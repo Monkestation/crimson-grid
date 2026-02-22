@@ -27,14 +27,16 @@
 		LSATCHEL,
 		GDUFFELBAG,
 		GMESSENGER,
+		/* DARKPACK EDIT REMOVAL
 		DBACKPACK,
 		DSATCHEL,
 		DDUFFELBAG,
 		DMESSENGER,
+		*/
 	)
 
 /datum/preference/choiced/backpack/create_default_value()
-	return DBACKPACK
+	return GBACKPACK // DARKPACK EDIT CHANGE
 
 /datum/preference/choiced/backpack/icon_for(value)
 	switch (value)
@@ -70,7 +72,7 @@
 	savefile_key = "jumpsuit_style"
 	savefile_identifier = PREFERENCE_CHARACTER
 	priority = PREFERENCE_PRIORITY_BODY_TYPE
-	main_feature_name = "Jumpsuit"
+	main_feature_name = "Suit or Skirt" // DARKPACK EDIT CHANGE
 	category = PREFERENCE_CATEGORY_CLOTHING
 	should_generate_icons = TRUE
 
@@ -86,9 +88,9 @@
 /datum/preference/choiced/jumpsuit/icon_for(value)
 	switch (value)
 		if (PREF_SUIT)
-			return /obj/item/clothing/under/color/grey
+			return /obj/item/clothing/under/vampire/baali // DARKPACK EDIT CHANGE
 		if (PREF_SKIRT)
-			return /obj/item/clothing/under/color/jumpskirt/grey
+			return /obj/item/clothing/under/vampire/baali/female // DARKPACK EDIT CHANGE
 
 /datum/preference/choiced/jumpsuit/apply_to_human(mob/living/carbon/human/target, value)
 	target.jumpsuit_style = value

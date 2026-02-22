@@ -45,9 +45,9 @@
 
 //Suit/Skirt
 /// Preference: Jumpsuit
-#define PREF_SUIT "Jumpsuit"
+#define PREF_SUIT "Suit" // DARKPACK EDIT CHANGE
 /// Preference: Jumpskirt
-#define PREF_SKIRT "Jumpskirt"
+#define PREF_SKIRT "Skirt" // DARKPACK EDIT CHANGE
 
 // Types of backpack
 /// Backpack type: Department themed backpack
