@@ -245,7 +245,7 @@
 			human_crafter = crafter
 			if(CONFIG_GET(flag/punishing_zero_dots) && human_crafter.st_get_stat(STAT_CRAFTS) < 1)
 				return ", you dont know how to craft!"
-			recipe_time = recipe_time / human_crafter.st_get_stat(STAT_CRAFTS)
+			recipe_time = recipe_time / max(human_crafter.st_get_stat(STAT_CRAFTS), 1)
 		// DARKPACK EDIT ADD END
 
 		if(!do_after(crafter, round(recipe_time, 0.1 SECONDS), target = crafter))
