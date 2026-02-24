@@ -66,7 +66,6 @@
 	bumper_text = "bash door"
 	reroll_cooldown = 1 SCENES
 	applicable_stats = list(STAT_STRENGTH)
-	numerical = TRUE
 
 /datum/storyteller_roll/grappling
 	bumper_text = "grappling"
