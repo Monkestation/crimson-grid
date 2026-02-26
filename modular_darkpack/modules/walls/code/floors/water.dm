@@ -28,17 +28,27 @@
 	light_power = 0.5
 	baseturfs = /turf/open/water/acid
 
-/turf/open/water/acid/Entered(atom/movable/AM)
-	if(acid_burn(AM))
+/turf/open/water/acid/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	. = ..()
+	if(acid_burn(arrived))
 		START_PROCESSING(SSobj, src)
 
-/turf/open/water/acid/proc/acid_burn(mob/living/L)
-	if(isliving(L))
-		if(L.movement_type & FLYING)
-			return
-		L.apply_damage(10, AGGRAVATED)
-		L.apply_damage(30, TOX)
-		to_chat(L, span_warning("Your flesh burns!"))
+/turf/open/water/acid/proc/acid_burn(mob/living/burnt_mob)
+	if(istype(burnt_mob))
+		if(!HAS_TRAIT(burnt_mob, TRAIT_IMMERSED))
+			return TRUE // We still want to keep processing incase something changes
+		if(burnt_mob.movement_type & FLYING)
+			return TRUE
+		burnt_mob.apply_damage(1 TTRPG_DAMAGE, AGGRAVATED)
+		burnt_mob.apply_damage(2 TTRPG_DAMAGE, TOX)
+		to_chat(burnt_mob, span_warning("Your flesh burns!"))
+		return TRUE
+
+/turf/open/water/acid/process(seconds_per_tick)
+	if(!(locate(/mob/living) in contents))
+		return PROCESS_KILL
+	for(var/mob/living/burnt_guy in contents)
+		acid_burn(burnt_guy)
 
 //Code mostly taken from /obj/crystal_mass
 /turf/open/water/bloodwave
