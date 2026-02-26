@@ -1,0 +1,6 @@
+author: "FalloutFalcon"
+delete-after: True
+changes:
+  - bugfix: "Typhon's Brew actually shows up if you have Serpentis"
+  - refactor: "Reworks DISCIPLINE_KNOWLEDGE traits into checks for the disc"
+  - code_imp: "Some type casts on `attack_self`s mostly have type safety to prevent run-times if you use it while not a human"
