@@ -123,7 +123,7 @@
 	desc = "Contains some first aid supplies."
 	cost = 500
 	contains = list(
-		/obj/item/stack/medical/gauze = 4,
+		/obj/item/stack/medical/wrap/gauze = 4,
 		/obj/item/stack/medical/bruise_pack = 4,
 		/obj/item/stack/medical/suture = 4,
 		/obj/item/stack/medical/ointment = 4

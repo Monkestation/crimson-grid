@@ -19,7 +19,7 @@
 	if(empty)
 		return
 	var/static/items_inside = list(
-		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/wrap/gauze = 1,
 		/obj/item/stack/medical/suture = 2,
 		/obj/item/stack/medical/mesh = 2,
 		/obj/item/reagent_containers/hypospray/medipen = 1,
@@ -38,7 +38,7 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/healthanalyzer = 1,
-		/obj/item/stack/medical/gauze/twelve = 1,
+		/obj/item/stack/medical/wrap/gauze/twelve = 1,
 		/obj/item/stack/medical/suture = 2,
 		/obj/item/stack/medical/mesh = 2,
 		/obj/item/reagent_containers/hypospray/medipen = 1,
@@ -61,7 +61,7 @@
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/applicator/patch/synthflesh = 3,
 		/obj/item/reagent_containers/hypospray/medipen/atropine = 2,
-		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/wrap/gauze = 1,
 		/obj/item/storage/pill_bottle/penacid = 1,
 	)
 	generate_items_inside(items_inside,src)
@@ -77,7 +77,7 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/applicator/patch/libital = 3,
-		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/wrap/gauze = 1,
 		/obj/item/storage/pill_bottle/probital = 1,
 		/obj/item/reagent_containers/hypospray/medipen/salacid = 1,
 	)
@@ -145,7 +145,7 @@
 		return
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/hypospray/medipen/ifak = 3,
-		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/wrap/gauze = 1,
 		/obj/item/healthanalyzer = 1,
 	)
 	generate_items_inside(items_inside,src)
@@ -161,7 +161,7 @@
 	if(empty)
 		return
 	var/static/items_inside = list(
-		/obj/item/stack/medical/gauze = 1,
+		/obj/item/stack/medical/wrap/gauze = 1,
 		/obj/item/defibrillator/compact/combat/loaded = 1,
 		/obj/item/reagent_containers/hypospray/combat = 1,
 		/obj/item/reagent_containers/applicator/patch/libital = 2,

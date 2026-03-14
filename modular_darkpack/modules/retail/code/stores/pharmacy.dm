@@ -2,7 +2,7 @@
 	product_types = list(
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/gauze,
+		/obj/item/stack/medical/wrap/gauze,
 		/obj/item/stack/medical/suture,
 		/obj/item/stack/medical/mesh,
 	)
