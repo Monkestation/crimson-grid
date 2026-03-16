@@ -4,7 +4,7 @@
 	bouncer_weapon_type = /obj/item/gun/ballistic/automatic/darkpack/mp5
 	bouncer_backup_weapon_type = /obj/item/melee/baton/vamp
 	shoes = list(/obj/item/clothing/shoes/vampire/jackboots)
-	//uniforms = list(/obj/item/clothing/under/pentex/pentex_turtleneck)
+	uniforms = list(/obj/item/clothing/under/vampire/pentex_turtleneck)
 	pockets = list(/obj/item/vamp/keys/npc, /obj/item/stack/dollar/rand)
 	gloves = list(/obj/item/clothing/gloves/vampire/work)
 	suits = list(/obj/item/clothing/suit/vampire/vest)
@@ -16,7 +16,7 @@
 	bouncer_weapon_type = /obj/item/gun/ballistic/automatic/darkpack/mp5
 	bouncer_backup_weapon_type = /obj/item/melee/baton/vamp
 	shoes = list(/obj/item/clothing/shoes/vampire/jackboots)
-	//uniforms = list(/obj/item/clothing/under/pentex/pentex_janitor)
+	uniforms = list(/obj/item/clothing/under/vampire/pentex_janitor)
 	pockets = list(/obj/item/vamp/keys/npc, /obj/item/stack/dollar/rand)
 	gloves = list(/obj/item/clothing/gloves/vampire/latex)
 	suits = list(/obj/item/clothing/suit/vampire/vest)
@@ -28,7 +28,7 @@
 	bouncer_weapon_type = /obj/item/gun/ballistic/automatic/darkpack/mp5
 	bouncer_backup_weapon_type = /obj/item/melee/baton/vamp
 	shoes = list(/obj/item/clothing/shoes/vampire/jackboots)
-	//uniforms = list(/obj/item/clothing/under/pentex/pentex_janitor)
+	uniforms = list(/obj/item/clothing/under/vampire/pentex_janitor)
 	pockets = list(/obj/item/vamp/keys/npc, /obj/item/stack/dollar/rand)
 	gloves = list(/obj/item/clothing/gloves/vampire/latex)
 	suits = list(/obj/item/clothing/suit/vampire/vest)
@@ -40,7 +40,7 @@
 	bouncer_weapon_type = /obj/item/gun/ballistic/automatic/pistol/darkpack/deagle
 	bouncer_backup_weapon_type = /obj/item/melee/baton/vamp
 	shoes = list(/obj/item/clothing/shoes/vampire/jackboots)
-	//uniforms = list(/obj/item/clothing/under/pentex/pentex_suit)
+	uniforms = list(/obj/item/clothing/under/vampire/pentex_suit)
 	pockets = list(/obj/item/vamp/keys/npc, /obj/item/stack/dollar/rand)
 	gloves = list(/obj/item/clothing/gloves/vampire/work)
 	suits = list(/obj/item/clothing/suit/vampire/vest)
