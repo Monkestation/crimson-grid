@@ -10,7 +10,7 @@
 	///Handles the informational chat message timer.
 	COOLDOWN_DECLARE(headshot_cooldown)
 	///Assoc list of ckeys and their links, used to cut down on chat spam
-	var/list/stored_links = list()
+	var/static/list/stored_links = list()
 	var/static/link_regex = regex("files.catbox.moe|images2.imgbox.com|i.gyazo.com")
 	var/static/list/valid_extensions = list("jpg", "png", "jpeg") // Regex works fine, if you know how it works
 
@@ -33,7 +33,7 @@
 
 	// extension will always be the last entry
 	var/extension = value_split[length(value_split)]
-	if(!(extension in valid_extensions))
+	if(!(lowertext(extension) in valid_extensions))
 		to_chat(usr, span_warning("The image must be one of the following extensions: '[english_list(valid_extensions)]'"))
 		return
 
