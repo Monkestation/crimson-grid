@@ -156,7 +156,7 @@
 		var/list/mental_conditions = list()
 		if(target.has_quirk(/datum/quirk/insanity))
 			mental_conditions += "insanity"
-		if(target.has_quirk(/datum/quirk/derangement))
+		if(target.has_quirk(/datum/quirk/darkpack/derangement))
 			mental_conditions += "an incurable derangement"
 		if(length(mental_conditions))
 			msg_mental = "[english_list(mental_conditions)] clouds their mind."

@@ -184,12 +184,10 @@
 		var/mob/living/carbon/human/husrc = src // gross istypesrc but easier than refactoring even further for now
 		if(husrc.skin_tone == "albino")
 			apparent_blood_volume -= (BLOOD_VOLUME_NORMAL * 0.25) // knocks you down a few pegs
-	if(HAS_TRAIT(user, TRAIT_COLD_AURA))
-		apparent_blood_volume -= (BLOOD_VOLUME_NORMAL * 0.25)
-	if(HAS_TRAIT(user, TRAIT_WARM_AURA))
-		apparent_blood_volume += (BLOOD_VOLUME_NORMAL * 0.25)
+	// DARKPACK EDIT ADD START
 	if(HAS_TRAIT(user, TRAIT_BLUSH_OF_HEALTH))
 		apparent_blood_volume += (BLOOD_VOLUME_NORMAL * 0.50)
+	// DAKRPACK EDIT ADD END
 	switch(apparent_blood_volume)
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 			. += span_warning("[t_He] [t_has] pale skin.")

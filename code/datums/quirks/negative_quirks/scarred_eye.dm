@@ -1,5 +1,5 @@
 /datum/quirk/item_quirk/scarred_eye
-	name = "Scarred Eye"
+	name = "One Eye" // DARKPACK EDIT CHANGE - MERITS/FLAWS
 	desc = "An accident in your past has cost you one of your eyes, but you got a cool eyepatch. Yarr!"
 	icon = FA_ICON_EYE_SLASH
 	value = -2
@@ -9,6 +9,7 @@
 	hardcore_value = 2
 	quirk_flags = QUIRK_HUMAN_ONLY|QUIRK_CHANGES_APPEARANCE
 	mail_goodies = list(/obj/item/reagent_containers/cup/glass/bottle/rum, /obj/item/clothing/mask/bandana/red)
+	darkpack_allowed = TRUE // DARKPACK EDIT ADD - MERITS/FLAWS
 
 /datum/quirk_constant_data/eye_scarring
 	associated_typepath = /datum/quirk/item_quirk/scarred_eye

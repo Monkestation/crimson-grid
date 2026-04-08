@@ -19,7 +19,9 @@
 		to_chat(owner, span_warning("Your shifting is on cooldown for one turn."))
 		return
 
-	if(ispath(get_breed_form_species(), form_to_transform))
+	if(HAS_TRAIT(owner, TRAIT_METAMORPH))
+		requires_roll = FALSE
+	else if(ispath(get_breed_form_species(), form_to_transform))
 		requires_roll = FALSE
 	else if(costs_rage)
 		if(adjust_rage(-1, TRUE))
@@ -38,7 +40,7 @@
 		transform_roll.difficulty = form_to_transform::shift_difficulty
 		switch(transform_roll.st_roll(owner, owner, PRIMAL_URGE_PLACEHOLDER))
 			if(ROLL_SUCCESS)
-				EMPTY_BLOCK_GUARD
+				pass()
 			if(ROLL_FAILURE, ROLL_BOTCH)
 				return
 
@@ -60,6 +62,15 @@
 	addtimer(CALLBACK(src, PROC_REF(transform_finish), form_to_transform, time_to_transform), time_to_transform * 0.9)
 
 /datum/splat/werewolf/shifter/proc/revert_to_breed_form()
+	if(HAS_TRAIT(owner, TRAIT_METAMORPH))
+		var/datum/storyteller_roll/metamorph/roll_datum = new()
+		if(roll_datum.st_roll(owner, bonus = PRIMAL_URGE_PLACEHOLDER) == ROLL_SUCCESS)
+			// First valid use of timeout discovered (we dont want to be able to hold it out)
+			var/choice = tgui_input_list(owner, "Revert to your choosen form", "Metamorph", transformation_list, get_breed_form_species(), 1 TURNS)
+			if(choice in transformation_list)
+				transform_fera(choice, force = TRUE)
+				return
+
 	transform_fera(get_breed_form_species(), force = TRUE)
 
 /datum/splat/werewolf/shifter/proc/transform_finish(form_to_transform, time_taken = DOGGY_ANIMATION_TIME)

@@ -206,7 +206,7 @@
 	holder.color = null
 
 	var/mob/parent_mob = parent
-	if(get_kindred_splat(parent_mob) && output_color)
+	if(HAS_TRAIT(parent, TRAIT_PALE_AURA) && !HAS_TRAIT(parent, TRAIT_DECEPTIVE_AURA) && output_color)
 		var/mob/living/carbon/human/lick = parent_mob
 		var/datum/st_stat/morality_path/morality/stat_morality = lick.storyteller_stats[STAT_MORALITY]
 		if(!stat_morality?.morality_path.alignment == MORALITY_HUMANITY) // non-humanity licks have standard kindred auras that give them away
@@ -284,7 +284,7 @@
 		static_image.alpha = 150
 		holder.vis_contents += static_image
 
-	if(get_ghoul_splat(parent_mob))
+	if(!HAS_TRAIT(parent, TRAIT_PALE_AURA) && get_ghoul_splat(parent_mob))
 		var/list/hsv_color_value = rgb2hsv(aura_appearance.color)
 		hsv_color_value[2] = hsv_color_value[2] * 0.7 // Reduce saturation for ghouls
 		aura_smoke_image.color = hsv2rgb(hsv_color_value)

@@ -54,6 +54,9 @@
 	if(HAS_TRAIT(src, TRAIT_SERPENTIS_SKIN) && !(HIDEJUMPSUIT)) // 'hidden by modest clothing'
 		. += span_danger("[p_They()] [p_are()] covered in... scales!?<br>")
 
+	if(HAS_TRAIT(src, TRAIT_ANIMAL_MUSK))
+		. += span_warning("[p_they(TRUE)] smell[p_s()] weirdly animal like...<br>")
+
 	if(!(obscured_slots & HIDEFACE))
 		switch(st_get_stat(STAT_APPEARANCE))
 			if(0)

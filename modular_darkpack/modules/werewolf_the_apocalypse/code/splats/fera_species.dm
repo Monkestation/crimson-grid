@@ -48,8 +48,7 @@
 
 	human_who_gained_species.add_offsets(type, w_add = mob_pixel_w, z_add = mob_pixel_z)
 
-	for(var/key, value in form_bonus_stats)
-		human_who_gained_species.st_add_stat_mod(key, value, type)
+	add_buffs(human_who_gained_species)
 
 /datum/species/human/shifter/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
@@ -58,9 +57,23 @@
 
 	human.remove_offsets(type)
 
+	clear_buffs(human)
+
+/datum/species/human/shifter/proc/add_buffs(mob/living/carbon/human/human)
+	for(var/key, value in form_bonus_stats)
+		if(!should_add_buff(human, key, value))
+			continue
+		human.st_add_stat_mod(key, value, type)
+
+/datum/species/human/shifter/proc/should_add_buff(mob/living/carbon/human/human, datum/st_stat/buff_type, amount)
+	return TRUE
+
+/datum/species/human/shifter/proc/clear_buffs(mob/living/carbon/human/human)
 	for(var/key, value in form_bonus_stats)
 		human.st_remove_stat_mod(key, type)
 
+/datum/species/human/shifter/proc/is_veil_breaching_form(mob/living/carbon/human/human)
+	return veil_breaching_form
 
 /// Fetch the mobs fur color from their features.
 /datum/species/human/shifter/proc/get_fur_color(mob/living/carbon/human/human)
@@ -137,20 +150,28 @@
 	fallback_icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/garou_forms/glabro.dmi'
 	veil_breaching_form = TRUE
 
+/datum/species/human/shifter/bestial/should_add_buff(mob/living/carbon/human/human, datum/st_stat/buff_type, amount)
+	. = ..()
+	// Raw string check instead of a define or type path is pretty bleak
+	if(HAS_TRAIT(human, TRAIT_FAIR_GLABRO) && (buff_type::subcategory == "Social") && (amount < 0))
+		return FALSE
+
+/datum/species/human/shifter/bestial/is_veil_breaching_form(mob/living/carbon/human/human)
+	if(HAS_TRAIT(human, TRAIT_FAIR_GLABRO))
+		return FALSE
+	return ..()
+
 /datum/species/human/shifter/bestial/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	human_who_gained_species.update_mob_height()
 	human_who_gained_species.update_transform(1.25)
 
-
-	human_who_gained_species.remove_overlay(BODY_ADJ_LAYER)
-
-	var/fur_color = get_fur_color(human_who_gained_species)
-	var/mob_icon = get_mob_icon(human_who_gained_species)
-
-	human_who_gained_species.overlays_standing[BODY_ADJ_LAYER] = list(image(mob_icon, fur_color))
-
-	human_who_gained_species.apply_overlay(BODY_ADJ_LAYER)
+	if(!HAS_TRAIT(human_who_gained_species, TRAIT_FAIR_GLABRO))
+		human_who_gained_species.remove_overlay(BODY_ADJ_LAYER)
+		var/fur_color = get_fur_color(human_who_gained_species)
+		var/mob_icon = get_mob_icon(human_who_gained_species)
+		human_who_gained_species.overlays_standing[BODY_ADJ_LAYER] = list(image(mob_icon, fur_color))
+		human_who_gained_species.apply_overlay(BODY_ADJ_LAYER)
 
 /datum/species/human/shifter/bestial/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()

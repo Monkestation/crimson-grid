@@ -145,7 +145,7 @@
 		var/list/mental_conditions = list()
 		if(target.has_quirk(/datum/quirk/insanity))
 			mental_conditions += "insanity"
-		if(target.has_quirk(/datum/quirk/derangement))
+		if(target.has_quirk(/datum/quirk/darkpack/derangement))
 			mental_conditions += "an incurable derangement"
 		if(length(mental_conditions))
 			msg_mental = "[english_list(mental_conditions)] clouds their mind."
@@ -291,7 +291,7 @@
 		return
 	var/obj/item/organ/brain/target_brain = carbon_target.get_organ_by_type(/obj/item/organ/brain)
 	var/list/gotten_traumas = target_brain.traumas
-	if(carbon_target.has_quirk(/datum/quirk/derangement))
+	if(carbon_target.has_quirk(/datum/quirk/darkpack/derangement))
 		gotten_traumas += "Derangement"
 	var/chosen_derangement = tgui_input_list(owner, "Choose a trauma to cure", "Traumas", gotten_traumas)
 	if(!chosen_derangement)
@@ -303,7 +303,7 @@
 		if(ROLL_BOTCH)
 			var/obj/item/organ/brain/owner_brain = owner.get_organ_by_type(/obj/item/organ/brain)
 			if(chosen_derangement == "Derangement")
-				owner.add_quirk(/datum/quirk/derangement)
+				owner.add_quirk(/datum/quirk/darkpack/derangement)
 			else
 				owner_brain.gain_trauma_type(chosen_derangement, TRAUMA_RESILIENCE_MAGIC)
 			to_chat(owner, span_bolddanger("You fail to alleviate [target]'s [chosen_derangement] as your own brain inherits it!"))
@@ -311,7 +311,7 @@
 			to_chat(owner, span_danger("You fail to alleviate [target]'s [chosen_derangement]."))
 		if(ROLL_SUCCESS)
 			if(chosen_derangement == "Derangement")
-				carbon_target.remove_quirk(/datum/quirk/derangement)
+				carbon_target.remove_quirk(/datum/quirk/darkpack/derangement)
 			else
 				target_brain.cure_trauma_type(chosen_derangement, TRAUMA_RESILIENCE_MAGIC)
 			to_chat(owner, span_notice("You succesfully alleviate [target]'s [chosen_derangement]."))

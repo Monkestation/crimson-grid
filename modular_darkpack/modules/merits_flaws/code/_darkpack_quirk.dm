@@ -26,6 +26,8 @@
 			if(splat.id in allowed_splats)
 				has_allowed_splat = TRUE
 				break
+		if(!new_holder.splats && (SPLAT_NONE in allowed_splats))
+			has_allowed_splat = TRUE
 		if(!has_allowed_splat)
 			return FALSE
 
@@ -50,7 +52,8 @@
 		return TRUE
 
 	var/datum/splat/splat_path = GLOB.splat_prototypes[mob_splat]
-	var/splat_id = splat_path?.id
+	// If splat is null, just assume we have no splat.
+	var/splat_id = splat_path?.id ? splat_path.id : SPLAT_NONE
 
 	if(forbidden_splats && (splat_id in forbidden_splats))
 		return FALSE

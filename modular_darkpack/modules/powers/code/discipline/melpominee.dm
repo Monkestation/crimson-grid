@@ -350,14 +350,14 @@
 	listener.overlays_standing[MUTATIONS_LAYER] = song_overlay
 	listener.apply_overlay(MUTATIONS_LAYER)
 	if(cumulative_our_power[listener] >= 20)
-		listener.add_quirk(/datum/quirk/derangement)
+		listener.add_quirk(/datum/quirk/darkpack/derangement)
 
 	if(cumulative_list[listener] <= cumulative_our_power[listener]-6)
-		if(listener.add_quirk(/datum/quirk/derangement))
+		if(listener.add_quirk(/datum/quirk/darkpack/derangement))
 			addtimer(CALLBACK(src, PROC_REF(remove_derangement), listener), 1 SCENES)
 
 /datum/discipline_power/melpominee/sirens_beckoning/proc/remove_derangement(mob/living/carbon/listener)
-	listener.remove_quirk(/datum/quirk/derangement)
+	listener.remove_quirk(/datum/quirk/darkpack/derangement)
 
 /datum/discipline_power/melpominee/sirens_beckoning/deactivate(mob/living/carbon/target)
 	. = ..()

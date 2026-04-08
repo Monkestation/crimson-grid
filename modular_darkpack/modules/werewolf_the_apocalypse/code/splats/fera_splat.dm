@@ -145,7 +145,7 @@
 		COOLDOWN_START(src, passive_healing_cd, 1 TURNS)
 	var/datum/species/human/shifter/shifter_species = owner.dna.species
 	if(istype(shifter_species))
-		if(shifter_species.veil_breaching_form && !shifter_species.causes_delerium)
+		if(shifter_species.is_veil_breaching_form(owner) && (!shifter_species.causes_delerium || HAS_TRAIT(owner, TRAIT_PIERCED_VEIL)))
 			SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 // Being used to represent meditating in your caern

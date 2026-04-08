@@ -1,3 +1,4 @@
+// Homebrew?
 /datum/quirk/darkpack/illegal_identity
 	name = "Illegal Identity"
 	desc = "Illegal immigrant? Died legally? Born a wolf? The cops aren't happy."

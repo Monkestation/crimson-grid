@@ -15,7 +15,8 @@
 		TRAIT_VTM_MORALITY,
 		TRAIT_VTM_CLANS,
 		TRAIT_UNAGING,
-		TRAIT_DRINKS_BLOOD
+		TRAIT_DRINKS_BLOOD,
+		TRAIT_PALE_AURA,
 	)
 	splat_actions = list(
 		/datum/action/cooldown/mob_cooldown/give_vitae,

@@ -42,8 +42,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CHARMER "charmer"
 
 // Mutates the apperance of auras
-#define TRAIT_COLD_AURA "cold_aura"
-#define TRAIT_WARM_AURA "warm_aura"
+#define TRAIT_PALE_AURA "pale_aura"
+#define TRAIT_DECEPTIVE_AURA "deceptive_aura"
 #define TRAIT_FRENETIC_AURA "frenetic_aura"
 
 #define TRAIT_BLUSH_OF_HEALTH "blush_of_health"
@@ -88,8 +88,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_VTM_MORALITY "vtm_morality"
 /// Uses Vampire: The Masquerade Clans/Bloodlines
 #define TRAIT_VTM_CLANS "vtm_clans"
-/// This species drinks blood
-#define TRAIT_BLOOD_DRINKER "blood_drinker"
 /// Does not biologically age, and so has a disconnected biological and chronological age
 #define TRAIT_UNAGING "unaging"
 // Does the mob have ghostsight?
@@ -154,11 +152,21 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SURGERY_INAPPLICABLE "surgery_inapplicable"
 // BELOW ARE ALL MERITS/FLAWS
 #define TRAIT_ILLEGAL_IDENTITY "illegal_identity" // GOVERNMENT
+#define TRAIT_ANIMAL_MUSK "animal_musk"
 #define TRAIT_PERMAFANGS "permafangs"
 #define TRAIT_ORGANOVORE "organovore"
 #define TRAIT_SANGUINE_INCONGRUITY "sanguine_incongruity"
 #define TRAIT_MONSTROUS "monstrous"
 #define TRAIT_HORRIFIC_APPEARANCE "horrific_appearance"
+
 #define TRAIT_STILLNESS_OF_DEATH "stillness_of_death"
+
+#define TRAIT_PIERCED_VEIL "pierced_veil"
+#define TRAIT_WEAK_WILLED "weak_willed"
+#define TRAIT_TIME_SENSE "time_sense"
+#define TRAIT_METAMORPH "metamorph"
+#define TRAIT_MERIT_UNTAMABLE "merit_untamable"
+#define TRAIT_FAIR_GLABRO "fair_glabro"
+
 
 // END TRAIT DEFINES

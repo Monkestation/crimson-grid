@@ -1,7 +1,7 @@
 
 #define FLOOR_DISAPPEAR 3 SECONDS
 
-/datum/quirk/derangement
+/datum/quirk/darkpack/derangement
 	name = "Derangement"
 	desc = "Suffer from a permanent, incurable derangement that alters your perception."
 	icon = FA_ICON_HOUSE_MEDICAL_CIRCLE_EXCLAMATION
@@ -11,17 +11,17 @@
 	value = -8
 	hardcore_value = 6
 	quirk_flags = QUIRK_PROCESSES
-	darkpack_allowed = TRUE
 	mob_trait = TRAIT_SHIFTY_EYES // they're deranged, so give them the trait that tells people around them about their crazy eyes
 	mail_goodies = list(/obj/effect/spawner/random/contraband/narcotics) // happy pills! :)
+	excluded_clans = list(VAMPIRE_CLAN_MALKAVIAN)
 	var/process_interval = 3 SECONDS
 	var/list/derangements
 	COOLDOWN_DECLARE(next_process)
 
-/datum/quirk/derangement/add()
+/datum/quirk/darkpack/derangement/add()
 	derangements = subtypesof(/datum/hallucination/malk)
 
-/datum/quirk/derangement/process(seconds_per_tick)
+/datum/quirk/darkpack/derangement/process(seconds_per_tick)
 	if(!quirk_holder.client)
 		return
 	if(!COOLDOWN_FINISHED(src, next_process))
@@ -36,7 +36,7 @@
 
 // largely taken from https://github.com/The-Final-Nights/The-Final-Nights/pull/287
 // based on the work of maaacha
-/datum/quirk/derangement/proc/handle_malk_floors()
+/datum/quirk/darkpack/derangement/proc/handle_malk_floors()
 	if(!quirk_holder?.client)
 		return
 	//Floors go crazy go stupid
@@ -47,7 +47,7 @@
 			continue
 		handle_malk_floor(floor)
 
-/datum/quirk/derangement/proc/handle_malk_floor(turf/open/floor)
+/datum/quirk/darkpack/derangement/proc/handle_malk_floor(turf/open/floor)
 	var/mutable_appearance/fake_floor = image(floor.icon, floor, floor.icon_state, floor.layer)
 	quirk_holder?.client.images += fake_floor
 	var/offset = pick(-3,-2, -1, 1, 2, 3)
@@ -55,11 +55,11 @@
 	animate(fake_floor, pixel_y = offset, time = disappearfirst, flags = ANIMATION_RELATIVE)
 	addtimer(CALLBACK(src, PROC_REF(malk_floor_stage1), quirk_holder, offset, fake_floor), disappearfirst, TIMER_CLIENT_TIME)
 
-/datum/quirk/derangement/proc/malk_floor_stage1(mob/living/malk, offset, mutable_appearance/fake_floor)
+/datum/quirk/darkpack/derangement/proc/malk_floor_stage1(mob/living/malk, offset, mutable_appearance/fake_floor)
 	animate(fake_floor, pixel_y = -offset, time = FLOOR_DISAPPEAR, flags = ANIMATION_RELATIVE)
 	addtimer(CALLBACK(src, PROC_REF(malk_floor_stage2), malk, fake_floor), FLOOR_DISAPPEAR, TIMER_CLIENT_TIME)
 
-/datum/quirk/derangement/proc/malk_floor_stage2(mob/living/malk, mutable_appearance/fake_floor)
+/datum/quirk/darkpack/derangement/proc/malk_floor_stage2(mob/living/malk, mutable_appearance/fake_floor)
 	malk.client?.images -= fake_floor
 
 /datum/hallucination/malk

@@ -924,7 +924,11 @@
 
 /// Adds this list to the output to the stat browser
 /mob/proc/get_status_tab_items()
-	. = list("") //we want to offset unique stuff from standard stuff
+	// DARKPACK EDIT CHANGE START - MERITS/FLAWS - (Time sense)
+	. = list()
+	. += get_time_status()
+	. += "" //we want to offset unique stuff from standard stuff
+	// DARKPACK EDIT CHANGE END
 	SEND_SIGNAL(src, COMSIG_MOB_GET_STATUS_TAB_ITEMS, .)
 	return .
 
