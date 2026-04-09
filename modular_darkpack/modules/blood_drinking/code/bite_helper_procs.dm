@@ -47,6 +47,8 @@
 	var/drink_mod = 1
 	if(HAS_TRAIT(src, TRAIT_HUNGRY))
 		drink_mod *= 0.5
+	if(HAS_TRAIT(src, TRAIT_EFFICIENT_DIGESTION))
+		drink_mod *= 1.5
 
 	return drink_mod
 

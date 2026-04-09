@@ -12,7 +12,8 @@
 	)
 	clan_traits = list(
 		TRAIT_REJECTED_BY_TECHNOLOGY,
-		TRAIT_NO_MIRROR_REFLECTION
+		TRAIT_NO_MIRROR_REFLECTION,
+		TRAIT_INVISIBLE_TO_CAMERA
 	)
 	male_clothes = /obj/item/clothing/under/vampire/emo
 	female_clothes = /obj/item/clothing/under/vampire/business
