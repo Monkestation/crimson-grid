@@ -10,5 +10,4 @@
 	if(identified && owner)
 		if(last_regen+60 < world.time)
 			last_regen = world.time
-			owner.adjust_brute_loss(-5)
-			owner.adjust_fire_loss(-5)
+			owner.heal_storyteller_health(dots_to_heal = 1, heal_aggravated = FALSE, heal_scars = TRUE, heal_blood = TRUE)
