@@ -16,11 +16,6 @@
 					SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
 					to_chat(src, span_warning("You're not desperate enough to try <i>that</i>."))
 					return
-			// Prevent drinking from corspes... Not V20 accurate as far as I can tell?
-			if(bit_living.stat == DEAD && !HAS_TRAIT(src, TRAIT_GULLET))
-				SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
-				to_chat(src,span_warning("Your Beast requires life, not the tepid swill of corpses."))
-				return
 			// Allow for diablor?
 			if(!get_kindred_splat(bit_living) || !get_kindred_splat(src))
 				if(!CAN_HAVE_BLOOD(bit_living) || (bit_living.blood_volume <= 50) || (bit_living.bloodpool <= 0))
