@@ -36,6 +36,7 @@
 	if (isnull(landingzone))
 		WARNING("[src] couldnt find a Quartermaster/Storage (aka cargobay) area on the station, and as such it has set the supplypod landingzone to the area it resides in.")
 		landingzone = get_area(src)
+	RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(withdraw_money)) // DARKPACK EDIT ADD - Putting cash into the Cargo console
 
 /obj/machinery/computer/cargo/express/on_construction(mob/user)
 	. = ..()
@@ -72,7 +73,38 @@
 		to_chat(user, span_alert("[src] is already linked to [beacon]."))
 		return ITEM_INTERACT_FAILURE
 
+	// DARKPACK EDIT ADD START - Putting cash into the cargo console
+	if(istype(tool, /obj/item/stack/dollar))
+		var/datum/bank_account/account = SSeconomy.get_dep_account(cargo_account)
+		if(isnull(account))
+			return ITEM_INTERACT_FAILURE
+		var/obj/item/stack/dollar/cash = tool
+		var/amount = cash.amount
+		account.adjust_money(amount)
+		to_chat(user, span_notice("You deposit [amount] dollar\s into the cargo account."))
+		qdel(cash)
+		return ITEM_INTERACT_SUCCESS
+	// DARKPACK EDIT ADD END - Putting cash into the cargo console
+
 	return NONE
+
+// DARKPACK EDIT ADD START - Putting cash into the cargo console
+/obj/machinery/computer/cargo/express/proc/withdraw_money(mob/living/user)
+	var/datum/bank_account/account = SSeconomy.get_dep_account(cargo_account)
+	if(isnull(account))
+		return
+	var/amount = account.account_balance
+	if(amount <= 0)
+		balloon_alert(user, "no funds to withdraw!")
+		return
+	account.adjust_money(-amount)
+	var/turf/T = get_turf(src)
+	while(amount > 0)
+		var/stack_amount = min(amount, 1000)
+		new /obj/item/stack/dollar(T, stack_amount)
+		amount -= stack_amount
+	to_chat(user, span_notice("You withdraw [account.account_balance] dollar\s from the cargo account."))
+// DRAKPACK EDIT ADD END - Putting cash into the cargo console
 
 /obj/machinery/computer/cargo/express/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
