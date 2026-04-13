@@ -190,6 +190,7 @@ export type CharacterPreferencesData = {
   manually_rendered_features: Record<string, string>;
 
   names: Record<string, string>;
+  vocals: Record<string, string | number | boolean>; // TFN EDIT ADDITION
 
   misc: {
     gender: Gender;

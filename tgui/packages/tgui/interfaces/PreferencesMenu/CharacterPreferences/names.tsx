@@ -181,6 +181,7 @@ export function NameInput(props: NameInputProps) {
         {/* We only know other names when the server tells us */}
         {data?.names && (
           <Stack.Item>
+            {/* // TFN EDIT REMOVAL START
             <Button
               as="span"
               tooltip="Alternate Names"
@@ -211,6 +212,7 @@ export function NameInput(props: NameInputProps) {
                 }}
               />
             </Button>
+            // TFN EDIT REMOVAL END */}
           </Stack.Item>
         )}
       </Stack>

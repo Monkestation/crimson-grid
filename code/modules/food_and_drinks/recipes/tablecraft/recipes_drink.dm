@@ -147,6 +147,7 @@
 	//We can't spawn the abstract food/grown path
 	unit_test_spawn_extras = list(/obj/item/food/grown/banana = 4)
 	category = CAT_DRINK
+	non_craftable = TRUE // TFN EDIT ADDITION
 
 /datum/crafting_recipe/lean
 	name = "lean"
