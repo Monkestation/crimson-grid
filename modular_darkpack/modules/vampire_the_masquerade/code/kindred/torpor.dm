@@ -1,4 +1,4 @@
-/mob/living/proc/torpor(source, force)
+/mob/living/proc/torpor(source = DAMAGE_TRAIT, force)
 	if(HAS_TRAIT(src, TRAIT_TORPOR))
 		return
 
