@@ -5,6 +5,7 @@
 	music_index = MUSIC_BAR
 	zone_type = ZONE_ELYSIUM
 	fire_controled = TRUE
+	domain = TRUE
 
 /area/vtm/interior/anarch/basement
 	name = "Bar - Basement"

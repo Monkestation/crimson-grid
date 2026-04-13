@@ -5,6 +5,7 @@
 	music_index = MUSIC_FOREST
 	fire_controled = FALSE
 	gauntlet_rating = 8
+	domain = TRUE
 
 /area/vtm/interior/endron_facility/restricted
 	name = MAIN_EVIL_COMPANY + " Facility Restricted"

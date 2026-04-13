@@ -11,6 +11,9 @@
 	/// The rating of the gauntlet, the Gauntlet is strongest near certain types of environments
 	var/gauntlet_rating = 7 // WEREWOLF
 
+	// is this able to be classified as a domain? e.g, territorial flaw, later political implementation
+	var/domain = FALSE
+
 /area/vtm/powered(chan)
 	if (!requires_power)
 		return TRUE

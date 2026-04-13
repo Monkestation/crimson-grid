@@ -2,6 +2,21 @@
 	COOLDOWN_START(src, drinkblood_use_cd, 3 SECONDS)
 	update_drinking_overlay(drunk_from)
 
+	if(HAS_TRAIT(src, TRAIT_VICTIM_OF_THE_MASQUERADE))
+		var/datum/quirk/darkpack/victim_of_the_masquerade/votm = src.get_quirk(/datum/quirk/darkpack/victim_of_the_masquerade)
+		if(votm)
+			if(!votm.victim_of_the_masquerade_roll)
+				votm.victim_of_the_masquerade_roll = new()
+			var/result = votm.victim_of_the_masquerade_roll.st_roll(src, drunk_from)
+			if(result != ROLL_SUCCESS)
+				to_chat(src, span_warning("No... this isn't real. I can't be doing this...!"))
+				SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
+				Unconscious(5 SECONDS)
+				SEND_SIGNAL(src, COMSIG_PATH_HIT, -1, 0, FALSE)
+				remove_drinking_overlay(drunk_from)
+				return
+
+
 	if(HAS_TRAIT(src, TRAIT_BLOODY_SUCKER))
 		src.emote("moan")
 		Immobilize(30, TRUE)

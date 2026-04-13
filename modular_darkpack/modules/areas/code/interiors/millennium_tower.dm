@@ -4,6 +4,7 @@
 	music_index = MUSIC_PRINCE
 	zone_type = ZONE_ELYSIUM
 	fire_controled = TRUE
+	domain = TRUE
 
 /area/vtm/interior/millennium_tower/f2
 	name = "Millennium Tower F2"

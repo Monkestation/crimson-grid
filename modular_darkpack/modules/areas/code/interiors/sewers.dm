@@ -5,6 +5,7 @@
 	musictracks = list('modular_darkpack/modules/ambience/sounds/music/nosferatu.ogg')
 	outdoors = FALSE
 	zone_type = ZONE_NO_MASQUERADE
+	domain = TRUE
 
 /area/vtm/interior/sewer/nosferatu_town
 	name = "Underground Town"

@@ -22,6 +22,39 @@
 					SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
 					to_chat(src, span_warning("This vessel is empty. You'll have to find another."))
 					return
+			// Prey exclusion for anyone with the Flaw. Note that this is different than drinksomeblood.dm and TRAIT_FEEDING_RESTRICTION which disallows ventrue from drinking blood of poor npcs.
+			var/datum/quirk/darkpack/prey_exclusion/prey_exclusion_datum = src.get_quirk(/datum/quirk/darkpack/prey_exclusion)
+			if(prey_exclusion_datum && prey_exclusion_datum.prey_exclusion && istype(bit_living, prey_exclusion_datum.prey_exclusion))
+				SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
+				to_chat(src, span_warning("You despise this kind of prey."))
+				// DARKPACK TODO - FRENZY - tgui_input, yes or no to continue feeding in spite of the prey being excluded, if so, frenzy and path/humanity hit
+				return
+
+			// victim of the masquerade flaw
+			if(HAS_TRAIT(src, TRAIT_VICTIM_OF_THE_MASQUERADE))
+				var/datum/quirk/darkpack/victim_of_the_masquerade/votm = src.get_quirk(/datum/quirk/darkpack/victim_of_the_masquerade)
+				if(votm)
+					if(!votm.victim_of_the_masquerade_roll)
+						votm.victim_of_the_masquerade_roll = new()
+					var/result = votm.victim_of_the_masquerade_roll.st_roll(src, bit_living)
+					if(result != ROLL_SUCCESS)
+						to_chat(src, span_warning("What the hell am I doing? I'm not a vampire... oh god... I feel lightheaded..."))
+						src.Unconscious(1 TURNS)
+						SEND_SIGNAL(src, COMSIG_PATH_HIT, -1, 0, FALSE)
+						SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
+						return
+					else
+						to_chat(src, span_notice("Your teeth... or are they fangs... sink deep. It feels warm and good... oh god... this is wrong...!"))
+
+			// territorial flaw
+			if(HAS_TRAIT(src, TRAIT_VAMPIRE_TERRITORIAL))
+				var/datum/quirk/darkpack/territorial/terr = src.get_quirk(/datum/quirk/darkpack/territorial)
+				if(terr && terr.territory)
+					var/area/current_area = get_area(bit_living)
+					if(!istype(current_area, terr.territory))
+						to_chat(src, span_warning("This isn't your territory. You don't want to feed here."))
+						SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
+						return
 
 			if(get_kindred_splat(src))
 				bit_living.emote("groan")
