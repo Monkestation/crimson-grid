@@ -25,6 +25,12 @@
 #define BEARING_GUILT (1<<11)
 #define BEARING_TRIBULATION (1<<12)
 #define BEARING_SEDUCTION (1<<13)
+#define BEARING_BALANCE (1<<14)
+#define BEARING_CONFIDENCE (1<<15)
+#define BEARING_CORRUPTION (1<<16)
+#define BEARING_DARKNESS (1<<17)
+#define BEARING_FURY (1<<18)
+#define BEARING_RAPTURE (1<<19)
 
 // Path hits
 #define PATH_SCORE_DOWN -1
