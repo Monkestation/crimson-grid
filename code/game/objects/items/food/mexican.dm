@@ -95,6 +95,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
 	crafting_complexity = FOOD_COMPLEXITY_1
+	custom_price = 2 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/cheesynachos
 	name = "cheesy nachos"
@@ -111,6 +112,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_EXOTIC
 	crafting_complexity = FOOD_COMPLEXITY_2
+	custom_price = 2 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/cubannachos
 	name = "Cuban nachos"

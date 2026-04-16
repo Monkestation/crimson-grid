@@ -1,6 +1,7 @@
 /obj/structure/retail/gun_store
 	desc = "Boom! Booom!! BOOOOOOM!!!!"
-	products_list = list(new /datum/data/vending_product("magnum revolver", /obj/item/gun/ballistic/revolver/darkpack/magnum, 200),
+	products_list = list(
+		new /datum/data/vending_product("magnum revolver", /obj/item/gun/ballistic/revolver/darkpack/magnum, 200),
 		new /datum/data/vending_product("Colt M1911", /obj/item/gun/ballistic/automatic/pistol/darkpack/m1911, 250),
 		new /datum/data/vending_product("Elite 92G", /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta, 500),
 		new /datum/data/vending_product("desert eagle", /obj/item/gun/ballistic/automatic/pistol/darkpack/deagle, 600),

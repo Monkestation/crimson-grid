@@ -18,4 +18,7 @@
 		/obj/item/food/donut/matcha,
 		/obj/item/food/donut/jelly/matcha,
 		/obj/item/food/muffin/berry,
+		/obj/item/reagent_containers/cup/glass/coffee/vampire,
+		/obj/item/reagent_containers/cup/glass/coffee/vampire/robust,
+		/obj/item/reagent_containers/cup/soda_cans/thaw_club
 	)

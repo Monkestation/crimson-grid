@@ -95,6 +95,7 @@
 	tastes = list("rice" = 1)
 	foodtypes = GRAIN | BREAKFAST
 	crafting_complexity = FOOD_COMPLEXITY_1
+	custom_price = 1 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/salad/ricepudding
 	name = "rice pudding"
@@ -122,6 +123,7 @@
 	foodtypes = GRAIN | MEAT
 	crafting_complexity = FOOD_COMPLEXITY_2
 	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT * 2)
+	custom_price = 2 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/salad/risotto
 	name = "risotto"
@@ -148,6 +150,7 @@
 	tastes = list("rice" = 1, "egg" = 1)
 	foodtypes = MEAT|VEGETABLES|GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_4
+	custom_price = 2 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/salad/edensalad
 	name = "\improper Salad of Eden"

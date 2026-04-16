@@ -596,6 +596,7 @@
 	spawn_type = /obj/item/food/nugget
 	spawn_count = 6
 	storage_type = /datum/storage/nugget_box
+	custom_price = 2 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/storage/fancy/nugget_box/Initialize(mapload)
 	. = ..()

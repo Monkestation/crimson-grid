@@ -13,6 +13,7 @@
 	eat_time = 15 //Quick snack
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+	custom_price = 3 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/burger/plain
 	name = "plain burger"

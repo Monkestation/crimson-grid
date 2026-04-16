@@ -103,8 +103,8 @@
 
 // Fries
 /obj/item/food/fries
-	name = "space fries"
-	desc = "AKA: French Fries, Freedom Fries, etc."
+	name = "french fries" // DARKPACK EDIT CHANGE
+	desc = "AKA: Freedom Fries, etc." // DARKPACK EDIT CHANGE
 	icon_state = "fries"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4)
 	tastes = list("fries" = 3, "salt" = 1)

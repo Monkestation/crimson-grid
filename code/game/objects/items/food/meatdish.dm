@@ -990,6 +990,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
+	custom_price = 2 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/food/fried_chicken/Initialize(mapload)
 	. = ..()
