@@ -156,7 +156,7 @@
 		examine_message += "Black veins pulse through [parent_mob.p_their()] aura."
 	if(HAS_TRAIT(parent_mob, TRAIT_FRENETIC_AURA))
 		examine_message += "[parent_mob.p_Their()] aura appears especially energetic."
-	if(get_ghoul_splat(parent_mob))
+	if(!HAS_TRAIT(parent, TRAIT_PALE_AURA) && get_ghoul_splat(parent_mob))
 		examine_message += "Pale blotches mark [parent_mob.p_their()] aura."
 	if(get_kindred_splat(parent_mob))
 		var/mob/living/carbon/human/lick = parent_mob
