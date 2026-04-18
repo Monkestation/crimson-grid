@@ -1,13 +1,13 @@
+// DARKPACK EDIT CHANGE START
 import {
   AnimatedNumber,
   Box,
-  Button,
   Icon,
-  LabeledList,
   NoticeBox,
   Section,
   Stack,
 } from 'tgui-core/components';
+// DARKPACK EDIT CHANGE END
 import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
@@ -84,6 +84,7 @@ function CargoExpressContent(props) {
             </Box>
           }
         >
+          {/* // DARKPACK EDIT REMOVAL
           <LabeledList>
             <LabeledList.Item label="Landing Location">
               <Button selected={!using_beacon} onClick={() => act('LZCargo')}>
@@ -105,6 +106,7 @@ function CargoExpressContent(props) {
               </Button>
             </LabeledList.Item>
           </LabeledList>
+          */}
         </Section>
       </Stack.Item>
       <Stack.Item grow>

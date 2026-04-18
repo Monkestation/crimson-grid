@@ -18,6 +18,7 @@
 // DARKPACK EDIT ADD START - WALLS
 ///Seethrough component the EFFECT that darkpack walls use. Creates a wallening like effect
 #define SEE_THROUGH_MAP_WALLS "darkpack_walls"
+#define SEE_THROUGH_CARGO_CRATE "cargo_crate"
 // DARKPACK EDIT ADD END
 
 /**global statics for the see_through_component coordinate maps
@@ -52,6 +53,12 @@ GLOBAL_LIST_INIT(see_through_maps, list(
 		list(-1, 2, 0), list(0, 2, 0), list(1, 2, 0),
 		list(-1, 1, 0), list(0, 1, 0), list(1, 1, 0),
 		list(-1, 0, 0), list(0, 0, 0), list(1, 0, 0)
+	),
+	// XXXX
+	// AXXX
+	SEE_THROUGH_CARGO_CRATE = list(
+		list(0, 1, 0), list(1, 1, 0), list(2, 1, 0), list(3, 1, 0),
+		list(0, 0, 0), list(1, 0, 0), list(2, 0, 0), list(3, 0, 0)
 	),
 	// DARKPACK EDIT ADD END
 

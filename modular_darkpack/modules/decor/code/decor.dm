@@ -359,6 +359,7 @@
 /obj/cargotrain/Initialize(mapload)
 	. = ..()
 	icon_state = "[rand(2, 5)]"
+	AddComponent(/datum/component/seethrough, SEE_THROUGH_CARGO_CRATE)
 
 /obj/cargotrain/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	for(var/mob/living/L in get_step(src, movement_dir))
@@ -383,6 +384,7 @@
 	icon_state = "[rand(1, 5)]"
 	if(icon_state != "1")
 		opacity = TRUE
+		AddComponent(/datum/component/seethrough, SEE_THROUGH_CARGO_CRATE)
 	set_density(TRUE)
 	var/atom/movable/M1 = new(get_step(loc, EAST))
 	var/atom/movable/M2 = new(get_step(M1.loc, EAST))
