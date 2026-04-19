@@ -103,7 +103,6 @@
 	bumper_text = "aura reading"
 	difficulty = 8
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
-	numerical = TRUE
 	roll_output_type = ROLL_PRIVATE
 
 //AURA PERCEPTION
@@ -128,7 +127,7 @@
 		if(ROLL_SUCCESS)
 			return TRUE
 		else
-			to_chat(span_danger("You fail to read into anything at all..."))
+			to_chat(owner, span_danger("You fail to read into anything at all..."))
 			return FALSE
 
 /datum/discipline_power/auspex/aura_perception/activate()
