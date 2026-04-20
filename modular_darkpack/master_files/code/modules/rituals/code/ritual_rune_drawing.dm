@@ -15,8 +15,11 @@
 	//stat to use for rune drawing speed
 	var/speed_stat = STAT_OCCULT
 
-/datum/action/ritual_drawing/Trigger(trigger_flags)
+/datum/action/ritual_drawing/Trigger(mob/clicker, trigger_flags)
 	. = ..()
+	if(!.)
+		return
+
 	if(!rune_type || !tome_type)
 		stack_trace("[type] has no rune_type or tome_type set!")
 		return

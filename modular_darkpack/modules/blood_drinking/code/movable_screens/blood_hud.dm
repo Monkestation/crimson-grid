@@ -45,6 +45,6 @@
 /mob/living/proc/update_blood_hud()
 	if(!hud_used)
 		return
-	hud_used.bloodpool_icon?.update_icon()
+	hud_used.screen_objects[HUD_MOB_BLOODPOOL]?.update_icon()
 
 #undef UI_LIVING_BLOODPOOL

@@ -750,7 +750,7 @@
 /datum/crafting_recipe/food/processor/spidereggs
 	reqs = list(/obj/item/food/spidereggs = 1)
 	result = /obj/item/food/spidereggs/processed
- */
+
 // Machinery: Microwave
 /datum/crafting_recipe/food/microwave
 	machinery = list(/obj/machinery/microwave)
@@ -930,6 +930,7 @@
 /datum/crafting_recipe/food/drying/firm_cheese
 	reqs = list(/obj/item/food/cheese/cheese_curds = 1)
 	result = /obj/item/food/cheese/firm_cheese
+
 /* // DARKPACK EDIT REMOVE
 /datum/crafting_recipe/food/drying/headcheese
 	reqs = list(/obj/item/food/raw_headcheese = 1)
@@ -942,6 +943,7 @@
 	result = /obj/item/food/tiziran_sausage
 	dish_category = DISH_MEAT
 	meal_category = MEAL_APPETIZER
+*/
 
 /datum/crafting_recipe/food/drying/sosjerky
 	reqs = list(/obj/item/food/meat/slab = 1)
@@ -964,3 +966,4 @@
 	result = /obj/item/food/kamaboko
 	cuisine_category = CUISINE_TERRAN // DARKPACK EDIT CHANGE - (TG lore removal)
 	meal_category = MEAL_SNACK
+

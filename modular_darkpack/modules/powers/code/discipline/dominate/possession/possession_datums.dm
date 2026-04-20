@@ -138,11 +138,14 @@
 	controller = WEAKREF(possessor)
 	..()
 
-/datum/action/end_possession/Trigger(trigger_flags)
+/datum/action/end_possession/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
 	var/datum/possession_controller/possessor = controller?.resolve()
 	if(!possessor)
 		Remove(owner)
 		qdel(src)
-		return
+		return FALSE
 	possessor.end_possession()
-	return TRUE
