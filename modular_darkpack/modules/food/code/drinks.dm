@@ -141,11 +141,12 @@
 /obj/item/reagent_containers/condiment/milk/malk
 	desc = "a carton of fish-brand milk, a subsidary of malk incorporated."
 
-/obj/item/reagent_containers/glass/mixing_bowl
+/obj/item/reagent_containers/cup/mixing_bowl
 	name = "mixing bowl"
 	desc = "A mixing bowl. It can hold up to 50 units. Perfect for cooking"
 	icon = 'modular_darkpack/modules/food/icons/items.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/food/icons/food_onfloor.dmi')
 	icon_state = "mixingbowl"
+	spillable = TRUE
 	custom_materials = list(/datum/material/glass=500)
 	custom_price = 10 // ECONOMY
