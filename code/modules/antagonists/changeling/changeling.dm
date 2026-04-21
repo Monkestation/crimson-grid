@@ -569,12 +569,12 @@
 	new_profile.underwear_color = target.underwear_color
 	new_profile.undershirt = target.undershirt
 	new_profile.socks = target.socks
-	// DARKPACK EDIT ADDITION START
+	// DARKPACK EDIT ADD START
 	new_profile.blooper = target.blooper
 	new_profile.blooper_speed = target.blooper_speed
 	new_profile.blooper_pitch = target.blooper_pitch
 	new_profile.blooper_pitch_range = target.blooper_pitch_range
-	// DARKPACK EDIT ADDITION END
+	// DARKPACK EDIT ADD END
 
 	// Grab skillchips they have
 	new_profile.skillchips = target.clone_skillchip_list(TRUE)
