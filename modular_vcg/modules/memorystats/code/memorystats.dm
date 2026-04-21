@@ -25,7 +25,7 @@ SUBSYSTEM_DEF(memory_stats)
 
 /datum/controller/subsystem/memory_stats/Initialize()
 	if(!rustg_file_exists(MEMORYSTATS_DLL_PATH))
-		flags |= SS_NO_FIRE
+		ss_flags |= SS_NO_FIRE
 		return SS_INIT_NO_NEED
 	fire()
 	return SS_INIT_SUCCESS

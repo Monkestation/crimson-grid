@@ -87,3 +87,26 @@ cd ..
 echo "Compiling tgui..."
 cd "$1"
 env TG_BOOTSTRAP_CACHE="$original_dir" CBT_BUILD_MODE="TGS" tools/bootstrap/javascript.sh tools/build/build.ts
+
+# CRIMSON EDIT ADDITION START - Byond memory stats
+
+# update byond-memorystats
+if [ ! -d "byond-memorystats" ]; then
+	echo "Cloning byond-memorystats..."
+	git clone https://github.com/Absolucy/byond-memorystats/
+	cd byond-memorystats
+	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
+else
+	echo "Fetching byond-memorystats..."
+	cd byond-memorystats
+	git fetch
+	~/.cargo/bin/rustup target add i686-unknown-linux-gnu
+fi
+
+echo "Deploying byond-memorystats..."
+git checkout "v$BYONDMEMORYSTATS_VERSION"
+env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --ignore-rust-version --release --target=i686-unknown-linux-gnu
+cp -f target/i686-unknown-linux-gnu/release/libmemorystats.so "$1/libmemorystats.so"
+cd ..
+
+# CRIMSON EDIT ADDITION END - Byond memory stats
