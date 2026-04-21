@@ -261,6 +261,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_home)
 			return new /atom/movable/screen/parallax_layer/layer_1(null, null, owner)
 		if(2)
 			return new /atom/movable/screen/parallax_layer/layer_2(null, null, owner)
+		/* // DARKPACK EDIT REMOVAL START
 		if(3)
 			return new /atom/movable/screen/parallax_layer/planet(null, null, owner)
 		if(4)
@@ -271,11 +272,14 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_home)
 		if(5)
 			if(SSparallax.random_layer)
 				return new /atom/movable/screen/parallax_layer/layer_3(null, null, owner)
+		*/ // DARKPACK EDIT REMOVAL END
 
 /atom/movable/screen/parallax_home/proc/regenerate_layers()
 	clear_layers()
 	if(layers_to_draw == 0 && !draw_old_space)
 		return
+
+	layers_to_draw = min(layers_to_draw, 2) // DARKPACK EDIT ADD - (Sorry but we only have 2...)
 
 	parallax_layers_cached = list()
 	for(var/space_layer in 1 to layers_to_draw)
@@ -283,6 +287,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_home)
 
 	if(draw_old_space)
 		parallax_layers_cached += new /atom/movable/screen/parallax_layer/old(null, null, owner)
+
+	parallax_layers_cached += new /atom/movable/screen/parallax_layer/umbra(null, null, owner) // DARKPACK EDIT ADD - UMBRA
 
 	display_layers()
 

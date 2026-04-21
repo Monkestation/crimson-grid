@@ -5,17 +5,16 @@
 	speed = 0.6
 	layer = 3
 
-/atom/movable/screen/parallax_layer/umbra/Initialize(mapload, datum/hud/hud_owner)
+/atom/movable/screen/parallax_layer/umbra/Initialize(mapload, datum/hud/hud_owner, client/owner)
 	. = ..()
-	var/client/boss = hud_owner?.mymob?.canon_client
-	if(!boss)
+	if(!owner)
 		return
 	var/static/list/connections = list(
 		COMSIG_MOVABLE_Z_CHANGED = PROC_REF(on_z_change),
 		COMSIG_MOB_LOGOUT = PROC_REF(on_mob_logout),
 	)
-	AddComponent(/datum/component/connect_mob_behalf, boss, connections)
-	on_z_change(hud_owner?.mymob)
+	AddComponent(/datum/component/connect_mob_behalf, owner, connections)
+	on_z_change(owner.mob)
 
 /atom/movable/screen/parallax_layer/umbra/proc/on_mob_logout(mob/source)
 	SIGNAL_HANDLER
