@@ -173,7 +173,7 @@ ADMIN_VERB(stealth, R_STEALTH, "Stealth Mode", "Toggle stealth.", ADMIN_CATEGORY
 	log_admin("[key_name(usr)] has turned stealth mode ON")
 	message_admins("[key_name_admin(usr)] has turned stealth mode ON")
 	*/
-	source = isnull(source) ? " via [source]." : ""
+	source = isnull(source) ? "" : " via [source]."
 	log_admin("[key_name(usr)] has turned stealth mode ON (with key '[new_key]')[source]")
 	message_admins("[key_name_admin(usr)] has turned stealth mode ON (with key '[new_key]')[source]")
 
