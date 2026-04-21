@@ -23,7 +23,11 @@
 	var/active = FALSE
 	var/original_name
 
-/datum/action/gargoyle_statue_form/Trigger(trigger_flags)
+/datum/action/gargoyle_statue_form/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
 	if(!owner)
 		return
 

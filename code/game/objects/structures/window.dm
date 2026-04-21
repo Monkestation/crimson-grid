@@ -422,7 +422,7 @@
 		QUEUE_SMOOTH(src)
 
 	var/ratio = atom_integrity / max_integrity
-	ratio = CEILING(ratio*4, 1) * 25
+	ratio = ceil(ratio*4) * 25
 	if(ratio > 75)
 		return
 	. += mutable_appearance('modular_darkpack/modules/deprecated/icons/32x48.dmi', "damage[ratio]", -(layer+0.1)) // DARKPACK EDIT CHANGE

@@ -7,8 +7,11 @@
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
 	var/is_following = TRUE  // Track current state
 
-/datum/action/beastmaster_command_toggle_follow/Trigger(trigger_flags)
+/datum/action/beastmaster_command_toggle_follow/Trigger(mob/clicker, trigger_flags)
 	. = ..()
+	if(!.)
+		return
+
 	if(!ishuman(owner))
 		return
 
@@ -56,8 +59,11 @@
 	button_icon_state = "free"
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
 
-/datum/action/beastmaster_command_end_aggression/Trigger(trigger_flags)
+/datum/action/beastmaster_command_end_aggression/Trigger(mob/clicker, trigger_flags)
 	. = ..()
+	if(!.)
+		return
+
 	if(!ishuman(owner))
 		return
 

@@ -343,6 +343,7 @@
 	time = 15 SECONDS
 	category = CAT_WEAPON_RANGED
 	crafting_flags = CRAFT_CHECK_DENSITY
+*/
 
 /datum/crafting_recipe/detached_ratvarian_repeater
 	name = "Iconoclast's Repeater"
@@ -353,8 +354,7 @@
 	)
 	time = 10 SECONDS
 	category = CAT_WEAPON_RANGED
-	crafting_flags = CRAFT_CHECK_DENSITY
-*/
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 
 /datum/crafting_recipe/large_ballista
 	name = "Improvised Ballista"
