@@ -483,7 +483,10 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 				log_in_blackbox = FALSE,
 				player_message = player_interaction_message)
 
-		if (ticket || recipient_ticket) SSplexora.aticket_pm(ticket || recipient_ticket, raw_send_message, src.ckey) // CRIMSON EDIT ADDITION
+		// CRIMSON EDIT ADDITION START
+		if (ticket || recipient_ticket)
+			SSplexora.aticket_pm(ticket || recipient_ticket, raw_send_message, src.ckey)
+		// CRIMSON EDIT ADDITION END
 
 		SSblackbox.LogAhelp(ticket_id, "Reply", send_message, recip_ckey, our_ckey)
 		return TRUE
