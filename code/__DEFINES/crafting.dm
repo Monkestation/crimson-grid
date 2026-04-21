@@ -55,7 +55,7 @@
 	#define CUISINE_MARTIAN "Martian"
 	#define CUISINE_MEXICAN "Mexican"
 	#define CUISINE_MOTHIC "Mothic"
-	#define CUISINE_TERRAN "Terran" // catch-all for earth food that we don't have a more specific category for
+	#define CUISINE_TERRAN "Uncategorized" // catch-all for earth food that we don't have a more specific category for // DARKPACK EDIT CHANGE - (Not Terran)
 	// dish categories
 	#define DISH_BREAD "Bread"
 	#define DISH_BURGER "Burger"

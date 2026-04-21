@@ -160,11 +160,13 @@
 	reaction = /datum/chemical_reaction/food/gravy
 	dish_category = DISH_CONDIMENT
 
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/food/reaction/mothic_pizza_dough
 	result = /obj/item/food/mothic_pizza_dough
 	reaction = /datum/chemical_reaction/food/mothic_pizza_dough
 	cuisine_category = CUISINE_MOTHIC
 	dish_category = DISH_PIZZA
+*/
 
 /datum/crafting_recipe/food/reaction/curd_cheese
 	result = /obj/item/food/cheese/curd_cheese
@@ -222,11 +224,13 @@
 	result = /obj/item/food/flatdough
 	dish_category = DISH_BREAD
 
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/food/rollingpin/flatrootdough
 	reqs = list(/obj/item/food/rootdough = 1)
 	result = /obj/item/food/flatrootdough
 	dish_category = DISH_BREAD
 	cuisine_category = CUISINE_LIZARD
+*/
 
 /datum/crafting_recipe/food/rollingpin/piedough
 	reqs = list(/obj/item/food/cakebatter = 1)
@@ -280,12 +284,14 @@
 	dish_category = DISH_BREAD
 	meal_category = MEAL_COMPONENT
 
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/food/knife/rootdoughslice
 	reqs = list(/obj/item/food/flatrootdough = 1)
 	result = /obj/item/food/rootdoughslice
 	dish_category = DISH_BREAD
 	cuisine_category = CUISINE_LIZARD
 	meal_category = MEAL_COMPONENT
+*/
 
 /datum/crafting_recipe/food/knife/rawpastrybase
 	reqs = list(/obj/item/food/piedough = 1)
@@ -304,12 +310,14 @@
 	dish_category = DISH_BREAD
 	meal_category = MEAL_COMPONENT
 
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/food/knife/nizaya
 	reqs = list(/obj/item/food/rootdoughslice = 1)
 	result = /obj/item/food/spaghetti/nizaya
 	dish_category = DISH_NOODLES
 	cuisine_category = CUISINE_LIZARD
 	meal_category = MEAL_COMPONENT
+*/
 
 /datum/crafting_recipe/food/knife/rawcutlet
 	reqs = list(/obj/item/food/meat/slab = 1)
@@ -400,7 +408,7 @@
 /datum/crafting_recipe/food/knife/lil_baked_rice
 	reqs = list(/obj/item/food/big_baked_rice = 1)
 	result = /obj/item/food/lil_baked_rice
-	cuisine_category = CUISINE_MOTHIC
+	cuisine_category = CUISINE_TERRAN
 	dish_category = DISH_RICE
 	meal_category = MEAL_SNACK
 
@@ -480,6 +488,7 @@
 	result = /obj/item/food/sausage
 	meal_category = MEAL_APPETIZER
 
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/food/grill/moonfish
 	reqs = list(/obj/item/food/fishmeat/moonfish = 1)
 	result = /obj/item/food/grilled_moonfish
@@ -491,6 +500,7 @@
 	result = /obj/item/food/root_flatbread
 	dish_category = DISH_BREAD
 	cuisine_category = CUISINE_LIZARD
+*/
 
 /datum/crafting_recipe/food/grill/griddle_toast
 	reqs = list(/obj/item/food/breadslice/plain = 1)
@@ -815,11 +825,13 @@
 	result = /obj/item/food/bun
 	meal_category = MEAL_SNACK
 
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/food/oven/rootroll
 	reqs = list(/obj/item/food/rootdoughslice = 1)
 	result = /obj/item/food/rootroll
 	cuisine_category = CUISINE_LIZARD
 	meal_category = MEAL_SNACK
+*/
 
 /datum/crafting_recipe/food/oven/pastrybase
 	reqs = list(/obj/item/food/rawpastrybase = 1)
@@ -839,10 +851,12 @@
 	cuisine_category = CUISINE_ITALIAN
 	dish_category = DISH_PIZZA
 
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/food/oven/rootflatbread
 	reqs = list(/obj/item/food/flatrootdough = 1)
 	result = /obj/item/food/root_flatbread
 	cuisine_category = CUISINE_LIZARD
+*/
 
 /datum/crafting_recipe/food/oven/pie
 	reqs = list(/obj/item/food/piedough = 1)
@@ -878,7 +892,7 @@
 /datum/crafting_recipe/food/oven/big_baked_rice
 	reqs = list(/obj/item/food/raw_baked_rice = 1)
 	result = /obj/item/food/big_baked_rice
-	cuisine_category = CUISINE_MOTHIC
+	cuisine_category = CUISINE_TERRAN // DARKPACK EDIT CHANGE - (TG lore removal)
 	dish_category = DISH_RICE
 
 /datum/crafting_recipe/food/oven/ratatouille
@@ -887,11 +901,13 @@
 	dish_category = DISH_SALAD
 	// cuisine_category = CUISINE_FRENCH
 
+/* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/food/oven/stuffed_peppers
 	name = "Voltölpapriken (Stuffed peppers)"
 	reqs = list(/obj/item/food/raw_stuffed_peppers = 1)
 	result = /obj/item/food/stuffed_peppers
 	cuisine_category = CUISINE_MOTHIC
+*/
 
 /datum/crafting_recipe/food/oven/roasted_bell_pepper
 	reqs = list(/obj/item/food/grown/bell_pepper = 1)

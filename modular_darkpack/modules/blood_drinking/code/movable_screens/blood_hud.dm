@@ -37,6 +37,10 @@
 /atom/movable/screen/bloodpool/update_icon_state()
 	var/mob/living/owner = hud?.mymob
 	if(!istype(owner))
+		icon_state = null
+		return
+	if(owner.maxbloodpool <= 0)
+		icon_state = null
 		return
 	var/bp_amount = clamp(round((owner.bloodpool/owner.maxbloodpool)*10), 0, 10)
 	icon_state = "blood[bp_amount]"

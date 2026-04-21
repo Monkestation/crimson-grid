@@ -2,7 +2,7 @@
 /datum/hud/avatar/initialize_screen_objects()
 	. = ..()
 
-	add_screen_object(/atom/movable/screen/avatar/reenter_corpse, HUD_AVATAR_REENTER_CORPSE)
+	add_screen_object(/atom/movable/screen/avatar/reenter_corpse, HUD_AVATAR_REENTER_CORPSE, HUD_GROUP_STATIC)
 	add_screen_object(/atom/movable/screen/floor_changer/vertical, HUD_MOB_FLOOR_CHANGER, HUD_GROUP_STATIC, ui_style, ui_ghost_floor_changer)
 
 
