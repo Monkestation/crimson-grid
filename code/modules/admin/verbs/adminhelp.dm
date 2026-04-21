@@ -1161,4 +1161,4 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 #undef WEBHOOK_URGENT
 #undef WEBHOOK_NONE
 #undef WEBHOOK_NON_URGENT
-#undef CHECK_AHELP_ACTIVE
+#undef CHECK_AHELP_ACTIVE // CRIMSON EDIT ADDITION
