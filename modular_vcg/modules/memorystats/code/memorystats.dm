@@ -15,7 +15,7 @@
 SUBSYSTEM_DEF(memory_stats)
 	name = "Memory Statistics"
 	wait = 1 MINUTES
-	flags = SS_BACKGROUND
+	ss_flags = SS_BACKGROUND
 	runlevels = ALL
 	var/list/stats
 
