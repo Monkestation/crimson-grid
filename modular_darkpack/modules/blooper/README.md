@@ -43,3 +43,9 @@ To set things up, copy `blooper_config.json.example` and rename it to `blooper_c
 ### Credits:
 
 XeonMations
+xPokee
+LT3
+TealSeer
+GeneriedJenelle
+ghost
+SynthTwo
