@@ -2,7 +2,7 @@
 	. = ..()
 	if(!blooper)
 		return
-	if(client && !(client.prefs.read_preference(/datum/preference/toggle/send_blooper)))
+	if(!client || !(client.prefs.read_preference(/datum/preference/toggle/send_blooper)))
 		return
 	if(HAS_TRAIT(src, TRAIT_SIGN_LANG) && !HAS_TRAIT(src, TRAIT_MUTE)) //if you can speak and you sign, your hands don't make a bark. Unless you are completely mute, you can have some hand bark.
 		return
