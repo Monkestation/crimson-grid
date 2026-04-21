@@ -1,4 +1,4 @@
-#define BLOOPER_CONFIG_PATH "[global.config.directory]/tfn_config/bloopers"
+#define BLOOPER_CONFIG_PATH "[global.config.directory]/tfn_config/bloopers" // uhh fallcon what should i change this to
 
 SUBSYSTEM_DEF(blooper)
 	name = "Blooper"
