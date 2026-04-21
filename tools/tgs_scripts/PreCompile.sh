@@ -109,4 +109,4 @@ env PKG_CONFIG_ALLOW_CROSS=1 ~/.cargo/bin/cargo build --ignore-rust-version --re
 cp -f target/i686-unknown-linux-gnu/release/libmemorystats.so "$1/libmemorystats.so"
 cd ..
 
-# CRIMSON EDIT ADDITION END - Byond memory stats
+# CRIMSON EDIT ADDITION END
