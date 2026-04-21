@@ -89,7 +89,7 @@ cd "$1"
 env TG_BOOTSTRAP_CACHE="$original_dir" CBT_BUILD_MODE="TGS" tools/bootstrap/javascript.sh tools/build/build.ts
 
 # CRIMSON EDIT ADDITION START - Byond memory stats
-
+cd "$original_dir"
 # update byond-memorystats
 if [ ! -d "byond-memorystats" ]; then
 	echo "Cloning byond-memorystats..."
