@@ -116,6 +116,10 @@ SUBSYSTEM_DEF(sounds)
 	all_sounds += pathwalk("modular_darkpack/master_files/sounds/", byond_sound_extensions)
 	all_sounds += pathwalk("modular_darkpack/modules/", byond_sound_extensions)
 	// DARKPACK EDIT ADD END
+	// CRIMSON EDIT ADD START
+	all_sounds += pathwalk("modular_vcg/master_files/sounds/", byond_sound_extensions)
+	all_sounds += pathwalk("modular_vcg/modules/", byond_sound_extensions)
+	// CRIMSON EDIT ADD END
 
 /// Removes a channel from using list.
 /datum/controller/subsystem/sounds/proc/free_sound_channel(channel)
