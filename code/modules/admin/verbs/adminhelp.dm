@@ -657,7 +657,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			SSplexora.aticket_closed(src, usr.ckey, AHELP_CLOSETYPE_REJECT) // CRIMSON EDIT ADDITION
 			Reject()
 		if("reply")
-			usr?.client.cmd_ahelp_reply(initiator)
+			usr.client.cmd_ahelp_reply(initiator)
 		if("icissue")
 			CHECK_AHELP_ACTIVE // CRIMSON EDIT ADDITION
 			SSplexora.aticket_closed(src, usr.ckey, AHELP_CLOSETYPE_RESOLVE, AHELP_CLOSEREASON_IC) // CRIMSON EDIT ADDITION
