@@ -31,10 +31,6 @@
 /area/vtm/outside/pacificheights/industrial
 	name = "Pacific Heights - Industrial District"
 
-/area/vtm/outside/pacificheights/community/tunnel
-	name = "Pacific Heights - Community Road Tunnel"
-	outdoors = FALSE
-
 /area/vtm/outside/chinatown
 	name = "Chinatown"
 	icon_state = "chinatown"
@@ -88,13 +84,6 @@
 	ambience_index = AMBIENCE_NATURE
 	music_index = MUSIC_CITY
 	domain = TRUE
-
-/area/vtm/outside/culture
-	name = "Cultural District"
-	icon_state = "unionsquare"
-	ambience_index = AMBIENCE_CITY
-	music_index = MUSIC_CITY
-
 
 /area/vtm/outside/supply
 	name = "Supply"

@@ -81,11 +81,6 @@
 	zone_type = ZONE_NO_MASQUERADE
 	domain = TRUE
 
-// CRIMSON EDIT START
-/area/vtm/interior/apartment/pacific
-	name = "Pacific Apartments"
-// CRIMSON EDIT END
-
 /area/vtm/interior/apartment
 	name = "Millenium Apartments"
 	icon_state = "camarilla_interior"
