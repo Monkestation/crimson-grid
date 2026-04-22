@@ -3,6 +3,7 @@
 	desc = "A simple leather wallet for storing cash, cards, and small items."
 	icon = 'modular_darkpack/modules/wallets/icons/docsicons.dmi'
 	icon_state = "wallet"
+	worn_icon_state = "nothing"
 	w_class = WEIGHT_CLASS_SMALL
 	storage_type = /datum/storage/wallet/darkpack
 	slot_flags = ITEM_SLOT_ID

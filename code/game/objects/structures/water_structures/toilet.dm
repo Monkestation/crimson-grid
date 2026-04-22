@@ -25,7 +25,7 @@
 	/// Does the toilet have a water recycler to recollect its water supply?
 	var/has_water_reclaimer = TRUE
 	/// Units of water to reclaim per second
-	var/reclaim_rate = 0.5
+	var/reclaim_rate = 50 // DARKPACK EDIT, ORIGINAL: var/reclaim_rate = 0.5
 	/// What reagent does the toilet flush with
 	var/reagent_id = /datum/reagent/water
 	/// How much reagent can the cistern contain
@@ -46,7 +46,7 @@
 	create_reagents(reagent_capacity)
 	if(src.has_water_reclaimer)
 		reagents.add_reagent(reagent_id, reagent_capacity)
-	AddComponent(/datum/component/plumbing/simple_demand/extended)
+	// AddComponent(/datum/component/plumbing/simple_demand/extended) // DARKPACK EDIT REMOVAL
 
 /obj/structure/toilet/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()

@@ -9,7 +9,7 @@
 	var/datum/discipline/discipline
 	var/targeting = FALSE
 
-/datum/action/discipline/New(datum/discipline/discipline)
+/datum/action/discipline/New(Target, datum/discipline/discipline)
 	. = ..()
 
 	src.discipline = discipline
@@ -26,11 +26,31 @@
 
 	register_to_availability_signals()
 
-/datum/action/discipline/Remove(mob/remove_from)
+/datum/action/discipline/Remove(mob/owner)
 	if(discipline)
 		discipline.post_loss()
-
-	. = ..()
+	end_targeting()
+	if(owner)
+		UnregisterSignal(owner, list(
+			SIGNAL_ADDTRAIT(TRAIT_TORPOR),
+			SIGNAL_REMOVETRAIT(TRAIT_TORPOR),
+			SIGNAL_ADDTRAIT(TRAIT_KNOCKEDOUT),
+			SIGNAL_REMOVETRAIT(TRAIT_KNOCKEDOUT),
+			SIGNAL_ADDTRAIT(TRAIT_INCAPACITATED),
+			SIGNAL_REMOVETRAIT(TRAIT_INCAPACITATED),
+			SIGNAL_ADDTRAIT(TRAIT_IMMOBILIZED),
+			SIGNAL_REMOVETRAIT(TRAIT_IMMOBILIZED),
+			SIGNAL_ADDTRAIT(TRAIT_FLOORED),
+			SIGNAL_REMOVETRAIT(TRAIT_FLOORED),
+			SIGNAL_ADDTRAIT(TRAIT_MUTE),
+			SIGNAL_REMOVETRAIT(TRAIT_MUTE),
+			SIGNAL_ADDTRAIT(TRAIT_HANDS_BLOCKED),
+			SIGNAL_REMOVETRAIT(TRAIT_HANDS_BLOCKED),
+			SIGNAL_ADDTRAIT(TRAIT_PACIFISM),
+			SIGNAL_REMOVETRAIT(TRAIT_PACIFISM),
+		))
+	QDEL_NULL(discipline)
+	return ..()
 
 /datum/action/discipline/proc/register_to_availability_signals()
 	//this should only go through if it's the first Discipline gained by the mob

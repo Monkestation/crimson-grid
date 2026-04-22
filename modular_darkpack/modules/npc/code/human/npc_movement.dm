@@ -228,12 +228,14 @@
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		return FALSE
+	if(HAS_TRAIT(src, TRAIT_IMMOBILIZED))
+		return FALSE
 	if(is_talking)
 		return FALSE
 	if(pulledby)
 		if (HAS_TRAIT(pulledby, TRAIT_CHARMER))
 			return FALSE
-		if (prob(30))
+		if (prob(10))
 			execute_resist()
 		return FALSE
 

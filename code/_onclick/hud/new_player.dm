@@ -25,7 +25,7 @@
 			lobbyscreen.RegisterSignal(src, COMSIG_HUD_LOBBY_COLLAPSED, TYPE_PROC_REF(/atom/movable/screen/lobby, collapse_button))
 			lobbyscreen.RegisterSignal(src, COMSIG_HUD_LOBBY_EXPANDED, TYPE_PROC_REF(/atom/movable/screen/lobby, expand_button))
 
-	if (!owner.client.is_localhost())
+	if (!owner?.client?.is_localhost()) // DARKPACK EDIT, ORIGINAL: if (!owner.client.is_localhost())
 		return
 
 	var/atom/movable/screen/lobby/button/start_now/start_button = add_screen_object(/atom/movable/screen/lobby/button/start_now, HUD_NEW_PLAYER_START_NOW)

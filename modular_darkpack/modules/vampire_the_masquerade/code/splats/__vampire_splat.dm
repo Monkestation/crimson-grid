@@ -33,7 +33,7 @@
 	if (get_power(power_type))
 		return FALSE
 	var/datum/discipline/new_discipline = new power_type(level)
-	var/datum/action/discipline/adding_action = new new_discipline.action_type(new_discipline)
+	var/datum/action/discipline/adding_action = new new_discipline.action_type(owner, new_discipline)
 	adding_action.Grant(owner)
 	LAZYADD(powers, adding_action)
 	return TRUE

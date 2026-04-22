@@ -1,4 +1,4 @@
-#define UI_LIVING_BLOODPOOL "EAST-2:28,CENTER-4:14"
+#define UI_LIVING_BLOODPOOL "EAST-2:29,CENTER-4:4"
 /atom/movable/screen/bloodpool
 	name = "bloodpool"
 	//icon = 'modular_darkpack/modules/blood_drinking/icons/bloodpool.dmi'

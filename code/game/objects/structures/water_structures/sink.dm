@@ -19,7 +19,7 @@
 	///Does the sink have a water recycler to recollect its water supply?
 	var/has_water_reclaimer = TRUE
 	///Units of water to reclaim per second
-	var/reclaim_rate = 0.5
+	var/reclaim_rate = 50 // DARKPACK EDIT, ORIGINAL: var/reclaim_rate = 0.5
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 
@@ -29,7 +29,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sink, (-14))
 	create_reagents(capacity, NO_REACT)
 	if(has_water_reclaimer)
 		reagents.add_reagent(dispensedreagent, capacity)
-	AddComponent(/datum/component/plumbing/simple_demand/extended)
+	// AddComponent(/datum/component/plumbing/simple_demand/extended) // DARKPACK EDIT REMOVAL
 
 	register_context()
 
