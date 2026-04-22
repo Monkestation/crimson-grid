@@ -2,4 +2,4 @@
 	/// How much fuel this open turf provides to turf fires
 	var/flammability = 0.2 // TURF_FIRE
 	var/obj/effect/abstract/turf_fire/turf_fire // TURF_FIRE
-
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS //CRIMSON EDIT ADDITION 

@@ -208,3 +208,28 @@
 
 /obj/effect/turf_decal/siding/beige/end
 	icon_state = "siding_plain_end"
+
+// CRIMSON specific sidings (for the towels on the beach and in the forest)
+/obj/effect/turf_decal/siding/tan
+	color = "#9c8a67"
+
+/obj/effect/turf_decal/siding/tan/corner
+	icon_state = "siding_plain_corner"
+
+/obj/effect/turf_decal/siding/tan/inner_corner
+	icon_state = "siding_plain_corner_inner"
+
+/obj/effect/turf_decal/siding/tan/end
+	icon_state = "siding_plain_end"
+
+/obj/effect/turf_decal/siding/dark_brown
+	color = "#463227"
+
+/obj/effect/turf_decal/siding/dark_brown/corner
+	icon_state = "siding_plain_corner"
+
+/obj/effect/turf_decal/siding/dark_brown/inner_corner
+	icon_state = "siding_plain_corner_inner"
+
+/obj/effect/turf_decal/siding/dark_brown/end
+	icon_state = "siding_plain_end"
