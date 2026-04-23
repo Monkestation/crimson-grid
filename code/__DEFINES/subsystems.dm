@@ -20,7 +20,7 @@
  *
  * make sure you add an update to the schema_version stable in the db changelog
  */
-#define DB_MINOR_VERSION 35 // DARKPACK EDIT CHANGE
+#define DB_MINOR_VERSION 36 // DARKPACK EDIT CHANGE
 
 
 //! ## Timing subsystem
@@ -155,6 +155,7 @@
 #define FIRE_PRIORITY_ACID 40
 #define FIRE_PRIORITY_BURNING 40
 #define FIRE_PRIORITY_DEFAULT 50
+#define FIRE_PRIORITY_PLEXORA 60 // CRIMSON ADDITION
 #define FIRE_PRIORITY_PARALLAX 65
 #define FIRE_PRIORITY_INSTRUMENTS 80
 #define FIRE_PRIORITY_FLUIDS 80
