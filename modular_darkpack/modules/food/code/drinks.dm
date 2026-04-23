@@ -1,10 +1,3 @@
-//---------VENDORS---------//
-/obj/machinery/vending/boozeomat/Initialize()
-	. = ..()
-	all_products_free = TRUE
-	product_slogans = null
-	product_ads = null
-
 //---------DRINKS---------//
 
 /obj/item/reagent_containers/cup/glass/coffee/vampire
