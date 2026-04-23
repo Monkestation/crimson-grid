@@ -40,8 +40,8 @@
 
 /obj/item/storage/belt/holster/detective/darkpack/fbi/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/darkpack/glock21(src)
-	new /obj/item/ammo_box/magazine/glock45acp(src)
-	new /obj/item/ammo_box/magazine/glock45acp(src)
+	new /obj/item/ammo_box/magazine/glock45acp/hp(src)
+	new /obj/item/ammo_box/magazine/glock45acp/hp(src)
 
 /obj/item/storage/belt/holster/detective/darkpack/endron
 

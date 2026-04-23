@@ -39,7 +39,7 @@
 	ammo_type = /obj/item/ammo_casing/vampire/c45acp
 	max_ammo = 100
 
-/obj/item/ammo_box/darkpack/c45acp/HP
+/obj/item/ammo_box/darkpack/c45acp/hp
 	name = "ammo box (.45 ACP HP)"
 	ammo_type = /obj/item/ammo_casing/vampire/c45acp/HP
 	max_ammo = 100
