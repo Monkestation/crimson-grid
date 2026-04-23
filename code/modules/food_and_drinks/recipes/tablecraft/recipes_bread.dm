@@ -11,7 +11,8 @@
 		/obj/item/food/cheese/wedge = 3
 	)
 	result = /obj/item/food/bread/meat
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+
 /* // DARKPACK EDIT REMOVE
 /datum/crafting_recipe/food/xenomeatbread
 	name = "Xenomeat bread"
@@ -21,7 +22,7 @@
 		/obj/item/food/cheese/wedge = 3
 	)
 	result = /obj/item/food/bread/xenomeat
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 
 /datum/crafting_recipe/food/spidermeatbread
 	name = "Spidermeat bread"
@@ -31,8 +32,9 @@
 		/obj/item/food/cheese/wedge = 3
 	)
 	result = /obj/item/food/bread/spidermeat
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 */
+
 /datum/crafting_recipe/food/sausagebread
 	name = "Sausage bread"
 	reqs = list(
@@ -41,7 +43,7 @@
 	)
 	result = /obj/item/food/bread/sausage
 	removed_foodtypes = BREAKFAST
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 
 /datum/crafting_recipe/food/banananutbread
 	name = "Banana nut bread"
@@ -52,8 +54,8 @@
 		/obj/item/food/grown/banana = 1
 	)
 	result = /obj/item/food/bread/banana
-	removed_foodtypes = BREAKFAST
-	category = CAT_BREAD
+	removed_foodtypes = BREAKFAST|EGG
+	dish_category = DISH_BREAD
 
 /datum/crafting_recipe/food/tofubread
 	name = "Tofu bread"
@@ -63,7 +65,7 @@
 		/obj/item/food/cheese/wedge = 3
 	)
 	result = /obj/item/food/bread/tofu
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 
 /datum/crafting_recipe/food/creamcheesebread
 	name = "Cream cheese bread"
@@ -73,7 +75,8 @@
 		/obj/item/food/cheese/wedge = 2
 	)
 	result = /obj/item/food/bread/creamcheese
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+
 /* // DARKPACK EDIT REMOVE
 /datum/crafting_recipe/food/mimanabread
 	name = "Mimana bread"
@@ -84,8 +87,9 @@
 		/obj/item/food/grown/banana/mime = 1
 	)
 	result = /obj/item/food/bread/mimana
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 */
+
 /datum/crafting_recipe/food/garlicbread
 	name = "Garlic Bread"
 	time = 4 SECONDS
@@ -94,7 +98,8 @@
 				/obj/item/food/butterslice = 1
 	)
 	result = /obj/item/food/garlicbread
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+	meal_category = MEAL_APPETIZER
 
 /datum/crafting_recipe/food/butterbiscuit
 	name = "Butter Biscuit"
@@ -104,7 +109,7 @@
 	)
 	result = /obj/item/food/butterbiscuit
 	added_foodtypes = BREAKFAST
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 
 /datum/crafting_recipe/food/butterdog
 	name = "Butterdog"
@@ -113,7 +118,7 @@
 		/obj/item/food/butter = 1,
 		)
 	result = /obj/item/food/butterdog
-	category = CAT_BREAD
+	dish_category = DISH_SANDWICH
 
 /datum/crafting_recipe/food/baguette
 	name = "Baguette"
@@ -123,7 +128,8 @@
 		/obj/item/food/doughslice = 2,
 	)
 	result = /obj/item/food/baguette
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+	meal_category = MEAL_SNACK
 
 /datum/crafting_recipe/food/raw_breadstick
 	name = "Raw breadstick"
@@ -133,7 +139,8 @@
 		/obj/item/food/butterslice = 1
 	)
 	result = /obj/item/food/raw_breadstick
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+	meal_category = MEAL_COMPONENT
 
 /datum/crafting_recipe/food/raw_croissant
 	name = "Raw croissant"
@@ -143,7 +150,8 @@
 		/obj/item/food/butterslice = 1
 	)
 	result = /obj/item/food/raw_croissant
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+	meal_category = MEAL_COMPONENT
 
 /datum/crafting_recipe/food/throwing_croissant
 	name = "Throwing croissant"
@@ -152,7 +160,7 @@
 		/obj/item/stack/rods = 1,
 	)
 	result = /obj/item/food/croissant/throwing
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 /* // DARKPACK EDIT REMOVE
 /datum/crafting_recipe/food/breaddog
@@ -170,8 +178,10 @@
 		/obj/item/organ/heart
 	)
 	result = /mob/living/basic/pet/dog/breaddog
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+	meal_category = MEAL_UNCATEGORIZED
 */
+
 ////////////////////////////////////////////////TOAST////////////////////////////////////////////////
 
 /datum/crafting_recipe/food/slimetoast
@@ -182,7 +192,7 @@
 	)
 	result = /obj/item/food/jelliedtoast/slime
 	added_foodtypes = TOXIC | BREAKFAST
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 
 /datum/crafting_recipe/food/jelliedyoast
 	name = "Jellied toast"
@@ -192,7 +202,7 @@
 	)
 	result = /obj/item/food/jelliedtoast/cherry
 	added_foodtypes = FRUIT | SUGAR | BREAKFAST
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 
 /datum/crafting_recipe/food/butteredtoast
 	name = "Buttered Toast"
@@ -202,7 +212,7 @@
 	)
 	result = /obj/item/food/butteredtoast
 	added_foodtypes = BREAKFAST
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 
 /datum/crafting_recipe/food/twobread
 	name = "Two bread"
@@ -211,7 +221,7 @@
 		/obj/item/food/breadslice/plain = 2
 	)
 	result = /obj/item/food/twobread
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
 
 /datum/crafting_recipe/food/moldybread // why would you make this?
 	name = "Moldy Bread"
@@ -222,7 +232,8 @@
 	result = /obj/item/food/breadslice/moldy
 	removed_foodtypes = VEGETABLES|GRAIN
 	added_foodtypes = GROSS
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+
 /* // DARKPACK EDIT REMOVE
 /datum/crafting_recipe/food/breadcat
 	name = "Bread cat/bread hybrid"
@@ -235,8 +246,10 @@
 		/datum/reagent/medicine/strange_reagent = 5
 	)
 	result = /mob/living/basic/pet/cat/breadcat
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+	meal_category = MEAL_UNCATEGORIZED
 */
+
 /datum/crafting_recipe/food/frenchtoast
 	name = "Raw french toast"
 	reqs = list(
@@ -246,4 +259,5 @@
 	)
 	result = /obj/item/food/raw_frenchtoast
 	added_foodtypes = BREAKFAST
-	category = CAT_BREAD
+	dish_category = DISH_BREAD
+	meal_category = MEAL_COMPONENT

@@ -365,10 +365,14 @@
 	..()
 	linked_power = power
 
-/datum/action/vampire/end_mesmerization/Trigger(trigger_flags)
+/datum/action/vampire/end_mesmerization/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
 	if(!linked_power)
 		Remove(owner)
-		return
+		return FALSE
 	linked_power.force_end_mesmerization()
 
 // THE FORGETFUL MIND

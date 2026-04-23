@@ -79,7 +79,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	drop_sound = 'sound/items/handling/matchbox_drop.ogg'
 	pickup_sound = 'sound/items/handling/matchbox_pickup.ogg'
-	custom_price = PAYCHECK_CREW * 0.4
+	custom_price = 5 // DARKPACK EDIT CHANGE - ECONOMY
 	base_icon_state = "matchbox"
 	illustration = null
 	storage_type = /datum/storage/box/match

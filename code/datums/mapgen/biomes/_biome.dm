@@ -1,7 +1,9 @@
 ///This datum handles the transitioning from a turf to a specific biome, and handles spawning decorative structures and mobs.
 /datum/biome
-	///Type of turf this biome creates
-	var/turf_type
+	/// Type of turf this biome creates for open turfs
+	var/open_turf_type
+	/// Type of turf this biome creates for closed turfs
+	var/closed_turf_type
 	/// Chance of having a structure from the flora types list spawn
 	var/flora_density = 0
 	/// Chance of spawning special features, such as geysers.
@@ -32,8 +34,13 @@
 
 
 ///This proc handles the creation of a turf of a specific biome type
-/datum/biome/proc/generate_turf(turf/gen_turf)
-	gen_turf.ChangeTurf(turf_type, null, CHANGETURF_DEFER_CHANGE)
+/datum/biome/proc/generate_turf(turf/gen_turf, closed)
+	if (closed)
+		gen_turf.ChangeTurf(closed_turf_type, null, CHANGETURF_DEFER_CHANGE)
+		return
+
+	gen_turf.ChangeTurf(open_turf_type, null, CHANGETURF_DEFER_CHANGE)
+
 	if(length(flora_types) && prob(flora_density))
 		var/obj/structure/flora = pick(flora_types)
 		new flora(gen_turf)
@@ -52,7 +59,8 @@
 /// This proc handles the creation of a turf of a specific biome type, assuming
 /// that the turf has not been initialized yet. Don't call this unless you know
 /// what you're doing.
-/datum/biome/proc/generate_turf_for_terrain(turf/gen_turf)
+/datum/biome/proc/generate_turf_for_terrain(turf/gen_turf, closed)
+	var/turf_type = closed ? closed_turf_type : open_turf_type
 	var/turf/new_turf = new turf_type(gen_turf)
 	return new_turf
 
@@ -70,8 +78,10 @@
 	var/list/turf/new_turfs = list()
 
 	for(var/turf/gen_turf as anything in gen_turfs)
+		var/closed = gen_turfs[gen_turf]
+		var/turf_type = closed ? closed_turf_type : open_turf_type
 		var/turf/new_turf = new turf_type(gen_turf)
-		new_turfs += new_turf
+		new_turfs[new_turf] = turf_type
 
 		if(gen_turf.turf_flags & NO_RUINS)
 			new_turf.turf_flags |= NO_RUINS
@@ -176,80 +186,3 @@
 						continue
 
 			new picked_mob(target_turf)
-
-// DARKPACK EDIT CHANGE START
-/datum/biome/mudlands
-	turf_type = /turf/open/misc/dirt
-	flora_types = list(
-		/obj/structure/flora/rock/pile/darkpack = 2,
-		/obj/structure/flora/rock/darkpack = 1,
-		/obj/structure/flora/rock/darkpack_big = 1,
-		/obj/effect/mine/stick = 1,
-	)
-	flora_density = 3
-
-/datum/biome/plains
-	turf_type = /turf/open/misc/grass
-	flora_types = list(
-		/obj/effect/spawner/random/flora/grass = 50,
-		/obj/effect/spawner/random/flora/bushes = 15,
-		/obj/structure/flora/tree/vamp/pine = 1,
-		/obj/structure/flora/rock/pile/darkpack = 1,
-		/obj/structure/flora/rock/darkpack = 1,
-		/obj/effect/mine/stick = 2,
-	)
-	flora_density = 70
-	fauna_types = list(
-		/mob/living/basic/butterfly = 40,
-		/mob/living/basic/deer = 20,
-		/mob/living/basic/cockroach = 10,
-		/mob/living/basic/goose = 10,
-		/mob/living/basic/frog = 10,
-		/mob/living/basic/pet/fox = 2,
-		/mob/living/basic/stoat = 2,
-		/mob/living/basic/pet/dog/wolf = 1,
-	)
-	fauna_density = 2
-
-/datum/biome/jungle
-	turf_type = /turf/open/misc/grass
-	flora_types = list(
-		/obj/effect/spawner/random/flora/grass = 5,
-		/obj/effect/spawner/random/flora/flowers = 2,
-		/obj/structure/flora/tree/vamp/pine = 3,
-		/obj/structure/flora/rock/pile/darkpack = 1,
-		/obj/structure/flora/rock/darkpack = 1,
-		/obj/effect/mine/stick = 3,
-	)
-	flora_density = 40
-	fauna_types = list(
-		/mob/living/basic/butterfly = 40,
-		/mob/living/basic/deer = 20,
-		/mob/living/basic/cockroach = 10,
-		/mob/living/basic/goose = 10,
-		/mob/living/basic/frog = 10,
-		/mob/living/basic/pet/fox = 2,
-		/mob/living/basic/stoat = 2,
-		/mob/living/basic/pet/dog/wolf = 1,
-	)
-	fauna_density = 1
-
-/datum/biome/jungle/deep
-	flora_density = 60
-
-/datum/biome/wasteland
-	turf_type = /turf/open/misc/dirt
-	flora_types = list(
-		/obj/structure/flora/rock/pile/darkpack = 10,
-		/obj/structure/flora/rock/darkpack = 2,
-		/obj/structure/flora/rock/darkpack_big = 1,
-		/obj/effect/mine/stick = 1,
-	)
-	flora_density = 5
-
-/datum/biome/water
-	turf_type = /turf/open/water/beach/vamp
-
-/datum/biome/mountain
-	turf_type = /turf/closed/wall/vampwall/rock
-// DARKPACK EDIT CHANGE END

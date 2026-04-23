@@ -188,7 +188,7 @@
 	desc = "Merge with solid stone, and move through it without disturbing it."
 
 	level = 5
-	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE
+	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 2
 	violates_masquerade = TRUE
 
@@ -222,7 +222,7 @@
 	SIGNAL_HANDLER
 	if(!istype(blocker, /turf/closed))
 		return
-	if(!istype(blocker, /turf/cordon))
+	if(istype(blocker, /turf/cordon))
 		return
 	if(get_area(owner) == get_area(blocker))
 		return COMSIG_COMPONENT_PERMIT_PASSAGE

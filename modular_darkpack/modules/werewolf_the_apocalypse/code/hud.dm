@@ -5,26 +5,11 @@
 #define UI_LIVING_TRANSFORM_FERAL "EAST,CENTER+1:40"
 
 /datum/hud/proc/add_werewolf_elements()
-	// transform_werewolf = new(null, src)
-	// infodisplay += transform_werewolf
-
-	if(!auspice_icon)
-		auspice_icon = new(null, src)
-		infodisplay += auspice_icon
-
-	if(!rage_and_gnosis_icon)
-		rage_and_gnosis_icon = new(null, src)
-		infodisplay += rage_and_gnosis_icon
-
-	if(!homid_trans_icon)
-		homid_trans_icon = new(null, src)
-		infodisplay += homid_trans_icon
-	if(!war_trans_icon)
-		war_trans_icon = new(null, src)
-		infodisplay += war_trans_icon
-	if(!feral_trans_icon)
-		feral_trans_icon = new(null, src)
-		infodisplay += feral_trans_icon
+	add_screen_object(/atom/movable/screen/auspice, HUD_MOB_AUSPICE, HUD_GROUP_INFO)
+	add_screen_object(/atom/movable/screen/rage_and_gnosis, HUD_MOB_RAGE_AND_GNOSIS, HUD_GROUP_INFO)
+	add_screen_object(/atom/movable/screen/fera_transform/homid, HUD_MOB_HOMID_TRANS, HUD_GROUP_INFO)
+	add_screen_object(/atom/movable/screen/fera_transform/war, HUD_MOB_WAR_TRANS, HUD_GROUP_INFO)
+	add_screen_object(/atom/movable/screen/fera_transform/feral, HUD_MOB_FERAL_TRANS, HUD_GROUP_INFO)
 
 
 /datum/splat/werewolf/add_relevent_huds(datum/hud/hud_used)
@@ -116,7 +101,7 @@
 /mob/living/proc/update_werewolf_hud()
 	if(!hud_used)
 		return
-	hud_used.rage_and_gnosis_icon?.update_icon()
+	hud_used.screen_objects[HUD_MOB_RAGE_AND_GNOSIS]?.update_icon()
 
 /atom/movable/screen/rage_and_gnosis
 	name = "rage and gnosis"

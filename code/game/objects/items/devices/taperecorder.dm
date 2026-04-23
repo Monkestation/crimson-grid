@@ -128,7 +128,6 @@
 
 /obj/item/taperecorder/verb/ejectverb()
 	set name = "Eject Tape"
-	set category = "Object"
 
 	if(!can_use(usr))
 		balloon_alert(usr, "can't use!")
@@ -136,7 +135,6 @@
 	if(!mytape)
 		balloon_alert(usr, "no tape!")
 		return
-
 	eject(usr)
 
 
@@ -165,7 +163,6 @@
 
 /obj/item/taperecorder/verb/record()
 	set name = "Start Recording"
-	set category = "Object"
 
 	if(!can_use(usr))
 		balloon_alert(usr, "can't use!")
@@ -208,7 +205,6 @@
 
 /obj/item/taperecorder/verb/stop()
 	set name = "Stop"
-	set category = "Object"
 
 	if(!can_use(usr))
 		balloon_alert(usr, "can't use!")
@@ -229,7 +225,6 @@
 
 /obj/item/taperecorder/verb/play()
 	set name = "Play Tape"
-	set category = "Object"
 
 	if(!can_use(usr))
 		balloon_alert(usr, "can't use!")
@@ -302,7 +297,6 @@
 
 /obj/item/taperecorder/verb/print_transcript()
 	set name = "Print Transcript"
-	set category = "Object"
 
 	var/list/transcribed_info = mytape.storedinfo
 	if(!length(transcribed_info))

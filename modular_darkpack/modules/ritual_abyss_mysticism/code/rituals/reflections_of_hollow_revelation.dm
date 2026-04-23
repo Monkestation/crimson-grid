@@ -162,7 +162,11 @@
 	..()
 	parent_rune = rune
 
-/datum/action/close_window/Trigger(trigger_flags)
+/datum/action/close_window/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
 	if(!parent_rune || !usr)
 		return
 	parent_rune.close_window(usr)

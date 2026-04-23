@@ -41,7 +41,11 @@
 	. = ..()
 	tracked_stone = WEAKREF(stone)
 
-/datum/action/bloodstone_track/Trigger(trigger_flags)
+/datum/action/bloodstone_track/Trigger(mob/clicker, trigger_flags)
+	. = ..()
+	if(!.)
+		return
+
 	var/obj/item/vtm_artifact/bloodstone/bloodstone = tracked_stone.resolve()
 	if(!bloodstone)
 		to_chat(owner, span_warning("The bloodstone bond has been severed."))

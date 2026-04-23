@@ -265,9 +265,9 @@
 
 #undef SHEPHERDS_WATCH_RADIUS
 
-/datum/discipline_power/obeah/unburden_the_bestial_soul
-	name = "Unburden The Bestial Soul"
-	desc = "Draw out a Kindred's soul and heal it of impurities."
+/datum/discipline_power/obeah/mens_sana
+	name = "Mens Sana"
+	desc = "With this power, the Salubri can heal madness, quieting inner demons and bringing a soul to peace."
 
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
@@ -276,15 +276,15 @@
 	vitae_cost = 2
 	target_type = TARGET_LIVING
 	range = 1
-	var/datum/storyteller_roll/unburden_the_bestial_soul/discipline_roll
+	var/datum/storyteller_roll/mens_sana/discipline_roll
 
-/datum/storyteller_roll/unburden_the_bestial_soul
-	bumper_text = "unburden the bestial soul"
+/datum/storyteller_roll/mens_sana
+	bumper_text = "mens sana"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_EMPATHY)
 	difficulty = 8
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
 
-/datum/discipline_power/obeah/unburden_the_bestial_soul/activate(atom/target)
+/datum/discipline_power/obeah/mens_sana/activate(atom/target)
 	. = ..()
 	var/mob/living/carbon/carbon_target = target
 	if(!carbon_target)
@@ -297,7 +297,7 @@
 	if(!chosen_derangement)
 		to_chat(owner, span_notice("You fail to find any traumas."))
 		return
-	var/datum/storyteller_roll/unburden_the_bestial_soul/discipline_roll = new()
+	var/datum/storyteller_roll/mens_sana/discipline_roll = new()
 	var/success = discipline_roll.st_roll(owner, target)
 	switch(success)
 		if(ROLL_BOTCH)

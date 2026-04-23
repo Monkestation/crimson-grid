@@ -201,7 +201,6 @@
 		hud_used.set_parallax_movedir(areaobj.parallax_movedir, TRUE)
 
 // Root object for parallax, all parallax layers are drawn onto this and it manages them
-INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_home)
 /atom/movable/screen/parallax_home
 	icon = null
 	blend_mode = BLEND_ADD
@@ -261,6 +260,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_home)
 			return new /atom/movable/screen/parallax_layer/layer_1(null, null, owner)
 		if(2)
 			return new /atom/movable/screen/parallax_layer/layer_2(null, null, owner)
+		/* // DARKPACK EDIT REMOVAL START
 		if(3)
 			return new /atom/movable/screen/parallax_layer/planet(null, null, owner)
 		if(4)
@@ -271,18 +271,25 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_home)
 		if(5)
 			if(SSparallax.random_layer)
 				return new /atom/movable/screen/parallax_layer/layer_3(null, null, owner)
+		*/ // DARKPACK EDIT REMOVAL END
 
 /atom/movable/screen/parallax_home/proc/regenerate_layers()
 	clear_layers()
 	if(layers_to_draw == 0 && !draw_old_space)
 		return
 
+	layers_to_draw = min(layers_to_draw, 2) // DARKPACK EDIT ADD - (Sorry but we only have 2...)
+
 	parallax_layers_cached = list()
 	for(var/space_layer in 1 to layers_to_draw)
-		parallax_layers_cached += generate_space_layer(space_layer)
+		var/atom/movable/screen/parallax_layer/parallax = generate_space_layer(space_layer)
+		if (parallax)
+			parallax_layers_cached += parallax
 
 	if(draw_old_space)
 		parallax_layers_cached += new /atom/movable/screen/parallax_layer/old(null, null, owner)
+
+	parallax_layers_cached += new /atom/movable/screen/parallax_layer/umbra(null, null, owner) // DARKPACK EDIT ADD - UMBRA
 
 	display_layers()
 
@@ -291,7 +298,6 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_home)
 	QDEL_LIST(parallax_layers_cached)
 
 // We need parallax to always pass its args down into initialize, so we immediate init it
-INITIALIZE_IMMEDIATE(/atom/movable/screen/parallax_layer)
 /atom/movable/screen/parallax_layer
 	icon = 'modular_darkpack/master_files/icons/effects/parallax.dmi' // DARKPACK EDIT CHANGE - ORIGINAL: icon = 'icons/effects/parallax.dmi'
 	var/speed = 1

@@ -29,15 +29,14 @@
 	///All Discipline powers under this Discipline that the owner knows. Derived from all_powers.
 	var/list/datum/discipline_power/known_powers = list()
 	///The typepaths of possible powers for every rank in this Discipline.
-	var/all_powers = list()
+	var/list/all_powers = list()
 	///The mob that owns and is using this Discipline.
 	var/mob/living/carbon/human/owner
 	///If this Discipline has been assigned before and post_gain effects have already been applied.
 	var/post_gain_applied
-	/// Signature clan that "owns" the discipline. 
+	/// Signature clan that "owns" the discipline.
 	var/signature_clan
 
-//TODO: rework this and set_level to use proper loadouts instead of a default set every time
 /datum/discipline/New(level)
 	all_powers = subtypesof(power_type)
 	if (!level)
@@ -52,6 +51,14 @@
 		var/datum/discipline_power/new_power = new type_to_create(src)
 		known_powers += new_power
 	current_power = known_powers[1]
+
+/datum/discipline/Destroy(force)
+	action_type = null
+	QDEL_NULL(current_power)
+	QDEL_LIST(known_powers)
+	all_powers = null
+	owner = null
+	return ..()
 
 /**
  * Modifies a Discipline's level, updating its available powers
@@ -100,25 +107,6 @@
 	if (!post_gain_applied)
 		post_gain()
 	post_gain_applied = TRUE
-
-	// Destroy self and contained powers when owner is destroyed
-	RegisterSignal(owner, COMSIG_QDELETING, PROC_REF(on_owner_destroy))
-
-/**
- * When the Discipline's owner is destroyed, this deletes all
- * contained powers, clears out references to the destroyed owner,
- * and then deletes itself.
- */
-/datum/discipline/proc/on_owner_destroy(mob/living/source, force)
-	SIGNAL_HANDLER
-
-	// Clear out Discipline powers
-	current_power = null
-	QDEL_LIST(known_powers)
-
-	// Destroy self when owner is destroyed
-	owner = null
-	qdel(src)
 
 /**
  * Returns a known Discipline power in this Discipline

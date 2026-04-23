@@ -18,11 +18,10 @@
 	var/sack_type = /obj/item/soil_sack
 	var/wet_overlay = "soil_wet" // DARKPACK EDIT ADD
 
-/obj/machinery/hydroponics/soil/default_deconstruction_screwdriver(mob/user, icon_state_open, icon_state_closed, obj/item/screwdriver)
-	return NONE
-
-/obj/machinery/hydroponics/soil/default_deconstruction_crowbar(obj/item/crowbar, ignore_panel, custom_deconstruct)
-	return NONE
+/obj/machinery/hydroponics/soil/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/tool_blocker, TOOL_SCREWDRIVER)
+	AddElement(/datum/element/tool_blocker, TOOL_CROWBAR)
 
 /obj/machinery/hydroponics/soil/update_icon(updates=ALL)
 	. = ..()

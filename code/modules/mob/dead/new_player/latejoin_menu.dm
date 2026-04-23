@@ -166,6 +166,12 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 					tgui_alert(owner, "The server is full!", "Oh No!")
 					return TRUE
 
+			//DARKPACK EDIT ADD START - (prevents players from joining with negative freebie points)
+			var/datum/st_stat/freebie/freebie_stat = owner.client?.prefs?.preference_storyteller_stats[STAT_FREEBIE_POINTS]
+			if(freebie_stat && freebie_stat.get_points() < 0)
+				tgui_alert(owner, "You cannot join with negative freebie points! Please fix your character preferences.", "Oh No!")
+				return TRUE
+			// DARKPACK EDIT ADD END
 			// SAFETY: AttemptLateSpawn has it's own sanity checks. This is perfectly safe.
 			owner.AttemptLateSpawn(params["job"])
 		if("viewpoll")

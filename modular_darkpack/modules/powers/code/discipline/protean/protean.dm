@@ -32,17 +32,23 @@
 	. = ..()
 	var/obj/item/organ/eyes/owners_eyes = owner.get_organ_by_type(/obj/item/organ/eyes)
 	ADD_TRAIT(owner, TRAIT_TRUE_NIGHT_VISION, type)
+	ADD_TRAIT(owner, TRAIT_LUMINESCENT_EYES, type)
+	ADD_TRAIT(owner, TRAIT_UNNATURAL_RED_GLOWY_EYES, type)
+	ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, type)
 	owners_eyes?.refresh()
 	owner.st_add_stat_mod(STAT_CHARISMA, -1, type) // 20th edition
 	owner.st_add_stat_mod(STAT_MANIPULATION, -1, type) // 20th edition
 	owner.st_add_stat_mod(STAT_APPEARANCE, -1, type) // 20th edition
 	owner.st_add_stat_mod(STAT_INTIMIDATION, 2, type) // 5th edition
-	owner.add_eye_color("#ff0000", EYE_COLOR_DISC)
+	owner.add_eye_color(COLOR_RED, EYE_COLOR_DISC)
 
 /datum/discipline_power/protean/eyes_of_the_beast/deactivate()
 	. = ..()
 	var/obj/item/organ/eyes/owners_eyes = owner.get_organ_by_type(/obj/item/organ/eyes)
 	REMOVE_TRAIT(owner, TRAIT_TRUE_NIGHT_VISION, type)
+	REMOVE_TRAIT(owner, TRAIT_LUMINESCENT_EYES, type)
+	REMOVE_TRAIT(owner, TRAIT_UNNATURAL_RED_GLOWY_EYES, type)
+	REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, type)
 	owners_eyes?.refresh()
 	owner.st_remove_stat_mod(STAT_CHARISMA, type) // 20th edition
 	owner.st_remove_stat_mod(STAT_MANIPULATION, type) // 20th edition

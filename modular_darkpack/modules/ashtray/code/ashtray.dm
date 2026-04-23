@@ -8,6 +8,7 @@
 	resistance_flags = FIRE_PROOF
 	drop_sound = 'sound/items/handling/drinkglass_drop.ogg'
 	pickup_sound = 'sound/items/handling/drinkglass_pickup.ogg'
+	custom_price = 30
 	var/recolored = FALSE
 
 /obj/item/storage/ashtray/update_overlays()
