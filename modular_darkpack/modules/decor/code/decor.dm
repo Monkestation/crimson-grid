@@ -459,19 +459,20 @@
 	if(pole_in_use)
 		to_chat(user, "It's already in use - wait a bit.")
 		return
+
 	if(user.dancing)
 		return
-	else
-		pole_in_use = TRUE
-		user.setDir(SOUTH)
-		user.Stun(100)
-		user.forceMove(src.loc)
-		user.visible_message("<B>[user] dances on [src]!</B>")
-		animatepole(user)
-		user.layer = layer //set them to the poles layer
-		pole_in_use = FALSE
-		user.pixel_y = 0
-		icon_state = initial(icon_state)
+
+	pole_in_use = TRUE
+	user.setDir(SOUTH)
+	user.Stun(100)
+	user.forceMove(src.loc)
+	user.visible_message("<B>[user] dances on [src]!</B>")
+	animatepole(user)
+	user.layer = layer //set them to the poles layer
+	pole_in_use = FALSE
+	user.pixel_y = 0
+	icon_state = initial(icon_state)
 
 /obj/structure/pole/proc/animatepole(mob/living/user)
 	return

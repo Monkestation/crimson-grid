@@ -36,7 +36,7 @@
 
 	// DARKPACK EDIT ADD START
 	add_screen_object(/atom/movable/screen/bloodpool, HUD_MOB_BLOODPOOL, HUD_GROUP_INFO)
-	add_screen_object(/atom/movable/screen/zone_hud, HUD_MOB_ZONE, HUD_GROUP_INFO)
+	add_screen_object(/atom/movable/screen/zone_hud, HUD_MOB_ZONE, HUD_GROUP_INFO) // AREAS - (Zone hud)
 	var/mob/living/carbon/human/human_mob = astype(mymob)
 	if(human_mob?.splats)
 		for(var/datum/splat/splat in human_mob.splats)

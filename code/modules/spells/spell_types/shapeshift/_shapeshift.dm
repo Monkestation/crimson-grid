@@ -170,7 +170,7 @@
 		polymorph_bot.bot_cover_flags |= BOT_COVER_EMAGGED
 		polymorph_bot.bot_mode_flags &= ~BOT_MODE_REMOTE_ENABLED
 
-	new_shape.storyteller_stats = caster.storyteller_stats //DARKPACK EDIT ADD
+	new_shape.storyteller_stats = caster.storyteller_stats // DARKPACK EDIT ADD - STORYTELLER_STATS
 
 	return new_shape
 
