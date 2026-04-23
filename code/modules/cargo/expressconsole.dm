@@ -36,7 +36,6 @@
 	if (isnull(landingzone))
 		WARNING("[src] couldnt find a Quartermaster/Storage (aka cargobay) area on the station, and as such it has set the supplypod landingzone to the area it resides in.")
 		landingzone = get_area(src)
-	RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(withdraw_money)) // DARKPACK EDIT ADD - Putting cash into the Cargo console
 
 /obj/machinery/computer/cargo/express/on_construction(mob/user)
 	. = ..()
@@ -73,7 +72,7 @@
 		to_chat(user, span_alert("[src] is already linked to [beacon]."))
 		return ITEM_INTERACT_FAILURE
 
-	// DARKPACK EDIT ADD START - Putting cash into the cargo console
+	// DARKPACK EDIT ADD START - (Putting cash into the cargo console)
 	if(istype(tool, /obj/item/stack/dollar))
 		var/datum/bank_account/account = SSeconomy.get_dep_account(cargo_account)
 		if(isnull(account))
@@ -81,15 +80,15 @@
 		var/obj/item/stack/dollar/cash = tool
 		var/amount = cash.amount
 		account.adjust_money(amount)
-		to_chat(user, span_notice("You deposit [amount] dollar\s into the cargo account."))
+		to_chat(user, span_notice("You deposit [amount] [MONEY_NAME_AUTOPURAL(amount)] into the cargo account."))
 		qdel(cash)
 		return ITEM_INTERACT_SUCCESS
-	// DARKPACK EDIT ADD END - Putting cash into the cargo console
+	// DARKPACK EDIT ADD END
 
 	return NONE
 
 // DARKPACK EDIT ADD START - (Putting cash into the cargo console)
-/obj/machinery/computer/cargo/express/proc/withdraw_money(mob/living/user)
+/obj/machinery/computer/cargo/express/click_alt(mob/user)
 	var/datum/bank_account/account = SSeconomy.get_dep_account(cargo_account)
 	if(isnull(account))
 		return
@@ -103,7 +102,7 @@
 		var/stack_amount = min(amount, 1000)
 		new /obj/item/stack/dollar(T, stack_amount)
 		amount -= stack_amount
-	to_chat(user, span_notice("You withdraw [account.account_balance] dollar\s from the cargo account."))
+	to_chat(user, span_notice("You withdraw [account.account_balance] [MONEY_NAME_AUTOPURAL(amount)] from the cargo account."))
 // DRAKPACK EDIT ADD END
 
 /obj/machinery/computer/cargo/express/emag_act(mob/user, obj/item/card/emag/emag_card)
