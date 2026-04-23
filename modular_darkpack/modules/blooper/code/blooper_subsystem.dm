@@ -1,4 +1,4 @@
-#define BLOOPER_CONFIG_PATH "[global.config.directory]/bloopers" // uhh fallcon what should i change this to
+#define BLOOPER_CONFIG_PATH "[global.config.directory]/darkpack_config/bloopers" // uhh fallcon what should i change this to
 
 SUBSYSTEM_DEF(blooper)
 	name = "Blooper"
