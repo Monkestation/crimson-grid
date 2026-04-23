@@ -66,11 +66,13 @@ jobs:
         run: |
           bash tools/ci/check_grep.sh
           bash modular_darkpack/tools/darkpack_check_grep.sh # DARKPACK EDIT ADDITION - checking modular_darkpack code
+          bash modular_vcg/tools/darkpack_check_grep.sh # CRIMSON EDIT ADD
       - name: Ticked File Enforcement
         if: steps.linter-setup.conclusion == 'success' && !cancelled()
         run: |
           tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/tgstation_dme.json
           tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/unit_tests.json
+          tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < tools/ticked_file_enforcement/schemas/modular_vcg.json
           tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < modular_darkpack/tools/ticked_file_enforcement/modular_darkpack_master_files.json
           tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < modular_darkpack/tools/ticked_file_enforcement/modular_darkpack_modules.json
           tools/bootstrap/python tools/ticked_file_enforcement/ticked_file_enforcement.py < modular_darkpack/tools/ticked_file_enforcement/modular_darkpack_unit_tests.json
