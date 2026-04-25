@@ -156,7 +156,7 @@
 	for(var/obj/structure/werewolf_totem/totem in GLOB.totems)
 		if(totem.broken)
 			continue
-		if(!(tribe.name in totem.tribes))
+		if(!(tribe?.name in totem.tribes))
 			continue
 		if(get_area(totem) != get_area(owner))
 			continue
