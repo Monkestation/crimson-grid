@@ -191,6 +191,7 @@ export type CharacterPreferencesData = {
   manually_rendered_features: Record<string, string>;
 
   names: Record<string, string>;
+  vocals: Record<string, string | number | boolean>; // DARKPACK EDIT ADD - BLOOPERS
 
   misc: {
     gender: Gender;

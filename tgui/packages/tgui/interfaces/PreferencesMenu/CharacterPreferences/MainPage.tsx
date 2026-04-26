@@ -35,6 +35,7 @@ import { useRandomToggleState } from '../useRandomToggleState';
 import { useServerPrefs } from '../useServerPrefs';
 import { DeleteCharacterPopup } from './DeleteCharacterPopup';
 import { MultiNameInput, NameInput } from './names';
+import { VocalsInput, VoiceInput } from './darkpack_vocals'; // DARKPACK EDIT ADDITION
 
 const CLOTHING_CELL_SIZE = 48;
 const CLOTHING_SIDEBAR_ROWS = 12; // DARKPACK EDIT, ORIGINAL: 9;
@@ -460,6 +461,7 @@ export function MainPage(props: MainPageProps) {
   const [deleteCharacterPopupOpen, setDeleteCharacterPopupOpen] =
     useState(false);
   const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
+  const [vocalsInputOpen, setVocalsInputOpen] = useState(false); // DARKPACK EDIT ADDITION
   const [randomToggleEnabled] = useRandomToggleState();
   const [pendingConfirm, setPendingConfirm] = useState<(() => void) | null>(null); // DARKPACK EDIT ADD - for popups
 
@@ -579,6 +581,14 @@ export function MainPage(props: MainPageProps) {
           names={data.character_preferences.names}
         />
       )}
+      {/* DARKPACK EDIT ADDITION START */}
+      {vocalsInputOpen && (
+        <VocalsInput
+          handleClose={() => setVocalsInputOpen(false)}
+          vocals={data.character_preferences.vocals}
+        />
+      )}
+      {/* DARKPACK EDIT ADDITION END */}
 
       {deleteCharacterPopupOpen && (
         <DeleteCharacterPopup
@@ -682,6 +692,16 @@ export function MainPage(props: MainPageProps) {
                   setMultiNameInputOpen(true);
                 }}
               />
+
+            {/* DARKPACK EDIT ADDITION START */}
+            <Stack.Item position="relative">
+              <VoiceInput
+                openVocalsInput={() => {
+                  setVocalsInputOpen(true);
+                }}
+              />
+            </Stack.Item>
+            {/* DARKPACK EDIT ADDITION END */}
             </Stack.Item>
           </Stack>
         </Stack.Item>

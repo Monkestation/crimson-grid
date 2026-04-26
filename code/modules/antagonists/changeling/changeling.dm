@@ -551,6 +551,12 @@
 	new_profile.underwear_color = target.underwear_color
 	new_profile.undershirt = target.undershirt
 	new_profile.socks = target.socks
+	// DARKPACK EDIT ADD START
+	new_profile.blooper = target.blooper
+	new_profile.blooper_speed = target.blooper_speed
+	new_profile.blooper_pitch = target.blooper_pitch
+	new_profile.blooper_pitch_range = target.blooper_pitch_range
+	// DARKPACK EDIT ADD END
 
 	// Grab skillchips they have
 	new_profile.skillchips = target.clone_skillchip_list(TRUE)
@@ -780,6 +786,12 @@
 	user.mind?.set_level(/datum/skill/athletics, chosen_profile.athletics_level, silent = TRUE)
 	user.voice = chosen_profile.voice
 	user.voice_filter = chosen_profile.voice_filter
+	// DARKPACK EDIT ADDITION START
+	user.blooper = chosen_profile.blooper
+	user.blooper_speed = chosen_profile.blooper_speed
+	user.blooper_pitch = chosen_profile.blooper_pitch
+	user.blooper_pitch_range = chosen_profile.blooper_pitch_range
+	// DARKPACK EDIT ADDITION END
 
 	chosen_dna.copy_dna(user.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
 
@@ -970,6 +982,12 @@
 	new_profile.quirks = quirks.Copy()
 	new_profile.voice = voice
 	new_profile.voice_filter = voice_filter
+	// DARKPACK EDIT ADDITION START
+	new_profile.blooper = blooper
+	new_profile.blooper_speed = blooper_speed
+	new_profile.blooper_pitch = blooper_pitch
+	new_profile.blooper_pitch_range = blooper_pitch_range
+	// DARKPACK EDIT ADDITION END
 
 /datum/antagonist/changeling/roundend_report()
 	var/list/parts = list()
