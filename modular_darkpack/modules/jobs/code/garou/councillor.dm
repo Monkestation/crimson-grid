@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/vampire/councillor
 
 	allowed_splats = list(SPLAT_GAROU)
-//	allowed_tribes = list(TRIBE_GAIA)
+	allowed_tribes = TRIBE_LIST_GAIA
 
 	display_order = JOB_DISPLAY_ORDER_COUNCIL
 	department_for_prefs = /datum/job_department/gaia

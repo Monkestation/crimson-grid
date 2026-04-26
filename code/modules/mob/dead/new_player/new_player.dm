@@ -145,6 +145,10 @@
 			return "Your character's generation is too high for [jobtitle]."
 		if(JOB_UNAVAILABLE_KINDRED_CLAN)
 			return "Your character's clan is incompatible for [jobtitle]."
+		if(JOB_UNAVAILABLE_FERA_TRIBE)
+			return "Your character's tribe is incompatible for [jobtitle]."
+		if(JOB_UNAVAILABLE_FERA_AUSPICE)
+			return "Your character's auspice is incompatible for [jobtitle]."
 		// DARKPACK EDIT END
 
 	return GENERIC_JOB_UNAVAILABLE_ERROR

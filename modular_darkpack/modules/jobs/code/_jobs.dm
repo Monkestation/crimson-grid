@@ -1,12 +1,5 @@
 // Default vampire base type.
 /datum/job
-	///Minimum vampire Generation necessary to do this job.
-	var/minimal_generation = HIGHEST_GENERATION_LIMIT
-	///Minimum Masquerade level necessary to do this job.
-	var/minimal_masquerade = 0
-	/// Character must be at least this age (in years) since embrace (chronological_age - age) to join as role.
-	var/minimum_immortal_age = 0
-
 	/// The list of alternative job titles people can pick from, null by default.
 	var/list/alt_titles = null // ALTERNATIVE_JOB_TITLES
 
@@ -14,13 +7,32 @@
 	var/list/allowed_splats
 	///List of species that are limited to a certain amount of that species doing this job. e.g: list(SPLAT_NONE = -1, SPLAT_GHOUL = -1, SPLAT_KINDRED = -1)
 	var/list/splat_slots
+
+	// VTM
+	///Minimum vampire Generation necessary to do this job.
+	var/minimal_generation = HIGHEST_GENERATION_LIMIT
+	///Minimum Masquerade level necessary to do this job.
+	var/minimal_masquerade = 0
+	/// Character must be at least this age (in years) since embrace (chronological_age - age) to join as role.
+	var/minimum_immortal_age = 0
 	///List of Clans that are allowed to do this job.
 	var/list/allowed_clans
 	///List of Clans that are disallowed to do this job.
 	var/list/disallowed_clans
+
+	// WTA
+	///Minimum Renown Rank necessary to do this job.
+	var/minimal_renown_rank
+	///List of Tribes that are allowed to do this job.
+	var/list/allowed_tribes
+	var/list/disallowed_tribes
+	///List of Auspices that are allowed to do this job.
+	var/list/allowed_auspice
+	var/list/disallowed_auspice
+
+
 	///If this job requires whitelisting before it can be selected for characters.
 	var/whitelisted = FALSE
-
 	// Only for display in memories
 	var/list/known_contacts = null
 

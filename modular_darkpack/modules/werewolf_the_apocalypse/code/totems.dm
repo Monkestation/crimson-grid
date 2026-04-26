@@ -197,27 +197,27 @@
 
 /obj/structure/werewolf_totem/generic
 	light_color = "#81ff4f"
-	tribes = TRIBE_GAIA
+	tribes = TRIBE_LIST_GAIA
 
 /obj/structure/werewolf_totem/generic/wyld
 	light_color = "#81ff4f"
-	tribes = TRIBE_WYLD
+	tribes = TRIBE_LIST_WYLD
 
 /obj/structure/werewolf_totem/generic/weaver
 	icon_state = "glassw"
 	base_icon_state = "glassw"
 	light_color = "#35b0ff"
-	tribes = TRIBE_WEAVER
+	tribes = TRIBE_LIST_WEAVER
 
 /obj/structure/werewolf_totem/generic/wyrm
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/spiral_totem.dmi'
 	icon_state = "spiral"
 	base_icon_state = "spiral"
 	light_color = "#ff5235"
-	tribes = TRIBE_WYRM
+	tribes = TRIBE_LIST_WYRM
 
 /obj/structure/werewolf_totem/generic/alltribes
-	tribes = TRIBE_ALL
+	tribes = TRIBE_LIST_ALL
 
 
 // This things type path sucks
@@ -227,16 +227,16 @@
 	var/tribes = list()
 
 /obj/effect/landmark/teleport_mark/gaia
-	tribes = TRIBE_GAIA
+	tribes = TRIBE_LIST_GAIA
 
 /obj/effect/landmark/teleport_mark/wyld
-	tribes = TRIBE_WYLD
+	tribes = TRIBE_LIST_WYLD
 
 /obj/effect/landmark/teleport_mark/weaver
-	tribes = TRIBE_WEAVER
+	tribes = TRIBE_LIST_WEAVER
 
 /obj/effect/landmark/teleport_mark/wyrm
-	tribes = TRIBE_WYRM
+	tribes = TRIBE_LIST_WYRM
 
 /obj/effect/landmark/teleport_mark/alltribes
-	tribes = TRIBE_ALL
+	tribes = TRIBE_LIST_ALL
