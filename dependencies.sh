@@ -34,3 +34,6 @@ export CUTTER_REPO=spacestation13/hypnagogic
 #hypnagogic git tag
 export CUTTER_VERSION=v5.0.0
 
+# byond-memorystats version
+export BYONDMEMORYSTATS_VERSION=0.2.0
+
