@@ -9,7 +9,7 @@
 /obj/ritual_rune/abyss/pierce_the_veil/complete()
 	. = ..()
 	var/mob/living/carbon/human/H = last_activator
-	ADD_TRAIT(H, TRAIT_NIGHT_VISION, "pierce_the_veil")
+	ADD_TRAIT(H, TRAIT_TRUE_NIGHT_VISION, "pierce_the_veil")
 	ADD_TRAIT(H, TRAIT_MASQUERADE_VIOLATING_EYES, "pierce_the_veil")
 	to_chat(H, span_notice("Darkness floods your vision, then recedes - you can see clearly through the shadows now."))
 	H.update_sight()
