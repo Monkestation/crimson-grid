@@ -16,6 +16,7 @@
 	#ifdef ALL_MAPS
 		// DARKPACK EDIT CHANGE START
 		#include "map_files\Vampire\westfield_mall\westfield_mall.dmm"
+		#include "map_files\Vampire\sanfrancisco\SanFrancisco.dmm" //CRIMSON EDIT ADDITION
 		#include "map_files\Vampire\runtimetown.dmm"
 		#include "map_files\debug\multiz.dmm"
 		#include "map_files\debug\runtimestation.dmm"
