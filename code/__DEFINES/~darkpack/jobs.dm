@@ -237,7 +237,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 #define SUPERVISOR_PRIMOGEN_BANU_HAQIM "the Banu Haqim Primogen"
 #define SUPERVISOR_BARON "the Baron"
 #define SUPERVISOR_CLINIC_DIRECTOR "the Clinic Director"
-#define SUPERVISOR_CLUB_DIRECTOR "the Strip Club Owner"
+#define SUPERVISOR_CLUB_DIRECTOR PRIMARY_NIGHTCLUB_COMPANY + " Night Club Owner"
 #define SUPERVISOR_POLICE_CAPTAIN "the Police Captain"
 #define SUPERVISOR_POLICE_CAPTAIN_AND_SERGEANT "the Police Captain and Sergeant"
 #define SUPERVISOR_CAMARILLA "the Camarilla"

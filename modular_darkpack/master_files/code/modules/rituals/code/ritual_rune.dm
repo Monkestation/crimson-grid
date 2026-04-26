@@ -16,6 +16,7 @@
 	var/activation_color
 	var/cost = 1 // this needs to be set in subtypes
 	var/ritual_name
+	var/difficulty = 6 // set in subtypes
 
 	/// What discipline is required (if any) to use this rune.
 	var/required_discipline
@@ -35,9 +36,27 @@
 	qdel(src)
 	return CLICK_ACTION_SUCCESS
 
+/*
+*What happens when the ritual rune executes successfully
+*/
 /obj/ritual_rune/proc/complete()
 	return
 
+/*
+*What happens when the ritual rune executes with a failure
+*/
+/obj/ritual_rune/proc/ritual_failure()
+	return
+
+/*
+*What happens when the ritual rune executes with a botch
+*/
+/obj/ritual_rune/proc/ritual_botch()
+	return
+
+/*
+* What happens when the user clicks on the rune. Ideally shouldn't be overriden.
+*/
 /obj/ritual_rune/attack_hand(mob/user)
 	if(activated)
 		return
@@ -57,13 +76,19 @@
 
 	if(!ritual_roll_datum)
 		ritual_roll_datum = new()
-		ritual_roll_datum.difficulty = 3 + level
+		ritual_roll_datum.difficulty = difficulty
 
-	if(ritual_roll_datum.st_roll(last_activator, last_activator) != ROLL_SUCCESS)
-		return FALSE
-
-	complete()
-	return TRUE
+	var/roll_result = ritual_roll_datum.st_roll(last_activator, last_activator)
+	switch(roll_result)
+		if(ROLL_SUCCESS)
+			complete()
+			return TRUE
+		if(ROLL_FAILURE)
+			ritual_failure()
+			return FALSE
+		if(ROLL_BOTCH)
+			ritual_botch()
+			return FALSE
 
 /obj/ritual_rune/proc/check_and_consume_sacrifices(mob/user)
 	var/list/found_items = list()

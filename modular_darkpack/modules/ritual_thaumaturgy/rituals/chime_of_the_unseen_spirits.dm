@@ -7,8 +7,8 @@
 	level = 1
 
 /obj/ritual_rune/thaumaturgy/chime_of_unseen_spirits/complete()
+	. = ..()
 	new /obj/item/spirit_chime(loc)
-	playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
 	qdel(src)
 
 // The spirit chime item itself

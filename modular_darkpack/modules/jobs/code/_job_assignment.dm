@@ -39,10 +39,18 @@
 		return JOB_UNAVAILABLE_WHITELIST
 	*/
 
-	if(player_splat_id != SPLAT_KINDRED)
-		return JOB_AVAILABLE
-	// Beyond this point, we know our splat is a kindred.
+	var/splat_checks
+	switch(player_splat_id)
+		if(SPLAT_KINDRED)
+			splat_checks = check_kindred_prefs(player_client, player, possible_job, debug_prefix, add_job_to_log)
+		if(SPLAT_GAROU)
+			splat_checks = check_garou_prefs(player_client, player, possible_job, debug_prefix, add_job_to_log)
+	if(splat_checks)
+		return splat_checks
 
+	return JOB_AVAILABLE
+
+/datum/controller/subsystem/job/proc/check_kindred_prefs(client/player_client, mob/dead/new_player/player, datum/job/possible_job, debug_prefix = "", add_job_to_log = FALSE)
 	if((player_client.prefs.read_preference(/datum/preference/numeric/immortal_age) < possible_job.minimum_immortal_age))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_AGE, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_KINDRED_AGE
@@ -59,5 +67,19 @@
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_CLAN, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_KINDRED_CLAN
 
-	return JOB_AVAILABLE
+/datum/controller/subsystem/job/proc/check_garou_prefs(client/player_client, mob/dead/new_player/player, datum/job/possible_job, debug_prefix = "", add_job_to_log = FALSE)
+	var/datum/subsplat/werewolf/auspice/auspice = get_fera_auspice(player_client.prefs.read_preference(/datum/preference/choiced/subsplat/garou_auspice))
+	if(possible_job.allowed_auspice && !(auspice.name in possible_job.allowed_auspice))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FERA_AUSPICE, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_FERA_AUSPICE
+	if(possible_job.disallowed_auspice && (auspice.name in possible_job.disallowed_auspice))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FERA_AUSPICE, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_FERA_AUSPICE
 
+	var/datum/subsplat/werewolf/tribe/tribe = get_fera_tribe(player_client.prefs.read_preference(/datum/preference/choiced/subsplat/garou_tribe))
+	if(possible_job.allowed_tribes && !(tribe.name in possible_job.allowed_tribes))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FERA_TRIBE, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_FERA_TRIBE
+	if(possible_job.disallowed_tribes && (tribe.name in possible_job.disallowed_tribes))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FERA_TRIBE, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_FERA_TRIBE

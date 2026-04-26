@@ -6,8 +6,8 @@
 	level = 2
 
 /obj/ritual_rune/thaumaturgy/blood_wall/complete()
+	. = ..()
 	new /obj/structure/bloodwall(loc)
-	playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
 	qdel(src)
 
 /obj/structure/bloodwall

@@ -8,6 +8,7 @@
 	var/static/list/roll_cache = list()
 
 /obj/ritual_rune/abyss/comforting_darkness/complete()
+	. = ..()
 	var/list/heal_targets = list()
 	var/turf/rune_location = get_turf(src)
 	var/mob/living/carbon/human/invoker = last_activator

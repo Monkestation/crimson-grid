@@ -298,16 +298,6 @@
 	fire_controled = TRUE
 	domain = TRUE
 
-/area/vtm/interior/setite
-	name = "Community Center"
-	icon_state = "hotel"
-	fire_controled = TRUE
-	domain = TRUE
-
-/area/vtm/interior/setite/basement
-	name = "Community Center Basement"
-	zone_type = "elysium"
-
 /area/vtm/interior/substation
 	name = "Grid Substation"
 	icon_state = "hotel"

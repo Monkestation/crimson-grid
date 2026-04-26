@@ -22,7 +22,6 @@
 				valid_bodies += H
 			else
 				H.adjust_agg_loss(50)
-				playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 10, FALSE)
 				to_chat(usr, "Your specimen must be incapacitated! The ritual has merely hurt them!")
 				return
 
@@ -36,7 +35,6 @@
 	to_chat(usr, span_notice("You begin invoking the ritual of Gargoyle Creation with [body_count] vampire bod[body_count == 1 ? "y" : "ies"]..."))
 	usr.visible_message(span_notice("[usr] begins invoking a ritual with [body_count] vampire bod[body_count == 1 ? "y" : "ies"]..."))
 
-	playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
 	playsound(loc, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, FALSE)
 
 	// Apply stun so that they cant just crawl away in crit - caster must also stay still

@@ -52,7 +52,7 @@
 /obj/item/smartphone/toreador_primo
 	important_contact_of = VAMPIRE_CLAN_TOREADOR
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = "Rosebud Night Club Owner", USE_JOB_TITLE = FALSE)
+		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = (PRIMARY_NIGHTCLUB_COMPANY + " Night Club Owner"), USE_JOB_TITLE = FALSE)
 		)
 
 // NOSFERATU

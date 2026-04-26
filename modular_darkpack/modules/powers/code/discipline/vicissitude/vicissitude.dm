@@ -8,6 +8,14 @@
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/vicissitude
 
+/datum/discipline/vicissitude/post_gain()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_SELF_SURGERY, /datum/discipline/vicissitude) //Allows people with Vicissitude to perform operations on themselves.
+
+/datum/discipline/vicissitude/post_loss()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_SELF_SURGERY, /datum/discipline/vicissitude) //Removes the trait if you lose Vicissitude.
+
 /datum/discipline_power/vicissitude
 	name = "Vicissitude power name"
 	desc = "Vicissitude power description"
@@ -18,6 +26,7 @@
 	if(!shapeshift_ability)
 		shapeshift_ability = new(owner)
 	shapeshift_ability.Grant(owner)
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -168,7 +177,7 @@
 	desc = "Liquify into a shifting mass of sentient Vitae."
 
 	level = 5
-	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND
+	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE
 	target_type = NONE
 	violates_masquerade = TRUE
 	cooldown_length = 1 TURNS
@@ -185,6 +194,7 @@
 /datum/discipline_power/vicissitude/bloodform/activate()
 	. = ..()
 	owner.set_species(mrace = /datum/species/tzimisce_blood_form, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)
+	owner.uncuff() //Avoids any issues with existing cuffs, and you can't handcuff a selectively solid pool of blood.
 
 /datum/discipline_power/vicissitude/bloodform/deactivate()
 	. = ..()

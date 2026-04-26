@@ -17,6 +17,7 @@
 	icon_living = "ghost_animated"
 
 /obj/ritual_rune/thaumaturgy/question/complete()
+	. = ..()
 	var/text_question = tgui_input_text(usr, "Enter your question to the Ancestors:", "Question to Ancestors")
 	if(!text_question)
 		return
@@ -35,7 +36,6 @@
 		after_assumed_control = CALLBACK(src, PROC_REF(ghost_name_prompt), TR)\
 	)
 
-	playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
 	qdel(src)
 
 /obj/ritual_rune/thaumaturgy/question/proc/ghost_name_prompt(mob/living/basic/ghost/tremere/ghost_mob)

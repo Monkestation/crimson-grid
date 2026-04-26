@@ -44,6 +44,11 @@
 /datum/storyteller_roll/damage/punch
 	bumper_text = "damage (punch)"
 
+/datum/storyteller_roll/damage/punch/calculate_used_dice(mob/living/roller, bonus)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_RAZOR_CLAWS)) // Your still using claws. A bit homebrew tho.
+		. += 1
+
 /datum/storyteller_roll/damage/bite
 	bumper_text = "damage (bite)"
 	// + 1
@@ -55,6 +60,24 @@
 /datum/storyteller_roll/damage/claw
 	bumper_text = "damage (claw)"
 	// + 2
+
+/datum/storyteller_roll/damage/claw/calculate_used_dice(mob/living/roller, bonus)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_RAZOR_CLAWS))
+		. += 2
+
+/* DARKPACK TODO - (Requires https://github.com/DarkPack13/SecondCity/pull/683)
+/datum/storyteller_roll/damage/claw/calculate_used_difficulty(mob/living/roller)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_RAZOR_CLAWS))
+		. -= 1
+*/
+
+/datum/storyteller_roll/shooting
+	bumper_text = "shooting"
+	applicable_stats = list(STAT_DEXTERITY, STAT_FIREARMS)
+	reroll_cooldown = 1 TURNS
+	numerical = TRUE
 
 // Physical Feats
 /datum/storyteller_roll/lockpick
@@ -82,24 +105,6 @@
 /datum/storyteller_roll/climbing
 	bumper_text = "climbing"
 	applicable_stats = list(STAT_DEXTERITY, STAT_ATHLETICS)
-
-/datum/storyteller_roll/shooting
-	bumper_text = "shooting"
-	applicable_stats = list(STAT_DEXTERITY, STAT_FIREARMS)
-	reroll_cooldown = 1 TURNS
-	numerical = TRUE
-
-// DARKPACK TODO - (Attacks need a rework on how they calcuate landing a hit.)
-/datum/storyteller_roll/punch
-	bumper_text = "punch"
-	applicable_stats = list(STAT_DEXTERITY, STAT_BRAWL)
-	spammy_roll = TRUE
-
-/datum/storyteller_roll/damage
-	bumper_text = "damage"
-	applicable_stats = list(STAT_STRENGTH)
-	numerical = TRUE
-	spammy_roll = TRUE
 
 // Mental Feats
 /datum/storyteller_roll/investigation

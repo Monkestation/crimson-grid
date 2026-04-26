@@ -24,7 +24,7 @@
 	name = "Federal Investigator"
 	jobtype = /datum/job/vampire/fbi
 
-	ears = /obj/item/radio/headset/darkpack
+	ears = /obj/item/radio/headset/darkpack/police
 	uniform = /obj/item/clothing/under/vampire/office
 	shoes = /obj/item/clothing/shoes/vampire
 	suit = /obj/item/clothing/suit/vampire/jacket/fbi
@@ -32,8 +32,8 @@
 	id = /obj/item/card/police/fbi
 	gloves = /obj/item/clothing/gloves/vampire/investigator
 	l_pocket = /obj/item/smartphone
-	l_hand = /obj/item/vamp/keys/police/federal
-	backpack_contents = list(/obj/item/card/police/sergeant=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c45acp=1, /obj/item/storage/medkit/darkpack/ifak=1)
+	r_pocket = /obj/item/vamp/keys/police/federal
+	backpack_contents = list(/obj/item/card/police/sergeant=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c45acp/hp=1, /obj/item/storage/medkit/darkpack/ifak=1)
 
 /datum/outfit/job/vampire/fbi/post_equip(mob/living/carbon/human/agent)
 	..()

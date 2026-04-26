@@ -2,6 +2,7 @@
 #define CITY_POLICE_DEPARTMENT CITY_NAME + " Police Department"
 
 #define NEWSPAPER_COMPANY "Angel Times"
+#define PRIMARY_NIGHTCLUB_COMPANY "Dora"
 
 #define SEPT_NAME "Sept of the Western Eye"
 

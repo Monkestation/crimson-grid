@@ -39,7 +39,7 @@
 	target_hud.add_atom_to_hud(parent_mob)
 
 	RegisterSignal(parent_mob, COMSIG_MOB_EMOTION_CHANGED, PROC_REF(update_emotions))
-	RegisterSignal(parent_mob, COMSIG_MOB_UPDATE_AURA, PROC_REF(update_aura))
+	RegisterSignals(parent_mob, list(COMSIG_MOB_UPDATE_AURA, COMSIG_LIVING_GAINED_SPLAT, COMSIG_LIVING_LOSE_SPLAT, SIGNAL_ADDTRAIT(TRAIT_IN_FRENZY), SIGNAL_REMOVETRAIT(TRAIT_IN_FRENZY)), PROC_REF(update_aura))
 	RegisterSignal(parent_mob, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	if(isnpc(parent_mob))
 		RegisterSignal(parent_mob, COMSIG_COMBAT_MODE_TOGGLED, PROC_REF(on_combat_mode_toggled))
@@ -51,7 +51,7 @@
 	var/datum/atom_hud/data/auspex_aura/target_hud = GLOB.huds[DATA_HUD_AUSPEX_AURAS]
 	target_hud.remove_atom_from_hud(parent_mob)
 	examine_message = ""
-	UnregisterSignal(parent_mob, list(COMSIG_MOB_EMOTION_CHANGED, COMSIG_MOB_UPDATE_AURA, COMSIG_ATOM_EXAMINE))
+	UnregisterSignal(parent_mob, list(COMSIG_MOB_EMOTION_CHANGED, COMSIG_MOB_UPDATE_AURA, COMSIG_LIVING_GAINED_SPLAT, COMSIG_LIVING_LOSE_SPLAT, SIGNAL_ADDTRAIT(TRAIT_IN_FRENZY), SIGNAL_REMOVETRAIT(TRAIT_IN_FRENZY)), COMSIG_ATOM_EXAMINE)
 	if(isnpc(parent_mob))
 		UnregisterSignal(parent_mob, list(COMSIG_COMBAT_MODE_TOGGLED))
 	QDEL_NULL(aura_smoke)
@@ -156,13 +156,12 @@
 		examine_message += "Black veins pulse through [parent_mob.p_their()] aura."
 	if(HAS_TRAIT(parent_mob, TRAIT_FRENETIC_AURA))
 		examine_message += "[parent_mob.p_Their()] aura appears especially energetic."
-	if(!HAS_TRAIT(parent, TRAIT_PALE_AURA) && get_ghoul_splat(parent_mob))
+
+	if(has_pale_aura(parent_mob))
+		examine_message += "[parent_mob.p_Their()] aura colors appear pale."
+	else if(has_pale_blotches(parent_mob))
 		examine_message += "Pale blotches mark [parent_mob.p_their()] aura."
-	if(get_kindred_splat(parent_mob))
-		var/mob/living/carbon/human/lick = parent_mob
-		var/datum/st_stat/morality_path/morality/stat_morality = lick.storyteller_stats[STAT_MORALITY]
-		if(!stat_morality.morality_path.alignment == MORALITY_HUMANITY) // non-humanity licks have standard kindred auras that give them away
-			examine_message += "[parent_mob.p_Their()] aura colors appear pale."
+
 	if(isavatar(parent_mob) || isobserver(parent_mob))
 		examine_message += "[parent_mob.p_Their()] aura is weak and intermittent, fading in and out."
 
@@ -206,13 +205,10 @@
 	holder.color = null
 
 	var/mob/parent_mob = parent
-	if(HAS_TRAIT(parent, TRAIT_PALE_AURA) && !HAS_TRAIT(parent, TRAIT_DECEPTIVE_AURA) && output_color)
-		var/mob/living/carbon/human/lick = parent_mob
-		var/datum/st_stat/morality_path/morality/stat_morality = lick.storyteller_stats[STAT_MORALITY]
-		if(!stat_morality?.morality_path.alignment == MORALITY_HUMANITY) // non-humanity licks have standard kindred auras that give them away
-			var/list/hsv_color_value = rgb2hsv(output_color)
-			hsv_color_value[2] = hsv_color_value[2] * 0.7 // Reduce saturation for kindred
-			aura_appearance.color = hsv2rgb(hsv_color_value)
+	if(output_color && has_pale_aura(parent_mob))
+		var/list/hsv_color_value = rgb2hsv(output_color)
+		hsv_color_value[2] = hsv_color_value[2] * 0.7 // Reduce saturation for kindred
+		aura_appearance.color = hsv2rgb(hsv_color_value)
 
 	if(HAS_TRAIT(parent_mob, TRAIT_FRENETIC_AURA))
 		var/list/hsv_color_value = rgb2hsv(aura_appearance.color || "#ffffff")
@@ -284,7 +280,7 @@
 		static_image.alpha = 150
 		holder.vis_contents += static_image
 
-	if(!HAS_TRAIT(parent, TRAIT_PALE_AURA) && get_ghoul_splat(parent_mob))
+	if(has_pale_blotches(parent_mob))
 		var/list/hsv_color_value = rgb2hsv(aura_appearance.color)
 		hsv_color_value[2] = hsv_color_value[2] * 0.7 // Reduce saturation for ghouls
 		aura_smoke_image.color = hsv2rgb(hsv_color_value)
@@ -309,3 +305,18 @@
 	remove_wibbly_filters(holder)
 	apply_wibbly_filters(holder)
 	holder.add_filter("aura_glow", 1, gauss_blur_filter(2))
+
+/datum/component/aura/proc/has_pale_aura(mob/parent_mob)
+	if(HAS_TRAIT(parent, TRAIT_PALE_AURA) && !HAS_TRAIT(parent, TRAIT_DECEPTIVE_AURA))
+		if(get_kindred_splat(parent_mob))
+			var/mob/living/carbon/human/lick = parent_mob
+			var/datum/st_stat/morality_path/morality/stat_morality = lick.storyteller_stats[STAT_MORALITY]
+			var/alignment = stat_morality?.morality_path?.alignment
+			if(alignment != MORALITY_HUMANITY) // non-humanity licks have standard kindred auras that give them away // Also catches a null value.
+				return TRUE
+
+		return TRUE
+
+/datum/component/aura/proc/has_pale_blotches(mob/parent_mob)
+	if(!HAS_TRAIT(parent_mob, TRAIT_PALE_AURA) && get_ghoul_splat(parent_mob))
+		return TRUE

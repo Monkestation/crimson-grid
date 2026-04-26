@@ -5,8 +5,8 @@
 	word = "DUH'K-A'U"
 
 /obj/ritual_rune/thaumaturgy/blood_trap/complete()
+	. = ..()
 	if(!activated)
-		playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
 		activated = TRUE
 		alpha = 28
 		AddElement(/datum/element/connect_loc, list(COMSIG_ATOM_ENTERED = PROC_REF(on_crossed)))

@@ -7,13 +7,14 @@
 	sacrifices = list(/obj/item/reagent_containers/blood)
 
 /obj/ritual_rune/thaumaturgy/teleport/complete()
+	. = ..()
 	if(!activated)
 		activated = TRUE
 		color = rgb(255,255,255)
 		icon_state = "teleport"
 
 /obj/ritual_rune/thaumaturgy/teleport/attack_hand(mob/user)
-	..()
+	. = ..()
 	if(activated)
 		if(last_activator != user)
 			to_chat(user, span_warning("You are not the one who activated this rune!"))

@@ -11,10 +11,10 @@
 	sacrifices = list(/obj/item/vampire_stake)
 
 /obj/ritual_rune/thaumaturgy/deflection_stake/complete()
+	. = ..()
 	for(var/mob/living/carbon/human/H in loc)
 		if(!HAS_TRAIT(H, TRAIT_STAKE_RESISTANT))
 			ADD_TRAIT(H, TRAIT_STAKE_RESISTANT, MAGIC_TRAIT)
 			qdel(src)
-		playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
 		color = rgb(255,0,0)
 		activated = TRUE

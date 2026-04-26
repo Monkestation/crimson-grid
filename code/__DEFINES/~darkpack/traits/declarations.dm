@@ -99,7 +99,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 
 // Allows the user to pass through doors
-#define TRAIT_PASSDOOR "trait_passdoor" // DARKPACK EDIT ADD - Obtenebration & Mysticism Rework
 #define TRAIT_IN_FRENZY "in_frenzy"
 
 // Is the mob silenced (by Quietus 1 for example)
@@ -173,6 +172,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_METAMORPH "metamorph"
 #define TRAIT_MERIT_UNTAMABLE "merit_untamable"
 #define TRAIT_FAIR_GLABRO "fair_glabro"
-
+#define TRAIT_NO_CUFF "no_cuff" //Used for uncuffable forms such as Tenebrous and Blood form.
 
 // END TRAIT DEFINES

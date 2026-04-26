@@ -5,7 +5,8 @@
 	word = "Reveal thy bloodline for mine eyes."
 	level = 2
 
-/obj/ritual_rune/thaumaturgy/bloodwalk/attack_hand(mob/living/user)
+/obj/ritual_rune/thaumaturgy/bloodwalk/complete()
+	. = ..()
 	for(var/obj/item/reagent_containers/syringe/S in loc)
 		for(var/datum/reagent/blood/B in S.reagents.reagent_list)
 			var/blood_data = B.data
@@ -14,14 +15,12 @@
 				var/clan = blood_data["clan"]
 				var/real_name = blood_data["real_name"]
 				var/message = generate_message(generation, clan, real_name)
-				to_chat(user, "[message]")
+				to_chat(last_activator, "[message]")
 				// Process blood collection for research points
-				if(ishuman(user))
-					SSoccult_research.process_blood_collection(user, B)
-
+				if(ishuman(last_activator))
+					SSoccult_research.process_blood_collection(last_activator, B)
 			else
-				to_chat(user, "The blood speaks not; it is empty of power!")
-		playsound(loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
+				to_chat(last_activator, "The blood speaks not; it is empty of power!")
 		color = rgb(255,0,0)
 		activated = TRUE
 		qdel(src)

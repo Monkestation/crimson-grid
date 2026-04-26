@@ -6,4 +6,5 @@
 	cost = 1
 
 /obj/ritual_rune/abyss/selfgib/complete()
+	. = ..()
 	last_activator.death()

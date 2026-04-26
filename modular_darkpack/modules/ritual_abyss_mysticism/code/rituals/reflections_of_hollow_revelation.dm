@@ -12,6 +12,7 @@
 	var/isactive = FALSE
 
 /obj/ritual_rune/abyss/reflections_of_hollow_revelation/complete()
+	. = ..()
 	var/mob/living/user = usr
 	if(!user)
 		return

@@ -38,7 +38,6 @@
 		clear_powers()
 		return
 
-	SEND_SIGNAL(owner, COMSIG_LIVING_LOSE_SPLAT, src)
 
 	on_lose()
 
@@ -49,6 +48,7 @@
 	remove_biotypes()
 
 	LAZYREMOVE(owner.splats, src)
+	SEND_SIGNAL(owner, COMSIG_LIVING_LOSE_SPLAT, src)
 	owner = null
 
 /datum/splat/Destroy()

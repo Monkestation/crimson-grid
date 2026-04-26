@@ -13,6 +13,7 @@
 	custom_materials = list(/datum/material/iron= SMALL_MATERIAL_AMOUNT * 0.5)
 	attack_verb_continuous = list("bludgeons", "whacks", "disciplines", "thrashes")
 	attack_verb_simple = list("bludgeon", "whack", "discipline", "thrash")
+	custom_price = 50 // DARKPACK EDIT ADD - ECONOMY
 
 /obj/item/cane/examine(mob/user, thats)
 	. = ..()

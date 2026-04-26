@@ -17,8 +17,9 @@
 	outfit = /datum/outfit/job/vampire/secchief
 
 	allowed_splats = list(SPLAT_GAROU, SPLAT_KINDRED)
-//	allowed_tribes = list(TRIBE_WYRM, TRIBE_RONIN)
 	minimal_masquerade = 4
+	// minimal_renown_rank = 3
+	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
 
 	display_order = JOB_DISPLAY_ORDER_SECCHIEF
 	department_for_prefs = /datum/job_department/pentex
@@ -32,7 +33,6 @@
 		JOB_PENTEX_AFFAIRS
 	)
 
-//	minimal_renownrank = 3
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SEC
 

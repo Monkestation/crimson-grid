@@ -24,7 +24,7 @@
 		"Endron Labourer"
 	)
 
-//	allowed_tribes = list(TRIBE_WYRM, TRIBE_RONIN)
+	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
 	minimal_masquerade = 3
 
 	display_order = JOB_DISPLAY_ORDER_EMPLOYEE

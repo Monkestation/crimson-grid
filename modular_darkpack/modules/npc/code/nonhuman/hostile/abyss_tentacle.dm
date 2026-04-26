@@ -198,8 +198,8 @@ GLOBAL_LIST_EMPTY(global_tentacle_grabs)
 		return
 
 	if(get_dist(source, src) > 0)
-		if(world.time >= source.escape_attempt)
-			source.escape_attempt = world.time + 1 TURNS
+		if(world.time >= source.tentacle_escape_attempt)
+			source.tentacle_escape_attempt = world.time + 1 TURNS
 			var/rollcheck = SSroll.storyteller_roll(source.st_get_stat(STAT_STRENGTH), 6, source)
 			switch(rollcheck)
 				if(ROLL_SUCCESS)
@@ -218,8 +218,7 @@ GLOBAL_LIST_EMPTY(global_tentacle_grabs)
 	. = ..()
 
 /mob/living/proc/set_tentacle_grab(obj/tentacle)
-	grabbed_by_tentacle = tentacle
+	return
 
 /mob/living/proc/clear_tentacle_grab()
-	grabbed_by_tentacle = null
-	escape_attempt = 0
+	tentacle_escape_attempt = 0

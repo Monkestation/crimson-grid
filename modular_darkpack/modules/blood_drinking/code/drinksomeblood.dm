@@ -52,8 +52,6 @@
 
 	if(ishuman(drunk_from))
 		var/mob/living/carbon/human/H = drunk_from
-		drunked_of |= "[H.dna.real_name]"
-
 		if(!get_kindred_splat(drunk_from))
 			H.blood_volume = max(H.blood_volume-50, 150)
 

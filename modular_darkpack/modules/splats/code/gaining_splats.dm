@@ -29,7 +29,6 @@
 	var/signal_return = SEND_SIGNAL(owner, COMSIG_LIVING_GAINING_SPLAT, src)
 	if (signal_return & SPLAT_PREVENT_GAIN)
 		return
-	SEND_SIGNAL(owner, COMSIG_LIVING_GAINED_SPLAT, src)
 
 	src.owner = owner
 	LAZYADD(owner.splats, src)
@@ -43,6 +42,7 @@
 	if(owner.hud_used)
 		add_relevent_huds(owner.hud_used)
 
+	SEND_SIGNAL(owner, COMSIG_LIVING_GAINED_SPLAT, src)
 	return src
 
 /**

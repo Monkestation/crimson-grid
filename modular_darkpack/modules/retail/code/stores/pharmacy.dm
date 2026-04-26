@@ -13,5 +13,9 @@
 		new /datum/data/vending_product("inhaler canister", /obj/item/reagent_containers/inhaler_canister/albuterol/asthma, 150),
 		new /datum/data/vending_product("ephedrine pill bottle", /obj/item/storage/pill_bottle/ephedrine),
 		new /datum/data/vending_product("box of syringes", /obj/item/storage/box/syringes, 300),
-		new /datum/data/vending_product("inhaler", /obj/item/inhaler/albuterol/asthma, 400)
+		new /datum/data/vending_product("inhaler", /obj/item/inhaler/albuterol/asthma, 400),
+		new /datum/data/vending_product("cane", /obj/item/cane),
+		new /datum/data/vending_product("white cane", /obj/item/cane/white),
+		new /datum/data/vending_product("crutch", /obj/item/cane/crutch),
+		new /datum/data/vending_product("wooden crutch", /obj/item/cane/crutch/wood),
 	)

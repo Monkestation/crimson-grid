@@ -23,8 +23,9 @@
 		"Endron Operations Director"
 	)
 
-//	allowed_tribes = list(TRIBE_WYRM, TRIBE_RONIN)
 	minimal_masquerade = 5
+	// minimal_renown_rank = 4
+	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
 
 	display_order = JOB_DISPLAY_ORDER_BRANCH_LEAD
 	department_for_prefs = /datum/job_department/pentex
@@ -38,7 +39,6 @@
 		JOB_PENTEX_SEC_CHIEF
 	)
 
-//	minimal_renownrank = 4
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SEC
 
