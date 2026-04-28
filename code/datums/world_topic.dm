@@ -34,7 +34,12 @@
 		if (input["format"] == "json")
 			. = list("error" = .)
 	else
-		. = Run(input)
+		// CRIMSON EDIT ADDITION START
+		if (input["json"])
+			. = Run(input + json_decode(input["json"]))
+		else
+			. = Run(input)
+		// CRIMSON EDIT ADDITION END
 	if (input["format"] == "json")
 		. = json_encode(.)
 	else if(islist(.))

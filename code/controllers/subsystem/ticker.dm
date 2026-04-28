@@ -207,6 +207,7 @@ SUBSYSTEM_DEF(ticker)
 				toggle_dooc(TRUE)
 				declare_completion(force_ending)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
+				SEND_SIGNAL(src, COMSIG_TICKER_ROUND_ENDED) // CRIMSON EDIT ADDITION
 
 		if(GAME_STATE_FINISHED)
 			if(ready_for_reboot)
@@ -708,6 +709,7 @@ SUBSYSTEM_DEF(ticker)
 				Master.SetRunLevel(RUNLEVEL_GAME)
 			if(GAME_STATE_FINISHED)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
+				SEND_SIGNAL(src, COMSIG_TICKER_ROUND_ENDED) // CRIMSON EDIT ADDITION
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message

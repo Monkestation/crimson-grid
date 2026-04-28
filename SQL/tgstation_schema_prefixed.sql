@@ -99,12 +99,12 @@ CREATE TABLE `SS13_ban` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `citation`
+-- Table structure for table `SS13_citation`
 --
 DROP TABLE IF EXISTS `SS13_citation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE IF NOT EXISTS `SS13_citation` (
+CREATE TABLE `SS13_citation` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `round_id` int(11) unsigned NULL,
   `server_ip` int(11) unsigned NOT NULL,
@@ -136,7 +136,7 @@ CREATE TABLE `SS13_connection_log` (
   `datetime` datetime DEFAULT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
-  `round_id` int(11) unsigned NOT NULL,
+  `round_id` int(11) unsigned NULL,
   `ckey` varchar(32) DEFAULT NULL,
   `ip` int(10) unsigned NOT NULL,
   `computerid` varchar(45) DEFAULT NULL,
@@ -160,7 +160,7 @@ CREATE TABLE `SS13_death` (
   `mapname` varchar(32) NOT NULL,
   `server_ip` int(10) unsigned NOT NULL,
   `server_port` smallint(5) unsigned NOT NULL,
-  `round_id` int(11) NULL,
+  `round_id` int(11) unsigned NULL,
   `tod` datetime NOT NULL COMMENT 'Time of death',
   `job` varchar(32) NOT NULL,
   `special` varchar(32) DEFAULT NULL,
@@ -193,8 +193,8 @@ CREATE TABLE `SS13_feedback` (
   `datetime` datetime NOT NULL,
   `round_id` int(11) unsigned NULL,
   `key_name` varchar(32) NOT NULL,
-  `version` tinyint(3) unsigned NOT NULL,
   `key_type` enum('text', 'amount', 'tally', 'nested tally', 'associative') NOT NULL,
+  `version` tinyint(3) unsigned NOT NULL,
   `json` json NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -215,8 +215,9 @@ CREATE TABLE `SS13_ipintel` (
   KEY `idx_ipintel` (`ip`,`intel`,`date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 --
--- Table structure for table `ipintel_whitelist`
+-- Table structure for table `SS13_ipintel_whitelist`
 --
 
 DROP TABLE IF EXISTS `SS13_ipintel_whitelist`;
@@ -309,7 +310,7 @@ CREATE TABLE `SS13_manifest` (
   `job` text NOT NULL,
   `special` text DEFAULT NULL,
   `latejoin` tinyint(1) NOT NULL DEFAULT 0,
-	`timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -371,7 +372,7 @@ DROP TABLE IF EXISTS `SS13_role_time_log`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 
-CREATE TABLE IF NOT EXISTS `SS13_role_time_log` (
+CREATE TABLE `SS13_role_time_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `job` varchar(128) NOT NULL,
@@ -539,57 +540,9 @@ CREATE TABLE `SS13_schema_revision` (
   `major` TINYINT(3) unsigned NOT NULL,
   `minor` TINYINT(3) unsigned NOT NULL,
   `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`major`,`minor`)
+  PRIMARY KEY (`major`, `minor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Table structure for table `SS13_stickyban`
---
-DROP TABLE IF EXISTS `SS13_stickyban`;
-CREATE TABLE `SS13_stickyban` (
-	`ckey` VARCHAR(32) NOT NULL,
-	`reason` VARCHAR(2048) NOT NULL,
-	`banning_admin` VARCHAR(32) NOT NULL,
-	`datetime` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (`ckey`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `SS13_stickyban_matched_ckey`
---
-DROP TABLE IF EXISTS `SS13_stickyban_matched_ckey`;
-CREATE TABLE `SS13_stickyban_matched_ckey` (
-	`stickyban` VARCHAR(32) NOT NULL,
-	`matched_ckey` VARCHAR(32) NOT NULL,
-	`first_matched` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`last_matched` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	`exempt` TINYINT(1) NOT NULL DEFAULT '0',
-	PRIMARY KEY (`stickyban`, `matched_ckey`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `SS13_stickyban_matched_ip`
---
-DROP TABLE IF EXISTS `SS13_stickyban_matched_ip`;
-CREATE TABLE `SS13_stickyban_matched_ip` (
-	`stickyban` VARCHAR(32) NOT NULL,
-	`matched_ip` INT UNSIGNED NOT NULL,
-	`first_matched` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`last_matched` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (`stickyban`, `matched_ip`)
-) ENGINE=InnoDB;
-
---
--- Table structure for table `SS13_stickyban_matched_cid`
---
-DROP TABLE IF EXISTS `SS13_stickyban_matched_cid`;
-CREATE TABLE `SS13_stickyban_matched_cid` (
-	`stickyban` VARCHAR(32) NOT NULL,
-	`matched_cid` VARCHAR(32) NOT NULL,
-	`first_matched` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	`last_matched` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (`stickyban`, `matched_cid`)
-) ENGINE=InnoDB;
 
 --
 -- Table structure for table `SS13_achievements`
@@ -613,7 +566,9 @@ CREATE TABLE `SS13_achievement_metadata` (
 	PRIMARY KEY (`achievement_key`)
 ) ENGINE=InnoDB;
 
--- Table structure for table 'SS13_x_progress'
+--
+-- Table structure for table `SS13_fish_progress`
+--
 
 DROP TABLE IF EXISTS `SS13_fish_progress`;
 CREATE TABLE `SS13_fish_progress` (
@@ -623,6 +578,9 @@ CREATE TABLE `SS13_fish_progress` (
   PRIMARY KEY (`ckey`,`progress_entry`)
 ) ENGINE=InnoDB;
 
+--
+-- Table structure for table `SS13_pda_themes_progress`
+--
 DROP TABLE IF EXISTS `SS13_pda_themes_progress`;
 CREATE TABLE `SS13_pda_themes_progress` (
   `ckey` VARCHAR(32) NOT NULL,
@@ -655,7 +613,7 @@ CREATE TABLE `SS13_ticket` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 DELIMITER //
-CREATE PROCEDURE `set_poll_deleted`(
+CREATE PROCEDURE `SS13_set_poll_deleted`(
 	IN `poll_id` INT
 )
 SQL SECURITY INVOKER
@@ -678,7 +636,7 @@ END
 DELIMITER ;
 
 --
--- Table structure for table `discord_links`
+-- Table structure for table `SS13_discord_links`
 --
 DROP TABLE IF EXISTS `SS13_discord_links`;
 CREATE TABLE `SS13_discord_links` (
@@ -687,12 +645,12 @@ CREATE TABLE `SS13_discord_links` (
 	`discord_id` BIGINT(20) DEFAULT NULL,
 	`timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`one_time_token` VARCHAR(100) NOT NULL,
-	`valid` BOOLEAN NOT NULL DEFAULT FALSE,
+  	`valid` BOOLEAN NOT NULL DEFAULT FALSE,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `admin_connections`
+-- Table structure for table `SS13_admin_connections`
 --
 DROP TABLE IF EXISTS `SS13_admin_connections`;
 CREATE TABLE `SS13_admin_connections` (
@@ -706,7 +664,7 @@ CREATE TABLE `SS13_admin_connections` (
 ) ENGINE=InnoDB;
 
 --
--- Table structure for table `known_alts`
+-- Table structure for table `SS13_known_alts`
 --
 DROP TABLE IF EXISTS `SS13_known_alts`;
 CREATE TABLE `SS13_known_alts` (
@@ -719,7 +677,7 @@ CREATE TABLE `SS13_known_alts` (
 );
 
 --
--- Table structure for table `telemetry_connections`
+-- Table structure for table `SS13_telemetry_connections`
 --
 DROP TABLE IF EXISTS `SS13_telemetry_connections`;
 CREATE TABLE `SS13_telemetry_connections` (
