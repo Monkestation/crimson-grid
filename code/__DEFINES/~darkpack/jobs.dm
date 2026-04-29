@@ -103,6 +103,14 @@
 #define JOB_PENTEX_SEC "Security Agent"
 #define JOB_PENTEX_EMPLOYEE "Employee"
 
+// CRIMSON EDIT ADD - Hunters
+// Society of Leopold
+#define JOB_NOVICE "Novice"
+#define JOB_ABBE "Abbé"
+#define JOB_CONDOTTIERI "Condottieri"
+#define JOB_INQUISITOR "Inquisitor"
+// CRIMSON EDIT ADD END - Hunters
+
 //////////////////////////////////////////////////
 
 #define JOB_DISPLAY_ORDER_CITIZEN 1
@@ -172,6 +180,13 @@
 #define JOB_DISPLAY_ORDER_PENTEX_SEC 52
 #define JOB_DISPLAY_ORDER_EMPLOYEE 53
 
+// CRIMSON EDIT ADD - Hunters
+#define JOB_DISPLAY_ORDER_NOVICE 54
+#define JOB_DISPLAY_ORDER_CONDOTTIERI 55
+#define JOB_DISPLAY_ORDER_INQUISITOR 56
+#define JOB_DISPLAY_ORDER_ABBE 57
+// CRIMSON EDIT ADD - Hunters
+
 //////////////////////////////////////////////////
 
 #define DEPARTMENT_BITFLAG_CITIZEN (1<<0)
@@ -206,6 +221,10 @@
 #define DEPARTMENT_PENTEX "Pentex"
 #define DEPARTMENT_BITFLAG_GAIA (1<<15)
 #define DEPARTMENT_GAIA "Garou_Nation"
+// CRIMSON EDIT ADD - Hunters
+#define DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD (1<<16)
+#define DEPARTMENT_SOCIETY_OF_LEOPOLD "Society_of_Leopold"
+// CRIMSON EDIT ADD END - Hunters
 
 DEFINE_BITFIELD(departments_bitflags, list(
 	"CITIZEN" = DEPARTMENT_BITFLAG_CITIZEN,
@@ -224,6 +243,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 	"CHANTRY" = DEPARTMENT_BITFLAG_CHANTRY,
 	"MANOR" = DEPARTMENT_BITFLAG_MANOR,
 	"CITY_SERVICES" = DEPARTMENT_BITFLAG_CITY_SERVICES,
+	"SOCIETY_OF_LEOPOLD" = DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD, // CRIMSON EDIT ADD - Hunters
 ))
 
 /// Combination flag for jobs which are considered regular crew members of the station.
@@ -244,6 +264,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 #define SUPERVISOR_REGENT "the Regent"
 #define SUPERVISOR_SENESCHAL_PUBLIC "the COO"
 #define SUPERVISOR_BARON_PUBLIC "the Bar's Owner"
+#define SUPERVISOR_SOCIETY_OF_LEOPOLD "the Society of Leopold, the Inquisition, the local Provincial, and God" // CRIMSON EDIT ADD - Hunters
 
 // Playtime tracking system, see jobs_exp.dm
 #define EXP_TYPE_KINDRED "Kindred"

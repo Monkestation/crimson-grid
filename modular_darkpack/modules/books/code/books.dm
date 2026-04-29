@@ -42,3 +42,12 @@
 
 /obj/item/vampirebook/quran/read_book(mob/living/carbon/human/user)
 	quote = pick(GLOB.quran_quotes)
+
+/obj/item/vampirebook/bible
+	name = "Bible"
+	icon_state = "bible"
+
+// note to self - fucking move this to the parent type
+/obj/item/vampirebook/bible/read_book(mob/living/carbon/human/user)
+	. = ..()
+	quote = pick(GLOB.bible_quotes)
