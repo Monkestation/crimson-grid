@@ -28,8 +28,30 @@
 	violates_masquerade = TRUE
 
 	multi_activate = TRUE
-	duration_length = 0.5 SECONDS
+	duration_length = 5 SECONDS
 	cooldown_length = 5 SECONDS
+
+/datum/discipline_power/serpentis/the_eyes_of_the_serpent/proc/immobilize_target(mob/living/target, duration = 5 SECONDS)
+	ADD_TRAIT(target, TRAIT_IMMOBILIZED, DISCIPLINE_TRAIT(type))
+	RegisterSignals(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT), PROC_REF(on_target_attacked))
+	if(do_after(owner, duration, target))
+		release_target(target)
+		return TRUE
+	else
+		release_target(target)
+		return FALSE
+
+/datum/discipline_power/serpentis/the_eyes_of_the_serpent/proc/on_target_attacked(datum/source)
+	SIGNAL_HANDLER
+	var/mob/living/target = source
+	release_target(target)
+	to_chat(owner, span_warning("Your concentration is broken as [target] is attacked!"))
+	to_chat(target, span_warning("The mental hold on you breaks as you're attacked!"))
+
+/datum/discipline_power/serpentis/the_eyes_of_the_serpent/proc/release_target(mob/living/target)
+	UnregisterSignal(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT))
+	to_chat(target, span_danger("You feel your concentration become your own once more, able to look away from the commanding gaze."))
+	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, DISCIPLINE_TRAIT(type))
 
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/can_activate_untargeted(alert)
 	. = ..()
@@ -41,7 +63,6 @@
 
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/activate(mob/living/target)
 	. = ..()
-	target.Immobilize(2 SECONDS)
 	target.face_atom(owner)
 	target.visible_message(span_hypnophrase("<b>[owner] hypnotizes [target] with [owner.p_their()] eyes!</b>"), span_warning("<b>[owner] hypnotizes you! Their words seem to become more convincing and hypnotic...</b>"))
 	if(ishuman(target))
@@ -50,9 +71,11 @@
 		var/mutable_appearance/serpentis_overlay = mutable_appearance('modular_darkpack/modules/powers/icons/serpentis.dmi', "serpentis", -MUTATIONS_LAYER)
 		H.overlays_standing[MUTATIONS_LAYER] = serpentis_overlay
 		H.apply_overlay(MUTATIONS_LAYER)
+	immobilize_target(target)
 
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/deactivate(mob/living/target)
 	. = ..()
+	release_target(target)
 	if (ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		human_target.remove_overlay(MUTATIONS_LAYER)
