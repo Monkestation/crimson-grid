@@ -2,7 +2,6 @@
 
 /datum/outfit/job/towerwork/towercleaner
 	name = "Tower Employee (Tower Cleaner)"
-	jobtype = /datum/job/vampire/towerwork
 	uniform = /obj/item/clothing/under/vampire/janitor
 	suit = null
 	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
@@ -13,7 +12,6 @@
 
 /datum/outfit/job/towerwork/towerassistant
 	name = "Tower Employee (Tower Assistant)"
-	jobtype = /datum/job/vampire/towerwork
 	uniform = /obj/item/clothing/under/vampire/office
 	gloves = null
 	suit = null
@@ -23,7 +21,6 @@
 
 /datum/outfit/job/towerwork/towersecurityguard
 	name = "Tower Employee (Tower Security Guard)"
-	jobtype = /datum/job/vampire/towerwork
 	uniform = /obj/item/clothing/under/vampire/guard
 	shoes = /obj/item/clothing/shoes/vampire
 	gloves = null
@@ -35,7 +32,6 @@
 
 /datum/outfit/job/towerwork/towerpersonaldriver
 	name = "Tower Employee (Tower Personal Driver)"
-	jobtype = /datum/job/vampire/towerwork
 	uniform = /obj/item/clothing/under/vampire/suit
 	suit = null
 	head = /obj/item/clothing/head/vampire/chauffeur
@@ -51,7 +47,6 @@
 
 /datum/outfit/job/towerwork/towerpersonalattendant
 	name = "Tower Employee (Tower Personal Attendant)"
-	jobtype = /datum/job/vampire/towerwork
 	uniform = /obj/item/clothing/under/vampire/suit
 	r_pocket = /obj/item/vamp/keys/camarilla/ghoul
 	l_pocket = /obj/item/smartphone/tower_employee
