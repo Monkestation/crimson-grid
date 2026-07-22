@@ -1600,6 +1600,10 @@
 /obj/structure/transport/linear/public,
 /turf/open/floor/plating/elevatorshaft,
 /area/vtm/interior)
+"ayb" = (
+/obj/weapon_showcase,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "ayf" = (
 /mob/living/carbon/human/npc/shop{
 	resistant_to_disciplines = 1
@@ -2464,6 +2468,11 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
+"aKx" = (
+/obj/weapon_showcase,
+/obj/machinery/light/directional/west,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "aKy" = (
 /obj/structure/chair/plastic{
 	dir = 8;
@@ -3306,6 +3315,9 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
+"aWe" = (
+/turf/open/space/basic,
+/area/vtm/interior/shop)
 "aWj" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -6384,6 +6396,15 @@
 /obj/item/camera/detective,
 /turf/open/floor/carpet/royalblack,
 /area/vtm/interior/police/fed)
+"bRa" = (
+/obj/item/gun/ballistic/automatic/darkpack/huntrifle{
+	pixel_y = 30;
+	layer = 4;
+	anchored = 1;
+	desc = "A semi-automatic hunting rifle, just like what your dad used to shoot. If your dad didn't go out to get milk, anyways. This one is just for display."
+	},
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "bRd" = (
 /obj/machinery/light/directional/west,
 /obj/weapon_showcase,
@@ -9432,6 +9453,10 @@
 /obj/effect/decal/pallet,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/sewer)
+"cJQ" = (
+/obj/structure/rack/wide/store_shelf,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "cJS" = (
 /obj/structure/flora/bush/style_random,
 /turf/open/misc/grass,
@@ -11306,6 +11331,13 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/unionsquare)
+"dmu" = (
+/obj/structure/retail/camping{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/shop)
 "dmz" = (
 /obj/effect/decal/cleanable/wrapping,
 /obj/structure/barrels/rand,
@@ -12888,6 +12920,16 @@
 /mob/living/basic/szlachta/fister/hostile,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/sewer)
+"dMg" = (
+/obj/item/fish/darkpack/shark{
+	pixel_y = 31;
+	pixel_x = 16;
+	layer = 4;
+	anchored = 1;
+	desc = "A stuffed and taxidermied shark. Its' eyes stare at you lifelessly. This one doesn't make any noise."
+	},
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "dMj" = (
 /obj/structure/closet/cardboard,
 /turf/open/floor/plating/rough/cave,
@@ -19342,6 +19384,10 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
+"fHT" = (
+/obj/effect/decal/kopatich,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/shop)
 "fIi" = (
 /obj/effect/decal/graffiti,
 /obj/structure/mop_bucket,
@@ -27338,6 +27384,13 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/hotel)
+"ibD" = (
+/obj/effect/decal/wallpaper/paper/stripe,
+/obj/structure/fish_mount/bar{
+	name = "gun mount"
+	},
+/turf/closed/wall/vampwall/market,
+/area/vtm/interior/shop)
 "ibG" = (
 /obj/machinery/light/small/directional/north,
 /obj/structure/dresser,
@@ -27694,11 +27747,6 @@
 /mob/living/carbon/human/npc/business,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
-"iho" = (
-/obj/machinery/light/small/directional/north,
-/obj/structure/rack/clothing_hanger,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
 "ihq" = (
 /turf/open/water{
 	color = "#483C32"
@@ -43245,16 +43293,6 @@
 	},
 /turf/open/floor/carpet,
 /area/vtm/interior/shop)
-"mQg" = (
-/obj/machinery/light/small/directional/south,
-/obj/structure/table/wood,
-/obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
 "mQp" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 8
@@ -49326,10 +49364,9 @@
 /turf/open/misc/dirt,
 /area/vtm/interior/cog/caern)
 "oDz" = (
-/obj/machinery/light/small/directional/north,
-/obj/structure/closet/secure_closet/personal/cabinet,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
+/obj/structure/coclock,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "oDM" = (
 /obj/structure/mop_bucket/janitorialcart,
 /obj/item/mop,
@@ -49628,12 +49665,8 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior/tzimisce_manor)
 "oHG" = (
-/obj/machinery/light/small/directional/south,
-/obj/structure/toilet{
-	dir = 8
-	},
-/turf/open/floor/city/toilet,
-/area/vtm/interior)
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "oHH" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/misc/grass,
@@ -51633,6 +51666,14 @@
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/setite)
+"plk" = (
+/obj/structure/vampdoor/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/door/access/npc,
+/obj/effect/mapping_helpers/door/lock,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "plm" = (
 /obj/effect/turf_decal/bordur{
 	dir = 10
@@ -53751,6 +53792,10 @@
 "pNH" = (
 /turf/open/misc/grass,
 /area/vtm/outside/park)
+"pNL" = (
+/obj/structure/platform/lowwall/market/window/reinforced,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/shop)
 "pNN" = (
 /obj/effect/landmark/npcbeacon,
 /obj/effect/landmark/npcability,
@@ -57272,6 +57317,10 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating/granite,
 /area/vtm/interior/millennium_tower)
+"qOB" = (
+/obj/structure/platform/lowwall/market/window/reinforced,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "qOE" = (
 /obj/structure/coclock,
 /turf/open/floor/city/saint,
@@ -59552,6 +59601,10 @@
 /obj/effect/decal/graffiti,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch/basement)
+"ruc" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "rug" = (
 /obj/effect/turf_decal/bordur{
 	dir = 5
@@ -63413,6 +63466,10 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/techshop)
+"szW" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "sAa" = (
 /turf/closed/wall/vampwall/rich/old,
 /area/vtm/outside/forest)
@@ -63833,6 +63890,11 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
+"sGi" = (
+/obj/structure/fish_mount/bar,
+/obj/effect/decal/wallpaper/paper/stripe,
+/turf/closed/wall/vampwall/market,
+/area/vtm/interior/shop)
 "sGC" = (
 /obj/effect/decal/cleanable/trash,
 /turf/open/floor/wood/old,
@@ -65023,6 +65085,10 @@
 	},
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
+"tbQ" = (
+/obj/structure/vampdoor/glass,
+/turf/open/floor/plating/sidewalk,
+/area/vtm/interior/shop)
 "tbS" = (
 /obj/structure/table/wood,
 /obj/underplate,
@@ -73150,10 +73216,9 @@
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights/forest)
 "vAO" = (
-/obj/machinery/light/small/directional/south,
-/obj/item/kirbyplants/random,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
+/obj/structure/closet/crate/bin,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "vBa" = (
 /obj/structure/chair/plastic,
 /turf/open/floor/wood/smooth,
@@ -74771,6 +74836,13 @@
 /obj/effect/landmark/npcbeacon/directed,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf)
+"vYI" = (
+/mob/living/carbon/human/npc/campingstore,
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/shop)
 "vYU" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -76345,6 +76417,10 @@
 	},
 /turf/open/floor/city/church,
 /area/vtm/interior/church/staff)
+"wyL" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "wyW" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/machinery/light/prince/directional/north,
@@ -82005,9 +82081,8 @@
 /area/vtm/interior/police)
 "yhi" = (
 /obj/machinery/light/small/directional/north,
-/obj/item/kirbyplants/random,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/shop)
 "yhk" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -180719,12 +180794,12 @@ jMv
 pdi
 bUo
 oiT
-oOD
-oOD
-oOD
-oOD
-oOD
-oOD
+bvc
+bvc
+bvc
+bvc
+bvc
+bvc
 gEh
 tgt
 xkt
@@ -180976,12 +181051,12 @@ jMv
 pdi
 bUo
 oiT
-eVP
-rwG
-iIm
-uQS
-sTS
-uQS
+sQR
+szW
+ayb
+aKx
+ayb
+szW
 gEh
 tgt
 ddc
@@ -181233,11 +181308,11 @@ jMv
 pdi
 bUo
 oiT
-eVP
-vfw
-uQS
-uQS
-eVP
+sGi
+dMg
+ewI
+ewI
+ewI
 oHG
 gEh
 tgt
@@ -181490,12 +181565,12 @@ jMv
 pdi
 bUo
 oiT
-oOD
-oOD
-eVP
-uUT
-oOD
-oOD
+ibD
+bRa
+ewI
+ewI
+ewI
+oHG
 gEh
 tgt
 pgd
@@ -181747,12 +181822,12 @@ jMv
 pdi
 bUo
 oiT
-nLG
+sQR
 yhi
-iHq
-iHq
-jsE
-iHq
+ewI
+ewI
+ewI
+ruc
 gEh
 tgt
 nkL
@@ -182004,12 +182079,12 @@ jMv
 pdi
 bUo
 oiT
-nLG
-iHq
-iHq
-iHq
-iHq
-cCD
+sQR
+cJQ
+ewI
+ewI
+ewI
+cJQ
 gEh
 tgt
 nkL
@@ -182261,12 +182336,12 @@ jMv
 pdi
 bUo
 oiT
-vhu
-iHq
-iHq
-iHq
-iHq
-iHq
+sQR
+oHG
+ewI
+ewI
+ewI
+oHG
 gEh
 tgt
 wdR
@@ -182518,12 +182593,12 @@ jMv
 pdi
 svk
 oiT
-nLG
-iho
-iHq
-iHq
-iHq
-iHq
+sQR
+yhi
+ewI
+ewI
+ewI
+ruc
 gEh
 tgt
 bfz
@@ -182775,12 +182850,12 @@ jMv
 pdi
 bUo
 oiT
-nLG
-iHq
-iHq
-iHq
-iHq
-txX
+tbQ
+oHG
+ewI
+fHT
+ewI
+oHG
 gEh
 tgt
 hUa
@@ -183032,12 +183107,12 @@ jMv
 pdi
 bUo
 oiT
-nLG
-uLD
-uLD
-iHq
-iHq
-ihN
+tbQ
+oHG
+ewI
+ewI
+ewI
+oHG
 gEh
 tgt
 tgt
@@ -183289,12 +183364,12 @@ jMv
 pdi
 bUo
 oiT
-nLG
-tmr
-ihN
-iHq
-iHq
-tVk
+sQR
+yhi
+ewI
+ewI
+ewI
+ruc
 gEh
 qGw
 qGw
@@ -183546,13 +183621,13 @@ jMv
 pdi
 bUo
 oiT
-nLG
-ihN
-ihN
-iHq
-iHq
-mQg
-oOD
+sQR
+cJQ
+ewI
+ewI
+ewI
+cJQ
+bvc
 lIb
 kpk
 kpk
@@ -183803,13 +183878,13 @@ jMv
 pdi
 bUo
 oiT
-nLG
-btF
-btF
-iHq
-iHq
-ihN
-oOD
+sQR
+aWe
+ewI
+ewI
+ewI
+oHG
+bvc
 sBO
 rUK
 kpk
@@ -184060,13 +184135,13 @@ jMv
 pdi
 bUo
 oiT
-nLG
-kwh
-iHq
-iHq
-iHq
-iHq
-oOD
+sQR
+yhi
+ewI
+ewI
+ewI
+ruc
+bvc
 sWl
 kpk
 kpk
@@ -184317,13 +184392,13 @@ jMv
 pdi
 bUo
 oiT
-nLG
-iHq
-iHq
-iHq
-iHq
-cCD
-oOD
+sQR
+qOB
+dmu
+ofo
+pNL
+plk
+bvc
 iIq
 kpk
 kpk
@@ -184574,13 +184649,13 @@ jMv
 pdi
 bUo
 oiT
-nLG
-iHq
-iHq
-iHq
-iHq
-iHq
-oOD
+sQR
+oHG
+vYI
+ewI
+ewI
+oHG
+bvc
 iIq
 kpk
 kpk
@@ -184831,13 +184906,13 @@ jMv
 pdi
 bUo
 oiT
-nLG
+sQR
 oDz
-iHq
-iHq
-iHq
-iHq
-oOD
+ewI
+ewI
+ewI
+oHG
+bvc
 iIq
 kpk
 kpk
@@ -185088,13 +185163,13 @@ jMv
 pdi
 bUo
 oiT
-nLG
-ihN
-ihN
-pyi
-gMy
+sQR
+szW
+oHG
+wyL
+oHG
 vAO
-oOD
+bvc
 hmq
 gnq
 gnq
@@ -185345,13 +185420,13 @@ jMv
 pdi
 bUo
 oiT
-oOD
-oOD
-oOD
-oOD
-oOD
-oOD
-oOD
+bvc
+bvc
+bvc
+bvc
+bvc
+bvc
+bvc
 oiT
 dFO
 ojC
