@@ -338,20 +338,6 @@
 /mob/living/carbon/human/toggle_externals(obj/item/tank)
 	return toggle_internals(tank, TRUE)
 
-/mob/living/carbon/human/proc/equipOutfit(outfit, visuals_only = FALSE)
-	var/datum/outfit/O = null
-
-	if(ispath(outfit))
-		O = new outfit
-	else
-		O = outfit
-		if(!istype(O))
-			return 0
-	if(!O)
-		return 0
-
-	return O.equip(src, visuals_only)
-
 
 ///A version of equipOutfit that overrides passed in outfits with their entry on the species' outfit override registry
 /mob/living/carbon/human/proc/equip_species_outfit(outfit, visuals_only = FALSE)
