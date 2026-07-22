@@ -324,7 +324,7 @@
 /mob/living/carbon/human/toggle_externals(obj/item/tank)
 	return toggle_internals(tank, TRUE)
 
-/mob/living/carbon/human/proc/equipOutfit(outfit, visuals_only = FALSE)
+/mob/living/carbon/human/proc/equipOutfit(outfit, visuals_only = FALSE, client/preference_source = null) // Shitcode
 	var/datum/outfit/O = null
 
 	if(ispath(outfit))
@@ -336,7 +336,7 @@
 	if(!O)
 		return 0
 
-	return O.equip(src, visuals_only)
+	return O.equip(src, visuals_only, preference_source)
 
 
 ///A version of equipOutfit that overrides passed in outfits with their entry on the species' outfit override registry
