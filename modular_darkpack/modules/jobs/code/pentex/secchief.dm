@@ -16,7 +16,7 @@
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/secchief
 
-	allowed_splats = list(SPLAT_GAROU, SPLAT_KINDRED)
+	allowed_splats = list(SPLAT_GAROU, SPLAT_KINDRED, SPLAT_KINFOLK, SPLAT_GHOUL, SPLAT_NONE)
 	minimal_masquerade = 4
 	// minimal_renown_rank = 3
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
@@ -30,7 +30,9 @@
 	known_contacts = list(
 		JOB_PENTEX_LEAD,
 		JOB_PENTEX_EXEC,
-		JOB_PENTEX_AFFAIRS
+		JOB_PENTEX_AFFAIRS,
+		JOB_PENTEX_EMPLOYEE,
+		JOB_PENTEX_SEC
 	)
 
 	paycheck = PAYCHECK_COMMAND
@@ -39,7 +41,7 @@
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
 /datum/outfit/job/vampire/secchief
-	name = "Endron Chief of Security"
+	name = JOB_PENTEX_SEC_CHIEF
 	jobtype = /datum/job/vampire/secchief
 
 //	ears = /obj/item/p25radio

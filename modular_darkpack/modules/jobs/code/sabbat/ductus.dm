@@ -18,11 +18,14 @@
 	display_order = JOB_DISPLAY_ORDER_SABBATDUCTUS
 	whitelisted = TRUE
 
+	known_contacts = list(JOB_SABBAT_PACK, JOB_SABBAT_PRIEST)
+
+
 /datum/antagonist/sabbatist/ductus
 	antag_hud_name = "ductus_priest"
 
 /datum/outfit/job/vampire/sabbatductus
-	name = "Sabbat Ductus"
+	name = JOB_SABBAT_DUCTUS
 	jobtype = /datum/job/vampire/sabbatductus
 	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/sabbat

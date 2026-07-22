@@ -23,16 +23,16 @@
 		/datum/job_department/city_services
 	)
 
-	minimal_generation = 12
-	minimum_immortal_age = 15
+	minimal_generation = 10
+	minimum_immortal_age = 100
 	minimal_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_NOSFERATU)
 
-	known_contacts = list("Prince")
+	known_contacts = list(JOB_PRINCE, JOB_SHERIFF, JOB_SENESCHAL, JOB_HARPY)
 
 /datum/outfit/job/vampire/nosferatu
-	name = "Primogen Nosferatu"
+	name = JOB_PRIMOGEN_NOSFERATU
 	jobtype = /datum/job/vampire/primogen_nosferatu
 
 	ears = /obj/item/radio/headset/darkpack

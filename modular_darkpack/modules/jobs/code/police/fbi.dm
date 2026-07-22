@@ -14,14 +14,21 @@
 		/datum/job_department/police,
 	)
 
+	alt_titles = list(
+		"Federal Investigator",
+		"SAD Officer",
+		"Project Twilight Operative",
+		"FIRSTLIGHT Analyst",
+	)
+
 	allowed_splats = list(SPLAT_NONE)
 	description = "Enforce the Law."
-	minimal_masquerade = 0
+	minimal_masquerade = 3
 
-	known_contacts = list("Police Captain")
+	known_contacts = list(JOB_POLICE_CAPTAIN, JOB_POLICE_SERGEANT, JOB_EMERGENCY_DISPATCHER)
 
 /datum/outfit/job/vampire/fbi
-	name = "Federal Investigator"
+	name = JOB_FEDERAL_INVESTIGATOR
 	jobtype = /datum/job/vampire/fbi
 
 	ears = /obj/item/radio/headset/darkpack/police

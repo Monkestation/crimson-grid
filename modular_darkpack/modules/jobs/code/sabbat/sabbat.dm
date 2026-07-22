@@ -20,7 +20,7 @@
 	H.forceMove(D.loc)
 
 /datum/antagonist/sabbatist
-	name = "Sabbatist"
+	name = JOB_SABBAT_SABBATIST
 	roundend_category = "sabbattites"
 	antagpanel_category = FACTION_SABBAT
 	pref_flag = ROLE_SABBAT

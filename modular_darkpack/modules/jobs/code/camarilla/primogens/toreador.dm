@@ -23,16 +23,16 @@
 		/datum/job_department/strip_club,
 	)
 
-	minimal_generation = 12
-	minimum_immortal_age = 50
+	minimal_generation = 10
+	minimum_immortal_age = 100
 	minimal_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TOREADOR)
 
-	known_contacts = list("Prince")
+	known_contacts = list(JOB_PRINCE, JOB_SHERIFF, JOB_SENESCHAL, JOB_HARPY)
 
 /datum/outfit/job/vampire/toreador
-	name = "Primogen Toreador"
+	name = JOB_PRIMOGEN_TOREADOR
 	jobtype = /datum/job/vampire/primogen_toreador
 
 	ears = /obj/item/radio/headset/darkpack

@@ -17,11 +17,14 @@
 		/datum/job_department/society_of_leopold,
 	)
 
-	allowed_splats = list(SPLAT_NONE)
+	known_contacts = list(JOB_ABBE, JOB_CONDOTTIERI, JOB_INQUISITOR)
+
+	splat_slots = list(SPLAT_KINFOLK = 1)
+	allowed_splats = list(SPLAT_NONE, SPLAT_KINFOLK) // infiltrators and betrayal arcs
 
 
 /datum/outfit/job/vampire/novice
-	name = "Novice"
+	name = JOB_NOVICE
 	jobtype = /datum/job/vampire/novice
 
 	id = /obj/item/card/hunter

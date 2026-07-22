@@ -14,13 +14,15 @@
 		/datum/job_department/giovanni,
 	)
 
+	known_contacts = list(JOB_CAPO, JOB_LA_SQUADRA)
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_CAITIFF)
 	description = "Your family is a strange one. Maybe you are strange too, because sitting next to your great uncles as an equal is something you are greatly interested in."
 	minimal_masquerade = 0
 
 /datum/outfit/job/vampire/famiglia
-	name = "La Famiglia"
+	name = JOB_LA_FAMIGLIA
 	jobtype = /datum/job/vampire/famiglia
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	uniform = /obj/item/clothing/under/vampire/suit

@@ -21,10 +21,10 @@
 	description = "Whether you are of Voivode-in-Waiting's blood or if you've been honored, you are one of the Kin of the Voivode. Protect your Family, as your Family would protect you."
 	minimal_masquerade = 2
 
-	known_contacts = list("Prince", "Baron", "Sheriff")
+	known_contacts = list(JOB_PRINCE, JOB_BARON, JOB_SHERIFF, JOB_VOIVODE, JOB_ZADRUGA)
 
 /datum/outfit/job/vampire/bogatyr
-	name = "Bogatyr"
+	name = JOB_BOGATYR
 	jobtype = /datum/job/vampire/bogatyr
 	id = /obj/item/card/bogatyr
 	glasses = /obj/item/clothing/glasses/vampire/yellow

@@ -26,14 +26,14 @@
 	)
 
 	known_contacts = list(
-		"Councillor",
-		"Truthcatcher",
-		"Warder",
-		"Wyrmfoe"
+		JOB_GAROU_COUNCIL,
+		JOB_GAROU_TRUTHCATCHER,
+		JOB_GAROU_WARDER,
+		JOB_GAROU_WYRMFOE
 	)
 
 /datum/outfit/job/vampire/guardian
-	name = "Sept Guardian"
+	name = JOB_GAROU_GUARDIAN
 	jobtype = /datum/job/vampire/guardian
 
 	id = /obj/item/card/park_ranger

@@ -28,7 +28,7 @@
 	minimal_masquerade = 3
 
 /datum/outfit/job/vampire/club_worker
-	name = "Stripper"
+	name = JOB_CLUB_WORKER
 	jobtype = /datum/job/vampire/citizen
 	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/strip

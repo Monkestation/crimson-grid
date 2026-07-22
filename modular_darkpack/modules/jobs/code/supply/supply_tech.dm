@@ -19,8 +19,11 @@
 	description = "You work at the warehouse, moving boxes and selling not-quite legal goods to anyone who has the money."
 	minimal_masquerade = 0
 
+	known_contacts = list(JOB_DEALER)
+
+
 /datum/outfit/job/vampire/supply_tech
-	name = "Supply Technician"
+	name = JOB_SUPPLY_TECH
 	jobtype = /datum/job/vampire/supply
 	uniform = /obj/item/clothing/under/vampire/suit
 	shoes = /obj/item/clothing/shoes/vampire/jackboots

@@ -23,16 +23,16 @@
 		/datum/job_department/church,
 	)
 
-	minimal_generation = 12
-	minimum_immortal_age = 50
+	minimal_generation = 10
+	minimum_immortal_age = 100
 	minimal_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_LASOMBRA)
 
-	known_contacts = list("Prince")
+	known_contacts = list(JOB_PRINCE, JOB_SHERIFF, JOB_SENESCHAL, JOB_HARPY)
 
 /datum/outfit/job/vampire/lasombraprim
-	name = "Primogen Lasombra"
+	name = JOB_PRIMOGEN_LASOMBRA
 	jobtype = /datum/job/vampire/primogen_lasombra
 
 	ears = /obj/item/radio/headset/darkpack

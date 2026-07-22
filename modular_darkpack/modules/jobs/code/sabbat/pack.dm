@@ -19,8 +19,11 @@
 	display_order = JOB_DISPLAY_ORDER_SABBATPACK
 	whitelisted = TRUE
 
+	known_contacts = list(JOB_SABBAT_DUCTUS, JOB_SABBAT_PRIEST)
+
+
 /datum/outfit/job/vampire/sabbatpack
-	name = "Sabbat Pack"
+	name = JOB_SABBAT_PACK
 	jobtype = /datum/job/vampire/sabbatpack
 	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/sabbat

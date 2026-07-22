@@ -13,7 +13,8 @@
 	departments_list = list(
 		/datum/job_department/church,
 	)
-	allowed_splats = list(SPLAT_NONE)
+	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_KINDRED)
+	allowed_clans = list(VAMPIRE_CLAN_LASOMBRA) // They do religious shit don't @ me
 	description = "Be the shepherd of the flock in " + CITY_NAME + ", lead them to salvation, piety and righteousness."
 
 	alt_titles = list(
@@ -29,7 +30,7 @@
 	)
 
 /datum/outfit/job/vampire/priest
-	name = "Priest"
+	name = JOB_PRIEST
 	jobtype = /datum/job/vampire/priest
 
 	uniform = /obj/item/clothing/under/vampire/graveyard

@@ -18,7 +18,7 @@
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL)
 
 /datum/outfit/job/vampire/graveyard
-	name = "Graveyard Keeper"
+	name = JOB_GRAVEYARD_KEEPER
 	jobtype = /datum/job/vampire/graveyard
 
 	id = /obj/item/card/graveyard

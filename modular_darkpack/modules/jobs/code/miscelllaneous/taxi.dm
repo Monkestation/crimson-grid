@@ -18,7 +18,7 @@
 	minimal_masquerade = 0
 
 /datum/outfit/job/vampire/taxi
-	name = "Taxi Driver"
+	name = JOB_TAXI_DRIVER
 	jobtype = /datum/job/vampire/taxi
 
 	glasses = /obj/item/clothing/glasses/vampire/sun

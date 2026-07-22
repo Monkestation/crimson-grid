@@ -26,10 +26,10 @@
 	description = "Enforce the law. Keep the officers in line. Follow what the Captain says."
 	minimal_masquerade = 0
 
-	known_contacts = list("Police Captain")
+	known_contacts = list(JOB_POLICE_CAPTAIN, JOB_EMERGENCY_DISPATCHER)
 
 /datum/outfit/job/vampire/police_sergeant
-	name = "Police Sergeant"
+	name = JOB_POLICE_SERGEANT
 	jobtype = /datum/job/vampire/police_sergeant
 
 	ears = /obj/item/radio/headset/darkpack/police

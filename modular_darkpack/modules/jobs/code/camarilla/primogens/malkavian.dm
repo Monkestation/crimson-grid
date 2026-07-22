@@ -23,16 +23,16 @@
 		/datum/job_department/clinic,
 	)
 
-	minimal_generation = 12
-	minimum_immortal_age = 5 // Actually Malkavian Primo is whoever showed for work that day. Crazy bunch.
+	minimal_generation = 10
+	minimum_immortal_age = 50 // Actually Malkavian Primo is whoever showed for work that day. Crazy bunch.
 	minimal_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN)
 
-	known_contacts = list("Prince")
+	known_contacts = list(JOB_PRINCE, JOB_SHERIFF, JOB_SENESCHAL, JOB_HARPY)
 
 /datum/outfit/job/vampire/malkav
-	name = "Primogen Malkavian"
+	name = JOB_PRIMOGEN_MALKAVIAN
 	jobtype = /datum/job/vampire/primogen_malkavian
 
 	ears = /obj/item/radio/headset/darkpack

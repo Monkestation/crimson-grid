@@ -16,7 +16,7 @@
 	minimal_masquerade = 0
 
 /datum/outfit/job/vampire/janitor
-	name = "Street Janitor"
+	name = JOB_STREET_JANITOR
 	jobtype = /datum/job/vampire/janitor
 
 	id = /obj/item/card/cleaning
