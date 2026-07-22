@@ -17,7 +17,7 @@
 	suit = null
 	r_pocket = /obj/item/vamp/keys/camarilla/ghoul
 	l_pocket = /obj/item/smartphone/tower_employee
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/card/credit=1, /obj/item/clipboard=1, /obj/item/pen=1, /obj/item/folder/blue=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/watch=1, /obj/item/flashlight=1, /obj/item/card/credit=1, /obj/item/clipboard=1, /obj/item/pen=1, /obj/item/folder/blue=1)
 
 /datum/outfit/job/towerwork/towersecurityguard
 	name = "Tower Employee (Tower Security Guard)"
@@ -25,20 +25,20 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	gloves = null
 	suit = null
-	belt = /obj/item/gun/ballistic/automatic/vampire/m1911
+	belt = /obj/item/gun/ballistic/automatic/pistol/darkpack/m1911
 	r_pocket = /obj/item/vamp/keys/camarilla/ghoul
 	l_pocket = /obj/item/smartphone/tower_employee
-	backpack_contents = list(/obj/item/flashlight=1, /obj/item/card/credit=1,/obj/item/food/vampire/donut=5, /obj/item/cockclock=1)
+	backpack_contents = list(/obj/item/flashlight=1, /obj/item/card/credit=1,/obj/item/storage/fancy/donut_box=1, /obj/item/watch=1)
 
 /datum/outfit/job/towerwork/towerpersonaldriver
 	name = "Tower Employee (Tower Personal Driver)"
 	uniform = /obj/item/clothing/under/vampire/suit
 	suit = null
-	head = /obj/item/clothing/head/vampire/chauffeur
+	head = /obj/item/clothing/head/vampire/top
 	gloves = /obj/item/clothing/gloves/vampire/white
 	r_pocket = /obj/item/vamp/keys/camarilla/ghoul
 	l_pocket = /obj/item/smartphone/tower_employee
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/card/credit=1, /obj/item/clipboard=1, /obj/item/pen=1, /obj/item/folder/red=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/watch=1, /obj/item/flashlight=1, /obj/item/card/credit=1, /obj/item/clipboard=1, /obj/item/pen=1, /obj/item/folder/red=1)
 
 /datum/outfit/job/towerwork/towerpersonaldriver/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -50,7 +50,7 @@
 	uniform = /obj/item/clothing/under/vampire/suit
 	r_pocket = /obj/item/vamp/keys/camarilla/ghoul
 	l_pocket = /obj/item/smartphone/tower_employee
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/card/credit=1, /obj/item/clipboard=1, /obj/item/pen=1, /obj/item/folder/red=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/watch=1, /obj/item/flashlight=1, /obj/item/card/credit=1, /obj/item/clipboard=1, /obj/item/pen=1, /obj/item/folder/red=1)
 
 /datum/outfit/job/towerwork/towerpersonalattendant/pre_equip(mob/living/carbon/human/H)
 	..()
