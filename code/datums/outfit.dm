@@ -175,7 +175,7 @@
  *
  * If visuals_only is true, you can omit any work that doesn't visually appear on the character sprite
  */
-/datum/outfit/proc/equip(mob/living/carbon/human/user, visuals_only = FALSE, client/preference_source = null)
+/datum/outfit/proc/equip(mob/living/carbon/human/user, visuals_only = FALSE)
 	pre_equip(user, visuals_only)
 
 	//Start with uniform,suit,backpack for additional slots
