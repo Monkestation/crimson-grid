@@ -287,6 +287,20 @@
 	if(tank == existing_tank)
 		return toggle_close_internals(is_external)
 
+/mob/living/carbon/human/proc/equipOutfit(outfit, visualsOnly = FALSE, client/preference_source = null) // Alt jobs title outfits shitcode
+	var/datum/outfit/O = null
+
+	if(ispath(outfit))
+		O = new outfit
+	else
+		O = outfit
+		if(!istype(O))
+			return 0
+	if(!O)
+		return 0
+
+	return O.equip(src, visualsOnly, preference_source) // Alt jobs title outfits shitcode
+
 	// Use breathing tube regardless of mask.
 	if(can_breathe_tube())
 		return toggle_open_internals(tank, is_external)
