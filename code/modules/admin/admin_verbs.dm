@@ -211,7 +211,6 @@ ADMIN_VERB(stealth, R_STEALTH, "Stealth Mode", "Toggle stealth.", ADMIN_CATEGORY
 
 	BLACKBOX_LOG_ADMIN_VERB("Stealth Mode")
 
-#define STEALTH_MODE_TRAIT "stealth_mode"
 
 /* CRIMSON EDIT - ORIGINAL
 /client/proc/enable_stealth_mode()
