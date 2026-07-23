@@ -1,6 +1,6 @@
 /obj/structure/retail/flower_shop
 	name = "Community Garden"
-	desc = "The only 24hr flower shop in SanFran."
+	desc = "The only twenty-four hour gardening store in San Francisco."
 	products_list = list(
 		new /datum/data/vending_product("Gardening Gloves", /obj/item/clothing/gloves/botanic_leather, 45),
 		new /datum/data/vending_product("respirator", /obj/item/clothing/mask/gas/vampire),
