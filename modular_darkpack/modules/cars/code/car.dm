@@ -19,10 +19,6 @@
 	mid_length = 1.1 SECONDS
 	end_sound = 'modular_darkpack/modules/cars/sounds/stop.ogg'
 
-/obj/car_trunk
-	name = "car trunk"
-	desc = "How did this get out of the car."
-
 /obj/darkpack_car
 	name = "car"
 	desc = "Take me home, country roads..."
@@ -69,7 +65,6 @@
 	var/access = "none"
 
 	var/car_storage_type = /datum/storage/grid/car
-	var/obj/car_trunk/trunk
 
 	var/exploded = FALSE
 	var/beep_sound = 'modular_darkpack/modules/cars/sounds/beep.ogg'
@@ -91,9 +86,7 @@
 	. = ..()
 	engine_sound_loop = new(src)
 
-	trunk = new(src)
 	create_storage(storage_type = car_storage_type)
-	atom_storage.set_real_location(trunk)
 
 	if(access == "none")
 		grant_car_keys = TRUE
@@ -129,7 +122,6 @@
 /obj/darkpack_car/Destroy()
 	STOP_PROCESSING(SScarpool, src)
 	QDEL_NULL(engine_sound_loop)
-	QDEL_NULL(trunk)
 	empty_car()
 	. = ..()
 

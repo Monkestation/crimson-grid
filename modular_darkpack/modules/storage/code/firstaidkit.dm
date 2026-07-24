@@ -161,7 +161,7 @@
 	desc = "A medical suite designed for when you need your strongest potions to take into battle."
 	icon_state = "firstaid_combat"
 	inhand_icon_state = "firstaid_combat"
-	storage_type = /datum/storage/medkit/darkpack/combat
+	storage_type = /datum/storage/grid/firstaid
 
 /obj/item/storage/medkit/darkpack/combat/PopulateContents()
 	if(empty)

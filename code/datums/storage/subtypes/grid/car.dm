@@ -6,7 +6,7 @@
 	insert_on_attack = FALSE
 	click_alt_open = FALSE
 
-/datum/storage/car/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound)
+/datum/storage/grid/car/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound)
 	. = ..()
 	set_locked(STORAGE_FULLY_LOCKED)
 
