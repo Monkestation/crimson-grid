@@ -21792,10 +21792,6 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
-"gpS" = (
-/obj/vampire_computer,
-/turf/open/floor/plating/sidewalk,
-/area/vtm/outside/fishermanswharf/lower)
 "gpX" = (
 /obj/structure/fluff/beach_umbrella/security,
 /turf/open/misc/beach/vamp,
@@ -26529,10 +26525,6 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/railing{
-	dir = 1;
-	pixel_y = 12
-	},
 /obj/structure/hedge,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
@@ -28713,9 +28705,7 @@
 /turf/open/floor/city/gummaguts,
 /area/vtm/interior/shop)
 "iww" = (
-/obj/machinery/vending/cola/black{
-	pixel_y = 20
-	},
+/obj/machinery/vending/cola/black,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop)
 "iwJ" = (
@@ -64481,9 +64471,7 @@
 /area/vtm/interior/police)
 "sJv" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/railing{
-	dir = 4
-	},
+/obj/structure/railing,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
 "sJy" = (
@@ -79405,9 +79393,7 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/millennium_tower/f4)
 "xkM" = (
-/obj/machinery/vending/cola/blue{
-	pixel_y = 20
-	},
+/obj/machinery/vending/cola/blue,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop)
 "xkN" = (
@@ -82451,6 +82437,10 @@
 /obj/effect/spawner/random/bedsheet/any,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
+"yeP" = (
+/obj/structure/railing,
+/turf/open/openspace,
+/area/vtm/outside/financialdistrict)
 "yeS" = (
 /obj/effect/decal/cleanable/litter,
 /obj/effect/decal/cleanable/litter,
@@ -157047,8 +157037,8 @@ tmu
 oWV
 tmu
 oWV
-oWV
 tmu
+oWV
 oWV
 oWV
 oWV
@@ -157311,7 +157301,7 @@ oWV
 oWV
 oWV
 oWV
-tmu
+oWV
 oWV
 oWV
 oWV
@@ -157825,7 +157815,7 @@ oWV
 gSI
 oWV
 oWV
-gpS
+oWV
 oWV
 dje
 pOb
@@ -171178,7 +171168,7 @@ rhL
 rhL
 edq
 edq
-edq
+yeP
 hMA
 nYX
 nYX
@@ -171692,7 +171682,7 @@ edq
 edq
 edq
 edq
-edq
+yeP
 hMA
 nYX
 nYX
@@ -172206,7 +172196,7 @@ edq
 edq
 edq
 edq
-edq
+yeP
 hMA
 nYX
 nYX
