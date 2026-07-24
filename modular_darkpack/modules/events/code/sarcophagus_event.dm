@@ -28,16 +28,12 @@
 /datum/round_event/sarcophagus
 	start_when = 1
 	announce_when = 5
+	announce_chance = 20
 
 /datum/round_event/sarcophagus/announce(fake)
-	if(prob(20))
-		priority_announce(
-			"You receive a notification about a viral Endpost - a respected archaeologist notes that the location of a long-lost Assyrian sarcophagus alongside it's key, which was famously stolen, seems to be in your city according to newly published criminological records tracking the suspected thief.",
-			"Viral News Story",
-			'modular_darkpack/modules/events/sounds/news_notification.ogg',
-			ANNOUNCEMENT_TYPE_PRIORITY,
-			color_override = "yellow",
-		)
+	var/endpost_author = pick("thesupernaturalguy71", "mhaley71", "justplumbin92", "illuminati_truther777", "satanwatch_now")
+	var/endpost_post = pick("saw something soooo weird... :) new video coming soon on my channel", "(the post has an extremely blurry image attached of what looks to be some kind of strange tomb.)")
+	endpost_announce(endpost_post, endpost_author)
 
 /datum/round_event/sarcophagus/start()
 	var/list/landmarks = list()

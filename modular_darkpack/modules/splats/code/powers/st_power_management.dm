@@ -18,6 +18,12 @@
 /datum/splat/proc/change_power_level(power_type, new_level)
 	CRASH("change_power_level() not implemented for [type]!")
 
+/datum/splat/proc/get_selected_power()
+	CRASH("get_selected_power() not implemented for [type]!")
+
+/datum/splat/proc/set_selected_power(datum/action/selected_power)
+	CRASH("set_selected_power() not implemented for [type]!")
+
 /**
  * Internal proc to clean up all power instances owned by this splat. Called by
  * unassign() on losing the splat.

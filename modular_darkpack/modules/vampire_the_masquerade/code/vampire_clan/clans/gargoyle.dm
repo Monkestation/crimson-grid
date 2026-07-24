@@ -19,27 +19,19 @@
 	male_clothes = /obj/item/clothing/under/vampire/malkavian
 	female_clothes = /obj/item/clothing/under/vampire/malkavian
 	default_accessory = "gargoyle_full"
-	accessories = list(
-		"gargoyle_full",
-		"gargoyle_left",
-		"gargoyle_right",
-		"gargoyle_broken",
-		"gargoyle_round",
-		"gargoyle_oni",
-		"gargoyle_devil",
-		"none"
-	)
-	accessories_layers = list(
-		"gargoyle_full" = BODY_FRONT_LAYER,
-		"gargoyle_left" = BODY_FRONT_LAYER,
-		"gargoyle_right" = BODY_FRONT_LAYER,
-		"gargoyle_broken" = BODY_FRONT_LAYER,
-		"gargoyle_round" = BODY_FRONT_LAYER,
-		"gargoyle_oni" = BODY_FRONT_LAYER,
-		"gargoyle_devil" = BODY_FRONT_LAYER,
-		"none" = BODY_FRONT_LAYER
+	clan_marks = list(
+		/datum/bodypart_overlay/simple/clan_mark/gargoyle/full,
+		/datum/bodypart_overlay/simple/clan_mark/gargoyle/left,
+		/datum/bodypart_overlay/simple/clan_mark/gargoyle/right,
+		/datum/bodypart_overlay/simple/clan_mark/gargoyle/broken,
+		/datum/bodypart_overlay/simple/clan_mark/gargoyle/round,
+		/datum/bodypart_overlay/simple/clan_mark/gargoyle/oni,
+		/datum/bodypart_overlay/simple/clan_mark/gargoyle/devil,
 	)
 	whitelisted = TRUE
+
+	// Type to use for the extra clan mark they get.
+	var/datum/bodypart_overlay/simple/clan_mark/gargy_tail_type = /datum/bodypart_overlay/simple/clan_mark/gargoyle/tail
 
 /datum/subsplat/vampire_clan/gargoyle/on_gain(mob/living/carbon/human/gaining_mob, datum/splat/gaining_splat, joining_round)
 	. = ..()
@@ -56,3 +48,6 @@
 	if(wings)
 		wings.Remove(losing_mob)
 		qdel(wings)
+
+	var/obj/item/bodypart/part = losing_mob.get_bodypart(BODY_ZONE_CHEST)
+	part.remove_bodypart_overlay(gargy_tail_type)

@@ -2,7 +2,7 @@
 	name = "Czech"
 	desc = "A West Slavic language spoken by people from Czechia and its diaspora."
 	key = "C"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 45
 	syllables = list(
 		"ano", "ne", "ja", "ty", "on", "ona", "my", "vy", "oni",

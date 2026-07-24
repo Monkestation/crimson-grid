@@ -9,7 +9,6 @@
 	job_flags = CITY_JOB_FLAGS
 	display_order = JOB_DISPLAY_ORDER_FBI
 	exp_required_type_department = EXP_TYPE_NATIONAL_SECURITY
-	department_for_prefs = /datum/job_department/police
 	departments_list = list(
 		/datum/job_department/police,
 	)
@@ -23,9 +22,7 @@
 
 	allowed_splats = list(SPLAT_NONE)
 	description = "Enforce the Law."
-	minimal_masquerade = 3
-
-	known_contacts = list(JOB_POLICE_CAPTAIN, JOB_POLICE_SERGEANT, JOB_EMERGENCY_DISPATCHER)
+	minimum_masquerade = 3
 
 /datum/outfit/job/vampire/fbi
 	name = JOB_FEDERAL_INVESTIGATOR

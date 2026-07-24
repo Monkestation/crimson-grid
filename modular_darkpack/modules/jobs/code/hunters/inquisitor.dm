@@ -12,7 +12,6 @@
 	outfit = /datum/outfit/job/vampire/inquisitor
 
 	display_order = JOB_DISPLAY_ORDER_INQUISITOR
-	department_for_prefs = /datum/job_department/society_of_leopold
 	departments_list = list(
 		/datum/job_department/society_of_leopold,
 	)

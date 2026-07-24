@@ -13,7 +13,7 @@
 	var/datum/subsplat/vampire_clan/clan = get_vampire_clan(clan_type)
 	if(!clan)
 		return FALSE
-	if(clan.accessories)
+	if(clan.clan_marks)
 		return TRUE
 	return FALSE
 
@@ -22,23 +22,33 @@
 		return list("none")
 	var/clan_type = preferences.read_preference(/datum/preference/choiced/subsplat/vampire_clan)
 	var/datum/subsplat/vampire_clan/clan = get_vampire_clan(clan_type)
-	if(!clan || !clan.accessories)
+	if(!clan || !clan.clan_marks)
 		return list("none")
-	return clan.accessories
+
+	return GLOB.beast_mark_names_by_clan[clan.type]
 
 /datum/preference/external_choiced/clan_mark/create_informed_default_value(datum/preferences/preferences)
+	var/clan_type = preferences.read_preference(/datum/preference/choiced/subsplat/vampire_clan)
+	var/datum/subsplat/vampire_clan/clan = get_vampire_clan(clan_type)
+	if(clan?.default_accessory)
+		return GLOB.beast_marks_to_names_reverse[clan.default_accessory]
 	return pick(get_choices(preferences))
 
 /datum/preference/external_choiced/clan_mark/apply_to_human(mob/living/carbon/human/target, value)
-	if(!value)
+	if(!value || (value == "none"))
 		return
 	var/datum/subsplat/vampire_clan/clan = target.get_clan()
-	if(!length(clan?.accessories))
+	if(!length(clan?.clan_marks))
 		return
-	target.remove_overlay(clan.accessories_layers[value])
-	var/mutable_appearance/acc_overlay = mutable_appearance('modular_darkpack/modules/vampire_the_masquerade/icons/features.dmi', value, -clan.accessories_layers[value])
-	target.overlays_standing[clan.accessories_layers[value]] = acc_overlay
-	target.apply_overlay(clan.accessories_layers[value])
+
+	clan.clear_old_overlays(target)
+
+	var/datum/bodypart_overlay/simple/clan_mark/mark_type = GLOB.beast_marks_to_names[value]
+	if(!ispath(mark_type, /datum/bodypart_overlay/simple/clan_mark))
+		return
+
+	var/obj/item/bodypart/limb = target.get_bodypart(mark_type::using_limb)
+	limb.add_bodypart_overlay(new mark_type())
 
 //gargoyle legs and tail
 /datum/preference/toggle/gargoyle_legs_and_tail
@@ -59,10 +69,15 @@
 	return FALSE
 
 /datum/preference/toggle/gargoyle_legs_and_tail/apply_to_human(mob/living/carbon/human/target, value)
-	var/datum/subsplat/vampire_clan/clan = target.get_clan()
-	if(!istype(clan, /datum/subsplat/vampire_clan/gargoyle))
+	if(!value)
 		return
-	if(value)
-		var/mutable_appearance/acc_overlay = mutable_appearance('modular_darkpack/modules/vampire_the_masquerade/icons/features.dmi', "gargoyle_legs_n_tails", -BODY_ADJ_LAYER)
-		target.overlays_standing[BODY_ADJ_LAYER] = acc_overlay
-		target.apply_overlay(BODY_ADJ_LAYER)
+
+	var/datum/bodypart_overlay/simple/clan_mark/tail_type = /datum/subsplat/vampire_clan/gargoyle::gargy_tail_type
+	var/obj/item/bodypart/leggies = target.get_bodypart(tail_type::using_limb)
+	leggies.remove_bodypart_overlay(tail_type)
+
+	var/datum/subsplat/vampire_clan/gargoyle/clan = target.get_clan()
+	if(!istype(clan))
+		return
+
+	leggies.add_bodypart_overlay(new tail_type())

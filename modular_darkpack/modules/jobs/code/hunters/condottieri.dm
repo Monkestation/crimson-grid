@@ -13,7 +13,6 @@
 	outfit = /datum/outfit/job/vampire/condottieri
 
 	display_order = JOB_DISPLAY_ORDER_CONDOTTIERI
-	department_for_prefs = /datum/job_department/society_of_leopold
 	departments_list = list(
 		/datum/job_department/society_of_leopold,
 	)

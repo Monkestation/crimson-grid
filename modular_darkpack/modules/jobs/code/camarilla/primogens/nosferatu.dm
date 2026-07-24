@@ -17,7 +17,6 @@
 	outfit = /datum/outfit/job/vampire/nosferatu
 
 	display_order = JOB_DISPLAY_ORDER_NOSFERATU
-	department_for_prefs = /datum/job_department/camarilla
 	departments_list = list(
 		/datum/job_department/camarilla,
 		/datum/job_department/city_services
@@ -25,7 +24,8 @@
 
 	minimal_generation = 10
 	minimum_immortal_age = 100
-	minimal_masquerade = 5
+	minimum_masquerade = 5
+
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_NOSFERATU)
 

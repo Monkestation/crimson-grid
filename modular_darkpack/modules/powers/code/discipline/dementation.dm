@@ -374,7 +374,7 @@ frenzy or Rötschreck response is automatic.
 	owner.say(attack_text, spans = list("bold", "singing"))
 	var/list/potential_targets = list()
 	for(var/mob/living/carbon/human/hearer in (get_hearers_in_view(8, owner) - owner))
-		if(!HAS_TRAIT(hearer, TRAIT_DEAF) || hearer.stat > CONSCIOUS)
+		if(HAS_TRAIT(hearer, TRAIT_DEAF) || hearer.stat > CONSCIOUS)
 			continue
 		potential_targets += hearer
 	var/targets_affected = 0

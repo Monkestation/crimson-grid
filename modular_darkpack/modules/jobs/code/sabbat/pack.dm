@@ -9,13 +9,12 @@
 	job_flags = CITY_JOB_FLAGS
 	allowed_splats = list(SPLAT_KINDRED)
 	exp_required_type_department = EXP_TYPE_SABBAT
-	department_for_prefs = /datum/job_department/sabbat
 	departments_list = list(
 		/datum/job_department/sabbat,
 	)
 
 	description = "You are a member of the Sabbat. You are charged with rebellion against the Elders and the Camarilla, against the Jyhad, against the Masquerade and the Traditions, and the recognition of Caine as the true Dark Father of all Kindred kind. NOTE: BY PLAYING THIS ROLE YOU AGREE TO AND HAVE READ THE SERVER'S RULES ON ESCALATION FOR ANTAGS. KEEP THINGS INTERESTING AND ENGAGING FOR BOTH SIDES. KILLING PLAYERS JUST BECAUSE YOU CAN MAY RESULT IN A ROLEBAN."
-	minimal_masquerade = 0
+	minimum_masquerade = 0
 	display_order = JOB_DISPLAY_ORDER_SABBATPACK
 	whitelisted = TRUE
 

@@ -143,3 +143,9 @@
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
 	reroll_cooldown = 1 SCENES
 	difficulty = 8
+
+/datum/storyteller_roll/restraint_break
+	bumper_text = "breaking restraints"
+	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
+	reroll_cooldown = 1 TURNS
+	difficulty = 9

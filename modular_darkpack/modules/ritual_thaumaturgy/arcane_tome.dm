@@ -6,6 +6,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ritual_thaumaturgy/icons/arcane_tome_onfloor.dmi')
 	rune_type = /obj/ritual_rune/thaumaturgy
 	discipline_type = /datum/discipline/thaumaturgy
+	custom_materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT, /datum/material/paper = SHEET_MATERIAL_AMOUNT * 0.75)
 
 /obj/item/ritual_tome/arcane/attack_self(mob/user)
 	var/mob/living/living_user = astype(user)

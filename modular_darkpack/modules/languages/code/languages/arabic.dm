@@ -1,7 +1,7 @@
 /datum/language/arabic
 	name = "Arabic"
 	desc = "A lyrical language known across the Middle East."
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "a"
 	space_chance = 30
 	syllables = list(

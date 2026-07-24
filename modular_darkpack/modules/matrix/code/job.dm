@@ -1,4 +1,6 @@
 /datum/controller/subsystem/job/proc/FreeRole(mob/living/carbon/despawning_mob)
+	if(!despawning_mob.mind)
+		return
 	var/datum/job/job_datum = despawning_mob.mind.assigned_role
 	if(!job_datum)
 		return

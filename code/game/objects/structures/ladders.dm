@@ -171,6 +171,7 @@
 
 	down.up = null
 	down.update_appearance(UPDATE_ICON_STATE)
+	down.update_minimap_blip()
 	down = null
 	update_appearance(UPDATE_ICON_STATE)
 	clear_base_transparency()
@@ -194,6 +195,7 @@
 	up.down = null
 	up.clear_base_transparency()
 	up.update_appearance(UPDATE_ICON_STATE)
+	up.update_minimap_blip()
 	up = null
 	update_appearance(UPDATE_ICON_STATE)
 
@@ -201,6 +203,11 @@
 /obj/structure/ladder/proc/disconnect()
 	unlink_down()
 	unlink_up()
+
+/obj/structure/ladder/proc/update_minimap_blip()
+	remove_minimap_blip(MINIMAP_LADDER_BLIP, src)
+	if(up || down)
+		add_minimap_blip(src, MINIMAP_LADDER_BLIP, "ladder")
 
 /obj/structure/ladder/LateInitialize()
 	// By default, discover ladders above and below us vertically
@@ -223,6 +230,7 @@
 		if(requires_friend)
 			CRASH("[src] failed to find another ladder to link up with at: [x],[y],[z]")
 		// DARKPACK EDIT ADD END - Manholes
+	update_minimap_blip()
 
 /obj/structure/ladder/update_icon_state()
 	// DARKPACK EDIT CHANGE START - Manholes
@@ -404,16 +412,17 @@
 	use(user, going_up = FALSE)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-/obj/structure/ladder/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
+/obj/structure/ladder/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(user.combat_mode)
+		return NONE
 	use(user)
-	return TRUE
+	return ITEM_INTERACT_SUCCESS
 
-/obj/structure/ladder/attackby_secondary(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
-	. = ..()
-	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
-		return
+/obj/structure/ladder/item_interaction_secondary(mob/living/user, obj/item/tool, list/modifiers)
+	if(user.combat_mode)
+		return NONE
 	use(user, going_up = FALSE)
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/ladder/attack_robot(mob/living/silicon/robot/user)
 	if(user.Adjacent(src))

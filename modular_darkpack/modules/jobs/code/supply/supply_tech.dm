@@ -10,14 +10,13 @@
 
 	display_order = JOB_DISPLAY_ORDER_SUPPLY
 	exp_required_type_department = EXP_TYPE_WAREHOUSE
-	department_for_prefs = /datum/job_department/supply
 	departments_list = list(
 		/datum/job_department/supply,
 	)
 
 
 	description = "You work at the warehouse, moving boxes and selling not-quite legal goods to anyone who has the money."
-	minimal_masquerade = 0
+	minimum_masquerade = 0
 
 	known_contacts = list(JOB_DEALER)
 

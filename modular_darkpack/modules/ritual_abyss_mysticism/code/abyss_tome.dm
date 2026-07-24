@@ -6,6 +6,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ritual_abyss_mysticism/icons/abyss_mysticism_onfloor.dmi')
 	rune_type = /obj/ritual_rune/abyss
 	discipline_type = /datum/discipline/obtenebration
+	custom_materials = list(/datum/material/paper = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 
 /obj/item/ritual_tome/abyss/attack_self(mob/user)
 	var/mob/living/living_user = astype(user)

@@ -35,11 +35,12 @@
 
 #define DEFAULT_PLANE 0 //Marks out the default plane, even if we don't use it
 
-#define WEATHER_PLANE 1
-#define AREA_PLANE 2
-#define MASSIVE_OBJ_PLANE 3
-#define GHOST_PLANE 4
-#define POINT_PLANE 5
+#define PARTICLE_WEATHER_PLANE 1
+#define WEATHER_PLANE 2
+#define AREA_PLANE 3
+#define MASSIVE_OBJ_PLANE 4
+#define GHOST_PLANE 5
+#define POINT_PLANE 6
 
 //---------- LIGHTING -------------
 /// Normal 1 per turf dynamic lighting objects
@@ -315,6 +316,10 @@
 #define CURSE_LAYER 6
 #define ECHO_LAYER 7
 #define PARRY_LAYER 8
+#define MINIMAP_IMAGE_LAYER 9
+#define MINIMAP_BLIPS_LAYER 10
+#define MINIMAP_LOCATOR_LAYER 11
+#define MINIMAP_LABELS_LAYER 12
 
 #define FOV_EFFECT_LAYER 100
 

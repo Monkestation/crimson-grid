@@ -12,6 +12,17 @@
 /obj/item/bodypart/chest/fera
 	// limb_id = SPECIES_FERA
 
+/obj/item/bodypart/chest/fera/bestial
+
+/obj/item/bodypart/chest/fera/bestial/update_mob_heights(mob/living/carbon/human/holder)
+	if(HAS_TRAIT(holder, TRAIT_DWARF))
+		return HUMAN_HEIGHT_MEDIUM
+
+	if(HAS_TRAIT(holder, TRAIT_TOO_TALL))
+		return HUMAN_HEIGHT_TALLEST
+
+	return HUMAN_HEIGHT_TALL
+
 /obj/item/bodypart/arm/left/fera
 	// limb_id = SPECIES_FERA
 	unarmed_sharpness = SHARP_EDGED

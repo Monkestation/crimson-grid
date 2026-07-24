@@ -12,8 +12,11 @@
 	)
 	male_clothes = /obj/item/clothing/under/vampire/gangrel
 	female_clothes = /obj/item/clothing/under/vampire/gangrel/female
-	accessories = list("beast_legs", "beast_tail", "beast_tail_and_legs", "none")
-	accessories_layers = list("beast_legs" = BODY_ADJ_LAYER, "beast_tail" = BODY_ADJ_LAYER, "beast_tail_and_legs" = BODY_ADJ_LAYER, "none" = BODY_ADJ_LAYER)
+	clan_marks = list(
+		/datum/bodypart_overlay/simple/clan_mark/beast_legs,
+		/datum/bodypart_overlay/simple/clan_mark/beast_tail,
+		/datum/bodypart_overlay/simple/clan_mark/beast_tail_and_legs,
+	)
 
 /datum/subsplat/vampire_clan/gangrel/city
 	name = "City Gangrel"

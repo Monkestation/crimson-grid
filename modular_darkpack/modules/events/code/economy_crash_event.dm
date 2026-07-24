@@ -21,13 +21,6 @@
 
 /datum/round_event/financial_crisis/announce(fake)
 	var/chosen_announcement = "[pick(announcement_messages)] Customers are encouraged to contact the branch during normal business hours between 8:00am and 5:00pm, Monday through Friday."
-	priority_announce(
-		"[chosen_announcement]",
-		"BREAKING Financial News ALERT",
-		'modular_darkpack/modules/events/sounds/news_notification.ogg',
-		ANNOUNCEMENT_TYPE_PRIORITY,
-		color_override = "green",
-	)
 	endpost_announce("[chosen_announcement]", "BianchiBank")
 
 /datum/round_event/financial_crisis/start()

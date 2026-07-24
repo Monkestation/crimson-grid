@@ -2,7 +2,7 @@
 	name = "Español"
 	desc = "A romantic and widely spoken world language."
 	key = "e"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 40
 	syllables = list(
 		"cha", "che", "chi", "cho", "chu", "lla", "lle", "lli", "llo", "llu",

@@ -26,6 +26,7 @@
 		true_desc = desc
 		name = "dusty forgotten tome"
 		desc = "This book is covered in dust and the pages appear worn. Its probably not important."
+	AddComponent(/datum/component/selling, 100, "artifact", FALSE, 0, 10, TRUE)
 
 /obj/item/path_spellbook/examine(mob/user)
 	. = ..()
@@ -147,6 +148,10 @@
 		"Ancient knowledge flows from the pages into your mind.",
 		"The text reveals secrets of supernatural power and ritual."
 	)
+
+/obj/item/occult_book/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/selling, 100, "artifact", FALSE, 0, 10, TRUE)
 
 /obj/item/occult_book/attack_self(mob/living/carbon/human/user)
 	if(!can_study(user))

@@ -21,7 +21,6 @@
 	allowed_auspice = list(AUSPICE_PHILODOX)
 
 	display_order = JOB_DISPLAY_ORDER_TRUTHCATCHER
-	department_for_prefs = /datum/job_department/gaia
 	departments_list = list(
 		/datum/job_department/gaia,
 	)

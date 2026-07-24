@@ -126,7 +126,7 @@
 		if(owner.mind.guestbook.known_names[character.real_name] && character.client) // Everyone we know who has a client
 			targets += character
 
-	var/list/mob/living/listener_list
+	var/list/mob/living/listener_list = list()
 	var/mob/living/listener
 
 	if(!HAS_TRAIT_FROM(owner, TRAIT_VIRTUOSA, type))

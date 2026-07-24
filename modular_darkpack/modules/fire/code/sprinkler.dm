@@ -63,7 +63,7 @@
 	else
 		looping_sound.stop()
 		current_spray_range = 1
-	update_overlays()
+	update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/sprinkler/update_overlays()
 	. = ..()

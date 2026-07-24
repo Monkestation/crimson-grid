@@ -9,7 +9,6 @@
 	outfit = /datum/outfit/job/vampire/clinic_director
 	job_flags = CITY_JOB_FLAGS
 	display_order = JOB_DISPLAY_ORDER_CLINICS_DIRECTOR
-	department_for_prefs = /datum/job_department/clinic
 	departments_list = list(
 		/datum/job_department/clinic,
 	)

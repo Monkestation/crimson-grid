@@ -13,8 +13,10 @@
 	var/humanity_loss
 	///Down to what point humanity can be reduced when selling the item.
 	var/humanity_loss_limit
+	///Does selling this object threaten the masquerade? if so, make a (stat) + subterfuge roll to avoid losing masq
+	var/masquerade_violating
 
-/datum/component/selling/Initialize(new_cost, new_object_category, new_illegal, new_humanity_loss, new_humanity_loss_limit)
+/datum/component/selling/Initialize(new_cost, new_object_category, new_illegal, new_humanity_loss, new_humanity_loss_limit, new_masquerade_sensitivity = FALSE)
 	if(!isobj(parent)) //Only items can be sold
 		return COMPONENT_INCOMPATIBLE
 	cost = new_cost
@@ -22,6 +24,7 @@
 	illegal = new_illegal
 	humanity_loss = new_humanity_loss
 	humanity_loss_limit = new_humanity_loss_limit
+	masquerade_violating = new_masquerade_sensitivity
 
 //Whether it can be sold -- overriden by subtypes such as organs, which can only be sold if they have a certain health.
 /datum/component/selling/proc/can_sell()
@@ -35,7 +38,7 @@
 /datum/component/selling/proc/sale_fail_message()
 	return span_notice("You cannot sell [parent].")
 
-/datum/component/selling/organ/Initialize(new_cost, new_object_category, new_illegal, new_humanity_loss, new_humanity_loss_limit)
+/datum/component/selling/organ/Initialize(new_cost, new_object_category, new_illegal, new_humanity_loss, new_humanity_loss_limit, new_masquerade_sensitivity = FALSE)
 	if(!istype(parent, /obj/item/organ))
 		return COMPONENT_INCOMPATIBLE
 	..()

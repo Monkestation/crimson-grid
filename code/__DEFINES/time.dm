@@ -2,7 +2,7 @@
 #define MIDNIGHT_ROLLOVER 864000
 
 /// In-universe, SS13 is set 540 years in the future from the real-world day, hence this number for determining the year-offset for the in-game year.
-#define STATION_YEAR_OFFSET 9 // CRIMSON EDIT CHANGE
+#define STATION_YEAR_OFFSET -17 // CRIMSON EDIT CHANGE
 
 ///Returns the time that has passed since the game started
 #define STATION_TIME_PASSED(...) (world.time - SSticker.round_start_time)
@@ -39,6 +39,13 @@
 #define HOTDOG_DAY "National Hot Dog Day"
 #define ICE_CREAM_DAY "National Ice Cream Day"
 #define CHERNOBYL_ANNIVERSARY "Chernobyl Disaster Remembrance Day"
+#define LIZARD_ATRAKOR_DAY "Festival of Atrakor's Might"
+#define MOTH_FLEET_DAY "Fleet Day"
+#define BEE_DAY "Bee Day"
+#define BEER_DAY "Beer Day"
+#define VEGAN_DAY "Vegan Day"
+#define TALK_LIKE_A_PIRATE_DAY "Talk-Like-a-Pirate Day"
+#define ST_PATRICK_DAY "St. Patrick's Day"
 /*
 
 Days of the week to make it easier to reference them.

@@ -2,7 +2,7 @@
 	name = "Mandarin"
 	desc = "A dialect commonly spoken in China."
 	key = "m"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 70
 	syllables = list(
 		"de","yī","shì","bù","le","zài","rén","yǒu", "wǒ", "tā","zhè", " gè","men","zhōng","lái","shàng","guó","wèi","zǐ",

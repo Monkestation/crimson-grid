@@ -8,14 +8,13 @@
 	outfit = /datum/outfit/job/vampire/archivist
 	job_flags = CITY_JOB_FLAGS
 	exp_required_type_department = EXP_TYPE_CHANTRY
-	department_for_prefs = /datum/job_department/chantry
 	departments_list = list(
 		/datum/job_department/chantry,
 	)
 	display_order = JOB_DISPLAY_ORDER_ARCHIVIST
 
 	description = "Keep a census of events and provide information to neonates. Listen to the Regent Carefully. Study blood magic and protect the chantry."
-	minimal_masquerade = 3
+	minimum_masquerade = 3
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE)
 	known_contacts = list(JOB_CHANTRY_REGENT, JOB_CHANTRY_GARGOYLE)

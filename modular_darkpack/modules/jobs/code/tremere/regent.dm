@@ -8,14 +8,13 @@
 	outfit = /datum/outfit/job/vampire/regent
 	job_flags = CITY_JOB_FLAGS
 	exp_required_type_department = EXP_TYPE_CHANTRY
-	department_for_prefs = /datum/job_department/chantry
 	departments_list = list(
 		/datum/job_department/chantry,
 	)
 	display_order = JOB_DISPLAY_ORDER_REGENT
 
 	description = "Lead the Chantry. You serve as both the Regent and Tremere Primogen. You report to the Tremere Lord of this region first, Prince second."
-	minimal_masquerade = 4
+	minimum_masquerade = 4
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE)
 

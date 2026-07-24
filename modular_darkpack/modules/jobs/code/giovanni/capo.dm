@@ -7,9 +7,8 @@
 	config_tag = "CAPO"
 	outfit = /datum/outfit/job/vampire/capo
 	job_flags = CITY_JOB_FLAGS
-	display_order = JOB_DISPLAY_ORDER_GIOVANNI
+	display_order = 1
 	exp_required_type_department = EXP_TYPE_GIOVANNI
-	department_for_prefs = /datum/job_department/giovanni
 	departments_list = list(
 		/datum/job_department/giovanni,
 	)
@@ -17,7 +16,7 @@
 	known_contacts = list(JOB_LA_FAMIGLIA, JOB_LA_SQUADRA)
 
 	description = "Pure blood runs through your veins and, with it, old power. Throughout your long life you have learnt to hold onto two things and never let go: money, and family."
-	minimal_masquerade = 0
+	minimum_masquerade = 0
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GIOVANNI)
 
@@ -31,7 +30,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/smartphone/giovanni_capo
 	r_pocket = /obj/item/vamp/keys/capo
-	backpack_contents = list(/obj/item/card/credit/giovanniboss=1, /obj/item/ritual_tome/necromancy=1)
+	backpack_contents = list(/obj/item/card/credit/giovanniboss=1, /obj/item/ritual_tome/necromancy=1, /obj/item/vamp/keys/graveyard = 1)
 
 /datum/memory/key/bank_vault_code
 	var/remembered_code

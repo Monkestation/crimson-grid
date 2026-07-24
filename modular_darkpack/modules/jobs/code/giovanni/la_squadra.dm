@@ -7,9 +7,8 @@
 	config_tag = "LA_SQUADRA"
 	outfit = /datum/outfit/job/vampire/squadra
 	job_flags = CITY_JOB_FLAGS
-	display_order = JOB_DISPLAY_ORDER_GIOVANNI
+	display_order = 3
 	exp_required_type_department = EXP_TYPE_GIOVANNI
-	department_for_prefs = /datum/job_department/giovanni
 	departments_list = list(
 		/datum/job_department/giovanni,
 	)
@@ -17,7 +16,7 @@
 	known_contacts = list(JOB_LA_FAMIGLIA, JOB_CAPO)
 
 	description = "Whether born or Embraced into the family, you are one of the Giovanni. Be you a necromancer, financier or lowly fledgling, remember that so long as you stand with your family, they too will stand with you."
-	minimal_masquerade = 0
+	minimum_masquerade = 0
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GIOVANNI)
 
@@ -31,7 +30,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/smartphone/giovanni_squadra
 	r_pocket = /obj/item/vamp/keys/giovanni
-	backpack_contents = list(/obj/item/card/credit/rich=1, /obj/item/ritual_tome/necromancy=1)
+	backpack_contents = list(/obj/item/card/credit/rich=1, /obj/item/ritual_tome/necromancy=1, /obj/item/vamp/keys/graveyard = 1)
 
 
 /datum/job/vampire/squadra/after_spawn(mob/living/spawned, client/player_client)

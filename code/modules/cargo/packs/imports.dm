@@ -397,3 +397,16 @@
 		whichever the mechanics were able to get to. They're all set to go without any tweaking, so don't futz with them. Otherwise, you let us know \
 		if anything seems out of place."
 
+/* // DARKPACK EDIT REMOVAL
+/datum/supply_pack/imports/jet_boots
+	name = "Jet Boots"
+	desc = "These days, it's hard enough to get yourself access to a personal cruiser, let alone your own personal hyperspace tunnel.\
+		Why not travel in style? Introducing the all new, nuVoid Jet Boots. Sleek, off white finish. Self-propelling mini-ion thrusters.\
+		Genuine carbo-fuel microjets for that old-world finish. Don't just arrive, arrive in style. No financing required or available."
+	order_flags = ORDER_NOT_DEPARTMENTAL
+	access_view = ACCESS_CARGO
+	cost = CARGO_CRATE_VALUE * 200 // One pair of these boots are really gosh darn expensive.
+	contains = list(/obj/item/clothing/shoes/bhop/rocket/jet)
+	crate_name = "nuVoid Jet Boots Crate"
+	crate_type = /obj/structure/closet/crate/goldcrate
+*/

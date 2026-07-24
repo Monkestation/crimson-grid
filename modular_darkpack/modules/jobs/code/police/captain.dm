@@ -9,7 +9,6 @@
 	job_flags = CITY_JOB_FLAGS
 	display_order = JOB_DISPLAY_ORDER_POLICE_CAPTAIN
 	exp_required_type_department = EXP_TYPE_POLICE
-	department_for_prefs = /datum/job_department/police
 	departments_list = list(
 		/datum/job_department/police,
 	)
@@ -17,8 +16,9 @@
 	allowed_splats = list(SPLAT_NONE)
 
 	description = "Underpaid, overworked, and understrength. Do your best to keep the order in " + CITY_NAME + ". Keep the officers in line."
-	minimal_masquerade = 0
+	minimum_masquerade = 0
 	known_contacts = list(JOB_POLICE_SERGEANT, JOB_EMERGENCY_DISPATCHER, JOB_FEDERAL_INVESTIGATOR)
+
 
 /datum/outfit/job/vampire/police_captain
 	name = JOB_POLICE_CAPTAIN

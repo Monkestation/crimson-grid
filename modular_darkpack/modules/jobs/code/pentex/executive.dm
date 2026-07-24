@@ -29,12 +29,11 @@
 	)
 
 	allowed_splats = list(SPLAT_GAROU, SPLAT_NONE, SPLAT_KINFOLK, SPLAT_GHOUL, SPLAT_KINDRED)
-	minimal_masquerade = 4
+	minimum_masquerade = 4
 	// minimal_renown_rank = 3
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
 
 	display_order = JOB_DISPLAY_ORDER_EXECUTIVE
-	department_for_prefs = /datum/job_department/pentex
 	departments_list = list(
 		/datum/job_department/pentex,
 	)

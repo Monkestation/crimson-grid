@@ -103,7 +103,7 @@
 	name = "Stewed soymeat"
 	reqs = list(
 		/obj/item/food/soydope = 2,
-		/obj/item/food/grown/carrot = 1,
+		/obj/item/food/grown/carrotlike/carrot = 1,
 		/obj/item/food/grown/tomato = 1
 	)
 	result = /obj/item/food/stewedsoymeat
@@ -259,6 +259,7 @@
 	result = /obj/item/food/beef_stroganoff
 	added_foodtypes = DAIRY
 	dish_category = DISH_MEAT
+	unit_test_spawn_extras = list(/obj/item/food/grown/mushroom/chanterelle = 2) //generic mushrooms
 
 /datum/crafting_recipe/food/beef_wellington
 	name = "Beef Wellington"
@@ -275,6 +276,7 @@
 	result = /obj/item/food/beef_wellington
 	removed_foodtypes = BREAKFAST
 	dish_category = DISH_MEAT
+	unit_test_spawn_extras = list(/obj/item/food/grown/mushroom/chanterelle = 1) //generic mushrooms
 
 /* // DARKPACK EDIT REMOVAL
 /datum/crafting_recipe/food/korta_wellington
@@ -292,6 +294,7 @@
 	result = /obj/item/food/korta_wellington
 	removed_foodtypes = BREAKFAST
 	dish_category = DISH_MEAT
+	unit_test_spawn_extras = list(/obj/item/food/grown/mushroom/chanterelle = 1) //generic mushrooms
 */
 
 /datum/crafting_recipe/food/full_roast
@@ -367,6 +370,7 @@
 	)
 	result = /obj/item/food/full_english
 	dish_category = DISH_MEAT
+	unit_test_spawn_extras = list(/obj/item/food/grown/mushroom/chanterelle = 1) //generic mushrooms
 
 /datum/crafting_recipe/food/envirochow
 	name = "Envirochow"

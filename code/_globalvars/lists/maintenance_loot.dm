@@ -17,6 +17,7 @@
 GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto chemistry items
 	list(//trash
 		/obj/item/trash/can = 1,
+		/* // DARKPACK EDIT REMOVAL
 		/obj/item/trash/candy = 1,
 		/obj/item/trash/cheesie = 1,
 		/obj/item/trash/chips = 1,
@@ -24,6 +25,10 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/trash/popcorn = 1,
 		/obj/item/trash/raisins = 1,
 		/obj/item/trash/sosjerky = 1,
+		*/
+		// DARKPACK ADD CHANGE START
+		/obj/effect/spawner/random/trash/food_packaging = 7,
+		// DARKPACK ADD CHANGE END
 		/obj/item/trash/flare = 1,
 		/obj/item/trash/candle = 1,
 
@@ -101,7 +106,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/radio/headset = 1,
 		/obj/item/storage/backpack = 1,
 		/obj/item/storage/belt/fannypack = 1,
-		/obj/item/storage/wallet/random = 1,
+		/obj/item/storage/wallet/darkpack = 1, // DARKPACK EDIT CHANGE
 		) = 1,
 
 	list(//construction and crafting
@@ -147,7 +152,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/extinguisher = 1,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/radio/off = 1,
-		/obj/item/stack/spacecash/c10 = 1,
+		/obj/item/stack/dollar/rand/hundred = 1, // DARKPACK EDIT CHANGE
 		/obj/item/stack/medical/wrap/sticky_tape = 1,
 		/obj/item/tank/internals/emergency_oxygen = 1,
 		/obj/item/paper/paperslip/fishing_tip = 1,
@@ -164,6 +169,8 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 
 GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 	list(//tools
+		/obj/effect/spawner/random/weapon/small_melee = 10, // DARKPACK EDIT ADD START - LOOT
+		/obj/effect/spawner/random/weapon/weak_large_melee = 5, // DARKPACK EDIT ADD END
 		/obj/item/grenade/iedcasing/spawned = 1,
 		/obj/item/hatchet = 1,
 		/obj/item/melee/baton/security/cattleprod = 1,
@@ -246,6 +253,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/food/canned/peaches/maint = 1,
 		/obj/item/storage/box/donkpockets = 1,
 		/obj/item/storage/box/gum/happiness = 1,
+		/obj/item/storage/box/ramen_beef = 1,
 		list(//Donk Varieties
 			/obj/item/storage/box/donkpockets/donkpocketberry = 1,
 			/obj/item/storage/box/donkpockets/donkpockethonk = 1,
@@ -364,15 +372,20 @@ GLOBAL_LIST_INIT(rarity_loot, list(//rare: really good items
 		) = 1,
 
 	list(//misc
+		/obj/effect/spawner/random/occult/artifact = 10, // DARKPACK EDIT ADD
 		/obj/item/book/granter/crafting_recipe/dusting/pipegun_prime = 1,
 		/obj/item/book/granter/crafting_recipe/trash_cannon = 1,
+		/* // DARKPACK EDIT REMOVAL
 		/obj/item/book/granter/crafting_recipe/dusting/laser_musket_prime = 1,
 		/obj/item/book/granter/crafting_recipe/dusting/detached_ratvarian_repeater = 1,
 		/obj/item/book/granter/sign_language = 1,
+		*/
 		/obj/item/disk/nuclear/fake = 1,
 		/obj/item/disk/surgery/advanced_plastic_surgery = 1,
+		/* // DARKPACK EDIT REMOVAL
 		/obj/item/skillchip/brainwashing = 1,
 		/obj/item/skillchip/intj = 1,
+		*/
 		/obj/item/tattoo_kit = 1,
 		/obj/item/folder/ancient_paperwork = 1,
 		) = 1,

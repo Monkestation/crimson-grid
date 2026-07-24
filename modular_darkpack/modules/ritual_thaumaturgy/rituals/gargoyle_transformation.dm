@@ -163,6 +163,7 @@
 	if(!G || QDELETED(G))
 		return
 	if(!G.key || !G.client)
+		QDEL_NULL(G.ai_controller)
 		G.ai_controller = new /datum/ai_controller/basic_controller/beastmaster_summon(G)
 		if(activator)
 			activator.add_beastmaster_minion(G)

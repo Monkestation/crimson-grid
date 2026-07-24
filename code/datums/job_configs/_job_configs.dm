@@ -37,6 +37,10 @@
 /// By default returns TRUE, meaning that by default every job will have the config entry created by the datum
 /// An example of what this could be used for is: A value that only appears if the job is a head of staff
 /datum/job_config_type/proc/validate_entry(datum/job/occupation)
+	// DARKPACK EDIT ADD START
+	if(isnull(get_current_value(occupation)))
+		return FALSE
+	// DARKPACK EDIT ADD END
 	return TRUE
 
 /// This is the proc that we actually invoke to set the config-based values for each job. Is also intended to handle all in-depth logic checks pertient to the job datum itself.

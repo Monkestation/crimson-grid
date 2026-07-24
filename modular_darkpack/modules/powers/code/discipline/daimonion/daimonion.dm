@@ -60,7 +60,7 @@
 		var/target_sense_the_sin_weakness = target_clan.sense_the_sin_text
 		baali_get_stolen_disciplines(target, owner)
 		if(target_sense_the_sin_weakness)
-			to_chat(target, span_notice("[target.name] [target_sense_the_sin_weakness]"))
+			to_chat(owner, span_notice("[target.name] [target_sense_the_sin_weakness]"))
 	/* DARKPACK TODO - bloodbonds
 	if(isghoul(target))
 		var/mob/living/carbon/human/ghoul = target

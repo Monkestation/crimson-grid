@@ -15,3 +15,8 @@
 // DO_EMOTES
 #define COMSIG_KB_CLIENT_DO_DOWN "keybinding_client_do_down"
 #define COMSIG_KB_CLIENT_DO_LONGER_DOWN "keybinding_client_do_longer_down"
+
+// Disciplines
+#define COMSIG_KB_DISCIPLINE_SELECT "keybinding_discipline_select"
+#define COMSIG_KB_DISCIPLINE_ACTIVATE "keybinding_discipline_activate"
+#define COMSIG_KB_DISCIPLINE_POWER_ACTIVATE "keybinding_discipline_power_activate"

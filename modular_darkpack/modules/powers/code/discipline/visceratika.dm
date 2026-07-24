@@ -18,15 +18,6 @@
 	owner.set_body_sprite("gargoyle")
 	owner.update_body_parts()
 	owner.update_body()
-	// since dot 4 is always active and requires no roll
-	if(level >= 4)
-		owner.physiology.brute_mod *= 0.8
-		owner.physiology.heat_mod *= 0.5
-		//owner.physiology.clone_mod *= 0.9
-		//ADD_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, TRAIT_GENERIC)
-		ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, DISCIPLINE_TRAIT(type))
-		if(!(owner.is_clan(/datum/subsplat/vampire_clan/gargoyle)))
-			ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, DISCIPLINE_TRAIT(type))
 
 //SKIN OF THE CHAMELEON
 /datum/discipline_power/visceratika/skin_of_the_chameleon
@@ -62,23 +53,40 @@
 //SCRY THE HEARTHSTONE
 /datum/discipline_power/visceratika/scry_the_hearthstone
 	name = "Scry the Hearthstone"
-	desc = "Sense the exact locations of individuals around you."
+	desc = "Sense the exact locations of everyone within a structure."
 	willpower_cost = 1
 
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_SEE
 	toggled = TRUE
-	var/area/starting_area
 	var/datum/storyteller_roll/scry_the_hearthstone/scry_roll
+	var/area/monitoring_area
+
 /datum/storyteller_roll/scry_the_hearthstone
 	bumper_text = "scry the hearthstone"
 	applicable_stats = list(STAT_PERCEPTION, STAT_AWARENESS)
 	roll_output_type = ROLL_PRIVATE
 
+/datum/discipline_power/visceratika/scry_the_hearthstone/New(datum/discipline/discipline)
+	. = ..()
+
+	scry_roll = new()
+
+/datum/discipline_power/visceratika/scry_the_hearthstone/can_activate(atom/target, alert)
+	. = ..()
+	if (!.)
+		return .
+
+	// Can only be used to detect people 'inside a given structure'
+	var/area/in_area = get_area(owner)
+	if (in_area.outdoors)
+		if (alert)
+			to_chat(owner, span_warning("You can only use [name] indoors!"))
+		return FALSE
+
 /datum/discipline_power/visceratika/scry_the_hearthstone/pre_activation_checks()
 	. = ..()
-	if(!scry_roll)
-		scry_roll = new()
+
 	if(scry_roll.st_roll(owner, owner) == ROLL_SUCCESS)
 		return TRUE
 	else
@@ -86,28 +94,77 @@
 
 /datum/discipline_power/visceratika/scry_the_hearthstone/activate()
 	. = ..()
-	for(var/mob/living/player in GLOB.player_list)
-		if(get_area(player) == get_area(owner))
-			var/their_name = player.name
-			if(ishuman(player))
-				var/mob/living/carbon/human/human_player = player
-				their_name = human_player.name
-			to_chat(owner, "- [their_name]")
-	starting_area = get_area(owner)
+
+	monitoring_area = get_area(owner)
+
+	// In the TTRPG this is resisted when targets are hiding (V20 p. 476), but there is no roll to resist here
+	var/found_anyone = FALSE
+	for (var/mob/living/player in (GLOB.player_list - owner))
+		if (get_area(player) != monitoring_area)
+			continue
+
+		to_chat(owner, "- [GET_GUESTBOOK_NAME(owner, player)] is [get_relative_location_description(player)].")
+		RegisterSignal(player, COMSIG_EXIT_AREA, PROC_REF(on_target_exit_area))
+		found_anyone = TRUE
+
+	if (!found_anyone)
+		to_chat(owner, span_notice("You don't sense anyone interesting in the area."))
+
 	ADD_TRAIT(owner, TRAIT_THERMAL_VISION, DISCIPLINE_TRAIT(type))
 	owner.update_sight()
 	//visceratika 2 gives a gargoyle a heatmap of all living people in a building. if they leave the building, they need to re-cast it.
-	RegisterSignal(owner, COMSIG_EXIT_AREA, PROC_REF(on_area_exited))
+	RegisterSignal(owner, COMSIG_EXIT_AREA, PROC_REF(on_caster_exit_area))
+	// Also alert the user when someone enters the building
+	RegisterSignal(monitoring_area, COMSIG_AREA_ENTERED, PROC_REF(on_area_entered))
 
-/datum/discipline_power/visceratika/scry_the_hearthstone/proc/on_area_exited(atom/movable/source, area/old_area)
+/**
+ * Returns a text description of the distance and direction from the owner to the target
+ */
+/datum/discipline_power/visceratika/scry_the_hearthstone/proc/get_relative_location_description(mob/living/target)
+	var/distance = get_dist(owner, target)
+	if (distance == 0)
+		return "close to you"
+	else
+		return "[distance] [distance == 1 ? "yard" : "yards"] [dir2text(get_dir(owner, target))]"
+
+/datum/discipline_power/visceratika/scry_the_hearthstone/proc/on_target_exit_area(mob/living/source, area/old_area)
+	SIGNAL_HANDLER
+
+	if (!active)
+		return
+
+	to_chat(owner, span_warning("[GET_GUESTBOOK_NAME(owner, source)] left your monitored area [get_relative_location_description(source)]."))
+	UnregisterSignal(source, COMSIG_EXIT_AREA)
+
+/datum/discipline_power/visceratika/scry_the_hearthstone/proc/on_area_entered(area/source, atom/movable/arrived, area/old_area)
+	SIGNAL_HANDLER
+
+	if (!isliving(arrived))
+		return
+	var/mob/living/entering_mob = arrived
+
+	// Only players are interesting enough to alert the caster of
+	if (!GET_CLIENT(entering_mob))
+		return
+
+	to_chat(owner, span_warning("[GET_GUESTBOOK_NAME(owner, entering_mob)] entered your monitored area [get_relative_location_description(entering_mob)]."))
+	RegisterSignal(entering_mob, COMSIG_EXIT_AREA, PROC_REF(on_target_exit_area))
+
+/datum/discipline_power/visceratika/scry_the_hearthstone/proc/on_caster_exit_area(mob/living/source, area/old_area)
 	SIGNAL_HANDLER
 
 	to_chat(owner, span_warning("You lose your connection to the stone as you leave the area."))
-	starting_area = null
+	try_deactivate()
+
+/datum/discipline_power/visceratika/scry_the_hearthstone/deactivate(atom/target, direct)
+	. = ..()
+
 	REMOVE_TRAIT(owner, TRAIT_THERMAL_VISION, DISCIPLINE_TRAIT(type))
 	owner.update_sight()
 	UnregisterSignal(owner, COMSIG_EXIT_AREA)
-	try_deactivate()
+
+	UnregisterSignal(monitoring_area, COMSIG_AREA_ENTERED)
+	monitoring_area = null
 
 //BOND WITH THE MOUNTAIN
 /datum/discipline_power/visceratika/bond_with_the_mountain
@@ -174,14 +231,30 @@
 	desc = "This power requires no roll and is always active. Your stony skin has hardened to the point where nearly all damage against you is lessened."
 
 	level = 4
-	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_LYING
+	check_flags = NONE
 
 	vitae_cost = 0
 
-/datum/discipline_power/visceratika/armor_of_terra/activate()
-	. = ..()
-	to_chat(owner, span_danger("This is a passive ability. The effects are already active!"))
+/datum/discipline_power/visceratika/armor_of_terra/post_gain()
+	owner.physiology.brute_mod *= 0.8
+	owner.physiology.heat_mod *= 0.5
+	ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, DISCIPLINE_TRAIT(type))
+	if (!owner.is_clan(/datum/subsplat/vampire_clan/gargoyle))
+		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, DISCIPLINE_TRAIT(type))
 
+/datum/discipline_power/visceratika/armor_of_terra/post_loss()
+	owner.physiology.brute_mod *= 1.25
+	owner.physiology.heat_mod *= 2
+	REMOVE_TRAIT(owner, TRAIT_NOSOFTCRIT, DISCIPLINE_TRAIT(type))
+	REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, DISCIPLINE_TRAIT(type))
+
+/datum/discipline_power/visceratika/armor_of_terra/can_activate_untargeted(alert)
+	. = ..()
+
+	if (alert)
+		to_chat(owner, span_danger("[name] is a passive ability. The effects are already active!"))
+
+	return FALSE
 
 //FLOW WITHIN THE MOUNTAIN
 /datum/discipline_power/visceratika/flow_within_the_mountain
@@ -197,12 +270,14 @@
 	duration_length = 1 SCENES // might be too long...
 	cooldown_length = 10 SECONDS
 
-/datum/discipline_power/visceratika/flow_within_the_mountain/try_activate()
-	// placed in try_activate instead of pre_activation_checks so as to not consume blood while running this check
+/datum/discipline_power/visceratika/flow_within_the_mountain/can_activate(atom/target, alert)
+	. = ..()
+	if (!.)
+		return .
+
 	if(!HAS_TRAIT(owner, TRAIT_BOND_WITHIN_THE_MOUNTAIN))
-		to_chat(owner, span_notice("You must cast Bond with the Mountain first before using Flow within the Mountain"))
+		to_chat(owner, span_notice("You must cast Bond with the Mountain before using Flow within the Mountain"))
 		return FALSE
-	..()
 
 /datum/discipline_power/visceratika/flow_within_the_mountain/activate()
 	. = ..()

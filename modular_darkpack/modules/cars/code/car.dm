@@ -124,6 +124,9 @@
 		access = "[rand(1,9999999)]"
 		AddComponent(/datum/component/door_ownership)
 
+	if(mapload)
+		GLOB.city_door_lock_ids |= access
+
 	// DARKPACK TODO - see about reimplementing this sprite for cars
 	/*
 	headlight_image = new(src)
@@ -457,7 +460,7 @@
 	if(length(exit_side))
 		dumpe.Move(get_step(dumpe, angle2dir(pick(exit_side))))
 	else if(length(exit_alt))
-		dumpe.Move(get_step(dumpe, exit_alt))
+		dumpe.Move(get_step(dumpe, pick(exit_alt)))
 
 	to_chat(dumpe, span_notice("You exit [src]."))
 	if(dumpe?.client)

@@ -1,4 +1,5 @@
 /datum/job
+	abstract_type = /datum/job
 	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 
@@ -216,30 +217,29 @@
 		bank_account.payday(STARTING_PAYCHECKS, free = TRUE)
 		account_id = bank_account.account_id
 		bank_account.replaceable = FALSE
-		// DARKPACK EDIT ADD - Finance affects starting money
-		if(st_get_stat(STAT_FINANCE))
-			var/finance = st_get_stat(STAT_FINANCE)
-			switch(finance)
-				if(0)
-					if(!CONFIG_GET(flag/punishing_zero_dots))
-						bank_account.account_balance = rand(50, 100)
-						bank_account.paycheck_amount = 15
-				if(1)
-					bank_account.account_balance = rand(100, 200)
-					bank_account.paycheck_amount = 40
-				if(2)
-					bank_account.account_balance = rand(300, 600)
-					bank_account.paycheck_amount = 80
-				if(3)
-					bank_account.account_balance = rand(800, 1200)
-					bank_account.paycheck_amount = 120
-				if(4)
-					bank_account.account_balance = rand(1200, 1600)
-					bank_account.paycheck_amount = 160
-				if(5)
-					bank_account.account_balance = rand(2000, 3000)
-					bank_account.paycheck_amount = 250
-		// DARKPACK EDIT ADD END - Finance affects starting money
+		// DARKPACK EDIT ADD - (Finance affects starting money)
+		var/finance = st_get_stat(STAT_FINANCE)
+		switch(finance)
+			if(0)
+				if(!CONFIG_GET(flag/punishing_zero_dots))
+					bank_account.account_balance = rand(50, 100)
+					bank_account.paycheck_amount = 15
+			if(1)
+				bank_account.account_balance = rand(100, 200)
+				bank_account.paycheck_amount = 40
+			if(2)
+				bank_account.account_balance = rand(300, 600)
+				bank_account.paycheck_amount = 80
+			if(3)
+				bank_account.account_balance = rand(800, 1200)
+				bank_account.paycheck_amount = 120
+			if(4)
+				bank_account.account_balance = rand(1200, 1600)
+				bank_account.paycheck_amount = 160
+			if(5)
+				bank_account.account_balance = rand(2000, 3000)
+				bank_account.paycheck_amount = 250
+		// DARKPACK EDIT ADD END
 		add_mob_memory(/datum/memory/key/account, remembered_id = account_id)
 		add_mob_memory(/datum/memory/key/bank_pin, remembered_id = bank_account.bank_pin) // DARKPACK EDIT ADD
 
@@ -553,7 +553,7 @@
 	var/mob/living/spawn_instance
 	if(ispath(spawn_type, /mob/living/silicon/ai))
 		// This is unfortunately necessary because of snowflake AI init code. To be refactored.
-		spawn_instance = new spawn_type(get_turf(spawn_point), null, player_client.mob)
+		spawn_instance = new spawn_type(get_turf(spawn_point), null, player_client.mob, TRUE)
 	else
 		spawn_instance = spawn_point.JoinPlayerHere(spawn_type, TRUE)
 	spawn_instance.apply_prefs_job(player_client, src)
@@ -704,3 +704,10 @@
 		CRASH("[src.type] has no job icon state.")
 
 	return icon('icons/mob/huds/hud.dmi', icon_state)
+
+/datum/job/proc/display_order_with_department()
+	var/datum/job_department/main_department = departments_list?[1]
+	if(!main_department)
+		main_department = /datum/job_department/undefined
+
+	return display_order + (main_department::display_order * 1000)

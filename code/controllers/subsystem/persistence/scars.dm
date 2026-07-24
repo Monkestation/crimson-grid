@@ -10,6 +10,11 @@
 		if(!original_human)
 			continue
 
+		// DARKPACK EDIT ADD START
+		if(HAS_TRAIT(original_human, TRAIT_SCARRING_RESISTANT))
+			continue
+		// DARKPACK EDIT ADD END
+
 		if(original_human.stat == DEAD || !original_human.all_scars || original_human != ending_human)
 			original_human.save_persistent_scars(TRUE)
 		else

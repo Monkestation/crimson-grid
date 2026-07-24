@@ -131,3 +131,13 @@
 		"Stop doing this!",
 		"Someone, call the ambulance!"
 	)
+	var/masquerade_item_phrases = list(
+		"Eh? You get this from a garage sale?",
+		"Looks funny. I'll give it to my uncle for his birthday.",
+		"Take the money and go. I don't do business with Satanists."
+	)
+	var/masquerade_item_failure_phrases = list(
+		"What the hell? Buddy, you're creeping me out.",
+		"Where did you get this?!",
+		"Ok, I'll buy it, but please leave..."
+	)

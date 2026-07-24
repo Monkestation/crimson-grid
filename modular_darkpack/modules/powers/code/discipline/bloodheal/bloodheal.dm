@@ -87,13 +87,29 @@
 			var/datum/brain_trauma/healing_trauma = pick(brain.get_traumas_type())
 			brain.cure_trauma_type(healing_trauma, resilience = TRAUMA_RESILIENCE_WOUND)
 
-	//miscellaneous organ damage healing
+	// Let core species logic handle restoring/healing organs so missing eyes are rebuilt correctly.
+	owner.regenerate_organs()
 	var/obj/item/organ/eyes/eyes = owner.get_organ_slot(ORGAN_SLOT_EYES)
+	if (!eyes)
+		var/eyes_type = owner.dna?.species?.get_mutant_organ_type_for_slot(ORGAN_SLOT_EYES) || /obj/item/organ/eyes
+		eyes = new eyes_type()
+		eyes.Insert(owner, special = TRUE, movement_flags = DELETE_IF_REPLACED)
+	owner.cure_blind(NO_EYES)
+	if(!owner.has_quirk(/datum/quirk/item_quirk/blindness))
+		owner.cure_blind(QUIRK_TRAIT)
+	owner.cure_blind(EYE_DAMAGE)
+	owner.cure_blind(EYE_SCARRING_TRAIT)
+	owner.cure_nearsighted(QUIRK_TRAIT)
+	owner.cure_nearsighted(EYE_DAMAGE)
 	if (eyes)
-		eyes.apply_organ_damage(-HEAL_BASHING_LETHAL_DAMAGE * vitae_cost)
+		eyes.fix_scar(LEFT_EYE_SCAR)
+		eyes.fix_scar(RIGHT_EYE_SCAR)
+	owner.remove_status_effect(/datum/status_effect/temporary_blindness)
+	owner.remove_status_effect(/datum/status_effect/eye_blur)
 
-		owner.adjust_temp_blindness(-HEAL_AGGRAVATED_DAMAGE * vitae_cost)
-		owner.adjust_eye_blur(-HEAL_AGGRAVATED_DAMAGE * vitae_cost)
+	if(get_kindred_splat(owner) && length(owner.get_missing_limbs()))
+		owner.regenerate_limbs()
+		violates_masquerade = TRUE
 
 	//healing too quickly attracts attention
 	if (violates_masquerade)

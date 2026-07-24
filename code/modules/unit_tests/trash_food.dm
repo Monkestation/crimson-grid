@@ -1,3 +1,4 @@
+/* // DARKPACK EDIT REMOVAL - (Due to modularity, this just cant exist, we have too many food items we dont acctually want apperaing in game)
 /// Checks to make sure all food trash is included in /obj/effect/spawner/random/trash/food_packaging
 /datum/unit_test/trash_food
 
@@ -32,3 +33,4 @@
 			continue
 		if(!food_trash[trash])
 			TEST_FAIL("[food] must include its trash_type for loot table /obj/effect/spawner/random/trash/food_packaging or be added to this unit tests food_trash_blacklist")
+*/

@@ -8,14 +8,13 @@
 	outfit = /datum/outfit/job/vampire/gargoyle
 	job_flags = CITY_JOB_FLAGS
 	exp_required_type_department = EXP_TYPE_CHANTRY
-	department_for_prefs = /datum/job_department/chantry
 	departments_list = list(
 		/datum/job_department/chantry,
 	)
 	display_order = JOB_DISPLAY_ORDER_GARGOYLE
 
 	description = "You serve the local Chantry as either a guard dog, enforcer, or scout, a shock troop for the Mages of Clan Tremere. You serve the Tremere still, despise most of your kind being freed long ago, whether thats out of duty, mental enslavement, or having nowhere else to go. Among your Masters you are a second class citizen - yet you remain. Guard the Chantry and the Masters as your people always have."
-	minimal_masquerade = 3
+	minimum_masquerade = 3
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 	known_contacts = list(JOB_CHANTRY_REGENT, JOB_CHANTRY_ARCHIVIST)

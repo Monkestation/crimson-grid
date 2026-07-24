@@ -9,7 +9,6 @@
 	outfit = /datum/outfit/job/vampire/bogatyr
 	job_flags = CITY_JOB_FLAGS
 	exp_required_type_department = EXP_TYPE_MANOR
-	department_for_prefs = /datum/job_department/manor
 	departments_list = list(
 		/datum/job_department/manor,
 	)
@@ -19,7 +18,7 @@
 	allowed_clans = list(VAMPIRE_CLAN_TZIMISCE)
 
 	description = "Whether you are of Voivode-in-Waiting's blood or if you've been honored, you are one of the Kin of the Voivode. Protect your Family, as your Family would protect you."
-	minimal_masquerade = 2
+	minimum_masquerade = 2
 
 	known_contacts = list(JOB_PRINCE, JOB_BARON, JOB_SHERIFF, JOB_VOIVODE, JOB_ZADRUGA)
 

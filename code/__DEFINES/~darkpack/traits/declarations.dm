@@ -8,12 +8,13 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 */
 
 // CITY_TRAITS
-#define STATION_TRAIT_RED_STAR "station_trait_red_star"
-#define STATION_TRAIT_WILD_MASQUERADE "station_trait_wild_masquerade"
+#define STATION_TRAIT_BLACKOUT "station_trait_blackout"
+#define STATION_TRAIT_COSPLAY_CONVENTION "station_trait_cosplay_convention"
 #define STATION_TRAIT_INFESTATION "station_trait_infestation"
 #define STATION_TRAIT_PEST_CONTROL "station_trait_pest_control"
+#define STATION_TRAIT_RED_STAR "station_trait_red_star"
 #define STATION_TRAIT_STRAY_MIGRATION "station_trait_stray_migration"
-#define STATION_TRAIT_COSPLAY_CONVENTION "station_trait_cosplay_convention"
+#define STATION_TRAIT_WILD_MASQUERADE "station_trait_wild_masquerade"
 
 // Mob traits
 
@@ -102,6 +103,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BOND_WITHIN_THE_MOUNTAIN "bond_within_the_mountain"
 // Is the mob unable to be cuffed? (For Tzimisce zulo form and others)
 #define TRAIT_NO_CUFF "no_cuff" //Used for uncuffable forms such as Tenebrous and Blood form.
+#define TRAIT_SCARRING_RESISTANT "scarring_resistant"// Temporal scars wont save
+/// Stepping on glass shards immunity. Currently used for a couple Garou forms but could be used elsewhere.
+#define TRAIT_HARDENED_SOLES "hardened_soles"
 
 
 // Allows the user to pass through doors
@@ -190,5 +194,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EAT_FOOD "eat_food"
 #define TRAIT_CALM_HEART "calm_heart"
 #define TRAIT_ACUTE_HEARING "acute_hearing"
+#define TRAIT_DISFIGURED_APPEARANCE "disfigured_appearance"
+#define TRAIT_GRAVE_SMELL "grave_smell"
+#define TRAIT_GLOWING_EYES "glowing_eyes"
+#define TRAIT_PROMETHEAN_CLAY "promethean_clay"
 
 // END TRAIT DEFINES

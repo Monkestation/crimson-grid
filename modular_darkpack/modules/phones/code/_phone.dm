@@ -265,7 +265,11 @@
 		))
 	data["phone_history"] = phone_history
 
-	data["calling_user"] = get_number_contact_name()
+	var/calling_user = incoming_phone_number ? incoming_phone_number : dialed_number
+	if(calling_user)
+		data["calling_user"] = get_number_contact_name(calling_user)
+	else
+		data["calling_user"] = ""
 
 	data["time"] = server_timestamp("hh:mm", ic_time = TRUE)
 	data["date"] = server_timestamp("Day, Month DD, YYYY", ic_time = TRUE)
@@ -547,7 +551,7 @@
 	if(!contact_number || !message_text)
 		return FALSE
 
-	var/contact_name = get_number_contact_name()
+	var/contact_name = get_number_contact_name(contact_number)
 	var/datum/phone_conversation/conversation = get_conversation(contact_number)
 
 	if(!conversation)
@@ -558,22 +562,20 @@
 
 	var/obj/item/smartphone/receiving_phone = SSphones.get_phone_from_number(contact_number)
 	if(receiving_phone)
-		var/recv_contact_name = receiving_phone.get_number_contact_name()
+		var/recv_contact_name = receiving_phone.get_number_contact_name(sim_card.phone_number)
 		var/datum/phone_conversation/recv_conversation = receiving_phone.get_conversation(sim_card.phone_number)
 		if(!recv_conversation)
 			recv_conversation = new(recv_contact_name, sim_card.phone_number)
 			receiving_phone.conversations += recv_conversation
 		recv_conversation.add_message(message_text, FALSE)
-		addtimer(CALLBACK(receiving_phone, PROC_REF(after_text_received)), rand(2 SECONDS, 6 SECONDS)) //simulate random delay before sending an audible/visible alert
+		addtimer(CALLBACK(receiving_phone, PROC_REF(after_text_received), contact_name, message_text), rand(1 SECONDS, 2 SECONDS)) //simulate random delay before sending an audible/visible alert
 		log_phone("[key_name(usr)] sent a text to [contact_number]: [message_text]", list("sender" = contact_name, "receiver" = recv_contact_name, "message" = message_text))
 	return TRUE
 
 //stuff to do after a text is received
-/obj/item/smartphone/proc/after_text_received()
-	if(ringer) //only play the receive sound if sounds are on
-		playsound(loc, 'modular_darkpack/modules/phones/sounds/text_receive.ogg', 50, TRUE)
-		balloon_alert_to_viewers(message = "New Message!", vision_distance = SAMETILE_MESSAGE_RANGE)
-	return TRUE
+/obj/item/smartphone/proc/after_text_received(contact_name, message_text)
+	// This should support having your notifiactions set to hidden to not show detials without opening the app.
+	receive_notification("Message+", contact_name, message_text)
 
 /obj/item/smartphone/proc/format_conversation(contact_number)
 	var/datum/phone_conversation/conversation = get_conversation(contact_number)

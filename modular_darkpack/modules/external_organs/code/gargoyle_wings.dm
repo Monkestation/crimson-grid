@@ -10,7 +10,7 @@
 	var/hidden = FALSE
 
 //using parent's example with open or closed wings
-/datum/bodypart_overlay/mutant/wings/functional/gargoyle/generate_icon_cache()
+/datum/bodypart_overlay/mutant/wings/functional/gargoyle/icon_render_key(obj/item/bodypart/limb)
 	. = ..()
 	. += hidden ? "hidden" : "visible"
 

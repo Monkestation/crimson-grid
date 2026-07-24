@@ -1,7 +1,7 @@
 /datum/language/irish
 	name = "Irish"
 	desc = "The melodic language spoken by the Irish."
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "I"
 	space_chance = 50
 	syllables = list(

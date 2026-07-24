@@ -258,6 +258,5 @@
 		/datum/reagent/consumable/milk = 5
 	)
 	result = /obj/item/food/raw_frenchtoast
-	added_foodtypes = BREAKFAST
 	dish_category = DISH_BREAD
 	meal_category = MEAL_COMPONENT

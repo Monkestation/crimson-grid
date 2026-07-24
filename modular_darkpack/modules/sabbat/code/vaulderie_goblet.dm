@@ -3,11 +3,12 @@
 	desc = "A gleaming goblet used in ancient vampire rites."
 	icon = 'modular_darkpack/modules/sabbat/icons/vaulderie_goblet.dmi'
 	icon_state = "pewter_cup"
+	base_icon_state = "pewter_cup"
 	w_class = WEIGHT_CLASS_TINY
 	force = 1
 	throwforce = 1
 	amount_per_transfer_from_this = 5
-	custom_materials = list(/datum/material/iron=100)
+	custom_materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT)
 	possible_transfer_amounts = list(1, 5)
 	volume = 80
 	spillable = TRUE
@@ -23,10 +24,10 @@
 
 /obj/item/reagent_containers/cup/silver_goblet/update_icon_state()
 	. = ..()
-	if(reagents && (reagents.has_reagent(/datum/reagent/blood) || reagents.has_reagent(/datum/reagent/blood/vitae)))
-		icon_state = "pewter_cup_filled_blood"
+	if(reagents && (reagents.has_reagent(/datum/reagent/blood)))
+		icon_state = "[base_icon_state]_filled_blood"
 	else
-		icon_state = "pewter_cup"
+		icon_state = base_icon_state
 
 /obj/item/reagent_containers/cup/silver_goblet/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -56,7 +57,7 @@
 	user.adjust_brute_loss(5)
 
 	reagents.add_reagent(/datum/reagent/blood/vitae, 10)
-	user.bloodpool -= 2
+	user.adjust_blood_pool(-2)
 
 	if(!(user in blood_donors))
 		blood_donors += user
@@ -128,10 +129,4 @@
 	name = "Vaulderie Goblet"
 	desc = "An obsidian-black goblet used in ancient vampire rites."
 	icon_state = "vaulderie_goblet"
-
-/obj/item/reagent_containers/cup/silver_goblet/vaulderie_goblet/update_icon_state()
-	. = ..()
-	if(reagents && (reagents.has_reagent(/datum/reagent/blood) || reagents.has_reagent(/datum/reagent/blood/vitae)))
-		icon_state = "vaulderie_goblet_filled"
-	else
-		icon_state = "vaulderie_goblet"
+	base_icon_state = "vaulderie_goblet"

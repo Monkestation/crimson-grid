@@ -9,23 +9,17 @@
 )
 
 /mob/living/carbon/human/proc/add_beastmaster_minion(mob/living/minion_or_type, turf/spawn_location)
-	//first, make sure the beastmaster_minions list is accurate
-	for(var/mob/living/minion in beastmaster_minions)
-		if(QDELETED(minion) || minion.stat == DEAD)
-			beastmaster_minions -= minion
-			minion_command_components -= minion
-
-	//limit of (leadership) + 1
-	var/max_minions = st_get_stat(STAT_LEADERSHIP) + 1
-	if(length(beastmaster_minions) >= max_minions)
-		to_chat(src, span_warning("You cannot control more than [max_minions] minion[max_minions > 1 ? "s" : ""]!"))
+	if(!can_tame_beastmaster_minion(minion_or_type, TRUE))
 		return FALSE
+
+	if(istype(minion_or_type))
+		minion_or_type.wipe_old_beastmasters()
 
 	//does the mob exist? if not, spawn it. if its already spawned in, just reference them
 	var/mob/living/minion
-	if(ispath(minion_or_type, /mob/living))
+	if(ispath(minion_or_type))
 		minion = new minion_or_type(spawn_location || get_turf(src))
-	else if(isliving(minion_or_type))
+	else if(istype(minion_or_type))
 		minion = minion_or_type
 	else
 		return FALSE
@@ -63,7 +57,7 @@
 	//if we didnt have beastmaster minions before, then register beastmaster signals.
 	var/had_minions = length(beastmaster_minions)
 	beastmaster_minions += minion
-	RegisterSignal(minion, COMSIG_LIVING_DEATH, PROC_REF(on_minion_death))
+	RegisterSignals(minion, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOB_WIPE_BEASTMASTER), PROC_REF(on_wipe_beastmaster))
 
 	if(!had_minions)
 		register_beastmaster_signals()
@@ -72,14 +66,10 @@
 	return TRUE
 
 //when the minion dies we need to remove them from beastmaster_minions, and if there are no more minions, remove the signals from the master.
-/mob/living/carbon/human/proc/on_minion_death(mob/living/minion)
+/mob/living/carbon/human/proc/on_wipe_beastmaster(mob/living/minion)
 	SIGNAL_HANDLER
-	beastmaster_minions -= minion
-	minion_command_components -= minion
-	UnregisterSignal(minion, COMSIG_LIVING_DEATH)
 
-	if(!length(beastmaster_minions))
-		unregister_beastmaster_signals()
+	remove_beastmaster_minion(minion)
 
 /mob/living/carbon/human/proc/remove_beastmaster_minion(mob/living/minion)
 	if(!minion)
@@ -102,9 +92,28 @@
 	//remove them from the owner's minion's list and unregister signals if the list is now empty
 	beastmaster_minions -= minion
 	minion_command_components -= minion
-	UnregisterSignal(minion, COMSIG_LIVING_DEATH)
+	UnregisterSignal(minion, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOB_WIPE_BEASTMASTER))
 
 	if(!length(beastmaster_minions))
 		unregister_beastmaster_signals()
+
+/mob/living/carbon/human/proc/can_tame_beastmaster_minion(mob/living/living_minion, feedback)
+	if(istype(living_minion))
+		if(living_minion in beastmaster_minions)
+			if(feedback)
+				to_chat(src, span_warning("[living_minion] already heads your commands."))
+			return FALSE
+
+	//limit of (leadership) + 1
+	var/max_minions = st_get_stat(STAT_LEADERSHIP) + 1
+	if(length(beastmaster_minions) >= max_minions)
+		if(feedback)
+			to_chat(src, span_warning("You cannot control more than [max_minions] minion[max_minions > 1 ? "s" : ""]!"))
+		return FALSE
+
+	return TRUE
+
+/mob/proc/wipe_old_beastmasters()
+	SEND_SIGNAL(src, COMSIG_MOB_WIPE_BEASTMASTER)
 
 #undef BEASTMASTER_COMMANDS

@@ -214,6 +214,9 @@
 	. = ..()
 	RegisterSignal(owner, COMSIG_MOB_EXAMINATE, PROC_REF(store_target_in_list))
 
+/datum/discipline_power/obfuscate/mask_of_a_thousand_faces/post_loss()
+	UnregisterSignal(owner, COMSIG_MOB_EXAMINATE)
+
 /datum/discipline_power/obfuscate/mask_of_a_thousand_faces/pre_activation_checks()
 	owner_splat = get_kindred_splat(owner)
 	if(!LAZYLEN(cached_targets))

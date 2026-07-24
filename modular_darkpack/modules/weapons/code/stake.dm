@@ -5,13 +5,14 @@
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "stake"
-	force = 10
-	throwforce = 10
+
+	// VTM pg. 280
+	force = 1 TTRPG_DAMAGE
+
+	sharpness = SHARP_POINTY
 	attack_verb_continuous = list("pierces", "cuts")
 	attack_verb_simple = list("pierce", "cut")
 	hitsound = 'sound/items/weapons/bladeslice.ogg'
-	armour_penetration = 50
-	sharpness = SHARP_POINTY
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
 	custom_price = 100

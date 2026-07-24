@@ -2,7 +2,7 @@
 	name = "Cantonese"
 	desc = "A dialect commonly spoken in Hong Kong."
 	key = "c"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 50
 	syllables = list(
 		"de","yi","sì","bù","le","zài","rén","you", "wo", "ta","zhè", " gè","men","zhong","lái","sàng","guó","wèi","zi",

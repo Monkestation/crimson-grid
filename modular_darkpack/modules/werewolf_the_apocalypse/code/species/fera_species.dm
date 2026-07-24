@@ -38,7 +38,7 @@
 	/// Speed mod applied and removed upon gaining this species
 	var/speed_mod
 	/// Causes delirium, which if the user is affected by, does not cause breaches
-	var/causes_delirium
+	var/form_causes_delirium = FALSE
 	/// IF this form can be witnessed, causes masqurade breaches
 	var/veil_breaching_form = FALSE
 
@@ -157,6 +157,14 @@
 	shift_difficulty = 7
 	fallback_icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/garou_forms/glabro.dmi'
 	veil_breaching_form = TRUE
+	bodypart_overrides = list(
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/fera/bestial,
+	)
 
 /datum/species/human/shifter/bestial/should_add_buff(mob/living/carbon/human/human, datum/st_stat/buff_type, amount)
 	. = ..()
@@ -171,30 +179,28 @@
 
 /datum/species/human/shifter/bestial/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
-	human_who_gained_species.update_mob_height()
+	RegisterSignal(human_who_gained_species, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_fluff))
+	human_who_gained_species.update_appearance(UPDATE_OVERLAYS)
 	human_who_gained_species.update_transform(1.25)
-
-	if(!HAS_TRAIT(human_who_gained_species, TRAIT_FAIR_GLABRO))
-		human_who_gained_species.remove_overlay(BODY_ADJ_LAYER)
-		var/fur_color = get_fur_color(human_who_gained_species)
-		var/mob_icon = get_mob_icon(human_who_gained_species)
-		human_who_gained_species.overlays_standing[BODY_ADJ_LAYER] = list(image(mob_icon, fur_color))
-		human_who_gained_species.apply_overlay(BODY_ADJ_LAYER)
 
 /datum/species/human/shifter/bestial/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
-	human.update_mob_height()
+	UnregisterSignal(human, COMSIG_ATOM_UPDATE_OVERLAYS)
+	human.update_appearance(UPDATE_OVERLAYS)
 	human.update_transform()
-	human.remove_overlay(BODY_ADJ_LAYER)
 
-/datum/species/human/shifter/bestial/update_species_heights(mob/living/carbon/human/holder)
-	if(HAS_TRAIT(holder, TRAIT_DWARF))
-		return HUMAN_HEIGHT_MEDIUM
+/datum/species/human/shifter/bestial/proc/add_fluff(datum/source, list/overlay_list)
+	SIGNAL_HANDLER
 
-	if(HAS_TRAIT(holder, TRAIT_TOO_TALL))
-		return HUMAN_HEIGHT_TALLEST
+	var/mob/living/carbon/human/guy = astype(source)
+	if(!guy)
+		return
 
-	return HUMAN_HEIGHT_TALL
+	if(!HAS_TRAIT(guy, TRAIT_FAIR_GLABRO))
+		var/fur_color = get_fur_color(guy)
+		var/mob_icon = get_mob_icon(guy)
+		var/image/fluff = image(mob_icon, fur_color, layer = -BODY_ADJ_LAYER)
+		overlay_list += fluff
 
 
 /datum/species/human/shifter/war
@@ -205,8 +211,9 @@
 		TRAIT_NO_BLOOD_OVERLAY,
 		TRAIT_NO_LYING_ANGLE,
 		TRAIT_TRANSFORM_UPDATES_ICON,
+		TRAIT_HARDENED_SOLES,
 	)
-	causes_delirium = TRUE
+	form_causes_delirium = TRUE
 	veil_breaching_form = TRUE
 
 	mutanttongue = /obj/item/organ/tongue/fera
@@ -242,6 +249,7 @@
 		TRAIT_FERAL_BITER,
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
+		TRAIT_HARDENED_SOLES,
 	)
 	veil_breaching_form = TRUE
 

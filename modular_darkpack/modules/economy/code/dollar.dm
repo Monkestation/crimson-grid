@@ -56,9 +56,17 @@
 /obj/item/stack/dollar/thousand
 	amount = 1000
 
+
 /obj/item/stack/dollar/rand
+	amount = 15
 
 /obj/item/stack/dollar/rand/Initialize(mapload, new_amount, merge = TRUE, list/mat_override = null, mat_amt = 1)
+	amount = round(gaussian(amount, amount * 0.2))
 	. = ..()
-	amount = rand(5, 30)
 	update_appearance()
+
+/obj/item/stack/dollar/rand/ten
+	amount = 10
+
+/obj/item/stack/dollar/rand/hundred
+	amount = 100

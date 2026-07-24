@@ -9,7 +9,6 @@
 	config_tag = "CLUB_WORKER"
 	display_order = JOB_DISPLAY_ORDER_STRIP
 	exp_required_type_department = EXP_TYPE_CLUB
-	department_for_prefs = /datum/job_department/strip_club
 	departments_list = list(
 		/datum/job_department/strip_club
 	)
@@ -25,7 +24,7 @@
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
 
 	description = "Offer strip club services. Some of your clientele may be... Unusual, but you are either addicted to vampire bites, or bribed to listen little and say even less."
-	minimal_masquerade = 3
+	minimum_masquerade = 3
 
 /datum/outfit/job/vampire/club_worker
 	name = JOB_CLUB_WORKER

@@ -1,7 +1,7 @@
 /datum/language/latin
 	name = "Latin"
 	desc = "An ancient and complex language once spoken by the rulers of empires."
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "l"
 	space_chance = 33
 	syllables = list(

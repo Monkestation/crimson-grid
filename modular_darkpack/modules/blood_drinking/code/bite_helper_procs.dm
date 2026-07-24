@@ -26,17 +26,16 @@
 
 	adjust_blood_pool(amount, updating_health, on_spawn)
 
-//runs a bite animation for biting people and biting people and biting p
+/// Runs a bite animation for biting people and biting people and biting p
 /mob/living/carbon/human/proc/add_bite_animation()
-	remove_overlay(HALO_LAYER)
-	var/mutable_appearance/bite_overlay = mutable_appearance('modular_darkpack/modules/deprecated/icons/icons.dmi', "bite", -HALO_LAYER)
-	overlays_standing[HALO_LAYER] = bite_overlay
-	apply_overlay(HALO_LAYER)
-	addtimer(CALLBACK(src, PROC_REF(clear_bite_animation_overlay)), 1.5 SECONDS)
+	var/mutable_appearance/bite_overlay = mutable_appearance('modular_darkpack/modules/blood_drinking/icons/bite_overlay.dmi', "bite", -HALO_LAYER)
+	add_overlay(bite_overlay)
+	addtimer(CALLBACK(src, PROC_REF(clear_bite_animation_overlay), bite_overlay), 1.5 SECONDS)
 
-/mob/living/carbon/human/proc/clear_bite_animation_overlay()
-	if(src)
-		remove_overlay(HALO_LAYER)
+/mob/living/carbon/human/proc/clear_bite_animation_overlay(mutable_appearance/bite_overlay)
+	if(QDELETED(src))
+		return
+	cut_overlay(bite_overlay)
 
 
 //Here is where you handle any circumstantial modifiers to bloodpool gains

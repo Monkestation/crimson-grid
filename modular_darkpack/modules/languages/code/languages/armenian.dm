@@ -1,7 +1,7 @@
 /datum/language/armenian
 	name = "Armenian"
 	desc = "Armenian is spoken by those in the Armenian Highlands in Western Asia."
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "n"
 	space_chance = 100
 	sentence_chance = 10

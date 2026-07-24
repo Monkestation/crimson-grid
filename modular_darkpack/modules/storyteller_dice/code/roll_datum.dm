@@ -127,11 +127,18 @@
 			else
 				return list(roller, target)
 		if(ROLL_PRIVATE_ADMIN)
-			return GLOB.admins + roller
+			return admin_mobs() + roller
 		if(ROLL_ADMIN)
-			return GLOB.admins
+			return admin_mobs()
 		if(ROLL_NONE)
 			return // Not even important enough to be admin visible.
+
+/datum/storyteller_roll/proc/admin_mobs()
+	var/list/admin_mobs = list()
+	for(var/client/staff in GLOB.admins)
+		if(staff.mob)
+			admin_mobs += staff.mob
+	return admin_mobs
 
 /datum/storyteller_roll/proc/calculate_used_dice(mob/living/roller, bonus = 0)
 	var/dice_amount = 0

@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/szlachta
 	weight = 3
 	min_players = 10
-	max_occurrences = 2
+	max_occurrences = 1
 	earliest_start = 90 MINUTES
 	category = EVENT_CATEGORY_INVASION
 	description = "Roving, loose szlachta have found their way into the city."
@@ -17,6 +17,7 @@
 /datum/round_event/szlachta
 	start_when = 1
 	announce_when = 5
+	announce_chance = 75
 
 /datum/round_event/szlachta/announce(fake)
 	var/endpost_szlachta_author = pick("thesupernaturalguy71", "mhaley71", "justplumbin92", "illuminati_truther777", "satanwatch_now")
