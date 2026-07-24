@@ -5,23 +5,25 @@
 	. = ..()
 	var/atom/movable/screen/using
 	// Static elements
-	add_screen_object(/atom/movable/screen/language_menu, HUD_MOB_LANGUAGE_MENU, HUD_GROUP_STATIC, ui_style, ui_human_language)
+	add_screen_object(/atom/movable/screen/language_menu, HUD_MOB_LANGUAGE_MENU, HUD_GROUP_STATIC, 'icons/hud/vampire/buttons_wide.dmi', ui_human_language)
 	add_screen_object(/atom/movable/screen/navigate, HUD_MOB_NAVIGATE_MENU, HUD_GROUP_STATIC, ui_style, ui_human_navigate)
 	add_screen_object(/atom/movable/screen/area_creator, HUD_MOB_AREA_CREATOR, HUD_GROUP_STATIC, ui_style, ui_human_area)
 	add_screen_object(/atom/movable/screen/combattoggle/flashy, HUD_MOB_INTENTS, HUD_GROUP_INFO, ui_style)
 	add_screen_object(/atom/movable/screen/floor_changer/vertical, HUD_MOB_FLOOR_CHANGER, HUD_GROUP_STATIC, ui_style, ui_human_floor_changer)
-	add_screen_object(/atom/movable/screen/mov_intent, HUD_MOB_MOVE_INTENT, HUD_GROUP_STATIC, ui_style)
-	add_screen_object(/atom/movable/screen/drop, HUD_MOB_DROP, HUD_GROUP_STATIC, ui_style, ui_swaphand_position(mymob, 1))
-	add_screen_object(/atom/movable/screen/human/toggle, HUD_HUMAN_TOGGLE_INVENTORY, HUD_GROUP_STATIC, ui_style)
-	add_screen_object(/atom/movable/screen/rest, HUD_MOB_REST, HUD_GROUP_HOTKEYS, ui_style)
-	add_screen_object(/atom/movable/screen/sleep, HUD_MOB_SLEEP, HUD_GROUP_HOTKEYS, ui_style, ui_above_throw)
-	add_screen_object(/atom/movable/screen/pull, HUD_MOB_PULL, HUD_GROUP_STATIC, ui_style, ui_above_movement_top)
-	add_screen_object(/atom/movable/screen/zone_sel, HUD_MOB_ZONE_SELECTOR, HUD_GROUP_STATIC, ui_style)
+	add_screen_object(/atom/movable/screen/mov_intent, HUD_MOB_MOVE_INTENT, HUD_GROUP_STATIC, 'icons/hud/vampire/buttons32.dmi')
+	add_screen_object(/atom/movable/screen/drop, HUD_MOB_DROP, HUD_GROUP_STATIC, 'icons/hud/vampire/buttons_wide.dmi', ui_drop)
+	add_screen_object(/atom/movable/screen/rest, HUD_MOB_REST, HUD_GROUP_HOTKEYS,  'icons/hud/vampire/buttons_wide.dmi', ui_rest)
+	add_screen_object(/atom/movable/screen/sleep, HUD_MOB_SLEEP, HUD_GROUP_HOTKEYS,  'icons/hud/vampire/buttons_wide.dmi', ui_above_throw)
+	add_screen_object(/atom/movable/screen/pull, HUD_MOB_PULL, HUD_GROUP_STATIC,  'icons/hud/vampire/buttons_wide.dmi', ui_above_movement_top)
+	add_screen_object(/atom/movable/screen/zone_sel, HUD_MOB_ZONE_SELECTOR, HUD_GROUP_STATIC, 'icons/hud/vampire/buttons64.dmi')
 	add_screen_object(/atom/movable/screen/memories, HUD_MOB_MEMORIES, HUD_GROUP_STATIC, ui_style, ui_human_memories_menu)
+	add_screen_object(/atom/movable/screen/fullscreen_hud, HUD_MOB_FULLSCREEN, HUD_GROUP_STATIC, 'icons/hud/vampire/full.dmi', ui_full_inventory)
 	build_hand_slots()
 
-	using = add_screen_object(/atom/movable/screen/swap_hand, HUD_MOB_SWAPHAND_2, HUD_GROUP_STATIC, ui_style, ui_swaphand_position(mymob, 2))
-	using.icon_state = "act_swap"
+	using = add_screen_object(/atom/movable/screen/swap_hand, HUD_MOB_SWAPHAND_2, HUD_GROUP_STATIC, 'icons/hud/vampire/buttons32.dmi', ui_swaphand_position(mymob, 2))
+	using.icon_state = "swap_2"
+	using = add_screen_object(/atom/movable/screen/swap_hand, HUD_MOB_SWAPHAND_1, HUD_GROUP_STATIC, 'icons/hud/vampire/buttons32.dmi', ui_swaphand_position(mymob, 1))
+	using.icon_state = "swap_1"
 
 	// Hotkey buttons
 	add_screen_object(/atom/movable/screen/resist, HUD_MOB_RESIST, HUD_GROUP_HOTKEYS, ui_style)
@@ -101,7 +103,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	icon_state = "uniform"
 	icon_full = "template"
 	screen_loc = ui_iclothing
-	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+	screen_group = HUD_GROUP_STATIC
 
 /datum/inventory_slot/human/suit
 	name = "suit"
@@ -109,7 +111,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	icon_state = "suit"
 	icon_full = "template"
 	screen_loc = ui_oclothing
-	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+	screen_group = HUD_GROUP_STATIC
 
 /datum/inventory_slot/human/id
 	name = "id"
@@ -124,7 +126,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	icon_full = "template"
 	screen_loc = ui_mask
 	slot_id = ITEM_SLOT_MASK
-	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+	screen_group = HUD_GROUP_STATIC
 
 /datum/inventory_slot/human/neck
 	name = "neck"
@@ -132,7 +134,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	icon_full = "template"
 	screen_loc = ui_neck
 	slot_id = ITEM_SLOT_NECK
-	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+	screen_group = HUD_GROUP_STATIC
 
 /datum/inventory_slot/human/back
 	name = "back"
@@ -168,7 +170,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	icon_full = "template"
 	screen_loc = ui_gloves
 	slot_id = ITEM_SLOT_GLOVES
-	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+	screen_group = HUD_GROUP_STATIC
 
 /datum/inventory_slot/human/eyes
 	name = "eyes"
@@ -176,7 +178,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	icon_full = "template"
 	screen_loc = ui_glasses
 	slot_id = ITEM_SLOT_EYES
-	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+	screen_group = HUD_GROUP_STATIC
 
 /datum/inventory_slot/human/ears
 	name = "ears"
@@ -184,7 +186,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	icon_full = "template"
 	screen_loc = ui_ears
 	slot_id = ITEM_SLOT_EARS
-	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+	screen_group = HUD_GROUP_STATIC
 
 /datum/inventory_slot/human/head
 	name = "head"
@@ -192,7 +194,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	icon_full = "template"
 	screen_loc = ui_head
 	slot_id = ITEM_SLOT_HEAD
-	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+	screen_group = HUD_GROUP_STATIC
 
 /datum/inventory_slot/human/shoes
 	name = "shoes"
@@ -200,7 +202,7 @@ GAME_VERB_DESC(/mob/living/carbon/human, toggle_hotkey_verbs, "Toggle hotkey but
 	icon_full = "template"
 	screen_loc = ui_shoes
 	slot_id = ITEM_SLOT_FEET
-	screen_group = HUD_GROUP_TOGGLEABLE_INVENTORY
+	screen_group = HUD_GROUP_STATIC
 
 /datum/inventory_slot/human/belt
 	name = "belt"

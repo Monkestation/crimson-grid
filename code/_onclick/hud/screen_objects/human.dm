@@ -1,5 +1,9 @@
 /atom/movable/screen/human
-	icon = 'icons/hud/screen_midnight.dmi'
+	icon = 'icons/hud/vampire/buttons32.dmi'
+
+/atom/movable/screen/fullscreen_hud
+	plane = HUD_PLANE
+	icon = 'icons/hud/vampire/full.dmi'
 
 /atom/movable/screen/human/toggle
 	name = "toggle"

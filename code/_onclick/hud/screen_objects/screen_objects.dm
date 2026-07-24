@@ -330,7 +330,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 
 /atom/movable/screen/drop
 	name = "drop"
-	icon = 'icons/hud/screen_midnight.dmi'
+	icon = 'icons/hud/vampire/buttons_wide.dmi'
+	screen_loc = ui_drop
 	icon_state = "act_drop"
 	mouse_over_pointer = MOUSE_HAND_POINTER
 
@@ -750,7 +751,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	vis_contents += overlay_object
 
 /obj/effect/overlay/zone_sel
-	icon = 'icons/hud/screen_gen.dmi'
+	icon = 'icons/hud/vampire/buttons64.dmi'
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 128
 	anchored = TRUE
@@ -763,39 +764,36 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 
 /atom/movable/screen/zone_sel/proc/get_zone_at(icon_x, icon_y)
 	switch(icon_y)
-		if(1 to 9) //Legs
+		if(3 to 26) //Legs
 			switch(icon_x)
-				if(10 to 15)
+				if(9 to 15)
 					return BODY_ZONE_R_LEG
-				if(17 to 22)
+				if(17 to 23)
 					return BODY_ZONE_L_LEG
-		if(10 to 13) //Hands and groin
+		if(27 to 33) //Hands and groin
 			switch(icon_x)
-				if(8 to 11)
+				if(3 to 8)
 					return BODY_ZONE_R_ARM
-				if(12 to 20)
+				if(9 to 24)
 					return BODY_ZONE_PRECISE_GROIN
-				if(21 to 24)
+				if(25 to 30)
 					return BODY_ZONE_L_ARM
-		if(14 to 22) //Chest and arms to shoulders
+		if(34 to 51) //Chest and arms to shoulders
 			switch(icon_x)
-				if(8 to 11)
+				if(3 to 8)
 					return BODY_ZONE_R_ARM
-				if(12 to 20)
+				if(9 to 24)
 					return BODY_ZONE_CHEST
-				if(21 to 24)
+				if(25 to 30)
 					return BODY_ZONE_L_ARM
-		if(23 to 30) //Head, but we need to check for eye or mouth
-			if(icon_x in 12 to 20)
+		if(52 to 61) //Head, but we need to check for eye or mouth
+			if(icon_x in 12 to 21)
 				switch(icon_y)
-					if(23 to 24)
-						if(icon_x in 15 to 17)
+					if(52 to 55)
+						if(icon_x in 14 to 19)
 							return BODY_ZONE_PRECISE_MOUTH
-					if(26) //Eyeline, eyes are on 15 and 17
-						if(icon_x in 14 to 18)
-							return BODY_ZONE_PRECISE_EYES
-					if(25 to 27)
-						if(icon_x in 15 to 17)
+					if(56 to 57) //Eyeline, eyes are on 15 and 17
+						if(icon_x in 14 to 19)
 							return BODY_ZONE_PRECISE_EYES
 				return BODY_ZONE_HEAD
 

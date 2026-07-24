@@ -39,6 +39,8 @@
 		////////////////
 	/// hides the byond verb panel as we use our own custom version
 	show_verb_panel = FALSE
+
+	pixel_x = -64 ///this is so we can do side hud whilst being centered and in the game plane
 	///Contains admin info. Null if client is not an admin.
 	var/datum/admins/holder = null
 	///Needs to implement InterceptClickOn(user,params,atom) proc
