@@ -418,8 +418,8 @@
 	attack_verb_simple = list("bludgeon", "bash", "beat", "smacks")
 	hitsound = 'sound/items/weapons/genhit3.ogg'
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
-	//grid_width = 2 GRID_BOXES
-	//grid_height = 1 GRID_BOXES
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 	var/broken = FALSE
 
 /obj/item/melee/vamp/brick/after_throw(datum/callback/callback)
@@ -431,8 +431,8 @@
 		throwforce = 1 TTRPG_DAMAGE
 		icon_state = "red_brick2"
 		hitsound = 'sound/items/weapons/genhit1.ogg'
-		//grid_width = 1 GRID_BOXES
-		//grid_height = 1 GRID_BOXES
+		grid_width = 1 GRID_BOXES
+		grid_height = 1 GRID_BOXES
 
 //this should be a subtype of spear in the future but we lack the sprites
 /obj/item/darkpack/spear

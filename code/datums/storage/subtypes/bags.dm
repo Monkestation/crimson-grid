@@ -280,7 +280,7 @@
 		exception_hold_list = list(/obj/item/storage/backpack),
 	)
 
-/datum/storage/bag/garment/can_insert(obj/item/to_insert, mob/user, messages, force)
+/datum/storage/bag/garment/can_insert(obj/item/to_insert, mob/user, messages, force, list/modifiers)
 	. = ..()
 	if(!.)
 		return FALSE

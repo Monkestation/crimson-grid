@@ -3,7 +3,7 @@
 	max_specific_storage = WEIGHT_CLASS_GIGANTIC
 	can_hold_description = "Fish and aquarium equipment"
 
-/datum/storage/fish_case/can_insert(obj/item/to_insert, mob/user, messages, force)
+/datum/storage/fish_case/can_insert(obj/item/to_insert, mob/user, messages, force, list/modifiers)
 	. = ..()
 	if(!.)
 		return

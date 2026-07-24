@@ -322,7 +322,7 @@
 		source.balloon_alert(source, "unable to hotswap!")
 		return
 
-	if (atom_storage.attempt_insert(weapon, source, override = TRUE) && source.put_in_hands(target))
+	if (atom_storage.attempt_insert(weapon, source, override = TRUE, modifiers = modifiers) && source.put_in_hands(target))
 		source.visible_message(span_notice("[source] quickly swaps [weapon] out with [target]!"), span_notice("You quickly swap [weapon] with [target]."))
 	else
 		source.balloon_alert(source, "unable to hotswap!")

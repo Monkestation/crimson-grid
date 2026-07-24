@@ -244,6 +244,12 @@
 	/// Do we apply a click cooldown when resisting this object if it is restraining them?
 	var/resist_cooldown = CLICK_CD_BREAKOUT
 
+	// ~Grid INVENTORY VARIABLES
+	/// Width we occupy on the hud - Keep null to generate based on w_class
+	var/grid_width
+	/// Height we occupy on the hud - Keep null to generate based on w_class
+	var/grid_height
+
 /obj/item/Initialize(mapload)
 	if(attack_verb_continuous)
 		attack_verb_continuous = string_list(attack_verb_continuous)
@@ -251,6 +257,11 @@
 		attack_verb_simple = string_list(attack_verb_simple)
 	if(species_exception)
 		species_exception = string_list(species_exception)
+
+	if(grid_width <= 0)
+		grid_width = w_class GRID_BOXES
+	if(grid_height <= 0)
+		grid_height = w_class GRID_BOXES
 
 	if(sharpness && force > 5) //give sharp objects butchering functionality, for consistency
 		AddComponent(/datum/component/butchering, speed = 8 SECONDS * toolspeed)

@@ -150,7 +150,7 @@
 	/// Max weapons weight that can be stored within, inclusive
 	var/max_weapon_weight = WEAPON_MEDIUM
 
-/datum/storage/briefcase/gun/can_insert(obj/item/to_insert, mob/user, messages, force)
+/datum/storage/briefcase/gun/can_insert(obj/item/to_insert, mob/user, messages, force, list/modifiers)
 	. = ..()
 	if(!.)
 		return FALSE

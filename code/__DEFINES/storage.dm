@@ -22,3 +22,6 @@
 #define STORAGE_NOT_LOCKED 0
 #define STORAGE_SOFT_LOCKED 1
 #define STORAGE_FULLY_LOCKED 2
+
+///Length of one inventory grid box in pixels.
+#define GRID_BOXES *32
