@@ -259,9 +259,9 @@
 		species_exception = string_list(species_exception)
 
 	if(grid_width <= 0)
-		grid_width = w_class GRID_BOXES
+		grid_width = 1 GRID_BOXES
 	if(grid_height <= 0)
-		grid_height = w_class GRID_BOXES
+		grid_height = 1 GRID_BOXES
 
 	if(sharpness && force > 5) //give sharp objects butchering functionality, for consistency
 		AddComponent(/datum/component/butchering, speed = 8 SECONDS * toolspeed)
