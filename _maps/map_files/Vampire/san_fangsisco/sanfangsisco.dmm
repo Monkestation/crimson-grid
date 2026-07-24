@@ -123,10 +123,6 @@
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/laundromat)
-"abX" = (
-/obj/machinery/computer/security/telescreen/entertainment/directional/west,
-/turf/open/floor/carpet/darkpack/old,
-/area/vtm/interior/giovanni)
 "aca" = (
 /mob/living/basic/mouse/vampire,
 /turf/open/floor/plating/sidewalk/poor,
@@ -15140,6 +15136,13 @@
 /obj/structure/toilet,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/ghetto)
+"euW" = (
+/obj/machinery/light/directional/south,
+/obj/structure/rack/food/rand{
+	dir = 4
+	},
+/turf/open/floor/sepia,
+/area/vtm/interior/shop)
 "euZ" = (
 /obj/structure/railing{
 	dir = 4
@@ -17878,6 +17881,10 @@
 	},
 /turf/open/floor/plating,
 /area/vtm/interior/clinic/haven)
+"flz" = (
+/obj/vampire_computer,
+/turf/open/floor/plating/sidewalk,
+/area/vtm/outside/fishermanswharf/lower)
 "flA" = (
 /turf/open/floor/city/toilet,
 /area/vtm/interior/ghetto)
@@ -26125,10 +26132,6 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/sewer/nosferatu_town)
-"hFM" = (
-/obj/machinery/status_display/evac/directional/south,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/giovanni)
 "hFR" = (
 /obj/structure/stairs/north,
 /turf/open/floor/wood/smooth/old,
@@ -26524,6 +26527,10 @@
 "hMA" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1;
+	pixel_y = 12
 	},
 /obj/structure/hedge,
 /turf/open/floor/plating/sidewalk,
@@ -28705,7 +28712,9 @@
 /turf/open/floor/city/gummaguts,
 /area/vtm/interior/shop)
 "iww" = (
-/obj/machinery/vending/cola/black,
+/obj/machinery/vending/cola/black{
+	pixel_y = 20
+	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop)
 "iwJ" = (
@@ -64471,7 +64480,9 @@
 /area/vtm/interior/police)
 "sJv" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
 "sJy" = (
@@ -79393,7 +79404,9 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/millennium_tower/f4)
 "xkM" = (
-/obj/machinery/vending/cola/blue,
+/obj/machinery/vending/cola/blue{
+	pixel_y = 20
+	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop)
 "xkN" = (
@@ -82437,10 +82450,6 @@
 /obj/effect/spawner/random/bedsheet/any,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
-"yeP" = (
-/obj/structure/railing,
-/turf/open/openspace,
-/area/vtm/outside/financialdistrict)
 "yeS" = (
 /obj/effect/decal/cleanable/litter,
 /obj/effect/decal/cleanable/litter,
@@ -155875,7 +155884,7 @@ gcL
 iSD
 kfr
 dFZ
-hFM
+kyB
 uJx
 gcL
 xNg
@@ -156136,7 +156145,7 @@ hlf
 hlf
 uNJ
 hlf
-abX
+hlf
 hlf
 hlf
 hlf
@@ -157037,8 +157046,8 @@ tmu
 oWV
 tmu
 oWV
-tmu
 oWV
+tmu
 oWV
 oWV
 oWV
@@ -157301,7 +157310,7 @@ oWV
 oWV
 oWV
 oWV
-oWV
+tmu
 oWV
 oWV
 oWV
@@ -157815,7 +157824,7 @@ oWV
 gSI
 oWV
 oWV
-oWV
+flz
 oWV
 dje
 pOb
@@ -160114,7 +160123,7 @@ hJS
 fZl
 fZl
 fZl
-wae
+euW
 wiu
 oWV
 vox
@@ -160885,7 +160894,7 @@ bgX
 nKd
 fZl
 fZl
-fZl
+iBm
 wiu
 dnN
 vox
@@ -171168,7 +171177,7 @@ rhL
 rhL
 edq
 edq
-yeP
+edq
 hMA
 nYX
 nYX
@@ -171682,7 +171691,7 @@ edq
 edq
 edq
 edq
-yeP
+edq
 hMA
 nYX
 nYX
@@ -172196,7 +172205,7 @@ edq
 edq
 edq
 edq
-yeP
+edq
 hMA
 nYX
 nYX
