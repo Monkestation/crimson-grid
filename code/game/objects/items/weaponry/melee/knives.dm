@@ -366,6 +366,8 @@
 	attack_verb_continuous = list("stubs", "pokes")
 	attack_verb_simple = list("stub", "poke")
 	resistance_flags = FIRE_PROOF
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 	/// Whether the switchblade starts extended or not.
 	var/start_extended = FALSE
 	var/list/alt_continuous = list("stabs", "pierces", "shanks")
@@ -391,6 +393,7 @@
 		sharpness_on = SHARP_EDGED, \
 		hitsound_on = 'sound/items/weapons/bladeslice.ogg', \
 		w_class_on = WEIGHT_CLASS_NORMAL, \
+		grid_height_on = 2 GRID_BOXES,\
 		attack_verb_continuous_on = list("slashes", "slices", "tears", "lacerates", "rips", "dices", "cuts"), \
 		attack_verb_simple_on = list("slash", "slice", "tear", "lacerate", "rip", "dice", "cut"), \
 	)

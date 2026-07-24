@@ -32,6 +32,14 @@
 	var/throw_speed_off
 	/// Weight class of the weapon when inactive
 	var/w_class_off
+	/// Our grid_width when active
+	var/grid_width_on
+	/// Our grid_height when active
+	var/grid_height_on
+	/// Our grid_width when inactive
+	var/grid_width_off
+	/// Our grid_height when inactive
+	var/grid_height_off
 	/// The sharpness of the weapon when inactive
 	var/sharpness_off
 	/// List of the original continuous attack verbs the item has.
@@ -67,6 +75,8 @@
 	list/attack_verb_continuous_on,
 	list/attack_verb_simple_on,
 	inhand_icon_change = TRUE,
+	grid_width_on,
+	grid_height_on,
 )
 
 	if(!isitem(parent))
@@ -84,6 +94,18 @@
 	src.clumsy_check = clumsy_check
 	src.clumsy_damage = clumsy_damage
 	src.inhand_icon_change = inhand_icon_change
+
+	if(!grid_width_on)
+		src.grid_width_on = item_parent.grid_width
+	else
+		src.grid_width_on = grid_width_on
+	if(!grid_height_on)
+		src.grid_height_on = item_parent.grid_height
+	else
+		src.grid_height_on = grid_height_on
+
+	grid_height_off = item_parent.grid_height
+	grid_width_off = item_parent.grid_width
 
 	src.force_off = item_parent.force
 	src.throwforce_off = item_parent.throwforce
@@ -261,6 +283,9 @@
 	if(LAZYLEN(attack_verb_simple_on))
 		source.attack_verb_simple = attack_verb_simple_on
 
+	source.grid_width = grid_width_on
+	source.grid_height = grid_height_on
+
 	source.hitsound = hitsound_on
 	source.update_weight_class(w_class_on)
 	source.icon_state = "[source.icon_state]_on"
@@ -290,6 +315,9 @@
 		source.attack_verb_continuous = attack_verb_continuous_off
 	if(LAZYLEN(attack_verb_simple_off))
 		source.attack_verb_simple = attack_verb_simple_off
+
+	source.grid_width = grid_width_off
+	source.grid_height = grid_height_off
 
 	source.hitsound = initial(source.hitsound)
 	source.update_weight_class(w_class_off)
