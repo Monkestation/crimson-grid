@@ -69,6 +69,7 @@
 #define HUD_MOB_MOOD "mob_mood"
 #define HUD_MOB_HEALTHDOLL "mob_healthdoll"
 #define HUD_MOB_MEMORIES "mob_memories"
+#define HUD_MOB_FULLSCREEN "mob_fullscreen"
 
 #define HUD_OOZE_NUTRITION_DISPLAY "ooze_nutrition_display"
 
@@ -208,6 +209,7 @@
 
 //Lower left, persistent menu
 #define ui_inventory "WEST:6,SOUTH:5"
+#define ui_full_inventory "WEST,SOUTH"
 
 //Middle left indicators
 #define ui_lingchemdisplay "WEST,CENTER-1:15"
@@ -216,12 +218,12 @@
 #define ui_xenobiodisplay "WEST:6,CENTER:-4"
 
 //Lower center, persistent menu
-#define ui_sstore1 "CENTER-5:10,SOUTH:5"
-#define ui_id "CENTER-4:12,SOUTH:5"
-#define ui_belt "CENTER-3:14,SOUTH:5"
-#define ui_back "CENTER-2:14,SOUTH:5"
-#define ui_storage1 "CENTER+1:18,SOUTH:5"
-#define ui_storage2 "CENTER+2:20,SOUTH:5"
+#define ui_sstore1 "WEST+2:16,SOUTH+8:22"
+#define ui_id "WEST:16,SOUTH+8:22"
+#define ui_belt "WEST+1:16,SOUTH+10:7"
+#define ui_back "WEST+1:16,SOUTH+8:6"
+#define ui_storage1 "WEST:16,SOUTH+7:22"
+#define ui_storage2 "WEST+2:16,SOUTH+7:22"
 #define ui_combo "CENTER+4:24,SOUTH+1:7" //combo meter for martial arts
 
 //Lower right, persistent menu
@@ -238,9 +240,23 @@
 #define ui_acti_alt "EAST-1:28,SOUTH:5" //alternative intent switcher for when the interface is hidden (F12)
 #define ui_crafting "EAST-4:22,SOUTH:5"
 #define ui_building "EAST-4:22,SOUTH:21"
-#define ui_language_menu "EAST-4:6,SOUTH:21"
+#define ui_language_menu "WEST+2:11,SOUTH+3:14"
 #define ui_navigate_menu "EAST-4:6,SOUTH:5"
 #define ui_memories_menu "EAST-4:6,SOUTH:5"
+
+
+#define ui_throw "WEST:15,SOUTH+4:12"
+#define ui_drop "WEST:15,SOUTH+4:2"
+#define ui_jump "WEST+2:11,SOUTH+2:26"
+#define ui_pull "WEST+2:11,SOUTH+2:16"
+#define ui_resist "WEST+2:11,SOUTH+4:12"
+#define ui_rest "WEST:15,SOUTH+3:24"
+#define ui_block "WEST+2:11,SOUTH+4:2"
+#define ui_movi "WEST+1:15,SOUTH+2:26"
+#define ui_acti "WEST+1:16,SOUTH+1:16"
+#define ui_zonesel "WEST:16,SOUTH+1:16"
+#define ui_acti_alt "WEST+1:16,SOUTH+1:16"	//alternative intent switcher for when the interface is hidden (F12)
+#define ui_crafting	"WEST+2:11,SOUTH+3:4"
 
 //basic mob-unique ui
 #define ui_basic_combat_toggle "EAST-1:28,SOUTH:6"
@@ -256,7 +272,7 @@
 
 //Middle right (status indicators)
 #define ui_healthdoll "EAST-1:28,CENTER-2:17"
-#define ui_health "EAST-1:28,CENTER-1:19"
+#define ui_health "WEST+2:16,SOUTH+1:16"
 #define ui_internal "EAST-1:28,CENTER+1:21"
 #define ui_mood "EAST-1:28,CENTER:21"
 #define ui_hunger "EAST-1:2,CENTER:21"
@@ -264,18 +280,18 @@
 #define ui_stamina "EAST-1:28,CENTER-3:14"
 
 //Pop-up inventory
-#define ui_shoes "WEST+1:8,SOUTH:5"
-#define ui_iclothing "WEST:6,SOUTH+1:7"
-#define ui_oclothing "WEST+1:8,SOUTH+1:7"
-#define ui_gloves "WEST+2:10,SOUTH+1:7"
-#define ui_glasses "WEST:6,SOUTH+3:11"
-#define ui_mask "WEST+1:8,SOUTH+2:9"
-#define ui_ears "WEST+2:10,SOUTH+2:9"
-#define ui_neck "WEST:6,SOUTH+2:9"
-#define ui_head "WEST+1:8,SOUTH+3:11"
+#define ui_shoes "WEST:16,SOUTH+10:7"
+#define ui_iclothing "WEST:16,SOUTH+11:7"
+#define ui_oclothing "WEST+2:16,SOUTH+11:7"
+#define ui_gloves "WEST+2:16,SOUTH+10:7"
+#define ui_glasses "WEST+1:16,SOUTH+12:7"
+#define ui_mask "WEST+1:16,SOUTH+11:7"
+#define ui_ears "WEST+2:12,SOUTH+12:19"
+#define ui_neck "WEST:20,SOUTH+12:19"
+#define ui_head "WEST+1:16,SOUTH+13:7"
 
 //Generic living
-#define ui_living_pull "EAST-1:28,CENTER-3:15"
+#define ui_living_pull "WEST+1:24,SOUTH+1:5"
 #define ui_living_healthdoll "EAST-1:28,CENTER-1:15"
 
 //Humans
