@@ -814,7 +814,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	. = ..()
 	if(!hud?.mymob)
 		return
-	. += mutable_appearance(overlay_icon, "[hud.mymob.zone_selected]")
+	. += mutable_appearance(icon, "[hud.mymob.zone_selected]")
 
 /atom/movable/screen/zone_sel/alien
 	icon = 'icons/hud/screen_alien.dmi'

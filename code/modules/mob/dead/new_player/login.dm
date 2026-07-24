@@ -1,6 +1,7 @@
 /mob/dead/new_player/Login()
 	if(!client)
 		return
+	client.pixel_x = 0
 
 	if(CONFIG_GET(flag/use_exp_tracking))
 		client?.set_exp_from_db()

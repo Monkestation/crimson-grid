@@ -48,7 +48,7 @@ GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
 /datum/storyteller_roll/custom_roll
 	bumper_text = "custom roll"
 
-#define UI_MOB_DICE_ROLL "EAST-4:22,SOUTH+1:24"
+#define UI_MOB_DICE_ROLL "WEST+1,SOUTH+4:8"
 
 /atom/movable/screen/dice_roll
 	name = "roll custom dice"

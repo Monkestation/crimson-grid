@@ -2,6 +2,7 @@
 	. = ..()
 	if(!. || !client)
 		return FALSE
+	client.pixel_x = -64
 
 	ghost_accs = client.prefs.read_preference(/datum/preference/choiced/ghost_accessories)
 	ghost_others = client.prefs.read_preference(/datum/preference/choiced/ghost_others)

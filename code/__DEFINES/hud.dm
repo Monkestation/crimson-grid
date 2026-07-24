@@ -239,10 +239,10 @@
 #define ui_zonesel "EAST-1:28,SOUTH:5"
 #define ui_acti_alt "EAST-1:28,SOUTH:5" //alternative intent switcher for when the interface is hidden (F12)
 #define ui_crafting "EAST-4:22,SOUTH:5"
-#define ui_building "EAST-4:22,SOUTH:21"
+#define ui_building "WEST+1,SOUTH+3:24"
 #define ui_language_menu "WEST+2:11,SOUTH+3:14"
-#define ui_navigate_menu "EAST-4:6,SOUTH:5"
-#define ui_memories_menu "EAST-4:6,SOUTH:5"
+#define ui_navigate_menu "WEST+1:16,SOUTH+3:24"
+#define ui_memories_menu "WEST+1:16,SOUTH+4:8"
 
 
 #define ui_throw "WEST:15,SOUTH+4:12"
@@ -296,9 +296,9 @@
 
 //Humans
 #define ui_human_floor_changer "EAST-4:22,SOUTH:5"
-#define ui_human_crafting "EAST-3:24,SOUTH+1:7"
+#define ui_human_crafting "WEST+2:11,SOUTH+3:4"
 #define ui_human_navigate "EAST-3:7,SOUTH+1:7"
-#define ui_human_language "EAST-3:7,SOUTH+1:24"
+#define ui_human_language "WEST+2:11,SOUTH+3:14"
 #define ui_human_area "EAST-3:24,SOUTH+1:24"
 #define ui_human_memories_menu "EAST-4:22,SOUTH+1:7"
 

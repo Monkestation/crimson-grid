@@ -1,6 +1,6 @@
 /mob/living/carbon/human/Login()
 	. = ..()
-
+	client.pixel_x = -64
 	dna?.species?.on_owner_login(src)
 
 	if(SStts.tts_enabled && !voice)
