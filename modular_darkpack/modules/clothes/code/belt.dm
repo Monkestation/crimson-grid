@@ -1,25 +1,7 @@
-/datum/storage/holster/darkpack
-	max_slots = 3 // Pistol + two mags
-	max_total_storage = 16
-	open_sound = 'sound/items/handling/holster_open.ogg'
-	open_sound_vary = TRUE
-/datum/storage/holster/darkpack/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound, list/holdables)
-	. = ..()
-	if(length(holdables))
-		set_holdable(holdables)
-		return
-
-	set_holdable(list(
-		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/ammo_box/magazine,
-		/obj/item/ammo_box/darkpack/c9mm/moonclip
-	))
-
 /obj/item/storage/belt/holster/detective/darkpack // TODO: Get unique sprites for these
 	name = "holster"
 	desc = "a holster for your gun."
-	storage_type = /datum/storage/holster/darkpack
+	storage_type = /datum/storage/grid/holster
 
 /obj/item/storage/belt/holster/detective/darkpack/police
 	desc = "standard issue holster for standard issue sidearms."

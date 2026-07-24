@@ -191,7 +191,7 @@
 	damage = 45
 	armour_penetration = 75
 	exposed_wound_bonus = 30
-	wound_bonus = 30 //We're gonna make this hurt as much as possible. 
+	wound_bonus = 30 //We're gonna make this hurt as much as possible.
 	sharpness = SHARP_POINTY
 	embed_type = /datum/embedding/crossbolt //YEEEEOUCH!!!!
 

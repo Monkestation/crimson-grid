@@ -102,6 +102,8 @@
 
 	// WTA pg. 302
 	force = 2 LETHAL_TTRPG_DAMAGE
+	grid_width = 2 GRID_BOXES
+	grid_height = 5 GRID_BOXES
 
 	armour_penetration = 50	 //Normally 75 pen, that pens army armor. Instead, 50. Pens bullet proof.
 	var/value = 1000 // DARKPACK TODO: Move this up at some point. I hate the selling component with all my heart.
@@ -122,6 +124,8 @@
 	// WTA pg. 302
 	force = 2 LETHAL_TTRPG_DAMAGE
 	armour_penetration = 50
+	grid_width = 2 GRID_BOXES
+	grid_height = 5 GRID_BOXES
 
 /obj/item/melee/sabre/rapier/Initialize(mapload)
 	. = ..()
@@ -144,6 +148,8 @@
 	inhand_icon_state = "longsword"
 	// WTA pg. 302
 	force = 2 LETHAL_TTRPG_DAMAGE
+	grid_width = 2 GRID_BOXES
+	grid_height = 5 GRID_BOXES
 
 
 /obj/item/claymore/longsword/Initialize(mapload)
@@ -166,6 +172,8 @@
 	force = 1 LETHAL_TTRPG_DAMAGE
 	attack_difficulty = 5 // Slightly worse handling then a knife.
 	block_chance = 0
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/claymore/machete/Initialize(mapload)
 	. = ..()
@@ -209,6 +217,8 @@
 	worn_icon_state = "baseball"
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT // Should really be suit storage
 	custom_price = 50
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/baseball_bat/vamp/Initialize(mapload)
 	. = ..()
@@ -221,6 +231,8 @@
 	force = 1 TTRPG_DAMAGE
 	attack_difficulty = 5
 	masquerade_violating = TRUE
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 	//is_wood = FALSE
 
 /obj/item/melee/vamp/tire
@@ -236,6 +248,8 @@
 	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FIRE_PROOF
 	obj_flags = CONDUCTS_ELECTRICITY
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/knife/vamp
 	name = "knife"
@@ -250,6 +264,8 @@
 	attack_difficulty = 4
 
 	custom_price = 85
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/knife/vamp/lasombra_tentacle
 	name = "shadow tentacle"
@@ -286,6 +302,8 @@
 	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FIRE_PROOF
 	obj_flags = CONDUCTS_ELECTRICITY
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/touch_attack/werewolf
 	name = "falling touch"
@@ -362,6 +380,8 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	// Made up
 	force = 2 LETHAL_TTRPG_DAMAGE
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 
 /obj/item/instrument/eguitar/vamp
@@ -378,6 +398,8 @@
 	// Made up
 	force = 2 TTRPG_DAMAGE
 	attack_difficulty = 7
+	grid_width = 7 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/melee/baton/vamp
 	name = "police baton"
@@ -386,6 +408,8 @@
 	icon_state = "baton"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/switchblade/vamp
 	name = "switchblade"
@@ -458,6 +482,8 @@
 	slot_flags = ITEM_SLOT_BACK
 	resistance_flags = FIRE_PROOF
 	custom_price = 1200
+	grid_width = 2 GRID_BOXES
+	grid_height = 8 GRID_BOXES
 
 /obj/item/darkpack/spear/Initialize(mapload)
 	. = ..()

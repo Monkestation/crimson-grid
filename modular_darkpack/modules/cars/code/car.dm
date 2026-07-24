@@ -92,7 +92,7 @@
 	var/lockpick_difficulty = 6
 	var/access = "none"
 
-	var/car_storage_type = /datum/storage/car
+	var/car_storage_type = /datum/storage/grid/car
 	var/obj/car_trunk/trunk
 
 	var/exploded = FALSE

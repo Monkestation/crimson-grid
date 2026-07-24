@@ -130,6 +130,8 @@
 	attack_verb_continuous = list("bashes", "bludgeons", "thrashes", "whacks")
 	attack_verb_simple = list("bash", "bludgeon", "thrash", "whack")
 	sharpness = SHARP_EDGED
+	grid_width = 5 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/shovel/Initialize(mapload)
 	. = ..()

@@ -15,6 +15,8 @@
 
 	storage_type = /datum/storage/hardcase
 	spawn_count = 4
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /datum/storage/hardcase
 	max_slots = 4

@@ -40,6 +40,8 @@
 	vary_fire_sound = FALSE
 	fire_sound_volume = 85
 	recoil = 3
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/gun/ballistic/revolver/darkpack/magnum
 	name = "magnum revolver"
@@ -57,6 +59,8 @@
 	projectile_damage_multiplier = 1.2 //21.6 damage, slightly higher than the m1911, just so it is possible to kill NPCs within 6 bullets
 	recoil = 2
 	serial_type = "SN"
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/ammo_box/magazine/internal/cylinder/rev9mm
 	name = "revolver cylinder"
@@ -84,6 +88,8 @@
 	caliber = CALIBER_44MAG
 	max_ammo = 7
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/deagle
 	name = "\improper Desert Eagle"
@@ -95,6 +101,8 @@
 	recoil = 4
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/deagle.ogg'
 	serial_type = "MR"
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/ammo_box/magazine/m50
 	name = "handgun magazine (.50)"
@@ -125,6 +133,8 @@
 	caliber = CALIBER_45ACP
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/m1911
 	name = "\improper Colt 1911"
@@ -136,6 +146,8 @@
 	vary_fire_sound = FALSE
 	fire_sound_volume = 100
 	serial_type = "CM"
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/ammo_box/magazine/glock9mm
 	name = "automatic pistol magazine (9mm)"
@@ -146,6 +158,8 @@
 	caliber = CALIBER_9MMPARA
 	max_ammo = 15
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/glock19
 	name = "\improper Brokk 19"
@@ -161,6 +175,8 @@
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/glock.ogg'
 	fire_sound_volume = 100
 	serial_type = "GG"
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/ammo_box/magazine/glock45acp
 	name = "automatic pistol magazine (.45 ACP)"
@@ -171,6 +187,8 @@
 	caliber = CALIBER_45ACP
 	max_ammo = 12
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/ammo_box/magazine/glock45acp/hp
 	ammo_type = /obj/item/ammo_casing/vampire/c45acp/HP
@@ -190,6 +208,8 @@
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/glock.ogg'
 	fire_sound_volume = 100
 	serial_type = "GG"
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta
 	name = "\improper Elite 92G"
@@ -207,6 +227,8 @@
 	fire_sound_volume = 75
 	custom_price = 1200
 	serial_type = "BH"
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta/toreador
 	name = "\improper Sword Series S 9mm"
@@ -225,6 +247,8 @@
 	max_ammo = 18
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	custom_price = 200
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/semi9mm/toreador
 	name = "custom pistol magazine (9mm)"
@@ -257,6 +281,8 @@
 	rack_sound = 'sound/items/weapons/gun/pistol/slide_lock.ogg'
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/uzi.ogg'
 	serial_type = "IWI"
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/darkpack9mp5
 	name = "mp5 magazine (9mm)"
@@ -267,6 +293,8 @@
 	caliber = CALIBER_9MMPARA
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/darkpack/mp5
 	name = "\improper HK MP5"
@@ -286,6 +314,8 @@
 	rack_sound = 'sound/items/weapons/gun/pistol/slide_lock.ogg'
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/mp5.ogg'
 	serial_type = "H&K"
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 	var/rof = 0.15 SECONDS
 
 /obj/item/gun/ballistic/automatic/darkpack/mp5/Initialize(mapload)
@@ -302,6 +332,8 @@
 	caliber = CALIBER_45ACP
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/darkpack/mac10
 	name = "\improper Braddock .45"
@@ -324,6 +356,8 @@
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/mac10.ogg' // DARKPACK sound effect
 	serial_type = "GBI"
 	var/rof = 0.055 SECONDS //1090 RPM, if any other gun has the same fire rate as this gun, increase this gun so its the new fastest
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/darkpack/mac10/Initialize(mapload)
 	. = ..()
@@ -353,6 +387,8 @@
 	suppressed_volume = 70
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack45custom
 	can_unsuppress = FALSE
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/darkpack/c46pdw
 	name = "4.6mm MP7 magazine"
@@ -407,6 +443,8 @@
 	caliber = CALIBER_556NATO
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/darkpack556/hunt
 	name = "rifle magazine (5.56mm)"
@@ -435,6 +473,8 @@
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/rifle.ogg'
 	masquerade_violating = TRUE
 	serial_type = "CAR"
+	grid_width = 8 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/darkpack/huntrifle
 	name = "hunting rifle"
@@ -459,6 +499,8 @@
 	masquerade_violating = FALSE
 	custom_price = 2000
 	serial_type = "R&C"
+	grid_width = 8 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/darkpack545
 	name = "rifle magazine (5.45mm)"
@@ -469,6 +511,8 @@
 	caliber = CALIBER_545SOVIET
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/darkpack/ak74
 	name = "\improper Kalashnikov's Automatic Rifle 74"
@@ -492,6 +536,8 @@
 	masquerade_violating = TRUE
 	can_be_sawn_off	= TRUE
 	serial_type = "KA"
+	grid_width = 8 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 	var/rof = 0.2 SECONDS //300 RPM
 
 /obj/item/gun/ballistic/automatic/darkpack/ak74/Initialize(mapload)
@@ -516,6 +562,8 @@
 	caliber = CALIBER_556NATO
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/darkpack/aug
 	name = "\improper Steyr AUG-77"
@@ -539,6 +587,8 @@
 	masquerade_violating = TRUE
 	obj_flags = NONE
 	serial_type = "SA"
+	grid_width = 8 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/darkpackthompson
 	name = "tommy gun magazine (.45 ACP)"
@@ -549,6 +599,8 @@
 	caliber = CALIBER_45ACP
 	max_ammo = 50
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/darkpack/thompson
 	name = "\improper Thompson Submachine Gun"
@@ -569,6 +621,8 @@
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/thompson.ogg'
 	masquerade_violating = TRUE
 	serial_type = "AO"
+	grid_width = 5 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 	var/rof = 0.15 SECONDS //400 RPM
 
 /obj/item/gun/ballistic/automatic/darkpack/thompson/Initialize(mapload)
@@ -666,6 +720,8 @@
 	actions_types = list()
 	masquerade_violating = TRUE
 	serial_type = "RB"
+	grid_width = 4 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/darkpack/autosniper
 	name = "auto-sniper rifle"
@@ -698,6 +754,8 @@
 	actions_types = list()
 	masquerade_violating = TRUE
 	serial_type = "DS"
+	grid_width = 8 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/vamp762x51PSG1
 	name = "PSG1 magazine (7.62x51mm)"
@@ -711,6 +769,8 @@
 	caliber = CALIBER_762NATO
 	max_ammo = 10
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/internal/vampshotgun
 	name = "shotgun internal magazine"
@@ -741,6 +801,8 @@
 	inhand_y_dimension = 32
 	custom_price = 1000
 	serial_type = "L"
+	grid_width = 6 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/internal/vampshotgun/sawnoff
 	name = "sawn-off shotgun internal magazine"
@@ -838,6 +900,8 @@
 	masquerade_violating = TRUE
 	recoil = 6
 	serial_type = "AL"
+	grid_width = 5 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/shotgun/toy/crossbow/vampire
 	name = "crossbow"
@@ -857,6 +921,8 @@
 	masquerade_violating = FALSE
 	obj_flags = NONE
 	serial_shown = FALSE	//No serial, it's a crossbow.
+	grid_width = 5 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/internal/vampcrossbow
 	ammo_type = /obj/item/ammo_casing/caseless/bolt

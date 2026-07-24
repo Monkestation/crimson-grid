@@ -908,6 +908,8 @@
 	icon_state = "vodkabottle"
 	list_reagents = list()
 	heatable = FALSE
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 	var/active = FALSE
 	var/list/accelerants = list(
 		/datum/reagent/consumable/ethanol,

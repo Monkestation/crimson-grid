@@ -24,6 +24,8 @@
 	aquarium_vc_color = "#33302e"
 	sprite_width = 5
 	sprite_height = 3
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/fish/darkpack/shark/Initialize(mapload)
 	. = ..()
@@ -44,6 +46,8 @@
 	aquarium_vc_color = "#33302e"
 	sprite_width = 5
 	sprite_height = 3
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/fish/darkpack/tuna/Initialize(mapload)
 	. = ..()
@@ -63,6 +67,8 @@
 	aquarium_vc_color = "#33302e"
 	sprite_width = 5
 	sprite_height = 3
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/fish/darkpack/catfish/Initialize(mapload)
 	. = ..()
@@ -82,6 +88,8 @@
 	dedicated_in_aquarium_icon_state = "crab_small"
 	sprite_height = 6
 	sprite_width = 10
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/fish/darkpack/crab/Initialize(mapload)
 	. = ..()

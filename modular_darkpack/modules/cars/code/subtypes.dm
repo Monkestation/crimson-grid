@@ -51,7 +51,7 @@
 	icon_state = "limo"
 	max_passengers = 6
 	dir = WEST
-	car_storage_type = /datum/storage/car/limo
+	car_storage_type = /datum/storage/grid/car/limo
 
 /obj/darkpack_car/limousine/giovanni
 	icon_state = "giolimo"
@@ -117,19 +117,19 @@
 	max_passengers = 6
 	dir = WEST
 	access = "none"
-	car_storage_type = /datum/storage/car/truck
+	car_storage_type = /datum/storage/grid/car/truck
 
 /obj/darkpack_car/track/Initialize(mapload)
 	. = ..()
 
 /obj/darkpack_car/track/volkswagen
 	icon_state = "volkswagen"
-	car_storage_type = /datum/storage/car/van
+	car_storage_type = /datum/storage/grid/car/van
 
 /obj/darkpack_car/track/ambulance
 	icon_state = "ambulance"
 	access = LOCKACCESS_CLINIC
-	car_storage_type = /datum/storage/car/van
+	car_storage_type = /datum/storage/grid/car/van
 
 /obj/darkpack_car/endroncar
 	icon_state = "endron"
@@ -140,4 +140,4 @@
 	icon_state = "endrontruck"
 	max_passengers = 6
 	access = LOCKACCESS_PENTEX
-	car_storage_type = /datum/storage/car/truck
+	car_storage_type = /datum/storage/grid/car/truck

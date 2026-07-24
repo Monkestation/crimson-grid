@@ -10,6 +10,9 @@
 	lefthand_file = 'modular_darkpack/modules/storage/icons/firstaidkit_lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/storage/icons/firstaidkit_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
+	storage_type = /datum/storage/grid/firstaid
 
 /obj/item/storage/medkit/darkpack/standard
 	name = "first-aid kit"
@@ -31,7 +34,7 @@
 	desc = "A handheld medical suite containing basic medical tools and some surgery equipment."
 	icon_state = "firstaid_doctor"
 	inhand_icon_state = "firstaid_doctor"
-	storage_type = /datum/storage/medkit/darkpack/doctor
+	storage_type = /datum/storage/grid/firstaid
 
 /obj/item/storage/medkit/darkpack/doctor/PopulateContents()
 	if(empty)
@@ -139,6 +142,9 @@
 	desc = "An Individual First-Aid Kit, for when it's just you and me."
 	icon_state = "firstaid_ifak"
 	inhand_icon_state = "firstaid_ifak"
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
+	storage_type = /datum/storage/grid/firstaid/ifak
 
 /obj/item/storage/medkit/darkpack/ifak/PopulateContents()
 	if(empty)

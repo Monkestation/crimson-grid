@@ -21,6 +21,8 @@
 	light_power = 2
 	light_on = FALSE
 	interaction_flags_click = NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING
+	grid_width = 7 GRID_BOXES
+	grid_height = 3 GRID_BOXES
 	var/status = FALSE
 	var/lit = FALSE //on or off
 	var/operating = FALSE//cooldown

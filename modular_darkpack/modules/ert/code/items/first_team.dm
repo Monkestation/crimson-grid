@@ -218,6 +218,8 @@
 	caliber = CALIBER_556NATO
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	grid_width = 4 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 //	brand = "fullforce" // TODO: implement the rest of the non-top 21 pentex subsids
 
 /obj/item/ammo_box/magazine/darkpack/px249f
@@ -362,6 +364,8 @@
 	spread = 6
 	fire_sound = 'modular_darkpack/modules/ert/sounds/m249fire.ogg'
 	rack_sound = 'modular_darkpack/modules/ert/sounds/m249rack.ogg'
+	grid_width = 9 GRID_BOXES
+	grid_height = 4 GRID_BOXES
 //	brand = "fullforce" // TODO: implement the rest of the non-top 21 pentex subsids
 
 /obj/item/gun/ballistic/automatic/l6_saw/darkpack/update_icon_state()

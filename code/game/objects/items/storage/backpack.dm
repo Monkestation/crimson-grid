@@ -22,7 +22,7 @@
 	slot_flags = ITEM_SLOT_BACK //ERROOOOO
 	resistance_flags = NONE
 	max_integrity = 300
-	storage_type = /datum/storage/backpack
+	storage_type = /datum/storage/grid/backpack
 	pickup_sound = 'sound/items/handling/backpack/backpack_pickup1.ogg'
 	drop_sound = 'sound/items/handling/backpack/backpack_drop1.ogg'
 	equip_sound = 'sound/items/equip/backpack_equip.ogg'
@@ -298,6 +298,7 @@
 	desc = "A trendy looking satchel."
 	icon_state = "satchel-norm"
 	inhand_icon_state = "satchel-norm"
+	storage_type = /datum/storage/grid/satchel
 
 /obj/item/storage/backpack/satchel/leather
 	name = "leather satchel"

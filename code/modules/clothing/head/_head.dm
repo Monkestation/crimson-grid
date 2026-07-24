@@ -7,6 +7,8 @@
 	abstract_type = /obj/item/clothing/head
 	body_parts_covered = HEAD
 	slot_flags = ITEM_SLOT_HEAD
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 ///Special throw_impact for hats to frisbee hats at people to place them on their heads/attempt to de-hat them.
 /obj/item/clothing/head/throw_impact(atom/hit_atom, datum/thrownthing/thrownthing)

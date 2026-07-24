@@ -12,6 +12,8 @@
 	force = 8
 	w_class = WEIGHT_CLASS_HUGE
 	custom_materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT * 2, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 2)
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 	/// How far can you cast this
 	var/cast_range = 3

@@ -229,6 +229,8 @@ GAME_VERB_SRC(/obj/item/reagent_containers/spray, empty, usr, "Empty Spray Bottl
 	drop_sound = 'sound/items/handling/pepper_spray/pepper_spray_drop.ogg'
 	custom_price = 200 // DARKPACK EDIT ADD - ECONOMY
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.5, /datum/material/glass = HALF_SHEET_MATERIAL_AMOUNT)
+	grid_height = 2 GRID_BOXES
+	grid_width = 1 GRID_BOXES
 
 /obj/item/reagent_containers/spray/pepper/empty //for protolathe printing
 	list_reagents = null
