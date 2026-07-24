@@ -17,14 +17,13 @@
 	outfit = /datum/outfit/job/vampire/prince
 
 	display_order = JOB_DISPLAY_ORDER_PRINCE
-	department_for_prefs = /datum/job_department/prince
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
 
 	minimal_generation = 10
 	minimum_immortal_age = 75
-	minimal_masquerade = 5
+	minimum_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE, VAMPIRE_CLAN_VENTRUE, VAMPIRE_CLAN_NOSFERATU, VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN, VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_BANU_HAQIM_VIZIER)
 

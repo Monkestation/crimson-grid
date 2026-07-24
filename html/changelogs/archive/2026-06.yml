@@ -138,3 +138,26 @@
   - qol: all ritual tomes now print a sorted list rather than a mishmash
   dwinters99:
   - code_imp: randomized trash and SOME randomized turfs now retain icon_state var-edits
+2026-06-29:
+  Ambrose997:
+  - rscadd: Added the katana as one of the blade options for the Burning Blade ritual.
+  - bugfix: saves the inhand_icon_state before restoring to original_icon_state to
+      avoid the wrong sprite being used.
+  - rscadd: adds a clarification for the victim that they should respond in vague
+      thoughts or symbolism
+  - admin: admins now see every usage of auspex 4 mind reading
+  - balance: Increases telepathy cooldown to 9 minutes.
+  FalloutFalcon:
+  - balance: tweaks alot of loot pools to have less tg items and more darkpack ones
+  - bugfix: Aggravated damage now transfers to limbs when changing species (such as
+      via fera shapeshifting)
+  - bugfix: Showing flavor text while masked checks the holder not the reader
+  - balance: Melee force and attack difficulty is more inline with TTRPG numbers
+  - rscadd: Item outlines and tooltips now match colors of the huds we use.
+  - qol: Going through transfer points brings items your dragging or buckled to with
+      you
+  Icarus-The-Sun:
+  - rscadd: Adds Acute Sense Merit
+  - rscadd: Adds Disfigured, Glowing Eyes, and Smell of the Grave flaws
+  buffyuwu:
+  - qol: Country of Origin now grants the appropriate languages

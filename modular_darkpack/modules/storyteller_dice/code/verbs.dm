@@ -2,9 +2,8 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(roll_storyteller_dice, R_FUN, "Roll storyteller dic
 	M.roll_dice_custom()
 	BLACKBOX_LOG_ADMIN_VERB("Storyteller dice")
 
-/mob/living/verb/do_roll_dice_custom()
-	set name = "Roll custom dice"
-	set hidden = TRUE
+GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
+	roll_dice_custom()
 
 /mob/living/proc/roll_dice_custom(atom/movable/roll_target)
 	var/list/allowed_stats = list()

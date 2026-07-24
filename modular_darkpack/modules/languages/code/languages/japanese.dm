@@ -2,7 +2,7 @@
 	name = "Japanese"
 	desc = "A language spoken in the land of the rising sun."
 	key = "j"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 20
 	syllables = list(
 		"ka", "ki", "ku", "ke", "ko", "sa", "shi", "su", "se", "so",

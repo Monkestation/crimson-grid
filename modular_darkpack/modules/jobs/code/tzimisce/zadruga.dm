@@ -8,7 +8,6 @@
 	outfit = /datum/outfit/job/vampire/zadruga
 	job_flags = CITY_JOB_FLAGS
 	exp_required_type_department = EXP_TYPE_MANOR
-	department_for_prefs = /datum/job_department/manor
 	departments_list = list(
 		/datum/job_department/manor,
 	)
@@ -16,7 +15,7 @@
 
 	allowed_splats = list(SPLAT_GHOUL)
 	description = "You were born in servitude to the Master of the Manor: your father served the Voivode, as did his father. Now, you carry their blood, and with it their responsibilities."
-	minimal_masquerade = 2
+	minimum_masquerade = 2
 
 	known_contacts = list(JOB_PRINCE, JOB_BARON, JOB_SHERIFF, JOB_BOGATYR, JOB_VOIVODE)
 

@@ -27,9 +27,7 @@
 	var/female_clothes
 
 	/// List of unnatural features that members of this Clan can choose
-	var/list/accessories
-	/// Associative list of layers for unnatural features that members of this Clan can choose
-	var/list/accessories_layers
+	var/list/clan_marks
 	/// Clan accessory that's selected by default
 	var/default_accessory
 
@@ -89,13 +87,7 @@
 	if (alt_sprite)
 		losing_mob.set_body_sprite(ignore_clan = TRUE)
 
-	// DARKPACK TODO - reimplement clan accessories
-	/*
-	// Remove Clan accessories
-	if (losing_mob.client?.prefs?.clan_accessory)
-		var/equipped_accessory = accessories_layers[losing_mob.client.prefs.clan_accessory]
-		losing_mob.remove_overlay(equipped_accessory)
-	*/
+	clear_old_overlays(losing_mob)
 
 	losing_mob.remove_faction(id)
 
@@ -162,3 +154,13 @@
 /mob/living/proc/is_clan(clan_type)
 	return istype(get_clan(), clan_type)
 
+
+/datum/subsplat/vampire_clan/proc/clear_old_overlays(mob/living/carbon/human/losing_mob)
+	var/needs_update = FALSE
+	for(var/obj/item/bodypart/part as anything in losing_mob.get_bodyparts())
+		for(var/clan_mark in clan_marks)
+			part.remove_bodypart_overlay(clan_mark, update = FALSE)
+			needs_update = TRUE
+
+	if(needs_update && !(losing_mob.living_flags & STOP_OVERLAY_UPDATE_BODY_PARTS))
+		losing_mob.update_body_parts()

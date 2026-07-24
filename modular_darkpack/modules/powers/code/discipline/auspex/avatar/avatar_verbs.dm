@@ -1,6 +1,4 @@
-/mob/living/basic/avatar/verb/reenter_corpse()
-	set name = "Re-enter Corpse"
-
+GAME_VERB(/mob/living/basic/avatar, reenter_corpse, "Re-enter Corpse", null)
 	exit_avatar(force = FALSE)
 
 /mob/living/basic/avatar/proc/exit_avatar(force = FALSE)

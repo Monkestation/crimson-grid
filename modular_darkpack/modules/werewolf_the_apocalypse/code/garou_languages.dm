@@ -22,7 +22,7 @@
 	name = "Garou Tongue"
 	desc = "A guttural and pitchy language also known as 'High Tongue', the language of the Garou capable of being learned and spoken by Garou. It is hard to speak in human form."
 	key = "w"
-	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
+	flags = LANGUAGE_TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	space_chance = 40
 	syllables = list(
 		"to", "lo", "of", "li", "ka", "ha", "he", "ah", "ny", "ro",
@@ -39,7 +39,7 @@
 	name = "Primal Tongue"
 	desc = "A language inherently known to all Garou breeds at birth, able to be spoken only in Lupus, Crinos and Hispo forms."
 	key = "p"
-	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
+	flags = LANGUAGE_TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	space_chance = 40
 	syllables = list (
 		"gra", "grr", "gru", "gha", "sha", "zho", "yip", "whu", "zar", "ruk",

@@ -67,3 +67,13 @@ ROLEPLAY_ONLY_MERITS 1
 ## Configs for the type of attack we use when we click at a ranged distance. Only one can be enabled at a time.
 #DIRECTIONAL_COMBAT
 SWING_COMBAT
+
+## Configs for passive bloodpool drain, if this is enabled, then the below timer can be adjusted to make vampires and ghouls lose 1 blood point when the timer is up
+#PASSIVE_BP_DRAIN
+PASSIVE_BP_DRAIN_TIMER 12000
+
+## Configs for which Discipline keybinds are enabled (unbound by default) and how they behave
+## Default keybinds where you select a Discipline then activate a power
+DISCIPLINE_KEYBINDS
+## Gives every single power a keybind, will majorly clutter the keybinds menu if uncommented in exchange for being very convenient for players
+#INDIVIDUAL_POWER_KEYBINDS

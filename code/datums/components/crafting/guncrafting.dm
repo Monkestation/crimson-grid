@@ -16,7 +16,7 @@
 	desc = "A prototype modular receiver and trigger assembly for a firearm."
 	icon = 'icons/obj/weapons/improvised.dmi'
 	icon_state = "receiver"
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5.5, /datum/material/cardboard = SHEET_MATERIAL_AMOUNT)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5.55, /datum/material/cardboard = SHEET_MATERIAL_AMOUNT, /datum/material/plastic = SMALL_MATERIAL_AMOUNT)
 
 /* // DARKPACK EDIT REMOVAL
 /obj/item/weaponcrafting/receiver/create_slapcraft_component()
@@ -30,7 +30,7 @@
 /obj/item/weaponcrafting/stock
 	name = "rifle stock"
 	desc = "A classic rifle stock that doubles as a grip, roughly carved out of wood."
-	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 8)
+	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 8, /datum/material/plastic = SMALL_MATERIAL_AMOUNT)
 	resistance_flags = FLAMMABLE
 	icon = 'icons/obj/weapons/improvised.dmi'
 	icon_state = "riflestock"

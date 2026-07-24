@@ -63,25 +63,23 @@
 		var/mob/living/carbon/human/human_target = target
 		var/disabled_any = FALSE
 
-		for(var/obj/item/I in human_target.get_head_slots())
-			if(istype(I, /obj/item/radio/headset/darkpack))
-				var/obj/item/radio/headset/darkpack/radio = I
-				if(radio.is_on())
-					radio.set_on(FALSE)
-					human_target.visible_message(
-						span_warning("[human_target]'s [I.name] crackles violently and powers down!"),
-						span_warning("Your [I.name] crackles violently and powers down!"),
-					)
-					playsound(human_target, 'sound/effects/sparks/sparks4.ogg', 60, TRUE)
-					disabled_any = TRUE
-				else
-					radio.set_on(TRUE)
-					human_target.visible_message(
-						span_warning("Electricity surges into [human_target]'s [I.name] - turning it on!"),
-						span_warning("Electricity surges into your radio - turning it on!"),
-					)
-					playsound(human_target, 'sound/effects/sparks/sparks4.ogg', 60, TRUE)
-					disabled_any = TRUE
+		for(var/obj/item/radio/headset/darkpack/radio in human_target.get_contents())
+			if(radio.is_on())
+				radio.set_on(FALSE)
+				human_target.visible_message(
+					span_warning("[human_target]'s [radio.name] crackles violently and powers down!"),
+					span_warning("Your [radio.name] crackles violently and powers down!"),
+				)
+				playsound(human_target, 'sound/effects/sparks/sparks4.ogg', 60, TRUE)
+				disabled_any = TRUE
+			else
+				radio.set_on(TRUE)
+				human_target.visible_message(
+					span_warning("Electricity surges into [human_target]'s [radio.name] - turning it on!"),
+					span_warning("Electricity surges into your radio - turning it on!"),
+				)
+				playsound(human_target, 'sound/effects/sparks/sparks4.ogg', 60, TRUE)
+				disabled_any = TRUE
 
 		if(disabled_any)
 			var/datum/effect_system/basic/spark_spread/spark_system = new(get_turf(human_target), 5, 1)

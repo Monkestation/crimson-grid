@@ -7,13 +7,12 @@
 	config_tag = "JANITOR"
 	outfit = /datum/outfit/job/vampire/janitor
 	job_flags = CITY_JOB_FLAGS
-	department_for_prefs = /datum/job_department/city_services
 	departments_list = list(
 		/datum/job_department/city_services,
 	)
 	display_order = JOB_DISPLAY_ORDER_STREETJAN
 	description = "Keep the streets clean. You are paid to keep your mouth shut about the things you see."
-	minimal_masquerade = 0
+	minimum_masquerade = 0
 
 /datum/outfit/job/vampire/janitor
 	name = JOB_STREET_JANITOR

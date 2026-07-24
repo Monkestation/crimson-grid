@@ -23,8 +23,8 @@
 	abstract_type = /obj/item/occult_artifact
 	w_class = WEIGHT_CLASS_SMALL
 	var/mob/living/owner
-	var/true_name = "artifact"
-	var/true_desc = "Debug"
+	var/true_name
+	var/true_desc
 	var/identified = FALSE
 	var/research_value = 0
 	var/can_be_identified_without_ritual = TRUE
@@ -36,10 +36,16 @@
 
 	var/datum/storyteller_roll/identify_occult/identify_roll
 
+/obj/item/occult_artifact/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/selling, 200, "artifact", FALSE, 0, 10, TRUE)
+
 /obj/item/occult_artifact/proc/identify(mob/living/artifact_identifier)
 	if(!identified)
-		name = true_name
-		desc = true_desc
+		if(true_name)
+			name = true_name
+		if(true_desc)
+			desc = true_desc
 		identified = TRUE
 		if(src in artifact_identifier?.get_all_contents())
 			bind(artifact_identifier)
@@ -112,23 +118,46 @@
 	else
 		to_chat(artifact_identifier, span_warning("You stop examining [src]."))
 
+
 /obj/effect/spawner/random/occult
 	name = "occult spawner"
 	icon = 'modular_darkpack/modules/occult_artifacts/icons/artifacts.dmi'
 	icon_state = "art_rand"
 
+
 /obj/effect/spawner/random/occult/artifact
 	name = "random occult artifact"
-	loot_subtype_path = /obj/item/occult_artifact
+	loot = list(
+		/obj/effect/spawner/random/occult/artifact/vampire_only = 55,
+		/obj/effect/spawner/random/occult/artifact/werewolf_only = 45,
+	)
 
 /obj/effect/spawner/random/occult/artifact/Initialize(mapload)
-	spawn_loot_chance = CONFIG_GET(number/artifact_random_probability)
+	if(isnull(spawn_loot_chance))
+		spawn_loot_chance = CONFIG_GET(number/artifact_random_probability)
 	. = ..()
+
 
 /obj/effect/spawner/random/occult/artifact/vampire_only
 	name = "random vampire artifact"
+	loot = null
 	loot_subtype_path = /obj/item/occult_artifact/vampire
+
 
 /obj/effect/spawner/random/occult/artifact/werewolf_only
 	name = "random garou fetish"
-	loot_subtype_path = /obj/item/occult_artifact/werewolf
+	loot = list(
+		/obj/item/occult_artifact/werewolf/nyxs_bangle = 45,
+		/obj/item/occult_artifact/werewolf/dagger_of_retribution = 45,
+		/obj/effect/spawner/random/occult/artifact/klaive = 10,
+	)
+
+
+/obj/effect/spawner/random/occult/artifact/klaive
+	name = "random klaive"
+	loot = list(
+		/obj/item/occult_artifact/werewolf/klaive = 32,
+		/obj/item/occult_artifact/werewolf/klaive/bane = 32,
+		/obj/item/occult_artifact/werewolf/klaive/karambit = 32,
+		/obj/item/occult_artifact/werewolf/klaive/grand = 4, // Idk this thing is mega scary and mabye even doesnt belong here.
+	)

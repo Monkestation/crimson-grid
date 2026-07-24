@@ -2,7 +2,7 @@
 	name = "French"
 	desc = "A romantic and refined language spoken in France and beyond."
 	key = "f"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 40
 	syllables = list(
 		"ou", "on", "an", "in", "un", "ai", "oi", "au", "eu", "ch",

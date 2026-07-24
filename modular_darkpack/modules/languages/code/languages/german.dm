@@ -2,7 +2,7 @@
 	name = "German"
 	desc = "A precise and powerful language spoken in Germany and beyond."
 	key = "g"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 30
 	syllables = list(
 		"al", "an", "auf", "aus", "bei", "da", "de", "di", "do", "du",

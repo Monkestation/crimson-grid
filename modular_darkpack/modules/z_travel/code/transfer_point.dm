@@ -72,10 +72,12 @@ GLOBAL_LIST_EMPTY(unallocted_transfer_points)
 	var/moved_dir = get_dir(arrived, src)
 	var/turf/exit_turf
 	exit_turf = get_open_turf_in_dir(exit, moved_dir)
-	if(exit_turf)
-		return arrived.forceMove(exit_turf)
+	if(!exit_turf)
+		exit_turf = get_turf(exit)
 
-	return arrived.forceMove(get_turf(exit))
+	var/atom/movable/moving_stuff = arrived.get_teleport_move_affected()
+	for(var/atom/movable/moving in moving_stuff)
+		moving.forceMove(exit_turf)
 
 // Use inside the umbra. visible
 /obj/transfer_point_vamp/umbral

@@ -363,11 +363,15 @@
 
 #define CAINES_FURY_PROTECTION 15 // borrowed from fortitude
 
+// Halo behavoir is copy pasted from /datum/status_effect/cult_halo
 /datum/status_effect/armor_of_caines_fury
 	id = "armor_of_caines_fury"
 	status_type = STATUS_EFFECT_REPLACE
 	alert_type = null
+	tick_interval = STATUS_EFFECT_NO_TICK
 	var/successes = 1
+	/// The actual halo applied to the mob
+	VAR_PRIVATE/mutable_appearance/halo_overlay
 
 /datum/status_effect/armor_of_caines_fury/on_creation(mob/living/new_owner, successes_count = 1)
 	successes = successes_count
@@ -378,20 +382,21 @@
 	if (!.)
 		return
 
-	if (ishuman(owner))
-		var/mob/living/carbon/human/H = owner
-		RegisterSignal(H, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(reduce_damage))
-		H.AddElement(/datum/element/armor_of_caines_fury_halo, initial_delay = 0 SECONDS)
-		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, DISCIPLINE_TRAIT(type))
+	if(ismob(owner))
+		return FALSE
+
+	RegisterSignal(owner, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(reduce_damage))
+	RegisterSignal(owner, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_halo))
+	refresh_halo()
 
 /datum/status_effect/armor_of_caines_fury/on_remove()
 	. = ..()
 
-	if (ishuman(owner))
-		var/mob/living/carbon/human/H = owner
-		UnregisterSignal(H, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
-		H.RemoveElement(/datum/element/armor_of_caines_fury_halo)
-		REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, DISCIPLINE_TRAIT(type))
+	UnregisterSignal(owner, list(COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, COMSIG_ATOM_UPDATE_OVERLAYS))
+	owner.update_appearance(UPDATE_OVERLAYS)
+
+	REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, TRAIT_STATUS_EFFECT(id))
+	halo_overlay = null
 
 /datum/status_effect/armor_of_caines_fury/proc/reduce_damage(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
 	SIGNAL_HANDLER
@@ -401,37 +406,27 @@
 	var/protection = clamp(successes * CAINES_FURY_PROTECTION, 0, 90) // we don't yet have a comparison for what 1 point of armor means in v20 vs ingame, so this is just a percent reduction for now
 	damage_mods += (100 - protection) / 100
 
-#undef CAINES_FURY_PROTECTION
+/datum/status_effect/armor_of_caines_fury/proc/refresh_halo()
+	ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, TRAIT_STATUS_EFFECT(id))
+	owner.update_appearance(UPDATE_OVERLAYS)
+	new /obj/effect/temp_visual/cult/sparks(get_turf(owner), owner.dir)
 
-// Halo stuff for Armor of Caine's Fury
-/datum/element/armor_of_caines_fury_halo
-
-/datum/element/armor_of_caines_fury_halo/Attach(datum/target, initial_delay = 20 SECONDS)
-	. = ..()
-	if (!isliving(target))
-		return ELEMENT_INCOMPATIBLE
-
-	addtimer(CALLBACK(src, PROC_REF(set_halo), target), initial_delay)
-
-/datum/element/armor_of_caines_fury_halo/proc/set_halo(mob/living/target)
+/datum/status_effect/armor_of_caines_fury/proc/add_halo(datum/source, list/overlay_list)
 	SIGNAL_HANDLER
-	var/mutable_appearance/new_halo_overlay = mutable_appearance('icons/mob/effects/halo.dmi', "halo[rand(1, 6)]", -HALO_LAYER)
-	if (ishuman(target))
-		var/mob/living/carbon/human/human_parent = target
-		new /obj/effect/temp_visual/cult/sparks(get_turf(human_parent), human_parent.dir)
-		human_parent.overlays_standing[HALO_LAYER] = new_halo_overlay
-		human_parent.apply_overlay(HALO_LAYER)
-	else
-		target.add_overlay(new_halo_overlay)
 
-/datum/element/armor_of_caines_fury_halo/Detach(mob/living/target, ...)
-	if (ishuman(target))
-		var/mob/living/carbon/human/human_parent = target
-		human_parent.remove_overlay(HALO_LAYER)
-		human_parent.update_body()
-	else
-		target.cut_overlay(HALO_LAYER)
-	return ..()
+	halo_overlay ||= mutable_appearance('icons/mob/effects/halo.dmi', "halo[rand(1, 6)]", -HALO_LAYER)
+	halo_overlay.pixel_z = 0
+	halo_overlay.pixel_w = 0
+	if (ishuman(owner))
+		var/mob/living/carbon/human/human_parent = owner
+		human_parent.apply_height(halo_overlay, UPPER_BODY)
+
+		var/obj/item/bodypart/head/human_head = human_parent.get_bodypart(BODY_ZONE_HEAD)
+		human_head?.worn_head_offset?.apply_offset(halo_overlay)
+
+	overlay_list += halo_overlay
+
+#undef CAINES_FURY_PROTECTION
 
 // this is basically just potence 5 with stat bonuses, used potence as a baseline because of the 'makes for significant damage' wording in v20 above
 /datum/discipline_power/valeren/vengeance_of_samiel

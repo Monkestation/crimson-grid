@@ -17,15 +17,14 @@
 	outfit = /datum/outfit/job/vampire/lasombraprim
 
 	display_order = JOB_DISPLAY_ORDER_LASOMBRA
-	department_for_prefs = /datum/job_department/camarilla
 	departments_list = list(
-		/datum/job_department/camarilla,
 		/datum/job_department/church,
+		/datum/job_department/camarilla,
 	)
 
 	minimal_generation = 10
 	minimum_immortal_age = 100
-	minimal_masquerade = 5
+	minimum_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_LASOMBRA)
 

@@ -23,18 +23,18 @@
 /obj/item/occult_artifact/werewolf/nyxs_bangle/process(seconds_per_tick)
 	. = ..()
 
-	var/mob/living/carbon/carbon_owner = astype(owner)
-	if(identified && carbon_owner)
+	var/mob/living/carbon/human/human_owner = astype(owner)
+	if(identified && human_owner)
 		var/turf/owner_turf = get_turf(owner)
 		var/light_amount = owner_turf.get_lumcount()
 
 		if(light_amount <= 0.2)
-			if(src == carbon_owner.gloves || src == carbon_owner.get_active_held_item() || src == carbon_owner.get_inactive_held_item())
-				carbon_owner.alpha = max(carbon_owner.alpha-12.75, 25.5)
+			if(src == human_owner.gloves || src == human_owner.get_active_held_item() || src == human_owner.get_inactive_held_item())
+				human_owner.alpha = max(human_owner.alpha-12.75, 25.5)
 			else
-				carbon_owner.alpha = min (carbon_owner.alpha+25.5, 255)
+				human_owner.alpha = min (human_owner.alpha+25.5, 255)
 		else
-			carbon_owner.alpha = min (carbon_owner.alpha+25.5, 255)
+			human_owner.alpha = min (human_owner.alpha+25.5, 255)
 
 /obj/item/occult_artifact/werewolf/nyxs_bangle/proc/get_held_mob()
 	if(isnull(loc))

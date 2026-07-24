@@ -87,7 +87,7 @@
 	target.physique = (chosen_physique == "Masculine") ? MALE : FEMALE
 	target.dna.update_ui_block(/datum/dna_block/identity/gender)
 	target.update_body(is_creating = TRUE) // or else physique won't change properly
-	target.update_mutations_overlay() //(hulk male/female)
+	target.update_appearance(UPDATE_OVERLAYS) //(hulk male/female)
 	target.update_clothing(ITEM_SLOT_ICLOTHING) // update gender shaped clothing
 	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 	playsound(target, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, TRUE)
@@ -199,7 +199,7 @@
 	target.skin_tone = new_s_tone
 	target.dna.update_ui_block(/datum/dna_block/identity/skin_tone)
 	target.update_body(is_creating = TRUE)
-	target.update_mutations_overlay()
+	target.update_appearance(UPDATE_OVERLAYS)
 	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 	playsound(target, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, TRUE)
 	to_chat(owner, span_notice("You finish altering the race of [target]."))

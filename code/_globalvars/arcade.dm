@@ -61,6 +61,10 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 	/obj/item/toy/plush/abductor/agent = 2,
 	/obj/item/toy/plush/shark = 2,
 	/obj/item/toy/plush/monkey = 2,
+	// DARKPACK EDIT ADD START - TOYS - (Plushes.dm addition for mapping)
+	/obj/item/toy/plush/goatplushie = 5,
+	/obj/item/toy/plush/argemia = 5,
+	// DARKPACK EDIT ADD END
 	/obj/item/storage/belt/military/snack/full = 2,
 	/obj/item/toy/brokenradio = 2,
 	/obj/item/toy/braintoy = 2,

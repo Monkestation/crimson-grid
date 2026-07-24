@@ -30,7 +30,7 @@
 	var/nsfw_content = user.client?.prefs.read_preference(/datum/preference/toggle/nsfw_content_pref)
 	var/flavor_text_nsfw = ""
 	var/ooc_notes = ""
-	var/show_flavor_text_when_masked = user.client?.prefs.read_preference(/datum/preference/toggle/show_flavor_text_when_masked)
+	var/show_flavor_text_when_masked = holder.client?.prefs.read_preference(/datum/preference/toggle/show_flavor_text_when_masked)
 
 	if(ishuman(holder))
 		var/mob/living/carbon/human/holder_human = holder

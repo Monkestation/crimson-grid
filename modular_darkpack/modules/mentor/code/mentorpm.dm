@@ -1,7 +1,6 @@
 //shows a list of clients we could send PMs to, then forwards our choice to cmd_Mentor_pm
-/client/proc/cmd_mentor_pm_panel() // We're not using this and I'm debating removing the code as it's dead and useless. We don't need mentors PMing people out of the blue. That's not really how we operate.
-	set category = "Mentor"
-	set name = "Mentor PM"
+// We're not using this and I'm debating removing the code as it's dead and useless. We don't need mentors PMing people out of the blue. That's not really how we operate.
+GAME_VERB_PROC(/client, cmd_mentor_pm_panel, "Mentor PM", "Mentor")
 	if(!is_mentor())
 		to_chat(src, span_danger("Error: Mentor-PM-Panel: Only Mentors and Admins may use this command."))
 		return

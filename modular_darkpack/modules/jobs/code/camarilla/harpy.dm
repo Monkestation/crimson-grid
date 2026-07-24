@@ -17,13 +17,12 @@
 	outfit = /datum/outfit/job/vampire/harpy
 
 	display_order = JOB_DISPLAY_ORDER_HARPY
-	department_for_prefs = /datum/job_department/camarilla
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
 
 	minimal_generation = 11	//Uncomment when players get exp enough
-	minimal_masquerade = 5
+	minimum_masquerade = 5
 
 	allowed_splats = list(SPLAT_KINDRED)
 

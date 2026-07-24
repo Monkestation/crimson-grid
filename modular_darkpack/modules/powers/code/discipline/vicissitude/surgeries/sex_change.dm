@@ -59,7 +59,7 @@
 	patient.physique = (chosen_physique == "Masculine") ? MALE : FEMALE
 	patient.dna.update_ui_block(/datum/dna_block/identity/gender)
 	patient.update_body(is_creating = TRUE) // or else physique won't change properly
-	patient.update_mutations_overlay()
+	patient.update_appearance(UPDATE_OVERLAYS)
 	patient.update_clothing(ITEM_SLOT_ICLOTHING) // update gender shaped clothing
 	SEND_SIGNAL(surgeon, COMSIG_MASQUERADE_VIOLATION)
 	playsound(patient, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, TRUE)

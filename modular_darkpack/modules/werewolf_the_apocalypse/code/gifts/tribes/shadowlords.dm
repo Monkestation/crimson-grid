@@ -78,6 +78,8 @@
 		return
 
 	var/mob/living/target = target_ref?.resolve()
+	if(QDELETED(target))
+		return
 
 	highlight = image(loc = target)
 	highlight.appearance = target.appearance

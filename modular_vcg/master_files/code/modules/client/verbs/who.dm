@@ -3,10 +3,8 @@
 	var/awho_count_since = 0
 	COOLDOWN_DECLARE(adminwho_alert_cooldown)
 
-/client/adminwho()
-	set category = "Admin"
-	set name = "Adminwho"
 
+/* CRIMSON EDIT REMOVAL - here lies adminwho. it's been moved to /tg/ code in a modular edit because we can't use the verb macro and override at the same time.
 	. = ..()
 
 	if(COOLDOWN_FINISHED(src, adminwho_alert_cooldown) && !is_admin(src))
@@ -19,3 +17,4 @@
 		COOLDOWN_START(src, adminwho_alert_cooldown, 1 MINUTES)
 
 	awho_count_since++
+*/

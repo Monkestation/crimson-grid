@@ -33,7 +33,7 @@ GLOBAL_LIST_INIT(all_brandnames, brand_list_by_name())
 	RegisterSignal(target, COMSIG_ATOM_EXAMINE_MORE, PROC_REF(on_examine_more))
 
 /datum/element/corp_label/Detach(datum/target)
-	UnregisterSignal(target, list(COMSIG_ATOM_EXAMINE))
+	UnregisterSignal(target, list(COMSIG_ATOM_EXAMINE, COMSIG_ATOM_EXAMINE_MORE))
 	return ..()
 
 /datum/element/corp_label/proc/on_examine(datum/source, mob/user, list/examine_list)

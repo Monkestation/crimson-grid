@@ -104,7 +104,7 @@
 	desc = "A set of sensory tendrils that swiftly assess the health conditions of a patient"
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "hivenode"
-	advanced = TRUE
+	scanpower = SCANPOWER_ADVANCED
 
 /obj/item/shockpaddles/cyborg/vicissitude
 	name = "electrocyte stack"

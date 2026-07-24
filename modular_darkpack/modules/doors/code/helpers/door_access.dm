@@ -6,6 +6,7 @@
 
 /obj/effect/mapping_helpers/door/access/payload(obj/structure/vampdoor/payload)
 	payload.lock_id = lock_id
+	GLOB.city_door_lock_ids |= lock_id
 
 /obj/effect/mapping_helpers/door/access/all
 	name = "all access"

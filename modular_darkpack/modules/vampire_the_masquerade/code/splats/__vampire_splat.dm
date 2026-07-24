@@ -2,6 +2,15 @@
 	abstract_type = /datum/splat/vampire
 
 	power_type = /datum/discipline
+	COOLDOWN_DECLARE(passive_bp_drain_cooldown)
+
+
+/datum/splat/vampire/splat_life(seconds_per_tick)
+	if(CONFIG_GET(flag/passive_bp_drain))
+		if(COOLDOWN_FINISHED(src, passive_bp_drain_cooldown))
+			owner.adjust_blood_pool(-1)
+			COOLDOWN_START(src, passive_bp_drain_cooldown, CONFIG_GET(number/passive_bp_drain_timer))
+	return
 
 /datum/splat/vampire/proc/get_discipline_power(datum/discipline_power/discipline_power_type)
 	RETURN_TYPE(/datum/discipline_power)
@@ -66,4 +75,25 @@
 		return FALSE
 
 	found_action.discipline.set_level(new_level)
+	return TRUE
+
+/datum/splat/vampire/get_selected_power()
+	RETURN_TYPE(/datum/action/discipline)
+
+	return selected_power
+
+/datum/splat/vampire/set_selected_power(slot)
+	if (!slot)
+		// Just try to unselect
+		if (!get_selected_power())
+			return FALSE
+		get_selected_power().unselect(FALSE)
+		return TRUE
+
+	if (length(powers) < slot)
+		return FALSE
+	get_selected_power()?.unselect()
+	selected_power = powers[slot]
+	get_selected_power()?.select()
+
 	return TRUE

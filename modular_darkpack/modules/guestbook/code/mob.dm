@@ -1,8 +1,5 @@
 ///Shows guestbook tgui window
-/mob/verb/guestbook()
-	set name = "Guestbook"
-	set category = "IC"
-	set desc = "View your character's Guestbook."
+GAME_VERB_DESC(/mob, guestbook, "Guestbook", "View your character's Guestbook.", "IC")
 	if(!mind)
 		var/fail_message = "You have no mind!"
 		if(isobserver(src))

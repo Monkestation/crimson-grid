@@ -2,7 +2,7 @@
 	name = "Russian"
 	desc = "The language of Mother Russia."
 	key = "r"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 40
 	syllables = list(
 		"da", "net", "blin", "suka", "ho", "ya", "ty", "on", "ona", "vy", "oni",

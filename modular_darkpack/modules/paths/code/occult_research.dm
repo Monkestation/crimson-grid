@@ -39,11 +39,7 @@ SUBSYSTEM_DEF(occult_research)
 		COOLDOWN_START(src, research_notification_cooldown, 10 MINUTES)
 		to_chat(user, span_notice("Your occult studies have yielded [research_gain] research points. Total: [user.research_points]"))
 
-/mob/living/carbon/human/proc/check_research_points()
-	set name = "Check Research Points"
-	set desc = "Check your current research point balance."
-	set hidden = TRUE
-
+GAME_VERB_PROC_DESC(/mob/living/carbon/human, check_research_points, "Check Research Points", "Check your current research point balance.", null)
 	if(!get_discipline(/datum/discipline/thaumaturgy))
 		to_chat(src, span_alert("You lack occult knowledge."))
 		return

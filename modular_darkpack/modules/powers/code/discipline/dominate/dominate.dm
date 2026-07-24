@@ -12,6 +12,10 @@
 	if(level >= 4)
 		RegisterSignal(owner, COMSIG_MOB_EMOTE, PROC_REF(on_snap))
 
+/datum/discipline/dominate/post_loss()
+	. = ..()
+	UnregisterSignal(owner, COMSIG_MOB_EMOTE)
+
 /datum/discipline/dominate/proc/on_snap(atom/source, datum/emote/emote_args)
 	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, PROC_REF(handle_snap), source, emote_args)
@@ -105,7 +109,6 @@
 			return TRUE
 
 	var/theirpower = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
-	var/mypower = SSroll.storyteller_roll_datum(owner, target, difficulty = theirpower, applic_stats = owner_stat, numerical = TRUE)
 
 	//tremere have built-in safeguards to easily dominate their stone servitors
 	if(HAS_TRAIT(target, TRAIT_WEAK_TO_DOMINATE))
@@ -113,6 +116,15 @@
 
 	if(HAS_TRAIT(target, TRAIT_WEAK_WILLED))
 		theirpower -= 2
+
+	if((!(owner.obscured_slots & HIDEFACE))&(HAS_TRAIT(owner, TRAIT_DISFIGURED_APPEARANCE))) // Are we visibly disfigured?
+		theirpower += 2
+
+	if(!get_kindred_splat(target)) // Is our target mortal?
+		if(HAS_TRAIT(owner, TRAIT_GRAVE_SMELL)) // Are we stinky?
+			theirpower += 1
+		if((HAS_TRAIT(owner, TRAIT_GLOWING_EYES)) && (!owner.is_eyes_covered()) && (STAT_INTIMIDATION in owner_stat)) // Are we intimidating a mortal with uncovered eyes?
+			theirpower -= 1
 
 	//wearing dark sunglasses makes it harder for the Dominator to capture the victim's gaze and raises difficulty -- V20 'Dominate' section titled 'Eye Contact'
 	var/total_tint = 0
@@ -129,6 +141,9 @@
 	//if anyone else tries to dominate my conditioned servant its much harder for them but not for me
 	if(target.conditioner?.resolve())
 		theirpower += 3
+
+	// This var needs to go after everything that changes theirpower.
+	var/mypower = SSroll.storyteller_roll_datum(owner, target, difficulty = theirpower, applic_stats = owner_stat, numerical = TRUE)
 
 	//i've botched so now this person is immune to dominate for the rest of the round
 	if(mypower < 0)

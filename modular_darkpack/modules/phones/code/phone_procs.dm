@@ -18,30 +18,31 @@
 			contacts |= new_phone_contact
 
 // Gets the displayed contact's name if they are in contacts or published. If not, show the number.
-/obj/item/smartphone/proc/get_number_contact_name()
+/obj/item/smartphone/proc/get_number_contact_name(contact_num)
 	var/output_user
-	var/calling = incoming_phone_number
-	if(dialed_number)
-		calling = dialed_number
+	if(!contact_num)
+		CRASH("Trying to get a contact number with a bad input.")
+
 	// Default to the contact name calling the phone.
 	for(var/datum/phonecontact/contact in contacts)
-		if(contact.number == calling)
+		if(contact.number == contact_num)
 			output_user = contact.name
 	// If we dont have a contact name, refer to the published listings.
 	if(!output_user)
 		for(var/contact in SSphones.published_phone_numbers)
-			if(calling == SSphones.published_phone_numbers[contact])
+			if(contact_num == SSphones.published_phone_numbers[contact])
 				output_user = contact
 	// Not in our contacts or published listings? Then resolve to showing the phone number.
 	if(!output_user)
-		output_user = "+" + calling
+		output_user = "+" + contact_num
 	return output_user
 
 // Helper proc to add a history log to the phone's records.
 /obj/item/smartphone/proc/add_phone_call_history(call_type, call_type_tooltip)
 	var/datum/phone_history/new_contact = new()
-	new_contact.name = get_number_contact_name()
-	new_contact.number = dialed_number ? dialed_number : incoming_phone_number
+	var/caller_num = dialed_number ? dialed_number : incoming_phone_number
+	new_contact.name = get_number_contact_name(caller_num)
+	new_contact.number = caller_num
 	new_contact.call_type = call_type
 	new_contact.call_type_tooltip = call_type_tooltip
 	new_contact.time = server_timestamp("hh:mm:ss", ic_time = TRUE)
@@ -157,6 +158,18 @@
 		balloon_alert_to_viewers(pick("zzZz!", "ZZZT!", "zZzZ!", "Zzz...", "zzZ...", "ZzZZT!"), vision_distance = COMBAT_MESSAGE_RANGE)
 	if(ringer)
 		playsound(src, call_sound, 50, TRUE, 0, 2)
+
+// App really ought to be a datum. Whateverrrrr
+/obj/item/smartphone/proc/receive_notification(app, title, body)
+	if(vibration)
+		animate(src, pixel_w = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+		for(var/i in 1 to VIBRATION_LOOP_DURATION / (0.2 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
+			animate(pixel_w = -2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+			animate(pixel_w = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+		animate(pixel_w = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+	if(ringer)
+		playsound(src, 'modular_darkpack/modules/phones/sounds/text_receive.ogg', 50, TRUE, 0, 2) // This could prob use a better notification
+	balloon_alert_to_viewers("[app]:[title]", vision_distance = SAMETILE_MESSAGE_RANGE)
 
 #undef VIBRATION_LOOP_DURATION
 

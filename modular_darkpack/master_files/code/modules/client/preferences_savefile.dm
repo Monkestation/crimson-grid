@@ -2,6 +2,15 @@
 	// List of known guestbook names we have saved
 	var/list/guestbook_names = list()
 
+	var/list/preference_storyteller_stats = list()
+	// Associative list of disciplines and their current level. like: list("/datum/discipline/animalism" = 2)
+	var/list/discipline_levels = list()
+	// Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
+	var/list/alt_job_titles = list()
+	/// Whether this player is whitelisted to bypass discipline sheet validation limits
+	var/discipline_trusted = FALSE
+
+
 /datum/preferences/load_preferences()
 	discipline_trusted = savefile.get_entry("discipline_trusted", FALSE) // deserialization and its consequences
 	. = ..()

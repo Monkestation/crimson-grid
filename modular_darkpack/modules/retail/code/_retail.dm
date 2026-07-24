@@ -27,6 +27,8 @@
 	build_inventory()
 
 /obj/structure/retail/proc/cleanup_owner()
+	SIGNAL_HANDLER
+
 	my_owner = null
 
 //whether or not the user can shop at this store.

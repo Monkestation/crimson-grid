@@ -17,15 +17,14 @@
 	outfit = /datum/outfit/job/vampire/malkav
 
 	display_order = JOB_DISPLAY_ORDER_MALKAVIAN
-	department_for_prefs = /datum/job_department/camarilla
 	departments_list = list(
-		/datum/job_department/camarilla,
 		/datum/job_department/clinic,
+		/datum/job_department/camarilla,
 	)
 
 	minimal_generation = 10
 	minimum_immortal_age = 50 // Actually Malkavian Primo is whoever showed for work that day. Crazy bunch.
-	minimal_masquerade = 5
+	minimum_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN)
 

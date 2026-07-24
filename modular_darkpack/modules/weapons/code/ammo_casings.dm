@@ -159,7 +159,7 @@
 	name = "bolt"
 	desc = "Welcome to the Middle Ages!"
 	projectile_type = /obj/projectile/bullet/crossbow_bolt
-	caliber = CALIBER_FOAM
+	caliber = CALIBER_CROSSBOWBOLT
 	icon_state = "arrow"
 	icon = 'modular_darkpack/modules/weapons/icons/ammo.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')

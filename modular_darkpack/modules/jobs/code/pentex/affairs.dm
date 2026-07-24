@@ -17,12 +17,11 @@
 	outfit = /datum/outfit/job/vampire/affairs
 
 	allowed_splats = list(SPLAT_GAROU)
-	minimal_masquerade = 5
+	minimum_masquerade = 5
 	// minimal_renown_rank = 3
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS)
 
 	display_order = JOB_DISPLAY_ORDER_AFFAIRS
-	department_for_prefs = /datum/job_department/pentex
 	departments_list = list(
 		/datum/job_department/pentex,
 	)

@@ -10,7 +10,6 @@
 	outfit = /datum/outfit/job/vampire/clinic_doctor
 
 	display_order = JOB_DISPLAY_ORDER_DOCTOR
-	department_for_prefs = /datum/job_department/clinic
 	departments_list = list(
 		/datum/job_department/clinic,
 	)

@@ -94,6 +94,14 @@
 /datum/action/discipline/IsAvailable(feedback)
 	return discipline.current_power.can_activate_untargeted(feedback)
 
+/datum/action/discipline/proc/trigger_level(mob/user, level, trigger_flags)
+	// This proc is for specific levels only, unlike switch_level() it should never roll over to 1 or the max level
+	if (discipline.level < level || level < 0)
+		return
+
+	switch_level(level - discipline.level_casting, TRUE)
+	return Trigger(user, trigger_flags)
+
 /datum/action/discipline/Trigger(mob/clicker, trigger_flags)
 	. = ..()
 	if(!.)
@@ -180,7 +188,7 @@
 		return
 
 	//actually try to use the Discipline on the target
-	spawn()
+	ASYNC
 		if (discipline.current_power.try_activate(target))
 			end_targeting()
 
@@ -198,6 +206,18 @@
 	RegisterSignal(owner, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
 	targeting = TRUE
 	client.mouse_pointer_icon = 'modular_darkpack/modules/deprecated/icons/effects/mouse_pointers/discipline.dmi'
+
+/datum/action/discipline/proc/select()
+	background_icon_state = "bg_discipline_selected"
+	build_all_button_icons()
+	SEND_SOUND(owner, sound('modular_darkpack/modules/deprecated/sounds/highlight.ogg', volume = 50))
+
+/datum/action/discipline/proc/unselect(swapping = TRUE)
+	background_icon_state = "bg_discipline"
+	build_all_button_icons()
+	// If you're activating another at the same time, this isn't necessary
+	if (!swapping)
+		SEND_SOUND(owner, sound('modular_darkpack/modules/deprecated/sounds/highlight.ogg', volume = 50))
 
 /atom/movable/screen/movable/action_button/Click(location, control, params)
 	if(istype(linked_action, /datum/action/discipline))

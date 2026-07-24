@@ -21,7 +21,7 @@
 
 /obj/effect/decal/dirt_pile/Initialize(mapload)
 	. = ..()
-	update_overlays()
+	update_appearance(UPDATE_OVERLAYS)
 
 /obj/effect/decal/dirt_pile/update_overlays()
 	. = ..()

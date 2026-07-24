@@ -41,6 +41,9 @@
 /obj/structure/vampdoor/Initialize(mapload)
 	. = ..()
 
+	if(mapload)
+		GLOB.city_door_lock_ids |= lock_id
+
 	register_context()
 
 	var/static/list/loc_connections = list(
@@ -118,15 +121,17 @@
 	. = ..()
 	fix_door()
 
-/obj/structure/vampdoor/proc/break_door(mob/user)
+/obj/structure/vampdoor/proc/break_door(mob/living/user)
 	if(door_broken)
 		return FALSE
 	playsound(get_turf(src), 'modular_darkpack/master_files/sounds/effects/door/get_bent.ogg', 100, FALSE)
 	var/obj/item/shield/door/broken_door = new(get_turf(src))
 	broken_door.icon_state = base_icon_state
 	if(user)
+		var/strength_dots = user.st_get_stat(STAT_STRENGTH)
+		var/throw_distance = clamp(rand(strength_dots - 1, strength_dots + 1) - bash_successes_needed, 0, 5)
 		var/atom/throw_target = get_edge_target_turf(src, user.dir)
-		broken_door.throw_at(throw_target, rand(2, 4), 4, user)
+		broken_door.throw_at(throw_target, throw_distance, 4, user)
 	name = "door frame"
 	desc = "An empty door frame. Someone removed the door by force. A special door repair kit should be able to fix this."
 	door_broken = TRUE

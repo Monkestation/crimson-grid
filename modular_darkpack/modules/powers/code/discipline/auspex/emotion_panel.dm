@@ -1,9 +1,5 @@
 ///Shows a tgui window with memories
-/mob/verb/emotion_panel()
-	set name = "Emotion Panel"
-	set category = "IC"
-	set desc = "Change your character's emotions."
-
+GAME_VERB_DESC(/mob, emotion_panel, "Emotion Panel", "Change your character's emotions.", "IC")
 	if(HAS_TRAIT(src, TRAIT_FORCED_EMOTION))
 		to_chat(src, span_warning("You cannot change emotions right now."))
 		return FALSE

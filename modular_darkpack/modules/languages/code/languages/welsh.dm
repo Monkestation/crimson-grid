@@ -1,7 +1,7 @@
 /datum/language/welsh
 	name = "Welsh"
 	desc = "The flowing language spoken by the Welsh."
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "W"
 	space_chance = 30
 	syllables = list(

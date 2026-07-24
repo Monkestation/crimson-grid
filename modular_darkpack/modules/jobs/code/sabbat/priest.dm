@@ -9,13 +9,12 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	job_flags = CITY_JOB_FLAGS
 	exp_required_type_department = EXP_TYPE_SABBAT
-	department_for_prefs = /datum/job_department/sabbat
 	departments_list = list(
 		/datum/job_department/sabbat,
 	)
 
 	description = "You are the Sabbat Priest. You are charged with the supervision of the ritae of your pack. You also serve as the second-in-command to the Ductus. Consecrate the Vaulderie for new Sabbat, consult your tome for rites to aid your pack, and ensure the Sabbat live on in Caine's favor. NOTE: BY PLAYING THIS ROLE YOU AGREE TO AND HAVE READ THE SERVER'S RULES ON ESCALATION FOR ANTAGS. KEEP THINGS INTERESTING AND ENGAGING FOR BOTH SIDES. KILLING PLAYERS JUST BECAUSE YOU CAN MAY RESULT IN A ROLEBAN."
-	minimal_masquerade = 0
+	minimum_masquerade = 0
 	display_order = JOB_DISPLAY_ORDER_SABBATPRIEST
 	whitelisted = TRUE
 

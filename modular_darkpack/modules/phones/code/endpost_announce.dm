@@ -1,5 +1,5 @@
 // useful proc to announce events as endposts
-/proc/endpost_announce(body, author = "SF Chronicle Nightly")
+/proc/endpost_announce(body, author = EVIL_NEWS_COMPANY)
 	UNTYPED_LIST_ADD(SSphones.endpost_posts, list(
 		"body" = body,
 		"date" = server_timestamp("Day, Month DD, "),
@@ -8,3 +8,7 @@
 		//"thumbsup_voters" = list(),
 		//"thumbsdown_voters" = list(),
 	))
+
+	// I dont love this, idealy this should be sending code directly to a /datum/app/ or something and having that handle this behavoir as like a signal.
+	for(var/obj/item/smartphone/listening_phone in GLOB.phones_list)
+		listening_phone.receive_notification("EndPost", author, body)

@@ -8,6 +8,11 @@
 	difficulty = SALE_DIFFICULTY
 	numerical = TRUE
 
+/datum/storyteller_roll/selling_masquerade_sensitive
+	bumper_text = "selling supernatural items"
+	applicable_stats = list(STAT_MANIPULATION, STAT_SUBTERFUGE)
+	difficulty = 8
+
 /obj/lombard
 	name = "pawnshop"
 	desc = "Sell your stuff."
@@ -15,8 +20,23 @@
 	icon_state = "sell"
 	icon = 'modular_darkpack/modules/retail/icons/vendors_shops.dmi'
 	anchored = TRUE
+	var/mob/living/carbon/human/npc/owner
 	var/black_market = FALSE
 	var/datum/storyteller_roll/fencing/sell_roll
+	var/datum/storyteller_roll/selling_masquerade_sensitive/masquerade_roll
+
+/obj/lombard/Initialize(mapload)
+	. = ..()
+	for(var/mob/living/carbon/human/npc/potential_owner in range(2, src))
+		if(istype(potential_owner, /mob/living/carbon/human/npc/shop) || istype(potential_owner, /mob/living/carbon/human/npc/illegal))
+			owner = potential_owner
+			break
+	if(owner)
+		RegisterSignal(owner, COMSIG_QDELETING, PROC_REF(cleanup_owner))
+
+/obj/lombard/proc/cleanup_owner()
+	SIGNAL_HANDLER
+	owner = null
 
 /obj/lombard/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	var/datum/component/selling/selling_comp = tool.GetComponent(/datum/component/selling)
@@ -40,6 +60,8 @@
 		to_chat(user, selling_comp.sale_fail_message())
 		return FALSE
 
+	sell_masquerade_sensitive_item(user, selling_comp)
+
 	var/sale_price = calculate_sale_price(sold, user, selling_comp)
 	spawn_money(sale_price, loc)
 
@@ -60,6 +82,12 @@
 /obj/lombard/proc/sell_multiple_items(list/items_to_sell, mob/living/user)
 	if(!length(items_to_sell))
 		return list()
+
+	// One masquerade roll for the whole batch, using the first item as reference
+	var/obj/item/reference_item = items_to_sell[1]
+	var/datum/component/selling/reference_comp = reference_item.GetComponent(/datum/component/selling)
+	if(reference_comp)
+		sell_masquerade_sensitive_item(user, reference_comp)
 
 	var/list/sold_items = list()
 	var/total_sale_price = 0
@@ -228,6 +256,29 @@
 		matching_items += check_item
 
 	return matching_items
+
+/obj/lombard/proc/sell_masquerade_sensitive_item(mob/living/user, datum/component/selling/reference_comp)
+	if(!issupernatural(user))
+		return TRUE
+	if(!reference_comp.masquerade_violating)
+		return TRUE
+	if(!masquerade_roll)
+		masquerade_roll = new()
+
+	var/roll_output = masquerade_roll.st_roll(user, src)
+	var/datum/socialrole/shop/shop_role = owner?.socialrole
+
+	if(roll_output != ROLL_SUCCESS)
+		to_chat(user, span_warning("You get a bad feeling about selling that supernatural item..."))
+		SEND_SIGNAL(user, COMSIG_MASQUERADE_VIOLATION)
+		if(shop_role && length(shop_role.masquerade_item_failure_phrases))
+			owner.realistic_say(pick(shop_role.masquerade_item_failure_phrases))
+		return FALSE
+	else
+		to_chat(user, span_notice("You successfully fence the supernatural item with enough finesse that the sale won't be traced back to you."))
+		if(shop_role && length(shop_role.masquerade_item_phrases))
+			owner.realistic_say(pick(shop_role.masquerade_item_phrases))
+		return TRUE
 
 /obj/lombard/blackmarket
 	name = "black market"

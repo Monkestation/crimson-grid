@@ -2,7 +2,7 @@
 	name = "Polish"
 	desc = "A West Slavic language spoken by people from Poland and its diaspora."
 	key = "P"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 45
 	syllables = list(
 		"tak", "nie", "ja", "ty", "on", "ona", "my", "wy", "oni",

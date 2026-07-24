@@ -47,5 +47,7 @@
 
 	/// Powers unique to this splat possessed by the owner
 	var/list/datum/action/powers
+	/// Which power is currently selected by keybinds
+	var/datum/action/selected_power
 	/// Mob this splat belongs to
 	var/mob/living/carbon/human/owner

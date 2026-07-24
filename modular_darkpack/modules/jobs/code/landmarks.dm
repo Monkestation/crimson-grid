@@ -19,13 +19,6 @@ JOB_START_HELPER(anarch/emissary, JOB_EMISSARY)
 JOB_START_HELPER(anarch/sweeper, JOB_SWEEPER)
 JOB_START_HELPER(anarch/tapster, JOB_TAPSTER)
 
-/* Axe Gang */
-/obj/effect/landmark/start/darkpack/axe
-	name = "generic axe gang start"
-
-JOB_START_HELPER(axe/leader, JOB_AXE_LEADER)
-JOB_START_HELPER(axe/gang, JOB_AXE_GANG)
-
 /* Supply */
 /obj/effect/landmark/start/darkpack/axe
 	name = "generic warehouse start"
@@ -91,7 +84,6 @@ JOB_START_HELPER(citizen/club_worker, JOB_CLUB_WORKER)
 JOB_START_HELPER(citizen/janitor, JOB_STREET_JANITOR)
 JOB_START_HELPER(citizen/priest, JOB_PRIEST)
 JOB_START_HELPER(citizen/taxi, JOB_TAXI_DRIVER)
-JOB_START_HELPER(citizen/graveyardkeeper, JOB_GRAVEYARD_KEEPER)
 
 /* Sabbat */
 /obj/effect/landmark/start/darkpack/sabbat

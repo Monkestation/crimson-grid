@@ -20,7 +20,6 @@
 	allowed_tribes = TRIBE_LIST_GAIA
 
 	display_order = JOB_DISPLAY_ORDER_GUARDIAN
-	department_for_prefs = /datum/job_department/gaia
 	departments_list = list(
 		/datum/job_department/gaia,
 	)

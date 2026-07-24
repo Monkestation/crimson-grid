@@ -190,7 +190,20 @@
 	name = "bolt"
 	damage = 45
 	armour_penetration = 75
+	exposed_wound_bonus = 30
+	wound_bonus = 30 //We're gonna make this hurt as much as possible. 
 	sharpness = SHARP_POINTY
+	embed_type = /datum/embedding/crossbolt //YEEEEOUCH!!!!
+
+/datum/embedding/crossbolt
+	embed_chance = 90
+	fall_chance = 2
+	jostle_chance = 2
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.5
+	pain_mult = 3
+	jostle_pain_mult = 3
+	rip_time = 3 SECONDS
 
 // 7.62x51mm NATO
 /obj/projectile/bullet/darkpack/vamp762x51mm

@@ -13,8 +13,11 @@
 	male_clothes = /obj/item/clothing/under/vampire/sport
 	female_clothes = /obj/item/clothing/under/vampire/red
 	enlightenment = TRUE
-	accessories = list("spines", "spines_slim", "animal_skull", "none")
-	accessories_layers = list("spines" = BODY_ADJ_LAYER, "spines_slim" = BODY_ADJ_LAYER, "animal_skull" = BODY_ADJ_LAYER, "none" = BODY_ADJ_LAYER)
+	clan_marks = list(
+		/datum/bodypart_overlay/simple/clan_mark/spines,
+		/datum/bodypart_overlay/simple/clan_mark/spines_slim,
+		/datum/bodypart_overlay/simple/clan_mark/animal_skull,
+	)
 
 /datum/subsplat/vampire_clan/tzimisce/psychomania_effect(mob/living/target, mob/living/owner)
 	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh3.ogg", 50, FALSE)

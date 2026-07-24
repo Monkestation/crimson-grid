@@ -1,7 +1,7 @@
 /datum/language/italian
 	name = "Italian"
 	desc = "A melodic and expressive language spoken across Italy."
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "i"
 	space_chance = 40
 	syllables = list(

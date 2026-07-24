@@ -97,7 +97,7 @@
 		return
 
 	if (!(flags & CALTROP_BYPASS_SHOES))
-		if ((digitigrade_fan.wear_suit?.body_parts_covered | digitigrade_fan.w_uniform?.body_parts_covered | digitigrade_fan.shoes?.body_parts_covered) & FEET)
+		if (((digitigrade_fan.wear_suit?.body_parts_covered | digitigrade_fan.w_uniform?.body_parts_covered | digitigrade_fan.shoes?.body_parts_covered) & FEET) || HAS_TRAIT(digitigrade_fan, TRAIT_HARDENED_SOLES)) // DARKPACK EDIT CHANGE - (Added hardened soles check)
 			return
 
 	var/damage = rand(min_damage, max_damage)

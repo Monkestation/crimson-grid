@@ -6,6 +6,7 @@
 	volume = 200
 	//fill_icon_thresholds = list(10, 20, 30, 40, 50, 60, 70, 80, 90, 100) DARKPACK EDIT REMOVAL
 	obj_flags = UNIQUE_RENAME | RENAME_NO_DESC
+	custom_materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
 	var/blood_type = null
 	var/labeled = FALSE
 	var/start_blood_amount = 200 // DARKPACK EDIT ADD

@@ -28,7 +28,8 @@
 		return TRUE
 
 	var/datum/splat/werewolf/wolp_splat = get_werewolf_splat(owner)
-	var/range = round(((wolp_splat?.renown[RENOWN_WISDOM] ? wolp_splat.renown[RENOWN_WISDOM] : 1) YARDS) * 20)
+	// Should be 20 yards (tiles) per Wisdom according to W20 Changing Breeds p. 99, scaled down to 5 instead because that would be absurd
+	var/range = (wolp_splat?.renown[RENOWN_WISDOM] ? wolp_splat.renown[RENOWN_WISDOM] : 1) * 5
 
 	var/list/old_answers_resolved = list()
 	for(var/datum/weakref/guy_ref, old_choice in old_answers)

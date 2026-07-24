@@ -315,8 +315,10 @@
 	// DARKPACK EDIT ADD START - STORYTELLER_ROLLS/STORYTELLER_STATS
 	// This is pretty evil, but we are gonna convert all the tg force into the +# that melee weapons have listed.
 	// This means we can do stuff like set force of a baseball bat to 2 TTRPG_DAM and it just works.
-	if(isliving(user) && !HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER))
-		var/bonus_dice = round(final_force / (1 TTRPG_DAMAGE))
+	if(isliving(user) && !HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER) && (final_force >= 1 TTRPG_DAMAGE))
+		var/bonus_dice = FORCE_TO_DICE_POOL(final_force)
+		if(prob(LEFTOVER_FORCE_TO_PERCENT(final_force)))
+			bonus_dice++
 		var/datum/storyteller_roll/damage/damage_roll = new()
 		damage_roll.applicable_stats = list(attacking_item.st_damage_stat)
 		var/damage_roll_result = damage_roll.st_roll(user, src, bonus_dice)
@@ -363,7 +365,7 @@
 		final_force *= attacking_item.get_demolition_modifier(src)
 
 	// DARKPACK EDIT ADD START - STORYTELLER_ROLLS/STORYTELLER_STATS
-	if(isliving(user) && !HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER))
+	if(isliving(user) && !HAS_TRAIT(user, TRAIT_PERFECT_ATTACKER) && (final_force >= 1 TTRPG_DAMAGE))
 		var/datum/storyteller_roll/attack/attack_roll = new()
 		attack_roll.applicable_stats = list(attacking_item.st_attack_ability, attacking_item.st_attack_attribute)
 		attack_roll.difficulty = attacking_item.attack_difficulty
@@ -373,7 +375,9 @@
 		if(attack_roll_result == ROLL_SUCCESS)
 			// This is pretty evil, but we are gonna convert all the tg force into the +# that melee weapons have listed.
 			// This means we can do stuff like set force of a baseball bat to 2 TTRPG_DAM and it just works.
-			var/bonus_dice = round(final_force / (1 TTRPG_DAMAGE))
+			var/bonus_dice = FORCE_TO_DICE_POOL(final_force)
+			if(prob(LEFTOVER_FORCE_TO_PERCENT(final_force)))
+				bonus_dice++
 			var/datum/storyteller_roll/damage/damage_roll = new()
 			damage_roll.applicable_stats = list(attacking_item.st_damage_stat)
 			var/damage_roll_result = damage_roll.st_roll(user, src, bonus_dice)

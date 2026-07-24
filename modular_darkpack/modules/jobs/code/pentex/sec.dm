@@ -17,10 +17,9 @@
 	outfit = /datum/outfit/job/vampire/pentex_sec
 
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
-	minimal_masquerade = 3
+	minimum_masquerade = 3
 
 	display_order = JOB_DISPLAY_ORDER_PENTEX_SEC
-	department_for_prefs = /datum/job_department/pentex
 	departments_list = list(
 		/datum/job_department/pentex,
 	)

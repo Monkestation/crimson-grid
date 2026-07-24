@@ -1,3 +1,24 @@
+GLOBAL_LIST_INIT(key_access_by_types, init_key_access_by_types())
+GLOBAL_LIST_INIT(city_door_lock_ids, list())
+
+/// Builds a list of the access locks because we cant pull lists from un initlizied keys and we dont want to qdel a key for every spawn.
+/proc/init_key_access_by_types()
+	var/list/keys_by_type = list()
+	for(var/subtype in valid_subtypesof(/obj/item/vamp/keys))
+		var/obj/item/vamp/keys/temp_key = new subtype()
+		keys_by_type[subtype] = temp_key.accesslocks
+		qdel(temp_key)
+
+	return keys_by_type
+
+/proc/key_has_matching_door(key_type)
+	for(var/access in GLOB.key_access_by_types[key_type])
+		if(access in GLOB.city_door_lock_ids)
+			return TRUE
+
+	return FALSE
+
+
 /obj/item/vamp/keys
 	name = "keys"
 	desc = "Those can open some doors."

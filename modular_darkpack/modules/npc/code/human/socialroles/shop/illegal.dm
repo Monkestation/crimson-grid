@@ -52,4 +52,14 @@
 		"Fuck the police!!",
 		"COPS?!!"
 	)
+	masquerade_item_phrases = list(
+		"Don't worry, I know just the right guy for this piece.",
+		"I used to steal from art galleries too, you know.",
+		"I can probably get a few bucks for this. Sure, why not."
+	)
+	masquerade_item_failure_phrases = list(
+		"Don't worry man, it'll be our little secret!",
+		"Oh man, I gotta get a picture of me with this thing!",
+		"Heh, you're one of those guys, huh?"
+	)
 	is_criminal = TRUE

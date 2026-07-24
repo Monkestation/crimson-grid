@@ -9,7 +9,6 @@
 	job_flags = CITY_JOB_FLAGS
 	display_order = JOB_DISPLAY_ORDER_POLICE_SERGEANT
 	exp_required_type_department = EXP_TYPE_POLICE
-	department_for_prefs = /datum/job_department/police
 	departments_list = list(
 		/datum/job_department/police,
 	)
@@ -24,7 +23,7 @@
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE)
 
 	description = "Enforce the law. Keep the officers in line. Follow what the Captain says."
-	minimal_masquerade = 0
+	minimum_masquerade = 0
 
 	known_contacts = list(JOB_POLICE_CAPTAIN, JOB_EMERGENCY_DISPATCHER)
 

@@ -1,7 +1,7 @@
 /datum/language/scottish
 	name = "Scottish"
 	desc = "The bold language spoken by the Scottish."
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	key = "s"
 	space_chance = 40
 	syllables = list(

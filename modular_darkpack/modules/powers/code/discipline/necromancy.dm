@@ -42,27 +42,30 @@
 
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS
-	vitae_cost = 0
+	vitae_cost = 1
 
 	activate_sound = 'modular_darkpack/modules/ritual_necromancy/sounds/necromancy1on.ogg'
 	deactivate_sound = 'modular_darkpack/modules/ritual_necromancy/sounds/necromancy1off.ogg'
 
-	cooldown_length = 1 SCENES
+	cooldown_length = 3 SCENES
 	duration_length = 1 SCENES
 
 	var/datum/storyteller_roll/shroudsight/roll_datum
 
-/datum/discipline_power/necromancy/shroudsight/activate()
-	. = ..()
+/datum/discipline_power/necromancy/shroudsight/pre_activation_checks(mob/living/target)
 	if(!roll_datum)
 		roll_datum = new()
 
 	var/roll_result = roll_datum.st_roll(owner)
+	if(roll_result == ROLL_COOLDOWN)
+		return FALSE
+	return roll_result == ROLL_SUCCESS
 
-	if(roll_result != ROLL_SUCCESS)
-		return
+/datum/discipline_power/necromancy/shroudsight/activate()
+	. = ..()
 
 	ADD_TRAIT(owner, TRAIT_GHOST_VISION, NECROMANCY_TRAIT)
+	ADD_TRAIT(owner, TRAIT_LOCAL_SIXTHSENSE, NECROMANCY_TRAIT)
 	owner.update_sight()
 
 	to_chat(owner, span_notice("You peek beyond the Shroud."))
@@ -71,6 +74,7 @@
 	. = ..()
 
 	REMOVE_TRAIT(owner, TRAIT_GHOST_VISION, NECROMANCY_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_LOCAL_SIXTHSENSE, NECROMANCY_TRAIT)
 	owner.update_sight()
 
 	to_chat(owner, span_warning("Your vision returns to the mortal realm."))

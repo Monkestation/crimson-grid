@@ -2,9 +2,9 @@
 	name = "stock exchange computer"
 	desc = "A console that connects to the galactic stock market. Stocks trading involves substantial risk of loss and is not suitable for every cargo technician."
 	icon = 'icons/obj/machines/computer.dmi'
-	icon_state = "oldcomp"
+	icon_state = MAP_SWITCH("oldcomp", "/obj/machinery/computer/pod/old")
 	icon_screen = "stock_computer"
-	icon_keyboard = "tram_controls" // this is the closest we can get to 'none'. its just nothing.
+	icon_keyboard = null
 	var/logged_in = "Millenium Stock Department"
 	var/vmode = 1
 	interaction_flags_atom = INTERACT_ATOM_REQUIRES_DEXTERITY | INTERACT_ATOM_UI_INTERACT | INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_REQUIRES_ANCHORED

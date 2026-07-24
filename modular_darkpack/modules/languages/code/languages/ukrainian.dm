@@ -2,7 +2,7 @@
 	name = "Ukrainian"
 	desc = "An East Slavic language spoken by people from Ukraine and its diaspora."
 	key = "U"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 45
 	syllables = list(
 		"tak", "ni", "ya", "ty", "vin", "vona", "my", "vy", "vony",

@@ -2,7 +2,7 @@
 	name = "Greek"
 	desc = "The language from the land of marble and philosophy."
 	key = "k"
-	flags = TONGUELESS_SPEECH
+	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 40
 	syllables = list(
 		"αι","αν","απ","ας","εί","ει","ης","ια","κα","να","ου","πο","στ","τα","τη","το","ου","αι","τα","κα","να","στ","σε","από","και","δ","γ","φ","ψ","του","προ","μέν",
