@@ -176,11 +176,3 @@
 	)
 	generate_items_inside(items_inside,src)
 
-
-/datum/storage/medkit/darkpack/doctor/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound, list/holdables)
-	holdables = list_of_everything_medkits_can_hold
-	return ..()
-
-/datum/storage/medkit/darkpack/combat/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound, list/holdables)
-	holdables = list_of_everything_medkits_can_hold
-	return ..()

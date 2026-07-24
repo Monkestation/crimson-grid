@@ -23,30 +23,6 @@
 	name = "car trunk"
 	desc = "How did this get out of the car."
 
-/datum/storage/car
-	animated = FALSE
-	max_slots = 40
-	max_total_storage = 100
-	max_specific_storage = WEIGHT_CLASS_HUGE
-	insert_on_attack = FALSE
-	click_alt_open = FALSE
-
-/datum/storage/car/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound)
-	. = ..()
-	set_locked(STORAGE_FULLY_LOCKED)
-
-/datum/storage/car/limo
-	max_slots = 45
-
-/datum/storage/car/truck
-	max_slots = 100
-	max_total_storage = 200
-	max_specific_storage = WEIGHT_CLASS_GIGANTIC
-
-/datum/storage/car/van
-	max_slots = 60
-	max_specific_storage = WEIGHT_CLASS_GIGANTIC
-
 /obj/darkpack_car
 	name = "car"
 	desc = "Take me home, country roads..."
