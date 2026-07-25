@@ -55,7 +55,7 @@
 		. += span_danger("[p_They()] [p_are()] covered in... scales!?<br>")
 
 	if(HAS_TRAIT(src, TRAIT_ANIMAL_MUSK))
-		. += span_warning("[p_They()] smell[p_s()] weirdly animal like...<br>") //CRIMSON EDIT CHANGE - ORIGINAL: 		. += span_warning("[p_they(TRUE)] smell[p_s()] weirdly animal like...<br>")
+		. += span_warning("[p_They()] smell[p_s()] weirdly animalistic...<br>") //CRIMSON EDIT CHANGE - ORIGINAL: 		. += span_warning("[p_they(TRUE)] smell[p_s()] weirdly animal like...<br>")
 
 	if(HAS_TRAIT(src, TRAIT_GRAVE_SMELL))
 		. += span_warning("[p_They()] smell[p_s()] like petrichor and freshly turned soil.<br>")
