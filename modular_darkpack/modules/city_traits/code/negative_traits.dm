@@ -9,7 +9,9 @@
 
 /datum/station_trait/thunder_storm/on_round_start()
 	. = ..()
+	/* CRIMSON EDIT REMOVAL - remove when rain is fixed
 	SSweather.run_weather(/datum/weather/particle/rain_storm/endless)
+	*/ // CRIMSON EDIT REMOVAL - remove when rain is fixed
 
 /datum/weather/particle/rain_storm/endless
 	name = "endless rain"
