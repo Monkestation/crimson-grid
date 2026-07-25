@@ -18,3 +18,9 @@
 /mob/living/reset_pull_offsets(mob/living/M, override)
 	. = ..()
 	SEND_SIGNAL(M, COMSIG_LIVING_RESET_PULL_OFFSETS)
+
+/mob/living/death(gibbed)
+	. = ..()
+	if(masquerade_score < 5)
+		while (masquerade_score < 5)
+			AdjustMasquerade(1, "death of breacher")
