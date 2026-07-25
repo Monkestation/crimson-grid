@@ -392,7 +392,7 @@
 	if(!driver)
 		radial_menu_options["Driver Seat"] = icon('modular_darkpack/modules/cars/icons/car_actions.dmi', "driver")
 	if(passengers.len < max_passengers)
-		radial_menu_options["Passanger Seat"] = icon('modular_darkpack/modules/cars/icons/car_actions.dmi', "passanger")
+		radial_menu_options["Passenger Seat"] = icon('modular_darkpack/modules/cars/icons/car_actions.dmi', "passanger")) //CRIMSON EDIT CHANGE - ORIGINAL: 		radial_menu_options["Passanger Seat"] = icon('modular_darkpack/modules/cars/icons/car_actions.dmi', "passanger"))
 	var/pick = show_radial_menu(user, src, radial_menu_options, require_near = TRUE)
 	if(!pick)
 		return
@@ -402,7 +402,7 @@
 	if(do_after(user, 1 SECONDS, dropped, interaction_key = DOAFTER_SOURCE_CAR))
 		if(pick == "Driver Seat" && driver_enter(dropped))
 			return
-		else if(pick == "Passanger Seat" && passenger_enter(dropped))
+		else if(pick == "Passenger Seat" && passenger_enter(dropped)) //CRIMSON EDIT CHANGE - ORIGINAL: 			else if(pick == "Passanger Seat" && passenger_enter(dropped))
 			return
 	to_chat(dropped, span_warning("You fail to enter [src]."))
 	return
