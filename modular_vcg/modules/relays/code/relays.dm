@@ -1,6 +1,5 @@
 GLOBAL_VAR(relay_config)
 
-/client/verb/go2relay()
 GAME_VERB_DESC(/client, go2relay, "Internet Routing Relays", "Connect to one of our relays for a potentially stabler connection.", "OOC")
 
 	if(is_localhost())
