@@ -7,6 +7,11 @@
 /obj/projectile/bullet/darkpack/vamp50ae
 	damage = 30
 
+//AK
+/obj/projectile/bullet/darkpack/vamp762x51mm
+	name = "7.62x51mm bullet"
+	damage = 45
+
 //AR15, AUG, Hunt Rifle
 /obj/projectile/bullet/darkpack/vamp556mm
 	damage = 35
