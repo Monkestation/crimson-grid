@@ -8,7 +8,6 @@
 
 //Autosniper PSG
 /obj/projectile/bullet/darkpack/vamp762x51mm
-	name = "7.62x51mm bullet"
 	damage = 45
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary
