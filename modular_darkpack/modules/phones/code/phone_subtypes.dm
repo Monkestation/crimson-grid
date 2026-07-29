@@ -176,7 +176,7 @@
 
 /obj/item/smartphone/liaison
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = ANARCH_NETWORK, OUR_ROLE = "Club Promotor", USE_JOB_TITLE = FALSE)
+		alist(NETWORK_ID = ANARCH_NETWORK, OUR_ROLE = "Club Promoter", USE_JOB_TITLE = FALSE)
 		)
 
 /obj/item/smartphone/tapster

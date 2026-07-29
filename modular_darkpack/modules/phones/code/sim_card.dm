@@ -59,7 +59,7 @@
 /obj/item/sim_card/cleaner
 	name = "\improper Cleaning Services SIM card"
 	desc = "A SIM card with the number of the cleaners."
-	phone_number = "1415444444"
+	phone_number = "411"
 
 /obj/item/sim_card/cleaner/Initialize(mapload)
 	SSphones.assigned_phone_numbers[src] = phone_number
