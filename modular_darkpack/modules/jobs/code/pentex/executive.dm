@@ -55,10 +55,10 @@
 	name = JOB_PENTEX_EXEC
 	jobtype = /datum/job/vampire/executive
 
-//	ears = /obj/item/p25radio
+	ears = /obj/item/p25radio
 	id = /obj/item/card/pentex/executive
 	uniform =  /obj/item/clothing/under/vampire/pentex_executive_suit
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
-	l_pocket = /obj/item/smartphone // /pentex_exec - todo: subtype
+	l_pocket = /obj/item/smartphone/endron_exec
 	r_pocket = /obj/item/vamp/keys/pentex
 	backpack_contents = list(/obj/item/phone_book=1, /obj/item/card/credit/seneschal=1)

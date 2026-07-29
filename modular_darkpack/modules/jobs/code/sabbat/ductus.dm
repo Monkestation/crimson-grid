@@ -26,7 +26,7 @@
 /datum/outfit/job/vampire/sabbatductus
 	name = JOB_SABBAT_DUCTUS
 	jobtype = /datum/job/vampire/sabbatductus
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/sabbat_ductus
 	r_pocket = /obj/item/vamp/keys/sabbat
 	uses_default_clan_clothes = TRUE
 	backpack_contents = list(/obj/item/card/credit=1)

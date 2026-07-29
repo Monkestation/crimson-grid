@@ -37,7 +37,7 @@
 	suit = /obj/item/clothing/suit/vampire/vest/police/sergeant
 	belt = /obj/item/storage/belt/holster/detective/darkpack/officer
 	id = /obj/item/card/police/sergeant
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/police_sergeant
 	r_pocket = /obj/item/vamp/keys/police/secure
 	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/restraints/handcuffs = 1, /obj/item/melee/baton/vamp = 1, /obj/item/storage/medkit/darkpack/ifak = 1)
 

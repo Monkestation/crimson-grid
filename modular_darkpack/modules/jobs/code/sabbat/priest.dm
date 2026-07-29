@@ -24,7 +24,7 @@
 /datum/outfit/job/vampire/sabbatpriest
 	name = JOB_SABBAT_PRIEST
 	jobtype = /datum/job/vampire/sabbatpriest
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/sabbat_priest
 	r_pocket = /obj/item/vamp/keys/sabbat
 	suit = /obj/item/clothing/suit/vampire/noddist
 	head = /obj/item/clothing/head/vampire/noddist_mask

@@ -89,6 +89,7 @@
 #define JOB_GAROU_WARDER "Sept Warder" // Adren+
 #define JOB_GAROU_WYRMFOE "Sept Wyrmfoe" // Fostern
 #define JOB_GAROU_GUARDIAN "Sept Guardian"
+#define JOB_GAROU_KEEPER "Sept Keeper" // Kinfolk included
 
 // Pentex
 #define JOB_PENTEX_FIRST "First Team"
@@ -163,6 +164,7 @@
 #define JOB_DISPLAY_ORDER_WARDER 3
 #define JOB_DISPLAY_ORDER_WYRMFOE 4
 #define JOB_DISPLAY_ORDER_GUARDIAN 5
+#define JOB_DISPLAY_ORDER_KEEPER 6
 
 #define JOB_DISPLAY_ORDER_BRANCH_LEAD 1
 #define JOB_DISPLAY_ORDER_EXECUTIVE 2

@@ -3,8 +3,8 @@
 	description = "You are the bottom of the Sept's pecking order, but also the frontline offense and defense, serving directly under the Warder and Wyrmfoe to ensure the caern's safety and well-being."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_GAIA
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 5
+	spawn_positions = 5
 	supervisors = /datum/job/vampire/warder
 	req_admin_notify = 1
 	minimal_player_age = 25
@@ -28,7 +28,9 @@
 		JOB_GAROU_COUNCIL,
 		JOB_GAROU_TRUTHCATCHER,
 		JOB_GAROU_WARDER,
-		JOB_GAROU_WYRMFOE
+		JOB_GAROU_WYRMFOE,
+		JOB_GAROU_GUARDIAN,
+		JOB_GAROU_KEEPER
 	)
 
 /datum/outfit/job/vampire/guardian
@@ -42,5 +44,5 @@
 	belt = /obj/item/melee/baton/vamp
 	gloves = /obj/item/clothing/gloves/vampire/leather
 	suit = /obj/item/clothing/suit/vampire/jacket
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/garou_guardian
 	backpack_contents = list(/obj/item/card/credit=1)

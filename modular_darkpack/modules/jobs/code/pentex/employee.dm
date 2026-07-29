@@ -3,8 +3,8 @@
 	description = "You are an employee for " + MAIN_EVIL_COMPANY + ", operating out of San Francisco. Your bosses can be a little strange; give credence to the security team and executives for tasks on the night shift, and avoid getting negative attention from the branch manager or internal affairs."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_PENTEX
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = "the Board and the Branch Lead"
 	req_admin_notify = 1
 	minimal_player_age = 25
@@ -37,7 +37,8 @@
 		JOB_PENTEX_EXEC,
 		JOB_PENTEX_AFFAIRS,
 		JOB_PENTEX_SEC_CHIEF,
-		JOB_PENTEX_SEC
+		JOB_PENTEX_SEC,
+		JOB_PENTEX_EMPLOYEE
 	)
 
 	paycheck = PAYCHECK_CREW
@@ -49,11 +50,11 @@
 	name = JOB_PENTEX_EMPLOYEE
 	jobtype = /datum/job/vampire/employee
 
-//	ears = /obj/item/p25radio
+	ears = /obj/item/p25radio
 	id = /obj/item/card/pentex
 	uniform = /obj/item/clothing/under/vampire/pentex_longleeve
 	gloves = /obj/item/clothing/gloves/vampire/work
 	shoes = /obj/item/clothing/shoes/vampire
 	r_pocket = /obj/item/vamp/keys/pentex
-	l_pocket = /obj/item/smartphone // /employee - todo subtype
+	l_pocket = /obj/item/smartphone/endron_employee
 	backpack_contents = list(/obj/item/card/credit=1)

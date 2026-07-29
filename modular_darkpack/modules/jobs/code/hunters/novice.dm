@@ -16,7 +16,7 @@
 		/datum/job_department/society_of_leopold,
 	)
 
-	known_contacts = list(JOB_ABBE, JOB_CONDOTTIERI, JOB_INQUISITOR)
+	known_contacts = list(JOB_ABBE, JOB_CONDOTTIERI, JOB_INQUISITOR, JOB_NOVICE)
 
 	splat_slots = list(SPLAT_KINFOLK = 1)
 	allowed_splats = list(SPLAT_NONE, SPLAT_KINFOLK) // infiltrators and betrayal arcs

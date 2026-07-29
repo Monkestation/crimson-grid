@@ -30,7 +30,7 @@
 	suit = /obj/item/clothing/suit/vampire/vest/police/captain
 	belt = /obj/item/storage/belt/holster/detective/darkpack/officer
 	id = /obj/item/card/police/captain
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/police_captain
 	r_pocket = /obj/item/vamp/keys/police/secure/captain
 	backpack_contents = list(
 		/obj/item/card/credit = 1,

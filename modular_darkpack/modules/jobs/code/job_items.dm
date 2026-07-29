@@ -334,6 +334,10 @@
 	name = "NPS Biologist badge"
 	desc = "You love the outdoors? Good, you are now taking care of a wide outdoors area."
 
+/obj/item/card/park_ranger/staff
+	name = "Park Staff badge"
+	desc = "A pretty park attracts more visitors. Keep the park clean and tidy."
+
 /obj/item/card/pentex
 	name = "\improper " + MAIN_EVIL_COMPANY + " employee badge"
 	desc = "Congratulations, wagie."

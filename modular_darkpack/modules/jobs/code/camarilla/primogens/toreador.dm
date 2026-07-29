@@ -1,6 +1,6 @@
 /datum/job/vampire/primogen_toreador
 	title = JOB_PRIMOGEN_TOREADOR
-	description = "Offer your infinite knowledge to Prince of the City. Take care of the Strip Club and its Elysium, for it is your domain and a social center within the city."
+	description = "Offer your infinite knowledge to Prince of the City. Take care of the Strip Club for it is your domain and a social center within the city."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_CAMARILLA
 	total_positions = 1
@@ -28,7 +28,7 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TOREADOR)
 
-	known_contacts = list(JOB_PRINCE, JOB_SHERIFF, JOB_SENESCHAL, JOB_HARPY)
+	known_contacts = list(JOB_PRINCE, JOB_SHERIFF, JOB_SENESCHAL, JOB_HARPY, JOB_CLUB_WORKER)
 
 /datum/outfit/job/vampire/toreador
 	name = JOB_PRIMOGEN_TOREADOR

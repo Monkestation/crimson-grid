@@ -29,10 +29,11 @@
 		JOB_GAROU_COUNCIL,
 		JOB_GAROU_WARDER,
 		JOB_GAROU_WYRMFOE,
-		JOB_GAROU_GUARDIAN
+		JOB_GAROU_GUARDIAN,
+		JOB_GAROU_KEEPER
 	)
 
-/datum/outfit/job/vampire/trutchcatcher
+/datum/outfit/job/vampire/truthcatcher
 	name = JOB_GAROU_TRUTHCATCHER
 	jobtype = /datum/job/vampire/truthcatcher
 
@@ -41,6 +42,6 @@
 	suit = /obj/item/clothing/suit/vampire/coat/winter/alt
 	gloves = /obj/item/clothing/gloves/vampire/work
 	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/garou_truthcatcher
 	backpack_contents = list(/obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1)
 

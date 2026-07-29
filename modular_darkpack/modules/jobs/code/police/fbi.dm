@@ -35,7 +35,7 @@
 	belt = /obj/item/storage/belt/holster/detective/darkpack/fbi
 	id = /obj/item/card/police/fbi
 	gloves = /obj/item/clothing/gloves/vampire/investigator
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/federal_investigator
 	r_pocket = /obj/item/vamp/keys/police/federal
 	backpack_contents = list(/obj/item/card/police/sergeant=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c45acp/hp=1, /obj/item/storage/medkit/darkpack/ifak=1)
 

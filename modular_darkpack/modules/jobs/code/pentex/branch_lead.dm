@@ -49,11 +49,11 @@
 	name = MAIN_EVIL_COMPANY + " Branch Lead"
 	jobtype = /datum/job/vampire/branch_lead
 
-//	ears = /obj/item/p25radio
+	ears = /obj/item/p25radio
 	id = /obj/item/card/pentex/branch_lead
 	uniform =  /obj/item/clothing/under/vampire/pentex_executive_suit
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
 	suit = /obj/item/clothing/suit/vampire/pentex_labcoat_alt
-	l_pocket = /obj/item/smartphone // /branch_lead - TODO: phone subtype
+	l_pocket = /obj/item/smartphone/endron_lead
 	r_pocket = /obj/item/vamp/keys/pentex
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/card/credit/prince=1)

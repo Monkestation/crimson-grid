@@ -43,7 +43,7 @@
 	name = JOB_PENTEX_SEC_CHIEF
 	jobtype = /datum/job/vampire/secchief
 
-//	ears = /obj/item/p25radio
+	ears = /obj/item/p25radio
 	id = /obj/item/card/pentex/secchief
 	uniform =  /obj/item/clothing/under/vampire/pentex_turtleneck
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
@@ -52,6 +52,6 @@
 	suit = /obj/item/clothing/suit/vampire/vest
 	belt = /obj/item/storage/belt/holster/detective/darkpack/endron
 	glasses = /obj/item/clothing/glasses/vampire/sun
-	l_pocket = /obj/item/smartphone // /secchief - todo subtype
+	l_pocket = /obj/item/smartphone/endron_sec_chief
 	r_pocket = /obj/item/vamp/keys/pentex
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1)

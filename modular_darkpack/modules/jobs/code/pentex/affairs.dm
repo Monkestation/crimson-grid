@@ -43,10 +43,10 @@
 	name = JOB_PENTEX_AFFAIRS
 	jobtype = /datum/job/vampire/affairs
 
-//	ears = /obj/item/p25radio
+	ears = /obj/item/p25radio
 	id = /obj/item/card/pentex/affairs
 	uniform =  /obj/item/clothing/under/vampire/pentex_suit
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
-	l_pocket = /obj/item/smartphone // /affairsagent - todo subtype
+	l_pocket = /obj/item/smartphone/endron_affairs
 	r_pocket = /obj/item/vamp/keys/pentex
 	backpack_contents = list(/obj/item/veil_contract, /obj/item/card/credit/rich=1)

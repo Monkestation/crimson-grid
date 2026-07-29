@@ -111,6 +111,7 @@ JOB_START_HELPER(forest_wolves/warder, JOB_GAROU_WARDER)
 JOB_START_HELPER(forest_wolves/catcher, JOB_GAROU_TRUTHCATCHER)
 JOB_START_HELPER(forest_wolves/wyrmfoe, JOB_GAROU_WYRMFOE)
 JOB_START_HELPER(forest_wolves/guardian, JOB_GAROU_GUARDIAN)
+JOB_START_HELPER(forest_wolves/keeper, JOB_GAROU_KEEPER)
 
 /* Pentex */
 /obj/effect/landmark/start/darkpack/pentex
