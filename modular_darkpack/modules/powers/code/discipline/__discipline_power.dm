@@ -78,6 +78,7 @@
 	QDEL_LIST(duration_timers)
 	grouped_powers = null
 	owner = null
+	discipline = null
 	return ..()
 
 /**

@@ -43,6 +43,10 @@
 
 	var/datum/storyteller_roll/bloodheal/bloodheal_roll
 
+/datum/discipline_power/bloodheal/Destroy(force)
+	qdel(bloodheal_roll)
+	return ..()
+
 /datum/discipline_power/bloodheal/pre_activation_checks(atom/target)
 	. = ..()
 	if(do_after(owner, 1 TURNS, timed_action_flags = DO_AFTER_CHECK_NEXT_MOVE | IGNORE_INCAPACITATED))
