@@ -336,3 +336,15 @@
 /datum/loadout_item/pocket_items/candles
 	name = "Box of Candles"
 	item_path = /obj/item/storage/fancy/candle_box
+
+/datum/loadout_item/pocket_items/cross
+	name = "Gold Cross"
+	item_path = /obj/item/card/hunter
+
+/datum/loadout_item/pocket_items/cross/silver
+	name = "Silver Cross"
+	item_path = /obj/item/card/hunter/silver
+
+/datum/loadout_item/pocket_items/cross/gothic
+	name = "Gothic Cross"
+	item_path = /obj/item/card/hunter/gothic

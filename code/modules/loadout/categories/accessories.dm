@@ -86,15 +86,3 @@
 	name = "Pride Pin"
 	item_path = /obj/item/clothing/accessory/pride
 	reskin_datum = /datum/atom_skin/pride_pin
-
-/datum/loadout_item/accessory/cross
-	name = "Gold Cross"
-	item_path = /obj/item/card/hunter
-
-/datum/loadout_item/accessory/cross/silver
-	name = "Silver Cross"
-	item_path = /obj/item/card/hunter/silver
-
-/datum/loadout_item/accessory/cross/gothic
-	name = "Gothic Cross"
-	item_path = /obj/item/card/hunter/gothic
