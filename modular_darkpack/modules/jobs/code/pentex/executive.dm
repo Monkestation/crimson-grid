@@ -55,7 +55,7 @@
 	name = JOB_PENTEX_EXEC
 	jobtype = /datum/job/vampire/executive
 
-	ears = /obj/item/p25radio
+	ears = /obj/item/radio/headset/darkpack
 	id = /obj/item/card/pentex/executive
 	uniform =  /obj/item/clothing/under/vampire/pentex_executive_suit
 	shoes = /obj/item/clothing/shoes/vampire/businessblack

@@ -49,7 +49,7 @@
 	name = MAIN_EVIL_COMPANY + " Branch Lead"
 	jobtype = /datum/job/vampire/branch_lead
 
-	ears = /obj/item/p25radio
+	ears = /obj/item/radio/headset/darkpack
 	id = /obj/item/card/pentex/branch_lead
 	uniform =  /obj/item/clothing/under/vampire/pentex_executive_suit
 	shoes = /obj/item/clothing/shoes/vampire/businessblack

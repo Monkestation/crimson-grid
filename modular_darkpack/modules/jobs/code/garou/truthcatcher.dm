@@ -14,7 +14,7 @@
 	exp_granted_type = EXP_TYPE_GAIA
 	config_tag = "TRUTHCATCHER"
 	job_flags = CITY_JOB_FLAGS
-	outfit = /datum/outfit/job/vampire/trutchcatcher
+	outfit = /datum/outfit/job/vampire/truthcatcher
 
 	allowed_splats = list(SPLAT_GAROU)
 	allowed_tribes = TRIBE_LIST_GAIA

@@ -289,7 +289,7 @@
 		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "Park Ranger", USE_JOB_TITLE = FALSE)
 		)
 
-/obj/item/smarphone/garou_truthcatcher
+/obj/item/smartphone/garou_truthcatcher
 	contact_networks_pre_init = list(
 		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "Park Guide", USE_JOB_TITLE = FALSE)
 		)
