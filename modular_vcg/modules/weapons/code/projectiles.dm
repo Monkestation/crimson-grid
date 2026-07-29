@@ -1,4 +1,3 @@
-
 //Sniper
 /obj/projectile/bullet/darkpack/vamp50
 	damage = 50
@@ -7,7 +6,7 @@
 /obj/projectile/bullet/darkpack/vamp50ae
 	damage = 30
 
-//AK
+//Autosniper PSG
 /obj/projectile/bullet/darkpack/vamp762x51mm
 	name = "7.62x51mm bullet"
 	damage = 45
