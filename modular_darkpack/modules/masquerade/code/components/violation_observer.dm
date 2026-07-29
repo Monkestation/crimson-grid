@@ -44,6 +44,7 @@
 	source.AddComponent(/datum/component/masquerade_hud, player_breacher)
 	breached_players += player_breacher
 	SSmasquerade.masquerade_breach(source, player_breacher, (isliving(source) ? MASQUERADE_REASON_NPC : MASQUERADE_REASON_OBJECT))
+	RegisterSignal(player_breacher, COMSIG_LIVING_DEATH, PROC_REF(on_breacher_death))
 
 	return TRUE
 
@@ -55,6 +56,7 @@
 		SSmasquerade.masquerade_reinforce(source, player_breacher)
 		source.observe_masquerade_reinforce(player_breacher)
 		breached_players -= player_breacher
+		UnregisterSignal(player_breacher, COMSIG_LIVING_DEATH)
 
 		return TRUE
 
@@ -66,6 +68,18 @@
 		SSmasquerade.masquerade_reinforce(source, player_breacher)
 		source.observe_masquerade_reinforce(player_breacher)
 		breached_players -= player_breacher
+		UnregisterSignal(player_breacher, COMSIG_LIVING_DEATH)
+
+/datum/component/violation_observer/proc/on_breacher_death(mob/living/dead_breacher, gibbed)
+	SIGNAL_HANDLER
+
+	if(dead_breacher in breached_players)
+		var/atom/parent_atom = parent
+		SEND_SIGNAL(parent, COMSIG_MASQUERADE_HUD_DELETE, dead_breacher)
+		SSmasquerade.masquerade_reinforce(parent, dead_breacher)
+		parent_atom.observe_masquerade_reinforce(dead_breacher)
+		breached_players -= dead_breacher
+		UnregisterSignal(dead_breacher, COMSIG_LIVING_DEATH)
 
 /atom/proc/observe_masquerade_violation(player_breacher)
 	do_alert_animation()

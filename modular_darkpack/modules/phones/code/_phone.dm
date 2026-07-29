@@ -106,6 +106,7 @@
 		GLOB.important_contacts[important_contact_of] = new /datum/phonecontact(owner.real_name, sim_card.phone_number)
 
 /obj/item/smartphone/Destroy(force)
+	SEND_SIGNAL(src, COMSIG_ALL_MASQUERADE_REINFORCE)
 	GLOB.phones_list -= src
 	for(var/datum/contact_network/contact_network as anything in contact_networks)
 		for(var/datum/contact/our_contact in contact_network.contacts)

@@ -528,7 +528,8 @@
 		if(!HAS_TRAIT(L, TRAIT_TOUGH_FLESH))
 			hit_dam = hit_dam*2
 		L.apply_damage(hit_dam, BRUTE, BODY_ZONE_CHEST)
-		log_combat(driver, L, "hit with", src)
+		if(driver)
+			log_combat(driver, L, "hit with", src)
 	var/dam = prev_speed
 	if(driver)
 		var/driver_skill = clamp(driver.st_get_stat(STAT_DRIVE)/2, 1, 4)
