@@ -56,4 +56,4 @@
 	suit = /obj/item/clothing/suit/vampire/pentex_labcoat_alt
 	l_pocket = /obj/item/smartphone/endron_lead
 	r_pocket = /obj/item/vamp/keys/pentex
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/card/credit/prince=1)
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/card/credit/prince=1, /obj/item/veil_contract)
