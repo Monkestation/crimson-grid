@@ -7,7 +7,8 @@
 	clan_disciplines = list(
 		/datum/discipline/obfuscate,
 		/datum/discipline/fortitude,
-		/datum/discipline/thanatosis
+		/datum/discipline/thanatosis,
+		/datum/discipline/necromancy
 	)
 	alt_sprite = "rotten4"
 	clan_traits = list(
