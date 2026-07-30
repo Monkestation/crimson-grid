@@ -9,3 +9,6 @@
 	default = 5
 	min_val = 5
 	max_val = 50
+
+/datum/config_entry/number/hunger_modifier
+	default = 0.5

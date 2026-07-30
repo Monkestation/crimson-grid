@@ -30,6 +30,7 @@ SUBSYSTEM_DEF(minor_mapping)
 
 	weakpoint_spawns += SSmapping.current_map.bonus_weakpoints //This will add 0 by default, or additional on large maps where it's included in the config.
 	place_weakpoints(weakpoint_spawns)
+	spawn_umbra_artifacts(rand(CONFIG_GET(number/umbra_artifact_min), CONFIG_GET(number/umbra_artifact_max))) // DARKPACK EDIT ADD - OCCULT_ARTIFACTS
 	return SS_INIT_SUCCESS
 #endif
 

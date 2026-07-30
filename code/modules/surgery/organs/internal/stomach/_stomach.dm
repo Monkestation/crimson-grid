@@ -37,7 +37,7 @@
 	var/metabolism_efficiency = 0.05 // the lowest we should go is 0.025
 
 	/// Multiplier for hunger rate
-	var/hunger_modifier = 0.2 // DARKPACK EDIT CHANGE - ORIGINAL: var/hunger_modifier = 1
+	var/hunger_modifier = 1
 	/// Whether the stomach's been repaired with surgery and can be fixed again or not
 	var/operated = FALSE
 	/// List of all atoms within the stomach
@@ -169,6 +169,7 @@
 			hunger_rate = 3 * HUNGER_FACTOR
 		hunger_rate *= hunger_modifier
 		hunger_rate *= human.physiology.hunger_mod
+		hunger_rate *= CONFIG_GET(number/hunger_modifier) // DARKPACK EDIT ADD
 		human.adjust_nutrition(-hunger_rate * seconds_per_tick)
 
 	var/nutrition = human.nutrition
@@ -203,7 +204,7 @@
 /obj/item/organ/stomach/proc/handle_hunger_slowdown(mob/living/carbon/human/human)
 	var/hungry = (500 - human.nutrition) / 5 //So overeat would be 100 and default level would be 80
 	if(hungry >= 70)
-		human.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/hunger, multiplicative_slowdown = (hungry / 80)) // DARKPACK EDIT CHANGE - ORIGINAL: human.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/hunger, multiplicative_slowdown = (hungry / 50))
+		human.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/hunger, multiplicative_slowdown = (hungry / 50))
 	else
 		human.remove_movespeed_modifier(/datum/movespeed_modifier/hunger)
 

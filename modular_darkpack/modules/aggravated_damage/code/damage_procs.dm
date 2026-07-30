@@ -36,18 +36,26 @@
 /mob/living/simple_animal/adjust_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
 	if(!can_adjust_agg_loss(amount, forced, required_bodytype))
 		return 0
+	// Has to be structured diffrently to the other loss procs as we cant assume aggravated is in all damagecoeff
+	var/damage_modifier = 1
+	if(AGGRAVATED in damage_coeff)
+		damage_modifier = damage_coeff[AGGRAVATED]
 	if(forced)
 		. = adjustHealth(amount * CONFIG_GET(number/damage_multiplier), updating_health, forced)
-	else if(damage_coeff[AGGRAVATED])
-		. = adjustHealth(amount * damage_coeff[AGGRAVATED] * CONFIG_GET(number/damage_multiplier), updating_health, forced)
+	else if(damage_modifier)
+		. = adjustHealth(amount * damage_modifier * CONFIG_GET(number/damage_multiplier), updating_health, forced)
 
 /mob/living/basic/adjust_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
 	if(!can_adjust_agg_loss(amount, forced, required_bodytype))
 		return 0
+	// Has to be structured diffrently to the other loss procs as we cant assume aggravated is in all damagecoeff
+	var/damage_modifier = 1
+	if(AGGRAVATED in damage_coeff)
+		damage_modifier = damage_coeff[AGGRAVATED]
 	if(forced)
 		. = adjust_health(amount * CONFIG_GET(number/damage_multiplier), updating_health, forced)
-	else if(damage_coeff[AGGRAVATED])
-		. = adjust_health(amount * damage_coeff[AGGRAVATED] * CONFIG_GET(number/damage_multiplier), updating_health, forced)
+	else if(damage_modifier)
+		. = adjust_health(amount * damage_modifier * CONFIG_GET(number/damage_multiplier), updating_health, forced)
 
 /mob/living/proc/set_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
 	if(!forced && HAS_TRAIT(src, TRAIT_GODMODE))

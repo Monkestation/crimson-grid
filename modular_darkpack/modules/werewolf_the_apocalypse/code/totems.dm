@@ -147,7 +147,7 @@
 			return
 		var/obj/umbra_portal/prev = locate() in get_step(src, SOUTH)
 		if(!prev)
-			if(shifter_splat.auspice.name == AUSPICE_THEURGE)
+			if(shifter_splat.auspice?.name == AUSPICE_THEURGE)
 				if(!opening)
 					opening = TRUE
 					if(do_after(user, 10 SECONDS, src))
@@ -156,7 +156,7 @@
 			else
 				to_chat(user, span_warning("You need a Theurge to open the Moon Gates!"))
 		else
-			if(shifter_splat.auspice.name == AUSPICE_THEURGE)
+			if(shifter_splat.auspice?.name == AUSPICE_THEURGE)
 				collapse_portal(prev)
 
 /obj/structure/werewolf_totem/proc/spawn_portal()

@@ -1,9 +1,9 @@
-/mob/living/carbon/human/proc/AdjustMasquerade(value, reason = "debug")
+/mob/living/proc/AdjustMasquerade(value, reason = "debug")
 	if(ismundane(src))
 		return
 
 	switch(value)
 		if(1)
-			SSmasquerade.masquerade_reinforce(reason, src)
+			SSmasquerade.masquerade_reinforce(null, src, reason)
 		if(-1)
-			SSmasquerade.masquerade_breach(reason, src, MASQUERADE_REASON_OTHER)
+			SSmasquerade.masquerade_breach(null, src, reason)
