@@ -1,5 +1,11 @@
 GLOBAL_LIST_EMPTY(fuseboxes)
 
+/datum/looping_sound/generator/fusebox
+	volume = 8
+	falloff_exponent = 4 //Ultra quiet very fast
+	extra_range = -12
+	falloff_distance = 1 //Instant falloff after initial tile
+
 // The way this completely bypasses the entire power system is so strange
 /obj/fusebox
 	name = "fuse box"
@@ -18,7 +24,7 @@ GLOBAL_LIST_EMPTY(fuseboxes)
 	//Repairing var for the loop
 	var/repairing = FALSE
 	//Soundloop for Transformers
-	var/datum/looping_sound/generator/soundloop
+	var/datum/looping_sound/generator/fusebox/soundloop
 
 /obj/fusebox/Initialize(mapload)
 	. = ..()

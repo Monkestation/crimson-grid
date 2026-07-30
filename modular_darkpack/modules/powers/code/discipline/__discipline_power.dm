@@ -70,13 +70,14 @@
 	src.owner = discipline.owner
 
 /datum/discipline_power/Destroy(force)
-	for(var/i in length(duration_timers))
-		deltimer(duration_timers[i])
+	for(var/timer_id in duration_timers)
+		deltimer(timer_id)
+	duration_timers = null
 	if(cooldown_timer)
 		deltimer(cooldown_timer)
 		cooldown_timer = null
-	QDEL_LIST(duration_timers)
 	grouped_powers = null
+	discipline = null
 	owner = null
 	return ..()
 

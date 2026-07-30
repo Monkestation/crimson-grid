@@ -20,7 +20,7 @@
 	return NONE
 
 /obj/machinery/hydroponics/simple/base_item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(default_deconstruction_crowbar(tool, TRUE))
+	if(default_deconstruction_crowbar(user, tool))
 		return
 
 	return ..()

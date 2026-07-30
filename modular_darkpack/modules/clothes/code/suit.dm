@@ -43,6 +43,8 @@
 	body_parts_covered = CHEST | GROIN | ARMS
 	cold_protection = CHEST | GROIN | ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	clothing_flags = THICKMATERIAL
+	resistance_flags = ACID_PROOF
 	armor_type = /datum/armor/chemical_costume
 	hoodtype = /obj/item/clothing/head/hooded/heisenberg_hood
 
@@ -56,7 +58,7 @@
 
 /obj/item/clothing/head/hooded/heisenberg_hood
 	name = "chemical hood"
-	desc = "A hood attached to a cchemical costume."
+	desc = "A hood attached to a chemical costume."
 	icon_state = "heisenberg_helm"
 	icon = 'modular_darkpack/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_darkpack/modules/clothes/icons/worn.dmi'
@@ -65,6 +67,8 @@
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEHAIR | HIDEEARS
+	clothing_flags = THICKMATERIAL | BLOCK_GAS_SMOKE_EFFECT | SNUG_FIT | STACKABLE_HELMET_EXEMPT | HEADINTERNALS
+	resistance_flags = ACID_PROOF
 	armor_type = /datum/armor/chemical_costume
 
 //** SPOOOOKY ROBES FROM THE CAPPADOCIAN UPDATE **//

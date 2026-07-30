@@ -2,3 +2,4 @@
 /area/vtm/outside
 	outdoors = TRUE
 	sound_environment = SOUND_ENVIRONMENT_CITY
+	ambient_buzz = 'modular_darkpack/modules/ambience/sounds/outdoors_generic.ogg'

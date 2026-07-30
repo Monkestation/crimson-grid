@@ -1,24 +1,3 @@
-/datum/outfit/job/vampire/sabbatist
-	name = JOB_SABBAT_SABBATIST
-	l_pocket = /obj/item/smartphone
-	r_pocket = /obj/item/flashlight
-	suit = /obj/item/clothing/suit/vampire/trench
-	belt = /obj/item/scythe/vamp
-	backpack_contents = list(/obj/item/vampire_stake=3, /obj/item/gun/ballistic/revolver/darkpack/magnum=1, /obj/item/knife/vamp=1, /obj/item/vamp/keys/hack=1, /obj/item/vamp/keys/sabbat=1)
-
-/datum/outfit/job/vampire/sabbatist/post_equip(mob/living/carbon/human/H)
-	..()
-	if(H.mind)
-		H.mind.add_antag_datum(/datum/antagonist/sabbatist)
-	GLOB.sabbatites += H
-
-	var/list/landmarkslist = list()
-	for(var/obj/effect/landmark/start/S in GLOB.start_landmarks_list)
-		if(S.name == name)
-			landmarkslist += S
-	var/obj/effect/landmark/start/D = pick(landmarkslist)
-	H.forceMove(D.loc)
-
 /datum/antagonist/sabbatist
 	name = "Sabbatist"
 	roundend_category = "sabbattites"
