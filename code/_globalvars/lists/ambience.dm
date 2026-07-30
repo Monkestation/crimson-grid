@@ -210,5 +210,6 @@ GLOBAL_LIST_INIT(ambience_assoc,list(
 	AMBIENCE_BEACH = GLOB.beach_ambience,
 	AMBIENCE_NATURE = GLOB.nature_ambience,
 	AMBIENCE_SEWER = GLOB.sewer_ambience,
-	AMBIENCE_OFFICE = GLOB.office_ambience // DARKPACK EDIT ADD END
+	AMBIENCE_OFFICE = GLOB.office_ambience,
+	AMBIENCE_TOWER = GLOB.tower_ambience, // DARKPACK EDIT ADD END
 ))

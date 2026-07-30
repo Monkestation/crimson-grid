@@ -10,7 +10,7 @@
 	base_pixel_x = -12
 	gender = MALE // Female ones are the bipedal elites
 	speed = 12
-	basic_mob_flags = IMMUNE_TO_FISTS
+	// basic_mob_flags = IMMUNE_TO_FISTS // DARKPACK EDIT REMOVAL
 	maxHealth = 300
 	health = 300
 	friendly_verb_continuous = "wails at"

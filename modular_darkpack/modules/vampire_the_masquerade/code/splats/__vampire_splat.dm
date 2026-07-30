@@ -75,6 +75,7 @@
 		return FALSE
 
 	found_action.discipline.set_level(new_level)
+	found_action.refresh_power_display()
 	return TRUE
 
 /datum/splat/vampire/get_selected_power()

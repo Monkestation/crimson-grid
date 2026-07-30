@@ -136,8 +136,10 @@
 	if(guest)
 		if(user == guest)
 			return guest.real_name
-		else
-			checked_name = guest.real_name
+		var/mob/living/carbon/carbon_guest = astype(guest)
+		if((carbon_guest?.get_face_name() == "Unknown") && !carbon_guest.client?.prefs.read_preference(/datum/preference/toggle/show_identity_when_masked))
+			return null
+		checked_name = guest.real_name
 	return LAZYACCESS(known_names, checked_name)
 
 /datum/guestbook/proc/visibility_checks(mob/user, mob/living/carbon/human/guest, silent = FALSE)

@@ -67,6 +67,7 @@
 	fire_colour = "#bd3f46"
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light/bulb
+	flourescent = FALSE // DARKPACK EDIT ADD - AMBIENCE - (No humminh for small bulbs)
 
 /obj/machinery/light/small/broken
 	status = LIGHT_BROKEN

@@ -18,6 +18,7 @@
 	armor_type = /datum/armor/item_claymore
 	resistance_flags = FIRE_PROOF
 	custom_materials = list(/datum/material/silver = (2 * SHEET_MATERIAL_AMOUNT))
+	rank = 4
 	spirit_type = SPIRIT_VENGEANCE
 	var/stirred_spirit = FALSE
 	var/silver_damage = 2
@@ -86,5 +87,6 @@
 	attack_difficulty = 7
 	w_class = WEIGHT_CLASS_HUGE
 	custom_materials = list(/datum/material/silver = (4 * SHEET_MATERIAL_AMOUNT))
+	rank = 5
 	silver_damage = 3
 	awakened_force = 6 LETHAL_TTRPG_DAMAGE

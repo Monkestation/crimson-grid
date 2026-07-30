@@ -58,8 +58,8 @@ SUBSYSTEM_DEF(masquerade)
 		else
 			source_matches = (source == breach_sources)
 
-		if(source_matches)
-			if(!reason || (reason in masquerade_breach) || (reason == MASQUERADE_REASON_PREFERENCES))
+		if(source_matches || reason == "debug")
+			if(!reason || (reason in masquerade_breach) || (reason == MASQUERADE_REASON_PREFERENCES) || (reason == "debug"))
 				// Only require blood hunt skull for "Preferences" (round-persistent) breaches
 				if(breach_reasons == MASQUERADE_REASON_PREFERENCES && !istype(source, /obj/item/blood_hunt))
 					continue

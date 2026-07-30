@@ -1,3 +1,5 @@
+/area/vtm/interior/cog
+
 /area/vtm/interior/cog/caern
 	name = "Children of Gaia Caern"
 	icon_state = "cog_caern"
