@@ -12,6 +12,8 @@
 	)
 	display_order = JOB_DISPLAY_ORDER_STREETJAN
 	description = "Keep the streets clean. You are paid to keep your mouth shut about the things you see."
+	maximal_generation = 11
+	maximum_immortal_age = 100
 	minimum_masquerade = 0
 
 /datum/outfit/job/vampire/janitor

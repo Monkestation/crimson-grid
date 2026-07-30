@@ -22,6 +22,8 @@
 	)
 
 	minimal_generation = 12	//Uncomment when players get exp enough
+	maximal_generation = 9
+	maximum_immortal_age = 200
 	minimum_masquerade = 5
 
 	allowed_splats = list(SPLAT_KINDRED)

@@ -50,18 +50,24 @@
 
 	return JOB_AVAILABLE
 
+/datum/config_entry/flag/max_gen_limits //If you can be limited from a job for having too high a generation
+
 /datum/controller/subsystem/job/proc/check_kindred_prefs(client/player_client, mob/dead/new_player/player, datum/job/possible_job, debug_prefix = "", add_job_to_log = FALSE)
 	if((player_client.prefs.read_preference(/datum/preference/numeric/immortal_age) < possible_job.minimum_immortal_age))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_AGE_MIN, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_KINDRED_AGE_MIN
 
-	if((!isnull(possible_job.maximum_immortal_age) && (player_client.prefs.read_preference(/datum/preference/numeric/immortal_age) > possible_job.maximum_immortal_age)))
+	if((CONFIG_GET(flag/max_gen_limits)) && (!isnull(possible_job.maximum_immortal_age) && (player_client.prefs.read_preference(/datum/preference/numeric/immortal_age) > possible_job.maximum_immortal_age)))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_AGE_MAX, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_KINDRED_AGE_MAX
 
 	if((player_client.prefs.read_preference(/datum/preference/numeric/generation) > possible_job.minimal_generation))
-		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_GENERATION, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
-		return JOB_UNAVAILABLE_KINDRED_GENERATION
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_GENERATION_MIN, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_KINDRED_GENERATION_MIN
+
+	if((CONFIG_GET(flag/max_gen_limits)) && (player_client.prefs.read_preference(/datum/preference/numeric/generation) < possible_job.maximal_generation))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_GENERATION_MAX, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_KINDRED_GENERATION_MAX
 
 	var/datum/subsplat/vampire_clan/clan = get_vampire_clan(player_client.prefs.read_preference(/datum/preference/choiced/subsplat/vampire_clan))
 	if(possible_job.allowed_clans && !(clan.id in possible_job.allowed_clans))

@@ -25,6 +25,8 @@
 	)
 
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
+	maximal_generation = 9
+	maximum_immortal_age = 200
 	minimum_masquerade = 3
 
 	display_order = JOB_DISPLAY_ORDER_EMPLOYEE
