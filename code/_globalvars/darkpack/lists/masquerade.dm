@@ -6,5 +6,7 @@ GLOBAL_LIST_EMPTY(blood_hunt_announcers)
 GLOBAL_LIST_EMPTY(masquerade_breakers_list)
 /// List of people who have created unresolved major Veil breaches (Masquerade but for werewolves/fera)
 GLOBAL_LIST_EMPTY(veil_breakers_list)
+/// List of people who have done breaches in general.
+GLOBAL_LIST_EMPTY(supernatural_breakers_list)
 /// Areas that people will be transported to if they latejoin with a Masquerade-violating appearance
 GLOBAL_LIST_EMPTY(masquerade_latejoin)

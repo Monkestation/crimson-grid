@@ -171,11 +171,11 @@ function SplatsPageInner(props: SplatsPageInnerProps) {
               <Box>
                 <Stack fill>
                   <Stack.Item width="70%">
-                    <Section
-                      title={currentSplat.name}
-                    >
+                    <Section title={currentSplat.name}>
                       <Section title="Description">
-                        {currentSplat.desc}
+                        <Box style={{ whiteSpace: 'pre-wrap' }}>
+                          {currentSplat.desc}
+                        </Box>
                       </Section>
 
                       <Section title="Features">

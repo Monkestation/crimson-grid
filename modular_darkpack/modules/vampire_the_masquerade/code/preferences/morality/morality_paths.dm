@@ -1,3 +1,12 @@
+GLOBAL_LIST_INIT(morality_paths, init_morality_paths())
+
+/proc/init_morality_paths()
+	var/list/paths = list()
+	for(var/morality_type in subtypesof(/datum/morality))
+		var/datum/morality/M = new morality_type()
+		paths[initial(M.name)] = M
+	return paths
+
 /datum/morality
 	var/name = ""
 	var/desc = ""
@@ -5,6 +14,9 @@
 	var/alignment
 	/// The bearing of the path's ethos
 	var/bearing
+
+/datum/morality/proc/show_lore(mob/user)
+	to_chat(user, span_notice("[uppertext(name)]<br><br>[alignment == MORALITY_HUMANITY ? "Uses Self-Control and Conscience" : "Uses Instinct and Conviction"] <br> <br>All Vampires follow a Path, a method by which the Vampire reconciles their supernatural Beast, which desires for nothing but animalistic slaughter and the feasting of blood, with the consciousness they retain from their mortal days. Most Vampires that aren't apart of the Sabbat follow the Path of Humanity. If a Vampire fails to follow their Path, they may 'wight', becoming a mindless, wandering animal fully succumbed to the Beast within. <br> <br>[desc]<br>"))
 
 /datum/morality/humanity
 	name = "Path of Humanity"

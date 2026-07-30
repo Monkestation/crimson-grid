@@ -6,8 +6,9 @@
 	human.update_body()
 	human.equipOutfit(/datum/outfit/job/vampire/prince, TRUE)
 
+// note - we have unused desc vars on splats
 /datum/splat/vampire/kindred/get_splat_description()
-	return "Blood sucking vampires of the dark realm!"
+	return "Immortal predators cursed to live in the night, these vampires survive on human blood while hiding their existence behind the facade they call the Masquerade. Divided by clans, sects, and rivalries, they wage endless political and ideological wars beneath the surface of mortal society.\n\nThough officially under the Camarilla, many cities also harbour Anarchs, Sabbat, and independent factions in an uneasy balance constantly threatened by each other, outside forces and internal fighting alike. Every Kindred struggles against the primal urges of the Beast within them, with bloody frenzy and decline into monstrosity only ever one mistake away."
 
 // Pulled straight from the wiki https://whitewolf.fandom.com/wiki/Vampire_(WOD)
 /datum/splat/vampire/kindred/get_splat_lore()

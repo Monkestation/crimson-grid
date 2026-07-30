@@ -72,6 +72,7 @@ SUBSYSTEM_DEF(masquerade)
 	if(player_breacher.masquerade_score == 5) //Doesn't matter if they weren't in one of these lists.
 		GLOB.veil_breakers_list -= player_breacher
 		GLOB.masquerade_breakers_list -= player_breacher
+		GLOB.supernatural_breakers_list -= player_breacher
 
 	/*
 	var/datum/splat/werewolf/werewolf_splat = get_werewolf_splat(player_breacher)
@@ -98,8 +99,10 @@ SUBSYSTEM_DEF(masquerade)
 	masquerade_breachers += list(list(player_breacher, source, reason))
 	if(get_vampire_splat(player_breacher))
 		GLOB.masquerade_breakers_list |= player_breacher
+		GLOB.supernatural_breakers_list |= player_breacher
 	else if(get_werewolf_splat(player_breacher))
 		GLOB.veil_breakers_list |= player_breacher
+		GLOB.supernatural_breakers_list |= player_breacher
 	//Only lower the global masq if the player's breach score is actually reduced by 1
 	if(pre_breach_score > player_breacher.masquerade_score)
 		masquerade_level = max(0, masquerade_level - 1)
@@ -133,6 +136,7 @@ SUBSYSTEM_DEF(masquerade)
 			masquerade_level = min(MASQUERADE_MAX_LEVEL, masquerade_level + 1)
 	GLOB.masquerade_breakers_list -= player_breacher
 	GLOB.veil_breakers_list -= player_breacher
+	GLOB.supernatural_breakers_list -= player_breacher
 	if(update_preferences)
 		save_persistent_masquerade(player_breacher)
 
@@ -141,11 +145,14 @@ SUBSYSTEM_DEF(masquerade)
 	if(player_breacher.masquerade_score < 5)
 		if(get_vampire_splat(player_breacher))
 			GLOB.masquerade_breakers_list |= player_breacher
+			GLOB.supernatural_breakers_list |= player_breacher
 		else if(get_werewolf_splat(player_breacher))
 			GLOB.veil_breakers_list |= player_breacher
+			GLOB.supernatural_breakers_list |= player_breacher
 	else
 		GLOB.masquerade_breakers_list -= player_breacher
 		GLOB.veil_breakers_list -= player_breacher
+		GLOB.supernatural_breakers_list -= player_breacher
 
 /datum/controller/subsystem/masquerade/proc/player_masquerade_reinforce(datum/source, mob/living/player_breacher)
 	SIGNAL_HANDLER

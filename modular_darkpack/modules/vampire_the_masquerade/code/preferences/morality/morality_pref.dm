@@ -40,6 +40,17 @@
 
 	stat_morality.morality_path = new value(target)
 
+/datum/preference/choiced/vtm_morality/post_set_preference(mob/user, value)
+	. = ..()
+	if(!user)
+		return
+
+	var/datum/morality/morality_path = GLOB.morality_paths[value]
+	if(!morality_path)
+		return
+
+	morality_path.show_lore(user)
+
 /mob/living/proc/is_enlightenment()
 	var/datum/st_stat/morality_path/morality/stat_morality = storyteller_stats[STAT_MORALITY]
 	if(!stat_morality?.morality_path)

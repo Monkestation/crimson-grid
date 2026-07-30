@@ -216,12 +216,11 @@
 	data["muted"] = muted
 
 	var/list/published_numbers = list()
-	for(var/contact in SSphones.published_phone_numbers)
+	for(var/contact, number in SSphones.published_phone_numbers)
 		UNTYPED_LIST_ADD(published_numbers, list(
 			"name" = contact,
-			"number" = SSphones.published_phone_numbers[contact],
+			"number" = number,
 		))
-	published_numbers = sort_list(published_numbers)
 	data["published_numbers"] = published_numbers
 	data["sim_published"] = sim_card.published
 	data["sim_published_name"] = sim_card.published_name
@@ -232,7 +231,6 @@
 			"name" = contact.name,
 			"number" = contact.number,
 		))
-	our_contacts = sort_list(our_contacts)
 	data["our_contacts"] = our_contacts
 
 	var/list/our_blocked_contacts = list()
@@ -241,7 +239,6 @@
 			"name" = contact.name,
 			"number" = contact.number,
 		))
-	our_blocked_contacts = sort_list(our_blocked_contacts)
 	data["our_blocked_contacts"] = our_blocked_contacts
 
 	var/list/phone_history = list()

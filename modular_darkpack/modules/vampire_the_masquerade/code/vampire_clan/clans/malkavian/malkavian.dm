@@ -1,9 +1,10 @@
 /datum/subsplat/vampire_clan/malkavian
 	name = "Malkavian"
 	id = VAMPIRE_CLAN_MALKAVIAN
-	desc = "Derided as Lunatics by other vampires, the Blood of the Malkavians lets them perceive and foretell truths hidden from others. Like the �wise madmen� of poetry their fractured perspective stems from seeing too much of the world at once, from understanding too deeply, and feeling emotions that are just too strong to bear."
+	desc = "Derided as Lunatics by other vampires, the Blood of the Malkavians lets them perceive and foretell truths hidden from others. Like the wise madmen of poetry their fractured perspective stems from seeing too much of the world at once, from understanding too deeply, and feeling emotions that are just too strong to bear. The Malkavians are cursed with supernatural madness that grants disturbing insights, visions and premonitions. They are largely loyal to the Camarilla, equally serving as seers, manipulators, prophets, and fools. Since the undoing of the Great Prank, Dementation has returned to the clan, though some still mysteriously retain Dominate instead (See: Dominate Malkavian). Every Malkavian suffers from a unique derangement that shapes how they experience the world."
 	icon = "malkavian"
 	curse = "Insanity."
+	roleplay_level = "Advanced"
 	sense_the_sin_text = "frightens people near them."
 	clan_disciplines = list(
 		/datum/discipline/auspex,
@@ -19,6 +20,7 @@
 	name = "Dominate Malkavian"
 	id = VAMPIRE_CLAN_DOMINATE_MALKAVIAN
 	icon = "dominate_malkavian"
+	roleplay_level = "Beginner Friendly"
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/dominate,

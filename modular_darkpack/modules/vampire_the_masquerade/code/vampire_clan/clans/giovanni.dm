@@ -3,7 +3,7 @@
 	id = VAMPIRE_CLAN_GIOVANNI
 	desc = "The Giovanni are the usurpers of Clan Cappadocian and one of the youngest clans. The Giovanni has historically been both a clan and a family. They Embrace almost exclusively within their family, and are heavily focused on the goals of money and necromantic power."
 	icon = "giovanni"
-	curse = "Harmful bites."
+	curse = "Extremely painful bites that injure their quarry causing them to scream in pain and perhaps die, while other Clan's bites lull their victims into a pleasurable, foggy trance."
 	sense_the_sin_text = "never considers any action too great for their family."
 	clan_disciplines = list(
 		/datum/discipline/potence,

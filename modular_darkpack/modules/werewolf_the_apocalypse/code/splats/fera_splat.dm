@@ -181,10 +181,11 @@
 
 /datum/splat/werewolf/shifter/proc/causes_delirium()
 	var/datum/species/human/shifter/shifter_species = owner.dna.species
-	if(istype(shifter_species))
+	if(!istype(shifter_species))
 		return FALSE
-	if(shifter_species.form_causes_delirium && !HAS_TRAIT(owner, TRAIT_PIERCED_VEIL))
-		return TRUE
+	if(HAS_TRAIT(owner, TRAIT_PIERCED_VEIL))
+		return FALSE
+	return shifter_species.form_causes_delirium
 
 // Being used to represent meditating in your caern
 /datum/splat/werewolf/shifter/proc/regain_gnosis_process(seconds_per_tick)
