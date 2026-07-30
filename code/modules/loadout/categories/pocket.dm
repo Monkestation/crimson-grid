@@ -337,6 +337,8 @@
 	name = "Box of Candles"
 	item_path = /obj/item/storage/fancy/candle_box
 
+//CRIMSON EDIT ADDITION START - Loadout crosses
+
 /datum/loadout_item/pocket_items/cross
 	name = "Cross (Gold)"
 	item_path = /obj/item/card/hunter
@@ -348,3 +350,5 @@
 /datum/loadout_item/pocket_items/cross
 	name = "Cross (Gothic)"
 	item_path = /obj/item/card/hunter/gothic
+
+//CRIMSON EDIT ADDITION END

@@ -155,15 +155,16 @@
 	worn_icon_state = "head_sec_badge"
 
 /obj/item/card/hunter
-	name = "gold cross"
+	name = "gold cross" //CRIMSON EDIT - specified gold
 	desc = "When you come into the land that the Lord your God is giving you, you must not learn to imitate the abhorrent practices of those nations. No one shall be found among you who makes a son or daughter pass through fire, or who practices divination, or is a soothsayer, or an augur, or a sorcerer, or one who casts spells, or who consults ghosts or spirits, or who seeks oracles from the dead. For whoever does these things is abhorrent to the Lord; it is because of such abhorrent practices that the Lord your God is driving them out before you (Deuteronomy 18:9-12)."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "hunter_badge"
-	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT | ITEM_SLOT_NECK
+	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_BELT | ITEM_SLOT_NECK //CRIMSON EDIT - added belt and neck slot useability
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
 	COOLDOWN_DECLARE(detonation_timer)
 
+//CRIMSON EDIT ADDITION START - new crosses
 /obj/item/card/hunter/silver
 	name = "silver cross"
 	icon_state = "hunter_silver"
@@ -171,6 +172,7 @@
 /obj/item/card/hunter/gothic
 	name = "gothic cross"
 	icon_state = "hunter_gothic"
+//CRIMSON EDIT ADDITION END
 
 /obj/item/card/hunter/attack_self(mob/user)
 	. = ..()
