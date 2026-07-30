@@ -55,8 +55,6 @@
 #define JOB_POLICE_OFFICER "Police Officer"
 #define JOB_EMERGENCY_DISPATCHER "Emergency Dispatcher"
 #define JOB_FEDERAL_INVESTIGATOR "Federal Investigator"
-#define JOB_NATIONAL_GUARD "National Guard Soldier"
-#define JOB_POLICE_SWAT "Swat Officer"
 
 //Clinic
 #define JOB_CLINIC_DIRECTOR "Clinic Director"
@@ -77,7 +75,6 @@
 #define JOB_SABBAT_DUCTUS "Sabbat Ductus"
 #define JOB_SABBAT_PRIEST "Sabbat Priest"
 #define JOB_SABBAT_PACK "Sabbat Pack"
-#define JOB_SABBAT_SABBATIST "Sabbatist"
 
 // Supply
 #define JOB_DEALER "Dealer"
@@ -92,7 +89,6 @@
 #define JOB_GAROU_KEEPER "Sept Keeper" // Kinfolk included
 
 // Pentex
-#define JOB_PENTEX_FIRST "First Team"
 #define JOB_PENTEX_LEAD "Branch Lead"
 #define JOB_PENTEX_EXEC "Executive"
 #define JOB_PENTEX_AFFAIRS "Internal Affairs Agent"

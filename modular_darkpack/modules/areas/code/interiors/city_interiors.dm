@@ -2,6 +2,8 @@
 	name = "\improper Shop"
 	icon_state = "shop"
 	fire_controled = TRUE
+	ambient_buzz = 'modular_darkpack/modules/ambience/sounds/shop.ogg'
+	ambient_buzz_vol = 20
 
 /area/vtm/interior/laundromat
 	name = "Laundromat"
@@ -110,13 +112,6 @@
 	music_index = MUSIC_FOREST
 	fire_controled = FALSE
 
-/area/vtm/interior/tzimisce_manor
-	name = "Tzimisce Manor"
-	icon_state = "old_clan_tzimisce"
-	zone_type = ZONE_ELYSIUM
-	music_index = MUSIC_PRINCE
-	domain = TRUE
-
 /area/vtm/interior/strip_elysium
 	name = "Strip Club - Elysium"
 	icon_state = "prince"
@@ -193,8 +188,6 @@
 	name = "Elevator"
 	icon_state = "prince"
 	zone_type = ZONE_ELYSIUM
-	// Most elevators handle themselves with those little effect thingys
-	ambience_index = null
 	fire_controled = TRUE
 
 /area/vtm/interior/theatre
@@ -248,10 +241,10 @@
 	zone_type = ZONE_ELYSIUM
 	fire_controled = TRUE
 
-// line 111. someone fucked up.
 /area/vtm/interior/tzimisce_manor
 	name = "Clan Tzimisce Manor"
 	icon_state = "old_clan_tzimisce"
+	music_index = MUSIC_PRINCE
 	zone_type = ZONE_ELYSIUM
 	domain = TRUE
 

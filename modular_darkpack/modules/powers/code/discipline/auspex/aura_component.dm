@@ -185,14 +185,10 @@
 		aura_smoke = new /obj/effect/abstract/shared_particle_holder(null, /particles/smoke/aura)
 		aura_smoke.blend_mode = 2
 		aura_smoke.add_filter("particle_blur", 1, gauss_blur_filter(8))
-	var/mutable_appearance/aura_appearance = mutable_appearance('modular_darkpack/modules/powers/icons/auras.dmi', "aura", ABOVE_MOB_LAYER, parent_mob, ABOVE_GAME_PLANE)
-	// high humanity kindred OR kindred with blush of health avoid getting the still heart. in auspex, their hearts will instead show like humans; beating!
-	if(get_kindred_splat(parent_mob))
-		var/mob/living/carbon/human/lick = parent_mob
-		var/datum/st_stat/morality_path/morality/stat_morality = lick?.storyteller_stats[STAT_MORALITY]
-		if((stat_morality?.morality_path?.alignment != MORALITY_HUMANITY || stat_morality?.get_score() < 5) && !HAS_TRAIT(parent_mob, TRAIT_BLUSH_OF_HEALTH))
-			aura_appearance = mutable_appearance('modular_darkpack/modules/powers/icons/auras.dmi', "aura_dead", ABOVE_MOB_LAYER, parent_mob, ABOVE_GAME_PLANE)
-	if(parent_mob.stat == DEAD)
+	var/mutable_appearance/aura_appearance
+	if(parent_mob.heart_is_beating())
+		aura_appearance = mutable_appearance('modular_darkpack/modules/powers/icons/auras.dmi', "aura", ABOVE_MOB_LAYER, parent_mob, ABOVE_GAME_PLANE)
+	else
 		aura_appearance = mutable_appearance('modular_darkpack/modules/powers/icons/auras.dmi', "aura_dead", ABOVE_MOB_LAYER, parent_mob, ABOVE_GAME_PLANE)
 	update_aura_colors(aura_appearance, holder)
 	update_aura_overlays(aura_appearance, holder)
@@ -344,3 +340,26 @@
 /datum/component/aura/proc/has_pale_blotches(mob/parent_mob)
 	if(!HAS_TRAIT(parent_mob, TRAIT_PALE_AURA) && get_ghoul_splat(parent_mob))
 		return TRUE
+
+
+/mob/proc/heart_is_beating()
+	return FALSE
+
+/mob/living/heart_is_beating()
+	if(stat == DEAD)
+		return FALSE
+
+	return TRUE
+
+/mob/living/carbon/human/heart_is_beating()
+	var/obj/item/organ/heart/beating_heart = get_organ_slot(ORGAN_SLOT_HEART)
+	if(!istype(beating_heart) || !(beating_heart.is_beating()))
+		return FALSE
+
+	// high humanity kindred OR kindred with blush of health avoid getting the still heart. in auspex, their hearts will instead show like humans; beating!
+	if(get_kindred_splat(src))
+		var/datum/st_stat/morality_path/morality/stat_morality = storyteller_stats[STAT_MORALITY]
+		if((stat_morality?.morality_path?.alignment != MORALITY_HUMANITY || stat_morality?.get_score() < 5) && !HAS_TRAIT(src, TRAIT_BLUSH_OF_HEALTH))
+			return FALSE
+
+	return TRUE

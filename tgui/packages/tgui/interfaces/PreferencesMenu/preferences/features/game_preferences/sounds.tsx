@@ -8,9 +8,9 @@ import {
 import { FeatureDropdownInput } from '../dropdowns';
 
 export const sound_ambience_volume: Feature<number> = {
-  name: 'Ambience volume',
+  name: 'City ambience volume', // DARKPACK EDIT CHANGE - AMBIENCE
   category: 'SOUND',
-  description: `Ambience refers to the more noticeable ambient sounds that play on occasion.`,
+  description: `Ambience refers to things like ocean waves, city noise, etc.`, // DARKPACK EDIT CHANGE - AMBIENCE
   component: FeatureSliderInput,
 };
 
@@ -129,9 +129,9 @@ export const sound_midi: Feature<number> = {
 };
 
 export const sound_ship_ambience_volume: Feature<number> = {
-  name: 'Ship ambience volume',
+  name: 'Main ambience volume', // DARKPACK EDIT CHANGE - AMBIENCE
   category: 'SOUND',
-  description: `Ship ambience refers to the low ambient buzz that plays on loop.`,
+  description: `Main ambience refers to the main background noise that plays on loop.`, // DARKPACK EDIT CHANCE - AMBIENCE
   component: FeatureSliderInput,
 };
 

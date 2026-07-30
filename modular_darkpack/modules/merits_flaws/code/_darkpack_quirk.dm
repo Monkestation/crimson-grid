@@ -78,3 +78,49 @@
 
 	return TRUE
 
+
+
+/// Subtype quirk that has some bonus logic to spawn items for the player.
+/datum/quirk/darkpack/item_quirk
+	/// Lazylist of strings describing where all the quirk items have been spawned.
+	var/list/where_items_spawned
+	/// If true, the backpack automatically opens on post_add(). Usually set to TRUE when an item is equipped inside the player's backpack.
+	var/open_backpack = FALSE
+	abstract_type = /datum/quirk/darkpack/item_quirk
+
+/**
+ * Handles inserting an item in any of the valid slots provided, then allows for post_add notification.
+ *
+ * If no valid slot is available for an item, the item is left at the mob's feet.
+ * Arguments:
+ * * quirk_item - The item to give to the quirk holder. If the item is a path, the item will be spawned in first on the player's turf.
+ * * valid_slots - List of LOCATION_X that is fed into [/mob/living/carbon/proc/equip_in_one_of_slots].
+ * * flavour_text - Optional flavour text to append to the where_items_spawned string after the item's location.
+ * * default_location - If the item isn't possible to equip in a valid slot, this is a description of where the item was spawned.
+ * * notify_player - If TRUE, adds strings to where_items_spawned list to be output to the player in [/datum/quirk/darkpack/item_quirk/post_add()]
+ */
+/datum/quirk/darkpack/item_quirk/proc/give_item_to_holder(obj/item/quirk_item, list/valid_slots, flavour_text = null, default_location = "at your feet", notify_player = FALSE)
+	if(ispath(quirk_item))
+		quirk_item = new quirk_item(get_turf(quirk_holder))
+
+	var/mob/living/carbon/human/human_holder = quirk_holder
+
+	var/where = human_holder.equip_in_one_of_slots(quirk_item, valid_slots, qdel_on_fail = FALSE, indirect_action = TRUE) || default_location
+
+	if(where == LOCATION_BACKPACK)
+		open_backpack = TRUE
+
+	if(notify_player)
+		LAZYADD(where_items_spawned, span_boldnotice("You have \a [quirk_item] [where]. [flavour_text]"))
+
+/datum/quirk/darkpack/item_quirk/post_add()
+	if(open_backpack)
+		var/mob/living/carbon/human/human_holder = quirk_holder
+		// post_add() can be called via delayed callback. Check they still have a backpack equipped before trying to open it.
+		if(human_holder.back)
+			human_holder.back.atom_storage.show_contents(human_holder)
+
+	for(var/chat_string in where_items_spawned)
+		to_chat(quirk_holder, chat_string)
+
+	where_items_spawned = null

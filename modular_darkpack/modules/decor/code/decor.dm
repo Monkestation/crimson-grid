@@ -239,12 +239,25 @@
 	layer = ABOVE_ALL_MOB_LAYER
 	anchored = TRUE
 
+
 /obj/structure/vampipe
 	name = "pipes"
 	icon = 'modular_darkpack/modules/decor/icons/pipes.dmi'
 	icon_state = "piping1"
 	layer = ABOVE_ALL_MOB_LAYER
 	anchored = TRUE
+	var/datum/looping_sound/slow_drip/looping_drips
+	var/drip_chance = 5
+
+/obj/structure/vampipe/Initialize(mapload)
+	. = ..()
+	if(prob(drip_chance))
+		looping_drips = new(src, TRUE)
+
+/obj/structure/vampipe/Destroy(force)
+	. = ..()
+	QDEL_NULL(looping_drips)
+
 
 /obj/structure/vamproofwall
 	name = "wall"

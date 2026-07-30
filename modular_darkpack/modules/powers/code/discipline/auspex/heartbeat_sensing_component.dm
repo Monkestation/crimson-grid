@@ -58,8 +58,7 @@
 	if(isnull(receivers[parent_mob]))
 		receivers[parent_mob] = list()
 	for(var/mob/living/carbon/living_carbon in orange(parent_mob.client?.view, get_turf(parent_mob)))
-		var/obj/item/organ/heart/beating_heart = living_carbon.get_organ_slot(ORGAN_SLOT_HEART)
-		if(!istype(beating_heart) && !(beating_heart.is_beating()))
+		if(!living_carbon.heart_is_beating())
 			continue
 		show_heartbeat_image(living_carbon)
 

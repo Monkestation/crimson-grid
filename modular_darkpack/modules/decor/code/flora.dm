@@ -161,11 +161,18 @@
 	icon_state = "stalagmite1"
 	icon = 'modular_darkpack/modules/decor/icons/flora64x64.dmi'
 	pixel_w = -16
+	var/datum/looping_sound/slow_drip/looping_drips
+	var/drip_chance = 75
 
 /obj/structure/flora/rock/stalagmite/Initialize(mapload)
 	. = ..()
 	icon_state = "stalagmite[rand(1, 5)]"
+	if(prob(drip_chance))
+		looping_drips = new(src, TRUE)
 
+/obj/structure/flora/rock/stalagmite/Destroy(force)
+	. = ..()
+	QDEL_NULL(looping_drips)
 
 /obj/effect/spawner/random/flora
 	icon_state = "flower"

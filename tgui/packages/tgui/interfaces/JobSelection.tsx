@@ -38,6 +38,7 @@ type Data = {
   disable_jobs_for_non_observers: BooleanLike;
   priority: BooleanLike;
   round_duration: string;
+  selected_character?: string; // CRIMSON EDIT ADDITION - CHANGE_CHARACTER_SLOT
 };
 
 type JobEntryProps = {
@@ -189,12 +190,21 @@ export function JobSelection(props) {
       <Window.Content>
         <Section
           buttons={
-            <Button
-              onClick={() => act('select_job', { job: 'Random' })}
-              tooltip="Roll target random job. You can re-roll or cancel your random job if you don't like it."
-            >
-              Random Job!
-            </Button>
+            // CRIMSON EDIT ADDITION - CHANGE_CHARACTER_SLOT - added "change_slot". ORIGINAL: select_job button without the parent fragment
+            <>
+              <Button
+                onClick={() => act('change_slot')}
+                tooltip="Quickly change your current character without opening the Character Setup menu."
+              >
+                Change Character
+              </Button>
+              <Button
+                onClick={() => act('select_job', { job: 'Random' })}
+                tooltip="Roll target random job. You can re-roll or cancel your random job if you don't like it."
+              >
+                Random Job!
+              </Button>
+            </>
           }
           fill
           scrollable
@@ -202,7 +212,14 @@ export function JobSelection(props) {
             <>
               {shuttle_status && <NoticeBox info>{shuttle_status}</NoticeBox>}
               <Box as="span" color="label">
-                It is currently {round_duration} into the night. {/* DARKPACK EDIT CHANGE - ORIGINAL: It is currently {round_duration} into the shift. */}
+                {!!data.selected_character && (
+                  <span style={{ color: 'grey' }}>
+                    Joining as '{data.selected_character}' —{' '}
+                  </span>
+                )}
+                It is currently {round_duration} into the night.
+                {/* DARKPACK EDIT CHANGE - ORIGINAL: It is currently {round_duration} into the shift. */}
+                {/* CRIMSON EDIT CHANGE - CHANGE_CHARACTER_SLOT - Added "Joining as", I am not going to form an ORIGINAL, please git blame */}
               </Box>
             </>
           }
