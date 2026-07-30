@@ -8,7 +8,7 @@
 		/datum/discipline/obfuscate,
 		/datum/discipline/fortitude,
 		/datum/discipline/thanatosis,
-		/datum/discipline/necromancy
+		/datum/discipline/necromancy // CRIMSON EDIT ADD - Samedi Get Necromancy Now
 	)
 	alt_sprite = "rotten4"
 	clan_traits = list(
