@@ -7000,6 +7000,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+/obj/effect/abstract/cargo_landing_spot,
 /turf/open/misc/dirt,
 /area/vtm/interior/supply)
 "cat" = (
@@ -25119,6 +25120,7 @@
 /obj/item/supplypod_beacon{
 	anchored = 1
 	},
+/obj/effect/abstract/cargo_landing_spot,
 /turf/open/misc/dirt/rails,
 /area/vtm/interior/supply)
 "hoH" = (
@@ -25476,6 +25478,14 @@
 /obj/effect/landmark/npcwall,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/northbeach)
+"htK" = (
+/obj/effect/turf_decal/bordur,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/abstract/cargo_landing_spot,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/interior/supply)
 "htL" = (
 /obj/item/ammo_box/magazine/darkpackthompson,
 /obj/structure/table/wood/fancy/green,
@@ -36229,6 +36239,10 @@
 	},
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/outside/park)
+"kIN" = (
+/obj/effect/abstract/cargo_landing_spot,
+/turf/open/misc/dirt/rails,
+/area/vtm/interior/supply)
 "kIP" = (
 /obj/structure/railing{
 	pixel_x = 5;
@@ -36962,6 +36976,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/effect/abstract/cargo_landing_spot,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/supply)
 "kUC" = (
@@ -42851,6 +42866,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/abstract/cargo_landing_spot,
+/obj/effect/abstract/cargo_landing_spot,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/supply)
 "mHN" = (
@@ -72883,6 +72900,7 @@
 	dir = 4
 	},
 /obj/machinery/sprinkler/area_managed,
+/obj/effect/abstract/cargo_landing_spot,
 /turf/open/misc/dirt/rails,
 /area/vtm/interior/supply)
 "voG" = (
@@ -76945,6 +76963,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
+/obj/effect/abstract/cargo_landing_spot,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/supply)
 "wAC" = (
@@ -79085,6 +79104,7 @@
 /area/vtm/interior/millennium_tower)
 "xfR" = (
 /obj/effect/turf_decal/stripes/line,
+/obj/effect/abstract/cargo_landing_spot,
 /turf/open/misc/dirt,
 /area/vtm/interior/supply)
 "xfV" = (
@@ -82040,6 +82060,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/effect/abstract/cargo_landing_spot,
 /turf/open/misc/dirt,
 /area/vtm/interior/supply)
 "xYr" = (
@@ -205478,8 +205499,8 @@ sAm
 sAm
 wIj
 bjm
-mHI
-gAq
+htK
+kIN
 xfR
 oWs
 gAq
@@ -205735,8 +205756,8 @@ xTh
 xTh
 wEh
 bjm
-mHI
-gAq
+htK
+kIN
 xfR
 oWs
 gAq
@@ -205992,8 +206013,8 @@ jHL
 xTh
 wEh
 bjm
-mHI
-gAq
+htK
+kIN
 xfR
 twJ
 gAq
@@ -206250,7 +206271,7 @@ xTh
 wEh
 bjm
 mHI
-gAq
+kIN
 xfR
 twJ
 gAq
