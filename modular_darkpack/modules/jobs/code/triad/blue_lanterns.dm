@@ -14,7 +14,7 @@
 		/datum/job_department/triad,
 	)
 
-	known_contacts = list(JOB_MOUNTAIN_MASTER, JOB_DEPUTY_MOUNTAIN_MASTER, JOB_RED_POLE, JOB_BLUE_LANTERNS)
+	known_contacts = list(JOB_MOUNTAIN_MASTER, JOB_DEPUTY_MOUNTAIN_MASTER, JOB_TRIAD_RED_POLE, JOB_TRIAD_BLUE_LANTERNS)
 	allowed_splats = list(SPLAT_NONE)
 	description = "You are a loyal follower of the Triad, assisting in their operations and maintaining order."
 	minimum_masquerade = 0
