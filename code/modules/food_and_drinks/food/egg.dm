@@ -397,7 +397,6 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 /obj/item/food/spore_sack/independent
 	icon_state = "spore_sack_independent"
 	base_icon_state = "spore_sack_independent"
-*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/item/food/friedegg/spore
 	name = "fried spore"
@@ -422,3 +421,4 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 
 /obj/item/food/rawegg/spore/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/friedegg/spore, rand(15 SECONDS, 25 SECONDS), TRUE, FALSE)
+*/ //CRIMSON EDIT REMOVAL END - debloat
