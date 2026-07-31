@@ -1,6 +1,6 @@
 ///Mobs spawned with this one are automatically player controlled, if possible
 /datum/shuttle_event/simple_spawner/player_controlled
-	spawning_list = list(/mob/living/basic/carp)
+	spawning_list = list(/mob/living/basic/hivebot) // CRIMSON EDIT ADDITION - debloat - ORIGINAL: /mob/living/basic/carp
 
 	///If we cant find a ghost, do we spawn them anyway? Otherwise they go in the garbage bin
 	var/spawn_anyway_if_no_player = FALSE
@@ -45,6 +45,7 @@
 
 	role_type = ROLE_ALIEN
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 ///Spawns three player controlled carp!! Deadchats final chance to wreak havoc, probably really not that dangerous if even one person has a laser gun
 /datum/shuttle_event/simple_spawner/player_controlled/carp
 	name = "Three player controlled carp! (Little dangerous!)"
@@ -72,3 +73,4 @@
 	spawning_list.Cut()
 	for(var/i in 1 to max_carp_spawns)
 		spawning_list[pick_weight(spawning_list_copy)] += 1
+*/ //CRIMSON EDIT REMOVAL END - debloat

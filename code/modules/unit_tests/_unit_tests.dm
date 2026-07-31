@@ -170,7 +170,7 @@
 #include "dismemberment.dm"
 #include "dna_infusion.dm"
 #include "door_access.dm"
-#include "dragon_expiration.dm"
+// #include "dragon_expiration.dm"// CRIMSON EDIT REMOVAL - debloat
 #include "drink_icons.dm"
 #include "dropper.dm"
 #include "dummy_spawn.dm"

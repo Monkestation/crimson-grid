@@ -41,7 +41,7 @@
 	max_requirement_per_type = 2
 	possible_types = list(
 		/mob/living/basic/pet/cat,
-		/mob/living/basic/carp,
+		// /mob/living/basic/carp, // CRIMSON EDIT REMOVAL - debloat
 		/mob/living/basic/chicken,
 		/mob/living/basic/cow,
 		/mob/living/basic/pet/dog/corgi,

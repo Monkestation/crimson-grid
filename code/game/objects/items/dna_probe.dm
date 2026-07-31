@@ -152,6 +152,7 @@
 		return TRUE
 	return FALSE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 #define CARP_MIX_DNA_TIMER (15 SECONDS)
 
 ///Used for scanning carps, and then turning yourself into one.
@@ -193,6 +194,7 @@
 	qdel(src)
 
 #undef CARP_MIX_DNA_TIMER
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 #undef DNA_PROBE_SCAN_PLANTS
 #undef DNA_PROBE_SCAN_ANIMALS

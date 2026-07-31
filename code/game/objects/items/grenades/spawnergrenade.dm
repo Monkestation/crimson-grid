@@ -42,10 +42,12 @@
 	spawner_type = /mob/living/basic/viscerator
 	deliveryamt = 10
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/item/grenade/spawnergrenade/spesscarp
 	name = "carp delivery grenade"
 	spawner_type = /mob/living/basic/carp
 	deliveryamt = 5
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/item/grenade/spawnergrenade/syndiesoap
 	name = "Mister Scrubby"

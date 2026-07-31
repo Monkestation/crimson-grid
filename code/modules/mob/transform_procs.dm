@@ -413,8 +413,10 @@
 		return TRUE
 	if(ispath(MP, /mob/living/basic/crab))
 		return TRUE
+	/* //CRIMSON EDIT REMOVAL START - debloat
 	if(ispath(MP, /mob/living/basic/carp))
 		return TRUE
+	*/ //CRIMSON EDIT REMOVAL END - debloat
 	if(ispath(MP, /mob/living/basic/mushroom))
 		return TRUE
 	if(ispath(MP, /mob/living/basic/shade))

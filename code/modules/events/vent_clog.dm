@@ -263,7 +263,7 @@
 /datum/round_event/vent_clog/critical/get_mob()
 	var/static/list/mob_list = list(
 		/mob/living/basic/bee/toxin,
-		/mob/living/basic/carp,
+		// /mob/living/basic/carp, // CRIMSON EDIT REMOVAL - debloat
 		/mob/living/basic/cockroach/glockroach,
 	)
 	return pick(mob_list)

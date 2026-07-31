@@ -1,5 +1,6 @@
 //Fish sources that're usually related to rifts or anomalies go here.
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/fish_source/carp_rift
 	background = "background_carp_rift"
 	catalog_description = "Space Dragon Rifts"
@@ -24,6 +25,7 @@
 	)
 	fishing_difficulty = FISHING_DEFAULT_DIFFICULTY + 28
 	associated_safe_turfs = list(/turf/open/space)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/fish_source/dimensional_rift
 	background = "background_mansus"

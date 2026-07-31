@@ -237,8 +237,10 @@
 			new /obj/item/storage/bag/harpoon_quiver(src)
 			new /obj/item/clothing/suit/hooded/carp_costume/spaceproof(src)
 			new /obj/item/clothing/mask/gas/carp(src)
+			/* //CRIMSON EDIT REMOVAL START - debloat
 			new /obj/item/grenade/spawnergrenade/spesscarp(src)
 			new /obj/item/toy/plush/carpplushie/dehy_carp(src) // 1 tc, for use as a personal mount
+			*/ //CRIMSON EDIT REMOVAL END - debloat
 
 		if(KIT_MAD_SCIENTIST)
 			new /obj/item/clothing/suit/toggle/labcoat/mad(src) // 0 tc

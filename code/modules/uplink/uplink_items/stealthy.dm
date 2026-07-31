@@ -16,12 +16,14 @@
 	surplus = 50
 	purchasable_from = ~UPLINK_ALL_SYNDIE_OPS
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/uplink_item/stealthy_weapons/dehy_carp
 	name = "Dehydrated Space Carp"
 	desc = "Looks like a plush toy carp, but just add water and it becomes a real-life space carp! Activate in \
 			your hand before use so it knows not to kill you."
 	item = /obj/item/toy/plush/carpplushie/dehy_carp
 	cost = 1
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/uplink_item/stealthy_weapons/edagger
 	name = "Energy Dagger"

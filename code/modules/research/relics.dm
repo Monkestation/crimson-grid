@@ -160,7 +160,7 @@
 		/mob/living/basic/bear,
 		/mob/living/basic/bee,
 		/mob/living/basic/butterfly,
-		/mob/living/basic/carp,
+		// /mob/living/basic/carp, // CRIMSON EDIT REMOVAL - debloat
 		/mob/living/basic/crab,
 		/mob/living/basic/lizard,
 		/mob/living/basic/mouse,

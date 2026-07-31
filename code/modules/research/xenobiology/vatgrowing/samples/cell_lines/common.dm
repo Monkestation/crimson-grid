@@ -212,6 +212,7 @@
 	virus_suspectibility = 2
 	resulting_atom = /mob/living/basic/bear
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/micro_organism/cell_line/carp
 	desc = "Cyprinid cells"
 	required_reagents = list(
@@ -250,6 +251,7 @@
 
 	virus_suspectibility = 1
 	resulting_atom = /mob/living/basic/carp/mega
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/micro_organism/cell_line/snake
 	desc = "Ophidic cells"

@@ -14,10 +14,10 @@ GLOBAL_LIST_INIT_TYPED(cell_line_tables, /list, list(
 	),
 
 	CELL_LINE_TABLE_MOIST = list(
-		/datum/micro_organism/cell_line/carp = 1,
+		// /datum/micro_organism/cell_line/carp = 1, // CRIMSON EDIT REMOVAL - debloat
 		/datum/micro_organism/cell_line/cockroach = 1,
 		/datum/micro_organism/cell_line/gelatinous_cube = 2,
-		/datum/micro_organism/cell_line/megacarp = 1,
+		// /datum/micro_organism/cell_line/megacarp = 1, // CRIMSON EDIT REMOVAL - debloat
 		/datum/micro_organism/cell_line/slime = 2,
 		/datum/micro_organism/cell_line/snake = 1,
 		/datum/micro_organism/cell_line/glockroach = 1,
@@ -44,7 +44,7 @@ GLOBAL_LIST_INIT_TYPED(cell_line_tables, /list, list(
 	CELL_LINE_TABLE_BEAR = list(/datum/micro_organism/cell_line/bear = 1),
 	CELL_LINE_TABLE_BLOBBERNAUT = list(/datum/micro_organism/cell_line/blobbernaut = 1),
 	CELL_LINE_TABLE_BLOBSPORE = list(/datum/micro_organism/cell_line/blob_spore = 1),
-	CELL_LINE_TABLE_CARP = list(/datum/micro_organism/cell_line/carp = 1),
+	CELL_LINE_TABLE_CARP = list(), // CRIMSON EDIT REMOVAL - debloat - /datum/micro_organism/cell_line/carp = 1
 	CELL_LINE_TABLE_CAT = list(/datum/micro_organism/cell_line/cat = 1),
 	CELL_LINE_TABLE_CHICKEN = list(/datum/micro_organism/cell_line/chicken = 1),
 	CELL_LINE_TABLE_COCKROACH = list(/datum/micro_organism/cell_line/cockroach = 1),
@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT_TYPED(cell_line_tables, /list, list(
 	CELL_LINE_TABLE_GLOCKROACH = list(/datum/micro_organism/cell_line/glockroach = 1),
 	CELL_LINE_TABLE_GRAPE = list(/datum/micro_organism/cell_line/sholean_grapes = 1),
 	CELL_LINE_TABLE_HAUBEROACH = list(/datum/micro_organism/cell_line/hauberoach = 1),
-	CELL_LINE_TABLE_MEGACARP = list(/datum/micro_organism/cell_line/megacarp = 1),
+	CELL_LINE_TABLE_MEGACARP = list(), // CRIMSON EDIT REMOVAL - debloat - /datum/micro_organism/cell_line/megacarp = 1
 	CELL_LINE_TABLE_MOUSE = list(/datum/micro_organism/cell_line/mouse = 1),
 	CELL_LINE_TABLE_PINE = list(/datum/micro_organism/cell_line/pine = 1),
 	CELL_LINE_TABLE_PUG = list(/datum/micro_organism/cell_line/pug = 1),

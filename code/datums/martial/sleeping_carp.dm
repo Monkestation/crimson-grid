@@ -315,8 +315,10 @@
 	// An evaluation of how 'carp' we are.
 	var/style_factor_points = 0
 
+	/* //CRIMSON EDIT REMOVAL START - debloat
 	if(istype(carp_user, /mob/living/basic/space_dragon) || istype(carp_user, /mob/living/basic/carp))
 		return 100
+	*/ //CRIMSON EDIT REMOVAL END - debloat
 
 	if(!ishuman(carp_user)) // We're not concerned about nonhumans here, we can assume we've covered any relevant mobs by checking for carp.
 		return 0

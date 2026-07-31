@@ -125,6 +125,7 @@
 	user.apply_status_effect(/datum/status_effect/go_away/deletes_mob)
 	qdel(src)
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/item/fish/baby_carp
 	name = "baby space carp"
 	fish_id = "baby_carp"
@@ -245,5 +246,5 @@
 
 /obj/item/fish/baby_carp/persistence_load(list/data)
 	add_atom_colour(data[PERSISTENCE_FISH_CARP_COLOR], FIXED_COLOUR_PRIORITY)
-
 #undef PERSISTENCE_FISH_CARP_COLOR
+*/ //CRIMSON EDIT REMOVAL END - debloat

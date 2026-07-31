@@ -83,8 +83,8 @@ GLOBAL_LIST_INIT(phobia_mobs, list(
 	)),
 	"doctors" = typecacheof(list(/mob/living/basic/bot/medbot)),
 	"fish" = typecacheof(list(
-		/mob/living/basic/carp,
-		/mob/living/basic/space_dragon,
+		// /mob/living/basic/carp, // CRIMSON EDIT REMOVAL - debloa
+		// /mob/living/basic/space_dragon, // CRIMSON EDIT REMOVAL - debloat
 	)),
 	"insects" = typecacheof(list(
 		/mob/living/basic/ant,
@@ -397,8 +397,10 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 		/obj/item/food/fishmeat,
 		/obj/item/food/nugget/fish,
 		/obj/item/food/volt_fish,
+		/* //CRIMSON EDIT REMOVAL START - debloat
 		/obj/item/grenade/clusterbuster/spawner_spesscarp,
 		/obj/item/grenade/spawnergrenade/spesscarp,
+		*/ //CRIMSON EDIT REMOVAL END - debloat
 		/obj/item/knife/carp,
 		/obj/item/organ/brain/carp,
 		/obj/item/organ/heart/carp,

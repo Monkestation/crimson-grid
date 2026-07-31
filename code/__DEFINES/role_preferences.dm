@@ -37,7 +37,7 @@
 #define ROLE_CLOWN_OPERATIVE_MIDROUND "Clown Operative (Midround)"
 #define ROLE_PARADOX_CLONE "Paradox Clone"
 #define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
-#define ROLE_SPACE_DRAGON "Space Dragon"
+// #define ROLE_SPA CE_DRAGON "Space Dragon" // CRIMSON EDIT REMOVAL - debloat
 #define ROLE_SPIDER "Spider"
 #define ROLE_WIZARD_MIDROUND "Wizard (Midround)"
 #define ROLE_VOIDWALKER "Voidwalker"

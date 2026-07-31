@@ -1605,14 +1605,16 @@ GAME_VERB_PROC(/mob/living, mob_sleep, "Sleep", null)
 				/mob/living/basic/bear/butter,
 				/mob/living/basic/bear/snow,
 				/mob/living/basic/bear/russian,
-				/mob/living/basic/blob_minion/blobbernaut,
-				/mob/living/basic/blob_minion/spore,
+				// /mob/living/basic/blob_minion/blobbernaut, // CRIMSON EDIT REMOVAL - debloat
+				// /mob/living/basic/blob_minion/spore, // CRIMSON EDIT REMOVAL - debloat
 				/mob/living/basic/blood_worm/hatchling/polymorph,
 				/mob/living/basic/butterfly,
+				/* //CRIMSON EDIT REMOVAL START - debloat
 				/mob/living/basic/carp,
 				/mob/living/basic/carp/mega,
 				/mob/living/basic/carp/magic,
 				/mob/living/basic/carp/magic/chaos,
+				*/ //CRIMSON EDIT REMOVAL END - debloat
 				/mob/living/basic/chick,
 				/mob/living/basic/chick/permanent,
 				/mob/living/basic/chicken,

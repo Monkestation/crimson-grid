@@ -539,6 +539,7 @@
 	candidate.current.forceMove(find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = TRUE))
 	playsound(candidate.current, 'sound/effects/magic/ethereal_exit.ogg', 50, TRUE, -1)
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/dynamic_ruleset/midround/from_ghosts/space_dragon
 	name = "Space Dragon"
 	config_tag = "Space Dragon"
@@ -578,6 +579,7 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/space_dragon/false_alarm()
 	announce_space_dragon()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors
 	name = "Abductors"

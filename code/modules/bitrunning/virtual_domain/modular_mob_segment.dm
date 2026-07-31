@@ -145,10 +145,12 @@
 	)
 
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/modular_mob_segment/carps
 	mobs = list(
 		/mob/living/basic/carp,
 	)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 
 /datum/modular_mob_segment/hivebots

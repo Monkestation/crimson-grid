@@ -248,9 +248,11 @@
 		/mob/living/basic/bear,
 		/mob/living/basic/blob_minion/blobbernaut,
 		/mob/living/basic/butterfly,
+		/* //CRIMSON EDIT REMOVAL START - debloat
 		/mob/living/basic/carp,
 		/mob/living/basic/carp/magic,
 		/mob/living/basic/carp/magic/chaos,
+		*/ //CRIMSON EDIT REMOVAL END - debloat
 		/mob/living/basic/chick,
 		/mob/living/basic/chicken,
 		/mob/living/basic/cow,

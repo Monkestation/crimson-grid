@@ -7,7 +7,7 @@
 GLOBAL_LIST_INIT(floor_diseases, list(
 	/datum/disease/nebula_nausea = 2,
 	/datum/disease/gastritium = 2,
-	/datum/disease/carpellosis = 1,
+	// /datum/disease/carpellosis = 1, // CRIMSON EDIT REMOVAL - debloat
 ))
 
 /// Makes items infective if left on floor, also sending corresponding signals to parent

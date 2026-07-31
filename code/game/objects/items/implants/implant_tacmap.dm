@@ -66,10 +66,12 @@
 	if(.)
 		RegisterSignal(target, COMSIG_MINIMAP_ACTION_TRIGGER, PROC_REF(deny_nukie_base_open))
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/item/implant/tacmap/nuclear/get_minimap_icon_state(mob/living/wearer)
 	if(wearer.stat != DEAD && istype(wearer, /mob/living/basic/carp/pet/cayenne))
 		return "cayenne"
 	. = ..()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/item/implant/tacmap/nuclear/removed(mob/living/source, silent, special)
 	UnregisterSignal(source, COMSIG_MINIMAP_ACTION_TRIGGER)

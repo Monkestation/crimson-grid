@@ -134,6 +134,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 		to_chat(L, span_warning("Your uplink could not be found so your share of the team's bonus telecrystals has been bluespaced to your [L.put_in_hands(TC) ? "hands" : "feet"]."))
 		tc_to_distribute -= tc_per_nukie
 
+	/* //CRIMSON EDIT REMOVAL START - debloat
 	if (tc_to_distribute > 0) // What shall we do with the remainder...
 		for (var/mob/living/basic/carp/pet/cayenne/C in GLOB.mob_living_list)
 			if (C.stat != DEAD)
@@ -141,6 +142,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 				TC.throw_at(get_step(C, C.dir), 3, 3)
 				C.visible_message(span_notice("[C] coughs up a half-digested telecrystal"),span_notice("You cough up a half-digested telecrystal!"))
 				break
+	*/ //CRIMSON EDIT REMOVAL END - debloat
 
 
 /obj/item/nuclear_challenge/proc/check_allowed(mob/living/user)

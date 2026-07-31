@@ -1,3 +1,4 @@
+/* //CRIMSON EDIT REMOVAL START - debloat
 /**
  * # Magicarp Bolt
  * Holder ability simply for "firing a projectile with a cooldown".
@@ -32,6 +33,7 @@
 	if (!clicker.combat_mode)
 		return FALSE
 	return ..()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /**
  * # Lesser Carp Rift

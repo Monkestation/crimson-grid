@@ -49,9 +49,8 @@
 	to_spawn.flags_1 |= HOLOGRAM_1
 	to_spawn.obj_flags |= NO_DEBRIS_AFTER_DECONSTRUCTION
 	return to_spawn
-
 /obj/effect/holodeck_effect/mobspawner
-	var/mobtype = /mob/living/basic/carp/holographic
+	var/mobtype = /mob/living/basic/butterfly // CRIMSON EDIT CHANGE - debloat - original: /mob/living/basic/carp/holographic
 	var/mob/our_mob = null
 
 /obj/effect/holodeck_effect/mobspawner/activate(obj/machinery/computer/holodeck/HC)

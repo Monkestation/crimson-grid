@@ -28,6 +28,7 @@
 	tier = DNA_MUTANT_TIER_ONE
 	status_effect_type = /datum/status_effect/organ_set_bonus/goliath
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/infuser_entry/carp
 	name = "Carp"
 	infuse_mob_name = "space-cyprinidae"
@@ -51,6 +52,7 @@
 	infusion_desc = "nomadic"
 	tier = DNA_MUTANT_TIER_ONE
 	status_effect_type = /datum/status_effect/organ_set_bonus/carp
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/infuser_entry/rat
 	name = "Rat"

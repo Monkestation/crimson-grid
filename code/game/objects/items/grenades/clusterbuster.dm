@@ -165,9 +165,11 @@
 	name = "iViscerator"
 	payload = /obj/item/grenade/spawnergrenade/manhacks
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/item/grenade/clusterbuster/spawner_spesscarp
 	name = "Invasion of the Space Carps"
 	payload = /obj/item/grenade/spawnergrenade/spesscarp
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/item/grenade/clusterbuster/soap
 	name = "Slipocalypse"

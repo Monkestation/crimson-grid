@@ -182,10 +182,12 @@
 		var/obj/item/food/monkeycube/cube = exposed_obj
 		cube.Expand()
 
+	/* //CRIMSON EDIT REMOVAL START - debloat
 	// Dehydrated carp
 	else if(istype(exposed_obj, /obj/item/toy/plush/carpplushie/dehy_carp))
 		var/obj/item/toy/plush/carpplushie/dehy_carp/dehy = exposed_obj
 		dehy.Swell() // Makes a carp
+	*/ //CRIMSON EDIT REMOVAL END - debloat
 
 	else if(istype(exposed_obj, /obj/item/stack/sheet/hairlesshide))
 		var/obj/item/stack/sheet/hairlesshide/HH = exposed_obj

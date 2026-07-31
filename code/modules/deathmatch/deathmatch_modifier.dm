@@ -281,7 +281,7 @@
 /datum/deathmatch_modifier/mounts/apply(mob/living/carbon/player, datum/deathmatch_lobby/lobby)
 	///We do a bit of fun over balance here, some mounts may be better than others.
 	var/mount_path = pick(list(
-		/mob/living/basic/carp,
+		// /mob/living/basic/carp, // CRIMSON EDIT REMOVAL - debloat
 		/mob/living/basic/pony,
 		/mob/living/basic/pony/syndicate,
 		/mob/living/basic/pig,

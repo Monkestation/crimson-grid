@@ -98,9 +98,9 @@
 	fish_table = list(
 		FISHING_DUD = 5,
 		/obj/item/fish/starfish = 6,
-		/obj/item/fish/baby_carp = 6,
+		// /obj/item/fish/baby_carp = 6, // CRIMSON EDIT REMOVAL - debloat
 		/obj/item/stack/ore/bluespace_crystal = 2,
-		/mob/living/basic/carp = 2,
+		// /mob/living/basic/carp = 2, // CRIMSON EDIT REMOVAL - debloat
 	)
 	fish_counts = list(
 		/obj/item/stack/ore/bluespace_crystal = 10,

@@ -12,7 +12,7 @@
 	spell_requirements = NONE
 
 	possible_shapes = list(
-		/mob/living/basic/carp,
+		// /mob/living/basic/carp, // CRIMSON EDIT REMOVAL - debloat
 		/mob/living/basic/mouse,
 		/mob/living/basic/pet/cat,
 		/mob/living/basic/pet/dog/corgi,

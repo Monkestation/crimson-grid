@@ -350,7 +350,7 @@
 	abstract = FALSE
 	/// Typepaths of mobs to create
 	var/static/list/permitted_mobs = list(
-		/mob/living/basic/carp,
+		// /mob/living/basic/carp, // CRIMSON EDIT REMOVAL - debloat
 		/mob/living/basic/illusion,
 		/mob/living/basic/killer_tomato,
 		/mob/living/basic/skeleton,

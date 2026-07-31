@@ -12,7 +12,7 @@
 
 	var/max_mobs = 5
 	var/spawn_time = 30 SECONDS
-	var/mob_types = list(/mob/living/basic/carp)
+	var/mob_types = list(/mob/living/basic/hivebot) // CRIMSON EDIT ADDITION - debloat - ORIGINAL: /mob/living/basic/carp
 	var/spawn_text = "emerges from"
 	var/spawner_type = /datum/component/spawner
 	/// Is this spawner taggable with something?

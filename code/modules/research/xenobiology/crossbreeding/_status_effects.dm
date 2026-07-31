@@ -674,11 +674,13 @@
 		var/obj/item/food/monkeycube/cube = O
 		cube.Expand()
 
+	/* //CRIMSON EDIT REMOVAL START - debloat
 	// Dehydrated carp
 	else if(istype(O, /obj/item/toy/plush/carpplushie/dehy_carp))
 		to_chat(owner, span_warning("[linked_extract] kept your hands wet! It makes [O] expand!"))
 		var/obj/item/toy/plush/carpplushie/dehy_carp/dehy = O
 		dehy.Swell() // Makes a carp
+	*/ //CRIMSON EDIT REMOVAL END - debloat
 
 	else if(istype(O, /obj/item/stack/sheet/hairlesshide))
 		to_chat(owner, span_warning("[linked_extract] kept your hands wet! It wets [O]!"))

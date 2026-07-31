@@ -314,6 +314,7 @@
 	desc = "A fast-moving fragment of exploded cluster-rock."
 	icon_state = "dust"
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 //frozen carp "meteor"
 /obj/effect/meteor/carp
 	name = "frozen carp"
@@ -330,6 +331,7 @@
 	if(prob(2))
 		meteordrop = list(/mob/living/basic/carp/mega) //hehe
 	return ..()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 //bluespace meteor
 /obj/effect/meteor/bluespace

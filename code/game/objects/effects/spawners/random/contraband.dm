@@ -201,7 +201,7 @@
 		/obj/item/grenade/clusterbuster/antiweed = 3,
 		/obj/item/grenade/clusterbuster/soap = 2,
 		/obj/item/grenade/clusterbuster/emp = 1,
-		/obj/item/grenade/clusterbuster/spawner_spesscarp = 1,
+		// /obj/item/grenade/clusterbuster/spawner_spesscarp = 1, // CRIMSON EDIT REMOVAL - debloat
 		/obj/item/grenade/clusterbuster/facid = 1,
 		/obj/item/grenade/clusterbuster/inferno = 1,
 		/obj/item/grenade/clusterbuster/clf3 = 1,
@@ -216,7 +216,7 @@
 		/obj/item/grenade/chem_grenade/clf3 = 2,
 		/obj/item/grenade/gluon = 2,
 		/obj/item/grenade/chem_grenade/holy = 2,
-		/obj/item/grenade/spawnergrenade/spesscarp = 1,
+		// /obj/item/grenade/spawnergrenade/spesscarp = 1, // CRIMSON EDIT REMOVAL - debloat
 		/obj/item/grenade/spawnergrenade/cat = 1,
 		/obj/item/grenade/frag = 1,
 		/obj/item/grenade/chem_grenade/bioterrorfoam = 1,

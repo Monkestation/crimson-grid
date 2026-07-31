@@ -77,6 +77,7 @@
 	credit_cost = CARGO_CRATE_VALUE * 10
 	occupancy_limit = "45"
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/map_template/shuttle/emergency/humpback
 	suffix = "humpback"
 	name = "Humpback Emergency Shuttle"
@@ -89,6 +90,7 @@
 		/datum/shuttle_event/simple_spawner/carp = 2,
 		/datum/shuttle_event/simple_spawner/carp/magic = 1,
 	)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/map_template/shuttle/emergency/bar
 	suffix = "bar"
