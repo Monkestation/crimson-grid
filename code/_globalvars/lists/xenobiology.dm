@@ -42,8 +42,8 @@ GLOBAL_LIST_INIT_TYPED(cell_line_tables, /list, list(
 	),
 
 	CELL_LINE_TABLE_BEAR = list(/datum/micro_organism/cell_line/bear = 1),
-	CELL_LINE_TABLE_BLOBBERNAUT = list(), // CRIMSON EDIT REMOVAL - debloat - /datum/micro_organism/cell_line/blobbernaut = 1
-	CELL_LINE_TABLE_BLOBSPORE = list(), // CRIMSON EDIT REMOVAL - debloat- /datum/micro_organism/cell_line/blob_spore = 1
+	// CELL_LINE_TABLE_BLOBBERNAUT = list(), // CRIMSON EDIT REMOVAL - debloat - /datum/micro_organism/cell_line/blobbernaut = 1
+	// CELL_LINE_TABLE_BLOBSPORE = list(), // CRIMSON EDIT REMOVAL - debloat- /datum/micro_organism/cell_line/blob_spore = 1
 	CELL_LINE_TABLE_CARP = list(/datum/micro_organism/cell_line/carp = 1),
 	CELL_LINE_TABLE_CAT = list(/datum/micro_organism/cell_line/cat = 1),
 	CELL_LINE_TABLE_CHICKEN = list(/datum/micro_organism/cell_line/chicken = 1),

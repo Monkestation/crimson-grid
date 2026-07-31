@@ -350,6 +350,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/item/food/spore_sack
 	name = "spore sack"
 	desc = "A spore sack. blobby and gooey!"
@@ -370,6 +371,7 @@ GLOBAL_VAR_INIT(chicks_from_eggs, 0)
 		icon_state = "[base_icon_state]2"
 
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_BLOBSPORE, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/item/food/spore_sack/interact_with_atom_secondary(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!istype(interacting_with, /obj/machinery/griddle))
