@@ -257,7 +257,14 @@ define_sanity_output.txt
 tgstation.json
 rust_g64.dll
 
-# Debloat
+# DEBLOAT SECTION!
 code/modules/antagonists/space_dragon/
 code/modules/mob/living/basic/space_fauna/carp/
 code/modules/mob/living/basic/space_fauna/space_dragon/
+
+# maps we wont use or want to use. this is starting off small because i dont want to scope creep in the current PR.
+_maps/kilostation.json
+_maps/nebulastation.json
+_maps/deltastation.json
+
+

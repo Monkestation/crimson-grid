@@ -131,17 +131,21 @@
 	key = LAZY_TEMPLATE_KEY_NUKIEELEVATOR
 	map_name = "nukie_elevator"
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/lazy_template/nukie_base
 	key = LAZY_TEMPLATE_KEY_NUKIEBASE
 	map_name = "nukie_base"
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/lazy_template/wizard_dem
 	key = LAZY_TEMPLATE_KEY_WIZARDDEN
 	map_name = "wizard_den"
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/lazy_template/ninja_holding_facility
 	key = LAZY_TEMPLATE_KEY_NINJA_HOLDING_FACILITY
 	map_name = "ninja_den"
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/lazy_template/abductor_ship
 	key = LAZY_TEMPLATE_KEY_ABDUCTOR_SHIPS

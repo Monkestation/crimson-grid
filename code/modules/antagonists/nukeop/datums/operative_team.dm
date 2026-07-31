@@ -298,6 +298,7 @@
 
 /// Returns whether or not syndicate operatives escaped.
 /proc/is_infiltrator_docked_at_syndiebase()
+	/* //CRIMSON EDIT REMOVAL START - debloat
 	var/obj/docking_port/mobile/infiltrator/infiltrator_port = SSshuttle.getShuttle("syndicate")
 
 	var/datum/lazy_template/nukie_base/nukie_template = GLOB.lazy_templates[LAZY_TEMPLATE_KEY_NUKIEBASE]
@@ -308,6 +309,7 @@
 		var/infiltrator_turf = get_turf(infiltrator_port)
 		if(infiltrator_turf in loaded_area.reserved_turfs)
 			return TRUE
+	*/ //CRIMSON EDIT REMOVAL END - debloat
 	return FALSE
 
 /datum/team/nuclear/add_member(datum/mind/new_member)

@@ -7,12 +7,14 @@
 	ruin_type = ZTRAIT_SPACE_RUINS
 	default_area = /area/space
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/map_template/ruin/space/zoo
 	id = "zoo"
 	suffix = "abandonedzoo.dmm"
 	name = "Space-Ruin Biological Storage Facility"
 	description = "In case society crumbles, we will be able to restore our zoos to working order with the breeding stock kept in these 100% secure and unbreachable storage facilities. \
 	At no point has anything escaped. That's our story, and we're sticking to it."
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/map_template/ruin/space/asteroid1
 	id = "asteroid1"
@@ -65,6 +67,7 @@
 	description = "A once-bustling tradestation that handled imports and exports from nearby stations now lays eerily dormant. \
 	The last received message was a distress call from one of the on-board officers, but we had no success in making contact again."
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/map_template/ruin/space/derelict_construction
 	id = "derelict_construction"
 	suffix = "derelict_construction.dmm"
@@ -72,6 +75,7 @@
 	description = "Construction supplies are in high demand due to non-trivial damage routinely sustained by most space stations in this sector. \
 	Space pirates who don't attempt to rob corporate research stations with only 3 collaborators live long enough to sell captured construction \
 	equipment back to the highest bidder."
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/map_template/ruin/space/derelict_sulaco
 	id = "derelict_sulaco"
@@ -150,12 +154,14 @@
 	name = "Space-Ruin Authorship"
 	description = "Just somewhere quiet, where I can focus on my work with no interruptions."
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/map_template/ruin/space/caravanambush
 	id = "caravanambush"
 	suffix = "caravanambush.dmm"
 	name = "Space-Ruin Syndicate Ambush"
 	description = "A caravan route used by passing cargo freights has been ambushed by a salvage team manned by the syndicate. \
 	The caravan managed to send off a distress message before being surrounded, their video feed cutting off as the sound of gunfire and a parrot was heard."
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/map_template/ruin/space/originalcontent
 	id = "paperwizard"
@@ -270,12 +276,14 @@
 	description = "There seems to be a pair of buses that pulled over for repairs. What were they doing...? Their shipment sure  seems to be filled with a strange mix. \
 	Anyway, it looks like some people tried to fix it up for a long time but didn't really get anywhere..."
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/map_template/ruin/space/oldstation
 	id = "oldstation"
 	suffix = "oldstation.dmm"
 	name = "Space-Ruin Ancient Space Station"
 	description = "The crew of a space station awaken one hundred years after a crisis. Awaking to a derelict space station on the verge of collapse, and a hostile force of invading \
 	hivebots. Can the surviving crew overcome the odds and survive and rebuild, or will the cold embrace of the stars become their new home?"
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/map_template/ruin/space/gondoland
 	id = "gondolaasteroid"
@@ -327,12 +335,14 @@
 	name = "Space-Ruin Syndicate Forgotten Ship"
 	description = "Seemingly abandoned ship went of course right into NT controlled space. It seems that malfunction caused most systems to turn off, except for sleepers."
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/map_template/ruin/space/old_syndie_infiltrator
 	id = "old_infiltrator"
 	suffix = "old_infiltrator.dmm"
 	name = "Space-Ruin Abandoned Infiltrator"
 	description = "Only one in five Gorlex Marauder strike forces return from their regular raids into Nanotrasen space. \
 		For the other four... well, their ship doesn't just disappear when their target evacuates."
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/map_template/ruin/space/hellfactory
 	id = "hellfactory"
@@ -400,11 +410,13 @@
 	name = "Space-Ruin Atmos Asteroid"
 	description = "A dead atmos tech in a continuously pressurizing ruin."
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/map_template/ruin/space/massdriverrouter
 	id = "fasttravel"
 	suffix = "fasttravel.dmm"
 	name = "Space-Ruin Mass driver Router"
 	description = "An old, still functional router for some long destroyed system."
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/map_template/ruin/space/prey_pod
 	id = "prey"
