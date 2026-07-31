@@ -110,7 +110,7 @@
 //////////////////////////////////////////////////
 
 #define JOB_DISPLAY_ORDER_CITIZEN 1
-#define JOB_RED_NEWS_REPORTER 2
+#define JOB_DISPLAY_ORDER_RED_NEWS_REPORTER 2
 
 #define JOB_DISPLAY_ORDER_PRINCE 1
 #define JOB_DISPLAY_ORDER_CLERK 2
