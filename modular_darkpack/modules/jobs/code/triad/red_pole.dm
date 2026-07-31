@@ -20,7 +20,7 @@
 	minimum_masquerade = 2
 
 /datum/outfit/job/vampire/red_pole
-	name = JOB_RED_POLE
+	name = JOB_TRIAD_RED_POLE
 	jobtype = /datum/job/vampire/red_pole
 	uniform = /obj/item/clothing/under/vampire/suit
 	shoes = /obj/item/clothing/shoes/vampire/jackboots

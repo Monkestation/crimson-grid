@@ -1,5 +1,5 @@
 /datum/job/vampire/blue_lantern
-	title = "Blue Lantern"
+	title = JOB_TRIAD_BLUE_LANTERNS
 	faction = FACTION_CITY
 	total_positions = 5
 	spawn_positions = 5
@@ -20,7 +20,7 @@
 	minimum_masquerade = 0
 
 /datum/outfit/job/vampire/blue_lantern
-	name = JOB_BLUE_LANTERN
+	name = JOB_TRIAD_BLUE_LANTERNS
 	jobtype = /datum/job/vampire/blue_lantern
 	uniform = /obj/item/clothing/under/vampire/suit
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
