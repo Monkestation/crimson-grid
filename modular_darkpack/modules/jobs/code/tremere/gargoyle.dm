@@ -14,6 +14,8 @@
 	display_order = JOB_DISPLAY_ORDER_GARGOYLE
 
 	description = "You serve the local Chantry as either a guard dog, enforcer, or scout, a shock troop for the Mages of Clan Tremere. You serve the Tremere still, despise most of your kind being freed long ago, whether thats out of duty, mental enslavement, or having nowhere else to go. Among your Masters you are a second class citizen - yet you remain. Guard the Chantry and the Masters as your people always have."
+	maximal_generation = 9
+	maximum_immortal_age = 200
 	minimum_masquerade = 3
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GARGOYLE)

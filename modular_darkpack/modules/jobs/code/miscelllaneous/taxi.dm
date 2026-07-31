@@ -19,6 +19,7 @@
 
 	description = "Drive people in the city."
 	minimum_masquerade = 0
+	//Not including a max generation for reasons of Caine.
 
 /datum/outfit/job/vampire/taxi
 	name = JOB_TAXI_DRIVER

@@ -16,6 +16,8 @@
 	known_contacts = list(JOB_LA_FAMIGLIA, JOB_CAPO, JOB_LA_SQUADRA)
 
 	description = "Whether born or Embraced into the family, you are one of the Giovanni. Be you a necromancer, financier or lowly fledgling, remember that so long as you stand with your family, they too will stand with you."
+	maximal_generation = 9
+	maximum_immortal_age = 200
 	minimum_masquerade = 0
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GIOVANNI)

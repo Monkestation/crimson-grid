@@ -11,6 +11,8 @@
 	// VTM
 	///Minimum vampire Generation necessary to do this job.
 	var/minimal_generation = HIGHEST_GENERATION_LIMIT
+	//Maximum vampire generation to play the job.
+	var/maximal_generation = LOWEST_GENERATION_LIMIT
 	///Minimum Masquerade level necessary to do this job.
 	var/minimum_masquerade = 0
 	/// Character must be at least this age (in years) since embrace (chronological_age - age) to join as role.

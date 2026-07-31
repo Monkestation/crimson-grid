@@ -154,7 +154,6 @@
 /mob/living/proc/is_clan(clan_type)
 	return istype(get_clan(), clan_type)
 
-
 /datum/subsplat/vampire_clan/proc/clear_old_overlays(mob/living/carbon/human/losing_mob)
 	var/needs_update = FALSE
 	for(var/obj/item/bodypart/part as anything in losing_mob.get_bodyparts())
@@ -164,3 +163,9 @@
 
 	if(needs_update && !(losing_mob.living_flags & STOP_OVERLAY_UPDATE_BODY_PARTS))
 		losing_mob.update_body_parts()
+
+/datum/subsplat/vampire_clan/show_lore(mob/user)
+	. = ..()
+	if(curse)
+		to_chat(user, span_danger("<br>CURSE: [curse]"))
+

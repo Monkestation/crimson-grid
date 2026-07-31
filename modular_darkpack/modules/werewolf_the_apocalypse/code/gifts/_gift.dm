@@ -2,6 +2,7 @@
 /datum/storyteller_roll/gift
 
 /datum/action/cooldown/power/gift
+	abstract_type = /datum/action/cooldown/power/gift
 	background_icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/werewolf_abilities.dmi'
 	background_icon_state = "bg_gift"
 	button_icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/werewolf_abilities.dmi'
