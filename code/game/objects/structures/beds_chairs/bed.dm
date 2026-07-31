@@ -325,24 +325,21 @@
 	desc = "Ian's bed! Looks comfy."
 	name = "Ian's bed"
 	anchored = TRUE
-/* //CRIMSON EDIT REMOVAL START - debloat
+
 /obj/structure/bed/dogbed/cayenne
 	desc = "Seems kind of... fishy."
 	name = "Cayenne's bed"
 	anchored = TRUE
-*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/structure/bed/dogbed/misha
 	desc = "There is fur all over it, and some blood..."
 	name = "Misha's bed"
 	anchored = TRUE
 
-/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/structure/bed/dogbed/lia
 	desc = "Seems kind of... fishy."
 	name = "Lia's bed"
 	anchored = TRUE
-*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/structure/bed/dogbed/renault
 	desc = "Renault's bed! Looks comfy. A foxy person needs a foxy pet."
