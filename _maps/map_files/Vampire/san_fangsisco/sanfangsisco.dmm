@@ -3100,7 +3100,7 @@
 	},
 /obj/effect/landmark/npcwall,
 /turf/open/floor/plating/sidewalk/poor,
-/area/vtm/interior/supply)
+/area/vtm/outside/pacificheights/old)
 "aTj" = (
 /obj/machinery/light/directional/west,
 /obj/structure/chair{
@@ -4415,6 +4415,13 @@
 /obj/structure/flora/tree/palm/style_random,
 /turf/open/misc/beach/vamp,
 /area/vtm)
+"bmH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/abstract/cargo_landing_spot,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/supply)
 "bmI" = (
 /obj/structure/closet/cardboard,
 /turf/open/misc/dirt,
@@ -12397,6 +12404,11 @@
 /obj/structure/platform/lowwall/market/window/reinforced,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/shop)
+"dDi" = (
+/obj/machinery/light/directional/north,
+/obj/effect/abstract/cargo_landing_spot,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/supply)
 "dDz" = (
 /obj/structure/closet/cardboard,
 /turf/open/floor/plating/sidewalk/poor,
@@ -13406,13 +13418,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
-"dTU" = (
-/obj/effect/turf_decal/bordur{
-	dir = 1
-	},
-/obj/effect/landmark/npcwall,
-/turf/open/floor/plating/sidewalk/poor,
-/area/vtm/interior/supply)
 "dTW" = (
 /obj/structure/chair/wood/wings{
 	dir = 4
@@ -46924,6 +46929,13 @@
 	},
 /turf/open/floor/city/toilet,
 /area/vtm/interior/tzimisce_manor)
+"nLA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/abstract/cargo_landing_spot,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/supply)
 "nLE" = (
 /obj/effect/decal/coastline{
 	dir = 9
@@ -54512,6 +54524,10 @@
 /obj/structure/mannequin/plastic,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
+"pQr" = (
+/obj/effect/abstract/cargo_landing_spot,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/supply)
 "pQs" = (
 /mob/living/carbon/human/npc/hobo,
 /turf/open/floor/plating/sidewalk,
@@ -57578,10 +57594,11 @@
 /turf/open/floor/carpet/black,
 /area/vtm/interior/church/haven)
 "qJZ" = (
-/obj/effect/decal/cleanable/cardboard,
 /obj/structure/vampfence/corner{
 	dir = 4
 	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/abstract/cargo_landing_spot,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/supply)
 "qKa" = (
@@ -61160,6 +61177,13 @@
 	},
 /turf/open/misc/dirt,
 /area/vtm/outside/forest)
+"rJA" = (
+/obj/structure/vampfence{
+	dir = 8
+	},
+/obj/effect/abstract/cargo_landing_spot,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/supply)
 "rJB" = (
 /obj/effect/decal/cleanable/litter,
 /obj/structure/railing{
@@ -61174,6 +61198,13 @@
 	},
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/tzimisce_manor)
+"rJD" = (
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/obj/structure/barrels/rand,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/pacificheights/old)
 "rJN" = (
 /obj/structure/table,
 /obj/machinery/light/small/directional/south,
@@ -70417,6 +70448,11 @@
 /obj/machinery/light/small/red/directional/west,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/tzimisce_sanctum)
+"uxH" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/abstract/cargo_landing_spot,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/supply)
 "uxV" = (
 /turf/closed/wall/vampwall/rock{
 	density = 0
@@ -201394,9 +201430,9 @@ qiq
 thT
 thT
 pxg
-mLl
-ejv
-vuz
+pQr
+pQr
+rJA
 sAm
 sAm
 pxg
@@ -201651,9 +201687,9 @@ cNH
 thT
 thT
 pxg
-gZf
-ejv
-vuz
+dDi
+pQr
+rJA
 sAm
 sAm
 pxg
@@ -201908,8 +201944,8 @@ cNH
 thT
 thT
 pxg
-ejv
-sAm
+pQr
+pQr
 qJZ
 sAm
 jnv
@@ -202165,9 +202201,9 @@ cNH
 thT
 thT
 pxg
-uZA
-sAm
-sAm
+pQr
+pQr
+uxH
 hME
 sAm
 pxg
@@ -202422,9 +202458,9 @@ cNH
 thT
 thT
 pxg
-uZA
-sAm
-sAm
+bmH
+bmH
+nLA
 sAm
 sAm
 pxg
@@ -202679,7 +202715,7 @@ cNH
 thT
 thT
 pxg
-mLl
+sAm
 sAm
 sAm
 oZv
@@ -202936,7 +202972,7 @@ cNH
 thT
 thT
 pxg
-mLl
+sAm
 sAm
 sAm
 sAm
@@ -204220,7 +204256,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 fWk
 fWk
@@ -204477,7 +204513,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 ltY
 fWk
@@ -204734,7 +204770,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 ges
 aez
@@ -204991,7 +205027,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 gLx
 eGG
@@ -205248,7 +205284,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 gHS
 sAm
@@ -205505,7 +205541,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 fuQ
 fuQ
@@ -205762,7 +205798,7 @@ eIF
 oVA
 thT
 thT
-hrA
+hun
 pxg
 ltY
 sAm
@@ -206019,7 +206055,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 sAm
 sAm
@@ -206276,7 +206312,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 fuQ
 thv
@@ -206533,7 +206569,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 sAm
 sAm
@@ -206790,7 +206826,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 gHS
 sAm
@@ -207047,7 +207083,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 jmu
 fuQ
@@ -207304,7 +207340,7 @@ wGs
 cNH
 thT
 thT
-hrA
+hun
 pxg
 prA
 sAm
@@ -207561,7 +207597,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 btJ
 sAm
@@ -207818,7 +207854,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 fuQ
 fuQ
@@ -208075,7 +208111,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 ltY
 sAm
@@ -208332,7 +208368,7 @@ vnX
 cNH
 thT
 thT
-hrA
+hun
 pxg
 gHS
 sAm
@@ -208589,7 +208625,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 fuQ
 nuC
@@ -208846,7 +208882,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 hLV
 sAm
@@ -209103,7 +209139,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 rmJ
 wFU
@@ -209360,7 +209396,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 ssg
 jAp
@@ -209617,7 +209653,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 sAm
 dJP
@@ -209874,7 +209910,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 rmJ
 rmJ
@@ -210131,7 +210167,7 @@ laU
 cNH
 thT
 thT
-hrA
+hun
 pxg
 ejv
 sAm
@@ -210388,7 +210424,7 @@ okA
 hSD
 xKH
 xKH
-dTU
+tGO
 pxg
 vgD
 sAm
@@ -210902,7 +210938,7 @@ laU
 cNH
 thT
 thT
-lcr
+thT
 lcr
 lcr
 lcr
@@ -211159,7 +211195,7 @@ sNz
 cNH
 thT
 thT
-lcr
+thT
 lTI
 lcr
 lcr
@@ -211416,7 +211452,7 @@ laU
 jUT
 aEp
 aEp
-dVN
+rJD
 pxg
 pxg
 pxg
@@ -211673,7 +211709,7 @@ laU
 laU
 voA
 voA
-evu
+voA
 pxg
 bjm
 bjm
