@@ -768,6 +768,7 @@ SUBSYSTEM_DEF(ticker)
 				of one of their members aboard [decoded_station_name]."
 		// The station was nuked generically
 		if(STATION_NUKED)
+			/* //CRIMSON EDIT REMOVAL START - debloat
 			// There was a blob on board, guess it was nuked to stop it
 			if(length(GLOB.overminds))
 				for(var/mob/eye/blob/overmind as anything in GLOB.overminds)
@@ -780,8 +781,9 @@ SUBSYSTEM_DEF(ticker)
 					break
 			// A self destruct or something else
 			else
-				news_message = "[decoded_station_name] activated its self-destruct device for unknown reasons. \
-					Attempts to clone the Captain for arrest and execution are underway."
+			*/ //CRIMSON EDIT REMOVAL END - debloat
+			news_message = "[decoded_station_name] activated its self-destruct device for unknown reasons. \
+				Attempts to clone the Captain for arrest and execution are underway."
 		// The emergency escape shuttle was hijacked
 		if(SHUTTLE_HIJACK)
 			news_message = "During routine evacuation procedures, the emergency shuttle of [decoded_station_name] \

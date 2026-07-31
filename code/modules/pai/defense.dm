@@ -1,6 +1,7 @@
-
+/* //CRIMSON EDIT REMOVAL START - debloat
 /mob/living/silicon/pai/blob_act(obj/structure/blob/B)
 	return FALSE
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /mob/living/silicon/pai/emp_act(severity)
 	. = ..()

@@ -94,8 +94,10 @@
 			return TRUE
 	return FALSE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /turf/open/floor/blob_act(obj/structure/blob/B)
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /turf/open/floor/attack_paw(mob/user, list/modifiers)
 	return attack_hand(user, modifiers)

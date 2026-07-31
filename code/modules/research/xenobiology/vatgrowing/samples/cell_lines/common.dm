@@ -292,6 +292,7 @@
 	virus_suspectibility = 0
 	resulting_atom = /mob/living/basic/slime
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/micro_organism/cell_line/blob_spore //nuisance cell line
 	desc = "Immature blob spores"
 	required_reagents = list(/datum/reagent/consumable/nutriment/protein)
@@ -330,6 +331,7 @@
 
 	virus_suspectibility = 0
 	resulting_atom = /mob/living/basic/blob_minion/blobbernaut/independent
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/micro_organism/cell_line/gelatinous_cube
 	desc = "Cubic ooze particles"

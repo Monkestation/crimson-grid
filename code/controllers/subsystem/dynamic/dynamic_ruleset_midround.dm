@@ -385,6 +385,7 @@
 	else
 		candidate.add_antag_datum(/datum/antagonist/nukeop/clownop, nuke_team) // moves to nuke base for us
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/dynamic_ruleset/midround/from_ghosts/blob
 	name = "Blob"
 	config_tag = "Blob"
@@ -424,6 +425,7 @@
 
 	// Set status displays to biohazard alert even for false alarm
 	send_status_display_biohazard_alert()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/dynamic_ruleset/midround/from_ghosts/xenomorph
 	name = "Alien Infestation"
@@ -1214,6 +1216,7 @@
 /datum/dynamic_ruleset/midround/from_living/malf_ai/can_be_selected()
 	return ..() && !HAS_TRAIT(SSstation, STATION_TRAIT_HUMAN_AI)
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /datum/dynamic_ruleset/midround/from_living/blob
 	name = "Blob Infection"
 	config_tag = "Blob Infection"
@@ -1237,6 +1240,7 @@
 		source = candidate.current,
 		header = "So Bulbous...",
 	)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/dynamic_ruleset/midround/from_living/obsesed
 	name = "Obsession"

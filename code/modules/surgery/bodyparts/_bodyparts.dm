@@ -603,8 +603,10 @@
 		return span_smalldanger(single_message)
 	return ""
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/item/bodypart/blob_act()
 	receive_damage(max_damage, wound_bonus = CANT_WOUND)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/item/bodypart/attack(mob/living/carbon/victim, mob/user)
 	SHOULD_CALL_PARENT(TRUE)

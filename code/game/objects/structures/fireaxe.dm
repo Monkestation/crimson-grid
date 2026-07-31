@@ -145,10 +145,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/fireaxecabinet, 32)
 		held_item.forceMove(loc)
 	new /obj/item/wallframe/fireaxecabinet(loc)
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/structure/fireaxecabinet/blob_act(obj/structure/blob/B)
 	if(held_item)
 		held_item.forceMove(loc)
 	qdel(src)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/structure/fireaxecabinet/attack_hand(mob/user, list/modifiers)
 	. = ..()

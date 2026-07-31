@@ -583,10 +583,12 @@ GLOBAL_VAR(station_nuke_source)
 	else
 		. = timer_set
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/machinery/nuclearbomb/blob_act(obj/structure/blob/attacking_blob)
 	if(exploding)
 		return
 	qdel(src)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/machinery/nuclearbomb/zap_act(power, zap_flags)
 	. = ..()

@@ -21,8 +21,10 @@
 	sprayer = null
 	return ..()
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/effect/decal/chempuff/blob_act(obj/structure/blob/B)
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/effect/decal/chempuff/proc/end_life(delay = 0.5 SECONDS)
 	QDEL_IN(src, delay) //Gotta let it stop drifting

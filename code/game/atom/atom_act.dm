@@ -45,6 +45,8 @@
 /atom/proc/contents_explosion(severity, target)
 	return //For handling the effects of explosions on contents that would not normally be effected
 
+/* //CRIMSON EDIT REMOVAL START - debloat
+
 /**
  * React to a hit by a blob objecd
  *
@@ -55,6 +57,7 @@
 	if (blob_act_result & COMPONENT_CANCEL_BLOB_ACT)
 		return FALSE
 	return TRUE
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /**
  * React to an EMP of the given severity

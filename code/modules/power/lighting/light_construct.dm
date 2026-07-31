@@ -176,9 +176,11 @@
 	tool.play_tool_sound(src, 100)
 	return ITEM_INTERACT_SUCCESS
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/structure/light_construct/blob_act(obj/structure/blob/attacking_blob)
 	if(attacking_blob && attacking_blob.loc == loc)
 		deconstruct(FALSE)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/structure/light_construct/atom_deconstruct(disassembled)
 	new /obj/item/stack/sheet/iron(loc, sheets_refunded)

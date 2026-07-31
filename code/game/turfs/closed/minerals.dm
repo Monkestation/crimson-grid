@@ -338,9 +338,11 @@
 
 	return TRUE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /turf/closed/mineral/blob_act(obj/structure/blob/B)
 	if(prob(50 * /turf/closed/mineral::tool_mine_speed / tool_mine_speed))
 		gets_drilled()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /proc/calculate_rock_edges()
 	var/cardinals = GLOB.cardinals.Copy() // i'm sorry

@@ -340,6 +340,7 @@
 	return TRUE
 
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /mob/living/carbon/human/blob_act(obj/structure/blob/B)
 	if(stat == DEAD)
 		return
@@ -347,6 +348,7 @@
 	var/dam_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/obj/item/bodypart/affecting = get_bodypart(get_random_valid_zone(dam_zone))
 	apply_damage(5, BRUTE, affecting, run_armor_check(affecting, MELEE))
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 
 ///Calculates the siemens coeff based on clothing and species, can also restart hearts.

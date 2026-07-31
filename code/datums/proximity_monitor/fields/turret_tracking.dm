@@ -17,7 +17,7 @@
 			/mob/living/carbon,
 			/mob/living/silicon/robot,
 			/mob/living/simple_animal,
-			/obj/structure/blob,
+			// /obj/structure/blob, // CRIMSON EDIT REMOVAL - debloat
 			/obj/vehicle/sealed/mecha,
 		))
 

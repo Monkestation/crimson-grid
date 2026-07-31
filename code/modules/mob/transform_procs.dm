@@ -261,12 +261,13 @@
 	qdel(src)
 	return new_slime
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /mob/proc/become_overmind(starting_points = OVERMIND_STARTING_POINTS)
 	var/mob/eye/blob/B = new /mob/eye/blob(get_turf(src), starting_points)
 	B.PossessByPlayer(key)
 	. = B
 	qdel(src)
-
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /mob/living/carbon/human/proc/corgize()
 	if(HAS_TRAIT(src, TRAIT_NO_TRANSFORM))

@@ -305,8 +305,10 @@
 /mob/living/basic/revenant/ex_act(severity, target)
 	return FALSE //Immune to the effects of explosions.
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /mob/living/basic/revenant/blob_act(obj/structure/blob/attacking_blob)
 	return //blah blah blobs aren't in tune with the spirit world, or something.
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /mob/living/basic/revenant/singularity_act()
 	return //don't walk into the singularity expecting to find corpses, okay?

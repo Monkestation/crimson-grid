@@ -63,8 +63,10 @@
 		log_mapping("multiple lattices found in ([loc.x], [loc.y], [loc.z], [get_area(LAT)])")
 		return INITIALIZE_HINT_QDEL
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/structure/lattice/blob_act(obj/structure/blob/B)
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/structure/lattice/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	var/turf/underneath = get_turf(src)

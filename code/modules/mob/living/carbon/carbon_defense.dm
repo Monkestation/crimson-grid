@@ -213,12 +213,14 @@
 
 	return dam_zone
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /mob/living/carbon/blob_act(obj/structure/blob/B)
 	if (stat == DEAD)
 		return
 	else
 		show_message(span_userdanger("The blob attacks!"))
 		adjust_brute_loss(10)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 ///Adds to the parent by also adding functionality to propagate shocks through pulling and doing some fluff effects.
 /mob/living/carbon/electrocute_act(shock_damage, source, siemens_coeff = 1, flags = NONE, jitter_time = 20 SECONDS, stutter_time = 4 SECONDS, stun_duration = 4 SECONDS)

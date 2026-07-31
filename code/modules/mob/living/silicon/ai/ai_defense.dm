@@ -11,11 +11,13 @@
 
 	return ..()
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /mob/living/silicon/ai/blob_act(obj/structure/blob/B)
 	if (stat != DEAD)
 		adjust_brute_loss(60)
 		return TRUE
 	return FALSE
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /mob/living/silicon/ai/emp_act(severity)
 	. = ..()

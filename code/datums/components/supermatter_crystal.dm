@@ -12,7 +12,7 @@
 
 /datum/component/supermatter_crystal/Initialize(datum/callback/tool_act_callback, datum/callback/consume_callback)
 
-	RegisterSignal(parent, COMSIG_ATOM_BLOB_ACT, PROC_REF(blob_hit))
+	// RegisterSignal(parent, COMSIG_ATOM_BLOB_ACT, PROC_REF(blob_hit)) // CRIMSON EDIT REMOVAL - debloat
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_PAW, PROC_REF(paw_hit))
 	RegisterSignal(parent, COMSIG_ATOM_ATTACK_ANIMAL, PROC_REF(animal_hit))
 	RegisterSignal(parent, COMSIG_ATOM_HULK_ATTACK, PROC_REF(hulk_hit))
@@ -51,6 +51,8 @@
 
 	UnregisterSignal(parent, signals_to_remove)
 
+/* //CRIMSON EDIT REMOVAL START - debloat
+
 /datum/component/supermatter_crystal/proc/blob_hit(datum/source, obj/structure/blob/blob)
 	SIGNAL_HANDLER
 	var/atom/atom_source = source
@@ -66,6 +68,7 @@
 		blob.visible_message(span_danger("\The [blob] strikes at \the [atom_source] and rapidly flashes to ash."),
 			span_hear("You hear a loud crack as you are washed with a wave of heat."))
 		consume(atom_source, blob)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /datum/component/supermatter_crystal/proc/paw_hit(datum/source, mob/user, list/modifiers)
 	SIGNAL_HANDLER

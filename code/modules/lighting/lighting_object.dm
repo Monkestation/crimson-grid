@@ -128,8 +128,10 @@
 /atom/movable/lighting_object/singularity_pull()
 	return
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /atom/movable/lighting_object/blob_act()
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /atom/movable/lighting_object/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents = TRUE)
 	SHOULD_CALL_PARENT(FALSE)

@@ -138,11 +138,13 @@
 		/mob/living/basic/bee/toxin,
 	)
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 
 /datum/modular_mob_segment/blob_spores
 	mobs = list(
 		/mob/living/basic/blob_minion,
 	)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 
 /datum/modular_mob_segment/carps

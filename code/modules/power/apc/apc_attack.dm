@@ -124,8 +124,10 @@
 	if((machine_stat & MAINT) && !opened) //no board; no interface
 		return
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/machinery/power/apc/blob_act(obj/structure/blob/B)
 	atom_break()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/machinery/power/apc/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armor_penetration = 0)
 	// APC being at 0 integrity doesnt delete it outright. Combined with take_damage this might cause runtimes.

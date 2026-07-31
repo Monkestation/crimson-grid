@@ -140,8 +140,10 @@ FLOOR SAFES
 	return ITEM_INTERACT_SUCCESS
 
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/structure/safe/blob_act(obj/structure/blob/B)
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/structure/safe/ex_act(severity, target)
 	if(((severity == EXPLODE_HEAVY && target == src) || severity == EXPLODE_DEVASTATE) && explosion_count < BROKEN_THRESHOLD)

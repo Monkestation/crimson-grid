@@ -106,8 +106,10 @@
 		log_bomber(proj.firer, "triggered a", src, "explosion via projectile")
 		overload()
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/machinery/power/rtg/abductor/blob_act(obj/structure/blob/B)
 	overload()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/machinery/power/rtg/abductor/ex_act()
 	if(going_kaboom)

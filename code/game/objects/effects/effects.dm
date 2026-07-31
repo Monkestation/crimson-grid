@@ -27,8 +27,10 @@
 /obj/effect/acid_act()
 	return FALSE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/effect/blob_act(obj/structure/blob/B)
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/effect/attack_hulk(mob/living/carbon/human/user)
 	return FALSE

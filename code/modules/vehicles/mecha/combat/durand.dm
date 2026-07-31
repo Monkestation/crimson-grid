@@ -131,12 +131,14 @@
 		return shield.attack_generic(user, damage_amount, damage_type, damage_flag, sound_effect, armor_penetration)
 	return ..()
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/vehicle/sealed/mecha/durand/blob_act(obj/structure/blob/blob)
 	if(!defense_check(get_turf(blob)))
 		return ..()
 	log_message("Attack by blob. Attacker - [blob].", LOG_MECHA, color="red")
 	log_message("Attack absorbed by defense field.", LOG_MECHA, color="orange")
 	return shield.blob_act(blob)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/vehicle/sealed/mecha/durand/attackby(obj/item/weapon, mob/user as mob, list/modifiers, list/attack_modifiers)
 	if(defense_check(get_turf(user)))

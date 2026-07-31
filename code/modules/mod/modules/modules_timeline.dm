@@ -432,8 +432,10 @@
 /obj/structure/chrono_field/ex_act()
 	return FALSE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/structure/chrono_field/blob_act(obj/structure/blob/B)
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 #undef CHRONO_BEAM_RANGE
 #undef CHRONO_FRAME_COUNT

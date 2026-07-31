@@ -13,6 +13,7 @@
 	TEST_ASSERT_NOTEQUAL(victim.get_fire_loss(), 0, "Victim did not get burned by welder.")
 	TEST_ASSERT_EQUAL(weapon.get_fuel(), weapon.max_fuel - 1, "Welder did not consume fuel on attacking a mob")
 
+	/* //CRIMSON EDIT REMOVAL START - debloat
 	var/obj/structure/blob/blobby = EASY_ALLOCATE()
 	weapon.melee_attack_chain(tider, blobby)
 
@@ -24,3 +25,4 @@
 
 	TEST_ASSERT(QDELETED(blobby), "Blob was not destroyed by welder.")
 	TEST_ASSERT_EQUAL(weapon.get_fuel(), weapon.max_fuel - 3, "Welder did not consume fuel on deleting a blob")
+	*/ //CRIMSON EDIT REMOVAL END - debloat

@@ -332,8 +332,10 @@
 			balloon_alert(user, "out of charge!")
 			return
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/item/stock_parts/power_store/blob_act(obj/structure/blob/B)
 	SSexplosions.high_mov_atom += src
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/item/stock_parts/power_store/proc/get_electrocute_damage()
 	return ELECTROCUTE_DAMAGE(charge / max(0.001 * STANDARD_CELL_CHARGE, 1)) // Wouldn't want it to consider more energy than whatever is actually in the cell if for some strange reason someone set the STANDARD_CELL_CHARGE to below 1kJ.

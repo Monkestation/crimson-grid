@@ -509,6 +509,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	laws.associate(src)
 	update_icons()
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /mob/living/silicon/robot/blob_act(obj/structure/blob/B)
 	if(stat != DEAD)
 		adjust_brute_loss(30)
@@ -516,6 +517,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		investigate_log("has been gibbed by a blob.", INVESTIGATE_DEATHS)
 		gib(DROP_ALL_REMAINS)
 	return TRUE
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /mob/living/silicon/robot/ex_act(severity, target)
 	switch(severity)

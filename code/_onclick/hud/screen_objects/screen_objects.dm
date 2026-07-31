@@ -856,6 +856,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	icon = 'icons/hud/screen_cyborg.dmi'
 	screen_loc = ui_borg_health
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /atom/movable/screen/healths/blob
 	name = "blob health"
 	icon_state = "block"
@@ -867,6 +868,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	icon = 'icons/hud/blob.dmi'
 	icon_state = "corehealth"
 	screen_loc = ui_blobbernaut_overmind_health
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /atom/movable/screen/healths/guardian
 	name = "summoner health"

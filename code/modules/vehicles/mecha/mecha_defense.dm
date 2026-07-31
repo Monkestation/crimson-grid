@@ -102,9 +102,11 @@
 		log_message("Attack by hulk. Attacker - [user].", LOG_MECHA, color="red")
 		log_combat(user, src, "punched", "hulk powers")
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/vehicle/sealed/mecha/blob_act(obj/structure/blob/B)
 	log_message("Attack by blob. Attacker - [B].", LOG_MECHA, color="red")
 	take_damage(30, BRUTE, MELEE, 0, get_dir(src, B))
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/vehicle/sealed/mecha/attack_tk()
 	return

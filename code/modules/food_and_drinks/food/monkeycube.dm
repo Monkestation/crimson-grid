@@ -158,8 +158,8 @@
 		/mob/living/basic/bear = 4,
 		/mob/living/basic/bear/snow = 1,
 		/mob/living/basic/blankbody = 2,
-		/mob/living/basic/blob_minion/blobbernaut = 2,
-		/mob/living/basic/blob_minion/spore = 2,
+		// /mob/living/basic/blob_minion/blobbernaut = 2, // CRIMSON EDIT REMOVAL - DEBLOAT
+		// /mob/living/basic/blob_minion/spore = 2, // CRIMSON EDIT REMOVAL - DEBLOAT
 		/mob/living/basic/carp = 4,
 		/mob/living/basic/carp/mega = 1,
 		/mob/living/basic/creature = 2,

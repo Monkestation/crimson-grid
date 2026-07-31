@@ -370,9 +370,11 @@
 		return FALSE
 	return TRUE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/item/blob_act(obj/structure/blob/B)
 	if(B && B.loc == loc && !(resistance_flags & INDESTRUCTIBLE))
 		atom_destruction(MELEE)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /**Makes cool stuff happen when you suicide with an item
  *

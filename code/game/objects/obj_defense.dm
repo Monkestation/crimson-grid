@@ -60,10 +60,12 @@
 	user.visible_message(span_danger("[user] smashes [src][damage ? "" : ", [no_damage_feedback]"]!"), span_danger("You smash [src][damage ? "" : ", [no_damage_feedback]"]!"), null, COMBAT_MESSAGE_RANGE)
 	return TRUE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/blob_act(obj/structure/blob/B)
 	if (!..() || HAS_TRAIT(src, TRAIT_UNDERFLOOR))
 		return
 	take_damage(400, BRUTE, MELEE, 0, get_dir(src, B))
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
 	if(attack_generic(user, 60, BRUTE, MELEE, 0))

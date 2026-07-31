@@ -306,10 +306,12 @@
 		else if(closest_type >= BLOB)
 			continue
 
+		/* //CRIMSON EDIT REMOVAL START - debloat
 		else if(istype(A, /obj/structure/blob))
 			if(!HAS_TRAIT(A, TRAIT_BEING_SHOCKED))
 				closest_type = BLOB
 				closest_atom = A
+		*/ //CRIMSON EDIT REMOVAL END - debloat
 
 		else if(closest_type >= STRUCTURE)
 			continue

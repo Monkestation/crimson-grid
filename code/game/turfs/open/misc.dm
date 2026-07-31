@@ -77,8 +77,10 @@
 			return TRUE
 	return FALSE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /turf/open/misc/blob_act(obj/structure/blob/B)
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /turf/open/misc/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	if(the_rcd.mode == RCD_TURF)

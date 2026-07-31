@@ -139,9 +139,11 @@
 		bloss = bloss / 1.5
 	adjust_brute_loss(bloss)
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /mob/living/simple_animal/blob_act(obj/structure/blob/B)
 	adjust_brute_loss(20)
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /mob/living/simple_animal/do_attack_animation(atom/A, visual_effect_icon, used_item, no_effect)
 	if(!no_effect && !visual_effect_icon && melee_damage_upper)

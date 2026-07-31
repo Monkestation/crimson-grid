@@ -267,8 +267,10 @@
 	if(check_holidays(APRIL_FOOLS))
 		icon_state = "fuel_fools"
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
 	boom()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
 	boom()
@@ -601,10 +603,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/reagent_dispensers/wall/peppertank, 3
 	if(keg_print)
 		. += keg_print
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/structure/reagent_dispensers/keg/blob_act(obj/structure/blob/B)
 	explosion(src, heavy_impact_range = 3, light_impact_range = 5, flame_range = 10, flash_range = 7)
 	if(!QDELETED(src))
 		qdel(src)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/structure/reagent_dispensers/keg/beer
 	name = "beer keg"

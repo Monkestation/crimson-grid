@@ -176,11 +176,13 @@ no power level overlay is currently in the overlays list.
 	if(!anchored)
 		step(src, get_dir(user, src))
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/machinery/field/generator/blob_act(obj/structure/blob/B)
 	if(active)
 		return FALSE
 	else
 		return ..()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/machinery/field/generator/bullet_act(obj/projectile/considered_bullet)
 	if(considered_bullet.armor_flag != BULLET)

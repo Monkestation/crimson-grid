@@ -529,9 +529,11 @@ DEFINE_BITFIELD(turret_flags, list(
 					if(assess_perp(occupant) >= 4)
 						targets += mech
 
+	/* //CRIMSON EDIT REMOVAL START - debloat
 	if((turret_flags & TURRET_FLAG_SHOOT_ANOMALOUS) && GLOB.blobs.len && (mode == TURRET_LETHAL))
 		for(var/obj/structure/blob/B in view(scan_range, base))
 			targets += B
+	*/ //CRIMSON EDIT REMOVAL END - debloat
 
 	if(targets.len)
 		tryToShootAt(targets)

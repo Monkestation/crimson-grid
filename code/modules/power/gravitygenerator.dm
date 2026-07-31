@@ -40,9 +40,11 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 	return FALSE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/machinery/gravity_generator/blob_act(obj/structure/blob/B)
 	if(prob(20))
 		set_broken()
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /obj/machinery/gravity_generator/zap_act(power, zap_flags)
 	. = ..()

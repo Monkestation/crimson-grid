@@ -21,9 +21,11 @@
 	AddElement(/datum/element/connect_loc, loc_connections)
 	AddElement(/datum/element/force_move_pulled)
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /obj/effect/decal/blob_act(obj/structure/blob/B)
 	if(B && B.loc == loc)
 		qdel(src)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 ///Checks if we are allowed to be in `here_turf`, and returns that result. Subtypes should override this when necessary.
 /obj/effect/decal/proc/NeverShouldHaveComeHere(turf/here_turf)

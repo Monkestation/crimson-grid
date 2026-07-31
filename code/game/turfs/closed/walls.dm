@@ -137,12 +137,13 @@
 
 	return TRUE
 
-
+/* //CRIMSON EDIT REMOVAL START - debloat
 /turf/closed/wall/blob_act(obj/structure/blob/B)
 	if(prob(50))
 		dismantle_wall()
 	else
 		add_dent(WALL_DENT_HIT)
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /turf/closed/wall/attack_paw(mob/living/user, list/modifiers)
 	user.changeNext_move(CLICK_CD_MELEE)

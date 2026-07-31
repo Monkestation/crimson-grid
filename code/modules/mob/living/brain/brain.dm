@@ -54,8 +54,10 @@
 /mob/living/brain/ex_act() //you cant blow up brainmobs because it makes transfer_to() freak out when borgs blow up.
 	return FALSE
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /mob/living/brain/blob_act(obj/structure/blob/B)
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 /mob/living/brain/get_eye_protection()//no eyes
 	return FLASH_PROTECTION_WELDER

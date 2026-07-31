@@ -32,8 +32,10 @@
 /atom/movable/render_step/singularity_pull(atom/singularity, current_size)
 	return
 
+/* //CRIMSON EDIT REMOVAL START - debloat
 /atom/movable/render_step/blob_act()
 	return
+*/ //CRIMSON EDIT REMOVAL END - debloat
 
 //Prevents people from moving these after creation, because they shouldn't be.
 /atom/movable/render_step/forceMove(atom/destination, no_tp=FALSE, harderforce = FALSE)
