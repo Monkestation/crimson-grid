@@ -1,4 +1,5 @@
 /datum/action/cooldown/power
+	abstract_type = /datum/action/cooldown/power
 	cooldown_time = 1 TURNS // Good default.
 
 	/// The level/rank at which this power is taken or can be taken at.

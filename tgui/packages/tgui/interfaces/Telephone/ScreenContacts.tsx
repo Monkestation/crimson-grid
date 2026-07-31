@@ -1,5 +1,7 @@
 // THIS IS A DARKPACK UI FILE
-import { useState } from 'react';
+
+import { sortBy } from 'es-toolkit';
+import { useCallback, useMemo, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -102,6 +104,30 @@ export const ScreenContacts = (props: {
   const [openMenuBar, setOpenMenuBar] = useState<string | null>(null);
   const [openOnHover, setOpenOnHover] = useState(false);
 
+  const number_filter = useCallback(
+    (contact: Contact) => contact.number !== my_number,
+    [my_number],
+  );
+
+  const sorted_published_numbers = useMemo(
+    () =>
+      sortBy(published_numbers.filter(number_filter), [
+        (contact: Contact) => contact.name,
+      ]),
+    [published_numbers, number_filter],
+  );
+  const sorted_contacts = useMemo(
+    () =>
+      sortBy(our_contacts.filter(number_filter), [
+        (contact: Contact) => contact.name,
+      ]),
+    [our_contacts, number_filter],
+  );
+  const sorted_blocked_contacts = useMemo(
+    () => sortBy(our_blocked_contacts, [(contact: Contact) => contact.name]),
+    [our_blocked_contacts],
+  );
+
   return (
     <Stack vertical fill backgroundColor="#fff" textColor="#000">
       <Stack.Item>
@@ -139,17 +165,13 @@ export const ScreenContacts = (props: {
                   }}
                 />
                 <MenuBar.Dropdown.MenuItem
-                  displayText={
-                    'Add Contact'
-                  }
+                  displayText={'Add Contact'}
                   onClick={() => {
                     act('add_contact');
                   }}
                 />
                 <MenuBar.Dropdown.MenuItem
-                  displayText={
-                    'Remove Contact'
-                  }
+                  displayText={'Remove Contact'}
                   onClick={() => {
                     act('remove_contact');
                   }}
@@ -174,47 +196,43 @@ export const ScreenContacts = (props: {
       ) : (
         <Stack.Item grow mt={-1} style={{ overflowY: 'scroll' }}>
           <Collapsible open={true} color="orange" title="My Contacts" ml={-0.5}>
-            {our_contacts
-              .filter((contact) => contact.number !== my_number)
-              .map((contact) => (
-                <ContactElement
-                  contact={contact}
-                  key={contact.name + contact.number}
-                  deleteIcon="trash"
-                  messageIcon="comment"
-                  onClick={() => {
-                    setEnteredNumber(contact.number);
-                    setApp(NavigableApps.Phone);
-                  }}
-                  onDelete={() => act('remove_contact', { name: contact.name })}
-                  onMessage={() => {
-                    setEnteredNumber(contact.number);
-                    setApp(NavigableApps.Messages); // opens a text conversation
-                  }}
-                />
-              ))}
+            {sorted_contacts.map((contact) => (
+              <ContactElement
+                contact={contact}
+                key={contact.name + contact.number}
+                deleteIcon="trash"
+                messageIcon="comment"
+                onClick={() => {
+                  setEnteredNumber(contact.number);
+                  setApp(NavigableApps.Phone);
+                }}
+                onDelete={() => act('remove_contact', { name: contact.name })}
+                onMessage={() => {
+                  setEnteredNumber(contact.number);
+                  setApp(NavigableApps.Messages); // opens a text conversation
+                }}
+              />
+            ))}
           </Collapsible>
           <Collapsible color="orange" title="Published Numbers" ml={-0.5}>
-            {published_numbers
-              .filter((contact) => contact.number !== my_number)
-              .map((contact) => (
-                <ContactElement
-                  contact={contact}
-                  key={contact.name + contact.number}
-                  messageIcon="comment"
-                  onClick={() => {
-                    setEnteredNumber(contact.number);
-                    setApp(NavigableApps.Phone);
-                  }}
-                  onMessage={() => {
-                    setEnteredNumber(contact.number);
-                    setApp(NavigableApps.Messages);
-                  }}
-                />
-              ))}
+            {sorted_published_numbers.map((contact) => (
+              <ContactElement
+                contact={contact}
+                key={contact.name + contact.number}
+                messageIcon="comment"
+                onClick={() => {
+                  setEnteredNumber(contact.number);
+                  setApp(NavigableApps.Phone);
+                }}
+                onMessage={() => {
+                  setEnteredNumber(contact.number);
+                  setApp(NavigableApps.Messages);
+                }}
+              />
+            ))}
           </Collapsible>
           <Collapsible color="orange" title="Blocked Numbers" ml={-0.5}>
-            {our_blocked_contacts.map((contact) => (
+            {sorted_blocked_contacts.map((contact) => (
               <ContactElement
                 contact={contact}
                 key={contact.name + contact.number}

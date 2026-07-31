@@ -1,7 +1,7 @@
 /datum/job/vampire/abbe
 	title = JOB_ABBE
 	description = "You are an Abbé for the Society of Leopold who answers to the Provincial of this region, and who serves the local Cenacle of Inquisitors beneath you. You're tasked by the Inquisition in ensuring the Cenaculum are well-supplied and accounted for, as well as rooting out any heresy or infiltration. Act as the leaders of the Inquisitors, as your Lord has commanded you to be your brother's keeper."
-	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
+	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
 	faction = FACTION_CITY
 	total_positions = 1
 	spawn_positions = 1
@@ -29,4 +29,4 @@
 	glasses = /obj/item/clothing/glasses/vampire/perception
 	r_pocket = /obj/item/vamp/keys/hunter
 	l_pocket = /obj/item/smartphone/abbe
-	backpack_contents = list(/obj/item/vampire_stake=1, /obj/item/vampirebook/bible=1, /obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/vampire_stake=1, /obj/item/intel_report=1, /obj/item/vampirebook/bible=1, /obj/item/card/credit=1)

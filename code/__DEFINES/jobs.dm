@@ -21,12 +21,14 @@
 #define JOB_UNAVAILABLE_KINDRED_AGE_MIN 11
 /// Checks for character kindred age. (Maximum age)
 #define JOB_UNAVAILABLE_KINDRED_AGE_MAX 12
-/// Checks for character kindred generation.
-#define JOB_UNAVAILABLE_KINDRED_GENERATION 13
+/// Checks for character kindred generation minimum.
+#define JOB_UNAVAILABLE_KINDRED_GENERATION_MIN 13
+/// Checks for character kindred generation maximum.
+#define JOB_UNAVAILABLE_KINDRED_GENERATION_MAX 14
 /// Checks for character clan.
-#define JOB_UNAVAILABLE_KINDRED_CLAN 14
-#define JOB_UNAVAILABLE_FERA_TRIBE 15
-#define JOB_UNAVAILABLE_FERA_AUSPICE 16
+#define JOB_UNAVAILABLE_KINDRED_CLAN 15
+#define JOB_UNAVAILABLE_FERA_TRIBE 16
+#define JOB_UNAVAILABLE_FERA_AUSPICE 17
 
 // DARKPACK EDIT ADD END
 

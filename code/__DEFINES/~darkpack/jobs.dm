@@ -15,6 +15,7 @@
 #define JOB_ORDINARY_CITIZEN "Unassigned"
 #define JOB_STREET_JANITOR "Street Janitor"
 #define JOB_TAXI_DRIVER "Taxi Driver"
+#define JOB_RED_NEWS_REPORTER "Red News Reporter"
 
 //Camarilla
 #define JOB_PRINCE "Prince"
@@ -104,6 +105,7 @@
 //////////////////////////////////////////////////
 
 #define JOB_DISPLAY_ORDER_CITIZEN 1
+#define JOB_DISPLAY_ORDER_RED_NEWS_REPORTER 2
 
 #define JOB_DISPLAY_ORDER_PRINCE 1
 #define JOB_DISPLAY_ORDER_CLERK 2

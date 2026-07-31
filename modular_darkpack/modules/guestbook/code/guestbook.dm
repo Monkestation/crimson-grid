@@ -148,7 +148,7 @@
 			to_chat(user, span_warning("What?"))
 		return FALSE
 	var/mob/living/living_user = user
-	if(istype(living_user) && !can_see(living_user, guest, 7))
+	if(istype(living_user) && !can_see(living_user, guest, DEFAULT_SIGHT_DISTANCE))
 		if(!silent)
 			to_chat(user, span_warning("You can't see them!"))
 		return FALSE
@@ -157,7 +157,7 @@
 		if(!silent)
 			to_chat(user, span_warning("You can't see their face very well!"))
 		return FALSE
-	if(get_dist(user, guest) > 4)
+	if(get_dist(user, guest) > DEFAULT_SIGHT_DISTANCE)
 		if(!silent)
 			to_chat(user, span_warning("You need to take a closer look at them!"))
 		return FALSE

@@ -170,3 +170,24 @@
   - config: Hunger rate is on a config for easier tweaking
   kimesik:
   - bugfix: Fixed Condottieri's supervisor property.
+2026-07-30:
+  Absolucy:
+  - bugfix: Fixed a laggy hard delete related to disciplines.
+  FalloutFalcon:
+  - rscadd: Adds a large set of new ambiences to mostly replace the old ones.
+  - rscadd: Pipes and stalagmites have a chance to have dripping sounds playing
+  - rscadd: Light tubes have a chance to have an ambient buzz
+  - rscadd: Adds a `looping_sound_emitter` object for mapping that can be vareditted
+      to have a looping sound easier.
+  - bugfix: Fills in the gaps of the ambience buzzs and sounds so that Space ambience
+      no longer plays
+  - rscadd: The umbra now spawns corpses with fetishes and banes surronding them
+  - rscadd: 'Adds new minor werewolf fetish: Magpie''s Ears'
+  - rscadd: Adds merit to have a roundstart fetish owned by you.
+  - balance: Klaives are MUCH rarer from normal spawns
+  - bugfix: Improves handling for detecting a heartbeat to be more consistent
+  - code_imp: Fixes random runtimes
+  chazzyjazzy:
+  - rscadd: adds functionality for clearing masquerade breaches upon the death of
+      any mob/living, admins can also use the 'AdjustMasquerade' proc to restore people's
+      breaches now as it wasnt working before

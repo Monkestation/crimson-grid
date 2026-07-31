@@ -6,7 +6,7 @@
 	human.update_body()
 
 /datum/splat/vampire/ghoul/get_splat_description()
-	return "Servents of kindred, often bound through blood-bond to such."
+	return "Mortals sustained and bound by vampiric vitae, gaining unnatural vitality, eternal youth, and an emotional dependency on their domitors. Some serve willingly out of vitae-afflicted love, loyalty, or ambition, while others remain trapped by addiction in their inescapable blood bond.\n\nAcross the World, ghouls act as bodyguards, servants, agents, and intermediaries for Kindred across every sect and faction. Though stronger than ordinary humans and able to act in daytime, they remain vulnerable to the whims and politics of Kindred Society and their masters."
 
 // Pulled straight from the wiki https://whitewolf.fandom.com/wiki/Ghoul_(VTM)
 /datum/splat/vampire/ghoul/get_splat_lore()

@@ -37,6 +37,7 @@
 	data["immortal_age"] = null
 	data["clan_name"] = null
 	data["splat_name"] = null
+	data["generation"] = null
 	data["flavor_text"] = null
 	data["headshot"] = null
 
@@ -84,6 +85,7 @@
 
 			var/clan_value = target_prefs.read_preference(/datum/preference/choiced/subsplat/vampire_clan)
 			if(clan_value)
+				data["generation"] = target_prefs.read_preference(/datum/preference/numeric/generation)
 				var/datum/subsplat/vampire_clan/clan_datum = get_vampire_clan(clan_value)
 				if(clan_datum)
 					data["clan_name"] = clan_datum.name
@@ -175,6 +177,27 @@
 			target_prefs.save_character()
 			message_admins("[key_name_admin(ui.user)] set [disc_path] to level [new_level] for [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name]).")
 			log_admin("[key_name_admin(ui.user)] set [disc_path] to level [new_level] for [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name]).")
+			return TRUE
+
+		if("set_generation")
+			if(!target_prefs || !selected_slot)
+				return FALSE
+			var/new_gen = round(text2num(params["generation"]))
+			if(!isnum(new_gen))
+				return FALSE
+			new_gen = clamp(new_gen, LOWEST_GENERATION_LIMIT, HIGHEST_GENERATION_LIMIT)
+			var/save_data = target_prefs.get_save_data_for_savefile_identifier(PREFERENCE_CHARACTER)
+			if(save_data)
+				save_data["generation"] = new_gen
+			target_prefs.value_cache[/datum/preference/numeric/generation] = new_gen
+			var/client/target_client = GLOB.directory[target_ckey]
+			if(target_client?.mob && ishuman(target_client.mob))
+				var/mob/living/carbon/human/target_mob = target_client.mob
+				get_kindred_splat(target_mob)?.set_generation(new_gen)
+			var/character_name = target_prefs.read_preference(/datum/preference/name/real_name)
+			target_prefs.save_character()
+			message_admins("[key_name_admin(ui.user)] set [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name] to generation [new_gen]).")
+			log_admin("[key_name_admin(ui.user)] set [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name] to generation [new_gen]).")
 			return TRUE
 
 		if("toggle_trusted")

@@ -69,10 +69,20 @@ GAME_VERB_DESC(/client, looc_wallpierce, "LOOC (Wallpierce)", "Local OOC, seen b
 		var/client/hearing_client = hearing.client
 		if(hearing_client.holder)
 			admin_seen[hearing_client] = TRUE
-			continue //they are handled after that
+		/* // CRIMSON REMOVAL START - no no, ghosts should be able to.
+			// dont continue here, still need to show runechat
 
 		if(isobserver(hearing))
 			continue //Also handled later.
+		*/ // CRIMSON REMOVAL END
+
+		// CRIMSON EDIT ADDITION START
+		// do the runetext here so admins can still get the runetext
+		if(mob.runechat_prefs_check(hearing_client.mob) && hearing_client.prefs.read_preference(/datum/preference/toggle/enable_looc_runechat))
+			// EMOTE is close enough. We don't want it to treat the raw message with languages.
+			// I wish it didn't include the asterisk but it's modular this way.
+			hearing_client.mob?.create_chat_message(mob, /datum/language/common, "\[LOOC: [msg]\]", list("looc", "italics"))
+		// CRIMSON EDIT ADDITION END
 
 		to_chat(hearing_client, span_looc(span_prefix("LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.mob.name]:</EM> <span class='message'>[msg]")))
 
