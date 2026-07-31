@@ -344,13 +344,13 @@
 
 /obj/item/smartphone/mountain_master
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = TRIAD_NETWORK, OUR_ROLE = "Big Boss", USE_JOB_TITLE = FALSE)
+		alist(NETWORK_ID = TRIAD_NETWORK, OUR_ROLE = "Big Boss", USE_JOB_TITLE = FALSE),
 		alist(NETWORK_ID = SUPPLY_NETWORK, OUR_ROLE = "Chinatown Realtor", USE_JOB_TITLE = FALSE)
 		)
 
 /obj/item/smartphone/deputy_mountain_master
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = TRIAD_NETWORK, OUR_ROLE = "Deputy Big Boss", USE_JOB_TITLE = FALSE)
+		alist(NETWORK_ID = TRIAD_NETWORK, OUR_ROLE = "Deputy Big Boss", USE_JOB_TITLE = FALSE),
 		alist(NETWORK_ID = SUPPLY_NETWORK, OUR_ROLE = "Chinatown Broker", USE_JOB_TITLE = FALSE)
 		)
 
