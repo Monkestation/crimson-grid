@@ -107,10 +107,21 @@
 #define JOB_CONDOTTIERI "Condottieri"
 #define JOB_INQUISITOR "Inquisitor"
 
+// Triad
+#define JOB_MOUNTAIN_MASTER "Mountain Master"
+#define JOB_DEPUTY_MOUNTAIN_MASTER "Deputy Mountain Master"
+#define JOB_TRIAD_RED_POLE "Red Pole"
+#define JOB_TRIAD_BLUE_LANTERNS "Blue Lanterns"
+
 //////////////////////////////////////////////////
 
 #define JOB_DISPLAY_ORDER_CITIZEN 1
 #define JOB_DISPLAY_ORDER_RED_NEWS_REPORTER 2
+
+#define JOB_DISPLAY_ORDER_MOUNTAIN_MASTER 1
+#define JOB_DISPLAY_ORDER_DEPUTY_MOUNTAIN_MASTER 2
+#define JOB_DISPLAY_ORDER_TRIAD_RED_POLE 3
+#define JOB_DISPLAY_ORDER_TRIAD_BLUE_LANTERNS 4
 
 #define JOB_DISPLAY_ORDER_PRINCE 1
 #define JOB_DISPLAY_ORDER_CLERK 2
@@ -216,6 +227,8 @@
 #define DEPARTMENT_GAIA "Garou Nation"
 #define DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD (1<<16)
 #define DEPARTMENT_SOCIETY_OF_LEOPOLD "Society of Leopold"
+#define DEPARTMENT_BITFLAG_TRIAD (1<<17)
+#define DEPARTMENT_TRIAD "Chinese Triad"
 
 DEFINE_BITFIELD(departments_bitflags, list(
 	"CITIZEN" = DEPARTMENT_BITFLAG_CITIZEN,
@@ -271,6 +284,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 #define EXP_TYPE_POLICE "Police Force"
 #define EXP_TYPE_NATIONAL_SECURITY "National Security"
 #define EXP_TYPE_SERVICES "City Services"
+#define EXP_TYPE_TRIAD "Chinese Triad"
 // this prob should just say clinic genericly.
 #define EXP_TYPE_CLINIC "St. John's Clinic"
 #define EXP_TYPE_GIOVANNI "Giovanni Family"
