@@ -26,7 +26,7 @@
 		"Soldier",
 	)
 
-/datum/outfit/job/vampire/gangunderboss
+/datum/outfit/job/vampire/gangsoldier
 	name = JOB_GANG_SOLDIER
 	jobtype = /datum/job/vampire/gang
 
