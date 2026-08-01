@@ -5,6 +5,8 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = ".. Yourself.."
+	display_order = JOB_DISPLAY_ORDER_GANG_BOSS
+	config_tag = "GANG_BOSS"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/gangboss
 	allowed_splats = list(SPLAT_NONE)
@@ -13,10 +15,10 @@
 		/datum/job_department/gang,
 	)
 
-	known_contacts = list(
-		"Underboss",
-		"Enforcer",
-		"Dealer",
+	known_contacts = list( // no low level associates on the big dogs phone
+		JOB_GANG_UNDERBOSS,
+		JOB_GANG_SOLDIER,
+		JOB_DEALER,
 	)
 
 /datum/outfit/job/vampire/gangboss
@@ -33,4 +35,4 @@
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/darkpack/uzi=1, /obj/item/card/credit, /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine=1,)
 
 /obj/item/clothing/neck/necklace/dope/boss
-	name = "the boss's chain"
+	name = "\improper the boss's chain"

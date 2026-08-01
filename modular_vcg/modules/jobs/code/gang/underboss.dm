@@ -4,6 +4,8 @@
 	description = "You are the second in command and right hand to the Street Boss. Communicate with the Street Boss before any big moves, ensure the enforcers are controlling your turf and associates moving product."
 	total_positions = 1
 	spawn_positions = 1
+	display_order = JOB_DISPLAY_ORDER_GANG_UNDERBOSS
+	config_tag = "GANG_UNDERBOSS"
 	supervisors = SUPERVISOR_GANG
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/gangunderboss
@@ -14,10 +16,10 @@
 	)
 
 	known_contacts = list(
-		"Street Boss",
-		"Enforcer",
-		"Associate",
-		"Dealer",
+		JOB_GANG_BOSS,
+		JOB_GANG_SOLDIER,
+		JOB_GANG,
+		JOB_DEALER,
 	)
 
 /datum/outfit/job/vampire/gangunderboss

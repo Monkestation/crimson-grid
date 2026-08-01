@@ -6,6 +6,8 @@
 	spawn_positions = 5
 	supervisors = SUPERVISOR_GANG
 	job_flags = CITY_JOB_FLAGS
+	display_order = JOB_DISPLAY_ORDER_GANG_SOLDIER
+	config_tag = "GANG_SOLDIER"
 	outfit = /datum/outfit/job/vampire/gang
 	allowed_splats = list(SPLAT_NONE)
 	minimum_masquerade = 5 // nobody is gonna start a gang when theres swat in the city
@@ -14,10 +16,10 @@
 	)
 
 	known_contacts = list(
-		"Street Boss",
-		"Enforcer",
-		"Associate",
-		"Dealer",
+		JOB_GANG_BOSS,
+		JOB_GANG_SOLDIER,
+		JOB_GANG,
+		JOB_GANG_UNDERBOSS,
 	)
 
 	alt_titles = list(

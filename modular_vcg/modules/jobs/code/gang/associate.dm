@@ -4,6 +4,8 @@
 	description = "You are a low level gang member tasked with production, packaging and distribution of the gang's signature product. Follow the boss's orders."
 	total_positions = 10
 	spawn_positions = 10
+	display_order = JOB_DISPLAY_ORDER_GANG
+	config_tag = "GANG_MEMBER"
 	supervisors = SUPERVISOR_GANG
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/gang
@@ -14,10 +16,10 @@
 	)
 
 	known_contacts = list(
-		"Street Boss",
-		"Enforcer",
-		"Associate",
-		"Dealer",
+		JOB_GANG_BOSS,
+		JOB_GANG_SOLDIER,
+		JOB_GANG,
+		JOB_GANG_UNDERBOSS,
 	)
 
 	alt_titles = list(
@@ -33,5 +35,5 @@
 	uniform = /obj/item/clothing/under/vampire/bandit
 	shoes = /obj/item/clothing/shoes/vampire/sneakers/red
 	l_pocket = /obj/item/smartphone
-	backpack_contents = list(/obj/item/card/credit, /obj/item/knife/vamp=1, /obj/item/food/grown/cannabis=1)
+	backpack_contents = list(/obj/item/card/credit, /obj/item/knife/vamp=1, /obj/item/cigarette/rollie/cannabis=1)
 
