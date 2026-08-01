@@ -435,7 +435,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	color = "#339933"
 
 //===========================MISC KEYS===========================
-// CRIMSON EDIT ADDITION START
+
 /obj/item/vamp/keys/gang
 	name = "bloody keys"
 	accesslocks = list(
@@ -443,7 +443,6 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	)
 	color = "#bd3327"
 
-// CRIMSON EDIT ADDITION END
 /obj/item/vamp/keys/triads
 	name = "rusty keys"
 	accesslocks = list(
