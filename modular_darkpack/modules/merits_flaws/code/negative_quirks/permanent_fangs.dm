@@ -2,6 +2,7 @@
 /datum/quirk/darkpack/permafangs
 	name = "Permanent Fangs"
 	desc = "Your fangs do not retract, making it impossible for you to hide your true nature. While some mortals may think you've had your teeth filed or are wearing prosthetics, sooner or later you're going to run into someone who knows what you truly are."
+	ttrpg_sources = list(/datum/source_book/vtm20 = 482)
 	// TTRPG accurate would be -3? But this is also missing the max Appearance lock..
 	value = -1
 	mob_trait = TRAIT_PERMAFANGS
