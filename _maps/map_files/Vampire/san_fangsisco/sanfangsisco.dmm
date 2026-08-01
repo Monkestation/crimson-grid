@@ -5853,6 +5853,7 @@
 	pixel_x = -10;
 	pixel_y = -1
 	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "bHf" = (
@@ -8419,6 +8420,10 @@
 /obj/item/canvas/twentythree_twentythree,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior)
+"csq" = (
+/obj/effect/gibspawner/human,
+/turf/open/floor/city/plating,
+/area/vtm/interior/gangbase)
 "csu" = (
 /obj/structure/table,
 /obj/effect/decal/graffiti,
@@ -9339,6 +9344,10 @@
 /obj/item/storage/fancy/cigarettes/cigpack_cannabis{
 	pixel_x = 4;
 	pixel_y = 9
+	},
+/obj/item/shovel/spade{
+	pixel_x = -2;
+	pixel_y = -7
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
@@ -22412,6 +22421,7 @@
 	pixel_x = -85;
 	pixel_y = -5
 	},
+/obj/item/cultivator,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "gsk" = (
@@ -23418,6 +23428,10 @@
 /obj/item/clothing/head/cone,
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer)
+"gHv" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/city/plating,
+/area/vtm/interior/gangbase)
 "gHy" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 5
@@ -31575,7 +31589,7 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/turf/open/floor/wood/smooth/old,
+/turf/open/floor/city/plating,
 /area/vtm/interior/gangbase)
 "jev" = (
 /obj/structure/table,
@@ -34115,6 +34129,7 @@
 	pixel_x = 20;
 	pixel_y = 7
 	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "jQw" = (
@@ -39163,6 +39178,14 @@
 /obj/structure/roadsign/speedlimit25,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/unionsquare)
+"loO" = (
+/obj/effect/decal/wallpaper/red,
+/obj/item/soil_sack{
+	pixel_x = -3;
+	pixel_y = -21
+	},
+/turf/closed/wall/vampwall/rich,
+/area/vtm/interior/gangbase)
 "loQ" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -40268,8 +40291,8 @@
 /area/vtm/interior/glasswalker)
 "lFV" = (
 /obj/structure/chair/wood{
-	pixel_x = 2;
-	pixel_y = -6
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /obj/fusebox,
 /turf/open/floor/wood/smooth/old,
@@ -41845,7 +41868,8 @@
 "mdV" = (
 /obj/structure/chair/wood{
 	dir = 1;
-	pixel_y = 6
+	pixel_y = 10;
+	pixel_x = 0
 	},
 /obj/effect/landmark/start/darkpack/gang/enforcer,
 /obj/machinery/light/directional/north{
@@ -57656,10 +57680,7 @@
 /area/vtm/interior/millennium_tower/f2)
 "qyj" = (
 /obj/structure/rack/tall/store_shelf_metal,
-/obj/item/storage/fancy/cigarettes/cigpack_cannabis/empty{
-	pixel_x = 5;
-	pixel_y = 9
-	},
+/obj/item/shovel/spade,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "qyp" = (
@@ -58936,10 +58957,7 @@
 /area/vtm/interior)
 "qPR" = (
 /obj/effect/decal/wallpaper/red,
-/obj/item/bong{
-	pixel_x = -21;
-	pixel_y = -13
-	},
+/obj/item/cultivator,
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/gangbase)
 "qQd" = (
@@ -60606,6 +60624,11 @@
 	},
 /turf/open/floor/carpet/red,
 /area/vtm/interior/clinic/haven)
+"rmk" = (
+/obj/effect/decal/wallpaper/red,
+/obj/item/shovel/spade,
+/turf/closed/wall/vampwall/rich,
+/area/vtm/interior/gangbase)
 "rmo" = (
 /obj/effect/decal/wallpaper/paper/low,
 /obj/structure/platform/lowwall/city/window,
@@ -68375,6 +68398,7 @@
 	pixel_x = 62;
 	pixel_y = -4
 	},
+/obj/item/soil_sack,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "tAd" = (
@@ -68635,7 +68659,7 @@
 /area/vtm/interior/tzimisce_manor)
 "tDV" = (
 /obj/structure/vampfence/rich,
-/turf/open/floor/wood/smooth/old,
+/turf/open/floor/city/plating,
 /area/vtm/interior/gangbase)
 "tDW" = (
 /obj/structure/closet/cabinet,
@@ -69128,6 +69152,7 @@
 	pixel_x = 32;
 	pixel_y = 8
 	},
+/obj/item/cultivator,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "tLv" = (
@@ -71342,12 +71367,12 @@
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/sabbat_lair)
 "uvm" = (
-/obj/structure/rack/tall/store_shelf_metal,
-/obj/item/storage/fancy/cigarettes/cigpack_cannabis{
-	pixel_x = 11;
-	pixel_y = 21
+/obj/effect/decal/wallpaper/red,
+/obj/item/cultivator{
+	pixel_x = -1;
+	pixel_y = -2
 	},
-/turf/open/floor/wood/smooth/old,
+/turf/closed/wall/vampwall/rich,
 /area/vtm/interior/gangbase)
 "uvn" = (
 /obj/structure/closet/crate/large,
@@ -72502,6 +72527,11 @@
 /obj/item/melee/vamp/tire,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
+"uKZ" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/gangbase)
 "uLt" = (
 /obj/structure/table,
 /turf/open/floor/plating/granite/black,
@@ -79008,7 +79038,6 @@
 	pixel_x = 9;
 	pixel_y = 6
 	},
-/obj/machinery/light/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "wHH" = (
@@ -80142,6 +80171,10 @@
 /obj/item/storage/fancy/cigarettes/cigpack_cannabis/empty{
 	pixel_x = 31;
 	pixel_y = -12
+	},
+/obj/item/soil_sack{
+	pixel_x = 6;
+	pixel_y = -14
 	},
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/gangbase)
@@ -83008,6 +83041,11 @@
 /obj/structure/coclock,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/baali)
+"xPw" = (
+/obj/effect/decal/wallpaper/red,
+/obj/item/soil_sack,
+/turf/closed/wall/vampwall/rich,
+/area/vtm/interior/gangbase)
 "xPy" = (
 /obj/effect/decal/cleanable/trash{
 	icon_state = "trash5"
@@ -84231,9 +84269,9 @@
 /area/vtm/interior/oldchurch)
 "yhZ" = (
 /obj/effect/decal/wallpaper/red,
-/obj/item/bong{
+/obj/item/shovel/spade{
 	pixel_x = 0;
-	pixel_y = -12
+	pixel_y = -16
 	},
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/gangbase)
@@ -108659,8 +108697,8 @@ lxV
 sWn
 pJd
 pJd
-sWn
 uvm
+sYN
 pJd
 nHm
 pJd
@@ -108908,15 +108946,15 @@ kfi
 kfi
 kfi
 sWn
-rzv
-pJd
+csq
+gkP
 sWn
-pJd
-rzv
+gkP
+csq
 sWn
 lGz
 pJd
-sWn
+loO
 fpA
 pJd
 pJd
@@ -109165,11 +109203,11 @@ kfi
 kfi
 kfi
 sWn
-gdI
-pJd
+gHv
+gkP
 sWn
-gdI
-pJd
+gHv
+gkP
 sWn
 pJd
 pJd
@@ -109430,7 +109468,7 @@ jeq
 sWn
 pJd
 pJd
-sWn
+rmk
 gsi
 pJd
 nHm
@@ -110972,7 +111010,7 @@ bul
 sWn
 pJd
 pJd
-sWn
+xPw
 sYN
 pJd
 nHm
@@ -114050,7 +114088,7 @@ kfi
 kfi
 kfi
 sWn
-vyN
+uKZ
 pJd
 vYf
 sWn
@@ -114564,7 +114602,7 @@ kfi
 kfi
 kfi
 sWn
-gdI
+pJd
 pJd
 gYy
 sWn
