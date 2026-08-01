@@ -25,7 +25,7 @@
 	jobtype = /datum/job/vampire/gangunderboss
 
 	glasses = /obj/item/clothing/glasses/vampire/sun
-	uniform =  /obj/item/clothing/under/vampire/fancy_red
+	uniform = /obj/item/clothing/under/vampire/fancy_red
 	suit = /obj/item/clothing/suit/vampire/fancy_red
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/smartphone

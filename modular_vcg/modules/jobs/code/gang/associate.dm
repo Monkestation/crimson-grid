@@ -1,7 +1,7 @@
 /datum/job/vampire/gang // Human only gang grunt
 	title = JOB_GANG
 	faction = FACTION_GANG
-	description = "You are a low level gang member tasked with production, packaging and distribution of the gang's signature product."
+	description = "You are a low level gang member tasked with production, packaging and distribution of the gang's signature product. Follow the boss's orders."
 	total_positions = 10
 	spawn_positions = 10
 	supervisors = SUPERVISOR_GANG
@@ -27,8 +27,11 @@
 	)
 
 /datum/outfit/job/vampire/gangunderboss
-	name = "Associate"
+	name = JOB_GANG
 	jobtype = /datum/job/vampire/gang
 
+	uniform = /obj/item/clothing/under/vampire/bandit
+	shoes = /obj/item/clothing/shoes/vampire/sneakers/red
 	l_pocket = /obj/item/smartphone
-	backpack_contents = list(/obj/item/card/credit)
+	backpack_contents = list(/obj/item/card/credit, /obj/item/knife/vamp=1, /obj/item/food/grown/cannabis=1)
+
