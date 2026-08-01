@@ -17165,10 +17165,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch)
-"eWH" = (
-/obj/effect/gibspawner/human,
-/turf/open/floor/city/plating,
-/area/vtm/interior/gangbase)
 "eWK" = (
 /obj/structure/chair/wood/wings{
 	dir = 8
@@ -20778,8 +20774,13 @@
 /turf/open/floor/carpet/red,
 /area/vtm/interior/baali)
 "fUB" = (
+/obj/structure/rack/tall/store_shelf_metal,
+/obj/item/cultivator{
+	pixel_x = 6;
+	pixel_y = 12
+	},
 /obj/machinery/light/small/pink/directional/north{
-	layer = 0
+	layer = 2.7
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
@@ -29985,6 +29986,11 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/oldchurch)
+"iGt" = (
+/obj/structure/closet/secure_closet/personal/cabinet,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/gangbase)
 "iGD" = (
 /obj/structure/vampdoor/glass{
 	dir = 4
@@ -58955,11 +58961,7 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior)
 "qPR" = (
-/obj/structure/rack/tall/store_shelf_metal,
-/obj/item/shovel/spade{
-	pixel_x = -18;
-	pixel_y = 13
-	},
+/obj/machinery/light/small/pink/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "qQd" = (
@@ -69127,9 +69129,8 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior/bianchiBank)
 "tLe" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
 /obj/machinery/light/directional/north,
-/turf/open/floor/wood/smooth/old,
+/turf/open/floor/city/plating,
 /area/vtm/interior/gangbase)
 "tLn" = (
 /obj/structure/roadsign/warningtrafficlight,
@@ -72225,15 +72226,8 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/sewer)
 "uHq" = (
-/obj/structure/rack/tall/store_shelf_metal,
-/obj/item/cultivator{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/obj/machinery/light/small/pink/directional/north{
-	layer = 2.7
-	},
-/turf/open/floor/wood/smooth/old,
+/obj/effect/gibspawner/human,
+/turf/open/floor/city/plating,
 /area/vtm/interior/gangbase)
 "uHt" = (
 /obj/effect/decal/gut_floor,
@@ -80168,7 +80162,11 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/tzimisce_manor)
 "wZq" = (
-/obj/machinery/light/small/pink/directional/north,
+/obj/structure/rack/tall/store_shelf_metal,
+/obj/item/shovel/spade{
+	pixel_x = -18;
+	pixel_y = 13
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "wZt" = (
@@ -84256,8 +84254,10 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/oldchurch)
 "yhZ" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/city/plating,
+/obj/machinery/light/small/pink/directional/north{
+	layer = 0
+	},
+/turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "yic" = (
 /obj/machinery/washing_machine,
@@ -108168,7 +108168,7 @@ sWn
 pJd
 pJd
 sWn
-wZq
+qPR
 pJd
 nHm
 pJd
@@ -108428,7 +108428,7 @@ sWn
 cGb
 pJd
 nHm
-fUB
+yhZ
 nHm
 pJd
 nHm
@@ -108930,11 +108930,11 @@ kfi
 kfi
 kfi
 sWn
-eWH
+uHq
 gkP
 sWn
 gkP
-eWH
+uHq
 sWn
 lGz
 pJd
@@ -109187,16 +109187,16 @@ kfi
 kfi
 kfi
 sWn
-yhZ
+tLe
 gkP
 sWn
-yhZ
+tLe
 gkP
 sWn
 pJd
 pJd
 sWn
-uHq
+fUB
 pJd
 nHm
 pJd
@@ -109456,7 +109456,7 @@ sWn
 gsi
 pJd
 nHm
-fUB
+yhZ
 nHm
 pJd
 nHm
@@ -109970,7 +109970,7 @@ sWn
 tzU
 pJd
 nHm
-fUB
+yhZ
 nHm
 pJd
 nHm
@@ -110741,7 +110741,7 @@ sWn
 tLs
 pJd
 nHm
-fUB
+yhZ
 nHm
 pJd
 mCM
@@ -110995,7 +110995,7 @@ sWn
 pJd
 pJd
 sWn
-qPR
+wZq
 pJd
 nHm
 pJd
@@ -111255,7 +111255,7 @@ sWn
 pJd
 pJd
 nHm
-fUB
+yhZ
 nHm
 pJd
 nHm
@@ -114072,7 +114072,7 @@ kfi
 kfi
 kfi
 sWn
-tLe
+iGt
 pJd
 vYf
 sWn
