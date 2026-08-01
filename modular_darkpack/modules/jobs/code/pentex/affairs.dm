@@ -44,6 +44,7 @@
 //	ears = /obj/item/p25radio
 	id = /obj/item/card/pentex/affairs
 	uniform =  /obj/item/clothing/under/vampire/pentex_suit
+    belt = /obj/item/occult_artifact/werewolf/klaive
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
 	l_pocket = /obj/item/smartphone // /affairsagent - todo subtype
 	r_pocket = /obj/item/vamp/keys/pentex
