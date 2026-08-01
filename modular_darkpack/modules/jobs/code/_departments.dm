@@ -139,9 +139,17 @@
 	display_order = 15
 	ui_color = "#fff022"
 
+/datum/job_department/gang // humans only
+	department_name = DEPARTMENT_GANG
+	department_bitflags = DEPARTMENT_BITFLAG_GANG
+	department_head = /datum/job/vampire/gangboss
+	department_experience_type = EXP_TYPE_GANG
+	display_order = 16
+	ui_color = "#b1291f"
+
 // Bottom of the barrel
 /datum/job_department/citizen
 	department_name = DEPARTMENT_CITIZEN
 	department_bitflags = DEPARTMENT_BITFLAG_CITIZEN
-	display_order = 16
+	display_order = 17
 	// Don't add department_head! citizens names should not be in bold.

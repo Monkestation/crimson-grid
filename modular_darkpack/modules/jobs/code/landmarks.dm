@@ -137,4 +137,13 @@ JOB_START_HELPER(society_of_leopold/condittieri, JOB_CONDOTTIERI)
 JOB_START_HELPER(society_of_leopold/inquisitor, JOB_INQUISITOR)
 JOB_START_HELPER(society_of_leopold/novice, JOB_NOVICE)
 
+/* Gang */
+/obj/effect/landmark/start/darkpack/citizen
+	name = "generic gang start"
+
+JOB_START_HELPER(gang/boss, JOB_GANG_BOSS)
+JOB_START_HELPER(gang/underboss, JOB_GANG_UNDERBOSS)
+JOB_START_HELPER(gang/enforcer, JOB_GANG_SOLDIER)
+JOB_START_HELPER(gang/associate, JOB_GANG)
+
 #undef JOB_START_HELPER

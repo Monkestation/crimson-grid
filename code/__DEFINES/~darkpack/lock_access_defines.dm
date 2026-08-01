@@ -62,6 +62,7 @@
 #define LOCKACCESS_CHURCH "church"
 #define LOCKACCESS_TAXI "taxi"
 
+#define LOCKACCESS_GANG "gang"
 #define LOCKACCESS_TRAID "triad"
 #define LOCKACCESS_CLEANING "cleaning"
 #define LOCKACCESS_LAUNDROMAT "laundromat"

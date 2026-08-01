@@ -304,3 +304,8 @@
 	ambience_index = AMBIENCE_OFFICE
 	fire_controled = TRUE
 	domain = TRUE
+
+/area/vtm/interior/gangbase
+	name = "Gang Hideout"
+	fire_controled = TRUE
+	domain = TRUE

@@ -102,6 +102,12 @@
 #define JOB_CONDOTTIERI "Condottieri"
 #define JOB_INQUISITOR "Inquisitor"
 
+// Gang
+#define JOB_GANG_BOSS "Street Boss"
+#define JOB_GANG_UNDERBOSS "Underboss"
+#define JOB_GANG_SOLDIER "Enforcer"
+#define JOB_GANG "Associate"
+
 //////////////////////////////////////////////////
 
 #define JOB_DISPLAY_ORDER_CITIZEN 1
@@ -174,6 +180,11 @@
 #define JOB_DISPLAY_ORDER_CONDOTTIERI 3
 #define JOB_DISPLAY_ORDER_NOVICE 4
 
+#define JOB_DISPLAY_ORDER_GANG_BOSS 1
+#define JOB_DISPLAY_ORDER_GANG_UNDERBOSS 2
+#define JOB_DISPLAY_ORDER_GANG_SOLDIER 3
+#define JOB_DISPLAY_ORDER_GANG 4
+
 //////////////////////////////////////////////////
 
 #define DEPARTMENT_BITFLAG_CITIZEN (1<<0)
@@ -210,6 +221,8 @@
 #define DEPARTMENT_GAIA "Garou Nation"
 #define DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD (1<<16)
 #define DEPARTMENT_SOCIETY_OF_LEOPOLD "Society of Leopold"
+#define DEPARTMENT_BITFLAG_GANG (1<<17)
+#define DEPARTMENT_GANG "Gang"
 
 DEFINE_BITFIELD(departments_bitflags, list(
 	"CITIZEN" = DEPARTMENT_BITFLAG_CITIZEN,
@@ -229,6 +242,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 	"MANOR" = DEPARTMENT_BITFLAG_MANOR,
 	"CITY_SERVICES" = DEPARTMENT_BITFLAG_CITY_SERVICES,
 	"SOCIETY_OF_LEOPOLD" = DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD,
+	"GANG" = DEPARTMENT_BITFLAG_GANG,
 ))
 
 /// Combination flag for jobs which are considered regular crew members of the station.
@@ -250,6 +264,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 #define SUPERVISOR_SENESCHAL_PUBLIC "the COO"
 #define SUPERVISOR_BARON_PUBLIC "the Bar's Owner"
 #define SUPERVISOR_SOCIETY_OF_LEOPOLD "the Society of Leopold, the Inquisition, the local Provincial, and God"
+#define SUPERVISOR_GANG "the Street Boss"
 
 // Playtime tracking system, see jobs_exp.dm
 // weird one.
@@ -271,3 +286,4 @@ DEFINE_BITFIELD(departments_bitflags, list(
 #define EXP_TYPE_MANOR "Tzimisce Manor"
 #define EXP_TYPE_CHURCH "Church"
 #define EXP_TYPE_CLUB "Strip Club"
+#define EXP_TYPE_GANG "Gang"

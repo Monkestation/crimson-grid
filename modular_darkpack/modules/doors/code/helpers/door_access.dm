@@ -167,6 +167,9 @@
 	lock_id = LOCKACCESS_TAXI
 
 
+/obj/effect/mapping_helpers/door/access/gang
+	lock_id = LOCKACCESS_GANG
+
 /obj/effect/mapping_helpers/door/access/triad
 	lock_id = LOCKACCESS_TRAID
 
