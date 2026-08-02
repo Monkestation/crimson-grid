@@ -105,7 +105,6 @@
 	var/gas = MOTORCYCLE_TANK_MAX
 
 	/// If we provide extra debug information like path indicators
-	//neat. Don't need it. (Needed it.)
 	var/debug_car = TRUE
 
 	//access now handled in motorcycle_subtypes
@@ -647,7 +646,7 @@
 					if(prob(50))
 						NPC.realistic_say(pick(NPC.socialrole.car_dodged))
 
-//This controls the directional offset.
+//This controls the directional offset of the riders.
 /obj/motorcycle/proc/move_car_riders(moved_x, moved_y)
 	//Simple
 	if(driver)
@@ -733,27 +732,15 @@
 				speed_in_pixels = max(0, speed_in_pixels+adjusting_speed*3)
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 
-// Limited to 90 degree icon directions.
 /obj/motorcycle/proc/apply_vector_angle()
-	var/turn_state = round(SIMPLIFY_DEGREES(movement_vector + 45) / 90)
 	setDir(angle2dir_cardinal(movement_vector))
+
+	var/turn_state = round(SIMPLIFY_DEGREES(movement_vector + 45) / 90)
 	var/minus_angle = turn_state * 90
+
 	var/matrix/M = matrix()
 	M.Turn(movement_vector - minus_angle)
 	transform = M
-
-//(jurryrigged fix) ripped from type2type.dm, for above. Can i access above this somehow without this proc?
-/obj/motorcycle/proc/angle2dir_cardinal(degree)
-	degree = SIMPLIFY_DEGREES(degree)
-	switch(round(degree, 0.1))
-		if(315.5 to 360, 0 to 45.5)
-			return NORTH
-		if(45.6 to 135.5)
-			return EAST
-		if(135.6 to 225.5)
-			return SOUTH
-		if(225.6 to 315.5)
-			return WEST
 
 /obj/motorcycle/proc/start_engine()
 	if(on)
