@@ -122,6 +122,8 @@
 			radio.talk_into(radio, "A burglary has been reported at [get_area_name(location, TRUE)].", FREQ_POLICE, list(SPAN_ROBOT))
 		if(CRIME_ATM_TAMPERING)
 			radio.talk_into(radio, "An atm was broken into or otherwise tampered with at [get_area_name(location, TRUE)].", FREQ_POLICE, list(SPAN_ROBOT))
+		if(CRIME_DRUG_SALE)
+			radio.talk_into(radio, "A drug deal has been reported at [get_area_name(location, TRUE)].", FREQ_POLICE, list(SPAN_ROBOT))
 
 /datum/signal/subspace/radio
 

@@ -1,6 +1,16 @@
 #define BANDIT_TYPE_NPC /mob/living/carbon/human/npc/bandit
 #define POLICE_TYPE_NPC /mob/living/carbon/human/npc/police
 
+#define NPC_DRUG_SALE_DIFFICULTY 6
+#define NPC_DRUG_SALE_BOTCH_PENALTY 0.5
+#define NPC_DRUG_LINE_COOLDOWN 3 SECONDS
+
+/datum/storyteller_roll/npc_drug_sale
+	bumper_text = "dealing"
+	applicable_stats = list(STAT_STREETWISE, STAT_CHARISMA)
+	difficulty = NPC_DRUG_SALE_DIFFICULTY
+	numerical = TRUE
+
 /mob/living/carbon/human/npc
 	name = "NPC"
 
@@ -32,12 +42,14 @@
 
 	var/is_talking = FALSE
 	COOLDOWN_DECLARE(annoyed_cooldown)
+	COOLDOWN_DECLARE(drug_line_cooldown)
 	COOLDOWN_DECLARE(car_dodge)
 	var/hostile = FALSE
 	var/aggressive = FALSE
 	var/last_antagonised = 0
 	var/mob/living/danger_source
 	var/obj/effect/abstract/turf_fire/afraid_of_fire
+	var/mob/living/fleeing_from
 	var/mob/living/last_attacker
 	var/last_health = 100
 	var/mob/living/last_damager
@@ -77,6 +89,16 @@
 	var/is_criminal = FALSE
 
 	var/list/drop_on_death_list = null
+
+	var/drug_price = 0
+	var/drug_purchase_limit = 3 // so you can't just keep an NPC next to a weed farm
+	var/drug_purchases = 0
+	var/datum/storyteller_roll/npc_drug_sale/drug_sell_roll
+	var/static/list/npc_buyable_categories = list(
+		"weed",
+		"meth",
+		"cocaine",
+	)
 
 /mob/living/carbon/human/npc/Initialize(mapload)
 	. = ..()
@@ -269,3 +291,78 @@
 
 /mob/living/carbon/human/npc/proc/ghoul_player_controlled(mob/owner)
 	message_admins("[key_name_admin(src)] has became a ghoul by [key_name_admin(owner)].")
+
+//drug dealing
+/mob/living/carbon/human/npc/proc/announce_drug_line(list/phrases)
+	if(!LAZYLEN(phrases))
+		return
+	if(!COOLDOWN_FINISHED(src, drug_line_cooldown))
+		return
+	COOLDOWN_START(src, drug_line_cooldown, NPC_DRUG_LINE_COOLDOWN)
+	say(pick(phrases))
+
+/mob/living/carbon/human/npc/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	. = ..()
+	if(.)
+		return
+
+	if(user.combat_mode)
+		return NONE
+
+	var/datum/component/selling/selling_comp = tool.GetComponent(/datum/component/selling)
+	if(!selling_comp || !selling_comp.illegal || !(selling_comp.object_category in npc_buyable_categories))
+		return NONE
+    // dont deal drugs to cops
+	if(istype(src, /mob/living/carbon/human/npc/police))
+		announce_drug_line(socialrole?.drug_witness_phrases)
+		last_antagonised = world.time
+		Aggro(user, TRUE)
+		SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_DRUG_SALE, get_turf(src))
+		return ITEM_INTERACT_SUCCESS
+	// dont deal drugs to drug dealers
+	if(istype(src, /mob/living/carbon/human/npc/bandit) && prob(50))
+		announce_drug_line(socialrole?.drug_turf_phrases)
+		last_antagonised = world.time
+		Aggro(user, TRUE)
+		return ITEM_INTERACT_SUCCESS
+
+	if(danger_source == user)
+		return ITEM_INTERACT_SUCCESS
+
+	if(drug_price <= 0 || drug_purchases >= drug_purchase_limit)
+		realistic_say(pick(socialrole?.drug_refusal_phrases))
+		return ITEM_INTERACT_SUCCESS
+
+	drug_purchases++
+
+	if(!drug_sell_roll)
+		drug_sell_roll = new()
+	var/success_count = drug_sell_roll.st_roll(user, src)
+	var/stack_multiplier = 1
+	if(istype(tool, /obj/item/stack))
+		var/obj/item/stack/stack_item = tool
+		stack_multiplier = stack_item.amount
+	var/sale_price = round(selling_comp.cost * stack_multiplier * drug_price * (success_count > 0 ? success_count : NPC_DRUG_SALE_BOTCH_PENALTY))
+
+	var/obj/item/stack/dollar/cash = new(get_turf(src), sale_price)
+	user.put_in_hands(cash)
+
+	// dont deal drugs infront of cops
+	for(var/mob/living/carbon/human/npc/police/witness in oviewers(DEFAULT_SIGHT_DISTANCE, src))
+		witness.announce_drug_line(witness.socialrole?.drug_witness_phrases)
+		witness.last_antagonised = world.time
+		witness.Aggro(user, TRUE)
+		fleeing_from = witness
+
+	if(!fleeing_from)
+		realistic_say(pick(socialrole?.drug_purchase_phrases))
+
+	SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_DRUG_SALE, get_turf(src))
+
+	log_game("[key_name(user)] sold [tool] to [src] for $[sale_price]")
+	qdel(tool)
+	return ITEM_INTERACT_SUCCESS
+
+#undef NPC_DRUG_SALE_DIFFICULTY
+#undef NPC_DRUG_SALE_BOTCH_PENALTY
+#undef NPC_DRUG_LINE_COOLDOWN

@@ -119,3 +119,8 @@
 		"Ass!",
 		"Dick!"
 	)
+	drug_refusal_phrases = list(
+		"I'll get you the money tommorow i promise..",
+		"Can't you go cheaper?."
+		"Too expensive.."
+	)

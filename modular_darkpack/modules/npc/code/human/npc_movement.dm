@@ -310,6 +310,12 @@
 		if (prob(25))
 			emote("scream")
 
+	// Fleeing from cops who witnessed a drug deal
+	else if (fleeing_from)
+		GLOB.move_manager.move_away(src, fleeing_from, 10, cached_multiplicative_slowdown)
+		if(fleeing_from.stat > UNCONSCIOUS || !(fleeing_from in view(DEFAULT_SIGHT_DISTANCE, src)))
+			fleeing_from = null
+
 	// Walking around behaviour
 	else if (walktarget && !staying)
 		GLOB.move_manager.move_to(src, walktarget, 0, cached_multiplicative_slowdown)

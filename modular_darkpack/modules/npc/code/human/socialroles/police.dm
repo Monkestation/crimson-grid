@@ -141,6 +141,11 @@
 	answer_phrases = list(
 		"I'm here to protect you."
 	)
+	drug_witness_phrases = list(
+		"Get on the ground!",
+		"SFPD! Freeze!",
+		"Drop the drugs!",
+	)
 	help_phrases = list(
 		"Lay down!",
 		"Stop right there!!",
