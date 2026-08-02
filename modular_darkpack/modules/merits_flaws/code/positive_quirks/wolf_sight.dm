@@ -5,6 +5,7 @@
 		Your night vision, however, far surpasses human nocturnal vision."}
 		// Perception is not real yet.
 		// You also notice movement more readily. You gain an extra die to all visually-based Perception rolls that involve movement or take place at night."}
+	ttrpg_sources = list(/datum/source_book/wta20 = 472)
 	value = 1
 	mob_trait = TRAIT_TRUE_NIGHT_VISION
 	icon = FA_ICON_DOG

@@ -1,8 +1,8 @@
-//Vampire The Masquerade 20th Anniversary Edition, 485
 /datum/quirk/darkpack/speech_impediment
 	name = "Speech Impediment"
 	desc = "You have a stammer that hampers verbal communication."
 	icon = FA_ICON_COMMENT_SLASH
+	ttrpg_sources = list(/datum/source_book/vtm20 = 485)
 	value = -1
 	gain_text = span_danger("You start worrying about what you're saying.")
 	lose_text = span_notice("You feel easier about talking again.")

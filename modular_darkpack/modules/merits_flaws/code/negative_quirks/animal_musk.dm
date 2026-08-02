@@ -9,6 +9,7 @@
 		Outdoors or in situations where you can distance yourself from humans, your odor is not noticeable.
 		Wolves (and lupus-born Garou) take little notice of this Flaw.."}
 	*/
+	ttrpg_sources = list(/datum/source_book/wta20 = 473)
 	value = -1
 	mob_trait = TRAIT_ANIMAL_MUSK
 	icon = FA_ICON_SPRAY_CAN_SPARKLES // icon = FA_ICON_BUGS
