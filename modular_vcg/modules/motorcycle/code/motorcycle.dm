@@ -111,7 +111,7 @@
 	var/grant_car_keys = FALSE
 
 	/// sound loop for the engine
-	var/datum/looping_sound/car_engine/engine_sound_loop
+	var/datum/looping_sound/motorcycle_engine/engine_sound_loop
 
 	//cooldowns
 	COOLDOWN_DECLARE(impact_delay)
@@ -646,9 +646,8 @@
 					if(prob(50))
 						NPC.realistic_say(pick(NPC.socialrole.car_dodged))
 
-//This controls the directional offset of the riders.
+//This controls the direction of riders and their overlays.
 /obj/motorcycle/proc/move_car_riders(moved_x, moved_y)
-	//Simple
 	if(driver)
 		driver.dir = src.dir
 
