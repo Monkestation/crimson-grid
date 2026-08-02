@@ -38,7 +38,7 @@
 	id = /obj/item/card/park_ranger/biologist
 	uniform =  /obj/item/clothing/under/vampire/mechanic
 	suit = /obj/item/clothing/suit/vampire/labcoat
-    belt = /obj/item/knife/combat
+	belt = /obj/item/knife/combat
 	gloves = /obj/item/clothing/gloves/vampire/work
 	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
 	l_pocket = /obj/item/smartphone
