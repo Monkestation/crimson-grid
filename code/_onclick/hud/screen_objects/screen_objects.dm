@@ -664,6 +664,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 		return
 	if(usr.client)
 		usr.client.screen -= ui.hovering
+		ui.hovering.users -= usr.client
 
 /atom/movable/screen/storage/cell/MouseMove(location, control, params)
 	. = ..()
@@ -715,6 +716,13 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	plane = ABOVE_HUD_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 96
+	var/list/users = list()
+
+/atom/movable/screen/storage_hover/Destroy()
+	. = ..()
+	for(var/client/client in users)
+		client.screen -= src
+		users -= client
 
 /atom/movable/screen/throw_catch
 	name = "throw/catch"

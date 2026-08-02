@@ -77,6 +77,7 @@
 		hovering.color = COLOR_RED_LIGHT
 
 	hovering.transform = matrix()
+	hovering.users |= user.client
 	var/scale_x = used_gridwidth / world.icon_size
 	var/scale_y = used_gridheight / world.icon_size
 	hovering.transform = hovering.transform.Scale(scale_x, scale_y)
