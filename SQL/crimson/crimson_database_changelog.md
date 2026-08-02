@@ -18,7 +18,7 @@ In any query remember to add a prefix to the table names if you use one.
 
 ---
 
-Version 5.38 28 July 2026, by Flleeppyy
+Version 5.38 2 August 2026, by Flleeppyy
 Add `byond_build` and `byond_version` to the `connection_log` table.
 
 ```sql
