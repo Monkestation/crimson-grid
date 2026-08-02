@@ -1,6 +1,6 @@
 <!-- This should be copy-pasted into the root of your module folder as readme.md -->
 
-https://github.com/Monkestation/crimson-grid/pull/<!--PR Number-->
+https://github.com/Monkestation/crimson-grid/pull/96
 
 ## Monke Cross DB
 

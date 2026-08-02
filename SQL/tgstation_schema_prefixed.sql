@@ -406,6 +406,10 @@ CREATE TABLE `SS13_player` (
   `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
   `accountjoindate` DATE DEFAULT NULL,
   `flags` smallint(5) unsigned DEFAULT '0' NOT NULL,
+  `twitch_rank` VARCHAR(32) NOT NULL DEFAULT '',
+  `twitch_user` VARCHAR(32) NOT NULL DEFAULT '',
+  `patreon_key` VARCHAR(32) NOT NULL DEFAULT 'None',
+  `patreon_rank` VARCHAR(32) NOT NULL DEFAULT 'None',
   PRIMARY KEY (`ckey`),
   KEY `idx_player_cid_ckey` (`computerid`,`ckey`),
   KEY `idx_player_ip_ckey` (`ip`,`ckey`)

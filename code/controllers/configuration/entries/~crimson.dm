@@ -1,5 +1,14 @@
+// ------------- config.txt -------------
+/datum/config_entry/string/discord_link
+	config_entry_value = "We forgot to set the server's discord link in config.txt"
 
-// dbconfig
+/datum/config_entry/string/patreon_link
+
+/datum/config_entry/string/twitch_link
+
+
+
+// ------------- dbconfig.txt -------------
 
 /// Cross DB if its enabled.
 /datum/config_entry/flag/sql_enabled_cross // for sql switching

@@ -1,7 +1,7 @@
 /datum/controller/subsystem/dbcore
 	var/connection_cross   // Arbitrary handle returned from rust_g.
 
-/datum/controller/subsystem/dbcore/proc/Connect_Cross()
+/datum/controller/subsystem/dbcore/proc/ConnectCross()
 	if(IsConnected())
 		return TRUE
 
@@ -47,7 +47,7 @@
 	else
 		connection = null
 		last_error = result["data"]
-		log_sql("Connect() failed | [last_error]")
+		log_sql("ConnectCross() failed | [last_error]")
 		++failed_connections
 		//If it failed to establish a connection more than 5 times in a row, don't bother attempting to connect for a time.
 		if(failed_connections > max_connection_failures)
