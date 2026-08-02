@@ -27,15 +27,13 @@
 	/// If our owner is patreon or twitch sub
 	var/donator = FALSE
 
-/datum/preferences/New(client/parent)
-	max_save_slots = CONFIG_GET(number/max_save_slots)
+/datum/preferences/refresh_membership()
+	. = ..()
 	donator = parent?.persistent_client?.is_donator()
 
-	if(parent.IsByondMember())
-		max_save_slots += CONFIG_GET(number/extra_save_slots_byond_member)
 	if(donator)
 		max_save_slots += CONFIG_GET(number/extra_save_slots_donator)
-	..()
+		unlock_content = TRUE
 
 /datum/preference/text/headshot/is_valid(value)
 	var/patreon_link = CONFIG_GET(string/patreon_link)
