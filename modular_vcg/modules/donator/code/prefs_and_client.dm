@@ -36,4 +36,3 @@
 	. = ..()
 	if(.["headshot"] && !(holder?.client?.is_donator()))
 		.["headshot"] = null
-

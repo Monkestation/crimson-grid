@@ -21,8 +21,8 @@ Donator module for retireving info from the database on players if they are a tw
 
 ### Defines:
 
-- N/A
-<!-- If you needed to add any defines, mention the files you added those defines in, along with the name of the defines. -->
+- `code/__DEFINES/~~crimson_defines/twitch.dm`: NO_TWITCH_SUB, TWITCH_SUB_TIER_1, TWITCH_SUB_TIER_2, TWITCH_SUB_TIER_3, ACCESS_TWITCH_UNSUBBED, ACCESS_TWITCH_SUB_TIER_1, ACCESS_TWITCH_SUB_TIER_2, ACCESS_TWITCH_SUB_TIER_3
+- `code/__DEFINES/~~crimson_defines/patreon.dm`: NO_RANK, UNSUBBED, THANKS_RANK, ASSISTANT_RANK, COMMAND_RANK, TRAITOR_RANK, NUKIE_RANK, OLD_NUKIE_RANK, REALLY_ANOTHER_FUCKING_NUKIE_RANK, ACCESS_NONE_RANK, ACCESS_THANKS_RANK, ACCESS_ASSISTANT_RANK, ACCESS_COMMAND_RANK, ACCESS_TRAITOR_RANK, ACCESS_NUKIE_RANK
 
 ### Included files that are not contained in this module:
 
