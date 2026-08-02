@@ -41,7 +41,7 @@
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	gloves = /obj/item/clothing/gloves/vampire/work
 	head = /obj/item/clothing/head/vampire/cowboy
-    belt = /obj/item/occult_artifact/werewolf/klaive
+	belt = /obj/item/occult_artifact/werewolf/klaive
 	suit = /obj/item/clothing/suit/vampire/vest/medieval
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	l_pocket = /obj/item/smartphone
