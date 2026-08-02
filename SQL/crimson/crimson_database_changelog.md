@@ -19,10 +19,14 @@ In any query remember to add a prefix to the table names if you use one.
 ---
 
 Version 5.38 2 August 2026, by Flleeppyy
-Add `byond_build` and `byond_version` to the `connection_log` table.
+Add neccessary things for patreon and twitch linking.
 
 ```sql
-ALTER TABLE `connection_log` ADD COLUMN `byond_version` varchar(8) DEFAULT NULL, ADD COLUMN `byond_build` varchar(255) DEFAULT NULL;
+ALTER TABLE `player`
+  ADD COLUMN `twitch_rank` VARCHAR(32) NOT NULL DEFAULT '',
+  ADD COLUMN `twitch_user` VARCHAR(32) NOT NULL DEFAULT '',
+  ADD COLUMN `patreon_key` VARCHAR(32) NOT NULL DEFAULT 'None',
+  ADD COLUMN `patreon_rank` VARCHAR(32) NOT NULL DEFAULT 'None';
 ```
 
 ---
