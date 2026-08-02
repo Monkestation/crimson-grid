@@ -29,8 +29,10 @@
 
 /datum/preferences/New(client/parent)
 	max_save_slots = CONFIG_GET(number/max_save_slots)
-	donator = parent?.is_donator()
+	donator = parent?.persistent_client?.is_donator()
 
+	if(parent.IsByondMember())
+		max_save_slots + 5
 	if(donator)
 		max_save_slots += 10
 	..()
