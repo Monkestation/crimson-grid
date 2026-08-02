@@ -312,7 +312,7 @@
 	var/datum/component/selling/selling_comp = tool.GetComponent(/datum/component/selling)
 	if(!selling_comp || !selling_comp.illegal || !(selling_comp.object_category in npc_buyable_categories))
 		return NONE
-    // dont deal drugs to cops
+	// dont deal drugs to cops
 	if(istype(src, /mob/living/carbon/human/npc/police))
 		announce_drug_line(socialrole?.drug_witness_phrases)
 		last_antagonised = world.time
