@@ -32,9 +32,9 @@
 	donator = parent?.persistent_client?.is_donator()
 
 	if(parent.IsByondMember())
-		max_save_slots + 5
+		max_save_slots += CONFIG_GET(number/extra_save_slots_byond_member)
 	if(donator)
-		max_save_slots += 10
+		max_save_slots += CONFIG_GET(number/extra_save_slots_donator)
 	..()
 
 /datum/preference/text/headshot/is_valid(value)

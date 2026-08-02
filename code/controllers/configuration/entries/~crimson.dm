@@ -6,6 +6,11 @@
 
 /datum/config_entry/string/twitch_link
 
+/datum/config_entry/number/extra_save_slots_byond_member
+	default = 5
+
+/datum/config_entry/number/extra_save_slots_donator
+	default = 10
 
 
 // ------------- dbconfig.txt -------------
