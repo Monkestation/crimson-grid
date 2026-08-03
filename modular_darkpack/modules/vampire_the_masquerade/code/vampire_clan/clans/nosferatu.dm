@@ -14,7 +14,9 @@
 	)
 	clan_traits = list(
 		TRAIT_MASQUERADE_VIOLATING_FACE,
-		TRAIT_VENTCRAWLER_ALWAYS
+		TRAIT_VENTCRAWLER_ALWAYS,
+		TRAIT_TRUE_NIGHT_VISION
+
 	)
 	male_clothes = /obj/item/clothing/under/vampire/nosferatu
 	female_clothes = /obj/item/clothing/under/vampire/nosferatu/female
