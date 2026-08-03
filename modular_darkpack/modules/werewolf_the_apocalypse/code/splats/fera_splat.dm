@@ -132,7 +132,7 @@
 	. = ..()
 	owner.set_species(/datum/species/human/shifter/homid)
 	add_power(/datum/action/cooldown/power/gift/howling)
-	COOLDOWN_START(src, passive_regrowth_cd, 8 MINUTES)
+	COOLDOWN_START(src, passive_regrowth_cd, 5 MINUTES)
 
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(revert_to_breed_form))
 
@@ -152,7 +152,7 @@
 	if(COOLDOWN_FINISHED(src, passive_healing_cd))
 		if(can_passively_heal)
 			// 2 to represent lethal. Fera passive regen closes burn, but not aggravated damage.
-			owner.heal_storyteller_health(2, heal_aggravated = FALSE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE)
+			owner.heal_storyteller_health(2, heal_aggravated = TRUE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE)
 			// Keep organ healing ticking so internal damage recovers even between major regrowth pulses.
 			owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_HEART, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
@@ -167,7 +167,7 @@
 		owner.regenerate_organs()
 		if(length(owner.get_missing_limbs()))
 			owner.regenerate_limbs()
-		COOLDOWN_START(src, passive_regrowth_cd, 8 MINUTES)
+		COOLDOWN_START(src, passive_regrowth_cd, 5 MINUTES)
 
 	var/datum/species/human/shifter/shifter_species = owner.dna.species
 	if(istype(shifter_species))
@@ -220,7 +220,7 @@
 		),
 		SPECIES_FERA_WAR = list(
 			STAT_STRENGTH = 7, // CRIMSON EDIT CHANGE - Original : STAT_STRENGTH = 4,
-			STAT_STAMINA = 10, // CRIMSON EDIT CHANGE - Original : STAT_STAMINA = 3,
+			STAT_STAMINA = 12, // CRIMSON EDIT CHANGE - Original : STAT_STAMINA = 3,
 			STAT_DEXTERITY = 3, // CRIMSON EDIT CHANGE - Original : STAT_DEXTERITY = 1,
 			STAT_MANIPULATION = -3, 
 			// STAT_APPEARANCE = 0 // NOT YET SUPPORTED
