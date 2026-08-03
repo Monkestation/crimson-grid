@@ -132,7 +132,7 @@
 	. = ..()
 	owner.set_species(/datum/species/human/shifter/homid)
 	add_power(/datum/action/cooldown/power/gift/howling)
-	COOLDOWN_START(src, passive_regrowth_cd, 5 MINUTES)
+	COOLDOWN_START(src, passive_regrowth_cd, 4 MINUTES)
 
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(revert_to_breed_form))
 
@@ -167,7 +167,7 @@
 		owner.regenerate_organs()
 		if(length(owner.get_missing_limbs()))
 			owner.regenerate_limbs()
-		COOLDOWN_START(src, passive_regrowth_cd, 5 MINUTES)
+		COOLDOWN_START(src, passive_regrowth_cd, 4 MINUTES)
 
 	var/datum/species/human/shifter/shifter_species = owner.dna.species
 	if(istype(shifter_species))
@@ -220,7 +220,7 @@
 		),
 		SPECIES_FERA_WAR = list(
 			STAT_STRENGTH = 7, // CRIMSON EDIT CHANGE - Original : STAT_STRENGTH = 4,
-			STAT_STAMINA = 12, // CRIMSON EDIT CHANGE - Original : STAT_STAMINA = 3,
+			STAT_STAMINA = 13, // CRIMSON EDIT CHANGE - Original : STAT_STAMINA = 3,
 			STAT_DEXTERITY = 3, // CRIMSON EDIT CHANGE - Original : STAT_DEXTERITY = 1,
 			STAT_MANIPULATION = -3, 
 			// STAT_APPEARANCE = 0 // NOT YET SUPPORTED
