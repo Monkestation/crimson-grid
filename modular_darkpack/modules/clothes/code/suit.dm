@@ -296,9 +296,17 @@
 
 /obj/item/clothing/suit/vampire/jacket/fbi
 	name = "Federal Bureau of Investigation jacket"
-	desc = "\"FBI OPEN UP!!\""
+	desc = "A polyester jacket with 'FBI' emblazoned in yellow on the back. It's lightly armoured on the inner side, providing meager protection against small calibers and knives."
 	icon_state = "fbi"
 	armor_type = /datum/armor/vampire_jacket
+	allowed = list(
+		/obj/item/card/id,
+		/obj/item/flashlight,
+		/obj/item/melee/baton,
+		/obj/item/gun/energy/taser/darkpack,
+		/obj/item/melee/baton/security/handtaser,
+		/obj/item/restraints/handcuffs
+	) //Same as bulletproof vest's.
 
 /obj/item/clothing/suit/vampire/jacket/punk
 	icon_state = "punk"
@@ -400,6 +408,8 @@
 		/obj/item/card/id,
 		/obj/item/flashlight,
 		/obj/item/melee/baton,
+		/obj/item/gun/energy/taser/darkpack,
+		/obj/item/melee/baton/security/handtaser,
 		/obj/item/restraints/handcuffs
 	)
 
@@ -429,22 +439,30 @@
 	name = "police raincoat"
 	icon_state = "policecoat"
 	desc = "A sturdy and reflective raincoat tailored for wet weather patrols."
+	allowed = list(
+		/obj/item/card/id,
+		/obj/item/flashlight,
+		/obj/item/melee/baton,
+		/obj/item/gun/energy/taser/darkpack,
+		/obj/item/melee/baton/security/handtaser,
+		/obj/item/restraints/handcuffs
+	)
 
 /obj/item/clothing/suit/vampire/vest/police
 	name = "police duty vest"
 	icon_state = "pdvest"
-	desc = "Lightweight, bulletproof vest with SFPD markings, tailored for active duty."
+	desc = "Lightweight, bulletproof vest with police markings, tailored for active duty."
 
 /obj/item/clothing/suit/vampire/vest/police/sergeant
 	name = "police sergeant vest"
 	icon_state = "sgtvest"
-	desc = "Lightweight, bulletproof vest with SFPD markings, tailored for active duty. This one has sergeant insignia on it."
+	desc = "Lightweight, bulletproof vest with police markings, tailored for active duty. This one has sergeant insignia on it."
 
 // They got an Army vest post-PD update. I am just giving them the same, instead coded into their equipment instead of mapped.
 /obj/item/clothing/suit/vampire/vest/police/captain
 	name = "police captain duty vest"
 	icon_state = "capvest"
-	desc = "Composite bulletproof vest with SFPD markings, tailored for improved protection. This one has captain insignia on it."
+	desc = "Composite bulletproof vest with police markings, tailored for improved protection. This one has captain insignia on it."
 	armor_type = /datum/armor/highly_protective_vest
 
 /datum/armor/highly_protective_vest
@@ -478,6 +496,14 @@
 	w_class = WEIGHT_CLASS_BULKY
 	armor_type = /datum/armor/eod_suit
 	masquerade_violating = TRUE
+	allowed = list(
+		/obj/item/card/id,
+		/obj/item/flashlight,
+		/obj/item/melee/baton,
+		/obj/item/gun/energy/taser/darkpack,
+		/obj/item/melee/baton/security/handtaser,
+		/obj/item/restraints/handcuffs
+	) //Same as bulletproof vest's.
 
 /datum/armor/eod_suit
 	melee = 90
@@ -507,7 +533,21 @@
 	desc = "For medicine and research purposes."
 	icon_state = "labcoat"
 	armor_type = /datum/armor/labcoat
-
+	allowed = list(
+		/obj/item/card/id,
+		/obj/item/defibrillator/compact,
+		/obj/item/flashlight/pen,
+		/obj/item/healthanalyzer,
+		/obj/item/reagent_containers/applicator,
+		/obj/item/reagent_containers/cup/beaker,
+		/obj/item/reagent_containers/cup/bottle,
+		/obj/item/reagent_containers/cup/tube,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/reagent_containers/hypospray,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/stack/medical,
+		/obj/item/storage/pill_bottle
+	)
 /datum/armor/labcoat
 	acid = 90
 	wound = 10
@@ -564,13 +604,13 @@
 	icon_state = "DutchJacket"
 
 //Pentex Overwear
-/obj/item/clothing/suit/vampire/pentex_labcoat
+/obj/item/clothing/suit/vampire/labcoat/pentex
 	name = "\improper " + MAIN_EVIL_COMPANY + " labcoat"
 	desc = "A crisp white labcoat. This one has the " + MAIN_EVIL_COMPANY + " International logo stiched onto the breast!"
 	icon_state = "pentex_closedlabcoat"
 	armor_type = /datum/armor/labcoat
 
-/obj/item/clothing/suit/vampire/pentex_labcoat_alt
+/obj/item/clothing/suit/vampire/labcoat/pentex/alt
 	name = "\improper " + MAIN_EVIL_COMPANY + " labcoat"
 	desc = "A crisp white labcoat. This one has a green trim and the " + MAIN_EVIL_COMPANY + " International logo stiched onto the breast!"
 	icon_state = "pentex_labcoat_alt"
