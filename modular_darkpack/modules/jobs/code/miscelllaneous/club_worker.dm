@@ -27,6 +27,7 @@
 	)
 
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
+	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 
 	maximal_generation = 9
 	maximum_immortal_age = 200

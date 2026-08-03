@@ -26,6 +26,7 @@
 	minimum_masquerade = 5
 	// minimal_renown_rank = 4
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
+	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 
 	display_order = JOB_DISPLAY_ORDER_BRANCH_LEAD
 	departments_list = list(

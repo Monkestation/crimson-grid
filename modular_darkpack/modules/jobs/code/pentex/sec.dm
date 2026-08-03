@@ -17,6 +17,7 @@
 	outfit = /datum/outfit/job/vampire/pentex_sec
 
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
+	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 3

@@ -16,6 +16,7 @@
 
 	known_contacts = list(JOB_PRINCE, JOB_SENESCHAL, JOB_SHERIFF, JOB_BARON, JOB_SUPPLY_TECH, JOB_HARPY, JOB_EMISSARY, JOB_MOUNTAIN_MASTER, JOB_DEPUTY_MOUNTAIN_MASTER)
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_GAROU, SPLAT_NONE, SPLAT_KINFOLK, SPLAT_CORAX)
+	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 	description = "You provide both legal and illegal supplies to those that get busy during the night. You are your own person yet you know people are out for you. Time to buckle in..."
 	minimum_masquerade = 3
 

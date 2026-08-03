@@ -7,6 +7,7 @@
 	config_tag = "SABBAT_PRIEST"
 	outfit = /datum/outfit/job/vampire/sabbatpriest
 	allowed_splats = list(SPLAT_KINDRED)
+	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 	job_flags = CITY_JOB_FLAGS
 	exp_required_type_department = EXP_TYPE_SABBAT
 	departments_list = list(

@@ -22,6 +22,7 @@
 
 	known_contacts = list(JOB_DEALER)
 
+	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 
 /datum/outfit/job/vampire/supply_tech
 	name = JOB_SUPPLY_TECH

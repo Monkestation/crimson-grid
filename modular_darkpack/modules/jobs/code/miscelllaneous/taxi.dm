@@ -21,6 +21,8 @@
 	minimum_masquerade = 0
 	//Not including a max generation for reasons of Caine.
 
+	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
+
 /datum/outfit/job/vampire/taxi
 	name = JOB_TAXI_DRIVER
 	jobtype = /datum/job/vampire/taxi

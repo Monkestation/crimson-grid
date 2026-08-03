@@ -20,6 +20,8 @@
 		JOB_STREET_JANITOR
 	)
 
+	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
+
 /datum/outfit/job/vampire/janitor
 	name = JOB_STREET_JANITOR
 	jobtype = /datum/job/vampire/janitor
