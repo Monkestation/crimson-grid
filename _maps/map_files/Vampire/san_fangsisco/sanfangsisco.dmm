@@ -839,16 +839,8 @@
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/chinatown)
 "akN" = (
-/obj/structure/table/wood,
-/obj/item/storage/medkit/darkpack{
-	pixel_x = 6;
-	pixel_y = 9
-	},
-/obj/item/storage/medkit/darkpack{
-	pixel_x = -6;
-	pixel_y = 2
-	},
-/turf/open/floor/plating/stone,
+/obj/structure/bed/maint,
+/turf/open/floor/city/plating,
 /area/vtm/interior/gangbase)
 "akR" = (
 /obj/structure/sink/directional/south,
@@ -3123,8 +3115,8 @@
 "aRX" = (
 /obj/machinery/light/directional/north,
 /obj/item/reagent_containers/cup/bucket{
-	pixel_x = -1;
-	pixel_y = 6
+	pixel_x = 6;
+	pixel_y = 9
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/gangbase)
@@ -9592,8 +9584,11 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "cIn" = (
-/obj/structure/bed/maint,
-/turf/open/floor/city/plating,
+/obj/effect/landmark/start/darkpack/gang/associate,
+/obj/structure/chair/sofa/corp/right{
+	dir = 8
+	},
+/turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "cIr" = (
 /obj/machinery/light/small/red/dim/directional/west,
@@ -12759,9 +12754,7 @@
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/tzimisce_manor)
 "dEk" = (
-/obj/machinery/light/small/pink/directional/north,
-/obj/structure/reagent_dispensers/watertank/high,
-/turf/open/floor/wood/smooth/old,
+/turf/closed/wall/vampwall/brick,
 /area/vtm/interior/gangbase)
 "dEo" = (
 /turf/open/floor/plating/asphalt,
@@ -15342,12 +15335,6 @@
 /obj/item/clothing/shoes/vampire/jackboots,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/setite/basement)
-"erO" = (
-/obj/structure/vampdoor/reinf,
-/obj/effect/mapping_helpers/door/access/gang,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/gangbase)
 "erZ" = (
 /obj/structure/chair/plastic{
 	dir = 1
@@ -16582,17 +16569,14 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/shop)
 "eME" = (
-/obj/structure/table/wood{
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/obj/item/clothing/head/utility/surgerycap/black{
+/obj/structure/table/wood,
+/obj/item/storage/medkit/darkpack{
 	pixel_x = 6;
-	pixel_y = 0
+	pixel_y = 9
 	},
-/obj/item/clothing/under/rank/medical/scrubs/coroner{
+/obj/item/storage/medkit/darkpack{
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = 2
 	},
 /turf/open/floor/plating/stone,
 /area/vtm/interior/gangbase)
@@ -18149,7 +18133,8 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop)
 "fiJ" = (
-/obj/structure/bed/maint,
+/obj/machinery/light/small/pink/directional/north,
+/obj/structure/reagent_dispensers/watertank/high,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "fiX" = (
@@ -31501,9 +31486,6 @@
 /turf/open/floor/bronze,
 /area/vtm/interior/giovanni)
 "jdm" = (
-/obj/machinery/light/small/pink/directional/north{
-	layer = 2.7
-	},
 /obj/structure/rack/tall/store_shelf,
 /obj/item/shovel/spade{
 	pixel_x = 7;
@@ -31997,6 +31979,10 @@
 /obj/machinery/deepfryer,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior)
+"jlH" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/gangbase)
 "jlN" = (
 /obj/structure/chair/wood{
 	dir = 1
@@ -37021,6 +37007,14 @@
 /obj/structure/closet/cardboard,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf)
+"kJO" = (
+/obj/machinery/light/directional/north,
+/obj/item/reagent_containers/cup/bucket{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/turf/open/floor/city/plating,
+/area/vtm/interior/gangbase)
 "kJR" = (
 /obj/effect/turf_decal/bordur{
 	dir = 9
@@ -37412,14 +37406,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/cog/caern)
-"kQu" = (
-/obj/machinery/light/directional/north,
-/obj/item/reagent_containers/cup/bucket{
-	pixel_x = 6;
-	pixel_y = 9
-	},
-/turf/open/floor/city/plating,
-/area/vtm/interior/gangbase)
 "kQA" = (
 /obj/the_matrix{
 	alpha = 0
@@ -42269,7 +42255,9 @@
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer)
 "mlW" = (
-/obj/machinery/light/small/pink/directional/west,
+/obj/structure/vampdoor/reinf,
+/obj/effect/mapping_helpers/door/access/gang,
+/obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "mlY" = (
@@ -57618,15 +57606,7 @@
 /turf/open/indestructible/necropolis/air,
 /area/vtm/interior/endron_facility)
 "qwr" = (
-/obj/structure/table/wood,
-/obj/item/storage/fancy/cigarettes/cigpack_cannabis{
-	pixel_x = 6;
-	pixel_y = 12
-	},
-/obj/item/bong{
-	pixel_x = -7;
-	pixel_y = 3
-	},
+/obj/machinery/light/small/pink/directional/west,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "qww" = (
@@ -58066,8 +58046,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/supply)
 "qBN" = (
-/obj/effect/landmark/start/darkpack/gang/associate,
-/obj/structure/chair/sofa/corp/right{
+/obj/structure/chair/sofa/corp/left{
 	dir = 8
 	},
 /turf/open/floor/wood/smooth/old,
@@ -61767,10 +61746,12 @@
 /turf/open/floor/carpet/red,
 /area/vtm/interior/jazzclub)
 "rBX" = (
-/obj/structure/chair/sofa/corp/left{
-	dir = 8
+/obj/effect/gibspawner/human,
+/obj/item/knife/shiv{
+	pixel_x = -8;
+	pixel_y = -11
 	},
-/turf/open/floor/wood/smooth/old,
+/turf/open/floor/city/plating,
 /area/vtm/interior/gangbase)
 "rCg" = (
 /obj/effect/turf_decal/siding/white,
@@ -70715,7 +70696,21 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/community)
 "uif" = (
-/turf/closed/wall/vampwall/brick,
+/obj/structure/table/wood,
+/obj/item/food/grown/cannabis{
+	pixel_x = -7;
+	pixel_y = 9
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = -2;
+	pixel_y = 1
+	},
+/obj/item/food/grown/cannabis{
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/obj/machinery/light/small/pink/directional/north,
+/turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "uii" = (
 /turf/open/openspace,
@@ -74868,20 +74863,7 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior)
 "vrN" = (
-/obj/structure/table/wood,
-/obj/item/food/grown/cannabis{
-	pixel_x = -7;
-	pixel_y = 9
-	},
-/obj/item/food/grown/cannabis{
-	pixel_x = -2;
-	pixel_y = 1
-	},
-/obj/item/food/grown/cannabis{
-	pixel_x = 4;
-	pixel_y = 9
-	},
-/obj/machinery/light/small/pink/directional/north,
+/obj/structure/bed/maint,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "vrQ" = (
@@ -74900,12 +74882,19 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf)
 "vsf" = (
-/obj/effect/gibspawner/human,
-/obj/item/knife/shiv{
-	pixel_x = -8;
-	pixel_y = -11
+/obj/structure/table/wood{
+	pixel_x = 0;
+	pixel_y = 0
 	},
-/turf/open/floor/city/plating,
+/obj/item/clothing/head/utility/surgerycap/black{
+	pixel_x = 6;
+	pixel_y = 0
+	},
+/obj/item/clothing/under/rank/medical/scrubs/coroner{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/stone,
 /area/vtm/interior/gangbase)
 "vsr" = (
 /obj/structure/closet/crate/coffin,
@@ -78437,7 +78426,15 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
 "wsG" = (
-/obj/structure/reagent_dispensers/watertank/high,
+/obj/structure/table/wood,
+/obj/item/storage/fancy/cigarettes/cigpack_cannabis{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/bong{
+	pixel_x = -7;
+	pixel_y = 3
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/gangbase)
 "wsO" = (
@@ -107780,12 +107777,12 @@ alU
 sGo
 lJO
 mfi
-mlW
+qwr
 gPq
 aJA
 dgL
-mlW
 qwr
+wsG
 gia
 kfi
 kfi
@@ -108293,7 +108290,7 @@ bqS
 kjg
 kjg
 lJO
-vrN
+uif
 kjg
 lNC
 kjg
@@ -109313,10 +109310,10 @@ kfi
 kfi
 gia
 iNZ
-cIn
+akN
 gia
-cIn
-vsf
+akN
+rBX
 lJO
 qzW
 kjg
@@ -109325,7 +109322,7 @@ xbr
 kjg
 kjg
 kjg
-uif
+dEk
 kjg
 kjg
 gia
@@ -109569,10 +109566,10 @@ kfi
 kfi
 kfi
 gia
-kQu
+aRX
 nZd
 gia
-aRX
+kJO
 nZd
 lJO
 kjg
@@ -109582,7 +109579,7 @@ jdm
 kjg
 lNC
 kjg
-mlW
+qwr
 kjg
 hOJ
 gia
@@ -110088,7 +110085,7 @@ nZd
 nZd
 nZd
 nZd
-erO
+mlW
 kjg
 kjg
 lJO
@@ -110867,7 +110864,7 @@ eyi
 kjg
 kjg
 kjg
-uif
+dEk
 kjg
 kjg
 gia
@@ -111124,7 +111121,7 @@ meB
 kLB
 lNC
 kjg
-mlW
+qwr
 kjg
 hOJ
 gia
@@ -111891,7 +111888,7 @@ xnl
 kjg
 kjg
 lJO
-dEk
+fiJ
 kjg
 lNC
 kjg
@@ -112148,7 +112145,7 @@ lJO
 kjg
 kjg
 lJO
-wsG
+jlH
 kjg
 kjg
 kjg
@@ -112405,11 +112402,11 @@ lJO
 kjg
 kjg
 lJO
-wsG
+jlH
 aRK
-qBN
+cIn
 pYh
-rBX
+qBN
 aRK
 kjg
 gia
@@ -112914,7 +112911,7 @@ kfi
 lJO
 sbx
 kjg
-fiJ
+vrN
 fTZ
 kjg
 kjg
@@ -113683,7 +113680,7 @@ kfi
 kfi
 kfi
 lJO
-fiJ
+vrN
 kjg
 wjH
 lJO
@@ -113694,7 +113691,7 @@ iJH
 wUP
 iJH
 iJH
-eME
+vsf
 gia
 kfi
 kfi
@@ -113942,7 +113939,7 @@ kfi
 lJO
 wTC
 kjg
-fiJ
+vrN
 lJO
 qzW
 kjg
@@ -114465,7 +114462,7 @@ iJH
 iJH
 hkd
 iJH
-akN
+eME
 gia
 kfi
 kfi
@@ -114968,7 +114965,7 @@ kfi
 kfi
 kfi
 lJO
-fiJ
+vrN
 kjg
 wbR
 lJO
