@@ -39,7 +39,7 @@
 	add_sight(SEE_TURFS)
 
 	// CRIMSON EDIT CHANGE START
-	if (SSticker.state != GAME_STATE_STARTUP)
+	if(SSticker.current_state != GAME_STATE_STARTUP)
 		client.playtitlemusic()
 	// CRIMSON EDIT CHANGE END
 

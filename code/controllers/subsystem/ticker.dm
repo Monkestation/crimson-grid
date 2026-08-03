@@ -74,6 +74,7 @@ SUBSYSTEM_DEF(ticker)
 	var/atom/movable/screen/reboot_timer/reboot_hud
 	/// ID of round reboot timer, if it exists
 	var/reboot_timer = null
+	var/real_round_start_time = 0 // NOVA EDIT ADDITION
 
 /datum/controller/subsystem/ticker/Initialize()
 	var/list/provisional_title_music = flist("[global.config.directory]/title_music/sounds/")
@@ -287,6 +288,7 @@ SUBSYSTEM_DEF(ticker)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
 	round_start_timeofday = world.timeofday // DARKPACK EDIT ADD
+	real_round_start_time = REALTIMEOFDAY // CRIMSON EDIT ADDITION
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
@@ -550,7 +552,7 @@ SUBSYSTEM_DEF(ticker)
 			SSjob.equip_rank(new_player_living, player_assigned_role, new_player_mob.client)
 		player_assigned_role.after_roundstart_spawn(new_player_living, new_player_mob.client)
 		if(picked_spare_id_candidate == new_player_mob)
-			captainless = FALSE
+			// captainless = FALSE // CRIMSON EDIT REMOVAL
 			var/acting_captain = !is_captain_job(player_assigned_role)
 			SSjob.promote_to_captain(new_player_living, acting_captain)
 			OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), player_assigned_role.get_captaincy_announcement(new_player_living)))
