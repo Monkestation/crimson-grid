@@ -36,4 +36,4 @@
 	uniform = /obj/item/clothing/under/vampire/bandit
 	shoes = /obj/item/clothing/shoes/vampire/sneakers/red
 	l_pocket = /obj/item/smartphone
-	backpack_contents = list(/obj/item/card/credit, /obj/item/gun/ballistic/automatic/pistol/darkpack/m1911=1, /obj/item/melee/baton/security/handtaser=1)
+	backpack_contents = list(/obj/item/card/credit, /obj/item/gun/ballistic/automatic/pistol/darkpack/m1911=1)
