@@ -30,8 +30,8 @@
 		"Paralegal",
 	)
 
-disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
-allowed_tribes = list(TRIBE_RONIN)
+	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
+	allowed_tribes = list(TRIBE_RONIN)
 
 /datum/outfit/job/vampire/citizen
 	name = JOB_CITIZEN
