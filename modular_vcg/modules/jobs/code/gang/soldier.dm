@@ -2,8 +2,8 @@
 	title = JOB_GANG_SOLDIER
 	faction = FACTION_GANG
 	description = "You are a mid level gang member tasked with ensuring the security and secrecy of gang operations. Follow the boss's orders."
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = SUPERVISOR_GANG
 	job_flags = CITY_JOB_FLAGS
 	display_order = JOB_DISPLAY_ORDER_GANG_SOLDIER
