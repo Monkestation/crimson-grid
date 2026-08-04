@@ -48,7 +48,7 @@
 	glasses = /obj/item/clothing/glasses/night/thermal
 	gloves = /obj/item/clothing/gloves/vampire/darkpack_ert/firstteam
 	head = /obj/item/clothing/head/vampire/pentex_beret
-	suit = /obj/item/clothing/suit/vampire/darkpack_ert/firstteam_armor
+	suit = /obj/item/clothing/suit/vampire/vest
 	belt = /obj/item/storage/belt/holster/detective/darkpack/endron
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	l_pocket = /obj/item/smartphone // /secchief - todo subtype
