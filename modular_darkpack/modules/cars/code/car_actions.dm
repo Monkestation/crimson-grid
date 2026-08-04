@@ -86,7 +86,7 @@
 		var/mob/living/driver = owner
 		if(CONFIG_GET(flag/punishing_zero_dots) && driver.st_get_stat(STAT_DRIVE) < 1)
 			to_chat(owner, span_danger("You don't know what you're doing!"))
-			return FALSE
+			// return FALSE // CRIMSON GRID EDIT - now this is pod racing
 
 	if(!ISADVANCEDTOOLUSER(clicker))
 		return

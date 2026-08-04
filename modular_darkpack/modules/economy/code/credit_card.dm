@@ -98,7 +98,7 @@
 	registered_account.civilian_bounty?.on_reset(src)
 	LAZYREMOVE(registered_account.bank_cards, src)
 	registered_account = null
-
+/* CRIMSON GRID EDIT - moved to other post_equip
 /datum/outfit/job/vampire/post_equip(mob/living/carbon/human/user, visuals_only = FALSE)
 	. = ..()
 
@@ -114,7 +114,7 @@
 
 			if(account && account.account_id == user.account_id)
 				card.set_account(account)
-
+*/
 
 /obj/item/proc/GetCreditCard()
 	return null

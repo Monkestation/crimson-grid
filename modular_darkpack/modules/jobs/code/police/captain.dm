@@ -29,14 +29,14 @@
 	belt = /obj/item/storage/belt/holster/detective/darkpack/officer
 	id = /obj/item/card/police/captain
 	l_pocket = /obj/item/smartphone
-	r_pocket = /obj/item/vamp/keys/police/secure/captain
+	r_pocket = /obj/item/storage/wallet/darkpack
 	backpack_contents = list(
-		/obj/item/card/credit = 1,
 		/obj/item/ammo_box/darkpack/c9mm = 1,
 		/obj/item/restraints/handcuffs = 1,
 		/obj/item/melee/baton/vamp = 1,
 		/obj/item/storage/medkit/darkpack/ifak = 1
 	)
+	wallet_contents = list(/obj/item/card/credit, /obj/item/vamp/keys/police/secure/captain)
 
 /datum/outfit/job/vampire/police_captain/post_equip(mob/living/carbon/human/H)
 	. = ..()

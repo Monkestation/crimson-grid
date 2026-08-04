@@ -218,6 +218,7 @@
 		account_id = bank_account.account_id
 		bank_account.replaceable = FALSE
 		// DARKPACK EDIT ADD - (Finance affects starting money)
+		/* CRIMSON EDIT - moved to the wallet population cuz we calc streetwise into it
 		var/finance = st_get_stat(STAT_FINANCE)
 		switch(finance)
 			if(0)
@@ -239,6 +240,7 @@
 			if(5)
 				bank_account.account_balance = rand(2000, 3000)
 				bank_account.paycheck_amount = 250
+		CRIMSON EDIT END */
 		// DARKPACK EDIT ADD END
 		add_mob_memory(/datum/memory/key/account, remembered_id = account_id)
 		add_mob_memory(/datum/memory/key/bank_pin, remembered_id = bank_account.bank_pin) // DARKPACK EDIT ADD

@@ -199,5 +199,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GLOWING_EYES "glowing_eyes"
 #define TRAIT_PROMETHEAN_CLAY "promethean_clay"
 #define TRAIT_UNCONTROLLABLE "uncontrollable"
+#define TRAIT_UNDOCUMENTED "undocumented" // GOVERNMENT
 
 // END TRAIT DEFINES

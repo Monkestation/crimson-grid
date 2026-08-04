@@ -31,6 +31,10 @@ PROCESSING_SUBSYSTEM_DEF(personalities)
 		if(isnull(personality_key))
 			// Abstract personality, ignore
 			continue
+		/// CRIMSON GRID EDIT: Adds disabling specific personalities.
+		if(personality_type::disabled_vtm)
+			continue
+		/// CRIMSON GRID EDIT END
 		if(personalities_by_key[personality_key])
 			stack_trace("Personality save key collision! \
 				key: [personality_key] - \

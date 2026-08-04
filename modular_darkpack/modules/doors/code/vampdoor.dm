@@ -38,6 +38,8 @@
 	/// Number of successes needed to bash down
 	var/bash_successes_needed = 1
 
+// MODULAR CRIMSON CITY EDIT - check door_improvements.dm
+/*
 /obj/structure/vampdoor/Initialize(mapload)
 	. = ..()
 
@@ -50,6 +52,7 @@
 		COMSIG_ATOM_MAGICALLY_UNLOCKED = PROC_REF(on_magic_unlock),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+*/
 
 /obj/structure/vampdoor/CanAStarPass(to_dir, datum/can_pass_info/pass_info)
 	return !density || !locked
@@ -216,7 +219,7 @@
 			to_chat(user, span_warning("[src] is locked!"))
 		else
 			toggle_door(user)
-
+/* CRIMSON GUARD EDIT - See door_improvements.dm
 /obj/structure/vampdoor/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
@@ -282,6 +285,7 @@
 		if(!has_keys)
 			to_chat(user, span_warning("You need a key to lock/unlock this door!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+*/
 
 /obj/structure/vampdoor/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/door_repair_kit))
@@ -366,7 +370,7 @@
 				return toggle_lock(user)
 	if(!need_key)
 		return toggle_lock(user)
-
+/* CRIMSON GRID EDIT - See door_improvements.dm
 /obj/structure/vampdoor/proc/toggle_lock(mob/living/user)
 	playsound(src, lock_sound, 75, TRUE)
 	if(!locked)
@@ -379,6 +383,7 @@
 		proc_unlock("key")
 		locked = FALSE
 	return TRUE
+*/
 
 /obj/structure/vampdoor/proc/reset_transform()
 	pixel_z = initial(pixel_z)

@@ -8,8 +8,9 @@
 	righthand_file = null
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/deprecated/icons/onfloor.dmi')
 	w_class = WEIGHT_CLASS_TINY
+	full_w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
-	max_amount = 1000
+	max_amount = 5000
 	merge_type = /obj/item/stack/dollar
 
 /obj/item/stack/dollar/Initialize(mapload, new_amount, merge = TRUE, list/mat_override = null, mat_amt = 1)

@@ -59,7 +59,7 @@
 		if(LOCK_OWNERSHIP_CAR)
 			if(CONFIG_GET(flag/punishing_zero_dots) && human.st_get_stat(STAT_DRIVE) < 1)
 				to_chat(human, span_danger("Shouldnt you learn how to drive before owning a car?"))
-				return
+				// return // CRIMSON GRID EDIT - now this is pod racing
 			ownership_question = "Is this my car?"
 			alert_title = "Vehicle"
 		if(LOCK_OWNERSHIP_APARTMENT)

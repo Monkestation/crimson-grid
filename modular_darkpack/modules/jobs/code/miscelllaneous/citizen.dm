@@ -35,5 +35,6 @@
 	name = JOB_CITIZEN
 	jobtype = /datum/job/vampire/citizen
 	l_pocket = /obj/item/smartphone
-	backpack_contents = list(/obj/item/card/credit)
+	id = /obj/item/storage/wallet/darkpack
+	wallet_contents = list(/obj/item/card/credit)
 	uses_default_clan_clothes = TRUE

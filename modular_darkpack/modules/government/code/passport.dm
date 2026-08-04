@@ -1,3 +1,4 @@
+/* CRIMSON GRID EDIT - Everyone has identification now by default.
 /datum/loadout_item/pocket_items/passport
 	name = "Identification"
 	item_path = /obj/item/passport
@@ -11,6 +12,7 @@
 		LAZYADD(outfit.backpack_contents, /obj/item/card/drivers_license)
 	else
 		return ..()
+*/
 
 /obj/item/passport
 	name = "passport"
@@ -33,6 +35,7 @@
 	var/fake_identity = FALSE
 	var/datum/storyteller_roll/investigation/examine_roll
 
+/* CRIMSON GRID EDIT
 /obj/item/passport/Initialize(mapload)
 	. = ..()
 	var/mob/living/carbon/human/user = null
@@ -43,6 +46,7 @@
 	if(user)
 		// Init and equiping via loadout are both too soon to be able to catch the illegal identity quirk
 		link_human(user)
+*/
 
 /obj/item/passport/proc/link_human(mob/living/carbon/human/user)
 	if(HAS_TRAIT(user, TRAIT_ILLEGAL_IDENTITY))
