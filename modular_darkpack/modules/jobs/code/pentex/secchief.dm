@@ -43,13 +43,14 @@
 
 //	ears = /obj/item/p25radio
 	id = /obj/item/card/pentex/secchief
-	uniform =  /obj/item/clothing/under/vampire/pentex_turtleneck
-	shoes = /obj/item/clothing/shoes/vampire/jackboots
-	gloves = /obj/item/clothing/gloves/vampire/work
+	uniform = /obj/item/clothing/under/vampire/darkpack_ert/firstteam_uniform
+	shoes = /obj/item/clothing/shoes/vampire/darkpack_ert/firstteam 
+	glasses = /obj/item/clothing/glasses/night/thermal
+	gloves = /obj/item/clothing/gloves/vampire/darkpack_ert/firstteam
 	head = /obj/item/clothing/head/vampire/pentex_beret
-	suit = /obj/item/clothing/suit/vampire/vest
+	suit = /obj/item/clothing/suit/vampire/darkpack_ert/firstteam_armor
 	belt = /obj/item/storage/belt/holster/detective/darkpack/endron
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	l_pocket = /obj/item/smartphone // /secchief - todo subtype
 	r_pocket = /obj/item/vamp/keys/pentex
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1)
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/mk23_socom=1, /obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1, /obj/item/ammo_box/darkpack/c556/bale = 1, /obj/item/ammo_box/magazine/darkpack/mk23 = 2)
