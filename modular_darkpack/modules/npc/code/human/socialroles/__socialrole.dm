@@ -243,7 +243,7 @@
 		"I'm calling the cops!"
 	)
 	var/list/drug_turf_phrases = list(
-		"You're selling on the wrong turf."
+		"You're selling on the wrong turf!"
 	)
 
 	var/is_criminal = FALSE
