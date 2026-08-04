@@ -8,10 +8,6 @@
 GLOBAL_LIST_INIT(available_ui_styles, list(
 	"World-of-Darkness" = 'modular_darkpack/master_files/icons/hud/screen_darkness_new.dmi', // DARKPACK EDIT ADD - (Put at the top because it has almost full coverage now!)
 	"Pentex-Knox" = 'modular_darkpack/master_files/icons/hud/screen_pentexknox.dmi', // DARKPACK EDIT ADD - (Trasen-Knox logo with a Pentex logo)
-	"Glass" = 'modular_darkpack/master_files/icons/hud/screen_glass.dmi', // CRIMSON EDIT ADD
-	"Slimecore" = 'modular_darkpack/master_files/icons/hud/screen_slimecore.dmi', // CRIMSON EDIT ADD
-	"Detective" = 'modular_darkpack/master_files/icons/hud/screen_detective.dmi', // CRIMSON EDIT ADD
-	"Midnight" = 'modular_darkpack/master_files/icons/hud/screen_midnight.dmi', // CRIMSON EDIT ADD
 	/* // DARKPACK EDIT REMOVAL
 	"Midnight" = 'icons/hud/screen_midnight.dmi',
 	"Retro" = 'icons/hud/screen_retro.dmi',
