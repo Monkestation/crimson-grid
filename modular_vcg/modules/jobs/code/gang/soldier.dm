@@ -10,7 +10,6 @@
 	config_tag = "GANG_SOLDIER"
 	outfit = /datum/outfit/job/vampire/gang
 	allowed_splats = list(SPLAT_NONE)
-	minimum_masquerade = 5 // nobody is gonna start a gang when theres swat in the city
 	departments_list = list(
 		/datum/job_department/gang,
 	)
