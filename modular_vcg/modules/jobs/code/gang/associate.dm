@@ -2,8 +2,8 @@
 	title = JOB_GANG
 	faction = FACTION_GANG
 	description = "You are a low level gang member tasked with production, packaging and distribution of the gang's signature product. Follow the boss's orders."
-	total_positions = 10
-	spawn_positions = 10
+	total_positions = 5
+	spawn_positions = 5
 	display_order = JOB_DISPLAY_ORDER_GANG
 	config_tag = "GANG_MEMBER"
 	supervisors = SUPERVISOR_GANG
