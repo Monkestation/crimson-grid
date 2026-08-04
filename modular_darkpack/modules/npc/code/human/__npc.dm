@@ -8,7 +8,6 @@
 /datum/storyteller_roll/npc_drug_sale
 	bumper_text = "dealing"
 	applicable_stats = list(STAT_CHARISMA, STAT_STREETWISE)
-	difficulty = NPC_DRUG_SALE_DIFFICULTY
 	numerical = TRUE
 
 /mob/living/carbon/human/npc
