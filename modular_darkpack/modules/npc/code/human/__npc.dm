@@ -1,14 +1,12 @@
 #define BANDIT_TYPE_NPC /mob/living/carbon/human/npc/bandit
 #define POLICE_TYPE_NPC /mob/living/carbon/human/npc/police
 
-#define NPC_DRUG_SALE_DIFFICULTY 6
 #define NPC_DRUG_SALE_BOTCH_PENALTY 0.5
 #define NPC_DRUG_LINE_COOLDOWN 3 SECONDS
 
 /datum/storyteller_roll/npc_drug_sale
 	bumper_text = "dealing"
 	applicable_stats = list(STAT_STREETWISE, STAT_CHARISMA)
-	difficulty = NPC_DRUG_SALE_DIFFICULTY
 	numerical = TRUE
 
 /mob/living/carbon/human/npc
