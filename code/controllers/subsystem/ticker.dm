@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(ticker)
 	var/atom/movable/screen/reboot_timer/reboot_hud
 	/// ID of round reboot timer, if it exists
 	var/reboot_timer = null
-	var/real_round_start_time = 0 // NOVA EDIT ADDITION
+	var/real_round_start_time = 0 // CRIMSON EDIT ADDITION
 
 /datum/controller/subsystem/ticker/Initialize()
 	var/list/provisional_title_music = flist("[global.config.directory]/title_music/sounds/")
