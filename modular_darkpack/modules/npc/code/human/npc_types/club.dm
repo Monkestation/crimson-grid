@@ -1,6 +1,6 @@
 /mob/living/carbon/human/npc/walkby/club
 	staying = TRUE
-	drug_price = 1
+	drug_price = 2
 
 /mob/living/carbon/human/npc/walkby/club/Life()
 	. = ..()
