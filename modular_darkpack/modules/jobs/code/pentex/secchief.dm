@@ -53,4 +53,4 @@
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	l_pocket = /obj/item/smartphone // /secchief - todo subtype
 	r_pocket = /obj/item/vamp/keys/pentex
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/mk23_socom=1, /obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1, /obj/item/ammo_box/magazine/darkpack/mk23 = 2)
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/deagle, /obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1, /obj/item/ammo_box/magazine/m50 = 2)
