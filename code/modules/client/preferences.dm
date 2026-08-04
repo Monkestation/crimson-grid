@@ -107,7 +107,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/New(client/parent)
 	src.parent = parent
 
-	max_save_slots = CONFIG_GET(number/max_save_slots)
+ // max_save_slots = CONFIG_GET(number/max_save_slots) // DARKPACK EDIT ADD
+
 
 	for (var/middleware_type in subtypesof(/datum/preference_middleware))
 		middleware += new middleware_type(src)
