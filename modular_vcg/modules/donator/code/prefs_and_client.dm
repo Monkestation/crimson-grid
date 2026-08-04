@@ -33,7 +33,6 @@
 
 	if(donator)
 		max_save_slots += CONFIG_GET(number/extra_save_slots_donator)
-		unlock_content = TRUE
 
 /datum/preference/text/headshot/is_valid(value)
 	var/patreon_link = CONFIG_GET(string/patreon_link)
