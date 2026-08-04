@@ -386,6 +386,7 @@
 	icon_state = "baton"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
+	custom_price = 20
 
 /obj/item/switchblade/vamp
 	name = "switchblade"

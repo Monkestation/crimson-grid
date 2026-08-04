@@ -7,6 +7,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/taser/icons/taser_onfloor.dmi')
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/darkpack)
 	charge_sections = 2
+	custom_price = 50
 
 
 /obj/item/ammo_casing/energy/electrode/darkpack
