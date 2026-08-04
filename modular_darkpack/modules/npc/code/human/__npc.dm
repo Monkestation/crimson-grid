@@ -6,7 +6,7 @@
 
 /datum/storyteller_roll/npc_drug_sale
 	bumper_text = "dealing"
-	applicable_stats = list(STAT_STREETWISE, STAT_CHARISMA)
+	applicable_stats = list(STAT_CHARISMA, STAT_STREETWISE)
 	numerical = TRUE
 
 /mob/living/carbon/human/npc
@@ -308,7 +308,7 @@
 		return NONE
 
 	var/datum/component/selling/selling_comp = tool.GetComponent(/datum/component/selling)
-	if(!selling_comp || !selling_comp.illegal || !(selling_comp.object_category in npc_buyable_categories))
+	if(!selling_comp || !(selling_comp.object_category in npc_buyable_categories))
 		return NONE
 	// dont deal drugs to cops
 	if(istype(src, /mob/living/carbon/human/npc/police))
