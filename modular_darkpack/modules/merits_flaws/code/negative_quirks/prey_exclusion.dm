@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(prey_exclusion_choice, list(
 /datum/quirk/darkpack/prey_exclusion
 	name = "Prey Exclusion"
 	desc = "You refuse to hunt a certain kind of prey. When joining the game, you'll have to select what type of NPC you cant feed from. Ventrue cannot take this flaw."
+	ttrpg_sources = list(/datum/source_book/vtm20 = 485)
 	value = -1
 	mob_trait = TRAIT_PREY_EXCLUSION
 	gain_text = span_notice("You feel very picky about what type of person you feed from.")
