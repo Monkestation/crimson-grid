@@ -30,7 +30,6 @@
 		"Paralegal",
 	)
 
-allowed_splats = list(SPLAT_KINDRED, SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_GAROU, SPLAT_CORAX)
 disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 allowed_tribes = list(TRIBE_RONIN)
 
