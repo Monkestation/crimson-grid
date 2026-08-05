@@ -123,6 +123,7 @@
 	desc = "Can look dangerous or sexy despite the circumstances. Provides some kind of protection."
 	icon_state = "law"
 	armor_type = /datum/armor/armored_hat
+	custom_price = 20
 
 /datum/armor/armored_hat
 	melee = 20
@@ -176,6 +177,7 @@
 	armor_type = /datum/armor/police_helmet
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	masquerade_violating = TRUE
+	custom_price = 50
 
 /datum/armor/police_helmet
 	melee = 40
