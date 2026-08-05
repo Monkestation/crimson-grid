@@ -22,13 +22,13 @@
 
 /datum/subsplat/vampire_clan/kiasyd/on_gain(mob/living/carbon/human/gaining_mob, datum/splat/gaining_splat, joining_round)
 	. = ..()
-	/*
+
 	// Kiasyd are made taller and thinner
 	if (gaining_mob.has_quirk(/datum/quirk/dwarf))
 		gaining_mob.remove_quirk(/datum/quirk/dwarf)
 	else if (!gaining_mob.has_quirk(/datum/quirk/tower))
 		gaining_mob.add_quirk(/datum/quirk/tower)
-	*/
+
 
 	var/obj/item/organ/eyes/kiasyd/weird_eyes = new()
 	weird_eyes.Insert(gaining_mob, TRUE, DELETE_IF_REPLACED)
@@ -36,12 +36,12 @@
 /datum/subsplat/vampire_clan/kiasyd/on_lose(mob/living/carbon/human/losing_mob)
 	. = ..()
 
-	/*
+
 	if (losing_mob.has_quirk(/datum/quirk/tower))
 		losing_mob.remove_quirk(/datum/quirk/tower)
 	else
 		losing_mob.add_quirk(/datum/quirk/dwarf)
-	*/
+
 
 	// replace eyes
 	var/eye_type = /obj/item/organ/eyes
