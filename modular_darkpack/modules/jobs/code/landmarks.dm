@@ -82,6 +82,7 @@ JOB_START_HELPER(citizen/club_worker, JOB_CLUB_WORKER)
 JOB_START_HELPER(citizen/janitor, JOB_STREET_JANITOR)
 JOB_START_HELPER(citizen/priest, JOB_PRIEST)
 JOB_START_HELPER(citizen/taxi, JOB_TAXI_DRIVER)
+JOB_START_HELPER(citizen/red_news, JOB_RED_NEWS_REPORTER)
 
 /* Sabbat */
 /obj/effect/landmark/start/darkpack/sabbat
