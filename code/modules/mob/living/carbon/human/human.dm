@@ -956,7 +956,24 @@
 		experience_reward *= 2
 
 	// can remove up to 2 seconds at legendary
-	carrydelay -= fitness_level * (1/3) SECONDS
+	carrydelay -= fitness_level * (1/3) SECONDS	
+
+	/mob/living/carbon/human/updatehealth()
+	. = ..()
+	dna?.species.spec_updatehealth(src)
+	if(HAS_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN))
+		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown)
+		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying)
+		return
+	var/health_deficiency = max((maxHealth - health), staminaloss)
+	var/health_scale_modifier = maxHealth/100 //If the human has a higher amount of max health this will be reflected in the amount of damage required to slow down.
+	var/health_slowdown = health_deficiency / (75 * health_scale_modifier)
+	if(health_deficiency >= (40 * health_scale_modifier))
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown, TRUE, multiplicative_slowdown = health_slowdown)
+		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying, TRUE, multiplicative_slowdown = health_slowdown)
+	else
+		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown)
+		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying)
 
 	var/obj/item/organ/cyberimp/chest/spine/potential_spine = get_organ_slot(ORGAN_SLOT_SPINE)
 	if(istype(potential_spine))
