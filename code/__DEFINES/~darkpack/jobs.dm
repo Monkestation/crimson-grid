@@ -119,11 +119,6 @@
 #define JOB_DISPLAY_ORDER_CITIZEN 1
 #define JOB_DISPLAY_ORDER_RED_NEWS_REPORTER 2
 
-#define JOB_DISPLAY_ORDER_MOUNTAIN_MASTER 1
-#define JOB_DISPLAY_ORDER_DEPUTY_MOUNTAIN_MASTER 2
-#define JOB_DISPLAY_ORDER_TRIAD_RED_POLE 3
-#define JOB_DISPLAY_ORDER_TRIAD_BLUE_LANTERNS 4
-
 #define JOB_DISPLAY_ORDER_PRINCE 1
 #define JOB_DISPLAY_ORDER_CLERK 2
 #define JOB_DISPLAY_ORDER_SHERIFF 3
@@ -192,6 +187,11 @@
 #define JOB_DISPLAY_ORDER_INQUISITOR 2
 #define JOB_DISPLAY_ORDER_CONDOTTIERI 3
 #define JOB_DISPLAY_ORDER_NOVICE 4
+
+#define JOB_DISPLAY_ORDER_MOUNTAIN_MASTER 1
+#define JOB_DISPLAY_ORDER_DEPUTY_MOUNTAIN_MASTER 2
+#define JOB_DISPLAY_ORDER_TRIAD_RED_POLE 3
+#define JOB_DISPLAY_ORDER_TRIAD_BLUE_LANTERNS 4
 
 //////////////////////////////////////////////////
 
@@ -272,6 +272,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 #define SUPERVISOR_SENESCHAL_PUBLIC "the COO"
 #define SUPERVISOR_BARON_PUBLIC "the Bar's Owner"
 #define SUPERVISOR_SOCIETY_OF_LEOPOLD "the Society of Leopold, the Inquisition, the local Provincial, and God"
+#define SUPERVISOR_TRIAD "the Mountain Master"
 
 // Playtime tracking system, see jobs_exp.dm
 // weird one.

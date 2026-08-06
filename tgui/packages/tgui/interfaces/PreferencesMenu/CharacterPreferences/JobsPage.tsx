@@ -638,6 +638,11 @@ export function JobsPage() {
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
                   setHoveringOver={setHoveringOver}/>
+                <Department department="Chinese Triad"
+                                  dragging={dragging}
+                  setDragging={setDragging}
+                  hoveringOver={hoveringOver}
+                  setHoveringOver={setHoveringOver}/>
                 <Department department="City Services"
                                   dragging={dragging}
                   setDragging={setDragging}

@@ -129,14 +129,6 @@
 	display_order = 14
 	// give its own ui color?
 
-/datum/job_department/triad
-	department_name = DEPARTMENT_TRIAD
-	department_bitflags = DEPARTMENT_BITFLAG_TRIAD
-	department_head = /datum/job/vampire/mountain_master
-	department_experience_type = EXP_TYPE_TRIAD
-	display_order = 15
-	ui_color = "#8c1717"
-
 // Antag*
 /datum/job_department/society_of_leopold
 	department_name = DEPARTMENT_SOCIETY_OF_LEOPOLD
@@ -144,8 +136,16 @@
 	department_head = /datum/job/vampire/abbe
 	// why are you reusing the church xp.
 	department_experience_type = EXP_TYPE_CHURCH
-	display_order = 16
+	display_order = 15
 	ui_color = "#fff022"
+
+/datum/job_department/triad
+	department_name = DEPARTMENT_TRIAD
+	department_bitflags = DEPARTMENT_BITFLAG_TRIAD
+	department_head = /datum/job/vampire/mountain_master
+	department_experience_type = EXP_TYPE_TRIAD
+	display_order = 16
+	ui_color = "#8c1717"
 
 // Bottom of the barrel
 /datum/job_department/citizen
