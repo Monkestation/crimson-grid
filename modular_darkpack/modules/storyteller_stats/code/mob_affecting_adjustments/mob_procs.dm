@@ -58,11 +58,7 @@
 /mob/living/proc/update_modifiers_from_stats(initial = FALSE)
 	for(var/stat_typepath in storyteller_stats)
 		var/datum/st_stat/stat_datum = storyteller_stats[stat_typepath]
-		if(stat_datum.stat_flags & AFFECTS_HEALTH)
-			recalculate_max_health(initial)
-		if(stat_datum.stat_flags & AFFECTS_SPEED)
-			add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/dexterity, multiplicative_slowdown = -(st_get_stat(STAT_DEXTERITY) / 20))
-
+		stat_datum.update_mob(src, initial)
 
 /datum/preferences/proc/apply_stats_from_prefs(mob/living/carbon/human/character)
 	character.storyteller_stats = preference_storyteller_stats.Copy()

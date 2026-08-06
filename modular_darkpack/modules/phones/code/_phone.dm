@@ -377,6 +377,7 @@
 					return TRUE
 
 		if("custom_background")
+			// CRIMSON EDIT START
 			if(!usr.client?.is_donator())
 				var/patreon_link = CONFIG_GET(string/patreon_link)
 				var/twitch_link = CONFIG_GET(string/twitch_link)
@@ -385,6 +386,7 @@
 					"[twitch_link ? "<a href='[twitch_link]'>": ""]Twitch subscriber[twitch_link ? "</a>": ""]."
 				to_chat(usr, span_notice(notice))
 				return
+			// CRIMSON EDIT END
 			to_chat(usr, span_danger("Do NOT use images that can be considered offensive or obscene, or that contain references to something that happened after the year [CURRENT_STATION_YEAR]. Recommended image dimensions: 400x600 "))
 			custom_background = tgui_input_text(usr, "Input background image URL", "Custom Background")
 			if(!custom_background)
