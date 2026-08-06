@@ -67,11 +67,17 @@
 		assigned_wallet = TRUE
 	else if(id == /obj/item/storage/wallet/darkpack)
 		assigned_wallet = TRUE
+	if(!r_pocket)
+		r_pocket = /obj/item/storage/wallet/darkpack
+		assigned_wallet = TRUE
 	if(r_pocket && ispath(r_pocket, /obj/item/vamp/keys) && !assigned_wallet)
 		wallet_contents += r_pocket
 		r_pocket = /obj/item/storage/wallet/darkpack
 		assigned_wallet = TRUE
 	else if(r_pocket == /obj/item/storage/wallet/darkpack)
+		assigned_wallet = TRUE
+	if(!l_pocket)
+		l_pocket = /obj/item/storage/wallet/darkpack
 		assigned_wallet = TRUE
 	if(l_pocket && ispath(l_pocket, /obj/item/vamp/keys) && !assigned_wallet)
 		wallet_contents += l_pocket
@@ -79,7 +85,7 @@
 		assigned_wallet = TRUE
 	else if(l_pocket == /obj/item/storage/wallet/darkpack)
 		assigned_wallet = TRUE
-	if(!assigned_wallet)
+	if(!assigned_wallet && !no_wallet)
 		CRASH("[src] doesn't have a spot for a wallet! Check their configuration, please.")
 	for(var/path in backpack_contents)
 		if(ispath(path, /obj/item/vamp/keys) || ispath(path, /obj/item/card))

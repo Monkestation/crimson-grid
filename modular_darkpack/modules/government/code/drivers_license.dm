@@ -79,7 +79,7 @@
 		photograph.scale(128, 128)
 		photograph.crop(1,1,128,128)
 		our_photograph = photograph
-		//qdel(dummy)
+		qdel(dummy)
 		return our_photograph.to_icon()
 	else if(our_photograph)
 		return our_photograph.to_icon()

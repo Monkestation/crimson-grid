@@ -520,8 +520,7 @@
 	last_pos["y_pix"] = 0
 	for(var/mob/living/L in src)
 		if(L.client)
-			L.client.pixel_x = 0
-			L.client.pixel_y = 0
+			shake_camera(L, 0.5 SECONDS, 3)
 	if(istype(bumped_atom, /mob/living))
 		var/mob/living/L = bumped_atom
 		var/hit_dam = prev_speed
@@ -715,9 +714,9 @@
 		if(SOUTH)
 			controlling(-1, 0)
 		if(SOUTHEAST)
-			controlling(-1, turn_speed)
-		if(SOUTHWEST)
 			controlling(-1, -turn_speed)
+		if(SOUTHWEST)
+			controlling(-1, turn_speed)
 		if(EAST)
 			controlling(0, turn_speed)
 		if(WEST)
@@ -726,9 +725,9 @@
 /obj/darkpack_car/proc/controlling(adjusting_speed, adjusting_turn)
 	var/drift
 	if(!driver.st_get_stat(STAT_DRIVE) || driver.get_drunk_amount()) // 0 drive???
-		drift = rand(0.05, 3)
+		drift = rand(0.05, 5)
 	else
-		drift = clamp(1/driver.st_get_stat(STAT_DRIVE), 0.2, 1)
+		drift = round(driver.st_get_stat(STAT_DRIVE)/2)
 	var/adjust_true = adjusting_turn
 	if(speed_in_pixels != 0)
 		movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
