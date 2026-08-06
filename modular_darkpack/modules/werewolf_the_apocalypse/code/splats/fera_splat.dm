@@ -168,7 +168,7 @@
 		owner.regenerate_organs()
 		if(length(owner.get_missing_limbs()))
 			owner.regenerate_limbs()
-		COOLDOWN_START(src, passive_regrowth_cd, 4 MINUTES)
+		COOLDOWN_START(src, passive_regrowth_cd, 4 MINUTES) // CRIMSON EDIT CHANGE - Original: COOLDOWN_START(src, passive_regrowth_cd, 8 MINUTES)
 
 	var/datum/species/human/shifter/shifter_species = owner.dna.species
 	if(istype(shifter_species))
