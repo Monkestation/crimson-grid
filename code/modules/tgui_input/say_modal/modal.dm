@@ -93,7 +93,7 @@
 		CRASH("No channel provided to an open TGUI-Say")
 	window_open = TRUE
 	saved_text = ""
-	if(payload["channel"] != OOC_CHANNEL && payload["channel"] != LOOC_CHANNEL && payload["channel"] != ADMIN_CHANNEL && payload["channel"] != PRAY_CHANNEL) // DARKPACK EDIT CHANGE - LOOC
+	if(payload["channel"] != OOC_CHANNEL && payload["channel"] != LOOC_CHANNEL && payload["channel"] != ADMIN_CHANNEL && payload["channel"] != PRAY_CHANNEL && payload["channel"] != MENTOR_CHANNEL) // DARKPACK EDIT CHANGE - LOOC // CRIMSON EDIT CHANGE - MENTOR
 		start_thinking()
 	if(!client.typing_indicators)
 		log_speech_indicators("[key_name(client)] started typing at [loc_name(client.mob)], indicators DISABLED.")

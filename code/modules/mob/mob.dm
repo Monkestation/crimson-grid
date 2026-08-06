@@ -1602,6 +1602,11 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 	clear_important_client_contents()
 	canon_client = null
 
+// CRIMSON EDIT START - MEMORIES
+GAME_VERB_DESC(/mob, memories, "Memories", "View your character's memories.", "IC")
+	open_memory_panel()
+// CRIMSON EDIT END
+
 ///Shows a tgui window with memories
 /mob/proc/open_memory_panel()
 	if(!mind)

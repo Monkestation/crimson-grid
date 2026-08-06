@@ -1053,6 +1053,14 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[asay]")
 					else
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=")
+				// CRIMSON EDIT ADDITION START - MENTOR
+				if(MENTOR_CHANNEL)
+					if(is_mentor())
+						var/msay = tgui_say_create_open_command(MENTOR_CHANNEL)
+						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[msay]")
+					else
+						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=")
+				// CRIMSON EDIT ADDITION END
 	calculate_move_dir()
 
 /client/proc/change_view(new_size)
