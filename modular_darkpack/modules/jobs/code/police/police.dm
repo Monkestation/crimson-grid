@@ -25,7 +25,11 @@
 	description = "Enforce the Law."
 	minimum_masquerade = 0
 
-	known_contacts = list(JOB_POLICE_CAPTAIN, JOB_POLICE_SERGEANT, JOB_EMERGENCY_DISPATCHER)
+	known_contacts = list(
+		JOB_POLICE_CAPTAIN,
+		JOB_POLICE_SERGEANT,
+		JOB_EMERGENCY_DISPATCHER
+	)
 
 /datum/outfit/job/vampire/police_officer
 	name = JOB_POLICE_OFFICER

@@ -13,7 +13,11 @@
 		/datum/job_department/giovanni,
 	)
 
-	known_contacts = list(JOB_CAPO, JOB_LA_SQUADRA, JOB_LA_FAMIGLIA)
+	known_contacts = list(
+		JOB_CAPO,
+		JOB_LA_SQUADRA,
+		JOB_LA_FAMIGLI
+	)
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_CAITIFF)

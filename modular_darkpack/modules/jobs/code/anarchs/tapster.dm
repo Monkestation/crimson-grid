@@ -23,7 +23,13 @@
 		"Waitress"
 	)
 
-	known_contacts = list(JOB_BARON, JOB_BRUISER, JOB_EMISSARY, JOB_SWEEPER, JOB_TAPSTER)
+	known_contacts = list(
+		JOB_BARON,
+		JOB_BRUISER,
+		JOB_EMISSARY,
+		JOB_SWEEPER,
+		JOB_TAPSTER
+	)
 	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL)
 	splat_slots = list(SPLAT_GHOUL = 2)
 	description = "You are a bartender of the local biker hangout. Serve the eclectic clients that pass through, and try not to ask too many questions."

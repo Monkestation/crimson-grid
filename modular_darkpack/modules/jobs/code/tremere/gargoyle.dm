@@ -19,7 +19,10 @@
 	minimum_masquerade = 3
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
-	known_contacts = list(JOB_CHANTRY_REGENT, JOB_CHANTRY_ARCHIVIST)
+	known_contacts = list(
+		JOB_CHANTRY_REGENT,
+		JOB_CHANTRY_ARCHIVIST
+	)
 
 /datum/outfit/job/vampire/gargoyle
 	name = JOB_CHANTRY_GARGOYLE

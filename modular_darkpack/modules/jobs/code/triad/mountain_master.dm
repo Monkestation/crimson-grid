@@ -14,7 +14,12 @@
 		/datum/job_department/triad,
 	)
 
-	known_contacts = list(JOB_DEPUTY_MOUNTAIN_MASTER, JOB_TRIAD_RED_POLE, JOB_TRIAD_BLUE_LANTERNS, JOB_DEALER)
+	known_contacts = list(
+		JOB_DEPUTY_MOUNTAIN_MASTER,
+		JOB_TRIAD_RED_POLE,
+		JOB_TRIAD_BLUE_LANTERNS,
+		JOB_DEALER
+	)
 	allowed_splats = list(SPLAT_NONE)
 	description = "You are the head of the Triad, a secretive criminal organization. You are responsible for overseeing all operations and ensuring the loyalty of your subordinates."
 	minimum_masquerade = 3

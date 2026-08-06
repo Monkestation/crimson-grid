@@ -21,7 +21,10 @@
 	display_order = JOB_DISPLAY_ORDER_SABBATPACK
 	whitelisted = TRUE
 
-	known_contacts = list(JOB_SABBAT_DUCTUS, JOB_SABBAT_PRIEST)
+	known_contacts = list(
+		JOB_SABBAT_DUCTUS,
+		JOB_SABBAT_PRIEST
+	)
 
 
 /datum/outfit/job/vampire/sabbatpack

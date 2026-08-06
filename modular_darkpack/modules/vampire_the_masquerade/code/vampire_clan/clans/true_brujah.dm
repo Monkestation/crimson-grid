@@ -10,6 +10,7 @@
 		/datum/discipline/presence,
 		/datum/discipline/temporis
 	)
+	/obj/item/vamp/keys/brujah
 	enlightenment = TRUE
 	male_clothes = /obj/item/clothing/under/vampire/rich
 	female_clothes = /obj/item/clothing/under/vampire/business

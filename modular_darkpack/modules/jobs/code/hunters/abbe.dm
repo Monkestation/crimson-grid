@@ -16,7 +16,11 @@
 		/datum/job_department/society_of_leopold,
 	)
 
-	known_contacts = list(JOB_CONDOTTIERI, JOB_INQUISITOR, JOB_NOVICE)
+	known_contacts = list(
+		JOB_CONDOTTIERI,
+		JOB_INQUISITOR,
+		JOB_NOVICE
+	)
 
 	allowed_splats = list(SPLAT_NONE)
 

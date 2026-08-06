@@ -32,6 +32,7 @@
 #define JOB_PRIMOGEN_MALKAVIAN "Primogen Malkavian"
 #define JOB_PRIMOGEN_NOSFERATU "Primogen Nosferatu"
 #define JOB_PRIMOGEN_VENTRUE "Primogen Ventrue"
+#define JOB_PRIMOGEN_BRUJAH "Primogen Brujah"
 
 //Anarch
 #define JOB_BARON "Baron"
@@ -135,6 +136,7 @@
 #define JOB_DISPLAY_ORDER_NOSFERATU 10
 #define JOB_DISPLAY_ORDER_TOREADOR 11
 #define JOB_DISPLAY_ORDER_VENTRUE 12
+#define JOB_DISPLAY_ORDER_BRUJAH 13
 
 #define JOB_DISPLAY_ORDER_CLINICS_DIRECTOR 1
 #define JOB_DISPLAY_ORDER_DOCTOR 2
@@ -248,6 +250,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 	"MANOR" = DEPARTMENT_BITFLAG_MANOR,
 	"CITY_SERVICES" = DEPARTMENT_BITFLAG_CITY_SERVICES,
 	"SOCIETY_OF_LEOPOLD" = DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD,
+	"TRIAD" = DEPARTMENT_BITFLAG_TRIAD
 ))
 
 /// Combination flag for jobs which are considered regular crew members of the station.

@@ -14,7 +14,11 @@
 		/datum/job_department/clinic,
 	)
 
-	known_contacts = list(JOB_CLINIC_DIRECTOR, JOB_DOCTOR)
+	known_contacts = list(
+		JOB_CLINIC_DIRECTOR,
+		JOB_DOCTOR,
+		JOB_PRIMOGEN_MALKAVIAN
+	)
 
 	description = "Help your fellow kindred in all matters medicine related. Sell blood. Keep your human colleagues ignorant."
 	maximal_generation = 9

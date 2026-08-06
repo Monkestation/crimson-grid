@@ -13,7 +13,10 @@
 		/datum/job_department/clinic,
 	)
 
-	known_contacts = list(JOB_DOCTOR)
+	known_contacts = list(
+		JOB_DOCTOR,
+		JOB_PRIMOGEN_MALKAVIAN
+	)
 
 	description = "Keep Saint John's clinic up and running. Collect blood by helping mortals at the Clinic."
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINFOLK) // Removed kindred, clinic director should be human as agreed by impromptu poll in #general. Head of the clinic, should be impartial etc etc.

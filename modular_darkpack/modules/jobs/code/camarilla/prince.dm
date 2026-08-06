@@ -40,7 +40,8 @@
 		JOB_PRIMOGEN_VENTRUE,
 		JOB_PRIMOGEN_NOSFERATU,
 		JOB_BARON,
-		JOB_VOIVODE
+		JOB_VOIVODE,
+		JOB_PRIMOGEN_BRUJAH
 	)
 
 /datum/job/vampire/prince/get_captaincy_announcement(mob/living/captain)

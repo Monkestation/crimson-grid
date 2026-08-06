@@ -20,6 +20,10 @@
 		"FIRSTLIGHT Analyst",
 	)
 
+	known_contacts = list(
+		JOB_POLICE_CAPTAIN
+	)
+
 	allowed_splats = list(SPLAT_NONE)
 	description = "Enforce the Law."
 	minimum_masquerade = 3

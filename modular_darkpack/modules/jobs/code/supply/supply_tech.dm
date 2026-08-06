@@ -20,7 +20,9 @@
 	maximum_immortal_age = 200
 	minimum_masquerade = 0
 
-	known_contacts = list(JOB_DEALER)
+	known_contacts = list(
+		JOB_DEALER
+	)
 
 	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 

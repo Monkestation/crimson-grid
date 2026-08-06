@@ -18,7 +18,10 @@
 	display_order = JOB_DISPLAY_ORDER_SABBATDUCTUS
 	whitelisted = TRUE
 
-	known_contacts = list(JOB_SABBAT_PACK, JOB_SABBAT_PRIEST)
+	known_contacts = list(
+		JOB_SABBAT_PACK,
+		JOB_SABBAT_PRIEST
+	)
 
 
 /datum/antagonist/sabbatist/ductus

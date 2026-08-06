@@ -27,7 +27,18 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_VENTRUE)
 
-	known_contacts = list(JOB_PRINCE, JOB_SHERIFF, JOB_SENESCHAL, JOB_HARPY)
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_SHERIFF,
+		JOB_SENESCHAL,
+		JOB_HARPY,
+		JOB_PRIMOGEN_BANU_HAQIM,
+		JOB_PRIMOGEN_TOREADOR,
+		JOB_PRIMOGEN_LASOMBRA,
+		JOB_PRIMOGEN_MALKAVIAN,
+		JOB_PRIMOGEN_NOSFERATU,
+		JOB_PRIMOGEN_BRUJAH
+	)
 
 /datum/outfit/job/vampire/ventrue
 	name = JOB_PRIMOGEN_VENTRUE
