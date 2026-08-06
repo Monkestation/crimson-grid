@@ -91,7 +91,7 @@
 		TRAIT_FERA_RENOWN,
 		TRAIT_FRENETIC_AURA,
 		TRAIT_SILVER_WEAKNESS,
-		TRAIT_STUNIMMUNE,
+		TRAIT_STUNIMMUNE, // CRIMSON EDIT ADD - Fera splat warform buffs
 	)
 	// id = SPLAT_FERA
 	incompatible_splats = list(
