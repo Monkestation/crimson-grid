@@ -271,7 +271,7 @@
 /datum/loadout_item/pocket_items/britcup
 	name = "British Flag Cup"
 	item_path = /obj/item/reagent_containers/cup/glass/mug/britcup
-
+/*
 // The wallet loadout item is special, and puts the player's ID and other small items into it on initialize (fancy!)
 /datum/loadout_item/pocket_items/wallet
 	name = "Wallet"
@@ -314,6 +314,7 @@
 		if(thing.w_class > wallet.atom_storage.max_specific_storage)
 			continue
 		wallet.atom_storage.attempt_insert(thing, override = TRUE, force = STORAGE_FULLY_LOCKED, messages = FALSE)
+*/
 
 /* // DARKPACK EDIT REMOVAL
 /datum/loadout_item/pocket_items/borg_me_dogtag
