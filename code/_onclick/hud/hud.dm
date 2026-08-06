@@ -8,6 +8,7 @@
 GLOBAL_LIST_INIT(available_ui_styles, list(
 	"World-of-Darkness" = 'modular_darkpack/master_files/icons/hud/screen_darkness_new.dmi', // DARKPACK EDIT ADD - (Put at the top because it has almost full coverage now!)
 	"Pentex-Knox" = 'modular_darkpack/master_files/icons/hud/screen_pentexknox.dmi', // DARKPACK EDIT ADD - (Trasen-Knox logo with a Pentex logo)
+	"Detective" = 'modular_darkpack/master_files/icons/hud/screen_detective.dmi' // DARKPACK EDIT ADD - I'd like one more waiter
 	/* // DARKPACK EDIT REMOVAL
 	"Midnight" = 'icons/hud/screen_midnight.dmi',
 	"Retro" = 'icons/hud/screen_retro.dmi',

@@ -122,6 +122,11 @@
 		, alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = "Bank Manager", USE_JOB_TITLE = FALSE)
 		)
 
+/obj/item/smartphone/giovanni_nonni
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = GIOVANNI_NETWORK, OUR_ROLE = "Bank Shareholder", USE_JOB_TITLE = FALSE)
+		)
+
 /obj/item/smartphone/giovanni_squadra
 	contact_networks_pre_init = list(
 		alist(NETWORK_ID = GIOVANNI_NETWORK, OUR_ROLE = "Bank Security", USE_JOB_TITLE = FALSE)
