@@ -6,6 +6,8 @@
 	worn_icon_state = ""
 	slot_flags = NONE
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/government/icons/docsonfloor.dmi')
+	shows_name = TRUE
+	item_type = "license"
 	/// Issuing state
 	var/issuing_state = "California"
 	/// Owner
@@ -19,9 +21,9 @@
 	var/fake = FALSE
 	/// If the NAME does not belong to the person.
 	var/fake_identity = FALSE
-	var/datum/storyteller_roll/investigation/examine_roll
 	var/mob/living/carbon/human/our_human
 	var/datum/universal_icon/our_photograph
+	var/datum/storyteller_roll/investigation/examine_roll
 	var/additional_text = ""
 
 /obj/item/card/drivers_license/Initialize(mapload)
@@ -51,10 +53,7 @@
 		dob = CURRENT_STATION_YEAR - user.age
 		issued_year = (dob + 18) + (round(((user.age - 18) / 8)) * 8) // This should be renewals roughly every 8 years after issuance at 18.
 		expiry_year = (dob + 18) + ((round(((user.age - 18) / 8)) + 1) * 8) // this math is probably wrong but FUCK IT
-		if(user.client?.prefs)
-			organ_donor = user.client.prefs.read_preference(/datum/preference/toggle/organ_donor)
-		else
-			organ_donor = FALSE
+		organ_donor = user.dna.organ_donor
 		if(user.gender == MALE)
 			owner_gender = "M"
 		else if(user.gender == FEMALE)
@@ -87,10 +86,8 @@
 
 /obj/item/card/drivers_license/examine(mob/user)
 	. = ..()
-	examine_roll.difficulty = our_human.st_get_stat(STAT_STREETWISE)
-	examine_roll.successes_needed = round(our_human.st_get_stat(STAT_STREETWISE) / 2)
-	var/roll_result = examine_roll.st_roll(user, src)
-	var/memorize_name = TRUE
+	examine_roll.difficulty = min(our_human.st_get_stat(STAT_STREETWISE) * 2, 10)
+	examine_roll.successes_needed = round(our_human.st_get_stat(STAT_STREETWISE))
 	if(owner)
 		var/id_examine = span_slightly_larger(separator_hr("You examine [src]...</em>"))
 		id_examine += "<div class='img_by_text_container'>"
@@ -112,10 +109,17 @@
 
 		. += boxed_message(id_examine)
 		. += span_slightly_larger(separator_hr("You finish reading [src]...</em>"))
-		if(fake && (roll_result == ROLL_SUCCESS))
-			memorize_name = FALSE // you ain't fallin for this bullshit
-			. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
-		if(our_human && !QDELETED(our_human) && memorize_name)
+		if(our_human == user)
+			return
+
+		if(fake)
+			examine_roll.difficulty = our_human.st_get_stat(STAT_STREETWISE)
+			examine_roll.successes_needed = round(our_human.st_get_stat(STAT_STREETWISE) / 2)
+			var/roll_result = examine_roll.st_roll(user, src)
+			if(roll_result == ROLL_SUCCESS)
+				. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
+				return
+		if(our_human && !QDELETED(our_human))
 			var/check_name = LAZYACCESS(user.mind.guestbook.known_names, our_human.real_name)
 			if(check_name && owner != check_name)
 				. += span_boldwarning("You recognize the license photo as [check_name], but this says [p_their(our_human)] name is [owner]!")

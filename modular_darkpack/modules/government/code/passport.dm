@@ -105,10 +105,6 @@
 
 /obj/item/passport/examine(mob/user)
 	. = ..()
-	examine_roll.difficulty = our_human.st_get_stat(STAT_STREETWISE)
-	examine_roll.successes_needed = round(our_human.st_get_stat(STAT_STREETWISE) / 2)
-	var/roll_result = examine_roll.st_roll(user, src)
-	var/memorize_name = TRUE
 	if(owner)
 		var/id_examine = span_slightly_larger(separator_hr("You examine [src]...</em>"))
 		id_examine += "<div class='img_by_text_container'>"
@@ -128,10 +124,17 @@
 
 		. += boxed_message(id_examine)
 		. += span_slightly_larger(separator_hr("You finish reading [src]...</em>"))
-		if(fake && (roll_result == ROLL_SUCCESS))
-			memorize_name = FALSE // you ain't fallin for this bullshit
-			. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
-		if(our_human && !QDELETED(our_human) && memorize_name)
+		if(our_human == user)
+			return
+
+		if(fake)
+			examine_roll.difficulty = min(our_human.st_get_stat(STAT_STREETWISE) * 2, 10)
+			examine_roll.successes_needed = round(our_human.st_get_stat(STAT_STREETWISE))
+			var/roll_result = examine_roll.st_roll(user, src)
+			if(roll_result == ROLL_SUCCESS)
+				. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
+				return
+		if(our_human && !QDELETED(our_human))
 			var/check_name = LAZYACCESS(user.mind.guestbook.known_names, our_human.real_name)
 			if(check_name && owner != check_name)
 				. += span_boldwarning("You recognize the passport photo as [check_name], but this says [p_their(our_human)] name is [owner]!")

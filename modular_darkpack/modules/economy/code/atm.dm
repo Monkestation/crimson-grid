@@ -5,8 +5,9 @@
 	icon_state = "atm"
 	anchored = TRUE
 
-	max_integrity = 250
-	damage_deflection = 20
+	max_integrity = 500
+	damage_deflection = 50
+	armor_type = /datum/armor/atm_armor
 
 	light_color = COLOR_GREEN
 	light_range = 2
@@ -18,6 +19,16 @@
 	var/inserted_cash = 0
 	// Just because there is account selected does not nesicarrly indicate logged_in is true. (you still have to enter your pin)
 	var/datum/bank_account/logged_account
+
+/datum/armor/atm_armor
+	melee = 100 // Stop fucking beating it to death you little shits
+	bullet = 100
+	laser = 100
+	energy = 100
+	bomb = 75
+	fire = 100
+	acid = 100
+	wound = 100
 
 /obj/machinery/atm/Initialize(mapload)
 	. = ..()

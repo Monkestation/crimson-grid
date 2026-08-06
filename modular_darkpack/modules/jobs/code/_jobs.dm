@@ -214,6 +214,11 @@
 
 /datum/job/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
+	for(var/possible_card in spawned.gather_belongings())
+		if(istype(possible_card, /obj/item/card))
+			var/obj/item/card/found_card = possible_card
+			if(found_card.shows_name)
+				found_card.link_human_id(spawned)
 	if(!(guestbook_flags & GUESTBOOK_FORGETMENOT))
 		for(var/mob/player_mob as anything in GLOB.player_list)
 			if((player_mob == spawned) || !player_mob.mind?.assigned_role)

@@ -107,8 +107,12 @@
 			var/obj/item/passport/passport = item
 			passport.link_human(criminal)
 			continue
-		if(istype(item, /obj/item/card/drivers_license))
-			var/obj/item/card/drivers_license/license = item
-			license.link_human(criminal)
+		if(istype(item, /obj/item/card))
+			var/obj/item/card/card = item
+			card.link_human_id(criminal)
+			if(istype(item, /obj/item/card/drivers_license))
+				var/obj/item/card/drivers_license/license = item
+				license.link_human(criminal)
+				continue
 			continue
 
