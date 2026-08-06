@@ -16,7 +16,7 @@
 	known_contacts = list(
 		JOB_CAPO,
 		JOB_LA_SQUADRA,
-		JOB_LA_FAMIGLI
+		JOB_LA_FAMIGLIA
 	)
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINDRED)
