@@ -1,2 +1,2 @@
 /datum/outfit/job/vampire/guardian
-	r_pocket = /obj/item/vamp/keys/nps
+	wallet_contents = list(/obj/item/vamp/keys/nps, /obj/item/card/credit=1)
