@@ -17,17 +17,19 @@
 	no_facial = TRUE
 	male_clothes = /obj/item/clothing/under/vampire/archivist
 	female_clothes = /obj/item/clothing/under/vampire/archivist
+	subsplat_keys = /obj/item/vamp/keys/lasombra // Clan Lasombra bloodline
 	whitelisted = TRUE
 	clan_marks = list(/datum/bodypart_overlay/simple/clan_mark/fae_ears)
 
 /datum/subsplat/vampire_clan/kiasyd/on_gain(mob/living/carbon/human/gaining_mob, datum/splat/gaining_splat, joining_round)
 	. = ..()
-
+/*
 	// Kiasyd are made taller and thinner
 	if (gaining_mob.has_quirk(/datum/quirk/dwarf))
 		gaining_mob.remove_quirk(/datum/quirk/dwarf)
 	else if (!gaining_mob.has_quirk(/datum/quirk/tower))
 		gaining_mob.add_quirk(/datum/quirk/tower)
+*/
 
 
 	var/obj/item/organ/eyes/kiasyd/weird_eyes = new()
@@ -36,11 +38,12 @@
 /datum/subsplat/vampire_clan/kiasyd/on_lose(mob/living/carbon/human/losing_mob)
 	. = ..()
 
-
+/*
 	if (losing_mob.has_quirk(/datum/quirk/tower))
 		losing_mob.remove_quirk(/datum/quirk/tower)
 	else
 		losing_mob.add_quirk(/datum/quirk/dwarf)
+*/
 
 
 	// replace eyes
