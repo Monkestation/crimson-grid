@@ -520,7 +520,8 @@
 	last_pos["y_pix"] = 0
 	for(var/mob/living/L in src)
 		if(L.client)
-			shake_camera(L, 0.5 SECONDS, 3)
+			L.client.pixel_x = 0
+			L.client.pixel_y = 0
 	if(istype(bumped_atom, /mob/living))
 		var/mob/living/L = bumped_atom
 		var/hit_dam = prev_speed
@@ -531,16 +532,10 @@
 			log_combat(driver, L, "hit with", src)
 	var/dam = prev_speed
 	if(driver)
-		if(driver.st_get_stat(STAT_DRIVE)) // no protection at 0
-			var/driver_skill = clamp(driver.st_get_stat(STAT_DRIVE)/2, 1, 4)
-			dam = round(dam/driver_skill)
-		else
-			dam = round(dam)
-		if(driver.get_drunk_amount())
-			dam = dam * (1 + 100/driver.get_drunk_amount())
+		var/driver_skill = clamp(driver.st_get_stat(STAT_DRIVE)/2, 1, 4)
+		dam = round(dam/driver_skill)
 		driver.apply_damage(prev_speed, BRUTE, BODY_ZONE_CHEST)
-	var/drive_stat = driver.st_get_stat(STAT_DRIVE)
-	take_damage(drive_stat ? dam / drive_stat : dam)
+	take_damage(dam)
 	return
 
 /obj/darkpack_car/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
@@ -714,23 +709,19 @@
 		if(SOUTH)
 			controlling(-1, 0)
 		if(SOUTHEAST)
-			controlling(-1, -turn_speed)
-		if(SOUTHWEST)
 			controlling(-1, turn_speed)
+		if(SOUTHWEST)
+			controlling(-1, -turn_speed)
 		if(EAST)
 			controlling(0, turn_speed)
 		if(WEST)
 			controlling(0, -turn_speed)
 
 /obj/darkpack_car/proc/controlling(adjusting_speed, adjusting_turn)
-	var/drift
-	if(!driver.st_get_stat(STAT_DRIVE) || driver.get_drunk_amount()) // 0 drive???
-		drift = rand(0.05, 5)
-	else
-		drift = round(driver.st_get_stat(STAT_DRIVE)/2)
+	var/drift = clamp(driver.st_get_stat(STAT_DRIVE)/4, 0.25, 4)
 	var/adjust_true = adjusting_turn
 	if(speed_in_pixels != 0)
-		movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
+		movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true)
 		apply_vector_angle()
 	if(adjusting_speed)
 		if(on)
