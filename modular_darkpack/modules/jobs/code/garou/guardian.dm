@@ -43,4 +43,6 @@
 	gloves = /obj/item/clothing/gloves/vampire/leather
 	suit = /obj/item/clothing/suit/vampire/jacket
 	l_pocket = /obj/item/smartphone
-	backpack_contents = list(/obj/item/card/credit=1)
+	r_pocket = /obj/item/storage/wallet/darkpack
+	backpack_contents = list()
+	wallet_contents = list(/obj/item/card/credit=1)
