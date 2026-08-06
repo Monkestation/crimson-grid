@@ -33,6 +33,7 @@
 	name = "police radio"
 	icon_state = "pp25"
 	COOLDOWN_DECLARE(emergency_cooldown)
+	custom_price = 50
 
 /obj/item/radio/headset/darkpack/police/examine(mob/user)
 	. = ..()

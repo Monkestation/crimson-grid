@@ -27,13 +27,10 @@
 	if(GLOB.admin_datums[ckey] || GLOB.deadmins[ckey])
 		admin = TRUE
 
-	// TODO: Uncomment when mentors are implemented
-	/*
 	// CRIMSON EDIT ADDITION START
 	if (GLOB.mentor_datums[ckey]/* || GLOB.dementors[ckey] || (ckey in GLOB.protected_mentors)*/)
 		mentor = TRUE
 	// CRIMSON EDIT ADDITION END
-	*/
 
 	// CRIMSON EDIT ADDITION START
 	if (!real_bans_only)
@@ -86,7 +83,14 @@
 	if(!real_bans_only && !C && extreme_popcap && !admin)
 		var/popcap_value = GLOB.clients.len
 		if(popcap_value >= extreme_popcap && !GLOB.joined_player_list.Find(ckey))
-			if(!CONFIG_GET(flag/byond_member_bypass_popcap) || !world.IsSubscribed(ckey, "BYOND"))
+			// CRIMSON EDIT ADDITION START - donator
+			var/supporter = get_patreon_rank(ckey) > 0
+			if (admin || mentor || supporter)
+				var/msg = "Popcap Login: [ckey] - Is a(n) [admin ? "admin" : mentor ? "mentor" : supporter ? "patreon supporter" : "???"], therefore allowed passed the popcap of [extreme_popcap] - [popcap_value] clients connected"
+				log_access(msg)
+				message_admins(msg)
+			// CRIMSON EDIT ADDITION END
+			else if(!CONFIG_GET(flag/byond_member_bypass_popcap) || !world.IsSubscribed(ckey, "BYOND"))
 				log_access("Failed Login: [ckey] - Population cap reached")
 				return list("reason"="popcap", "desc"= "\nReason: [CONFIG_GET(string/extreme_popcap_message)]")
 

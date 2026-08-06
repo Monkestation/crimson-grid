@@ -34,6 +34,18 @@
 	name = "Wrist watch"
 	item_path = /obj/item/watch
 
+/datum/loadout_item/pocket_items/gold_cross
+	name = "Cross (Gold)"
+	item_path = /obj/item/card/hunter
+
+/datum/loadout_item/pocket_items/silver_cross
+	name = "Cross (Silver)"
+	item_path = /obj/item/card/hunter/silver
+
+/datum/loadout_item/pocket_items/gothic_cross
+	name = "Cross (Gothic)"
+	item_path = /obj/item/card/hunter/gothic
+
 /*
 /datum/loadout_item/pocket_items/phone
 	name = "Phone"
