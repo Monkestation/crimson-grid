@@ -153,7 +153,7 @@
 	if(COOLDOWN_FINISHED(src, passive_healing_cd))
 		if(can_passively_heal)
 			// 2 to represent lethal. Fera passive regen closes burn, but not aggravated damage.
-			owner.heal_storyteller_health(2, heal_aggravated = TRUE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE)
+			owner.heal_storyteller_health(2, heal_aggravated = TRUE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE) //CRIMSON EDIT CHANGE - Original: owner.heal_storyteller_health(2, heal_aggravated = FALSE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE)
 			// Keep organ healing ticking so internal damage recovers even between major regrowth pulses.
 			owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_HEART, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
