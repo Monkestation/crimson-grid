@@ -133,7 +133,7 @@
 	. = ..()
 	owner.set_species(/datum/species/human/shifter/homid)
 	add_power(/datum/action/cooldown/power/gift/howling)
-	COOLDOWN_START(src, passive_regrowth_cd, 4 MINUTES)
+	COOLDOWN_START(src, passive_regrowth_cd, 4 MINUTES) // CRIMSON EDIT - Original: COOLDOWN_START(src, passive_regrowth_cd, 8 MINUTES)
 
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(revert_to_breed_form))
 
