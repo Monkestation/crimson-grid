@@ -580,6 +580,11 @@ export function JobsPage() {
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
                   setHoveringOver={setHoveringOver}/>
+                <Department department="Chinese Triad"
+                                  dragging={dragging}
+                  setDragging={setDragging}
+                  hoveringOver={hoveringOver}
+                  setHoveringOver={setHoveringOver}/>
               </Stack>
             </Stack.Item>
             <Stack.Item mt={-3.9}>
@@ -634,11 +639,6 @@ export function JobsPage() {
                   hoveringOver={hoveringOver}
                   setHoveringOver={setHoveringOver}/>
                 <Department department="Society of Leopold"
-                                  dragging={dragging}
-                  setDragging={setDragging}
-                  hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Chinese Triad"
                                   dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
