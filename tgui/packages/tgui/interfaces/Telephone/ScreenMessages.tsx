@@ -1,7 +1,7 @@
 // THIS IS A DARKPACK UI FILE
 import { useEffect, useRef, useState } from 'react';
-import { Box, Icon, Stack } from 'tgui-core/components';
 import { useBackend } from 'tgui/backend';
+import { Box, Icon, Stack } from 'tgui-core/components';
 import type { Data, NavigableApps } from '.';
 import { ContactElement } from './ScreenContacts';
 
@@ -14,7 +14,23 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
   const keyHandler = (key: string) => {
     if (onClick) {
       onClick(key);
-      act('keyboard_click')
+      // CRIMSON EDIT ADDITION START
+      let sound: string | undefined;
+      switch (key) {
+        case 'Backspace':
+          sound = 'del';
+          break;
+        case ' ':
+          sound = 'spb';
+          break;
+        case 'Enter':
+          sound = 'ret';
+          break;
+        default:
+          sound = undefined;
+      }
+      // CRIMSON EDIT ADDITION END
+      act('keyboard_click', { sound }); // CRIMSON EDIT ADDITION - ORIGINAL: act('keyboard_click');
     }
   };
 
@@ -62,18 +78,155 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
       {keyboardVisible && (
         <>
           <Stack.Item>
-        <Stack align="center" justify="center">
-          {activeKeyboard.map(
-            (numberKey) => (
+            <Stack align="center" justify="center">
+              {activeKeyboard.map((numberKey) => (
+                <Stack.Item
+                  key={numberKey}
+                  onClick={() => keyHandler(numberKey)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <Box
+                    inline
+                    width={1.8}
+                    height={2}
+                    backgroundColor="#beecff"
+                    textColor="#000"
+                    fontSize={1.2}
+                    style={{
+                      borderRadius: '4px',
+                    }}
+                  >
+                    <Stack fill align="center" justify="center">
+                      <Stack.Item>{numberKey}</Stack.Item>
+                    </Stack>
+                  </Box>
+                </Stack.Item>
+              ))}
+            </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Stack fill align="center" justify="center">
+              {row1.map((key) => {
+                if (!caps) {
+                  key = key.toLowerCase();
+                }
+                return (
+                  <Stack.Item
+                    key={key}
+                    onClick={() => keyHandler(key)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <Box
+                      inline
+                      width={1.8}
+                      height={2.4}
+                      backgroundColor="#d5ffff"
+                      textColor="#000"
+                      fontSize={1.2}
+                      style={{
+                        borderRadius: '4px',
+                      }}
+                    >
+                      <Stack fill align="center" justify="center">
+                        <Stack.Item>{key}</Stack.Item>
+                      </Stack>
+                    </Box>
+                  </Stack.Item>
+                );
+              })}
+            </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Stack fill align="center" justify="center">
+              {row2.map((key) => {
+                if (!caps) {
+                  key = key.toLowerCase();
+                }
+                return (
+                  <Stack.Item
+                    key={key}
+                    onClick={() => keyHandler(key)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <Box
+                      inline
+                      width={1.8}
+                      height={2.4}
+                      backgroundColor="#d5ffff"
+                      textColor="#000"
+                      fontSize={1.2}
+                      style={{
+                        borderRadius: '4px',
+                      }}
+                    >
+                      <Stack fill align="center" justify="center">
+                        <Stack.Item>{key}</Stack.Item>
+                      </Stack>
+                    </Box>
+                  </Stack.Item>
+                );
+              })}
+            </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Stack fill align="center" justify="center">
+              <Stack.Item>
+                <Box
+                  inline
+                  width={3}
+                  height={2.4}
+                  backgroundColor="#beecff"
+                  textColor="#000"
+                  fontSize={1.2}
+                  style={{
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => setCaps((x) => !x)}
+                >
+                  <Stack fill align="center" justify="center">
+                    <Stack.Item>
+                      <Icon name="arrow-up" color={caps ? 'blue' : 'black'} />
+                    </Stack.Item>
+                  </Stack>
+                </Box>
+              </Stack.Item>
+              {row3.map((key) => {
+                if (!caps) {
+                  key = key.toLowerCase();
+                }
+                return (
+                  <Stack.Item
+                    key={key}
+                    onClick={() => keyHandler(key)}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <Box
+                      inline
+                      width={1.8}
+                      height={2.4}
+                      backgroundColor="#d5ffff"
+                      textColor="#000"
+                      fontSize={1.2}
+                      style={{
+                        borderRadius: '4px',
+                      }}
+                    >
+                      <Stack fill align="center" justify="center">
+                        <Stack.Item>{key}</Stack.Item>
+                      </Stack>
+                    </Box>
+                  </Stack.Item>
+                );
+              })}
               <Stack.Item
-                key={numberKey}
-                onClick={() => keyHandler(numberKey)}
                 style={{ cursor: 'pointer' }}
+                onClick={() => keyHandler('Backspace')}
               >
                 <Box
                   inline
-                  width={1.8}
-                  height={2}
+                  width={3}
+                  height={2.4}
                   backgroundColor="#beecff"
                   textColor="#000"
                   fontSize={1.2}
@@ -82,282 +235,143 @@ export const Keyboard = (props: { onClick?: (keyPressed: string) => void }) => {
                   }}
                 >
                   <Stack fill align="center" justify="center">
-                    <Stack.Item>{numberKey}</Stack.Item>
+                    <Stack.Item>
+                      <Icon name="delete-left" />
+                    </Stack.Item>
                   </Stack>
                 </Box>
               </Stack.Item>
-            ),
-          )}
-        </Stack>
-      </Stack.Item>
-      <Stack.Item>
-        <Stack fill align="center" justify="center">
-          {row1.map((key) => {
-            if (!caps) {
-              key = key.toLowerCase();
-            }
-            return (
-              <Stack.Item
-                key={key}
-                onClick={() => keyHandler(key)}
-                style={{ cursor: 'pointer' }}
-              >
-                <Box
-                  inline
-                  width={1.8}
-                  height={2.4}
-                  backgroundColor="#d5ffff"
-                  textColor="#000"
-                  fontSize={1.2}
-                  style={{
-                    borderRadius: '4px',
-                  }}
-                >
-                  <Stack fill align="center" justify="center">
-                    <Stack.Item>{key}</Stack.Item>
-                  </Stack>
-                </Box>
-              </Stack.Item>
-            );
-          })}
-        </Stack>
-      </Stack.Item>
-      <Stack.Item>
-        <Stack fill align="center" justify="center">
-          {row2.map((key) => {
-            if (!caps) {
-              key = key.toLowerCase();
-            }
-            return (
-              <Stack.Item
-                key={key}
-                onClick={() => keyHandler(key)}
-                style={{ cursor: 'pointer' }}
-              >
-                <Box
-                  inline
-                  width={1.8}
-                  height={2.4}
-                  backgroundColor="#d5ffff"
-                  textColor="#000"
-                  fontSize={1.2}
-                  style={{
-                    borderRadius: '4px',
-                  }}
-                >
-                  <Stack fill align="center" justify="center">
-                    <Stack.Item>{key}</Stack.Item>
-                  </Stack>
-                </Box>
-              </Stack.Item>
-            );
-          })}
-        </Stack>
-      </Stack.Item>
-      <Stack.Item>
-        <Stack fill align="center" justify="center">
-          <Stack.Item>
-            <Box
-              inline
-              width={3}
-              height={2.4}
-              backgroundColor="#beecff"
-              textColor="#000"
-              fontSize={1.2}
-              style={{
-                borderRadius: '4px',
-                cursor: 'pointer',
-              }}
-              onClick={() => setCaps((x) => !x)}
-            >
-              <Stack fill align="center" justify="center">
-                <Stack.Item>
-                  <Icon name="arrow-up" color={caps ? 'blue' : 'black'} />
-                </Stack.Item>
-              </Stack>
-            </Box>
-          </Stack.Item>
-          {row3.map((key) => {
-            if (!caps) {
-              key = key.toLowerCase();
-            }
-            return (
-              <Stack.Item
-                key={key}
-                onClick={() => keyHandler(key)}
-                style={{ cursor: 'pointer' }}
-              >
-                <Box
-                  inline
-                  width={1.8}
-                  height={2.4}
-                  backgroundColor="#d5ffff"
-                  textColor="#000"
-                  fontSize={1.2}
-                  style={{
-                    borderRadius: '4px',
-                  }}
-                >
-                  <Stack fill align="center" justify="center">
-                    <Stack.Item>{key}</Stack.Item>
-                  </Stack>
-                </Box>
-              </Stack.Item>
-            );
-          })}
-          <Stack.Item
-            style={{ cursor: 'pointer' }}
-            onClick={() => keyHandler('Backspace')}
-          >
-            <Box
-              inline
-              width={3}
-              height={2.4}
-              backgroundColor="#beecff"
-              textColor="#000"
-              fontSize={1.2}
-              style={{
-                borderRadius: '4px',
-              }}
-            >
-              <Stack fill align="center" justify="center">
-                <Stack.Item>
-                  <Icon name="delete-left" />
-                </Stack.Item>
-              </Stack>
-            </Box>
-          </Stack.Item>
-        </Stack>
-      </Stack.Item>
-      <Stack.Item>
-        <Stack fill align="center" justify="center">
-          <Stack.Item
-            style={{ cursor: 'pointer' }}
-            onClick={() => setShowSymbols(!showSymbols)}
-          >
-            <Box
-              inline
-              width={3}
-              height={2.4}
-              backgroundColor="#beecff"
-              textColor="#000"
-              fontSize={1.2}
-              style={{
-                borderRadius: '4px',
-              }}
-            >
-              <Stack fill align="center" justify="center">
-                <Stack.Item>{showSymbols ? 'ABC' : '?123'}</Stack.Item>
-              </Stack>
-            </Box>
+            </Stack>
           </Stack.Item>
           <Stack.Item>
-            <Box
-              inline
-              width={1.8}
-              height={2.4}
-              backgroundColor="#d5ffff"
-              textColor="#000"
-              fontSize={1.2}
-              style={{
-                borderRadius: '4px',
-              }}
-            >
-              <Stack fill align="center" justify="center">
-                <Stack.Item>
-                  <Icon name="microphone" />
-                </Stack.Item>
-              </Stack>
-            </Box>
+            <Stack fill align="center" justify="center">
+              <Stack.Item
+                style={{ cursor: 'pointer' }}
+                onClick={() => setShowSymbols(!showSymbols)}
+              >
+                <Box
+                  inline
+                  width={3}
+                  height={2.4}
+                  backgroundColor="#beecff"
+                  textColor="#000"
+                  fontSize={1.2}
+                  style={{
+                    borderRadius: '4px',
+                  }}
+                >
+                  <Stack fill align="center" justify="center">
+                    <Stack.Item>{showSymbols ? 'ABC' : '?123'}</Stack.Item>
+                  </Stack>
+                </Box>
+              </Stack.Item>
+              <Stack.Item>
+                <Box
+                  inline
+                  width={1.8}
+                  height={2.4}
+                  backgroundColor="#d5ffff"
+                  textColor="#000"
+                  fontSize={1.2}
+                  style={{
+                    borderRadius: '4px',
+                  }}
+                >
+                  <Stack fill align="center" justify="center">
+                    <Stack.Item>
+                      <Icon name="microphone" />
+                    </Stack.Item>
+                  </Stack>
+                </Box>
+              </Stack.Item>
+              <Stack.Item
+                style={{ cursor: 'pointer' }}
+                onClick={() => keyHandler(',')}
+              >
+                <Box
+                  inline
+                  width={1.8}
+                  height={2.4}
+                  backgroundColor="#d5ffff"
+                  textColor="#000"
+                  fontSize={1.2}
+                  style={{
+                    borderRadius: '4px',
+                  }}
+                >
+                  <Stack fill align="center" justify="center">
+                    <Stack.Item>,</Stack.Item>
+                  </Stack>
+                </Box>
+              </Stack.Item>
+              <Stack.Item
+                style={{ cursor: 'pointer' }}
+                onClick={() => keyHandler(' ')}
+              >
+                <Box
+                  width={8.7}
+                  height={2.4}
+                  backgroundColor="#d5ffff"
+                  textColor="#000"
+                  fontSize={1.2}
+                  style={{
+                    borderRadius: '4px',
+                  }}
+                >
+                  {' '}
+                </Box>
+              </Stack.Item>
+              <Stack.Item
+                style={{ cursor: 'pointer' }}
+                onClick={() => keyHandler('.')}
+              >
+                <Box
+                  inline
+                  width={1.8}
+                  height={2.4}
+                  backgroundColor="#d5ffff"
+                  textColor="#000"
+                  fontSize={1.2}
+                  style={{
+                    borderRadius: '4px',
+                  }}
+                >
+                  <Stack fill align="center" justify="center">
+                    <Stack.Item>.</Stack.Item>
+                  </Stack>
+                </Box>
+              </Stack.Item>
+              <Stack.Item
+                style={{ cursor: 'pointer' }}
+                onClick={() => keyHandler('Enter')}
+              >
+                <Box
+                  inline
+                  width={3}
+                  height={2.4}
+                  backgroundColor="#beecff"
+                  textColor="#000"
+                  fontSize={1.2}
+                  style={{
+                    borderRadius: '4px',
+                  }}
+                >
+                  <Stack fill align="center" justify="center">
+                    <Stack.Item>
+                      <Icon name="arrow-turn-down" rotation={90} />
+                    </Stack.Item>
+                  </Stack>
+                </Box>
+              </Stack.Item>
+            </Stack>
           </Stack.Item>
-          <Stack.Item
-            style={{ cursor: 'pointer' }}
-            onClick={() => keyHandler(',')}
-          >
-            <Box
-              inline
-              width={1.8}
-              height={2.4}
-              backgroundColor="#d5ffff"
-              textColor="#000"
-              fontSize={1.2}
-              style={{
-                borderRadius: '4px',
-              }}
-            >
-              <Stack fill align="center" justify="center">
-                <Stack.Item>,</Stack.Item>
-              </Stack>
-            </Box>
-          </Stack.Item>
-          <Stack.Item
-            style={{ cursor: 'pointer' }}
-            onClick={() => keyHandler(' ')}
-          >
-            <Box
-              width={8.7}
-              height={2.4}
-              backgroundColor="#d5ffff"
-              textColor="#000"
-              fontSize={1.2}
-              style={{
-                borderRadius: '4px',
-              }}
-            >
-              {' '}
-            </Box>
-          </Stack.Item>
-          <Stack.Item
-            style={{ cursor: 'pointer' }}
-            onClick={() => keyHandler('.')}
-          >
-            <Box
-              inline
-              width={1.8}
-              height={2.4}
-              backgroundColor="#d5ffff"
-              textColor="#000"
-              fontSize={1.2}
-              style={{
-                borderRadius: '4px',
-              }}
-            >
-              <Stack fill align="center" justify="center">
-                <Stack.Item>.</Stack.Item>
-              </Stack>
-            </Box>
-          </Stack.Item>
-          <Stack.Item
-            style={{ cursor: 'pointer' }}
-            onClick={() => keyHandler('Enter')}
-          >
-            <Box
-              inline
-              width={3}
-              height={2.4}
-              backgroundColor="#beecff"
-              textColor="#000"
-              fontSize={1.2}
-              style={{
-                borderRadius: '4px',
-              }}
-            >
-              <Stack fill align="center" justify="center">
-                <Stack.Item>
-                  <Icon name="arrow-turn-down" rotation={90} />
-                </Stack.Item>
-              </Stack>
-            </Box>
-          </Stack.Item>
-        </Stack>
-      </Stack.Item>
         </>
       )}
     </Stack>
   );
 };
 
-export const ScreenMessages = (props : {
+export const ScreenMessages = (props: {
   enteredNumber: string;
   setEnteredNumber: React.Dispatch<React.SetStateAction<string>>;
   setApp: React.Dispatch<React.SetStateAction<NavigableApps | null>>;
@@ -371,7 +385,15 @@ export const ScreenMessages = (props : {
     const displayHour = hour % 12 || 12;
     return `${displayHour}:${minute} ${period}`;
   };
-  const { my_number, published_numbers, our_contacts, our_blocked_contacts, current_conversation_messages, conversations, date } = data;
+  const {
+    my_number,
+    published_numbers,
+    our_contacts,
+    our_blocked_contacts,
+    current_conversation_messages,
+    conversations,
+    date,
+  } = data;
   const { enteredNumber, setEnteredNumber, setApp } = props;
 
   const [selectedContact, setSelectedContact] = useState<string | null>(null);
@@ -390,25 +412,30 @@ export const ScreenMessages = (props : {
   // keep scrollin scrollin scrollin scrollin
   useEffect(() => {
     const messageCount = current_conversation_messages?.length || 0;
-    if (messagesContainerRef.current && messageCount > prevMessageCountRef.current) {
-      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    if (
+      messagesContainerRef.current &&
+      messageCount > prevMessageCountRef.current
+    ) {
+      messagesContainerRef.current.scrollTop =
+        messagesContainerRef.current.scrollHeight;
     }
     prevMessageCountRef.current = messageCount;
   }, [current_conversation_messages]);
 
   useEffect(() => {
     if (selectedContact && messagesContainerRef.current) {
-      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+      messagesContainerRef.current.scrollTop =
+        messagesContainerRef.current.scrollHeight;
     }
   }, [selectedContact]);
 
   const handleKeyPress = (key: string) => {
     if (key === 'Backspace') {
-      setMessageText(prev => prev.slice(0, -1));
+      setMessageText((prev) => prev.slice(0, -1));
     } else if (key === 'Enter') {
       handleSend();
     } else {
-      setMessageText(prev => prev + key);
+      setMessageText((prev) => prev + key);
     }
   };
 
@@ -416,7 +443,7 @@ export const ScreenMessages = (props : {
     if (messageText && selectedContact) {
       act('send_message', {
         contact_number: selectedContact,
-        message_text: messageText
+        message_text: messageText,
       });
       setMessageText('');
     }
@@ -429,19 +456,24 @@ export const ScreenMessages = (props : {
 
   useEffect(() => {
     if (selectedContact) {
-      const conv = conversations.find(c => c.number === selectedContact);
+      const conv = conversations.find((c) => c.number === selectedContact);
       if (conv) {
-        const seenConversations = JSON.parse(localStorage.getItem('seen_conversations') || '{}');
+        const seenConversations = JSON.parse(
+          localStorage.getItem('seen_conversations') || '{}',
+        );
         seenConversations[selectedContact] = conv.last_timestamp;
-        localStorage.setItem('seen_conversations', JSON.stringify(seenConversations)); // updating this removes the unread badge
+        localStorage.setItem(
+          'seen_conversations',
+          JSON.stringify(seenConversations),
+        ); // updating this removes the unread badge
       }
     }
   }, [selectedContact, conversations]);
 
   const getContactName = (contactNumber: string) => {
-    const contact = our_contacts.find(c => c.number === contactNumber);
+    const contact = our_contacts.find((c) => c.number === contactNumber);
     if (contact) return contact.name;
-    const published = published_numbers.find(p => p.number === contactNumber);
+    const published = published_numbers.find((p) => p.number === contactNumber);
     if (published) return published.name;
     return contactNumber;
   };
@@ -476,24 +508,46 @@ export const ScreenMessages = (props : {
                 display: none;
               }
             `}</style>
-            <Box fontSize={0.8} textAlign="center" textColor= '#969696'>{date}</Box>
+            <Box fontSize={0.8} textAlign="center" textColor="#969696">
+              {date}
+            </Box>
             {current_conversation_messages?.map((msg, idx) => (
-            // flex-end for INCOMING, flex-start for OUTGOING. left and right sides
-            <Stack key={idx} mb={1} p={1} justify={msg.is_outgoing ? 'flex-end' : 'flex-start'}>
-              <Box
-                backgroundColor={msg.is_outgoing ? '#0069ff' : '#e0e0e0'} //TODO maybe change this to green if we do expensive vs cheap phones
-                textColor={msg.is_outgoing ? '#fff' : '#000'}
+              // flex-end for INCOMING, flex-start for OUTGOING. left and right sides
+              <Stack
+                key={idx}
+                mb={1}
                 p={1}
-                style={{ borderRadius: '8px', maxWidth: '70%', wordWrap: 'break-word' }}
+                justify={msg.is_outgoing ? 'flex-end' : 'flex-start'}
               >
-                {msg.message_text}
-                <Box textAlign={msg.is_outgoing ? 'right' : 'left'} fontSize={0.7} mt={0.5} textColor={msg.is_outgoing ? '#ffffff' : '#303030'}>{convertTo12Hour(msg.time)}</Box>
-              </Box>
+                <Box
+                  backgroundColor={msg.is_outgoing ? '#0069ff' : '#e0e0e0'} //TODO maybe change this to green if we do expensive vs cheap phones
+                  textColor={msg.is_outgoing ? '#fff' : '#000'}
+                  p={1}
+                  style={{
+                    borderRadius: '8px',
+                    maxWidth: '70%',
+                    wordWrap: 'break-word',
+                  }}
+                >
+                  {msg.message_text}
+                  <Box
+                    textAlign={msg.is_outgoing ? 'right' : 'left'}
+                    fontSize={0.7}
+                    mt={0.5}
+                    textColor={msg.is_outgoing ? '#ffffff' : '#303030'}
+                  >
+                    {convertTo12Hour(msg.time)}
+                  </Box>
+                </Box>
               </Stack>
             ))}
           </div>
         </Stack.Item>
-        <Stack.Item p={1} backgroundColor="#f0f0f0" style={{ borderTop: '1px solid #ddd' }}>
+        <Stack.Item
+          p={1}
+          backgroundColor="#f0f0f0"
+          style={{ borderTop: '1px solid #ddd' }}
+        >
           <style>{`
             @keyframes blink {
               0%, 50% { opacity: 1; }
@@ -511,11 +565,13 @@ export const ScreenMessages = (props : {
               backgroundColor: '#fff',
               borderRadius: '4px',
               border: '1px solid #ccc',
-              minHeight: '2.5em'
+              minHeight: '2.5em',
             }}
           >
             {messageText}
-            {messageText.length === 0 && selectedContact && <span className="cursor">|</span>}
+            {messageText.length === 0 && selectedContact && (
+              <span className="cursor">|</span>
+            )}
           </Box>
         </Stack.Item>
         <Stack.Item mb={6}>
@@ -526,23 +582,30 @@ export const ScreenMessages = (props : {
   }
 
   // all of our gott dang convos are here
-  const seenConversations = JSON.parse(localStorage.getItem('seen_conversations') || '{}');
+  const seenConversations = JSON.parse(
+    localStorage.getItem('seen_conversations') || '{}',
+  );
   const allContacts = Array.isArray(conversations)
     ? conversations
-        .filter(c => c.number !== my_number)
+        .filter((c) => c.number !== my_number)
         .sort((a, b) => {
-          const aTime = typeof a.last_timestamp === 'number' ? a.last_timestamp : 0;
-          const bTime = typeof b.last_timestamp === 'number' ? b.last_timestamp : 0;
+          const aTime =
+            typeof a.last_timestamp === 'number' ? a.last_timestamp : 0;
+          const bTime =
+            typeof b.last_timestamp === 'number' ? b.last_timestamp : 0;
           return bTime - aTime;
         }) // sort by most recent first
-        .map(c => ({
+        .map((c) => ({
           name: getContactName(c.number),
           number: c.number,
           lastMessage: c.last_message_text,
-          isUnread: (seenConversations[c.number] || 0) === 0 || (c.last_timestamp && c.last_timestamp > (seenConversations[c.number] || 0))// fuck
+          isUnread:
+            (seenConversations[c.number] || 0) === 0 ||
+            (c.last_timestamp &&
+              c.last_timestamp > (seenConversations[c.number] || 0)), // fuck
         }))
     : [];
-    if(allContacts.length === 0) {
+  if (allContacts.length === 0) {
     return (
       <Stack vertical fill backgroundColor="#fff" textColor="#000">
         <Stack.Item backgroundColor="#0069ff" textColor="#fff" p={1}>
@@ -562,19 +625,18 @@ export const ScreenMessages = (props : {
         </Stack.Item>
       </Stack>
     );
-
-    }
+  }
 
   return (
     <Stack vertical fill backgroundColor="#fff" textColor="#000">
       <Stack.Item backgroundColor="#0069ff" textColor="#fff" p={1}>
         <Stack align="center">
-            <Icon
-              name="arrow-left"
-              onClick={() => setApp(null)}
-              style={{ cursor: 'pointer' }}
-            />
-        Messages
+          <Icon
+            name="arrow-left"
+            onClick={() => setApp(null)}
+            style={{ cursor: 'pointer' }}
+          />
+          Messages
         </Stack>
       </Stack.Item>
       <Stack.Item grow overflowY="auto">

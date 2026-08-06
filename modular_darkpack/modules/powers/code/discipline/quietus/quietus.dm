@@ -1,6 +1,11 @@
 /datum/discipline/quietus
 	name = "Quietus"
-	desc = "The signature discipline of the Banu Haqim, Quietus allows the user to create poison and assassinate their targets quietly, maipulating their blood. Violates Masquerade."
+	desc = {"The signature discipline of the Banu Haqim, Quietus allows the user to create poison and assassinate their targets quietly, manipulating their blood. Violates Masquerade.
+● Silence of Death: Passive
+●● Scorpion's Touch: Permanent Willpower (difficulty 6)
+●●● Dagon's Call: Stamina vs. target's Willpower
+●●●● Baal's Caress: Passive
+●●●●● Taste of Death: Stamina + Athletics (difficulty 6)"}
 	icon_state = "quietus"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/quietus

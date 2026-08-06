@@ -2,7 +2,12 @@
 
 /datum/discipline/dominate
 	name = "Dominate"
-	desc = "Suppresses will of your targets and forces them to obey you, if their will is not more powerful than yours."
+	desc = {"Suppresses will of your targets and forces them to obey you, if their will is not more powerful than yours.
+● Command: Manipulation + Intimidation
+●● Mesmerize: Manipulation + Leadership
+●●● The Forgetful Mind: Wits + Subterfuge
+●●●● Conditioning: Charisma + Leadership
+●●●●● Possession: Charisma + Intimidation"}
 	icon_state = "dominate"
 	power_type = /datum/discipline_power/dominate
 	var/list/botched_targets //a lazylist of weakrefs

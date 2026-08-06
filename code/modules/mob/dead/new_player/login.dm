@@ -38,7 +38,11 @@
 
 	add_sight(SEE_TURFS)
 
-	client.playtitlemusic()
+	// CRIMSON EDIT CHANGE START
+	if(SSticker.current_state != GAME_STATE_STARTUP)
+		client.playtitlemusic()
+	// CRIMSON EDIT CHANGE END
+
 
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
 	asset_datum.send(client)

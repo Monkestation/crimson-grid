@@ -418,22 +418,24 @@
 	desc = "Probably spanish. Provides good protection."
 	icon_state = "medieval"
 
-/obj/item/clothing/suit/vampire/vest/police/fbivest
-	name = "FBI duty vest"
-	icon_state = "fbivest"
-	desc = "Lightweight, bulletproof vest with yellow FBI markings, tailored for active duty. This one has special agent insignia on it."
-
 //Police + Army
 
 /obj/item/clothing/suit/vampire/coat/police
 	name = "police raincoat"
 	icon_state = "policecoat"
 	desc = "A sturdy and reflective raincoat tailored for wet weather patrols."
+	custom_price = 20
 
 /obj/item/clothing/suit/vampire/vest/police
 	name = "police duty vest"
 	icon_state = "pdvest"
 	desc = "Lightweight, bulletproof vest with SFPD markings, tailored for active duty."
+	custom_price = 50
+
+/obj/item/clothing/suit/vampire/vest/police/fbivest
+	name = "FBI duty vest"
+	icon_state = "fbivest"
+	desc = "Lightweight, bulletproof vest with yellow FBI markings, tailored for active duty. This one has special agent insignia on it."
 
 /obj/item/clothing/suit/vampire/vest/police/sergeant
 	name = "police sergeant vest"

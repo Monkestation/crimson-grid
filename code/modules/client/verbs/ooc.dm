@@ -85,6 +85,14 @@ GAME_VERB(/client, ooc, VERB_OOC, null, msg as text)
 	if(visible_unlock)
 		LAZYADD(key_tags, "byond_member")
 
+	// CRIMSON EDIT ADD START - donator
+	if(persistent_client.patreon.access_rank > 0 && prefs.read_preference(/datum/preference/toggle/patreon_public))
+		LAZYADD(key_tags, "emoji-patreon")
+
+	if(persistent_client.twitch.access_rank > 0 && prefs.read_preference(/datum/preference/toggle/twitch_public))
+		LAZYADD(key_tags, "emoji-twitch")
+	// CRIMSON EDIT ADD END - donator
+
 	if(LAZYLEN(key_tags))
 		var/datum/asset/spritesheet_batched/chat/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
 		for(var/icon_name in key_tags)
