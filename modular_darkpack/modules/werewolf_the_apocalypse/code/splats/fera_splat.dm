@@ -162,7 +162,7 @@
 			owner.adjust_organ_loss(ORGAN_SLOT_LIVER, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EYES, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EARS, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
-		COOLDOWN_START(src, passive_healing_cd, 0.5 TURNS)
+		COOLDOWN_START(src, passive_healing_cd, 0.5 TURNS) //CRIMSON EDIT CHANGE - Original: COOLDOWN_START(src, passive_healing_cd, 1 TURNS)
 
 	if(COOLDOWN_FINISHED(src, passive_regrowth_cd))
 		owner.regenerate_organs()
