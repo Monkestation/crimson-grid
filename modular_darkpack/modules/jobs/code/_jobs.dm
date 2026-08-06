@@ -60,8 +60,32 @@
 
 /datum/outfit/job/vampire/pre_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
+	// fuck editing all these jobs manually goddamn kiss my ass
+	var/assigned_wallet = FALSE
 	if(!id)
 		id = /obj/item/storage/wallet/darkpack
+		assigned_wallet = TRUE
+	else if(id == /obj/item/storage/wallet/darkpack)
+		assigned_wallet = TRUE
+	if(r_pocket && ispath(r_pocket, /obj/item/vamp/keys) && !assigned_wallet)
+		wallet_contents += r_pocket
+		r_pocket = /obj/item/storage/wallet/darkpack
+		assigned_wallet = TRUE
+	else if(r_pocket == /obj/item/storage/wallet/darkpack)
+		assigned_wallet = TRUE
+	if(l_pocket && ispath(l_pocket, /obj/item/vamp/keys) && !assigned_wallet)
+		wallet_contents += l_pocket
+		l_pocket = /obj/item/storage/wallet/darkpack
+		assigned_wallet = TRUE
+	else if(l_pocket == /obj/item/storage/wallet/darkpack)
+		assigned_wallet = TRUE
+	if(!assigned_wallet)
+		CRASH("[src] doesn't have a spot for a wallet! Check their configuration, please.")
+	for(var/path in backpack_contents)
+		if(ispath(path, /obj/item/vamp/keys) || ispath(path, /obj/item/card))
+			wallet_contents += path
+			backpack_contents -= path
+			continue
 	if(uses_default_clan_clothes == TRUE && uniform == initial(uniform))
 		var/datum/splat/vampire/kindred/kindred = get_kindred_splat(H)
 		if(kindred)
@@ -89,12 +113,12 @@
 
 /datum/outfit/job/vampire/post_equip(mob/living/carbon/human/user, visuals_only = FALSE)
 	. = ..()
-	var/obj/item/smartphone/phone = locate() in user.contents
+	var/obj/item/smartphone/phone = locate() in user.gather_belongings()
 	if(phone)
 		phone.owner_weakref = WEAKREF(user)
 		phone.update_initialized_contacts()
 	// CRIMSON GRID EDIT BEGIN - Wallets and money splits, and identification.
-	var/obj/item/storage/wallet/darkpack/wallet = locate() in user.contents
+	var/obj/item/storage/wallet/darkpack/wallet = locate() in user.gather_belongings()
 	if(wallet && !no_wallet)
 		if(wallet_contents)
 			for(var/path in wallet_contents)
@@ -119,6 +143,8 @@
 		var/datum/bank_account/bank_account = card?.registered_account
 		var/streetwise_mult
 		var/total_money
+		if(card.min_starting_wealth && card.max_starting_wealth)
+			total_money = rand(card.min_starting_wealth, card.max_starting_wealth)
 		switch(streetwise)
 			if(0)
 				streetwise_mult = 0
@@ -135,31 +161,31 @@
 		switch(finance)
 			if(0)
 				if(!CONFIG_GET(flag/punishing_zero_dots))
-					total_money = rand(50, 100)
+					total_money += rand(50, 100)
 					if(bank_account)
 						bank_account.paycheck_amount = 15
 				else
-					total_money = 50
+					total_money += 50
 					if(bank_account)
 						bank_account.paycheck_amount = 10
 			if(1)
-				total_money = rand(100, 200)
+				total_money += rand(100, 200)
 				if(bank_account)
 					bank_account.paycheck_amount = 40
 			if(2)
-				total_money = rand(300, 600)
+				total_money += rand(300, 600)
 				if(bank_account)
 					bank_account.paycheck_amount = 80
 			if(3)
-				total_money = rand(800, 1200)
+				total_money += rand(800, 1200)
 				if(bank_account)
 					bank_account.paycheck_amount = 120
 			if(4)
-				total_money = rand(1200, 1600)
+				total_money += rand(1200, 1600)
 				if(bank_account)
 					bank_account.paycheck_amount = 160
 			if(5)
-				total_money = rand(2000, 3000)
+				total_money += rand(2000, 3000)
 				if(bank_account)
 					bank_account.paycheck_amount = 250
 		if(bank_account)
@@ -167,23 +193,24 @@
 			cash_money.add(total_money * (1 - streetwise_mult))
 		else
 			cash_money.add(total_money) // no bank accounts somehow
-		var/country = user?.client?.prefs?.read_preference(/datum/preference/choiced/country_of_origin)
+		var/country_of_origin = user.dna.country_of_origin
+		if(!country_of_origin)
+			return
 		var/driving_skill = user.st_get_stat(STAT_DRIVE)
 		var/obj/item/card/drivers_license/license
-		if(country == "United States")
-			if(!driving_skill)
-				license = SSwardrobe.provide_type(/obj/item/card/drivers_license/state_issued_id, wallet)
-			else
-				license = SSwardrobe.provide_type(/obj/item/card/drivers_license, wallet)
-			license.link_human(user)
-		else
-			if(driving_skill)
-				license = SSwardrobe.provide_type(/obj/item/card/drivers_license/international, wallet)
+		if(wallet && !no_wallet)
+			if(country_of_origin == "United States")
+				if(!driving_skill)
+					license = new /obj/item/card/drivers_license/state_issued_id(wallet)
+				else
+					license = new /obj/item/card/drivers_license(wallet)
 				license.link_human(user)
-			var/obj/item/passport/passport = SSwardrobe.provide_type(/obj/item/passport, wallet)
-			passport.link_human(user)
-	else
-		CRASH("[src] didn't have a wallet and doesn't have no_wallet set! File a bug report.")
+			else
+				if(driving_skill)
+					license = new /obj/item/card/drivers_license/international(wallet)
+					license.link_human(user)
+				var/obj/item/passport/passport = new /obj/item/passport(wallet)
+				passport.link_human(user)
 
 /datum/job/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

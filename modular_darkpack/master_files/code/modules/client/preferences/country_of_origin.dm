@@ -25,9 +25,6 @@
 /datum/preference/choiced/country_of_origin/create_default_value()
 	return "United States"
 
-/datum/preference/choiced/country_of_origin/apply_to_human(mob/living/carbon/human/target, value)
-	return
-
 /datum/preference/choiced/state_of_origin
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -48,6 +45,7 @@
 	return "California"
 
 /datum/preference/choiced/state_of_origin/apply_to_human(mob/living/carbon/human/target, value)
+	target.dna.state_of_origin = value
 	return
 
 /datum/preference/choiced/state_of_origin/is_accessible(datum/preferences/preferences)
@@ -58,6 +56,26 @@
 	return (country == "United States")
 
 /datum/preference/choiced/country_of_origin/apply_to_human(mob/living/carbon/human/target, value)
+	// CRIMSON GRID EDIT - starting IDs
+	target.dna.country_of_origin = value // THIS SUCKS but it's what we gotta do
+	var/driving_skill = target.st_get_stat(STAT_DRIVE)
+	var/obj/item/card/drivers_license/license
+	var/list/belongings = target.gather_belongings()
+	var/obj/item/storage/wallet/darkpack/wallet = locate() in belongings
+	if(wallet)
+		if(value == "United States")
+			if(!driving_skill)
+				license = new /obj/item/card/drivers_license/state_issued_id(wallet)
+			else
+				license = new /obj/item/card/drivers_license(wallet)
+			license.link_human(target)
+		else
+			if(driving_skill)
+				license = new /obj/item/card/drivers_license/international(wallet)
+				license.link_human(target)
+			var/obj/item/passport/passport = new /obj/item/passport(wallet)
+			passport.link_human(target)
+	// CRIMSON GRID EDIT END
 	var/static/list/country_language_map
 	if(!country_language_map)
 		country_language_map = list(

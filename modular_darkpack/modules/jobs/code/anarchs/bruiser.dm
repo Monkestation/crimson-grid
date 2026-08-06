@@ -41,7 +41,8 @@
 	uniform = /obj/item/clothing/under/vampire/bouncer
 	suit = /obj/item/clothing/suit/vampire/jacket
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
-	r_pocket = /obj/item/vamp/keys/anarch
+	r_pocket = /obj/item/storage/wallet/darkpack
 	l_pocket = /obj/item/smartphone/bruiser
 	r_hand = /obj/item/melee/baseball_bat/vamp
-	backpack_contents = list(/obj/item/vampire_stake=3, /obj/item/vamp/keys/hack=1, /obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/vampire_stake=3)
+	wallet_contents = list(/obj/item/vamp/keys/hack=1, /obj/item/vamp/keys/anarch, /obj/item/card/credit=1)

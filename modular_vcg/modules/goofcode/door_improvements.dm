@@ -98,9 +98,10 @@
 				toggle_lock(live_bumper)
 			else
 				return // AIN'T GOT THE KEY!
-		open_door(live_bumper)
-		auto_opener = live_bumper
-		live_bumper.Move(our_turf)
+		else
+			open_door(live_bumper)
+			auto_opener = live_bumper
+			live_bumper.Move(our_turf)
 
 #define AINT_GOT_THE_KEY FALSE
 #define GOT_THE_KEY TRUE

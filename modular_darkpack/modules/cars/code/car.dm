@@ -537,9 +537,11 @@
 			dam = round(dam/driver_skill)
 		else
 			dam = round(dam)
-		dam = dam * (1 + 100/driver.get_drunk_amount()) // WE LOVE DUIS
+		if(driver.get_drunk_amount())
+			dam = dam * (1 + 100/driver.get_drunk_amount())
 		driver.apply_damage(prev_speed, BRUTE, BODY_ZONE_CHEST)
-	take_damage(dam)
+	var/drive_stat = driver.st_get_stat(STAT_DRIVE)
+	take_damage(drive_stat ? dam / drive_stat : dam)
 	return
 
 /obj/darkpack_car/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
@@ -729,18 +731,18 @@
 		drift = clamp(1/driver.st_get_stat(STAT_DRIVE), 0.2, 1)
 	var/adjust_true = adjusting_turn
 	if(speed_in_pixels != 0)
-		movement_vector = SIMPLIFY_DEGREES((movement_vector+adjust_true)*drift)
+		movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 		apply_vector_angle()
 	if(adjusting_speed)
 		if(on)
 			if(adjusting_speed > 0 && speed_in_pixels <= 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = speed_in_pixels+adjusting_speed*3
-				movement_vector = SIMPLIFY_DEGREES((movement_vector+adjust_true)*drift)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = speed_in_pixels+adjusting_speed*3
-				movement_vector = SIMPLIFY_DEGREES((movement_vector+adjust_true)*drift)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else
 				speed_in_pixels = min(stage*64, max(-stage*64, speed_in_pixels+adjusting_speed*stage))
 				playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 10, FALSE)
@@ -748,11 +750,11 @@
 			if(adjusting_speed > 0 && speed_in_pixels < 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = min(0, speed_in_pixels+adjusting_speed*3)
-				movement_vector = SIMPLIFY_DEGREES((movement_vector+adjust_true)*drift)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = max(0, speed_in_pixels+adjusting_speed*3)
-				movement_vector = SIMPLIFY_DEGREES((movement_vector+adjust_true)*drift)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 
 /obj/darkpack_car/proc/apply_vector_angle()
 	var/new_dir = angle2dir(movement_vector)

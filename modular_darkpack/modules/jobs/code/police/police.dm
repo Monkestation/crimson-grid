@@ -39,7 +39,7 @@
 	id = /obj/item/card/police
 	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/storage/wallet/darkpack
-	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/storage/medkit/darkpack/ifak = 1)
+	backpack_contents = list(/obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/storage/medkit/darkpack/ifak = 1)
 	wallet_contents = list(
 		/obj/item/vamp/keys/police=1,
 		/obj/item/card/credit=1

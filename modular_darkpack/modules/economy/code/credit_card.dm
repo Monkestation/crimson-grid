@@ -13,8 +13,8 @@
 	var/registered_name
 	var/datum/bank_account/registered_account
 	var/has_checked = FALSE
-	var/min_starting_wealth = 600
-	var/max_starting_wealth = 1000
+	var/min_starting_wealth = 0
+	var/max_starting_wealth = 0
 
 /obj/item/card/credit/prince
 	icon_state = "card2"

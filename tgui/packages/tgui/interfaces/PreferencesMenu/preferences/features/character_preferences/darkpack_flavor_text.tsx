@@ -2,7 +2,11 @@
 import {
   type Feature,
   FeatureTextInput,
+  FeatureShortTextInput,
+  FeatureToggle,
+  CheckboxInput,
 } from '../base';
+import { FeatureDropdownInput } from '../dropdowns';
 
 export const flavor_text: Feature<string> = {
   name: 'Flavor Text',
@@ -68,4 +72,39 @@ export const background_info: Feature<string> = {
   name: 'Records (Background)',
   description: 'Only viewable by yourself and ghosts. You can have whatever you want in here - it may be valuable as a way to orient yourself to what your character is.',
   component: FeatureTextInput,
+};
+
+export const illegal_identity: Feature<string> = {
+  name: 'Fake Name',
+  description:
+    'What name is going to be on your fake documents, if you have any?',
+  component: FeatureShortTextInput,
+};
+
+export const fake_age: Feature<string> = {
+  name: 'Fake Age',
+  description:
+    'What age is going to be on your fake documents, if you have any?',
+  component: FeatureShortTextInput,
+};
+
+export const fake_organ_donor: FeatureToggle = {
+  name: 'Fake Organ Donor',
+  description:
+    'What organ donor status is going to be on your fake documents, if you have any?',
+  component: CheckboxInput,
+};
+
+export const fake_gender: Feature<string> = {
+  name: 'Fake Gender Marker',
+  description:
+    'What gender marker is going to be on your fake documents, if you have any?',
+  component: FeatureDropdownInput,
+};
+
+export const organ_donor: FeatureToggle = {
+  name: 'Organ Donor',
+  description:
+    'Are you an organ donor?',
+  component: CheckboxInput,
 };
