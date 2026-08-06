@@ -263,9 +263,18 @@
 	it is because of such abhorrent practices that the Lord your God is driving them out before you (Deuteronomy 18:9-12)."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "hunter_badge"
+	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_NECK | ITEM_SLOT_BELT
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
 	COOLDOWN_DECLARE(detonation_timer)
+
+/obj/item/card/hunter/silver
+	name = "silver cross"
+	icon_state = "hunter_silver"
+
+/obj/item/card/hunter/gothic
+	name = "gothic cross"
+	icon_state = "hunter_gothic"
 
 /obj/item/card/hunter/attack_self(mob/user)
 	. = ..()

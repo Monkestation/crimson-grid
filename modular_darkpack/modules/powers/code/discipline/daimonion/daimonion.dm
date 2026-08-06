@@ -1,6 +1,11 @@
 /datum/discipline/daimoinon
 	name = "Daimoinon"
-	desc = "Draw power from the demons and infernal nature of Hell. Use subtle power to manipulate people and when you must, draw upon fire itself and protect yourself."
+	desc = {"Draw power from the demons and infernal nature of Hell. Use subtle power to manipulate people and when you must, draw upon fire itself and protect yourself.
+● Sense the Sin: Perception + Empathy vs. target's Self-Control + 4
+●● Fear of the Void Below: Wits + Intimidation vs. target's Courage + 4
+●●● Conflagration: No roll
+●●●● Psychomania: target's lowest Virtue
+●●●●● Condemnation: Intelligence + Occult vs. target's Willpower"}
 	icon_state = "daimonion"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/daimoinon

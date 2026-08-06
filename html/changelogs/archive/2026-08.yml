@@ -1,0 +1,77 @@
+2026-08-03:
+  Absolucy:
+  - bugfix: Fixed a laggy hard delete related to disciplines.
+  - bugfix: made smartphone contacts lag the server less
+  Faengi:
+  - config: Added a config setting to limit high generations to a limited selection
+      of jobs
+  - rscadd: Gave the Society of Leopold intel reports to find breachers with
+  - rscadd: Added more breach phrases to the list
+  - rscadd: Added the Uncontrollable flaw for Brujah
+  FalloutFalcon:
+  - rscadd: Adds a large set of new ambiences to mostly replace the old ones.
+  - rscadd: Pipes and stalagmites have a chance to have dripping sounds playing
+  - rscadd: Light tubes have a chance to have an ambient buzz
+  - rscadd: Adds a `looping_sound_emitter` object for mapping that can be vareditted
+      to have a looping sound easier.
+  - bugfix: Fills in the gaps of the ambience buzzs and sounds so that Space ambience
+      no longer plays
+  - code_imp: new var on datum level for storing info on what source book it comes
+      from
+  - config: Adds config for limiting merit based on official status
+  - rscadd: The umbra now spawns corpses with fetishes and banes surronding them
+  - rscadd: 'Adds new minor werewolf fetish: Magpie''s Ears'
+  - rscadd: Adds merit to have a roundstart fetish owned by you.
+  - balance: Klaives are MUCH rarer from normal spawns
+  - balance: You can guestbook from a full screen width
+  - bugfix: Delirium will properly be applied
+  - admin: 2 VV topics for managing actions or gifts
+  - bugfix: Improves handling for detecting a heartbeat to be more consistent
+  - code_imp: Fixes random runtimes
+  buffyuwu:
+  - rscadd: Admins can now set generations below 8
+  chazzyjazzy:
+  - rscadd: Adds the red news reporter role which can broadcast to the city using
+      the captain-caster camera and mapped-in greenscreens as well as 'entertainment
+      monitors' and the mobile cameras
+  - rscadd: expands lore primers to help new players figure out what morality paths
+      are as well as some stuff about Garou, Clans, etc
+  - rscadd: adds functionality for clearing masquerade breaches upon the death of
+      any mob/living, admins can also use the 'AdjustMasquerade' proc to restore people's
+      breaches now as it wasnt working before
+  - bugfix: fixes firearms recoil roll difficulty never being reset
+2026-08-04:
+  Absolucy:
+  - rscadd: Open Seal can now unlock cars.
+  FalloutFalcon:
+  - code_imp: makes some stat lists properly lazylists
+  - code_imp: Changing stats based on stamina or dexterity is handled smarter
+  KCartridge:
+  - rscadd: proper TV subtypes
+  - rscadd: directionals for TV
+  chazzyjazzy:
+  - code_imp: adds a landmark for the red news reporter
+2026-08-05:
+  FalloutFalcon:
+  - rscadd: Seizure Flaw/Deformity
+  breadcrombs:
+  - qol: see through can be toggled on the vicissitude horror form
+  buffyuwu:
+  - rscadd: ported discipline stat descriptions from TFN
+  - rscadd: plays a sound when corax toggle flight
+  - rscadd: gives corax a waddle when walking in bird form
+  cam_dev:
+  - rscadd: '"I Nonni" role for Giovanni elders'
+2026-08-06:
+  FalloutFalcon:
+  - code_imp: Fixes infinite loop caused by  teleport moving while having a looped
+      chain of grabbed mobs
+  Stutternov:
+  - balance: Reduces bonus tiles on acute hearing from 3 to 1 (hearing whispers 4
+      tiles away down to 2)
+  - rscadd: Adds brass knuckles to the game and illegal vendor.
+  - rscadd: Adds spiked knuckles to the Baron.
+  cam_dev:
+  - rscadd: added crosses to loadout menu
+  - qol: crosses can be worn on belt and neck
+  - image: added two new cross sprites

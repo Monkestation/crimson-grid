@@ -1,5 +1,4 @@
-/*
-GAME_VERB_PROC(/client, cmd_mentor_say, "Msay", "Mentor", msg as text)
+GAME_VERB_PROC(/client, cmd_mentor_say, "Msay", "Mentor", message as text)
 	if(!is_mentor())
 		return
 
@@ -23,9 +22,6 @@ GAME_VERB_PROC(/client, cmd_mentor_say, "Msay", "Mentor", msg as text)
 
 	for(var/iter_ckey in pinged_mentor_clients)
 		var/client/iter_mentor_client = pinged_mentor_clients[iter_ckey]
-		// TODO: allow mentors to de/rementor themselves
-		// if(iter_mentor_client?.mentor_datum.dementored)
-		// 	continue
 		window_flash(iter_mentor_client)
 		SEND_SOUND(iter_mentor_client.mob, sound('sound/misc/bloop.ogg'))
 
@@ -41,7 +37,6 @@ GAME_VERB_PROC(/client, cmd_mentor_say, "Msay", "Mentor", msg as text)
 			avoid_highlighting = (mentor == src),
 			confidential = TRUE,
 		)
-*/
 
 // Checks a given message to see if any of the words contain an active mentor's ckey with an @ before it
 /proc/check_mentor_pings(message)

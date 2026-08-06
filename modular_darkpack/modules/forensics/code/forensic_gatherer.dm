@@ -26,6 +26,7 @@
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	range = 1	//Stops across the room gathering.
+	custom_price = 10 // DARKPACK EDIT ADD - Police Store
 
 /obj/item/detective_scanner/darkpack/scan(mob/user, atom/scanned_atom)
 	if(loc != user)

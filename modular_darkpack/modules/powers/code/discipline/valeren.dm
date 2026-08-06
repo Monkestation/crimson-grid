@@ -1,6 +1,11 @@
 /datum/discipline/valeren
 	name = "Valeren"
-	desc = "The warrior's path of Valeren, used by the Salubri antitribu to read and exploit weakness in their enemies."
+	desc = {"The warrior's path of Valeren, used by the Salubri antitribu to read and exploit weakness in their enemies.
+● Sense Vitality: Perception + Empathy (difficulty 7)
+●● Anesthetic Touch: Willpower (difficulty 8 if unwilling)
+●●● Burning Touch: Passive
+●●●● Armor of Caine's Fury: Stamina + Melee (difficulty 7)
+●●●●● Vengeance of Samiel: Passive"}
 	icon_state = "valeren"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/valeren
