@@ -37,9 +37,3 @@
 		/obj/item/melee/baton/vamp = 1,
 		/obj/item/storage/medkit/darkpack/ifak = 1
 	)
-
-/datum/outfit/job/vampire/police_captain/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	var/datum/martial_art/martial_art = new /datum/martial_art/cqc
-	H.ignores_warrant = TRUE
-	martial_art.teach(H)
