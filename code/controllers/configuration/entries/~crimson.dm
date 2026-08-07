@@ -20,3 +20,5 @@
 	default = "monkestation"
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
+
+/datum/config_entry/flag/whitelist_allow_donators

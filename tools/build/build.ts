@@ -8,6 +8,7 @@
  */
 
 import fs from 'node:fs';
+import { resolve } from 'node:path'; // CRIMSON EDIT ADDITION
 import Bun from 'bun';
 import Juke from './juke/index.js';
 import { bun } from './lib/bun';
@@ -435,6 +436,30 @@ export const TgsTarget = new Juke.Target({
     prependDefines('TGS');
   },
 });
+
+//  CRIMSON EDIT ADDITION START
+export const SortDmeTarget = new Juke.Target({
+  executes: async () => {
+    const sorter = resolve(import.meta.dirname, "../dme-sorter.com");
+    const dme = resolve(import.meta.dirname, "../../tgstation.dme");
+
+    const proc = Bun.spawn([
+      "sh",
+      sorter,
+      dme,
+    ], {
+      stdout: "inherit",
+      stderr: "inherit",
+    });
+
+    const exitCode = await proc.exited;
+
+    if (exitCode !== 0) {
+      throw new Error(`dme-sorter failed (${exitCode})`);
+    }
+  },
+});
+// CRIMSON EDIT ADDITION END
 
 Juke.setup({ file: import.meta.url }).then((code) => {
   // We're using the currently available quirk in Juke Build, which

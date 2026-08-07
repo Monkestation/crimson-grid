@@ -3,7 +3,8 @@
 
 /datum/discipline/bloodheal
 	name = "Bloodheal"
-	desc = "Use the power of your Vitae to mend your flesh."
+	desc = {"Use the power of your Vitae to mend your flesh.
+● Bloodheal: Stamina + Survival (difficulty 8) - roll only on interrupted cast"}
 	icon_state = "bloodheal"
 	power_type = /datum/discipline_power/bloodheal
 	selectable = FALSE

@@ -1,6 +1,11 @@
 /datum/discipline/thanatosis
 	name = "Thanatosis"
-	desc = "Offers control over your own rotted body"
+	desc = {"Offers control over your own rotted body.
+● Hag's Wrinkles: Stamina + Subterfuge
+●● Putrefaction: Dexterity + Medicine vs. target's Stamina
+●●● Ashes to Ashes: Passive
+●●●● Withering: Manipulation + Medicine vs. target's Stamina
+●●●●● Necrosis: Dexterity + Medicine vs. target's Stamina"}
 	icon_state = "thanatosis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/thanatosis

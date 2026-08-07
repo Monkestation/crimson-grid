@@ -17,6 +17,13 @@ GLOBAL_LIST(whitelist)
 /proc/check_whitelist(ckey)
 	if(!GLOB.whitelist)
 		return FALSE
+	// CRIMSON EDIT ADDITION START - donator whitelist - i could have made this cleaner but then it wouldn't be as readable.
+	if (CONFIG_GET(flag/whitelist_allow_donators))
+		if(get_patreon_rank(ckey) > ACCESS_NO_RANK)
+			return TRUE
+		else if(world.IsSubscribed(ckey, "BYOND"))
+			return TRUE
+	// CRIMSON EDIT ADDTION END
 	. = (ckey in GLOB.whitelist)
 
 ADMIN_VERB(whitelist_player, R_BAN, "Whitelist CKey", "Adds a ckey to the Whitelist file.", ADMIN_CATEGORY_MAIN)

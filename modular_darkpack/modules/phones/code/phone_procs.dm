@@ -101,6 +101,7 @@
 	phone_ringing_timer = addtimer(CALLBACK(src, PROC_REF(set_phone_available)), TIME_TO_RING, TIMER_STOPPABLE | TIMER_DELETE_ME)
 	add_phone_call_history(PHONE_CALL_SENT, PHONE_CALL_SENT_TOOLTIP)
 	set_phone_state(PHONE_CALLING)
+	return TRUE // CRIMSON EDIT ADDITION - need to know if a phone call actually went through or not
 
 // Used for when the receiving phone picks up a phone call.
 /obj/item/smartphone/proc/accept_phone_call(mob/user)
@@ -146,18 +147,26 @@
 
 // Only used to indicate to the receiving phone that they are being called.
 /obj/item/smartphone/process(seconds_per_tick)
-	if(!COOLDOWN_FINISHED(src, ringer_cooldown))
-		return
-	COOLDOWN_START(src, ringer_cooldown, 4 SECONDS)
-	if(vibration)
-		animate(src, pixel_w = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
-		for(var/i in 1 to VIBRATION_LOOP_DURATION / (0.2 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
-			animate(pixel_w = -2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
-			animate(pixel_w = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
-		animate(pixel_w = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
-		balloon_alert_to_viewers(pick("zzZz!", "ZZZT!", "zZzZ!", "Zzz...", "zzZ...", "ZzZZT!"), vision_distance = COMBAT_MESSAGE_RANGE)
-	if(ringer)
-		playsound(src, call_sound, 50, TRUE, 0, 2)
+	// CRIMSON EDIT ADDITION START - Ringing tone
+	if(current_state == PHONE_CALLING)
+		if(!COOLDOWN_FINISHED(src, paging_cooldown))
+			return
+		COOLDOWN_START(src, paging_cooldown, 2.5 SECONDS)
+		playsound(src, 'modular_vcg/master_files/sounds/item/smartphone/ringing.ogg', 25, FALSE, 0, 2)
+	else if (current_state == PHONE_RINGING)
+	// CRIMSON EDIT ADDITION END - Ringing tone
+		if(!COOLDOWN_FINISHED(src, ringer_cooldown))
+			return
+		COOLDOWN_START(src, ringer_cooldown, 4 SECONDS)
+		if(vibration)
+			animate(src, pixel_w = 1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+			for(var/i in 1 to VIBRATION_LOOP_DURATION / (0.2 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
+				animate(pixel_w = -2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+				animate(pixel_w = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
+			animate(pixel_w = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+			balloon_alert_to_viewers(pick("zzZz!", "ZZZT!", "zZzZ!", "Zzz...", "zzZ...", "ZzZZT!"), vision_distance = COMBAT_MESSAGE_RANGE)
+		if(ringer)
+			playsound(src, call_sound, 50, TRUE, 0, 2)
 
 // App really ought to be a datum. Whateverrrrr
 /obj/item/smartphone/proc/receive_notification(app, title, body)
@@ -168,7 +177,8 @@
 			animate(pixel_w = 2, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_CONTINUE)
 		animate(pixel_w = -1, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
 	if(ringer)
-		playsound(src, 'modular_darkpack/modules/phones/sounds/text_receive.ogg', 50, TRUE, 0, 2) // This could prob use a better notification
+		// playsound(src, 'modular_darkpack/modules/phones/sounds/text_receive.ogg', 50, TRUE, 0, 2) // This could prob use a better notification // CRIMSON EDIT REMOVAL
+		play_notification_sound() // CRIMSON EDIT ADDITION
 	balloon_alert_to_viewers("[app]:[title]", vision_distance = SAMETILE_MESSAGE_RANGE)
 
 #undef VIBRATION_LOOP_DURATION
@@ -204,11 +214,13 @@
 /obj/item/smartphone/proc/terminate_call_connection()
 	PROTECTED_PROC(TRUE)
 
+	playsound(loc, 'modular_vcg/master_files/sounds/item/smartphone/hangup.ogg', 35, TRUE) // CRIMSON EDIT ADDITION - hangup tone
 	var/obj/item/smartphone/calling_smartphone = SSphones.get_phone_from_number(incoming_phone_number)
 	if(!calling_smartphone)
 		calling_smartphone = SSphones.get_phone_from_number(dialed_number)
 	if(!calling_smartphone)
 		return
+	playsound(calling_smartphone, 'modular_vcg/master_files/sounds/item/smartphone/hangup.ogg', 35, TRUE) // CRIMSON EDIT ADDITION - hangup tone
 
 	// Free up the secure connection.
 	SSphones.free_secure_frequency(secure_frequency)

@@ -11,6 +11,7 @@
 		new /datum/data/vending_product("LSD pill bottle", /obj/item/storage/pill_bottle/lsd, 50),
 		new /datum/data/vending_product("knife", /obj/item/knife/vamp, 85),
 		new /datum/data/vending_product("switchblade", /obj/item/switchblade/vamp, 85),
+		new /datum/data/vending_product("knuckledusters", /obj/item/clothing/gloves/vampire/brassknuckles, 100),
 		new /datum/data/vending_product("stake", /obj/item/vampire_stake, 100),
 		new /datum/data/vending_product("Surgery dufflebag", /obj/item/storage/backpack/duffelbag/sec/surgery, 100),
 		new /datum/data/vending_product("Handcuffs", /obj/item/restraints/handcuffs, 50),
