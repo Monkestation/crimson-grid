@@ -240,7 +240,7 @@
 
 /datum/species/human/shifter/war/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
-	human.remove_status_effect(/datum/status_effect/fortitude)
+	human.remove_status_effect(/datum/status_effect/fortitude/four)
 
 /datum/species/human/shifter/war/visible_gender_override(mob/living/carbon/human/holder)
 	return "beast"
