@@ -181,10 +181,11 @@
 
 /datum/splat/werewolf/shifter/proc/causes_delirium()
 	var/datum/species/human/shifter/shifter_species = owner.dna.species
-	if(istype(shifter_species))
+	if(!istype(shifter_species))
 		return FALSE
-	if(shifter_species.form_causes_delirium && !HAS_TRAIT(owner, TRAIT_PIERCED_VEIL))
-		return TRUE
+	if(HAS_TRAIT(owner, TRAIT_PIERCED_VEIL))
+		return FALSE
+	return shifter_species.form_causes_delirium
 
 // Being used to represent meditating in your caern
 /datum/splat/werewolf/shifter/proc/regain_gnosis_process(seconds_per_tick)
@@ -249,6 +250,7 @@
 		TRAIT_FERA_FLIGHT,
 		TRAIT_FRENETIC_AURA,
 		TRAIT_GOLD_WEAKNESS,
+		TRAIT_TRUE_NIGHT_VISION, // CRIMSON GRID ADDITION - allow corax to see in the dark, so they can snoop on people better
 	)
 	transformation_list = list(
 		/datum/species/human/shifter/homid,
@@ -284,11 +286,15 @@
 /datum/splat/werewolf/shifter/corax/on_gain()
 	. = ..()
 	add_power(/datum/action/cooldown/power/gift/eye_drink)
+	owner.update_sight() // CRIMSON GRID ADDITION - allow corax to see in the dark, so they can snoop on people better
 
 /datum/splat/werewolf/shifter/corax/on_lose_or_destroy()
 	. = ..()
 	remove_power(/datum/action/cooldown/power/gift/eye_drink)
-
+	// CRIMSON GRID ADDITION START - allow corax to see in the dark, so they can snoop on people better
+	if(!QDELETED(owner))
+		owner.update_sight()
+	// CRIMSON GRID ADDITION END
 
 /mob/living/carbon/human/splat/kinfolk
 	auto_splats = list(/datum/splat/werewolf/kinfolk)

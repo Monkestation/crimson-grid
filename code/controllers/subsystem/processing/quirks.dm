@@ -92,14 +92,18 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 	for(var/type in quirk_list)
 		var/datum/quirk/quirk_type = type
-		// DARKPACK EDIT ADD START - MERITS_FLAWS
+		// DARKPACK EDIT CHANGE START - MERITS_FLAWS
 		if(!quirk_type::darkpack_allowed)
 			continue
 		if(quirk_type::roleplay_only && !CONFIG_GET(flag/roleplay_only_merits))
 			continue
-		// DARKPACK EDIT ADD END
 
-		quirk_prototypes[type] = new type
+		var/datum/quirk/quirk_datum = new type
+		if(!quirk_datum.soure_book_allowed(CONFIG_GET(string/ttrpg_accurate_cuttoff_merits)))
+			continue
+
+		quirk_prototypes[type] = quirk_datum
+		// DARKPACK EDIT CHANGE END
 		quirks[initial(quirk_type.name)] = quirk_type
 		quirk_points[initial(quirk_type.name)] = initial(quirk_type.value)
 

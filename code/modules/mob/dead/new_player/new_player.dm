@@ -143,8 +143,10 @@
 			return "Your character is too young for [jobtitle]."
 		if(JOB_UNAVAILABLE_KINDRED_AGE_MAX)
 			return "Your character is too old for [jobtitle]."
-		if(JOB_UNAVAILABLE_KINDRED_GENERATION)
+		if(JOB_UNAVAILABLE_KINDRED_GENERATION_MIN)
 			return "Your character's generation is too high for [jobtitle]."
+		if(JOB_UNAVAILABLE_KINDRED_GENERATION_MAX)
+			return "Your character's generation is too low for [jobtitle]."
 		if(JOB_UNAVAILABLE_KINDRED_CLAN)
 			return "Your character's clan is incompatible for [jobtitle]."
 		if(JOB_UNAVAILABLE_FERA_TRIBE)
@@ -152,6 +154,11 @@
 		if(JOB_UNAVAILABLE_FERA_AUSPICE)
 			return "Your character's auspice is incompatible for [jobtitle]."
 		// DARKPACK EDIT END
+		// CRIMSON EDIT ADD START
+		if(JOB_UNAVAILABLE_DONATOR)
+			return "You need to be a donator to have play as [jobtitle]."
+		// CRIMSON EDIT ADD END
+
 
 	return GENERIC_JOB_UNAVAILABLE_ERROR
 

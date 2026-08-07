@@ -198,5 +198,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GRAVE_SMELL "grave_smell"
 #define TRAIT_GLOWING_EYES "glowing_eyes"
 #define TRAIT_PROMETHEAN_CLAY "promethean_clay"
+#define TRAIT_UNCONTROLLABLE "uncontrollable"
+
+// Below are traits given by items/clothing being equiped or worn
+#define TRAIT_BRASSKNUCKLES "brassknuckles"
 
 // END TRAIT DEFINES

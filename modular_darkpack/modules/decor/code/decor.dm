@@ -246,7 +246,7 @@
 	icon_state = "piping1"
 	layer = ABOVE_ALL_MOB_LAYER
 	anchored = TRUE
-	var/datum/looping_sound/slow_drip/looping_drips
+/* 	var/datum/looping_sound/slow_drip/looping_drips
 	var/drip_chance = 5
 
 /obj/structure/vampipe/Initialize(mapload)
@@ -256,7 +256,7 @@
 
 /obj/structure/vampipe/Destroy(force)
 	. = ..()
-	QDEL_NULL(looping_drips)
+	QDEL_NULL(looping_drips) */
 
 
 /obj/structure/vamproofwall
@@ -786,9 +786,22 @@
 
 /obj/structure/fluff/tv
 	name = "\improper TV"
-	desc = "A slightly battered looking TV. Various infomercials play on a loop, accompanied by a jaunty tune."
+	desc = "A slightly battered looking TV. It's off"
 	icon = 'modular_darkpack/modules/decor/icons/television.dmi'
+	icon_state = "tv_off"
+	density = TRUE
+
+/obj/structure/fluff/tv/news
+	desc = "A slightly battered looking TV. Looks like you're not on the news... this time."
 	icon_state = "tv_news"
+
+/obj/structure/fluff/tv/nature
+	desc = "A slightly battered looking TV. A documentary about a rabbit named 'Lepix'."
+	icon_state = "tv_nature"
+
+/obj/structure/fluff/tv/analog
+	desc = "A slightly battered looking TV. It might be broken."
+	icon_state = "tv_analog"
 
 /obj/structure/fluff/tv/order
 	name = "order screen"

@@ -613,6 +613,7 @@
 		recoil_roll = new()
 
 	if(COOLDOWN_FINISHED(src, recoil_skill_check))
+		recoil_roll.difficulty = initial(recoil_roll.difficulty)
 		for(var/obj/item/gun/gun in user.held_items)
 			if(gun == src || gun.weapon_weight >= WEAPON_MEDIUM)
 				continue

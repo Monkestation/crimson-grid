@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { useBackend } from 'tgui/backend';
-import { Box, Button, DmIcon, Icon, Input, Section, Stack, Tooltip } from 'tgui-core/components';
+import { Box, Button, DmIcon, Icon, Input, NumberInput, Section, Stack, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
 
 type DisciplineInfo = {
@@ -39,6 +39,7 @@ type Data = {
   immortal_age: number | null;
   clan_name: string | null;
   splat_name: string | null;
+  generation: number | null;
   flavor_text: string | null;
   headshot: string | null;
 };
@@ -160,6 +161,7 @@ export function AdminDisciplineEditor() {
     immortal_age,
     clan_name,
     splat_name,
+    generation,
     flavor_text,
     headshot,
   } = data;
@@ -345,6 +347,24 @@ export function AdminDisciplineEditor() {
                           <Box inline bold ml={0.5} color="gold">
                             {clan_name}
                           </Box>
+                        </Stack.Item>
+                      )}
+                      {generation !== null && (
+                        <Stack.Item ml={2}>
+                          <Box color="label" inline>
+                            Generation:
+                          </Box>
+                          <NumberInput
+                            ml={0.5}
+                            inline
+                            step={1}
+                            minValue={1}
+                            maxValue={16}
+                            value={generation}
+                            onChange={(value: number) =>
+                              act('set_generation', { generation: value })
+                            }
+                          />
                         </Stack.Item>
                       )}
                     </Stack>

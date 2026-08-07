@@ -7,7 +7,7 @@
 	config_tag = "LA_FAMIGLIA"
 	outfit = /datum/outfit/job/vampire/famiglia
 	job_flags = CITY_JOB_FLAGS
-	display_order = 2
+	display_order = 4
 	exp_required_type_department = EXP_TYPE_GIOVANNI
 	departments_list = list(
 		/datum/job_department/giovanni,
@@ -15,6 +15,8 @@
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_CAITIFF)
+	maximal_generation = 9
+	maximum_immortal_age = 200
 	description = "Your family is a strange one. Maybe you are strange too, because sitting next to your great uncles as an equal is something you are greatly interested in."
 	minimum_masquerade = 0
 

@@ -27,6 +27,9 @@ ON_CRIT_ADDITIONAL_DIE
 ## If having 0 dot in abilities can hardlock you out of features
 #PUNISHING_ZERO_DOTS
 
+#If you can be barred from jobs for having too high of an age/generation
+#MAX_GEN_LIMITS
+
 ##Artifact spawn chance from crates - note, crates usually drop random artifact subtype, so this probability is typically multiplied by the random probability
 ARTIFACT_CRATE_PROBABILITY 20
 ##Artifact spawn chance from mapped in random spots
@@ -56,7 +59,7 @@ DISABLE_GHOST_LOOC
 ## DOWNSTREAMS! Consider leaving/setting this low to encourage people to support the service that makes this game possible. <3 BYOND <3
 MAX_SAVE_SLOTS 5
 EXTRA_SAVE_SLOTS_BYOND_MEMBER 5
-
+EXTRA_SAVE_SLOTS_DONATOR 10
 ## log stat and pref changes
 LOG_STATS
 
@@ -66,6 +69,9 @@ LOG_STATS
 
 ## Bool for if roleplay only merits/quirks are enabled
 ROLEPLAY_ONLY_MERITS 1
+
+## String for how ttrpg accurate our merits must be. Offical, Storyteller Vault, or Homebrew
+TTRPG_ACCURATE_CUTOFF_MERITS Homebrew
 
 ## Configs for the type of attack we use when we click at a ranged distance. Only one can be enabled at a time.
 #DIRECTIONAL_COMBAT

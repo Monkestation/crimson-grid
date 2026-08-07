@@ -31,4 +31,4 @@
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	r_pocket = /obj/item/vamp/keys/hunter
 	l_pocket = /obj/item/smartphone/inquisitor
-	backpack_contents = list(/obj/item/vampire_stake=2, /obj/item/vampirebook/bible=1, /obj/item/masquerade_contract=1, /obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/vampire_stake=2, /obj/item/intel_report=1, /obj/item/vampirebook/bible=1, /obj/item/masquerade_contract=1, /obj/item/card/credit=1)

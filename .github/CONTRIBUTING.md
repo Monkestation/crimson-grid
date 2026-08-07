@@ -30,24 +30,31 @@ First things first, we want to make it clear how you can contribute (if you've n
 
 ## Getting Started
 
-/tg/station doesn't have a list of goals and features to add; we instead allow freedom for contributors to suggest and create their ideas for the game. That doesn't mean we aren't determined to squash bugs, which unfortunately pop up a lot due to the deep complexity of the game. Here are some useful starting guides, if you want to contribute or if you want to know what challenges you can tackle with zero knowledge about the game's code structure.
+DarkPack13/SecondCity doesn't have a list of goals and features to add; we instead allow freedom for contributors to suggest and create their ideas for the game. That doesn't mean we aren't determined to squash bugs, which unfortunately pop up a lot due to the deep complexity of the game. Here are some useful starting guides, if you want to contribute or if you want to know what challenges you can tackle with zero knowledge about the game's code structure.
 
 If you want to contribute the first thing you'll need to do is [set up Git](https://hackmd.io/@tgstation/HJ8OdjNBc) so you can download the source code.
 After setting it up, optionally navigate your git commandline to the project folder and run the command: `git config blame.ignoreRevsFile .git-blame-ignore-revs`.
 
-We have a [list of guides on the wiki](http://tgstation13.org/wiki/Guides#Development_and_Contribution_Guides) that will help you get started contributing to /tg/station with Git and Dream Maker. For beginners, it is recommended you work on small projects like bugfixes at first. If you need help learning to program in BYOND, check out this [repository of resources](http://www.byond.com/developer/articles/resources).
+We have a [list of guides on the wiki](http://tgstation13.org/wiki/Guides#Development_and_Contribution_Guides) that will help you get started contributing to DarkPack13/SecondCity with Git and Dream Maker. For beginners, it is recommended you work on small projects like bugfixes at first. If you need help learning to program in BYOND, check out this [repository of resources](http://www.byond.com/developer/articles/resources).
 
 There is an open list of approachable issues for [your inspiration here](https://github.com/tgstation/tgstation/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+First+Issue%22).
 
 You can of course, as always, ask for help on the Discord channels or the forums. We're just here to have fun and help out, so please don't expect professional support.
 
+## AI Disclosure
+Darkpack does not accept any AI-generated code. This to all aspects like use of any inbuilt Gen-AI features in IDEs. **All use of AI in the process of contributing to the project should be disclosed.**
+#### Why?
+For communication (pr bodies, reviews, etc.), AI creates a large burden on maintainers. It creates a communication barrier between the contributor and maintainer, as you now have to filter every response. We want YOUR thoughts on why you added something or why it's good for the game.
+For code, while applicable to many projects, it's especially true that AI is bad at writing DM or SS13 code. It's a language with a very small set of data that's mostly SS13-derived projects. It makes frequent hallucinations and assumptions from hodgepodging together every SS13 codebase. Code written by AI instantly suffers from a bus factor of 0; if even you don't understand your code, how is anyone meant to maintain it?
+In general its a big resource drain for a project of volunteers and I would ask you please respect the time of them.
+
 ## Meet the Team
 
-### Headcoder
+### ~~Headcoder~~
 
-The Headcoder is responsible for controlling, adding, and removing maintainers from the project. In addition to filling the role of a normal maintainer, they have sole authority on who becomes a maintainer, as well as who remains a maintainer and who does not.
+~~The Headcoder is responsible for controlling, adding, and removing maintainers from the project. In addition to filling the role of a normal maintainer, they have sole authority on who becomes a maintainer, as well as who remains a maintainer and who does not.~~
 
-### Maintainers
+### Maintainers/Antediluvian
 
 Maintainers are quality control. If a proposed pull request doesn't meet the following specifications, they can request you to change it, or simply just close the pull request. Maintainers are required to give a reason for closing the pull request.
 
@@ -70,9 +77,9 @@ These are not steadfast rules as maintainers are expected to use their best judg
 
 </details>
 
-### Issue Managers
+### ~~Issue Managers~~
 
-Issue Managers help out the project by labelling bug reports and PRs and closing bug reports which are duplicates or are no longer applicable.
+~~Issue Managers help out the project by labelling bug reports and PRs and closing bug reports which are duplicates or are no longer applicable.~~
 
 <details>
 <summary>What You Can and Can't Do as an Issue Manager</summary>
@@ -208,6 +215,6 @@ Github actions that require additional configuration are disabled on the reposit
 
 ## Using the Maintainer Role Ping in Discord
 
-When your PR is labeled as "Stale", you are permitted to ping the `@Maintainer` role on the /tg/station Discord. Using this ping for anything else can be met with escalating timeouts and referral to /tg/station's Discord moderators for further infractions.
+When your PR is labeled as "Stale", you are permitted to ping the `@Antediluvian` or `@Review Ping` role on the DarkPack13/SecondCity Discord.
 
-Feel free to engage and obtain general feedback in the Coding General channel without the role ping before your PR goes stale to build interest and get reviews.
+Feel free to engage and obtain general feedback in the #development channel without the role ping before your PR goes stale to build interest and get reviews.

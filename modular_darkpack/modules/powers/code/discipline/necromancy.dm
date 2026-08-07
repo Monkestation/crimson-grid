@@ -2,7 +2,12 @@
 
 /datum/discipline/necromancy
 	name = "Necromancy"
-	desc = "Offers control over another, undead reality."
+	desc = {"Offers control over another, undead reality.
+● Shroudsight: Perception + Awareness (difficulty 7)
+●● Ethereal Horde: Wits + Occult (difficulty 6)
+●●● Ashes to Ashes: Wits + Occult (difficulty 6)
+●●●● Cold of the Grave: Wits + Occult (difficulty 6)
+●●●●● Shambling Horde: Wits + Occult (difficulty 6)"}
 	icon_state = "necromancy"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/necromancy
