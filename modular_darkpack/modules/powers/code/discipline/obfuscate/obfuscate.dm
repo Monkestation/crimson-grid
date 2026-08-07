@@ -3,12 +3,7 @@
 
 /datum/discipline/obfuscate
 	name = "Obfuscate"
-	desc = {"Makes you less noticable for living and un-living beings.
-● Cloak of Shadows: Passive
-●● Unseen Presence: Passive
-●●● Mask of a Thousand Faces: Manipulation + Performance (difficulty 7)
-●●●● Vanish from the Mind's Eye: Charisma + Stealth (difficulty 6)
-●●●●● Cloak the Gathering: Passive"}
+	desc = "Makes you less noticable for living and un-living beings."
 	icon_state = "obfuscate"
 	power_type = /datum/discipline_power/obfuscate
 

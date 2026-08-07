@@ -49,7 +49,6 @@ GLOBAL_LIST_INIT(zulo_forms, list(
 /mob/living/basic/zulo/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_UNMASQUERADE, INNATE_TRAIT)
-	AddComponent(/datum/component/seethrough_mob)
 
 /mob/living/basic/zulo/mind_initialize()
 	. = ..()

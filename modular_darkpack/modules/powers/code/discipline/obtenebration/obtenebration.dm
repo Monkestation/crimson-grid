@@ -1,11 +1,6 @@
 /datum/discipline/obtenebration
 	name = "Obtenebration"
-	desc = {"Controls the darkness around you.
-● Shadow Play: Passive
-●● Shroud of Night: Manipulation + Occult (difficulty 7)
-●●● Arms of the Abyss: Manipulation + Occult (difficulty 7)
-●●●● Black Metamorphosis: Manipulation + Courage (difficulty 7)
-●●●●● Tenebrous Form: Passive"}
+	desc = "Controls the darkness around you."
 	icon_state = "obtenebration"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obtenebration

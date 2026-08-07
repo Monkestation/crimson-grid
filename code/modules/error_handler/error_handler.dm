@@ -120,7 +120,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 	var/list/usrinfo = null
 	var/locinfo
 	if(istype(usr))
-		usrinfo = list("  usr: ([usr.real_name]) [key_name(usr)] ") // CRIMSON EDIT CHANGE: add realname
+		usrinfo = list("  usr: [key_name(usr)]")
 		locinfo = loc_name(usr)
 		if(locinfo)
 			usrinfo += "  usr.loc: [locinfo]"

@@ -1,11 +1,6 @@
 /datum/discipline/potence
 	name = "Potence"
-	desc = {"Boosts melee and unarmed damage.
-● Potence 1: Passive
-●● Potence 2: Passive
-●●● Potence 3: Passive
-●●●● Potence 4: Passive
-●●●●● Potence 5: Passive"}
+	desc = "Boosts melee and unarmed damage."
 	icon_state = "potence"
 	power_type = /datum/discipline_power/potence
 

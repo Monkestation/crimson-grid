@@ -1,11 +1,6 @@
 /datum/discipline/valeren
 	name = "Healer Valeren"
-	desc = {"Use your third eye in healing or protecting needs.
-● Sense Vitality: Passive
-●● Anesthetic Touch: Passive
-●●● Corpore Sano: Passive
-●●●● Shepherd's Watch: Passive
-●●●●● Unburden the Bestial Soul: Passive"}
+	desc = "Use your third eye in healing or protecting needs."
 	icon_state = "valeren"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/valeren
