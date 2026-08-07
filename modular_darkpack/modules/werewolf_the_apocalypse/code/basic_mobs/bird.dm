@@ -44,6 +44,7 @@
 	AddElement(/datum/element/ai_retaliate)
 	AddElement(/datum/element/pet_bonus, "caw")
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_CLAW)
+	AddElementTrait(TRAIT_WADDLING, INNATE_TRAIT, /datum/element/waddling)
 	update_appearance(UPDATE_ICON)
 
 /mob/living/basic/corvid/update_icon_state()
@@ -90,10 +91,12 @@
 		// sadly, "is flying animal" does not give us flying traits when life() is called, only during VV or upon Init. We're doing this the hard way.
 		// the corax sprites already animate up-and-down bobbing, no need to float
 		corvid.add_traits(list(TRAIT_MOVE_FLYING, TRAIT_NO_FLOATING_ANIM), ACTION_TRAIT)
+		corvid.remove_traits(list(TRAIT_WADDLING), INNATE_TRAIT)
 		// we set this while we wait for the icons to update, otherwise there is latency
 	else
 		to_chat(corvid, span_notice("You settle gently back onto the ground..."))
 		corvid.remove_traits(list(TRAIT_MOVE_FLYING, TRAIT_NO_FLOATING_ANIM), ACTION_TRAIT)
+		corvid.AddElementTrait(TRAIT_WADDLING, INNATE_TRAIT, /datum/element/waddling)
 
 	corvid.update_icon(UPDATE_ICON)
 

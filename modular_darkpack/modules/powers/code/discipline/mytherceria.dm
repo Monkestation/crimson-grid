@@ -1,6 +1,11 @@
 /datum/discipline/mytherceria
 	name = "Mytherceria"
-	desc = "Mytherceria is a Discipline that manifests in faerie-blooded vampires such as the Kiasyd and Maeghar. It grants the vampire mystical senses, the ability to steal knowledge, and other powers attributed to fae."
+	desc = {"Mytherceria is a Discipline that manifests in faerie-blooded vampires such as the Kiasyd and Maeghar. It grants the vampire mystical senses, the ability to steal knowledge, and other powers attributed to fae.
+● Fey Sight: Passive
+●● Darkling Trickery: Passive
+●●● Goblinism: Passive
+●●●● Chanjelin Ward: Passive
+●●●●● Riddle Phantastique: Passive"}
 	icon_state = "mytherceria"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/mytherceria

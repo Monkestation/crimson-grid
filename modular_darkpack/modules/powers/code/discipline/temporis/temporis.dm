@@ -1,6 +1,11 @@
 /datum/discipline/temporis
 	name = "Temporis"
-	desc = "Temporis is a Discipline unique to the True Brujah. Supposedly a refinement of Celerity, Temporis grants the Cainite the ability to manipulate the flow of time itself."
+	desc = {"Temporis is a Discipline unique to the True Brujah. Supposedly a refinement of Celerity, Temporis grants the Cainite the ability to manipulate the flow of time itself.
+● Hourglass of the Mind: Passive
+●● Recurring Contemplation: Passive
+●●● Leaden Moment: Passive
+●●●● Patience of the Norns: Passive
+●●●●● Clotho's Gift: Passive"}
 	icon_state = "temporis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/temporis

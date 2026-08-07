@@ -3,7 +3,12 @@
 
 /datum/discipline/vicissitude
 	name = "Vicissitude"
-	desc = "It is widely known as Tzimisce art of flesh and bone shaping. Violates Masquerade."
+	desc = {"It is widely known as Tzimisce art of flesh and bone shaping. Violates Masquerade.
+● Malleable Visage: Passive
+●● Fleshcrafting: Passive
+●●● Bonecrafting: Strength + Medicine (difficulty 7)
+●●●● Horrid Form: Passive
+●●●●● Bloodform: Passive"}
 	icon_state = "vicissitude"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/vicissitude

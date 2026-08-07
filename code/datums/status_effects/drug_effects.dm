@@ -45,11 +45,15 @@
 	tick_interval = STATUS_EFFECT_NO_TICK
 	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/seizure
+	// DARKPACK EDIT ADD START
+	var/dur_min = 1 SECONDS
+	var/dur_max = 3 SECONDS
+	// DARKPACK EDIT ADD END
 
 /datum/status_effect/seizure/on_apply()
 	if(!iscarbon(owner))
 		return FALSE
-	var/amplitude = rand(1 SECONDS, 3 SECONDS)
+	var/amplitude = rand(dur_min, dur_max) // DARKPACK EDIT CHANGE
 	duration = amplitude
 	owner.set_jitter_if_lower(100 SECONDS)
 	owner.Paralyze(duration)
