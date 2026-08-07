@@ -410,6 +410,74 @@
 				BAN_LOOC,
 			),
 			// DARKPACK EDIT ADD END
+			// CRIMSON EDIT ADD START
+			// SPLAT_* and VAMPIRE_* defines are in snake_case, so below we'll have the label converted with snake_to_pascal
+			"Splats" = list(
+				SPLAT_KINDRED,
+				SPLAT_GHOUL,
+				SPLAT_KINFOLK,
+				SPLAT_GAROU,
+				SPLAT_CORAX,
+			),
+			"Clans" = list(
+				VAMPIRE_CLAN_BAALI,
+				VAMPIRE_CLAN_BANU_HAQIM,
+				VAMPIRE_CLAN_BANU_HAQIM_VIZIER,
+				VAMPIRE_CLAN_BRUJAH,
+				VAMPIRE_CLAN_CAITIFF,
+				VAMPIRE_CLAN_CAPPADOCIAN,
+				VAMPIRE_CLAN_CITY_GANGREL,
+				VAMPIRE_CLAN_DAUGHTERS_OF_CACOPHONY,
+				VAMPIRE_CLAN_DOMINATE_MALKAVIAN,
+				VAMPIRE_CLAN_GANGREL,
+				VAMPIRE_CLAN_GARGOYLE,
+				VAMPIRE_CLAN_GIOVANNI,
+				VAMPIRE_CLAN_HARBINGER,
+				VAMPIRE_CLAN_KIASYD,
+				VAMPIRE_CLAN_LASOMBRA,
+				VAMPIRE_CLAN_MALKAVIAN,
+				VAMPIRE_CLAN_NAGARAJA,
+				VAMPIRE_CLAN_NOSFERATU,
+				VAMPIRE_CLAN_OLD_CLAN_TZIMISCE,
+				VAMPIRE_CLAN_HEALER_SALUBRI,
+				VAMPIRE_CLAN_WARRIOR_SALUBRI,
+				VAMPIRE_CLAN_SAMEDI,
+				VAMPIRE_CLAN_SETITE,
+				VAMPIRE_CLAN_TLACIQUE,
+				VAMPIRE_CLAN_TOREADOR,
+				VAMPIRE_CLAN_TREMERE,
+				VAMPIRE_CLAN_TRUE_BRUJAH,
+				VAMPIRE_CLAN_TZIMISCE,
+				VAMPIRE_CLAN_VENTRUE,
+				VAMPIRE_CLAN_VENTRUE_ANTITRIBU,
+				VAMPIRE_CLAN_WARRIOR_SETITE,
+			),
+			"Tribes" = list(
+				TRIBE_RONIN,
+				TRIBE_BLACK_FURIES,
+				TRIBE_BONE_GNAWERS,
+				TRIBE_CHILDREN_OF_GAIA,
+				TRIBE_FIANNA,
+				TRIBE_GALESTALKERS,
+				TRIBE_GET_OF_FENRIS,
+				TRIBE_UKTENA,
+				TRIBE_GLASS_WALKERS,
+				TRIBE_RED_TALONS,
+				TRIBE_SHADOW_LORDS,
+				TRIBE_SILENT_STRIDERS,
+				TRIBE_SILVER_FANGS,
+				TRIBE_STARGAZERS,
+				TRIBE_BLACK_SPIRAL_DANCERS,
+			),
+			"Auspice" = list( // body wash cant block odor for 16 hours
+				AUSPICE_NONE,
+				AUSPICE_RAGABASH,
+				AUSPICE_THEURGE,
+				AUSPICE_PHILODOX,
+				AUSPICE_AHROUN,
+				AUSPICE_GALLIARD,
+			)
+			// CRIMSON EDIT ADD END
 		)
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'><input type='checkbox' name='[department]' class='hidden' onClick='header_click_all_checkboxes(this)'>[department]</label><div class='content'>"
@@ -417,7 +485,8 @@
 			for(var/job in long_job_lists[department])
 				if(break_counter > 0 && (break_counter % 10 == 0))
 					output += "<br>"
-				output += {"<label class='inputlabel checkbox'>[job]
+					// CRIMSON EDIT BELOW - original: output += {"<label class='inputlabel checkbox'>[job]
+				output += {"<label class='inputlabel checkbox'>[(department == "Splats" || department == "Clans") ? snake_to_pascal(replacetext(job, "splat_", ""), TRUE) : job]
 							<input type='checkbox' name='[job]' class='[department]' value='1'>
 							<div class='inputbox[(job in banned_from) ? " banned" : ""]'></div></label>
 				"}
@@ -531,7 +600,7 @@
 			if("server")
 				roles_to_ban += "Server"
 			if("role")
-				href_list.Remove("Command", "Security", "Engineering", "Medical", "Science", "Supply", "Silicon", "Abstract", "Service", "Ghost and Other Roles", "Antagonist Positions") //remove the role banner hidden input values
+				href_list.Remove("Command", "Security", "Engineering", "Medical", "Science", "Supply", "Silicon", "Abstract", "Service", "Ghost and Other Roles", "Antagonist Positions", "Darkpack Ban Options", "Splats", "Clans") //remove the role banner hidden input values // CRIMSON EDIT ADDITION: "Darkpack Ban Options", "Splats", "Clans"
 				var/delimiter_pos = href_list.Find("roleban_delimiter")
 				if(href_list.len == delimiter_pos)
 					error_state += "Role ban was selected but no roles to ban were selected."
