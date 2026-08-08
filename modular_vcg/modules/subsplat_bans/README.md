@@ -11,7 +11,8 @@ ability to ban splats and subsplats. yes the name is misleading, no i dont wanna
 ### TG Proc/File Changes:
 
 - `code/modules/admin/sql_ban_system.dm`: added Splats, Clans, Tribes, and Auspice's to `long_job_lists`
-- `code/modules/mob/dead/new_player/new_player.dm`: `get_job_unavailable_error_message` message additions
+- `code/modules/mob/dead/new_player/latejoin_menu.dm`: `/datum/latejoin_menu/ui_data` added `mob` argument to `get_job_unavailable_error_message`
+- `code/modules/mob/dead/new_player/new_player.dm`: `get_job_unavailable_error_message` message additions, also the above
 - `modular_darkpack/modules/jobs/code/_job_assignment.dm`: added `is_banned_from` check for everything applicable
 - `tgui/packages/tgui/interfaces/PreferencesMenu/CharacterPreferences/MainPage.tsx`
 - `tgui/packages/tgui/interfaces/PreferencesMenu/types.ts`

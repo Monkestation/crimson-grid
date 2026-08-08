@@ -34,7 +34,7 @@
 		return JOB_UNAVAILABLE_SPLAT_SLOTS
 
 	// CRIMSON EDIT START - splat and clan bans
-	if((player_splat_id in possible_job.allowed_splats) && is_banned_from(player.ckey, player_splat_id))
+	if(is_banned_from(player.ckey, player_splat_id))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED, player_splat_id)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED_SPLAT
 	// CRIMSON EDIT END
@@ -83,7 +83,7 @@
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_CLAN, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_KINDRED_CLAN
 	// CRIMSON EDIT START
-	if(possible_job.allowed_clans && (clan.id in possible_job.allowed_clans) && is_banned_from(player.ckey, clan.id))
+	if(is_banned_from(player.ckey, clan.id))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED_CLAN, clan.id)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED_CLAN
 	// CRIMSON EDIT ENDs
