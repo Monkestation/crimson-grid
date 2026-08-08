@@ -230,7 +230,7 @@ export type PreferencesMenuData = {
     }
   >;
   job_preferences: JobPreference[];
-// DARKPACK EDIT ADD -  ALTERNATIVE_JOB_TITLES
+  // DARKPACK EDIT ADD -  ALTERNATIVE_JOB_TITLES
   job_alt_titles: Record<string, string>;
   keybindings: Record<string, string[]>;
   overflow_role: string;
@@ -253,6 +253,8 @@ export type PreferencesMenuData = {
   max_public_generation: number;
   highest_generation_limit: number;
   // DARKPACK EDIT ADD END - DISCIPLINES
+
+  banned_features: Record<string, string[]> // CRIMSON EDIT ADDITION - subsplat_bans
 
   // DARKPACK EDIT ADD START
   stats: Record<

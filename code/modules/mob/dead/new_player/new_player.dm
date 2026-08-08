@@ -157,6 +157,27 @@
 		// CRIMSON EDIT ADD START
 		if(JOB_UNAVAILABLE_DONATOR)
 			return "You need to be a donator to have play as [jobtitle]."
+
+	var/splat_pref = usr.client.prefs.read_preference(/datum/preference/choiced/splats)
+	var/player_splat_id
+	if(ispath(splat_pref))
+		var/datum/splat/player_splat = GLOB.splat_prototypes[splat_pref]
+		player_splat_id = player_splat.id
+	else
+		player_splat_id = splat_pref
+	var/datum/subsplat/vampire_clan/clan = get_vampire_clan(usr.client.prefs.read_preference(/datum/preference/choiced/subsplat/vampire_clan))
+	var/datum/subsplat/werewolf/auspice/auspice = get_fera_auspice(usr.client.prefs.read_preference(/datum/preference/choiced/subsplat/fera_auspice/garou))
+	var/datum/subsplat/werewolf/tribe/tribe = get_fera_tribe(usr.client.prefs.read_preference(/datum/preference/choiced/subsplat/fera_tribe/garou))
+
+	switch(retval)
+		if(JOB_UNAVAILABLE_BANNED_SPLAT)
+			return "You are currently banned from the [player_splat_id ? snake_to_pascal(player_splat_id, TRUE) : "currently selected"] splat."
+		if(JOB_UNAVAILABLE_BANNED_TRIBE)
+			return "You are currently banned from the [tribe.id || "currently selected"] tribe."
+		if(JOB_UNAVAILABLE_BANNED_CLAN)
+			return "You are currently banned from the [clan?.id || "currently selected"] clan."
+		if(JOB_UNAVAILABLE_BANNED_AUSPICE)
+			return "You are currently banned from the [auspice?.id || "currently selected"] auspice."
 		// CRIMSON EDIT ADD END
 
 
