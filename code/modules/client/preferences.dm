@@ -200,6 +200,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	data["window"] = current_window
 
 	data["content_unlocked"] = unlock_content
+	data["see_own_notes"] = CONFIG_GET(flag/see_own_notes) // CRIMSON EDIT ADD - SUBSPLAT_BANS
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		data += preference_middleware.get_ui_static_data(user)
@@ -317,6 +318,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			return TRUE
 		// DARKPACK EDIT ADD END
+		// CRIMSON EDIT ADD START - SUBSPLAT_BANS
+		if ("show_notes")
+			browse_messages(null, usr.ckey, null, TRUE)
+		// CRIMSON EDIT ADD END
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		var/delegation = preference_middleware.action_delegations[action]

@@ -6,13 +6,13 @@ import { exhaustiveCheck } from 'tgui-core/exhaustive';
 import { PageButton } from '../components/PageButton';
 import type { PreferencesMenuData } from '../types';
 import { AntagsPage } from './AntagsPage';
+import { DisciplinesPage } from './DisciplinesPage'; // DARKPACK EDIT ADD
 import { JobsPage } from './JobsPage';
 import { LoadoutPage } from './loadout';
 import { MainPage } from './MainPage';
 import { QuirkPersonalityPage } from './QuirksPage';
 import { SplatsPage } from './SplatsPage'; // DARKPACK EDIT CHANGE - SPLATS
 import { StatsPage } from './Stats'; // DARKPACK EDIT ADD
-import { DisciplinesPage } from './DisciplinesPage'; // DARKPACK EDIT ADD
 
 enum Page {
   Antags,
@@ -243,6 +243,29 @@ export function CharacterPreferenceWindow(props) {
       <Stack.Item grow position="relative" overflowX="hidden" overflowY="auto">
         {pageContents}
       </Stack.Item>
+      {/* CRIMSON EDIT ADD START - SUBSPLAT_BANS */}
+      {data.see_own_notes && (
+        <>
+          <Stack.Divider />
+          <Stack.Item position="relative">
+            <Stack>
+              <Stack.Item align="left">
+                {data.see_own_notes && (
+                  <Button
+                    onClick={() => {
+                      act('show_notes');
+                    }}
+                  >
+                    View notes & bans
+                  </Button>
+                )}
+              </Stack.Item>
+              {/* and more useful buttons to have here. */}
+            </Stack>
+          </Stack.Item>
+        </>
+      )}
+      {/* CRIMSON EDIT ADD END */}
     </Stack>
   );
 }

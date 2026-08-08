@@ -161,9 +161,10 @@
 	var/datum/subsplat/vampire_clan/clan
 	var/datum/subsplat/werewolf/auspice/auspice
 	var/datum/subsplat/werewolf/tribe/tribe
-	var/splat_pref = player.client.prefs.read_preference(/datum/preference/choiced/splats)
+	var/splat_pref
 	var/player_splat_id
 	if(player)
+		splat_pref = player.client.prefs.read_preference(/datum/preference/choiced/splats)
 		if(ispath(splat_pref))
 			var/datum/splat/player_splat = GLOB.splat_prototypes[splat_pref]
 			player_splat_id = player_splat.id
