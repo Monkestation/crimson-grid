@@ -600,7 +600,7 @@
 			if("server")
 				roles_to_ban += "Server"
 			if("role")
-				href_list.Remove("Command", "Security", "Engineering", "Medical", "Science", "Supply", "Silicon", "Abstract", "Service", "Ghost and Other Roles", "Antagonist Positions", "Darkpack Ban Options", "Splats", "Clans") //remove the role banner hidden input values // CRIMSON EDIT ADDITION: "Darkpack Ban Options", "Splats", "Clans"
+				href_list.Remove("Command", "Security", "Engineering", "Medical", "Science", "Supply", "Silicon", "Abstract", "Service", "Ghost and Other Roles", "Antagonist Positions", "Darkpack Ban Options", "Splats", "Clans") //remove the role banner hidden input values // CRIMSON EDIT ADDITION - SUBSPLAT_BANS : "Darkpack Ban Options", "Splats", "Clans"
 				var/delimiter_pos = href_list.Find("roleban_delimiter")
 				if(href_list.len == delimiter_pos)
 					error_state += "Role ban was selected but no roles to ban were selected."
