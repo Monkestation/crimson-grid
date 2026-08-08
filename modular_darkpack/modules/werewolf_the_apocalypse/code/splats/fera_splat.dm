@@ -92,6 +92,7 @@
 		TRAIT_FRENETIC_AURA,
 		TRAIT_SILVER_WEAKNESS,
 		TRAIT_STUNIMMUNE, // CRIMSON EDIT ADD - Fera splat warform buffs
+		TRAIT_LIVERLESS_METABOLISM, // CRIMSON EDIT ADD - Fera splat warform buffs 
 	)
 	// id = SPLAT_FERA
 	incompatible_splats = list(
@@ -155,11 +156,11 @@
 			// 2 to represent lethal. Fera passive regen closes burn, but not aggravated damage.
 			owner.heal_storyteller_health(2, heal_aggravated = TRUE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE) //CRIMSON EDIT CHANGE - Original: owner.heal_storyteller_health(2, heal_aggravated = FALSE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE)
 			// Keep organ healing ticking so internal damage recovers even between major regrowth pulses.
-			owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
+			owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, -0.1 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_HEART, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_LUNGS, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_STOMACH, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
-			owner.adjust_organ_loss(ORGAN_SLOT_LIVER, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
+			owner.adjust_organ_loss(ORGAN_SLOT_LIVER, -0.1 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EYES, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EARS, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 		COOLDOWN_START(src, passive_healing_cd, 0.5 TURNS) //CRIMSON EDIT CHANGE - Original: COOLDOWN_START(src, passive_healing_cd, 1 TURNS)
@@ -220,8 +221,8 @@
 			STAT_APPEARANCE = -1
 		),
 		SPECIES_FERA_WAR = list(
-			STAT_STRENGTH = 8, // CRIMSON EDIT CHANGE - Original : STAT_STRENGTH = 4,
-			STAT_STAMINA = 10, // CRIMSON EDIT CHANGE - Original : STAT_STAMINA = 3,
+			STAT_STRENGTH = 7, // CRIMSON EDIT CHANGE - Original : STAT_STRENGTH = 4,
+			STAT_STAMINA = 7, // CRIMSON EDIT CHANGE - Original : STAT_STAMINA = 3,
 			STAT_DEXTERITY = 5, // CRIMSON EDIT CHANGE - Original : STAT_DEXTERITY = 1,
 			STAT_MANIPULATION = -3,
 			// STAT_APPEARANCE = 0 // NOT YET SUPPORTED
