@@ -410,7 +410,7 @@
 				BAN_LOOC,
 			),
 			// DARKPACK EDIT ADD END
-			// CRIMSON EDIT ADD START
+			// CRIMSON EDIT ADD START - SUBSPLAT_BANS
 			// SPLAT_* and VAMPIRE_* defines are in snake_case, so below we'll have the label converted with snake_to_pascal
 			"Splats" = list(
 				SPLAT_KINDRED,
@@ -485,7 +485,7 @@
 			for(var/job in long_job_lists[department])
 				if(break_counter > 0 && (break_counter % 10 == 0))
 					output += "<br>"
-					// CRIMSON EDIT BELOW - original: output += {"<label class='inputlabel checkbox'>[job]
+					// CRIMSON EDIT BELOW - SUBSPLAT_BANS - Original: output += {"<label class='inputlabel checkbox'>[job]
 				output += {"<label class='inputlabel checkbox'>[(department == "Splats" || department == "Clans") ? snake_to_pascal(replacetext(job, "splat_", ""), TRUE) : job]
 							<input type='checkbox' name='[job]' class='[department]' value='1'>
 							<div class='inputbox[(job in banned_from) ? " banned" : ""]'></div></label>

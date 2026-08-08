@@ -254,7 +254,7 @@ export type PreferencesMenuData = {
   highest_generation_limit: number;
   // DARKPACK EDIT ADD END - DISCIPLINES
 
-  banned_features: Record<string, string[]> // CRIMSON EDIT ADDITION - subsplat_bans
+  banned_features: Record<string, string[]> // CRIMSON EDIT ADD - subsplat_bans
 
   // DARKPACK EDIT ADD START
   stats: Record<

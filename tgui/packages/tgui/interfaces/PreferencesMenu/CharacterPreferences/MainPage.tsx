@@ -104,13 +104,13 @@ type ChoicedSelectionProps = {
   selected: string;
   supplementalFeature?: string;
   supplementalValue?: unknown;
-  bannedFeatures?: string[]; // CRIMSON EDIT ADDITION
+  bannedFeatures?: string[]; // CRIMSON EDIT ADD - SUBSPLAT_BANS
   onSelect: (value: string) => void;
 };
 
 function ChoicedSelection(props: ChoicedSelectionProps) {
   const { catalog, supplementalFeature, supplementalValue, bannedFeatures } =
-    props; // CRIMSON EDIT ADDITION - bannedFeatures
+    props; // CRIMSON EDIT ADD - SUBSPLAT_BANS
   const [searchText, setSearchText] = useState('');
 
   if (!catalog.icons) {
@@ -156,18 +156,18 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
             <Stack wrap>
               {searchInCatalog(searchText, catalog.icons).map(
                 ([name, image], index) => {
-                  const banned = bannedFeatures?.includes(name); // CRIMSON EDIT ADDITION
+                  const banned = bannedFeatures?.includes(name); // CRIMSON EDIT ADD - SUBSPLAT_BANS
                   return (
                     <Button
                       key={index}
                       onClick={() => {
                         props.onSelect(name);
                       }}
-                      disabled={banned} // CRIMSON EDIT ADDITION
+                      disabled={banned} // CRIMSON EDIT ADD - SUBSPLAT_BANS
                       selected={name === props.selected}
                       tooltip={
                         banned ? `${name} (Banned from selection)` : name
-                      } // CRIMSON EDIT ADDITION - Original: tooltip={name}
+                      } // CRIMSON EDIT ADD - SUBSPLAT_BANS -Original: tooltip={name}
                       tooltipPosition="right"
                       style={{
                         height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
@@ -274,7 +274,7 @@ function MainFeature(props: MainFeatureProps) {
     handleSelect,
     randomization,
     setRandomization,
-    bannedFeatures, // CRIMSON EDIT ADDITION
+    bannedFeatures, // CRIMSON EDIT ADD - SUBSPLAT_BANS
   } = props;
 
   const supplementalFeature = catalog.supplemental_feature;
@@ -295,7 +295,7 @@ function MainFeature(props: MainFeatureProps) {
               supplementalFeature
             ]
           }
-          bannedFeatures={bannedFeatures} // CRIMSON EDIT ADDITION
+          bannedFeatures={bannedFeatures} // CRIMSON EDIT ADD - SUBSPLAT_BANS
           onSelect={handleSelect}
         />
       }
@@ -766,7 +766,7 @@ export function MainPage(props: MainPageProps) {
                       setRandomization={createSetRandomization(clothingKey)}
                       bannedFeatures={
                         data.banned_features?.[catalog.name.toLowerCase()]
-                      } // CRIMSON EDIT ADDITION
+                      } // CRIMSON EDIT ADD - SUBSPLAT_BANS
                     />
                   )}
                 </Stack.Item>
