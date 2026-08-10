@@ -262,6 +262,7 @@
 	 */
 	desc = "The clothes of the boys in blue. Did you know that 40% of Cops have heard of " + EVIL_COMPANY + "? Google 40% of Cops for more information."
 	icon_state = "police"
+	custom_price = 20
 
 /obj/item/clothing/under/vampire/police/long
 	name = "police uniform"

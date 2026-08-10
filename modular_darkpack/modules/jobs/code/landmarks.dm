@@ -70,6 +70,7 @@ JOB_START_HELPER(law_enforcement/fbi, JOB_FEDERAL_INVESTIGATOR)
 	name = "generic hecata start"
 
 JOB_START_HELPER(hecata/capo, JOB_CAPO)
+JOB_START_HELPER(hecata/nonni, JOB_I_NONNI)
 JOB_START_HELPER(hecata/famiglia, JOB_LA_SQUADRA)
 JOB_START_HELPER(hecata/squadra, JOB_LA_FAMIGLIA)
 
@@ -82,6 +83,7 @@ JOB_START_HELPER(citizen/club_worker, JOB_CLUB_WORKER)
 JOB_START_HELPER(citizen/janitor, JOB_STREET_JANITOR)
 JOB_START_HELPER(citizen/priest, JOB_PRIEST)
 JOB_START_HELPER(citizen/taxi, JOB_TAXI_DRIVER)
+JOB_START_HELPER(citizen/red_news, JOB_RED_NEWS_REPORTER)
 
 /* Sabbat */
 /obj/effect/landmark/start/darkpack/sabbat

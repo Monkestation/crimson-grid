@@ -165,7 +165,7 @@ GLOBAL_LIST_INIT(derangement_phrases,list(
 /datum/hallucination/your_mother/malk/start()
 	var/mob/living/carbon/human/malk = hallucinator
 	var/age = malk.chronological_age
-	if(!malk.client || malk.stat >= UNCONSCIOUS)
+	if(!malk.client || IS_UNCONSCIOUS(malk))
 		return FALSE
 
 	var/list/spawn_locs = list()

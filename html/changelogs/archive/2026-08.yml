@@ -5,3 +5,73 @@
   - code_imp: new var on datum level for storing info on what source book it comes
       from
   - config: Adds config for limiting merit based on official status
+2026-08-04:
+  Absolucy:
+  - rscadd: Open Seal can now unlock cars.
+  FalloutFalcon:
+  - code_imp: makes some stat lists properly lazylists
+  - code_imp: Changing stats based on stamina or dexterity is handled smarter
+  KCartridge:
+  - rscadd: proper TV subtypes
+  - rscadd: directionals for TV
+  chazzyjazzy:
+  - code_imp: adds a landmark for the red news reporter
+2026-08-05:
+  FalloutFalcon:
+  - rscadd: Seizure Flaw/Deformity
+  breadcrombs:
+  - qol: see through can be toggled on the vicissitude horror form
+  buffyuwu:
+  - rscadd: ported discipline stat descriptions from TFN
+  - rscadd: plays a sound when corax toggle flight
+  - rscadd: gives corax a waddle when walking in bird form
+  cam_dev:
+  - rscadd: '"I Nonni" role for Giovanni elders'
+2026-08-06:
+  FalloutFalcon:
+  - code_imp: Fixes infinite loop caused by  teleport moving while having a looped
+      chain of grabbed mobs
+  Stutternov:
+  - balance: Reduces bonus tiles on acute hearing from 3 to 1 (hearing whispers 4
+      tiles away down to 2)
+  - rscadd: Adds brass knuckles to the game and illegal vendor.
+  - rscadd: Adds spiked knuckles to the Baron.
+  cam_dev:
+  - rscadd: added crosses to loadout menu
+  - qol: crosses can be worn on belt and neck
+  - image: added two new cross sprites
+2026-08-07:
+  FalloutFalcon:
+  - bugfix: Masquerade breaches no longer get smuggled out of deathmatch arena and
+      other spawns not meant to send them to the sewers
+  - bugfix: Loadout items wont get replaced by robes and masks assuming they cover
+      your breaches
+  flleeppyy:
+  - rscadd: Detective UI is now a possible UI to choose from in preferences.
+2026-08-08:
+  Absolucy:
+  - qol: You can now see your phone number by examining your phone.
+  - code_imp: Cleaned up a lot of phone shitcode.
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  FalloutFalcon:
+  - rscadd: Commendation hearts occur when the night ends
+  baabass1:
+  - bugfix: Fixed the door shield not displaying its correct in-hand sprite when held.
+  - code_imp: Added the missing `inhand_icon_state` assignment for the door shield
+      item.
+  chazzyjazzy:
+  - rscadd: adds a police requisitions console, where police officers/captains/sergeants/fbi
+      can purchase dirt-cheap lethal weaponry to stand a fighting chance against vampires
+      and werewolves
+  lpeapnni:
+  - bugfix: Fixes targets list never being properly initialized for Phantom Speaker
+2026-08-10:
+  Stutternov:
+  - rscadd: Adjusts size of 1,000 dollar stack from normal to small.
+  chazzyjazzy:
+  - bugfix: fixes infinite blindness from Pierce the Veil
+  dwinters99:
+  - rscadd: submarine sandwiches (4 types)
+  flleeppyy:
+  - admin: Removed Darkpack Ban Options and moved LOOC ban to the Abstract category.

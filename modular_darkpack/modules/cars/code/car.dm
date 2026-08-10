@@ -150,6 +150,11 @@
 	add_overlay(image(icon = src.icon, icon_state = src.icon_state, pixel_x = -32, pixel_y = -32))
 	icon_state = "empty"
 
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_MAGICALLY_UNLOCKED = PROC_REF(on_magic_unlock),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/darkpack_car/Destroy()
 	STOP_PROCESSING(SScarpool, src)
 	QDEL_NULL(engine_sound_loop)
@@ -769,6 +774,15 @@
 		return
 	on = FALSE
 	engine_sound_loop.stop()
+
+/// Signal proc for [COMSIG_ATOM_MAGICALLY_UNLOCKED]. Unlock and open up when we get knock casted.
+/obj/darkpack_car/proc/on_magic_unlock(datum/source, datum/spell, atom/caster)
+	SIGNAL_HANDLER
+
+	if(!locked)
+		return
+	playsound(src, 'modular_darkpack/modules/cars/sounds/open.ogg', 50, TRUE)
+	locked = FALSE
 
 #undef DOAFTER_SOURCE_CAR
 #undef CAR_TANK_MAX

@@ -57,7 +57,9 @@ function DisciplineCard(props: DisciplineCardProps) {
                   <Box color={isRare ? 'red' : 'label'} textAlign="center">
                     {isRare ? 'Rare Discipline' : 'Common Discipline'}
                   </Box>
-                  {discipline.desc}
+                  {discipline.desc.split('\n').map((line, i) => (
+                    <Box key={i}>{line}</Box>
+                  ))}
                 </>
               }
             >
@@ -193,6 +195,11 @@ function DisciplinesInner(props: DisciplinesInnerProps) {
             {isGhoul
               ? 'Ghouls only have access to a maximum of one dot in each discipline. To unlock more, the Ghoul must be embraced.'
               : "A Kindred's immortal age determines their dot balance. The higher their age, the more dots they can assign."}
+          </i>
+        </Box>
+        <Box color="label" textAlign="center">
+          <i>
+            Hover over a discipline's name to view the stats used. Passives don't require a roll.
           </i>
         </Box>
       </Stack.Item>

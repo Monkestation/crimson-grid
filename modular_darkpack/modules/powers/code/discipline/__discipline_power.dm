@@ -650,7 +650,7 @@
 
 	SEND_SIGNAL(src, COMSIG_POWER_DEACTIVATE, src, target)
 	SEND_SIGNAL(owner, COMSIG_POWER_DEACTIVATE, src, target)
-	if (target)
+	if (istype(target))
 		SEND_SIGNAL(target, COMSIG_POWER_DEACTIVATE_ON, src)
 
 	if (!multi_activate)

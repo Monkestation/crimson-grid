@@ -71,7 +71,7 @@
 	RegisterSignal(owner, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(handle_lose_organ))
 
 	//vampires don't die while in crit, they just slip into torpor after 2 minutes of being critted
-	RegisterSignal(owner, SIGNAL_ADDTRAIT(TRAIT_CRITICAL_CONDITION), PROC_REF(handle_enter_critical_condition))
+	RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(handle_enter_critical_condition))
 
 	//vampires resist vampire bites better than mortals
 	RegisterSignal(owner, COMSIG_MOB_VAMPIRE_SUCKED, PROC_REF(on_vampire_bitten))
@@ -109,7 +109,7 @@
 
 	UnregisterSignal(owner, list(
 		COMSIG_CARBON_LOSE_ORGAN,
-		SIGNAL_ADDTRAIT(TRAIT_CRITICAL_CONDITION),
+		COMSIG_MOB_STATCHANGE,
 		COMSIG_MOB_VAMPIRE_SUCKED,
 		COMSIG_MOB_APPLY_DAMAGE_MODIFIERS,
 		COMSIG_HUMAN_ON_HANDLE_BLOOD,
@@ -188,8 +188,10 @@
 
 	source.death()
 
-/datum/splat/vampire/kindred/proc/handle_enter_critical_condition(mob/living/carbon/human/source)
+/datum/splat/vampire/kindred/proc/handle_enter_critical_condition(mob/living/carbon/human/source, new_stat, old_stat)
 	SIGNAL_HANDLER
+	if(new_stat < SOFT_CRIT)
+		return
 
 	to_chat(source, span_warning("You can feel yourself slipping into Torpor. You can use succumb to immediately sleep..."))
 	addtimer(CALLBACK(src, PROC_REF(slip_into_torpor), source), 2 MINUTES)
@@ -197,7 +199,7 @@
 /datum/splat/vampire/kindred/proc/slip_into_torpor(mob/living/carbon/human/kindred)
 	if (!kindred || (kindred.stat == DEAD))
 		return
-	if (kindred.stat < SOFT_CRIT)
+	if (!IS_UNCONSCIOUS_OR_CRIT(kindred))
 		return
 
 	kindred.torpor(DAMAGE_TRAIT)
