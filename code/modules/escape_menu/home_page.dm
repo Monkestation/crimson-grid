@@ -196,8 +196,8 @@
 		CALLBACK(client, TYPE_VERB_REF(/client, changelog)),
 		/* button_overlay = */ "changelog",
 		/* end_point */ offset_order[1],
-		))
-		offset_order -= offset_order[1]
+	))
+	offset_order -= offset_order[1]
 
 	// CRIMSON EDIT ADD - Discord and Webmap
 	var/discordurl = CONFIG_GET(string/discordurl)
