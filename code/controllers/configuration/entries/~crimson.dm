@@ -9,6 +9,12 @@
 /datum/config_entry/number/extra_save_slots_donator
 	default = 10
 
+/datum/config_entry/string/discordurl
+	default = "https://discord.gg/qezxHW6xS"
+
+/datum/config_entry/string/webmapurl
+	default = "https://maps.crimson-grid.city/"
+
 
 // ------------- dbconfig.txt -------------
 

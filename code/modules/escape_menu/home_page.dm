@@ -101,6 +101,8 @@
 		-360,
 		-420,
 		-480,
+		-540, // CRIMSON EDIT ADD - Discord and Webmap
+		-600, // CRIMSON EDIT ADD - Discord and Webmap
 	)
 	resource_panels = list()
 
@@ -194,7 +196,38 @@
 		CALLBACK(client, TYPE_VERB_REF(/client, changelog)),
 		/* button_overlay = */ "changelog",
 		/* end_point */ offset_order[1],
-	))
+		))
+		offset_order -= offset_order[1]
+
+	// CRIMSON EDIT ADD - Discord and Webmap
+	var/discordurl = CONFIG_GET(string/discordurl)
+	if(discordurl)
+		resource_panels += page_holder.give_screen_object(new /atom/movable/screen/escape_menu/lobby_button/small/collapsible(
+			null,
+			/* hud_owner = */ null,
+			"Discord",
+			"Join the server's discord",
+			/* button_screen_loc */ "BOTTOM:30,RIGHT:-20",
+			CALLBACK(client, TYPE_VERB_REF(/client, discord)),
+			/* button_overlay = */ "discord",
+			/* end_point */ offset_order[1],
+		))
+		offset_order -= offset_order[1]
+
+	var/webmapurl = CONFIG_GET(string/webmapurl)
+	if(webmapurl)
+		resource_panels += page_holder.give_screen_object(new /atom/movable/screen/escape_menu/lobby_button/small/collapsible(
+			null,
+			/* hud_owner = */ null,
+			"Webmap",
+			"View the server's webmap",
+			/* button_screen_loc */ "BOTTOM:30,RIGHT:-20",
+			CALLBACK(client, TYPE_VERB_REF(/client, webmap)),
+			/* button_overlay = */ "webmap",
+			/* end_point */ offset_order[1],
+		))
+		offset_order -= offset_order[1]
+	// CRIMSON EDIT ADD END - Discord and Webmap
 
 /datum/escape_menu/proc/home_resume()
 	qdel(src)
