@@ -177,10 +177,10 @@
 	switch(retval)
 		if(JOB_UNAVAILABLE_BANNED_SPLAT)
 			return "You are currently banned from the [player_splat_id ? snake_to_pascal(player_splat_id, TRUE) : "currently selected"] splat."
-		if(JOB_UNAVAILABLE_BANNED_TRIBE)
-			return "You are currently banned from the [tribe.id || "currently selected"] tribe."
 		if(JOB_UNAVAILABLE_BANNED_CLAN)
-			return "You are currently banned from the [clan?.id || "currently selected"] clan."
+			return "You are currently banned from the [clan?.id ? snake_to_pascal(clan.id, TRUE) : "currently selected"] clan."
+		if(JOB_UNAVAILABLE_BANNED_TRIBE)
+			return "You are currently banned from the [tribe?.id || "currently selected"] tribe."
 		if(JOB_UNAVAILABLE_BANNED_AUSPICE)
 			return "You are currently banned from the [auspice?.id || "currently selected"] auspice."
 		// CRIMSON EDIT ADD END
