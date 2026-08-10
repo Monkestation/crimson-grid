@@ -40,7 +40,7 @@
 	owner.visible_message(
 		span_danger("[owner] starts pouring blood into \the [target][ismob(target) ? "'s mouth" : null]!"),
 		span_info("You start pouring blood into \the [target][ismob(target) ? "'s mouth" : null]."))
-	if(!do_after(owner, delay = charge_duration, target = target, icon = 'modular_darkpack/modules/vampire_the_masquerade/icons/vitae.dmi', iconstate = "vitae"))
+	if(!do_after(owner, delay = charge_duration, target = target, cog_icon = 'modular_darkpack/modules/vampire_the_masquerade/icons/vitae.dmi', cog_iconstate = "vitae"))
 		return FALSE
 
 	var/mob/living/carbon/vamp = owner
@@ -81,7 +81,7 @@
 	if(!length(discipline_entries))
 		return FALSE
 
-	if(!student || student.stat != CONSCIOUS)
+	if(!student || IS_UNCONSCIOUS_OR_CRIT(student))
 		owner.balloon_alert(owner,"they must be conscious!")
 		return FALSE
 
@@ -98,10 +98,10 @@
 	owner.visible_message(
 		span_danger("[owner] starts pouring blood into [student]'s mouth!"),
 		span_info("You start pouring blood into [student]'s mouth."))
-	if(!do_after(owner, delay = 1 MINUTES, target = student, icon = 'modular_darkpack/modules/vampire_the_masquerade/icons/vitae.dmi', iconstate = "vitae"))
+	if(!do_after(owner, delay = 1 MINUTES, target = student, cog_icon = 'modular_darkpack/modules/vampire_the_masquerade/icons/vitae.dmi', cog_iconstate = "vitae"))
 		return FALSE
 
-	if(student.stat != CONSCIOUS)
+	if(IS_UNCONSCIOUS_OR_CRIT(student))
 		return FALSE
 
 	var/mob/living/carbon/vamp = owner

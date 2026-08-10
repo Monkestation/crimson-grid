@@ -1,6 +1,11 @@
 /datum/discipline/serpentis
 	name = "Serpentis"
-	desc = "Act like a cobra, get the powers to stun targets with your gaze and your tongue, praise the mummy traditions and spread them to your childe. Violates Masquerade."
+	desc = {"Act like a cobra, get the powers to stun targets with your gaze and your tongue, praise the mummy traditions and spread them to your childe. Violates Masquerade.
+● The Eyes of the Serpent: Passive
+●● The Tongue of the Asp: Strength (difficulty 6)
+●●● The Skin of the Adder: Passive
+●●●● The Form of the Cobra: Passive
+●●●●● The Heart of Darkness: Passive"}
 	icon_state = "serpentis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/serpentis

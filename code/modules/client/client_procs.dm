@@ -398,11 +398,6 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 			return
 		new /datum/admins(list(localhost_rank), ckey, 1, 1)
 
-	if (length(GLOB.stickybanadminexemptions))
-		GLOB.stickybanadminexemptions -= ckey
-		if (!length(GLOB.stickybanadminexemptions))
-			restore_stickybans()
-
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
 			message_admins(span_adminnotice("[key_name(src)] has been detected as spoofing their byond version. Connection rejected."))
@@ -440,11 +435,13 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	tgui_say.initialize()
 
 	if(alert_mob_dupe_login && !holder)
+		/* CRIMSON GRID REMOVAL START - Kills Stickybans
 		// Notify admins if the connecting player's CID is configured to be ignored by stickybans
 		if (SSstickyban && (computer_id in SSstickyban.ignored_cids))
 			message_admins("<B>MULTIKEYING: </B></span><span class='notice'>[key_name_admin(src)] Connecting player joined with IGNORED CID [computer_id].")
 			log_admin_private("MULTIKEYING: [key_name(src)] Connecting player joined with IGNORED CID [computer_id].")
 			return
+		*/ // CRIMSON GRID REMOVAL END
 
 		// If the CID is not ignored, notify the player with the pop-up.
 		var/dupe_login_message = "Your ComputerID has already logged in with another key this round, please log out of this one NOW or risk being banned!"
@@ -783,10 +780,13 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 		)
 	if(!account_join_date)
 		account_join_date = "Error"
+	/* // CRIMSON REMOVAL START - moved to proc, check modular_vcg/master_files for this file
 	SSdbcore.FireAndForget({"
 		INSERT INTO `[format_table_name("connection_log")]` (`id`,`datetime`,`server_ip`,`server_port`,`round_id`,`ckey`,`ip`,`computerid`)
 		VALUES(null,Now(),INET_ATON(:internet_address),:port,:round_id,:ckey,INET_ATON(:ip),:computerid)
 	"}, list("internet_address" = world.internet_address || "0", "port" = world.port, "round_id" = GLOB.round_id, "ckey" = ckey, "ip" = address, "computerid" = computer_id))
+	*/ // CRIMSON REMOVAL END
+
 
 	SSserver_maint.UpdateHubStatus()
 

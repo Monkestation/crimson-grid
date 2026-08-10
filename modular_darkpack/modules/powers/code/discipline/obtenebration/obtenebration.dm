@@ -1,6 +1,11 @@
 /datum/discipline/obtenebration
 	name = "Obtenebration"
-	desc = "Controls the darkness around you."
+	desc = {"Controls the darkness around you.
+● Shadow Play: Passive
+●● Shroud of Night: Manipulation + Occult (difficulty 7)
+●●● Arms of the Abyss: Manipulation + Occult (difficulty 7)
+●●●● Black Metamorphosis: Manipulation + Courage (difficulty 7)
+●●●●● Tenebrous Form: Passive"}
 	icon_state = "obtenebration"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obtenebration
@@ -119,7 +124,7 @@
 	cooldown_length = 1 TURNS
 
 	var/list/active_tentacles = list()
-	var/aggro_mode = "Aggressive"
+	var/aggro_mode = ABYSS_TENTACLE_MODE_AGGRESSIVE
 
 /datum/discipline_power/obtenebration/arms_of_the_abyss/activate(atom/target)
 	. = ..()
@@ -157,7 +162,7 @@
 
 			// if we ended up making a new tentacle add it to our list and inherit set aggro_mode
 			if(new_tentacle)
-				new_tentacle.aggro_mode = aggro_mode
+				new_tentacle.ai_controller?.set_blackboard_key(BB_ABYSS_TENTACLE_MODE, aggro_mode)
 				active_tentacles += new_tentacle
 	else
 		to_chat(usr, span_warning("The area is too bright for the shadows to manifest!"))
@@ -323,9 +328,9 @@
 /datum/action/aggro_mode
 	name = "Tentacle Control"
 	desc = "Switches the aggro mode of your Arms of the Abyss"
-	button_icon = 'icons/hud/screen_glass.dmi'
+	button_icon = 'modular_darkpack/master_files/icons/hud/screen_gen.dmi'
 	button_icon_state = "harm"
-	var/current_mode = "Aggressive"
+	var/current_mode = ABYSS_TENTACLE_MODE_AGGRESSIVE
 	var/datum/discipline_power/obtenebration/arms_of_the_abyss/abyss_power
 
 /datum/action/aggro_mode/New(Target)
@@ -347,9 +352,9 @@
 		return
 
 	var/list/options = list(
-		"Aggressive" = "Aggressive (grab and damage targets)",
-		"Control" = "Control (grab and restrain without damage)",
-		"Passive" = "Passive (don't attack or grab)"
+		ABYSS_TENTACLE_MODE_AGGRESSIVE = "Aggressive (grab and damage targets)",
+		ABYSS_TENTACLE_MODE_CONTROL = "Control (grab and restrain without damage)",
+		ABYSS_TENTACLE_MODE_PASSIVE = "Passive (don't attack or grab)"
 	)
 
 	var/select = tgui_input_list(tentacle_owner, "Select tentacle behaviour", "Tentacle Mode", options)
@@ -363,13 +368,13 @@
 	var/tentacles = 0
 	for(var/mob/living/basic/abyss_tentacle/T in abyss_power?.active_tentacles)
 		if(T && !QDELETED(T))
-			var/was_passive = (T.aggro_mode == "Passive")
-			T.aggro_mode = select
+			var/was_passive = (T.ai_controller?.blackboard[BB_ABYSS_TENTACLE_MODE] == ABYSS_TENTACLE_MODE_PASSIVE)
+			T.ai_controller?.set_blackboard_key(BB_ABYSS_TENTACLE_MODE, abyss_power.aggro_mode)
 			tentacles++
 
-			if(select == "Passive" && T.grabbed_mob)
+			if(select == ABYSS_TENTACLE_MODE_PASSIVE && T.ai_controller?.blackboard[BB_ABYSS_TENTACLE_GRABBED])
 				T.release_grabbed_mob()
-			else if(was_passive && select != "Passive")
+			else if(was_passive && select != ABYSS_TENTACLE_MODE_PASSIVE)
 				T.recently_released.Cut()
 
 	if(tentacles)
@@ -378,11 +383,11 @@
 
 /datum/action/aggro_mode/proc/update_button_icon()
 	switch(current_mode)
-		if("Aggressive")
+		if(ABYSS_TENTACLE_MODE_AGGRESSIVE)
 			button_icon_state = "harm"
-		if("Control")
+		if(ABYSS_TENTACLE_MODE_CONTROL)
 			button_icon_state = "grab"
-		if("Passive")
+		if(ABYSS_TENTACLE_MODE_PASSIVE)
 			button_icon_state = "disarm"
 	build_all_button_icons()
 

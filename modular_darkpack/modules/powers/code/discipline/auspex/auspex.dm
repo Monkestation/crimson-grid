@@ -8,7 +8,12 @@
 
 /datum/discipline/auspex
 	name = "Auspex"
-	desc = "Allows to see entities, auras and their health through walls."
+	desc = {"Allows to see entities, auras and their health through walls.
+● Heightened Senses: Passive
+●● Aura Perception: Passive
+●●● The Spirit's Touch: Passive
+●●●● Telepathy: Intelligence + Subterfuge vs. target's Willpower
+●●●●● Psychic Projection: Perception + Awareness (difficulty 7)"}
 	icon_state = "auspex"
 	power_type = /datum/discipline_power/auspex
 

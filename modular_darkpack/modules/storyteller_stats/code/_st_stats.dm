@@ -26,10 +26,10 @@
 
 	/// If the user can spend points on that stat.
 	var/editable = TRUE
-	/// A dictionary of modifiers to this attribute.
-	var/list/modifiers = list()
-	/// A dictionary of auto success scores to this attribute.
-	var/list/auto_successes = list()
+	/// LAZYLIST. A dictionary of modifiers to this attribute.
+	var/list/modifiers
+	/// LAZYLIST. A dictionary of auto success scores to this attribute.
+	var/list/auto_successes
 	/// What score does this stat start out with at character creation.
 	var/starting_score = 0
 	/// How many points are in this stat category that the player can use. Used in abstract classes only.
@@ -195,3 +195,6 @@
 	points -= amount
 	freebie_cost_spent += amount
 	return TRUE
+
+/datum/st_stat/proc/update_mob(mob/living/our_mob, initial)
+	return

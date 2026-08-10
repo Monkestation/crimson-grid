@@ -46,7 +46,7 @@
 /datum/action/change_apparel/Activate(atom/target)
 	. = ..()
 	var/mob/living/carbon/werewolf/crinos/C = owner
-	if(C.stat == CONSCIOUS)
+	if(!IS_UNCONSCIOUS_OR_CRIT(C))
 		if(C.sprite_apparel == 4)
 			C.sprite_apparel = 0
 		else

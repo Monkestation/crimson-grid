@@ -143,7 +143,7 @@
 			. += damage_overlay
 
 /mob/living/basic/pet/dog/wolf/proc/wolfresting()
-	return stat > CONSCIOUS || IsSleeping() || IsParalyzed() || body_position == LYING_DOWN
+	return IS_UNCONSCIOUS_OR_CRIT(src) || IsSleeping() || IsParalyzed() || body_position == LYING_DOWN
 
 // WOLF TYPES
 /mob/living/basic/pet/dog/wolf/kinfolk

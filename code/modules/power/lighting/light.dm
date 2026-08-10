@@ -86,8 +86,8 @@
 
 	// DARKPACK EDIT ADD START - AMBIENCE
 	var/flourescent = TRUE // Bulbs are flouresenct and likely to hum.
-	var/datum/looping_sound/light_hum/light_hum
-	var/hum_chance = 50
+	/* var/datum/looping_sound/light_hum/light_hum
+	var/hum_chance = 50 */
 	// DARKPACK EDIT ADD END
 
 // create a new lighting fixture
@@ -95,8 +95,8 @@
 	. = ..()
 
 	// DARKPACK EDIT ADD START - AMBIENCE
-	if(prob(hum_chance))
-		light_hum = new(src, on)
+	/* if(prob(hum_chance))
+		light_hum = new(src, on) */
 	// DARKPACK EDIT ADD END
 
 	// Detect and scream about double stacked lights
@@ -155,7 +155,7 @@
 	if(local_area)
 		on = FALSE
 	QDEL_NULL(cell)
-	QDEL_NULL(light_hum) // DARKPACK EDIT ADD - AMBIENCE
+	/* QDEL_NULL(light_hum) */ // DARKPACK EDIT ADD - AMBIENCE
 	return ..()
 
 /obj/machinery/light/Move()
@@ -294,8 +294,8 @@
 					l_color = color_set
 					)
 		// DARKPACK EDIT ADD START - AMBIENCE
-		if(light_hum)
-			light_hum.start()
+		/* if(light_hum)
+			light_hum.start() */
 		// DARKPACK EDIT ADD END
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE * SSMACHINES_DT) && !turned_off())
 		use_power = IDLE_POWER_USE
@@ -309,8 +309,8 @@
 		use_power = IDLE_POWER_USE
 		set_light(l_range = 0)
 		// DARKPACK EDIT ADD START - AMBIENCE
-		if(light_hum)
-			light_hum.stop()
+		/* if(light_hum)
+			light_hum.stop() */
 		// DARKPACK EDIT ADD END
 	update_appearance()
 	update_current_power_usage()
@@ -524,13 +524,13 @@
 // if a light is turned off, it won't activate emergency power
 /obj/machinery/light/proc/turned_off()
 	var/area/local_area = get_room_area()
-	return !local_area.lightswitch && local_area.power_light || flickering
+	return (local_area && !local_area.lightswitch && local_area.power_light) || flickering
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
 	var/area/local_area = get_room_area()
-	return local_area.lightswitch && local_area.power_light
+	return local_area && local_area.lightswitch && local_area.power_light
 
 // returns whether this light has emergency power
 // can also return if it has access to a certain amount of that power

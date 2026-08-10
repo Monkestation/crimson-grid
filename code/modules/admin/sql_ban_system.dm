@@ -348,7 +348,7 @@
 			break_counter = 0
 
 		var/list/other_job_lists = list(
-			"Abstract" = list("Appearance", "Emote", "Deadchat", "OOC", "Urgent Adminhelp"),
+			"Abstract" = list("Appearance", "Emote", "Deadchat", "OOC", "Urgent Adminhelp", BAN_LOOC), // DARKPACK EDIT ADD - LOOC
 			)
 		for(var/department in other_job_lists)
 			output += "<div class='column'><label class='rolegroup [ckey(department)]'><input type='checkbox' name='[department]' class='hidden' onClick='header_click_all_checkboxes(this)'>[department]</label><div class='content'>"
@@ -405,11 +405,6 @@
 				ROLE_VOIDWALKER,
 				ROLE_WIZARD,
 			),
-			// DARKPACK EDIT ADD START
-			"Darkpack Ban Options" = list(
-				BAN_LOOC,
-			),
-			// DARKPACK EDIT ADD END
 		)
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'><input type='checkbox' name='[department]' class='hidden' onClick='header_click_all_checkboxes(this)'>[department]</label><div class='content'>"
@@ -637,6 +632,27 @@
 	var/msg = "has created a [isnull(duration) ? "permanent" : "temporary [time_message]"] [applies_to_admins ? "admin " : ""][is_server_ban ? "server ban" : "role ban from [roles_to_ban.len] roles"] for [target]."
 	log_admin_private("[kn] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join(", ")]"] Reason: [reason]")
 	message_admins("[kna] [msg][is_server_ban ? "" : " Roles: [roles_to_ban.Join("\n")]"]\nReason: [reason]")
+	// CRIMSON EDIT ADDITION START
+	// Mock player just in case they disconnect and we lose their preferences
+	var/datum/client_interface/mock_player = new(player_key)
+	mock_player.prefs = new /datum/preferences(mock_player)
+
+	var/list/plexora_ban = list(
+		"ckey" = player_ckey,
+		"roles" = roles_to_ban,
+		"expiration_time" = duration,
+		"expiration_interval" = interval,
+		"reason" = reason,
+		"admin_ckey" = admin_ckey,
+		"admin_key_name" = key_name(usr),
+		"round_id" = GLOB.round_id,
+		"round_timer" = round_timestamp(),
+		"world_time" = world.time,
+	)
+
+	plexora_ban["total_playtime"] = mock_player.get_exp_living()
+	SSplexora.new_ban(plexora_ban)
+	// CRIMSON EDIT ADDITION END
 	if(applies_to_admins)
 		send2adminchat("BAN ALERT","[kn] [msg]")
 	if(player_ckey)

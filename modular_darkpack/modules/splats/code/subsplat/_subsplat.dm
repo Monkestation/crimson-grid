@@ -32,6 +32,7 @@
 	// Applies on_join_round effects when a client logs into this mob
 	if(joining_round)
 		RegisterSignal(gaining_mob, COMSIG_MOB_LOGIN, PROC_REF(on_join_round))
+		RegisterSignal(gaining_mob, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED, PROC_REF(apply_after_setup))
 
 /**
  * Undoes the effects of on_gain more or less
@@ -42,7 +43,7 @@
  */
 /datum/subsplat/proc/on_lose(mob/living/carbon/human/losing_mob)
 	SHOULD_CALL_PARENT(TRUE)
-	UnregisterSignal(losing_mob, COMSIG_MOB_LOGIN)
+	UnregisterSignal(losing_mob, list(COMSIG_MOB_LOGIN, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED))
 	return
 
 
@@ -52,8 +53,7 @@
  * at roundstart. Anything that's not innate
  * to the subsplat and more part of its social
  * structure or whatnot should go in here.
- * Will teleport Masquerade-breaching Clans to
- * safe areas and give them their subsplat keys by
+ * Will give them their subsplat keys by
  * default.
  *
  * Arguments:
@@ -61,13 +61,25 @@
  */
 /datum/subsplat/proc/on_join_round(mob/living/carbon/human/joining)
 	SIGNAL_HANDLER
-
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(subsplat_keys && check_doors_for_keys && key_has_matching_door(subsplat_keys))
 		joining.put_in_r_hand(new subsplat_keys(joining))
 
 	UnregisterSignal(joining, COMSIG_MOB_LOGIN)
+
+/**
+ * Applies anything that should only be applied when joining the round through late-start or round-start
+ * This exludes spawning as a ghost and other such sources. This is for stuff like outfits or teleporting players to locations.
+ *
+ * Arguments:
+ * * source - Human with this subsplat joining the round.
+ */
+/datum/subsplat/proc/apply_after_setup(mob/living/carbon/human/source)
+	SIGNAL_HANDLER
+	SHOULD_CALL_PARENT(TRUE)
+
+	UnregisterSignal(source, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
 
 /// Displays description and roleplay level of the subsplat.
 /datum/subsplat/proc/show_lore(mob/user)
