@@ -290,9 +290,6 @@
  *********/
 //Can *you* speak their language?
 
-/// The amount of extra range (in tiles) given to trees upon falling.
-#define TREE_FALL_EXTRARANGE 5
-
 /obj/structure/flora/tree
 	name = "tree"
 	desc = "A large tree."
@@ -327,15 +324,13 @@
 /obj/structure/flora/tree/harvest(mob/living/user, product_amount_multiplier)
 	. = ..()
 	var/turf/my_turf = get_turf(src)
-	if(has_gravity(my_turf)) // If a tree falls in the forest, it makes a sound unless it doesn't have gravity.
-		playsound(my_turf, 'sound/effects/meteorimpact.ogg', 100 , FALSE, extrarange = TREE_FALL_EXTRARANGE)
+	playsound(my_turf, 'sound/effects/meteorimpact.ogg', 100 , FALSE, FALSE)
 	var/obj/structure/flora/tree/stump/new_stump = new(my_turf)
 	new_stump.name = "[name] stump"
 
 /obj/structure/flora/tree/uproot(mob/living/user)
 	..()
-	if(has_gravity(get_turf(src)))
-		playsound(get_turf(src), 'sound/effects/meteorimpact.ogg', 100 , FALSE, extrarange = TREE_FALL_EXTRARANGE)
+	playsound(get_turf(src), 'sound/effects/meteorimpact.ogg', 100 , FALSE, FALSE)
 
 /obj/structure/flora/tree/stump
 	name = "stump"
@@ -548,8 +543,6 @@
 	. = ..()
 	icon_state = "palm[rand(1,2)]"
 	update_appearance()
-
-#undef TREE_FALL_EXTRARANGE
 
 /*********
  * Grass *

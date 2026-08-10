@@ -1,8 +1,5 @@
 /obj/structure/retail/bubway_menu
 	product_types = list(
-		/obj/item/food/submarine_sandwich,
-		/obj/item/food/submarine_sandwich/meatball,
-		/obj/item/food/submarine_sandwich/italiano,
 		/obj/item/food/donut/plain,
 		/obj/item/food/burger/plain,
 		/obj/item/food/cookie,

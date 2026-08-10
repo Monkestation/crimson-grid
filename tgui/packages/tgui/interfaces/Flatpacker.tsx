@@ -144,7 +144,7 @@ const BoardPreview = (props: BoardPreviewProps) => {
             icon="cog"
             fontSize={1.2}
             textAlign="center"
-            disabled={design?.disableReason !== ''}
+            disabled={!design || design.disableReason !== ''}
             tooltip={design.disableReason}
             tooltipPosition="bottom"
             onClick={() => onPrint()}

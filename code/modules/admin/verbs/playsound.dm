@@ -46,7 +46,7 @@ ADMIN_VERB(play_local_sound, R_SOUND, "Play Local Sound", "Plays a sound only yo
 	playsound(get_turf(user.mob), sound, volume || 50, FALSE)
 	BLACKBOX_LOG_ADMIN_VERB("Play Local Sound")
 
-ADMIN_VERB(play_direct_mob_sound, R_SOUND, "Play Direct Mob Sound", "Play a sound directly to a mob.", ADMIN_CATEGORY_FUN, sound as sound, mob/target)
+ADMIN_VERB(play_direct_mob_sound, R_SOUND, "Play Direct Mob Sound", "Play a sound directly to a mob.", ADMIN_CATEGORY_FUN, sound as sound, mob/target in world)
 	if(!target)
 		target = input(user, "Choose a mob to play the sound to. Only they will hear it.", "Play Mob Sound") as null|anything in sort_names(GLOB.player_list)
 	if(QDELETED(target))
@@ -106,7 +106,7 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 		if (duration > 10 MINUTES)
 			if((tgui_alert(user, "This song is over 10 minutes long. Are you sure you want to play it?", "Length Warning", list("No", "Yes", "Cancel")) != "Yes"))
 				return
-		var/include_song_data = tgui_input_list(user, "Show the title of and link to this song to the players?\n[title]", "Show Info?", list("Yes", "No", "Custom Title", "Cancel")) // CRIMSON EDIT, ORIGINAL: var/include_song_data = tgui_alert(user, "Show the title of and link to this song to the players?\n[title]", "Song Info", list("Yes", "No", "Cancel"))
+		var/include_song_data = tgui_alert(user, "Show the title of and link to this song to the players?\n[title]", "Song Info", list("Yes", "No", "Cancel"))
 		switch(include_song_data)
 			if("Yes")
 				music_extra_data["title"] = data["title"]
@@ -117,14 +117,6 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 				music_extra_data["artist"] = "Unknown"
 				music_extra_data["upload_date"] = "XX.YY.ZZZZ"
 				music_extra_data["album"] = "Default"
-			// CRIMSON EDIT ADDITION START
-			if("Custom Title")
-				var/custom_title = tgui_input_text(user, "Enter the title to show to players", "Custom sound info", null)
-				if (!length(custom_title))
-					tgui_alert(user, "No title specified, using default.", "Custom sound info", list("Okay"))
-				else
-					music_extra_data["title"] = custom_title
-			// CRIMSON EDIT ADDITION END
 			if("Cancel", null)
 				return
 		var/credit_yourself = tgui_alert(user, "Display who played the song?", "Credit Yourself", list("Yes", "No", "Cancel"))

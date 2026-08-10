@@ -1,5 +1,6 @@
 /mob/living/carbon/human/npc/police
 	aggressive = TRUE
+	max_stat = DEAD
 	my_backup_weapon_type = /obj/item/melee/baton/vamp
 
 /mob/living/carbon/human/npc/police/Initialize(mapload)
@@ -10,7 +11,7 @@
 /mob/living/carbon/human/npc/police/Life()
 	. = ..()
 
-	if (IS_UNCONSCIOUS_OR_CRIT(src))
+	if (stat >= SOFT_CRIT)
 		return
 	if (!prob(10))
 		return
@@ -28,6 +29,7 @@
 /mob/living/carbon/human/npc/police/static
 	// fights_anyway = TRUE
 	staying = TRUE
+	max_stat = UNCONSCIOUS
 	my_backup_weapon_type = /obj/item/melee/baton/vamp
 
 /*

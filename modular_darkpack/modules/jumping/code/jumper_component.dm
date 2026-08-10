@@ -38,7 +38,7 @@
 	if(LAZYACCESS(modifiers, CTRL_CLICK) || LAZYACCESS(modifiers, SHIFT_CLICK) || LAZYACCESS(modifiers, ALT_CLICK))
 		return
 
-	if(IS_UNCONSCIOUS_OR_CRIT(jumper))
+	if(jumper.stat >= UNCONSCIOUS)
 		return
 
 	if(jumper.pulledby && jumper.pulledby.grab_state != GRAB_PASSIVE)

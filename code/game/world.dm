@@ -374,14 +374,12 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 	#else
 	if(check_hard_reboot())
 		log_world("World hard rebooted at [server_timestamp()]")
-		SSplexora.notify_shutdown(PLEXORA_SHUTDOWN_KILLDD) // CRIMSON ADDITION
 		shutdown_logging() // See comment below.
 		QDEL_NULL(Tracy)
 		QDEL_NULL(Debugger)
 		TgsEndProcess()
 		return ..()
 
-	SSplexora.notify_shutdown() // CRIMSON ADDITION
 	log_world("World rebooted at [server_timestamp()]")
 
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
@@ -434,7 +432,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		new_status += "<br><b>STARTING</b>"
 	else if(SSticker)
 		if(SSticker.current_state == GAME_STATE_PREGAME && SSticker.GetTimeLeft() > 0)
-			new_status += "<br>Starting: <b>[DisplayTimeText(SSticker.GetTimeLeft())]</b>" // CRIMSON EDIT - ORIGINAL: new_status += "<br>Starting: <b>[round((SSticker.GetTimeLeft())/10)]</b>"
+			new_status += "<br>Starting: <b>[round((SSticker.GetTimeLeft())/10)]</b>"
 		else if(SSticker.current_state == GAME_STATE_SETTING_UP)
 			new_status += "<br>Starting: <b>Now</b>"
 		else if(SSticker.IsRoundInProgress())

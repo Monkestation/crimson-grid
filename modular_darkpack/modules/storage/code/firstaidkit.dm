@@ -139,7 +139,6 @@
 	desc = "An Individual First-Aid Kit, for when it's just you and me."
 	icon_state = "firstaid_ifak"
 	inhand_icon_state = "firstaid_ifak"
-	custom_price = 20
 
 /obj/item/storage/medkit/darkpack/ifak/PopulateContents()
 	if(empty)

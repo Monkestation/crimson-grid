@@ -1,12 +1,12 @@
-import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
-import { type SeedData, SeedTable, type TraitData } from './SeedTable';
+import { useBackend } from '../backend';
+import { SeedTable, SeedData, TraitData } from './SeedTable';
 
 type Data = {
   seeds: SeedData[];
   trait_db: TraitData[];
   cycle_seconds: number;
-};
+}
 
 export const NtosBotanicalEncyclopedia = (props) => {
   const { data } = useBackend<Data>();

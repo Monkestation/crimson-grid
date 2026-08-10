@@ -4,7 +4,7 @@
 		if(!ismundane(usr))
 			return
 		var/mob/living/carbon/human/reporter = usr
-		if(IS_UNCONSCIOUS_OR_CRIT(reporter))
+		if(reporter.stat > UNCONSCIOUS)
 			return
 		if(usr == src)
 			return
@@ -22,7 +22,7 @@
 		if(!ismundane(usr))
 			return
 		var/mob/living/carbon/human/reporter = usr
-		if(IS_UNCONSCIOUS_OR_CRIT(reporter))
+		if(reporter.stat > UNCONSCIOUS)
 			return
 		if(usr == src)
 			return

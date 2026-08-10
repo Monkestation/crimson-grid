@@ -37,7 +37,6 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	desc = "This appears to be a combination of both sand and stone."
 	singular_name = "sandstone brick"
 	icon_state = "sheet-sandstone"
-	worn_icon_state = null
 	inhand_icon_state = null
 	throw_speed = 3
 	throw_range = 5
@@ -104,7 +103,6 @@ GLOBAL_LIST_INIT(sandbag_recipes, list ( \
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"
 	icon_state = "sheet-diamond"
-	worn_icon_state = "purified_soulstone"
 	inhand_icon_state = "sheet-diamond"
 	singular_name = "diamond"
 	construction_path_type = "diamond"
@@ -137,7 +135,6 @@ GLOBAL_LIST_INIT(diamond_recipes, list ( \
 /obj/item/stack/sheet/mineral/uranium
 	name = "uranium"
 	icon_state = "sheet-uranium"
-	worn_icon_state = "sheet-uranium"
 	inhand_icon_state = "sheet-uranium"
 	singular_name = "uranium sheet"
 	construction_path_type = "uranium"
@@ -174,7 +171,6 @@ GLOBAL_LIST_INIT(uranium_recipes, list ( \
 /obj/item/stack/sheet/mineral/plasma
 	name = "solid plasma"
 	icon_state = "sheet-plasma"
-	worn_icon_state = "sheet-plasma"
 	inhand_icon_state = "sheet-plasma"
 	singular_name = "plasma sheet"
 	construction_path_type = "plasma"
@@ -214,7 +210,6 @@ GLOBAL_LIST_INIT(plasma_recipes, list ( \
 /obj/item/stack/sheet/mineral/gold
 	name = "gold"
 	icon_state = "sheet-gold"
-	worn_icon_state = "sheet-gold"
 	inhand_icon_state = "sheet-gold"
 	singular_name = "gold bar"
 	construction_path_type = "gold"
@@ -246,7 +241,6 @@ GLOBAL_LIST_INIT(gold_recipes, list ( \
 /obj/item/stack/sheet/mineral/silver
 	name = "silver"
 	icon_state = "sheet-silver"
-	worn_icon_state = "sheet-silver"
 	inhand_icon_state = "sheet-silver"
 	singular_name = "silver bar"
 	construction_path_type = "silver"
@@ -278,9 +272,7 @@ GLOBAL_LIST_INIT(silver_recipes, list ( \
 /obj/item/stack/sheet/mineral/bananium
 	name = "bananium"
 	icon_state = "sheet-bananium"
-	lefthand_file = 'icons/mob/inhands/items/food_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items/food_righthand.dmi'
-	inhand_icon_state = "banana_peel"
+	inhand_icon_state = null
 	singular_name = "bananium sheet"
 	construction_path_type = "bananium"
 	mats_per_unit = list(/datum/material/bananium=SHEET_MATERIAL_AMOUNT)
@@ -307,7 +299,6 @@ GLOBAL_LIST_INIT(bananium_recipes, list ( \
 /obj/item/stack/sheet/mineral/titanium
 	name = "titanium"
 	icon_state = "sheet-titanium"
-	worn_icon_state = "sheet-titanium"
 	inhand_icon_state = "sheet-titanium"
 	singular_name = "titanium sheet"
 	force = 5
@@ -366,7 +357,6 @@ GLOBAL_LIST_INIT(titanium_recipes, list ( \
 /obj/item/stack/sheet/mineral/plastitanium
 	name = "plastitanium"
 	icon_state = "sheet-plastitanium"
-	worn_icon_state = "sheet-plastitanium"
 	inhand_icon_state = "sheet-plastitanium"
 	singular_name = "plastitanium sheet"
 	force = 5
@@ -384,8 +374,6 @@ GLOBAL_LIST_INIT(titanium_recipes, list ( \
 // DARKPACK EDIT REMOVAL START
 GLOBAL_LIST_INIT(plastitanium_recipes, list ( \
 	new/datum/stack_recipe("plastitanium tile", /obj/item/stack/tile/mineral/plastitanium, 1, 4, 20, crafting_flags = NONE, category = CAT_TILES), \
-	new/datum/stack_recipe("plastitanium wall filler", /obj/item/stack/wall_filling/plastitanium/basic, 2, 1, 10, crafting_flags = NONE, category = CAT_STRUCTURE), \
-	new/datum/stack_recipe("plastitanium platform", /obj/structure/platform/plastitanium, 2, time = 3 SECONDS, crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF | CRAFT_ON_SOLID_GROUND, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75, category = CAT_STRUCTURE), \
 	))
 /*
 /obj/item/stack/sheet/mineral/plastitanium/get_main_recipes()
@@ -400,7 +388,6 @@ GLOBAL_LIST_INIT(plastitanium_recipes, list ( \
 /obj/item/stack/sheet/mineral/snow
 	name = "snow"
 	icon_state = "sheet-snow"
-	worn_icon_state = null
 	inhand_icon_state = null
 	mats_per_unit = list(/datum/material/snow = SHEET_MATERIAL_AMOUNT)
 	singular_name = "snow block"
@@ -441,7 +428,6 @@ GLOBAL_LIST_INIT(adamantine_recipes, list(
 /obj/item/stack/sheet/mineral/adamantine
 	name = "adamantine"
 	icon_state = "sheet-adamantine"
-	worn_icon_state = "sheet-adamantine"
 	inhand_icon_state = "sheet-adamantine"
 	singular_name = "adamantine sheet"
 	mats_per_unit = list(/datum/material/adamantine=SHEET_MATERIAL_AMOUNT)
@@ -460,7 +446,6 @@ GLOBAL_LIST_INIT(adamantine_recipes, list(
 	desc = "Rare material found in distant lands."
 	singular_name = "runite bar"
 	icon_state = "sheet-runite"
-	worn_icon_state = "sheet-runite"
 	inhand_icon_state = "sheet-runite"
 	mats_per_unit = list(/datum/material/runite=SHEET_MATERIAL_AMOUNT)
 	merge_type = /obj/item/stack/sheet/mineral/runite
@@ -473,7 +458,6 @@ GLOBAL_LIST_INIT(adamantine_recipes, list(
 /obj/item/stack/sheet/mineral/mythril
 	name = "mythril"
 	icon_state = "sheet-mythril"
-	worn_icon_state = "sheet-mythril"
 	inhand_icon_state = "sheet-mythril"
 	singular_name = "mythril sheet"
 	novariants = TRUE
@@ -487,7 +471,6 @@ GLOBAL_LIST_INIT(adamantine_recipes, list(
 	name = "alien alloy"
 	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "sheet-abductor"
-	worn_icon_state = "sheet-abductor"
 	inhand_icon_state = "sheet-abductor"
 	singular_name = "alien alloy sheet"
 	construction_path_type = "abductor"
@@ -558,9 +541,7 @@ GLOBAL_LIST_INIT(metalhydrogen_recipes, list(
 /obj/item/stack/sheet/mineral/metal_hydrogen
 	name = "metal hydrogen"
 	icon_state = "sheet-metalhydrogen"
-	worn_icon_state = "sheet-metalhydrogen"
-	worn_icon_state = "sheet-metalhydrogen"
-	inhand_icon_state = "sheet-metalhydrogen"
+	inhand_icon_state = null
 	singular_name = "metal hydrogen sheet"
 	w_class = WEIGHT_CLASS_NORMAL
 	resistance_flags = FIRE_PROOF | LAVA_PROOF | ACID_PROOF | BOMB_PROOF
@@ -598,7 +579,6 @@ GLOBAL_LIST_INIT(zaukerite_recipes, list(
 	name = "zaukerite"
 	icon_state = "zaukerite"
 	inhand_icon_state = "sheet-zaukerite"
-	worn_icon_state = "shard_white"
 	singular_name = "zaukerite crystal"
 	w_class = WEIGHT_CLASS_NORMAL
 	gulag_value = 100

@@ -2,12 +2,7 @@
 
 /datum/discipline/presence
 	name = "Presence"
-	desc = {"Allows you to attract, sway, and control crowds through supernatural allure and emotional manipulation.
-● Awe: Charisma + Performance (difficulty 7)
-●● Dread Gaze: Charisma + Intimidation vs. Wits + Courage
-●●● Entrancement: Appearance + Empathy vs. Willpower
-●●●● Summon: Charisma + Subterfuge (difficulty 7)
-●●●●● Majesty: Courage vs. Charisma + Intimidation"}
+	desc = "Allows you to attract, sway, and control crowds through supernatural allure and emotional manipulation."
 	icon_state = "presence"
 	power_type = /datum/discipline_power/presence
 

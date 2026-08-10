@@ -49,8 +49,7 @@
 
 /turf/open/misc/ice/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(tool.tool_behaviour != TOOL_SHOVEL && tool.tool_behaviour != TOOL_MINING)
-		return ..()
-
+		return NONE
 	return dig_hole(user) ? ITEM_INTERACT_SUCCESS : NONE
 
 /turf/open/misc/ice/proc/dig_hole(mob/living/user)

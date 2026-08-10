@@ -13,7 +13,7 @@
 // We also make SURE to fail loud, IE: if something stops the message from reaching the recipient, the sender HAS to know
 // If you "refactor" this to make it "cleaner" I will send you to hell
 
-ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_NONE, "Admin PM Mob", mob/target)
+ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_NONE, "Admin PM Mob", mob/target in world)
 	if(!ismob(target))
 		to_chat(
 			src,
@@ -287,11 +287,10 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 /// or a /client, in which case we send in the standard form
 /// send_message is the raw message to send, it will be filtered and treated to ensure we do not break any text handling
 /// Returns FALSE if the send failed, TRUE otherwise
-/client/proc/sends_adminpm_message(ambiguious_recipient, raw_send_message) // CRIMSON EDIT CHANGE - ORIGINAL: /client/proc/sends_adminpm_message(ambiguious_recipient, send_message)
+/client/proc/sends_adminpm_message(ambiguious_recipient, send_message)
 	if(IsAdminAdvancedProcCall())
 		return FALSE
 
-	var/send_message = raw_send_message // CRIMSON EDIT ADDITION
 	send_message = adminpm_filter_text(ambiguious_recipient, send_message)
 	if(!send_message)
 		return null
@@ -323,7 +322,6 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 		var/category = "Reply: [ckey]"
 		if(new_admin_help)
 			category = "#[new_help_id] [category]"
-			SSplexora.aticket_pm(new_admin_help, raw_send_message) // CRIMSON EDIT ADDITION
 
 		send2adminchat(category, raw_message)
 		return TRUE
@@ -393,14 +391,6 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 			link_to_us,
 			span_linkify(send_message),
 		)
-		// CRIMSON EDIT ADDITION START - Plexora
-		if (!ticket || recipient_ticket)
-			var/datum/admin_help = GLOB.ahelp_tickets.TicketByID(recipient_ticket_id)
-
-			SSplexora.aticket_pm(admin_help, raw_send_message, src.ckey)
-		else
-			SSplexora.aticket_pm(ticket || recipient_ticket, raw_send_message, src.ckey)
-		// CRIMSON EDIT ADDITION END - Plexora
 
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
@@ -483,11 +473,6 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 				log_in_blackbox = FALSE,
 				player_message = player_interaction_message)
 
-		// CRIMSON EDIT ADDITION START
-		if (ticket || recipient_ticket)
-			SSplexora.aticket_pm(ticket || recipient_ticket, raw_send_message, src.ckey)
-		// CRIMSON EDIT ADDITION END
-
 		SSblackbox.LogAhelp(ticket_id, "Reply", send_message, recip_ckey, our_ckey)
 		return TRUE
 
@@ -505,7 +490,6 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 
 	ticket.reply_to_admins_notification(send_message)
 	SSblackbox.LogAhelp(ticket_id, "Reply", send_message, recip_ckey, our_ckey)
-	SSplexora.aticket_pm(ticket, raw_send_message) // CRIMSON EDIT ADDITION
 
 	return TRUE
 

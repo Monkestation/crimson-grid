@@ -38,7 +38,6 @@
 	questions = CONFIG_GET(str_list/interview_questions)
 	responses.len = questions.len
 	welcome_message = CONFIG_GET(string/interview_welcome_msg)
-	SSplexora.interview(src) // CRIMSON EDIT ADDITION
 
 /**
  * Approves the interview, forces reconnect of owner if relevant.

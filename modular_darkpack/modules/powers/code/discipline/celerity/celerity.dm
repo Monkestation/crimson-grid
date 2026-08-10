@@ -1,11 +1,6 @@
 /datum/discipline/celerity
 	name = "Celerity"
-	desc = {"Boosts your speed. Violates Masquerade.
-● Celerity 1: Passive
-●● Celerity 2: Passive
-●●● Celerity 3: Passive
-●●●● Celerity 4: Passive
-●●●●● Celerity 5: Passive"}
+	desc = "Boosts your speed. Violates Masquerade."
 	icon_state = "celerity"
 	power_type = /datum/discipline_power/celerity
 

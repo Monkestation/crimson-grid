@@ -1,5 +1,7 @@
 // Stat Flags
-#define AFFECTS_STATS (1<<0) // If the stat affects other stats, like courage or permanent willpower.
+#define AFFECTS_HEALTH (1<<0)
+#define AFFECTS_SPEED (1<<1)
+#define AFFECTS_STATS (1<<2) // If the stat affects other stats, like courage or permanent willpower.
 
 
 #define STAT_FREEBIE_POINTS /datum/st_stat/freebie

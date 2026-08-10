@@ -19,9 +19,6 @@
 	///The departmental access given to the key.
 	var/list/department_access
 
-	/// The amount of time it takes to find the necessary key when attempting to open an airlock
-	var/key_speed = 3 SECONDS
-
 /obj/item/access_key/Initialize(mapload)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_ON_DEPARTMENT_ACCESS, PROC_REF(department_access_given))
@@ -53,7 +50,7 @@
 		return FALSE
 	user.balloon_alert_to_viewers("fumbles with keys...", "finding key...")
 	user.playsound_local(src, 'sound/items/rattling_keys.ogg', 25, TRUE)
-	if(!do_after(user, key_speed, airlock))
+	if(!do_after(user, 3 SECONDS, airlock))
 		return FALSE
 	if(!department_access || !airlock.check_access_list(SSid_access.accesses_by_region[department_access]))
 		airlock.balloon_alert(user, "no access!")

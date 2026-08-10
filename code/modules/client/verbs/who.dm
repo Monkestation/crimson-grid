@@ -23,7 +23,7 @@ GAME_VERB(/client, who, "Who", "OOC")
 				else
 					entry += " - Playing as [client.mob.real_name]"
 					switch(client.mob.stat)
-						if(HARD_CRIT)
+						if(UNCONSCIOUS, HARD_CRIT)
 							entry += " - <font color='darkgray'><b>Unconscious</b></font>"
 						if(DEAD)
 							if(isobserver(client.mob))
@@ -77,19 +77,6 @@ GAME_VERB(/client, adminwho, "Adminwho", "Admin")
 	lines += payload_string
 
 	to_chat(src, fieldset_block(span_bold(header), jointext(lines, "\n"), "boxed_message"), type = MESSAGE_TYPE_INFO)
-
-	// CRIMSON EDIT START - admin alert tracking
-	if(COOLDOWN_FINISHED(src, adminwho_alert_cooldown) && !is_admin(src))
-		var/laststring = "has checked adminwho."
-		if(awho_count_since > 0)
-			laststring += " ([awho_count_since] checks since last cooldown)"
-		awho_count_since = 0
-		message_admins("[ADMIN_STEALTHLOOKUPFLW(mob)] [laststring]")
-		log_admin_private("[key_name(src)] [laststring]")
-		COOLDOWN_START(src, adminwho_alert_cooldown, 1 MINUTES)
-
-	awho_count_since++
-	// CRIMSON EDIT END
 
 /// Proc that generates the applicable string to dispatch to the client for adminwho.
 /client/proc/generate_adminwho_string()
