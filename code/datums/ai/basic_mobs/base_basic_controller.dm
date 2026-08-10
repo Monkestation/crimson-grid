@@ -1,6 +1,5 @@
 /datum/ai_controller/basic_controller
 	movement_delay = 0.4 SECONDS
-	behavior_tree_json = ABSTRACT_AI_CLASS
 
 /datum/ai_controller/basic_controller/TryPossessPawn(atom/new_pawn)
 	if(!isliving(new_pawn))
@@ -35,7 +34,7 @@
 	if(. & AI_UNABLE_TO_RUN)
 		return .
 	var/mob/living/living_pawn = pawn
-	if (IS_UNCONSCIOUS_OR_CRIT(living_pawn) && !(ai_traits & CAN_ACT_WHILE_DEAD))
+	if (living_pawn.stat && !(ai_traits & CAN_ACT_WHILE_DEAD))
 		return AI_UNABLE_TO_RUN
 
 	var/ignore_incap_flags = NONE
@@ -63,9 +62,9 @@
 /datum/ai_controller/proc/on_tamed(datum/source, mob/living/new_friend)
 	SIGNAL_HANDLER
 	forgive_target(new_friend)
-	clear_blackboard_key(BB_CURRENT_TARGET)
+	clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
 	clear_blackboard_key(BB_BASIC_MOB_RETALIATE_LIST) //we have just been tamed by a new party, clean slate for everyone!
-	cancel_current_plan()
+	CancelActions()
 	RegisterSignal(new_friend, COMSIG_LIVING_MADE_NEW_FRIEND, PROC_REF(on_master_tame))
 
 /datum/ai_controller/proc/on_untamed(datum/source, mob/living/old_friend)
@@ -78,7 +77,7 @@
 
 /datum/ai_controller/proc/forgive_target(atom/target)
 	var/static/list/keys_to_check = list(
-		BB_CURRENT_TARGET,
+		BB_BASIC_MOB_CURRENT_TARGET,
 		BB_CURRENT_PET_TARGET,
 	)
 	for(var/key in keys_to_check)

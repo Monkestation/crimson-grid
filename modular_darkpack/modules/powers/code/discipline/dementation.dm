@@ -1,11 +1,6 @@
 /datum/discipline/dementation
 	name = "Dementation"
-	desc = {"Makes all humans in radius mentally ill for a moment, supressing their defending ability.
-● Passion: Charisma + Empathy
-●● The Haunting: Manipulation + Subterfuge
-●●● Eyes of Chaos: Perception + Occult
-●●●● Voice of Madness: Manipulation + Empathy
-●●●●● Total Insanity: Manipulation + Intimidation"}
+	desc = "Makes all humans in radius mentally ill for a moment, supressing their defending ability."
 	icon_state = "dementation"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/dementation
@@ -379,7 +374,7 @@ frenzy or Rötschreck response is automatic.
 	owner.say(attack_text, spans = list("bold", "singing"))
 	var/list/potential_targets = list()
 	for(var/mob/living/carbon/human/hearer in (get_hearers_in_view(8, owner) - owner))
-		if(HAS_TRAIT(hearer, TRAIT_DEAF) || IS_UNCONSCIOUS_OR_CRIT(hearer))
+		if(HAS_TRAIT(hearer, TRAIT_DEAF) || hearer.stat > CONSCIOUS)
 			continue
 		potential_targets += hearer
 	var/targets_affected = 0
@@ -442,7 +437,7 @@ determines the duration.
 	return TRUE
 
 /datum/discipline_power/dementation/total_insanity/proc/self_attack(iteration)
-	if(IS_UNCONSCIOUS_OR_CRIT(attack_target))
+	if(attack_target.stat > CONSCIOUS)
 		return
 	if(iteration <= 0)
 		return

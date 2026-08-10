@@ -1,11 +1,13 @@
 /obj/effect/landmark/latejoin_masquerade
-	name = "JoinLate Masquerade"
+	name = "JoinLate"
 
 /obj/effect/landmark/latejoin_masquerade/Initialize(mapload)
+	. = ..()
+
 	REGISTER_REQUIRED_MAP_ITEM(1, INFINITY)
+	GLOB.masquerade_latejoin += src
 
-	..()
+/obj/effect/landmark/latejoin_masquerade/Destroy()
+	. = ..()
 
-	GLOB.masquerade_latejoin += loc
-	return INITIALIZE_HINT_QDEL
-
+	GLOB.masquerade_latejoin -= src

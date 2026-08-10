@@ -70,11 +70,7 @@
 	if (flashed.stat == DEAD || issilicon(flashed) || isdrone(flashed))
 		return
 
-	if (flashed.stat != STABLE)
-		flashed.balloon_alert(source, "in critical!")
-		return
-
-	if (IS_UNCONSCIOUS(flashed))
+	if (flashed.stat != CONSCIOUS)
 		flashed.balloon_alert(source, "unconscious!")
 		return
 
@@ -98,7 +94,7 @@
 		return
 
 	if (HAS_MIND_TRAIT(flashed, TRAIT_UNCONVERTABLE))
-		flashed.balloon_alert(source, "[flashed.p_they()] resist[flashed.p_s()]!")
+		flashed.balloon_alert(source, "[flashed.p_they()] resist!")
 		return
 
 	if (!team.add_brother(flashed, key_name(source))) // Shouldn't happen given the former, more specific checks but just in case

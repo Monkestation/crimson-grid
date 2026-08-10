@@ -6,7 +6,7 @@
 	key_third_person = "daps"
 	message = "sadly can't find anybody to give daps to, and daps themself. Shameful."
 	message_param = "gives daps to %t."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/eyebrow
 	key = "eyebrow"
@@ -40,7 +40,7 @@
 	key = "handshake"
 	message = "shakes their own hands."
 	message_param = "shakes hands with %t."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/human/hug
@@ -48,7 +48,7 @@
 	key_third_person = "hugs"
 	message = "hugs themself."
 	message_param = "hugs %t."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/mumble
 	key = "mumble"
@@ -77,41 +77,41 @@
 	key = "raise"
 	key_third_person = "raises"
 	message = "raises a hand."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/salute
 	key = "salute"
 	key_third_person = "salutes"
 	message = "salutes."
 	message_param = "salutes to %t."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 	sound = 'sound/mobs/humanoids/human/salute/salute.ogg'
 
 /datum/emote/living/carbon/human/slit
 	key = "slit"
 	key_third_person = "slits"
 	message = "drags a finger across their neck."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/scratch_h
 	key = "scratch_h"
 	message = "scratches their head."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/thumb_up
 	key = "thumb_u"
 	message = "gives a thumbs up."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/thumb_down
 	key = "thumb_d"
 	message = "gives a thumbs down."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/time
 	key = "time"
 	message = "checks the time."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/tap
 	key = "tap"
@@ -122,42 +122,42 @@
 	key = "halt"
 	key_third_person = "halts"
 	message = "holds up their palm, signaling to stop."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/shush
 	key = "shush"
 	key_third_person = "shushes"
 	message = "holds a finger to their lips."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/listen
 	key = "listen"
 	key_third_person = "listens"
 	message = "cups a hand to their ear."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/think
 	key = "think"
 	key_third_person = "thinks"
 	message = "taps their head, thinking."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/beckon
 	key = "beckon"
 	key_third_person = "beckons"
 	message = "waves a hand for someone to come closer."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/airquote
 	key = "airquote"
 	key_third_person = "airquotes"
 	message = "makes air quotes."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/crazy
 	key = "crazy"
 	message = "twirls a finger next to their head."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/squint
 	key = "squint"
@@ -168,7 +168,7 @@
 	key = "rub"
 	key_third_person = "rubs"
 	message = "rubs their chin."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/shrug
 	key = "shrug"
@@ -290,13 +290,13 @@
 	key = "roll"
 	key_third_person = "rolls"
 	message = "rolls."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/monkey/scratch
 	key = "scratch"
 	key_third_person = "scratches"
 	message = "scratches."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /datum/emote/living/carbon/human/monkey/screech/roar
 	key = "roar"
@@ -313,7 +313,7 @@
 	key = "sign"
 	key_third_person = "signs"
 	message_param = "signs the number %t."
-	can_use_flags = EMOTE_CANUSE_REQUIRE_HANDS
+	hands_use_check = TRUE
 
 /// emotes for glowy goobers
 /datum/emote/living/carbon/human/glow

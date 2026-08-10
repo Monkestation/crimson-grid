@@ -661,7 +661,8 @@
 
 	var/list/myriad_targets = list()
 	for(var/mob/living/target in loc)
-		myriad_targets += target
+		if(!IS_DEAD_OR_INCAP(target))
+			myriad_targets += target
 
 	if(length(myriad_targets) < 20)
 		visible_message(span_warning("The markings pulse with a small flash of red light, then fall dark."))
@@ -785,22 +786,9 @@
 
 /obj/structure/fluff/tv
 	name = "\improper TV"
-	desc = "A slightly battered looking TV. It's off"
+	desc = "A slightly battered looking TV. Various infomercials play on a loop, accompanied by a jaunty tune."
 	icon = 'modular_darkpack/modules/decor/icons/television.dmi'
-	icon_state = "tv_off"
-	density = TRUE
-
-/obj/structure/fluff/tv/news
-	desc = "A slightly battered looking TV. Looks like you're not on the news... this time."
 	icon_state = "tv_news"
-
-/obj/structure/fluff/tv/nature
-	desc = "A slightly battered looking TV. A documentary about a rabbit named 'Lepix'."
-	icon_state = "tv_nature"
-
-/obj/structure/fluff/tv/analog
-	desc = "A slightly battered looking TV. It might be broken."
-	icon_state = "tv_analog"
 
 /obj/structure/fluff/tv/order
 	name = "order screen"

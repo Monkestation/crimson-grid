@@ -9,7 +9,6 @@
 	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "brain-x-d"
 	shade_color = "black, somehow"
-	variant_traits_added = list(TRAIT_NIGHTMARISH)
 
 	///Our associated shadow jaunt spell, for all nightmares
 	var/datum/action/cooldown/spell/jaunt/shadow_walk/our_jaunt
@@ -162,7 +161,7 @@
 	respawn_progress = 0
 
 /obj/item/organ/heart/nightmare/get_availability(datum/species/owner_species, mob/living/owner_mob)
-	if(HAS_TRAIT(owner_mob, TRAIT_NIGHTMARISH))
+	if(isnightmare(owner_mob))
 		return TRUE
 	return ..()
 

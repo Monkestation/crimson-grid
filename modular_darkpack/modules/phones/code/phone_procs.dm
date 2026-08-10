@@ -59,17 +59,17 @@
 	if(current_state == PHONE_RINGING)
 		START_PROCESSING(SSprocessing, src)
 		if(ringer)
-			add_shared_particles(/particles/phone_ringing, particle_flags = PARTICLE_ATTACH_MOB)
+			setup_particles()
 
-	else if(current_state == PHONE_IN_CALL || current_state == PHONE_AVAILABLE)
+	if(current_state == PHONE_IN_CALL || current_state == PHONE_AVAILABLE)
 		if(phone_ringing_timer)
 			deltimer(phone_ringing_timer)
-			phone_ringing_timer = null
-		remove_shared_particles(/particles/phone_ringing, delete_on_empty = FALSE)
+		if(particle_generator)
+			QDEL_NULL(particle_generator)
 		STOP_PROCESSING(SSprocessing, src)
 
 /obj/item/smartphone/proc/check_missing_sim_card(mob/user)
-	if(QDELETED(sim_card))
+	if(phone_flags & PHONE_NO_SIM)
 		balloon_alert(user, "no SIM!")
 		return TRUE
 	return FALSE

@@ -91,9 +91,9 @@
 	return load_songs_from_config()
 
 /// Loads the config sounds once, and returns a copy of them.
-/datum/jukebox/proc/load_songs_from_config(force = FALSE)
+/datum/jukebox/proc/load_songs_from_config()
 	var/static/list/config_songs
-	if(isnull(config_songs) || force)
+	if(isnull(config_songs))
 		config_songs = list()
 		var/list/tracks = flist(CONFIG_JUKEBOX_SOUNDS)
 		for(var/track_file in tracks)

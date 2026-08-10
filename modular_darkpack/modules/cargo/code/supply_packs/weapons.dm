@@ -96,13 +96,6 @@
 	contains = list(/obj/item/gun/ballistic/revolver/darkpack/magnum)
 	crate_name = "weapon crate"
 
-/datum/supply_pack/weapons/weaponlever
-	name = "Weapon (lever action rifle)"
-	desc = "Contains a lever action rifle."
-	cost = 1500
-	contains = list(/obj/item/gun/ballistic/rifle/darkpack/lever)
-	crate_name = "weapon crate"
-
 /datum/supply_pack/weapons/weapondeagle
 	name = "Weapon (desert eagle)"
 	desc = "Contains a desert eagle."
@@ -142,13 +135,6 @@
 	desc = "Contains a pump shotgun."
 	cost = 800
 	contains = list(/obj/item/gun/ballistic/shotgun/vampire)
-	crate_name = "weapon crate"
-
-/datum/supply_pack/weapons/weapondbshotgun
-	name = "Weapon (double barrel shotgun)"
-	desc = "Contains a double barrel shotgun."
-	cost = 1000
-	contains = list(/obj/item/gun/ballistic/shotgun/vampire/doublebarrel)
 	crate_name = "weapon crate"
 
 /datum/supply_pack/weapons/thompson
@@ -254,13 +240,6 @@
 	desc = "Contains a box of .44 ammunition."
 	cost = 600
 	contains = list(/obj/item/ammo_box/darkpack/c44, /obj/item/ammo_box/darkpack/c44)
-	crate_name = "ammo crate"
-
-/datum/supply_pack/weapons/ammo45
-	name = "Ammo (.45 ACP ammo)"
-	desc = "Contains a box of .45 ACP ammo"
-	cost = 700
-	contains = list(/obj/item/ammo_box/darkpack/c45acp, /obj/item/ammo_box/darkpack/c45acp)
 	crate_name = "ammo crate"
 
 /datum/supply_pack/weapons/ammo556

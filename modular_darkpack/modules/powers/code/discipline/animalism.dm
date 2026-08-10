@@ -1,11 +1,6 @@
 /datum/discipline/animalism
 	name = "Animalism"
-	desc = {"Summons spectral animals over your targets. Violates Masquerade.
-● Summon Rat: Passive
-●● Summon Cat: Passive
-●●● Summon Wolf: Passive
-●●●● Summon Bat: Passive
-●●●●● Skitter: Passive"}
+	desc = "Summons spectral animals over your targets. Violates Masquerade."
 	icon_state = "animalism"
 	power_type = /datum/discipline_power/animalism
 

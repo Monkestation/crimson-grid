@@ -101,15 +101,13 @@
 			/datum/language/terrum,
 			/datum/language/nekomimetic,
 			/datum/language/garou_tongue,
-			/datum/language/primal_tongue,
+			/datum/language/primal_tongue
 		)
 		for(var/datum/language/lang as anything in subtypesof(/datum/language))
 			if(lang.restricted)
 				continue
 			lang_list |= lang
-	. = lang_list.Copy() // DARKPACK EDIT CHANGE END
-	if(languages_native)
-		. |= languages_native
+	return lang_list // DARKPACK EDIT CHANGE END
 
 /obj/item/organ/tongue/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
@@ -256,7 +254,7 @@
 		if(feedback)
 			owner.balloon_alert(owner, "you can't seem to statue-ize!")
 		return FALSE // permanently bricked
-	if(IS_UNCONSCIOUS_OR_CRIT(owner))
+	if(owner.stat != CONSCIOUS)
 		if(feedback)
 			owner.balloon_alert(owner, "you're too weak!")
 		return FALSE
@@ -373,7 +371,6 @@
 	desc = "A mysterious structure that allows for instant communication between users. Pretty impressive until you need to eat something."
 	icon_state = "tongueayylmao"
 	say_mod = "gibbers"
-	organ_traits = list(TRAIT_HIDE_THINKING_INDICATOR)
 	sense_of_taste = FALSE
 	modifies_speech = TRUE
 	var/mothership
@@ -498,7 +495,7 @@
 
 /obj/item/organ/tongue/zombie/on_life(seconds_per_tick)
 	. = ..()
-	if(!IS_UNCONSCIOUS_OR_CRIT(owner) && SPT_PROB(2, seconds_per_tick))
+	if(owner.stat == CONSCIOUS && SPT_PROB(2, seconds_per_tick))
 		playsound(owner, pick(spooks), 50, TRUE, 10)
 
 /obj/item/organ/tongue/alien
@@ -630,6 +627,10 @@
 	attack_verb_simple = list("shock", "jolt", "zap")
 	voice_filter = @{"[0:a] asplit [out0][out2]; [out0] asetrate=%SAMPLE_RATE%*0.99,aresample=%SAMPLE_RATE%,volume=0.3 [p0]; [p0][out2] amix=inputs=2"}
 	languages_native = list(/datum/language/voltaic)
+
+// Ethereal tongues can speak all default + voltaic
+/obj/item/organ/tongue/ethereal/get_possible_languages()
+	return ..() + /datum/language/voltaic
 
 /obj/item/organ/tongue/cat
 	name = "felinid tongue"

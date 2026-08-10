@@ -18,8 +18,6 @@
 			"tgui-panel/*": ["./packages/tgui-panel/*"],
 			"tgui-say": ["./packages/tgui-say"],
 			"tgui-say/*": ["./packages/tgui-say/*"],
-			"tgui-escape-menu": ["./packages/tgui-escape-menu"],
-			"tgui-escape-menu/*": ["./packages/tgui-escape-menu/*"],
 			"tgui-dev-server": ["./packages/tgui-dev-server"],
 			"tgui-dev-server/*": ["./packages/tgui-dev-server/*"]
 		},
@@ -29,5 +27,5 @@
 		"strictNullChecks": true,
 		"target": "ESNext"
 	},
-	"include": ["./*.d.ts", "./packages", "happydom.ts"]
+	"include": ["./*.d.ts", "./packages"]
 }

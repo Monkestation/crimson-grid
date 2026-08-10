@@ -12,7 +12,7 @@
 	return ..()
 
 /datum/hallucination/eyes_in_dark/start()
-	if(!hallucinator.client || IS_UNCONSCIOUS(hallucinator))
+	if(!hallucinator.client || hallucinator.stat >= UNCONSCIOUS)
 		return FALSE
 
 	if(hallucinator.lighting_cutoff >= 2.5)
