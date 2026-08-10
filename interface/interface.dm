@@ -144,3 +144,21 @@ GAME_VERB_HIDDEN(/client, emote_panel, "Emote Panel")
 	if(!GLOB.emote_panel)
 		GLOB.emote_panel = new /datum/emote_panel()
 	GLOB.emote_panel.ui_interact(mob)
+
+// CRIMSON EDIT ADD - Discord and Webmap
+GAME_VERB_HIDDEN(/client, discord, "discord")
+
+	var/discordurl = CONFIG_GET(string/discordurl)
+	if(!discordurl)
+		to_chat(src, span_danger("The Discord URL is not set in the server configuration."))
+		return
+	DIRECT_OUTPUT(src, link(discordurl))
+
+GAME_VERB_HIDDEN(/client, webmap, "webmap")
+
+	var/webmapurl = CONFIG_GET(string/webmapurl)
+	if(!webmapurl)
+		to_chat(src, span_danger("The Webmap URL is not set in the server configuration."))
+		return
+	DIRECT_OUTPUT(src, link(webmapurl))
+// CRIMSON EDIT ADD END - Discord and Webmap
