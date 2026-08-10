@@ -362,6 +362,9 @@
 				"}
 				break_counter++
 			output += "</div></div>"
+		// CRIMSON EDIT ADD START - SUBSPLAT_BANS
+		// CRIMSON EDIT END
+
 		var/list/long_job_lists = list(
 			"Ghost and Other Roles" = list(
 				ROLE_PAI,
@@ -419,39 +422,7 @@
 				SPLAT_GAROU,
 				SPLAT_CORAX,
 			),
-			"Clans" = list(
-				VAMPIRE_CLAN_BAALI,
-				VAMPIRE_CLAN_BANU_HAQIM,
-				VAMPIRE_CLAN_BANU_HAQIM_VIZIER,
-				VAMPIRE_CLAN_BRUJAH,
-				VAMPIRE_CLAN_CAITIFF,
-				VAMPIRE_CLAN_CAPPADOCIAN,
-				VAMPIRE_CLAN_CITY_GANGREL,
-				VAMPIRE_CLAN_DAUGHTERS_OF_CACOPHONY,
-				VAMPIRE_CLAN_DOMINATE_MALKAVIAN,
-				VAMPIRE_CLAN_GANGREL,
-				VAMPIRE_CLAN_GARGOYLE,
-				VAMPIRE_CLAN_GIOVANNI,
-				VAMPIRE_CLAN_HARBINGER,
-				VAMPIRE_CLAN_KIASYD,
-				VAMPIRE_CLAN_LASOMBRA,
-				VAMPIRE_CLAN_MALKAVIAN,
-				VAMPIRE_CLAN_NAGARAJA,
-				VAMPIRE_CLAN_NOSFERATU,
-				VAMPIRE_CLAN_OLD_CLAN_TZIMISCE,
-				VAMPIRE_CLAN_HEALER_SALUBRI,
-				VAMPIRE_CLAN_WARRIOR_SALUBRI,
-				VAMPIRE_CLAN_SAMEDI,
-				VAMPIRE_CLAN_SETITE,
-				VAMPIRE_CLAN_TLACIQUE,
-				VAMPIRE_CLAN_TOREADOR,
-				VAMPIRE_CLAN_TREMERE,
-				VAMPIRE_CLAN_TRUE_BRUJAH,
-				VAMPIRE_CLAN_TZIMISCE,
-				VAMPIRE_CLAN_VENTRUE,
-				VAMPIRE_CLAN_VENTRUE_ANTITRIBU,
-				VAMPIRE_CLAN_WARRIOR_SETITE,
-			),
+			"Clans" = LAZY,
 			"Tribes" = list(
 				TRIBE_RONIN,
 				TRIBE_BLACK_FURIES,
@@ -600,7 +571,7 @@
 			if("server")
 				roles_to_ban += "Server"
 			if("role")
-				href_list.Remove("Command", "Security", "Engineering", "Medical", "Science", "Supply", "Silicon", "Abstract", "Service", "Ghost and Other Roles", "Antagonist Positions", "Darkpack Ban Options", "Splats", "Clans") //remove the role banner hidden input values // CRIMSON EDIT ADDITION - SUBSPLAT_BANS : "Darkpack Ban Options", "Splats", "Clans"
+				href_list.Remove("Command", "Security", "Engineering", "Medical", "Science", "Supply", "Silicon", "Abstract", "Service", "Ghost and Other Roles", "Antagonist Positions", "Darkpack Ban Options", "Splats", "Clans", "Auspices", "Tribes") //remove the role banner hidden input values // CRIMSON EDIT ADDITION - SUBSPLAT_BANS : "Darkpack Ban Options", "Splats", "Clans"
 				var/delimiter_pos = href_list.Find("roleban_delimiter")
 				if(href_list.len == delimiter_pos)
 					error_state += "Role ban was selected but no roles to ban were selected."
