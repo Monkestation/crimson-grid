@@ -157,7 +157,7 @@
 			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST)
 			return
 		if(owner.combat_mode)
-			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, zone)
+			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone)
 			if(roll >= 5)
 				// A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
 				if((target_zone == BODY_ZONE_CHEST))
@@ -173,7 +173,7 @@
 					target.visible_message(span_danger("[target]'s face is twisted and disfigured!"), span_danger("Your feel your face being twisted and disfigured!"))
 					ADD_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE, TRAIT_GENERIC)
 			else
-				target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, zone)
+				target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone)
 		// CRIMSON EDIT ADDITION END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
