@@ -75,10 +75,10 @@
 
 		var/datum/ai_controller/controller = minion.ai_controller
 		if(controller)
-			controller.CancelActions()
-			controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
+			controller.cancel_current_plan()
+			controller.clear_blackboard_key(BB_CURRENT_TARGET)
+			controller.clear_blackboard_key(BB_CURRENT_TARGET_HIDING_LOCATION)
 			controller.clear_blackboard_key(BB_CURRENT_PET_TARGET)
-			controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
 
 			var/list/enemies = controller.blackboard[BB_BEASTMASTER_ENEMIES_LIST]
 			if(enemies)

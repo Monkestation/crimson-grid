@@ -124,7 +124,7 @@
 		to_chat(owner, span_warning("You don't seem to know anyone you can speak to right now...")) // You have no friends.
 		return
 	// Guys we add to the input below
-	var/list/targets
+	var/list/targets = list()
 
 	for(var/mob/living/character in GLOB.player_list)
 		if(character == owner) // Skip ourselves

@@ -432,7 +432,7 @@
 	result = /obj/item/food/donkpocket/deluxe
 	dish_category = DISH_PASTRY
 	removed_foodtypes = BREAKFAST
-	crafting_flags = parent_type::crafting_flags | CRAFT_MUST_BE_LEARNED
+	// crafting_flags = parent_type::crafting_flags | CRAFT_MUST_BE_LEARNED // DARKPACK EDIT REMOVAL - (Causes a strange compile fail i dont care to fix.)
 
 /datum/crafting_recipe/food/donkpocket/deluxe/nocarb
 	time = 1.5 SECONDS

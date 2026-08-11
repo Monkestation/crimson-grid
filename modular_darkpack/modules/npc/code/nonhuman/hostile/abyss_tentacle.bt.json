@@ -1,0 +1,85 @@
+{
+	"dm_type": "/datum/ai_controller/basic_controller/abyss_tentacle",
+	"type": "parallel",
+	"failure_policy": "BT_PARALLEL_FAILURE_CHILD_ONE",
+	"success_policy": "BT_PARALLEL_SUCCESS_CHILD_ONE",
+	"repeat_secondary": true,
+	"repeat_secondary_delay": "BASIC_MOB_FIND_TARGET_RATE",
+	"finish_on_primary": true,
+	"children": [
+		{
+			"type": "selector",
+			"children": [
+				{
+					"type": "decorator",
+					"decorator": "/datum/bt_node/decorator/bb_key_equals",
+					"vars": {
+						"observer_abort": "BT_ABORT_LOWER_PRIORITY",
+						"key": "BB_ABYSS_TENTACLE_MODE",
+						"value": "\"Passive\""
+					},
+					"child": {
+						"type": "leaf",
+						"behavior": "/datum/bt_node/ai_behavior/tentacle_release_target",
+						"vars": {
+							"time_between_perform": "0.5 SECONDS"
+						}
+					}
+				},
+				{
+					"type": "decorator",
+					"decorator": "/datum/bt_node/decorator/bb_key_true",
+					"vars": {
+						"observer_abort": "BT_ABORT_NONE",
+						"key": "BB_ABYSS_TENTACLE_GRABBED"
+					},
+					"child": {
+						"type": "decorator",
+						"decorator": "/datum/bt_node/decorator/bb_key_equals",
+						"vars": {
+							"observer_abort": "BT_ABORT_NONE",
+							"key": "BB_ABYSS_TENTACLE_MODE",
+							"value": "\"Aggressive\""
+						},
+						"child": {
+							"type": "leaf",
+							"behavior": "/datum/bt_node/ai_behavior/tentacle_crush_victim"
+						}
+					}
+				},
+				{
+					"type": "decorator",
+					"decorator": "/datum/bt_node/decorator/bb_key_equals",
+					"vars": {
+						"observer_abort": "BT_ABORT_NONE",
+						"invert": true,
+						"key": "BB_ABYSS_TENTACLE_MODE",
+						"value": "\"Passive\""
+					},
+					"child": {
+						"type": "decorator",
+						"decorator": "/datum/bt_node/decorator/bb_key_set",
+						"vars": {
+							"observer_abort": "BT_ABORT_BOTH",
+							"key": "BB_CURRENT_TARGET"
+						},
+						"child": {
+							"type": "leaf",
+							"behavior": "/datum/bt_node/ai_behavior/tentacle_grab_target"
+						}
+					}
+				}
+			]
+		},
+		{
+			"type": "leaf",
+			"behavior": "/datum/bt_node/ai_behavior/acquire_target/update_combat_targets",
+			"vars": {
+				"target_key": "BB_CURRENT_TARGET",
+				"targeting_strategy": "BB_TARGETING_STRATEGY",
+				"vision_range": 2,
+				"hiding_location_key": "BB_CURRENT_TARGET_HIDING_LOCATION"
+			}
+		}
+	]
+}
