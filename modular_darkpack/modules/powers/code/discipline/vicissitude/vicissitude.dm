@@ -127,25 +127,41 @@
 	if(target.stat >= HARD_CRIT)
 		if(target.stat != DEAD)
 			target.death()
-		var/obj/item/bodypart/arm/right/r_arm = target.get_bodypart(BODY_ZONE_R_ARM)
-		var/obj/item/bodypart/arm/left/l_arm = target.get_bodypart(BODY_ZONE_L_ARM)
-		var/obj/item/bodypart/leg/right/r_leg = target.get_bodypart(BODY_ZONE_R_LEG)
-		var/obj/item/bodypart/leg/left/l_leg = target.get_bodypart(BODY_ZONE_L_LEG)
-		r_arm?.drop_limb()
-		l_arm?.drop_limb()
-		r_leg?.drop_limb()
-		l_leg?.drop_limb()
 		new /obj/item/stack/sheet/meat/twenty(target.loc)
 		new /obj/item/guts(target.loc)
 		new /obj/item/spine(target.loc)
-		qdel(target)
+		if (roll >= 5)
+			target.gib(DROP_ALL_REMAINS)
+		else
+			target.gib(DROP_ORGANS)
 	else
+		var/target_zone = owner.zone_selected
 		target.emote("scream")
-		target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST)
+		target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone)
 		if(roll >= 5)
-			target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
-			target.adjust_blood_pool(-(round(target.bloodpool * 0.5))) // A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
-
+			if (target_zone = BODY_ZONE_CHEST)
+				target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
+				target.adjust_blood_pool(-(round(target.bloodpool * 0.5))) // A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
+				var/obj/item/organ/heart/heart = target.get_organ_slot(ORGAN_SLOT_HEART)
+				if ((heart.damage >= heart.maxHealth * 0.8) && get_kindred_splat(target))
+					victim.Knockdown(1 TURNS)
+					victim.Immobilize(1 TURNS)
+				else
+					heart.apply_organ_damage(heart.maxHealth/5)
+			else if(target_zone == BODY_ZONE_HEAD)
+				if (owner.combat_mode)
+					if (HAS_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE))
+						ADD_TRAIT(target, TRAIT_MONSTROUS, TRAIT_GENERIC)
+					else
+						ADD_TRAIT(target, TRAIT_MONSTROUS, TRAIT_GENERIC)
+				else
+					var/obj/item/organ/brain/brain = target.get_organ_slot(ORGAN_SLOT_BRAIN)
+					brain.apply_organ_damage(brain.maxHealth / 4)
+			else
+				if (roll >= 9)
+					target.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
+				else
+					target.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/horrid_form
