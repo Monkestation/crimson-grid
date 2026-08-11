@@ -35,7 +35,7 @@
 			to_chat(usr, span_ghostalert("This soul yet persists in the Skinlands at [targetarea.name]."))
 			playsound(loc, 'modular_darkpack/modules/ritual_necromancy/sounds/necromancy1on.ogg', 50, FALSE)
 
-			if(livetarget.stat > SOFT_CRIT)
+			if(IS_UNCONSCIOUS(livetarget))
 				to_chat(usr, span_ghostalert("Their connection to this is realm weak, and fading. Death waits for them."))
 			if(livetarget.get_discipline(/datum/discipline/necromancy)) //other necromancers catch onto it if targeted
 				var/area/userarea = get_area(usr)

@@ -8,14 +8,6 @@
 #define PHONE_CALLING 2
 #define PHONE_IN_CALL 3
 
-#define PHONE_NO_SIM (1<<1)
-#define PHONE_OPEN (1<<2)
-
-DEFINE_BITFIELD(phone_flags, list(
-	"PHONE_NO_SIM" = PHONE_NO_SIM,
-	"PHONE_OPEN" = PHONE_OPEN,
-))
-
 // Icons used for call history logging
 #define PHONE_CALL_ACCEPTED "fa-phone-volume"
 #define PHONE_CALL_DECLINED "fa-phone-slash"

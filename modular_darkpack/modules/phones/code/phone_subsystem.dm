@@ -15,6 +15,12 @@ SUBSYSTEM_DEF(phones)
 	// Posts for the endpost feed
 	var/list/endpost_posts = list()
 
+/datum/controller/subsystem/phones/Recover()
+	assigned_phone_numbers = SSphones.assigned_phone_numbers
+	frequencies_in_use = SSphones.frequencies_in_use
+	published_phone_numbers = SSphones.published_phone_numbers
+	endpost_posts = SSphones.endpost_posts
+
 // Generates a random phone number from the available ranges, ten digits, starts with a 415 or 628.
 /datum/controller/subsystem/phones/proc/random_number()
 	return "[pick("415","628")][rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)][rand(0,9)]"
@@ -59,5 +65,4 @@ SUBSYSTEM_DEF(phones)
 	for(var/obj/item/sim_card/sim_card as anything in assigned_phone_numbers)
 		if(sim_card.phone_number == phone_number)
 			gotten_sim_card = sim_card
-	var/gotten_phone = gotten_sim_card?.phone_weakref?.resolve()
-	return gotten_phone
+	return gotten_sim_card?.phone_weakref?.resolve()

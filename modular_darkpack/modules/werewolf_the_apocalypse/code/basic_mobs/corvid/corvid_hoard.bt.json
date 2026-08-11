@@ -1,0 +1,88 @@
+{
+	"dm_type": "/datum/bt_node/subtree/parrot_hoard",
+	"type": "selector",
+	"children": [
+		{
+			"type": "decorator",
+			"decorator": "/datum/bt_node/decorator/target_is_holding_item",
+			"vars": {
+				"observer_abort": "BT_ABORT_SELF",
+				"key": "BB_MY_PAWN"
+			},
+			"child": {
+				"type": "sequence",
+				"children": [
+					{
+						"type": "leaf",
+						"behavior": "/datum/bt_node/ai_behavior/move_to_target",
+						"vars": {
+							"target_key": "BB_HOARD_LOCATION",
+							"required_dist": 1
+						}
+					},
+					{
+						"type": "leaf",
+						"behavior": "/datum/bt_node/ai_behavior/drop_all_held_items"
+					}
+				]
+			}
+		},
+		{
+			"type": "decorator",
+			"decorator": "/datum/bt_node/decorator/bb_key_set",
+			"vars": {
+				"observer_abort": "BT_ABORT_SELF",
+				"key": "BB_HOARD_ITEM_TARGET"
+			},
+			"child": {
+				"type": "selector",
+				"children": [
+					{
+						"type": "sequence",
+						"children": [
+							{
+								"type": "leaf",
+								"behavior": "/datum/bt_node/ai_behavior/move_to_target",
+								"vars": {
+									"target_key": "BB_HOARD_ITEM_TARGET",
+									"required_dist": 1
+								}
+							},
+							{
+								"type": "leaf",
+								"behavior": "/datum/bt_node/ai_behavior/basic_melee_attack/interact_once/parrot",
+								"vars": {
+									"target_key": "BB_HOARD_ITEM_TARGET",
+									"targeting_strategy": "BB_TARGETING_STRATEGY",
+									"hiding_location_key": "BB_CURRENT_TARGET_HIDING_LOCATION"
+								}
+							}
+						]
+					},
+					{
+						"type": "leaf",
+						"behavior": "/datum/bt_node/ai_behavior/clear_key",
+						"vars": {
+							"key": "BB_HOARD_ITEM_TARGET"
+						}
+					}
+				]
+			}
+		},
+		{
+			"type": "decorator",
+			"decorator": "/datum/bt_node/decorator/random_chance",
+			"vars": {
+				"chance": 0.05
+			},
+			"child": {
+				"type": "leaf",
+				"behavior": "/datum/bt_node/ai_behavior/acquire_target/parrot_hoard_item",
+				"vars": {
+					"target_key": "BB_HOARD_ITEM_TARGET",
+					"vision_range": 12
+				}
+			}
+		}
+	]
+}

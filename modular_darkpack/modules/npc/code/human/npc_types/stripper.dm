@@ -15,7 +15,7 @@
 /mob/living/carbon/human/npc/stripper/Life()
 	. = ..()
 
-	if (stat >= UNCONSCIOUS)
+	if (IS_UNCONSCIOUS(src))
 		return
 	if (!prob(20))
 		return

@@ -23,4 +23,5 @@
 		new /datum/data/vending_product("comedy mask", /obj/item/clothing/mask/vampire/comedy, 25),
 		new /datum/data/vending_product("tragedy mask", /obj/item/clothing/mask/vampire/tragedy, 25),
 		new /datum/data/vending_product("shemagh", /obj/item/clothing/mask/vampire/shemagh, 20),
+		new /datum/data/vending_product("gothic cross", /obj/item/card/hunter/gothic, 20),
 	)

@@ -69,6 +69,7 @@
 
 //Giovanni
 #define JOB_CAPO "Capo"
+#define JOB_I_NONNI "I Nonni"
 #define JOB_LA_SQUADRA "La Squadra"
 #define JOB_LA_FAMIGLIA "La Famiglia"
 

@@ -1,6 +1,12 @@
 /datum/discipline/melpominee
 	name = "Melpominee"
-	desc = "Named for the Greek Muse of Tragedy, Melpominee is a unique discipline of the Daughters of Cacophony. It explores the power of the voice, shaking the very soul of those nearby and allowing the vampire to perform sonic feats otherwise impossible."
+	desc = {"Named for the Greek Muse of Tragedy, Melpominee is a unique discipline of the Daughters of Cacophony. It explores the power of the voice, shaking the very soul of those nearby and allowing the vampire to perform sonic feats otherwise impossible.
+● The Missing Voice: Passive
+●● Phantom Speaker: Wits + Performance (difficulty 7)
+●●● Madrigal: Wits + Performance vs. target's Wits + Awareness
+●●●● Siren's Beckoning: Wits + Performance vs. target's Willpower
+●●●●● Virtuosa: Passive toggle
+●●●●●● Shattering Crescendo: Passive"}
 	icon_state = "melpominee"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/melpominee
@@ -118,7 +124,7 @@
 		to_chat(owner, span_warning("You don't seem to know anyone you can speak to right now...")) // You have no friends.
 		return
 	// Guys we add to the input below
-	var/list/targets
+	var/list/targets = list()
 
 	for(var/mob/living/character in GLOB.player_list)
 		if(character == owner) // Skip ourselves

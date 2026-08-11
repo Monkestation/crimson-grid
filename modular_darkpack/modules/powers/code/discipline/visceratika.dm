@@ -1,6 +1,11 @@
 /datum/discipline/visceratika
 	name = "Visceratika"
-	desc = "The Discipline of Visceratika is the exclusive possession of the Gargoyle bloodline and is an extension of their natural affinity for stone, earth, and things made thereof."
+	desc = {"The Discipline of Visceratika is the exclusive possession of the Gargoyle bloodline and is an extension of their natural affinity for stone, earth, and things made thereof.
+● Skin of the Chameleon: Passive
+●● Scry the Hearthstone: Perception + Awareness
+●●● Bond with the Mountain: Passive
+●●●● Armor of Terra: No roll - always active
+●●●●● Flow Within the Mountain: Passive"}
 	icon_state = "visceratika"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/visceratika
