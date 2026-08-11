@@ -166,12 +166,11 @@
 		else
 			// This power enables a Vicissitude practitioner to deform a victim (or herself) beyond recognition
 			if(target_zone == BODY_ZONE_HEAD)
-				if (HAS_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE))
-					target.visible_message(span_danger("[target]'s face is twisted into something monstrous!"), span_danger("Your feel your face twisted into something monstrous!"))
-					ADD_TRAIT(target, TRAIT_MONSTROUS, TRAIT_GENERIC)
-				else
-					target.visible_message(span_danger("[target]'s face is twisted and disfigured!"), span_danger("Your feel your face being twisted and disfigured!"))
+				if (!HAS_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE))
+					target.visible_message(span_danger("[target]'s face is twisted and deformed!"), span_danger("Your feel your face being twisted and deformed!"))
 					ADD_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE, TRAIT_GENERIC)
+				else
+					to_chat(owner, span_danger("[target]'s face is already deformed!"))
 			else
 				target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone)
 		// CRIMSON EDIT ADDITION END
