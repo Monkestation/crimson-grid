@@ -132,7 +132,7 @@
 	if(target.stat >= HARD_CRIT)
 		if(target.stat != DEAD)
 			target.death()
-		new /obj/item/stack/sheet/meat/twenty(target.loc)
+		new /obj/item/stack/sheet/meat(target.loc, 10 + roll * 2)
 		new /obj/item/guts(target.loc)
 		new /obj/item/spine(target.loc)
 		if (roll >= 5)
@@ -144,26 +144,31 @@
 		target.emote("scream")
 		target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone)
 		if(roll >= 5)
-			if (target_zone = BODY_ZONE_CHEST)
+			if(target_zone == BODY_ZONE_CHEST)
 				target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
 				target.adjust_blood_pool(-(round(target.bloodpool * 0.5))) // A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
 				var/obj/item/organ/heart/heart = target.get_organ_slot(ORGAN_SLOT_HEART)
-				if ((heart.damage >= heart.maxHealth * 0.8) && get_kindred_splat(target))
-					victim.Knockdown(1 TURNS)
-					victim.Immobilize(1 TURNS)
+				if((heart.damage >= heart.maxHealth * 0.8) && get_kindred_splat(target))
+					target.Knockdown(1 TURNS)
+					target.Immobilize(1 TURNS)
 				else
 					heart.apply_organ_damage(heart.maxHealth/5)
 			else if(target_zone == BODY_ZONE_HEAD)
-				if (owner.combat_mode)
+				if(owner.combat_mode)
 					if (HAS_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE))
+						target.visible_message(span_danger("[target]'s face is turned into something monstrous!"), span_danger("Your feel your face become something monstrous!"))
 						ADD_TRAIT(target, TRAIT_MONSTROUS, TRAIT_GENERIC)
 					else
-						ADD_TRAIT(target, TRAIT_MONSTROUS, TRAIT_GENERIC)
+						target.visible_message(span_danger("[target]'s face is twisted and disfigured!"), span_danger("Your feel your face being twisted and disfigured!"))
+						ADD_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE, TRAIT_GENERIC)
 				else
+					target.visible_message(span_danger("[target]'s head is crushed!"), span_danger("Your feel your head being crushed!"))
 					var/obj/item/organ/brain/brain = target.get_organ_slot(ORGAN_SLOT_BRAIN)
 					brain.apply_organ_damage(brain.maxHealth / 4)
+					target.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
 			else
-				if (roll >= 9)
+
+				if(roll >= 9)
 					target.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
 				else
 					target.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
