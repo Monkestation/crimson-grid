@@ -132,7 +132,7 @@
 	if(target.stat >= HARD_CRIT)
 		if(target.stat != DEAD)
 			target.death()
-		new /obj/item/stack/sheet/meat(target.loc, 10 + roll * 2)
+		new /obj/item/stack/sheet/meat(target.loc, 15 + roll * 3)
 		new /obj/item/guts(target.loc)
 		new /obj/item/spine(target.loc)
 		target.gib(DROP_ALL_REMAINS)
@@ -144,29 +144,30 @@
 			var/obj/item/bodypart/limb = target.get_bodypart(target_zone)
 			var/mob/living/carbon/victim = target
 			if (!limb)
+				target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST)
 				return
+			// A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
 			if((target_zone == BODY_ZONE_CHEST) && roll >= 5)
 				target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
-				target.adjust_blood_pool(-(round(target.bloodpool * 0.5))) // A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
+				target.adjust_blood_pool(-(round(target.bloodpool * 0.5)))
 				var/obj/item/organ/heart/heart = target.get_organ_slot(ORGAN_SLOT_HEART)
 				if((heart.damage >= heart.maxHealth * 0.8) && get_kindred_splat(target))
 					target.Knockdown(1 TURNS)
 					target.Immobilize(1 TURNS)
 				else
 					heart.apply_organ_damage(heart.maxHealth/5)
+			// disfigure people's faces in out of combat mode or crush their skulls with a +5 roll
 			else if(target_zone == BODY_ZONE_HEAD)
-				if(owner.combat_mode)
+				if(!owner.combat_mode)
 					if (HAS_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE))
-						target.visible_message(span_danger("[target]'s face is turned into something monstrous!"), span_danger("Your feel your face become something monstrous!"))
+						target.visible_message(span_danger("[target]'s face is twisted into something monstrous!"), span_danger("Your feel your face twisted into something monstrous!"))
 						ADD_TRAIT(target, TRAIT_MONSTROUS, TRAIT_GENERIC)
 					else
 						target.visible_message(span_danger("[target]'s face is twisted and disfigured!"), span_danger("Your feel your face being twisted and disfigured!"))
 						ADD_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE, TRAIT_GENERIC)
 				else if(roll >= 5)
-					target.visible_message(span_danger("[target]'s head is crushed!"), span_danger("Your feel your head being crushed!"))
-					var/obj/item/organ/brain/brain = target.get_organ_slot(ORGAN_SLOT_BRAIN)
-					brain?.apply_organ_damage(brain.maxHealth / 4)
 					victim.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
+			// Break a limb
 			else
 				if(roll >= 5)
 					victim.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
