@@ -58,3 +58,7 @@
 #define CATEGORY_DISCIPLINES "DISCIPLINES"
 /// Category for the keybinds where you activate individual powers
 #define CATEGORY_DISCIPLINE_POWERS "DISCIPLINE POWERS"
+
+#define ABYSS_TENTACLE_MODE_AGGRESSIVE "Aggressive"
+#define ABYSS_TENTACLE_MODE_CONTROL "Control"
+#define ABYSS_TENTACLE_MODE_PASSIVE "Passive"

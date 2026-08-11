@@ -779,7 +779,7 @@
 /obj/darkpack_car/proc/on_magic_unlock(datum/source, datum/spell, atom/caster)
 	SIGNAL_HANDLER
 
-	if(locked)
+	if(!locked)
 		return
 	playsound(src, 'modular_darkpack/modules/cars/sounds/open.ogg', 50, TRUE)
 	locked = FALSE

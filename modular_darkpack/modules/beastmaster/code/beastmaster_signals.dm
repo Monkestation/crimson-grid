@@ -60,5 +60,5 @@
 			continue
 
 		//stop everything we're doing if the beastmaster points at an enemy - its time to attack
-		minion.ai_controller.CancelActions()
+		minion.ai_controller.cancel_current_plan()
 		attack_command.on_target_set(H, living_target)

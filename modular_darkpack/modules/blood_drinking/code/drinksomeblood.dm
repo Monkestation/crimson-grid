@@ -41,7 +41,7 @@
 	if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
 		SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 
-	if(!do_after(src, 3 SECONDS, target = drunk_from, timed_action_flags = NONE, progress = FALSE))
+	if(!do_after(src, 3 SECONDS, target = drunk_from, timed_action_flags = NONE, show_progress = FALSE))
 		remove_drinking_overlay(drunk_from)
 		if(!(SEND_SIGNAL(drunk_from, COMSIG_MOB_VAMPIRE_SUCKED, drunk_from) & COMPONENT_RESIST_VAMPIRE_KISS))
 			drunk_from.apply_status_effect(/datum/status_effect/kissed)

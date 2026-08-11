@@ -153,7 +153,7 @@
 	var/mob/living/carbon/human/clicker = usr
 	if(!istype(clicker))
 		return
-	if(clicker.stat >= UNCONSCIOUS)
+	if(IS_UNCONSCIOUS(clicker))
 		return
 
 	var/datum/splat/werewolf/shifter/shifting = get_shifter_splat(clicker)

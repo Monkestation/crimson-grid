@@ -41,14 +41,14 @@
 		enemies += living_target
 		RegisterSignal(living_target, COMSIG_LIVING_DEATH, PROC_REF(on_enemy_death), override = TRUE)
 
-	parent.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, living_target)
+	parent.ai_controller.set_blackboard_key(BB_CURRENT_TARGET, living_target)
 	parent.ai_controller.set_blackboard_key(BB_CURRENT_PET_TARGET, living_target)
 	parent.ai_controller.set_blackboard_key(BB_ACTIVE_PET_COMMAND, src)
 	parent.visible_message(span_warning("[parent] follows [friend]'s gesture towards [living_target] [pointed_reaction]!"))
 	return TRUE
 
 /datum/pet_command/attack/beastmaster/execute_action(datum/ai_controller/controller)
-	var/mob/living/target = controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET]
+	var/mob/living/target = controller.blackboard[BB_CURRENT_TARGET]
 
 	// if current target is invalid, find a new one from enemies list
 	if(!target || target.stat == DEAD)
@@ -57,14 +57,14 @@
 			for(var/mob/living/enemy in enemies)
 				if(!QDELETED(enemy) && enemy.stat != DEAD)
 					target = enemy
-					controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, target)
+					controller.set_blackboard_key(BB_CURRENT_TARGET, target)
 					controller.set_blackboard_key(BB_CURRENT_PET_TARGET, target)
 					break
 
 		// no valid targets, clear everything
 		if(!target)
 			controller.clear_blackboard_key(BB_CURRENT_PET_TARGET)
-			controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
+			controller.clear_blackboard_key(BB_CURRENT_TARGET)
 
 			// get owner and check their follow/stay state
 			var/mob/living/pawn = controller.pawn
@@ -87,8 +87,7 @@
 			return
 
 	// attack the target
-	controller.queue_behavior(attack_behaviour, BB_BASIC_MOB_CURRENT_TARGET, targeting_strategy_key)
-	return SUBTREE_RETURN_FINISH_PLANNING
+	controller.set_behavior_tree_override(SUBPLAN_ID_PET_COMMAND, attack_subtree)
 
 /datum/pet_command/attack/beastmaster/proc/on_enemy_death(mob/living/dead_enemy)
 	SIGNAL_HANDLER
@@ -104,7 +103,7 @@
 	UnregisterSignal(dead_enemy, COMSIG_LIVING_DEATH)
 
 	// if this was our current target, find next target, if there is one
-	if(parent.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET] == dead_enemy)
+	if(parent.ai_controller.blackboard[BB_CURRENT_TARGET] == dead_enemy)
 		var/mob/living/new_target = null
 
 		// find the next enemy
@@ -117,13 +116,13 @@
 		if(new_target)
 			// theres a new target so plan your attack
 			parent.ai_controller.set_blackboard_key(BB_CURRENT_PET_TARGET, new_target)
-			parent.ai_controller.set_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET, new_target)
-			parent.ai_controller.CancelActions()
-			parent.ai_controller.able_to_plan = TRUE
+			parent.ai_controller.set_blackboard_key(BB_CURRENT_TARGET, new_target)
+			parent.ai_controller.cancel_current_plan()
+
 		else
 			// no more enemies, clear and return to previous behavior
 			parent.ai_controller.clear_blackboard_key(BB_CURRENT_PET_TARGET)
-			parent.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
+			parent.ai_controller.clear_blackboard_key(BB_CURRENT_TARGET)
 
 			var/list/friends = parent.ai_controller.blackboard[BB_FRIENDS_LIST]
 			if(friends && length(friends))
@@ -145,8 +144,8 @@
 	// clear all commands
 	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
 	controller.clear_blackboard_key(BB_CURRENT_PET_TARGET)
-	controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
-	controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET_HIDING_LOCATION)
+	controller.clear_blackboard_key(BB_CURRENT_TARGET)
+	controller.clear_blackboard_key(BB_CURRENT_TARGET_HIDING_LOCATION)
 
 	// clear enemies list and unregister signals
 	var/list/enemies = controller.blackboard[BB_BEASTMASTER_ENEMIES_LIST]
@@ -155,7 +154,7 @@
 			UnregisterSignal(enemy, COMSIG_LIVING_DEATH)
 		enemies.Cut()
 
-	controller.CancelActions()
+	controller.cancel_current_plan()
 	return
 
 /datum/pet_command/befriend_target
@@ -213,10 +212,10 @@
 		UnregisterSignal(living_target, COMSIG_LIVING_DEATH)
 
 	//and if theyre the current target remove that too
-	if(parent.ai_controller.blackboard[BB_BASIC_MOB_CURRENT_TARGET] == living_target)
+	if(parent.ai_controller.blackboard[BB_CURRENT_TARGET] == living_target)
 		parent.ai_controller.clear_blackboard_key(BB_CURRENT_PET_TARGET)
-		parent.ai_controller.clear_blackboard_key(BB_BASIC_MOB_CURRENT_TARGET)
-		parent.ai_controller.CancelActions()
+		parent.ai_controller.clear_blackboard_key(BB_CURRENT_TARGET)
+		parent.ai_controller.cancel_current_plan()
 
 	parent.visible_message(span_notice("[parent] follows [friend]'s gesture and befriends [living_target]!"))
 	return TRUE
@@ -226,4 +225,3 @@
 
 /datum/pet_command/befriend_target/execute_action(datum/ai_controller/controller)
 	controller.clear_blackboard_key(BB_ACTIVE_PET_COMMAND)
-	return SUBTREE_RETURN_FINISH_PLANNING
