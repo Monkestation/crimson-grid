@@ -32,7 +32,6 @@ SUBSYSTEM_DEF(humannpcpool)
 
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
-
 	while(length(currentrun))
 		var/mob/living/carbon/human/npc/NPC = currentrun[length(currentrun)]
 		--currentrun.len

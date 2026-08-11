@@ -340,8 +340,6 @@
 			return
 	// CRIMSON GRID ADDITION END - normal taps!!
 
-
-	var/mob/user = ui.user
 	switch(action)
 		if("call")
 			start_phone_call(user, params["number"])
