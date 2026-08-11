@@ -18,27 +18,19 @@
 	. = ..()
 	// Lock sound!
 	playsound(loc, 'modular_vcg/master_files/sounds/item/smartphone/aosp/Lock.ogg', 20, TRUE)
-
 	opened = FALSE
 	update_appearance(UPDATE_ICON_STATE)
 
 /obj/item/smartphone/toggle_screen(mob/user)
 	var/prev_opened = opened
 	. = ..()
-	var/new_opened = opened
-
-	if (!prev_opened && new_opened)
+	if(!prev_opened && opened)
 		playsound(loc, 'modular_vcg/master_files/sounds/item/smartphone/aosp/Unlock.ogg', 20)
 
 /obj/item/smartphone/ui_data(mob/user)
 	. = ..()
 	.["notification_sound"] = ringtone_sound
 	.["notification_sounds"] = list()
-	for(var/sound_name in GLOB.pda_ringtone_sounds)
-		.["notification_sounds"] += sound_name
-
-/obj/item/smartphone/ui_static_data(mob/user)
-	. = list("notification_sounds" = list())
 	for(var/sound_name in GLOB.pda_ringtone_sounds)
 		.["notification_sounds"] += sound_name
 

@@ -323,6 +323,8 @@
 	if(.)
 		return
 
+	var/mob/user = ui.user
+
 	// CRIMSON GRID ADDITION START - normal taps!!
 	if(COOLDOWN_FINISHED(src, tap_sound_cooldown))
 		var/static/list/ignored_actions_for_clicksound = list(

@@ -41,6 +41,8 @@ SUBSYSTEM_DEF(city_time)
 		shifting_colors = TRUE
 		transition_light("#faeacb", 1, 0.75)
 		to_chat(world, span_ghostalert("THE NIGHT IS OVER."))
+		// Close enough to round end.
+		INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
 
 	if(city_time_passed() > time_till_roundend && !roundend_started)
 		roundend_started = TRUE

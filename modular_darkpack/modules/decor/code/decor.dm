@@ -661,8 +661,7 @@
 
 	var/list/myriad_targets = list()
 	for(var/mob/living/target in loc)
-		if(!IS_DEAD_OR_INCAP(target))
-			myriad_targets += target
+		myriad_targets += target
 
 	if(length(myriad_targets) < 20)
 		visible_message(span_warning("The markings pulse with a small flash of red light, then fall dark."))

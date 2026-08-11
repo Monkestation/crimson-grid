@@ -411,11 +411,34 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		var/server_name = CONFIG_GET(string/servername)
 		if (server_name)
 			new_status += "<b>[server_name]</b> "
+		// DARKPACK EDIT ADD START
+		new_status += "(<a href=\"[CONFIG_GET(string/forumurl)]\">Discord</a>)"
+		if(CONFIG_GET(string/servertagline))
+			new_status += "<br>[CONFIG_GET(string/servertagline)]<br>"
+		if(CONFIG_GET(flag/nsfw_content))
+			features += "18+"
+		if(CONFIG_GET(flag/usewhitelist))
+			features += "whitelisted"
+		// DARKPACK EDIT ADD END
+		/* // DARKPACK EDIT REMOVAL
 		if(CONFIG_GET(flag/allow_respawn))
 			features += "respawn" // show "respawn" regardless of "respawn as char" or "free respawn"
 		if(!CONFIG_GET(flag/allow_ai))
 			features += "AI disabled"
 		hostedby = CONFIG_GET(string/hostedby)
+		*/
+		// DARKPACK EDIT ADD START
+
+		var/list/splats = get_selectable_splats()
+		var/static/splat_name
+		if(!splat_name && length(splats))
+			var/splat_id = pick(splats)
+			var/splats_type = GLOB.splat_list[splat_id]
+			var/datum/splat/splat = GLOB.splat_prototypes[splats_type]
+			splat_name = splat?.name
+		if(splat_name)
+			features += "try [splat_name]"
+		// DARKPACK EDIT ADD END
 
 	if (CONFIG_GET(flag/station_name_in_hub_entry))
 		new_status += " &#8212; <b>[station_name()]</b>"
@@ -428,7 +451,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		features += "hosted by <b>[hostedby]</b>"
 
 	if(length(features))
-		new_status += ": [jointext(features, ", ")]"
+		new_status += "[jointext(features, ", ")]" // DARKPACK EDIT CHANGE
 
 	if(!SSticker || SSticker?.current_state == GAME_STATE_STARTUP)
 		new_status += "<br><b>STARTING</b>"

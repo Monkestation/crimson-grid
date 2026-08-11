@@ -70,7 +70,6 @@
 
 	var/lifespan = 0	//How many cycles. He'll be deleted if over than a ten thousand
 	var/old_movement = FALSE
-	var/max_stat = 2
 
 	var/list/spotted_bodies = list()
 
