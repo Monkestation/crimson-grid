@@ -140,17 +140,41 @@
 		l_arm?.drop_limb()
 		r_leg?.drop_limb()
 		l_leg?.drop_limb()
+		// CRIMSON EDIT ADDITION START - BONECRAFT BRAIN DROP
+		var/obj/item/bodypart/head = target.get_bodypart(BODY_ZONE_HEAD)
+		head?.drop_organs()
+		// CRIMSON EDIT ADDITION END
 		new /obj/item/stack/sheet/meat/twenty(target.loc)
 		new /obj/item/guts(target.loc)
 		new /obj/item/spine(target.loc)
 		qdel(target)
 	else
+		// CRIMSON EDIT ADDITION START - BONECRAFT ZONE SELECT
+		var/target_zone = owner.zone_selected
 		target.emote("scream")
-		target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST)
-		if(roll >= 5)
-			target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
-			target.adjust_blood_pool(-(round(target.bloodpool * 0.5))) // A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
-
+		var/obj/item/bodypart/limb = target.get_bodypart(target_zone)
+		if(!limb)
+			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST)
+			return
+		if(owner.combat_mode)
+			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, zone)
+			if(roll >= 5)
+				// A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
+				if((target_zone == BODY_ZONE_CHEST))
+					target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
+					target.adjust_blood_pool(-(round(target.bloodpool * 0.5)))
+		else
+			// This power enables a Vicissitude practitioner to deform a victim (or herself) beyond recognition
+			if(target_zone == BODY_ZONE_HEAD)
+				if (HAS_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE))
+					target.visible_message(span_danger("[target]'s face is twisted into something monstrous!"), span_danger("Your feel your face twisted into something monstrous!"))
+					ADD_TRAIT(target, TRAIT_MONSTROUS, TRAIT_GENERIC)
+				else
+					target.visible_message(span_danger("[target]'s face is twisted and disfigured!"), span_danger("Your feel your face being twisted and disfigured!"))
+					ADD_TRAIT(target, TRAIT_DISFIGURED_APPEARANCE, TRAIT_GENERIC)
+			else
+				target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, zone)
+		// CRIMSON EDIT ADDITION END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/horrid_form
