@@ -143,7 +143,11 @@
 		var/target_zone = owner.zone_selected
 		target.emote("scream")
 		target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone)
-		if(roll >= 5)
+		if(iscarbon(target) && roll >= 5)
+			var/obj/item/bodypart/limb = target.get_bodypart(target_zone)
+			var/mob/living/carbon/victim = target
+			if (!limb)
+				return
 			if(target_zone == BODY_ZONE_CHEST)
 				target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
 				target.adjust_blood_pool(-(round(target.bloodpool * 0.5))) // A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
@@ -164,14 +168,13 @@
 				else
 					target.visible_message(span_danger("[target]'s head is crushed!"), span_danger("Your feel your head being crushed!"))
 					var/obj/item/organ/brain/brain = target.get_organ_slot(ORGAN_SLOT_BRAIN)
-					brain.apply_organ_damage(brain.maxHealth / 4)
-					target.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
+					brain?.apply_organ_damage(brain.maxHealth / 4)
+					victim.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
 			else
-
 				if(roll >= 9)
-					target.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
+					victim.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
 				else
-					target.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
+					victim.cause_wound_of_type_and_severity(WOUND_BLUNT, target_zone, WOUND_SEVERITY_SEVERE)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/horrid_form
