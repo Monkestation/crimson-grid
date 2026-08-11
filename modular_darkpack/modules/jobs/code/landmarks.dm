@@ -70,6 +70,7 @@ JOB_START_HELPER(law_enforcement/fbi, JOB_FEDERAL_INVESTIGATOR)
 	name = "generic hecata start"
 
 JOB_START_HELPER(hecata/capo, JOB_CAPO)
+JOB_START_HELPER(hecata/nonni, JOB_I_NONNI)
 JOB_START_HELPER(hecata/famiglia, JOB_LA_SQUADRA)
 JOB_START_HELPER(hecata/squadra, JOB_LA_FAMIGLIA)
 

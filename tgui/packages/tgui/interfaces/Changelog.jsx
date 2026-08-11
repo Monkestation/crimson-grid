@@ -184,27 +184,43 @@ export class Changelog extends Component {
 
     const header = (
       <Section>
+        {/* CRIMSON EDIT REMOVAL
         <h1>Darkpack: Second City</h1>
+        */}
+        <h1>CRIMSON GRID</h1>
         <p>
           <b>Thanks to: </b>
-          The Final Nights, World of Darkness 13, RequiemSS13, TGstation,
-          Baystation 12, /vg/station, NTstation, CDK Station devs,
-          FacepunchStation, GoonStation devs, the original Space Station 13
-          developers, Invisty for the title image and the countless others who
-          have contributed to the game, issue tracker or wiki over the years.
+          Darkpack: Second City, The Final Nights, World of Darkness 13,
+          RequiemSS13, TGstation, Baystation 12, /vg/station, NTstation, CDK
+          Station devs, FacepunchStation, GoonStation devs, the original Space
+          Station 13 developers, Invisty for the title image and the countless
+          others who have contributed to the game, issue tracker or wiki over
+          the years.
         </p>
+        {/* CRIMSON EDIT ADDITION START */}
+        <p>
+          Credits to:
+          <a href="https://bsky.app/profile/euphoriaenby.bsky.social">
+            @euphoricaspentrees
+          </a>{' '}
+          (Original logo drawing) and <a href="https://fleepy.tv">@flleeppyy</a>{' '}
+          (touchups and additional graphics) for the game icon and banner!
+        </p>
+        {/* CRIMSON EDIT ADDITION END */}
         <p>
           {'Current organization members can be found '}
-          <a href="https://github.com/orgs/DarkPack13/people">here</a>
+          {/* CRIMSON EDIT BELOW - our github repo */}
+          <a href="https://github.com/orgs/Monkestation/people">here</a>
           {', recent GitHub contributors can be found '}
-          <a href="https://github.com/DarkPack13/SecondCity/pulse/monthly">
+          <a href="https://github.com/Monkestation/crimson-grid/pulse/monthly">
             here
           </a>
           .
         </p>
         <p>
           {'You can also join our discord '}
-          <a href="https://discord.gg/rmAbJcuChD">here</a>.
+          {/* CRIMSON EDIT BELOW - our discord */}
+          <a href="https://discord.gg/9YrFgSHU6j">here</a>.
         </p>
         {dateDropdown}
       </Section>

@@ -4,7 +4,7 @@
 /mob/living/carbon/human/npc/walkby/club/Life()
 	. = ..()
 
-	if (!staying || stat >= UNCONSCIOUS)
+	if (!staying || IS_UNCONSCIOUS_OR_CRIT(src))
 		return
 	if (!prob(5))
 		return

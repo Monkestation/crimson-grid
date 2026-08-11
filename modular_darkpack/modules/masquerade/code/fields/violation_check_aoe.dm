@@ -69,7 +69,7 @@
 	SIGNAL_HANDLER
 
 	var/mob/living/host_mob = host
-	if(host_mob.incapacitated || host_mob.stat >= SOFT_CRIT || host_mob.IsSleeping() || host_mob.IsParalyzed())
+	if(host_mob.incapacitated || IS_UNCONSCIOUS_OR_CRIT(host_mob) || host_mob.IsSleeping() || host_mob.IsParalyzed())
 		return
 	if(HAS_TRAIT(source, TRAIT_OBFUSCATED))
 		return

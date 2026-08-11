@@ -1,6 +1,11 @@
 /datum/discipline/obeah
 	name = "Obeah"
-	desc = "Use your third eye in healing or protecting needs."
+	desc = {"Use your third eye in healing or protecting needs.
+● Sense Vitality: Perception + Empathy (difficulty 7)
+●● Anesthetic Touch: Willpower (difficulty 8 if unwilling)
+●●● Corpore Sano: No roll
+●●●● Shepherd's Watch: No roll
+●●●●● Unburden the Bestial Soul: Intelligence + Empathy (difficulty 8)"}
 	icon_state = "obeah"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obeah

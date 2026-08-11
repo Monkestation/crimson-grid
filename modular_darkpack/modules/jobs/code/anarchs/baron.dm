@@ -32,4 +32,4 @@
 	gloves = /obj/item/clothing/gloves/vampire/work
 	l_pocket = /obj/item/smartphone/baron
 	r_pocket = /obj/item/vamp/keys/baron
-	backpack_contents = list(/obj/item/phone_book=1, /obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/phone_book=1, /obj/item/card/credit=1, /obj/item/clothing/gloves/vampire/brassknuckles/spiked=1)

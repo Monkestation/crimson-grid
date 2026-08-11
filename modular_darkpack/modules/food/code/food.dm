@@ -68,6 +68,58 @@
 /obj/item/food/butterdog
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/food/icons/food_onfloor.dmi')
 
+/obj/item/food/submarine_sandwich
+	name = "submarine sandwich"
+	desc = "Like a sandwich, but underwater. Wait, no, that isn't right..."
+	icon = 'modular_darkpack/modules/food/icons/items.dmi'
+	icon_state = "sub"
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/food/icons/food_onfloor.dmi')
+	custom_price = 5
+	food_flags = null
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 2,
+		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
+	)
+	tastes = list("italy" = 4, "meat" = 2, "cheese" = 2, "lettuce" = 1)
+	foodtypes = MEAT | DAIRY | GRAIN | VEGETABLES
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/food/submarine_sandwich/Initialize(mapload)
+	. = ..()
+	if(istype(src, /obj/item/food/submarine_sandwich/wish))
+		return
+	if(!prob(1))
+		return
+	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
+	visible_message(span_warning("They got the order wrong!"))
+	new /obj/item/food/submarine_sandwich/wish(loc)
+	qdel(src)
+
+/obj/item/food/submarine_sandwich/meatball
+	name = "meatball sub"
+	desc = "Better than the sub-ball meat."
+	icon_state = "meatball"
+	tastes = list("italy" = 4, "meat" = 2) // demon
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 2,
+		/datum/reagent/consumable/nutriment/protein = 5)
+	foodtypes = MEAT | GRAIN
+
+/obj/item/food/submarine_sandwich/italiano
+	name = "italiano sub"
+	desc = "Don't let your plumber see this."
+	icon_state = "italian"
+	tastes = list("extra italy" = 4, "meat" = 2, "cheese" = 2, "lettuce" = 1)
+
+/obj/item/food/submarine_sandwich/wish
+	name = "wish sandwich"
+	desc = "Make a wish!"
+	icon_state = "wish"
+	tastes = list("a wish that the sandwich had anything in it" = 4)
+	food_reagents = list(/datum/reagent/consumable/nutriment = 0.5)
+	foodtypes = GRAIN
+
 //--------PACKAGED SNACKS-----------//
 
 /obj/item/trash/vampirebar

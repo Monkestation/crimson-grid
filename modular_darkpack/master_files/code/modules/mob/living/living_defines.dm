@@ -44,7 +44,6 @@
 	var/list/datum/component/obeys_commands/minion_command_components = list()
 
 	var/tentacle_escape_attempt = 0
-	var/tentacle_aggro_mode = "Aggressive"
 	var/possessed = FALSE //dominate 5 body posession
 	var/datum/weakref/conditioner // dominate 4
 	//obfuscate icon, client side
