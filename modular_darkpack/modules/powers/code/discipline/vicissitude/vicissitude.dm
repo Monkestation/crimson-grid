@@ -154,10 +154,10 @@
 		target.emote("scream")
 		var/obj/item/bodypart/limb = target.get_bodypart(target_zone)
 		if(!limb)
-			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST)
+			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST, wound_bonus = 10)
 			return
 		if(owner.combat_mode)
-			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone)
+			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone, wound_bonus = 10)
 			if(roll >= 5)
 				// A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
 				if((target_zone == BODY_ZONE_CHEST))
@@ -172,7 +172,7 @@
 				else
 					to_chat(owner, span_danger("[target]'s face is already deformed!"))
 			else
-				target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone)
+				target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone, wound_bonus = 10)
 		// CRIMSON EDIT ADDITION END
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
