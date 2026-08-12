@@ -97,7 +97,7 @@
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FERA_AUSPICE, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_FERA_AUSPICE
 	// CRIMSON EDIT ADD START - SUBSPLAT_BANS
-	if(possible_job.allowed_auspice && (auspice.name in possible_job.allowed_auspice) && is_banned_from(player.ckey, auspice.name))
+	if(is_banned_from(player.ckey, auspice.name))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED_AUSPICE, auspice.name)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED_AUSPICE
 	// CRIMSON EDIT ADD END

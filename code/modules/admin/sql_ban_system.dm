@@ -363,6 +363,9 @@
 				break_counter++
 			output += "</div></div>"
 		// CRIMSON EDIT ADD START - SUBSPLAT_BANS
+		var/list/clan_list = list()
+		for(var/key in GLOB.vampire_clan_list)
+			clan_list += GLOB.vampire_clan_list[key].id
 		// CRIMSON EDIT END
 
 		var/list/long_job_lists = list(
@@ -417,7 +420,7 @@
 				SPLAT_GAROU,
 				SPLAT_CORAX,
 			),
-			"Clans" = LAZY,
+			"Clans" = clan_list,
 			"Tribes" = list(
 				TRIBE_RONIN,
 				TRIBE_BLACK_FURIES,
