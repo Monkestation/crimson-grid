@@ -534,6 +534,11 @@
 	if(!psychonaut.hud_used)
 		return
 
+	// CRIMSON GRID ADDITION START - holy shit this is laggy af
+	if(TICK_USAGE > (Master.current_ticklimit * 0.5))
+		return
+	// CRIMSON GRID ADDITION END
+
 	var/atom/movable/plane_master_controller/game_plane_master_controller = psychonaut.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 
 	// Info for non-matrix plebs like me!
