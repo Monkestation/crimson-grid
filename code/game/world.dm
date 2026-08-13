@@ -84,6 +84,10 @@ GLOBAL_VAR(restart_counter)
 			return
 #endif
 
+	// CRIMSON EDIT ADDITION START - MEMORY_PROFILING
+	MemProfiler = new
+	// CRIMSON EDIT ADDITION END
+
 	Profile(PROFILE_RESTART)
 	Profile(PROFILE_RESTART, type = "sendmaps")
 
