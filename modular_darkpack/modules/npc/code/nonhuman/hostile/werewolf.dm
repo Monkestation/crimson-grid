@@ -26,7 +26,7 @@
 	pixel_w = -8
 	bloodpool = 10
 	maxbloodpool = 10
-	ai_controller = /datum/ai_controller/basic_controller/crinos_beast
+	ai_controller = /datum/ai_controller/basic_controller/simple/simple_hostile
 	var/clothing_type = 0 // Set to -1 for random clothing
 
 	faction = list(FACTION_HOSTILE)
@@ -41,18 +41,3 @@
 	. = ..()
 	AddElement(/datum/element/ai_retaliate)
 	ADD_TRAIT(src, TRAIT_FRENETIC_AURA, INNATE_TRAIT)
-
-///nothing unique, just retaliation.
-/datum/ai_controller/basic_controller/crinos_beast
-	blackboard = list(
-		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
-	)
-
-	ai_movement = /datum/ai_movement/basic_avoidance
-	idle_behavior = /datum/idle_behavior/idle_random_walk
-	planning_subtrees = list(
-		/datum/ai_planning_subtree/escape_captivity,
-		/datum/ai_planning_subtree/target_retaliate,
-		/datum/ai_planning_subtree/simple_find_target,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree,
-	)

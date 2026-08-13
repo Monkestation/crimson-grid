@@ -10,8 +10,3 @@
 	gravity = list(0, 0.1)
 	position = generator(GEN_SPHERE, 0, 16, NORMAL_RAND)
 	spin = generator(GEN_NUM, -1, 1, NORMAL_RAND)
-
-
-/obj/item/smartphone/proc/setup_particles()
-	if(!particle_generator)
-		particle_generator = new(src, /particles/phone_ringing, PARTICLE_ATTACH_MOB)

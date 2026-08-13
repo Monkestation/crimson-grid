@@ -4,7 +4,7 @@
 /mob/living/proc/enter_frenzy_mode(atom/target, fleeing = FALSE, source = "Unknown cause")
 	if(HAS_TRAIT(src, TRAIT_IN_FRENZY))
 		return
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(IS_UNCONSCIOUS(src))
 		return
 	add_traits(list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), FRENZY_TRAIT)
 	message_admins("[ADMIN_LOOKUPFLW(src)] has entered frenzy[target ? " targeting [ADMIN_LOOKUPFLW(src)]": ""]. ([source])")
@@ -65,7 +65,7 @@
 
 
 /mob/living/proc/trigger_rotschreck(atom/fire, difficulty = 6, successes = 0)
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(IS_UNCONSCIOUS(src))
 		return
 	if(!get_kindred_splat(src))
 		return
@@ -84,7 +84,7 @@
 
 
 /mob/living/proc/trigger_kindred_frenzy(atom/target, difficulty = 6, successes = 0, flavor_text = "Something")
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(IS_UNCONSCIOUS(src))
 		return
 	if(!get_kindred_splat(src))
 		return
@@ -109,7 +109,7 @@
 
 
 /mob/living/proc/trigger_rage_frenzy(atom/target, difficulty = 6, successes = 0)
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(IS_UNCONSCIOUS(src))
 		return
 	var/datum/splat/werewolf/shifter/shifter_splat = get_shifter_splat(src)
 	if(!shifter_splat)

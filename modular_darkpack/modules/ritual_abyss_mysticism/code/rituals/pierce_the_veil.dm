@@ -25,11 +25,5 @@
 	var/mob/living/carbon/human/H = last_activator
 	H.become_blind("pierce_the_veil_botch")
 	to_chat(H, span_userdanger("Darkness overwhelmes your vision as you mess up the ritual, causing temporary blindness!"))
-	addtimer(CALLBACK(src, PROC_REF(cure_botch), H), 2 MINUTES)
+	addtimer(CALLBACK(H, TYPE_PROC_REF(/mob/living, remove_status_effect), /datum/status_effect/grouped/blindness, "pierce_the_veil_botch"), 2 MINUTES)
 	qdel(src)
-
-/obj/ritual_rune/abyss/pierce_the_veil/proc/cure_botch(mob/living/carbon/human/H)
-	if(QDELETED(H))
-		return
-	H.cure_blind("pierce_the_veil_botch")
-	to_chat(H, span_notice("Your vision slowly returns."))
