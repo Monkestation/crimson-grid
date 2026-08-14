@@ -92,7 +92,6 @@
 		TRAIT_FRENETIC_AURA,
 		TRAIT_SILVER_WEAKNESS,
 		TRAIT_STUNIMMUNE, // CRIMSON EDIT ADD - Fera splat warform buffs
-		TRAIT_LIVERLESS_METABOLISM, // CRIMSON EDIT ADD - Fera splat warform buffs 
 	)
 	// id = SPLAT_FERA
 	incompatible_splats = list(
