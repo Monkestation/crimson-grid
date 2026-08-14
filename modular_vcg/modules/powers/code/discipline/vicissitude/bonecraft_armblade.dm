@@ -96,7 +96,6 @@
 		return TRUE
 	return FALSE
 
-//
 /datum/action/vicissitude/boneblade/proc/extrude(mob/living/carbon/human/user)
 	var/obj/item/held = user.get_active_held_item()
 	if(held && !user.dropItemToGround(held))
