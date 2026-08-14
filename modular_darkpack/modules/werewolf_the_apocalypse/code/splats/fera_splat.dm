@@ -156,11 +156,11 @@
 			// 2 to represent lethal. Fera passive regen closes burn, but not aggravated damage.
 			owner.heal_storyteller_health(2, heal_aggravated = TRUE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE) //CRIMSON EDIT CHANGE - Original: owner.heal_storyteller_health(2, heal_aggravated = FALSE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE)
 			// Keep organ healing ticking so internal damage recovers even between major regrowth pulses.
-			owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, -0.1 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
+			owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, -0.1 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC) // CRIMSON EDIT CHANGE - Original 0.5
 			owner.adjust_organ_loss(ORGAN_SLOT_HEART, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_LUNGS, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_STOMACH, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
-			owner.adjust_organ_loss(ORGAN_SLOT_LIVER, -0.1 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
+			owner.adjust_organ_loss(ORGAN_SLOT_LIVER, -0.1 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC) // CRIMSON EDIT CHANGE - Original 0.5
 			owner.adjust_organ_loss(ORGAN_SLOT_EYES, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EARS, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 		COOLDOWN_START(src, passive_healing_cd, 0.5 TURNS) //CRIMSON EDIT CHANGE - Original: COOLDOWN_START(src, passive_healing_cd, 1 TURNS)
