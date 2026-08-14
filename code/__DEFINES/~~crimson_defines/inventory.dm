@@ -1,7 +1,7 @@
 //necessary for the new inventory stuff Cause holy shit is darkpack items loogged in stupdily
 
 //Mostly a just in case someone needs a "Store all melee weapons" cause holy moly do they have some random names
-GLOBAL_LIST_INIT(darkpack_melee list(
+GLOBAL_LIST_INIT(darkpack_melee, list(
 	/obj/item/melee/vamp,
 	/obj/item/fireaxe/vamp,
 	/obj/item/katana/vamp,
