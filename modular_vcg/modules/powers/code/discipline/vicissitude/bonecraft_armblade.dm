@@ -11,14 +11,14 @@
 
 /obj/item/melee/vamp/boneblade
 	name = "bone blade"
-	desc = "A horifying blade of flesh and blones repurposed from a arm"
+	desc = "A horrifying blade of bones and flesh in place of a arm"
 	// placeholder icons
 	icon = 'icons/obj/weapons/changeling_items.dmi'
 	icon_state = "arm_blade"
 	inhand_icon_state = "arm_blade"
 	lefthand_file = 'icons/mob/inhands/antag/changeling_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/antag/changeling_righthand.dmi'
-	force = 1 LETHAL_TTRPG_DAMAGE
+	force = 1 LETHAL_TTRPG_DAMAGE // placeholder damage, this is scaled by medical stat
 	sharpness = SHARP_EDGED
 	wound_bonus = 10
 	armour_penetration = 40
@@ -37,7 +37,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, INNATE_TRAIT)
 	if(ismob(loc))
-		loc.visible_message(span_warning("A grotesque blade forms around [loc.name]\'s arm as it twists and rips!"), span_warning("Your twist your arm's bone and flesh, transforming it into a deadly blade."), span_hear("You hear bones and flesh ripping and tearing!"))
+		loc.visible_message(span_warning("A grotesque blade forms around [loc.name]\'s arm as it twists and rips!"), span_warning("Your twist your arm's bone and flesh, transforming it into a deadly blade."), span_hear("You hear bones and flesh tearing and ripping!"))
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, attack_verb_continuous, attack_verb_simple, -5)
 	AddComponent(/datum/component/butchering, \
 	speed = 6 SECONDS, \
@@ -88,7 +88,7 @@
 		user.temporarilyRemoveItemFromInventory(held, TRUE) //DROPDEL will delete the item
 		user.visible_message(
 			span_warning("With a sickening fleshy sound, [user] reforms [user.p_their()] [weapon_name_simple] into an arm!"),
-			span_notice("You reform the fleshy and bony [weapon_name_simple] back into a arm."),
+			span_notice("You reform the bony and fleshy [weapon_name_simple] back into a arm."),
 			span_hear("You hear bones and flesh ripping and tearing!"),
 		)
 		playsound(user, 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 50, FALSE)
