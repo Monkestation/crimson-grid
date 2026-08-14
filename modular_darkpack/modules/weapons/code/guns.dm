@@ -8,7 +8,7 @@
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_guns.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	recoil = 5
-	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
+
 	//Leave serial_type blank for no serial number/obliterated serial number.
 	serial_type = "SF"
 
@@ -429,7 +429,6 @@
 	fire_delay = 2
 	recoil = 5
 	spread = 4
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	bolt_type = BOLT_TYPE_LOCKING
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -453,7 +452,6 @@
 	fire_delay = 1
 	spread = 2
 	recoil = 3
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	bolt_type = BOLT_TYPE_LOCKING
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -487,7 +485,6 @@
 	recoil = 5
 	burst_size = 1
 	spread = 5
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	bolt_type = BOLT_TYPE_LOCKING
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -506,7 +503,6 @@
 	desc = "Pretty old, but also easy fireable and cleanable by vodka. This one has had its stock removed and the barrel chopped; it's a miracle it still cycles! Uses 5.45 rounds."
 	icon_state = "ak74_sawn"
 	inhand_icon_state = "ak74_sawn"
-	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
 	recoil = 8	//Increased recoil due to sawing off the stock on a full-auto. Bootleg draco.
@@ -536,7 +532,6 @@
 	fire_delay = 2
 	spread = 3
 	recoil = 5
-	slot = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	bolt_type = BOLT_TYPE_LOCKING
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -568,7 +563,6 @@
 	recoil = 5
 	burst_size = 1
 	spread = 15
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -615,7 +609,7 @@
 	recoil = 3
 	fire_delay = 1					//It's bolt-action. Fast as you can go really; which is still pretty slow.
 	burst_size = 1
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	projectile_damage_multiplier = 1.5 //~52 damage vs 35 base .44 damage. It's ok, on par with 5.56 but lower pen and slower to fire due to bolt action.
 	masquerade_violating = FALSE
 	serial_type = "WN"
@@ -667,7 +661,7 @@
 	//zoomable = TRUE
 	//zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
 	//zoom_out_amt = 5
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
+	slot_flags = ITEM_SLOT_BACK
 	projectile_damage_multiplier = 2 //140 damage. Nice.
 	actions_types = list()
 	masquerade_violating = TRUE
@@ -699,7 +693,7 @@
 	fire_delay = 5
 	spread = 2
 	recoil = 6
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
+	slot_flags = ITEM_SLOT_BACK
 	projectile_damage_multiplier = 1.5
 	actions_types = list()
 	masquerade_violating = TRUE
@@ -740,7 +734,6 @@
 	worn_icon_state = "pomp"
 	recoil = 6
 	fire_delay = 6
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/vampshotgun
 	can_be_sawn_off	= TRUE
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/pomp.ogg'
@@ -761,7 +754,6 @@
 	recoil = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
-	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/vampshotgun/sawnoff
 
 /obj/item/ammo_box/magazine/internal/darkpack_dbarrel
@@ -793,7 +785,6 @@
 	burst_delay = 2
 	recoil = 5
 	spread = 2
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	fire_delay = 3
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/darkpack_dbarrel
 	can_be_sawn_off	= TRUE
@@ -813,7 +804,6 @@
 	. = ..()
 	w_class = WEIGHT_CLASS_NORMAL	//Lets you stow it in a bag
 	weapon_weight = WEAPON_MEDIUM	//Lets you one-hand it on sawing.
-	slot_flags = ITEM_SLOT_SUITSTORE | ITEM_SLOT_BELT // Lets you put it on your belt now
 
 /obj/item/ammo_box/magazine/darkpackautoshot
 	name = "shotgun magazine (12ga)"
@@ -843,7 +833,7 @@
 	show_bolt_icon = FALSE
 	mag_display = TRUE
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/pomp.ogg'
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
+	slot_flags = ITEM_SLOT_BACK
 	projectile_damage_multiplier = 0.9
 	masquerade_violating = TRUE
 	recoil = 6
@@ -859,7 +849,6 @@
 	icon_state = "crossbow0"
 	inhand_icon_state = "crossbow0"
 	fire_delay = 16
-	slot_flags = ITEM_SLOT_SUITSTORE | ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/vampcrossbow
 	fire_sound = 'sound/items/syringeproj.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
@@ -901,7 +890,7 @@
 	recoil = 10	//tee hee
 	spread = 14
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
+	slot_flags = ITEM_SLOT_BACK
 	projectile_damage_multiplier = 1.5 //150 damage; it is a single-shot.
 	serial_shown = FALSE	//No serial, it's a musket.
 	actions_types = list()
@@ -920,4 +909,4 @@
 	recoil = 12
 	spread = 25		//+25 from sawing off anyway, good fucking luck
 	w_class = WEIGHT_CLASS_NORMAL
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
