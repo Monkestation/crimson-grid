@@ -84,6 +84,10 @@ GLOBAL_VAR(restart_counter)
 			return
 #endif
 
+	// CRIMSON EDIT ADDITION START - MEMORY_PROFILING
+	MemProfiler = new
+	// CRIMSON EDIT ADDITION END
+
 	Profile(PROFILE_RESTART)
 	Profile(PROFILE_RESTART, type = "sendmaps")
 
@@ -345,6 +349,10 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 	// byond-tracy can't clean up itself, and thus we should always hard reboot if its enabled, to avoid an infinitely growing trace.
 	if(Tracy?.enabled)
 		return TRUE
+	// CRIMSON ADDITION START - memprofiler
+	if(MemProfiler?.enabled)
+		return TRUE
+	// CRIMSON ADDITION END - memprofiler
 	var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
 	switch(ruhr)
 		if(-1)
