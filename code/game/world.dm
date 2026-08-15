@@ -345,6 +345,10 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 	// byond-tracy can't clean up itself, and thus we should always hard reboot if its enabled, to avoid an infinitely growing trace.
 	if(Tracy?.enabled)
 		return TRUE
+	// CRIMSON ADDITION START - datum refscanner
+	if(GLOB.datum_refscanner_ready)
+		return TRUE
+	// CRIMSON ADDITION END
 	var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
 	switch(ruhr)
 		if(-1)

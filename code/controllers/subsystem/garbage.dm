@@ -279,6 +279,16 @@ SUBSYSTEM_DEF(garbage)
 
 //this is mainly to separate things profile wise.
 /datum/controller/subsystem/garbage/proc/HardDelete(datum/D)
+	var/static/list/dont_scan_these_types
+	if(isnull(dont_scan_these_types))
+		dont_scan_these_types = list(
+			// always hard delete anyways
+			/client,
+			/datum/controller,
+			/datum/parsed_map,
+			// can't find these yet, avoid them to prevent lagspikes
+			/mob/living/carbon/human,
+		)
 	++delslasttick
 	++totaldels
 	var/type = D.type
@@ -288,9 +298,36 @@ SUBSYSTEM_DEF(garbage)
 	if(detail)
 		LAZYADD(type_info.extra_details, detail)
 
+	var/do_native_scan = GLOB.datum_refscanner_enabled && !is_type_in_list(D, dont_scan_these_types) // don't run it for things that intentionally harddel
+	if(do_native_scan && !refscanner_ensure_ready())
+		do_native_scan = FALSE
+		stack_trace("failed to ensure refscanner is ready")
+
 	var/tick_usage = TICK_USAGE
+	if(do_native_scan)
+		refscanner_clear()
+		rustg_time_reset("native_refscan")
+		refscanner_arm_once()
 	del(D)
 	tick_usage = TICK_USAGE_TO_MS(tick_usage)
+	if(do_native_scan)
+		var/time = rustg_time_milliseconds("native_refscan")
+		var/list/debug_lines = refscanner_debug_drain()
+		var/list/findings = refscanner_report()
+
+		if(length(findings))
+			message_admins("native refscan complete for [type] ([refID]), [length(findings)] findings, took [time] ms (see refscanner.log for more info)")
+			logger.Log("refscanner", "native refscan complete for [type] ([refID]), took [time] ms\n=== [length(findings)] finding(s)===\n[jointext(findings, "\n")]")
+		else
+			message_admins("native refscan complete for [type] ([refID]), took [time] ms, but nothing was found.")
+			logger.Log("refscanner", "native refscan complete for [type] ([refID]), took [time] ms, nothing was found")
+
+		if(debug_lines)
+			var/filename = "[replacetext(copytext("[type]", 2), "/", "_")]-[copytext(refID, 2, -1)]"
+			var/debug_file = file("[GLOB.log_directory]/refscanner_debug/[sanitize_filename(filename)].txt")
+			debug_file << "Native RefScanner debug ([type] | [refID]):"
+			for(var/line in debug_lines)
+				debug_file << "  [line]"
 
 	type_info.hard_deletes++
 	type_info.hard_delete_time += tick_usage
