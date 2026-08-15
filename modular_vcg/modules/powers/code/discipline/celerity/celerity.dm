@@ -2,23 +2,23 @@
 
 /datum/discipline_power/celerity/one
 
-	duration_length = 4 TURNS
+	duration_length = 3 TURNS
 
 /datum/discipline_power/celerity/two
 
-	duration_length = 4 TURNS
+	duration_length = 3 TURNS
 
 /datum/discipline_power/celerity/three
 
-	duration_length = 4 TURNS
+	duration_length = 3 TURNS
 
 /datum/discipline_power/celerity/four
 
-	duration_length = 4 TURNS
+	duration_length = 3 TURNS
 
 /datum/discipline_power/celerity/five
 
-	duration_length = 4 TURNS
+	duration_length = 3 TURNS
 
 
 /datum/discipline_power/celerity/one/post_gain()
