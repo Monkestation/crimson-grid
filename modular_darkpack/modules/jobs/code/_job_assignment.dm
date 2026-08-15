@@ -83,8 +83,8 @@
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_CLAN, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_KINDRED_CLAN
 	// CRIMSON EDIT ADD START - SUBSPLAT_BANS
-	if(is_banned_from(player.ckey, clan.id))
-		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED_CLAN, clan.id)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+	if(is_banned_from(player.ckey, clan.name))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED_CLAN, clan.name)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED_CLAN
 	// CRIMSON EDIT ADD END
 
