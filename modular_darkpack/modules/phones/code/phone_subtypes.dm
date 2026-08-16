@@ -37,12 +37,17 @@
 /obj/item/smartphone/ventrue_primo
 	important_contact_of = VAMPIRE_CLAN_VENTRUE
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = "Crown Blue Jazz Club Owner", USE_JOB_TITLE = FALSE)
+		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = (PRIMARY_JAZZCLUB_COMPANY + " Jazz Club Owner"), USE_JOB_TITLE = FALSE)
 		)
 
 /obj/item/smartphone/ventrue_patron
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = VENTRUE_NETWORK, OUR_ROLE = "Jazz Club Patron", USE_JOB_TITLE = FALSE)
+		alist(NETWORK_ID = VENTRUE_NETWORK, OUR_ROLE = (PRIMARY_NIGHTCLUB_COMPANY + "Jazz Club Patron"), USE_JOB_TITLE = TRUE)
+		)
+
+/obj/item/smartphone/ventrue_associate
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = VENTRUE_NETWORK, OUR_ROLE = (PRIMARY_NIGHTCLUB_COMPANY + "Jazz Club Associate"), USE_JOB_TITLE = TRUE)
 		)
 
 // TOREADOR
