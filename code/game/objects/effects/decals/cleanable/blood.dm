@@ -37,6 +37,8 @@
 	/// When dried, this becomes the desc of the blood
 	var/dry_desc = "Looks like it's been here a while. Eew."
 
+	var/last_dry_time
+
 /*
  * diseases - List of diseases to add to this decal on init
  * blood_or_dna - Either a blood type which will get added, or a full list of DNA
@@ -66,6 +68,7 @@
 		dry()
 	else if(can_dry)
 		total_dry_time = drying_time
+		last_dry_time = world.time
 		START_PROCESSING(SSblood_drying, src)
 
 	AddElement(/datum/element/connect_loc, loc_connections)
@@ -158,10 +161,13 @@
 	if(dried || !can_dry)
 		return PROCESS_KILL
 
+	var/delta_time = max(world.time - last_dry_time, seconds_per_tick) * 1 SECONDS
 	if(decay_bloodiness)
-		adjust_bloodiness(-bloodiness / drying_time * seconds_per_tick * 1 SECONDS, ignore_timer = TRUE)
+		adjust_bloodiness(-bloodiness / drying_time * delta_time, ignore_timer = TRUE)
 
-	drying_time -= seconds_per_tick * 1 SECONDS
+	drying_time -= delta_time
+
+	last_dry_time = world.time
 	if(drying_time <= 0)
 		dry()
 
