@@ -552,7 +552,7 @@ GAME_VERB(/mob/living, pulled, "Pull", null, atom/movable/thing_pulled as mob|ob
 	log_message("points at [pointing_at]", LOG_EMOTE)
 	visible_message(span_infoplain("[span_name("[src]")] points at [pointing_at]."), span_notice("You point at [pointing_at]."))
 
-GAME_VERB(/mob/living, succumb, "succumb", whispered as num|null) // CRIMSON EDIT CHANGE ORIGINAL: GAME_VERB_HIDDEN(/mob/living, succumb, "succumb", whispered as num|null)
+GAME_VERB(/mob/living, succumb, "Succumb", "IC", whispered as num|null) // CRIMSON EDIT CHANGE ORIGINAL: GAME_VERB_HIDDEN(/mob/living, succumb, "succumb", whispered as num|null)
 	if (!CAN_SUCCUMB(src))
 		if(HAS_TRAIT(src, TRAIT_SUCCUMB_OVERRIDE))
 			if(whispered)
