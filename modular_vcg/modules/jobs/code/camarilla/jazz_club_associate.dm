@@ -2,6 +2,7 @@
 	title = JOB_JAZZ_CLUB_ASSOCIATE
 	faction = FACTION_CITY
 	total_positions = 6
+	spawn_positions = 4
 	supervisors = SUPERVISOR_JAZZ_CLUB_DIRECTOR
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/jazz_club_associate
