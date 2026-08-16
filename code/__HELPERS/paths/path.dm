@@ -327,7 +327,10 @@
 	if(isnull(construct_from))
 		return
 
-	src.requester_ref = WEAKREF(construct_from)
+	if(!ismovable(construct_from))
+		stack_trace("Tried to construct [type] from a non-movable ([construct_from.type]), what the fuck?")
+	else
+		src.requester_ref = WEAKREF(construct_from)
 	src.pass_flags = construct_from.pass_flags
 	src.movement_type = construct_from.movement_type
 	src.thrown = !!construct_from.throwing
