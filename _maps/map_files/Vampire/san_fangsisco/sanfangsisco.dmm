@@ -416,6 +416,13 @@
 /obj/item/pen,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/trujah)
+"afL" = (
+/obj/effect/turf_decal/siding/wideplating/dark{
+	dir = 1
+	},
+/obj/effect/landmark/start/darkpack/citizen/jazz_club_associate,
+/turf/open/floor/carpet/red,
+/area/vtm/interior/jazzclub)
 "afO" = (
 /obj/effect/decal/cleanable/trash,
 /obj/effect/decal/cleanable/litter,
@@ -2971,6 +2978,9 @@
 "aNn" = (
 /obj/structure/window/reinforced/tinted/spawner/directional/south,
 /obj/structure/platform/lowwall/rich/window,
+/obj/structure/curtain/cloth/fancy/blue{
+	pixel_y = 8
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/jazzclub)
 "aNs" = (
@@ -4202,6 +4212,9 @@
 	},
 /obj/effect/decal/wallpaper/red/low,
 /obj/structure/platform/lowwall/rich/window,
+/obj/structure/curtain/cloth/fancy/blue{
+	pixel_y = 8
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/jazzclub)
 "bez" = (
@@ -5422,15 +5435,12 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
 "bwu" = (
-/obj/effect/turf_decal/bordur{
-	dir = 1
+/obj/structure/platform/lowwall/rich/window,
+/obj/structure/curtain/cloth/fancy/blue{
+	pixel_y = 8
 	},
-/obj/structure/hedge{
-	pixel_y = 6
-	},
-/obj/structure/roadsign/noparking,
-/turf/open/floor/plating/sidewalk/old,
-/area/vtm/outside/financialdistrict)
+/turf/open/floor/plating/rough,
+/area/vtm/interior/jazzclub)
 "bwA" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
@@ -15914,6 +15924,7 @@
 /obj/structure/chair/sofa/corp{
 	dir = 1
 	},
+/obj/effect/landmark/start/darkpack/citizen/jazz_club_associate,
 /turf/open/floor/carpet/green,
 /area/vtm/interior/jazzclub)
 "ejU" = (
@@ -16706,6 +16717,9 @@
 "evP" = (
 /obj/effect/decal/wallpaper/red/low,
 /obj/structure/platform/lowwall/rich/window,
+/obj/structure/curtain/cloth/fancy/blue{
+	pixel_y = 8
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/jazzclub)
 "ewc" = (
@@ -22677,6 +22691,9 @@
 	max_integrity = 1000000
 	},
 /obj/structure/platform/lowwall/rich/window,
+/obj/structure/curtain/cloth/fancy/blue{
+	pixel_y = 8
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/jazzclub)
 "gbe" = (
@@ -26557,6 +26574,7 @@
 /area/vtm/interior/supply)
 "hdD" = (
 /obj/structure/chair/stool/bar,
+/obj/effect/landmark/start/darkpack/citizen/jazz_club_associate,
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/jazzclub)
 "hdE" = (
@@ -28754,6 +28772,9 @@
 	max_integrity = 1000000
 	},
 /obj/structure/platform/lowwall/rich/window,
+/obj/structure/curtain/cloth/fancy/blue{
+	pixel_y = 8
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/jazzclub)
 "hKy" = (
@@ -29522,6 +29543,7 @@
 /obj/structure/chair/comfy{
 	dir = 4
 	},
+/obj/effect/landmark/start/darkpack/citizen/jazz_club_associate,
 /turf/open/floor/carpet/red,
 /area/vtm/interior/jazzclub)
 "hWS" = (
@@ -36837,6 +36859,9 @@
 /obj/effect/decal/wallpaper/red/low,
 /obj/effect/decal/wallpaper/red/low,
 /obj/structure/platform/lowwall/rich/window,
+/obj/structure/curtain/cloth/fancy/blue{
+	pixel_y = 8
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/jazzclub)
 "jYJ" = (
@@ -40235,6 +40260,7 @@
 /area/vtm/outside/park)
 "kWI" = (
 /obj/structure/chair/comfy,
+/obj/effect/landmark/start/darkpack/citizen/jazz_club_associate,
 /turf/open/floor/carpet/green,
 /area/vtm/interior/jazzclub)
 "kWJ" = (
@@ -40649,6 +40675,12 @@
 /obj/machinery/light/prince/directional/north,
 /obj/item/clothing/under/vampire/suit/female,
 /obj/item/clothing/under/vampire/suit,
+/obj/item/card/jazz_club_associate,
+/obj/item/card/jazz_club_associate,
+/obj/item/card/jazz_club_associate,
+/obj/item/vamp/keys/jazz,
+/obj/item/vamp/keys/jazz,
+/obj/item/vamp/keys/jazz,
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/millennium_tower/ventrue)
 "lcZ" = (
@@ -42838,6 +42870,13 @@
 /obj/structure/table,
 /turf/open/floor/city/gummaguts,
 /area/vtm/interior/techshop)
+"lJf" = (
+/obj/effect/turf_decal/bordur{
+	dir = 1
+	},
+/obj/structure/roadsign/noparking,
+/turf/open/floor/plating/sidewalk/old,
+/area/vtm/outside/financialdistrict)
 "lJh" = (
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/community)
@@ -52399,6 +52438,9 @@
 	},
 /obj/effect/decal/wallpaper/red/low,
 /obj/structure/platform/lowwall/rich/window,
+/obj/structure/curtain/cloth/fancy/blue{
+	pixel_y = 8
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/jazzclub)
 "oqd" = (
@@ -67509,6 +67551,10 @@
 /obj/item/reagent_containers/blood/vitae,
 /turf/open/indestructible/necropolis/air,
 /area/vtm/interior/tzimisce_sanctum)
+"soX" = (
+/obj/effect/landmark/start/darkpack/citizen/jazz_club_associate,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/jazzclub)
 "spc" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -78267,6 +78313,7 @@
 /obj/structure/chair/sofa/corp{
 	dir = 1
 	},
+/obj/effect/landmark/start/darkpack/citizen/jazz_club_associate,
 /turf/open/floor/carpet/green,
 /area/vtm/interior/jazzclub)
 "vpb" = (
@@ -184174,7 +184221,7 @@ xvs
 fno
 oXC
 iUL
-xPY
+bwu
 hnz
 gcj
 ujA
@@ -184431,7 +184478,7 @@ jji
 fno
 oXC
 kIs
-xPY
+bwu
 hnz
 gcj
 ujA
@@ -184935,7 +184982,7 @@ bIJ
 xJZ
 tCE
 fyW
-mvX
+afL
 uOc
 eiL
 eiL
@@ -185183,7 +185230,7 @@ wbX
 dmU
 wbX
 wbX
-wcJ
+riW
 fzQ
 evP
 gHb
@@ -185440,7 +185487,7 @@ wbX
 dmU
 wbX
 wbX
-bwu
+riW
 fzQ
 eiL
 hZa
@@ -185459,7 +185506,7 @@ wsc
 xJZ
 xJZ
 auB
-xPY
+bwu
 hnz
 gcj
 ujA
@@ -185716,7 +185763,7 @@ dGb
 bJS
 xJZ
 rrh
-xPY
+bwu
 hnz
 gcj
 ujA
@@ -186226,7 +186273,7 @@ wsc
 dDZ
 xJZ
 bJS
-hnC
+soX
 bJS
 bIJ
 xAx
@@ -186744,7 +186791,7 @@ hnC
 bJS
 xJZ
 rrh
-xPY
+bwu
 hnz
 oCx
 lNu
@@ -187001,7 +187048,7 @@ xJZ
 xJZ
 xJZ
 auB
-xPY
+bwu
 hnz
 gcj
 dEW
@@ -187239,7 +187286,7 @@ wbX
 dmU
 wbX
 wbX
-wcJ
+riW
 fzQ
 ssi
 vZt
@@ -187496,7 +187543,7 @@ wbX
 dmU
 wbX
 wbX
-wcJ
+lJf
 fzQ
 cLl
 cLl

@@ -571,6 +571,11 @@ export function JobsPage() {
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
                   setHoveringOver={setHoveringOver}/>
+                <Department department="Jazz Club"
+                                  dragging={dragging}
+                  setDragging={setDragging}
+                  hoveringOver={hoveringOver}
+                  setHoveringOver={setHoveringOver}/>
               </Stack>
             </Stack.Item>
             <Stack.Item mt={-3.9}>

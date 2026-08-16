@@ -40,6 +40,11 @@
 		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = "Crown Blue Jazz Club Owner", USE_JOB_TITLE = FALSE)
 		)
 
+/obj/item/smartphone/ventrue_patron
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = VENTRUE_NETWORK, OUR_ROLE = "Jazz Club Patron", USE_JOB_TITLE = FALSE)
+		)
+
 // TOREADOR
 
 /obj/item/smartphone/toreador_primo

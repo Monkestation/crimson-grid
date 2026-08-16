@@ -3,6 +3,7 @@
 
 #define NEWSPAPER_COMPANY "Angel Times"
 #define PRIMARY_NIGHTCLUB_COMPANY "Dora"
+#define PRIMARY_JAZZCLUB_COMPANY "Crown Blues"
 
 #define SEPT_NAME "Sept of the Western Eye"
 
