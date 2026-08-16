@@ -42,12 +42,12 @@
 
 /obj/item/smartphone/ventrue_patron
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = VENTRUE_NETWORK, OUR_ROLE = (PRIMARY_NIGHTCLUB_COMPANY + "Jazz Club Patron"), USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = VENTRUE_NETWORK, OUR_ROLE = (PRIMARY_NIGHTCLUB_COMPANY + " Jazz Club Patron"), USE_JOB_TITLE = TRUE)
 		)
 
 /obj/item/smartphone/ventrue_associate
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = VENTRUE_NETWORK, OUR_ROLE = (PRIMARY_NIGHTCLUB_COMPANY + "Jazz Club Associate"), USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = VENTRUE_NETWORK, OUR_ROLE = (PRIMARY_JAZZCLUB_COMPANY + " Jazz Club Associate"), USE_JOB_TITLE = TRUE)
 		)
 
 // TOREADOR
