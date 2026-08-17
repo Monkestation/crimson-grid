@@ -43,6 +43,7 @@ SUBSYSTEM_DEF(city_time)
 		to_chat(world, span_ghostalert("THE NIGHT IS OVER."))
 		// Close enough to round end.
 		INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
+		INVOKE_ASYNC(SSvote, TYPE_PROC_REF(/datum/controller/subsystem/vote, initiate_vote), /datum/vote/map_vote, vote_initiator_name = "Map Rotation", forced = TRUE)
 
 	if(city_time_passed() > time_till_roundend && !roundend_started)
 		roundend_started = TRUE
