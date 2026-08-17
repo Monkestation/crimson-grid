@@ -117,7 +117,6 @@
 
 /mob/living/carbon/human/npc/Destroy()
 	UnregisterSignal(src, list(COMSIG_ATOM_WAS_ATTACKED, COMSIG_LIVING_MOB_BUMPED, COMSIG_CARBON_HELP_ACT))
-	QDEL_NULL(socialrole)
 	danger_source = null
 	QDEL_NULL(afraid_of_fire)
 	last_attacker = null

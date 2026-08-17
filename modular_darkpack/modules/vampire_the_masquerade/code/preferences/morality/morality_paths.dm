@@ -195,3 +195,9 @@ GLOBAL_LIST_INIT(morality_paths, init_morality_paths())
 	desc = "The Internalists of the Path of Self-Focus would find inaction and acceptance to be their code; they do not worry about what is or what is to be, they worry only about the now. They feed and kill when they need, yet find themselves considered slow and passive by most. A charitable observer may call them perceptive and introspective."
 	alignment = MORALITY_ENLIGHTENMENT
 	bearing = BEARING_BALANCE
+
+/datum/morality/asakku
+	name = "Path of Asakku"
+	desc = "Asakku followers, often called the Corrupted, are less an ideology than a state of being prompted by the obsessive study of Vicissitude and communion with the dark intelligences behind it. As members of an intuitive Path, the Corrupted only use common terminology after working together for some time, though advanced followers display a strange synchronicity at times. They may call the presence they summon forth a “shadow within” or a “Watcher,” or identify with one of the Qlippothic demons associated with Vicissitude. Vicissitude is the focus of the Corrupted’s obsessions. It spreads this power through blood and instruction as widely as possible. They resent untainted Kindred who inherit Vicissitude through a Clan or bloodline, devoting special attention to converting or destroying them."
+	alignment = MORALITY_ENLIGHTENMENT
+	bearing = BEARING_OTHERWORLDLY
