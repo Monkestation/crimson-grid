@@ -9,7 +9,7 @@
 
 /datum/component/violation_observer/Initialize(add_area_of_effect) //Only add the AOE checker for NPCs and camera objects.
 	if(add_area_of_effect)
-		area_of_effect = new(parent, 7)
+		area_of_effect = new(parent, 7, TRUE, src)
 	breached_players = new()
 
 /datum/component/violation_observer/RegisterWithParent()
@@ -21,6 +21,12 @@
 	QDEL_NULL(area_of_effect)
 	breached_players = null
 	UnregisterSignal(parent, list(COMSIG_SEEN_MASQUERADE_VIOLATION, COMSIG_MASQUERADE_REINFORCE, COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE))
+
+/datum/component/violation_observer/proc/toggle_area_of_effect(origin = parent)
+	if(area_of_effect)
+		QDEL_NULL(area_of_effect)
+	else
+		area_of_effect = new(origin, 7, TRUE, src)
 
 /datum/component/violation_observer/proc/on_observed_violation(atom/source, mob/living/player_breacher)
 	SIGNAL_HANDLER
@@ -63,12 +69,12 @@
 /datum/component/violation_observer/proc/on_death(atom/source)
 	SIGNAL_HANDLER
 
-	for(var/player_breacher in breached_players)
-		SEND_SIGNAL(source, COMSIG_MASQUERADE_HUD_DELETE, player_breacher)
-		SSmasquerade.masquerade_reinforce(source, player_breacher)
-		source.observe_masquerade_reinforce(player_breacher)
-		breached_players -= player_breacher
-		UnregisterSignal(player_breacher, COMSIG_LIVING_DEATH)
+	for(var/mob/player_breacher in breached_players)
+		if(!QDELETED(player_breacher))
+			SEND_SIGNAL(source, COMSIG_MASQUERADE_HUD_DELETE, player_breacher)
+			SSmasquerade.masquerade_reinforce(source, player_breacher)
+			source.observe_masquerade_reinforce(player_breacher)
+			breached_players -= player_breacher
 
 /datum/component/violation_observer/proc/on_breacher_death(mob/living/dead_breacher, gibbed)
 	SIGNAL_HANDLER

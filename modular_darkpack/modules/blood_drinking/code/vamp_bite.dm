@@ -62,6 +62,13 @@
 				SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
 				return
 
+			// Thirst Of Ages flaw.
+			if(HAS_TRAIT(src, TRAIT_THIRST_OF_AGES))
+				if(!get_full_splat(bit_living))
+					to_chat(src, span_warning("Their blood isn't potent enough!"))
+					SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
+					return
+
 			if(get_kindred_splat(src))
 				bit_living.emote("groan")
 			else if(get_ghoul_splat(src))
@@ -84,4 +91,5 @@
 				else
 					playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/kiss.ogg', 50, TRUE)
 					bit_living.visible_message(span_italics(span_bold("[src] kisses [bit_living]!")), span_userlove(span_bold("[src] kisses you!")))
+				log_combat(src, bit_living, "bit and is drinking blood from", "Drinker bloodpool : [bloodpool] ,  Victim bloodpool : [bit_living.bloodpool]")
 				drinksomeblood(bit_living, TRUE)
