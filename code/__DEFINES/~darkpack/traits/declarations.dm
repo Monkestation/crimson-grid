@@ -136,6 +136,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FERA_RENOWN "wta_fera_renown"
 // This mob has fur!
 #define TRAIT_FERA_FUR "fera_fur"
+// This mob has a possible wyrm taint sprite
+#define TRAIT_POSSIBLE_WYRM "possible_wyrm"
 /// If the fera is wyrm tainted.
 #define TRAIT_WYRMTAINTED "wyrm_tainted"
 /// If the fera is wyrm tainted. Affects their sprite.
@@ -199,6 +201,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GLOWING_EYES "glowing_eyes"
 #define TRAIT_PROMETHEAN_CLAY "promethean_clay"
 #define TRAIT_UNCONTROLLABLE "uncontrollable"
+#define TRAIT_THIRST_OF_AGES "thirst_of_ages"
 
 // Below are traits given by items/clothing being equiped or worn
 #define TRAIT_BRASSKNUCKLES "brassknuckles"

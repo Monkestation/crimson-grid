@@ -15,11 +15,12 @@
 		new /datum/data/vending_product("12ga shotgun shells, buckshot",/obj/item/ammo_box/darkpack/c12g/buck),
 		new /datum/data/vending_product("machete", /obj/item/claymore/machete),
 		new /datum/data/vending_product("hunting shotgun", /obj/item/gun/ballistic/shotgun/vampire),
-		new	/datum/data/vending_product("beretta handgun", /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta),
+		new	/datum/data/vending_product("Elite 92G", /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta),
 		new /datum/data/vending_product("rescue fireaxe", /obj/item/fireaxe/vamp),
 		new /datum/data/vending_product("chainsaw", /obj/item/chainsaw/vamp),
 		new /datum/data/vending_product("hunting rifle", /obj/item/gun/ballistic/automatic/darkpack/huntrifle),
 		new /datum/data/vending_product("5.56 ammo", /obj/item/ammo_box/darkpack/c556),
+		new /datum/data/vending_product("military parka", /obj/item/clothing/suit/vampire/coat/milparka,	90),
 	)
 	product_types = list(
 		/obj/item/fishing_rod,

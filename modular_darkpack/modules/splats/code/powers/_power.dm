@@ -29,6 +29,8 @@
 	if(!handles_spend_resources)
 		spend_resources()
 
+	do_logging(target)
+
 
 /**
  * Returns a boolean of if the caster can afford
@@ -54,3 +56,9 @@
 		var/mob/living/living_owner = owner
 		living_owner.st_change_stat(STAT_TEMPORARY_WILLPOWER, -willpower_cost)
 		to_chat(owner, span_warning("You burn [willpower_cost] willpower."))
+
+/**
+ * Overridable proc handling the combat log created by using this power.
+ */
+/datum/action/cooldown/power/proc/do_logging(target)
+	log_combat(owner, target || owner, "casted the power [name] on")

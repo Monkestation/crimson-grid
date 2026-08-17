@@ -79,11 +79,11 @@
 	desc = "None may defy Caine - especially not those who have undertaken the Vaulderie! Traitors and defectors to Caine and the Sabbat shall be struck down with a rightful war party, along with any who know of their treachery. Diablerie, burning them atop our ritual fire with a stake still in their putrid heart, or mutilation may take place, before they are sentenced to death. None may defy Caine, and none may escape Caine's vengeance, not the Elders of the Camarilla or traitors to the pack.\n "
 
 /obj/item/sabbat_priest_tome/attack_self(mob/living/carbon/human/user)
-	if(!user.mind || !is_sabbatist(user))
+	if(!user.mind || !is_sabbatist(user.mind.assigned_role))
 		to_chat(user, "You feel nothing when you touch this tome.")
 		return
 
-	var/is_priest = is_sabbat_priest(user)
+	var/is_priest = is_sabbat_priest(user.mind.assigned_role)
 
 	var/original_icon_state = icon_state
 	icon_state = "[original_icon_state]-open"
