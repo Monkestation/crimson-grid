@@ -112,3 +112,20 @@ ADMIN_VERB(remove_action, R_FUN, "Remove Action", ADMIN_VERB_NO_DESCRIPTION, ADM
 	message_admins("[key_name_admin(user)] removed the action [chosen_action] from [key_name_admin(removal_target)].")
 	BLACKBOX_LOG_ADMIN_VERB("Remove Action")
 
+ADMIN_VERB(cure_breach, R_FUN, "Cure Masquerade Breach", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/breached_player)
+	var/list/breaches = list()
+	for(var/list/masquerade_breach in SSmasquerade.masquerade_breachers)
+		if(masquerade_breach[1] != breached_player)
+			continue
+		breaches += masquerade_breach[2]
+	var/atom/chosen_breach_to_restore = tgui_input_list(user, "Cure Masquerade Breach", "Choose a breach source to cure", breaches)
+	if(!chosen_breach_to_restore)
+		return
+	SEND_SIGNAL(chosen_breach_to_restore, COMSIG_MASQUERADE_REINFORCE, breached_player)
+
+ADMIN_VERB(cure_all_breaches, R_FUN, "Cure All Masquerade Breaches", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/breached_player)
+	for(var/list/masquerade_breach in SSmasquerade.masquerade_breachers)
+		if(masquerade_breach[1] != breached_player)
+			continue
+		var/atom/masquerade_breach_source = masquerade_breach[2]
+		SEND_SIGNAL(masquerade_breach_source, COMSIG_MASQUERADE_REINFORCE, breached_player)
