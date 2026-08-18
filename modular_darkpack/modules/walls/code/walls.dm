@@ -106,23 +106,29 @@
 /turf/closed/wall/vampwall/ex_act(severity, target)
 	return
 
-/turf/closed/wall/vampwall/Initialize(mapload)
-	. = ..()
-	wall_frill = new(get_step(src, NORTH))
-	wall_frill.icon = frill_icon
-	wall_frill.icon_state = icon_state
-	wall_frill.name = name
-	wall_frill.desc = desc
-
+#define CULL_JUNCTIONS (NORTH_JUNCTION|EAST_JUNCTION|WEST_JUNCTION|NORTHWEST_JUNCTION|NORTHEAST_JUNCTION)
 /turf/closed/wall/vampwall/set_smoothed_icon_state(new_junction)
 	. = ..()
-	if(wall_frill)
-		wall_frill.icon_state = icon_state
+
+	// Our wall is not generally visible.
+	if((new_junction & CULL_JUNCTIONS) == CULL_JUNCTIONS)
+		if(wall_frill)
+			QDEL_NULL(wall_frill)
+	else
+		if(wall_frill)
+			wall_frill.icon_state = icon_state
+		else
+			wall_frill = new(get_step(src, NORTH))
+			wall_frill.icon = frill_icon
+			wall_frill.icon_state = icon_state
+			wall_frill.name = name
+			wall_frill.desc = desc
+#undef CULL_JUNCTIONS
 
 /turf/closed/wall/vampwall/Destroy()
 	. = ..()
 	if(wall_frill)
-		qdel(wall_frill)
+		QDEL_NULL(wall_frill)
 
 /turf/closed/wall/vampwall/rich
 	name = "rich-looking wall"

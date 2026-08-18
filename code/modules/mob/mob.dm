@@ -1373,11 +1373,13 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_SPELL, "Remove Spell")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_MOB_ACTION, "Give Mob Ability")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_MOB_ACTION, "Remove Mob Ability")
-	// DARKPACK EDIT ADD START - SPLATS
+	// DARKPACK EDIT ADD START - SPLATS & MASQUERADE
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_POWER, "Give Power")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_POWER, "Remove Power")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_ACTION, "Give Action")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_ACTION, "Remove Action")
+	VV_DROPDOWN_OPTION(VV_HK_CURE_BREACH, "Cure Breach")
+	VV_DROPDOWN_OPTION(VV_HK_CURE_ALL_BREACHES, "Cure All Breaches")
 	// DARKPACK EDIT ADD END
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DISEASE, "Give Disease")
 	VV_DROPDOWN_OPTION(VV_HK_GODMODE, "Toggle Godmode")
@@ -1428,7 +1430,7 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 	if(href_list[VV_HK_REMOVE_SPELL])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/remove_spell, src)
 
-	// DARKPACK EDIT ADD START - SPLATS
+	// DARKPACK EDIT ADD START - SPLATS & MASQUERADE
 	if(href_list[VV_HK_GIVE_ACTION])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/give_action, src)
 
@@ -1440,6 +1442,12 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 
 	if(href_list[VV_HK_REMOVE_POWER])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/remove_power, src)
+
+	if(href_list[VV_HK_CURE_BREACH])
+		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/cure_breach, src)
+
+	if(href_list[VV_HK_CURE_ALL_BREACHES])
+		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/cure_all_breaches, src)
 	// DARKPACK EDIT ADD END
 
 	if(href_list[VV_HK_GIVE_DISEASE])

@@ -523,3 +523,12 @@
 	desc = "A white designer suitskirt with a green dress shirt. This one has an Endron International tag on it!"
 	icon_state = "pentex_executiveskirt"
 
+/obj/item/clothing/under/vampire/gown_black
+	name = "black gown"
+	desc = "An expensive black gown."
+	icon_state = "gown_black"
+
+/obj/item/clothing/under/vampire/gown_white
+	name = "white gown"
+	desc = "An expensive white gown."
+	icon_state = "gown_white"

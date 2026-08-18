@@ -31,6 +31,7 @@
 #define BEARING_DARKNESS (1<<17)
 #define BEARING_FURY (1<<18)
 #define BEARING_RAPTURE (1<<19)
+#define BEARING_OTHERWORLDLY (1<<20)
 
 // Path hits
 #define PATH_SCORE_DOWN -1

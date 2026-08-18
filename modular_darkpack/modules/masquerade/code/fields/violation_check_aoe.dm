@@ -5,7 +5,7 @@
 
 /datum/proximity_monitor/advanced/violation_check_aoe/New(atom/_host, range, _ignore_if_not_on_turf = TRUE, _violation_observer_callback)
 	. = ..()
-	violation_observer_callback = violation_observer_callback
+	violation_observer_callback = _violation_observer_callback
 	tracking_mobs = new()
 
 /datum/proximity_monitor/advanced/violation_check_aoe/Destroy()
@@ -69,6 +69,8 @@
 	SIGNAL_HANDLER
 
 	var/mob/living/host_mob = host
+	if(!host_mob)
+		return
 	if(host_mob.incapacitated || IS_UNCONSCIOUS_OR_CRIT(host_mob) || host_mob.IsSleeping() || host_mob.IsParalyzed())
 		return
 	if(HAS_TRAIT(source, TRAIT_OBFUSCATED))
@@ -80,4 +82,5 @@
 	if(!COOLDOWN_FINISHED(source, masquerade_timer))
 		return
 	COOLDOWN_START(source, masquerade_timer, 10 SECONDS)
-	SEND_SIGNAL(host_mob, COMSIG_SEEN_MASQUERADE_VIOLATION, source)
+	if(violation_observer_callback)
+		SEND_SIGNAL(violation_observer_callback.parent, COMSIG_SEEN_MASQUERADE_VIOLATION, source)
