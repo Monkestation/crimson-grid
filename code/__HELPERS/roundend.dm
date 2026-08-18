@@ -340,7 +340,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 /datum/controller/subsystem/ticker/proc/survivor_report(popcount)
 	var/list/parts = list()
-	var/station_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED
+	// var/station_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED // CRIMSON EDIT REMOVAL
 
 	if(GLOB.round_id)
 		var/statspage = CONFIG_GET(string/roundstatsurl)
