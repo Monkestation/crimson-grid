@@ -166,6 +166,8 @@
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/fera/bestial,
 	)
 
+	no_equip_flags = ITEM_SLOT_HEAD | ITEM_SLOT_OCLOTHING
+
 /datum/species/human/shifter/bestial/should_add_buff(mob/living/carbon/human/human, datum/st_stat/buff_type, amount)
 	. = ..()
 	// Raw string check instead of a define or type path is pretty bleak
