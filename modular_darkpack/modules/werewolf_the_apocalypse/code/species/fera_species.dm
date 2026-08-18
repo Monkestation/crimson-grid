@@ -154,6 +154,7 @@
 /datum/species/human/shifter/bestial
 	name = "bestial form"
 	id = SPECIES_FERA_BESTIAL
+	inherent_traits = list(TRAIT_CHUNKYFINGERS)
 	shift_difficulty = 7
 	fallback_icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/garou_forms/glabro.dmi'
 	veil_breaching_form = TRUE
@@ -209,6 +210,7 @@
 	name = "war form"
 	id = SPECIES_FERA_WAR
 	inherent_traits = list(
+		TRAIT_CHUNKYFINGERS,
 		TRAIT_NO_UNDERWEAR,
 		TRAIT_NO_BLOOD_OVERLAY,
 		TRAIT_NO_LYING_ANGLE,
