@@ -919,10 +919,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	else
 		log_combat(user, target, "punched")
 
+	/* // DARKPACK EDIT REMOVAL - (Lupus Biting)
 	if(user != target && biting && (target.mob_biotypes & MOB_ORGANIC)) //Good for you. You probably just ate someone alive.
 		var/datum/reagents/tasty_meal = new()
 		tasty_meal.add_reagent(/datum/reagent/consumable/nutriment/protein, round(damage/3, 1))
 		tasty_meal.trans_to(user, tasty_meal.total_volume, transferred_by = user, methods = INGEST)
+	*/ // DARKPACK EDIT REMOVAL
 
 	SEND_SIGNAL(target, COMSIG_HUMAN_GOT_PUNCHED, user, damage, attack_type, affecting, armor_block, kicking, limb_sharpness)
 	SEND_SIGNAL(user, COMSIG_HUMAN_PUNCHED, target, damage, attack_type, affecting, armor_block, kicking, limb_sharpness)

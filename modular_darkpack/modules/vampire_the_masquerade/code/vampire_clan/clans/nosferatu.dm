@@ -14,7 +14,9 @@
 	)
 	clan_traits = list(
 		TRAIT_MASQUERADE_VIOLATING_FACE,
-		TRAIT_VENTCRAWLER_ALWAYS
+		TRAIT_VENTCRAWLER_ALWAYS,
+		TRAIT_TRUE_NIGHT_VISION //CRIMSON GRID ADDITION - NOSFERATU GET NIGHT VISION
+
 	)
 	male_clothes = /obj/item/clothing/under/vampire/nosferatu
 	female_clothes = /obj/item/clothing/under/vampire/nosferatu/female
@@ -22,3 +24,12 @@
 	default_accessory = /datum/bodypart_overlay/simple/clan_mark/nosferatu_ears
 	subsplat_keys = /obj/item/vamp/keys/nosferatu
 
+//CRIMSON GRID ADDITION - NOSFERATU GET NIGHT VISION
+/datum/subsplat/vampire_clan/nosferatu/on_gain(mob/living/carbon/human/gaining_mob, datum/splat/gaining_splat, joining_round)
+	. =  ..()
+	gaining_mob.update_sight()
+
+/datum/subsplat/vampire_clan/nosferatu/on_lose(mob/living/carbon/human/losing_mob)
+	. = ..()
+	if(!QDELETED(losing_mob))
+		losing_mob.update_sight()

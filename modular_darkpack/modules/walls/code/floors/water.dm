@@ -27,6 +27,7 @@
 	light_color = "#1b7c4c"
 	light_range = 1
 	light_power = 0.5
+	fishing_datum = /datum/fish_source/acid
 	baseturfs = /turf/open/water/acid
 	reagent_to_extract = /datum/reagent/toxin/acid
 	var/damage_modifer = 1
@@ -71,6 +72,7 @@
 	baseturfs = /turf/open/water/bloodwave
 	immerse_overlay = "immerse_deep"
 	is_swimming_tile = TRUE
+	fishing_datum = /datum/fish_source/blood
 	// Maybe this should be mixed in with a contiminant.
 	reagent_to_extract = /datum/reagent/blood
 	///All dirs we can expand to

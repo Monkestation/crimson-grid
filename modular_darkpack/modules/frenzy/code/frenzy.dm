@@ -7,8 +7,8 @@
 	if(IS_UNCONSCIOUS(src))
 		return
 	add_traits(list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), FRENZY_TRAIT)
-	message_admins("[ADMIN_LOOKUPFLW(src)] has entered frenzy[target ? " targeting [ADMIN_LOOKUPFLW(src)]": ""]. ([source])")
-	log_message("entered frenzy.", LOG_GAME)
+	message_admins("[ADMIN_LOOKUPFLW(src)] has entered frenzy[target ? " targeting [ADMIN_LOOKUPFLW(target)]": ""]. ([source])")
+	log_combat(src, (src || target), "has frenzied on because of \"[source]\" on")
 
 	if(fleeing)
 		to_chat(src, span_danger("FLEE."))
@@ -26,7 +26,7 @@
 	if(!HAS_TRAIT(src, TRAIT_IN_FRENZY))
 		return
 	remove_traits(list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), FRENZY_TRAIT)
-	log_message("exited frenzy.", LOG_GAME)
+	log_message("exited frenzy.", LOG_ATTACK, color="red")
 
 	remove_status_effect(/datum/status_effect/frenzy)
 

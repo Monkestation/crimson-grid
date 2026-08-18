@@ -14,7 +14,7 @@
 
 	var/mob/living/carbon/human/H = user
 
-	if(!is_sabbat_ductus(user) && !is_sabbat_priest(user))
+	if(!is_sabbat_ductus(H.mind.assigned_role) && !is_sabbat_priest(H.mind.assigned_role))
 		to_chat(H, span_cult("Only the Ductus or the Priest may call a War Party from the Totem!"))
 		return
 
@@ -24,7 +24,7 @@
 		// Inform the user about the current status of the totem
 		to_chat(H, span_notice("The skull's eyes flare with crimson light as you invoke its power."))
 		for(var/mob/living/carbon/human/sabbat_member in GLOB.player_list)
-			if(sabbat_member.mind && is_sabbatist(sabbat_member))
+			if(sabbat_member.mind && is_sabbatist(sabbat_member.mind.assigned_role))
 				to_chat(sabbat_member, span_cult("The Ductus calls all pack members back to the lair, return at once!"))
 				SEND_SOUND(sabbat_member, sound('modular_darkpack/master_files/sounds/announce.ogg'))
 				sabbat_member.emote("twitch")

@@ -8,7 +8,7 @@
 	sentience_type = SENTIENCE_BOSS
 	mob_biotypes = MOB_ORGANIC|MOB_SPECIAL
 	faction = list(FACTION_MINING, FACTION_BOSS)
-	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, AGGRAVATED = 0, STAMINA = 0, OXY = 0)
+	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, AGGRAVATED = 1, STAMINA = 0, OXY = 0) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 	obj_damage = 400
 	unsuitable_cold_damage = 0
 	unsuitable_heat_damage = 0
