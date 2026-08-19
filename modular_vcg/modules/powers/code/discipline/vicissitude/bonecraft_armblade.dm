@@ -18,7 +18,7 @@
 	inhand_icon_state = "arm_blade"
 	lefthand_file = 'icons/mob/inhands/antag/changeling_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/antag/changeling_righthand.dmi'
-	force = 1 LETHAL_TTRPG_DAMAGE // placeholder damage, this is scaled by medical stat
+	force = 2 LETHAL_TTRPG_DAMAGE
 	sharpness = SHARP_EDGED
 	wound_bonus = 10
 	exposed_wound_bonus = 10
@@ -38,19 +38,15 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, INNATE_TRAIT)
 	if(ismob(loc))
-		loc.visible_message(span_warning("A grotesque blade forms around [loc.name]\'s arm as it rips and twists!"), span_warning("Your twist your arm's bone and flesh, transforming it into a deadly blade."), span_hear("You hear bones and flesh ripping and tearing!"))
+		loc.visible_message(span_warning("A grotesque blade forms around [loc.name]\'s arm as it rips and twists!"), span_warning("You twist your arm's bone and flesh, transforming it into a deadly blade."), span_hear("You hear bones and flesh ripping and tearing!"))
 	AddComponent(/datum/component/alternative_sharpness, SHARP_POINTY, attack_verb_continuous, attack_verb_simple, -5)
 	AddComponent(/datum/component/butchering, \
 	speed = 6 SECONDS, \
 	effectiveness = 80, \
 	)
-	var/mob/living/carbon/human/wielder = loc
-	if(istype(wielder))
-		stat_scale(wielder)
-
-/obj/item/melee/vamp/boneblade/proc/stat_scale(mob/living/carbon/human/wielder)
-	var/skill = wielder.st_get_stat(STAT_MEDICINE)
-	force = (1 + skill * 0.25) LETHAL_TTRPG_DAMAGE  // 1 lethal at 0 medical to 2 lethal at 4 medical
+	var/datum/component/selling/sell_component = GetComponent(/datum/component/selling)
+	if(sell_component)
+		qdel(sell_component)
 
 /datum/action/vicissitude/boneblade
 	name = "Bone Blade"
@@ -81,7 +77,6 @@
 
 	extrude(user)
 
-// Removes weapon if it exists, returns true if we removed something
 /datum/action/vicissitude/boneblade/proc/unequip_held(mob/user)
 	for(var/obj/item/held in user.held_items)
 		if(!istype(held, weapon_type))
