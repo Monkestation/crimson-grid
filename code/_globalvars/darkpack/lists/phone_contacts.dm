@@ -7,6 +7,7 @@ GLOBAL_LIST_EMPTY(important_contacts)
 
 GLOBAL_LIST_EMPTY(millenium_tower_network)
 GLOBAL_LIST_EMPTY(lasombra_network)
+GLOBAL_LIST_EMPTY(ventrue_network)
 GLOBAL_LIST_EMPTY(tremere_network)
 GLOBAL_LIST_EMPTY(giovanni_network)
 GLOBAL_LIST_EMPTY(tzmisce_network)
@@ -18,19 +19,21 @@ GLOBAL_LIST_EMPTY(society_network)
 
 #define MILLENIUM_TOWER_NETWORK 1
 #define LASOMBRA_NETWORK 2
-#define TREMERE_NETWORK 3
-#define GIOVANNI_NETWORK 4
-#define TZMISCE_NETWORK 5
-#define ANARCH_NETWORK 6
-#define SUPPLY_NETWORK 7
-#define VAMPIRE_LEADER_NETWORK 8
-#define ENDRON_NETWORK 9
-#define SOCIETY_OF_LEOPOLD_NETWORK 10
+#define VENTRUE_NETWORK 3
+#define TREMERE_NETWORK 4
+#define GIOVANNI_NETWORK 5
+#define TZMISCE_NETWORK 6
+#define ANARCH_NETWORK 7
+#define SUPPLY_NETWORK 8
+#define VAMPIRE_LEADER_NETWORK 9
+#define ENDRON_NETWORK 10
+#define SOCIETY_OF_LEOPOLD_NETWORK 11
 
 // An indexed list of all the different phone networks that connect the phones that are part of them together.
 GLOBAL_LIST_INIT(contact_networks, alist(
 		MILLENIUM_TOWER_NETWORK = GLOB.millenium_tower_network,
 		LASOMBRA_NETWORK = GLOB.lasombra_network,
+		VENTRUE_NETWORK = GLOB.ventrue_network,
 		TREMERE_NETWORK = GLOB.tremere_network,
 		GIOVANNI_NETWORK = GLOB.giovanni_network,
 		TZMISCE_NETWORK = GLOB.tzmisce_network,

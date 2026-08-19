@@ -18,6 +18,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_VENTRUE
 	departments_list = list(
+		/datum/job_department/jazz_club,
 		/datum/job_department/camarilla,
 	)
 

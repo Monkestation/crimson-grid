@@ -80,6 +80,7 @@ JOB_START_HELPER(hecata/squadra, JOB_LA_FAMIGLIA)
 
 JOB_START_HELPER(citizen/citizen, JOB_CITIZEN)
 JOB_START_HELPER(citizen/club_worker, JOB_CLUB_WORKER)
+JOB_START_HELPER(citizen/jazz_club_associate, JOB_JAZZ_CLUB_ASSOCIATE)
 JOB_START_HELPER(citizen/janitor, JOB_STREET_JANITOR)
 JOB_START_HELPER(citizen/priest, JOB_PRIEST)
 JOB_START_HELPER(citizen/taxi, JOB_TAXI_DRIVER)
