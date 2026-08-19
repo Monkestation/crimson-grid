@@ -1,16 +1,17 @@
 /obj/projectile/bullet/darkpack
 	abstract_type = /obj/projectile/bullet/darkpack
+	hitscan = TRUE // Crimson Grid Addition
 
 // 9x19mm Parabellum
 /obj/projectile/bullet/darkpack/vamp9mm
 	name = "9mm bullet"
-	damage = 18
-	exposed_wound_bonus = 10
+	damage = CG_9MM_DAMAGE // Crimson Grid Edit - Was 18
+	exposed_wound_bonus = CG_MEDCAL_BONUS // Crimson Grid Edit - Was 10
 
 /obj/projectile/bullet/darkpack/vamp9mm/plus
 	name = "9mm HV bullet"
-	damage = 22
-	armour_penetration = 10
+	damage = CG_9MM_HV_DAMAGE // Crimson Grid Edit - Was 22
+	armour_penetration = CG_LOW_AP // Crimson Grid Edit - Was 10
 
 /obj/projectile/bullet/darkpack/vamp9mm/silver
 	name = "9mm silver bullet"
@@ -22,15 +23,14 @@
 // .45 ACP
 /obj/projectile/bullet/darkpack/vamp45acp
 	name = ".45 ACP bullet"
-	damage = 20
-	armour_penetration = 5
+	damage = CG_45ACP_DAMAGE // Crimson Grid Edit - Was 20
+	armour_penetration = CG_LOW_AP // Crimson Grid Edit - Was 5
 
 /obj/projectile/bullet/darkpack/vamp45acp/HP
 	name = ".45 ACP hollow point bullet"
-	damage = 25
-	armour_penetration = 0
-	wound_bonus = 5
-	wound_bonus = 5
+	damage = CG_45ACP_HP_DAMAGE // Crimson Grid Edit - Was 25
+	armour_penetration = CG_NO_AP // Crimson Grid Edit - Was 0
+	wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
 
 /obj/projectile/bullet/darkpack/vamp45acp/silver
 	name = ".45 ACP silver bullet"
@@ -42,10 +42,10 @@
 // .44 Magnum
 /obj/projectile/bullet/darkpack/vamp44
 	name = ".44 bullet"
-	damage = 35
-	armour_penetration = 15
-	exposed_wound_bonus = -5
-	wound_bonus = 10
+	damage = CG_44MAG_DAMAGE // Crimson Grid Edit - Was 35
+	armour_penetration = CG_MED_AP // Crimson Grid Edit - Was 15
+	exposed_wound_bonus = CG_WOUND_MALUS // Crimson Grid Edit - Was -5
+	wound_bonus = CG_MEDCAL_BONUS // Crimson Grid Edit - Was 10
 
 /obj/projectile/bullet/darkpack/vamp44/silver
 	name = ".44 silver bullet"
@@ -58,29 +58,29 @@
 // .50 BMG/AE
 /obj/projectile/bullet/darkpack/vamp50
 	name = ".50 BMG bullet"
-	damage = 70
-	armour_penetration = 20
-	exposed_wound_bonus = 5
-	wound_bonus = 5
+	damage = CG_50BMG_DAMAGE // Crimson Grid Edit - Was 70
+	armour_penetration = CG_MED_AP // Crimson Grid Edit - Was 20
+	exposed_wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
+	wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
 
 /obj/projectile/bullet/darkpack/vamp50ae
 	name = ".50 AE bullet"
-	damage = 40
-	armour_penetration = 20
-	exposed_wound_bonus = 5
-	wound_bonus = 5
+	damage = CG_50AE_DAMAGE // Crimson Grid Edit - Was 40
+	armour_penetration = CG_MED_AP // Crimson Grid Edit - Was 20
+	exposed_wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
+	wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
 
 // 5.56mm NATO
 /obj/projectile/bullet/darkpack/vamp556mm
 	name = "5.56mm bullet"
-	damage = 45
-	armour_penetration = 25
-	exposed_wound_bonus = -5
-	wound_bonus = 5
+	damage = CG_556CAL_DAMAGE // Crimson Grid Edit - Was 45
+	armour_penetration = CG_HIGH_AP // Crimson Grid Edit - Was 25
+	exposed_wound_bonus = CG_WOUND_MALUS // Crimson Grid Edit - Was -5
+	wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
 
 /obj/projectile/bullet/darkpack/vamp556mm/incendiary
-	armour_penetration = 0
-	damage = 30
+	armour_penetration = CG_NO_AP // Crimson Grid Edit - Was 0
+	damage = CG_556CAL_INCENDIARY_DAMAGE // Crimson Grid Edit - Was 30
 	var/fire_stacks = 4
 
 /obj/projectile/bullet/darkpack/vamp556mm/incendiary/on_hit(atom/target, blocked = 0, pierce_hit)
@@ -92,7 +92,7 @@
 
 /obj/projectile/bullet/darkpack/vamp556mm/silver
 	name = "5.56mm silver bullet"
-	armour_penetration = 20
+	armour_penetration = CG_MED_AP // Crimson Grid Edit - Was 20
 
 /obj/projectile/bullet/darkpack/vamp556mm/silver/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
@@ -101,26 +101,26 @@
 // 5.45x39mm
 /obj/projectile/bullet/darkpack/vamp545mm
 	name = "5.45mm bullet"
-	damage = 40
-	armour_penetration = 30
-	exposed_wound_bonus = -5
-	wound_bonus = 5
+	damage = CG_545CAL_DAMAGE // Crimson Grid Edit - Was 40
+	armour_penetration = CG_HIGH_AP // Crimson Grid Edit - Was 30
+	exposed_wound_bonus = CG_WOUND_MALUS // Crimson Grid Edit - Was -5
+	wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
 
 // 4.6mm HK
 /obj/projectile/bullet/darkpack/vamp46mm
 	name = "4.6mm bullet"
-	damage = 19
-	armour_penetration = 30
-	exposed_wound_bonus = 0
-	wound_bonus = 0
+	damage = CG_46CAL_DAMAGE // Crimson Grid Edit - Was 19
+	armour_penetration = CG_HIGH_AP // Crimson Grid Edit - Was 30
+	exposed_wound_bonus = CG_LOWCAL_BONUS // Crimson Grid Edit - Was 0
+	wound_bonus = CG_LOWCAL_BONUS // Crimson Grid Edit - Was 0
 
 // 12 Gauge
 /obj/projectile/bullet/shotgun_slug/vamp
 	name = "12g shotgun slug"
-	damage = 70
-	armour_penetration = 15
-	exposed_wound_bonus = 5
-	wound_bonus = 10
+	damage = CG_12G_SLUG_DAMAGE // Crimson Grid Edit - Was 70
+	armour_penetration = CG_MED_AP // Crimson Grid Edit - Was 15
+	exposed_wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
+	wound_bonus = CG_MEDCAL_BONUS // Crimson Grid Edit - Was 10
 
 /obj/projectile/bullet/shotgun_slug/vamp/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
@@ -135,7 +135,7 @@
 
 /obj/projectile/bullet/shotgun_slug/vamp/silver
 	name = "12g silver shotgun slug"
-	armour_penetration = 10
+	armour_penetration = CG_LOW_AP // Crimson Grid Edit - Was 10
 
 /obj/projectile/bullet/shotgun_slug/vamp/silver/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
@@ -143,23 +143,23 @@
 
 /obj/projectile/bullet/darkpack/rubber
 	name = "12g shotgun rubber shot"
-	damage = 5
+	damage = CG_RUBBERBULLET_DAMAGE // Crimson Grid Edit - Was 5
 	stamina = 50
-	exposed_wound_bonus = 5
-	wound_bonus = -5
+	exposed_wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
+	wound_bonus = CG_WOUND_MALUS // Crimson Grid Edit - Was -5
 
 /obj/projectile/bullet/darkpack/incap
 	name = "12g shotgun incapacitation shot"
-	damage = 15
+	damage = CG_12G_INCAP_DAMAGE // Crimson Grid Edit - Was 15
 	stamina = 80
 
 /obj/projectile/bullet/darkpack/shotpellet
 	name = "12g shotgun pellet"
-	damage = 9
+	damage = CG_12G_PELLET_DAMAGE // Crimson Grid Edit - Was 9
 	range = 22 //range of where you can see + one screen after
-	armour_penetration = 10
-	exposed_wound_bonus = 10
-	wound_bonus = -5
+	armour_penetration = CG_LOW_AP // Crimson Grid Edit - Was 10
+	exposed_wound_bonus = CG_MEDCAL_BONUS // Crimson Grid Edit - Was 10
+	wound_bonus = CG_WOUND_MALUS // Crimson Grid Edit - Was -5
 
 /obj/projectile/bullet/darkpack/shotpellet/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
@@ -169,12 +169,12 @@
 
 /obj/projectile/bullet/darkpack/dragonsbreath
 	name = "12g shotgun incendiary pellet"
-	damage = 6
+	damage = CG_12G_DRAGONSBREATH_DAMAGE // Crimson Grid Edit - Was 6
 	damage_type = BURN
 	range = 22 //range of where you can see + one screen after
-	armour_penetration = 0
-	exposed_wound_bonus = 0
-	wound_bonus = 0
+	armour_penetration = CG_NO_AP // Crimson Grid Edit - Was 0
+	exposed_wound_bonus = CG_LOWCAL_BONUS // Crimson Grid Edit - Was 0
+	wound_bonus = CG_LOWCAL_BONUS // Crimson Grid Edit - Was 0
 	var/fire_stacks = 1 // 1 stack per pellet but we have 9 pellets so it adds up
 
 /obj/projectile/bullet/darkpack/dragonsbreath/on_hit(atom/target, blocked = 0, pierce_hit)
@@ -188,10 +188,10 @@
 // Crossbow Bolt
 /obj/projectile/bullet/crossbow_bolt
 	name = "bolt"
-	damage = 45
-	armour_penetration = 75
-	exposed_wound_bonus = 30
-	wound_bonus = 30 //We're gonna make this hurt as much as possible. 
+	damage = CG_BOLT_DAMAGE // Crimson Grid Edit - Was 45
+	armour_penetration = CG_XTRM_AP // Crimson Grid Edit - Was 75
+	exposed_wound_bonus = CG_XTRM_WOUND_BONUS // Crimson Grid Edit - Was 30
+	wound_bonus = CG_XTRM_WOUND_BONUS // Crimson Grid Edit - Was 30
 	sharpness = SHARP_POINTY
 	embed_type = /datum/embedding/crossbolt //YEEEEOUCH!!!!
 
@@ -208,14 +208,14 @@
 // 7.62x51mm NATO
 /obj/projectile/bullet/darkpack/vamp762x51mm
 	name = "7.62x51mm bullet"
-	damage = 55
-	armour_penetration = 25
-	exposed_wound_bonus = -5
-	wound_bonus = 5
+	damage = CG_762CAL_DAMAGE // Crimson Grid Edit - Was 55
+	armour_penetration = CG_HIGH_AP // Crimson Grid Edit - Was 25
+	exposed_wound_bonus = CG_WOUND_MALUS // Crimson Grid Edit - Was -5
+	wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary
-	armour_penetration = 5 //Big ass bullet
-	damage = 50
+	armour_penetration = CG_LOW_AP // Crimson Grid Edit - Was 5
+	damage = CG_762CAL_INCENDIARY_DAMAGE // Crimson Grid Edit - Was 50
 	var/fire_stacks = 3 //This one comes in Semi-automatics
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary/on_hit(atom/target, blocked = FALSE, pierce_hit)
@@ -227,7 +227,7 @@
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/silver
 	name = "7.62x51mm silver bullet"
-	armour_penetration = 20
+	armour_penetration = CG_MED_AP // Crimson Grid Edit - Was 20
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
 	. = ..()
@@ -235,14 +235,14 @@
 
 /obj/projectile/bullet/darkpack/vamp75
 	name = ".75 ball"
-	damage = 100
-	armour_penetration = 5
-	exposed_wound_bonus = 5
-	wound_bonus = 5
+	damage = CG_75CAL_DAMAGE // Crimson Grid Edit - Was 100
+	armour_penetration = CG_LOW_AP // Crimson Grid Edit - Was 5
+	exposed_wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
+	wound_bonus = CG_SHOTGUN_BONUS // Crimson Grid Edit - Was 5
 
 /obj/projectile/bullet/darkpack/vamp75/silver
 	name = ".75 silver ball"
-	armour_penetration = 0
+	armour_penetration = CG_NO_AP // Crimson Grid Edit - Was 0
 
 /obj/projectile/bullet/darkpack/vamp75/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
 	. = ..()
