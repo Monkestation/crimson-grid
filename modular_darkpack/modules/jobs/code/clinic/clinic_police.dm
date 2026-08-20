@@ -41,9 +41,10 @@
 	suit = /obj/item/clothing/suit/vampire/vest/police
 	belt = /obj/item/storage/belt/security/police
 	id = /obj/item/card/police
+	gloves = /obj/item/clothing/gloves/vampire/latex
 	l_pocket = /obj/item/smartphone
-	r_pocket = /obj/item/vamp/keys/police
-	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/storage/medkit/darkpack/ifak = 1, /obj/item/vamp/keys/clinic = 1, /obj/item/clothing/accessory/armband/medblue = 1)
+	r_pocket = /obj/item/vamp/keys/clinic
+	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/storage/medkit/darkpack/ifak = 1, /obj/item/vamp/keys/police = 1, /obj/item/clothing/accessory/armband/medblue = 1)
 
 /datum/outfit/job/vampire/police_officer/post_equip(mob/living/carbon/human/H)
 	..()

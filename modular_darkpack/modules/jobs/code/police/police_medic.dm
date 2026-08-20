@@ -43,7 +43,7 @@
 	belt = /obj/item/storage/belt/medical/paramedic
 	gloves = /obj/item/clothing/gloves/vampire/latex
 	l_pocket = /obj/item/smartphone
-	r_pocket = /obj/item/vamp/keys/clinic
-	backpack_contents = list(/obj/item/card/credit=1, /obj/item/storage/medkit/darkpack/doctor=1, /obj/item/vamp/keys/police)
+	r_pocket = /obj/item/vamp/keys/police
+	backpack_contents = list(/obj/item/card/credit=1, /obj/item/storage/medkit/darkpack/doctor=1, /obj/item/vamp/keys/clinic = 1)
 
 	skillchips = list(/obj/item/skillchip/entrails_reader)
