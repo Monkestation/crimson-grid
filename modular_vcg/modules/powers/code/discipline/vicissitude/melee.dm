@@ -1,10 +1,10 @@
 /obj/item/melee/vampirearms/tzimisce
 	name = "armblade"
 	desc = "A monstrous weapon, made out of sharpened bone."
-	icon = 'modular_vcg/modules/icons/weapons.dmi'
+	icon = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/weapons.dmi'
 	icon_state = "armblade"
-	lefthand_file = 'modular_vcg/modules/icons/lefthand.dmi'
-	righthand_file = 'modular_vcg/modules/icons/righthand.dmi'
+	lefthand_file = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/lefthand.dmi'
+	righthand_file = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/righthand.dmi'
 	force = 2 LETHAL_TTRPG_DAMAGE
 	w_class = WEIGHT_CLASS_BULKY
 	block_chance = 40

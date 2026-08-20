@@ -1,7 +1,7 @@
 /obj/item/organ/cyberimp/arm/toolkit/tzimisce
 	name = "armblade implant"
 	desc = "A concealed serrated bone blade."
-	icon = 'modular_vcg/modules/icons/weapons.dmi'
+	icon = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/weapons.dmi'
 	icon_state = "armblade"
 	organ_flags = ORGAN_ORGANIC
 	zone = BODY_ZONE_L_ARM
