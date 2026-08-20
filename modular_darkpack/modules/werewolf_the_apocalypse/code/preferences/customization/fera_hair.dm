@@ -1,4 +1,4 @@
-datum/sprite_accessory/fera_feature/hair
+/datum/sprite_accessory/fera_feature/hair
 	abstract_type = /datum/sprite_accessory/fera_feature/hair
 
 
