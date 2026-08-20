@@ -18,5 +18,16 @@
 		new /datum/data/vending_product("white cane", /obj/item/cane/white),
 		new /datum/data/vending_product("crutch", /obj/item/cane/crutch),
 		new /datum/data/vending_product("wooden crutch", /obj/item/cane/crutch/wood),
-		new /datum/data/vending_product("empty blood bag", /obj/item/reagent_containers/blood/empty)
+// CRIMSON EDIT ADD START - Medkit to Pharmacy
+		new /datum/data/vending_product("empty blood bag", /obj/item/reagent_containers/blood/empty),
+		new /datum/data/vending_product("Empty Medical Kit", /obj/item/storage/medkit/darkpack, 200),
+		new /datum/data/vending_product("Medical Kit", /obj/item/storage/medkit/darkpack/standard, 500),
+		new /datum/data/vending_product("Individual First Aid Kit", /obj/item/storage/medkit/darkpack/ifak, 500),
+		new /datum/data/vending_product("Doctor's Kit", /obj/item/storage/medkit/darkpack/doctor, 900),
+		new /datum/data/vending_product("Advanced Medical Kit", /obj/item/storage/medkit/darkpack/advanced, 1200),
+		new /datum/data/vending_product("Burn Kit", /obj/item/storage/medkit/darkpack/burn, 600),
+		new /datum/data/vending_product("Toxin Treatment Kit", /obj/item/storage/medkit/darkpack/tox, 700),
+		new /datum/data/vending_product("Brute Treatment Kit", /obj/item/storage/medkit/darkpack/brute, 700),
+		new /datum/data/vending_product("Oxygen Deprivation Kit", /obj/item/storage/medkit/darkpack/oxy, 700),
+// CRIMSON EDIT ADD END - Medkit to Pharmacy
 	)
