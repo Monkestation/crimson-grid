@@ -50,7 +50,7 @@
 // DARKPACK EDIT ADD - blood increments bloodpool
 /datum/reagent/blood/expose_mob(mob/living/exposed_mob, methods, reac_volume, show_message, touch_protection)
 	. = ..()
-	if((!istype(src, /datum/reagent/blood/vitae)) && get_kindred_splat(exposed_mob))
+	if((!istype(src, /datum/reagent/blood/vitae)) && get_kindred_splat(exposed_mob) && !HAS_TRAIT(exposed_mob, TRAIT_THIRST_OF_AGES))
 		if(methods & INGEST)
 			if(get_splat_with_vitae(exposed_mob))
 				//100u of vitae = 1bp, keeping consistent w/ give vitae action. 200u of normal blood = 1 bp

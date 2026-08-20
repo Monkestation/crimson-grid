@@ -49,6 +49,7 @@
 	circuit = null
 	interaction_flags_atom = INTERACT_ATOM_UI_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND | INTERACT_MACHINE_REQUIRES_SIGHT
 	frame_type = /obj/item/wallframe/telescreen/entertainment
+	skill_dots_minimum = 0 // CRIMSON GRID ADDITION - tv isn't some advanced tech, anyone should be able to watch it
 	/// Virtual radio inside of the entertainment monitor to broadcast audio
 	var/obj/item/radio/entertainment/speakers/speakers
 	var/icon_state_off = "entertainment_blank"
