@@ -17,3 +17,8 @@
 	exposed_wound_bonus = 25
 	resistance_flags = FIRE_PROOF
 	masquerade_violating = TRUE
+
+/obj/item/melee/vampirearms/tzimisce/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_NATURAL, INNATE_TRAIT)
