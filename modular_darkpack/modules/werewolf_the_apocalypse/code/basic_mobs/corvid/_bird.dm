@@ -72,7 +72,7 @@
 	. += eyes_overlay
 	*/
 
-	var/mutable_appearance/emissive_overlay = emissive_appearance(icon, "eyes[HAS_TRAIT(src, TRAIT_MOVE_FLYING) ? "_flying" : ""]", src, effect_type = EMISSIVE_SPECULAR)	. += emissive_overlay
+	var/mutable_appearance/emissive_overlay = emissive_appearance(icon, "eyes[HAS_TRAIT(src, TRAIT_MOVE_FLYING) ? "_flying" : ""]", src, effect_type = EMISSIVE_SPECULAR)
 	. += emissive_overlay
 
 /datum/action/innate/togglecorvidflight // this action handles corvid forms toggle their flight, and swaps their sprite to be of the relevant type.
