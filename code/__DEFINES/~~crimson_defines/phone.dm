@@ -18,6 +18,7 @@
 #define PDA_RINGTONE_CHORD3 "Chord 3"
 #define PDA_RINGTONE_CODEC "Codec"
 #define PDA_RINGTONE_DING "Ding"
+#define PDA_RINGTONE_GRANDMA "Grandma"
 #define PDA_RINGTONE_HORN "Horn"
 #define PDA_RINGTONE_MAUS "Maus"
 #define PDA_RINGTONE_MEOW1 "Meow 1"
