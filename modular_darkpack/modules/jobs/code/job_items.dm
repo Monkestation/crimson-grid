@@ -103,6 +103,14 @@
 	name = "clinic director's badge"
 	desc = "A badge which shows not only medical qualification, but also an authority over the clinic."
 
+//CRIMSON GRID ADDITION
+
+/obj/item/card/clinic/police_medic
+	name = "police-officiated medical badge"
+	desc = "A badge which shows medical qualification as well as authorization to work in police estabilshments."
+
+//CRIMSON GRID FINISHED
+
 /obj/item/card/archive
 	name = "scholar badge"
 	desc = "A badge which shows a love of culture."
@@ -242,6 +250,15 @@
 /obj/item/card/police/fbi
 	name = "fbi special agent badge"
 	desc = "A rather ornate badge made of polished gold-like metal. It has the words \"Federal Bureau of Investigation\" engraved on it."
+
+//CRIMSON GRID ADDITION
+/obj/item/card/police/clinic
+	name = "clinic-officer badge"
+	desc = "A silver star made of smooth polished metal, \
+	indicating the wearer to be a police officer of the San Francisco Police Department.\
+	It also has an ammendment that designates the holder of this badge as assigned to Clinic-security duties."
+
+//CRIMSONS GRID FINISHED
 
 // CULTISTS
 /obj/item/card/bahari

@@ -206,7 +206,7 @@
 	preload = TRUE
 
 /obj/item/storage/belt/medical/paramedic/PopulateContents()
-	SSwardrobe.provide_type(/obj/item/sensor_device, src)
+//	SSwardrobe.provide_type(/obj/item/sensor_device, src) CRIMSON GRID EDIT (too lazy gotta make sure this doesn't appear)
 	SSwardrobe.provide_type(/obj/item/stack/medical/wrap/gauze/twelve, src)
 	SSwardrobe.provide_type(/obj/item/tourniquet, src)
 	SSwardrobe.provide_type(/obj/item/bonesetter, src)
