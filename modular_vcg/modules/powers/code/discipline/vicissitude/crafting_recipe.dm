@@ -1,6 +1,6 @@
 /datum/crafting_recipe/tzi_armblade
 	name = "Armblade"
-	time = 10 SECONDS
+	time = 50
 	reqs = list(/obj/item/stack/sheet/meat = 30, /obj/item/spine = 1)
 	result = /obj/item/organ/cyberimp/arm/toolkit/tzimisce
 	category = CAT_TZIMISCE
