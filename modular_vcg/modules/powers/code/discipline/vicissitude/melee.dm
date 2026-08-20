@@ -1,0 +1,19 @@
+/obj/item/melee/vampirearms/tzimisce
+	name = "armblade"
+	desc = "A monstrous weapon, made out of sharpened bone."
+	icon = 'modular_vcg/modules/icons/weapons.dmi'
+	icon_state = "armblade"
+	lefthand_file = 'modular_vcg/modules/icons/lefthand.dmi'
+	righthand_file = 'modular_vcg/modules/icons/righthand.dmi'
+	force = 2 LETHAL_TTRPG_DAMAGE
+	w_class = WEIGHT_CLASS_BULKY
+	block_chance = 40
+	armour_penetration = 40
+	sharpness = SHARP_EDGED
+	attack_verb_continuous = list("slashes", "cuts")
+	attack_verb_simple = list("slash", "cut")
+	hitsound = 'sound/items/weapons/rapierhit.ogg'
+	wound_bonus = 5
+	exposed_wound_bonus = 25
+	resistance_flags = FIRE_PROOF
+	masquerade_violating = TRUE
