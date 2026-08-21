@@ -21,8 +21,8 @@
 		/datum/job_department/camarilla,
 	)
 
-	minimal_generation = 11	//Uncomment when players get exp enough
-	maximal_generation = 9
+	minimal_generation = 12	//Uncomment when players get exp enough
+	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 5
 

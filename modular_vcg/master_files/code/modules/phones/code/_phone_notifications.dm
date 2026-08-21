@@ -27,6 +27,7 @@ GLOBAL_LIST_INIT(pda_ringtone_sounds, list(
 	PDA_RINGTONE_CHORD3 = 'modular_vcg/master_files/sounds/item/smartphone/notifications/chord3.ogg',
 	PDA_RINGTONE_CODEC = 'modular_vcg/master_files/sounds/item/smartphone/notifications/codec.ogg',
 	PDA_RINGTONE_DING = 'modular_vcg/master_files/sounds/item/smartphone/notifications/ding.ogg',
+	PDA_RINGTONE_GRANDMA = 'modular_vcg/master_files/sounds/item/smartphone/notifications/grandma.ogg',
 	PDA_RINGTONE_HORN = 'modular_vcg/master_files/sounds/item/smartphone/notifications/horn.ogg',
 	PDA_RINGTONE_MAUS = 'modular_vcg/master_files/sounds/item/smartphone/notifications/maus.ogg',
 	PDA_RINGTONE_MEOW1 = 'modular_vcg/master_files/sounds/item/smartphone/notifications/meow1.ogg',

@@ -43,6 +43,7 @@
 	name = "sewage"
 	icon = 'modular_darkpack/modules/walls/icons/floors.dmi'
 	icon_state = "shit"
+	fishing_datum = /datum/fish_source/sewer
 
 /turf/open/water/vamp_sewer/Initialize(mapload)
 	. = ..()

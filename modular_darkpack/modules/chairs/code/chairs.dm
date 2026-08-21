@@ -158,3 +158,24 @@
 
 /obj/structure/chair/comfy/darkpack/red
 	icon_state = "comfy_red"
+
+// Tileable booth seats
+
+/obj/structure/chair/sofa/booth_seat
+	name = "booth seat"
+	desc = "A comfy cushioned seat in a booth."
+	has_armrest = FALSE
+	icon = 'modular_darkpack/modules/chairs/icons/dinersofa_tileable.dmi'
+	icon_state = "middle"
+
+/obj/structure/chair/sofa/booth_seat/left
+	icon_state = "left"
+
+/obj/structure/chair/sofa/booth_seat/right
+	icon_state = "right"
+
+// Standalone booth seats
+
+/obj/structure/chair/comfy/darkpack/booth_seat
+	icon = 'modular_darkpack/modules/chairs/icons/dinersofa_48.dmi'
+	icon_state = "dinner"
