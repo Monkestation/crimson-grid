@@ -1,4 +1,7 @@
-// Handgun cartridges
+// Handgun/Compact cartridges
+
+// 9mm
+
 /obj/projectile/bullet/darkpack/vamp9mm
 	damage = 30
 	exposed_wound_bonus = 10
@@ -7,11 +10,19 @@
 	damage = 30
 	exposed_wound_bonus = 10
 
+/obj/projectile/bullet/darkpack/vamp9mm/plus
+	damage = 34
+	armour_penetration = 15
+
+// 4.6mm
+
 /obj/projectile/bullet/darkpack/vamp46mm
 	damage = 25
 	armour_penetration = 35
 	exposed_wound_bonus = -5
 	wound_bonus = 0
+
+// .45 Auto
 
 /obj/projectile/bullet/darkpack/vamp45acp
 	damage = 35
@@ -21,14 +32,12 @@
 	damage = 35
 	armour_penetration = 0
 
-/obj/projectile/bullet/darkpack/vamp9mm/plus
-	damage = 34
-	armour_penetration = 15
-
 /obj/projectile/bullet/darkpack/vamp45acp/HP
 	damage = 50
 	armour_penetration = -10
 	wound_bonus = 10
+
+// .44 Magnum
 
 /obj/projectile/bullet/darkpack/vamp44
 	damage = 45
@@ -42,6 +51,8 @@
 	exposed_wound_bonus = 0
 	wound_bonus = 10
 
+// .50 Action Express
+
 /obj/projectile/bullet/darkpack/vamp50ae
 	damage = 60
 	armour_penetration = 10
@@ -49,6 +60,8 @@
 	wound_bonus = 10
 
 // Rifle cartridges
+
+// 5.56mm
 
 /obj/projectile/bullet/darkpack/vamp556mm
 	damage = 35
@@ -68,17 +81,16 @@
 	exposed_wound_bonus = -10
 	wound_bonus = 10
 
+// 5.45mm
+
 /obj/projectile/bullet/darkpack/vamp545mm
 	damage = 32
 	armour_penetration = 40
 	exposed_wound_bonus = -10
 	wound_bonus = 10
 
-/obj/projectile/bullet/darkpack/vamp762x51mm/incendiary
-	damage = 55
-	armour_penetration = 15
-	exposed_wound_bonus = 0
-	wound_bonus = 10
+
+// 7.62x51mm
 
 /obj/projectile/bullet/darkpack/vamp762x51mm
 	damage = 55
@@ -92,6 +104,13 @@
 	exposed_wound_bonus = -5
 	wound_bonus = 10
 
+/obj/projectile/bullet/darkpack/vamp762x51mm/incendiary
+	damage = 55
+	armour_penetration = 15
+	exposed_wound_bonus = 0
+	wound_bonus = 10
+
+// .50 BMG
 /obj/projectile/bullet/darkpack/vamp50
 	damage = 120
 	armour_penetration = 95

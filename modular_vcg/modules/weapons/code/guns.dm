@@ -28,16 +28,17 @@
 // SMGs
 /obj/item/gun/ballistic/automatic/darkpack/uzi
 	recoil = 3
+	attack_difficulty = 8
 
 /obj/item/gun/ballistic/automatic/darkpack/mp5
 	recoil = 2
 
 /obj/item/gun/ballistic/automatic/darkpack/mac10
 	recoil = 4
+	attack_difficulty = 8
 
 /obj/item/gun/ballistic/automatic/darkpack/mac10/super
 	recoil = 3
-	attack_difficulty = 8
 
 /obj/item/gun/ballistic/automatic/darkpack/mp7
 	recoil = 1
@@ -92,3 +93,9 @@
 /obj/item/gun/ballistic/automatic/darkpack/autoshotgun
 	recoil = 4
 	attack_difficulty = 6
+
+// Magazine Changes
+
+/obj/item/ammo_box/magazine/darkpack556/hunt
+	caliber = CALIBER_762NATO
+	max_ammo = 10
