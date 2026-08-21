@@ -257,7 +257,7 @@
 
 /obj/item/smartphone/garou_keeper
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = , OUR_ROLE = "Park Staff", USE_JOB_TITLE = FALSE)
+		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "Park Staff", USE_JOB_TITLE = FALSE)
 		)
 
 /obj/item/smartphone/mountain_master
