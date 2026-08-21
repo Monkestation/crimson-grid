@@ -47,6 +47,7 @@ JOB_START_HELPER(primogen/lasombra, JOB_PRIMOGEN_LASOMBRA)
 JOB_START_HELPER(primogen/malkavian, JOB_PRIMOGEN_MALKAVIAN)
 JOB_START_HELPER(primogen/nosferatu, JOB_PRIMOGEN_NOSFERATU)
 JOB_START_HELPER(primogen/ventrue, JOB_PRIMOGEN_VENTRUE)
+JOB_START_HELPER(primogen/brujah, JOB_PRIMOGEN_BRUJAH) // Crimson Grid edit
 
 /* Hospital */
 /obj/effect/landmark/start/darkpack/hospital
@@ -110,6 +111,7 @@ JOB_START_HELPER(forest_wolves/warder, JOB_GAROU_WARDER)
 JOB_START_HELPER(forest_wolves/catcher, JOB_GAROU_TRUTHCATCHER)
 JOB_START_HELPER(forest_wolves/wyrmfoe, JOB_GAROU_WYRMFOE)
 JOB_START_HELPER(forest_wolves/guardian, JOB_GAROU_GUARDIAN)
+JOB_START_HELPER(forest_wolves/keeper, JOB_GAROU_KEEPER) // Crimson Grid edit
 
 /* Pentex */
 /obj/effect/landmark/start/darkpack/pentex
@@ -138,5 +140,14 @@ JOB_START_HELPER(society_of_leopold/abbe, JOB_ABBE)
 JOB_START_HELPER(society_of_leopold/condittieri, JOB_CONDOTTIERI)
 JOB_START_HELPER(society_of_leopold/inquisitor, JOB_INQUISITOR)
 JOB_START_HELPER(society_of_leopold/novice, JOB_NOVICE)
+
+// Triad - Crimson Grid edit
+/obj/effect/landmark/start/darkpack/triad
+	name = "generic triad start"
+
+JOB_START_HELPER(triad/mountain_master, JOB_MOUNTAIN_MASTER)
+JOB_START_HELPER(triad/deputy_mountain_master, JOB_DEPUTY_MOUNTAIN_MASTER)
+JOB_START_HELPER(triad/red_pole, JOB_TRIAD_RED_POLE)
+JOB_START_HELPER(triad/blue_lanterns, JOB_TRIAD_BLUE_LANTERNS)
 
 #undef JOB_START_HELPER

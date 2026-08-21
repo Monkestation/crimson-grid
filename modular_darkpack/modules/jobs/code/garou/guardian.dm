@@ -3,8 +3,8 @@
 	description = "You are the bottom of the Sept's pecking order, but also the frontline offense and defense, serving directly under the Warder and Wyrmfoe to ensure the caern's safety and well-being."
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	faction = FACTION_GAIA
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 5 // Crimson Grid edit - 3 -> 5
+	spawn_positions = 5 // Crimson Grid edit - 3 -> 5
 	supervisors = /datum/job/vampire/warder
 	req_admin_notify = 1
 	minimal_player_age = 25

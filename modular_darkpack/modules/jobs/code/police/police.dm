@@ -20,7 +20,7 @@
 	)
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
-	splat_slots = list(SPLAT_GHOUL = 2, SPLAT_KINFOLK = 2)
+	splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1) // Crimson Grid edit - Infiltrators, normal humans shouldn't be outnumbered in their own police department. Ghoul: 2 -> 1 & Kinfolk 2 -> 1
 
 	description = "Enforce the Law."
 	minimum_masquerade = 0

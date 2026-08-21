@@ -22,8 +22,8 @@
 		/datum/job_department/camarilla,
 	)
 
-	minimal_generation = 12
-	minimum_immortal_age = 5 // Actually Malkavian Primo is whoever showed for work that day. Crazy bunch.
+	minimal_generation = 10 // Crimson Grid edit - 12 -> 10
+	minimum_immortal_age = 50 // Actually Malkavian Primo is whoever showed for work that day. Crazy bunch. Crimson Grid edit - 5 -> 50
 	minimum_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN)

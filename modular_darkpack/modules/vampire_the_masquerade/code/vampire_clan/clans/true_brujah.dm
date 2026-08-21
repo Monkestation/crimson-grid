@@ -13,5 +13,6 @@
 	enlightenment = TRUE
 	male_clothes = /obj/item/clothing/under/vampire/rich
 	female_clothes = /obj/item/clothing/under/vampire/business
+	subsplat_keys = /obj/item/vamp/keys/brujah // Crimson Grid edit - Disguised as Brujah
 	restricted_disciplines = list(/datum/discipline/celerity)
 	whitelisted = TRUE

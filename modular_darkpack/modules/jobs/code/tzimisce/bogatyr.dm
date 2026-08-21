@@ -15,7 +15,7 @@
 	display_order = JOB_DISPLAY_ORDER_BOGATYR
 
 	allowed_splats = list(SPLAT_KINDRED)
-	allowed_clans = list(VAMPIRE_CLAN_TZIMISCE)
+	allowed_clans = list(VAMPIRE_CLAN_OLD_CLAN_TZIMISCE) // Crimson Grid edit - New clan changed to old clan
 
 	description = "Whether you are of Voivode-in-Waiting's blood or if you've been honored, you are one of the Kin of the Voivode. Protect your Family, as your Family would protect you."
 	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9

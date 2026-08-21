@@ -22,8 +22,8 @@
 		/datum/job_department/city_services
 	)
 
-	minimal_generation = 12
-	minimum_immortal_age = 15
+	minimal_generation = 10 // Crimson Grid edit - 12 -> 10
+	minimum_immortal_age = 100 // Crimson Grid edit - 15 -> 100
 	minimum_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_NOSFERATU)
@@ -37,7 +37,7 @@
 	ears = /obj/item/radio/headset/darkpack
 	id = /obj/item/card/primogen
 	mask = /obj/item/clothing/mask/vampire/shemagh
-	glasses = /obj/item/clothing/glasses/vampire/sun
+	glasses = /obj/item/clothing/gl"asses/vampire/sun
 	uniform = /obj/item/clothing/under/vampire/suit
 	suit = /obj/item/clothing/suit/vampire/trench
 	shoes = /obj/item/clothing/shoes/vampire

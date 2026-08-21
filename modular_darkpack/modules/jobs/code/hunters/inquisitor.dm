@@ -15,8 +15,9 @@
 	departments_list = list(
 		/datum/job_department/society_of_leopold,
 	)
-	splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1, SPLAT_NONE = 3)
-	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINFOLK) // infiltrators and betrayal arcs
+
+	splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1) // Crimson Grid edit - Humans removed from limited splat slots
+	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINFOLK) // Infiltrators and betrayal arcs
 
 /datum/outfit/job/vampire/inquisitor
 	name = "Inquisitor"

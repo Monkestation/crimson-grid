@@ -22,7 +22,6 @@
 	)
 	disallowed_clans = list(VAMPIRE_CLAN_CAPPADOCIAN, VAMPIRE_CLAN_SAMEDI, VAMPIRE_CLAN_GARGOYLE, VAMPIRE_CLAN_KIASYD, VAMPIRE_CLAN_NOSFERATU)
 
-
 /datum/outfit/job/vampire/red_news_reporter
 	name = JOB_RED_NEWS_REPORTER
 	jobtype = /datum/job/vampire/red_news_reporter

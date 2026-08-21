@@ -17,6 +17,7 @@
 	no_facial = TRUE
 	male_clothes = /obj/item/clothing/under/vampire/archivist
 	female_clothes = /obj/item/clothing/under/vampire/archivist
+	subsplat_keys = /obj/item/vamp/keys/lasombra // Clan Lasombra bloodline - Crimson Grid edit
 	whitelisted = TRUE
 	clan_marks = list(/datum/bodypart_overlay/simple/clan_mark/fae_ears)
 

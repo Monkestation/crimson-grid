@@ -19,7 +19,7 @@
 	allowed_splats = list(SPLAT_GAROU)
 	minimum_masquerade = 5
 	// minimal_renown_rank = 3
-	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
+	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS) // Crimson Grid edit - Removed Ronin from IAA.
 
 	display_order = JOB_DISPLAY_ORDER_AFFAIRS
 	departments_list = list(
@@ -41,10 +41,10 @@
 	name = JOB_PENTEX_AFFAIRS
 	jobtype = /datum/job/vampire/affairs
 
-//	ears = /obj/item/p25radio
+	ears = /obj/item/radio/headset/darkpack // Crimson Grid edit - Fixing the headset radio
 	id = /obj/item/card/pentex/affairs
 	uniform =  /obj/item/clothing/under/vampire/pentex_suit
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
-	l_pocket = /obj/item/smartphone // /affairsagent - todo subtype
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/pentex
-	backpack_contents = list(/obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1)
+	backpack_contents = list(/obj/item/veil_contract, /obj/item/card/credit/rich=1) // Crimson Grid edit - Removed phonebook, obsolete

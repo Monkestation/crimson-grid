@@ -13,6 +13,13 @@
 		/datum/job_department/giovanni,
 	)
 
+	known_contacts = list(
+		JOB_CAPO,
+		JOB_I_NONNI,
+		JOB_LA_FAMIGLIA,
+		JOB_LA_SQUADRA
+	)
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GIOVANNI)
 	minimal_generation = 10
@@ -22,7 +29,7 @@
 	minimum_masquerade = 0
 
 /datum/outfit/job/vampire/nonni
-	name = "I Nonni"
+	name = JOB_I_NONNI
 	jobtype = /datum/job/vampire/nonni
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	uniform = /obj/item/clothing/under/vampire/suit

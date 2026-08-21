@@ -18,6 +18,7 @@
 	description = "Underpaid, overworked, and understrength. Do your best to keep the order in " + CITY_NAME + ". Keep the officers in line."
 	minimum_masquerade = 0
 
+
 /datum/outfit/job/vampire/police_captain
 	name = "Police Captain"
 	jobtype = /datum/job/vampire/police_captain

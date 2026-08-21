@@ -1,8 +1,8 @@
 /datum/job/vampire/dealer
 	title = "Dealer"
 	faction = FACTION_CITY
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 1 // Crimson Grid edit - 2 -> 1
+	spawn_positions = 1 // Crimson Grid edit - 2 -> 1
 	supervisors = "nobody. You are beholden only to yourself."
 	config_tag = "DEALER"
 	job_flags = CITY_JOB_FLAGS
@@ -15,10 +15,9 @@
 	)
 
 	known_contacts = list("Prince", "Seneschal", "Sheriff", "Baron")
-	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_GAROU, SPLAT_NONE)
-	splat_slots = list(SPLAT_NONE = 1)
+	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_GAROU, SPLAT_NONE, SPLAT_KINFOLK, SPLAT_CORAX) // Crimson Grid edit - Added kinfolk & corax
 	description = "You provide both legal and illegal supplies to those that get busy during the night. You are your own person yet you know people are out for you. Time to buckle in..."
-	minimum_masquerade = 0
+	minimum_masquerade = 3 // Crimson Grid edit - 0 -> 3
 
 /datum/outfit/job/vampire/dealer
 	name = "Dealer"

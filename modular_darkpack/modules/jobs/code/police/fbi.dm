@@ -13,9 +13,17 @@
 		/datum/job_department/police,
 	)
 
+// Crimson Grid edit - Added alt titles
+	alt_titles = list(
+		"Federal Investigator",
+		"SAD Officer",
+		"Project Twilight Operative",
+		"FIRSTLIGHT Analyst",
+	)
+
 	allowed_splats = list(SPLAT_NONE)
 	description = "Enforce the Law."
-	minimum_masquerade = 0
+	minimum_masquerade = 3 // Crimson Grid edit - Added minimum masquerade
 
 	known_contacts = list("Police Captain")
 

@@ -1,8 +1,8 @@
 /datum/job/vampire/tapster
 	title = JOB_TAPSTER
 	faction = FACTION_ANARCHS
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 5 // Crimson Grid Edit - 2 -> 5
+	spawn_positions = 5 // Crimson Grid Edit - 2 -> 5
 	supervisors = SUPERVISOR_BARON_PUBLIC
 	config_tag = "TAPSTER"
 	job_flags = CITY_JOB_FLAGS
@@ -25,7 +25,7 @@
 
 	known_contacts = list("Baron", "Bouncer", "Emissary", "Sweeper")
 	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL)
-	splat_slots = list(SPLAT_NONE = 2, SPLAT_GHOUL = 2)
+	splat_slots = list(SPLAT_GHOUL = 2) // Crimson Grid Edit - Removed human splat limit. 2 -> DEL
 	description = "You are a bartender of the local biker hangout. Serve the eclectic clients that pass through, and try not to ask too many questions."
 	minimum_masquerade = 0
 

@@ -14,8 +14,7 @@
 		/datum/job_department/clinic,
 	)
 
-	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
-	splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1)
+	allowed_splats = list(SPLAT_NONE) // Crimson Grid edit - Made human only
 
 	description = "Report emergencies to the correct emergency service."
 	minimum_masquerade = 0

@@ -1,8 +1,8 @@
 /datum/job/vampire/sabbatpack
 	title = JOB_SABBAT_PACK
 	faction = FACTION_SABBAT
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 3 // Crimson Grid edit - 5 -> 3
+	spawn_positions = 3 // Crimson Grid edit - 5 -> 3
 	supervisors = "Caine"
 	config_tag = "SABBAT_PACK"
 	outfit = /datum/outfit/job/vampire/sabbatpack

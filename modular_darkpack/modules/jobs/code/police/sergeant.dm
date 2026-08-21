@@ -20,7 +20,7 @@
 		"Detective",
 	)
 
-	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE)
+	allowed_splats = list(SPLAT_NONE) // Crimson Grid edit - Removed ghoul from sergeant.
 
 	description = "Enforce the law. Keep the officers in line. Follow what the Captain says."
 	minimum_masquerade = 0
