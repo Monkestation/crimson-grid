@@ -97,5 +97,6 @@
 // Magazine Changes
 
 /obj/item/ammo_box/magazine/darkpack556/hunt
+name = "rifle magazine (7.62x51mm)"
 	caliber = CALIBER_762NATO
 	max_ammo = 10
