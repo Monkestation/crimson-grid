@@ -17,7 +17,7 @@
 		/datum/job_department/society_of_leopold,
 	)
 
-known_contacts = list(
+	known_contacts = list(
 		JOB_ABBE,
 		JOB_INQUISITOR,
 		JOB_NOVICE,
