@@ -27,10 +27,20 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_BANU_HAQIM_VIZIER)
 
-	known_contacts = list("Prince")
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_SHERIFF,
+		JOB_SENESCHAL,
+		JOB_HARPY,
+		JOB_PRIMOGEN_TOREADOR,
+		JOB_PRIMOGEN_LASOMBRA,
+		JOB_PRIMOGEN_MALKAVIAN,
+		JOB_PRIMOGEN_VENTRUE,
+		JOB_PRIMOGEN_NOSFERATU
+	)
 
 /datum/outfit/job/vampire/banuprim
-	name = "Primogen Banu Haqim"
+	name = JOB_PRIMOGEN_BANU_HAQIM
 	jobtype = /datum/job/vampire/primogen_banu
 
 	ears = /obj/item/radio/headset/darkpack

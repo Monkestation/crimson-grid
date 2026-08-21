@@ -16,11 +16,18 @@
 		/datum/job_department/society_of_leopold,
 	)
 
+	known_contacts = list(
+		JOB_ABBE,
+		JOB_CONDOTTIERI,
+		JOB_INQUISITOR,
+		JOB_NOVICE
+	)
+
 	allowed_splats = list(SPLAT_NONE)
 
 
 /datum/outfit/job/vampire/novice
-	name = "Novice"
+	name = JOB_NOVICE
 	jobtype = /datum/job/vampire/novice
 
 	id = /obj/item/card/hunter

@@ -17,10 +17,17 @@
 		/datum/job_department/society_of_leopold,
 	)
 
+known_contacts = list(
+		JOB_ABBE,
+		JOB_INQUISITOR,
+		JOB_NOVICE,
+		JOB_CONDOTTIERI
+	)
+
 	allowed_splats = list(SPLAT_NONE)
 
 /datum/outfit/job/vampire/condottieri
-	name = "Condottieri"
+	name = JOB_CONDOTTIERI
 	jobtype = /datum/job/vampire/condottieri
 
 	id = /obj/item/card/hunter

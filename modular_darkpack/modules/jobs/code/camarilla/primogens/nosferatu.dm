@@ -28,10 +28,20 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_NOSFERATU)
 
-	known_contacts = list("Prince")
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_SHERIFF,
+		JOB_SENESCHAL,
+		JOB_HARPY,
+		JOB_PRIMOGEN_BANU_HAQIM,
+		JOB_PRIMOGEN_TOREADOR,
+		JOB_PRIMOGEN_LASOMBRA,
+		JOB_PRIMOGEN_MALKAVIAN,
+		JOB_PRIMOGEN_VENTRUE
+	)
 
 /datum/outfit/job/vampire/nosferatu
-	name = "Primogen Nosferatu"
+	name = JOB_PRIMOGEN_NOSFERATU
 	jobtype = /datum/job/vampire/primogen_nosferatu
 
 	ears = /obj/item/radio/headset/darkpack
