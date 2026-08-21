@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/vampire/pentex_sec
 
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
-	maximal_generation = 9
+	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 3
 

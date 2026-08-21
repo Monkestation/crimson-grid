@@ -17,7 +17,7 @@
 	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/string/feedback_database_cross
-	default = "monkestation"
+	default = "crimsongrid"
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
 
