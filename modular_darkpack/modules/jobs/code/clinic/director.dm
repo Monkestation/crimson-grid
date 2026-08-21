@@ -32,7 +32,7 @@
 	shoes = /obj/item/clothing/shoes/vampire/white
 	suit =  /obj/item/clothing/suit/vampire/labcoat/director
 	gloves = /obj/item/clothing/gloves/vampire/latex
-	l_pocket = /obj/item/smartphone/clinics_director
+	l_pocket = /obj/item/smartphone/clinic_director
 	r_pocket = /obj/item/vamp/keys/clinics_director
 	backpack_contents = list(/obj/item/card/credit=1, /obj/item/storage/medkit/darkpack/doctor=1)
 
