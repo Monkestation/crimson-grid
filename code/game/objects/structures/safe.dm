@@ -13,7 +13,7 @@ FLOOR SAFES
 /obj/structure/safe
 	name = "safe"
 	desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Scarborough Arms - 2 tumbler safe, guaranteed thermite resistant, explosion resistant, and burglar resistant.\"" // DARKPACK EDIT CHANGE
-	icon = 'icons/obj/structures.dmi'
+	icon = 'modular_darkpack/modules/decor/icons/safes.dmi' // DARKPACK EDIT CHANGE - (MS FURNITURE UPDATE)
 	icon_state = "safe"
 	anchored = TRUE
 	density = TRUE

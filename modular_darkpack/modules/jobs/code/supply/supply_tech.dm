@@ -16,7 +16,7 @@
 
 
 	description = "You work at the warehouse, moving boxes and selling not-quite legal goods to anyone who has the money."
-	maximal_generation = 9
+	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 0
 
