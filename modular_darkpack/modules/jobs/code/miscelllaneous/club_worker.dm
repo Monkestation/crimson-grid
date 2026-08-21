@@ -13,11 +13,6 @@
 		/datum/job_department/strip_club
 	)
 
-	known_contacts = list(
-		JOB_CLUB_WORKER,
-		JOB_PRIMOGEN_TOREADOR
-	)
-
 	alt_titles = list(
 		"Club Worker",
 		"Stripper",
@@ -27,7 +22,6 @@
 	)
 
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
-	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 
 	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 200
@@ -37,7 +31,7 @@
 /datum/outfit/job/vampire/club_worker
 	name = JOB_CLUB_WORKER
 	jobtype = /datum/job/vampire/citizen
-	l_pocket = /obj/item/smartphone/club_worker
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/strip
 	backpack_contents = list(/obj/item/card/credit=1)
 	uses_default_clan_clothes = TRUE

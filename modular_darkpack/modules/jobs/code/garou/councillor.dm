@@ -25,12 +25,10 @@
 	)
 
 	known_contacts = list(
-		JOB_GAROU_TRUTHCATCHER,
-		JOB_GAROU_WARDER,
-		JOB_GAROU_WYRMFOE,
-		JOB_GAROU_GUARDIAN,
-		JOB_GAROU_COUNCIL,
-		JOB_GAROU_KEEPER
+		"Truthcatcher",
+		"Warder",
+		"Wyrmfoe",
+		"Guardian"
 	)
 
 /datum/outfit/job/vampire/councillor
@@ -41,5 +39,5 @@
 	uniform =  /obj/item/clothing/under/vampire/turtleneck_white
 	suit = /obj/item/clothing/suit/vampire/coat/winter/alt
 	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
-	l_pocket = /obj/item/smartphone/garou_council
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/card/credit/rich=1, /obj/item/veil_contract)
+	l_pocket = /obj/item/smartphone
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/card/credit/rich=1, /obj/item/veil_contract) // Crimson Grid edit - Veil contract added

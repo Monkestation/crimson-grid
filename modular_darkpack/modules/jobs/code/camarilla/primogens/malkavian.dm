@@ -22,24 +22,13 @@
 		/datum/job_department/camarilla,
 	)
 
-	minimal_generation = 10
-	minimum_immortal_age = 50 // Actually Malkavian Primo is whoever showed for work that day. Crazy bunch.
+	minimal_generation = 10 // Crimson Grid edit - 12 -> 10
+	minimum_immortal_age = 50 // Actually Malkavian Primo is whoever showed for work that day. Crazy bunch. Crimson Grid edit - 5 -> 50
 	minimum_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN)
 
-	known_contacts = list(
-		JOB_PRINCE,
-		JOB_SHERIFF,
-		JOB_SENESCHAL,
-		JOB_HARPY,
-		JOB_PRIMOGEN_BANU_HAQIM,
-		JOB_PRIMOGEN_TOREADOR,
-		JOB_PRIMOGEN_LASOMBRA,
-		JOB_PRIMOGEN_VENTRUE,
-		JOB_PRIMOGEN_NOSFERATU,
-		JOB_PRIMOGEN_BRUJAH
-	)
+	known_contacts = list("Prince")
 
 /datum/outfit/job/vampire/malkav
 	name = JOB_PRIMOGEN_MALKAVIAN

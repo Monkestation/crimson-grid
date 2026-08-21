@@ -22,25 +22,14 @@
 		/datum/job_department/city_services
 	)
 
-	minimal_generation = 10
-	minimum_immortal_age = 100
+	minimal_generation = 10 // Crimson Grid edit - 12 -> 10
+	minimum_immortal_age = 100 // Crimson Grid edit - 15 -> 100
 	minimum_masquerade = 5
 
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_NOSFERATU)
 
-	known_contacts = list(
-		JOB_PRINCE,
-		JOB_SHERIFF,
-		JOB_SENESCHAL,
-		JOB_HARPY,
-		JOB_PRIMOGEN_BANU_HAQIM,
-		JOB_PRIMOGEN_TOREADOR,
-		JOB_PRIMOGEN_LASOMBRA,
-		JOB_PRIMOGEN_MALKAVIAN,
-		JOB_PRIMOGEN_VENTRUE,
-		JOB_PRIMOGEN_BRUJAH
-	)
+	known_contacts = list("Prince")
 
 /datum/outfit/job/vampire/nosferatu
 	name = JOB_PRIMOGEN_NOSFERATU
@@ -49,7 +38,7 @@
 	ears = /obj/item/radio/headset/darkpack
 	id = /obj/item/card/primogen
 	mask = /obj/item/clothing/mask/vampire/shemagh
-	glasses = /obj/item/clothing/glasses/vampire/sun
+	glasses = /obj/item/clothing/gl"asses/vampire/sun
 	uniform = /obj/item/clothing/under/vampire/suit
 	suit = /obj/item/clothing/suit/vampire/trench
 	shoes = /obj/item/clothing/shoes/vampire

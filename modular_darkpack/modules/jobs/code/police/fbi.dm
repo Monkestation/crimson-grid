@@ -13,6 +13,7 @@
 		/datum/job_department/police,
 	)
 
+// Crimson Grid edit - Added alt titles
 	alt_titles = list(
 		"Federal Investigator",
 		"SAD Officer",
@@ -20,13 +21,11 @@
 		"FIRSTLIGHT Analyst",
 	)
 
-	known_contacts = list(
-		JOB_POLICE_CAPTAIN
-	)
-
 	allowed_splats = list(SPLAT_NONE)
 	description = "Enforce the Law."
-	minimum_masquerade = 3
+	minimum_masquerade = 3 // Crimson Grid edit - Added minimum masquerade
+
+	known_contacts = list("Police Captain")
 
 /datum/outfit/job/vampire/fbi
 	name = JOB_FEDERAL_INVESTIGATOR
@@ -39,7 +38,7 @@
 	belt = /obj/item/storage/belt/holster/detective/darkpack/fbi
 	id = /obj/item/card/police/fbi
 	gloves = /obj/item/clothing/gloves/vampire/investigator
-	l_pocket = /obj/item/smartphone/federal_investigator
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/police/federal
 	backpack_contents = list(/obj/item/card/police/sergeant=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c45acp/hp=1, /obj/item/storage/medkit/darkpack/ifak=1)
 

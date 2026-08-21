@@ -1,14 +1,13 @@
 /datum/job/vampire/sabbatpack
 	title = JOB_SABBAT_PACK
 	faction = FACTION_SABBAT
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 3 // Crimson Grid edit - 5 -> 3
+	spawn_positions = 3 // Crimson Grid edit - 5 -> 3
 	supervisors = "Caine"
 	config_tag = "SABBAT_PACK"
 	outfit = /datum/outfit/job/vampire/sabbatpack
 	job_flags = CITY_JOB_FLAGS
 	allowed_splats = list(SPLAT_KINDRED)
-	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 	exp_required_type_department = EXP_TYPE_SABBAT
 	departments_list = list(
 		/datum/job_department/sabbat,
@@ -21,16 +20,10 @@
 	display_order = JOB_DISPLAY_ORDER_SABBATPACK
 	whitelisted = TRUE
 
-	known_contacts = list(
-		JOB_SABBAT_DUCTUS,
-		JOB_SABBAT_PRIEST
-	)
-
-
 /datum/outfit/job/vampire/sabbatpack
 	name = JOB_SABBAT_PACK
 	jobtype = /datum/job/vampire/sabbatpack
-	l_pocket = /obj/item/smartphone/sabbat_pack
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/sabbat
 	uses_default_clan_clothes = TRUE
 	backpack_contents = list(/obj/item/card/credit=1)

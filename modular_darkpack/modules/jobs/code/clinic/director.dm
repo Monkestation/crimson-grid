@@ -13,13 +13,8 @@
 		/datum/job_department/clinic,
 	)
 
-	known_contacts = list(
-		JOB_DOCTOR,
-		JOB_PRIMOGEN_MALKAVIAN
-	)
-
 	description = "Keep Saint John's clinic up and running. Collect blood by helping mortals at the Clinic."
-	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINFOLK) // Removed kindred, clinic director should be human as agreed by impromptu poll in #general. Head of the clinic, should be impartial etc etc.
+	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINFOLK) // Crimson Grid edit - Removed kindred, clinic director should be human as agreed by impromptu poll in #general. Head of the clinic, should be impartial etc etc.
 
 /datum/outfit/job/vampire/clinic_director
 	name = JOB_CLINIC_DIRECTOR
@@ -31,7 +26,7 @@
 	shoes = /obj/item/clothing/shoes/vampire/white
 	suit =  /obj/item/clothing/suit/vampire/labcoat/director
 	gloves = /obj/item/clothing/gloves/vampire/latex
-	l_pocket = /obj/item/smartphone/clinic_director
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/clinics_director
 	backpack_contents = list(/obj/item/card/credit=1, /obj/item/storage/medkit/darkpack/doctor=1)
 

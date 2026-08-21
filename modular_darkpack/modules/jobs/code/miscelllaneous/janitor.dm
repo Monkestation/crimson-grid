@@ -16,19 +16,13 @@
 	maximum_immortal_age = 100
 	minimum_masquerade = 0
 
-	known_contacts = list(
-		JOB_STREET_JANITOR
-	)
-
-	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
-
 /datum/outfit/job/vampire/janitor
 	name = JOB_STREET_JANITOR
 	jobtype = /datum/job/vampire/janitor
 
 	id = /obj/item/card/cleaning
 	uniform = /obj/item/clothing/under/vampire/janitor
-	l_pocket = /obj/item/smartphone/janitor
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/cleaning
 	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
 	gloves = /obj/item/clothing/gloves/vampire/cleaning

@@ -12,16 +12,11 @@
 	departments_list = list(
 		/datum/job_department/church,
 	)
-	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINDRED, SPLAT_KINFOLK)
+	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINDRED, SPLAT_KINFOLK) // Crimson Grid edit - Added kinfolk
 	allowed_clans = list(VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_CAPPADOCIAN, VAMPIRE_CLAN_BANU_HAQIM_VIZIER) //Each have pretty big religious influences, so!
 	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 11
 	maximum_immortal_age = 100
 	description = "Be the shepherd of the flock in " + CITY_NAME + ", lead them to salvation, piety and righteousness."
-
-	known_contacts = list(
-		JOB_PRIEST,
-		JOB_PRIMOGEN_LASOMBRA
-	)
 
 	alt_titles = list(
 		"Priest",
@@ -42,7 +37,7 @@
 	uniform = /obj/item/clothing/under/vampire/graveyard
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	id = /obj/item/card/hunter
-	l_pocket = /obj/item/smartphone/priest
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/flashlight
 	l_hand = /obj/item/vamp/keys/church
 	back = /obj/item/storage/backpack/satchel

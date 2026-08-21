@@ -14,15 +14,11 @@
 		/datum/job_department/clinic,
 	)
 
-	allowed_splats = list(SPLAT_NONE)
+	allowed_splats = list(SPLAT_NONE) // Crimson Grid edit - Made human only
 
 	description = "Report emergencies to the correct emergency service."
 	minimum_masquerade = 0
-	known_contacts = list(
-		JOB_POLICE_CAPTAIN,
-		JOB_POLICE_SERGEANT,
-		JOB_POLICE_OFFICER
-	)
+	known_contacts = list("Police Captain")
 
 /datum/outfit/job/vampire/dispatcher
 	name = JOB_EMERGENCY_DISPATCHER
@@ -31,6 +27,6 @@
 	ears = /obj/item/radio/headset/darkpack
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
 	id = /obj/item/card/government
-	l_pocket = /obj/item/smartphone/dispatch
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/dispatch
 	backpack_contents = list(/obj/item/card/credit=1)

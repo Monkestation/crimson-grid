@@ -21,24 +21,13 @@
 		/datum/job_department/camarilla,
 	)
 
-	minimal_generation = 10
-	minimum_immortal_age = 100
+	minimal_generation = 10 // Crimson Grid edit - 12 -> 10
+	minimum_immortal_age = 100 // Crimson Grid edit - 50 -> 100
 	minimum_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_BANU_HAQIM_VIZIER)
 
-	known_contacts = list(
-		JOB_PRINCE,
-		JOB_SHERIFF,
-		JOB_SENESCHAL,
-		JOB_HARPY,
-		JOB_PRIMOGEN_TOREADOR,
-		JOB_PRIMOGEN_LASOMBRA,
-		JOB_PRIMOGEN_MALKAVIAN,
-		JOB_PRIMOGEN_VENTRUE,
-		JOB_PRIMOGEN_NOSFERATU,
-		JOB_PRIMOGEN_BRUJAH
-	)
+	known_contacts = list("Prince")
 
 /datum/outfit/job/vampire/banuprim
 	name = JOB_PRIMOGEN_BANU_HAQIM

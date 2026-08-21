@@ -28,11 +28,10 @@
 		"Endron Chief Financial Officer"
 	)
 
-	allowed_splats = list(SPLAT_GAROU, SPLAT_NONE, SPLAT_KINFOLK, SPLAT_GHOUL, SPLAT_KINDRED)
+	allowed_splats = list(SPLAT_GAROU, SPLAT_NONE, SPLAT_KINFOLK, SPLAT_GHOUL, SPLAT_KINDRED) // Crimson Grid edit - Added human, kinfolk, and ghoul to executives.
 	minimum_masquerade = 4
 	// minimal_renown_rank = 3
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
-	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 
 	display_order = JOB_DISPLAY_ORDER_EXECUTIVE
 	departments_list = list(
@@ -42,9 +41,7 @@
 	known_contacts = list(
 		JOB_PENTEX_LEAD,
 		JOB_PENTEX_AFFAIRS,
-		JOB_PENTEX_SEC_CHIEF,
-		JOB_PENTEX_EMPLOYEE,
-		JOB_PENTEX_SEC
+		JOB_PENTEX_SEC_CHIEF
 	)
 
 	paycheck = PAYCHECK_COMMAND
@@ -56,10 +53,10 @@
 	name = JOB_PENTEX_EXEC
 	jobtype = /datum/job/vampire/executive
 
-	ears = /obj/item/radio/headset/darkpack
+	ears = /obj/item/radio/headset/darkpack // Crimson Grid edit - Fixed the headset being the wrong type
 	id = /obj/item/card/pentex/executive
 	uniform =  /obj/item/clothing/under/vampire/pentex_executive_suit
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
 	l_pocket = /obj/item/smartphone/endron_exec
 	r_pocket = /obj/item/vamp/keys/pentex
-	backpack_contents = list(/obj/item/phone_book=1, /obj/item/card/credit/seneschal=1, /obj/item/veil_contract)
+	backpack_contents = list(/obj/item/phone_book=1, /obj/item/card/credit/seneschal=1, /obj/item/veil_contract) // Crimson Grid edit - Added the veil contract

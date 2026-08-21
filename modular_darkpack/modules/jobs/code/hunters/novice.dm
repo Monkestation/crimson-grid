@@ -16,15 +16,8 @@
 		/datum/job_department/society_of_leopold,
 	)
 
-	known_contacts = list(
-		JOB_ABBE,
-		JOB_CONDOTTIERI,
-		JOB_INQUISITOR,
-		JOB_NOVICE
-	)
-
-	splat_slots = list(SPLAT_KINFOLK = 1)
-	allowed_splats = list(SPLAT_NONE, SPLAT_KINFOLK) // infiltrators and betrayal arcs
+	splat_slots = list(SPLAT_KINFOLK = 1) // Crimson Grid edit - Added Kinfolk splat slot
+	allowed_splats = list(SPLAT_NONE, SPLAT_KINFOLK) // Crimson Grid edit - Infiltrators and betrayal arcs. Added Kinfolk
 
 
 /datum/outfit/job/vampire/novice

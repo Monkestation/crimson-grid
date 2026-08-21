@@ -20,16 +20,12 @@
 	)
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
-	splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1) // Infiltrators, normal humans shouldn't be outnumbered in their own police department.
+	splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1) // Crimson Grid edit - Infiltrators, normal humans shouldn't be outnumbered in their own police department. Ghoul: 2 -> 1 & Kinfolk 2 -> 1
 
 	description = "Enforce the Law."
 	minimum_masquerade = 0
 
-	known_contacts = list(
-		JOB_POLICE_CAPTAIN,
-		JOB_POLICE_SERGEANT,
-		JOB_EMERGENCY_DISPATCHER
-	)
+	known_contacts = list("Police Captain")
 
 /datum/outfit/job/vampire/police_officer
 	name = JOB_POLICE_OFFICER
@@ -41,7 +37,7 @@
 	suit = /obj/item/clothing/suit/vampire/vest/police
 	belt = /obj/item/storage/belt/security/police
 	id = /obj/item/card/police
-	l_pocket = /obj/item/smartphone/police_officer
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/police
 	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/storage/medkit/darkpack/ifak = 1, /obj/item/bodycam_upgrade = 1)
 

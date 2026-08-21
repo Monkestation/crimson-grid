@@ -20,15 +20,12 @@
 		"Detective",
 	)
 
-	allowed_splats = list(SPLAT_NONE)
+	allowed_splats = list(SPLAT_NONE) // Crimson Grid edit - Removed ghoul from sergeant.
 
 	description = "Enforce the law. Keep the officers in line. Follow what the Captain says."
 	minimum_masquerade = 0
 
-	known_contacts = list(
-		JOB_POLICE_CAPTAIN,
-		JOB_EMERGENCY_DISPATCHER
-	)
+	known_contacts = list("Police Captain")
 
 /datum/outfit/job/vampire/police_sergeant
 	name = JOB_POLICE_SERGEANT
@@ -40,7 +37,7 @@
 	suit = /obj/item/clothing/suit/vampire/vest/police/sergeant
 	belt = /obj/item/storage/belt/holster/detective/darkpack/officer
 	id = /obj/item/card/police/sergeant
-	l_pocket = /obj/item/smartphone/police_sergeant
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/police/secure
 	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/restraints/handcuffs = 1, /obj/item/melee/baton/vamp = 1, /obj/item/storage/medkit/darkpack/ifak = 1, /obj/item/bodycam_upgrade = 1)
 

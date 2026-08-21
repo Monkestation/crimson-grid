@@ -139,6 +139,7 @@
 	display_order = 15
 	ui_color = "#fff022"
 
+// Crimson Grid edit
 /datum/job_department/triad
 	department_name = DEPARTMENT_TRIAD
 	department_bitflags = DEPARTMENT_BITFLAG_TRIAD
@@ -151,5 +152,5 @@
 /datum/job_department/citizen
 	department_name = DEPARTMENT_CITIZEN
 	department_bitflags = DEPARTMENT_BITFLAG_CITIZEN
-	display_order = 17
+	display_order = 17 // Crimson Grid edit - 16 -> 17 due to Triad addition
 	// Don't add department_head! citizens names should not be in bold.

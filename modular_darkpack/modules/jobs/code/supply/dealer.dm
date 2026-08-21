@@ -1,8 +1,8 @@
 /datum/job/vampire/dealer
 	title = "Dealer"
 	faction = FACTION_CITY
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 1 // Crimson Grid edit - 2 -> 1
+	spawn_positions = 1 // Crimson Grid edit - 2 -> 1
 	supervisors = "nobody. You are beholden only to yourself."
 	config_tag = "DEALER"
 	job_flags = CITY_JOB_FLAGS
@@ -14,21 +14,10 @@
 		/datum/job_department/supply,
 	)
 
-	known_contacts = list(
-		JOB_PRINCE,
-		JOB_SENESCHAL,
-		JOB_SHERIFF,
-		JOB_BARON,
-		JOB_SUPPLY_TECH,
-		JOB_HARPY,
-		JOB_EMISSARY,
-		JOB_MOUNTAIN_MASTER,
-		JOB_DEPUTY_MOUNTAIN_MASTER
-	)
-	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_GAROU, SPLAT_NONE, SPLAT_KINFOLK, SPLAT_CORAX)
-	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
+	known_contacts = list("Prince", "Seneschal", "Sheriff", "Baron")
+	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_GAROU, SPLAT_NONE, SPLAT_KINFOLK, SPLAT_CORAX) // Crimson Grid edit - Added kinfolk & corax
 	description = "You provide both legal and illegal supplies to those that get busy during the night. You are your own person yet you know people are out for you. Time to buckle in..."
-	minimum_masquerade = 3
+	minimum_masquerade = 3 // Crimson Grid edit - 0 -> 3
 
 /datum/outfit/job/vampire/dealer
 	name = JOB_DEALER

@@ -18,13 +18,7 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE)
 
-	known_contacts = list(
-		JOB_PRINCE,
-		JOB_CHANTRY_GARGOYLE,
-		JOB_CHANTRY_ARCHIVIST,
-		JOB_SHERIFF,
-		JOB_SENESCHAL
-	)
+	known_contacts = list("Prince")
 
 /datum/outfit/job/vampire/regent
 	name = JOB_CHANTRY_REGENT

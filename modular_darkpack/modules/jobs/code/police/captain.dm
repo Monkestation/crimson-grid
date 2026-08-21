@@ -17,11 +17,6 @@
 
 	description = "Underpaid, overworked, and understrength. Do your best to keep the order in " + CITY_NAME + ". Keep the officers in line."
 	minimum_masquerade = 0
-	known_contacts = list(
-		JOB_POLICE_SERGEANT,
-		JOB_EMERGENCY_DISPATCHER,
-		JOB_FEDERAL_INVESTIGATOR
-	)
 
 
 /datum/outfit/job/vampire/police_captain
@@ -34,7 +29,7 @@
 	suit = /obj/item/clothing/suit/vampire/vest/police/captain
 	belt = /obj/item/storage/belt/holster/detective/darkpack/officer
 	id = /obj/item/card/police/captain
-	l_pocket = /obj/item/smartphone/police_captain
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/police/secure/captain
 	backpack_contents = list(
 		/obj/item/card/credit = 1,

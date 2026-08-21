@@ -7,7 +7,6 @@
 	config_tag = "SABBAT_DUCTUS"
 	outfit = /datum/outfit/job/vampire/sabbatductus
 	allowed_splats = list(SPLAT_KINDRED)
-	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 	job_flags = CITY_JOB_FLAGS
 	exp_required_type_department = EXP_TYPE_SABBAT
 	departments_list = list(
@@ -18,19 +17,13 @@
 	display_order = JOB_DISPLAY_ORDER_SABBATDUCTUS
 	whitelisted = TRUE
 
-	known_contacts = list(
-		JOB_SABBAT_PACK,
-		JOB_SABBAT_PRIEST
-	)
-
-
 /datum/antagonist/sabbatist/ductus
 	antag_hud_name = "ductus_priest"
 
 /datum/outfit/job/vampire/sabbatductus
 	name = JOB_SABBAT_DUCTUS
 	jobtype = /datum/job/vampire/sabbatductus
-	l_pocket = /obj/item/smartphone/sabbat_ductus
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/sabbat
 	uses_default_clan_clothes = TRUE
 	backpack_contents = list(/obj/item/card/credit=1)

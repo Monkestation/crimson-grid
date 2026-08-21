@@ -30,8 +30,7 @@
 		"Paralegal",
 	)
 
-	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
-	allowed_tribes = list(TRIBE_RONIN)
+	allowed_tribes = list(TRIBE_RONIN) // Crimson Grid edit - Garou buffed, other roles added for garou.
 
 /datum/outfit/job/vampire/citizen
 	name = JOB_CITIZEN

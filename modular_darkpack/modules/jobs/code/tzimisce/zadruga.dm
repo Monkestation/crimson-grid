@@ -17,13 +17,7 @@
 	description = "You were born in servitude to the Master of the Manor: your father served the Voivode, as did his father. Now, you carry their blood, and with it their responsibilities."
 	minimum_masquerade = 2
 
-	known_contacts = list(
-		JOB_PRINCE,
-		JOB_BARON,
-		JOB_SHERIFF,
-		JOB_BOGATYR,
-		JOB_VOIVODE
-	)
+	known_contacts = list("Prince", "Baron", "Sheriff")
 
 /datum/outfit/job/vampire/zadruga
 	name = JOB_ZADRUGA

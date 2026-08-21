@@ -13,16 +13,6 @@
 		/datum/job_department/giovanni,
 	)
 
-	known_contacts = list(
-		JOB_LA_FAMIGLIA,
-		JOB_LA_SQUADRA,
-		JOB_PRINCE,
-		JOB_SENESCHAL,
-		JOB_SHERIFF,
-		JOB_BARON,
-		JOB_EMISSARY
-	)
-
 	description = "Pure blood runs through your veins and, with it, old power. Throughout your long life you have learnt to hold onto two things and never let go: money, and family."
 	minimum_masquerade = 0
 	allowed_splats = list(SPLAT_KINDRED)

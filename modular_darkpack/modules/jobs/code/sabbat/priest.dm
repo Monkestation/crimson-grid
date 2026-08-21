@@ -7,7 +7,6 @@
 	config_tag = "SABBAT_PRIEST"
 	outfit = /datum/outfit/job/vampire/sabbatpriest
 	allowed_splats = list(SPLAT_KINDRED)
-	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 	job_flags = CITY_JOB_FLAGS
 	exp_required_type_department = EXP_TYPE_SABBAT
 	departments_list = list(
@@ -19,16 +18,10 @@
 	display_order = JOB_DISPLAY_ORDER_SABBATPRIEST
 	whitelisted = TRUE
 
-	known_contacts = list(
-		JOB_SABBAT_DUCTUS,
-		JOB_SABBAT_PACK
-	)
-
-
 /datum/outfit/job/vampire/sabbatpriest
 	name = JOB_SABBAT_PRIEST
 	jobtype = /datum/job/vampire/sabbatpriest
-	l_pocket = /obj/item/smartphone/sabbat_priest
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/sabbat
 	suit = /obj/item/clothing/suit/vampire/noddist
 	head = /obj/item/clothing/head/vampire/noddist_mask

@@ -26,7 +26,6 @@
 	minimum_masquerade = 5
 	// minimal_renown_rank = 4
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
-	disallowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
 
 	display_order = JOB_DISPLAY_ORDER_BRANCH_LEAD
 	departments_list = list(
@@ -36,9 +35,7 @@
 	known_contacts = list(
 		JOB_PENTEX_EXEC,
 		JOB_PENTEX_AFFAIRS,
-		JOB_PENTEX_SEC_CHIEF,
-		JOB_PENTEX_EMPLOYEE,
-		JOB_PENTEX_SEC
+		JOB_PENTEX_SEC_CHIEF
 	)
 
 	paycheck = PAYCHECK_COMMAND
@@ -50,11 +47,11 @@
 	name = MAIN_EVIL_COMPANY + " Branch Lead"
 	jobtype = /datum/job/vampire/branch_lead
 
-	ears = /obj/item/radio/headset/darkpack
+	ears = /obj/item/radio/headset/darkpack // Crimson Grid edit - Fixed the headset being the wrong type
 	id = /obj/item/card/pentex/branch_lead
 	uniform =  /obj/item/clothing/under/vampire/pentex_executive_suit
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
 	suit = /obj/item/clothing/suit/vampire/pentex_labcoat_alt
-	l_pocket = /obj/item/smartphone/endron_lead
+	l_pocket = /obj/item/smartphone
 	r_pocket = /obj/item/vamp/keys/pentex
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/card/credit/prince=1, /obj/item/veil_contract)
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/card/credit/prince=1, /obj/item/veil_contract) // Crimson Grid edit - Added veil contract
