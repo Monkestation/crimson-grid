@@ -35,7 +35,8 @@
 		/obj/item/ammo_box/darkpack/c9mm = 1,
 		/obj/item/restraints/handcuffs = 1,
 		/obj/item/melee/baton/vamp = 1,
-		/obj/item/storage/medkit/darkpack/ifak = 1
+		/obj/item/storage/medkit/darkpack/ifak = 1,
+		/obj/item/bodycam_upgrade = 1
 	)
 
 /datum/outfit/job/vampire/police_captain/post_equip(mob/living/carbon/human/H)

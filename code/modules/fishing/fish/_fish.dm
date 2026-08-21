@@ -139,9 +139,12 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 	/// The maximum size this fish can reach, calculated the first time update_size_and_weight() is called.
 	var/maximum_size
 
-	/// Weight in "kiloclam". Null until update_size_and_weight is called. Grind results scale with it. Don't think too hard how a trout could fit in a blender.
+	//DARKPACK CHANGE START: kiloclams to grams
+	/// Weight in grams. Null until update_size_and_weight is called. Grind results scale with it. Don't think too hard how a trout could fit in a blender.
 	var/weight
-	/// Average weight for this fish type in "kiloclam"
+	/// Average weight for this fish type in grams
+	//DARKPACK CHANGE END
+
 	var/average_weight = 1000
 	/// Temporarily stores the new weight of the fish from randomize_size_and_weight() to be used by update_size_weight() later, so that it can be deferred.
 	var/temp_weight
@@ -559,8 +562,8 @@ GLOBAL_LIST_INIT(fish_compatible_fluid_types, list(
 		. += span_boldnicegreen("Caught by [catcher_name] on [catch_date].")
 
 	if(HAS_MIND_TRAIT(user, TRAIT_EXAMINE_FISH) || HAS_TRAIT(loc, TRAIT_EXAMINE_FISH))
-		. += span_notice("[p_Theyre()] [size] cm long.")
-		. += span_notice("[p_They()] weigh[p_s()] [weight] [span_tooltip("the standard unit of measurement for space age fish", "kiloclam")].")
+		. += span_notice("[p_Theyre()] [size] [span_tooltip("centimeters.", "cm")] long.") //DARKPACK EDIT - turns cm into a span_tooltip so it matches grams having one
+		. += span_notice("[p_They()] weigh[p_s()] [weight] [span_tooltip("grams.", "g")].") //DARKPACK EDIT - original: [span_tooltip("the standard unit of measurement for space age fish", "kiloclam")]
 
 		if(HAS_TRAIT(src, TRAIT_FISH_GENEGUNNED))
 			. += span_warning("[p_Theyve()] been edited by a fish genegun. [p_They()]'ll die if edited again.")

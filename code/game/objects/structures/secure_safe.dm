@@ -1,7 +1,7 @@
 /obj/item/wallframe/secure_safe
 	name = "secure safe frame"
 	desc = "A locked safe. It being unpowered prevents any access until placed back onto a wall."
-	icon = 'icons/obj/storage/storage.dmi'
+	icon = 'modular_darkpack/modules/decor/icons/safes.dmi' // DARKPACK EDIT CHANGE - (MS FURNITURE UPDATE)
 	icon_state = "wall_safe"
 	base_icon_state = "wall_safe"
 	result_path = /obj/structure/secure_safe
@@ -82,7 +82,7 @@
 /obj/structure/secure_safe
 	name = "secure safe"
 	desc = "Excellent for securing things away from grubby hands."
-	icon = 'icons/obj/storage/storage.dmi'
+	icon = 'modular_darkpack/modules/decor/icons/safes.dmi' // DARKPACK EDIT CHANGE - (MS FURNITURE UPDATE)
 	icon_state = "wall_safe"
 	base_icon_state = "wall_safe"
 	anchored = TRUE

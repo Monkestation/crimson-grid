@@ -134,7 +134,7 @@
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
 	toggled = TRUE
 	vitae_cost = 0 //handling blood cost in pre_activation because this power asks for one bloodpoint, but can be on forever without consuming more
-	violates_masquerade = TRUE
+	violates_masquerade = FALSE
 	var/choice
 
 /datum/discipline_power/serpentis/the_skin_of_the_adder/pre_activation_checks()

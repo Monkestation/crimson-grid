@@ -121,6 +121,7 @@
 			/obj/item/holochip,
 			/obj/item/toy/crayon,
 			/obj/item/reagent_containers/cup/glass/flask,
+			/obj/item/vamp/keys, // DARKPACK EDIT ADD
 		),
 		cant_hold_list = list(
 			/obj/item/screwdriver/power,
