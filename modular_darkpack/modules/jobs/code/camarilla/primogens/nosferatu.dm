@@ -37,7 +37,7 @@
 	ears = /obj/item/radio/headset/darkpack
 	id = /obj/item/card/primogen
 	mask = /obj/item/clothing/mask/vampire/shemagh
-	glasses = /obj/item/clothing/gl"asses/vampire/sun
+	glasses = /obj/item/clothing/glasses/vampire/sun
 	uniform = /obj/item/clothing/under/vampire/suit
 	suit = /obj/item/clothing/suit/vampire/trench
 	shoes = /obj/item/clothing/shoes/vampire
