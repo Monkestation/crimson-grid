@@ -84,7 +84,7 @@
 // 5.45mm
 
 /obj/projectile/bullet/darkpack/vamp545mm
-	damage = 32
+	damage = 30
 	armour_penetration = 40
 	exposed_wound_bonus = -10
 	wound_bonus = 10
