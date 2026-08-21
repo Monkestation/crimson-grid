@@ -142,6 +142,10 @@ SUBSYSTEM_DEF(ticker)
 			current_state = GAME_STATE_PREGAME
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 			fire()
+			// CRIMSON EDIT ADD START - lobby_notices
+			if (length(config.lobby_notices))
+				config.ShowLobbyNotices(world)
+			// CRIMSON END ADD
 		if(GAME_STATE_PREGAME)
 			//lobby stats for statpanels
 			if(isnull(timeLeft))

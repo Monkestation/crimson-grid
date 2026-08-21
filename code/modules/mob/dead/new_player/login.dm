@@ -28,7 +28,10 @@
 	var/motd = global.config.motd
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
-
+	// CRIMSON EDIT ADD START - lobby_notices
+	if (SSticker.current_state != GAME_STATE_STARTUP && length(config.lobby_notices))
+		config.ShowLobbyNotices(src)
+	// CRIMSON EDIT ADD END
 	if(GLOB.admin_notice)
 		to_chat(src, span_notice("<b>Admin Notice:</b>\n \t [GLOB.admin_notice]"))
 
