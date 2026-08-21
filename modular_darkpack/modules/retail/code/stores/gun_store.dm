@@ -17,7 +17,7 @@
 		new /datum/data/vending_product("double barrel shotgun", /obj/item/gun/ballistic/shotgun/vampire/doublebarrel, 1100),
 		new /datum/data/vending_product("12ga shotgun shells, buckshot", /obj/item/ammo_box/darkpack/c12g/buck, 400),
 		new /datum/data/vending_product("desert eagle magazine", /obj/item/ammo_box/magazine/m44, 100),
-		new /datum/data/vending_product("hunting rifle magazine, 5.56", /obj/item/ammo_box/magazine/darkpack556/hunt, 200),
+		new /datum/data/vending_product("hunting rifle magazine, 7.62x51", /obj/item/ammo_box/magazine/darkpack556/hunt, 200), // Crimson Grid Edit - Was 5.56
 		new /datum/data/vending_product("9mm pistol magazine, 18 rounds", /obj/item/ammo_box/magazine/semi9mm, 100),
 		new /datum/data/vending_product("Colt M1911 magazine", /obj/item/ammo_box/magazine/darkpack45acp, 50),
 		new /datum/data/vending_product("knife", /obj/item/knife/vamp, 100),
