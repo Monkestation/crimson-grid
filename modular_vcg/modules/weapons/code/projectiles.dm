@@ -64,19 +64,19 @@
 // 5.56mm
 
 /obj/projectile/bullet/darkpack/vamp556mm
-	damage = 35
+	damage = 33
 	armour_penetration = 33
 	exposed_wound_bonus = -10
 	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp556mm/incendiary
-	damage = 35
+	damage = 33
 	armour_penetration = 15
 	exposed_wound_bonus = 0
 	wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp556mm/silver
-	damage = 35
+	damage = 33
 	armour_penetration = 33
 	exposed_wound_bonus = -10
 	wound_bonus = 10
@@ -128,11 +128,6 @@
 /obj/projectile/bullet/darkpack/shotpellet
 	damage = 12
 	armour_penetration = -10
-	exposed_wound_bonus = 10
-	wound_bonus = -5
-
-/obj/projectile/bullet/darkpack/incap
-	damage = 15
 
 /obj/projectile/bullet/shotgun_slug/vamp
 	damage = 80
@@ -147,9 +142,10 @@
 	wound_bonus = 10
 
 // Special projectiles
+
 /obj/projectile/bullet/darkpack/rubber
 	damage = 5
-	exposed_wound_bonus = 5
+	exposed_wound_bonus = 0
 	wound_bonus = -5
 
 /obj/projectile/bullet/crossbow_bolt
@@ -160,12 +156,12 @@
 
 /obj/projectile/bullet/darkpack/vamp75
 	damage = 150
-	armour_penetration = 80
+	armour_penetration = 60
 	exposed_wound_bonus = 15
 	wound_bonus = 15
 
 /obj/projectile/bullet/darkpack/vamp75/silver
 	damage = 150
-	armour_penetration = 80
+	armour_penetration = 60
 	exposed_wound_bonus = 15
 	wound_bonus = 15
