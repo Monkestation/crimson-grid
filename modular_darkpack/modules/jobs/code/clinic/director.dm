@@ -14,7 +14,7 @@
 	)
 
 	description = "Keep Saint John's clinic up and running. Collect blood by helping mortals at the Clinic."
-	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINFOLK) // Crimson Grid edit - Removed kindred, clinic director should be human as agreed by impromptu poll in #general. Head of the clinic, should be impartial etc etc.
+	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINFOLK) //CRIMSON EDIT - Rolelocks & Triad - Original: allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_NONE)
 
 /datum/outfit/job/vampire/clinic_director
 	name = "Clinic Director"
