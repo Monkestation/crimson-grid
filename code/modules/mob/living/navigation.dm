@@ -8,7 +8,7 @@
 	/// Images of the path created by navigate().
 	var/list/navigation_images = list()
 
-GAME_VERB_HIDDEN(/mob/living, navigate, "Navigate")
+GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGINAL: GAME_VERB_HIDDEN(/mob/living, navigate, "Navigate")
 
 	if(incapacitated)
 		return
@@ -22,19 +22,18 @@ GAME_VERB_HIDDEN(/mob/living, navigate, "Navigate")
 	addtimer(CALLBACK(src, PROC_REF(create_navigation)), world.tick_lag)
 
 /mob/living/proc/create_navigation()
-	var/turf/our_turf = get_turf(src)
 	var/list/destination_list = list()
 	for(var/atom/destination as anything in GLOB.navigate_destinations)
-		if(get_dist(destination, our_turf) > MAX_NAVIGATE_RANGE)
+		if(get_dist(destination, src) > MAX_NAVIGATE_RANGE)
 			continue
 		var/destination_name = GLOB.navigate_destinations[destination]
-		if(destination.z != our_turf.z && is_multi_z_level(our_turf.z)) // up or down is just a good indicator "we're on the station", we don't need to check specifics
-			destination_name += ((get_dir_multiz(our_turf, destination) & UP) ? " (Above)" : " (Below)")
+		if(destination.z != z && is_multi_z_level(z)) // up or down is just a good indicator "we're on the station", we don't need to check specifics
+			destination_name += ((get_dir_multiz(src, destination) & UP) ? " (Above)" : " (Below)")
 
 		destination_list[destination_name] = destination
 
-	var/can_go_down = SSmapping.level_trait(our_turf.z, ZTRAIT_DOWN)
-	var/can_go_up = SSmapping.level_trait(our_turf.z, ZTRAIT_UP)
+	var/can_go_down = SSmapping.level_trait(z, ZTRAIT_DOWN)
+	var/can_go_up = SSmapping.level_trait(z, ZTRAIT_UP)
 	if(can_go_down)
 		destination_list["Nearest Way Down"] = DOWN
 	if(can_go_up)
@@ -53,12 +52,12 @@ GAME_VERB_HIDDEN(/mob/living, navigate, "Navigate")
 
 	var/finding_zchange = FALSE
 	COOLDOWN_START(src, navigate_cooldown, 15 SECONDS)
-	if(navigate_target == UP || navigate_target == DOWN || (isatom(navigate_target) && navigate_target.z != our_turf.z))
+	if(navigate_target == UP || navigate_target == DOWN || (isatom(navigate_target) && navigate_target.z != z))
 		// lowering the cooldown to 5 seconds if we're navigating to a ladder or staircase instead of a proper destination
 		// (so we can decide to move to another destination right off the bat, rather than needing to wait)
 		COOLDOWN_START(src, navigate_cooldown, 5 SECONDS)
 		var/direction_name = isatom(navigate_target) ? "there" : (navigate_target == UP ? "up" : "down")
-		var/nav_dir = isatom(navigate_target) ? (get_dir_multiz(our_turf, navigate_target) & (UP|DOWN)) : navigate_target
+		var/nav_dir = isatom(navigate_target) ? (get_dir_multiz(src, navigate_target) & (UP|DOWN)) : navigate_target
 		var/atom/new_target = find_nearest_stair_or_ladder(nav_dir)
 
 		if(!new_target)
@@ -72,7 +71,7 @@ GAME_VERB_HIDDEN(/mob/living, navigate, "Navigate")
 		stack_trace("Navigate target ([navigate_target]) is not an atom, somehow.")
 		return
 
-	var/list/path = get_path_to(our_turf, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = 1, access = get_access(), skip_first = FALSE)
+	var/list/path = get_path_to(src, navigate_target, MAX_NAVIGATE_RANGE, mintargetdist = 1, access = get_access(), skip_first = FALSE)
 	if(!length(path))
 		balloon_alert(src, "no valid path with current access!")
 		return
@@ -132,10 +131,9 @@ GAME_VERB_HIDDEN(/mob/living, navigate, "Navigate")
 	if(direction != UP && direction != DOWN)
 		return
 
-	var/turf/our_turf = get_turf(src)
 	var/target
 	for(var/obj/structure/ladder/lad in GLOB.ladders)
-		if(lad.z != our_turf.z)
+		if(lad.z != z)
 			continue
 		if(direction == UP && !lad.up)
 			continue
@@ -144,21 +142,21 @@ GAME_VERB_HIDDEN(/mob/living, navigate, "Navigate")
 		if(!target)
 			target = lad
 			continue
-		if(get_dist_euclidean(lad, our_turf) > get_dist_euclidean(target, our_turf))
+		if(get_dist_euclidean(lad, src) > get_dist_euclidean(target, src))
 			continue
 		target = lad
 
 	for(var/obj/structure/stairs/stairs_bro in GLOB.stairs)
-		if(direction == UP && stairs_bro.z != our_turf.z) //if we're going up, we need to find stairs on our z level
+		if(direction == UP && stairs_bro.z != z) //if we're going up, we need to find stairs on our z level
 			continue
-		if(direction == DOWN && stairs_bro.z != our_turf.z - 1) //if we're going down, we need to find stairs on the z level beneath us
+		if(direction == DOWN && stairs_bro.z != z - 1) //if we're going down, we need to find stairs on the z level beneath us
 			continue
 		if(!target)
-			target = stairs_bro.z == our_turf.z ? stairs_bro : get_step_multiz(stairs_bro, UP) //if the stairs aren't on our z level, get the turf above them (on our zlevel) to path to instead
+			target = stairs_bro.z == z ? stairs_bro : get_step_multiz(stairs_bro, UP) //if the stairs aren't on our z level, get the turf above them (on our zlevel) to path to instead
 			continue
-		if(get_dist_euclidean(stairs_bro, our_turf) > get_dist_euclidean(target, our_turf))
+		if(get_dist_euclidean(stairs_bro, src) > get_dist_euclidean(target, src))
 			continue
-		target = stairs_bro.z == our_turf.z ? stairs_bro : get_step_multiz(stairs_bro, UP)
+		target = stairs_bro.z == z ? stairs_bro : get_step_multiz(stairs_bro, UP)
 
 	return target
 
