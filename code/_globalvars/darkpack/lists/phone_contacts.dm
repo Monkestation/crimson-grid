@@ -15,8 +15,10 @@ GLOBAL_LIST_EMPTY(supply_network)
 GLOBAL_LIST_EMPTY(vampire_leader_network)
 GLOBAL_LIST_EMPTY(endron_network)
 GLOBAL_LIST_EMPTY(society_network)
+// CRIMSON EDIT ADD - Triad
 GLOBAL_LIST_EMPTY(triad_network)
 GLOBAL_LIST_EMPTY(garou_network)
+// CRIMSON EDIT END - Triad
 
 #define MILLENIUM_TOWER_NETWORK 1
 #define LASOMBRA_NETWORK 2

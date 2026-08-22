@@ -15,7 +15,6 @@
 	departments_list = list(
 		/datum/job_department/society_of_leopold,
 	)
-
 	allowed_splats = list(SPLAT_NONE)
 
 /datum/outfit/job/vampire/abbe
