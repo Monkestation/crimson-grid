@@ -70,15 +70,11 @@
 	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp556mm/incendiary
-	damage = 33
 	armour_penetration = 15
 	exposed_wound_bonus = 0
 	wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp556mm/silver
-	damage = 33
-	armour_penetration = 33
-	exposed_wound_bonus = -10
 	wound_bonus = 10
 
 // 5.45mm

@@ -43,7 +43,6 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/huntrifle
 	recoil = 1
-	attack_difficulty = 6
 
 /obj/item/gun/ballistic/automatic/darkpack/ak74
 	recoil = 3
