@@ -14,6 +14,7 @@
 	enlightenment = TRUE
 	//restricted_disciplines = list(/datum/discipline/vicissitude)
 	whitelisted = FALSE
+	subsplat_keys = /obj/item/vamp/keys/old_clan_tzimisce
 
 /datum/subsplat/vampire_clan/old_clan_tzimisce/on_join_round(mob/living/carbon/human/joining)
 	. = ..()
