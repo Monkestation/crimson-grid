@@ -25,7 +25,7 @@
 
 	known_contacts = list("Baron", "Bouncer", "Emissary", "Sweeper")
 	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL)
-	splat_slots = list(SPLAT_GHOUL = 2) // Crimson Grid Edit - Removed human splat limit. 2 -> DEL
+	splat_slots = list(SPLAT_GHOUL = 2) //CRIMSON GRID EDIT - Rolelocks & Triad - Original: splat_slots = list(SPLAT_NONE = 2, SPLAT_GHOUL = 2)
 	description = "You are a bartender of the local biker hangout. Serve the eclectic clients that pass through, and try not to ask too many questions."
 	minimum_masquerade = 0
 
