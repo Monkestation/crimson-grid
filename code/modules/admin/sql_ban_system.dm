@@ -365,7 +365,9 @@
 		// CRIMSON EDIT ADD START - SUBSPLAT_BANS
 		var/list/clan_list = list()
 		for(var/key in GLOB.vampire_clan_list)
-			clan_list += GLOB.vampire_clan_list[key].name
+			var/datum/subsplat/vampire_clan/clan = GLOB.vampire_clan_list[key]
+			if(clan)
+				clan_list += clan.name
 		// CRIMSON EDIT END
 
 		var/list/long_job_lists = list(
