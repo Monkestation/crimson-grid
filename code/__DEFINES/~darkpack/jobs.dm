@@ -57,8 +57,6 @@
 #define JOB_POLICE_OFFICER "Police Officer"
 #define JOB_EMERGENCY_DISPATCHER "Emergency Dispatcher"
 #define JOB_FEDERAL_INVESTIGATOR "Federal Investigator"
-#define JOB_NATIONAL_GUARD "National Guard Soldier" // Crimson Grid addition
-#define JOB_POLICE_SWAT "Swat Officer" // Crimson Grid addition
 
 //Clinic
 #define JOB_CLINIC_DIRECTOR "Clinic Director"
@@ -80,7 +78,6 @@
 #define JOB_SABBAT_DUCTUS "Sabbat Ductus"
 #define JOB_SABBAT_PRIEST "Sabbat Priest"
 #define JOB_SABBAT_PACK "Sabbat Pack"
-#define JOB_SABBAT_SABBATIST "Sabbatist" // Crimson Grid addition
 
 // Supply
 #define JOB_DEALER "Dealer"
@@ -95,7 +92,6 @@
 #define JOB_GAROU_KEEPER "Sept Keeper" // Kinfolk included, Crimson Grid addition
 
 // Pentex
-#define JOB_PENTEX_FIRST "First Team" // Crimson Grid addition
 #define JOB_PENTEX_LEAD "Branch Lead"
 #define JOB_PENTEX_EXEC "Executive"
 #define JOB_PENTEX_AFFAIRS "Internal Affairs Agent"
