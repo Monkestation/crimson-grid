@@ -79,8 +79,6 @@
 /obj/item/gun/ballistic/automatic/darkpack/autoshotgun
 	recoil = 4
 
-// Magazine Changes
-
 /obj/item/ammo_box/magazine/darkpack556/hunt
 	name = "rifle magazine (7.62x51mm)"
 	caliber = CALIBER_762NATO

@@ -127,15 +127,10 @@
 
 /obj/projectile/bullet/shotgun_slug/vamp
 	damage = 80
-	armour_penetration = 15
 	exposed_wound_bonus = 10
-	wound_bonus = 10
 
 /obj/projectile/bullet/shotgun_slug/vamp/silver
-	damage = 80
-	armour_penetration = 15
 	exposed_wound_bonus = 5
-	wound_bonus = 10
 
 // Special projectiles
 
