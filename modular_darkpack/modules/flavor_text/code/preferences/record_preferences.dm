@@ -5,7 +5,7 @@
 	savefile_key = "medical_record"
 	maximum_value_length = MAX_FLAVOR_LEN
 
-/datum/preference/text/medical/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/text/medical/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,7 +16,7 @@
 	savefile_key = "criminal_record"
 	maximum_value_length = MAX_FLAVOR_LEN
 
-/datum/preference/text/criminal/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/text/criminal/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +30,7 @@
 /datum/preference/text/exploitable/create_default_value()
 	return EXPLOITABLE_DEFAULT_TEXT
 
-/datum/preference/text/exploitable/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/text/exploitable/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,5 +41,5 @@
 	savefile_key = "background_info"
 	maximum_value_length = MAX_FLAVOR_LEN
 
-/datum/preference/text/background/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/text/background/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return FALSE

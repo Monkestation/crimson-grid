@@ -28,10 +28,22 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TOREADOR)
 
-	known_contacts = list("Prince")
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_SHERIFF,
+		JOB_SENESCHAL,
+		JOB_HARPY,
+		JOB_CLUB_WORKER,
+		JOB_PRIMOGEN_BANU_HAQIM,
+		JOB_PRIMOGEN_LASOMBRA,
+		JOB_PRIMOGEN_MALKAVIAN,
+		JOB_PRIMOGEN_VENTRUE,
+		JOB_PRIMOGEN_NOSFERATU,
+		JOB_CHANTRY_REGENT
+	)
 
 /datum/outfit/job/vampire/toreador
-	name = "Primogen Toreador"
+	name = JOB_PRIMOGEN_TOREADOR
 	jobtype = /datum/job/vampire/primogen_toreador
 
 	ears = /obj/item/radio/headset/darkpack

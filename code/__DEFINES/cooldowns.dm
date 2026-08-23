@@ -61,6 +61,7 @@
 
 // mob cooldowns
 #define COOLDOWN_YAWN_PROPAGATION "yawn_propagation_cooldown"
+#define COOLDOWN_YAWN_WITNESSED "yawn_witnessed_cooldown" // DARKPACK EDIT ADD
 
 //Shared cooldowns for actions
 #define MOB_SHARED_COOLDOWN_1 (1<<0)

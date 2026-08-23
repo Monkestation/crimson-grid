@@ -96,7 +96,6 @@
 			var/datum/storyteller_roll/damage/damage_roll = new damage_roll_type()
 			damage_roll.difficulty += damage_difficulty_bonus
 			damage = damage_roll.st_roll(user, src, damage_bonus_dice) TTRPG_DAMAGE
-	damage = (basic_mob_flags & IMMUNE_TO_FISTS) ? 0 : damage
 
 	if(damage <= 0 || !attack_landed)
 		playsound(loc, attacking_bodypart.unarmed_miss_sound, 25, TRUE, -1)
@@ -206,7 +205,7 @@
 	if(. && stat != DEAD) //successful larva bite
 		var/damage_done = apply_damage(rand(attacking_larva.melee_damage_lower, attacking_larva.melee_damage_upper), BRUTE)
 		if(damage_done > 0)
-			attacking_larva.amount_grown = min(attacking_larva.amount_grown + damage_done, attacking_larva.max_grown)
+			attacking_larva.amount_grown = min(attacking_larva.amount_grown + damage_done, XENOMORPH_MAX_GROWTH)
 
 /mob/living/basic/attack_drone(mob/living/basic/drone/attacking_drone)
 	if(attacking_drone.combat_mode) //No kicking dogs even as a rogue drone. Use a weapon.

@@ -28,20 +28,26 @@
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE, VAMPIRE_CLAN_VENTRUE, VAMPIRE_CLAN_NOSFERATU, VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN, VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_BANU_HAQIM_VIZIER)
 
 	known_contacts = list(
-		"Sheriff",
-		"Seneschal",
-		"Dealer",
-		"Tremere Regent",
-		"Primogens",
-		"Baron",
-		"Voivode"
+		JOB_SHERIFF,
+		JOB_SENESCHAL,
+		JOB_HARPY,
+		JOB_DEALER,
+		JOB_CHANTRY_REGENT,
+		JOB_PRIMOGEN_BANU_HAQIM,
+		JOB_PRIMOGEN_TOREADOR,
+		JOB_PRIMOGEN_LASOMBRA,
+		JOB_PRIMOGEN_MALKAVIAN,
+		JOB_PRIMOGEN_VENTRUE,
+		JOB_PRIMOGEN_NOSFERATU,
+		JOB_BARON,
+		JOB_VOIVODE
 	)
 
 /datum/job/vampire/prince/get_captaincy_announcement(mob/living/captain)
 	return "Prince [captain.real_name] is in the city!"
 
 /datum/outfit/job/vampire/prince
-	name = "Prince"
+	name = JOB_PRINCE
 	jobtype = /datum/job/vampire/prince
 
 	ears = /obj/item/radio/headset/darkpack
