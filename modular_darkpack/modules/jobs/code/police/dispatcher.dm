@@ -15,7 +15,7 @@
 	)
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
-	splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1)
+	//splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1) CRIMSON EDIT REMOVAL - Triad & other Roles
 
 	description = "Report emergencies to the correct emergency service."
 	minimum_masquerade = 0

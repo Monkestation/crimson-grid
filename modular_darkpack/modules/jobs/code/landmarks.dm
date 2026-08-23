@@ -139,4 +139,20 @@ JOB_START_HELPER(society_of_leopold/condittieri, JOB_CONDOTTIERI)
 JOB_START_HELPER(society_of_leopold/inquisitor, JOB_INQUISITOR)
 JOB_START_HELPER(society_of_leopold/novice, JOB_NOVICE)
 
+// CRIMSON EDIT ADD - Jobs
+JOB_START_HELPER(primogen/brujah, JOB_PRIMOGEN_BRUJAH)
+
+JOB_START_HELPER(forest_wolves/keeper, JOB_GAROU_KEEPER)
+
+// Triad
+/obj/effect/landmark/start/darkpack/triad
+	name = "generic triad start"
+
+JOB_START_HELPER(triad/mountain_master, JOB_MOUNTAIN_MASTER)
+JOB_START_HELPER(triad/deputy_mountain_master, JOB_DEPUTY_MOUNTAIN_MASTER)
+JOB_START_HELPER(triad/red_pole, JOB_TRIAD_RED_POLE)
+JOB_START_HELPER(triad/blue_lanterns, JOB_TRIAD_BLUE_LANTERNS)
+// CRIMSON EDIT ADD END - Jobs
+
+
 #undef JOB_START_HELPER
