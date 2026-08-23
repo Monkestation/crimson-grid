@@ -30,8 +30,10 @@ GLOBAL_LIST_EMPTY(garou_network)
 #define VAMPIRE_LEADER_NETWORK 8
 #define ENDRON_NETWORK 9
 #define SOCIETY_OF_LEOPOLD_NETWORK 10
+// CRIMSON EDIT ADD - Triads
 #define TRIAD_NETWORK 11
 #define GAROU_NETWORK 12
+// CRIMSON EDIT END - Triads
 
 // An indexed list of all the different phone networks that connect the phones that are part of them together.
 GLOBAL_LIST_INIT(contact_networks, alist(
