@@ -55,6 +55,11 @@ SUBSYSTEM_DEF(garbage)
 	#endif
 	#endif
 
+#if !defined(UNIT_TESTS) && !defined(REFERENCE_TRACKING)
+	/// Toggle for enabling/disabling hard deletes. Objects that don't explicitly request hard deletion with this disabled will leak.
+	var/enable_hard_deletes = FALSE
+#endif
+	var/list/failed_hard_deletes = list()
 
 /datum/controller/subsystem/garbage/PreInit()
 	InitQueues()
@@ -278,7 +283,14 @@ SUBSYSTEM_DEF(garbage)
 	queue[++queue.len] = list(queue_time, D, D.gc_destroyed) // not += for byond reasons
 
 //this is mainly to separate things profile wise.
-/datum/controller/subsystem/garbage/proc/HardDelete(datum/D)
+/datum/controller/subsystem/garbage/proc/HardDelete(datum/D, override = FALSE)
+	if(!D)
+		return
+#if !defined(UNIT_TESTS) && !defined(REFERENCE_TRACKING)
+	if(!enable_hard_deletes && !override)
+		failed_hard_deletes |= D
+		return
+#endif
 	++delslasttick
 	++totaldels
 	var/type = D.type
@@ -410,7 +422,7 @@ SUBSYSTEM_DEF(garbage)
 		if (QDEL_HINT_HARDDEL) //qdel should assume this object won't gc, and queue a hard delete
 			SSgarbage.Queue(to_delete, GC_QUEUE_HARDDELETE)
 		if (QDEL_HINT_HARDDEL_NOW) //qdel should assume this object won't gc, and hard del it post haste.
-			SSgarbage.HardDelete(to_delete)
+			SSgarbage.HardDelete(to_delete, override = TRUE)
 		#ifdef REFERENCE_TRACKING
 		if (QDEL_HINT_FINDREFERENCE) //qdel will, if REFERENCE_TRACKING is enabled, display all references to this object, then queue the object for deletion.
 			SSgarbage.Queue(to_delete)
