@@ -13,6 +13,10 @@ import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import {
+  LobbyNotices,
+  type LobbyNoticesType,
+} from './common/crimson/LobbyNotices';
 import { JOB2ICON } from './common/JobToIcon';
 
 type Job = {
@@ -39,6 +43,7 @@ type Data = {
   priority: BooleanLike;
   round_duration: string;
   selected_character?: string; // CRIMSON EDIT ADDITION - CHANGE_CHARACTER_SLOT
+  notices: LobbyNoticesType; // CRIMSON EDIT ADDITION - lobby_notices
 };
 
 type JobEntryProps = {
@@ -210,6 +215,9 @@ export function JobSelection(props) {
           scrollable
           title={
             <>
+              {/* CRIMSON EDIT ADDITION START - lobby_notices */}
+              <LobbyNotices notices={data.notices} />
+              {/* CRIMSON EDIT ADDITION END */}
               {shuttle_status && <NoticeBox info>{shuttle_status}</NoticeBox>}
               <Box as="span" color="label">
                 {!!data.selected_character && (

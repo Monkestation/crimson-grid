@@ -156,6 +156,11 @@ Always compile, always use that verb, and always make sure that it works for wha
 	ZTRAIT_MINING = TRUE, \
 	ZTRAIT_BASETURF = /turf/open/umbra)
 // DARKPACK EDIT ADD END
+// CRIMSON GRID EDIT ADD START - ADVENTURE ZONES
+#define ZTRAITS_ADVZONES list (\
+	ZTRAIT_NOPHASE = TRUE, \
+	ZTRAIT_BASETURF = /turf/open/misc/dirt)
+// CRIMSON GRID EDIT ADD END
 
 ///Z level traits for Away Missions
 #define ZTRAITS_AWAY list(ZTRAIT_AWAY = TRUE)

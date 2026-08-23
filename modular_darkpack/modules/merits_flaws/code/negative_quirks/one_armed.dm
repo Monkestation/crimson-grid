@@ -75,5 +75,5 @@
 
 	return /datum/quirk/darkpack/one_armed::name in preferences.all_quirks
 
-/datum/preference/choiced/missing_arm/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/missing_arm/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return

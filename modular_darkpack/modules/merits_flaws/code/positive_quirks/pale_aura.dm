@@ -6,8 +6,8 @@
 		any vampire discerns your character's aura as one belonging to the Kindred"}
 		*/
 	ttrpg_sources = list(
-		/datum/source_book/ghouls_and_revenants = 137,
-		/datum/source_book/hunterhunted2 = 43,
+		/datum/source_book/vtm20/ghouls_and_revenants = 137,
+		/datum/source_book/vtm20/hunterhunted2 = 43,
 	)
 	value = 2
 	mob_trait = TRAIT_PALE_AURA

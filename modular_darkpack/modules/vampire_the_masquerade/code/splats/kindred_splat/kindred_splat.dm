@@ -97,7 +97,7 @@
 			tongue?.toxic_foodtypes = ~(GORE | MEAT | RAW) // nagarajas?
 
 	// Set blood type
-	owner.set_blood_type(BLOOD_TYPE_KINDRED)
+	owner.set_blood_type(/datum/blood_type/kindred)
 
 	// Apply temperature damage modifiers
 	owner.physiology.heat_mod *= 2

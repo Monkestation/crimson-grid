@@ -14,15 +14,19 @@
 	display_order = JOB_DISPLAY_ORDER_ARCHIVIST
 
 	description = "Keep a census of events and provide information to neonates. Listen to the Regent Carefully. Study blood magic and protect the chantry."
-	maximal_generation = 9
+	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 3
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE)
-	known_contacts = list("Tremere Regent")
+	known_contacts = list(
+		JOB_CHANTRY_REGENT,
+		JOB_CHANTRY_ARCHIVIST,
+		JOB_CHANTRY_GARGOYLE
+	)
 
 /datum/outfit/job/vampire/archivist
-	name = "Archivist"
+	name = JOB_CHANTRY_ARCHIVIST
 	jobtype = /datum/job/vampire/archivist
 
 	id = /obj/item/card/archive

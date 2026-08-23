@@ -78,6 +78,8 @@
 	var/max_npcs = 0 // DARKPACK EDIT ADD - NPC
 	var/umbra_map_path // DARKPACK EDIT ADD - UMBRA
 	var/umbra_map_file	 // DARKPACK EDIT ADD - UMBRA
+	var/advzone_map_path // CRIMSON GRID EDIT ADD - ADVZONE
+	var/advzone_map_file // CRIMSON GRID EDIT ADD - ADVZONE
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -281,6 +283,11 @@
 	umbra_map_path = json["umbra_map_path"]
 	umbra_map_file = json["umbra_map_file"]
 	// DARKPACK EDIT ADD END
+	// CRIMSON GRID EDIT ADD START - ADVZONES
+	if (("advzone_map_path" in json) && ("advzone_map_file" in json))
+		advzone_map_path = json["advzone_map_path"]
+		advzone_map_file = json["advzone_map_file"]
+	// CRIMSON GRID EDIT ADD END
 
 #ifdef UNIT_TESTS
 	// Check for unit tests to skip, no reason to check these if we're not running tests

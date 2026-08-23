@@ -15,6 +15,8 @@
 		/obj/item/blood_filter/augment/vicissitude,
 		/obj/item/healthanalyzer/vicissitude,
 		/obj/item/shockpaddles/cyborg/vicissitude)
+	extend_sound = 'modular_darkpack/modules/powers/sounds/vicissitude.ogg'
+	retract_sound =  'modular_darkpack/modules/powers/sounds/vicissitude.ogg'
 
 /obj/item/retractor/augment/vicissitude
 	name = "retracting appendage"

@@ -15,19 +15,47 @@ GLOBAL_LIST_INIT(source_book_priority, list(
 	name = "Vampire The Masquerade 20th Anniversary Edition"
 	offical_status = SOURCE_OFFICAL
 
-/datum/source_book/hunterhunted2
+/datum/source_book/vtm20/lotc
+	name = "Lore of the Clans"
+
+/datum/source_book/vtm20/lotb
+	name = "Lore of the Bloodlines"
+
+/datum/source_book/vtm20/hunterhunted2
 	name = "The Hunters Hunted II"
 	offical_status = SOURCE_OFFICAL
 
-/datum/source_book/ghouls_and_revenants
+/datum/source_book/vtm20/ghouls_and_revenants
 	name = "Ghouls & Revenants"
 	offical_status = SOURCE_OFFICAL
 
 /datum/source_book/wta20
 	name = "Werewolf The Apocalypse 20th Anniversary Edition"
 	offical_status = SOURCE_OFFICAL
+	
+/datum/source_book/gt_tmr
+	name = "The Black Hand Guide to The Tal'Mahe'Ra"
+	offical_status = SOURCE_OFFICAL
 
-/datum/source_book/vampire_wild_west
+/datum/source_book/ctd20
+	name = "Changeling the Dreaming 20th Anniversary Edition"
+	offical_status = SOURCE_OFFICAL
+
+/datum/source_book/mta20
+	name = "Mage the Ascension 20th Anniversary Edition"
+	offical_status = SOURCE_OFFICAL
+
+/datum/source_book/mta20/bos
+	name = "The Book of Secrets"
+
+/datum/source_book/htr3
+	name = "Hunter the Reckoning Revised Edition"
+	offical_status = SOURCE_OFFICAL
+
+/datum/source_book/htr3/pg
+	name = "Hunter the Reckoning Players' Guide"
+
+/datum/source_book/vtm20/vampire_wild_west
 	name = "Vampire The Wild West"
 	offical_status = SOURCE_STORYTELLER_VAULT
 

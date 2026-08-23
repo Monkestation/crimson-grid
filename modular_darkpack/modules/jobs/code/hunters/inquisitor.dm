@@ -15,11 +15,19 @@
 	departments_list = list(
 		/datum/job_department/society_of_leopold,
 	)
+
+	known_contacts = list(
+		JOB_ABBE,
+		JOB_CONDOTTIERI,
+		JOB_NOVICE,
+		JOB_INQUISITOR
+	)
+
 	splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1, SPLAT_NONE = 3)
 	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINFOLK) // infiltrators and betrayal arcs
 
 /datum/outfit/job/vampire/inquisitor
-	name = "Inquisitor"
+	name = JOB_INQUISITOR
 	jobtype = /datum/job/vampire/inquisitor
 
 	id = /obj/item/card/hunter
@@ -32,3 +40,8 @@
 	r_pocket = /obj/item/vamp/keys/hunter
 	l_pocket = /obj/item/smartphone/inquisitor
 	backpack_contents = list(/obj/item/vampire_stake=2, /obj/item/intel_report=1, /obj/item/vampirebook/bible=1, /obj/item/masquerade_contract=1, /obj/item/card/credit=1)
+
+/datum/outfit/job/vampire/inquisitor/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	if(H.mind)
+		H.mind.set_holy_role(HOLY_ROLE_PRIEST)
