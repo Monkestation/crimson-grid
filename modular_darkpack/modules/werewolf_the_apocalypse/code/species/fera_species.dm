@@ -119,6 +119,8 @@
 		return FALSE
 
 	var/datum/splat/werewolf/shifter/shifter_splat = get_shifter_splat(human)
+    if(!shifter_splat)
+         return
 	var/splat_id = shifter_splat.id || SPLAT_GAROU
 
 	var/fur_color = get_fur_color(human)
