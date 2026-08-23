@@ -2,7 +2,11 @@
 	name = "Time Sense"
 	desc = {"You have an innate sense of time and are able to estimate the passage of time accurately without using a watch or other mechanical device,
 		even after long periods of unconsciousness. This allows you to know (among other things) what phase the moon is in."}
-	ttrpg_sources = list(/datum/source_book/wta20 = 475)
+	ttrpg_sources = list(
+		/datum/source_book/wta20 = 475,
+		/datum/source_book/vtm20 = 484,
+		/datum/source_book/htr3/pg = 111,
+		)
 	value = 1
 	mob_trait = TRAIT_TIME_SENSE
 	icon = FA_ICON_STOPWATCH

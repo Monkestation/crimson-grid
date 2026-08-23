@@ -13,6 +13,11 @@
 		/datum/job_department/strip_club
 	)
 
+	known_contacts = list(
+		JOB_CLUB_WORKER,
+		JOB_PRIMOGEN_TOREADOR
+	)
+
 	alt_titles = list(
 		"Club Worker",
 		"Stripper",
@@ -29,9 +34,9 @@
 	minimum_masquerade = 3
 
 /datum/outfit/job/vampire/club_worker
-	name = "Stripper"
+	name = JOB_CLUB_WORKER
 	jobtype = /datum/job/vampire/citizen
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/club_worker
 	r_pocket = /obj/item/vamp/keys/strip
 	backpack_contents = list(/obj/item/card/credit=1)
 	uses_default_clan_clothes = TRUE

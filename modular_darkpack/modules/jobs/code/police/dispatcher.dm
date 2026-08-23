@@ -19,15 +19,20 @@
 
 	description = "Report emergencies to the correct emergency service."
 	minimum_masquerade = 0
-	known_contacts = list("Police Captain")
+	known_contacts = list(
+		JOB_POLICE_CAPTAIN,
+		JOB_POLICE_SERGEANT,
+		JOB_POLICE_OFFICER,
+		JOB_EMERGENCY_DISPATCHER
+	)
 
 /datum/outfit/job/vampire/dispatcher
-	name = "Dispatcher"
+	name = JOB_EMERGENCY_DISPATCHER
 	jobtype = /datum/job/vampire/dispatcher
 	uniform = /obj/item/clothing/under/vampire/office
 	ears = /obj/item/radio/headset/darkpack
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
 	id = /obj/item/card/government
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/dispatch
 	r_pocket = /obj/item/vamp/keys/dispatch
 	backpack_contents = list(/obj/item/card/credit=1)

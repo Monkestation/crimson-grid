@@ -48,7 +48,7 @@ GLOBAL_LIST_INIT(prey_exclusion_choice, list(
 
 	return /datum/quirk/darkpack/prey_exclusion::name in preferences.all_quirks
 
-/datum/preference/choiced/prey_exclusion/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/prey_exclusion/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/datum/quirk/darkpack/prey_exclusion/quirk = target.get_quirk(/datum/quirk/darkpack/prey_exclusion)
 	if(!quirk)
 		return
