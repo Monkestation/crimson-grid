@@ -25,4 +25,5 @@
 		new /datum/data/vending_product("machete", /obj/item/claymore/machete, 500),
 		new /datum/data/vending_product("taser", /obj/item/melee/baton/security/handtaser, 250),
 		new /datum/data/vending_product("pepperspray", /obj/item/reagent_containers/spray/pepper, 200),
+		new /datum/data/vending_product("holster", /obj/item/storage/belt/holster/detective/darkpack, 100), // CRIMSON EDIT ADD - Shop Inventories Additions
 	)

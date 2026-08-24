@@ -160,3 +160,35 @@
 /obj/item/food/meat/slab
 	ONFLOOR_ICONSTATE_HELPER("meat")
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/food/icons/food_onfloor.dmi')
+
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+/obj/item/food/bowled/chicken_noodle
+	name = "chicken noodle soup"
+	desc = "A hearty bowl of chicken noodle soup, perfect for when you're stuck at home and sick."
+	icon_state = "chicken_noodle_soup"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment/soup/chicken_noodle_soup = 30,
+		/datum/reagent/consumable/nutriment = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 3,
+		/datum/reagent/consumable/nutriment/protein = 5,
+	)
+	tastes = list("broth" = 1, "chicken" = 1, "noodles" = 1, "carrots" = 1)
+	foodtypes = VEGETABLES | MEAT | GRAIN
+	trash_type = /obj/item/reagent_containers/cup/bowl
+// CRIMSON EDIT ADD END - Shop Inventories Additions
+
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+/obj/item/food/khinkali/dumpling
+	name = "dumpling"
+	desc = "A steamed parcel of dough pinched shut at the top, filled with pork and onion."
+	tastes = list("pork" = 2, "onions" = 1, "dough" = 1)
+	custom_price = 2
+// CRIMSON EDIT ADD END - Shop Inventories Additions
+
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+/obj/item/food/fries
+	custom_price = 2
+
+/obj/item/food/cheesyfries
+	custom_price = 3
+// CRIMSON EDIT ADD END - Shop Inventories Additions
