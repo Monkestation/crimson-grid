@@ -175,17 +175,17 @@
 	tastes = list("broth" = 1, "chicken" = 1, "noodles" = 1, "carrots" = 1)
 	foodtypes = VEGETABLES | MEAT | GRAIN
 	trash_type = /obj/item/reagent_containers/cup/bowl
-// CRIMSON EDIT ADD END - Shop Inventories Additions
 
-// CRIMSON EDIT ADD START - Shop Inventories Additions
 /obj/item/food/khinkali/dumpling
 	name = "dumpling"
 	desc = "A steamed parcel of dough pinched shut at the top, filled with pork and onion."
 	tastes = list("pork" = 2, "onions" = 1, "dough" = 1)
 	custom_price = 2
-// CRIMSON EDIT ADD END - Shop Inventories Additions
 
-// CRIMSON EDIT ADD START - Shop Inventories Additions
+/obj/item/food/khinkali/dumpling/Initialize(mapload)
+	. = ..()
+	transform = transform.Scale(0.4)
+
 /obj/item/food/fries
 	custom_price = 2
 
