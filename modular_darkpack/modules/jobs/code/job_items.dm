@@ -178,7 +178,7 @@
 		return
 	if(!user.mind)
 		return
-	if(user.mind.holy_role != HOLY_ROLE_PRIEST)
+	if(!user.mind?.holy_role)
 		return
 	COOLDOWN_START(src, detonation_timer, 30 SECONDS)
 	do_sparks(rand(5, 9), FALSE, user)

@@ -28,10 +28,21 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN)
 
-	known_contacts = list("Prince")
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_SHERIFF,
+		JOB_SENESCHAL,
+		JOB_HARPY,
+		JOB_PRIMOGEN_BANU_HAQIM,
+		JOB_PRIMOGEN_TOREADOR,
+		JOB_PRIMOGEN_LASOMBRA,
+		JOB_PRIMOGEN_VENTRUE,
+		JOB_PRIMOGEN_NOSFERATU,
+		JOB_CHANTRY_REGENT
+	)
 
 /datum/outfit/job/vampire/malkav
-	name = "Primogen Malkavian"
+	name = JOB_PRIMOGEN_MALKAVIAN
 	jobtype = /datum/job/vampire/primogen_malkavian
 
 	ears = /obj/item/radio/headset/darkpack

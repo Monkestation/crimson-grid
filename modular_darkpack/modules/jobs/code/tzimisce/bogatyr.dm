@@ -22,10 +22,16 @@
 	maximum_immortal_age = 200
 	minimum_masquerade = 2
 
-	known_contacts = list("Prince", "Baron", "Sheriff")
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_BARON,
+		JOB_SHERIFF,
+		JOB_VOIVODE,
+		JOB_ZADRUGA
+	)
 
 /datum/outfit/job/vampire/bogatyr
-	name = "Bogatyr"
+	name = JOB_BOGATYR
 	jobtype = /datum/job/vampire/bogatyr
 	id = /obj/item/card/bogatyr
 	glasses = /obj/item/clothing/glasses/vampire/yellow

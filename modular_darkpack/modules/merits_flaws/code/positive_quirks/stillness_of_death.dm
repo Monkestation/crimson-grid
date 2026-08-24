@@ -1,6 +1,7 @@
 /datum/quirk/darkpack/stillness_of_death
 	name = "Stillness of Death"
 	desc = "Some Gargoyles are able to take advantage of their unnatural appearance, undeath, stone-hued skin, and the affinity for rock and concrete in their discipline of Visceratika to hide themselves as if they were literal statues. Purchasing this merit allows a Gargoyle to enter 'statue form', allowing them to stand as still as a statue to prevent from breaching the Masquerade, and trick onlookers."
+	ttrpg_sources = list(/datum/source_book/vtm20/lotb = 37)
 	value = 2
 	mob_trait = TRAIT_STILLNESS_OF_DEATH
 	gain_text = span_notice("You feel brave enough to hide by pretending to be a statue.")

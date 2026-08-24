@@ -1,9 +1,14 @@
-// VTM pg. 479-480
 /datum/quirk/darkpack/acute_sense
 	name = "Acute Sense"
 	desc = "One of your senses is exceptionally sharp, be it sight, hearing, smell, touch, or taste."
 	value = 1
 	icon = FA_ICON_EYE
+	ttrpg_sources = list(
+		/datum/source_book/vtm20 = 479,
+		/datum/source_book/wta20 = 472,
+		/datum/source_book/ctd20 = 176,
+		/datum/source_book/mta20 = 642,
+		)
 	var/sense
 
 /*One of your senses is exceptionally sharp, be it sight,
@@ -84,5 +89,5 @@ acuity.*/
 
 	return /datum/quirk/darkpack/acute_sense::name in preferences.all_quirks
 
-/datum/preference/choiced/acute_sense/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/acute_sense/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return

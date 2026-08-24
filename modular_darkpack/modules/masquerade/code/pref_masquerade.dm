@@ -8,5 +8,5 @@
 /datum/preference/numeric/masquerade/create_default_value()
 	return 5
 
-/datum/preference/numeric/masquerade/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/masquerade/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.masquerade_score = value

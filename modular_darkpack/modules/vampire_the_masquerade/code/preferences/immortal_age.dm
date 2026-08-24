@@ -9,7 +9,7 @@
 	minimum = 0
 	maximum = 1000
 
-/datum/preference/numeric/immortal_age/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/immortal_age/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.chronological_age += value
 
 /datum/preference/numeric/immortal_age/create_informed_default_value(datum/preferences/preferences)

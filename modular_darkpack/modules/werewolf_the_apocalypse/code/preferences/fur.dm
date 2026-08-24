@@ -10,7 +10,7 @@
 	must_be_accessible = TRUE
 	var/splat_id
 
-/datum/preference/choiced/fera_fur_color/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/fera_fur_color/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features[FEATURE_FUR_COLOR] = value
 
 /datum/preference/choiced/fera_fur_color/is_accessible(datum/preferences/preferences)
