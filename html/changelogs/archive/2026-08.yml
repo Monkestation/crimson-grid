@@ -110,3 +110,156 @@
   - rscadd: submarine sandwiches (4 types)
   flleeppyy:
   - admin: Removed Darkpack Ban Options and moved LOOC ban to the Abstract category.
+2026-08-11:
+  FalloutFalcon:
+  - rscadd: Hub displays more information about server
+  - config: Server tagline config to be displayed in hub
+  breadcrombs:
+  - rscadd: The lever action rifle alongside the double barrel shotgun can now be
+      purchased from the supply console.
+  - rscadd: 45 ACP can now be bought from the supply console.
+  - balance: The lever action rifle can now be stored in the belt slot.
+2026-08-12:
+  chazzyjazzy:
+  - bugfix: auspex 5 ghosts can no longer talk, grab, emote, or be seein from Auspex
+      3
+2026-08-13:
+  FalloutFalcon:
+  - balance: Basic mob bosses take aggrevated damage
+  buffyuwu:
+  - rscadd: Adds 2 new jackets, 2 new shawls, and 2 new dresses made by @Major00 and
+      @Imaginos16
+  cornercube:
+  - rscadd: consistency in naming convention
+  - bugfix: deagle .50AE crate
+  - rscadd: obtainable mac-10
+2026-08-14:
+  Marshmellow105:
+  - rscadd: adds bodycams for police officers, when worn, police dispatchers can watch
+      their camera feed from the police station from a security console, and vampires
+      using disciplines get an un-restorable breach when in front of a police officer
+      with the bodycamera on
+  TheTrueSilverRat:
+  - rscadd: add a feature to be wyrm tainted
+  - code_imp: added the needed back-end tgui files for it.
+  chazzyjazzy:
+  - bugfix: auspex 5 ghosts cant enter cars
+  - bugfix: fixes sabbat war party totem
+2026-08-15:
+  Dangerlurking:
+  - rscadd: Adds path of Asakku along with its V20 book description.
+  - rscadd: 'Adds the otherworldly bearing in the morality defines.
+
+      :cl:'
+  FalloutFalcon:
+  - code_imp: Fixes Russian shit code relating to social roles on npcs
+  - code_imp: Optimizes walls by not rendering frills when they aren't visible
+  - bugfix: pouring gas works on all turf with real ground (not water or open space)
+  - admin: adds extra logging for important combat interactions
+  - admin: frenzy logging shows the proper target of the frenzy instead of themselves
+  - balance: Odious Chalice has a cap of 10 blood stored
+  - balance: Odious Chalice restores BP instead of health
+  - balance: Odious Chalice works off brawl/unarmed attacks
+  - balance: Odious Chalice melee strikes dont need to be sharp weapons but need to
+      deal actual damage
+  - balance: ghouls can use Odious Chalice
+  - balance: Odious Chalice gaining blood works off a 1 turn cooldown instead of random
+      chance
+  - qol: Odious Chalice shakes upon gaining blood
+  - bugfix: Odious Chalice wont display "contains x blood points when its unidentified
+  - bugfix: Odious Chalice only works if you hit something other then yourself
+  KCartridge:
+  - image: modified grandpa clock
+  Uristthedorf:
+  - bugfix: '"The skin of the adder" no longer causes masquerade breach on cast.'
+  - rscadd: You can now put boots and lockpicks inside of boots now.
+  chazzyjazzy:
+  - bugfix: bite attacks no longer count as eating food
+  - admin: vampire bites are now logged in attack.log
+  - bugfix: door repair kits work now
+  shqvelheaded, bomby:
+  - rscadd: adds the military parka, a new jacket purchasable at the hunting store
+2026-08-16:
+  Marshmellow105:
+  - rscadd: adds new tables, desks, wallpapers and diner booth seats
+  - image: changed the sprite of all safes
+  Uristthedorf:
+  - rscadd: Adds "thirst of ages" flaw for vampires.
+  cam_dev:
+  - rscadd: six new fish, leeches, and horn snails
+  - rscadd: unique descriptions for all fish
+  - balance: adjusted fish stats
+  - image: new sprite for bluefin tuna
+  - map: fishing tables for blood pools, sewer tiles, and acid
+  chazzyjazzy:
+  - admin: admins can now use the vv dropdown menu to 'cure breach' (a single one)
+      or 'cure all breaches' (clears all breaches) on any mob that has breached
+  dwinters99:
+  - image: bloodstone now has an onfloor
+2026-08-18:
+  Absolucy:
+  - rscadd: Map votes are now automatically started at roundend, if a next map has
+      not already been selected.
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  ChudBluski:
+  - balance: changed Thirst of Ages to -7 points to reflect the ttrpg
+  - code_imp: 'changes the ttrpg source of Thirst of Ages to "V20''s The Black Hand:
+      Guide to the Tal''Mahe''Ra"'
+  Contrabang:
+  - code_imp: Made wall frills more memory efficient
+  Faengi:
+  - rscadd: Added Alcohol Tolerance, Banned Transformation, Beacon of the Unholy,
+      Huge Size, Language Barrier, and No Sense of Taste as traits.
+  - bugfix: Priests and Inquisition are now set as priests.
+  Stutternov:
+  - bugfix: Fixes the sawn AK74's sprite overlays. Has proper mag now and belt sprite
+      placeholder. (Looks like normal AK on belt.)
+  - bugfix: Fixes lever action not having updating sprite overlays when you cycle
+      its bolt.
+  - bugfix: Fixes musket to be capable of being sawn down as intended.
+  breadcrombs:
+  - rscadd: Added a few more selectable adjectives
+  cam_dev:
+  - bugfix: buzzard crinos warforms are visible again (no unique sprites yet)
+  - image: red buzzard raven sprites
+  chazzyjazzy:
+  - bugfix: if you diablerize someone you can no longer bloodheal to get rid of the
+      imaginary friend
+  flleeppyy:
+  - bugfix: fix a phone bluescreen where some contacts could have empty names.
+  - bugfix: typo in ugly examine
+2026-08-19:
+  chazzyjazzy:
+  - rscdel: removed /tg/ brainwashing
+2026-08-20:
+  SabbyKat:
+  - bugfix: fixed Blood Form on-exit head sprite bug.
+  breadcrombs:
+  - balance: npc vendor .45 acp ammo box price has been reduced from 2100 to 700
+2026-08-21:
+  Stutternov:
+  - bugfix: Fixes issue on Dread Gaze that was causing people to run away for entire
+      rounds. Adjusted to 2 minute timer.
+  breadcrombs:
+  - sound: the vicissitude surgery implant toolset has been given a new more organic
+      sound
+  chazzyjazzy:
+  - rscdel: Removes Beekeeping supply pack from the warehouse
+  - rscdel: Removes Monkey Cubes supply pack from the warehouse
+2026-08-22:
+  FalloutFalcon:
+  - rscadd: Adds a subtype to yawns for a covered yawn to prevent propagation
+  - balance: Willpower scales the change for a yawn to propagate to you
+  - balance: You only roll a chance for automatic yawn propagation from the first
+      yawn you witness
+  - balance: Yawn propagation only happens on half of yawns
+  breadcrombs:
+  - rscadd: Bonecrafting now drops the brain along with all head organs when used
+      on a corpses
+  - rscadd: Bonecrafting can now deal damage to selected target limbs rather than
+      the chest all the time and can also wound
+2026-08-23:
+  ShirouAjisai:
+  - rscadd: Added phone contacts to every phone. You know your own co-workers now..
+      waow....

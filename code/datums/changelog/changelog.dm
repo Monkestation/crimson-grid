@@ -1,3 +1,4 @@
+/* // CRIMSON EDIT REMOVAL START - improved_changelog
 /datum/changelog
 	var/static/list/changelog_items = list()
 
@@ -30,3 +31,4 @@
 		data["dates"] = list(archive_date) + data["dates"]
 
 	return data
+*/ // CRIMSON EDIT REMOVAL END

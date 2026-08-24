@@ -22,11 +22,14 @@
 	)
 	disallowed_clans = list(VAMPIRE_CLAN_CAPPADOCIAN, VAMPIRE_CLAN_SAMEDI, VAMPIRE_CLAN_GARGOYLE, VAMPIRE_CLAN_KIASYD, VAMPIRE_CLAN_NOSFERATU)
 
+	known_contacts = list(
+		JOB_RED_NEWS_REPORTER
+	)
 
 /datum/outfit/job/vampire/red_news_reporter
 	name = JOB_RED_NEWS_REPORTER
 	jobtype = /datum/job/vampire/red_news_reporter
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/red_news
 	backpack_contents = list(/obj/item/card/credit)
 	uniform = /obj/item/clothing/under/vampire/suit
 	l_hand = /obj/item/broadcast_camera

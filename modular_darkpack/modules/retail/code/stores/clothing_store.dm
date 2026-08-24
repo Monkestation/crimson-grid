@@ -3,6 +3,10 @@
 	products_list = list(
 		new /datum/data/vending_product("crimson red dress", /obj/item/clothing/under/vampire/primogen_toreador/female	,	350),
 		new /datum/data/vending_product("black dress", /obj/item/clothing/under/vampire/business,	250),
+		new /datum/data/vending_product("black gown", /obj/item/clothing/under/vampire/gown_black,	250),
+		new /datum/data/vending_product("white gown", /obj/item/clothing/under/vampire/gown_white,	250),
+		new /datum/data/vending_product("black shawl", /obj/item/clothing/suit/vampire/shawl_black,	250),
+		new /datum/data/vending_product("white shawl", /obj/item/clothing/suit/vampire/shawl_white,	250),
 		new /datum/data/vending_product("leather pants", /obj/item/clothing/under/vampire/leatherpants,	200),
 		new /datum/data/vending_product("fancy gray suit", /obj/item/clothing/under/vampire/fancy_gray,	150),
 		new /datum/data/vending_product("fancy red suit", /obj/item/clothing/under/vampire/fancy_red,	150),
@@ -24,6 +28,8 @@
 		new /datum/data/vending_product("female flamboyant outfit", /obj/item/clothing/under/vampire/toreador/female,	30),
 		new /datum/data/vending_product("purple and black outfit", /obj/item/clothing/under/vampire/sexy,	25),
 		new /datum/data/vending_product("slick jacket", /obj/item/clothing/under/vampire/slickback, 25),
+		new /datum/data/vending_product("classic bomber jacket", /obj/item/clothing/suit/vampire/bomber_jacket_classic,	90),
+		new /datum/data/vending_product("gray bomber jacket", /obj/item/clothing/suit/vampire/bomber_jacket_gray,	90),
 		new /datum/data/vending_product("tracksuit", /obj/item/clothing/under/vampire/sport,	25),
 		new /datum/data/vending_product("grimey pants", /obj/item/clothing/under/vampire/malkavian,	20),
 		new /datum/data/vending_product("odd Goth schoolgirl attire", /obj/item/clothing/under/vampire/malkavian/female,	20),
@@ -83,6 +89,11 @@
 		new /datum/data/vending_product("rubber gloves", /obj/item/clothing/gloves/vampire/cleaning,	15),
 		new /datum/data/vending_product("latex gloves", /obj/item/clothing/gloves/vampire/latex,	5),
 		new /datum/data/vending_product("black work gloves", /obj/item/clothing/gloves/vampire/work,	45),
+		// CRIMSON EDIT ADD START
+		new /datum/data/vending_product("sunglasses", /obj/item/clothing/glasses/sunglasses,	25),
+		new /datum/data/vending_product("noir sunglasses", /obj/item/clothing/glasses/sunglasses/noir,	30),
+		new /datum/data/vending_product("black gar glasses", /obj/item/clothing/glasses/sunglasses/gar,	85),
+		// CRIMSON EDIT ADD END
 		new /datum/data/vending_product("bandana", /obj/item/clothing/head/vampire/bandana,	10),
 		new /datum/data/vending_product("red bandana", /obj/item/clothing/head/vampire/bandana/red,	10),
 		new /datum/data/vending_product("black bandana", /obj/item/clothing/head/vampire/bandana/black,	10),

@@ -1,5 +1,6 @@
 /datum/blood_type/kindred
-	name = BLOOD_TYPE_KINDRED
+	name = "V+"
+	dna_string = "Vampiric DNA"
 	reagent_type = /datum/reagent/blood/vitae
 	compatible_types = list(
 		/datum/blood_type/human/a_minus,
