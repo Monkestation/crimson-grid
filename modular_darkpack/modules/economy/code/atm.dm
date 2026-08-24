@@ -6,7 +6,7 @@
 	anchored = TRUE
 
 	max_integrity = 250
-	damage_deflection = 20
+	damage_deflection = 50 // CRIMSON EDIT CHANGE - ORIGINAL: damage_deflection = 20
 
 	light_color = COLOR_GREEN
 	light_range = 2
@@ -27,7 +27,6 @@
 /obj/machinery/atm/on_deconstruction(disassembled)
 	dump_cash()
 	SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_ATM_TAMPERING, get_turf(src))
-	explosion(src, heavy_impact_range = 100, light_impact_range = 200, flash_range = 300, adminlog = FALSE)
 
 /obj/machinery/atm/examine(mob/user)
 	. = ..()
