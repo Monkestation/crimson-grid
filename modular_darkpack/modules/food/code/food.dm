@@ -85,16 +85,18 @@
 	foodtypes = MEAT | DAIRY | GRAIN | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 
+#ifndef UNIT_TESTS
 /obj/item/food/submarine_sandwich/Initialize(mapload)
 	. = ..()
 	if(istype(src, /obj/item/food/submarine_sandwich/wish))
 		return
-	if(!prob(1))
+	if(!prob(0.1))
 		return
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 	visible_message(span_warning("They got the order wrong!"))
 	new /obj/item/food/submarine_sandwich/wish(loc)
 	qdel(src)
+#endif
 
 /obj/item/food/submarine_sandwich/meatball
 	name = "meatball sub"

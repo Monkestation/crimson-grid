@@ -37,7 +37,10 @@
 	known_contacts = list(
 		JOB_PENTEX_LEAD,
 		JOB_PENTEX_EXEC,
-		JOB_PENTEX_AFFAIRS
+		JOB_PENTEX_AFFAIRS,
+		JOB_PENTEX_SEC_CHIEF,
+		JOB_PENTEX_SEC,
+		JOB_PENTEX_EMPLOYEE
 	)
 
 	paycheck = PAYCHECK_CREW
@@ -55,5 +58,5 @@
 	gloves = /obj/item/clothing/gloves/vampire/work
 	shoes = /obj/item/clothing/shoes/vampire
 	r_pocket = /obj/item/vamp/keys/pentex
-	l_pocket = /obj/item/smartphone // /employee - todo subtype
+	l_pocket = /obj/item/smartphone/endron_employee
 	backpack_contents = list(/obj/item/card/credit=1)
