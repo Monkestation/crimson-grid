@@ -121,8 +121,12 @@
 			.["user"]["payment_item"] = REF(held_item)
 			break
 		else if(istype(held_item, /obj/item/stack/dollar))
-			var/obj/item/money = held_item
-			.["user"]["money"] = money.get_item_credit_value()
+// CRIMSON EDIT START - Cash Purchase Update
+//			var/obj/item/money = held_item
+//			.["user"]["money"] = money.get_item_credit_value()
+			for(var/obj/item/stack/dollar/money in user.get_all_contents_type(/obj/item/stack/dollar))
+				.["user"]["money"] += money.get_item_credit_value()
+// CRIMSON EDIT END - Cash Purchase Update
 			.["user"]["payment_item"] = REF(held_item)
 			break
 	return
@@ -171,9 +175,25 @@
 						return
 					//used_account.process_credit_fraud(user, product.price)
 				else if(istype(held_item, /obj/item/stack/dollar))
-					if(!held_item.use(product.price))
-						to_chat(user, span_alert("You don't have enough money in your hand."))
+// CRIMSON EDIT START - Cash Purchase Update
+//					if(!held_item.use(product.price))
+//						to_chat(user, span_alert("You don't have enough money in your hand."))
+//						return
+					var/list/carried_money = user.get_all_contents_type(/obj/item/stack/dollar)
+					var/total_money = 0
+					for(var/obj/item/stack/dollar/money in carried_money)
+						total_money += money.get_item_credit_value()
+					if(total_money < product.price)
+						to_chat(user, span_alert("You don't have enough money on you."))
 						return
+					var/remaining_price = product.price
+					for(var/obj/item/stack/dollar/money in carried_money)
+						var/to_spend = min(remaining_price, money.get_item_credit_value())
+						money.use(to_spend)
+						remaining_price -= to_spend
+						if(!remaining_price)
+							break
+// CRIMSON EDIT END - Cash Purchase Update
 				else
 					return // We have nothing we can pay with.
 
