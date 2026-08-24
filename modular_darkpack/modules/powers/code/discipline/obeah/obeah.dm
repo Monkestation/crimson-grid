@@ -220,7 +220,7 @@
 
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
-	target_type = TARGET_LIVING
+	target_type = TARGET_MOB // CRIMSON GRID EDIT Originally TARGET_LIVING
 	range = 1
 
 	violates_masquerade = TRUE
