@@ -58,6 +58,7 @@
 	armour_penetration = 10
 	exposed_wound_bonus = 10
 	wound_bonus = 10
+	sharpness = SHARP_EDGED
 
 // Rifle cartridges
 
@@ -112,14 +113,16 @@
 	armour_penetration = 95
 	exposed_wound_bonus = -10
 	wound_bonus = 20
+	sharpness = SHARP_EDGED
 
 // Shotgun ammunition
 
 /obj/projectile/bullet/darkpack/dragonsbreath
-	damage = 8
+	damage = 10
 	armour_penetration = 0
 	exposed_wound_bonus = 5
 	wound_bonus = 5
+	var/firestacks = 2
 
 /obj/projectile/bullet/darkpack/shotpellet
 	damage = 12
@@ -128,6 +131,7 @@
 /obj/projectile/bullet/shotgun_slug/vamp
 	damage = 80
 	exposed_wound_bonus = 10
+	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/shotgun_slug/vamp/silver
 	exposed_wound_bonus = 5
@@ -138,6 +142,7 @@
 	damage = 5
 	exposed_wound_bonus = 0
 	wound_bonus = -5
+	sharpness = NONE
 
 /obj/projectile/bullet/crossbow_bolt
 	damage = 45
@@ -150,9 +155,8 @@
 	armour_penetration = 60
 	exposed_wound_bonus = 15
 	wound_bonus = 15
+	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/darkpack/vamp75/silver
-	damage = 150
-	armour_penetration = 60
-	exposed_wound_bonus = 15
-	wound_bonus = 15
+	armour_penetration = 50
+
