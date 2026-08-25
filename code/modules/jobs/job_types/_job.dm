@@ -240,6 +240,16 @@
 				bank_account.account_balance = rand(2000, 3000)
 				bank_account.paycheck_amount = 250
 		// DARKPACK EDIT ADD END
+		// CRIMSON GRID ADD FOR BEING RICH
+		if(get_kindred_splat(src))
+			var/datum/subsplat/vampire_clan/rich_clan = src.get_clan()
+		if(equipping.super_rich)
+			bank_account.account_balance *= 10
+			bank_account.paycheck_amount *= 10
+		else if(equipping.rich || rich_clan.id == VAMPIRE_CLAN_VENTRUE || rich_clan.id == VAMPIRE_CLAN_GIOVANNI) //Job is rich
+			bank_account.account_balance *= 5
+			bank_account.paycheck_amount *= 5
+		// CRIMSON GRID ADD END
 		add_mob_memory(/datum/memory/key/account, remembered_id = account_id)
 		add_mob_memory(/datum/memory/key/bank_pin, remembered_id = bank_account.bank_pin) // DARKPACK EDIT ADD
 
