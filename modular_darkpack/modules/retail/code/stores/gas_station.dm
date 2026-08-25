@@ -8,6 +8,7 @@
 		new /datum/data/vending_product("malboro gold", /obj/item/storage/fancy/cigarettes/cigpack_robustgold, 80),
 		new /datum/data/vending_product("newport", /obj/item/storage/fancy/cigarettes/cigpack_xeno, 30),
 		new /datum/data/vending_product("camel", /obj/item/storage/fancy/cigarettes/dromedaryco, 30),
+		new /datum/data/vending_product("vape", /obj/item/vape, 170), // CRIMSON EDIT ADD
 		new /datum/data/vending_product("zippo lighter", /obj/item/lighter, 20),
 		new /datum/data/vending_product("lighter", /obj/item/lighter/greyscale, 10),
 		new /datum/data/vending_product("chocolate bar", /obj/item/food/chocolatebar),

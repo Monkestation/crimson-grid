@@ -22,7 +22,7 @@
 /mob/living/carbon/human/display_darkpack_examine_text(mob/user)
 	. = ..()
 
-	var/list/zero = list("Startlingly ugly. [p_are()] [p_they()] doing some awful cosplay...?", "JESUS, [p_they()] look like [p_they()] [p_are()] straight out of a horror movie!", "GOODNESS [p_they()] [p_are()] ugly.", "So ugly you could almost cry.")
+	var/list/zero = list("Startlingly ugly. [p_are()] [p_they()] doing some awful cosplay...?", "JESUS, [p_they()] look[p_s()] like [p_they()] [p_are()] straight out of a horror movie!", "GOODNESS [p_they()] [p_are()] ugly.", "So ugly you could almost cry.")
 	var/list/one = list("Yikes. [p_They()] [p_are()] not easy on the eyes.", "You wince slightly just looking at [p_them()].", "Someone clearly didn't win the genetic lottery.", "Definitely not winning any beauty contests.")
 	var/list/two = list("Pretty average looking. Nothing to write home about.", "Neither here nor there in the looks department.", "Completely ordinary in appearance.", "The very definition of 'plain'.", "Not attractive, but not unattractive, either.")
 	var/list/three = list("[p_They()] seem[p_s()] fairly attractive.", "A pleasant face, all things considered.", "Fairly attractive.", "[p_They()] [p_are()] [p_handsome_gorgeous()].")
@@ -55,10 +55,16 @@
 		. += span_danger("[p_They()] [p_are()] covered in... scales!?<br>")
 
 	if(HAS_TRAIT(src, TRAIT_ANIMAL_MUSK))
-		. += span_warning("[p_they(TRUE)] smell[p_s()] weirdly animal like...<br>")
+		. += span_warning("[p_They(TRUE)] smell[p_s()] weirdly animal like...<br>")
 
 	if(HAS_TRAIT(src, TRAIT_GRAVE_SMELL))
 		. += span_warning("[p_They()] smell[p_s()] like petrichor and freshly turned soil.<br>")
+
+	if(HAS_TRAIT(src, TRAIT_BEACON_OF_THE_UNHOLY))
+		if(isliving(user))
+			var/mob/living/living_user = user
+			if(living_user.mind.holy_role)
+				. += span_cult("[p_They()] radiate[p_s()] palpable evil! Something is terribly wrong with [p_them()]!")
 
 	if((!is_eyes_covered()) && HAS_TRAIT(src, TRAIT_GLOWING_EYES))
 		. += span_warning("[p_Their()] eyes glow unnaturally!<br>")

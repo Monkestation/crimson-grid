@@ -18,6 +18,11 @@
 	maximum_immortal_age = 100
 	description = "Be the shepherd of the flock in " + CITY_NAME + ", lead them to salvation, piety and righteousness."
 
+	known_contacts = list(
+		JOB_PRIEST,
+		JOB_PRIMOGEN_LASOMBRA
+	)
+
 	alt_titles = list(
 		"Priest",
 		"Nun",
@@ -31,14 +36,19 @@
 	)
 
 /datum/outfit/job/vampire/priest
-	name = "Priest"
+	name = JOB_PRIEST
 	jobtype = /datum/job/vampire/priest
 
 	uniform = /obj/item/clothing/under/vampire/graveyard
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	id = /obj/item/card/hunter
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/priest
 	r_pocket = /obj/item/flashlight
 	l_hand = /obj/item/vamp/keys/church
 	back = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/card/credit=1)
+
+/datum/outfit/job/vampire/priest/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	if(H.mind)
+		H.mind.set_holy_role(HOLY_ROLE_PRIEST)

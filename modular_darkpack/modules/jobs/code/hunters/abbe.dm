@@ -15,10 +15,17 @@
 	departments_list = list(
 		/datum/job_department/society_of_leopold,
 	)
+
+	known_contacts = list(
+		JOB_CONDOTTIERI,
+		JOB_INQUISITOR,
+		JOB_NOVICE
+	)
+
 	allowed_splats = list(SPLAT_NONE)
 
 /datum/outfit/job/vampire/abbe
-	name = "Abbe"
+	name = JOB_ABBE
 	jobtype = /datum/job/vampire/abbe
 
 	id = /obj/item/card/hunter
@@ -30,3 +37,8 @@
 	r_pocket = /obj/item/vamp/keys/hunter
 	l_pocket = /obj/item/smartphone/abbe
 	backpack_contents = list(/obj/item/vampire_stake=1, /obj/item/intel_report=1, /obj/item/vampirebook/bible=1, /obj/item/card/credit=1)
+
+/datum/outfit/job/vampire/abbe/pre_equip(mob/living/carbon/human/H)
+	. = ..()
+	if(H.mind)
+		H.mind.set_holy_role(HOLY_ROLE_HIGHPRIEST)

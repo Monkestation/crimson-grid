@@ -89,6 +89,11 @@
 		new /datum/data/vending_product("rubber gloves", /obj/item/clothing/gloves/vampire/cleaning,	15),
 		new /datum/data/vending_product("latex gloves", /obj/item/clothing/gloves/vampire/latex,	5),
 		new /datum/data/vending_product("black work gloves", /obj/item/clothing/gloves/vampire/work,	45),
+		// CRIMSON EDIT ADD START
+		new /datum/data/vending_product("sunglasses", /obj/item/clothing/glasses/sunglasses,	25),
+		new /datum/data/vending_product("noir sunglasses", /obj/item/clothing/glasses/sunglasses/noir,	30),
+		new /datum/data/vending_product("black gar glasses", /obj/item/clothing/glasses/sunglasses/gar,	85),
+		// CRIMSON EDIT ADD END
 		new /datum/data/vending_product("bandana", /obj/item/clothing/head/vampire/bandana,	10),
 		new /datum/data/vending_product("red bandana", /obj/item/clothing/head/vampire/bandana/red,	10),
 		new /datum/data/vending_product("black bandana", /obj/item/clothing/head/vampire/bandana/black,	10),

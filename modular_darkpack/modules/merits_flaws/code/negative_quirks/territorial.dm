@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(territorial_type_choices, init_territorial_type_choices())
 		return FALSE
 	return /datum/quirk/darkpack/territorial::name in preferences.all_quirks
 
-/datum/preference/choiced/territorial/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/territorial/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/datum/quirk/darkpack/territorial/terr = target.get_quirk(/datum/quirk/darkpack/territorial)
 	if(!terr)
 		return

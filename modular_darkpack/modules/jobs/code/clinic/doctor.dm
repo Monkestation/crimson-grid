@@ -14,6 +14,12 @@
 		/datum/job_department/clinic,
 	)
 
+	known_contacts = list(
+		JOB_CLINIC_DIRECTOR,
+		JOB_DOCTOR,
+		JOB_PRIMOGEN_MALKAVIAN
+	)
+
 	description = "Help your fellow kindred in all matters medicine related. Sell blood. Keep your human colleagues ignorant."
 	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 200
@@ -36,7 +42,7 @@
 
 
 /datum/outfit/job/vampire/clinic_doctor
-	name = "Doctor"
+	name = JOB_DOCTOR
 	jobtype = /datum/job/vampire/doctor
 
 	ears = /obj/item/radio/headset/darkpack
@@ -45,7 +51,7 @@
 	shoes = /obj/item/clothing/shoes/vampire/white
 	suit =  /obj/item/clothing/suit/vampire/labcoat
 	gloves = /obj/item/clothing/gloves/vampire/latex
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/doctor
 	r_pocket = /obj/item/vamp/keys/clinic
 	backpack_contents = list(/obj/item/card/credit=1, /obj/item/storage/medkit/darkpack/doctor=1)
 

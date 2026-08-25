@@ -58,7 +58,7 @@
 
 	return values
 
-/datum/preference/choiced/splats/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/splats/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	if(!value)
 		return
 	if(length(target.splats))
