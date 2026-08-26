@@ -212,11 +212,6 @@
 		TRAIT_NO_LYING_ANGLE,
 		TRAIT_TRANSFORM_UPDATES_ICON,
 		TRAIT_HARDENED_SOLES,
-		TRAIT_XRAY_HEARING, //CRIMSON GRID EDIT - Wolves have got exceptional hearing "All the better to hear you my dear!"
-		TRAIT_GOOD_HEARING, // //CRIMSON GRID EDIT - Wolves have got exceptional hearing "All the better to hear you my dear!"
-		TRAIT_STRENGTH, //CRIMSON GRID EDIT - Crinos is exceptionally strong, far past a normal human.
-		TRAIT_STRONG_STOMACH, //CRIMSON GRID EDIT - werewolves can eat weird stuff due to a strong immune system.
-		TRAIT_QUICK_CARRY, //CRIMSON GRID EDIT - Strong muscles make lifting easier.
 	)
 	form_causes_delirium = TRUE
 	veil_breaching_form = TRUE
@@ -255,12 +250,6 @@
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
 		TRAIT_HARDENED_SOLES,
-		TRAIT_TRUE_NIGHT_VISION, //CRIMSON GRID EDIT - Wolves can see in the dark "All the better to see you my dear!"
-		TRAIT_XRAY_HEARING, //CRIMSON GRID EDIT - Wolves have got exceptional hearing "All the better to hear you my dear!"
-		TRAIT_GOOD_HEARING, //CRIMSON GRID EDIT - Wolves have got exceptional hearing "All the better to hear you my dear!"
-		TRAIT_STRENGTH, //CRIMSON GRID EDIT - dire wolf form is a viel breaking massive beast that is exceptionally strong, far past a normal wolf.
-		TRAIT_STRONG_STOMACH, //CRIMSON GRID EDIT - werewolves can eat weird stuff due to a strong immune system.
-		TRAIT_QUICK_CARRY, //CRIMSON GRID EDIT - Strong muscles make lifting easier.
 	)
 	veil_breaching_form = TRUE
 
@@ -300,8 +289,6 @@
 		TRAIT_FERAL_BITER,
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
-		TRAIT_TRUE_NIGHT_VISION, //CRIMSON GRID EDIT - Wolves can see in the dark "All the better to see you my dear!"
-		TRAIT_STRONG_STOMACH, //CRIMSON GRID EDIT - werewolves can eat weird stuff due to a strong immune system.
 	)
 
 	mutantbrain = /obj/item/organ/brain/fera
@@ -332,10 +319,6 @@
 
 /datum/species/human/shifter/feral/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
-	//CRIMSON GRID ADDITION START - Wolves have got excpetional hearing, this is the same in the ttrpg aswell, this edit will stop corax from inheriting that hearing
-	if(get_garou_splat(human_who_gained_species,))
-		human_who_gained_species.add_traits(list(TRAIT_XRAY_HEARING, TRAIT_GOOD_HEARING), SPECIES_TRAIT)
-	//CRIMSON GRID ADDITION END
 	if(HAS_TRAIT(human_who_gained_species, TRAIT_FERA_FLIGHT))
 		var/datum/action/innate/toggle_fera_flight/ability = new(human_who_gained_species)
 		ability.Grant(human_who_gained_species)
@@ -343,9 +326,6 @@
 
 /datum/species/human/shifter/feral/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
-	//CRIMSON GRID ADDITION START - datum proc to remove the traits on species loss of feral form garou
-	human.remove_traits(list(TRAIT_XRAY_HEARING, TRAIT_GOOD_HEARING), SPECIES_TRAIT)
-	//CRIMSON GRID ADDITION END
 	for(var/datum/action/innate/toggle_fera_flight/action in human.actions)
 		action.Remove(human)
 
