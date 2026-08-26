@@ -212,6 +212,7 @@
 		TRAIT_NO_LYING_ANGLE,
 		TRAIT_TRANSFORM_UPDATES_ICON,
 		TRAIT_HARDENED_SOLES,
+		TRAIT_KEEN_NOSE, //CRIMSON GRID ADDITION - Fluff that just lets them smell things
 	)
 	form_causes_delirium = TRUE
 	veil_breaching_form = TRUE
@@ -250,6 +251,7 @@
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
 		TRAIT_HARDENED_SOLES,
+		TRAIT_KEEN_NOSE, //CRIMSON GRID ADDITION - Fluff that just lets them smell things
 	)
 	veil_breaching_form = TRUE
 
@@ -289,6 +291,7 @@
 		TRAIT_FERAL_BITER,
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
+		TRAIT_KEEN_NOSE, //CRIMSON GRID ADDITION - Fluff that just lets them smell things 
 	)
 
 	mutantbrain = /obj/item/organ/brain/fera
