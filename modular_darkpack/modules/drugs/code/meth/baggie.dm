@@ -12,8 +12,7 @@
 
 /obj/item/reagent_containers/cup/glass/baggie/meth/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 50, "meth", TRUE, -1, 4)
-//CRIMSON GRID EDIT. HALVED THE SELLING PRICE
+	AddComponent(/datum/component/selling, 100, "meth", TRUE, -1, 4)
 
 /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine
 	name = "white package"
@@ -23,6 +22,5 @@
 
 /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 50, "cocaine", TRUE, -1, 5)
+	AddComponent(/datum/component/selling, 100, "cocaine", TRUE, -1, 5)
 
-//CRIMSON GRID EDIT. HALVED THE SELLING PRICE
