@@ -1,2 +1,2 @@
 /datum/job/vampire/abbe
-	rich = TRUE //Leopold Assets
+	super_rich = TRUE //Knight Templars funded the San Francisco's Leopold Mission trust.
