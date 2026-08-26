@@ -245,11 +245,11 @@
 		if(get_kindred_splat(src))
 			rich_clan = src.get_clan()
 		if(equipping.super_rich)
-			bank_account.account_balance *= 10
-			bank_account.paycheck_amount *= 10
+			bank_account.account_balance = bank.account_balance * 10
+			bank_account.paycheck_amount = bank.paycheck_amount * 10
 		else if(equipping.rich || rich_clan.id == VAMPIRE_CLAN_VENTRUE || rich_clan.id == VAMPIRE_CLAN_GIOVANNI) //Job is rich
-			bank_account.account_balance *= 5
-			bank_account.paycheck_amount *= 5
+			bank_account.account_balance = bank.account_balance * 5
+			bank_account.paycheck_amount = bank.paycheck_amount * 5
 		// CRIMSON GRID ADD END
 		add_mob_memory(/datum/memory/key/account, remembered_id = account_id)
 		add_mob_memory(/datum/memory/key/bank_pin, remembered_id = bank_account.bank_pin) // DARKPACK EDIT ADD
