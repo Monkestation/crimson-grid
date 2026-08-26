@@ -21,19 +21,24 @@
 	// Just because there is account selected does not nesicarrly indicate logged_in is true. (you still have to enter your pin)
 	var/datum/bank_account/logged_account
 
+	var/static/list/hit_signals = list(COMSIG_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT) //CRIMSON GRID EDIT. ADDED TO MAKE ATMS GET THESE SIGNAS
+
+//CRIMSON GRID EDIT ADD
+/obj/machinery/atm/proc/thiefs_attacking()
+	SIGNAL_HANDLER
+
+	SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_ATM_ROBBING, get_turf(src))
+//CRIMSON GRID EDIT END
+
 /obj/machinery/atm/Initialize(mapload)
 	. = ..()
 	if(mapload)
 		total_stored_cash = rand(100000, 1000000) //Crimson Grid Edit (Add 2 more digits to the numbers for more money)
+	RegisterSignal(src, hit_signals, PROC_REF(thiefs_attacking)) //CRIMSON GRID EDIT ADD
 
 /obj/machinery/atm/on_deconstruction(disassembled)
 	dump_cash()
 	SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_ATM_TAMPERING, get_turf(src))
-
-//CRIMSON GRID EDIT. Done to make it so also attacking alerts the police
-/obj/machinery/atm/attack_generic()
-	. = ..()
-	SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_ATM_ROBBING, get_turf(src))
 
 /obj/machinery/atm/examine(mob/user)
 	. = ..()
