@@ -110,16 +110,9 @@
 		var/previous_angle = owner.set_lying_angle(0)
 		owner.set_species(form_to_transform)
 		owner.set_lying_angle(previous_angle)
-
-		//CRIMSION GRID ADDITION START - monocramtic wolf like vision to feral and dire wolf
-		update_monochrome_vision()
-		//CRIMSION GRID ADDITION END
 		return
 
 	owner.set_species(form_to_transform)
-	//CRIMSION GRID ADDITION START - monocramtic wolf like vision to feral and dire wolf
-	update_monochrome_vision()
-	//CRIMSION GRID ADDITION END
 
 /datum/splat/werewolf/shifter/proc/is_breed_form()
 	if(!owner?.dna)
