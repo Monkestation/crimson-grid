@@ -179,12 +179,6 @@
 /obj/structure/lamppost/sidewalk,
 /turf/open/umbra,
 /area/vtm/outside/penumbra)
-"cr" = (
-/obj/umbra_portal{
-	id = "umbra_hospital"
-	},
-/turf/open/floor/city/plating_mono,
-/area/vtm/outside/penumbra)
 "cs" = (
 /obj/structure/flora/bush/lavendergrass/style_random,
 /turf/open/misc/grass,
@@ -226,6 +220,12 @@
 /obj/item/flashlight/flare/candle/infinite,
 /turf/open/umbra,
 /area/vtm/outside/penumbra)
+"dg" = (
+/obj/structure/platform/lowwall/painted,
+/obj/structure/table,
+/obj/effect/decal/wallpaper/low,
+/turf/open/floor/plating/rough,
+/area/vtm/outside/penumbra)
 "dh" = (
 /obj/structure/table/optable,
 /obj/effect/mob_spawn/corpse/human/ciz4,
@@ -233,13 +233,14 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "di" = (
-/obj/structure/chair/darkpack{
+/obj/structure/chair{
 	dir = 4
 	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "dm" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_dora"
 	},
 /turf/open/floor/plating/concrete,
@@ -277,12 +278,6 @@
 "dD" = (
 /obj/structure/flora/grass/green,
 /turf/open/misc/grass,
-/area/vtm/outside/penumbra)
-"dJ" = (
-/obj/structure/chair/darkpack{
-	dir = 8
-	},
-/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "dO" = (
 /obj/effect/turf_decal/weather/dirt{
@@ -343,8 +338,8 @@
 /turf/open/floor/plating/canal,
 /area/vtm/outside/penumbra)
 "eD" = (
-/obj/machinery/light/directional/west,
-/obj/structure/chair/darkpack{
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/chair{
 	dir = 4
 	},
 /turf/open/floor/city/plating_mono,
@@ -356,17 +351,18 @@
 /turf/open/umbra,
 /area/vtm/outside/penumbra)
 "eG" = (
-/obj/machinery/light/directional/east,
-/obj/structure/chair/darkpack{
+/obj/structure/chair{
 	dir = 8
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "eK" = (
-/obj/vehicle/ridden/wheelchair{
-	anchored = 1;
-	dir = 4
+/obj/effect/turf_decal/siding/dark_blue/corner{
+	dir = 8
 	},
+/obj/effect/turf_decal/siding/dark_blue/corner,
+/obj/machinery/light/directional/south,
 /turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "eO" = (
@@ -481,14 +477,6 @@
 	},
 /turf/open/misc/grass,
 /area/vtm/outside/penumbra)
-"gu" = (
-/obj/structure/roadsign/busstop,
-/turf/open/floor/plating/sidewalk/rich,
-/area/vtm/outside/penumbra)
-"gx" = (
-/obj/structure/city_map,
-/turf/open/floor/plating/sidewalk/rich,
-/area/vtm/outside/penumbra)
 "gD" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -526,6 +514,19 @@
 /obj/structure/vampstatue,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/outside/penumbra)
+"hg" = (
+/obj/structure/platform/lowwall/painted,
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_y = 7;
+	pixel_x = 8
+	},
+/obj/item/pen{
+	pixel_y = 8
+	},
+/obj/effect/decal/wallpaper/low,
+/turf/open/floor/plating/rough,
+/area/vtm/outside/penumbra)
 "hi" = (
 /obj/effect/turf_decal/bordur,
 /obj/effect/decal/cleanable/trash,
@@ -538,6 +539,10 @@
 	dir = 4
 	},
 /turf/open/misc/grass,
+/area/vtm/outside/penumbra)
+"hp" = (
+/obj/machinery/sprinkler/area_managed,
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "ht" = (
 /obj/structure/flora/bush/style_random,
@@ -554,6 +559,12 @@
 	dir = 8
 	},
 /turf/open/water/beach/vamp/deep,
+/area/vtm/outside/penumbra)
+"hC" = (
+/obj/effect/turf_decal/siding/dark_blue/end{
+	dir = 1
+	},
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "hG" = (
 /obj/effect/turf_decal/weather/dirt{
@@ -583,7 +594,7 @@
 /turf/open/umbra,
 /area/vtm/outside/penumbra)
 "hP" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_forest"
 	},
 /turf/open/misc/grass,
@@ -659,6 +670,12 @@
 	dir = 8
 	},
 /turf/open/floor/wood/smooth/old,
+/area/vtm/outside/penumbra)
+"jk" = (
+/obj/effect/turf_decal/siding/dark_blue{
+	dir = 1
+	},
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "jo" = (
 /obj/structure/table/wood,
@@ -826,6 +843,20 @@
 	},
 /turf/open/misc/dirt,
 /area/vtm/outside/penumbra)
+"ld" = (
+/obj/effect/turf_decal/siding/dark_blue/corner,
+/obj/effect/turf_decal/siding/dark_blue/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark_blue/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark_blue/corner{
+	dir = 4
+	},
+/obj/machinery/sprinkler/area_managed,
+/turf/open/floor/city/plating_mono,
+/area/vtm/outside/penumbra)
 "lm" = (
 /obj/effect/decal/cleanable/trash,
 /obj/effect/decal/cleanable/cardboard,
@@ -892,6 +923,14 @@
 /obj/effect/decal/cleanable/garbage,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/penumbra)
+"mf" = (
+/obj/effect/turf_decal/siding/dark_blue/corner,
+/obj/effect/turf_decal/siding/dark_blue/corner{
+	dir = 8
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/city/plating_mono,
+/area/vtm/outside/penumbra)
 "mo" = (
 /obj/structure/chair/stool/bar/darkpack/red,
 /turf/open/floor/carpet/darkpack,
@@ -899,6 +938,12 @@
 "ms" = (
 /obj/structure/flora/rock/darkpack_big,
 /turf/open/misc/grass,
+/area/vtm/outside/penumbra)
+"my" = (
+/obj/effect/turf_decal/siding/dark_blue/end{
+	dir = 8
+	},
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "mz" = (
 /obj/structure/closet/crate/dumpster,
@@ -955,6 +1000,36 @@
 /obj/item/flashlight/flare/candle/infinite,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/outside/penumbra)
+"nI" = (
+/obj/structure/platform/lowwall/painted,
+/obj/structure/table,
+/obj/item/clipboard{
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/obj/item/clipboard{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/clipboard{
+	pixel_x = 7;
+	pixel_y = 7
+	},
+/obj/item/pen{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/obj/item/pen{
+	pixel_x = 0;
+	pixel_y = 2
+	},
+/obj/item/pen{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/effect/decal/wallpaper/low,
+/turf/open/floor/plating/rough,
+/area/vtm/outside/penumbra)
 "nN" = (
 /turf/open/floor/wood/old,
 /area/vtm/outside/penumbra)
@@ -974,6 +1049,12 @@
 /obj/effect/mapping_helpers/door/access/chantry,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/wood/old,
+/area/vtm/outside/penumbra)
+"ov" = (
+/obj/effect/turf_decal/siding/dark_blue/end{
+	dir = 4
+	},
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "ox" = (
 /turf/open/floor/wood/smooth/old,
@@ -1018,6 +1099,10 @@
 	},
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/dirt,
+/area/vtm/outside/penumbra)
+"pf" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/penumbra)
 "pl" = (
 /obj/structure/curtain/cloth/fancy,
@@ -1335,6 +1420,20 @@
 	},
 /turf/open/floor/wood/old,
 /area/vtm/outside/penumbra)
+"tt" = (
+/obj/structure/vampdoor/glass{
+	name = "Hospital Entrance"
+	},
+/obj/effect/mapping_helpers/door/access/clinic,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/landmark/navigate_destination,
+/obj/effect/turf_decal/siding/grey,
+/obj/effect/turf_decal/siding/grey{
+	dir = 1
+	},
+/turf/open/floor/plating/rough,
+/area/vtm/outside/penumbra)
 "tD" = (
 /obj/structure/table,
 /turf/open/umbra,
@@ -1560,7 +1659,7 @@
 /turf/open/floor/carpet/darkpack,
 /area/vtm/outside/penumbra)
 "wf" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_bar"
 	},
 /turf/open/floor/wood/smooth/old,
@@ -1582,6 +1681,12 @@
 	dir = 9
 	},
 /turf/open/misc/grass,
+/area/vtm/outside/penumbra)
+"wl" = (
+/obj/effect/turf_decal/siding/dark_blue/corner{
+	dir = 4
+	},
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "wq" = (
 /obj/effect/turf_decal/weather/dirt,
@@ -1616,8 +1721,12 @@
 "wA" = (
 /turf/open/floor/iron/stairs/left,
 /area/vtm/outside/penumbra)
+"wE" = (
+/obj/structure/platform/lowwall/painted/window,
+/turf/open/floor/plating/rough,
+/area/vtm/outside/penumbra)
 "wI" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_tower"
 	},
 /turf/open/floor/city/plating_mono,
@@ -1904,7 +2013,7 @@
 /turf/open/misc/dirt,
 /area/vtm/outside/penumbra)
 "AJ" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_police"
 	},
 /turf/open/floor/plating/concrete,
@@ -2019,7 +2128,7 @@
 /turf/open/misc/dirt,
 /area/vtm/outside/penumbra)
 "Ct" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_street"
 	},
 /turf/open/floor/plating/asphalt,
@@ -2294,7 +2403,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/penumbra)
 "Gv" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_beach"
 	},
 /turf/open/misc/beach/vamp,
@@ -2313,7 +2422,7 @@
 /turf/open/floor/plating/granite,
 /area/vtm/outside/penumbra)
 "GB" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_church"
 	},
 /turf/open/floor/wood/smooth/old,
@@ -2441,6 +2550,13 @@
 /obj/item/katana/vamp,
 /turf/open/floor/plating/concrete,
 /area/vtm/outside/penumbra)
+"Ik" = (
+/obj/effect/turf_decal/siding/dark_blue/end,
+/obj/transfer_point_vamp/umbral{
+	id = "umbra_hospital"
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/outside/penumbra)
 "Is" = (
 /obj/effect/turf_decal/bordur,
 /turf/open/misc/dirt,
@@ -2453,6 +2569,10 @@
 	dir = 6
 	},
 /turf/open/misc/dirt,
+/area/vtm/outside/penumbra)
+"Iy" = (
+/obj/effect/turf_decal/siding/dark_blue/corner,
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "IG" = (
 /obj/effect/turf_decal/weather/dirt,
@@ -2591,7 +2711,7 @@
 /turf/open/misc/dirt,
 /area/vtm/outside/penumbra)
 "Kn" = (
-/obj/effect/landmark/teleport_mark/weaver,
+/obj/effect/landmark/teleport_mark/alltribes,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/outside/penumbra)
 "Ks" = (
@@ -2627,7 +2747,7 @@
 	},
 /area/vtm/outside/penumbra)
 "Lc" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_sewers"
 	},
 /turf/open/water/vamp_sewer,
@@ -2813,14 +2933,24 @@
 /turf/open/floor/plating/canal,
 /area/vtm/outside/penumbra)
 "Oa" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_theatre"
 	},
 /turf/open/floor/wood/old,
 /area/vtm/outside/penumbra)
+"Oo" = (
+/obj/effect/turf_decal/siding/dark_blue,
+/turf/open/floor/city/plating_mono,
+/area/vtm/outside/penumbra)
 "Oq" = (
 /obj/structure/rack/clothing_hanger,
 /turf/open/floor/wood/smooth/old,
+/area/vtm/outside/penumbra)
+"Os" = (
+/obj/effect/turf_decal/siding/dark_blue/corner{
+	dir = 1
+	},
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "Oy" = (
 /obj/effect/turf_decal/siding/white,
@@ -2908,6 +3038,12 @@
 /obj/structure/cable/layer1,
 /turf/open/floor/plating/rough,
 /area/vtm/outside/penumbra)
+"PM" = (
+/obj/effect/turf_decal/siding/dark_blue{
+	dir = 5
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/outside/penumbra)
 "PN" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/weather/dirt{
@@ -2923,13 +3059,17 @@
 /turf/open/misc/dirt,
 /area/vtm/outside/penumbra)
 "PU" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_supply"
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/outside/penumbra)
 "PV" = (
 /turf/closed/wall/vampwall/bar,
+/area/vtm/outside/penumbra)
+"PX" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "Qe" = (
 /obj/effect/turf_decal/weather/dirt,
@@ -2958,6 +3098,10 @@
 	dir = 6
 	},
 /turf/open/misc/dirt,
+/area/vtm/outside/penumbra)
+"QR" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/umbra,
 /area/vtm/outside/penumbra)
 "QY" = (
 /obj/effect/turf_decal/bordur,
@@ -3332,7 +3476,7 @@
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/penumbra)
 "WO" = (
-/obj/umbra_portal{
+/obj/transfer_point_vamp/umbral{
 	id = "umbra_china"
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -3436,6 +3580,19 @@
 /obj/effect/mapping_helpers/door/access/police,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/concrete,
+/area/vtm/outside/penumbra)
+"Yc" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/outside/penumbra)
+"Yh" = (
+/obj/effect/turf_decal/siding/dark_blue/corner{
+	dir = 8
+	},
+/turf/open/floor/city/plating_mono,
 /area/vtm/outside/penumbra)
 "Yk" = (
 /obj/item/cigbutt,
@@ -32433,7 +32590,7 @@ qF
 qF
 qF
 qF
-qF
+aF
 qF
 qF
 qF
@@ -33201,13 +33358,13 @@ qF
 qF
 qF
 qF
+jk
 qF
 qF
-qF
-qF
-qF
-qF
-qF
+Yn
+hp
+Iy
+jq
 qF
 xx
 xx
@@ -33458,15 +33615,15 @@ qF
 qF
 qF
 jq
-jq
-jq
-jq
-jq
-jq
-jq
-jq
-jq
+PM
+wl
+eG
+eG
+Yc
+Oo
+wE
 ga
+fK
 xx
 xx
 xx
@@ -33713,17 +33870,17 @@ qF
 qF
 qF
 qF
+aF
 qF
-qF
-jA
-Yn
-jA
+dg
+jk
+PX
 di
 eD
 eK
-Yn
 jq
-fK
+pf
+jq
 xx
 xx
 qF
@@ -33971,15 +34128,15 @@ qF
 qF
 qF
 qF
-tD
-tD
+qF
+qF
+jk
 Yn
+my
 Yn
-Yn
-Yn
-Yn
-Yn
-jq
+Oo
+wE
+fK
 fK
 gQ
 xx
@@ -34229,13 +34386,13 @@ qF
 qF
 qF
 qF
-tD
-Yn
-Yn
-cC
-Yn
-cr
-Yn
+qF
+jk
+hC
+ld
+Ik
+Oo
+tt
 fK
 fK
 gQ
@@ -34486,13 +34643,13 @@ qF
 qF
 qF
 qF
-tD
-jA
+hg
+qF
 Yn
+ov
 Yn
-Yn
-jA
-Yn
+Oo
+wE
 fK
 fK
 hi
@@ -34743,15 +34900,15 @@ xx
 qF
 qF
 aF
-tD
-Yn
-Yn
-dJ
+nI
+jk
 eG
-Yn
-Yn
+eG
+eG
+mf
 jq
-gu
+pf
+jq
 gQ
 xx
 xx
@@ -35000,15 +35157,15 @@ xx
 qF
 qF
 jq
-jq
-Yn
-jq
-jq
-jq
-jq
-jq
-jq
-gx
+qF
+Os
+di
+QR
+QR
+Oo
+wE
+fK
+fK
 gQ
 xx
 xx
@@ -35257,13 +35414,13 @@ xx
 xx
 xx
 Yn
-Yn
-jA
-Yn
+jk
 Yn
 Yn
 Yn
-xx
+hp
+Yh
+jq
 xx
 xx
 xx
@@ -35517,8 +35674,8 @@ xx
 Yn
 cC
 qF
-Yn
-Yn
+jq
+jq
 Yn
 qF
 qF

@@ -210,7 +210,7 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/human/corpsebuff = target
 		// removed iscathayan(target) || from line 183 DARKPACK TODO - readd KJs Kuei-Jin
-		if(get_kindred_splat(target) || iszombie(target)) //undead become spongier, but move slightly slower
+		if(get_kindred_splat(target) || target.has_status_effect(/datum/status_effect/zombie)) //undead become spongier, but move slightly slower
 			corpsebuff.visible_message(span_danger("[target]'s body seizes with rigor mortis."), span_danger("Your senses dull to pain and everything else."))
 
 			for(var/obj/item/bodypart/part as anything in corpsebuff.bodyparts)
@@ -304,7 +304,7 @@
 					owner.add_beastmaster_minion(/mob/living/basic/beastmaster/giovanni_zombie/level5)
 					qdel(target)
 
-	else if(iszombie(target))
+	else if(target.has_status_effect(/datum/status_effect/zombie))
 		owner.visible_message(span_warning("[owner] aggressively gestures at [target]!"))
 		target.visible_message(span_warning("[target]'s flesh knits together'!"), span_danger("Your rotten flesh reconstitutes!"))
 		var/mob/living/carbon/human/zombie = target

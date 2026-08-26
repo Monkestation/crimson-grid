@@ -25,10 +25,13 @@
 	description = "Enforce the law. Keep the officers in line. Follow what the Captain says."
 	minimum_masquerade = 0
 
-	known_contacts = list("Police Captain")
+	known_contacts = list(
+		JOB_POLICE_CAPTAIN,
+		JOB_EMERGENCY_DISPATCHER
+	)
 
 /datum/outfit/job/vampire/police_sergeant
-	name = "Police Sergeant"
+	name = JOB_POLICE_SERGEANT
 	jobtype = /datum/job/vampire/police_sergeant
 
 	ears = /obj/item/radio/headset/darkpack/police
@@ -37,9 +40,9 @@
 	suit = /obj/item/clothing/suit/vampire/vest/police/sergeant
 	belt = /obj/item/storage/belt/holster/detective/darkpack/officer
 	id = /obj/item/card/police/sergeant
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/police_sergeant
 	r_pocket = /obj/item/vamp/keys/police/secure
-	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/restraints/handcuffs = 1, /obj/item/melee/baton/vamp = 1, /obj/item/storage/medkit/darkpack/ifak = 1)
+	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/restraints/handcuffs = 1, /obj/item/melee/baton/vamp = 1, /obj/item/storage/medkit/darkpack/ifak = 1, /obj/item/bodycam_upgrade = 1)
 
 /datum/outfit/job/vampire/police_sergeant/post_equip(mob/living/carbon/human/H)
 	..()

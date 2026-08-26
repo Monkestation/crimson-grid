@@ -5,8 +5,10 @@
 	icon_state = "atm"
 	anchored = TRUE
 
-	max_integrity = 2500 //Crimson Grid Edit change
-	damage_deflection = 30
+
+	max_integrity = 2500 //Crimson Grid Edit change ORIGINAL: 250
+	damage_deflection = 50 // CRIMSON EDIT CHANGE - ORIGINAL: damage_deflection = 20
+
 
 	light_color = COLOR_GREEN
 	light_range = 2

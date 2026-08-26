@@ -1,4 +1,5 @@
-GAME_VERB_PROC(/client, cmd_mentor_say, "Msay", "Mentor", message as text)
+GAME_VERB_PROC(/client, cmd_mentor_say, "Msay", "Mentor")
+	VERB_ARG(message, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 	if(!is_mentor())
 		return
 

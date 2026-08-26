@@ -10,7 +10,7 @@
 /datum/preference/choiced/subsplat/vampire_clan/icon_for(value)
 	return uni_icon('modular_darkpack/modules/vampire_the_masquerade/icons/vampire_clans.dmi', get_vampire_clan(value).icon)
 
-/datum/preference/choiced/subsplat/vampire_clan/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/subsplat/vampire_clan/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/joining_round = !isdummy(target)
 	target.set_clan(value, joining_round)
 

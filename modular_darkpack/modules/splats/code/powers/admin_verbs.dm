@@ -1,4 +1,5 @@
-ADMIN_VERB(give_power, R_FUN, "Give Power", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/power_recipient)
+ADMIN_VERB(give_power, R_FUN, "Give Power", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN)
+	VERB_ARG_TYPED(power_recipient, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob)
 	var/which = tgui_alert(user, "Chose by name or by type path?", "Chose option", list("Name", "Typepath"))
 	if(!which)
 		return
@@ -33,7 +34,8 @@ ADMIN_VERB(give_power, R_FUN, "Give Power", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CAT
 
 	new_power.Grant(power_recipient)
 
-ADMIN_VERB(remove_power, R_FUN, "Remove Power", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/removal_target)
+ADMIN_VERB(remove_power, R_FUN, "Remove Power", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN)
+	VERB_ARG_TYPED(removal_target, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob)
 	var/list/target_power_list = list()
 	for(var/datum/action/cooldown/power/power in removal_target.actions)
 		target_power_list[power.name] = power
@@ -54,7 +56,8 @@ ADMIN_VERB(remove_power, R_FUN, "Remove Power", ADMIN_VERB_NO_DESCRIPTION, ADMIN
 	BLACKBOX_LOG_ADMIN_VERB("Remove Power")
 
 
-ADMIN_VERB(give_action, R_FUN, "Give Action", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/action_recipient)
+ADMIN_VERB(give_action, R_FUN, "Give Action", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN)
+	VERB_ARG_TYPED(action_recipient, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob)
 	var/which = tgui_alert(user, "Chose by name or by type path?", "Chose option", list("Name", "Typepath"))
 	if(!which)
 		return
@@ -92,7 +95,9 @@ ADMIN_VERB(give_action, R_FUN, "Give Action", ADMIN_VERB_NO_DESCRIPTION, ADMIN_C
 
 	new_action.Grant(action_recipient)
 
-ADMIN_VERB(remove_action, R_FUN, "Remove Action", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN, mob/removal_target)
+ADMIN_VERB(remove_action, R_FUN, "Remove Action", ADMIN_VERB_NO_DESCRIPTION, ADMIN_CATEGORY_HIDDEN)
+	VERB_ARG_TYPED(removal_target, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob)
+
 	var/list/target_action_list = list()
 	for(var/datum/action/action in removal_target.actions)
 		target_action_list[action.name] = action

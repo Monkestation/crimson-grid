@@ -17,7 +17,7 @@
 	outfit = /datum/outfit/job/vampire/pentex_sec
 
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
-	maximal_generation = 9
+	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 3
 
@@ -30,7 +30,9 @@
 		JOB_PENTEX_LEAD,
 		JOB_PENTEX_EXEC,
 		JOB_PENTEX_AFFAIRS,
-		JOB_PENTEX_SEC_CHIEF
+		JOB_PENTEX_SEC_CHIEF,
+		JOB_PENTEX_EMPLOYEE,
+		JOB_PENTEX_SEC
 	)
 
 	paycheck = PAYCHECK_CREW
@@ -49,6 +51,6 @@
 	gloves = /obj/item/clothing/gloves/vampire/work
 	suit = /obj/item/clothing/suit/vampire/vest
 	belt = /obj/item/storage/belt/holster/detective/darkpack/endron
-	l_pocket = /obj/item/smartphone // /sec - todo subtype
+	l_pocket = /obj/item/smartphone/endron_security
 	r_pocket = /obj/item/vamp/keys/pentex
 	backpack_contents = list(/obj/item/phone_book=1, /obj/item/card/credit=1)

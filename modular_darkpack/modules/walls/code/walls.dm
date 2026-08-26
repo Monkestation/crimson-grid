@@ -16,7 +16,13 @@
 
 /obj/effect/wall_frill/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/seethrough, SEE_THROUGH_MAP_WALLS)
+	if(isnull(loc))
+		. = INITIALIZE_HINT_QDEL
+		CRASH("[type] created in nullspace, this should not happen!")
+	// Turfs don't really move, so we set the reset timer to an abstractly high number so we can enable and disable seethrough at will
+	AddComponent(/datum/component/seethrough, SEE_THROUGH_MAP_WALLS, perimeter_reset_timer = 24 HOURS)
+	update_seethrough()
+
 /* If we want to have transpanecy for ALL mobs instead of just you.
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(update_alpha),
@@ -30,6 +36,17 @@
 	else
 		alpha = 255
 */
+
+/obj/effect/wall_frill/proc/update_seethrough()
+	var/turf/our_turf = get_turf(src)
+	var/datum/component/seethrough/comp = GetComponent(/datum/component/seethrough)
+	if(our_turf.density)
+		comp.dismantle_perimeter()
+		return
+
+	// This is done on init by default, we dont need to override it a ton of times
+	if(!length(comp.watched_turfs))
+		comp.setup_perimeter(src)
 
 /turf/closed/wall/vampwall
 	name = "old brick wall"
@@ -106,23 +123,35 @@
 /turf/closed/wall/vampwall/ex_act(severity, target)
 	return
 
-/turf/closed/wall/vampwall/Initialize(mapload)
-	. = ..()
-	wall_frill = new(get_step(src, NORTH))
-	wall_frill.icon = frill_icon
-	wall_frill.icon_state = icon_state
-	wall_frill.name = name
-	wall_frill.desc = desc
-
+#define CULL_JUNCTIONS (NORTH_JUNCTION|EAST_JUNCTION|WEST_JUNCTION|NORTHWEST_JUNCTION|NORTHEAST_JUNCTION)
 /turf/closed/wall/vampwall/set_smoothed_icon_state(new_junction)
 	. = ..()
-	if(wall_frill)
-		wall_frill.icon_state = icon_state
+
+	// Our wall is not generally visible.
+	if((new_junction & CULL_JUNCTIONS) == CULL_JUNCTIONS)
+		if(wall_frill)
+			QDEL_NULL(wall_frill)
+		return
+
+	if(!wall_frill)
+		var/turf/north = get_step(src, NORTH)
+		if(isnull(north)) // edge of the map
+			return
+		wall_frill = new(north)
+		wall_frill.icon = frill_icon
+		wall_frill.name = name
+		wall_frill.desc = desc
+
+	wall_frill.icon_state = icon_state
+	// This will cover most cases with updating seethrough, except for cases where all the northern walls don't smooth with this turf, and all change from dense to non-dense
+	wall_frill.update_seethrough()
+
+#undef CULL_JUNCTIONS
 
 /turf/closed/wall/vampwall/Destroy()
 	. = ..()
 	if(wall_frill)
-		qdel(wall_frill)
+		QDEL_NULL(wall_frill)
 
 /turf/closed/wall/vampwall/rich
 	name = "rich-looking wall"

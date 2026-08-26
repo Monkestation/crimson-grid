@@ -24,33 +24,38 @@ SUBSYSTEM_DEF(city_time)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/city_time/fire()
-	if(city_time_passed() > time_till_daytime - 30 MINUTES && !first_warning && !shifting_colors)
+	var/time_passed = city_time_passed()
+
+	if(time_passed > time_till_daytime - 30 MINUTES && !first_warning && !shifting_colors)
 		first_warning = TRUE
 		shifting_colors = TRUE
 		transition_light("#584d88")
 		to_chat(world, span_ghostalert("The night is ending..."))
 
-	if(city_time_passed() > time_till_daytime - 15 MINUTES && !second_warning && !shifting_colors)
+	if(time_passed > time_till_daytime - 15 MINUTES && !second_warning && !shifting_colors)
 		second_warning = TRUE
 		shifting_colors = TRUE
 		transition_light("#dd80b0")
 		to_chat(world, span_ghostalert("First rays of the sun illuminate the sky..."))
 
-	if(city_time_passed() > time_till_daytime && !daytime_started && !shifting_colors)
+	if(time_passed > time_till_daytime && !daytime_started && !shifting_colors)
 		daytime_started = TRUE
 		shifting_colors = TRUE
 		transition_light("#faeacb", 1, 0.75)
 		to_chat(world, span_ghostalert("THE NIGHT IS OVER."))
 		// Close enough to round end.
 		INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
+		INVOKE_ASYNC(SSvote, TYPE_PROC_REF(/datum/controller/subsystem/vote, initiate_vote), /datum/vote/map_vote, vote_initiator_name = "Map Rotation", forced = TRUE)
 
-	if(city_time_passed() > time_till_roundend && !roundend_started)
+	if(time_passed > time_till_roundend && !roundend_started)
 		roundend_started = TRUE
 
 	if(daytime_started)
-		for(var/mob/living/carbon/human/H in GLOB.human_list)
-			H.apply_status_effect(/datum/status_effect/day_time_notif)
-			H.apply_status_effect(/datum/status_effect/sunlight_burning)
+		for(var/mob/living/carbon/human/human as anything in GLOB.human_list)
+			if(QDELETED(human))
+				continue
+			human.apply_status_effect(/datum/status_effect/day_time_notif)
+			human.apply_status_effect(/datum/status_effect/sunlight_burning)
 
 /datum/controller/subsystem/city_time/proc/extend_round(amount)
 	time_till_daytime += amount * SSticker.city_time_rate_multiplier

@@ -36,12 +36,12 @@
 
 /obj/structure/bath/sabbatbath/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/sabbat_priest_tome))
-		if(user.mind && is_sabbat_priest(user) && has_buckled_mobs())
+		if(user.mind && is_sabbat_priest(user.mind.assigned_role) && has_buckled_mobs())
 			var/mob/living/buckled_mob = buckled_mobs[1]
 			if(buckled_mob.mind)
 				// First, demote any existing Ductus to regular Sabbat Pack
 				for(var/mob/living/carbon/human/H in GLOB.player_list)
-					if(H.mind && is_sabbat_ductus(H))
+					if(H.mind && is_sabbat_ductus(H.mind.assigned_role))
 						H.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatpack))
 						var/datum/antagonist/temp_antag = new()
 						//temp_antag.remove_antag_hud(ANTAG_HUD_REV, H)
@@ -56,7 +56,7 @@
 				qdel(temp_antag)
 				// Notify all Sabbat members of the new Ductus
 				for(var/mob/living/carbon/human/sabbat_member in GLOB.player_list)
-					if(sabbat_member.mind && is_sabbatist(sabbat_member))
+					if(sabbat_member.mind && is_sabbatist(sabbat_member.mind.assigned_role))
 						to_chat(sabbat_member, span_cult("[buckled_mob] has been anointed as the new Ductus of the pack!"))
 
 				to_chat(buckled_mob, span_cult("You have been anointed as the new Ductus of the pack!"))

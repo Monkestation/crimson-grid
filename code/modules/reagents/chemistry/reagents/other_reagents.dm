@@ -25,11 +25,12 @@
 /datum/reagent/blood/on_new(list/data)
 	. = ..()
 	// If we were artificially created without blood data, we still want to have the blood_reagent element for exposure effects
-	if(!istype(data) || !data["blood_type"])
-		AddElement(/datum/element/blood_reagent, null, get_blood_type(BLOOD_TYPE_UNIVERSAL))
+	if(isnull(LAZYACCESS(data, BLOOD_DATA_TYPE)))
+		RegisterSignal(src, COMSIG_REAGENT_GROWN_IN_PLANT, PROC_REF(grown_in_plant))
+		AddElement(/datum/element/blood_reagent, null, get_blood_type(/datum/blood_type/universal))
 		return
 
-	var/datum/blood_type/blood_type = data["blood_type"]
+	var/datum/blood_type/blood_type = data[BLOOD_DATA_TYPE]
 	if(!istype(blood_type))
 		return
 
@@ -42,20 +43,26 @@
 		return ..()
 	if(!HAS_TRAIT(taster, TRAIT_DETECTIVES_TASTE))
 		return ..()
-	var/blood_type = data?["blood_type"]
+	var/blood_type = data?[BLOOD_DATA_TYPE]
 	if(!blood_type)
 		return ..()
 	return list("[blood_type] type blood" = 1)
 
-// DARKPACK EDIT ADD - blood increments bloodpool
+// DARKPACK EDIT ADD START - blood increments bloodpool
 /datum/reagent/blood/expose_mob(mob/living/exposed_mob, methods, reac_volume, show_message, touch_protection)
 	. = ..()
-	if((!istype(src, /datum/reagent/blood/vitae)) && get_kindred_splat(exposed_mob))
+	if((!istype(src, /datum/reagent/blood/vitae)) && get_kindred_splat(exposed_mob) && !HAS_TRAIT(exposed_mob, TRAIT_THIRST_OF_AGES))
 		if(methods & INGEST)
 			if(get_splat_with_vitae(exposed_mob))
 				//100u of vitae = 1bp, keeping consistent w/ give vitae action. 200u of normal blood = 1 bp
 				exposed_mob.adjust_blood_pool(reac_volume * 0.005)
 // DARKPACK EDIT ADD END
+
+/// All blood grown in plants defaults to O-
+/datum/reagent/blood/proc/grown_in_plant(datum/source, obj/item/seeds/our_seeds, obj/item/our_plant)
+	SIGNAL_HANDLER
+
+	LAZYSET(data, BLOOD_DATA_TYPE, get_blood_type(/datum/blood_type/human/o_minus))
 
 /datum/reagent/consumable/liquidgibs
 	name = "Liquid Gibs"
@@ -2647,6 +2654,13 @@
 	name = "Stable Uranium Gel"
 	color = "#04506C" // rgb: 4,80,108
 	taste_description = "the inside of a reactor"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
+
+/datum/reagent/wittelvirusfood
+	name = "Exotic Agar"
+	color = "#C3CF7C" // rgb: 195, 207, 124
+	taste_description = "sourness"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 

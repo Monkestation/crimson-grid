@@ -8,7 +8,7 @@
 		new /datum/data/vending_product("lever action rifle", /obj/item/gun/ballistic/rifle/darkpack/lever, 1600),
 		new /datum/data/vending_product("hunting rifle", /obj/item/gun/ballistic/automatic/darkpack/huntrifle, 2000),
 		new	/datum/data/vending_product("5.45 ammo", /obj/item/ammo_box/darkpack/c545, 1000),
-		new	/datum/data/vending_product(".45 ACP ammo", /obj/item/ammo_box/darkpack/c45acp, 2100),
+		new	/datum/data/vending_product(".45 ammo", /obj/item/ammo_box/darkpack/c45acp, 700),
 		new /datum/data/vending_product("9mm ammo", /obj/item/ammo_box/darkpack/c9mm, 600),
 		new /datum/data/vending_product(".44 ammo", /obj/item/ammo_box/darkpack/c44, 800),
 		new /datum/data/vending_product("5.56 ammo", /obj/item/ammo_box/darkpack/c556, 2000),

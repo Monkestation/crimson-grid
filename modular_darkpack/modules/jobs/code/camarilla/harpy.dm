@@ -22,18 +22,32 @@
 	)
 
 	minimal_generation = 12	//Uncomment when players get exp enough
-	maximal_generation = 9
+	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 5
 
 	allowed_splats = list(SPLAT_KINDRED)
 
-	known_contacts = list("Prince","Sheriff","Tremere Regent","Dealer","Emissary","Baron","Primogens")
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_SHERIFF,
+		JOB_SENESCHAL,
+		JOB_CHANTRY_REGENT,
+		JOB_DEALER,
+		JOB_EMISSARY,
+		JOB_BARON,
+		JOB_PRIMOGEN_BANU_HAQIM,
+		JOB_PRIMOGEN_TOREADOR,
+		JOB_PRIMOGEN_LASOMBRA,
+		JOB_PRIMOGEN_MALKAVIAN,
+		JOB_PRIMOGEN_VENTRUE,
+		JOB_PRIMOGEN_NOSFERATU
+	)
 
 	allowed_clans = list(VAMPIRE_CLAN_DAUGHTERS_OF_CACOPHONY, VAMPIRE_CLAN_TRUE_BRUJAH, VAMPIRE_CLAN_BRUJAH, VAMPIRE_CLAN_TREMERE, VAMPIRE_CLAN_VENTRUE, VAMPIRE_CLAN_NOSFERATU, VAMPIRE_CLAN_GANGREL, VAMPIRE_CLAN_CITY_GANGREL, VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN, VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_BANU_HAQIM_VIZIER, VAMPIRE_CLAN_TZIMISCE, VAMPIRE_CLAN_SETITE, VAMPIRE_CLAN_TLACIQUE, VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_GARGOYLE, VAMPIRE_CLAN_KIASYD, VAMPIRE_CLAN_SAMEDI, VAMPIRE_CLAN_NAGARAJA)
 
 /datum/outfit/job/vampire/harpy
-	name = "Harpy"
+	name = JOB_HARPY
 	jobtype = /datum/job/vampire/harpy
 
 	ears = /obj/item/radio/headset/darkpack

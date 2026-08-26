@@ -13,15 +13,21 @@
 		/datum/job_department/giovanni,
 	)
 
+	known_contacts = list(
+		JOB_CAPO,
+		JOB_LA_SQUADRA,
+		JOB_LA_FAMIGLIA
+	)
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_CAITIFF)
-	maximal_generation = 9
+	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
 	maximum_immortal_age = 200
 	description = "Your family is a strange one. Maybe you are strange too, because sitting next to your great uncles as an equal is something you are greatly interested in."
 	minimum_masquerade = 0
 
 /datum/outfit/job/vampire/famiglia
-	name = "La Famiglia"
+	name = JOB_LA_FAMIGLIA
 	jobtype = /datum/job/vampire/famiglia
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	uniform = /obj/item/clothing/under/vampire/suit

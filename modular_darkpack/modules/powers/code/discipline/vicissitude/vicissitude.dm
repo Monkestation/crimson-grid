@@ -89,7 +89,6 @@
 		tzimisce_operations += /datum/surgery_operation/basic/tend_wounds/combo/upgraded/master
 		tzimisce_operations += /datum/surgery_operation/limb/add_plastic
 		tzimisce_operations += typesof(/datum/surgery_operation/limb/bioware)
-		tzimisce_operations += typesof(/datum/surgery_operation/organ/brainwash)
 		tzimisce_operations += typesof(/datum/surgery_operation/organ/lobotomy)
 		tzimisce_operations += typesof(/datum/surgery_operation/organ/pacify)
 		tzimisce_operations += /datum/surgery_operation/organ/eye_color_surgery
@@ -136,21 +135,29 @@
 		var/obj/item/bodypart/arm/left/l_arm = target.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/leg/right/r_leg = target.get_bodypart(BODY_ZONE_R_LEG)
 		var/obj/item/bodypart/leg/left/l_leg = target.get_bodypart(BODY_ZONE_L_LEG)
+		var/obj/item/bodypart/head = target.get_bodypart(BODY_ZONE_HEAD)
 		r_arm?.drop_limb()
 		l_arm?.drop_limb()
 		r_leg?.drop_limb()
 		l_leg?.drop_limb()
+		head?.drop_organs()
 		new /obj/item/stack/sheet/meat/twenty(target.loc)
 		new /obj/item/guts(target.loc)
 		new /obj/item/spine(target.loc)
 		qdel(target)
 	else
 		target.emote("scream")
-		target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST)
+		var/target_zone = owner.zone_selected
+		var/obj/item/bodypart/limb = target.get_bodypart(target_zone)
+		if(!limb)
+			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST, wound_bonus = 10)
+			return
+		target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone, wound_bonus = 10)
 		if(roll >= 5)
-			target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
-			target.adjust_blood_pool(-(round(target.bloodpool * 0.5))) // A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
-
+			// A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
+			if((target_zone == BODY_ZONE_CHEST))
+				target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
+				target.adjust_blood_pool(-(round(target.bloodpool * 0.5)))
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/horrid_form
