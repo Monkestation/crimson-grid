@@ -140,7 +140,7 @@
 
 //CRIMSON GRI EDIT TO NOT MAKE IT FUCKING ASS
 /obj/machinery/atm/proc/dump_cash()
-	var/dropped_cash = mind(total_stored_cash, 5000)//Making it so ATM destructors aren't turbo loaded, 5k is the max chud
+	var/dropped_cash = min(total_stored_cash, 5000)//Making it so ATM destructors aren't turbo loaded, 5k is the max chud
 
 	while(dropped_cash > 0)
 		var/drop_amount = min(dropped_cash, 1000)
