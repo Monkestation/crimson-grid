@@ -5,8 +5,8 @@
 	icon_state = "atm"
 	anchored = TRUE
 
-	max_integrity = 250
-	damage_deflection = 20
+	max_integrity = 2500 //Crimson Grid Edit change
+	damage_deflection = 30
 
 	light_color = COLOR_GREEN
 	light_range = 2
@@ -22,11 +22,16 @@
 /obj/machinery/atm/Initialize(mapload)
 	. = ..()
 	if(mapload)
-		total_stored_cash = rand(1000, 10000)
+		total_stored_cash = rand(100000, 1000000) //Crimson Grid Edit (Add 2 more digits to the numbers for more money)
 
 /obj/machinery/atm/on_deconstruction(disassembled)
 	dump_cash()
 	SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_ATM_TAMPERING, get_turf(src))
+
+//CRIMSON GRID EDIT. Done to make it so also attacking alerts the police
+/obj/machinery/atm/attack_generic()
+	. = ..()
+	SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_ATM_ROBBING, get_turf(src))
 
 /obj/machinery/atm/examine(mob/user)
 	. = ..()
@@ -131,11 +136,15 @@
 		amount_drawn += drop_amount
 	logged_account.adjust_money(-amount_drawn, "ATM: Withdraw")
 
+//CRIMSON GRI EDIT TO NOT MAKE IT FUCKING ASS
 /obj/machinery/atm/proc/dump_cash()
-	while(total_stored_cash > 0)
-		var/drop_amount = min(total_stored_cash, 1000)
+	var/dropped_cash = mind(total_stored_cash, 5000)//Making it so ATM destructors aren't turbo loaded, 5k is the max chud
+
+	while(dropped_cash > 0)
+		var/drop_amount = min(dropped_cash, 1000)
 		new /obj/item/stack/dollar(loc, drop_amount)
-		total_stored_cash -= drop_amount
+		dropped_cash -= drop_amount
+//CRIMSON GRID EDIT DONE
 
 /obj/item/circuitboard/machine/atm
 	name = "\improper ATM Machine"

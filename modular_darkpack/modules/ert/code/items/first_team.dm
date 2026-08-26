@@ -110,7 +110,7 @@
 
 /obj/item/clothing/under/vampire/darkpack_ert/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 100, "undersuit", FALSE)
+	AddComponent(/datum/component/selling, 1000, "undersuit", FALSE)
 
 /obj/item/clothing/under/vampire/darkpack_ert/firstteam_uniform
 	name = "First Team uniform"
@@ -313,7 +313,7 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/px66f/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 350, "aug", FALSE)
+	AddComponent(/datum/component/selling, 3500, "aug", FALSE)
 	AddComponent(/datum/component/automatic_fire, 0.5 SECONDS)
 
 /obj/item/gun/ballistic/shotgun/darkpack/px12r  //DONT DISTRIBUTE IN MAPPING

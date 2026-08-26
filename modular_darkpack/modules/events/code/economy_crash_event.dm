@@ -1,7 +1,8 @@
+
 /datum/round_event_control/darkpack/financial_crisis
 	name = "Financial Crisis"
 	typepath = /datum/round_event/financial_crisis
-	weight = 2
+	weight = 0 //CRIMSON GRID EDIT JUST MAKE IT EXTREMLY STUIDLY UNLIKELY
 	min_players = 5
 	max_occurrences = 1
 	earliest_start = 50 MINUTES
@@ -29,4 +30,3 @@
 		if(!istype(bank, /datum/bank_account))
 			continue
 		bank.adjust_money(-(round(bank.account_balance * (rand(85, 95) / 100))), "Financial Crisis") // leaves them with 5-15% of their savings
-

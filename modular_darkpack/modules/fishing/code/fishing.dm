@@ -27,8 +27,8 @@
 
 /obj/item/fish/darkpack/shark/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 100, "fish", FALSE)
-
+	AddComponent(/datum/component/selling, 50, "fish", FALSE)
+//CRIMSON GRID EDIT ADDED HALVED SELLING PRICE
 /obj/item/fish/darkpack/tuna
 	name = "bluefin tuna"
 	icon_state = "fish"
@@ -47,8 +47,8 @@
 
 /obj/item/fish/darkpack/tuna/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 40, "fish", FALSE)
-
+	AddComponent(/datum/component/selling, 4, "fish", FALSE)
+//CRIMSON GRID EDIT ADDED MADE THE PRICE SMALLER BY ONE DIGIT
 /obj/item/fish/darkpack/catfish
 	name = "channel catfish"
 	icon_state = "catfish"
@@ -66,8 +66,8 @@
 
 /obj/item/fish/darkpack/catfish/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 20, "fish", FALSE)
-
+	AddComponent(/datum/component/selling, 2, "fish", FALSE)
+//CRIMSON GRID EDIT ADDED MADE THE PRICE SMALLER BY ONE DIGIT
 /obj/item/fish/darkpack/crab
 	name = "dungeness crab"
 	icon_state = "crab"
@@ -85,8 +85,8 @@
 
 /obj/item/fish/darkpack/crab/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 70, "fish", FALSE)
-
+	AddComponent(/datum/component/selling, 7, "fish", FALSE)
+//CRIMSON GRID EDIT ADDED MADE THE PRICE SMALLER BY ONE DIGIT
 /*
 /obj/item/fishing_rod
 	name = "fishing rod"
