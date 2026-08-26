@@ -241,8 +241,9 @@
 				bank_account.paycheck_amount = 250
 		// DARKPACK EDIT ADD END
 		// CRIMSON GRID ADD FOR BEING RICH
+		var/datum/subsplat/vampire_clan/rich_clan //need to be outside of get_kindred splats to proc
 		if(get_kindred_splat(src))
-			var/datum/subsplat/vampire_clan/rich_clan = src.get_clan()
+			rich_clan = src.get_clan()
 		if(equipping.super_rich)
 			bank_account.account_balance *= 10
 			bank_account.paycheck_amount *= 10
