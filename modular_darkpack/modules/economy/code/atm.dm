@@ -6,7 +6,7 @@
 	anchored = TRUE
 
 
-	max_integrity = 2500 //Crimson Grid Edit change ORIGINAL: 250
+	max_integrity = 250
 	damage_deflection = 50 // CRIMSON EDIT CHANGE - ORIGINAL: damage_deflection = 20
 
 
@@ -21,7 +21,7 @@
 	// Just because there is account selected does not nesicarrly indicate logged_in is true. (you still have to enter your pin)
 	var/datum/bank_account/logged_account
 
-	var/static/list/hit_signals = list(COMSIG_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT) //CRIMSON GRID EDIT. ADDED TO MAKE ATMS GET THESE SIGNAS
+	var/static/list/hit_signals = list(COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT, COMSIG_ATOM_ATTACKBY) //CRIMSON GRID EDIT. ADDED TO MAKE ATMS GET THESE SIGNAS
 
 //CRIMSON GRID EDIT ADD
 /obj/machinery/atm/proc/thiefs_attacking()
