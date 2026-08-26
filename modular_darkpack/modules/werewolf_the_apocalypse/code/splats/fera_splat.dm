@@ -107,6 +107,12 @@
 	var/list/transformation_stats
 	var/transform_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/transform.ogg'
 	COOLDOWN_DECLARE(transform_cd)
+
+	//CRIMSON GRID ADDITION START - variable to control the form shifts so mono chrome is lost on shifting to non wolf and dire form
+	var/monochrome_vision_from_form = FALSE
+	//CRIMSON GRID ADDITION END
+
+
 	/**
 	 * [SPECIES_ID -> dmi path] assoc list
 	 *
@@ -139,12 +145,33 @@
 
 /datum/splat/werewolf/shifter/on_lose_or_destroy()
 	. = ..()
+	//CRIMSON GRID ADDITION START - wolves see in monochromatic vision, they do in the table top aswell
+
+	if(monochrome_vision_from_form && !QDELETED(owner))
+		owner.remove_quirk(/datum/quirk/darkpack/monochrome_vision)
+		monochrome_vision_from_form = FALSE
+		//CRIMSON GRID ADDITION END
+
 	if(!QDELETED(owner))
 		owner.set_species(/datum/species/human)
 
 	remove_power(/datum/action/cooldown/power/gift/howling)
 	UnregisterSignal(owner, COMSIG_LIVING_DEATH)
 
+//CRIMSON GRID ADDITION START - wolves see in monochromatic vision, they do in the table top aswell
+
+/datum/splat/werewolf/shifter/proc/update_monochrome_vision()
+	var/is_monochrome_form = istype(owner?.dna?.species, /datum/species/human/shifter/dire) \
+		|| istype(owner?.dna?.species, /datum/species/human/shifter/feral)
+	if(is_monochrome_form)
+		if(!owner.has_quirk(/datum/quirk/darkpack/monochrome_vision))
+			monochrome_vision_from_form = owner.add_quirk(/datum/quirk/darkpack/monochrome_vision, announce = FALSE)
+		return
+	if(monochrome_vision_from_form)
+		owner.remove_quirk(/datum/quirk/darkpack/monochrome_vision)
+		monochrome_vision_from_form = FALSE
+
+//CRIMSON GRID ADDITION - END
 /datum/splat/werewolf/shifter/splat_life(seconds_per_tick)
 	regain_gnosis_process(seconds_per_tick)
 	// Crinos heal in all forms. Lupus and homid born dont heal FAST FAST in their breed form.

@@ -26,8 +26,8 @@
 /obj/item/bodypart/arm/left/fera
 	// limb_id = SPECIES_FERA
 	unarmed_sharpness = SHARP_EDGED
-	unarmed_attack_verbs = list("claw")
-	unarmed_attack_verbs_continuous = list("claws")
+	unarmed_attack_verbs = list("claw","Slash","Swipe") //CRIMSON GRID EDIT - added more verb variation
+	unarmed_attack_verbs_continuous = list("claws","slashes","swipes" ,"gores" ,"tears","shreds","lacerates", "paws") //CRIMSON GRID EDIT - added more verb variation
 	appendage_noun = "paw"
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
@@ -39,8 +39,8 @@
 /obj/item/bodypart/arm/right/fera
 	// limb_id = SPECIES_FERA
 	unarmed_sharpness = SHARP_EDGED
-	unarmed_attack_verbs = list("claw")
-	unarmed_attack_verbs_continuous = list("claws")
+	unarmed_attack_verbs = list("claw","Slash","Swipe") //CRIMSON GRID EDIT - added more verb variation
+	unarmed_attack_verbs_continuous = list("claws","slashes","swipes" ,"gores" ,"tears","shreds","lacerates","paws") //CRIMSON GRID EDIT - added more verb variation
 	appendage_noun = "paw"
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
