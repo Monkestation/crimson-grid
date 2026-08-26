@@ -206,7 +206,6 @@
 /datum/discipline_power/obtenebration/black_metamorphosis/activate()
 	. = ..()
 	activating = FALSE
-
 	var/roll = SSroll.storyteller_roll_datum(owner, difficulty = 7, applic_stats = list(STAT_MANIPULATION, STAT_COURAGE))
 	switch(roll)
 		if(ROLL_SUCCESS)
