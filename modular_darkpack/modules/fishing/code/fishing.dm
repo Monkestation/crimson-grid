@@ -79,8 +79,7 @@
 
 /obj/item/fish/darkpack/catfish/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 2, "fish", FALSE)
-//CRIMSON GRID EDIT ADDED MADE THE PRICE SMALLER BY ONE DIGIT
+	AddComponent(/datum/component/selling, 50, "fish", FALSE) // CRIMSON EDIT CHANGE - Redux of Financial PR - Original: 	AddComponent(/datum/component/selling, 75, "fish", FALSE)
 /obj/item/fish/darkpack/crab
 	name = "dungeness crab"
 	desc = "An economically important crab prized for its tasty innards."
