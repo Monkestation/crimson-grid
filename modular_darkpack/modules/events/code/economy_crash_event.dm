@@ -2,7 +2,7 @@
 /datum/round_event_control/darkpack/financial_crisis
 	name = "Financial Crisis"
 	typepath = /datum/round_event/financial_crisis
-	weight = 0 //CRIMSON GRID EDIT JUST MAKE IT EXTREMLY STUIDLY UNLIKELY
+	weight = 1 //CRIMSON GRID EDIT JUST MAKE IT EXTREMLY STUIDLY UNLIKELY
 	min_players = 5
 	max_occurrences = 1
 	earliest_start = 50 MINUTES
