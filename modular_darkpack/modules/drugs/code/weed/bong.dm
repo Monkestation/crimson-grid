@@ -37,15 +37,26 @@
 	. = ..()
 	create_reagents(chem_volume, INJECTABLE | NO_REACT)
 
+// CRIMSON EDIT ADD START - Drug Fixes
+/obj/item/bong/examine(mob/user)
+	. = ..()
+	if(packeditem)
+		. += span_notice("It is packed with \a [packeditem]. [bong_hits] hit\s remain.")
+	else
+		. += span_notice("It is empty.")
+// CRIMSON EDIT ADD END - Drug Fixes
+
 /obj/item/bong/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if((istype(tool, /obj/item/food/grown) || istype(tool, /obj/item/food/drug)))
 		if(packeditem)
 			to_chat(user, span_warning("It is already packed!"))
 			return ITEM_INTERACT_BLOCKING
 
+		/* // CRIMSON EDIT REMOVAL START - Drug Fixes
 		if(istype(tool, /obj/item/food/grown) && !HAS_TRAIT(tool, TRAIT_DRIED))
 			to_chat(user, span_warning("It has to be dried first!"))
 			return ITEM_INTERACT_BLOCKING
+		*/ // CRIMSON EDIT REMOVAL END - Drug Fixes
 
 		to_chat(user, span_notice("You stuff [tool] into [src]."))
 		bong_hits = max_hits
@@ -98,7 +109,7 @@
 	if(istype(pos))
 		for(var/i in 1 to smoke_range)
 			spawn_cloud(pos, smoke_range)
-	if(moan_chance > 0)
+	if(prob(10)) // CRIMSON EDIT - Drug Fixes - Original: if(moan_chance > 0)
 		if(prob(moan_chance))
 			playsound(interacting_with, pick('modular_darkpack/modules/drugs/sounds/lungbust_moan1.ogg','modular_darkpack/modules/drugs/sounds/lungbust_moan2.ogg', 'modular_darkpack/modules/drugs/sounds/lungbust_moan3.ogg'), 50, TRUE)
 			interacting_living.emote("moan")

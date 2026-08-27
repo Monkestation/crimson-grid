@@ -27,6 +27,15 @@
 	*/
 	reagents_add = list(/datum/reagent/drug/cannabis = 0.15)
 
+// CRIMSON EDIT ADD START - Drug Fixes
+/obj/item/seeds/cannabis/Initialize(mapload, nogenes)
+	var/strain_amount = reagents_add[/datum/reagent/drug/cannabis]
+	if(strain_amount)
+		reagents_add = list()
+		reagents_add[pick(subtypesof(/datum/reagent/drug/cannabis))] = strain_amount
+	return ..()
+// CRIMSON EDIT ADD END - Drug Fixes
+
 
 /obj/item/seeds/cannabis/rainbow
 	name = "rainbow weed seed pack"
@@ -130,6 +139,7 @@
 	foodtypes = VEGETABLES //i dont really know what else weed could be to be honest
 	tastes = list("cannabis" = 1)
 	wine_power = 20
+	decomposition_time = 15 MINUTES // CRIMSON EDIT ADD - Drug Fixes
 
 // DARKPACK EDIT ADD START
 /obj/item/food/grown/cannabis/Initialize(mapload, obj/item/seeds/new_seed)

@@ -78,6 +78,29 @@
 	if(cleared_aggressive)
 		affected_mob.ai_controller?.set_blackboard_key(BB_MONKEY_AGGRESSIVE, TRUE)
 
+// CRIMSON EDIT ADD START - Drug Fixes
+/datum/reagent/drug/cannabis/og_kush
+	taste_description = "earthy pine and lemon peel"
+	chemical_flags = NONE
+	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
+
+/datum/reagent/drug/cannabis/sour_diesel
+	taste_description = "sour diesel fumes"
+	chemical_flags = NONE
+	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
+
+/datum/reagent/drug/cannabis/granddaddy_purple
+	taste_description = "grape candy"
+	chemical_flags = NONE
+	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
+
+/datum/reagent/drug/cannabis/girl_scout_cookies
+	taste_description = "sweet earth and mint"
+	chemical_flags = NONE
+	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
+
+// CRIMSON EDIT ADD END - Drug Fixes
+
 /datum/reagent/drug/nicotine
 	name = "Nicotine"
 	description = "Slightly reduces stun times. If overdosed it will deal toxin and oxygen damage."

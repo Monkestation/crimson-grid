@@ -18,10 +18,10 @@
 		new /datum/data/vending_product("Black bag", /obj/item/clothing/head/vampire/blackbag, 50),
 		new /datum/data/vending_product("snub-nose revolver", /obj/item/gun/ballistic/revolver/darkpack/snub, 100),
 		new /datum/data/vending_product("Braddock .45 submachine gun", /obj/item/gun/ballistic/automatic/darkpack/mac10, 1200),
-		new /datum/data/vending_product("cannabis package", /obj/item/food/grown/cannabis, 700),
+		new /datum/data/vending_product("cannabis", /obj/item/food/grown/cannabis, 700), // CRIMSON EDIT - Drug Fixes - Original: "cannabis package"
 		new /datum/data/vending_product("morphine syringe", /obj/item/reagent_containers/syringe/contraband/morphine, 800),
-		new /datum/data/vending_product("meth package", /obj/item/reagent_containers/cup/glass/baggie/meth, 800),
-		new /datum/data/vending_product("cocaine package", /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine, 800),
+		new /datum/data/vending_product("crank baggie", /obj/item/reagent_containers/applicator/baggie/meth, 800), // CRIMSON EDIT - Drug Fixes - Original: "meth package", /obj/item/reagent_containers/cup/glass/baggie/meth
+		new /datum/data/vending_product("yayo baggie", /obj/item/reagent_containers/applicator/baggie/cocaine, 800), // CRIMSON EDIT - Drug Fixes - Original: "cocaine package", /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine
 // CRIMSON EDIT ADD START - Medkit to Pharmacy
 		new /datum/data/vending_product("Compact Medical Kit", /obj/item/storage/medkit/tactical_lite, 1125),
 		new /datum/data/vending_product("Coroner's Surgical Kit", /obj/item/storage/medkit/coroner, 750),
