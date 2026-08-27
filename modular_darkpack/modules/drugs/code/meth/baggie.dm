@@ -45,7 +45,7 @@
 
 /obj/item/reagent_containers/applicator/baggie/meth/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 100, "meth", TRUE, -1, 4)
+	AddComponent(/datum/component/selling, 25, "meth", TRUE, -1, 4)
 	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
 /obj/item/reagent_containers/applicator/baggie/cocaine
@@ -56,6 +56,6 @@
 
 /obj/item/reagent_containers/applicator/baggie/cocaine/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/selling, 100, "cocaine", TRUE, -1, 5)
+	AddComponent(/datum/component/selling, 25, "cocaine", TRUE, -1, 5)
 	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 // CRIMSON EDIT ADD END - Drug Fixes
