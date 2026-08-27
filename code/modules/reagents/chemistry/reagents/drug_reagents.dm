@@ -49,10 +49,22 @@
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	/// tracks if we cleared a monkey's aggressiveness value
 	var/cleared_aggressive = FALSE
+	var/strain_name // CRIMSON EDIT ADD - Drug Fixes
+	var/strain_desc // CRIMSON EDIT ADD - Drug Fixes
+
+// CRIMSON EDIT ADD START - Drug Fixes
+/datum/reagent/drug/cannabis/proc/is_primary_cannabis()
+	for(var/datum/reagent/drug/cannabis/other in holder.reagent_list)
+		return other == src
+// CRIMSON EDIT ADD END - Drug Fixes
 
 /datum/reagent/drug/cannabis/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	affected_mob.apply_status_effect(/datum/status_effect/stoned)
+	// CRIMSON EDIT ADD START - Drug Fixes
+	if(!is_primary_cannabis())
+		return
+	// CRIMSON EDIT ADD END - Drug Fixes
 	if(SPT_PROB(1, seconds_per_tick))
 		var/smoke_message = pick("You feel relaxed.","You feel calmed.","Your mouth feels dry.","You could use some water.","Your heart beats quickly.","You feel clumsy.","You crave junk food.","You notice you've been moving more slowly.")
 		to_chat(affected_mob, span_notice("[smoke_message]"))
@@ -80,21 +92,29 @@
 
 // CRIMSON EDIT ADD START - Drug Fixes
 /datum/reagent/drug/cannabis/og_kush
+	strain_name = "OG Kush"
+	strain_desc = "Forest green with long orange hairs and a golden crystal dusting. Smells earthy, sour and piney."
 	taste_description = "earthy pine and lemon peel"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
 
 /datum/reagent/drug/cannabis/sour_diesel
+	strain_name = "Sour Diesel"
+	strain_desc = "Dense light green with orange hairs. Smells like fuel and lemon."
 	taste_description = "sour diesel fumes"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
 
 /datum/reagent/drug/cannabis/granddaddy_purple
+	strain_name = "Granddaddy Purple"
+	strain_desc = "Strikingly purple with fiery orange hairs. Sticky with resin. Smells like sweet grape."
 	taste_description = "grape candy"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
 
 /datum/reagent/drug/cannabis/girl_scout_cookies
+	strain_name = "Girl Scout Cookies"
+	strain_desc = "Small dense lime green nugs under a heavy coat of kief. Smells like sweet earth and mint."
 	taste_description = "sweet earth and mint"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM

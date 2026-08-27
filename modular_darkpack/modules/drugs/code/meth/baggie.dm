@@ -13,15 +13,15 @@
 
 /obj/item/reagent_containers/applicator/baggie/update_icon_state()
 	. = ..()
-	icon_state = reagents.total_volume ? initial(icon_state) : "package_empty"
+	icon_state = reagents?.total_volume ? initial(icon_state) : "package_empty"
 
 /obj/item/reagent_containers/applicator/baggie/update_name(updates)
 	. = ..()
-	name = reagents.total_volume ? initial(name) : /obj/item/reagent_containers/applicator/baggie::name
+	name = reagents?.total_volume ? initial(name) : /obj/item/reagent_containers/applicator/baggie::name
 
 /obj/item/reagent_containers/applicator/baggie/update_desc(updates)
 	. = ..()
-	desc = reagents.total_volume ? initial(desc) : /obj/item/reagent_containers/applicator/baggie::desc
+	desc = reagents?.total_volume ? initial(desc) : /obj/item/reagent_containers/applicator/baggie::desc
 
 /obj/item/reagent_containers/applicator/baggie/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(ismob(interacting_with) && !reagents.total_volume)

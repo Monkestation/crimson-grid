@@ -141,6 +141,14 @@
 	wine_power = 20
 	decomposition_time = 15 MINUTES // CRIMSON EDIT ADD - Drug Fixes
 
+// CRIMSON EDIT ADD START - Drug Fixes
+/obj/item/food/grown/cannabis/examine(mob/user)
+	. = ..()
+	for(var/datum/reagent/drug/cannabis/strain in reagents?.reagent_list)
+		if(strain.strain_desc)
+			. += span_notice(strain.strain_desc)
+// CRIMSON EDIT ADD END - Drug Fixes
+
 // DARKPACK EDIT ADD START
 /obj/item/food/grown/cannabis/Initialize(mapload, obj/item/seeds/new_seed)
 	. = ..()

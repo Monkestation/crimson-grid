@@ -139,10 +139,10 @@
 
 	if(!attacker.transferItemToLoc(ingredient, parent))
 		return
-	var/had_replacement = replacement // CRIMSON EDIT ADD - Drug Fixes
+	var/hand_back = replacement_to_hand && replacement && attacker.is_holding(parent) // CRIMSON EDIT ADD - Drug Fixes
 	add_ingredient(ingredient)
 	// CRIMSON EDIT ADD START - Drug Fixes
-	if(replacement_to_hand && had_replacement)
+	if(hand_back)
 		attacker.put_in_hands(parent)
 	// CRIMSON EDIT ADD END - Drug Fixes
 
