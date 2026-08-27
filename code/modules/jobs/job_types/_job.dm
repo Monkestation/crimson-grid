@@ -241,21 +241,16 @@
 				bank_account.paycheck_amount = 250
 		// DARKPACK EDIT ADD END
 		// CRIMSON GRID ADD FOR BEING RICH
+		var/datum/subsplat/vampire_clan/rich_clan
 		if(get_kindred_splat(src))
-			var/datum/subsplat/vampire_clan/rich_clan = src.get_clan()
-			if(equipping.super_rich)
-				bank_account.account_balance = bank_account.account_balance * 10
-				bank_account.paycheck_amount = bank_account.paycheck_amount * 10
-			if(equipping.super_rich != TRUE && (equipping.rich || rich_clan.id == VAMPIRE_CLAN_VENTRUE || rich_clan.id == VAMPIRE_CLAN_GIOVANNI)) //Job is rich
-				bank_account.account_balance = bank_account.account_balance * 5
-				bank_account.paycheck_amount = bank_account.paycheck_amount * 5
-		else
-			if(equipping.super_rich)
-				bank_account.account_balance = bank_account.account_balance * 10
-				bank_account.paycheck_amount = bank_account.paycheck_amount * 10
-			if(equipping.rich) //Job is rich
-				bank_account.account_balance = bank_account.account_balance * 5
-				bank_account.paycheck_amount = bank_account.paycheck_amount * 5
+			rich_clan = src.get_clan()
+
+		if(equipping.super_rich)
+			bank_account.account_balance *= 2
+			bank_account.paycheck_amount *= 2
+		else if(equipping.rich || (rich_clan && (rich_clan.id == VAMPIRE_CLAN_VENTRUE || rich_clan.id == VAMPIRE_CLAN_GIOVANNI)))
+			bank_account.account_balance *= 1.5
+			bank_account.paycheck_amount *= 1.5
 		// CRIMSON GRID ADD END
 		to_chat(world, span_warning("THE MONEY IS DONE"))
 		add_mob_memory(/datum/memory/key/account, remembered_id = account_id)
