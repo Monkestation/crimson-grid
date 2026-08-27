@@ -13,7 +13,7 @@
 
 /obj/item/reagent_containers/applicator/baggie/update_icon_state()
 	. = ..()
-	icon_state = reagents?.total_volume ? initial(icon_state) : "package_empty"
+	icon_state = reagents?.total_volume ? initial(icon_state) : /obj/item/reagent_containers/applicator/baggie::icon_state
 
 /obj/item/reagent_containers/applicator/baggie/update_name(updates)
 	. = ..()
