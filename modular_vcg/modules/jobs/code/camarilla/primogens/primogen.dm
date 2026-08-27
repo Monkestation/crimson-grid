@@ -1,5 +1,3 @@
-//Fuck it just including all the edits here for primogen
-
 /datum/job/vampire/primogen_banu
 	rich = TRUE
 
