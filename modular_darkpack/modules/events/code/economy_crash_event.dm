@@ -1,4 +1,3 @@
-
 /datum/round_event_control/darkpack/financial_crisis
 	name = "Financial Crisis"
 	typepath = /datum/round_event/financial_crisis
