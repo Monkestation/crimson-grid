@@ -104,6 +104,7 @@
 
 	// CRIMSON EDIT ADD START - Drug Fixes
 	if(liverless && !reagent.self_consuming)
+		reagent.metabolize_reagent(owner, seconds_per_tick, min(reagent.metabolization_rate * seconds_per_tick, reagent.volume))
 		return FALSE
 	// CRIMSON EDIT ADD END - Drug Fixes
 
