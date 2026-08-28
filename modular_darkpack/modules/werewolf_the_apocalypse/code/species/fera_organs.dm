@@ -79,3 +79,44 @@
 // Garou tongues can speak all default + garou tongue
 /obj/item/organ/tongue/fera/get_possible_languages()
 	return ..() + /datum/language/garou_tongue
+
+
+/datum/species/human/shifter/war/on_species_gain(mob/living/carbon/human/species_fera_war, datum/species/old_species, pref_load, regenerate_icons)
+	. = ..()
+	var/datum/component/regenerator/regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
+	if(!regenerator)
+		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 1, heals_wounds = TRUE, brute_per_second = 35, burn_per_second = 10, tox_per_second = 10, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour = COLOR_RED_LIGHT)
+		regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
+	regenerator?.start_regenerating()
+
+
+/datum/species/human/shifter/war/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
+	. = ..()
+	human.set_health(min(human.health, human.maxHealth))
+	qdel(human.GetComponent(/datum/component/regenerator))
+
+/datum/species/human/shifter/dire/on_species_gain(mob/living/carbon/human/species_fera_dire, datum/species/old_species, pref_load, regenerate_icons)
+	. = ..()
+	var/datum/component/regenerator/regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
+	if(!regenerator)
+		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1, heals_wounds = TRUE, brute_per_second = 25, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour =  COLOR_RED_LIGHT)
+		regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
+	regenerator?.start_regenerating()
+
+
+/datum/species/human/shifter/dire/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
+	. = ..()
+	qdel(human.GetComponent(/datum/component/regenerator))
+
+/datum/species/human/shifter/bestial/on_species_gain(mob/living/carbon/human/species_fera_bestial, datum/species/old_species, pref_load, regenerate_icons)
+	. = ..()
+	var/datum/component/regenerator/regenerator = species_fera_bestial.GetComponent(/datum/component/regenerator)
+	if(!regenerator)
+		species_fera_bestial.AddComponent(/datum/component/regenerator, regeneration_delay = 1, heals_wounds = TRUE, brute_per_second = 10, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour =  null)
+		regenerator = species_fera_bestial.GetComponent(/datum/component/regenerator)
+	regenerator?.start_regenerating()
+
+
+/datum/species/human/shifter/bestial/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
+	. = ..()
+	qdel(human.GetComponent(/datum/component/regenerator))
