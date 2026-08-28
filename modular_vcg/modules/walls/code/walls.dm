@@ -3,3 +3,7 @@
 
 /turf/closed/wall/vampwall
 	icon = 'modular_vcg/modules/walls/icons/walls.dmi'
+
+/turf/closed/wall/vampwall/bar
+	icon = 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/bar/wall.dmi'
+	frill_icon = 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/bar/frill.dmi'
