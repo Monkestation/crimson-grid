@@ -80,6 +80,7 @@
 /obj/item/organ/tongue/fera/get_possible_languages()
 	return ..() + /datum/language/garou_tongue
 
+//CRIMSON GRID ADDITION START
 
 /datum/species/human/shifter/war/on_species_gain(mob/living/carbon/human/species_fera_war, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
@@ -120,3 +121,5 @@
 /datum/species/human/shifter/bestial/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
 	qdel(human.GetComponent(/datum/component/regenerator))
+
+//CRIMSION GRID ADDITION END
