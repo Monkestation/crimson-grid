@@ -3,6 +3,7 @@
 	name = "Glowing Eyes"
 	desc = {"You have the stereotypical glowing eyes of vampire legend, giving you a -1 difficulty when intimidating mortals.
 However, you MUST constantly disguise your condition, and the glow impairs your vision."}
+	ttrpg_sources = list(/datum/source_book/vtm20 = 482)
 	icon = FA_ICON_EYE
 	value = -3
 	gain_text = span_notice("Your eyes glow with an unnatural light!")
