@@ -243,8 +243,8 @@
 /turf/closed/wall/vampwall/bar
 	name = "dark brick wall"
 	desc = "A huge chunk of bricks used to separate rooms."
-	icon = 'icons/obj/smooth_structures/darkpack/wall/bar/wall.dmi'
-	frill_icon = 'icons/obj/smooth_structures/darkpack/wall/bar/frill.dmi'
+	icon = 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/bar/wall.dmi'
+	frill_icon = 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/bar/frill.dmi'
 
 /turf/closed/wall/vampwall/wood
 	name = "wood wall"
