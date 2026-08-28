@@ -177,9 +177,11 @@
 	vitae_cost = 2
 
 	violates_masquerade = TRUE
-	var/saved_brute_mod = 1// CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
-	var/saved_burn_mod = 1// CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
-	var/saved_aggravated_mod = 1// CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
+// CRIMSON EDIT ADD START - Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
+	var/saved_brute_mod = 1
+	var/saved_burn_mod = 1
+	var/saved_aggravated_mod = 1
+// CRIMSON EDIT ADD END - Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
 	toggled = TRUE
 	duration_length = 999 SCENES
 
