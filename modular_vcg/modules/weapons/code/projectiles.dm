@@ -90,21 +90,17 @@
 // 7.62x51mm
 
 /obj/projectile/bullet/darkpack/vamp762x51mm
-	damage = 55
 	armour_penetration = 45
 	exposed_wound_bonus = -5
 	wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/silver
-	damage = 55
-	armour_penetration = 45
-	exposed_wound_bonus = -5
-	wound_bonus = 10
+	exposed_wound_bonus = 0
+	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary
-	damage = 55
 	armour_penetration = 15
-	exposed_wound_bonus = 0
+	exposed_wound_bonus = 5
 	wound_bonus = 10
 
 // .50 BMG
