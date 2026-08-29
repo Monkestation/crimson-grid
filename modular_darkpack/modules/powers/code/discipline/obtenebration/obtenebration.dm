@@ -212,12 +212,14 @@
 	switch(roll)
 		if(ROLL_SUCCESS)
 			successful = TRUE
-			saved_brute_mod = owner.physiology.brute_mod  // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
-			owner.physiology.brute_mod = 0.70// CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
-			saved_burn_mod = owner.physiology.burn_mod  // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
-			owner.physiology.burn_mod = 2  // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
-			saved_aggravated_mod= owner.physiology.aggravated_mod  // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
-			owner.physiology.aggravated_mod = 0.80  // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
+// CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
+			saved_brute_mod = owner.physiology.brute_mod  
+			owner.physiology.brute_mod = 0.70
+			saved_burn_mod = owner.physiology.burn_mod 
+			owner.physiology.burn_mod = 2  
+			saved_aggravated_mod= owner.physiology.aggravated_mod
+			owner.physiology.aggravated_mod = 0.80
+// CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
 
 			animate(owner, color = "#000000", time = 1 SECONDS, loop = 1)
 			to_chat(owner, span_green("You successfully fuse with the shadows!"))
@@ -236,9 +238,11 @@
 	
 	to_chat(owner, span_notice("The shadows fall away from your body."))
 	playsound(owner.loc, 'sound/effects/magic/voidblink.ogg', 50, FALSE)
-	owner.physiology.brute_mod = saved_brute_mod // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
-	owner.physiology.burn_mod = saved_burn_mod // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
-	owner.physiology.aggravated_mod = saved_aggravated_mod // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
+// CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
+	owner.physiology.brute_mod = saved_brute_mod
+	owner.physiology.burn_mod = saved_burn_mod 
+	owner.physiology.aggravated_mod = saved_aggravated_mod
+// CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
 	animate(owner, color = initial(owner.color), time = 1 SECONDS, loop = 1)
 
 /datum/discipline_power/obtenebration/tenebrous_form
