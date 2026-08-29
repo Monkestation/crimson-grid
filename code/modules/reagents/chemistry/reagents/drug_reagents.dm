@@ -49,7 +49,6 @@
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	/// tracks if we cleared a monkey's aggressiveness value
 	var/cleared_aggressive = FALSE
-	var/strain_name // CRIMSON EDIT ADD - Drug Fixes And Rework
 	var/strain_desc // CRIMSON EDIT ADD - Drug Fixes And Rework
 
 // CRIMSON EDIT ADD START - Drug Fixes And Rework
@@ -92,28 +91,28 @@
 
 // CRIMSON EDIT ADD START - Drug Fixes And Rework
 /datum/reagent/drug/cannabis/og_kush
-	strain_name = "OG Kush"
+	name = "OG Kush"
 	strain_desc = "Forest green with long orange hairs and a golden crystal dusting. Smells earthy, sour and piney."
 	taste_description = "earthy pine and lemon peel"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
 
 /datum/reagent/drug/cannabis/sour_diesel
-	strain_name = "Sour Diesel"
+	name = "Sour Diesel"
 	strain_desc = "Dense light green with orange hairs. Smells like fuel and lemon."
 	taste_description = "sour diesel fumes"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
 
 /datum/reagent/drug/cannabis/granddaddy_purple
-	strain_name = "Granddaddy Purple"
+	name = "Granddaddy Purple"
 	strain_desc = "Strikingly purple with fiery orange hairs. Sticky with resin. Smells like sweet grape."
 	taste_description = "grape candy"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
 
 /datum/reagent/drug/cannabis/girl_scout_cookies
-	strain_name = "Girl Scout Cookies"
+	name = "Girl Scout Cookies"
 	strain_desc = "Small dense lime green nugs under a heavy coat of kief. Smells like sweet earth and mint."
 	taste_description = "sweet earth and mint"
 	chemical_flags = NONE

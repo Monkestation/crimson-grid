@@ -47,8 +47,8 @@
 	var/datum/reagent/drug/cannabis/strain
 	if(reagents)
 		strain = locate() in reagents.reagent_list
-	if(strain?.strain_name)
-		. += span_notice("It is packed with [strain.strain_name] cannabis. [bong_hits] hit\s remain.")
+	if(strain?.strain_desc)
+		. += span_notice("It is packed with [strain.name] cannabis. [bong_hits] hit\s remain.")
 		return
 	. += span_notice("It is packed with \a [packeditem]. [bong_hits] hit\s remain.")
 // CRIMSON EDIT ADD END - Drug Fixes And Rework
