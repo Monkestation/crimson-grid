@@ -27,14 +27,14 @@
 	*/
 	reagents_add = list(/datum/reagent/drug/cannabis = 0.15)
 
-// CRIMSON EDIT ADD START - Drug Fixes
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
 /obj/item/seeds/cannabis/Initialize(mapload, nogenes)
 	var/strain_amount = reagents_add[/datum/reagent/drug/cannabis]
 	if(strain_amount)
 		reagents_add = list()
 		reagents_add[pick(subtypesof(/datum/reagent/drug/cannabis))] = strain_amount
 	return ..()
-// CRIMSON EDIT ADD END - Drug Fixes
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 
 /obj/item/seeds/cannabis/rainbow
@@ -139,20 +139,20 @@
 	foodtypes = VEGETABLES //i dont really know what else weed could be to be honest
 	tastes = list("cannabis" = 1)
 	wine_power = 20
-	decomposition_time = 15 MINUTES // CRIMSON EDIT ADD - Drug Fixes
+	decomposition_time = 15 MINUTES // CRIMSON EDIT ADD - Drug Fixes And Rework
 
-// CRIMSON EDIT ADD START - Drug Fixes
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
 /obj/item/food/grown/cannabis/examine(mob/user)
 	. = ..()
 	for(var/datum/reagent/drug/cannabis/strain in reagents?.reagent_list)
 		if(strain.strain_desc)
 			. += span_notice(strain.strain_desc)
-// CRIMSON EDIT ADD END - Drug Fixes
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 // DARKPACK EDIT ADD START
 /obj/item/food/grown/cannabis/Initialize(mapload, obj/item/seeds/new_seed)
 	. = ..()
-	AddComponent(/datum/component/selling, 25, "weed", TRUE, -1, 7) // CRIMSON EDIT - Drug Fixes - Original: 100
+	AddComponent(/datum/component/selling, 25, "weed", TRUE, -1, 7) // CRIMSON EDIT - Drug Fixes And Rework - Original: 100
 	//In 2015 Cannabis was only legally distributed in California by medical dispensary. https://web.archive.org/web/20161109220853/http://www.times-standard.com/article/NJ/20161107/NEWS/161109826
 	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 // DARKPACK EDIT ADD END

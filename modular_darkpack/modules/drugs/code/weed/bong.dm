@@ -27,7 +27,7 @@
 	var/chem_volume = 100
 	///Is it filled?
 	var/packeditem = FALSE
-	var/obj/item/packed_object // CRIMSON EDIT ADD - Drug Fixes
+	var/obj/item/packed_object // CRIMSON EDIT ADD - Drug Fixes And Rework
 
 	///How many reagents do we transfer each use?
 	var/reagent_transfer_per_use = 0
@@ -38,7 +38,7 @@
 	. = ..()
 	create_reagents(chem_volume, INJECTABLE | NO_REACT)
 
-// CRIMSON EDIT ADD START - Drug Fixes
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
 /obj/item/bong/examine(mob/user)
 	. = ..()
 	if(!packeditem)
@@ -51,7 +51,7 @@
 		. += span_notice("It is packed with [strain.strain_name] cannabis. [bong_hits] hit\s remain.")
 		return
 	. += span_notice("It is packed with \a [packeditem]. [bong_hits] hit\s remain.")
-// CRIMSON EDIT ADD END - Drug Fixes
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /obj/item/bong/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if((istype(tool, /obj/item/food/grown) || istype(tool, /obj/item/food/drug)))
@@ -59,17 +59,17 @@
 			to_chat(user, span_warning("It is already packed!"))
 			return ITEM_INTERACT_BLOCKING
 
-		/* // CRIMSON EDIT REMOVAL START - Drug Fixes
+		/* // CRIMSON EDIT REMOVAL START - Drug Fixes And Rework
 		if(istype(tool, /obj/item/food/grown) && !HAS_TRAIT(tool, TRAIT_DRIED))
 			to_chat(user, span_warning("It has to be dried first!"))
 			return ITEM_INTERACT_BLOCKING
-		*/ // CRIMSON EDIT REMOVAL END - Drug Fixes
+		*/ // CRIMSON EDIT REMOVAL END - Drug Fixes And Rework
 
-		// CRIMSON EDIT ADD START - Drug Fixes
+		// CRIMSON EDIT ADD START - Drug Fixes And Rework
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
 		packed_object = tool
-		// CRIMSON EDIT ADD END - Drug Fixes
+		// CRIMSON EDIT ADD END - Drug Fixes And Rework
 		to_chat(user, span_notice("You stuff [tool] into [src]."))
 		bong_hits = max_hits
 		packeditem = tool.name
@@ -77,7 +77,7 @@
 		if(tool.reagents)
 			tool.reagents.trans_to(src, tool.reagents.total_volume, transferred_by = user)
 			reagent_transfer_per_use = reagents.total_volume / max_hits
-		//qdel(tool) // CRIMSON EDIT REMOVAL - Drug Fixes
+		//qdel(tool) // CRIMSON EDIT REMOVAL - Drug Fixes And Rework
 		return ITEM_INTERACT_SUCCESS
 	else
 		var/lighting_text = tool.ignition_effect(src, user)
@@ -90,7 +90,7 @@
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/bong/attack_self(mob/user)
-	/* // CRIMSON EDIT REMOVAL START - Drug Fixes
+	/* // CRIMSON EDIT REMOVAL START - Drug Fixes And Rework
 	var/turf/location = get_turf(user)
 	if(lit)
 		user.visible_message(span_notice("[user] puts out [src]."), span_notice("You put out [src]."))
@@ -100,8 +100,8 @@
 		new /obj/effect/decal/cleanable/ash(location)
 		empty_out()
 	return
-	*/ // CRIMSON EDIT REMOVAL END - Drug Fixes
-	// CRIMSON EDIT ADD START - Drug Fixes
+	*/ // CRIMSON EDIT REMOVAL END - Drug Fixes And Rework
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
 	if(lit && packeditem && isliving(user))
 		interact_with_atom(user, user)
 		return
@@ -111,10 +111,10 @@
 		return
 	if(packeditem)
 		to_chat(user, span_warning("It is not lit!"))
-	// CRIMSON EDIT ADD END - Drug Fixes
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
-// CRIMSON EDIT ADD START - Drug Fixes
-/obj/item/bong/click_ctrl(mob/user)
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/obj/item/bong/item_ctrl_click(mob/user)
 	if(loc != user)
 		return NONE
 	if(lit)
@@ -136,7 +136,7 @@
 	new /obj/effect/decal/cleanable/ash(location)
 	empty_out()
 	return CLICK_ACTION_SUCCESS
-// CRIMSON EDIT ADD END - Drug Fixes
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /obj/item/bong/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
@@ -159,7 +159,7 @@
 	if(istype(pos))
 		for(var/i in 1 to smoke_range)
 			spawn_cloud(pos, smoke_range)
-	if(prob(10)) // CRIMSON EDIT - Drug Fixes - Original: if(moan_chance > 0)
+	if(prob(10)) // CRIMSON EDIT - Drug Fixes And Rework - Original: if(moan_chance > 0)
 		if(prob(moan_chance))
 			playsound(interacting_with, pick('modular_darkpack/modules/drugs/sounds/lungbust_moan1.ogg','modular_darkpack/modules/drugs/sounds/lungbust_moan2.ogg', 'modular_darkpack/modules/drugs/sounds/lungbust_moan3.ogg'), 50, TRUE)
 			interacting_living.emote("moan")
@@ -172,12 +172,12 @@
 		empty_out()
 	return ITEM_INTERACT_SUCCESS
 
-// CRIMSON EDIT ADD START - Drug Fixes
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
 /obj/item/bong/Exited(atom/movable/gone, direction)
 	. = ..()
 	if(gone == packed_object)
 		packed_object = null
-// CRIMSON EDIT ADD END - Drug Fixes
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /obj/item/bong/proc/light(flavor_text = null)
 	if(lit)
@@ -215,7 +215,7 @@
 	packeditem = FALSE
 	bong_hits = 0
 	reagents.clear_reagents() //just to make sure
-	QDEL_NULL(packed_object) // CRIMSON EDIT ADD - Drug Fixes
+	QDEL_NULL(packed_object) // CRIMSON EDIT ADD - Drug Fixes And Rework
 
 /obj/item/bong/proc/spawn_cloud(turf/open/location, smoke_range)
 	var/list/turfs_affected = list(location)

@@ -49,22 +49,22 @@
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	/// tracks if we cleared a monkey's aggressiveness value
 	var/cleared_aggressive = FALSE
-	var/strain_name // CRIMSON EDIT ADD - Drug Fixes
-	var/strain_desc // CRIMSON EDIT ADD - Drug Fixes
+	var/strain_name // CRIMSON EDIT ADD - Drug Fixes And Rework
+	var/strain_desc // CRIMSON EDIT ADD - Drug Fixes And Rework
 
-// CRIMSON EDIT ADD START - Drug Fixes
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
 /datum/reagent/drug/cannabis/proc/is_primary_cannabis()
 	for(var/datum/reagent/drug/cannabis/other in holder.reagent_list)
 		return other == src
-// CRIMSON EDIT ADD END - Drug Fixes
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /datum/reagent/drug/cannabis/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	affected_mob.apply_status_effect(/datum/status_effect/stoned)
-	// CRIMSON EDIT ADD START - Drug Fixes
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
 	if(!is_primary_cannabis())
 		return
-	// CRIMSON EDIT ADD END - Drug Fixes
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 	if(SPT_PROB(1, seconds_per_tick))
 		var/smoke_message = pick("You feel relaxed.","You feel calmed.","Your mouth feels dry.","You could use some water.","Your heart beats quickly.","You feel clumsy.","You crave junk food.","You notice you've been moving more slowly.")
 		to_chat(affected_mob, span_notice("[smoke_message]"))
@@ -90,7 +90,7 @@
 	if(cleared_aggressive)
 		affected_mob.ai_controller?.set_blackboard_key(BB_MONKEY_AGGRESSIVE, TRUE)
 
-// CRIMSON EDIT ADD START - Drug Fixes
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
 /datum/reagent/drug/cannabis/og_kush
 	strain_name = "OG Kush"
 	strain_desc = "Forest green with long orange hairs and a golden crystal dusting. Smells earthy, sour and piney."
@@ -119,7 +119,7 @@
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
 
-// CRIMSON EDIT ADD END - Drug Fixes
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /datum/reagent/drug/nicotine
 	name = "Nicotine"
@@ -213,7 +213,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	addiction_types = list(/datum/addiction/stimulants = 75)
-	metabolized_traits = list(TRAIT_STIMULATED)
+	metabolized_traits = list(TRAIT_STIMULATED, TRAIT_SLEEPIMMUNE, TRAIT_BLOWN_PUPILS) // CRIMSON EDIT - Drug Fixes And Rework - Original: list(TRAIT_STIMULATED)
 
 /datum/reagent/drug/methamphetamine/on_new(data)
 	. = ..()
@@ -240,7 +240,7 @@
 
 /datum/reagent/drug/methamphetamine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
-	var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.", "You understand now.")
+	var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.", "You understand now.", "Sleep is a thing other people need.", "Your thoughts arrive faster than you can use them.", "You have not been hungry in hours.", "Something behind your eyes is being spent.") // CRIMSON EDIT - Drug Fixes And Rework - Original: pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.", "You understand now.")
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(affected_mob, span_notice("[high_message]"))
 	affected_mob.add_mood_event("tweaking", /datum/mood_event/stimulant_medium)
@@ -253,6 +253,15 @@
 		. = UPDATE_MOB_HEALTH
 	if(SPT_PROB(2.5, seconds_per_tick))
 		affected_mob.emote(pick("twitch", "shiver"))
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
+	affected_mob.take_stimulant_dose(0.2, 5)
+	affected_mob.adjust_nutrition(0.6 * metabolization_ratio * seconds_per_tick)
+	if(current_cycle > 60)
+		affected_mob.set_jitter_if_lower(7.5 SECONDS * metabolization_ratio * seconds_per_tick)
+		affected_mob.adjust_disgust(0.5 * metabolization_ratio * seconds_per_tick)
+		if(SPT_PROB(2, seconds_per_tick))
+			affected_mob.adjust_hallucinations_up_to(10 SECONDS * metabolization_ratio * seconds_per_tick, 60 SECONDS)
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /datum/reagent/drug/methamphetamine/overdose_process(mob/living/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
@@ -264,6 +273,10 @@
 	if(SPT_PROB(18, seconds_per_tick))
 		affected_mob.visible_message(span_danger("[affected_mob]'s hands flip out and flail everywhere!"))
 		affected_mob.drop_all_held_items()
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
+	if(SPT_PROB(10, seconds_per_tick))
+		to_chat(affected_mob, span_danger(pick("You cannot make your hands do what you want.", "Your skin will not stop crawling.", "You have lost track of what you were doing.")))
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 	var/need_mob_update
 	need_mob_update = affected_mob.adjust_tox_loss(0.67 * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
 	need_mob_update += affected_mob.adjust_organ_loss(ORGAN_SLOT_BRAIN, 0.67 * (rand(5, 10) / 10) * metabolization_ratio * seconds_per_tick, required_organ_flag = affected_organ_flags)

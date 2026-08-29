@@ -22,9 +22,9 @@
 	var/ingredient_type
 	/// Adds screentips for all items that call on this proc, defaults to "Add"
 	var/screentip_verb
-	// CRIMSON EDIT ADD START - Drug Fixes
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
 	var/replacement_to_hand = FALSE
-	// CRIMSON EDIT ADD END - Drug Fixes
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 	/// Stores the names of the ingredients used on the holder, to pass down if processed into new instances.
 	var/list/ingredient_names
@@ -40,7 +40,7 @@
 		max_ingredients = MAX_ATOM_OVERLAYS - 3, // The cap is >= MAX_ATOM_OVERLAYS so we reserve 2 for top /bottom of item + 1 to stay under cap
 		datum/component/ingredients_holder/processed_holder, //when processing a holder, the results receive their own comps, but need the ingredient names and filling passed down
 		screentip_verb = "Add",
-		replacement_to_hand = FALSE, // CRIMSON EDIT ADD - Drug Fixes
+		replacement_to_hand = FALSE, // CRIMSON EDIT ADD - Drug Fixes And Rework
 )
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -55,7 +55,7 @@
 	src.max_ingredients = max_ingredients
 	src.ingredient_type = ingredient_type
 	src.screentip_verb = screentip_verb
-	src.replacement_to_hand = replacement_to_hand // CRIMSON EDIT ADD - Drug Fixes
+	src.replacement_to_hand = replacement_to_hand // CRIMSON EDIT ADD - Drug Fixes And Rework
 
 	if(!processed_holder || !length(processed_holder.ingredient_names))
 		return
@@ -139,12 +139,12 @@
 
 	if(!attacker.transferItemToLoc(ingredient, parent))
 		return
-	var/hand_back = replacement_to_hand && replacement && attacker.is_holding(parent) // CRIMSON EDIT ADD - Drug Fixes
+	var/hand_back = replacement_to_hand && replacement && attacker.is_holding(parent) // CRIMSON EDIT ADD - Drug Fixes And Rework
 	add_ingredient(ingredient)
-	// CRIMSON EDIT ADD START - Drug Fixes
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
 	if(hand_back)
-		attacker.put_in_hands(parent)
-	// CRIMSON EDIT ADD END - Drug Fixes
+		INVOKE_ASYNC(attacker, TYPE_PROC_REF(/mob, put_in_hands), parent)
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 
 ///Extract the filling color from the ingredient, than calls apply_fill()

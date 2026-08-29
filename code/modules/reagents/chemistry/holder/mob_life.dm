@@ -102,11 +102,11 @@
 	if(!owner || !reagent || (dead && !(reagent.chemical_flags & REAGENT_DEAD_PROCESS)))
 		return FALSE
 
-	// CRIMSON EDIT ADD START - Drug Fixes
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
 	if(liverless && !reagent.self_consuming)
 		reagent.metabolize_reagent(owner, seconds_per_tick, min(reagent.metabolization_rate * seconds_per_tick, reagent.volume))
 		return FALSE
-	// CRIMSON EDIT ADD END - Drug Fixes
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 	var/metabolized_volume = reagent.compute_metabolization(owner, seconds_per_tick)
 	var/metabolization_ratio = REM * metabolized_volume
@@ -115,10 +115,10 @@
 	if(tick_return & COMSIG_MOB_STOP_REAGENT_TICK)
 		return FALSE
 
-	/* // CRIMSON EDIT REMOVAL START - Drug Fixes
+	/* // CRIMSON EDIT REMOVAL START - Drug Fixes And Rework
 	if(liverless && !reagent.self_consuming) //need to be6 metabolized
 		return FALSE
-	*/ // CRIMSON EDIT REMOVAL END - Drug Fixes
+	*/ // CRIMSON EDIT REMOVAL END - Drug Fixes And Rework
 
 	var/need_mob_update = FALSE
 	if(reagents_metabolized)

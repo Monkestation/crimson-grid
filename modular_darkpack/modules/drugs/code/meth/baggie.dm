@@ -1,4 +1,6 @@
-// CRIMSON EDIT ADD START - Drug Fixes
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+#define STIMULANT_HOOKED_POINTS 600
+
 /obj/item/reagent_containers/applicator/baggie
 	name = "tiny plastic baggie"
 	desc = "A tiny zip bag. What could possibly fit inside it?"
@@ -23,6 +25,11 @@
 	. = ..()
 	desc = reagents?.total_volume ? initial(desc) : /obj/item/reagent_containers/applicator/baggie::desc
 
+/obj/item/reagent_containers/applicator/baggie/attack_self(mob/user)
+	if(!isliving(user))
+		return
+	interact_with_atom(user, user)
+
 /obj/item/reagent_containers/applicator/baggie/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(ismob(interacting_with) && !reagents.total_volume)
 		balloon_alert(user, "empty!")
@@ -36,6 +43,11 @@
 		var/mob/living/sniffer = consumer
 		sniffer.emote("sniff")
 	reagents.trans_to(consumer, amount_per_transfer_from_this, transferred_by = giver, methods = INHALE)
+	if(HAS_TRAIT(consumer, TRAIT_LIVERLESS_METABOLISM) || !prob(10))
+		return
+	var/current_points = LAZYACCESS(consumer.mind?.addiction_points, /datum/addiction/stimulants) || 0
+	if(current_points < STIMULANT_HOOKED_POINTS)
+		consumer.mind?.add_addiction_points(/datum/addiction/stimulants, STIMULANT_HOOKED_POINTS - current_points)
 
 /obj/item/reagent_containers/applicator/baggie/meth
 	name = "baggie of crank"
@@ -52,10 +64,12 @@
 	name = "baggie of yayo"
 	desc = "A tiny zip bag of fine white cocaine."
 	icon_state = "package_cocaine"
-	list_reagents = list(/datum/reagent/drug/methamphetamine/cocaine = 30)
+	list_reagents = list(/datum/reagent/drug/cocaine = 30)
 
 /obj/item/reagent_containers/applicator/baggie/cocaine/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/selling, 25, "cocaine", TRUE, -1, 5)
 	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
-// CRIMSON EDIT ADD END - Drug Fixes
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
+
+#undef STIMULANT_HOOKED_POINTS
