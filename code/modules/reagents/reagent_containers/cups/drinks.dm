@@ -79,6 +79,7 @@
 /obj/item/reagent_containers/cup/glass/trophy/gold_cup/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/cuffable_item) //closed handles
+	AddComponent(/datum/component/selling, 300, "trophy", TRUE) // CRIMSON EDIT ADD - Sell Valuables
 
 /obj/item/reagent_containers/cup/glass/trophy/silver_cup
 	name = "silver cup"

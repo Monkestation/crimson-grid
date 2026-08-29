@@ -174,7 +174,7 @@
 
 /obj/item/smartphone/liaison
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = ANARCH_NETWORK, OUR_ROLE = "Club Promotor", USE_JOB_TITLE = FALSE)
+		alist(NETWORK_ID = ANARCH_NETWORK, OUR_ROLE = "Club Promoter", USE_JOB_TITLE = FALSE)
 		)
 
 /obj/item/smartphone/tapster
@@ -246,3 +246,120 @@
 	contact_networks_pre_init = list(
 		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Abbé", USE_JOB_TITLE = TRUE)
 		)
+
+// CIVILIAN
+
+/obj/item/smartphone/janitor
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = CIVILIAN_NETWORK, OUR_ROLE = "Janitor", USE_JOB_TITLE = TRUE)
+		)
+
+/obj/item/smartphone/taxi
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = CIVILIAN_NETWORK, OUR_ROLE = "Taxi Driver", USE_JOB_TITLE = TRUE)
+		)
+
+/obj/item/smartphone/club_worker
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = CIVILIAN_NETWORK, OUR_ROLE = "Club Worker", USE_JOB_TITLE = TRUE)
+		)
+
+/obj/item/smartphone/priest
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = CIVILIAN_NETWORK, OUR_ROLE = "Priest", USE_JOB_TITLE = TRUE)
+		)
+
+/obj/item/smartphone/clinic_director
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "Clinic Director", USE_JOB_TITLE = TRUE)
+		)
+
+/obj/item/smartphone/red_news
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "Red News Reporter", USE_JOB_TITLE = TRUE)
+		)
+
+/obj/item/smartphone/doctor
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "Clinic Staff", USE_JOB_TITLE = FALSE)
+		)
+
+// SEPT
+
+/obj/item/smartphone/garou_council
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "NPS Oversight Committee", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/garou_guardian
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "Park Ranger", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/garou_truthcatcher
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "Park Guide", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/garou_warder
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "Lead Park Ranger", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/garou_wyrmfoe
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "NPS Biologist", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/garou_keeper
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "Park Staff", USE_JOB_TITLE = FALSE)
+		)
+
+// POLICE
+
+/obj/item/smartphone/police_captain
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = POLICE_NETWORK, OUR_ROLE = "SFPD Captain", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/dispatch
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = POLICE_NETWORK, OUR_ROLE = "Emergency Dispatcher", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/federal_investigator
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = POLICE_NETWORK, OUR_ROLE = "Federal Investigator", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/police_officer
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = POLICE_NETWORK, OUR_ROLE = "SFPD Officer", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/police_sergeant
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = POLICE_NETWORK, OUR_ROLE = "SFPD Sergeant", USE_JOB_TITLE = FALSE)
+		)
+
+// SABBAT
+
+/obj/item/smartphone/sabbat_ductus
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = SABBAT_NETWORK, OUR_ROLE = "Shift Manager", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/sabbat_pack
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = SABBAT_NETWORK, OUR_ROLE = "Dipshit Co-worker", USE_JOB_TITLE = FALSE)
+		)
+
+/obj/item/smartphone/sabbat_priest
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = SABBAT_NETWORK, OUR_ROLE = "Assistant Manager", USE_JOB_TITLE = FALSE)
+		)
+
+#undef NETWORK_ID
+#undef OUR_ROLE
+#undef USE_JOB_TITLE

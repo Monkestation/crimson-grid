@@ -52,12 +52,12 @@ export const ContactElement = (props: {
               fontSize={1.5}
             >
               <Stack fill align="center" justify="center">
-                <Stack.Item>{contact.name[0]}</Stack.Item>
+                <Stack.Item>{contact.name ? contact.name[0] : '?'}</Stack.Item>
               </Stack>
             </Box>
           </Stack.Item>
           <Stack.Item grow>
-            <Box>{contact.name}</Box>
+            <Box>{contact.name || 'Unknown Name'}</Box>
             <Box
               fontWeight={isUnread ? 'bold' : 'normal'}
               textColor={isUnread ? '#313131' : '#aaa'}

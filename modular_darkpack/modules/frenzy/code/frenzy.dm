@@ -123,7 +123,9 @@
 	return frenzy_result
 
 
-GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy_roll, "Manual Frenzy Roll", "Trigger a roll for a frenzy", null, atom/movable/AM as mob|obj in oview(DEFAULT_SIGHT_DISTANCE))
+GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy_roll, "Manual Frenzy Roll", "Trigger a roll for a frenzy", null)
+	VERB_ARG_TYPED(AM, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_VIEW, /mob/living)
+
 	if(!istype(AM))
 		return
 	if(!issupernatural(src))
@@ -135,7 +137,9 @@ GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy_roll, "Manual Frenzy
 		trigger_kindred_frenzy(AM)
 
 // Used by the berserker merit. or possibly even for that one vampire thing of riding the frenzy in future?
-GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy, "Manual Frenzy", "Enter a frenzy at will", null, atom/movable/AM as mob|obj in oview(DEFAULT_SIGHT_DISTANCE))
+GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy, "Manual Frenzy", "Enter a frenzy at will", null)
+	VERB_ARG_TYPED(AM, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_VIEW, /mob/living)
+
 	if(!istype(AM))
 		return
 	if(!issupernatural(src))

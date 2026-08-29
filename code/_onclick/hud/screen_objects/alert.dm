@@ -602,22 +602,23 @@
 
 	var/title = pick(death_titles)
 
-	// DARKPACK EDIT CHANGE START - Torpor
+	// DARKPACK EDIT ADD START - VAMPIRE - (Torpor)
 	if (HAS_TRAIT(living_owner, TRAIT_TORPOR))
 		// Can't say your final words if you're already "dead"
 		var/confirm_death = tgui_alert(usr, "Do you want to give up and succumb to Final Death?", "Succumb Confirmation", list("Yes", "No"))
 		if (confirm_death != "Yes")
 			return
-		living_owner.succumb()
-	else
-		//Succumbing with a message
-		var/last_whisper = tgui_input_text(usr, "Do you have any last words?", title, max_length = CHAT_MESSAGE_MAX_LENGTH, encode = FALSE) // saycode already handles sanitization
-		if(isnull(last_whisper))
-			return
-		if(length(last_whisper))
-			living_owner.say("#[last_whisper]")
-		living_owner.succumb(whispered = length(last_whisper) > 0)
-	// DARKPACK EDIT CHANGE END - Torpor
+		INVOKE_GAME_VERB(living_owner, usr, /mob/living, succumb)
+		return
+	// DARKPACK EDIT ADD END
+	//Succumbing with a message
+	var/last_whisper = tgui_input_text(usr, "Do you have any last words?", title, max_length = CHAT_MESSAGE_MAX_LENGTH, encode = FALSE) // saycode already handles sanitization
+	if(isnull(last_whisper))
+		return
+	if(length(last_whisper))
+		living_owner.say("#[last_whisper]")
+	INVOKE_GAME_VERB(living_owner, usr, /mob/living, succumb, whisper = length(last_whisper) > 0)
+
 
 //ALIENS
 
