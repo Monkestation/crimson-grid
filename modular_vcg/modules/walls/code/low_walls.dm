@@ -22,7 +22,7 @@
 
 LOW_WALL_HELPER_CRIMSON(rich, 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich/low_wall.dmi')
 
-//LOW_WALL_HELPER_CRIMSON(rich/old, 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich_old/low_wall.dmi')
+LOW_WALL_HELPER_CRIMSON(rich/old, 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich_old/low_wall.dmi')
 
 //LOW_WALL_HELPER_CRIMSON(brick_old, 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/brick_old/low_wall.dmi')
 

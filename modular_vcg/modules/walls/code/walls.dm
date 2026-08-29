@@ -15,3 +15,7 @@
 /turf/closed/wall/vampwall/rich
 	icon = 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich/wall.dmi'
 	frill_icon = 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich/frill.dmi'
+
+/turf/closed/wall/vampwall/rich/old
+	icon = 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich_old/wall.dmi'
+	frill_icon = 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich_old/frill.dmi'
