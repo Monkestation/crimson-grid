@@ -20,7 +20,7 @@
 	icon_state = "wall-0"
 
 
-//LOW_WALL_HELPER_CRIMSON(rich, 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich/low_wall.dmi')
+LOW_WALL_HELPER_CRIMSON(rich, 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich/low_wall.dmi')
 
 //LOW_WALL_HELPER_CRIMSON(rich/old, 'icons/obj/smooth_structures/darkpack/crimson_grid/wall/rich_old/low_wall.dmi')
 
