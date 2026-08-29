@@ -113,4 +113,8 @@
 		new /datum/data/vending_product("backpack", /obj/item/storage/backpack, 100),
 		new /datum/data/vending_product("satchel", /obj/item/storage/backpack/satchel, 100),
 		new /datum/data/vending_product("leather satchel", /obj/item/storage/backpack/satchel/leather, 150),
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+		new /datum/data/vending_product("wallet", /obj/item/storage/wallet/darkpack, 25),
+		new /datum/data/vending_product("cloth", /obj/item/stack/sheet/cloth, 5),
+// CRIMSON EDIT ADD END - Shop Inventories Additions
 	)
