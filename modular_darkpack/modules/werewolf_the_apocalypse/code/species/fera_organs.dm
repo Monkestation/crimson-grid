@@ -80,13 +80,13 @@
 /obj/item/organ/tongue/fera/get_possible_languages()
 	return ..() + /datum/language/garou_tongue
 
-//CRIMSON GRID EDIT START - Gives fera war forms powerful passive regen that is constent, does not heal aggravated damage 
+//CRIMSON GRID EDIT START - Gives fera war forms powerful passive regen that is constent, does not heal aggravated damage
 
 /datum/species/human/shifter/war/on_species_gain(mob/living/carbon/human/species_fera_war, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	var/datum/component/regenerator/regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 35, burn_per_second = 10, tox_per_second = 5, oxy_per_second =5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour = COLOR_RED)
+		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 1, heals_wounds = TRUE, brute_per_second = 35, burn_per_second = 10, tox_per_second = 5, oxy_per_second =5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour = COLOR_RED)
 		regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
