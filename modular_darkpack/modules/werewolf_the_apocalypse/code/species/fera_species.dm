@@ -230,6 +230,10 @@
 		TRAIT_HARDLY_WOUNDED,
 // CRIMSON EDIT ADD END - Garou Trait Buffs
 	)
+// CRIMSON EDIT ADD START - heat damage weakness due to fur
+	coldmod = 0.65
+	heatmod = 2
+// CRIMSON EDIT ADD END
 	form_causes_delirium = TRUE
 	veil_breaching_form = TRUE
 
@@ -284,6 +288,10 @@
 		TRAIT_GRABRESISTANCE,
 	// CRIMSON EDIT ADD END - Garou Trait Buffs
 	)
+// CRIMSON EDIT ADD START - heat damage weakness due to fur
+	coldmod = 0.65
+	heatmod = 2
+// CRIMSON EDIT ADD END
 	veil_breaching_form = TRUE
 
 	mutantbrain = /obj/item/organ/brain/fera
@@ -328,7 +336,10 @@
 		TRAIT_GOOD_HEARING,
 	// CRIMSON EDIT ADD END - Garou Trait Buffs
 	)
-
+// CRIMSON EDIT ADD START - heat damage weakness due to fur
+	coldmod = 0.65
+	heatmod = 2
+// CRIMSON EDIT ADD END
 	mutantbrain = /obj/item/organ/brain/fera
 	mutanttongue = /obj/item/organ/tongue/fera
 	bodypart_overrides = list(
