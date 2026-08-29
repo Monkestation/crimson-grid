@@ -28,10 +28,21 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_LASOMBRA)
 
-	known_contacts = list("Prince")
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_SHERIFF,
+		JOB_SENESCHAL,
+		JOB_HARPY,
+		JOB_PRIMOGEN_BANU_HAQIM,
+		JOB_PRIMOGEN_TOREADOR,
+		JOB_PRIMOGEN_MALKAVIAN,
+		JOB_PRIMOGEN_VENTRUE,
+		JOB_PRIMOGEN_NOSFERATU,
+		JOB_CHANTRY_REGENT
+	)
 
 /datum/outfit/job/vampire/lasombraprim
-	name = "Primogen Lasombra"
+	name = JOB_PRIMOGEN_LASOMBRA
 	jobtype = /datum/job/vampire/primogen_lasombra
 
 	ears = /obj/item/radio/headset/darkpack

@@ -25,14 +25,15 @@
 	)
 
 	known_contacts = list(
-		"Councillor",
-		"Truthcatcher",
-		"Warder",
-		"Wyrmfoe"
+		JOB_GAROU_COUNCIL,
+		JOB_GAROU_TRUTHCATCHER,
+		JOB_GAROU_WARDER,
+		JOB_GAROU_WYRMFOE,
+		JOB_GAROU_GUARDIAN
 	)
 
 /datum/outfit/job/vampire/guardian
-	name = "Sept Guardian"
+	name = JOB_GAROU_GUARDIAN
 	jobtype = /datum/job/vampire/guardian
 
 	id = /obj/item/card/park_ranger
@@ -42,5 +43,5 @@
 	belt = /obj/item/melee/baton/vamp
 	gloves = /obj/item/clothing/gloves/vampire/leather
 	suit = /obj/item/clothing/suit/vampire/jacket
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/garou_guardian
 	backpack_contents = list(/obj/item/card/credit=1)

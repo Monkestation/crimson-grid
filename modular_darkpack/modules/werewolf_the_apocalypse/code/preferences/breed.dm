@@ -21,7 +21,7 @@
 
 	return breed_icon
 
-/datum/preference/choiced/subsplat/fera_breed/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/subsplat/fera_breed/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/joining_round = !isdummy(target)
 	target.set_breed_form(value, joining_round)
 

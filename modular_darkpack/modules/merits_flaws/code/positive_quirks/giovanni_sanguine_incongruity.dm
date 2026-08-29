@@ -1,6 +1,7 @@
 /datum/quirk/darkpack/giovanni_sanguine_incongruity
 	name = "Sanguine Incongruity"
 	desc = "Bearing the curse of a corpselike pallor and appearance of the Cappadocian blood that came before the usurpation of Clan Cappadocian, a Giovanni with this merit is afforded more leeway in the Clan, as they are either a Premascine (before the diablerie) Elder, or closer to Death than the rest of the Clan, a superstition of great Necromantic prowess. Giovanni with this merit also don't suffer the Curse of Lamia - the supernaturally painful bite that makes feeding for the Giovanni difficult. Only Giovanni may take this merit."
+	ttrpg_sources = list(/datum/source_book/vtm20/lotc = 106)
 	value = 5
 	mob_trait = TRAIT_SANGUINE_INCONGRUITY
 	gain_text = span_notice("The Curse of Lamia leaves your body allowing you to feed normally, but your skin pales and becomes more corpselike.")
@@ -10,11 +11,12 @@
 	icon = FA_ICON_SKULL_CROSSBONES
 	failure_message = "Somehow the Giovanni's Curse of Lamia returns, and your bite becomes far more painful. At least now your skin is more flush with life."
 
+
 /datum/quirk/darkpack/giovanni_sanguine_incongruity/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = astype(quirk_holder)
 	if(!human_holder)
 		return
-	
+
 	var/datum/splat/vampire/kindred/kindred = get_kindred_splat(human_holder)
 	if(kindred)
 		if(istype(kindred.clan, /datum/subsplat/vampire_clan/giovanni))

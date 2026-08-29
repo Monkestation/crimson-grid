@@ -1,7 +1,7 @@
 #define SPECIES_BLOODFORM "bloodform"
 
 /datum/species/tzimisce_blood_form
-	// A living puddle of Vitae, immune to Bashing and Lethal damage. 
+	// A living puddle of Vitae, immune to Bashing and Lethal damage.
 	name = "\improper Bloodform"
 	plural_form = "Bloodforms"
 	id = SPECIES_BLOODFORM
@@ -22,8 +22,8 @@
 		TRAIT_PULL_BLOCKED,
 		TRAIT_MASQUERADE_VIOLATING_FACE,
 		TRAIT_NO_CUFF,
-	) //Made of blood and can't be staked or wounded, but also has no actual ability to attack, per-se. 
-	exotic_bloodtype = BLOOD_TYPE_KINDRED
+	) //Made of blood and can't be staked or wounded, but also has no actual ability to attack, per-se.
+	exotic_bloodtype = /datum/blood_type/kindred
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/blood_form,
@@ -55,6 +55,9 @@
 		regenerate_limbs.Remove(former_jellyperson)
 	former_jellyperson.RemoveElement(/datum/element/soft_landing)
 	former_jellyperson.pass_flags = NONE //Resets it to default for humans after loss.
+	for(var/obj/item/organ/bloodform_organs in former_jellyperson.organs)
+		if(istype(bloodform_organs, /obj/item/organ/brain/bloodform) || istype(bloodform_organs, /obj/item/organ/eyes/bloodform) || istype(bloodform_organs, /obj/item/organ/ears/bloodform))
+			bloodform_organs.organ_flags &= ~ORGAN_UNREMOVABLE
 	return ..()
 
 /datum/action/innate/regenerate_blood_limbs

@@ -8,7 +8,7 @@
 		new /datum/data/vending_product("lever action rifle", /obj/item/gun/ballistic/rifle/darkpack/lever, 1600),
 		new /datum/data/vending_product("hunting rifle", /obj/item/gun/ballistic/automatic/darkpack/huntrifle, 2000),
 		new	/datum/data/vending_product("5.45 ammo", /obj/item/ammo_box/darkpack/c545, 1000),
-		new	/datum/data/vending_product(".45 ammo", /obj/item/ammo_box/darkpack/c45acp, 2100),
+		new	/datum/data/vending_product(".45 ammo", /obj/item/ammo_box/darkpack/c45acp, 700),
 		new /datum/data/vending_product("9mm ammo", /obj/item/ammo_box/darkpack/c9mm, 600),
 		new /datum/data/vending_product(".44 ammo", /obj/item/ammo_box/darkpack/c44, 800),
 		new /datum/data/vending_product("5.56 ammo", /obj/item/ammo_box/darkpack/c556, 2000),
@@ -25,4 +25,5 @@
 		new /datum/data/vending_product("machete", /obj/item/claymore/machete, 500),
 		new /datum/data/vending_product("taser", /obj/item/melee/baton/security/handtaser, 250),
 		new /datum/data/vending_product("pepperspray", /obj/item/reagent_containers/spray/pepper, 200),
+		new /datum/data/vending_product("holster", /obj/item/storage/belt/holster/detective/darkpack, 100), // CRIMSON EDIT ADD - Shop Inventories Additions
 	)

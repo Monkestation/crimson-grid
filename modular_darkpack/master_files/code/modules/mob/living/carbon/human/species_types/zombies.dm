@@ -1,5 +1,6 @@
 #define REGENERATION_DELAY 60  // After taking damage, how long it takes for automatic regeneration to begin
 
+/* Commented out so i can deal with a more atomic pr to reimplement behavoir ontop of the tg changes.
 /datum/species/zombie
 	name = "Zombie"
 	id = "zombie"
@@ -40,11 +41,11 @@
 /datum/species/zombie/proc/on_zombie_bitten(datum/source, mob/living/carbon/being_bitten)
 	SIGNAL_HANDLER
 
-	if(iszombie(being_bitten))
-		return COMPONENT_RESIST_VAMPIRE_KISS
+	return COMPONENT_RESIST_VAMPIRE_KISS
 
-/datum/species/zombie/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
+/datum/species/zombie/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
-	UnregisterSignal(C, COMSIG_MOB_VAMPIRE_SUCKED)
+	UnregisterSignal(human, COMSIG_MOB_VAMPIRE_SUCKED)
+*/
 
 #undef REGENERATION_DELAY
