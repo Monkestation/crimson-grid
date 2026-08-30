@@ -152,7 +152,7 @@
 /datum/component/jumper/proc/jump_boom(mob/living/jumper)
 	playsound(get_turf(jumper), 'modular_darkpack/modules/jumping/sounds/jump_slam.ogg', 40, FALSE)
 	new /obj/effect/temp_visual/dir_setting/crack_effect(get_turf(jumper))
-	for(var/mob/living/shaken_person in range(2, jumper)) //CRIMSON GRID EDIT - nerfs range from 5 tiles from origin of jumper(lmao?) to 2 tile range instead
+	for(var/mob/living/shaken_person in range(2, jumper)) //CRIMSON GRID EDIT - Reworks the Implimentation of stun jumps - Original: 	for(var/mob/living/shaken_person in range(5, jumper))
 		if(shaken_person == jumper)
 			continue
 		shaken_person.Stun(20)
