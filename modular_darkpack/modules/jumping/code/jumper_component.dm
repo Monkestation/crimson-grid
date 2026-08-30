@@ -156,7 +156,7 @@
 		if(shaken_person == jumper)
 			continue
 		shaken_person.Stun(20)
-		shaken_person.do_stagger_animation(60) //CRIMSON GRID ADDITION - nice little larp trigger, does nothing gameplay wise, just makes them stagger shake for 6 seconds
+		shaken_person.do_stagger_animation(60) //CRIMSON GRID ADDITION - Reworks the implimentation of stun jumps
 		var/distance = get_dist(shaken_person, jumper)
 		shake_camera(shaken_person, max(6-distance), max(4-distance, 1))
 	jumper.Stun(10)
