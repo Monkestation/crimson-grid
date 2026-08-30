@@ -128,7 +128,7 @@
 	else
 		jumper.adjust_stamina_loss(10)
 		jumper.visible_message(span_danger("[jumper] jumps towards [adjusted_target]."))
-	//CRIMS GRID EDIT END
+	//CRIMSON GRID EDIT END
 
 	var/turf/start_T = get_turf(jumper.loc) //Get the start and target tile for the descriptors
 	var/turf/end_T = get_turf(adjusted_target)
