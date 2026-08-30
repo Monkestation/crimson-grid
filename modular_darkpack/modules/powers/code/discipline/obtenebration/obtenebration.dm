@@ -235,7 +235,6 @@
 	. = ..()
 	if(!successful)
 		return
-	
 	to_chat(owner, span_notice("The shadows fall away from your body."))
 	playsound(owner.loc, 'sound/effects/magic/voidblink.ogg', 50, FALSE)
 // CRIMSON EDIT ADD Reduces Strength of Obtenebration 4 to stop it being stronger than fortitude
