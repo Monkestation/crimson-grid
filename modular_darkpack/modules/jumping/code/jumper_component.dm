@@ -170,4 +170,4 @@
 #undef JUMP_WINDUP
 #undef BASE_JUMP_DISTANCE
 #undef MAX_JUMP_DISTANCE
-#undef JUMP_BOOM_COOLDOWN //CRIMSON GRID ADDITION - cooldown undefine for jump boom
+#undef JUMP_BOOM_COOLDOWN //CRIMSON GRID ADDITION - Reworks the implimentation of stun jumps
