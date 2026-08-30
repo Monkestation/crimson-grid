@@ -241,6 +241,10 @@
 	)
 	mimmicing_animal = /mob/living/basic/pet/dog/wolf
 
+/datum/splat/werewolf/shifter/garou/on_gain()
+	. = ..()
+	add_power(/datum/action/cooldown/power/gift/rage_heal)
+
 /datum/splat/werewolf/shifter/corax
 	name = "Corax"
 	id = SPLAT_CORAX
