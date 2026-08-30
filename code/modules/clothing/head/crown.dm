@@ -17,3 +17,9 @@
 	name = "magnificent crown"
 	desc = "A crown worn by only the highest emperors of the <s>land</s> space."
 	icon_state = "fancycrown"
+
+// CRIMSON EDIT ADD START - Sell Valuables
+/obj/item/clothing/head/costume/crown/fancy/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/selling, 4000, "regalia", TRUE)
+// CRIMSON EDIT ADD END - Sell Valuables
