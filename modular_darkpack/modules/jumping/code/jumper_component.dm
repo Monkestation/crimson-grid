@@ -3,11 +3,11 @@
 #define JUMP_SLOWDOWN_MULT 1.6 // 1.5 means a jumping character and a walking character will keep pace. Increase to slow jumpers further.
 #define BASE_JUMP_DISTANCE 1
 #define MAX_JUMP_DISTANCE 6
-#define JUMP_BOOM_COOLDOWN 2 SECONDS //CRIMSON GRID ADDITION - cooldown define for time
+#define JUMP_BOOM_COOLDOWN 2 SECONDS //CRIMSON GRID ADDITION - Reworks the implimentation of stun jumps
 
 /datum/component/jumper
 	COOLDOWN_DECLARE(jump_cooldown)
-	COOLDOWN_DECLARE(jump_boom_cooldown) //CRMISON GRID ADDITION - cooldown delcare fore smashing the floor
+	COOLDOWN_DECLARE(jump_boom_cooldown) //CRMISON GRID ADDITION - Reworks the implimentation of stun jumps
 	var/prepared_to_jump = FALSE
 
 /datum/component/jumper/Initialize()
