@@ -123,12 +123,13 @@
 	if(jumper.combat_mode && distance <= adjusted_jump_range && strength >= 8 && COOLDOWN_FINISHED(src, jump_boom_cooldown))
 		COOLDOWN_START(src, jump_boom_cooldown, JUMP_BOOM_COOLDOWN) //CRIMSON GRID ADDITION - adds an internal cooldown to fix jump misfires
 		addtimer(CALLBACK(src, PROC_REF(jump_boom), jumper), (get_dist(jumper.loc, adjusted_target) * 0.5))
+	//CRIMSON GRID EDIT END
 		jumper.visible_message(span_danger("[jumper] takes a mighty leap that shatters \the [adjusted_target] where they land!"))
 		jumper.adjust_stamina_loss(20)
 	else
 		jumper.adjust_stamina_loss(10)
 		jumper.visible_message(span_danger("[jumper] jumps towards [adjusted_target]."))
-	//CRIMSON GRID EDIT END
+
 
 	var/turf/start_T = get_turf(jumper.loc) //Get the start and target tile for the descriptors
 	var/turf/end_T = get_turf(adjusted_target)
