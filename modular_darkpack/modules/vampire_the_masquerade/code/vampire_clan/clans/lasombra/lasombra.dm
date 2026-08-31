@@ -10,7 +10,7 @@
 		/datum/discipline/dominate,
 		/datum/discipline/obtenebration
 	)
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_REJECTED_BY_TECHNOLOGY,
 		TRAIT_NO_MIRROR_REFLECTION,
 		TRAIT_INVISIBLE_TO_CAMERA
