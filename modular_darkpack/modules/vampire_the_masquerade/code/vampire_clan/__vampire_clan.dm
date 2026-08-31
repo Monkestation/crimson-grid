@@ -9,8 +9,6 @@
 	var/list/clan_disciplines = list()
 	/// List of Disciplines that are rejected by this Clan
 	var/list/restricted_disciplines = list()
-	/// List of traits that are applied to members of this Clan
-	var/list/clan_traits = list()
 
 	/// The Clan's unique body sprite
 	var/alt_sprite
@@ -69,19 +67,11 @@
 	if (no_facial)
 		gaining_mob.set_facial_hairstyle("Shaved", update = FALSE)
 
-	// Add unique Clan features as traits
-	for (var/trait in clan_traits)
-		ADD_TRAIT(gaining_mob, trait, CLAN_TRAIT)
-
 	// Mostly for summons to not kill you.
 	gaining_mob.add_faction(id)
 
 /datum/subsplat/vampire_clan/on_lose(mob/living/carbon/human/losing_mob)
 	. = ..()
-
-	// Remove unique Clan feature traits
-	for (var/trait in clan_traits)
-		REMOVE_TRAIT(losing_mob, trait, CLAN_TRAIT)
 
 	// Sets the losing_mob back to their default body sprite
 	if (alt_sprite)

@@ -11,7 +11,7 @@
 		/datum/discipline/celerity,
 		/datum/discipline/presence
 	)
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_SENSITIVE_HUMANITY
 	)
 	male_clothes = /obj/item/clothing/under/vampire/toreador

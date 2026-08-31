@@ -119,9 +119,12 @@
 
 /obj/machinery/light/prince/ghost/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_ATOM_ENTERED, PROC_REF(jumpscare))
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(jumpscare),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
 
-/obj/machinery/light/prince/ghost/proc/jumpscare(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+/obj/machinery/light/prince/ghost/proc/jumpscare(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 
 	if(ishuman(arrived))

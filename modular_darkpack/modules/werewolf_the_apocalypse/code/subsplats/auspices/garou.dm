@@ -91,6 +91,7 @@
 /datum/subsplat/werewolf/auspice/garou/theurge
 	name = AUSPICE_THEURGE
 	desc = "The Crescent Moons can be strange and enigmatic, prone to falling into the convoluted symbolic logic of the spirits they truck with rather than the more familiar logic of humanity. Those Theurges born under the waning moon frequently have a harsher, more adversarial relationship with the spirit world - they tend to excel at binding and forcing spirits to their will, and are more vicious when battling spirits. Theurges born under the waxing moon tend to be more generous and open with the spirits, charming and cajoling rather than intimidating and threatening."
+	subsplat_traits = list(TRAIT_OPENS_MOONGATES)
 	start_rage = 2
 	gifts_provided = list(
 		/datum/action/cooldown/power/gift/mothers_touch,
