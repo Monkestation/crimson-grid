@@ -121,7 +121,7 @@
 	playsound(jumper.loc, 'modular_darkpack/modules/jumping/sounds/jump_neutral.ogg', 50, TRUE)
 	//CRIMSON GRID EDIT START - fixes jump stun flaking out at max distance and actually triggering proper
 	if(jumper.combat_mode && distance <= adjusted_jump_range && strength >= 8 && COOLDOWN_FINISHED(src, jump_boom_cooldown))
-		COOLDOWN_START(src, jump_boom_cooldown, JUMP_BOOM_COOLDOWN) //CRIMSON GRID ADDITION - adds an internal cooldown to fix jump misfires
+		COOLDOWN_START(src, jump_boom_cooldown, JUMP_BOOM_COOLDOWN)
 		addtimer(CALLBACK(src, PROC_REF(jump_boom), jumper), (get_dist(jumper.loc, adjusted_target) * 0.5))
 	//CRIMSON GRID EDIT END
 		jumper.visible_message(span_danger("[jumper] takes a mighty leap that shatters \the [adjusted_target] where they land!"))
