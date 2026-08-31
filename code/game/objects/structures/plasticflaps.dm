@@ -23,13 +23,13 @@
 	COOLDOWN_DECLARE(burn_damage_cd)
 
 /datum/armor/structure_plasticflaps
-	melee = 100
-	bullet = 80
-	laser = 80
-	energy = 100
-	bomb = 50
-	fire = 50
-	acid = 50
+	melee = 10 // CRIMSON EDIT - Plastic Flaps Balance - Original: 100
+	bullet = 30 // CRIMSON EDIT - Plastic Flaps Balance - Original: 80
+	laser = 30 // CRIMSON EDIT - Plastic Flaps Balance - Original: 80
+	energy = 20 // CRIMSON EDIT - Plastic Flaps Balance - Original: 100
+	bomb = 20 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
+	fire = 0 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
+	acid = 0 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
 
 /obj/structure/plasticflaps/opaque
 	opacity = TRUE
