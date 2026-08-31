@@ -67,6 +67,9 @@
 	var/custom_background = null // ori's request to add a custom background URL
 	var/endpost_username = null //username for the endpost app
 
+	// cg edit add password
+	var/phone_password
+
 /obj/item/smartphone/Initialize(mapload)
 	. = ..()
 	GLOB.phones_list += src
@@ -83,6 +86,9 @@
 	RegisterSignal(src, COMSIG_MOVABLE_HEAR, PROC_REF(handle_hearing))
 	AddComponent(/datum/component/violation_observer, FALSE)
 	phone_background = "BG_[rand(1,18)]" // pick a random phone background when spawned
+
+	// cg edit add phone password
+	phone_password = "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)]"
 
 /obj/item/smartphone/proc/update_initialized_contacts()
 	var/mob/living/carbon/owner = owner_weakref.resolve()
@@ -143,9 +149,28 @@
 	else
 		. += span_notice("You can [EXAMINE_HINT("Insert")] a SIM card.")
 
+// cg edit phone check
+/obj/item/smartphone/proc/check_password(mob/living/user)
+	if(!owner_weakref) // for prepaid phones, add set password stuff later
+		return TRUE
+
+	var/mob/living/carbon/owner = owner_weakref.resolve()
+	if(owner && user == owner)
+		to_chat(user, span_notice("You unlock [src] by memory."))
+		return TRUE
+
+	if(tgui_input_text(user, "Enter the pin number for this phone:", "Pin Input", max_length=4, multiline=FALSE) != phone_password)
+		to_chat(user, span_alert("The pin you entered for the [src] is incorrect."))
+		return FALSE
+	else
+		to_chat(user, span_notice("You correctly enter the pin for the [src]."))
+		return TRUE
+
 /obj/item/smartphone/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!opened)
+		if(!check_password(user))
+			return
 		toggle_screen(user)
 	ui_interact(user)
 
@@ -678,3 +703,26 @@
 
 /proc/log_phone(text, list/data)
 	logger.Log(LOG_CATEGORY_PDA_CHAT, text, data)
+
+// cg edit phone memory pin
+/datum/memory/key/phone_pin
+	var/remembered_id
+
+/datum/memory/key/phone_pin/New(
+	datum/mind/memorizer_mind,
+	atom/protagonist,
+	atom/deuteragonist,
+	atom/antagonist,
+	remembered_id,
+)
+	src.remembered_id = remembered_id
+	return ..()
+
+/datum/memory/key/phone_pin/get_names()
+	return list("The phone pin of [protagonist_name], [remembered_id].")
+
+/datum/memory/key/phone_pin/get_starts()
+	return list(
+		"[protagonist_name] flexing their last brain cells, proudly showing their lucky numbers [remembered_id].",
+		"[remembered_id]. The numbers mason, what do they mean!?",
+	)
