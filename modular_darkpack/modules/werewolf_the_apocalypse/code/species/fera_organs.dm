@@ -79,3 +79,20 @@
 // Garou tongues can speak all default + garou tongue
 /obj/item/organ/tongue/fera/get_possible_languages()
 	return ..() + /datum/language/garou_tongue
+
+//CRIMSON GRID EDIT START - Gives fera war forms powerful passive regen that kicks in after 5 seconds without embeds or damage, does not heal agg or stamina
+
+/datum/species/human/shifter/war/on_species_gain(mob/living/carbon/human/species_fera_war, datum/species/old_species, pref_load, regenerate_icons)
+	. = ..()
+	var/datum/component/regenerator/regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
+	if(!regenerator)
+		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 5 SECONDS, heals_wounds = TRUE, brute_per_second = 20, burn_per_second = 10, tox_per_second = 5, oxy_per_second =5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour = COLOR_RED)
+		regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
+	regenerator?.start_regenerating()
+
+
+/datum/species/human/shifter/war/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
+	. = ..()
+	qdel(human.GetComponent(/datum/component/regenerator))
+
+//CRIMSON GRID EDIT END
