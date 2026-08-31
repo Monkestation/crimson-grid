@@ -5,6 +5,8 @@
 		new /datum/data/vending_product("hunting knife", /obj/item/knife/vamp),
 		new /datum/data/vending_product("tent stake", /obj/item/vampire_stake),
 		new /datum/data/vending_product("shovel", /obj/item/shovel/vamp),
+		new /datum/data/vending_product("flashlight", /obj/item/flashlight), // CRIMSON EDIT ADD - Shop Inventories Additions
+		new /datum/data/vending_product("coal", /obj/item/stack/sheet/mineral/coal, 10), // CRIMSON EDIT ADD - Shop Inventories Additions
 		new /datum/data/vending_product("hunting rifle magazine, 5.56",/obj/item/ammo_box/magazine/darkpack556/hunt),
 		new /datum/data/vending_product("pepperspray", /obj/item/reagent_containers/spray/pepper),
 		new /datum/data/vending_product("SNEKTEK Handheld Taser", /obj/item/melee/baton/security/handtaser),
