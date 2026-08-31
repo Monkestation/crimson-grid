@@ -1,6 +1,6 @@
 /obj/structure/plasticflaps
 	name = "airtight plastic flaps"
-	desc = "Heavy duty, airtight, plastic flaps. Definitely can't get past those. No way."
+	desc = "Heavy duty, airtight, plastic flaps. Can get past those by crawling through." // CRIMSON EDIT - Plastic Flaps Balance - Original: Definitely can't get past those. No way.
 	gender = PLURAL
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "plasticflaps"
@@ -28,8 +28,8 @@
 	laser = 30 // CRIMSON EDIT - Plastic Flaps Balance - Original: 80
 	energy = 20 // CRIMSON EDIT - Plastic Flaps Balance - Original: 100
 	bomb = 20 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
-	fire = 0 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
-	acid = 0 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
+	fire = 5 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
+	acid = 5 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
 
 /obj/structure/plasticflaps/opaque
 	opacity = TRUE
@@ -42,9 +42,9 @@
 	flaps_alpha = 150
 
 /datum/armor/structure_plasticflaps/kitchen
-	melee = 50
-	fire = 20
-	acid = 20
+	melee = 10
+	fire = 5
+	acid = 5
 
 /obj/structure/plasticflaps/Initialize(mapload)
 	. = ..()
