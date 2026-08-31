@@ -7,7 +7,6 @@
 	exposed_wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp9mm/silver
-	damage = 30
 	exposed_wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp9mm/plus
@@ -29,27 +28,24 @@
 	armour_penetration = 0
 
 /obj/projectile/bullet/darkpack/vamp45acp/silver
-	damage = 35
 	armour_penetration = 0
 
 /obj/projectile/bullet/darkpack/vamp45acp/HP
 	damage = 50
 	armour_penetration = -10
+	exposed_wound_bonus = 5
 	wound_bonus = 10
 
 // .44 Magnum
 
 /obj/projectile/bullet/darkpack/vamp44
 	damage = 45
-	armour_penetration = 20
+	armour_penetration = 25
 	exposed_wound_bonus = 0
 	wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp44/silver
-	damage = 45
-	armour_penetration = 15
-	exposed_wound_bonus = 0
-	wound_bonus = 10
+	exposed_wound_bonus = -5
 
 // .50 Action Express
 
@@ -72,7 +68,7 @@
 
 /obj/projectile/bullet/darkpack/vamp556mm/incendiary
 	armour_penetration = 15
-	exposed_wound_bonus = 0
+	exposed_wound_bonus = 5
 	wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp556mm/silver
