@@ -127,10 +127,23 @@
 	. = ..()
 
 	var/roll = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/bonecrafting)
-
-	if(target.stat >= HARD_CRIT)
-		if(target.stat != DEAD)
+//CRIMSON GRID ADDITION START
+	if(target.stat == DEAD)
+		if(target.stat == DEAD)
 			target.death()
+		if(!do_after(
+			owner,
+			10 SECONDS,
+			target = target,
+			timed_action_flags = DO_AFTER_CHECK_NEXT_MOVE | IGNORE_INCAPACITATED
+		))
+			to_chat(owner, span_warning("You stopped before vivasecting the [target]'s corpse."))
+			return FALSE
+		if(QDELETED(target))
+			return FALSE
+		if(target.stat != DEAD)
+			return FALSE
+//CRIMSON GRID ADDITION END
 		var/obj/item/bodypart/arm/right/r_arm = target.get_bodypart(BODY_ZONE_R_ARM)
 		var/obj/item/bodypart/arm/left/l_arm = target.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/leg/right/r_leg = target.get_bodypart(BODY_ZONE_R_LEG)
