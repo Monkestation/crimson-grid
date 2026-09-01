@@ -16,7 +16,8 @@
 	light_power = 0.5
 	damage_deflection = 5
 
-	var/tribes = list()
+	var/friendly_trait
+	var/friendly_tribes
 
 	COOLDOWN_DECLARE(rage_notify_cd)
 
@@ -28,8 +29,8 @@
 	. = ..()
 	var/list/candidates = list()
 	for(var/obj/effect/landmark/teleport_mark/T in GLOB.landmarks_list)
-		for(var/entry in T.tribes)
-			if(entry in tribes)
+		for(var/entry in T.friendly_tribes)
+			if(entry in friendly_tribes)
 				candidates += T
 				break
 
@@ -110,27 +111,29 @@
 
 		if(damage_change < 0)
 			if(broken)
-				to_chat(human, span_userdanger("<b>YOUR TOTEM IS DESTROYED</b>"))
+				to_chat(human, span_userdanger("<b>A TOTEM'S SPIRIT WEEPS IN PAIN AS IT'S TOTEM SHATTERS.</b>"))
 				SEND_SOUND(human, sound('sound/effects/tendril_destroyed.ogg', volume = 50))
-				shifter_splat.adjust_gnosis(-5, FALSE)
+				shifter_splat.adjust_rage(3, FALSE)
 			else
-				to_chat(human, span_userdanger("<b>YOUR TOTEM IS BREAKING DOWN</b>"))
+				to_chat(human, span_userdanger("<b>A TOTEM's CRY CAN BE HEARD ACROSS THE CITY.</b>"))
 				SEND_SOUND(human, sound('modular_darkpack/modules/werewolf_the_apocalypse/sounds/bumps.ogg', volume = 50))
 				shifter_splat.adjust_rage(1, FALSE)
 		else
-			to_chat(human, span_boldnotice("<b>YOUR TOTEM IS RESTORED</b>"))
+			to_chat(human, span_boldnotice("<b>A TOTEM'S SPIRIT THANKS ITS ALLIES.</b>"))
 			SEND_SOUND(human, sound('modular_darkpack/modules/werewolf_the_apocalypse/sounds/gifts/inspire.ogg', volume = 50))
 			shifter_splat.adjust_gnosis(1, FALSE)
 
 /// Returns true or false wether or not the totems benificial affects will target this mob
 /obj/structure/werewolf_totem/proc/is_friend_of_totem(mob/living/potential_friend)
-	var/datum/splat/werewolf/friends_splat = get_werewolf_splat(potential_friend)
-	if(!friends_splat) // RN the only totem effect relys on a werewolf splat
-		return FALSE
-	if(!friends_splat.tribe) // Dont fuck over tribeless fera. Prob need a better way to determine freinds tho
+	if(friendly_trait && HAS_TRAIT(potential_friend, friendly_trait))
 		return TRUE
-	if(!(friends_splat.tribe.name in tribes))
-		return FALSE
+
+	if(friendly_tribes)
+		var/datum/splat/werewolf/friends_splat = get_werewolf_splat(potential_friend)
+		if(!friends_splat) // RN the only totem effect relys on a werewolf splat
+			return FALSE
+		if(!(friends_splat.tribe.name in friendly_tribes))
+			return FALSE
 
 	return TRUE
 
@@ -147,16 +150,16 @@
 			return
 		var/obj/umbra_portal/prev = locate() in get_step(src, SOUTH)
 		if(!prev)
-			if(shifter_splat.auspice?.name == AUSPICE_THEURGE)
+			if(HAS_TRAIT(user, TRAIT_OPENS_MOONGATES))
 				if(!opening)
 					opening = TRUE
 					if(do_after(user, 10 SECONDS, src))
 						spawn_portal()
 					opening = FALSE
 			else
-				to_chat(user, span_warning("You need a Theurge to open the Moon Gates!"))
+				to_chat(user, span_warning("You need someone who can open the Moon Gates!"))
 		else
-			if(shifter_splat.auspice?.name == AUSPICE_THEURGE)
+			if(HAS_TRAIT(user, TRAIT_OPENS_MOONGATES))
 				collapse_portal(prev)
 
 /obj/structure/werewolf_totem/proc/spawn_portal()
@@ -166,7 +169,9 @@
 	playsound(src, 'modular_darkpack/modules/deprecated/sounds/portal.ogg', 50, FALSE)
 	var/obj/umbra_portal/U = new (get_step(src, SOUTH))
 	// New code doesnt relay on ID for these two's connections buy why not.
-	U.id = "[pick(tribes)][rand(1, 999)]"
+	U.id = "[rand(1, 999)]"
+	if(length(friendly_tribes))
+		U.id += "[pick(friendly_tribes)]"
 	var/obj/umbra_portal/P = new (teleport_turf)
 	P.id = U.id
 	U.link_portal(P)
@@ -176,27 +181,41 @@
 	qdel(old_portal.exit)
 	qdel(old_portal)
 
+/obj/structure/werewolf_totem/proc/kick_out(mob/living/stinky_guy)
+	if(!istype(stinky_guy))
+		return
+
+	stinky_guy.set_confusion_if_lower(10 SECONDS)
+	stinky_guy.set_eye_blur_if_lower(30 SECONDS)
+	to_chat(stinky_guy, span_boldwarning("You get turned around and mixed up in a strange fog."))
+	for(var/obj/effect/landmark/bawn_entrance/landmark in GLOB.landmarks_list)
+		if(!istype(src, landmark.linked_totem_path))
+			continue
+		var/turf/kickout_turf = get_turf(landmark)
+		stinky_guy.forceMove(kickout_turf)
+		break
+
 /obj/structure/werewolf_totem/wendigo
 	name = "\improper " + TRIBE_GALESTALKERS + " totem"
-	tribes = list(TRIBE_GALESTALKERS)
+	friendly_tribes = list(TRIBE_GALESTALKERS)
 	light_color = "#81ff4f"
 
 /obj/structure/werewolf_totem/children_of_gaia
 	name = "\improper " + TRIBE_CHILDREN_OF_GAIA + " totem"
-	tribes = list(TRIBE_CHILDREN_OF_GAIA)
+	friendly_tribes = list(TRIBE_CHILDREN_OF_GAIA)
 	light_color = "#00CEC8"
 
 /obj/structure/werewolf_totem/bone_gnawer
 	name = "\improper " + TRIBE_BONE_GNAWERS + " totem"
 	light_color = "#FFA500"
-	tribes = list(TRIBE_BONE_GNAWERS)
+	friendly_tribes = list(TRIBE_BONE_GNAWERS)
 
 /obj/structure/werewolf_totem/glasswalker
 	name = "\improper " + TRIBE_GLASS_WALKERS + " totem"
 	icon_state = "glassw"
 	base_icon_state = "glassw"
 	light_color = "#35b0ff"
-	tribes = list(TRIBE_GLASS_WALKERS)
+	friendly_tribes = list(TRIBE_GLASS_WALKERS)
 
 /obj/structure/werewolf_totem/spiral
 	name = "spiral totem"
@@ -204,51 +223,54 @@
 	icon_state = "spiral"
 	base_icon_state = "spiral"
 	light_color = "#ff5235"
-	tribes = list(TRIBE_BLACK_SPIRAL_DANCERS)
-
+	friendly_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS)
 
 /obj/structure/werewolf_totem/generic
+	abstract_type = /obj/structure/werewolf_totem/generic
+
+/obj/structure/werewolf_totem/generic/gaia
 	light_color = "#81ff4f"
-	tribes = TRIBE_LIST_GAIA
+	friendly_tribes = TRIBE_LIST_GAIA
+	friendly_trait = TRAIT_GAIA_CAERN_FRIEND
 
 /obj/structure/werewolf_totem/generic/wyld
 	light_color = "#81ff4f"
-	tribes = TRIBE_LIST_WYLD
+	friendly_tribes = TRIBE_LIST_WYLD
 
 /obj/structure/werewolf_totem/generic/weaver
 	icon_state = "glassw"
 	base_icon_state = "glassw"
 	light_color = "#35b0ff"
-	tribes = TRIBE_LIST_WEAVER
+	friendly_tribes = TRIBE_LIST_WEAVER
 
 /obj/structure/werewolf_totem/generic/wyrm
 	icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/spiral_totem.dmi'
 	icon_state = "spiral"
 	base_icon_state = "spiral"
 	light_color = "#ff5235"
-	tribes = TRIBE_LIST_WYRM
+	friendly_tribes = TRIBE_LIST_WYRM
 
 /obj/structure/werewolf_totem/generic/alltribes
-	tribes = TRIBE_LIST_ALL
+	friendly_tribes = TRIBE_LIST_ALL
 
 
 // This things type path sucks
 /obj/effect/landmark/teleport_mark
 	name = "totem Exit Mark"
 	icon_state = "portal_exit"
-	var/tribes = list()
+	var/friendly_tribes
 
 /obj/effect/landmark/teleport_mark/gaia
-	tribes = TRIBE_LIST_GAIA
+	friendly_tribes = TRIBE_LIST_GAIA
 
 /obj/effect/landmark/teleport_mark/wyld
-	tribes = TRIBE_LIST_WYLD
+	friendly_tribes = TRIBE_LIST_WYLD
 
 /obj/effect/landmark/teleport_mark/weaver
-	tribes = TRIBE_LIST_WEAVER
+	friendly_tribes = TRIBE_LIST_WEAVER
 
 /obj/effect/landmark/teleport_mark/wyrm
-	tribes = TRIBE_LIST_WYRM
+	friendly_tribes = TRIBE_LIST_WYRM
 
 /obj/effect/landmark/teleport_mark/alltribes
-	tribes = TRIBE_LIST_ALL
+	friendly_tribes = TRIBE_LIST_ALL

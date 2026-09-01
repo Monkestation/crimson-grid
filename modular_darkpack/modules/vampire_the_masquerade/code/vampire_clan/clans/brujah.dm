@@ -11,7 +11,7 @@
 		/datum/discipline/potence,
 		/datum/discipline/presence
 	)
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_DIFFICULT_FRENZY
 	)
 	male_clothes = /obj/item/clothing/under/vampire/brujah

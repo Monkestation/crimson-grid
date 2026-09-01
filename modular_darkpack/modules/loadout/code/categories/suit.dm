@@ -45,6 +45,18 @@
 /datum/loadout_item/suit/coat/leopardcoat
 	item_path = /obj/item/clothing/suit/vampire/coat/leopard
 
+/datum/loadout_item/suit/jacket/oversizedjacket
+	name = "Oversized Jacket"
+	item_path = /obj/item/clothing/suit/jacket/oversized
+
+/datum/loadout_item/suit/jacket/fancyfurcoat
+	name = "Fancy Fur Coat"
+	item_path = /obj/item/clothing/suit/jacket/fancy
+
+/datum/loadout_item/suit/jacket/trenchcoatalt
+	name = "Trenchcoat (Alt)"
+	item_path = /obj/item/clothing/suit/toggle/jacket/trenchcoat
+
 // Jackets
 /datum/loadout_item/suit/jacket
 	abstract_type = /datum/loadout_item/suit/jacket
