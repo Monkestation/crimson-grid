@@ -87,9 +87,6 @@
 	AddComponent(/datum/component/violation_observer, FALSE)
 	phone_background = "BG_[rand(1,18)]" // pick a random phone background when spawned
 
-	// cg edit add phone password
-	phone_password = "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)]"
-
 /obj/item/smartphone/proc/update_initialized_contacts()
 	var/mob/living/carbon/owner = owner_weakref.resolve()
 	if(LAZYLEN(contact_networks_pre_init))
@@ -149,13 +146,17 @@
 	else
 		. += span_notice("You can [EXAMINE_HINT("Insert")] a SIM card.")
 
+// set password
+/obj/item/smartphone/proc/set_random_password()
+	phone_password = "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)]"
+
 // cg edit phone check
 /obj/item/smartphone/proc/check_password(mob/living/user)
-	if(!owner_weakref) // for prepaid phones, add set password stuff later
+	if(!phone_password) // for prepaid phones, add set password stuff later
 		return TRUE
 
-	var/mob/living/carbon/owner = owner_weakref.resolve()
-	if(owner && user == owner)
+	var/datum/memory/key/phone_pin/remembered = user.mind.memories[/datum/memory/key/phone_pin]
+	if (remembered.remembered_id == phone_password)
 		to_chat(user, span_notice("You unlock [src] by memory."))
 		return TRUE
 
