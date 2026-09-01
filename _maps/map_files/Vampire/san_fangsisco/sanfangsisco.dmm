@@ -160,7 +160,7 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/glasswalker)
 "acl" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/ghetto)
 "acB" = (
@@ -531,7 +531,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/outside/pacificheights/forest)
 "ahQ" = (
@@ -761,7 +761,7 @@
 /area/vtm)
 "akq" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/park)
 "akr" = (
@@ -976,7 +976,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
 "amQ" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
 "amT" = (
@@ -1150,7 +1150,7 @@
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
 "apZ" = (
-/obj/structure/lamppost/three,
+/obj/machinery/light/floor/lamppost/three,
 /obj/structure/trafficlight,
 /obj/structure/trafficlight{
 	dir = 10
@@ -1357,7 +1357,7 @@
 /turf/open/floor/iron,
 /area/vtm/interior/shop)
 "asJ" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/interior/church)
@@ -1787,12 +1787,6 @@
 	},
 /turf/open/floor/carpet/black,
 /area/vtm/interior/laundromat)
-"ayo" = (
-/obj/structure/vampdoor{
-	dir = 4
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
 "ayq" = (
 /obj/structure/railing{
 	dir = 4;
@@ -2915,6 +2909,13 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/carpet/blue,
 /area/vtm/interior)
+"aOC" = (
+/obj/structure/chair/wood/wings{
+	dir = 8
+	},
+/obj/effect/landmark/start/darkpack/triad/red_pole,
+/turf/open/floor/plating/rough,
+/area/vtm/interior)
 "aOK" = (
 /turf/open/floor/city/toilet,
 /area/vtm/interior/police/fed)
@@ -3057,7 +3058,7 @@
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/laundromat)
 "aRe" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior/library)
 "aRi" = (
@@ -3178,7 +3179,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/cog/caern)
 "aSs" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /obj/effect/landmark/npcactivity,
@@ -3325,7 +3326,7 @@
 /turf/open/misc/grass,
 /area/vtm/interior/cog/caern)
 "aUa" = (
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 8
 	},
 /obj/structure/trafficlight{
@@ -3408,15 +3409,6 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/vtm/interior/clinic/haven)
-"aUQ" = (
-/obj/structure/curtain/bounty,
-/obj/structure/vampdoor/reinf{
-	lock_id = "brujah";
-	locked = 1;
-	lockpick_difficulty = 18
-	},
-/turf/open/floor/plating/concrete,
-/area/vtm/interior)
 "aUR" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/plating/sidewalk/poor,
@@ -3463,7 +3455,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop)
 "aVx" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/dirt,
 /area/vtm/graveyard)
 "aVz" = (
@@ -3775,7 +3767,7 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior/baali)
 "baR" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk/old,
@@ -3804,7 +3796,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf/ghetto)
 "bbf" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
 "bbo" = (
@@ -4568,10 +4560,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/laundromat)
-"blH" = (
-/obj/structure/chair/comfy/brown,
-/turf/open/floor/carpet/lone,
-/area/vtm/interior)
 "blL" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/flare/candle,
@@ -4797,7 +4785,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/outside/pacificheights/forest)
 "bop" = (
@@ -5009,7 +4997,7 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/tzimisce_sanctum)
 "bqz" = (
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 8
 	},
 /obj/effect/landmark/npcactivity,
@@ -5238,7 +5226,7 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/endron_facility/plant)
 "bug" = (
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 8
 	},
 /obj/structure/closet/cardboard,
@@ -5252,6 +5240,14 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/millennium_tower/f3)
+"buv" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/laundromat)
 "buw" = (
 /obj/item/stack/dollar/fifty,
 /obj/structure/table/wood/fancy/green,
@@ -5631,7 +5627,7 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior)
 "bzV" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/effect/landmark/npcability,
@@ -5669,7 +5665,7 @@
 /turf/open/floor/wood/old,
 /area/vtm/outside/northbeach)
 "bAo" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior/library)
@@ -6142,7 +6138,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior)
 "bHo" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/old)
 "bHq" = (
@@ -6291,7 +6287,7 @@
 "bJu" = (
 /obj/structure/flora/bush/sparsegrass/style_random,
 /obj/effect/landmark/npcwall,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/iron/dark,
 /area/vtm/outside/pacificheights/old)
 "bJz" = (
@@ -6514,7 +6510,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
 "bLM" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
@@ -7416,12 +7412,6 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/unionsquare)
-"bXS" = (
-/obj/machinery/shuttle_scrambler{
-	desc = "Some sort of jury-rigged telnet system; it looks like it's harvesting someone's data illegally."
-	},
-/turf/open/floor/carpet/darkpack/old,
-/area/vtm/interior/techshop)
 "bXU" = (
 /obj/machinery/button/door{
 	id = "armouryaccess";
@@ -8064,7 +8054,7 @@
 /obj/effect/turf_decal/bordur/corner{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/chinatown)
 "chX" = (
@@ -8229,7 +8219,7 @@
 /turf/open/misc/grass,
 /area/vtm)
 "ckf" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk,
@@ -8566,6 +8556,10 @@
 /obj/structure/curtain/cloth/fancy,
 /turf/open/floor/wood/old,
 /area/vtm/interior)
+"coh" = (
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/laundromat)
 "cot" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 6
@@ -8823,16 +8817,6 @@
 	},
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
-"crU" = (
-/obj/structure/railing{
-	dir = 1;
-	pixel_y = 3
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/floor/plating/sidewalk/poor,
-/area/vtm)
 "crW" = (
 /obj/structure/vampdoor{
 	dir = 1
@@ -8913,6 +8897,11 @@
 /obj/effect/spawner/random/bedsheet/any,
 /turf/open/floor/carpet/black,
 /area/vtm/interior/hotel)
+"ctc" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/laundromat)
 "ctd" = (
 /obj/effect/decal/wallpaper/gold/alt,
 /turf/closed/wall/vampwall/painted,
@@ -9033,7 +9022,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
 "cum" = (
@@ -9138,14 +9127,6 @@
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
-"cvE" = (
-/obj/structure/vampdoor/reinf{
-	lock_id = "Brujah";
-	locked = 1;
-	lockpick_difficulty = 14
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
 "cvP" = (
 /obj/structure/table/wood,
 /obj/item/vamp/keys/hack,
@@ -11306,6 +11287,16 @@
 /obj/item/clothing/head/vampire/noddist_mask,
 /turf/open/indestructible/necropolis/air,
 /area/vtm/interior/tzimisce_sanctum)
+"dbJ" = (
+/obj/structure/vampdoor/reinf{
+	dir = 4;
+	lock_id = "Brujah";
+	locked = 1;
+	lockpick_difficulty = 10
+	},
+/obj/effect/mapping_helpers/door/access/primogen_brujah,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior)
 "dbM" = (
 /obj/structure/rack,
 /obj/item/flashlight,
@@ -11537,7 +11528,7 @@
 /turf/open/water/vamp_sewer,
 /area/vtm/interior/sewer/nosferatu_town)
 "deI" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk/poor,
@@ -11917,7 +11908,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/unionsquare)
 "djH" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/old,
@@ -12626,7 +12617,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm)
 "dur" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk,
@@ -13670,7 +13661,7 @@
 /turf/open/floor/city/plating,
 /area/vtm/interior/millennium_tower)
 "dJy" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk,
@@ -13688,7 +13679,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry)
 "dJE" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior/church)
 "dJK" = (
@@ -15432,7 +15423,7 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior)
 "ehz" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/ghetto)
 "ehA" = (
@@ -15554,6 +15545,10 @@
 /obj/structure/punching_bag,
 /turf/open/floor/wood/smooth,
 /area/vtm)
+"ejA" = (
+/obj/effect/landmark/start/darkpack/forest_wolves/keeper,
+/turf/open/misc/dirt,
+/area/vtm/outside/pacificheights/forest)
 "ejG" = (
 /obj/structure/ladder/manhole/up,
 /obj/structure/vampipe{
@@ -16156,7 +16151,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/banu/haven)
 "esZ" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk,
@@ -16766,7 +16761,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/chinatown)
 "eCH" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/structure/trafficlight{
@@ -16919,7 +16914,7 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/glasswalker)
 "eEm" = (
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 4
 	},
 /obj/effect/landmark/npcactivity,
@@ -17673,7 +17668,7 @@
 /obj/effect/turf_decal/bordur/corner{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/chinatown)
 "eOb" = (
@@ -17964,7 +17959,7 @@
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/interior/chantry)
 "eRU" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
 "eRX" = (
@@ -17991,7 +17986,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/npcwall,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/granite/black,
 /area/vtm/outside/park)
 "eSt" = (
@@ -18826,7 +18821,7 @@
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/bianchiBank)
 "fep" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/community)
 "fex" = (
@@ -18925,12 +18920,6 @@
 	},
 /turf/open/floor/carpet/lone,
 /area/vtm/interior/chantry/basement)
-"ffR" = (
-/obj/structure/chair/plastic{
-	dir = 4
-	},
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/laundromat)
 "fga" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/wood/smooth/old,
@@ -19029,7 +19018,7 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/endron_facility/plant)
 "fhc" = (
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk,
@@ -19086,7 +19075,7 @@
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
 "fhO" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/structure/trafficlight{
@@ -19224,7 +19213,7 @@
 /area/vtm/outside/ghetto)
 "fjW" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalkalt,
@@ -19745,7 +19734,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/chinatown)
 "frP" = (
@@ -19880,7 +19869,7 @@
 /turf/closed/wall/vampwall/city,
 /area/vtm/interior/salubri)
 "ftR" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/pacificheights/old)
 "ftX" = (
@@ -20112,7 +20101,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 6
 	},
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 8
 	},
 /obj/structure/trafficlight{
@@ -20397,7 +20386,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/npcwall,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/granite/black,
 /area/vtm/outside/park)
 "fAh" = (
@@ -20597,7 +20586,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/banu/haven)
 "fCt" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk,
@@ -21092,6 +21081,14 @@
 	},
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
+"fIP" = (
+/obj/structure/vampdoor{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/cardboard,
+/obj/effect/mapping_helpers/door/access/brujah,
+/turf/open/floor/plating/rough,
+/area/vtm/interior)
 "fIW" = (
 /obj/effect/decal/pallet{
 	pixel_x = 6;
@@ -21661,7 +21658,7 @@
 /turf/open/floor/city/saint,
 /area/vtm/interior/church/staff)
 "fQy" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
 "fQI" = (
@@ -21787,7 +21784,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 5
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/graveyard)
 "fSj" = (
@@ -22042,6 +22039,12 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/endron_facility/restricted)
+"fVo" = (
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/structure/chair/plastic,
+/obj/effect/landmark/start/darkpack/forest_wolves/keeper,
+/turf/open/misc/grass,
+/area/vtm/outside/pacificheights/forest)
 "fVs" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -22261,6 +22264,16 @@
 /obj/structure/closet,
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior)
+"fZs" = (
+/obj/structure/railing{
+	dir = 1;
+	pixel_y = 3
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm)
 "fZt" = (
 /obj/machinery/light/directional/east,
 /obj/structure/rack/clothing/rand,
@@ -22411,7 +22424,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 9
 	},
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -22622,12 +22635,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/cog/pantry)
-"geC" = (
-/obj/structure/vampdoor{
-	dir = 1
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
 "geG" = (
 /obj/machinery/shower/directional/south,
 /obj/structure/curtain,
@@ -23065,7 +23072,7 @@
 /turf/open/floor/plating/roofwalk,
 /area/vtm)
 "gkf" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/interior/church)
 "gkm" = (
@@ -23363,7 +23370,7 @@
 /turf/open/floor/sepia,
 /area/vtm/interior/shop)
 "gos" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/landmark/npcactivity,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
@@ -23389,7 +23396,7 @@
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
 "goC" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/dirt,
 /area/vtm/outside/pacificheights/old)
 "goL" = (
@@ -24051,6 +24058,13 @@
 	},
 /turf/open/misc/grass,
 /area/vtm/interior/cog/caern)
+"gzm" = (
+/obj/structure/chair/sofa/corner/brown{
+	dir = 4
+	},
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/laundromat)
 "gzr" = (
 /obj/machinery/light/directional/north,
 /mob/living/carbon/human/npc/bacotell,
@@ -24126,7 +24140,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/graveyard)
 "gAq" = (
@@ -24217,7 +24231,7 @@
 /turf/open/floor/city/plating,
 /area/vtm/interior/techshop)
 "gBJ" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk,
@@ -24877,7 +24891,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
 "gJQ" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/structure/roadsign/busstop,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights/community)
@@ -25072,7 +25086,7 @@
 /area/vtm/interior/library)
 "gNh" = (
 /obj/effect/landmark/npcwall,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/iron/dark,
 /area/vtm/outside/pacificheights/old)
 "gNm" = (
@@ -25528,7 +25542,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/chinatown)
 "gSI" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
 "gSS" = (
@@ -25640,6 +25654,16 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/bianchiBank)
+"gUS" = (
+/obj/structure/vampdoor/reinf{
+	dir = 8;
+	lock_id = "brujah";
+	locked = 1;
+	lockpick_difficulty = 15
+	},
+/obj/effect/mapping_helpers/door/access/brujah,
+/turf/open/floor/plating/rough,
+/area/vtm/interior)
 "gUU" = (
 /obj/structure/flora/rock/pile/darkpack,
 /turf/open/misc/dirt,
@@ -25716,7 +25740,7 @@
 /turf/open/misc/dirt,
 /area/vtm/outside/forest)
 "gWu" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk/old,
@@ -25797,7 +25821,7 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/shop)
 "gXq" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/old,
@@ -26000,7 +26024,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
 "haI" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -26706,7 +26730,7 @@
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "hko" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /obj/effect/landmark/npcactivity,
@@ -26950,7 +26974,7 @@
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/jazzclub)
 "hnD" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/structure/trafficlight{
@@ -27125,12 +27149,6 @@
 /obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
-"hqd" = (
-/obj/structure/chair/wood/wings{
-	dir = 8
-	},
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "hqh" = (
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plating/concrete,
@@ -27151,10 +27169,6 @@
 /obj/machinery/computer/security,
 /turf/open/floor/carpet/black,
 /area/vtm/interior/bianchiBank)
-"hqx" = (
-/obj/structure/vampdoor,
-/turf/open/floor/city/toilet,
-/area/vtm/interior)
 "hqz" = (
 /obj/structure/flora/bush/style_random,
 /turf/open/misc/grass,
@@ -27255,7 +27269,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
 "hrK" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /obj/effect/turf_decal/bordur{
@@ -27529,6 +27543,13 @@
 	},
 /turf/open/floor/plating/roofwalk,
 /area/vtm)
+"hwm" = (
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/laundromat)
 "hwo" = (
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/tzimisce_manor)
@@ -29257,6 +29278,13 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/cog/pantry)
+"hVo" = (
+/obj/structure/chair/wood/wings{
+	dir = 1
+	},
+/obj/effect/landmark/start/darkpack/triad/deputy_mountain_master,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior)
 "hVs" = (
 /obj/structure/bed,
 /obj/effect/spawner/random/bedsheet/any,
@@ -29803,7 +29831,7 @@
 /turf/open/floor/city/circled/large,
 /area/vtm/interior/clinic)
 "idG" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /obj/effect/turf_decal/bordur{
@@ -29844,6 +29872,16 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/plating/granite,
 /area/vtm/interior/millennium_tower)
+"iem" = (
+/obj/structure/curtain/bounty,
+/obj/structure/vampdoor/reinf{
+	lock_id = "brujah";
+	locked = 1;
+	lockpick_difficulty = 18
+	},
+/obj/effect/mapping_helpers/door/access/brujah,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior)
 "iex" = (
 /obj/effect/turf_decal/bordur/corner,
 /turf/open/floor/plating/roofwalk,
@@ -30600,6 +30638,13 @@
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/graveyard)
+"iqA" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/laundromat)
 "iqB" = (
 /obj/structure/statue/bone/rib{
 	dir = 1
@@ -31126,15 +31171,6 @@
 /obj/structure/table/wood,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop)
-"iyt" = (
-/obj/structure/vampdoor/reinf{
-	dir = 4;
-	lock_id = "Brujah";
-	locked = 1;
-	lockpick_difficulty = 10
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
 "iza" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
@@ -31674,7 +31710,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/trujah)
 "iGO" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk,
@@ -31880,7 +31916,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
 "iJr" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/asphalt,
@@ -32119,6 +32155,15 @@
 	},
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
+"iOi" = (
+/obj/structure/vampdoor/reinf{
+	lock_id = "Brujah";
+	locked = 1;
+	lockpick_difficulty = 14
+	},
+/obj/effect/mapping_helpers/door/access/primogen_brujah,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior)
 "iOm" = (
 /obj/structure/table/glass,
 /obj/item/food/donut/jelly/berry,
@@ -32167,7 +32212,7 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior)
 "iOJ" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/structure/trafficlight,
@@ -32210,7 +32255,7 @@
 /turf/open/floor/plating/grate,
 /area/vtm/interior/endron_facility/plant)
 "iPP" = (
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -32496,7 +32541,7 @@
 /area/vtm/interior/anarch)
 "iTx" = (
 /obj/effect/landmark/npcability,
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 4
 	},
 /obj/effect/landmark/npcbeacon,
@@ -33111,7 +33156,7 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
 "jbN" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/forest)
 "jbT" = (
@@ -33448,7 +33493,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/library)
 "jgV" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk,
@@ -33771,7 +33816,7 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sewer)
 "jlU" = (
-/obj/structure/lamppost/sidewalk/chinese,
+/obj/machinery/light/floor/lamppost/sidewalk/chinese,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/chinatown)
 "jlV" = (
@@ -33928,6 +33973,13 @@
 	},
 /obj/structure/sign/poster/city/kish/directional/north,
 /turf/open/floor/plating/sidewalk,
+/area/vtm/interior)
+"jnI" = (
+/obj/structure/vampdoor{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/brujah,
+/turf/open/floor/plating/rough,
 /area/vtm/interior)
 "jnL" = (
 /obj/machinery/iv_drip,
@@ -34998,7 +35050,7 @@
 /obj/effect/turf_decal/bordur/corner{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/giovanni/courtyard)
 "jDM" = (
@@ -35058,7 +35110,7 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/wyrm_corrupted)
 "jEh" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/effect/landmark/npcactivity,
@@ -36597,7 +36649,7 @@
 /area/vtm/outside/pacificheights/community)
 "kar" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
 "kax" = (
@@ -36818,7 +36870,7 @@
 /turf/open/floor/city/gummaguts,
 /area/vtm/interior/shop)
 "kdi" = (
-/obj/structure/lamppost/two,
+/obj/machinery/light/floor/lamppost/two,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
 "kdp" = (
@@ -37057,6 +37109,11 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
+"kgS" = (
+/obj/effect/turf_decal/siding/white,
+/obj/effect/landmark/start/darkpack/primogen/brujah,
+/turf/open/floor/plating/rough,
+/area/vtm/interior)
 "kgU" = (
 /obj/structure/closet/crate,
 /turf/open/floor/plating/sidewalk/poor,
@@ -37106,7 +37163,7 @@
 /area/vtm/interior)
 "khQ" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -37575,6 +37632,13 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
+"kpu" = (
+/obj/structure/chair/wood/wings{
+	dir = 4
+	},
+/obj/effect/landmark/start/darkpack/triad/red_pole,
+/turf/open/floor/plating/rough,
+/area/vtm/interior)
 "kpA" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/plating/sidewalk/poor,
@@ -37933,7 +37997,7 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sewer)
 "kvk" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk,
@@ -38542,7 +38606,7 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/cog/pantry)
 "kEk" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /obj/structure/trafficlight{
@@ -39026,6 +39090,11 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/stairs/black/right,
 /area/vtm/interior/endron_facility/restricted)
+"kLB" = (
+/obj/structure/vampdoor,
+/obj/effect/mapping_helpers/door/access/brujah,
+/turf/open/floor/city/toilet,
+/area/vtm/interior)
 "kLC" = (
 /obj/item/flashlight/lantern{
 	light_color = "#013220";
@@ -39232,6 +39301,14 @@
 	},
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/clinic)
+"kOE" = (
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/trash,
+/obj/effect/landmark/start/darkpack/forest_wolves/keeper,
+/turf/open/misc/grass,
+/area/vtm/outside/pacificheights/forest)
 "kOO" = (
 /obj/structure/railing{
 	dir = 1;
@@ -39249,10 +39326,6 @@
 	},
 /turf/open/floor/carpet/cyan,
 /area/vtm/interior/hotel)
-"kPc" = (
-/obj/structure/vampdoor,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
 "kPd" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 10
@@ -39964,7 +40037,7 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior/salubri)
 "kXM" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/poor,
@@ -40645,7 +40718,7 @@
 /turf/open/floor/city/plating,
 /area/vtm/interior/clinic/haven)
 "lgD" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /obj/structure/trafficlight{
@@ -41416,7 +41489,7 @@
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
 "lsR" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk,
@@ -41655,7 +41728,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
@@ -42297,7 +42370,7 @@
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/millennium_tower/f4)
 "lFS" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /obj/effect/landmark/npcactivity,
@@ -42854,7 +42927,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/park)
 "lNv" = (
@@ -42893,7 +42966,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 4
 	},
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/chinatown)
 "lOj" = (
@@ -42914,6 +42987,11 @@
 /obj/structure/glowshroom/shadowshroom,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sabbat_lair)
+"lOC" = (
+/obj/structure/vampdoor,
+/obj/effect/mapping_helpers/door/access/brujah,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior)
 "lOH" = (
 /obj/effect/decal/wallpaper/red,
 /turf/closed/wall/vampwall/painted,
@@ -42960,7 +43038,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop)
 "lPc" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/unionsquare)
 "lPj" = (
@@ -43490,7 +43568,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
 "lWp" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/community)
@@ -44021,7 +44099,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/anarch/basement)
 "med" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/fishermanswharf/lower)
 "meh" = (
@@ -44893,7 +44971,7 @@
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior)
 "mrB" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior/jazzclub)
 "mrJ" = (
@@ -44963,7 +45041,7 @@
 /area/vtm/graveyard)
 "msx" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalkalt,
@@ -45804,7 +45882,7 @@
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/baali)
 "mET" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk/old,
@@ -45864,7 +45942,7 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "mFJ" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -46078,7 +46156,7 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
 "mIK" = (
-/obj/structure/lamppost/three,
+/obj/machinery/light/floor/lamppost/three,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
 "mIP" = (
@@ -46605,6 +46683,13 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/sewer)
+"mOA" = (
+/obj/structure/chair/sofa/corp/left{
+	dir = 4
+	},
+/obj/effect/landmark/start/darkpack/hecata/nonni,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm)
 "mOE" = (
 /turf/open/floor/plating/grate/dirty,
 /area/vtm/interior/endron_facility/plant)
@@ -46991,7 +47076,7 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/chantry)
 "mTc" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/unionsquare)
@@ -47755,7 +47840,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
 "ndB" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk,
@@ -48096,7 +48181,7 @@
 /area/vtm/interior/clinic)
 "niD" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/grass,
 /area/vtm/outside/giovanni/courtyard)
 "niF" = (
@@ -48857,10 +48942,6 @@
 "nuJ" = (
 /turf/open/openspace,
 /area/vtm/interior/vjanitor)
-"nuL" = (
-/obj/effect/turf_decal/siding/white,
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "nuV" = (
 /obj/structure/vampdoor/prison{
 	dir = 1;
@@ -49062,10 +49143,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/vjanitor)
-"nyk" = (
-/obj/structure/chair/plastic,
-/turf/open/misc/grass,
-/area/vtm/outside/pacificheights/forest)
 "nyl" = (
 /obj/effect/turf_decal/bordur/corner,
 /obj/effect/landmark/npcbeacon,
@@ -49787,12 +49864,6 @@
 	},
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/shop)
-"nHD" = (
-/obj/structure/vampdoor{
-	dir = 4
-	},
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "nHK" = (
 /obj/machinery/light/directional/south,
 /obj/structure/chair/sofa/corp/left{
@@ -50477,7 +50548,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch)
 "nPI" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -50999,7 +51070,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "nXi" = (
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 4
 	},
 /obj/structure/trafficlight{
@@ -51107,7 +51178,7 @@
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/millennium_tower/ventrue)
 "nYJ" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/outside/park)
 "nYL" = (
@@ -51152,7 +51223,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -51776,7 +51847,7 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/endron_facility/restricted)
 "oiQ" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/grass,
 /area/vtm)
 "oiT" = (
@@ -51874,7 +51945,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "okx" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
 "okA" = (
@@ -51967,7 +52038,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/supply)
 "oml" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk,
@@ -52683,7 +52754,7 @@
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/plant)
 "owj" = (
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 8
 	},
 /obj/structure/trafficlight{
@@ -53681,7 +53752,7 @@
 /turf/open/water,
 /area/vtm/outside/forest)
 "oIQ" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /obj/effect/turf_decal/bordur,
@@ -54361,6 +54432,11 @@
 /obj/item/clothing/suit/vampire/trench/alt/armored,
 /turf/open/floor/carpet/red,
 /area/vtm/interior/millennium_tower)
+"oRd" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/landmark/start/darkpack/triad/red_pole,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/laundromat)
 "oRh" = (
 /obj/structure/chair/sofa/left/brown,
 /obj/effect/decal/shadow,
@@ -54443,7 +54519,7 @@
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/millennium_tower)
 "oSv" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/asphalt,
@@ -55004,7 +55080,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/wood/old,
 /area/vtm/outside/northbeach)
 "paQ" = (
@@ -55151,6 +55227,11 @@
 "pcT" = (
 /turf/open/misc/dirt,
 /area/vtm/outside/pacificheights/forest)
+"pdc" = (
+/obj/structure/chair/comfy/brown,
+/obj/effect/landmark/start/darkpack/triad/mountain_master,
+/turf/open/floor/carpet/lone,
+/area/vtm/interior)
 "pdi" = (
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights)
@@ -55514,7 +55595,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/supply)
 "piU" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/interior/library)
 "piZ" = (
@@ -55950,7 +56031,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/poor,
@@ -56485,7 +56566,7 @@
 /area/vtm/interior/supply)
 "pxi" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk,
@@ -57865,7 +57946,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/sewer/nosferatu_town)
 "pOE" = (
@@ -57994,6 +58075,13 @@
 "pQI" = (
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/clinic/haven)
+"pQM" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/landmark/start/darkpack/triad/red_pole,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/laundromat)
 "pQV" = (
 /obj/structure/table/wood,
 /obj/item/gun/ballistic/automatic/pistol/darkpack/glock19,
@@ -58168,7 +58256,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/tzimisce_manor)
 "pTz" = (
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 8
 	},
 /obj/effect/landmark/npcability,
@@ -58626,7 +58714,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
 "qab" = (
@@ -58765,7 +58853,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/sewer/nosferatu_town)
 "qcx" = (
@@ -60188,6 +60276,14 @@
 /obj/machinery/light/small/red/directional/east,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/sewer)
+"qwp" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/laundromat)
 "qww" = (
 /obj/structure/table,
 /obj/item/pen,
@@ -60354,7 +60450,7 @@
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
 "qyp" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /obj/effect/turf_decal/bordur{
@@ -60981,10 +61077,6 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
-"qHu" = (
-/obj/structure/vampdoor,
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "qHw" = (
 /obj/structure/railing{
 	pixel_y = -2
@@ -61342,7 +61434,7 @@
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/outside/financialdistrict)
 "qLp" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk/old,
@@ -61836,6 +61928,11 @@
 /obj/structure/retail/occult,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
+"qSk" = (
+/obj/structure/chair/plastic,
+/obj/effect/landmark/start/darkpack/forest_wolves/keeper,
+/turf/open/misc/grass,
+/area/vtm/outside/pacificheights/forest)
 "qSl" = (
 /obj/structure/railing{
 	dir = 1;
@@ -62133,7 +62230,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/bianchiBank)
 "qVb" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/outside/pacificheights/forest)
 "qVc" = (
@@ -62444,7 +62541,7 @@
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
 "qZP" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk,
@@ -62613,13 +62710,6 @@
 /obj/item/vamp/keys/nosferatu,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/sewer/nosferatu_town)
-"rct" = (
-/obj/structure/chair/plastic{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/trash,
-/turf/open/misc/grass,
-/area/vtm/outside/pacificheights/forest)
 "rcy" = (
 /obj/structure/vampdoor/simple{
 	dir = 4
@@ -62910,7 +63000,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/baali)
 "rgl" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/chinatown)
 "rgn" = (
@@ -64703,6 +64793,13 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/library)
+"rEo" = (
+/obj/structure/vampdoor{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/door/access/primogen_brujah,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior)
 "rEu" = (
 /obj/structure/table/wood/fancy/black,
 /obj/item/card/hunter,
@@ -64854,7 +64951,7 @@
 /turf/open/floor/plating/roofwalk,
 /area/vtm/interior/oldchurch)
 "rGz" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk/poor,
@@ -65134,7 +65231,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -65187,7 +65284,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/giovanni/courtyard)
 "rLw" = (
@@ -65499,7 +65596,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
 "rPP" = (
@@ -65588,7 +65685,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church/staff)
 "rRh" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /obj/effect/landmark/npcactivity,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/community)
@@ -65606,12 +65703,6 @@
 "rRq" = (
 /turf/open/floor/iron/white/textured_half,
 /area/vtm/interior/endron_facility/restricted)
-"rRr" = (
-/obj/structure/chair/sofa/corp/left{
-	dir = 4
-	},
-/turf/open/floor/plating/sidewalk/poor,
-/area/vtm)
 "rRA" = (
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 8
@@ -66188,7 +66279,7 @@
 /turf/open/floor/carpet/green,
 /area/vtm/interior/wyrm_corrupted)
 "rZH" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/structure/trafficlight,
@@ -66420,7 +66511,7 @@
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/unionsquare)
 "sbE" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /obj/structure/trafficlight{
 	dir = 4
 	},
@@ -66606,7 +66697,7 @@
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/financialdistrict)
 "sdW" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /obj/structure/trafficlight{
@@ -66700,7 +66791,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/setite)
 "sfz" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk,
@@ -66896,7 +66987,7 @@
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/outside/pacificheights/forest)
 "sis" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/effect/landmark/npcability,
@@ -66918,7 +67009,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights/community)
 "siP" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /obj/structure/trafficlight{
@@ -66966,7 +67057,7 @@
 /area/vtm/outside/financialdistrict)
 "sjC" = (
 /obj/effect/turf_decal/bordur/corner,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/chinatown)
 "sjD" = (
@@ -66984,7 +67075,7 @@
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
 "sjG" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/outside/park)
 "sjL" = (
@@ -67220,7 +67311,7 @@
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
 "smM" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
@@ -67289,6 +67380,13 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/trujah)
+"snq" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/laundromat)
 "sns" = (
 /obj/structure/table/wood,
 /obj/item/seeds/corn,
@@ -67603,12 +67701,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower/f2)
-"srD" = (
-/obj/structure/chair/plastic{
-	dir = 1
-	},
-/turf/open/floor/wood/old,
-/area/vtm/outside/pacificheights/forest)
 "srY" = (
 /obj/structure/vampipe{
 	icon_state = "piping32"
@@ -67992,7 +68084,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/glasswalker)
 "swz" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /obj/effect/landmark/npcactivity,
@@ -68079,7 +68171,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk/old,
@@ -68710,6 +68802,12 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
+"sGw" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/outside/pacificheights/forest)
 "sGC" = (
 /obj/effect/decal/cleanable/trash,
 /turf/open/floor/wood/old,
@@ -68763,12 +68861,6 @@
 /obj/structure/flora/tree/vamp/pine,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
-"sHj" = (
-/obj/structure/chair/wood/wings{
-	dir = 4
-	},
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "sHk" = (
 /obj/effect/decal/cleanable/garbage,
 /obj/machinery/light/dim/directional/north,
@@ -69292,12 +69384,6 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/vtm/interior/tzimisce_manor)
-"sQb" = (
-/obj/structure/chair/sofa/corner/brown{
-	dir = 4
-	},
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/laundromat)
 "sQu" = (
 /obj/effect/turf_decal/siding/white,
 /obj/effect/decal/wallpaper/paper/darkred,
@@ -69852,12 +69938,6 @@
 /obj/effect/turf_decal/siding/wood/dark/corner,
 /turf/open/floor/carpet/darkpack/bluesilver,
 /area/vtm/interior/salubri)
-"sYV" = (
-/obj/structure/chair/sofa/corp/right{
-	dir = 4
-	},
-/turf/open/floor/plating/sidewalk/poor,
-/area/vtm)
 "sYZ" = (
 /obj/machinery/light/small/directional/east,
 /obj/structure/table/wood,
@@ -70107,7 +70187,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 4
 	},
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk/rich,
@@ -70344,7 +70424,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/landmark/npcwall,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/northbeach)
@@ -70529,7 +70609,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
 "tie" = (
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk,
@@ -71334,7 +71414,7 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/chantry)
 "ttx" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk/poor,
@@ -71398,6 +71478,11 @@
 /obj/structure/flora/rock/darkpack,
 /turf/open/misc/grass,
 /area/vtm/interior/cog/caern)
+"tuw" = (
+/obj/structure/vampdoor,
+/obj/effect/mapping_helpers/door/access/brujah,
+/turf/open/floor/plating/rough,
+/area/vtm/interior)
 "tuP" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -71410,7 +71495,7 @@
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/millennium_tower/f2)
 "tva" = (
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 8
 	},
 /turf/open/floor/plating/sidewalk,
@@ -72171,6 +72256,14 @@
 /obj/item/knife/vamp,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/graveyard)
+"tGd" = (
+/obj/structure/chair/wood{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/landmark/start/darkpack/triad/red_pole,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/laundromat)
 "tGi" = (
 /obj/weapon_showcase,
 /turf/open/floor/carpet/green,
@@ -72387,12 +72480,6 @@
 	color = "#b5b5b5"
 	},
 /area/vtm)
-"tJi" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 10
-	},
-/turf/open/floor/plating/roofwalk,
-/area/vtm/outside/pacificheights/forest)
 "tJl" = (
 /obj/structure/vampdoor/simple{
 	dir = 8;
@@ -72598,7 +72685,7 @@
 /area/vtm/interior/sewer)
 "tLK" = (
 /obj/effect/decal/rugs,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/dirt,
 /area/vtm/graveyard)
 "tLO" = (
@@ -72700,11 +72787,6 @@
 /obj/structure/retail/hardware_store,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop)
-"tNt" = (
-/obj/structure/flora/bush/sparsegrass/style_random,
-/obj/structure/chair/plastic,
-/turf/open/misc/grass,
-/area/vtm/outside/pacificheights/forest)
 "tNx" = (
 /obj/structure/coclock/grandpa,
 /turf/open/floor/carpet/royalblack,
@@ -72766,15 +72848,6 @@
 /obj/item/plate,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/ghetto)
-"tOh" = (
-/obj/structure/vampdoor/reinf{
-	dir = 8;
-	lock_id = "brujah";
-	locked = 1;
-	lockpick_difficulty = 15
-	},
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "tOp" = (
 /obj/structure/table/countertop/bacotell,
 /obj/structure/retail/bacotell_menu,
@@ -73138,7 +73211,7 @@
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior/church)
 "tUU" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /obj/effect/landmark/npcability,
@@ -73409,7 +73482,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/wood/old,
 /area/vtm/outside/northbeach)
 "tYN" = (
@@ -73455,7 +73528,7 @@
 /area/vtm/interior/millennium_tower)
 "tZM" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
 "tZN" = (
@@ -74459,7 +74532,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
 "upI" = (
-/obj/structure/lamppost/three{
+/obj/machinery/light/floor/lamppost/three{
 	dir = 8
 	},
 /obj/structure/trafficlight{
@@ -74695,6 +74768,13 @@
 	},
 /turf/open/floor/carpet/darkpack/bluesilver,
 /area/vtm/interior/salubri)
+"usC" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 4
+	},
+/obj/effect/landmark/start/darkpack/hecata/nonni,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm)
 "usN" = (
 /obj/structure/chair/greyscale,
 /obj/effect/turf_decal/siding/grey{
@@ -75706,7 +75786,7 @@
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/millennium_tower/f4)
 "uGN" = (
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/ghetto)
 "uGO" = (
@@ -75902,7 +75982,7 @@
 "uJd" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/landmark/npcwall,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/grass,
 /area/vtm/outside/park)
 "uJk" = (
@@ -77020,7 +77100,7 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior/salubri)
 "uZO" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/grass,
 /area/vtm/graveyard)
 "uZV" = (
@@ -77330,6 +77410,13 @@
 /obj/structure/chair/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/ghetto)
+"vek" = (
+/obj/structure/vampdoor{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/brujah,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior)
 "ven" = (
 /obj/structure/railing{
 	pixel_y = -2
@@ -77554,7 +77641,7 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/techshop)
 "vhq" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
 "vhu" = (
@@ -77716,7 +77803,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk,
@@ -78148,7 +78235,7 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/setite/basement)
 "vqq" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/grass,
 /area/vtm/outside/giovanni/courtyard)
 "vqr" = (
@@ -78322,7 +78409,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
 "vsE" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/sewer/nosferatu_town)
 "vsG" = (
@@ -78833,7 +78920,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/police)
 "vBx" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/effect/landmark/npcactivity,
@@ -78880,6 +78967,10 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/ghetto)
+"vCk" = (
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/turf/open/floor/city/circled,
+/area/vtm/interior/laundromat)
 "vCp" = (
 /obj/structure/table,
 /obj/item/screwdriver,
@@ -79192,7 +79283,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/park)
 "vGx" = (
@@ -79294,7 +79385,7 @@
 /turf/open/water/vamp_sewer,
 /area/vtm/interior/sewer/nosferatu_town)
 "vHG" = (
-/obj/structure/lamppost/three,
+/obj/machinery/light/floor/lamppost/three,
 /obj/effect/landmark/npcactivity,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf)
@@ -79638,7 +79729,7 @@
 	dir = 1
 	},
 /obj/structure/roadsign/parking,
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
 "vMU" = (
@@ -79829,6 +79920,13 @@
 /obj/machinery/sprinkler/area_managed,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/ghetto)
+"vQo" = (
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/obj/effect/landmark/start/darkpack/forest_wolves/keeper,
+/turf/open/misc/grass,
+/area/vtm/outside/pacificheights/forest)
 "vQr" = (
 /obj/effect/decal/cleanable/garbage,
 /obj/effect/decal/cleanable/cardboard,
@@ -80199,7 +80297,7 @@
 /area/vtm/interior/tzimisce_sanctum)
 "vVm" = (
 /obj/effect/turf_decal/bordur,
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
 "vVw" = (
@@ -80469,7 +80567,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /obj/effect/turf_decal/bordur{
@@ -80625,13 +80723,6 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/chinatown)
-"waR" = (
-/obj/structure/vampdoor{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/cardboard,
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "waS" = (
 /obj/structure/table/wood,
 /obj/item/detective_scanner,
@@ -80767,7 +80858,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/upstairs)
 "wcv" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /obj/structure/trafficlight{
@@ -80957,7 +81048,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/graveyard)
 "wfV" = (
@@ -81583,6 +81674,13 @@
 /obj/structure/vampdoor/wood,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/giovanni)
+"woS" = (
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/obj/effect/landmark/start/darkpack/forest_wolves/keeper,
+/turf/open/floor/wood/old,
+/area/vtm/outside/pacificheights/forest)
 "woV" = (
 /obj/structure/table/reinforced,
 /obj/item/gun/ballistic/shotgun/vampire,
@@ -81707,12 +81805,6 @@
 /obj/machinery/hydroponics/soil,
 /turf/open/misc/dirt,
 /area/vtm/interior/cog/caern)
-"wqX" = (
-/obj/structure/chair/wood/wings{
-	dir = 1
-	},
-/turf/open/floor/wood/smooth,
-/area/vtm/interior)
 "wqZ" = (
 /obj/item/watch,
 /turf/open/floor/plating/rough,
@@ -81805,7 +81897,7 @@
 	},
 /area/vtm)
 "wsz" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
 /obj/effect/landmark/npcactivity,
@@ -81864,7 +81956,7 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "wts" = (
-/obj/structure/lamppost/three,
+/obj/machinery/light/floor/lamppost/three,
 /obj/effect/landmark/npcactivity,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
@@ -81996,7 +82088,7 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "wwn" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/northbeach)
@@ -83189,7 +83281,7 @@
 /area/vtm/interior/clinic)
 "wLW" = (
 /obj/effect/decal/cleanable/litter,
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk,
@@ -83319,7 +83411,7 @@
 /turf/open/floor/city/plating,
 /area/vtm/interior/museum)
 "wOg" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/outside/fishermanswharf)
 "wOh" = (
@@ -83370,7 +83462,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk,
@@ -83401,7 +83493,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
 "wPq" = (
@@ -84749,7 +84841,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf/lower)
 "xhK" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
@@ -86034,7 +86126,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/outside/forest)
 "xzP" = (
-/obj/structure/lamppost/one{
+/obj/machinery/light/floor/lamppost/one{
 	dir = 1
 	},
 /turf/open/floor/plating/sidewalk,
@@ -86241,7 +86333,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 1
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/grass,
 /area/vtm/outside/giovanni/courtyard)
 "xCf" = (
@@ -86633,7 +86725,7 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "xHR" = (
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /obj/effect/turf_decal/bordur{
 	dir = 4
 	},
@@ -87404,7 +87496,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 4
 	},
-/obj/structure/lamppost/one,
+/obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
 "xTh" = (
@@ -87615,7 +87707,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
-/obj/structure/lamppost/sidewalk,
+/obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/misc/grass,
 /area/vtm/outside/giovanni/courtyard)
 "xVc" = (
@@ -88752,7 +88844,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/anarch/basement)
 "ylP" = (
-/obj/structure/lamppost/sidewalk/chinese{
+/obj/machinery/light/floor/lamppost/sidewalk/chinese{
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalkalt,
@@ -100195,7 +100287,7 @@ jcc
 jcc
 jcc
 twu
-nHD
+jnI
 jcc
 jcc
 jcc
@@ -100702,15 +100794,15 @@ lMe
 lMe
 cmL
 lMe
-qHu
+tuw
 uQS
 qBk
 uQS
-hqx
+kLB
 lMe
 lMe
 lMe
-qHu
+tuw
 lMe
 lMe
 iDW
@@ -101212,7 +101304,7 @@ jcc
 jcc
 jcc
 jcc
-waR
+fIP
 jcc
 jcc
 jcc
@@ -101222,7 +101314,7 @@ jcc
 jcc
 jcc
 jcc
-nHD
+jnI
 jcc
 twu
 pDF
@@ -101233,7 +101325,7 @@ dVY
 lMe
 jcc
 jcc
-ayo
+vek
 jcc
 jcc
 pyi
@@ -101492,7 +101584,7 @@ twu
 gbw
 iHq
 iHq
-kPc
+lOC
 tqA
 iHq
 cJU
@@ -102246,20 +102338,20 @@ pKc
 lMe
 lMe
 lMe
-nuL
+kgS
 euZ
 bSK
 lMe
 wiR
 lMe
-qHu
+tuw
 lMe
 cmL
 lMe
 lMe
 lMe
 lMe
-qHu
+tuw
 tqA
 iHq
 iHq
@@ -102521,7 +102613,7 @@ kZy
 hfg
 rYy
 hcs
-kPc
+lOC
 tqA
 iHq
 cJU
@@ -103276,7 +103368,7 @@ jcc
 jcc
 jcc
 jcc
-tOh
+gUS
 jcc
 jcc
 jcc
@@ -131378,9 +131470,9 @@ lMe
 lMe
 fpe
 lVM
-blH
+pdc
 lYm
-wqX
+hVo
 jcc
 lMe
 lMe
@@ -132410,9 +132502,9 @@ lMe
 lMe
 cmL
 lMe
-sHj
+kpu
 lMe
-sHj
+kpu
 lMe
 lMe
 lMe
@@ -132924,9 +133016,9 @@ lMe
 lMe
 lMe
 lMe
-hqd
+aOC
 lMe
-hqd
+aOC
 lMe
 lMe
 lMe
@@ -170612,7 +170704,7 @@ oWV
 oWV
 neW
 xgh
-aUQ
+iem
 xgh
 xgh
 xgh
@@ -171814,7 +171906,7 @@ pcT
 pcT
 pcT
 pcT
-pcT
+ejA
 dvN
 cVX
 "}
@@ -199225,8 +199317,8 @@ qwy
 wXa
 wXa
 wXa
-vjp
-vjp
+tGd
+buv
 wXa
 mkH
 vFr
@@ -199739,8 +199831,8 @@ mBz
 wXa
 wXa
 wXa
-bbH
-bbH
+pQM
+snq
 wXa
 tep
 fTd
@@ -199997,7 +200089,7 @@ wXa
 xUb
 wXa
 wXa
-wXa
+coh
 wXa
 tep
 fTd
@@ -206168,7 +206260,7 @@ qHr
 mCW
 bly
 ofx
-ffR
+hwm
 pFs
 bly
 yec
@@ -206939,7 +207031,7 @@ mCW
 mCW
 pTO
 mCW
-qHC
+iqA
 qHC
 pTO
 cNN
@@ -207189,7 +207281,7 @@ oiw
 kgu
 rWu
 kgu
-kgu
+vCk
 lym
 lym
 lym
@@ -232203,8 +232295,8 @@ buw
 bDT
 uJx
 roP
-rRr
-sYV
+mOA
+usC
 kno
 kno
 eRn
@@ -237946,7 +238038,7 @@ xaI
 cJU
 hRD
 iHq
-cvE
+iOi
 iHq
 iHq
 cQu
@@ -238713,7 +238805,7 @@ aOU
 aOU
 oyA
 xZi
-iyt
+dbJ
 gkZ
 gkZ
 gkZ
@@ -239230,7 +239322,7 @@ xZi
 yix
 iHq
 iHq
-geC
+rEo
 uQS
 uYs
 gkZ
@@ -242202,7 +242294,7 @@ ntq
 ntq
 kAp
 hBH
-tJi
+sGw
 ntq
 ntq
 ntq
@@ -244510,7 +244602,7 @@ ntq
 ntq
 ntq
 jeA
-srD
+woS
 gIJ
 oRp
 arr
@@ -245024,7 +245116,7 @@ ntq
 ntq
 ntq
 jeA
-srD
+woS
 gIJ
 oRp
 adZ
@@ -247091,9 +247183,9 @@ pcT
 wLh
 ajk
 atu
-tNt
+fVo
 sqM
-ajk
+vQo
 atu
 atu
 atu
@@ -247348,9 +247440,9 @@ pcT
 tjc
 dnm
 dOI
-nyk
+qSk
 nwH
-rct
+kOE
 jRe
 jRe
 dvN
@@ -260499,7 +260591,7 @@ ntq
 ntq
 ntq
 oAP
-bXS
+jai
 rbC
 eyx
 tPH
@@ -265523,7 +265615,7 @@ ntq
 ntq
 ntq
 unZ
-sQb
+gzm
 brE
 mCW
 mCW
@@ -267067,9 +267159,9 @@ ntq
 hLp
 mCW
 ofx
-ofx
-ofx
-ofx
+oRd
+oRd
+ctc
 ofx
 mCW
 lym
@@ -273760,7 +273852,7 @@ ntq
 unZ
 bLk
 rfe
-aIl
+qwp
 rfe
 rfe
 rfe
@@ -274916,7 +275008,7 @@ ntq
 ntq
 ntq
 ntq
-crU
+fZs
 cEq
 cEq
 cEq

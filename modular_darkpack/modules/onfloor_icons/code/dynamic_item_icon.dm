@@ -40,8 +40,8 @@
 	item.icon = initial(item.icon)
 	item.pixel_w = initial(item.pixel_w)
 
-	if(item.item_flags & ACTIVE_WORLD_ICON)
-		item.item_flags &= ~ACTIVE_WORLD_ICON
+	if(item.item_flags & ACTIVE_ONFLOOR_ICON)
+		item.item_flags &= ~ACTIVE_ONFLOOR_ICON
 
 	item.update_icon()
 	item.update_greyscale()
@@ -53,8 +53,8 @@
 	if (item.onflooricon_state)
 		item.icon_state = item.onflooricon_state
 
-	if(!(item.item_flags & ACTIVE_WORLD_ICON))
-		item.item_flags |= ACTIVE_WORLD_ICON
+	if(!(item.item_flags & ACTIVE_ONFLOOR_ICON))
+		item.item_flags |= ACTIVE_ONFLOOR_ICON
 
 	item.update_icon()
 	//item.update_greyscale()

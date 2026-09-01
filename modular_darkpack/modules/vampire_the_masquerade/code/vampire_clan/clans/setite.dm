@@ -11,7 +11,7 @@
 		/datum/discipline/presence,
 		/datum/discipline/serpentis
 	)
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_LIGHT_WEAKNESS
 	)
 	male_clothes = /obj/item/clothing/under/vampire/slickback
@@ -39,3 +39,8 @@
 		/datum/discipline/presence,
 		/datum/discipline/serpentis
 	)
+
+/datum/subsplat/vampire_clan/setite/on_join_round(mob/living/carbon/human/joining)
+	. = ..()
+	joining.grant_language(/datum/language/arabic)
+//We don't have Mesoamerican languages.
