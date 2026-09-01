@@ -127,7 +127,7 @@
 	. = ..()
 
 	var/roll = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/bonecrafting)
-//CRIMSON GRID ADDITION START
+//CRIMSON GRID ADDITION START - Vicissitude Nerf
 	if(target.stat == DEAD)
 		if(!do_after(
 			owner,
