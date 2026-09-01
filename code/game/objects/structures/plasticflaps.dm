@@ -1,6 +1,6 @@
 /obj/structure/plasticflaps
 	name = "airtight plastic flaps"
-	desc = "Heavy duty, airtight, plastic flaps. Can get past those by crawling through." // CRIMSON EDIT - Plastic Flaps Balance - Original: Definitely can't get past those. No way.
+	desc = "Heavy duty, airtight, plastic flaps. Can get past those by crawling through." // CRIMSON EDIT - Plastic flaps are now breakable - Original: Definitely can't get past those. No way.
 	gender = PLURAL
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "plasticflaps"
@@ -23,13 +23,13 @@
 	COOLDOWN_DECLARE(burn_damage_cd)
 
 /datum/armor/structure_plasticflaps
-	melee = 10 // CRIMSON EDIT - Plastic Flaps Balance - Original: 100
-	bullet = 30 // CRIMSON EDIT - Plastic Flaps Balance - Original: 80
-	laser = 30 // CRIMSON EDIT - Plastic Flaps Balance - Original: 80
-	energy = 20 // CRIMSON EDIT - Plastic Flaps Balance - Original: 100
-	bomb = 20 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
-	fire = 5 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
-	acid = 5 // CRIMSON EDIT - Plastic Flaps Balance - Original: 50
+	melee = 10 // CRIMSON EDIT - Plastic flaps are now breakable - Original: 100
+	bullet = 30 // CRIMSON EDIT - Plastic flaps are now breakable - Original: 80
+	laser = 30 // CRIMSON EDIT - Plastic flaps are now breakable - Original: 80
+	energy = 20 // CRIMSON EDIT - Plastic flaps are now breakable - Original: 100
+	bomb = 20 // CRIMSON EDIT - Plastic flaps are now breakable - Original: 50
+	fire = 5 // CRIMSON EDIT - Plastic flaps are now breakable - Original: 50
+	acid = 5 // CRIMSON EDIT - Plastic flaps are now breakable - Original: 50
 
 /obj/structure/plasticflaps/opaque
 	opacity = TRUE
@@ -42,9 +42,9 @@
 	flaps_alpha = 150
 
 /datum/armor/structure_plasticflaps/kitchen
-	melee = 10
-	fire = 5
-	acid = 5
+	melee = 5 // CRIMSON GRID EDIT - Plastic flaps are now breakable - Original: 50
+	fire = 2 // CRIMSON GRID EDIT - Plastic flaps are now breakable - Original: 20
+	acid = 2 // CRIMSON GRID EDIT - Plastic flaps are now breakable - Original: 20
 
 /obj/structure/plasticflaps/Initialize(mapload)
 	. = ..()
