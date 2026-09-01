@@ -141,7 +141,7 @@
 			return FALSE
 		if(target.stat != DEAD)
 			return FALSE
-//CRIMSON GRID ADDITION END
+//CRIMSON GRID ADDITION END - Vicissitude Nerf
 		var/obj/item/bodypart/arm/right/r_arm = target.get_bodypart(BODY_ZONE_R_ARM)
 		var/obj/item/bodypart/arm/left/l_arm = target.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/leg/right/r_leg = target.get_bodypart(BODY_ZONE_R_LEG)
