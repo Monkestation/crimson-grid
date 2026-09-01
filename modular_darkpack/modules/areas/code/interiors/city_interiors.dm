@@ -1,10 +1,3 @@
-/area/vtm/interior/shop
-	name = "\improper Shop"
-	icon_state = "shop"
-	fire_controled = TRUE
-	ambient_buzz = 'modular_darkpack/modules/ambience/sounds/shop.ogg'
-	ambient_buzz_vol = 20
-
 /area/vtm/interior/laundromat
 	name = "Laundromat"
 	icon_state = "shop"
