@@ -75,3 +75,5 @@
 #define ALERT_BITRUNNER_GLITCH "bitrunning_glitch"
 
 #define ALERT_SILICON_RECORDING "silicon_recording"
+
+#define DISCIPLINE_ACTIVE_ALERT(power) "discipline_power_[power.type]" // CRIMSON EDIT ADD - Discipline Active Indicator
