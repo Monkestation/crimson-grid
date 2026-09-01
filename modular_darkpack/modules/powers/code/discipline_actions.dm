@@ -235,3 +235,19 @@
 			return
 		//TODO: middle click to swap loadout
 	. = ..()
+
+// CRIMSON EDIT ADD START - Discipline Active Indicator
+/datum/action/discipline/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags = ALL, force = FALSE)
+	. = ..()
+
+	if(!button)
+		return
+
+	for(var/datum/discipline_power/power as anything in discipline?.known_powers)
+		if(!power.active)
+			continue
+		button.add_filter("discipline_active", 2, outline_filter(color = COLOR_GOLD, size = 1))
+		return
+
+	button.remove_filter("discipline_active")
+// CRIMSON EDIT ADD END - Discipline Active Indicator
