@@ -129,8 +129,6 @@
 	var/roll = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/bonecrafting)
 //CRIMSON GRID ADDITION START
 	if(target.stat == DEAD)
-		if(target.stat == DEAD)
-			target.death()
 		if(!do_after(
 			owner,
 			10 SECONDS,
