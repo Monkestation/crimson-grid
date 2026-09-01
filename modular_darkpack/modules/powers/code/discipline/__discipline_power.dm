@@ -450,6 +450,13 @@
 	do_caster_notification(target)
 	do_logging(target)
 
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled)
+		var/atom/movable/screen/alert/discipline_active/indicator = owner.throw_alert("discipline_power_[type]", /atom/movable/screen/alert/discipline_active)
+		if (istype(indicator))
+			indicator.set_power(src)
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
+
 	owner.update_action_buttons()
 
 	return TRUE
@@ -661,6 +668,11 @@
 
 	if (deactivate_sound)
 		owner.playsound_local(owner, deactivate_sound, 50, FALSE)
+
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled)
+		owner.clear_alert("discipline_power_[type]")
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
 
 	owner.update_action_buttons()
 
