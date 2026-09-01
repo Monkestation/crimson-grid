@@ -100,7 +100,7 @@
 	. = ..()
 	var/datum/component/regenerator/regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1, heals_wounds = TRUE, brute_per_second = 25, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour =  COLOR_RED_LIGHT)
+		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 25, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour =  COLOR_RED_LIGHT)
 		regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
