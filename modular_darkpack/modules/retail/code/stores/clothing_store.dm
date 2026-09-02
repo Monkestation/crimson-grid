@@ -116,5 +116,9 @@
 // CRIMSON EDIT ADD START - Shop Inventories Additions
 		new /datum/data/vending_product("wallet", /obj/item/storage/wallet/darkpack, 25),
 		new /datum/data/vending_product("cloth", /obj/item/stack/sheet/cloth, 5),
+		new /datum/data/vending_product("baggy clothes", /obj/item/clothing/under/vampire/pinkman, 15),
+		new /datum/data/vending_product("blue baggy clothes", /obj/item/clothing/under/vampire/pinkman/blue, 15),
+		new /datum/data/vending_product("white baggy clothes", /obj/item/clothing/under/vampire/pinkman/white, 15),
+		new /datum/data/vending_product("brown baggy clothes", /obj/item/clothing/under/vampire/pinkman/brown, 15),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 	)
