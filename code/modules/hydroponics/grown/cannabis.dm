@@ -132,7 +132,7 @@
 	seed = /obj/item/seeds/cannabis
 	icon = 'modular_darkpack/modules/drugs/icons/items.dmi' // DARKPACK EDIT CHANGE - DRUGS
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/drugs/icons/onfloor.dmi')// DARKPACK EDIT ADD - DRUGS
-	name = "cannabis leaf"
+	name = "cannabis bud" // CRIMSON EDIT - Drug Fixes And Rework - Original: cannabis leaf
 	desc = "They say that next year they're going to try to legalise it." // DARKPACK EDIT CHANGE
 	icon_state = "cannabis"
 	bite_consumption_mod = 4

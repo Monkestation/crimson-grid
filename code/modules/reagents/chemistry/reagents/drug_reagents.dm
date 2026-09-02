@@ -51,6 +51,18 @@
 	var/cleared_aggressive = FALSE
 	var/strain_desc // CRIMSON EDIT ADD - Drug Fixes And Rework
 	var/strain_icon_state // CRIMSON EDIT ADD - Drug Fixes And Rework
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
+	var/list/smoke_messages = list(
+		"You feel relaxed.",
+		"You feel calmed.",
+		"Your mouth feels dry.",
+		"You could use some water.",
+		"Your heart beats quickly.",
+		"You feel clumsy.",
+		"You crave junk food.",
+		"You notice you've been moving more slowly."
+	)
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 // CRIMSON EDIT ADD START - Drug Fixes And Rework
 /datum/reagent/drug/cannabis/proc/is_primary_cannabis()
@@ -66,7 +78,7 @@
 		return
 	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 	if(SPT_PROB(1, seconds_per_tick))
-		var/smoke_message = pick("You feel relaxed.","You feel calmed.","Your mouth feels dry.","You could use some water.","Your heart beats quickly.","You feel clumsy.","You crave junk food.","You notice you've been moving more slowly.")
+		var/smoke_message = pick(smoke_messages) // CRIMSON EDIT - Drug Fixes And Rework - Original: inline pick() of the same eight lines
 		to_chat(affected_mob, span_notice("[smoke_message]"))
 	if(SPT_PROB(2, seconds_per_tick))
 		affected_mob.emote(pick("smile","laugh","giggle"))
@@ -94,6 +106,14 @@
 /datum/reagent/drug/cannabis/og_kush
 	name = "OG Kush"
 	strain_icon_state = "og_kush"
+	smoke_messages = list(
+		"You feel happy.",
+		"Your body tingles.",
+		"You feel your body relax.",
+		"You feel your worries melt away.",
+		"You feel talkative.",
+		"You need a snack."
+	)
 	strain_desc = "Forest green with long orange hairs and a golden crystal dusting. Smells earthy, sour and piney."
 	taste_description = "earthy pine and lemon peel"
 	chemical_flags = NONE
@@ -102,6 +122,13 @@
 /datum/reagent/drug/cannabis/sour_diesel
 	name = "Sour Diesel"
 	strain_icon_state = "sour_diesel"
+	smoke_messages = list(
+		"You feel excited and energized.",
+		"You feel creative.",
+		"You have three new ideas going on at once.",
+		"You feel like you can do all your chores.",
+		"You feel the music."
+	)
 	strain_desc = "Dense light green with orange hairs. Sticky. Smells like fuel and lemon."
 	taste_description = "sour diesel fumes"
 	chemical_flags = NONE
@@ -110,6 +137,15 @@
 /datum/reagent/drug/cannabis/granddaddy_purple
 	name = "Granddaddy Purple"
 	strain_icon_state = "granddaddy_purple"
+	smoke_messages = list(
+		"You feel euphoric.",
+		"Your body tingles.",
+		"You are becoming furniture.",
+		"Your hands are very far away.",
+		"You have not blinked in a while.",
+		"Time? What is time? It's not passing.",
+		"Your mind swirls."
+	)
 	strain_desc = "Deep purple with fiery orange hairs. Sticky. Smells like sweet grape."
 	taste_description = "grape candy"
 	chemical_flags = NONE
@@ -118,6 +154,13 @@
 /datum/reagent/drug/cannabis/girl_scout_cookies
 	name = "Girl Scout Cookies"
 	strain_icon_state = "girl_scout_cookies"
+	smoke_messages = list(
+		"You feel relaxed.",
+		"You keep giggling at nothing.",
+		"Your mouth is dry.",
+		"You have no urge to move.",
+		"You would join the Dark Side for a cookie."
+	)
 	strain_desc = "Small dense green nugs under a heavy silvery coat of kief. Smells like sweet earth and... mint?"
 	taste_description = "sweet earth and mint"
 	chemical_flags = NONE
