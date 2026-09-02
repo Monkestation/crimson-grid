@@ -33,6 +33,12 @@
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_SPLAT_SLOTS, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_SPLAT_SLOTS
 
+	// CRIMSON EDIT ADD START - SUBSPLAT_BANS
+	if(is_banned_from(player.ckey, player_splat_id))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED, player_splat_id)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_BANNED_SPLAT
+	// CRIMSON EDIT ADD END
+
 	/*
 	if(possible_job.whitelisted)
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_WHITELIST, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
@@ -76,6 +82,11 @@
 	if(possible_job.disallowed_clans && (clan.id in possible_job.disallowed_clans))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_KINDRED_CLAN, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_KINDRED_CLAN
+	// CRIMSON EDIT ADD START - SUBSPLAT_BANS
+	if(is_banned_from(player.ckey, clan.name))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED_CLAN, clan.name)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_BANNED_CLAN
+	// CRIMSON EDIT ADD END
 
 /datum/controller/subsystem/job/proc/check_garou_prefs(client/player_client, mob/dead/new_player/player, datum/job/possible_job, debug_prefix = "", add_job_to_log = FALSE)
 	var/datum/subsplat/werewolf/auspice/auspice = get_fera_auspice(player_client.prefs.read_preference(/datum/preference/choiced/subsplat/fera_auspice/garou))
@@ -85,6 +96,11 @@
 	if(possible_job.disallowed_auspice && (auspice.name in possible_job.disallowed_auspice))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FERA_AUSPICE, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_FERA_AUSPICE
+	// CRIMSON EDIT ADD START - SUBSPLAT_BANS
+	if(is_banned_from(player.ckey, auspice.name))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED_AUSPICE, auspice.name)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_BANNED_AUSPICE
+	// CRIMSON EDIT ADD END
 
 	var/datum/subsplat/werewolf/tribe/tribe = get_fera_tribe(player_client.prefs.read_preference(/datum/preference/choiced/subsplat/fera_tribe/garou))
 	if(possible_job.allowed_tribes && !(tribe.name in possible_job.allowed_tribes))
@@ -93,3 +109,9 @@
 	if(possible_job.disallowed_tribes && (tribe.name in possible_job.disallowed_tribes))
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FERA_TRIBE, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_FERA_TRIBE
+	// CRIMSON EDIT ADD START - SUBSPLAT_BANS
+	if(is_banned_from(player.ckey, tribe.name))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED_TRIBE, tribe.name)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_BANNED_TRIBE
+	// CRIMSON EDIT ADD END
+

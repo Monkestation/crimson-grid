@@ -114,7 +114,7 @@
 	qdel(src)
 	return TRUE
 
-/proc/get_job_unavailable_error_message(retval, jobtitle)
+/proc/get_job_unavailable_error_message(retval, jobtitle, mob/player) // CRIMSON EDIT CHANGE - SUBSPLAT_BANS - original: /proc/get_job_unavailable_error_message(retval, jobtitle)
 	switch(retval)
 		if(JOB_AVAILABLE)
 			return "[jobtitle] is available."
@@ -157,6 +157,32 @@
 		// CRIMSON EDIT ADD START
 		if(JOB_UNAVAILABLE_DONATOR)
 			return "You need to be a donator to have play as [jobtitle]."
+
+	var/datum/subsplat/vampire_clan/clan
+	var/datum/subsplat/werewolf/auspice/auspice
+	var/datum/subsplat/werewolf/tribe/tribe
+	var/splat_pref
+	var/player_splat_id
+	if(player)
+		splat_pref = player.client.prefs.read_preference(/datum/preference/choiced/splats)
+		if(ispath(splat_pref))
+			var/datum/splat/player_splat = GLOB.splat_prototypes[splat_pref]
+			player_splat_id = player_splat.id
+		else
+			player_splat_id = splat_pref
+		clan = get_vampire_clan(player.client.prefs.read_preference(/datum/preference/choiced/subsplat/vampire_clan))
+		auspice = get_fera_auspice(player.client.prefs.read_preference(/datum/preference/choiced/subsplat/fera_auspice/garou))
+		tribe = get_fera_tribe(player.client.prefs.read_preference(/datum/preference/choiced/subsplat/fera_tribe/garou))
+
+	switch(retval)
+		if(JOB_UNAVAILABLE_BANNED_SPLAT)
+			return "You are currently banned from the [player_splat_id ? snake_to_pascal(player_splat_id, TRUE) : "currently selected"] splat."
+		if(JOB_UNAVAILABLE_BANNED_CLAN)
+			return "You are currently banned from the [clan?.name || "currently selected"] clan."
+		if(JOB_UNAVAILABLE_BANNED_TRIBE)
+			return "You are currently banned from the [tribe?.id || "currently selected"] tribe."
+		if(JOB_UNAVAILABLE_BANNED_AUSPICE)
+			return "You are currently banned from the [auspice?.id || "currently selected"] auspice."
 		// CRIMSON EDIT ADD END
 
 
@@ -193,7 +219,7 @@
 
 	var/error = IsJobUnavailable(rank)
 	if(error != JOB_AVAILABLE)
-		tgui_alert(usr, get_job_unavailable_error_message(error, rank))
+		tgui_alert(usr, get_job_unavailable_error_message(error, rank, usr)) // CRIMSON EDIT CHANGE - SUBSPLAT_BANS - Original: tgui_alert(usr, get_job_unavailable_error_message(error, rank))
 		return FALSE
 
 	if(SSshuttle.arrivals)

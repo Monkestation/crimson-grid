@@ -34,8 +34,8 @@ import {
 import { useRandomToggleState } from '../useRandomToggleState';
 import { useServerPrefs } from '../useServerPrefs';
 import { DeleteCharacterPopup } from './DeleteCharacterPopup';
-import { MultiNameInput, NameInput } from './names';
 import { VocalsInput, VoiceInput } from './darkpack_vocals'; // DARKPACK EDIT ADDITION
+import { MultiNameInput, NameInput } from './names';
 
 const CLOTHING_CELL_SIZE = 48;
 const CLOTHING_SIDEBAR_ROWS = 12; // DARKPACK EDIT CHANGE - ORIGINAL: 9;
@@ -104,11 +104,13 @@ type ChoicedSelectionProps = {
   selected: string;
   supplementalFeature?: string;
   supplementalValue?: unknown;
+  bannedFeatures?: string[]; // CRIMSON EDIT ADD - SUBSPLAT_BANS
   onSelect: (value: string) => void;
 };
 
 function ChoicedSelection(props: ChoicedSelectionProps) {
-  const { catalog, supplementalFeature, supplementalValue } = props;
+  const { catalog, supplementalFeature, supplementalValue, bannedFeatures } =
+    props; // CRIMSON EDIT ADD - SUBSPLAT_BANS
   const [searchText, setSearchText] = useState('');
 
   if (!catalog.icons) {
@@ -154,14 +156,18 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
             <Stack wrap>
               {searchInCatalog(searchText, catalog.icons).map(
                 ([name, image], index) => {
+                  const banned = bannedFeatures?.includes(name); // CRIMSON EDIT ADD - SUBSPLAT_BANS
                   return (
                     <Button
                       key={index}
                       onClick={() => {
                         props.onSelect(name);
                       }}
+                      disabled={banned} // CRIMSON EDIT ADD - SUBSPLAT_BANS
                       selected={name === props.selected}
-                      tooltip={name}
+                      tooltip={
+                        banned ? `${name} (Banned from selection)` : name
+                      } // CRIMSON EDIT ADD - SUBSPLAT_BANS -Original: tooltip={name}
                       tooltipPosition="right"
                       style={{
                         height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
@@ -257,6 +263,7 @@ type MainFeatureProps = {
   handleSelect: (newClothing: string) => void;
   randomization?: RandomSetting;
   setRandomization: (newSetting: RandomSetting) => void;
+  bannedFeatures: string[];
 };
 
 function MainFeature(props: MainFeatureProps) {
@@ -267,6 +274,7 @@ function MainFeature(props: MainFeatureProps) {
     handleSelect,
     randomization,
     setRandomization,
+    bannedFeatures, // CRIMSON EDIT ADD - SUBSPLAT_BANS
   } = props;
 
   const supplementalFeature = catalog.supplemental_feature;
@@ -287,6 +295,7 @@ function MainFeature(props: MainFeatureProps) {
               supplementalFeature
             ]
           }
+          bannedFeatures={bannedFeatures} // CRIMSON EDIT ADD - SUBSPLAT_BANS
           onSelect={handleSelect}
         />
       }
@@ -413,7 +422,7 @@ export function PreferenceList(props: PreferenceListProps) {
                         value={value}
                       />
                     )}
-                  {/*DARKPACK EDIT END */}
+                    {/*DARKPACK EDIT END */}
                   </Stack.Item>
                 </Stack>
               </LabeledList.Item>
@@ -463,7 +472,9 @@ export function MainPage(props: MainPageProps) {
   const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
   const [vocalsInputOpen, setVocalsInputOpen] = useState(false); // DARKPACK EDIT ADDITION
   const [randomToggleEnabled] = useRandomToggleState();
-  const [pendingConfirm, setPendingConfirm] = useState<(() => void) | null>(null); // DARKPACK EDIT ADD - for popups
+  const [pendingConfirm, setPendingConfirm] = useState<(() => void) | null>(
+    null,
+  ); // DARKPACK EDIT ADD - for popups
 
   const serverData = useServerPrefs();
 
@@ -492,8 +503,12 @@ export function MainPage(props: MainPageProps) {
     ...data.character_preferences.non_contextual,
   };
   // DARKPACK EDIT ADD START - tracking age changes
-  const immortalAgeValue = nonContextualPreferences.immortal_age as number | undefined;
-  const immortalAgeServerData = serverData?.immortal_age as { minimum: number; maximum: number; step: number } | undefined;
+  const immortalAgeValue = nonContextualPreferences.immortal_age as
+    | number
+    | undefined;
+  const immortalAgeServerData = serverData?.immortal_age as
+    | { minimum: number; maximum: number; step: number }
+    | undefined;
   // DARKPACK EDIT ADD END
 
   if (randomBodyEnabled) {
@@ -540,18 +555,21 @@ export function MainPage(props: MainPageProps) {
           maxHeight="auto"
           // DARKPACK EDIT ADD START
           overrides={{
-            immortal_age: immortalAgeValue !== undefined ? (
-              <NumberInput
-                value={immortalAgeValue}
-                minValue={immortalAgeServerData?.minimum ?? 0}
-                maxValue={immortalAgeServerData?.maximum ?? 1000}
-                step={immortalAgeServerData?.step ?? 1}
-                onChange={(value) => setPendingConfirm(() => () => {
-                  createSetPreference(act, 'immortal_age')(value);
-                  act('clear_discipline_levels');
-                })}
-              />
-            ) : undefined,
+            immortal_age:
+              immortalAgeValue !== undefined ? (
+                <NumberInput
+                  value={immortalAgeValue}
+                  minValue={immortalAgeServerData?.minimum ?? 0}
+                  maxValue={immortalAgeServerData?.maximum ?? 1000}
+                  step={immortalAgeServerData?.step ?? 1}
+                  onChange={(value) =>
+                    setPendingConfirm(() => () => {
+                      createSetPreference(act, 'immortal_age')(value);
+                      act('clear_discipline_levels');
+                    })
+                  }
+                />
+              ) : undefined,
           }}
           // DARKPACK EDIT ADD END
         />
@@ -624,8 +642,9 @@ export function MainPage(props: MainPageProps) {
               Change Character Details?
             </Box>
             <Box color="label" mb={2}>
-              Changing significant character details (Clan, age, etc.) will wipe ALL of your existing disciplines.
-              This cannot be undone. Are you sure?
+              Changing significant character details (Clan, age, etc.) will wipe
+              ALL of your existing disciplines. This cannot be undone. Are you
+              sure?
             </Box>
             <Stack textAlign="center" justify="center">
               <Stack.Item>
@@ -693,15 +712,15 @@ export function MainPage(props: MainPageProps) {
                 }}
               />
 
-            {/* DARKPACK EDIT ADDITION START */}
-            <Stack.Item position="relative">
-              <VoiceInput
-                openVocalsInput={() => {
-                  setVocalsInputOpen(true);
-                }}
-              />
-            </Stack.Item>
-            {/* DARKPACK EDIT ADDITION END */}
+              {/* DARKPACK EDIT ADDITION START */}
+              <Stack.Item position="relative">
+                <VoiceInput
+                  openVocalsInput={() => {
+                    setVocalsInputOpen(true);
+                  }}
+                />
+              </Stack.Item>
+              {/* DARKPACK EDIT ADDITION END */}
             </Stack.Item>
           </Stack>
         </Stack.Item>
@@ -745,6 +764,9 @@ export function MainPage(props: MainPageProps) {
                       handleSelect={handleSelect}
                       randomization={randomizationOfMainFeatures[clothingKey]}
                       setRandomization={createSetRandomization(clothingKey)}
+                      bannedFeatures={
+                        data.banned_features?.[catalog.name.toLowerCase()]
+                      } // CRIMSON EDIT ADD - SUBSPLAT_BANS
                     />
                   )}
                 </Stack.Item>
