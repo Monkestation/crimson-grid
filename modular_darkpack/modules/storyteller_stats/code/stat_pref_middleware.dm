@@ -20,7 +20,7 @@
 		stat_data["subcategory"] = stat.subcategory
 		stat_data["max_score"] = stat.max_score
 		stat_data["points"] = stat.get_points()
-		stat_data["score"] = stat.get_score(include_bonus = FALSE)
+		stat_data["score"] = stat.get_pure_score()
 		stat_data["bonus_score"] = max(stat.get_bonus_score(), 0) // Dont go below 0 as this is to display bonuses and doesnt have handling for negative bonus score atm
 		stat_data["abstract_type"] = "[stat.abstract_type]"
 		data["stats"]["[stat.type]"] = stat_data
@@ -36,13 +36,13 @@
 	var/datum/st_stat/stat_path = preferences.preference_storyteller_stats[text2path(params["stat"])]
 	var/datum/st_stat/abstract_stat = preferences.preference_storyteller_stats[stat_path.abstract_type]
 	var/datum/st_stat/freebie_point_stat = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS]
-	var/old_value = stat_path.get_score(include_bonus = FALSE)
+	var/old_value = stat_path.get_pure_score()
 
 
 	if(!stat_path.can_increase_score(1)) // Have we reached the max_score of the stat?
 		return FALSE // If we have, then return early.
 
-	if((stat_path.get_score(include_bonus = FALSE) + 1) > stat_path.starting_score)
+	if((stat_path.get_pure_score() + 1) > stat_path.starting_score)
 		if(abstract_stat.can_decrease_points(1)) // Can we spend points on this stat?
 			abstract_stat.decrease_points(1) // Spend a point.
 		else
@@ -57,7 +57,7 @@
 		update_middleware_stats(preferences.preference_storyteller_stats)
 
 
-	var/new_value = stat_path.get_score(include_bonus = FALSE)
+	var/new_value = stat_path.get_pure_score()
 	var/real_name = user.client.prefs.read_preference(/datum/preference/name/real_name)
 	user.log_message("increased stat '[stat_path.name]' from [old_value] to [new_value] on [real_name]", LOG_STATS)
 	return TRUE
@@ -72,12 +72,12 @@
 	var/datum/st_stat/stat_path = preferences.preference_storyteller_stats[text2path(params["stat"])]
 	var/datum/st_stat/abstract_stat = preferences.preference_storyteller_stats[stat_path.abstract_type]
 	var/datum/st_stat/freebie_point_stat = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS]
-	var/old_value = stat_path.get_score(include_bonus = FALSE)
+	var/old_value = stat_path.get_pure_score()
 
 	if(!stat_path.can_decrease_score(1))
 		return FALSE
 
-	if((stat_path.get_score(include_bonus = FALSE) - 1) >= stat_path.starting_score)
+	if((stat_path.get_pure_score() - 1) >= stat_path.starting_score)
 		if(freebie_point_stat.can_increase_freebie_points(stat_path.freebie_point_cost)) // Can we regain freebie points?
 			freebie_point_stat.increase_freebie_points(stat_path.freebie_point_cost) // Regain freebie points.
 		else
@@ -88,7 +88,7 @@
 	if(stat_path.stat_flags & AFFECTS_STATS)
 		update_middleware_stats(preferences.preference_storyteller_stats)
 
-	var/new_value = stat_path.get_score(include_bonus = FALSE)
+	var/new_value = stat_path.get_pure_score()
 	var/real_name = user.client.prefs.read_preference(/datum/preference/name/real_name)
 	user.log_message("decreased stat '[stat_path.name]' from [old_value] to [new_value] on '[real_name]'", LOG_STATS)
 	return TRUE

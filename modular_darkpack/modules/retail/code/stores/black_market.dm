@@ -14,6 +14,7 @@
 		new /datum/data/vending_product("switchblade", /obj/item/switchblade/vamp, 85),
 		new /datum/data/vending_product("knuckledusters", /obj/item/clothing/gloves/vampire/brassknuckles, 100),
 		new /datum/data/vending_product("stake", /obj/item/vampire_stake, 100),
+		new /datum/data/vending_product("duffelbag", /obj/item/storage/backpack/duffelbag,	100), // CRIMSON EDIT ADD - Adds Duffelbags to Black Market
 		new /datum/data/vending_product("Surgery dufflebag", /obj/item/storage/backpack/duffelbag/sec/surgery, 100),
 		new /datum/data/vending_product("Handcuffs", /obj/item/restraints/handcuffs, 50),
 		new /datum/data/vending_product("Black bag", /obj/item/clothing/head/vampire/blackbag, 50),

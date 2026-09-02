@@ -10,6 +10,7 @@
 	density = FALSE
 	anchored = TRUE
 	anchored_tabletop_offset = 6
+	var/take_area_name = TRUE
 	var/owner_needed = TRUE //Does an npc need to be here for this
 	var/mob/living/carbon/human/npc/my_owner //tracks existence of owner
 	var/payment_department = ACCOUNT_SRV
@@ -25,6 +26,9 @@
 		if(my_owner)
 			RegisterSignal(my_owner, COMSIG_QDELETING, PROC_REF(cleanup_owner))
 	build_inventory()
+
+	if(take_area_name)
+		name = get_area_name(src, TRUE)
 
 /obj/structure/retail/proc/cleanup_owner()
 	SIGNAL_HANDLER

@@ -90,7 +90,7 @@
 
 	TEST_ASSERT_EQUAL(victim.loc.x, run_loc_floor_bottom_left.x + 2, "Victim wasn't moved back after being pushed")
 	TEST_ASSERT(!victim.has_status_effect(/datum/status_effect/incapacitating/knockdown), "Victim was knocked down despite not being against a wall")
-	TEST_ASSERT_EQUAL(victim.get_active_held_item(), toolbox, "Victim dropped toolbox despite not being against a wall")
+	//TEST_ASSERT_EQUAL(victim.get_active_held_item(), toolbox, "Victim dropped toolbox despite not being against a wall") DARKPACK EDIT REMOVAL - 1359 "Re-adds Potence Throwing" adds disarming without being against a wall so we don't care about this anymore
 
 	attacker.forceMove(get_step(attacker, EAST))
 

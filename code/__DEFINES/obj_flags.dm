@@ -70,7 +70,7 @@
 #define WEAPON_DESCRIPTION_INITIALIZED (1<<21)
 /// If an item causes bluespace interference when teleported with.
 #define BLUESPACE_INTERFERENCE (1<<22)
-#define ACTIVE_WORLD_ICON (1<<23) // DARKPACK EDIT ADD - World Icons
+#define ACTIVE_ONFLOOR_ICON (1<<23) // DARKPACK EDIT ADD - ONFLOOR_ICONS
 
 // Flags for the clothing_flags var on /obj/item/clothing
 

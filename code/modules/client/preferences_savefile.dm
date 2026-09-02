@@ -507,7 +507,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	for(var/stat_typepath in stats_list)
 		var/datum/st_stat/stat = stats_list[stat_typepath]
 		new_stats_list[stat_typepath] = list()
-		new_stats_list[stat_typepath][STAT_SCORE] = stat.get_score(include_bonus = FALSE)
+		new_stats_list[stat_typepath][STAT_SCORE] = stat.get_pure_score()
 		new_stats_list[stat_typepath][STAT_POINTS] = stat.get_points()
 		new_stats_list[stat_typepath][STAT_FREEBIE_COST_SPENT] = stat.freebie_cost_spent
 	save_data["preference_storyteller_stats"] = new_stats_list
