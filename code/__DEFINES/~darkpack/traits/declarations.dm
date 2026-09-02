@@ -16,6 +16,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define STATION_TRAIT_STRAY_MIGRATION "station_trait_stray_migration"
 #define STATION_TRAIT_WILD_MASQUERADE "station_trait_wild_masquerade"
 
+/// Prevents passive fire acts from igniting the ground below it.
+#define TRAIT_ELEVATED_FLAME "elevated_flame" // TURF_FIRE
+
 // Mob traits
 
 // If the user is unbondable via blood bonds.
@@ -107,8 +110,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Stepping on glass shards immunity. Currently used for a couple Garou forms but could be used elsewhere.
 #define TRAIT_HARDENED_SOLES "hardened_soles"
 
-
-// Allows the user to pass through doors
 #define TRAIT_IN_FRENZY "in_frenzy"
 
 // Is the mob silenced (by Quietus 1 for example)
@@ -146,6 +147,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_LYING_ANGLE "no_lying_angle"
 // Expensive but allows us to ensure there resting gets updated.
 #define TRAIT_TRANSFORM_UPDATES_ICON "transform_updates_icon"
+#define TRAIT_OPENS_MOONGATES "opens_moongates"
+/// Friends and allowed to interact with the main gaian caern
+#define TRAIT_GAIA_CAERN_FRIEND "gaia_caern_friend"
 // Fera both grants a flight ability, and has the sprites to support such a thing. (Presently only designed to supprot feral form.)
 #define TRAIT_FERA_FLIGHT "fera_flight"
 #define TRAIT_SILVER_WEAKNESS "silver_weakness"
@@ -172,6 +176,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // BELOW ARE ALL MERITS/FLAWS
 #define TRAIT_ACUTE_HEARING "acute_hearing"
 #define TRAIT_ANIMAL_MUSK "animal_musk"
+#define TRAIT_ANTHROPIC_TASTE "anthropic_taste"
 #define TRAIT_BANNED_TRANSFORMATION "banned_transformation"
 #define TRAIT_BEACON_OF_THE_UNHOLY "beacon_of_the_unholy"
 #define TRAIT_BETRAYERS_MARK "betrayers_mark"
