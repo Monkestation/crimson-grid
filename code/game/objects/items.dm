@@ -978,9 +978,14 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 	if(isturf(location))
 		location.hotspot_expose(flame_heat, 5)
 		// DARKPACK EDIT ADD START - TURF_FIRE
-		if(SEND_SIGNAL(location, COMSIG_TURF_OPEN_FLAME, flame_heat) & BLOCK_TURF_IGNITION)
-			return
 		var/turf/open/open_location = loc // NOT the location variable used earlier else cigarettes in mouths start fires
+		if(SEND_SIGNAL(open_location, COMSIG_TURF_OPEN_FLAME, flame_heat) & BLOCK_TURF_IGNITION)
+			return
+		// Checking src here incase we have... a flamable table. that should ignite its turf.
+		if(HAS_TRAIT(open_location, TRAIT_ELEVATED_TURF) && !HAS_TRAIT(src, TRAIT_ELEVATING_OBJECT))
+			return
+		if(HAS_TRAIT(src, TRAIT_ELEVATED_FLAME))
+			return
 		if(isopenturf(open_location) && open_location.flammability >= 1 && prob(open_location.flammability))
 			open_location.ignite_turf(2) // if there's enough flammability for a fire to sustain itself..
 		// DARKPACK EDIT ADD END

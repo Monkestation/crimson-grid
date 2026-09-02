@@ -15,6 +15,8 @@
 	VAR_PROTECTED/bonus_score = 0
 	/// Temporary bonus score applied to this stat from various ingame sources. These are directly added to results rather then added to dice pool
 	VAR_PROTECTED/auto_success_score = 0
+	/// Temporary number that clamps a stat to less-then or equal to said value
+	VAR_PROTECTED/stat_clamp_score
 	/// The minimum score this stat can be.
 	var/min_score = 0
 	/// The maximum score this stat can be.
@@ -30,6 +32,8 @@
 	var/list/modifiers
 	/// LAZYLIST. A dictionary of auto success scores to this attribute.
 	var/list/auto_successes
+	/// LAZYLIST. A dictionary of stat clamps to this attribute.
+	var/list/stat_clamps
 	/// What score does this stat start out with at character creation.
 	var/starting_score = 0
 	/// How many points are in this stat category that the player can use. Used in abstract classes only.
@@ -38,16 +42,20 @@
 	var/freebie_cost_spent = 0
 
 // Score
+/datum/st_stat/proc/get_pure_score()
+	return score
 
-/datum/st_stat/proc/get_score(include_bonus = TRUE, include_auto_sucesses = TRUE)
+/datum/st_stat/proc/get_score(include_bonus = TRUE, include_auto_sucesses = TRUE, include_stat_clamps = TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
+	var/using_score = score
 	if(include_bonus)
-		if(include_auto_sucesses)
-			return score + bonus_score + auto_success_score
-		else
-			return score + bonus_score
-	else
-		return score
+		using_score += bonus_score
+	if(include_auto_sucesses)
+		using_score += auto_success_score
+
+	if(include_stat_clamps && !isnull(stat_clamp_score))
+		return min(using_score, stat_clamp_score)
+	return using_score
 
 /datum/st_stat/proc/get_bonus_score()
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -137,6 +145,24 @@
 		auto_success_score += auto_successes[source]
 	auto_success_score = clamp(auto_success_score, 0, 10)
 
+
+/datum/st_stat/proc/add_stat_clamps(amount, source)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	LAZYSET(stat_clamps, source, amount)
+	update_stat_clamps()
+
+/datum/st_stat/proc/remove_stat_clamps(source)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	LAZYREMOVE(stat_clamps, source)
+	update_stat_clamps()
+
+/datum/st_stat/proc/update_stat_clamps()
+	SHOULD_NOT_OVERRIDE(TRUE)
+	stat_clamp_score = null
+	for(var/source in stat_clamps)
+		if(isnull(stat_clamp_score) || (stat_clamps[source] <= stat_clamp_score))
+			stat_clamp_score = stat_clamps[source]
+
 // Points
 
 /datum/st_stat/proc/get_points()
@@ -195,6 +221,12 @@
 	points -= amount
 	freebie_cost_spent += amount
 	return TRUE
+
+/datum/st_stat/proc/link_mob(mob/living/our_mob)
+	return
+
+/datum/st_stat/proc/unlink_mob(mob/living/our_mob)
+	return
 
 /datum/st_stat/proc/update_mob(mob/living/our_mob, initial)
 	return

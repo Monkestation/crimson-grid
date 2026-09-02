@@ -30,6 +30,13 @@
 				// DARKPACK TODO - FRENZY - tgui_input, yes or no to continue feeding in spite of the prey being excluded, if so, frenzy and path/humanity hit
 				return
 
+			// anthropic taste flaw
+			if(HAS_TRAIT(src, TRAIT_ANTHROPIC_TASTE) && istype(bit_living, /mob/living/basic))
+				SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
+				to_chat(src, span_warning("You despise this kind of prey."))
+				// DARKPACK TODO - FRENZY - tgui_input, yes or no to continue feeding in spite of the prey being excluded, if so, frenzy and path/humanity hit
+				return
+
 			// victim of the masquerade flaw
 			if(HAS_TRAIT(src, TRAIT_VICTIM_OF_THE_MASQUERADE))
 				var/datum/quirk/darkpack/victim_of_the_masquerade/votm = src.get_quirk(/datum/quirk/darkpack/victim_of_the_masquerade)
