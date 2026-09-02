@@ -155,7 +155,35 @@
 	AddComponent(/datum/component/selling, 25, "weed", TRUE, -1, 7) // CRIMSON EDIT - Drug Fixes And Rework - Original: 100
 	//In 2015 Cannabis was only legally distributed in California by medical dispensary. https://web.archive.org/web/20161109220853/http://www.times-standard.com/article/NJ/20161107/NEWS/161109826
 	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
+	update_appearance()
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 // DARKPACK EDIT ADD END
+
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/obj/item/food/grown/cannabis/proc/get_strain()
+	for(var/datum/reagent/drug/cannabis/strain in reagents?.reagent_list)
+		if(strain.strain_icon_state)
+			return strain
+	return null
+
+/obj/item/food/grown/cannabis/update_name(updates)
+	. = ..()
+
+	var/datum/reagent/drug/cannabis/strain = get_strain()
+	if(strain)
+		name = "[strain.name] bud"
+
+/obj/item/food/grown/cannabis/update_icon_state()
+	. = ..()
+
+	var/datum/reagent/drug/cannabis/strain = get_strain()
+	if(!strain)
+		return
+	icon = 'modular_darkpack/modules/drugs/icons/cannabis_strains.dmi'
+	onflooricon = icon
+	icon_state = strain.strain_icon_state
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /obj/item/food/grown/cannabis/rainbow
 	seed = /obj/item/seeds/cannabis/rainbow

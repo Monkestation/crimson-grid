@@ -26,8 +26,7 @@
 	///Max units able to be stored inside the bong
 	var/chem_volume = 100
 	///Is it filled?
-	var/packeditem = FALSE
-	var/obj/item/packed_object // CRIMSON EDIT ADD - Drug Fixes And Rework
+	var/obj/item/packeditem // CRIMSON EDIT - Drug Fixes And Rework - Original: var/packeditem = FALSE
 
 	///How many reagents do we transfer each use?
 	var/reagent_transfer_per_use = 0
@@ -68,11 +67,10 @@
 		// CRIMSON EDIT ADD START - Drug Fixes And Rework
 		if(!user.transferItemToLoc(tool, src))
 			return ITEM_INTERACT_BLOCKING
-		packed_object = tool
 		// CRIMSON EDIT ADD END - Drug Fixes And Rework
 		to_chat(user, span_notice("You stuff [tool] into [src]."))
 		bong_hits = max_hits
-		packeditem = tool.name
+		packeditem = tool
 		update_name()
 		if(tool.reagents)
 			tool.reagents.trans_to(src, tool.reagents.total_volume, transferred_by = user)
@@ -123,10 +121,10 @@
 		return CLICK_ACTION_SUCCESS
 	if(!packeditem)
 		return CLICK_ACTION_BLOCKING
-	if(bong_hits >= max_hits && packed_object)
-		var/obj/item/unpacked = packed_object
+	if(bong_hits >= max_hits && packeditem)
+		var/obj/item/unpacked = packeditem
 		reagents.trans_to(unpacked, reagents.total_volume)
-		packed_object = null
+		packeditem = null
 		empty_out()
 		to_chat(user, span_notice("You tip [unpacked] back out of [src]."))
 		user.put_in_hands(unpacked)
@@ -175,8 +173,8 @@
 // CRIMSON EDIT ADD START - Drug Fixes And Rework
 /obj/item/bong/Exited(atom/movable/gone, direction)
 	. = ..()
-	if(gone == packed_object)
-		packed_object = null
+	if(gone == packeditem)
+		packeditem = null
 // CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /obj/item/bong/proc/light(flavor_text = null)
@@ -212,10 +210,9 @@
 	icon_state = icon_off
 
 /obj/item/bong/proc/empty_out()
-	packeditem = FALSE
+	QDEL_NULL(packeditem) // CRIMSON EDIT - Drug Fixes And Rework - Original: packeditem = FALSE
 	bong_hits = 0
 	reagents.clear_reagents() //just to make sure
-	QDEL_NULL(packed_object) // CRIMSON EDIT ADD - Drug Fixes And Rework
 
 /obj/item/bong/proc/spawn_cloud(turf/open/location, smoke_range)
 	var/list/turfs_affected = list(location)

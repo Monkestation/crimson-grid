@@ -39,7 +39,7 @@
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(affected_mob, span_notice(pick("Everything looks sharp.", "You could do this all night.", "Your jaw aches.", "You are certain. About all of it.", "Your heart is working hard for you.", "The colours are louder.", "You keep swallowing. Your throat is numb.", "Your chest is warm and busy.")))
 	affected_mob.add_mood_event("tweaking", /datum/mood_event/stimulant_medium)
-	affected_mob.take_stimulant_dose(1, 5)
+	affected_mob.take_stimulant_dose(peak = 1, recovery_minutes = 5)
 	affected_mob.set_jitter_if_lower(1.33 SECONDS * metabolization_ratio * seconds_per_tick)
 	if(affected_mob.adjust_organ_loss(ORGAN_SLOT_HEART, 0.33 * (0.1 + 0.04 * volume) * metabolization_ratio * seconds_per_tick, required_organ_flag = affected_organ_flags))
 		. = UPDATE_MOB_HEALTH

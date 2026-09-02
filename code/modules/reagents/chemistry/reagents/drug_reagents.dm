@@ -50,6 +50,7 @@
 	/// tracks if we cleared a monkey's aggressiveness value
 	var/cleared_aggressive = FALSE
 	var/strain_desc // CRIMSON EDIT ADD - Drug Fixes And Rework
+	var/strain_icon_state // CRIMSON EDIT ADD - Drug Fixes And Rework
 
 // CRIMSON EDIT ADD START - Drug Fixes And Rework
 /datum/reagent/drug/cannabis/proc/is_primary_cannabis()
@@ -92,6 +93,7 @@
 // CRIMSON EDIT ADD START - Drug Fixes And Rework
 /datum/reagent/drug/cannabis/og_kush
 	name = "OG Kush"
+	strain_icon_state = "og_kush"
 	strain_desc = "Forest green with long orange hairs and a golden crystal dusting. Smells earthy, sour and piney."
 	taste_description = "earthy pine and lemon peel"
 	chemical_flags = NONE
@@ -99,21 +101,24 @@
 
 /datum/reagent/drug/cannabis/sour_diesel
 	name = "Sour Diesel"
-	strain_desc = "Dense light green with orange hairs. Smells like fuel and lemon."
+	strain_icon_state = "sour_diesel"
+	strain_desc = "Dense light green with orange hairs. Sticky. Smells like fuel and lemon."
 	taste_description = "sour diesel fumes"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
 
 /datum/reagent/drug/cannabis/granddaddy_purple
 	name = "Granddaddy Purple"
-	strain_desc = "Strikingly purple with fiery orange hairs. Sticky with resin. Smells like sweet grape."
+	strain_icon_state = "granddaddy_purple"
+	strain_desc = "Deep purple with fiery orange hairs. Sticky. Smells like sweet grape."
 	taste_description = "grape candy"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
 
 /datum/reagent/drug/cannabis/girl_scout_cookies
 	name = "Girl Scout Cookies"
-	strain_desc = "Small dense lime green nugs under a heavy coat of kief. Smells like sweet earth and mint."
+	strain_icon_state = "girl_scout_cookies"
+	strain_desc = "Small dense green nugs under a heavy silvery coat of kief. Smells like sweet earth and... mint?"
 	taste_description = "sweet earth and mint"
 	chemical_flags = NONE
 	randomized_spawns = REAGENT_SPAWN_NO_RANDOM
@@ -253,7 +258,7 @@
 	if(SPT_PROB(2.5, seconds_per_tick))
 		affected_mob.emote(pick("twitch", "shiver"))
 	// CRIMSON EDIT ADD START - Drug Fixes And Rework
-	affected_mob.take_stimulant_dose(0.2, 5)
+	affected_mob.take_stimulant_dose(peak = 0.2, recovery_minutes = 5)
 	affected_mob.adjust_nutrition(0.6 * metabolization_ratio * seconds_per_tick)
 	if(current_cycle > 60)
 		affected_mob.set_jitter_if_lower(7.5 SECONDS * metabolization_ratio * seconds_per_tick)
