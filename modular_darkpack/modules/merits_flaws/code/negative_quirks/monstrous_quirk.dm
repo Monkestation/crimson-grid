@@ -16,6 +16,9 @@
 	if(!human_holder)
 		return
 	human_holder.rot_body(1)
-	ADD_TRAIT(human_holder, TRAIT_MASQUERADE_VIOLATING_FACE, "Monstrous")
-	if(human_holder.st_get_stat(STAT_APPEARANCE) > 0)
-		human_holder.st_add_stat_mod(STAT_APPEARANCE, -human_holder.st_get_stat(STAT_APPEARANCE), "Monstrous")
+	ADD_TRAIT(human_holder, TRAIT_MASQUERADE_VIOLATING_FACE, type)
+	human_holder.st_add_stat_clamp(STAT_APPEARANCE, 0, type)
+
+/datum/quirk/darkpack/monstrous/remove()
+	. = ..()
+	quirk_holder.st_remove_stat_clamp(STAT_APPEARANCE, type)

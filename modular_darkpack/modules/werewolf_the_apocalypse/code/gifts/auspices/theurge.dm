@@ -21,8 +21,9 @@ the scar is received and an extra Gnosis point is spent.
 	click_to_activate = TRUE
 	rank = 1
 
-	//rage_cost = 1
-	gnosis_cost = 1
+	rage_cost = 1 // CRIMSON EDIT CHANGE - Healer Buff PR (Salubri and Theurges) - Original: //rage_cost = 1
+	//gnosis_cost = 1 // CRIMSON EDIT CHANGE - Healer Buff PR (Salubri and Theurges) - Original: gnosis_cost = 1
+
 
 /datum/action/cooldown/power/gift/mothers_touch/Activate(atom/target)
 	if(!isliving(target))
@@ -30,14 +31,28 @@ the scar is received and an extra Gnosis point is spent.
 	if(!(target in range(1, owner)))
 		return FALSE
 
-	. = ..()
-
-	var/datum/splat/werewolf/werewolf_splat = get_werewolf_splat(owner)
-	var/difficulty = werewolf_splat.uses_rage ? werewolf_splat.rage : 5
-	var/successes = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/gift/mothers_touch, difficulty = difficulty)
-
+// CRIMSON GRID EDIT START- Healer Buff PR (Salubri and Theurges) - (Made it so you can't heal yourself and vampires that aren't Humanity 7+)
 	var/mob/living/living_target = target
-	living_target.heal_storyteller_health(successes, TRUE, TRUE, TRUE)
+
+	if(living_target == owner)
+		return FALSE
+	if(get_kindred_splat(living_target))
+		var/datum/st_stat/morality_path/morality/stat_morality = living_target.st_get_stat(STAT_MORALITY)
+		if((stat_morality?.morality_path?.alignment != MORALITY_HUMANITY || stat_morality?.get_score() < 7) || HAS_TRAIT(src, TRAIT_HIDDEN_WYRMTAINT))
+			return FALSE
+// CRIMSON GRID EDIT END
+	. = ..()
+// CRIMSON GRID EDIT START- Healer Buff PR (Salubri and Theurges) -- Refactored the algorithim that determines rage.
+	var/difficulty = 0
+
+	if(get_shifter_splat(living_target))
+		var/datum/splat/werewolf/werewolf_splat = get_werewolf_splat(owner)
+		difficulty = werewolf_splat.uses_rage ? werewolf_splat.rage : 5
+	else //tldr any other splat you use diff 5 cause no rage
+		difficulty = 5
+// CRIMSON GRID EDIT END- Healer Buff PR (Salubri and Theurges)
+	var/successes = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/gift/mothers_touch, difficulty = difficulty)
+	living_target.heal_storyteller_health(successes * 2 , TRUE, TRUE, TRUE, TRUE) // CRIMSON EDIT CHANGE - Healer Buff PR (Salubri and Theurges) - Original: var/successes = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/gift/mothers_touch, difficulty = difficulty)
 
 	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 	return TRUE

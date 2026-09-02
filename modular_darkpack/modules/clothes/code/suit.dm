@@ -497,17 +497,35 @@
 	wound = 50
 
 /obj/item/clothing/suit/vampire/bogatyr
-	name = "bogatyr armor"
+	name = "bone armor"
 	desc = "A regal set of armor made of unknown materials."
-	icon_state = "bogatyr_armor"
+	icon_state = "bogatyr_armor_light"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEJUMPSUIT
 	clothing_flags = THICKMATERIAL
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	slowdown = 1
-	w_class = WEIGHT_CLASS_BULKY
+	slowdown = 0.5
+	w_class = WEIGHT_CLASS_NORMAL
+	armor_type = /datum/armor/bulletproof_vest
+
+/obj/item/clothing/suit/vampire/bogatyr/captain
+	name = "golden bone armor"
+	icon_state = "bogatyr_captain_armor"
 	armor_type = /datum/armor/highly_protective_vest
+
+/obj/item/clothing/suit/vampire/bogatyr/captain/heavy // ! Craftable only.
+	name = "reinforced golden bone armor"
+	armor_type = /datum/armor/eod_suit
+	w_class = WEIGHT_CLASS_BULKY
+	slowdown = 1
+
+/obj/item/clothing/suit/vampire/bogatyr/heavy
+	name = "heavy bone harness"
+	icon_state = "bogatyr_armor"
+	armor_type = /datum/armor/eod_suit
+	w_class = WEIGHT_CLASS_BULKY
+	slowdown = 1
 
 /obj/item/clothing/suit/vampire/labcoat
 	name = "labcoat"
