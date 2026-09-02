@@ -1,62 +1,73 @@
+#define HEAL_AGGRAVATED_DAMAGE 100
+
 /datum/action/cooldown/power/gift/rage_heal
 	name = "Rage heal"
-	desc = "This Gift allows the Garou to heal severe aggravated damage with their rage."
+	desc = "This Gift allows the Garou to heal severe aggravated damage with their Rage."
 	button_icon_state = "rage_heal"
 	innate_ability = TRUE
-	cooldown_time = 2 MINUTES
+	cooldown_time = 30 SECONDS
 	rage_cost = 2
 	check_flags = null
+
 	var/datum/storyteller_roll/rage_heal/rage_heal_roll = new /datum/storyteller_roll/rage_heal
+	var/heal_amount = 100
 
 /datum/storyteller_roll/rage_heal
 	bumper_text = "Rage heal"
 	difficulty = 8
-	applicable_stats = list(STAT_STAMINA)
+	applicable_stats = list(STAT_STAMINA, STAT_SURVIVAL)
 	roll_output_type = ROLL_PRIVATE
 
 /datum/action/cooldown/power/gift/rage_heal/Activate(atom/target)
+	var/mob/living/carbon/human/W = owner
 	. = ..()
-	if(!.)
+	var/channel_success = do_after(
+		W,
+		1 SECONDS,
+		timed_action_flags = DO_AFTER_CHECK_NEXT_MOVE
+	)
+	if(!channel_success)
+		to_chat(W, span_warning("You fail to channel your rage through your body to mend your wounds!"))
 		return FALSE
 
-	var/mob/living/carbon/human/BD = owner
-	if(!istype(BD) || BD.stat == DEAD)
-		return FALSE
+	to_chat(W, span_warning("Your rage rips through your flesh rapidly mending and closing your aggravated wounds!"))
 
-	if(!do_after(BD, 1 TURNS, timed_action_flags = DO_AFTER_CHECK_NEXT_MOVE | IGNORE_INCAPACITATED))
-		return FALSE
-
-	var/roll_result = rage_heal_roll.st_roll(BD, src)
-	if(roll_result != ROLL_SUCCESS)
-		to_chat(BD, span_warning("And fail to harness your Rage."))
-		return FALSE
-
-	to_chat(BD, span_notice("But your rage helps mend your wounds."))
-	SEND_SOUND(BD, sound('modular_darkpack/modules/werewolf_the_apocalypse/sounds/rage_heal.ogg', volume = 50))
-	BD.heal_storyteller_health(100, heal_aggravated = TRUE)
-	BD.adjust_agg_loss(-50)
-	BD.update_damage_overlays()
-	return TRUE
-
-	if(!uses_rage)
-		return FALSE
-/datum/action/cooldown/power/gift/rage_heal/proc/pre_activation_checks(atom/target)
-	. = ..()
-	if(do_after(owner, 1 TURNS, timed_action_flags = DO_AFTER_CHECK_NEXT_MOVE | IGNORE_INCAPACITATED))
-		return TRUE
 	if(!rage_heal_roll)
-		rage_heal_roll = new()
-	var/roll_result = rage_heal_roll.st_roll(owner, src)
-	to_chat(owner, span_warning("You break your concentration..."))
-	switch(roll_result)
-		if(ROLL_SUCCESS)
-			to_chat(owner, span_notice("But you succeed in mending your wounds."))
-			return TRUE
-		if(ROLL_FAILURE)
-			to_chat(owner, span_warning("And fail to harness your blood."))
-			return FALSE
-		if(ROLL_BOTCH)
-			to_chat(owner, span_danger("And worsen your wounds."))
-			/datum/splat/werewolf/adjust_rage(-2)
-			owner.apply_damage(1 TTRPG_DAMAGE, BRUTE)
-			return FALSE
+		rage_heal_roll = new /datum/storyteller_roll/rage_heal
+
+
+	var/roll_result = rage_heal_roll.st_roll(W, src)
+
+	if(roll_result == ROLL_BOTCH)
+
+		to_chat(W, span_warning("The rage inside of you spirals out your control. Your wounds remain!"))
+		return FALSE
+
+
+	var/agg_before = W.get_agg_loss()
+	if(agg_before <= 0)
+		to_chat(W, span_warning("Your body has no aggravated damage to mend."))
+		return FALSE
+
+	var/successes = rage_heal_roll.last_sucess_amount
+
+	var/heal_amount = HEAL_AGGRAVATED_DAMAGE + (max(successes - 1, 0) * 50)
+	heal_amount = min(heal_amount, HEAL_AGGRAVATED_DAMAGE)
+	heal_amount = min(heal_amount, agg_before)
+
+	to_chat(W, span_warning("Your supernatural rage tears through your wounds..."))
+
+	var/healed_amount = W.adjust_agg_loss(
+		-heal_amount,
+		TRUE,
+		TRUE
+	)
+	if(healed_amount <= 0)
+		to_chat(W, span_warning("Your rage rises within you, but you failed to use it to close your wounds."))
+		return FALSE
+
+	to_chat(W, span_danger("Your Rage surges through your body! Your Flesh rips rapidly together as your serious injuries close."))
+
+	W.update_damage_overlays()
+
+	return TRUE
