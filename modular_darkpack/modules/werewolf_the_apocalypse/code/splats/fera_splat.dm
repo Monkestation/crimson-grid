@@ -133,6 +133,7 @@
 	. = ..()
 	owner.set_species(/datum/species/human/shifter/homid)
 	add_power(/datum/action/cooldown/power/gift/howling)
+	add_power(/datum/action/cooldown/power/gift/rage_heal)
 	COOLDOWN_START(src, passive_regrowth_cd, 8 MINUTES)
 
 	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(revert_to_breed_form))
@@ -143,6 +144,7 @@
 		owner.set_species(/datum/species/human)
 
 	remove_power(/datum/action/cooldown/power/gift/howling)
+	remove_power(/datum/action/cooldown/power/gift/rage_heal)
 	UnregisterSignal(owner, COMSIG_LIVING_DEATH)
 
 /datum/splat/werewolf/shifter/splat_life(seconds_per_tick)
@@ -240,10 +242,6 @@
 		)
 	)
 	mimmicing_animal = /mob/living/basic/pet/dog/wolf
-
-/datum/splat/werewolf/shifter/garou/on_gain()
-	. = ..()
-	add_power(/datum/action/cooldown/power/gift/rage_heal)
 
 /datum/splat/werewolf/shifter/corax
 	name = "Corax"
