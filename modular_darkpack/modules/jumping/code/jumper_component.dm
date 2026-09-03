@@ -119,11 +119,9 @@
 		adjusted_target = locate(jumper.loc.x + round(dx * scale), jumper.loc.y + round(dy * scale), jumper.loc.z)
 
 	playsound(jumper.loc, 'modular_darkpack/modules/jumping/sounds/jump_neutral.ogg', 50, TRUE)
-	//CRIMSON GRID EDIT START - fixes jump stun flaking out at max distance and actually triggering proper
-	if(jumper.combat_mode && distance <= adjusted_jump_range && strength >= 8 && COOLDOWN_FINISHED(src, jump_boom_cooldown))
-		COOLDOWN_START(src, jump_boom_cooldown, JUMP_BOOM_COOLDOWN)
-		addtimer(CALLBACK(src, PROC_REF(jump_boom), jumper), (get_dist(jumper.loc, adjusted_target) * 0.5))
-	//CRIMSON GRID EDIT END
+	if(jumper.combat_mode && get_dist(jumper.loc, target) <= 3 && strength >= 8)
+		addtimer(CALLBACK(src, PROC_REF(jump_boom), jumper),(distance * 0.5))
+		COOLDOWN_START(src, jump_boom_cooldown, JUMP_BOOM_COOLDOWN) //CRMISON GRID ADDITION - Reworks the implimentation of stun jumps
 		jumper.visible_message(span_danger("[jumper] takes a mighty leap that shatters \the [adjusted_target] where they land!"))
 		jumper.adjust_stamina_loss(20)
 	else
