@@ -40,7 +40,7 @@
 			var/mob/living/buckled_mob = buckled_mobs[1]
 			if(buckled_mob.mind)
 				// CRIMSON EDIT ADD START - Sabbat Identifier Fix
-				if(!buckled_mob.mind.has_antag_datum(/datum/antagonist/sabbatist))
+				if(!is_sabbatist(buckled_mob.mind.assigned_role))
 					to_chat(user, span_warning("The vitae rejects them. They must join the pack before they can lead it."))
 					return ITEM_INTERACT_BLOCKING
 				// CRIMSON EDIT ADD END - Sabbat Identifier Fix
