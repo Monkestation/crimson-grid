@@ -49,7 +49,7 @@
 					if(H.mind && is_sabbat_ductus(H.mind.assigned_role))
 						H.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatpack))
 						// CRIMSON EDIT ADD START - Sabbat Identifier Fix
-						H.mind.remove_antag_datum(/datum/antagonist/sabbatist)
+						H.mind.remove_antag_datum(/datum/antagonist/sabbatist/ductus)
 						H.mind.add_antag_datum(/datum/antagonist/sabbatist)
 						// CRIMSON EDIT ADD END - Sabbat Identifier Fix
 						var/datum/antagonist/temp_antag = new()
