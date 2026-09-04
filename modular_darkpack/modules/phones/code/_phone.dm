@@ -188,6 +188,13 @@
 /obj/item/smartphone/click_alt(mob/user)
 	if(!user.is_holding(src))
 		return CLICK_ACTION_BLOCKING
+	// CRIMSON EDIT ADDITION START - TEMP BYPASS LOCKSCREEN FOR CALL
+	if(!opened)
+		if(current_state == PHONE_RINGING && password_enabled && phone_password)
+			unlocked_for_call = TRUE
+		else if(!check_password(user, TRUE))
+			return CLICK_ACTION_BLOCKING
+	// CRIMSON EDIT ADDITION END
 	toggle_screen(user)
 	return CLICK_ACTION_SUCCESS
 
