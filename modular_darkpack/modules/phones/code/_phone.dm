@@ -638,7 +638,6 @@
 					return FALSE
 				phone_password = new_password
 				to_chat(user, span_notice("You change [src]'s password."))
-				log_phone("[key_name(user)] changed the password on [src].")
 				return TRUE
 
 		if("toggle_password_lock")
