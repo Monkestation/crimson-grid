@@ -15,6 +15,7 @@ import { ScreenCalling, ScreenInCall } from './ScreenInCall';
 import { ScreenMessages } from './ScreenMessages';
 import { ScreenPhone } from './ScreenPhone';
 import { ScreenRecents } from './ScreenRecents';
+import { ScreenSecuritySetting } from './ScreenSecuritySetting';
 import { ScreenSettings } from './ScreenSettings';
 import { ScreenSoundSettings } from './ScreenSoundSettings';
 import { ScreenSoundSettingsNotificationSound } from './ScreenSoundSettings_NotificationSound';
@@ -79,6 +80,7 @@ export type Data = {
   calling_user?: string;
   ringer: BooleanLike;
   vibration: BooleanLike;
+  password_enabled: BooleanLike;
   speaker_mode: BooleanLike;
   muted: BooleanLike;
   notification_sound: string; // CRIMSON EDIT ADDITION - notification sounds
@@ -111,6 +113,7 @@ export enum NavigableApps {
   IRC,
   Backgrounds,
   Settings,
+  Security,
   SoundSettings,
   SoundSettingsNotificationSound, // CRIMSON EDIT ADDITION - notification sounds
   Endpost,
@@ -186,6 +189,8 @@ const PhysicalScreen = memo(
           return <ScreenBackgrounds setApp={setApp} />;
         case NavigableApps.Settings:
           return <ScreenSettings setApp={setApp} />;
+        case NavigableApps.Security:
+          return <ScreenSecuritySetting setApp={setApp} />;
         case NavigableApps.SoundSettings:
           return <ScreenSoundSettings setApp={setApp} />;
         // CRIMSON EDIT ADDITION START - notification sounds

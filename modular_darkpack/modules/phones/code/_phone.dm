@@ -68,7 +68,10 @@
 	var/endpost_username = null //username for the endpost app
 
 	// cg edit add password
+	var/password_enabled = FALSE
 	var/phone_password
+	// cg edit phone password lock screen call
+	var/unlocked_for_call = FALSE
 
 /obj/item/smartphone/Initialize(mapload)
 	. = ..()
@@ -148,15 +151,18 @@
 
 // set password
 /obj/item/smartphone/proc/set_random_password()
+	password_enabled = TRUE
 	phone_password = "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)]"
 
 // cg edit phone check
-/obj/item/smartphone/proc/check_password(mob/living/user)
+/obj/item/smartphone/proc/check_password(mob/living/user, autocheck)
+	if(!password_enabled)
+		return TRUE
 	if(!phone_password) // for prepaid phones, add set password stuff later
 		return TRUE
 
-	var/datum/memory/key/phone_pin/remembered = user.mind.memories[/datum/memory/key/phone_pin]
-	if (remembered.remembered_id == phone_password)
+	var/datum/memory/key/phone_pin/remembered = user.mind?.memories[/datum/memory/key/phone_pin]
+	if ((remembered?.remembered_id == phone_password) && autocheck)
 		to_chat(user, span_notice("You unlock [src] by memory."))
 		return TRUE
 
@@ -170,7 +176,10 @@
 /obj/item/smartphone/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!opened)
-		if(!check_password(user))
+		// cg edit phone ring lock screen check stuff
+		if(current_state == PHONE_RINGING && password_enabled && phone_password)
+			unlocked_for_call = TRUE
+		else if(!check_password(user, TRUE))
 			return
 		toggle_screen(user)
 	ui_interact(user)
@@ -254,6 +263,7 @@
 	data["phone_calling"] = (current_state == PHONE_CALLING) ? TRUE : FALSE
 	data["ringer"] = ringer
 	data["vibration"] = vibration
+	data["password_enabled"] = password_enabled
 	data["speaker_mode"] = (phone_radio.canhear_range == 3) ? TRUE : FALSE
 	data["muted"] = muted
 
@@ -617,7 +627,23 @@
 			if(ringer)
 				playsound(loc, 'modular_darkpack/modules/phones/sounds/text_send.ogg', 50, TRUE)
 			return TRUE
+		if("change_password")
+			password_enabled = TRUE
+			if(check_password(user, FALSE))
+				var/new_password = tgui_input_text(user, "Enter a new password", "Change Password", max_length = 4)
+				if(!new_password || length(new_password) == 0)
+					to_chat(user, span_danger("Not a valid password."))
+					return FALSE
+				phone_password = new_password
+				to_chat(user, span_notice("You change [src]'s password."))
+				log_phone("[key_name(user)] changed the password on [src].")
+				return TRUE
 
+		if("toggle_password_lock")
+			if(check_password(user, FALSE))
+				password_enabled = !password_enabled
+				to_chat(user, span_notice("Lock screen [password_enabled ? "enabled" : "disabled"] on [src]."))
+				return TRUE
 	return FALSE
 
 /obj/item/smartphone/proc/get_conversation(contact_number)
