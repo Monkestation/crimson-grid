@@ -45,7 +45,7 @@
 					return ITEM_INTERACT_BLOCKING
 				// CRIMSON EDIT ADD END - Sabbat Identifier Fix
 				// First, demote any existing Ductus to regular Sabbat Pack
-				for(var/mob/living/carbon/human/H in GLOB.player_list)
+				for(var/mob/living/carbon/human/H in GLOB.human_list) // CRIMSON EDIT - Sabbat Identifier Fix - Original: GLOB.player_list
 					if(H.mind && is_sabbat_ductus(H.mind.assigned_role))
 						H.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatpack))
 						// CRIMSON EDIT ADD START - Sabbat Identifier Fix
