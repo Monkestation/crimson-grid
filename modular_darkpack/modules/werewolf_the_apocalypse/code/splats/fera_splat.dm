@@ -43,8 +43,8 @@
 			return FALSE
 
 	owner.update_werewolf_hud()
+	update_rage_effects()
 	return TRUE
-
 /datum/splat/werewolf/proc/adjust_gnosis(amount, sound = TRUE)
 	if(!uses_gnosis)
 		return FALSE
@@ -149,6 +149,10 @@
 
 /datum/splat/werewolf/shifter/splat_life(seconds_per_tick)
 	regain_gnosis_process(seconds_per_tick)
+	if(COOLDOWN_FINISHED(src, rage_decay_cd))
+		if(adjust_rage(-1, FALSE))
+			COOLDOWN_START(src, rage_decay_cd, 5 MINUTES)
+
 	// Crinos heal in all forms. Lupus and homid born dont heal FAST FAST in their breed form.
 	// their fast healing is represented in day/days in breed-form so we just dont.
 	var/can_passively_heal = !(is_breed_form() && (get_breed_form_species() != /datum/species/human/shifter/war))
@@ -316,3 +320,32 @@
 
 /mob/living/carbon/human/splat/corax
 	auto_splats = list(/datum/splat/werewolf/shifter/corax)
+
+/datum/splat/werewolf/proc/update_rage_effects()
+	if(!owner)
+		return
+	var/is_resistant_form = istype(owner.dna?.species, /datum/species/human/shifter/war) || istype(owner.dna?.species, /datum/species/human/shifter/dire)
+	var/rage_slowdown = -0.02 * clamp(rage, 0, permanent_rage)
+	if(rage)
+		owner.add_or_update_variable_movespeed_modifier(
+			/datum/movespeed_modifier/shifter/rage,
+			multiplicative_slowdown = rage_slowdown,
+		)
+	else
+		owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
+	if(rage >= 8 && is_resistant_form)
+		owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	if(rage < 8 || !is_resistant_form)
+		owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+
+	if(rage >= 9 && is_resistant_form)
+		ADD_TRAIT(owner, TRAIT_STUNIMMUNE, type)
+		ADD_TRAIT(owner, TRAIT_SLEEPIMMUNE, type)
+		ADD_TRAIT(owner, TRAIT_CHUNKYFINGERS, type)
+		ADD_TRAIT(owner, TRAIT_HULK, type)
+	else
+		REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, type)
+		REMOVE_TRAIT(owner, TRAIT_SLEEPIMMUNE, type)
+		REMOVE_TRAIT(owner, TRAIT_CHUNKYFINGERS, type)
+		REMOVE_TRAIT(owner, TRAIT_HULK, type)
+

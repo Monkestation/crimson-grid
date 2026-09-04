@@ -53,6 +53,7 @@
 		human_who_gained_species.mob_size = mob_size_override
 
 	add_buffs(human_who_gained_species)
+	get_shifter_splat(human_who_gained_species)?.update_rage_effects()
 
 /datum/species/human/shifter/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
@@ -404,3 +405,131 @@
 
 /datum/movespeed_modifier/shifter/feral
 	multiplicative_slowdown = -0.35
+
+//CRIMSON GRID ADDITION - rage gaining and draining system for shifters
+/datum/movespeed_modifier/shifter/rage
+	variable = TRUE
+
+/datum/actionspeed_modifier/shifter/rage
+	variable = TRUE
+
+
+/datum/splat/werewolf/shifter
+	COOLDOWN_DECLARE(rage_damage_cd)
+	COOLDOWN_DECLARE(rage_wound_cd)
+	COOLDOWN_DECLARE(rage_decay_cd)
+	COOLDOWN_DECLARE(aggravated_decay_cd)
+
+/datum/splat/werewolf/shifter/on_gain()
+	. = ..()
+	owner.set_species(/datum/species/human/shifter/homid)
+	RegisterSignal(
+		owner,
+		COMSIG_MOB_AFTER_APPLY_DAMAGE,
+		PROC_REF(on_owner_damage)
+	)
+	RegisterSignal(
+		owner,
+		COMSIG_CARBON_GAIN_WOUND,
+		PROC_REF(on_owner_wound)
+	)
+	RegisterSignal(
+		owner,
+		COMSIG_LIVING_DEATH,
+		PROC_REF(revert_to_breed_form)
+	)
+	START_PROCESSING(SSprocessing, src)
+/datum/splat/werewolf/shifter/on_lose_or_destroy()
+	. = ..()
+	STOP_PROCESSING(SSprocessing, src)
+	if(!QDELETED(owner))
+		UnregisterSignal(
+			owner,
+			COMSIG_MOB_AFTER_APPLY_DAMAGE
+		)
+		UnregisterSignal(
+			owner,
+			COMSIG_CARBON_GAIN_WOUND
+		)
+		UnregisterSignal(
+			owner,
+			COMSIG_LIVING_DEATH
+		)
+/datum/splat/werewolf/shifter/proc/gain_rage(amount = 1)
+	if(!owner)
+		return FALSE
+	if(owner.stat == DEAD)
+		return FALSE
+	if(!uses_rage)
+		return FALSE
+	if(amount <= 0)
+		return FALSE
+	if(rage >= permanent_rage)
+		return FALSE
+	amount = min(amount, permanent_rage - rage)
+	if(amount <= 0)
+		return FALSE
+	adjust_rage(amount, FALSE, FALSE)
+	COOLDOWN_START(src, rage_decay_cd, 5 MINUTES)
+	return TRUE
+/datum/splat/werewolf/shifter/proc/on_owner_damage(
+	datum/source,
+	damage_dealt,
+	damagetype,
+	def_zone,
+	blocked,
+	wound_bonus,
+	exposed_wound_bonus,
+	sharpness,
+	attack_direction,
+	attacking_item,
+	wound_clothing
+)
+	SIGNAL_HANDLER
+	if(damage_dealt < 30)
+		return
+	if(!COOLDOWN_FINISHED(src, rage_damage_cd))
+		return
+	if(gain_rage(1))
+		COOLDOWN_START(src, rage_damage_cd, 5 SECONDS)
+	if(damage_dealt == AGGRAVATED)
+		return
+	if(!COOLDOWN_FINISHED(src, aggravated_decay_cd))
+		return
+	if(gain_rage(2))
+		COOLDOWN_START(src, aggravated_decay_cd, 2 MINUTES)
+/datum/splat/werewolf/shifter/proc/on_owner_wound(
+	datum/source,
+	datum/wound/wound,
+	obj/item/bodypart/limb
+)
+	SIGNAL_HANDLER
+	if(!COOLDOWN_FINISHED(src, rage_wound_cd))
+		return
+	if(gain_rage(1))
+		COOLDOWN_START(src, rage_wound_cd, 30 SECONDS)
+/datum/splat/werewolf/shifter/on_lose_or_destroy()
+	. = ..()
+	if(!QDELETED(owner))
+		UnregisterSignal(
+			owner,
+			COMSIG_MOB_AFTER_APPLY_DAMAGE
+		)
+		UnregisterSignal(
+			owner,
+			COMSIG_CARBON_GAIN_WOUND
+		)
+		UnregisterSignal(
+			owner,
+			COMSIG_LIVING_DEATH
+		)
+/datum/splat/werewolf/shifter/proc/clear_rage_effects()
+	if(!owner)
+		return
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
+	owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/shifter/rage)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, type)
+	REMOVE_TRAIT(owner, TRAIT_SLEEPIMMUNE, type)
+
+
