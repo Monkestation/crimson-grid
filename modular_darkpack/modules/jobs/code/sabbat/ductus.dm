@@ -8,10 +8,13 @@
 	outfit = /datum/outfit/job/vampire/sabbatductus
 	allowed_splats = list(SPLAT_KINDRED)
 	job_flags = CITY_JOB_FLAGS
-	exp_required_type_department = EXP_TYPE_SABBAT
 	departments_list = list(
 		/datum/job_department/sabbat,
 	)
+
+	exp_requirements = EXP_REQ_HEAD
+	exp_required_type_department = EXP_TYPE_SABBAT
+
 	description = "You are a Ductus and Pack Leader of your Sabbat pack. You are charged with rebellion against the Elders and the Camarilla, against the Jyhad, against the Masquerade and the Traditions, and the recognition of Caine as the true Dark Father of all Kindred kind. NOTE: BY PLAYING THIS ROLE YOU AGREE TO AND HAVE READ THE SERVER'S RULES ON ESCALATION FOR ANTAGS. KEEP THINGS INTERESTING AND ENGAGING FOR BOTH SIDES. KILLING PLAYERS JUST BECAUSE YOU CAN MAY RESULT IN A ROLEBAN."
 	minimum_masquerade = 0
 	display_order = JOB_DISPLAY_ORDER_SABBATDUCTUS

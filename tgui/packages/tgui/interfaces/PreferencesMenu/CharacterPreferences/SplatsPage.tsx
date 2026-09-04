@@ -1,6 +1,8 @@
 // THIS IS A DARKPACK UI FILE
 
+import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
+import { ConfirmModal } from '../components/ConfirmModal';
 import {
   BlockQuote,
   Box,
@@ -112,6 +114,10 @@ type SplatsPageInnerProps = {
 function SplatsPageInner(props: SplatsPageInnerProps) {
   const { act, data } = useBackend<PreferencesMenuData>();
   const setSplats = createSetPreference(act, 'splats');
+  const [pendingConfirm, setPendingConfirm] = useState<(() => void) | null>(
+    null,
+  );
+  const whitelistSet = new Set(data.player_whitelists || []);
 
   const splats: [string, Splats][] = Object.entries(props.splats).map(
     ([splats, data]) => {
@@ -142,24 +148,54 @@ function SplatsPageInner(props: SplatsPageInnerProps) {
           <Stack.Item>
             <Box height="calc(100vh - 170px)" overflowY="auto" pr={3}>
               {splats.map(([splatsKey, splats]) => {
+                const isLocked = !!splatsKey && !whitelistSet.has(splatsKey);
                 return (
                   <Button
                     key={splatsKey}
-                    onClick={() => setSplats(splatsKey)}
+                    // warn + clear disciplines when switching splats
+                    onClick={() => {
+                      if (
+                        splatsKey !== data.character_preferences.misc.splats
+                      ) {
+                        setPendingConfirm(() => () => {
+                          act('clear_discipline_levels');
+                          setSplats(splatsKey);
+                        });
+                      }
+                    }}
                     selected={
                       data.character_preferences.misc.splats === splatsKey
                     }
-                    tooltip={splats.name}
+                    tooltip={
+                      isLocked
+                        ? `${splats.name} (Not whitelisted!)`
+                        : splats.name
+                    }
                     style={{
                       display: 'block',
                       height: '64px',
                       width: '64px',
+                      position: 'relative',
                     }}
                   >
                     <Box
                       className={classes(['splat64x64', splats.icon])}
                       ml={-1}
+                      style={{ opacity: isLocked ? 0.4 : 1 }}
                     />
+                    {isLocked && (
+                      <Icon
+                        name="lock"
+                        style={{
+                          position: 'absolute',
+                          bottom: '2px',
+                          right: '2px',
+                          fontSize: '14px',
+                          color: 'rgba(255,255,255,0.85)',
+                          pointerEvents: 'none',
+                        }}
+                      />
+                    )}
                   </Button>
                 );
               })}
@@ -214,6 +250,16 @@ function SplatsPageInner(props: SplatsPageInnerProps) {
           </Stack.Item>
         </Stack>
       </Stack.Item>
+      {/* confirm dialog for splat changes */}
+      {pendingConfirm !== null && (
+        <ConfirmModal
+          onConfirm={() => {
+            pendingConfirm?.();
+            setPendingConfirm(null);
+          }}
+          onCancel={() => setPendingConfirm(null)}
+        />
+      )}
     </Stack>
   );
 }
