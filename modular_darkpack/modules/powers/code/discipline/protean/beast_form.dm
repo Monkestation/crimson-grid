@@ -7,34 +7,25 @@
 		/mob/living/basic/pet/dog/wolf/protean,
 	)
 
-// CRIMSON EDIT ADDITION - Protean 4 buffs
 // FIGHT FORMS
 /mob/living/basic/pet/dog/wolf/protean
-	maxHealth = 400
-	health = 400
-	melee_damage_lower = 40
-	melee_damage_upper = 40
-	melee_attack_cooldown = 8
+	maxHealth = 300
+	health = 300
+	melee_damage_lower = 20
+	melee_damage_upper = 20
 	random_wolf_color = FALSE
-	speed = -0.4
 
 /mob/living/basic/pet/dog/darkpack/protean
 	maxHealth = 300
 	health = 300
 	melee_damage_lower = 20
 	melee_damage_upper = 20
-	melee_attack_cooldown = 8
-	speed = -0.6
-	random_dog_color = FALSE
 
 /mob/living/basic/bear/vampire/protean
-	maxHealth = 500
-	health = 500
-	melee_damage_lower = 60
-	melee_damage_upper = 60
-	melee_attack_cooldown = 10
-	speed = -0.2
-	slowed_by_drag = FALSE
+	maxHealth = 300
+	health = 300
+	melee_damage_lower = 20
+	melee_damage_upper = 20
 
 // FLIGHT FORMS
 /mob/living/basic/bat/protean
@@ -45,16 +36,6 @@
 /mob/living/basic/corvid/protean
 	maxHealth = 300
 	health = 300
-	mob_size = MOB_SIZE_SMALL
-
-/mob/living/basic/pet/cat/darkpack/protean // Meow :3
-	maxHealth = 300
-	health = 300
-	mob_size = MOB_SIZE_SMALL
-	speed = -0.8
-	melee_attack_cooldown = 8
-	random_cat_color = FALSE
-
 
 /datum/action/cooldown/spell/shapeshift/gangrel/beast_form/Grant(mob/grant_to)
 	. = ..()
@@ -65,9 +46,7 @@
 				/mob/living/basic/bear/vampire/protean,
 				/mob/living/basic/pet/dog/darkpack/protean,
 				/mob/living/basic/corvid/protean,
-				/mob/living/basic/pet/cat/darkpack/protean,
 			)
-// CRIMSON EDIT END - Protean 4 buffs
 
 /mob/living/basic/gangrel
 	name = "horrid form"
