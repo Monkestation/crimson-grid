@@ -9,6 +9,7 @@
 	var/uses_rage = FALSE
 	var/permanent_rage = 10
 	var/rage = 0
+	var/rage_damage_resistance = 0 //CRIMSON GRID ADDITION - rage per pip damage resistance
 	// without a merit kinfolk cannot use gnosis
 	var/uses_gnosis = FALSE
 	var/permanent_gnosis = 10
@@ -324,32 +325,38 @@
 /mob/living/carbon/human/splat/corax
 	auto_splats = list(/datum/splat/werewolf/shifter/corax)
 
-
+//CRMISON GRID ADDITION START
 /datum/splat/werewolf/proc/update_rage_effects()
 	if(!owner)
 		return
+	var/crinos_form = istype(owner.dna?.species, /datum/species/human/shifter/war)
 	var/is_resistant_form = istype(owner.dna?.species, /datum/species/human/shifter/war) || istype(owner.dna?.species, /datum/species/human/shifter/dire)
+	var/new_rage_damage_resistance = is_resistant_form ? min(rage * 3, 30) : 0
+	owner.physiology.damage_resistance += new_rage_damage_resistance - rage_damage_resistance
+	rage_damage_resistance = new_rage_damage_resistance
 	var/rage_slowdown = -0.02 * clamp(rage, 0, permanent_rage)
-	if(rage)
-		owner.add_or_update_variable_movespeed_modifier(
-			/datum/movespeed_modifier/shifter/rage,
-			multiplicative_slowdown = rage_slowdown,
-		)
-	else
+	if(rage >= 7)
+		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/shifter/rage,multiplicative_slowdown = rage_slowdown)
+	if(rage < 7)
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
 	if(rage >= 8 && is_resistant_form)
 		owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	if(rage < 8 || !is_resistant_form)
 		owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-
 	if(rage >= 9 && is_resistant_form)
 		ADD_TRAIT(owner, TRAIT_STUNIMMUNE, type)
 		ADD_TRAIT(owner, TRAIT_SLEEPIMMUNE, type)
 		ADD_TRAIT(owner, TRAIT_CHUNKYFINGERS, type)
 		ADD_TRAIT(owner, TRAIT_HULK, type)
+		ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, type)
 	else
 		REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, type)
 		REMOVE_TRAIT(owner, TRAIT_SLEEPIMMUNE, type)
 		REMOVE_TRAIT(owner, TRAIT_CHUNKYFINGERS, type)
 		REMOVE_TRAIT(owner, TRAIT_HULK, type)
+		REMOVE_TRAIT(owner, TRAIT_NOSOFTCRIT, type)
+	if(rage >=9 && crinos_form )
+		ADD_TRAIT(owner, TRAIT_STRONG_GRABBER, type)
+	else
+		REMOVE_TRAIT(owner,TRAIT_STRONG_GRABBER, type)
 //CRIMSON GRID ADDITION END

@@ -419,6 +419,7 @@
 	COOLDOWN_DECLARE(rage_damage_cd)
 	COOLDOWN_DECLARE(rage_wound_cd)
 	COOLDOWN_DECLARE(rage_decay_cd)
+	COOLDOWN_DECLARE(passive_rage_cd)
 	COOLDOWN_DECLARE(aggravated_decay_cd)
 
 /datum/splat/werewolf/shifter/on_gain()
@@ -456,7 +457,7 @@
 			owner,
 			COMSIG_LIVING_DEATH
 		)
-/datum/splat/werewolf/shifter/proc/gain_rage(amount = 1)
+/datum/splat/werewolf/shifter/proc/gain_rage(amount = 0)
 	if(!owner)
 		return FALSE
 	if(owner.stat == DEAD)
@@ -471,7 +472,7 @@
 	if(amount <= 0)
 		return FALSE
 	adjust_rage(amount, FALSE, FALSE)
-	COOLDOWN_START(src, rage_decay_cd, 5 MINUTES)
+	COOLDOWN_START(src, rage_decay_cd, 3 MINUTES)
 	return TRUE
 /datum/splat/werewolf/shifter/proc/on_owner_damage(
 	datum/source,
@@ -487,12 +488,12 @@
 	wound_clothing
 )
 	SIGNAL_HANDLER
-	if(damage_dealt < 30)
-		return
-	if(!COOLDOWN_FINISHED(src, rage_damage_cd))
+	if(damage_dealt =< 40)
 		return
 	if(gain_rage(1))
 		COOLDOWN_START(src, rage_damage_cd, 5 SECONDS)
+		return
+	if(!COOLDOWN_FINISHED(src, rage_damage_cd))
 	if(damage_dealt == AGGRAVATED)
 		return
 	if(!COOLDOWN_FINISHED(src, aggravated_decay_cd))
@@ -511,6 +512,7 @@
 		COOLDOWN_START(src, rage_wound_cd, 30 SECONDS)
 /datum/splat/werewolf/shifter/on_lose_or_destroy()
 	. = ..()
+	clear_rage_effects()
 	if(!QDELETED(owner))
 		UnregisterSignal(
 			owner,
@@ -527,12 +529,16 @@
 /datum/splat/werewolf/shifter/proc/clear_rage_effects()
 	if(!owner)
 		return
+	owner.physiology.damage_resistance -= rage_damage_resistance
+	rage_damage_resistance = 0
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
-	owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/shifter/rage)
 	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, type)
 	REMOVE_TRAIT(owner, TRAIT_SLEEPIMMUNE, type)
-
+	REMOVE_TRAIT(owner, TRAIT_CHUNKYFINGERS, type)
+	REMOVE_TRAIT(owner, TRAIT_HULK, type)
+	REMOVE_TRAIT(owner, TRAIT_NOSOFTCRIT, type)
+	REMOVE_TRAIT(owner,TRAIT_STRONG_GRABBER, type)
 //CRIMSON GRID ADDITION END
 
 
