@@ -45,3 +45,7 @@
 				/mob/living/basic/corvid/protean,
 				/mob/living/basic/pet/cat/darkpack/protean
 			)
+		if(grant_to_human.is_clan(/datum/subsplat/vampire_clan/setite/tlacique)) // Host requested
+			possible_shapes += list(
+				/mob/living/basic/pet/cat/darkpack/protean
+			)
