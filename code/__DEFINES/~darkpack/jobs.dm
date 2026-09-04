@@ -211,6 +211,10 @@
 #define DEPARTMENT_GAIA "Garou Nation"
 #define DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD (1<<16)
 #define DEPARTMENT_SOCIETY_OF_LEOPOLD "Society of Leopold"
+// CRIMSON EDIT ADDITION - Triads
+#define DEPARTMENT_BITFLAG_TRIAD (1<<17)
+#define DEPARTMENT_TRIAD "Chinese Triad"
+// CRIMSON EDIT END - Triads
 
 DEFINE_BITFIELD(departments_bitflags, list(
 	"CITIZEN" = DEPARTMENT_BITFLAG_CITIZEN,
@@ -230,6 +234,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 	"MANOR" = DEPARTMENT_BITFLAG_MANOR,
 	"CITY_SERVICES" = DEPARTMENT_BITFLAG_CITY_SERVICES,
 	"SOCIETY_OF_LEOPOLD" = DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD,
+	"TRIAD" = DEPARTMENT_BITFLAG_TRIAD // CRIMSON GRID ADDITION - Triads
 ))
 
 /// Combination flag for jobs which are considered regular crew members of the station.
@@ -254,7 +259,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 
 // Playtime tracking system, see jobs_exp.dm
 // weird one.
-#define EXP_TYPE_KINDRED "Kindred"
+#define EXP_TYPE_PLAYTIME "Playtime"
 #define EXP_TYPE_GAIA "Garou Nation"
 #define EXP_TYPE_SPIRAL "Pentex"
 #define EXP_TYPE_CAMARILLA "Camarilla Authorities"
@@ -262,13 +267,15 @@ DEFINE_BITFIELD(departments_bitflags, list(
 #define EXP_TYPE_CHANTRY "Chantry"
 #define EXP_TYPE_ANARCH "Anarchs"
 #define EXP_TYPE_SABBAT "Sabbat"
-#define EXP_TYPE_COUNCIL "Camarilla Primogen Council"
 #define EXP_TYPE_POLICE "Police Force"
-#define EXP_TYPE_NATIONAL_SECURITY "National Security"
 #define EXP_TYPE_SERVICES "City Services"
-// this prob should just say clinic genericly.
-#define EXP_TYPE_CLINIC "St. John's Clinic"
+#define EXP_TYPE_CLINIC "Clinic"
 #define EXP_TYPE_GIOVANNI "Giovanni Family"
 #define EXP_TYPE_MANOR "Tzimisce Manor"
 #define EXP_TYPE_CHURCH "Church"
 #define EXP_TYPE_CLUB "Strip Club"
+#define EXP_TYPE_SOCIETY_OF_LEOPOLD "Society of Leopold"
+
+#define EXP_REQ_CRITICAL 720
+#define EXP_REQ_HEAD 360
+#define EXP_REQ_MINOR 180
