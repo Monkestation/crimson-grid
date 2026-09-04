@@ -3,9 +3,11 @@
 #define JUMP_SLOWDOWN_MULT 1.6 // 1.5 means a jumping character and a walking character will keep pace. Increase to slow jumpers further.
 #define BASE_JUMP_DISTANCE 1
 #define MAX_JUMP_DISTANCE 6
+#define JUMP_BOOM_COOLDOWN 2 SECONDS //CRIMSON GRID ADDITION - Reworks the implimentation of stun jumps
 
 /datum/component/jumper
 	COOLDOWN_DECLARE(jump_cooldown)
+	COOLDOWN_DECLARE(jump_boom_cooldown) //CRMISON GRID ADDITION - Reworks the implimentation of stun jumps
 	var/prepared_to_jump = FALSE
 
 /datum/component/jumper/Initialize()
@@ -117,9 +119,9 @@
 		adjusted_target = locate(jumper.loc.x + round(dx * scale), jumper.loc.y + round(dy * scale), jumper.loc.z)
 
 	playsound(jumper.loc, 'modular_darkpack/modules/jumping/sounds/jump_neutral.ogg', 50, TRUE)
-
-	if(jumper.combat_mode && get_dist(jumper.loc, target) <= 3 && strength >= 8)
+	if(jumper.combat_mode && get_dist(jumper.loc, target) <= 3 && strength >= 8 && COOLDOWN_FINISHED(src, jump_boom_cooldown)) //CRIMSON GRID EDIT - Reworks the Implimentation of stun jumps - Original: if(jumper.combat_mode && get_dist(jumper.loc, target) <= 3 && strength >= 8)
 		addtimer(CALLBACK(src, PROC_REF(jump_boom), jumper),(distance * 0.5))
+		COOLDOWN_START(src, jump_boom_cooldown, JUMP_BOOM_COOLDOWN) //CRMISON GRID ADDITION - Reworks the implimentation of stun jumps
 		jumper.visible_message(span_danger("[jumper] takes a mighty leap that shatters \the [adjusted_target] where they land!"))
 		jumper.adjust_stamina_loss(20)
 	else
@@ -148,10 +150,11 @@
 /datum/component/jumper/proc/jump_boom(mob/living/jumper)
 	playsound(get_turf(jumper), 'modular_darkpack/modules/jumping/sounds/jump_slam.ogg', 40, FALSE)
 	new /obj/effect/temp_visual/dir_setting/crack_effect(get_turf(jumper))
-	for(var/mob/living/shaken_person in range(5, jumper))
+	for(var/mob/living/shaken_person in range(2, jumper)) //CRIMSON GRID EDIT - Reworks the Implimentation of stun jumps - Original: 	for(var/mob/living/shaken_person in range(5, jumper))
 		if(shaken_person == jumper)
 			continue
 		shaken_person.Stun(20)
+		shaken_person.do_stagger_animation(60) //CRIMSON GRID ADDITION - Reworks the implimentation of stun jumps
 		var/distance = get_dist(shaken_person, jumper)
 		shake_camera(shaken_person, max(6-distance), max(4-distance, 1))
 	jumper.Stun(10)
@@ -165,3 +168,4 @@
 #undef JUMP_WINDUP
 #undef BASE_JUMP_DISTANCE
 #undef MAX_JUMP_DISTANCE
+#undef JUMP_BOOM_COOLDOWN //CRIMSON GRID ADDITION - Reworks the implimentation of stun jumps

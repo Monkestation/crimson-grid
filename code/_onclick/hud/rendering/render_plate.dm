@@ -121,7 +121,7 @@
 	if(!istype(mymob) || !mymob.canon_client?.prefs?.read_preference(/datum/preference/toggle/particle_weather))
 		return
 
-	SSweather.particle_planemasters += src
+	SSweather.particle_planemasters[src] = TRUE
 
 	// Lobby HUDs, we don't care about weather during init anyways
 	if(!SSmapping.initialized)
@@ -137,6 +137,9 @@
 
 /atom/movable/screen/plane_master/rendering_plate/particle_weather/proc/z_changed(datum/source, new_z)
 	SIGNAL_HANDLER
+
+	if(!SSweather.particle_planemasters[src])
+		return
 
 	if(!SSmapping.initialized)
 		return
