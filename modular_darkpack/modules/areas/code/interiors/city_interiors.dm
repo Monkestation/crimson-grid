@@ -77,6 +77,7 @@
 	icon_state = "mansion"
 	zone_type = ZONE_NO_MASQUERADE
 	domain = TRUE
+	musictracks = list('modular_darkpack/modules/ambience/sounds/music/enterlair.ogg', 'modular_darkpack/modules/ambience/sounds/music/infected_warehouse.ogg') //CRIMSON GRID EDIT | PR: Properly Makes Sangfancisco's Abandoned Manor is an interior | EDIT: I added scary music, spooky manors need to be spooky for the bit.
 
 /area/vtm/interior/apartment
 	name = "Millenium Apartments"

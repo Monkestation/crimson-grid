@@ -9,6 +9,7 @@ At the beginning of each night, you rise from sleep heavily wounded."}
 	allowed_splats = list(SPLAT_KINDRED)
 	icon = FA_ICON_USER_INJURED
 	failure_message = span_notice("You can't feel the pain of your wound anymore.")
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 
 /*You suffered injuries during your Embrace which your transformation somehow failed to repair.
 At the beginning of each night,
