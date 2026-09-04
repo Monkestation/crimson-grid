@@ -53,7 +53,7 @@
 		human_who_gained_species.mob_size = mob_size_override
 
 	add_buffs(human_who_gained_species)
-	get_shifter_splat(human_who_gained_species)?.update_rage_effects()
+	get_shifter_splat(human_who_gained_species)?.update_rage_effects() //CRIMSON GRID ADDITION
 
 /datum/species/human/shifter/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
@@ -407,6 +407,7 @@
 	multiplicative_slowdown = -0.35
 
 //CRIMSON GRID ADDITION - rage gaining and draining system for shifters
+
 /datum/movespeed_modifier/shifter/rage
 	variable = TRUE
 
@@ -531,5 +532,7 @@
 	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, type)
 	REMOVE_TRAIT(owner, TRAIT_SLEEPIMMUNE, type)
+
+//CRIMSON GRID ADDITION END
 
 

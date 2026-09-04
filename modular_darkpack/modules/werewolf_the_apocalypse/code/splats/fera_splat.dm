@@ -43,8 +43,9 @@
 			return FALSE
 
 	owner.update_werewolf_hud()
-	update_rage_effects()
+	update_rage_effects() //CRIMSON GRID ADDITION
 	return TRUE
+
 /datum/splat/werewolf/proc/adjust_gnosis(amount, sound = TRUE)
 	if(!uses_gnosis)
 		return FALSE
@@ -149,9 +150,11 @@
 
 /datum/splat/werewolf/shifter/splat_life(seconds_per_tick)
 	regain_gnosis_process(seconds_per_tick)
+//CRIMSON GRID EDIT BEIGN
 	if(COOLDOWN_FINISHED(src, rage_decay_cd))
 		if(adjust_rage(-1, FALSE))
-			COOLDOWN_START(src, rage_decay_cd, 5 MINUTES)
+			COOLDOWN_START(src, rage_decay_cd, 3 MINUTES)
+//CRIMSON GRID EDIT END
 
 	// Crinos heal in all forms. Lupus and homid born dont heal FAST FAST in their breed form.
 	// their fast healing is represented in day/days in breed-form so we just dont.
@@ -321,6 +324,7 @@
 /mob/living/carbon/human/splat/corax
 	auto_splats = list(/datum/splat/werewolf/shifter/corax)
 
+
 /datum/splat/werewolf/proc/update_rage_effects()
 	if(!owner)
 		return
@@ -348,4 +352,4 @@
 		REMOVE_TRAIT(owner, TRAIT_SLEEPIMMUNE, type)
 		REMOVE_TRAIT(owner, TRAIT_CHUNKYFINGERS, type)
 		REMOVE_TRAIT(owner, TRAIT_HULK, type)
-
+//CRIMSON GRID ADDITION END
