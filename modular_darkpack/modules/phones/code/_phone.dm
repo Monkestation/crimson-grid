@@ -67,10 +67,9 @@
 	var/custom_background = null // ori's request to add a custom background URL
 	var/endpost_username = null //username for the endpost app
 
-	// cg edit add password
+	// CRIMSON EDIT ADDITION START - PASSWORD AND LOCK SCREEN
 	var/password_enabled = FALSE
 	var/phone_password
-	// cg edit phone password lock screen call
 	var/unlocked_for_call = FALSE
 
 /obj/item/smartphone/Initialize(mapload)
@@ -149,7 +148,7 @@
 	else
 		. += span_notice("You can [EXAMINE_HINT("Insert")] a SIM card.")
 
-// set password
+// CRIMSON EDIT ADDITION START - PASSWORD FUNCTION
 /obj/item/smartphone/proc/set_random_password()
 	password_enabled = TRUE
 	phone_password = "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)]"
@@ -172,15 +171,17 @@
 	else
 		to_chat(user, span_notice("You correctly enter the pin for the [src]."))
 		return TRUE
+// CRIMSON EDIT ADDITION END
 
 /obj/item/smartphone/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!opened)
-		// cg edit phone ring lock screen check stuff
+		// CRIMSON EDIT ADDITION START - TEMP BYPASS LOCKSCREEN FOR CALL
 		if(current_state == PHONE_RINGING && password_enabled && phone_password)
 			unlocked_for_call = TRUE
 		else if(!check_password(user, TRUE))
 			return
+		// CRIMSON EDIT ADDITION END
 		toggle_screen(user)
 	ui_interact(user)
 
@@ -263,7 +264,7 @@
 	data["phone_calling"] = (current_state == PHONE_CALLING) ? TRUE : FALSE
 	data["ringer"] = ringer
 	data["vibration"] = vibration
-	data["password_enabled"] = password_enabled
+	data["password_enabled"] = password_enabled // CRIMSON EDIT ADDITION- PASSWORD SETTING
 	data["speaker_mode"] = (phone_radio.canhear_range == 3) ? TRUE : FALSE
 	data["muted"] = muted
 
@@ -627,6 +628,7 @@
 			if(ringer)
 				playsound(loc, 'modular_darkpack/modules/phones/sounds/text_send.ogg', 50, TRUE)
 			return TRUE
+		// CRIMSON EDIT ADDITION START - PASSWORD FUNCTIONS
 		if("change_password")
 			password_enabled = TRUE
 			if(check_password(user, FALSE))
@@ -644,6 +646,7 @@
 				password_enabled = !password_enabled
 				to_chat(user, span_notice("Lock screen [password_enabled ? "enabled" : "disabled"] on [src]."))
 				return TRUE
+		// CRIMSON EDIT ADDITION END
 	return FALSE
 
 /obj/item/smartphone/proc/get_conversation(contact_number)
@@ -731,7 +734,7 @@
 /proc/log_phone(text, list/data)
 	logger.Log(LOG_CATEGORY_PDA_CHAT, text, data)
 
-// cg edit phone memory pin
+// CRIMSON EDIT ADDITION START - PASSWORD MEMORY
 /datum/memory/key/phone_pin
 	var/remembered_id
 

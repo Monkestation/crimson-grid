@@ -56,7 +56,7 @@
 	if(current_state == PHONE_AVAILABLE)
 		dialed_number = null
 		incoming_phone_number = null
-		// cg edit allow phone call if not unlocked but rclose once call ends
+		// CRIMSON EDIT ADDITION START - PHONE CALL LOCKSCREEN BYPASS
 		if(unlocked_for_call)
 			unlocked_for_call = FALSE
 			if(opened && !always_open)

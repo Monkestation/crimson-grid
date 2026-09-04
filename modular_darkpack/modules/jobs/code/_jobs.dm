@@ -88,7 +88,7 @@
 	if(phone)
 		phone.owner_weakref = WEAKREF(user)
 		phone.update_initialized_contacts()
-		// cg edit phone password
+		// CRIMSON EDIT ADDITION START - Phone Password
 		phone.set_random_password()
 		user.add_mob_memory(/datum/memory/key/phone_pin, remembered_id = phone.phone_password)
 
