@@ -62,7 +62,7 @@
 
 	return TRUE
 
-/// Returns the splat with the highest priority, with a prefrence for ones first assigned.
+/// Returns the splat with the highest priority, with a preference for ones first assigned.
 /mob/living/proc/get_primary_splat(splat_type, count_splat = TRUE, count_halfsplat = TRUE)
 	RETURN_TYPE(/datum/splat)
 

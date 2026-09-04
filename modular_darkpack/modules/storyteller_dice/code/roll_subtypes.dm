@@ -79,6 +79,10 @@
 		. -= 1
 */
 
+/datum/storyteller_roll/damage/attacker_disarm
+	numerical = TRUE
+	applicable_stats = list(STAT_STRENGTH)
+
 /datum/storyteller_roll/shooting
 	bumper_text = "shooting"
 	applicable_stats = list(STAT_DEXTERITY, STAT_FIREARMS)

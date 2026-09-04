@@ -176,7 +176,8 @@
 
 	UnregisterSignal(owner, COMSIG_MOB_CLICKON)
 	targeting = FALSE
-	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
+	client.mouse_override_icon = initial(client.mouse_override_icon)
+	owner.update_mouse_pointer()
 
 /datum/action/discipline/proc/handle_click(mob/source, atom/target, click_parameters)
 	SIGNAL_HANDLER
@@ -207,7 +208,8 @@
 	SEND_SOUND(owner, sound('modular_darkpack/modules/deprecated/sounds/highlight.ogg', volume = 50))
 	RegisterSignal(owner, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
 	targeting = TRUE
-	client.mouse_pointer_icon = 'modular_darkpack/modules/deprecated/icons/effects/mouse_pointers/discipline.dmi'
+	client.mouse_override_icon = 'modular_darkpack/modules/deprecated/icons/effects/mouse_pointers/discipline.dmi'
+	owner.update_mouse_pointer()
 
 /datum/action/discipline/proc/select()
 	background_icon_state = "bg_discipline_selected"

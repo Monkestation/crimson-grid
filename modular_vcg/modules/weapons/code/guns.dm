@@ -53,6 +53,10 @@
 /obj/item/gun/ballistic/automatic/darkpack/aug
 	recoil = 3
 
+/obj/item/gun/ballistic/automatic/darkpack/aug/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.2)
+
 /obj/item/gun/ballistic/automatic/darkpack/thompson
 	recoil = 3
 
@@ -63,8 +67,16 @@
 /obj/item/gun/ballistic/automatic/darkpack/sniper
 	recoil = 6
 
+/obj/item/gun/ballistic/automatic/darkpack/sniper/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 4)
+
 /obj/item/gun/ballistic/automatic/darkpack/autosniper
 	recoil = 4
+
+/obj/item/gun/ballistic/automatic/darkpack/autosniper/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 4)
 
 // Shotguns
 /obj/item/gun/ballistic/shotgun/vampire
@@ -78,3 +90,9 @@
 
 /obj/item/gun/ballistic/automatic/darkpack/autoshotgun
 	recoil = 4
+
+/obj/item/ammo_box/magazine/darkpack556/hunt
+	name = "rifle magazine (7.62x51mm)"
+	caliber = CALIBER_762NATO
+	ammo_type = /obj/item/ammo_casing/vampire/c762x51mm
+	max_ammo = 8
