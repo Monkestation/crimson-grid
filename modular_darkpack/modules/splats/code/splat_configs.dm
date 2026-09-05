@@ -1,5 +1,7 @@
 /// List of roundstart splats' their splat_id's
 GLOBAL_LIST_EMPTY(roundstart_splats)
+GLOBAL_LIST_EMPTY(whitelisted_splats)
+GLOBAL_LIST_EMPTY(default_player_whitelists)
 
 /datum/config_entry/keyed_list/roundstart_splats //splats you can play as from the get go.
 	key_mode = KEY_MODE_TEXT
@@ -9,8 +11,21 @@ GLOBAL_LIST_EMPTY(roundstart_splats)
 	if(key_name in GLOB.splat_list)
 		return TRUE
 
-	log_config("ERROR: [key_name] is not a valid race ID.")
+	log_config("ERROR: [key_name] is not a valid splat ID.")
 	return FALSE
+
+
+/datum/config_entry/keyed_list/whitelisted_splats //splats you can play as from the get go.
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_FLAG
+
+/datum/config_entry/keyed_list/whitelisted_splats/ValidateListEntry(key_name, key_value)
+	if(key_name in GLOB.splat_list)
+		return TRUE
+
+	log_config("ERROR: [key_name] is not a valid splat ID.")
+	return FALSE
+
 
 /**
  * Checks if a splat is eligible to be picked at roundstart.
@@ -22,6 +37,12 @@ GLOBAL_LIST_EMPTY(roundstart_splats)
 	if(id in (CONFIG_GET(keyed_list/roundstart_splats)))
 		return TRUE
 	return FALSE
+
+/datum/splat/proc/requires_whitelist()
+	if(id in (CONFIG_GET(keyed_list/whitelisted_splats)))
+		return TRUE
+	return FALSE
+
 
 /**
  * Generates splat available to choose in character setup at roundstart
@@ -47,3 +68,35 @@ GLOBAL_LIST_EMPTY(roundstart_splats)
 		GLOB.roundstart_splats = generate_selectable_splats()
 
 	return GLOB.roundstart_splats
+
+
+/proc/get_default_player_whitelists()
+	RETURN_TYPE(/alist)
+
+	if (!GLOB.default_player_whitelists.len)
+		var/alist/defs = alist(
+			WHITELIST_TRUSTED = TRUE, // CRIMSON EDIT CHANGE - Original: WHITELIST_TRUSTED = FALSE
+			WHITELIST_TIMELIMITS = TRUE, // CRIMSON EDIT CHANGE - Original: WHITELIST_TIMELIMITS = FALSE
+			SPLAT_NONE = TRUE,
+		)
+
+		for(var/splat_id in get_selectable_splats())
+			var/splat_type = GLOB.splat_list[splat_id]
+			var/datum/splat/splat = GLOB.splat_prototypes[splat_type]
+
+			defs[splat_id] = !splat.requires_whitelist()
+
+		var/list/clan_whitelist_values = CONFIG_GET(keyed_list/whitelisted_clans)
+		for(var/clan_name in GLOB.vampire_clan_list)
+			var/datum/subsplat/vampire_clan/clan = get_vampire_clan(clan_name)
+			if(!clan)
+				continue
+
+			if(clan.id in clan_whitelist_values)
+				defs[clan.id] = FALSE
+			else
+				defs[clan.id] = TRUE
+
+		GLOB.default_player_whitelists = defs
+
+	return GLOB.default_player_whitelists

@@ -21,3 +21,19 @@
 /datum/loadout_item/pocket_items/transpride
 	name = "flag, trans"
 	item_path = /obj/item/sign/flag/pride/trans
+
+/datum/loadout_item/pocket_items/mlm
+	name = "flag, mlm"
+	item_path = /obj/item/sign/flag/pride/mlm
+
+/datum/loadout_item/pocket_items/rabies
+	name = "flag, rabies"
+	item_path = /obj/item/sign/flag/pride/rabies
+
+/datum/loadout_item/pocket_items/enby
+	name = "flag, non-binary"
+	item_path = /obj/item/sign/flag/pride/enby
+
+/datum/loadout_item/pocket_items/inter
+	name = "flag, intersex"
+	item_path = /obj/item/sign/flag/pride/inter

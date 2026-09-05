@@ -434,7 +434,7 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 
 	if(item_flags & CRUEL_IMPLEMENT)
 		.[span_red("morbid")] = "It seems quite practical for particularly morbid procedures and experiments."
-	if(item_flags & BLUESPACE_INTERFERENCE)
+	if(HAS_TRAIT(src, TRAIT_BLUESPACE_INTERFERENCE))
 		.["bluespace-active"] = "It is highly active in bluespace and will cause malfunctions in teleporters."
 	if (siemens_coefficient == 0)
 		.["insulated"] = "It is made from a robust electrical insulator and will block any electricity passing through it!"
@@ -978,9 +978,14 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 	if(isturf(location))
 		location.hotspot_expose(flame_heat, 5)
 		// DARKPACK EDIT ADD START - TURF_FIRE
-		if(SEND_SIGNAL(location, COMSIG_TURF_OPEN_FLAME, flame_heat) & BLOCK_TURF_IGNITION)
-			return
 		var/turf/open/open_location = loc // NOT the location variable used earlier else cigarettes in mouths start fires
+		if(SEND_SIGNAL(open_location, COMSIG_TURF_OPEN_FLAME, flame_heat) & BLOCK_TURF_IGNITION)
+			return
+		// Checking src here incase we have... a flamable table. that should ignite its turf.
+		if(HAS_TRAIT(open_location, TRAIT_ELEVATED_TURF) && !HAS_TRAIT(src, TRAIT_ELEVATING_OBJECT))
+			return
+		if(HAS_TRAIT(src, TRAIT_ELEVATED_FLAME))
+			return
 		if(isopenturf(open_location) && open_location.flammability >= 1 && prob(open_location.flammability))
 			open_location.ignite_turf(2) // if there's enough flammability for a fire to sustain itself..
 		// DARKPACK EDIT ADD END
@@ -1839,7 +1844,7 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 /obj/item/proc/item_start_equip(atom/target, obj/item/equipping, mob/user, show_visible_message = TRUE)
 
 	if(show_visible_message)
-		if(HAS_TRAIT(equipping, TRAIT_DANGEROUS_OBJECT))
+		if(HAS_TRAIT(equipping, TRAIT_DANGEROUS_EQUIP))
 			target.visible_message(
 				span_danger("[user] tries to put [equipping] on [target]."),
 				span_userdanger("[user] tries to put [equipping] on you."),

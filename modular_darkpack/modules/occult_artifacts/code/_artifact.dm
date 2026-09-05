@@ -55,11 +55,23 @@
 		if(src in artifact_identifier?.get_all_contents())
 			bind(artifact_identifier)
 
+/obj/item/occult_artifact/proc/can_be_used_by(mob/living/user)
+	return TRUE
+
 /obj/item/occult_artifact/proc/bind(mob/user)
 	if(!identified)
 		return
 	if(owner) // Dont bind twice
 		return
+	if(!can_be_used_by(user))
+		return
+	//CRIMSON GRID ADD START PR: Occult Artifacts Stacking Nerf PR
+	var/artifact = src.type //Needed to clarify the kind of item to look for is this specific type and not all artifacts
+	var/list/artifacts = user.get_all_contents_type(artifact)
+	if(length(artifacts) >= 1) //if there's more than one artifact. (The reason why it's 1 instead of 2 is cause the list structured like an array and started the counting number at 0)
+		to_chat(user, span_danger("This excess copy of an artifact is made inert by the same resonances of the current copies held."))
+		return
+	//CRIMSON GRID ADD END
 	owner = user
 
 	var/datum/controller/subsystem/processing/subsystem = locate(subsystem_type) in Master.subsystems
@@ -108,6 +120,10 @@
 
 	if(!can_be_identified_without_ritual)
 		to_chat(artifact_identifier, span_warning("You've seen some occult artifacts, trinkets, and powerful relics, but this, you've either never seen it before, or it's power can only be awakened by few..."))
+		return
+
+	if(!can_be_used_by(artifact_identifier))
+		to_chat(artifact_identifier, span_warning("There's a presence inside of this object that refuses to cooperate with you."))
 		return
 
 	to_chat(artifact_identifier, span_cult("You might have seen this before in an occult text. You start identifying it..."))

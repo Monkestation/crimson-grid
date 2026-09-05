@@ -3,8 +3,10 @@
 	///Set to null to disallow breaking.
 	var/cuff_break_strength_needed = null
 
+	// ONFLOOR_ICONS
 	var/onflooricon
 	var/onflooricon_state
+
 	var/masquerade_violating
 
 	// STORYTELLR_STATS

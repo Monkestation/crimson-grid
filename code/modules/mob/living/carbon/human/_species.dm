@@ -996,6 +996,18 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return FALSE
 	if(user.loc == target.loc)
 		return FALSE
+
+	// DARKPACK EDIT ADD START - POTENCE
+	if(user.st_get_stat(STAT_STRENGTH) >= 6)	//We check if potence is active, then base off strength
+		var/shove_strength = user.st_get_stat(STAT_STRENGTH)
+		var/shove_distance = round(shove_strength / 2)
+		var/atom/throw_target = get_edge_target_turf(target, user.dir)
+		if(shove_strength >= 9)		//If you have 9 or more strength, you knock your target back spinning. Distance based on strength, on hitting something they take damage.
+			target.throw_at(throw_target, shove_distance, 6, user, spin = TRUE)
+		else						//If you have 6 or more strength, you'll basically do the same thing, but without the spin and at a lower throwback speed.
+			target.throw_at(throw_target, shove_distance, 4, user)
+	// DAKRPACK EDIT ADD END
+
 	user.disarm(target)
 
 /datum/species/proc/spec_attack_hand(mob/living/carbon/human/owner, mob/living/carbon/human/target, datum/martial_art/attacker_style, modifiers)
@@ -1367,8 +1379,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 /datum/species/proc/spec_stun(mob/living/carbon/human/H, amount)
 	if((H.movement_type & FLYING) && !H.buckled)
-		var/obj/item/organ/wings/functional/wings = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
-		if(wings)
+		var/obj/item/organ/wings/wings = H.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
+		//Only allow folding wings that are holding us up.
+		//Otherwise, the toggle may get flipped and skip flightworthiness checks :P
+		if(wings && HAS_TRAIT_FROM(H, TRAIT_MOVE_FLOATING, SPECIES_FLIGHT_TRAIT))
 			wings.toggle_flight(H)
 			wings.fly_slip(H)
 	. = min(stunmod * H.physiology.stun_mod * amount, LAZYMIN(H.physiology.max_stun_len, INFINITY))

@@ -1,5 +1,5 @@
 /datum/preference/numeric/height
-	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_key = "height"
 	savefile_identifier = PREFERENCE_CHARACTER
 	priority = PREFERENCE_PRIORITY_WORLD_OF_DARKNESS

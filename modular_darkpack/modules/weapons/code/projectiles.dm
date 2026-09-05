@@ -87,6 +87,7 @@
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
+		M.apply_damage(1 TTRPG_DAMAGE, BURN)
 		M.adjust_fire_stacks(fire_stacks)
 		M.ignite_mob()
 
@@ -191,7 +192,7 @@
 	damage = 45
 	armour_penetration = 75
 	exposed_wound_bonus = 30
-	wound_bonus = 30 //We're gonna make this hurt as much as possible. 
+	wound_bonus = 30 //We're gonna make this hurt as much as possible.
 	sharpness = SHARP_POINTY
 	embed_type = /datum/embedding/crossbolt //YEEEEOUCH!!!!
 
@@ -215,13 +216,14 @@
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary
 	armour_penetration = 5 //Big ass bullet
-	damage = 50
+	damage = 40
 	var/fire_stacks = 3 //This one comes in Semi-automatics
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary/on_hit(atom/target, blocked = FALSE, pierce_hit)
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
+		M.apply_damage(2 TTRPG_DAMAGE, BURN)
 		M.adjust_fire_stacks(fire_stacks)
 		M.ignite_mob()
 
