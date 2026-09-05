@@ -8,7 +8,8 @@
 	clan_disciplines = list(
 		/datum/discipline/obfuscate,
 		/datum/discipline/presence,
-		/datum/discipline/daimoinon
+		/datum/discipline/daimoinon,
+		/datum/discipline/dark_thaumaturgy
 	)
 
 	subsplat_traits = list(
