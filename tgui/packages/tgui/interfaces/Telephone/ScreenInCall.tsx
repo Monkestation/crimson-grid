@@ -6,7 +6,7 @@ import type { Data } from '.';
 
 const FakeCallingControls = (props) => {
   const { act, data } = useBackend<Data>();
-  const { phone_calling, speaker_mode, muted } = data;
+  const { speaker_mode, muted, on_hold} = data;
 
   return (
     <Box className="Telephone__CallOptionsGrid" textAlign="center">
@@ -31,17 +31,6 @@ const FakeCallingControls = (props) => {
         </Box>
         Speaker
       </Box>
-      {/* Keypad */}
-      <Box>
-        <Box height={4}>
-          <Stack fill align="center" justify="center">
-            <Stack.Item>
-              <Icon name="keyboard" size={2} />
-            </Stack.Item>
-          </Stack>
-        </Box>
-        Keypad
-      </Box>
       {/* Mute */}
       <Box>
         <Box height={4}>
@@ -63,6 +52,38 @@ const FakeCallingControls = (props) => {
         </Box>
         Mute
       </Box>
+      {/* Keypad */}
+      <Box>
+        <Box height={4}>
+          <Stack fill align="center" justify="center">
+            <Stack.Item>
+              <Icon name="keyboard" size={2} />
+            </Stack.Item>
+          </Stack>
+        </Box>
+        Keypad
+      </Box>
+      {/* Hold call */}
+      <Box>
+        <Box height={4}>
+          <Stack fill align="center" justify="center">
+            <Stack.Item>
+              <Icon
+              name="fa-pause"
+              size={2}
+              color={on_hold ? 'green' : ''}
+              onClick={() => {
+                act('hold_call');
+              }}
+              style={{
+                borderRadius: '50%',
+                cursor: 'pointer',
+              }}/>
+            </Stack.Item>
+          </Stack>
+        </Box>
+        Hold call
+      </Box>
     </Box>
   );
 };
@@ -71,7 +92,7 @@ const FakeCallingControls = (props) => {
 // to manage a three-variable state machine in one component
 export const ScreenCalling = (props) => {
   const { act, data } = useBackend<Data>();
-  const { calling_user } = data;
+  const { calling_user, city_name } = data;
 
   return (
     <Stack fill vertical className="Telephone__PhoneScreen">
@@ -86,12 +107,12 @@ export const ScreenCalling = (props) => {
             <Box bold fontSize={2} textAlign="center">
               {calling_user}
             </Box>
-            <Box textAlign="center">San Franscisco</Box>
+            <Box textAlign="center">{city_name}</Box>
           </Stack.Item>
         </Stack>
       </Stack.Item>
       <Stack.Item>
-        <FakeCallingControls phone_calling />
+        <Box height={15.6}></Box>
       </Stack.Item>
       <Stack.Item>
         <Stack mt={-3} fill align="center" justify="center">
@@ -123,7 +144,7 @@ export const ScreenCalling = (props) => {
 
 export const ScreenInCall = (props) => {
   const { act, data } = useBackend<Data>();
-  const { calling_user, phone_ringing, speaker_mode } = data;
+  const { calling_user, phone_ringing, phone_in_call, city_name } = data;
 
   return (
     <Stack fill vertical className="Telephone__PhoneScreen">
@@ -138,12 +159,12 @@ export const ScreenInCall = (props) => {
             <Box bold fontSize={2} textAlign="center">
               {calling_user}
             </Box>
-            <Box textAlign="center">San Franscisco</Box>
+            <Box textAlign="center">{city_name}</Box>
           </Stack.Item>
         </Stack>
       </Stack.Item>
       <Stack.Item>
-        <FakeCallingControls phone_calling />
+        {phone_in_call ? <FakeCallingControls phone_calling /> : <Box height={16}></Box>}
       </Stack.Item>
       <Stack.Item>
         <Stack mt={-3} fill align="center" justify="center">

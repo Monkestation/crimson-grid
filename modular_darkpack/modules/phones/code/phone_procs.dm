@@ -56,15 +56,19 @@
 	if(current_state == PHONE_AVAILABLE)
 		dialed_number = null
 		incoming_phone_number = null
+	if(current_state == PHONE_CALLING)
+		START_PROCESSING(SSprocessing, src)
+
 	if(current_state == PHONE_RINGING)
 		START_PROCESSING(SSprocessing, src)
 		if(ringer)
 			add_shared_particles(/particles/phone_ringing, particle_flags = PARTICLE_ATTACH_MOB)
-
 	else if(current_state == PHONE_IN_CALL || current_state == PHONE_AVAILABLE)
 		if(phone_ringing_timer)
 			deltimer(phone_ringing_timer)
 			phone_ringing_timer = null
+		if(phone_hangupsound_timer)
+			deltimer(phone_hangupsound_timer)
 		remove_shared_particles(/particles/phone_ringing, delete_on_empty = FALSE)
 		STOP_PROCESSING(SSprocessing, src)
 
@@ -101,6 +105,9 @@
 	phone_ringing_timer = addtimer(CALLBACK(src, PROC_REF(set_phone_available)), TIME_TO_RING, TIMER_STOPPABLE | TIMER_DELETE_ME)
 	add_phone_call_history(PHONE_CALL_SENT, PHONE_CALL_SENT_TOOLTIP)
 	set_phone_state(PHONE_CALLING)
+
+	phone_hangupsound_timer = addtimer(CALLBACK(src, GLOBAL_PROC_REF(playsound), loc, 'modular_vcg/master_files/sounds/item/smartphone/hangup.ogg', 45, TRUE), TIME_TO_RING + 0.2 SECONDS, TIMER_STOPPABLE | TIMER_DELETE_ME) // CRIMSON EDIT ADDITION - hangup tone
+
 	return TRUE // CRIMSON EDIT ADDITION - need to know if a phone call actually went through or not
 
 // Used for when the receiving phone picks up a phone call.
@@ -207,8 +214,6 @@
 
 	phone_radio.canhear_range = 1
 	calling_smartphone.phone_radio.canhear_range = 1
-	muted = FALSE
-	calling_smartphone.muted = FALSE
 
 // Internal only proc, used for ending a calll connection.
 /obj/item/smartphone/proc/terminate_call_connection()
@@ -235,14 +240,15 @@
 	set_phone_state(PHONE_AVAILABLE)
 	calling_smartphone.set_phone_state(PHONE_AVAILABLE)
 
-// Internal only proc, used for setting a phone's internal radio.
+// Internal only proc, used for setting a phone's internal radio when accepting and terminating calls.
 /obj/item/smartphone/proc/set_phone_radio(enabled)
 	PROTECTED_PROC(TRUE)
 
 	if(enabled)
 		phone_radio.set_frequency(secure_frequency)
-		phone_radio.set_broadcasting(TRUE)
-		phone_radio.set_listening(TRUE)
+		phone_radio.should_be_broadcasting = TRUE
+		phone_radio.should_be_listening = TRUE
+		phone_radio.set_on(TRUE)
 	else
 		phone_radio.set_frequency(0)
 		phone_radio.set_broadcasting(FALSE)

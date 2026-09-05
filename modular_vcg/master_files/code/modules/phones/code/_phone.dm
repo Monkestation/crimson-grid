@@ -18,14 +18,9 @@
 	. = ..()
 	// Lock sound!
 	playsound(loc, 'modular_vcg/master_files/sounds/item/smartphone/aosp/Lock.ogg', 20, TRUE)
-	opened = FALSE
+	if(opened)
+		toggle_screen(user)
 	update_appearance(UPDATE_ICON_STATE)
-
-/obj/item/smartphone/toggle_screen(mob/user)
-	var/prev_opened = opened
-	. = ..()
-	if(!prev_opened && opened)
-		playsound(loc, 'modular_vcg/master_files/sounds/item/smartphone/aosp/Unlock.ogg', 20)
 
 /obj/item/smartphone/ui_data(mob/user)
 	. = ..()
@@ -101,27 +96,3 @@
 	if(!sound_file)
 		sound_file = 'modular_darkpack/modules/phones/sounds/text_send.ogg'
 	playsound(src, sound_file, 30, TRUE, 0, 2)
-
-/obj/item/smartphone/start_phone_call(mob/user, called_phone_number)
-	. = ..()
-	if(!.)
-		return
-	phone_hangupsound_timer = addtimer(CALLBACK(src, GLOBAL_PROC_REF(playsound), loc, 'modular_vcg/master_files/sounds/item/smartphone/hangup.ogg', 45, TRUE), TIME_TO_RING + 0.2 SECONDS, TIMER_STOPPABLE | TIMER_DELETE_ME) // CRIMSON EDIT ADDITION - hangup tone
-
-/obj/item/smartphone/set_phone_state(new_state)
-	. = ..()
-	if(current_state == PHONE_CALLING)
-		START_PROCESSING(SSprocessing, src)
-
-	if(current_state == PHONE_IN_CALL)
-		if(phone_hangupsound_timer)
-			deltimer(phone_hangupsound_timer)
-
-/datum/outfit/post_equip(mob/living/carbon/human/user, visuals_only)
-	. = ..()
-	var/obj/item/smartphone/daphon = locate() in user
-	if(!user?.client?.prefs || QDELETED(daphon)) // somehow
-		return
-	var/datum/preference/ringtone_pref = user.client.prefs.read_preference(/datum/preference/choiced/pda_ringtone_sound)
-	daphon.update_notification_sound(ringtone_pref)
-

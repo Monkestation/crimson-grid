@@ -417,7 +417,8 @@
 
 	if (message_mods[MODE_SING])
 		filtered_mods[MODE_SING] = message_mods[MODE_SING]
-	if (message_mods[WHISPER_MODE])
+	// Allows you to whisper into a radio/phone you are holding without interference
+	if (message_mods[WHISPER_MODE] && get_dist(src, speaker) > 0)
 		filtered_mods[WHISPER_MODE] = message_mods[WHISPER_MODE]
 	if (message_mods[SAY_MOD_VERB])
 		filtered_mods[SAY_MOD_VERB] = message_mods[SAY_MOD_VERB]
