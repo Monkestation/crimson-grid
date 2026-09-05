@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	/datum/discipline/dementation,
 	/datum/discipline/obtenebration,
 	/datum/discipline/thaumaturgy,
-	/datum/discipline/dark_thaumaturgy,
+	/datum/discipline/dark_thaumaturgy, //CRIMSON GRID ADDITION
 	/datum/discipline/necromancy,
 	/datum/discipline/valeren,
 	/datum/discipline/obeah,
