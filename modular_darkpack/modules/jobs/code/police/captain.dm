@@ -13,6 +13,8 @@
 		/datum/job_department/police,
 	)
 
+	exp_requirements = EXP_REQ_HEAD
+
 	allowed_splats = list(SPLAT_NONE)
 
 	description = "Underpaid, overworked, and understrength. Do your best to keep the order in " + CITY_NAME + ". Keep the officers in line."

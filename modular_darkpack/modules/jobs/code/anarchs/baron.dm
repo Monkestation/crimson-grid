@@ -13,6 +13,9 @@
 		/datum/job_department/anarch,
 	)
 
+	exp_requirements = EXP_REQ_HEAD
+	exp_required_type_department = EXP_TYPE_ANARCH
+
 	known_contacts = list(
 		JOB_BRUISER,
 		JOB_EMISSARY,
