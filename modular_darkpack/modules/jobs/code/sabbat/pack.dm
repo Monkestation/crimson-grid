@@ -8,7 +8,6 @@
 	outfit = /datum/outfit/job/vampire/sabbatpack
 	job_flags = CITY_JOB_FLAGS
 	allowed_splats = list(SPLAT_KINDRED)
-	exp_required_type_department = EXP_TYPE_SABBAT
 	departments_list = list(
 		/datum/job_department/sabbat,
 	)

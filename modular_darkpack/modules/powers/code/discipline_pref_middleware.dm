@@ -7,9 +7,10 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	/datum/discipline/obtenebration,
 	/datum/discipline/thaumaturgy,
 	/datum/discipline/necromancy,
-	/datum/discipline/daimoinon,
 	/datum/discipline/valeren,
-	// melpominee not yet implemented but will go here
+	/datum/discipline/obeah,
+	/datum/discipline/daimoinon,
+	/datum/discipline/melpominee,
 ))
 
 // warns a player if they have no discipline dots assigned before joining
@@ -118,13 +119,6 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	data["clan_disciplines"] = list()
 	data["clan_name"] = null
 	var/clan_value = preferences.read_preference(/datum/preference/choiced/subsplat/vampire_clan)
-	if(clan_value)
-		var/datum/subsplat/vampire_clan/clan_datum = get_vampire_clan(clan_value)
-		if(clan_datum)
-			data["clan_name"] = clan_datum.name
-			for(var/disc_type in clan_datum.clan_disciplines)
-				if(ispath(disc_type, /datum/discipline))
-					data["clan_disciplines"] += "[disc_type]"
 
 	var/discipline_count = 0
 	var/list/counted_discs = list()
@@ -146,7 +140,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	data["discipline_points_spent"] = points_spent
 	data["discipline_tier"] = budget_info["tier"]
 	data["discipline_tier_details"] = budget_info["details"]
-	data["is_trusted"] = preferences.discipline_trusted || FALSE
+	data["is_trusted"] = preferences?.has_whitelist(WHITELIST_TRUSTED)
 	data["max_trusted_generation"] = MAX_TRUSTED_GENERATION
 	data["max_public_generation"] = MAX_PUBLIC_GENERATION
 	data["highest_generation_limit"] = HIGHEST_GENERATION_LIMIT
@@ -257,8 +251,15 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	if(!isnewplayer(user) && ("[user.client.prefs.default_slot]" in user.persistent_client.joined_as_slots))
 		to_chat(user, span_warning("You may not adjust discipline dots of characters that have played in the current round."))
 		return FALSE
-
-	preferences.discipline_levels = list()
+	var/clan_value = preferences.read_preference(/datum/preference/choiced/subsplat/vampire_clan)
+	if(!clan_value)
+		return FALSE
+	preferences.discipline_levels = list() // restore them to default
+	var/datum/subsplat/vampire_clan/clan_datum = get_vampire_clan(clan_value) // then give them their default clan discs. clear_discipline_levels fires from changing clans
+	if(clan_datum)
+		for(var/disc_type in clan_datum.clan_disciplines)
+			if(ispath(disc_type, /datum/discipline))
+				preferences.discipline_levels += disc_type
 	preferences.save_character()
 	return TRUE
 

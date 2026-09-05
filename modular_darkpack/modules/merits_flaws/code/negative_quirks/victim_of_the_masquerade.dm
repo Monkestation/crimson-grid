@@ -10,6 +10,7 @@
 	icon = FA_ICON_DIZZY
 	failure_message = "I might be a vampire."
 	var/datum/storyteller_roll/victim_of_the_masquerade/victim_of_the_masquerade_roll
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 
 /datum/storyteller_roll/victim_of_the_masquerade
 	bumper_text = "victim of the masquerade"

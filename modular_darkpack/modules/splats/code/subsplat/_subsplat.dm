@@ -16,10 +16,13 @@
 	var/name
 	/// Description of what the splat is and what it does
 	var/desc
-	/// If set, the roleplay level that is displayed in prefrences as a guide to players.
+	/// If set, the roleplay level that is displayed in preferences as a guide to players.
 	var/roleplay_level
 	/// ID for trait sources and whatnot
 	var/id
+
+	/// List of traits that are applied to members of this subsplat
+	var/list/subsplat_traits = list()
 
 	/// Typepath of keys for this subsplats's exclusive hideout
 	var/obj/item/vamp/keys/subsplat_keys
@@ -34,6 +37,10 @@
 		RegisterSignal(gaining_mob, COMSIG_MOB_LOGIN, PROC_REF(on_join_round))
 		RegisterSignal(gaining_mob, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED, PROC_REF(apply_after_setup))
 
+	// Add unique subsplat features as traits
+	for (var/trait in subsplat_traits)
+		ADD_TRAIT(gaining_mob, trait, SUBSPLAT_TRAIT)
+
 /**
  * Undoes the effects of on_gain more or less
  * remove the effects of gaining the subsplat.
@@ -44,6 +51,11 @@
 /datum/subsplat/proc/on_lose(mob/living/carbon/human/losing_mob)
 	SHOULD_CALL_PARENT(TRUE)
 	UnregisterSignal(losing_mob, list(COMSIG_MOB_LOGIN, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED))
+
+	// Remove unique subsplat feature traits
+	for (var/trait in subsplat_traits)
+		REMOVE_TRAIT(losing_mob, trait, SUBSPLAT_TRAIT)
+
 	return
 
 
