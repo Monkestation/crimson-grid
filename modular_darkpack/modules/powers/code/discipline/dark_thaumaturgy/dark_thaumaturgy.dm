@@ -7,7 +7,8 @@
 ●●● Blood of Potency: Permanent Willpower
 ●●●● Theft of Vitae: Permanent Willpower
 ●●●●● Cauldron of Blood: Permanent Willpower"}
-	icon_state = "thaumaturgy"
+	icon = 'modular_vcg/modules/powers/icons/actions.dmi'
+	icon_state = "dark_thaumaturgy"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/thaumaturgy
 	max_selectable_level = 5
