@@ -1,6 +1,6 @@
 /datum/job/vampire/primogen_malkavian
 	title = JOB_PRIMOGEN_MALKAVIAN
-	description = "Offer your infinite knowledge to Prince of the City. You likely have a hold over the local hospital, make good use of it and ensure the blood bags remain available."
+	description = "Offer your infinite knowledge to Prince of the City. As the de facto leader of Clan Malkavian, you are expected to provide guidance and insight to the Prince on behalf of the Malkavian clan." // CRIMSON EDIT - #203 - Original : 	description = "Offer your infinite knowledge to Prince of the City. You likely have a hold over the local hospital, make good use of it and ensure the blood bags remain available."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	faction = FACTION_CAMARILLA
 	total_positions = 1
@@ -8,17 +8,14 @@
 	supervisors = SUPERVISOR_TRADITIONS
 	req_admin_notify = 1
 	minimal_player_age = 14
-	exp_requirements = 180
-	exp_required_type = EXP_TYPE_CAMARILLA
-	exp_required_type_department = EXP_TYPE_CAMARILLA
-	exp_granted_type = EXP_TYPE_CAMARILLA
+	exp_requirements = EXP_REQ_HEAD
 	config_tag = "PRIMOGEN_MALKAVIAN"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/malkav
 
 	display_order = JOB_DISPLAY_ORDER_MALKAVIAN
 	departments_list = list(
-		/datum/job_department/clinic,
+		///datum/job_department/clinic, CRIMSON EDIT REMOVAL - #206
 		/datum/job_department/camarilla,
 	)
 

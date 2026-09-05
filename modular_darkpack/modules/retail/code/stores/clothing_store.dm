@@ -116,5 +116,23 @@
 // CRIMSON EDIT ADD START - Shop Inventories Additions
 		new /datum/data/vending_product("wallet", /obj/item/storage/wallet/darkpack, 25),
 		new /datum/data/vending_product("cloth", /obj/item/stack/sheet/cloth, 5),
+		new /datum/data/vending_product("baggy clothes", /obj/item/clothing/under/vampire/pinkman, 15),
+		new /datum/data/vending_product("blue baggy clothes", /obj/item/clothing/under/vampire/pinkman/blue, 15),
+		new /datum/data/vending_product("white baggy clothes", /obj/item/clothing/under/vampire/pinkman/white, 15),
+		new /datum/data/vending_product("brown baggy clothes", /obj/item/clothing/under/vampire/pinkman/brown, 15),
+		new /datum/data/vending_product("bootcut gray jeans", /obj/item/clothing/under/vampire/bootcut_jeans, 15),
+		new /datum/data/vending_product("stonewashed bootcut jeans", /obj/item/clothing/under/vampire/bootcut_jeans/stonewashed, 15),
+		new /datum/data/vending_product("blue bootcut jeans", /obj/item/clothing/under/vampire/bootcut_jeans/blue, 15),
+		new /datum/data/vending_product("gray tripp jeans", /obj/item/clothing/under/vampire/tripp_jeans, 15),
+		new /datum/data/vending_product("blue tripp jeans", /obj/item/clothing/under/vampire/tripp_jeans/blue, 15),
+		new /datum/data/vending_product("red tripp jeans", /obj/item/clothing/under/vampire/tripp_jeans/red, 15),
+		new /datum/data/vending_product("bomber jacket", /obj/item/clothing/suit/vampire/toggled/bomber_jacket, 25),
+		new /datum/data/vending_product("inverted bomber jacket", /obj/item/clothing/suit/vampire/toggled/bomber_jacket/inverted, 25),
+		new /datum/data/vending_product("plain brown jacket", /obj/item/clothing/suit/vampire/toggled/plain_jacket, 20),
+		new /datum/data/vending_product("plain black jacket", /obj/item/clothing/suit/vampire/toggled/plain_jacket/black, 20),
+		new /datum/data/vending_product("military jacket", /obj/item/clothing/suit/vampire/toggled/military_jacket, 25),
+		new /datum/data/vending_product("harness boots", /obj/item/clothing/shoes/vampire/harness_boots, 30),
+		new /datum/data/vending_product("brown harness boots", /obj/item/clothing/shoes/vampire/harness_boots/brown, 30),
+
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 	)

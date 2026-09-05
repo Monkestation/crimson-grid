@@ -77,7 +77,12 @@
 
 	to_chat(user, span_warning("Your venomous touch burns [victim]!"))
 	to_chat(victim, span_userdanger("You feel a burning poison sap your strength!"))
-	qdel(src)
+	var/obj/item/weapon = parent
+	if(istype(weapon, /obj/item/melee/touch_attack/quietus))
+		qdel(src)
+		qdel(weapon)
+	else
+		qdel(src)
 
 /datum/component/scorpions_touch_poison/proc/remove_poison(mob/living/carbon/human/victim)
 	if(!victim || QDELETED(victim))
