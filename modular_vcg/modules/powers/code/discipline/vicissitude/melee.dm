@@ -24,7 +24,7 @@
 	ADD_TRAIT(src, TRAIT_NATURAL, INNATE_TRAIT)
 
 /obj/item/melee/vampirearms/tzimisce/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
-	mob/living/wielder = owner
+	var/mob/living/wielder = owner
 	if(owner.stat >= SOFT_CRIT)
 		final_block_chance = 0
 	else if(iscrinos(wielder) || ishispo(wielder) || islupus(wielder) || !iscarbon(wielder))
