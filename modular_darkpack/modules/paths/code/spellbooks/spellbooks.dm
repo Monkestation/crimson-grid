@@ -9,7 +9,7 @@
 	var/activate_sound = 'modular_darkpack/modules/paths/sounds/open_book.ogg'
 	var/deactivate_sound = 'modular_darkpack/modules/paths/sounds/close_book.ogg'
 
-	var/required_discipline = /datum/discipline/thaumaturgy
+	var/datum/discipline/required_discipline = /datum/discipline/thaumaturgy
 	var/path_type = null
 	var/path_level = 1
 	var/do_after_time = 30 SECONDS

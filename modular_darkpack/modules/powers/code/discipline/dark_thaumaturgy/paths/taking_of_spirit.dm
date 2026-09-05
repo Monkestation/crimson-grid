@@ -1,6 +1,7 @@
 /datum/discipline/path/spirit
 	name = "Taking of Spirit"
 	desc = "A path of Dark Thaumaturgy that allows the manipulation of willpower."
+	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	icon_state = "spirit"
 	power_type = /datum/discipline_power/dark_thaumaturgy/path/taking_of_spirit
 

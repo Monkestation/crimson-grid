@@ -1,6 +1,7 @@
 /datum/discipline/path/pain
 	name = "Path of Pain"
 	desc = "A path of Dark Thaumaturgy that allows the manipulation of pain. Violates Masquerade."
+	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	icon_state = "pain"
 	power_type = /datum/discipline_power/dark_thaumaturgy/path/path_of_pain
 
