@@ -112,7 +112,7 @@ export const ScreenCalling = (props) => {
         </Stack>
       </Stack.Item>
       <Stack.Item>
-        <Box height={15.6}></Box>
+        <Box height={15.6}/>
       </Stack.Item>
       <Stack.Item>
         <Stack mt={-3} fill align="center" justify="center">
@@ -164,7 +164,7 @@ export const ScreenInCall = (props) => {
         </Stack>
       </Stack.Item>
       <Stack.Item>
-        {phone_in_call ? <FakeCallingControls phone_calling /> : <Box height={16}></Box>}
+        {phone_in_call ? <FakeCallingControls phone_calling /> : <Box height={16}/>}
       </Stack.Item>
       <Stack.Item>
         <Stack mt={-3} fill align="center" justify="center">
