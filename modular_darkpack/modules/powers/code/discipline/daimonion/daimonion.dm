@@ -152,7 +152,7 @@
 	if(prob(50))
 		target.AdjustKnockdown(6 SECONDS, daze_amount = 4 SECONDS)
 	else
-		target.Immobilize(6 SECONDS) //CRIMSON GRID EDIT - NERF
+		target.Immobilize(6 SECONDS)
 
 //CONFLAGRATION
 /datum/discipline_power/daimoinon/conflagration
