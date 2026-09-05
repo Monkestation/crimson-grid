@@ -4,7 +4,8 @@
 	pixel_w = -16
 	pixel_z = -16
 	owner_needed = FALSE
-	desc = "Use your demonic knowledge to ask for favors of Infernal."
+	desc = "Use your demonic knowledge to ask for favors of Infernal. "
+	name = "Infernal Rune"
 
 	products_list = list(
 	// SPELLBOOKS
@@ -53,12 +54,12 @@
 
 /obj/structure/retail/occult/baali/proc/calculate_favor(mob/living/carbon/human/sacrificed)
 	if(get_kindred_splat(sacrificed))
-		return (GHOUL_GENERATION - sacrificed.get_generation()) * 5
+		return (GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17) * 8 + 78 //the '8+78' creates a linear scale based on generation with 8 being 150 favor, 13th being 100 favor, and 16th being 78 favor.
 	if(get_garou_splat(sacrificed) || get_corax_splat(sacrificed))
-		return 30
+		return 100
 	if(get_ghoul_splat(sacrificed))
-		return 5
-	return 3
+		return 50
+	return 25
 
 /obj/structure/retail/occult/baali/attackby(obj/item/I, mob/user, params)
 	. = ..()
@@ -67,7 +68,7 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/human_user = user
 			for(var/mob/living/carbon/human/sacrificed_human in get_turf(src))
-				if(sacrificed_human.stat != DEAD)
+				if(sacrificed_human.stat != DEAD || sacrificed_human.stat != HARD_CRIT)
 					continue
 				human_user.infernal_favor += calculate_favor(sacrificed_human)
 				sacrificed_human.gib(DROP_ALL_REMAINS)
@@ -77,10 +78,10 @@
 			animate(src, color = initial(color), time = 0.5 SECONDS)
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
 		else
-			ui_interact(user)
+			interface_interact(user)
 
 // BaaliSpellbookVendor.jsx in tgui/interfaces
-/obj/structure/retail/occult/baali/ui_interact(mob/user, datum/tgui/ui)
+/obj/structure/retail/occult/baali/proc/interface_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "BaaliSpellbookVendor", name)

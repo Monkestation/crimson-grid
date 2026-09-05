@@ -150,7 +150,7 @@
 	. = ..()
 	to_chat(target, span_warning("Your mind is enveloped by your greatest fear!"))
 	if(prob(50))
-		target.AdjustKnockdown(6 SECONDS, daze_amount = 4 SECONDS) target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone, wound_bonus = 10)
+		target.AdjustKnockdown(6 SECONDS, daze_amount = 4 SECONDS)
 	else
 		target.Immobilize(6 SECONDS) //CRIMSON GRID EDIT - NERF
 
