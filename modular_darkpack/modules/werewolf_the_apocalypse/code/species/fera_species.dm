@@ -410,18 +410,12 @@
 
 /datum/movespeed_modifier/shifter/rage
 	variable = TRUE
-
-/datum/actionspeed_modifier/shifter/rage
-	variable = TRUE
-
-
 /datum/splat/werewolf/shifter
 	COOLDOWN_DECLARE(rage_damage_cd)
 	COOLDOWN_DECLARE(rage_wound_cd)
 	COOLDOWN_DECLARE(rage_decay_cd)
 	COOLDOWN_DECLARE(passive_rage_cd)
-	COOLDOWN_DECLARE(aggravated_decay_cd)
-
+	COOLDOWN_DECLARE(aggravated_damage_cd)
 /datum/splat/werewolf/shifter/on_gain()
 	. = ..()
 	owner.set_species(/datum/species/human/shifter/homid)
@@ -488,18 +482,12 @@
 	wound_clothing
 )
 	SIGNAL_HANDLER
-	if(damage_dealt =< 40)
+	if(damage_dealt < 30)
+		return
+	if(!COOLDOWN_FINISHED(src, rage_damage_cd))
 		return
 	if(gain_rage(1))
 		COOLDOWN_START(src, rage_damage_cd, 5 SECONDS)
-		return
-	if(!COOLDOWN_FINISHED(src, rage_damage_cd))
-	if(damage_dealt == AGGRAVATED)
-		return
-	if(!COOLDOWN_FINISHED(src, aggravated_decay_cd))
-		return
-	if(gain_rage(2))
-		COOLDOWN_START(src, aggravated_decay_cd, 2 MINUTES)
 /datum/splat/werewolf/shifter/proc/on_owner_wound(
 	datum/source,
 	datum/wound/wound,
@@ -536,7 +524,6 @@
 	REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, type)
 	REMOVE_TRAIT(owner, TRAIT_SLEEPIMMUNE, type)
 	REMOVE_TRAIT(owner, TRAIT_CHUNKYFINGERS, type)
-	REMOVE_TRAIT(owner, TRAIT_HULK, type)
 	REMOVE_TRAIT(owner, TRAIT_NOSOFTCRIT, type)
 	REMOVE_TRAIT(owner,TRAIT_STRONG_GRABBER, type)
 //CRIMSON GRID ADDITION END
