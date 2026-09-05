@@ -150,9 +150,9 @@
 	. = ..()
 	to_chat(target, span_warning("Your mind is enveloped by your greatest fear!"))
 	if(prob(50))
-		target.AdjustKnockdown(6 SECONDS, daze_amount = 4 SECONDS)
+		target.AdjustKnockdown(6 SECONDS, daze_amount = 4 SECONDS) target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone, wound_bonus = 10)
 	else
-		target.Immobilize(6 SECONDS)
+		target.Immobilize(6 SECONDS) //CRIMSON GRID EDIT - NERF
 
 //CONFLAGRATION
 /datum/discipline_power/daimoinon/conflagration
@@ -170,8 +170,8 @@
 
 /obj/projectile/flames/baali
 	color = "#1c1f1d"
-	damage = 25
-	damage_type = AGGRAVATED
+	damage = 40 //CRIMSON GRID EDIT - BUFFED to make more reliable in combat. Currently just a free Rotshrek trigger for baali.
+	damage_type = BURN // CRIMSON GRID EDIT - No need to make the damage aggravated. Aggravated damage will be applied by the fire itself.
 
 /datum/discipline_power/daimoinon/conflagration/activate(mob/living/target)
 	. = ..()
