@@ -22,7 +22,6 @@
 	icon_dead = "cat_tzi_dead"
 	unique_pet = TRUE
 	random_cat_color = FALSE
-	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 20) // CRIMSON EDIT ADDITION SAME MEAT AS CRAFTING RECIPE
 
 /mob/living/basic/pet/cat/darkpack/cain
 	name = "Cain"
