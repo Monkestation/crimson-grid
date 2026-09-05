@@ -153,14 +153,14 @@
 	for(var/mob/living/shaken_person in range(2, jumper)) //CRIMSON GRID EDIT - Reworks the Implimentation of stun jumps - Original: 	for(var/mob/living/shaken_person in range(5, jumper))
 		if(shaken_person == jumper)
 			continue
-		shaken_person.Stun(20)
+		shaken_person.Stun(0) //CRIMSON GRID EDIT - original: shaken_person.Stun(20)
 		shaken_person.do_stagger_animation(60) //CRIMSON GRID ADDITION - Reworks the implimentation of stun jumps
 		var/distance = get_dist(shaken_person, jumper)
 		shake_camera(shaken_person, max(6-distance), max(4-distance, 1))
-	jumper.Stun(10)
+	jumper.Stun(0) //CRIMSON GRID EDIT - original: jumper.Stun(10)
 	shake_camera(jumper, 4, 3)
 
-	SEND_SIGNAL(jumper, COMSIG_MASQUERADE_VIOLATION)
+	//SEND_SIGNAL(jumper, COMSIG_MASQUERADE_VIOLATION) //CRIMSON GRID REMOVAL - without stun jumps doing anything they have no reason to have a penalty
 
 
 #undef JUMP_DELAY
