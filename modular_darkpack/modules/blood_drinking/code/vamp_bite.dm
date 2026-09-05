@@ -91,7 +91,8 @@
 					trigger_kindred_frenzy(bit_living, 6, 0, "The taste of blood while hungry")
 
 				if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
-					playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/drinkblood1.ogg', 50, TRUE)
+					playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/drinkblood1.ogg', 30, TRUE) // CRIMSON EDIT CHANGE - ORIGINAL: playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/drinkblood1.ogg', 50, TRUE)
+
 					bit_living.visible_message(span_warning(span_bold("[src] bites [bit_living]'s neck!")), span_warning(span_bold("[src] bites your neck!")))
 				if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
 					SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
