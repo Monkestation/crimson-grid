@@ -67,6 +67,8 @@
 		if(phone_ringing_timer)
 			deltimer(phone_ringing_timer)
 			phone_ringing_timer = null
+		if(phone_hangupsound_timer)
+			deltimer(phone_hangupsound_timer)
 		remove_shared_particles(/particles/phone_ringing, delete_on_empty = FALSE)
 		STOP_PROCESSING(SSprocessing, src)
 
@@ -103,6 +105,9 @@
 	phone_ringing_timer = addtimer(CALLBACK(src, PROC_REF(set_phone_available)), TIME_TO_RING, TIMER_STOPPABLE | TIMER_DELETE_ME)
 	add_phone_call_history(PHONE_CALL_SENT, PHONE_CALL_SENT_TOOLTIP)
 	set_phone_state(PHONE_CALLING)
+
+	phone_hangupsound_timer = addtimer(CALLBACK(src, GLOBAL_PROC_REF(playsound), loc, 'modular_vcg/master_files/sounds/item/smartphone/hangup.ogg', 45, TRUE), TIME_TO_RING + 0.2 SECONDS, TIMER_STOPPABLE | TIMER_DELETE_ME) // CRIMSON EDIT ADDITION - hangup tone
+
 	return TRUE // CRIMSON EDIT ADDITION - need to know if a phone call actually went through or not
 
 // Used for when the receiving phone picks up a phone call.

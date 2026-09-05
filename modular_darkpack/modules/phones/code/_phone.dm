@@ -673,8 +673,13 @@
 	return formatted_messages
 
 /obj/item/smartphone/proc/toggle_screen(mob/user)
+	var/prev_opened = opened
+
 	opened = always_open || !opened
 	update_appearance(UPDATE_ICON_STATE)
+
+	if(!prev_opened && opened)
+		playsound(loc, 'modular_vcg/master_files/sounds/item/smartphone/aosp/Unlock.ogg', 20)
 
 /obj/item/smartphone/proc/submit_post(mob/user, body)
 	if(!body)
