@@ -54,7 +54,7 @@
 
 /obj/structure/retail/occult/baali/proc/calculate_favor(mob/living/carbon/human/sacrificed)
 	if(get_kindred_splat(sacrificed))
-		return (GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17) * 8 + 78 //the '8+78' creates a linear scale based on generation with 8 being 150 favor, 13th being 100 favor, and 16th being 78 favor.
+		return (GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17) * 8 + 78) //the '8+78' creates a linear scale based on generation with 8 being 150 favor, 13th being 100 favor, and 16th being 78 favor.
 	if(get_garou_splat(sacrificed) || get_corax_splat(sacrificed))
 		return 100
 	if(get_ghoul_splat(sacrificed))
