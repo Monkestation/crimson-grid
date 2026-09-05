@@ -164,15 +164,15 @@
 
 	manifest_paper.add_raw_text(manifest_text)
 
-	// CRIMSON EDIT REMOVAL START - No More Missing Cargo
-	//if(manifest_paper.errors & MANIFEST_ERROR_ITEM)
-	//	if(HAS_TRAIT(container, TRAIT_NO_MISSING_ITEM_ERROR))
-	//		manifest_paper.errors &= ~MANIFEST_ERROR_ITEM
-	//	else
-	//		var/lost = max(round(container.contents.len / 10), 1)
-	//		while(--lost >= 0)
-	//			qdel(pick(container.contents))
-	// CRIMSON EDIT REMOVAL END - No More Missing Cargo
+	/* CRIMSON EDIT REMOVAL START - No More Missing Cargo
+	if(manifest_paper.errors & MANIFEST_ERROR_ITEM)
+		if(HAS_TRAIT(container, TRAIT_NO_MISSING_ITEM_ERROR))
+			manifest_paper.errors &= ~MANIFEST_ERROR_ITEM
+		else
+			var/lost = max(round(container.contents.len / 10), 1)
+			while(--lost >= 0)
+				qdel(pick(container.contents))
+	*/ // CRIMSON EDIT REMOVAL END - No More Missing Cargo
 
 	manifest_paper.update_appearance()
 	manifest_paper.forceMove(container)
