@@ -9,7 +9,7 @@
 		/datum/discipline/obfuscate,
 		/datum/discipline/presence,
 		/datum/discipline/daimoinon,
-		/datum/discipline/dark_thaumaturgy
+		/datum/discipline/dark_thaumaturgy //CRIMSON GRID ADDITION: Dark Thaumaturgy
 	)
 
 	subsplat_traits = list(
