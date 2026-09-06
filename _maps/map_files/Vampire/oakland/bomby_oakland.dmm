@@ -10448,13 +10448,10 @@
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer/nosferatu_warren)
 "cwE" = (
-/obj/structure/bodycontainer/morgue{
-	dir = 2
+/obj/structure/bodycontainer/crematorium{
+	id = "cliniccretorium"
 	},
-/obj/effect/turf_decal/siding/white{
-	dir = 6
-	},
-/turf/open/floor/plating/rough,
+/turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
 "cwG" = (
 /obj/effect/turf_decal/siding/wideplating/orange/corner{
@@ -46437,6 +46434,10 @@
 /obj/structure/table/wood/poker,
 /turf/open/floor/carpet/royalblack,
 /area/vtm/interior/giovanni)
+"leW" = (
+/obj/machinery/light/directional/east,
+/turf/open/openspace,
+/area/vtm/interior/clinic)
 "lfa" = (
 /obj/machinery/computer/security/telescreen/entertainment/directional/north,
 /turf/open/floor/city/plating_stone,
@@ -77497,6 +77498,13 @@
 	},
 /turf/open/floor/carpet/red,
 /area/vtm/interior)
+"swP" = (
+/obj/machinery/button/crematorium{
+	id = "cliniccretorium";
+	pixel_y = -6
+	},
+/turf/closed/wall/vampwall/painted,
+/area/vtm/interior/clinic)
 "swQ" = (
 /obj/effect/decal/cleanable/gasoline,
 /obj/effect/decal/pallet,
@@ -80487,6 +80495,7 @@
 	pixel_y = 10
 	},
 /obj/effect/turf_decal/siding/grey,
+/obj/machinery/light/directional/north,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
 "tiU" = (
@@ -86240,6 +86249,7 @@
 	},
 /obj/item/screwdriver,
 /obj/effect/turf_decal/siding/grey,
+/obj/machinery/light/directional/north,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
 "uBG" = (
@@ -101154,6 +101164,13 @@
 	},
 /turf/open/floor/city/gummaguts,
 /area/vtm/westfield_mall/interior)
+"yfY" = (
+/obj/structure/table,
+/obj/item/storage/box/bodybags{
+	pixel_y = 8
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/clinic)
 "ygc" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 1
@@ -178630,7 +178647,7 @@ pbo
 pbo
 pbo
 joX
-tci
+yfY
 kaD
 kaD
 kaD
@@ -178834,7 +178851,7 @@ chu
 pbo
 pbo
 joX
-joX
+swP
 kaD
 kaD
 joX
@@ -220047,7 +220064,7 @@ uBB
 kaD
 kaD
 kaD
-kaD
+uss
 kaD
 kaD
 kaD
@@ -220663,7 +220680,7 @@ ugv
 hjD
 bZL
 kaD
-kaD
+lVT
 kaD
 joX
 joX
@@ -221271,7 +221288,7 @@ joX
 jIO
 kaD
 kaD
-qqg
+leW
 qqg
 cfi
 gzK

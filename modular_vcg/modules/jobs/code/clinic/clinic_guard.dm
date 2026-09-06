@@ -22,6 +22,8 @@
 
 	description = "As an Orderly for the Hospital your main job is ensuring the security of medical staff, patients, and equipment."
 	minimum_masquerade = 0
+	maximal_generation = 8
+	maximum_immortal_age = 200
 
 	known_contacts = list(
 		JOB_CLINIC_DIRECTOR,
@@ -33,11 +35,12 @@
 	name = JOB_CLINIC_GUARD
 	jobtype = /datum/job/vampire/clinic_guard
 
+	ears = /obj/item/radio/headset/darkpack
 	uniform = /obj/item/clothing/under/vampire/guard
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	belt = /obj/item/storage/belt/security/police
 	id = /obj/item/card/clinic
 	l_pocket = /obj/item/smartphone/clinic_officer
 	r_pocket = /obj/item/vamp/keys/clinics_director
-	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/gun/ballistic/automatic/pistol/darkpack/m1911 = 1)
+	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/ammo_box/magazine/glock9mm = 2)
 
