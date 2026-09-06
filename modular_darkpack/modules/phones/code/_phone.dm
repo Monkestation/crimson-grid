@@ -67,6 +67,11 @@
 	var/custom_background = null // ori's request to add a custom background URL
 	var/endpost_username = null //username for the endpost app
 
+	// CRIMSON EDIT ADDITION START - PASSWORD AND LOCK SCREEN
+	var/password_enabled = FALSE
+	var/phone_password
+	var/unlocked_for_call = FALSE
+
 /obj/item/smartphone/Initialize(mapload)
 	. = ..()
 	GLOB.phones_list += src
@@ -143,15 +148,53 @@
 	else
 		. += span_notice("You can [EXAMINE_HINT("Insert")] a SIM card.")
 
+// CRIMSON EDIT ADDITION START - PASSWORD FUNCTION
+/obj/item/smartphone/proc/set_random_password()
+	password_enabled = TRUE
+	phone_password = "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)]"
+
+// cg edit phone check
+/obj/item/smartphone/proc/check_password(mob/living/user, autocheck)
+	if(!password_enabled)
+		return TRUE
+	if(!phone_password) // for prepaid phones, add set password stuff later
+		return TRUE
+
+	var/datum/memory/key/phone_pin/remembered = user.mind?.memories[/datum/memory/key/phone_pin]
+	if ((remembered?.remembered_id == phone_password) && autocheck)
+		to_chat(user, span_notice("You unlock [src] by memory."))
+		return TRUE
+
+	if(tgui_input_text(user, "Enter the pin number for this phone:", "Pin Input", max_length=4, multiline=FALSE) != phone_password)
+		to_chat(user, span_alert("The pin you entered for the [src] is incorrect."))
+		return FALSE
+	else
+		to_chat(user, span_notice("You correctly enter the pin for the [src]."))
+		return TRUE
+// CRIMSON EDIT ADDITION END
+
 /obj/item/smartphone/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!opened)
+		// CRIMSON EDIT ADDITION START - TEMP BYPASS LOCKSCREEN FOR CALL
+		if(current_state == PHONE_RINGING && password_enabled && phone_password)
+			unlocked_for_call = TRUE
+		else if(!check_password(user, TRUE))
+			return
+		// CRIMSON EDIT ADDITION END
 		toggle_screen(user)
 	ui_interact(user)
 
 /obj/item/smartphone/click_alt(mob/user)
 	if(!user.is_holding(src))
 		return CLICK_ACTION_BLOCKING
+	// CRIMSON EDIT ADDITION START - TEMP BYPASS LOCKSCREEN FOR CALL
+	if(!opened)
+		if(current_state == PHONE_RINGING && password_enabled && phone_password)
+			unlocked_for_call = TRUE
+		else if(!check_password(user, TRUE))
+			return CLICK_ACTION_BLOCKING
+	// CRIMSON EDIT ADDITION END
 	toggle_screen(user)
 	return CLICK_ACTION_SUCCESS
 
@@ -228,6 +271,7 @@
 	data["phone_calling"] = (current_state == PHONE_CALLING) ? TRUE : FALSE
 	data["ringer"] = ringer
 	data["vibration"] = vibration
+	data["password_enabled"] = password_enabled // CRIMSON EDIT ADDITION- PASSWORD SETTING
 	data["speaker_mode"] = (phone_radio.canhear_range == 3) ? TRUE : FALSE
 	data["muted"] = muted
 
@@ -591,7 +635,24 @@
 			if(ringer)
 				playsound(loc, 'modular_darkpack/modules/phones/sounds/text_send.ogg', 50, TRUE)
 			return TRUE
+		// CRIMSON EDIT ADDITION START - PASSWORD FUNCTIONS
+		if("change_password")
+			password_enabled = TRUE
+			if(check_password(user, FALSE))
+				var/new_password = tgui_input_text(user, "Enter a new password", "Change Password", max_length = 4)
+				if(!new_password || length(new_password) == 0)
+					to_chat(user, span_danger("Not a valid password."))
+					return FALSE
+				phone_password = new_password
+				to_chat(user, span_notice("You change [src]'s password."))
+				return TRUE
 
+		if("toggle_password_lock")
+			if(check_password(user, FALSE))
+				password_enabled = !password_enabled
+				to_chat(user, span_notice("Lock screen [password_enabled ? "enabled" : "disabled"] on [src]."))
+				return TRUE
+		// CRIMSON EDIT ADDITION END
 	return FALSE
 
 /obj/item/smartphone/proc/get_conversation(contact_number)
@@ -678,3 +739,26 @@
 
 /proc/log_phone(text, list/data)
 	logger.Log(LOG_CATEGORY_PDA_CHAT, text, data)
+
+// CRIMSON EDIT ADDITION START - PASSWORD MEMORY
+/datum/memory/key/phone_pin
+	var/remembered_id
+
+/datum/memory/key/phone_pin/New(
+	datum/mind/memorizer_mind,
+	atom/protagonist,
+	atom/deuteragonist,
+	atom/antagonist,
+	remembered_id,
+)
+	src.remembered_id = remembered_id
+	return ..()
+
+/datum/memory/key/phone_pin/get_names()
+	return list("The phone pin of [protagonist_name], [remembered_id].")
+
+/datum/memory/key/phone_pin/get_starts()
+	return list(
+		"[protagonist_name] flexing their last brain cells, proudly showing their lucky numbers [remembered_id].",
+		"[remembered_id]. The numbers mason, what do they mean!?",
+	)

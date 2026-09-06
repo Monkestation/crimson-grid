@@ -56,6 +56,12 @@
 	if(current_state == PHONE_AVAILABLE)
 		dialed_number = null
 		incoming_phone_number = null
+		// CRIMSON EDIT ADDITION START - PHONE CALL LOCKSCREEN BYPASS
+		if(unlocked_for_call)
+			unlocked_for_call = FALSE
+			if(opened && !always_open)
+				opened = FALSE
+				update_appearance(UPDATE_ICON_STATE)
 	if(current_state == PHONE_RINGING)
 		START_PROCESSING(SSprocessing, src)
 		if(ringer)
