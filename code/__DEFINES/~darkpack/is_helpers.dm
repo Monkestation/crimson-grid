@@ -1,5 +1,5 @@
 #define is_vampire_job(job_type)  (istype(job_type, /datum/job/vampire))
 #define is_prince_job(job_type) (istype(job_type, /datum/job/vampire/prince))
-#define is_sabbatist(job_type) (istype(job_type, /datum/job/vampire/sabbatpack || /datum/job/vampire/sabbatpriest || /datum/job/vampire/sabbatductus))
+#define is_sabbatist(job_type) (istype(job_type, /datum/job/vampire/sabbatpack) || istype(job_type, /datum/job/vampire/sabbatpriest) || istype(job_type, /datum/job/vampire/sabbatductus)) // CRIMSON EDIT - Sabbat Identifier Fix - Original: (istype(job_type, /datum/job/vampire/sabbatpack || /datum/job/vampire/sabbatpriest || /datum/job/vampire/sabbatductus))
 #define is_sabbat_priest(job_type) (istype(job_type, /datum/job/vampire/sabbatpriest))
 #define is_sabbat_ductus(job_type) (istype(job_type, /datum/job/vampire/sabbatductus))
