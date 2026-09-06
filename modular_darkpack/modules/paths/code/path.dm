@@ -12,3 +12,8 @@
 	background_icon_state = "default"
 	button_icon_state = "default"
 	overlay_icon_state = "default"
+
+/datum/action/discipline/path/New(Target, datum/discipline/discipline)
+	. = ..()
+	button_icon = discipline.icon
+	button_icon_state = discipline.icon_state

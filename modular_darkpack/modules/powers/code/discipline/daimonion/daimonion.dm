@@ -170,8 +170,8 @@
 
 /obj/projectile/flames/baali
 	color = "#1c1f1d"
-	damage = 25
-	damage_type = AGGRAVATED
+	damage = 40 //CRIMSON GRID EDIT - BUFFED to make more reliable in combat. Currently just a free Rotshrek trigger for baali.
+	damage_type = BURN // CRIMSON GRID EDIT - No need to make the damage aggravated. Aggravated damage will be applied by the fire itself.
 
 /datum/discipline_power/daimoinon/conflagration/activate(mob/living/target)
 	. = ..()

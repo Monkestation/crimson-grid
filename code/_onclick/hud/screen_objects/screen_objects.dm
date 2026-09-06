@@ -988,12 +988,16 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 			icon_key = "DEAD"
 		else if(SEND_SIGNAL(body_part, COMSIG_BODYPART_UPDATING_HEALTH_HUD, owner, overridable_key) & OVERRIDE_BODYPART_HEALTH_HUD)
 			icon_key = overridable_key[1] // thanks i hate it
+		else if(HAS_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES))  // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+			icon_key = 0
 		else if(!owner.has_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy))
 			var/damage = body_part.get_damage() / body_part.max_damage
 			// calculate what icon state (1-5, or 0 if undamaged) to use based on damage
 			icon_key = clamp(ceil(damage * 5), 0, 5)
 
-		if(length(body_part?.wounds))
+		if(HAS_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES))  // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+			LAZYREMOVE(animated_zones, part_zone)
+		else if(length(body_part?.wounds))
 			LAZYSET(animated_zones, part_zone, TRUE)
 		else
 			LAZYREMOVE(animated_zones, part_zone)
