@@ -275,7 +275,27 @@
 		TRAIT_NO_LYING_ANGLE,
 		TRAIT_TRANSFORM_UPDATES_ICON,
 		TRAIT_HARDENED_SOLES,
+// CRIMSON EDIT ADD START - Garou Trait Buffs
+		TRAIT_KEEN_NOSE,
+		TRAIT_QUICK_CARRY,
+		TRAIT_GOOD_HEARING,
+		TRAIT_STRENGTH,
+		TRAIT_HATED_BY_DOGS,
+		TRAIT_NO_SLIP_WATER,
+		TRAIT_HEAD_INJURY_BLOCKED,
+		TRAIT_NO_STAGGER,
+		TRAIT_BRAWLING_KNOCKDOWN_BLOCKED,
+		TRAIT_PUSHIMMUNE,
+		TRAIT_FAT_IGNORE_SLOWDOWN,
+		TRAIT_BATON_RESISTANCE,
+		TRAIT_FEARLESS,
+		TRAIT_HARDLY_WOUNDED,
+// CRIMSON EDIT ADD END - Garou Trait Buffs
 	)
+// CRIMSON EDIT ADD START - heat damage weakness due to fur
+	coldmod = 0.65
+	heatmod = 2
+// CRIMSON EDIT ADD END
 	form_causes_delirium = TRUE
 	veil_breaching_form = TRUE
 
@@ -313,7 +333,26 @@
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
 		TRAIT_HARDENED_SOLES,
+	//CRIMSON EDIT ADD START -Garou Trait Buffs
+		TRAIT_KEEN_NOSE,
+		TRAIT_QUICK_CARRY,
+		TRAIT_XRAY_HEARING,
+		TRAIT_GOOD_HEARING,
+		TRAIT_STRENGTH,
+		TRAIT_BATON_RESISTANCE,
+		TRAIT_HATED_BY_DOGS,
+		TRAIT_NO_SLIP_WATER,
+		TRAIT_HEAD_INJURY_BLOCKED,
+		TRAIT_NO_STAGGER,
+		TRAIT_BRAWLING_KNOCKDOWN_BLOCKED,
+		TRAIT_PUSHIMMUNE,
+		TRAIT_FAT_IGNORE_SLOWDOWN,
+	// CRIMSON EDIT ADD END - Garou Trait Buffs
 	)
+// CRIMSON EDIT ADD START - heat damage weakness due to fur
+	coldmod = 0.65
+	heatmod = 2
+// CRIMSON EDIT ADD END
 	veil_breaching_form = TRUE
 
 	mutantbrain = /obj/item/organ/brain/fera
@@ -352,8 +391,16 @@
 		TRAIT_FERAL_BITER,
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
+	//CRIMSON EDIT ADD START -Garou Trait Buffs
+		TRAIT_KEEN_NOSE,
+		TRAIT_XRAY_HEARING,
+		TRAIT_GOOD_HEARING,
+	// CRIMSON EDIT ADD END - Garou Trait Buffs
 	)
-
+// CRIMSON EDIT ADD START - heat damage weakness due to fur
+	coldmod = 0.65
+	heatmod = 2
+// CRIMSON EDIT ADD END
 	mutantbrain = /obj/item/organ/brain/fera
 	mutanttongue = /obj/item/organ/tongue/fera
 	bodypart_overrides = list(
