@@ -15,6 +15,7 @@
 	new /datum/data/vending_product("Path of Pain Spellbook (Level IV)",	/obj/item/path_spellbook/path_of_pain/level4,	240),
 	new /datum/data/vending_product("Path of Pain Spellbook (Level V)",	/obj/item/path_spellbook/path_of_pain/level5,	270),
 
+	/* Commented out until these have been added
 	new /datum/data/vending_product("Fires of Inferno Spellbook (Level I)",	/obj/item/path_spellbook/fires_of_inferno/level1,	130),
 	new /datum/data/vending_product("Fires of Inferno Spellbook (Level II)",	/obj/item/path_spellbook/fires_of_inferno/level2,	180),
 	new /datum/data/vending_product("Fires of Inferno Spellbook (Level III)",	/obj/item/path_spellbook/fires_of_inferno/level3,	210),
@@ -26,7 +27,7 @@
 	new /datum/data/vending_product("Taking of Spirit Spellbook (Level III)",	/obj/item/path_spellbook/taking_of_spirit/level3,	210),
 	new /datum/data/vending_product("Taking of Spirit Spellbook (Level IV)",	/obj/item/path_spellbook/taking_of_spirit/level4,	240),
 	new /datum/data/vending_product("Taking of Spirit Spellbook (Level V)",	/obj/item/path_spellbook/taking_of_spirit/level5, 270),
-
+	*/
 	// ARTIFACTS
 	// Lower tier artifacts
 	new /datum/data/vending_product("Weekapaug Thistle", /obj/item/occult_artifact/vampire/weekapaug_thistle, 75),
@@ -54,7 +55,7 @@
 
 /obj/structure/retail/occult/baali/proc/calculate_favor(mob/living/carbon/human/sacrificed)
 	if(get_kindred_splat(sacrificed))
-		return (GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17) * 8 + 78) //the '8+78' creates a linear scale based on generation with 8 being 150 favor, 13th being 100 favor, and 16th being 78 favor.
+		return ((GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17)) * 8 + 78) //the '8+78' creates a linear scale based on generation with 8 being 150 favor, 13th being 100 favor, and 16th being 78 favor.
 	if(get_garou_splat(sacrificed) || get_corax_splat(sacrificed))
 		return 100
 	if(get_ghoul_splat(sacrificed))
@@ -68,10 +69,10 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/human_user = user
 			for(var/mob/living/carbon/human/sacrificed_human in get_turf(src))
-				if(sacrificed_human.stat != DEAD || sacrificed_human.stat != HARD_CRIT)
+				if(sacrificed_human.stat != DEAD && sacrificed_human.stat != HARD_CRIT)
 					continue
 				human_user.infernal_favor += calculate_favor(sacrificed_human)
-				sacrificed_human.gib(DROP_ALL_REMAINS)
+				sacrificed_human.dust(TRUE, TRUE)
 				sacrifice = TRUE
 		if(sacrifice)
 			playsound(get_turf(src), 'sound/effects/magic/demon_dies.ogg', 100, TRUE)
@@ -173,7 +174,8 @@
 			/obj/item/path_spellbook/path_of_pain/level2,
 			/obj/item/path_spellbook/path_of_pain/level3,
 			/obj/item/path_spellbook/path_of_pain/level4,
-			/obj/item/path_spellbook/path_of_pain/level5,
+			/obj/item/path_spellbook/path_of_pain/level5))
+			/* Not yet implemented!
 			/obj/item/path_spellbook/fires_of_inferno/level1,
 			/obj/item/path_spellbook/fires_of_inferno/level2,
 			/obj/item/path_spellbook/fires_of_inferno/level3,
@@ -183,7 +185,7 @@
 			/obj/item/path_spellbook/taking_of_spirit/level2,
 			/obj/item/path_spellbook/taking_of_spirit/level3,
 			/obj/item/path_spellbook/taking_of_spirit/level4,
-			/obj/item/path_spellbook/taking_of_spirit/level5))
+			/obj/item/path_spellbook/taking_of_spirit/level5))*/
 
 		if(artifact.research_value >= 20)
 			to_chat(user, span_nicegreen("The Infernal hungrily consume the powerful artifact, granting you [artifact.research_value] favor and adding it to their collection!"))
