@@ -7,7 +7,6 @@
 	righthand_file = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/righthand.dmi'
 	force = 2 LETHAL_TTRPG_DAMAGE
 	w_class = WEIGHT_CLASS_BULKY
-	block_chance = 25
 	armour_penetration = 40
 	sharpness = SHARP_EDGED
 	attack_verb_continuous = list("slashes", "cuts")
@@ -22,13 +21,3 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_NATURAL, INNATE_TRAIT)
-
-/obj/item/melee/vampirearms/tzimisce/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
-	var/mob/living/wielder = owner
-	if(owner.stat >= SOFT_CRIT)
-		final_block_chance = 0
-	else if(iscrinos(wielder) || ishispo(wielder) || islupus(wielder) || !iscarbon(wielder))
-		final_block_chance = 0
-	else if(attack_type == PROJECTILE_ATTACK || attack_type == LEAP_ATTACK || attack_type == OVERWHELMING_ATTACK)
-		final_block_chance = 0
-	return ..()
