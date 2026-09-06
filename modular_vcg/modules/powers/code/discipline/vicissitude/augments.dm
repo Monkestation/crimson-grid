@@ -3,7 +3,7 @@
 	desc = "A concealed serrated bone blade."
 	icon_state = "armblade"
 	icon = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/weapons.dmi'
-	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 30)
+	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 40)
 	organ_flags = ORGAN_ORGANIC
 	aug_overlay = ""
 	zone = BODY_ZONE_L_ARM
