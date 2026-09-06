@@ -237,3 +237,26 @@
 			return
 		//TODO: middle click to swap loadout
 	. = ..()
+
+// CRIMSON EDIT ADD START - Discipline Active Indicator
+/datum/action/discipline/is_action_active(atom/movable/screen/movable/action_button/current_button)
+	for(var/datum/discipline_power/power as anything in discipline?.known_powers)
+		if(power.active)
+			return TRUE
+	return FALSE
+
+/datum/action/discipline/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags = ALL, force = FALSE)
+	. = ..()
+
+	if(!button)
+		return
+
+	var/wants_glow = is_action_active(button)
+	if(wants_glow == !isnull(button.get_filter("discipline_active")))
+		return
+
+	if(wants_glow)
+		button.add_filter("discipline_active", 2, outline_filter(color = COLOR_GOLD, size = 1))
+	else
+		button.remove_filter("discipline_active")
+// CRIMSON EDIT ADD END - Discipline Active Indicator
