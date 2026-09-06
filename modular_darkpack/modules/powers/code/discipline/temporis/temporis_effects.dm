@@ -22,3 +22,9 @@
 /obj/effect/temporis/clothos_gift
 	effect_alpha = 155
 	effect_fadeout = 0.5 SECONDS
+
+//VCG EDIT START - MARTIAL ARTS
+/obj/effect/temporis/weskar
+	effect_alpha = 155
+	effect_fadeout = 0.3 SECONDS
+//VCG EDIT END
