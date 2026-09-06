@@ -160,8 +160,7 @@
 	jumper.Stun(0) //CRIMSON GRID EDIT - original: jumper.Stun(10)
 	shake_camera(jumper, 4, 3)
 
-	//SEND_SIGNAL(jumper, COMSIG_MASQUERADE_VIOLATION) //CRIMSON GRID REMOVAL - without stun jumps doing anything they have no reason to have a penalty
-
+	SEND_SIGNAL(jumper, COMSIG_MASQUERADE_VIOLATION) 
 
 #undef JUMP_DELAY
 #undef JUMP_SLOWDOWN_MULT
