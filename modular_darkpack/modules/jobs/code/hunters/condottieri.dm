@@ -45,3 +45,7 @@
 	. = ..()
 	if(H.mind)
 		H.mind.set_holy_role(HOLY_ROLE_PRIEST)
+
+/datum/outfit/job/vampire/condottieri/post_equip(mob/living/carbon/human/H)
+	. = ..()
+	H.grant_language(/datum/language/latin, source = "job")

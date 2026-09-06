@@ -85,3 +85,9 @@
 
 	if(!GLOB.supernatural_breakers_list)
 		to_chat(user, span_info("No available freaks of nature in city..."))
+
+// CRIMSON EDIT ADD START - Sell Valuables
+/obj/item/veil_contract/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/selling, 100, "watch", FALSE)
+// CRIMSON EDIT ADD END - Sell Valuables

@@ -8,10 +8,8 @@
 	supervisors = SUPERVISOR_LITANY
 	req_admin_notify = 1
 	minimal_player_age = 25
-	exp_requirements = 100
-	exp_required_type = EXP_TYPE_GAIA
+	exp_requirements = EXP_REQ_MINOR
 	exp_required_type_department = EXP_TYPE_GAIA
-	exp_granted_type = EXP_TYPE_GAIA
 	config_tag = "WYRMFOE"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/wyrmfoe

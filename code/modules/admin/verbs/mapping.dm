@@ -197,12 +197,13 @@ ADMIN_VERB(disable_communication, R_DEBUG, "Disable all communication verbs", "D
 ADMIN_VERB_VISIBILITY(create_mapping_job_icons, ADMIN_VERB_VISIBLITY_FLAG_MAPPING_DEBUG)
 ADMIN_VERB(create_mapping_job_icons, R_DEBUG, "Generate job landmarks icons", "Generates job starting location landmarks.", ADMIN_CATEGORY_MAPPING)
 	var/icon/final = icon()
-	var/mob/living/carbon/human/dummy/consistent/mannequin = new(get_turf(usr))
-	mannequin.setDir(SOUTH)
+	// var/mob/living/carbon/human/dummy/consistent/mannequin = new(get_turf(usr))
+	// mannequin.setDir(SOUTH)
 	for(var/job_type in valid_subtypesof(/datum/job/vampire))
 		var/datum/job/job_datum = SSjob.get_job_type(job_type)
 		if(!job_datum.outfit)
 			continue
+		/* DARKPACK CODE
 		mannequin.delete_equipment()
 		mannequin.dress_up_as_job(
 			equipping = job_datum,
@@ -211,7 +212,11 @@ ADMIN_VERB(create_mapping_job_icons, R_DEBUG, "Generate job landmarks icons", "G
 		)
 		var/icon/job_icon = get_flat_existing_human_icon(mannequin, list(SOUTH))
 		final.Insert(job_icon, job_datum.title, frame = 1)
-	qdel(mannequin)
+		*/
+		// TG code, Test
+		var/icon/I = get_flat_human_icon(null, job_datum, null, "landmark_icons", list(SOUTH))
+		final.Insert(I, job_datum.title)
+	// qdel(mannequin)
 	final.Insert(icon('modular_darkpack/modules/jobs/icons/landmarks_static.dmi', "x"), "x")
 	final.Insert(icon('icons/hud/screen_gen.dmi', "x", ""))
 

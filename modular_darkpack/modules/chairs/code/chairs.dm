@@ -68,6 +68,9 @@
 /obj/structure/chair/office/darkpack/red
 	icon_state = "officechair_red"
 
+/obj/structure/chair/office/darkpack/black
+	icon_state = "officechair_black"
+
 // BARSTOOLS / OBJECTS
 
 /obj/structure/chair/stool/bar/darkpack
