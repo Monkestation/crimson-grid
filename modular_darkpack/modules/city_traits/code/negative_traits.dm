@@ -11,7 +11,6 @@
 	. = ..()
 	SSweather.run_weather(/datum/weather/particle/rain_storm/endless)
 
-
 /datum/weather/particle/rain_storm/endless
 	name = "endless rain"
 	probability = 0
