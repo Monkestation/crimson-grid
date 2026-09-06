@@ -7,7 +7,6 @@
 	righthand_file = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/righthand.dmi'
 	force = 2 LETHAL_TTRPG_DAMAGE
 	w_class = WEIGHT_CLASS_BULKY
-	block_chance = 40
 	armour_penetration = 40
 	sharpness = SHARP_EDGED
 	attack_verb_continuous = list("slashes", "cuts")
