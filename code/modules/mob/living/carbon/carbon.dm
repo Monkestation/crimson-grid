@@ -562,7 +562,7 @@
 	if(!client)
 		return
 
-	if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOCRITOVERLAY))
+	if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOCRITOVERLAY) && !HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES))  // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 		var/severity = 0
 		switch(health)
 			if(-20 to -10)
@@ -609,7 +609,7 @@
 		clear_fullscreen("critvision")
 
 	//Oxygen damage overlay
-	if(oxyloss)
+	if(oxyloss && !HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES))  // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 		var/severity = 0
 		switch(oxyloss)
 			if(10 to 20)
@@ -632,7 +632,7 @@
 
 	//Fire and Brute damage overlay (BSSR)
 	var/hurtdamage = get_brute_loss() + get_fire_loss() + get_agg_loss() + damageoverlaytemp // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
-	if(hurtdamage && !HAS_TRAIT(src, TRAIT_NO_DAMAGE_OVERLAY))
+	if(hurtdamage && !HAS_TRAIT(src, TRAIT_NO_DAMAGE_OVERLAY) && !HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES))  // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 		var/severity = 0
 		switch(hurtdamage)
 			if(5 to 15)
@@ -669,6 +669,9 @@
 
 	if(shown_health_amount == null)
 		shown_health_amount = health
+
+	if(HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES))  // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+		shown_health_amount = maxHealth
 
 	if(shown_health_amount >= maxHealth)
 		health_hud.icon_state = "health0"

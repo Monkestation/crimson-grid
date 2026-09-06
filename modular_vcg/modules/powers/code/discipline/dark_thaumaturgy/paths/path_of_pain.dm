@@ -5,10 +5,9 @@
 	icon_state = "pain"
 	power_type = /datum/discipline_power/dark_thaumaturgy/path/pain
 
-
 /datum/discipline_power/dark_thaumaturgy/path/pain
-	name = "Dark Thaumaturgy: Path of Pain power name"
-	desc = "Dark Thaumaturgy: Path of Pain description"
+	name = "Dark Thaumaturgy: Path of Pain Power Name"
+	desc = "Dark Thaumaturgy: Path of Pain Power Description"
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/thaum.ogg'
 
@@ -19,53 +18,56 @@
 	range = 7
 
 	cooldown_length = 3 TURNS
-	var/success_roll
-	var/use_counter = 0
+	var/success_count
 
-/datum/storyteller_roll/path/pain
-	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
+/datum/storyteller_roll/path_of_pain
+	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	numerical = TRUE
-
-/datum/discipline_power/dark_thaumaturgy/path/pain/pre_activation_checks(atom/target)
-	. = ..()
-	success_roll = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/path/pain, 0, difficulty = (level + 3), STAT_OCCULT, FALSE)
-	if(success_roll <= 0)
-		owner.visible_message(span_notice("You see [owner] shudder in pain, their whole body jerking."), span_danger("You shudder in pain, your body shaking."))
-		pain_botch_effect()
-		return FALSE
-	return TRUE
+	roll_output_type = ROLL_PRIVATE_AND_TARGET
 
 /datum/discipline_power/dark_thaumaturgy/path/pain/activate(atom/target)
 	. = ..()
-	if(owner.has_status_effect(/datum/status_effect/pain_botch))
-		use_counter++
-		if(use_counter == 3)
-			owner.remove_status_effect(/datum/status_effect/pain_botch)
-			use_counter = 0
+	success_count = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/path_of_pain, difficulty = (level + 3))
+	if(success_count < 0)
+		owner.visible_message(span_notice("[owner] twitches in agony, scratching their skin."), \
+			span_notice("You twitch in agony, scratching your skin."))
+		pain_botch_effect()
+		return TRUE
+	else if(success_count == 0)
+		to_chat(owner, span_notice("Your magic fizzles out!"))
+		return TRUE
+	return FALSE
+
+/datum/discipline_power/dark_thaumaturgy/path/pain/proc/pain_botch_effect()
+	owner.apply_status_effect(/datum/status_effect/pain_botch)
 
 /datum/discipline_power/dark_thaumaturgy/path/pain/numbing
 	name = "Numbing"
 	desc = "Become one with pain, ignoring the negative effects of pain as you become wounded."
+
 	level = 1
-	toggled = TRUE
-	duration_length = 45 SECONDS
-	grouped_powers = list(
-		/datum/discipline_power/dark_thaumaturgy/path/pain/anguish,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/shattering,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths
-	)
+	aggravating = FALSE
+	hostile = FALSE
+	duration_length = 1 SCENES
 
 /datum/discipline_power/dark_thaumaturgy/path/pain/numbing/activate(atom/target)
-	. = ..()
-	if(HAS_TRAIT(owner, TRAIT_PAIN_BOTCH))
-		owner.apply_damage(50, STAMINA)
-	ADD_TRAIT(owner, TRAIT_IGNORESLOWDOWN, MAGIC_TRAIT)
-	owner.visible_message(span_notice("[owner] twitches in pleasure!"), span_warning("You twitch in pleasure!"))
+	if(..())
+		return
+	ADD_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES, PATH_OF_PAIN_TRAIT)
+	ADD_TRAIT(owner, TRAIT_AGEUSIA, PATH_OF_PAIN_TRAIT)
+	ADD_TRAIT(owner, TRAIT_IGNORESLOWDOWN, PATH_OF_PAIN_TRAIT)
+	ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, PATH_OF_PAIN_TRAIT)
+	ADD_TRAIT(owner, TRAIT_NOHARDCRIT, PATH_OF_PAIN_TRAIT)
+	owner.visible_message(span_notice("[owner] twitches in pleasure!"), \
+			span_notice("You twitch in pleasure!"))
 
 /datum/discipline_power/dark_thaumaturgy/path/pain/numbing/deactivate(atom/target)
 	. = ..()
-	REMOVE_TRAIT(owner, TRAIT_IGNORESLOWDOWN, MAGIC_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES, PATH_OF_PAIN_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_AGEUSIA, PATH_OF_PAIN_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_IGNORESLOWDOWN, PATH_OF_PAIN_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_NOSOFTCRIT, PATH_OF_PAIN_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_NOHARDCRIT, PATH_OF_PAIN_TRAIT)
 
 /datum/discipline_power/dark_thaumaturgy/path/pain/anguish
 	name = "Anguish"
@@ -73,24 +75,24 @@
 	level = 2
 	range = 1
 	target_type = TARGET_MOB
+	aggravating = FALSE
 	grouped_powers = list(
-		/datum/discipline_power/dark_thaumaturgy/path/pain/numbing,
 		/datum/discipline_power/dark_thaumaturgy/path/pain/shattering,
 		/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within,
 		/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths
 	)
 
-
-/datum/discipline_power/dark_thaumaturgy/path/pain/anguish/activate(atom/target)
-	. = ..()
-	var/stamina_loss = min(success_roll * 12.5, 75)
-	var/mob/living/tar = target
-	tar.apply_damage(stamina_loss, STAMINA)
-	tar.visible_message(span_notice("[target] grabs their chest in pain!"), span_danger("You grab your heart, feeling burning pain!"))
+/datum/discipline_power/dark_thaumaturgy/path/pain/anguish/activate(mob/living/target)
+	if(..())
+		return
+	var/stamina_loss = success_count TTRPG_DAMAGE
+	target.apply_damage(stamina_loss, STAMINA)
+	target.visible_message(span_notice("[target] grabs their chest in pain!"), \
+			span_notice("You grab your chest, feeling burning pain!"))
 	if(HAS_TRAIT(owner, TRAIT_PAIN_BOTCH))
 		owner.apply_damage(stamina_loss, STAMINA)
-		owner.visible_message(span_notice("[owner] grabs their chest in pain!"), span_danger("You grab your heart, feeling burning pain!"))
-
+		owner.visible_message(span_notice("[owner] grabs their chest in pain!"), \
+			span_notice("You grab your chest, feeling burning pain!"))
 
 /datum/discipline_power/dark_thaumaturgy/path/pain/shattering
 	name = "Shattering"
@@ -99,29 +101,24 @@
 	target_type = TARGET_MOB
 	grouped_powers = list(
 		/datum/discipline_power/dark_thaumaturgy/path/pain/anguish,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/numbing,
 		/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within,
 		/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths
 	)
 
-	var/brute_loss = 25
-	var/willpower_resist
-
-
-/datum/discipline_power/dark_thaumaturgy/path/pain/shattering/activate(atom/target)
-	. = ..()
-	brute_loss = clamp(success_roll * 12.5, 12.5, 75)
-	willpower_resist = SSroll.storyteller_roll_datum(target, target, /datum/storyteller_roll/path/pain, 0, 6, STAT_TEMPORARY_WILLPOWER, TRUE)
-	owner.apply_damage(12.5, BRUTE)
-	var/mob/living/tar = target
-	tar.apply_damage(brute_loss/willpower_resist, BRUTE)
-	tar.visible_message(span_warning("You hear [tar]'s bones crunch!"), span_danger("You hear your bones crunch!"))
-	playsound(tar, "sound/effects/wounds/crack1.ogg", 50)
+/datum/discipline_power/dark_thaumaturgy/path/pain/shattering/activate(mob/living/target)
+	if(..())
+		return
+	owner.apply_damage(1 TTRPG_DAMAGE, BRUTE)
+	var/will_resist = SSroll.storyteller_roll_datum(target, target, /datum/storyteller_roll/path_of_pain, difficulty = 6)
+	target.apply_damage(max(0, (success_count - will_resist)) TTRPG_DAMAGE, BRUTE)
+	playsound(target, "sound/effects/wounds/crack1.ogg", 50)
+	target.visible_message(span_warning("[target]'s body does a horrifying cracking sound!"), \
+			span_warning("You hear a horrifying cracking sound coming from your body!"))
 	if(HAS_TRAIT(owner, TRAIT_PAIN_BOTCH))
-		willpower_resist = SSroll.storyteller_roll_datum(owner, owner, /datum/storyteller_roll/path/pain, 0, 6, STAT_TEMPORARY_WILLPOWER, TRUE)
-		owner.apply_damage(brute_loss/willpower_resist, BRUTE)
-		owner.visible_message(span_warning("You hear [owner]'s bones crunch!"), span_danger("You hear your bones crunch!"))
+		owner.apply_damage(success_count TTRPG_DAMAGE, BRUTE)
 		playsound(owner, "sound/effects/wounds/crack2.ogg", 50)
+		owner.visible_message(span_warning("[owner]'s body does a horrifying cracking sound!"), \
+			span_warning("You hear a horrifying cracking sound coming from your body!"))
 
 /datum/discipline_power/dark_thaumaturgy/path/pain/agony_within
 	name = "Agony Within"
@@ -130,53 +127,31 @@
 	grouped_powers = list(
 		/datum/discipline_power/dark_thaumaturgy/path/pain/anguish,
 		/datum/discipline_power/dark_thaumaturgy/path/pain/shattering,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/numbing,
 		/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths
 	)
 
-	var/success_roll_buff = 0
-	var/success_roll_defender = 0
-	var/success_roll_total = 0
-	var/total_health_loss
-
-
-/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within/pre_activation_checks(atom/target)
-	. = ..()
-	total_health_loss = round(owner.maxHealth - owner.health, 0.01)
-	if(total_health_loss < 1)
-		to_chat(owner, span_warning("You're not suffering from pain enough to use this ability!"))
-		owner.bloodpool += 1
-		return FALSE
-	return TRUE
-
-/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within/activate(atom/target)
-	. = ..()
-
-	total_health_loss = round(owner.maxHealth - owner.health, 0.01)
-
-	success_roll_buff = clamp(success_roll+max(1, total_health_loss), 0, 10)
-
-	success_roll_defender = SSroll.storyteller_roll_datum(target, target, /datum/storyteller_roll/path/pain, 0, 6, STAT_TEMPORARY_WILLPOWER, TRUE)
-
-	success_roll_total = max(0, success_roll_buff - floor(max(0, success_roll_defender/2)))
-
-	var/mob/living/tar = target
-
-	tar.apply_damage(12.5*success_roll_total, BRUTE)
-
-	tar.visible_message(span_warning("You hear [tar]'s spine snap!"), span_danger("You hear your spine snap!"))
-
-	playsound(tar, "sound/effects/wounds/crack1.ogg", 50)
+/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within/activate(mob/living/target)
+	if(..())
+		return
+	var/list/damage_choices = list(0, 10, 20, 30, 40)
+	var/self_mutilation_bonus = tgui_input_list(owner, "How much damage will you deal to yourself? (This will make the roll harder for target)", "Agony Within", damage_choices)
+	if(!self_mutilation_bonus)
+		self_mutilation_bonus = 0
+	self_mutilation_bonus /= 10
+	owner.apply_damage(self_mutilation_bonus TTRPG_DAMAGE, BRUTE)
+	success_count += self_mutilation_bonus
+	var/will_success_count = SSroll.storyteller_roll_datum(target, target, /datum/storyteller_roll/path_of_pain, difficulty = 6+self_mutilation_bonus)
+	var/will_endure = floor(will_success_count / 2)
+	target.apply_damage(max(0, (success_count - will_endure)) TTRPG_DAMAGE, BRUTE)
+	playsound(target, 'sound/items/weapons/whip.ogg', 50)
+	target.visible_message(span_warning("Blood-thorn threads tear [target]'s flesh!"), \
+			span_warning("Blood-thorn threads tear your flesh!"))
 	if(HAS_TRAIT(owner, TRAIT_PAIN_BOTCH))
-		success_roll_defender = SSroll.storyteller_roll_datum(owner, owner, /datum/storyteller_roll/path/pain, 0, 6, STAT_TEMPORARY_WILLPOWER, TRUE)
-
-		success_roll_total = max(0, success_roll_buff - floor(max(0, success_roll_defender/2)))
-
-		owner.apply_damage(12.5*success_roll_total, BRUTE)
-
-		owner.visible_message(span_warning("You hear [owner]'s spine snap!"), span_danger("You hear your spine snap!"))
-
-		playsound(owner, "sound/effects/wounds/crack2.ogg", 50)
+		owner.apply_damage(success_count TTRPG_DAMAGE, BRUTE)
+		playsound(owner, 'sound/items/weapons/whip.ogg', 50)
+		owner.visible_message(span_warning("Blood-thorn threads tear [owner]'s flesh!"), \
+			span_warning("Blood-thorn threads tear your flesh!"))
+	// There should be fortitude soak too but it's not implemented on cg and I'm not coding it
 
 /datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths
 	name = "Hundred Deaths"
@@ -187,28 +162,22 @@
 		/datum/discipline_power/dark_thaumaturgy/path/pain/anguish,
 		/datum/discipline_power/dark_thaumaturgy/path/pain/shattering,
 		/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/numbing
 	)
 
-	var/success_needed = 0
-	var/total_brute = 0
-
-/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths/activate(atom/target)
-	. = ..()
-	success_needed = SSroll.storyteller_roll_datum(target, target, /datum/storyteller_roll/path/pain, 0, 6, STAT_TEMPORARY_WILLPOWER, TRUE)
-	if(success_needed <= 0)
-		to_chat(owner, span_warning("You fail to inflict enough wounds to yourself to use that ability!"))
-		owner.do_jitter_animation(3 SECONDS)
+/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths/activate(mob/living/target)
+	var/will_success = SSroll.storyteller_roll_datum(owner, owner, /datum/storyteller_roll/path_of_pain, difficulty = 6)
+	if(will_success <= 0)
 		return
-	owner.apply_damage(12.5, BRUTE)
-	total_brute = clamp(12.5*success_needed, 12.5, 125)
-	var/mob/living/tar = target
-	tar.apply_damage(total_brute, BRUTE)
-	if(iscarbon(tar))
-		var/mob/living/carbon/C = tar
-		C.apply_status_effect(/datum/status_effect/hundred_deaths)
-	playsound(tar, "sound/effects/wounds/crack1.ogg", 50)
+	owner.apply_damage(1 LETHAL_TTRPG_DAMAGE, AGGRAVATED)
+	if(..())
+		return
+	target.apply_damage(success_count LETHAL_TTRPG_DAMAGE, AGGRAVATED)
+	target.visible_message(span_warning("Deep cuts appear all over [target]'s body!"), \
+			span_warning("Deep cuts appear all over your body, causing immense pain!"))
+	target.emote("scream")
 	if(HAS_TRAIT(owner, TRAIT_PAIN_BOTCH))
-		owner.apply_damage(total_brute, BRUTE)
-		owner.apply_status_effect(/datum/status_effect/hundred_deaths)
-		playsound(owner, "sound/effects/wounds/crack2.ogg", 50)
+		owner.apply_damage(success_count LETHAL_TTRPG_DAMAGE, AGGRAVATED)
+		owner.visible_message(span_warning("Deep cuts appear all over [owner]'s body!"), \
+			span_warning("Deep cuts appear all over your body, causing immense pain!"))
+		owner.emote("scream")
+	// There should be fortitude soak too but it's not implemented on cg and I'm not coding it

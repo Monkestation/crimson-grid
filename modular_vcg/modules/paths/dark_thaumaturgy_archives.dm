@@ -69,10 +69,10 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/human_user = user
 			for(var/mob/living/carbon/human/sacrificed_human in get_turf(src))
-				if(sacrificed_human.stat != DEAD && sacrificed_human.stat != HARD_CRIT)
+				if(sacrificed_human.stat < HARD_CRIT)
 					continue
 				human_user.infernal_favor += calculate_favor(sacrificed_human)
-				sacrificed_human.dust(TRUE, TRUE)
+				sacrificed_human.gib(DROP_ALL_REMAINS)
 				sacrifice = TRUE
 		if(sacrifice)
 			playsound(get_turf(src), 'sound/effects/magic/demon_dies.ogg', 100, TRUE)
