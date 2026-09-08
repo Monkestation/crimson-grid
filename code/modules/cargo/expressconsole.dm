@@ -19,9 +19,12 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 
 /obj/machinery/computer/cargo/express
 	name = "express supply console"
+	/* // CRIMSON EDIT REMOVAL START - Supply console restricted to supply workers
 	desc = "This console allows the user to purchase a package \
 		with 1/40th of the delivery time: made possible by Nanotrasen's new \"1500mm Orbital Railgun\".\
 		All sales are near instantaneous - please choose carefully"
+	*/ // CRIMSON EDIT REMOVAL END - Supply console restricted to supply workers
+	desc = "An ordering terminal for the warehouse." // CRIMSON EDIT ADD - Supply console restricted to supply workers
 	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/cargo/express")
 	icon_screen = "supply_express"
 	circuit = /obj/item/circuitboard/computer/cargo/express
@@ -100,6 +103,11 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 
 // DARKPACK EDIT ADD START - (Putting cash into the cargo console)
 /obj/machinery/computer/cargo/express/click_alt(mob/user)
+	// CRIMSON EDIT ADD START - Supply console restricted to supply workers
+	if(!allowed(user))
+		balloon_alert(user, "access denied!")
+		return
+	// CRIMSON EDIT ADD END - Supply console restricted to supply workers
 	var/datum/bank_account/account = SSeconomy.get_dep_account(cargo_account)
 	if(isnull(account))
 		return
