@@ -361,20 +361,20 @@
 		RegisterSignal(hearer, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_target_attacked))
 		// CRIMSON EDIT ADD END - Majesty pacifism breaks after being attacked
 
-		to_chat(hearer, span_hypnophrase("You find yourself completely submitting to the Majesty of [owner]. Their every word is your utmost priority, every frown of displeasure crushing your soul. You find yourself humbled entirely in their overwhelming presence."))
+		to_chat(hearer, span_hypnophrase("You find yourself overwhelmed by the Majesty of [owner]. You are humbled before their glorious presence and unable to oppose them, though you maintain your sense of self-preservation.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked - Original: to_chat(hearer, span_hypnophrase("You find yourself completely submitting to the Majesty of [owner]. Their every word is your utmost priority, every frown of displeasure crushing your soul. You find yourself humbled entirely in their overwhelming presence."))
 
 		// this ability is often used to end combat scenes but it often ignored.
 		var/pacifism_delay = hearer_successes * 10 SECONDS
 		if(hearer_successes > 0)
-			to_chat(hearer, span_info("Despite the overwhelming presence, your will allows you to resist for [pacifism_delay / 10] seconds before you're forced into pacifism."))
+			to_chat(hearer, span_info("Your will allows you to resist for [pacifism_delay / 10] seconds before you're forced into pacifism.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked - Original: to_chat(hearer, span_info("Despite the overwhelming presence, your will allows you to resist for [pacifism_delay / 10] seconds before you're forced into pacifism."))
 			addtimer(CALLBACK(src, PROC_REF(apply_pacifism), hearer), pacifism_delay)
 		else
 			ADD_TRAIT(hearer, TRAIT_PACIFISM, "Majesty")
-			to_chat(hearer, span_info("You are completely unable to act against [owner]."))
+			to_chat(hearer, span_info("You are completely unable to oppose [owner].")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked - Original: to_chat(hearer, span_info("You are completely unable to act against [owner]."))
 		ADD_TRAIT(owner, TRAIT_PACIFISM, "Majesty")
 
 		if(hearer_successes > 0)
-			to_chat(hearer, span_info("Despite the overwhelming presence, your will allows you to make [hearer_successes] contradictory action\s until youre allowed to leave [owner]'s company."))
+			to_chat(hearer, span_info("Your will allows you to make [hearer_successes] contradictory action\s until you're allowed to leave [owner]'s company.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked - Original: to_chat(hearer, span_info("Despite the overwhelming presence, your will allows you to make [hearer_successes] contradictory action\s until youre allowed to leave [owner]'s company."))
 
 	var/total_affected = length(affected_targets)
 	if(total_affected > 0)
@@ -395,7 +395,7 @@
 		if(affected_target)
 			UnregisterSignal(affected_target, COMSIG_ATOM_WAS_ATTACKED) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 			affected_target.remove_overlay(POWERS_LAYER)
-			to_chat(affected_target, span_hypnophrase("The overwhelming presence of [owner] fades, and your will returns to normal."))
+			to_chat(affected_target, span_hypnophrase("The overwhelming presence of [owner] fades, and your will returns to normal. You are still aware of what they did to you.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked - Original: to_chat(affected_target, span_hypnophrase("The overwhelming presence of [owner] fades, and your will returns to normal."))
 			REMOVE_TRAIT(affected_target, TRAIT_PACIFISM, "Majesty")
 	affected_targets.Cut()
 	attack_counts.Cut() // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
@@ -403,7 +403,7 @@
 /datum/discipline_power/presence/majesty/proc/apply_pacifism(mob/living/carbon/human/hearer)
 	if(hearer && (hearer in affected_targets))
 		ADD_TRAIT(hearer, TRAIT_PACIFISM, "Majesty")
-		to_chat(hearer, span_warning("Your resistance crumbles - you can no longer bring yourself to act against [owner]!"))
+		to_chat(hearer, span_warning("Your resistance crumbles. You can no longer bring yourself to oppose [owner]!")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked - Original: to_chat(hearer, span_warning("Your resistance crumbles - you can no longer bring yourself to act against [owner]!"))
 
 // CRIMSON EDIT ADD START - Majesty pacifism breaks after being attacked
 /datum/discipline_power/presence/majesty/proc/on_target_attacked(mob/living/carbon/human/victim, atom/attacker, attack_flags)
