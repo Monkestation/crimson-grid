@@ -355,11 +355,7 @@
 
 		apply_presence_overlay(hearer, 3 MINUTES)
 		affected_targets[hearer] = hearer_successes
-		// CRIMSON EDIT ADD START - Majesty pacifism breaks after being attacked
-		attack_counts[hearer] = 0
-		hearer.AddElement(/datum/element/relay_attackers)
-		RegisterSignal(hearer, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_target_attacked))
-		// CRIMSON EDIT ADD END - Majesty pacifism breaks after being attacked
+		watch_for_attacks(hearer) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 
 		// this ability is often used to end combat scenes but it often ignored.
 		var/pacifism_delay = hearer_successes * 10 SECONDS
@@ -378,11 +374,7 @@
 
 	var/total_affected = length(affected_targets)
 	if(total_affected > 0)
-		// CRIMSON EDIT ADD START - Majesty pacifism breaks after being attacked
-		attack_counts[owner] = 0
-		owner.AddElement(/datum/element/relay_attackers)
-		RegisterSignal(owner, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_target_attacked))
-		// CRIMSON EDIT ADD END - Majesty pacifism breaks after being attacked
+		watch_for_attacks(owner) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 		to_chat(owner, span_warning("Your Majesty overwhelms [total_affected] individual[total_affected == 1 ? "" : "s"] in your presence!"))
 	else
 		to_chat(owner, span_warning("No one is present to witness your Majesty."))
@@ -406,21 +398,26 @@
 		to_chat(hearer, span_warning("Your resistance crumbles. You can no longer bring yourself to oppose [owner]!")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 
 // CRIMSON EDIT ADD START - Majesty pacifism breaks after being attacked
-/datum/discipline_power/presence/majesty/proc/on_target_attacked(mob/living/carbon/human/victim, atom/attacker, attack_flags)
+/datum/discipline_power/presence/majesty/proc/watch_for_attacks(mob/living/carbon/human/attacked_mob)
+	attack_counts[attacked_mob] = 0
+	attacked_mob.AddElement(/datum/element/relay_attackers)
+	RegisterSignal(attacked_mob, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_attacked))
+
+/datum/discipline_power/presence/majesty/proc/on_attacked(mob/living/carbon/human/attacked_mob, atom/attacker, attack_flags)
 	SIGNAL_HANDLER
 	if(!(attack_flags & ATTACKER_DAMAGING_ATTACK))
 		return
-	attack_counts[victim] += 1
-	if(attack_counts[victim] < 2)
+	attack_counts[attacked_mob] += 1
+	if(attack_counts[attacked_mob] < 2)
 		return
-	UnregisterSignal(victim, COMSIG_ATOM_WAS_ATTACKED)
-	affected_targets -= victim
-	REMOVE_TRAIT(victim, TRAIT_PACIFISM, "Majesty")
-	if(victim == owner)
-		to_chat(victim, span_warning("Blood and pain break your regal calm. You can fight back."))
+	UnregisterSignal(attacked_mob, COMSIG_ATOM_WAS_ATTACKED)
+	affected_targets -= attacked_mob
+	REMOVE_TRAIT(attacked_mob, TRAIT_PACIFISM, "Majesty")
+	if(attacked_mob == owner)
+		to_chat(attacked_mob, span_warning("Blood and pain break your regal calm. You can fight back."))
 		return
-	victim.remove_overlay(POWERS_LAYER)
-	to_chat(victim, span_warning("The pain cuts through the haze. You can fight back."))
+	attacked_mob.remove_overlay(POWERS_LAYER)
+	to_chat(attacked_mob, span_warning("The pain cuts through the haze. You can fight back."))
 // CRIMSON EDIT ADD END - Majesty pacifism breaks after being attacked
 
 // LOVE
