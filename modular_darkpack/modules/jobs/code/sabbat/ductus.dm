@@ -26,7 +26,7 @@
 	)
 
 /datum/antagonist/sabbatist/ductus
-	antag_hud_name = "ductus_priest"
+	antag_hud_name = "ductus" // CRIMSON EDIT - Sabbat Rank Icons - Original: "ductus_priest"
 
 /datum/outfit/job/vampire/sabbatductus
 	name = JOB_SABBAT_DUCTUS
