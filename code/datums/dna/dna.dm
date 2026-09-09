@@ -101,6 +101,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		if(transfer_flags & COPY_DNA_BLOOD_TYPE)
 			new_dna.blood_type = blood_type
 		// DARKPACK EDIT CHANGE END
+		// DARKPACK GRID EDIT START - Adds country of origin to DNA to fix roundstart item assignment
+		new_dna.country_of_origin = country_of_origin
+		// DARKPACK GRID EDIT END
 		if(transfer_flags & COPY_DNA_SPECIES)
 			new_dna.species = new species.type
 	if(transfer_flags & COPY_DNA_MUTATIONS && holder?.can_mutate())

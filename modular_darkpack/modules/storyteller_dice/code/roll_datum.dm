@@ -84,7 +84,7 @@
 	title += " - [bumper_text] [span_tinynoticeital(roll_output_type)]"
 
 	var/output_combined = fieldset_block(title, jointext(last_output_text, "<br>"), "boxed_message")
-	for(var/mob/player_mob in get_mobs_to_show(roller, target))
+	for(var/mob/player_mob in get_mobs_to_show(roller, target, output))
 		var/roll_important_to_me = FALSE
 		if(!spammy_roll && (player_mob == roller || target))
 			roll_important_to_me = TRUE
@@ -118,7 +118,7 @@
 	else
 		roller.balloon_alert(player_mob, "<span style='color: #ff0000;'>[alert_prefix][number]</span>", TRUE)
 
-/datum/storyteller_roll/proc/get_mobs_to_show(mob/living/roller, atom/target)
+/datum/storyteller_roll/proc/get_mobs_to_show(mob/living/roller, atom/target, success)
 	switch(roll_output_type)
 		if(ROLL_PUBLIC)
 			return viewers(DEFAULT_SIGHT_DISTANCE, roller)
@@ -135,6 +135,11 @@
 			return admin_mobs()
 		if(ROLL_NONE)
 			return // Not even important enough to be admin visible.
+		if(ROLL_PRIVATE_UNLESS_FAILURE)
+			if(success == ROLL_SUCCESS)
+				return list(roller)
+			else
+				return
 
 /datum/storyteller_roll/proc/admin_mobs()
 	var/list/admin_mobs = list()

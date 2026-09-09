@@ -31,7 +31,7 @@
 	suit = /obj/item/clothing/suit/vampire/noddist
 	head = /obj/item/clothing/head/vampire/noddist_mask
 	uses_default_clan_clothes = TRUE
-	backpack_contents = list(/obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/card/credit = 1)
 
 /datum/outfit/job/vampire/sabbatpriest/pre_equip(mob/living/carbon/human/H)
 	..()
