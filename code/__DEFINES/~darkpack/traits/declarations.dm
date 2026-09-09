@@ -207,6 +207,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_THIRST_OF_AGES "thirst_of_ages"
 #define TRAIT_TIME_SENSE "time_sense"
 #define TRAIT_UNCONTROLLABLE "uncontrollable"
+#define TRAIT_UNDOCUMENTED "undocumented" // GOVERNMENT
+#define TRAIT_WALLET_HATER	"wallet_hater"
 #define TRAIT_VAMPIRE_TERRITORIAL "territorial"
 #define TRAIT_VICTIM_OF_THE_MASQUERADE "victim_of_the_masquerade"
 #define TRAIT_WEAK_WILLED "weak_willed"

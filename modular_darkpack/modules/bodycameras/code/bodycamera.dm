@@ -109,8 +109,9 @@
 	builtin_bodycamera.camera_enabled = TRUE
 	var/datum/component/violation_observer/violation_component = src.GetComponent(/datum/component/violation_observer)
 	var/obj/item/clothing = loc
-	var/mob/living/carbon/wearer = iscarbon(clothing.loc) // interacting_with_atom forces us to be on an /obj/item/clothing on a mob
-	violation_component.toggle_area_of_effect(wearer)
+	var/mob/living/carbon/wearer = clothing.loc // interacting_with_atom forces us to be on an /obj/item/clothing on a mob
+	if(iscarbon(wearer))
+		violation_component.toggle_area_of_effect(wearer)
 	log_game("BODYCAM TOGGLE: [(user ? key_name(user) : "SYSTEM")] turned ON [src] ([builtin_bodycamera.c_tag]) at [loc_name(src)].")
 
 ///Turns the camera off. Will be silent if 'user' is null.

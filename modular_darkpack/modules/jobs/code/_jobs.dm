@@ -54,6 +54,8 @@
 	box = null
 	pda_slot = null
 	var/uses_default_clan_clothes = FALSE
+	var/list/wallet_contents = list()
+	var/no_wallet = FALSE
 
 /datum/outfit/job/vampire/pre_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
@@ -81,13 +83,157 @@
 					shoes = /obj/item/clothing/shoes/vampire/heels
 				if(!uniform)
 					uniform = /obj/item/clothing/under/vampire/sport
+	if(visuals_only)
+		return
+	auto_assign_wallet()
+
+// DARKPACK EDIT - Wallets and money splits, and identification.
+/datum/outfit/job/vampire/proc/auto_assign_wallet()
+	if(no_wallet)
+		return
+	// fuck editing all these jobs manually goddamn kiss my ass
+	var/assigned_wallet = FALSE
+	if(!id)
+		id = /obj/item/storage/wallet/darkpack
+		assigned_wallet = TRUE
+	else if(ispath(id, /obj/item/storage/wallet))
+		assigned_wallet = TRUE
+
+	if(!assigned_wallet && !r_pocket)
+		r_pocket = /obj/item/storage/wallet/darkpack
+		assigned_wallet = TRUE
+
+	if(!assigned_wallet && r_pocket && ispath(r_pocket, /obj/item/vamp/keys))
+		wallet_contents += r_pocket
+		r_pocket = /obj/item/storage/wallet/darkpack
+		assigned_wallet = TRUE
+	else if(ispath(r_pocket, /obj/item/storage/wallet))
+		assigned_wallet = TRUE
+
+	if(!assigned_wallet && !l_pocket)
+		l_pocket = /obj/item/storage/wallet/darkpack
+		assigned_wallet = TRUE
+
+	if(!assigned_wallet && l_pocket && ispath(l_pocket, /obj/item/vamp/keys))
+		wallet_contents += l_pocket
+		l_pocket = /obj/item/storage/wallet/darkpack
+		assigned_wallet = TRUE
+	else if(ispath(l_pocket, /obj/item/storage/wallet))
+		assigned_wallet = TRUE
+
+	if(!assigned_wallet)
+		CRASH("[src] doesn't have a spot for a wallet! Check their configuration, please.")
+	for(var/path in backpack_contents)
+		if(ispath(path, /obj/item/vamp/keys) || ispath(path, /obj/item/card))
+			wallet_contents += path
+			backpack_contents -= path
+			continue
 
 /datum/outfit/job/vampire/post_equip(mob/living/carbon/human/user, visuals_only = FALSE)
 	. = ..()
-	var/obj/item/smartphone/phone = locate() in user.contents
+	if(visuals_only)
+		return
+
+	var/list/all_items = user.gather_belongings()
+
+	var/obj/item/smartphone/phone = locate() in all_items
 	if(phone)
 		phone.owner_weakref = WEAKREF(user)
 		phone.update_initialized_contacts()
+
+	// DARKPACK EDIT START - Wallets and money splits, and identification.
+	var/obj/item/storage/wallet/wallet = locate() in all_items
+	if(wallet)
+		for(var/path in wallet_contents)
+			var/number = wallet_contents[path] || 1 // Default to 1
+			for(var/i in 1 to number)
+				all_items += new path(wallet)
+
+	for(var/obj/item/card/found_card in all_items)
+		if(found_card.shows_name)
+			found_card.link_to_human(user)
+
+	var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[user.account_id]"]
+	var/obj/item/card/credit/credit_card = locate() in all_items
+	if(account && account.account_id == user.account_id)
+		if(!credit_card && wallet)
+			credit_card = new(wallet) // make one
+		credit_card?.set_account(account)
+	else
+		account = null
+
+	var/total_money = credit_card ? rand(credit_card.min_starting_wealth, credit_card.max_starting_wealth) : 0
+	switch(user.st_get_stat(STAT_FINANCE))
+		if(0)
+			total_money += CONFIG_GET(flag/punishing_zero_dots) ? 50 : rand(50, 100)
+			account?.paycheck_amount = 15
+		if(1)
+			total_money += rand(100, 200)
+			account?.paycheck_amount = 40
+		if(2)
+			total_money += rand(300, 600)
+			account?.paycheck_amount = 80
+		if(3)
+			total_money += rand(800, 1200)
+			account?.paycheck_amount = 120
+		if(4)
+			total_money += rand(1200, 1600)
+			account?.paycheck_amount = 160
+		if(5)
+			total_money += rand(2000, 3000)
+			account?.paycheck_amount = 250
+
+	if(wallet) // wallet is needed for loose cash
+		var/obj/item/stack/dollar/cash_stack = new(wallet)
+		var/cash_money = total_money
+		if(account) // no bank account somehow? get full cash back
+			switch(user.st_get_stat(STAT_STREETWISE))
+				if(0)
+					cash_money = total_money * 0.9
+				if(1)
+					cash_money = total_money * 0.8
+				if(2)
+					cash_money = total_money * 0.6
+				if(3)
+					cash_money = total_money * 0.4
+				if(4)
+					cash_money = total_money * 0.2
+				if(5)
+					cash_money = total_money * 0.1
+		cash_money = min(floor(cash_money), cash_stack.max_amount)
+		if(cash_money > 0)
+			cash_stack.add(cash_money)
+		else
+			qdel(cash_stack)
+		total_money -= cash_money
+	account?.adjust_money(total_money)
+
+	var/country_of_origin = user.dna.country_of_origin
+	if(country_of_origin && wallet)
+		var/driving_skill = user.st_get_stat(STAT_DRIVE)
+		var/obj/item/card/drivers_license/license
+		if(country_of_origin == DEFAULT_COUNTRY_NAME)
+			if(!driving_skill)
+				license = new /obj/item/card/drivers_license/state_issued_id(wallet)
+			else
+				license = new /obj/item/card/drivers_license(wallet)
+			license.link_to_human(user)
+		else
+			if(driving_skill)
+				license = new /obj/item/card/drivers_license/international(wallet)
+				license.link_to_human(user)
+			var/obj/item/passport/passport = new /obj/item/passport(wallet)
+			passport.link_human(user)
+
+	if(wallet && HAS_TRAIT(user, TRAIT_WALLET_HATER)) // Applied from "spawn_wallet" preferences
+		var/list/wallet_contents = list()
+		for(var/item in wallet.contents)
+			wallet_contents += item
+		wallet.atom_storage.remove_all(update_storage = FALSE)
+		qdel(wallet)
+		for(var/obj/item/item as anything in wallet_contents)
+			item.equip_to_best_slot(user)
+	// DARKPACK EDIT END - Wallets and money splits, and identification.
 
 /datum/job/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

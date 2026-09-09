@@ -37,4 +37,4 @@
 	r_pocket = /obj/item/vamp/keys/archive
 	l_pocket = /obj/item/smartphone/archivist
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
-	backpack_contents = list(/obj/item/ritual_tome/arcane=1, /obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/ritual_tome/arcane=1, /obj/item/card/credit = 1)

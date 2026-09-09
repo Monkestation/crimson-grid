@@ -32,4 +32,4 @@
 	id = /obj/item/card/supplytech
 	l_pocket = /obj/item/smartphone/supply_tech
 	r_pocket = /obj/item/vamp/keys/supply
-	backpack_contents = list(/obj/item/card/credit=1, /obj/item/clothing/mask/vampire/balaclava =1, /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta=2,/obj/item/ammo_box/magazine/semi9mm=2, /obj/item/knife/vamp)
+	backpack_contents = list(/obj/item/card/credit = 1, /obj/item/clothing/mask/vampire/balaclava =1, /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta=2,/obj/item/ammo_box/magazine/semi9mm=2, /obj/item/knife/vamp)

@@ -50,4 +50,4 @@
 	belt = /obj/item/storage/belt/holster/detective/darkpack/endron
 	l_pocket = /obj/item/smartphone/endron_security
 	r_pocket = /obj/item/vamp/keys/pentex
-	backpack_contents = list(/obj/item/phone_book=1, /obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/phone_book=1, /obj/item/card/credit = 1)
