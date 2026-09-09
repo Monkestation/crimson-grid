@@ -81,6 +81,8 @@
 	examine_roll = new()
 	examine_roll.roll_output_type = ROLL_PRIVATE_UNLESS_FAILURE
 	examine_roll.reroll_cooldown = 1 SCENES
+	examine_roll.difficulty = min(user.st_get_stat(STAT_STREETWISE) * 2, 10)
+	examine_roll.successes_needed = round(user.st_get_stat(STAT_STREETWISE))
 	our_human = user
 	country_of_origin = user.dna.country_of_origin
 	if(country_of_origin == DEFAULT_COUNTRY_NAME)
@@ -128,12 +130,9 @@
 			return
 
 		if(fake)
-			examine_roll.difficulty = min(our_human.st_get_stat(STAT_STREETWISE) * 2, 10)
-			examine_roll.successes_needed = round(our_human.st_get_stat(STAT_STREETWISE))
 			var/roll_result = examine_roll.st_roll(user, src)
 			if(roll_result == ROLL_SUCCESS)
 				. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
-				return
 
 /obj/item/passport/attack_self(mob/user)
 	. = ..()
