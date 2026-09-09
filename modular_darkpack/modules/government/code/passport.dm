@@ -110,6 +110,7 @@
 		id_examine += "<div class='img_by_text_container'>"
 		id_examine += "[icon2html(get_owner_id_photo(), user, extra_classes = "hugeicon")]"
 		id_examine += "<div class='img_text'>"
+		var/additional_blurb = additional_text ? " &bull; [additional_text]" : ""
 		id_examine += span_notice(jointext(list(
 			" &bull; Name: [owner]",
 			" &bull; Birth Year: [dob]",
@@ -117,7 +118,7 @@
 			" &bull; Issued Year: [issued_year]",
 			" &bull; Expiry Year: [expiry_year]",
 			" &bull; Gender: [owner_gender]",
-			additional_text,
+			additional_blurb,
 		), "<br>"))
 		id_examine += "</div>" // container
 		id_examine += "</div>" // text

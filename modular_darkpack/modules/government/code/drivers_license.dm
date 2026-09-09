@@ -98,6 +98,7 @@
 		id_examine += "[icon2html(get_owner_id_photo(), user, extra_classes = "hugeicon")]"
 		id_examine += "<div class='img_text'>"
 		var/organ_donor_text = organ_donor ? "YES" : "NO"
+		var/additional_blurb = additional_text ? " &bull; [additional_text]" : ""
 		id_examine += span_notice(jointext(list(
 			" &bull; Name: [owner]",
 			" &bull; Birth Year: [dob]",
@@ -106,7 +107,7 @@
 			" &bull; Expiry Year: [expiry_year]",
 			" &bull; Gender: [owner_gender]",
 			" &bull; Organ Donor: [organ_donor_text]",
-			" &bull; [additional_text]",
+			additional_blurb,
 		), "<br>"))
 		id_examine += "</div>" // container
 		id_examine += "</div>" // text
