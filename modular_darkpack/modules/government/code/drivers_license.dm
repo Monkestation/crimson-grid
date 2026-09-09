@@ -106,9 +106,9 @@
 			" &bull; Expiry Year: [expiry_year]",
 			" &bull; Gender: [owner_gender]",
 			" &bull; Organ Donor: [organ_donor_text]",
+			" &bull; [additional_text]",
 		), "<br>"))
 		id_examine += "</div>" // container
-		id_examine += additional_text
 		id_examine += "</div>" // text
 
 		. += boxed_message(id_examine)
