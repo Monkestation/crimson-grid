@@ -386,20 +386,25 @@
 	name = "\improper NPS Oversight Committee lanyard"
 	desc = "You have been out in the woods to know that you arent afraid of anything but one specific topic out there. Leadership."
 
+	title_if_lastname_only = "NPS Advisor"
+
 /obj/item/card/park_ranger/leader
 	name = "lead park ranger lanyard"
 	desc = "These are your woods and your lands. Keep them safe."
+
 	title_if_lastname_only = "Lead Ranger"
 
 /obj/item/card/park_ranger/guide
 	name = "park guide lanyard"
-	desc = "Remember, dire Wwlves arent real, as far as you tell people."
-	title_if_lastname_only = ""
+	desc = "Remember, dire wolves arent real, as far as you tell people."
+
+	title_if_lastname_only = "Guide"
 
 /obj/item/card/park_ranger/biologist
 	name = "\improper NPS Biologist lanyard"
 	desc = "You love the outdoors? Good, you are now taking care of a wide outdoors area."
-	title_if_lastname_only = ""
+
+	title_if_lastname_only = "NPS Biologist"
 
 /obj/item/card/pentex
 	name = "\improper " + MAIN_EVIL_COMPANY + " employee lanyard"
