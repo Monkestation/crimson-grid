@@ -131,34 +131,6 @@
 	var/obj/item/grabbed_item = grabbed_atom
 	grabbed_item.melee_attack_chain(owner, hitting_atom)
 
-/datum/status_effect/control_grab/proc/can_grab(atom/target)
-	if(owner == target)
-		return FALSE
-	if(!ismovable(target))
-		return FALSE
-	if(iseffect(target))
-		return FALSE
-	var/atom/movable/movable_target = target
-	if(movable_target.anchored)
-		return FALSE
-	if(movable_target.throwing)
-		return FALSE
-	if(movable_target.move_resist >= MOVE_FORCE_OVERPOWERING)
-		return FALSE
-	if(ismob(movable_target))
-		if(!isliving(movable_target))
-			return FALSE
-		var/mob/living/living_target = movable_target
-		if(living_target.buckled)
-			return FALSE
-	else if(isitem(movable_target))
-		var/obj/item/item_target = movable_target
-		if(item_target.w_class >= WEIGHT_CLASS_GIGANTIC)
-			return FALSE
-		if(item_target.item_flags & ABSTRACT)
-			return FALSE
-	return TRUE
-
 /datum/status_effect/control_grab/proc/clear_grab()
 	if(!grabbed_atom)
 		return
