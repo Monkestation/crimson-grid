@@ -1,19 +1,3 @@
-/* CRIMSON GRID EDIT - Everyone has identification now by default.
-/datum/loadout_item/pocket_items/passport
-	name = "Identification"
-	item_path = /obj/item/passport
-
-/datum/loadout_item/pocket_items/passport/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
-	if(visuals_only)
-		return ..()
-	var/country = equipper?.client?.prefs?.read_preference(/datum/preference/choiced/country_of_origin)
-	//USA Country of Origin gets drivers license, not passport
-	if(country == "United States")
-		LAZYADD(outfit.backpack_contents, /obj/item/card/drivers_license)
-	else
-		return ..()
-*/
-
 /obj/item/passport
 	name = "passport"
 	desc = "A book with someone's license, photo, and identifying information. Don't lose it!"
@@ -24,7 +8,6 @@
 	slot_flags = ITEM_SLOT_ID
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/government/icons/docsonfloor.dmi')
 
-	var/closed = TRUE
 	/// String of who the owner of the passport.
 	var/owner = ""
 	var/dob
@@ -42,18 +25,9 @@
 	var/datum/universal_icon/our_photograph
 	var/additional_text = ""
 
-/* CRIMSON GRID EDIT
-/obj/item/passport/Initialize(mapload)
+/obj/item/passport/attack_self(mob/user, modifiers)
 	. = ..()
-	var/mob/living/carbon/human/user = null
-	if(ishuman(loc)) // In pockets
-		user = loc
-	else if(ishuman(loc?.loc)) // In backpack
-		user = loc
-	if(user)
-		// Init and equiping via loadout are both too soon to be able to catch the illegal identity quirk
-		link_human(user)
-*/
+	user.examinate(src)
 
 /obj/item/passport/proc/link_human(mob/living/carbon/human/user)
 	if(HAS_TRAIT(user, TRAIT_ILLEGAL_IDENTITY))
@@ -87,6 +61,7 @@
 	country_of_origin = user.dna.country_of_origin
 	if(country_of_origin == DEFAULT_COUNTRY_NAME)
 		country_of_origin = "[user.dna.state_of_origin], [DEFAULT_COUNTRY_NAME]"
+	icon_state = pick("passport1", "passport")
 
 /obj/item/passport/proc/get_owner_id_photo(force = FALSE)
 	if((!our_photograph && our_human) || (our_human && force))
@@ -107,40 +82,32 @@
 
 /obj/item/passport/examine(mob/user)
 	. = ..()
-	if(owner)
-		var/id_examine = span_slightly_larger(separator_hr("You examine [src]...</em>"))
-		id_examine += "<div class='img_by_text_container'>"
-		id_examine += "[icon2html(get_owner_id_photo(), user, extra_classes = "hugeicon")]"
-		id_examine += "<div class='img_text'>"
-		var/additional_blurb = additional_text ? " &bull; [additional_text]" : ""
-		id_examine += span_notice(jointext(list(
-			" &bull; Name: [owner]",
-			" &bull; Birth Year: [dob]",
-			" &bull; Issuing Country: [country_of_origin]",
-			" &bull; Issued Year: [issued_year]",
-			" &bull; Expiry Year: [expiry_year]",
-			" &bull; Gender: [owner_gender]",
-			additional_blurb,
-		), "<br>"))
-		id_examine += "</div>" // container
-		id_examine += "</div>" // text
+	if(!owner)
+		return
 
-		. += boxed_message(id_examine)
-		if(our_human == user)
-			return
+	flick("passport0", src)
+	var/id_examine = span_slightly_larger(separator_hr("You examine [src]...</em>"))
+	id_examine += "<div class='img_by_text_container'>"
+	id_examine += "[icon2html(get_owner_id_photo(), user, extra_classes = "hugeicon")]"
+	id_examine += "<div class='img_text'>"
+	var/additional_blurb = additional_text ? " &bull; [additional_text]" : ""
+	id_examine += span_notice(jointext(list(
+		" &bull; Name: [owner]",
+		" &bull; Birth Year: [dob]",
+		" &bull; Issuing Country: [country_of_origin]",
+		" &bull; Issued Year: [issued_year]",
+		" &bull; Expiry Year: [expiry_year]",
+		" &bull; Gender: [owner_gender]",
+		additional_blurb,
+	), "<br>"))
+	id_examine += "</div>" // container
+	id_examine += "</div>" // text
 
-		if(fake)
-			var/roll_result = examine_roll.st_roll(user, src)
-			if(roll_result == ROLL_SUCCESS)
-				. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
+	. += boxed_message(id_examine)
+	if(our_human == user)
+		return
 
-/obj/item/passport/attack_self(mob/user)
-	. = ..()
-	if(closed)
-		closed = FALSE
-		icon_state = "passport0"
-		to_chat(user, span_notice("You open [src]."))
-	else
-		closed = TRUE
-		icon_state = "passport1"
-		to_chat(user, span_notice("You close [src]."))
+	if(fake)
+		var/roll_result = examine_roll.st_roll(user, src)
+		if(roll_result == ROLL_SUCCESS)
+			. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
