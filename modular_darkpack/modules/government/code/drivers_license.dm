@@ -24,18 +24,6 @@
 	var/datum/storyteller_roll/investigation/examine_roll
 	var/additional_text = ""
 
-/*
-/obj/item/card/drivers_license/Initialize(mapload)
-	. = ..()
-	var/mob/living/carbon/human/user = null
-	if(ishuman(loc)) // In pockets
-		user = loc
-	else if(ishuman(loc?.loc)) // In backpack
-		user = loc.loc
-	if(user)
-		link_human(user)
-*/
-
 /obj/item/card/drivers_license/attack_self(mob/user, modifiers)
 	. = ..()
 	user.examinate(src)
@@ -92,33 +80,33 @@
 
 /obj/item/card/drivers_license/examine(mob/user)
 	. = ..()
-	examine_roll.difficulty = min(our_human.st_get_stat(STAT_STREETWISE) * 2, 10)
-	examine_roll.successes_needed = round(our_human.st_get_stat(STAT_STREETWISE))
-	if(owner)
-		var/id_examine = span_slightly_larger(separator_hr("You examine [src]...</em>"))
-		id_examine += "<div class='img_by_text_container'>"
-		id_examine += "[icon2html(get_owner_id_photo(), user, extra_classes = "hugeicon")]"
-		id_examine += "<div class='img_text'>"
-		var/organ_donor_text = organ_donor ? "YES" : "NO"
-		var/additional_blurb = additional_text ? " &bull; [additional_text]" : ""
-		id_examine += span_notice(jointext(list(
-			" &bull; Name: [owner]",
-			" &bull; Birth Year: [dob]",
-			" &bull; Issuing State: [issuing_state]",
-			" &bull; Issued Year: [issued_year]",
-			" &bull; Expiry Year: [expiry_year]",
-			" &bull; Gender: [owner_gender]",
-			" &bull; Organ Donor: [organ_donor_text]",
-			additional_blurb,
-		), "<br>"))
-		id_examine += "</div>" // container
-		id_examine += "</div>" // text
+	if(!owner)
+		return
 
-		. += boxed_message(id_examine)
-		if(our_human == user)
-			return
+	var/id_examine = span_slightly_larger(separator_hr("You examine [src]...</em>"))
+	id_examine += "<div class='img_by_text_container'>"
+	id_examine += "[icon2html(get_owner_id_photo(), user, extra_classes = "hugeicon")]"
+	id_examine += "<div class='img_text'>"
+	var/organ_donor_text = organ_donor ? "YES" : "NO"
+	var/additional_blurb = additional_text ? " &bull; [additional_text]" : ""
+	id_examine += span_notice(jointext(list(
+		" &bull; Name: [owner]",
+		" &bull; Birth Year: [dob]",
+		" &bull; Issuing State: [issuing_state]",
+		" &bull; Issued Year: [issued_year]",
+		" &bull; Expiry Year: [expiry_year]",
+		" &bull; Gender: [owner_gender]",
+		" &bull; Organ Donor: [organ_donor_text]",
+		additional_blurb,
+	), "<br>"))
+	id_examine += "</div>" // container
+	id_examine += "</div>" // text
 
-		if(fake)
-			var/roll_result = examine_roll.st_roll(user, src)
-			if(roll_result == ROLL_SUCCESS)
-				. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
+	. += boxed_message(id_examine)
+	if(our_human == user)
+		return
+
+	if(fake)
+		var/roll_result = examine_roll.st_roll(user, src)
+		if(roll_result == ROLL_SUCCESS)
+			. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
