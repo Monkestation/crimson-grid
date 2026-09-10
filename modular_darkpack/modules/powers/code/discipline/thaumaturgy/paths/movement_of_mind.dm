@@ -117,20 +117,6 @@
 		pixel_x_change = -ICON_SIZE_X/2
 	animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x + pixel_x_change, pixel_y = grabbed_atom.base_pixel_y + pixel_y_change)
 
-	if(!isitem(grabbed_atom))
-		return
-	var/atom/hitting_atom
-	if(next_turf.density)
-		hitting_atom = next_turf
-	for(var/atom/movable/movable_content as anything in next_turf.contents)
-		if(ismob(movable_content))
-			continue
-		if(movable_content.density)
-			hitting_atom = movable_content
-			break
-	var/obj/item/grabbed_item = grabbed_atom
-	grabbed_item.melee_attack_chain(owner, hitting_atom)
-
 /datum/status_effect/control_grab/proc/clear_grab()
 	if(!grabbed_atom)
 		return
@@ -183,9 +169,9 @@
 
 //TODO: Rework to use rolls
 /datum/status_effect/control_grab/proc/launch_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
+	SIGNAL_HANDLER
+
 	UnregisterSignal(source, COMSIG_MOVABLE_IMPACT)
-	if(!(isstructure(source) || ismachinery(source) || isvehicle(source)))
-		return
 	var/damage_self = TRUE
 	var/damage = 60
 	if(hit_atom.density && isliving(source))
