@@ -335,7 +335,6 @@
 	willpower_cost = 1
 	violates_masquerade = TRUE
 	var/list/affected_targets = list()
-	var/list/attack_counts = list() // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 
 /datum/discipline_power/presence/majesty/pre_activation_checks(mob/living/target)
 	return TRUE
@@ -343,7 +342,6 @@
 /datum/discipline_power/presence/majesty/activate(mob/living/carbon/human/target)
 	. = ..()
 	affected_targets = list()
-	attack_counts = list() // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 	for(var/mob/living/carbon/human/hearer in get_hearers_in_view(range, owner))
 		if(hearer == owner)
 			continue
@@ -390,7 +388,6 @@
 			to_chat(affected_target, span_hypnophrase("The overwhelming presence of [owner] fades, and your will returns to normal. You are still aware of what they did to you.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 			REMOVE_TRAIT(affected_target, TRAIT_PACIFISM, "Majesty")
 	affected_targets.Cut()
-	attack_counts.Cut() // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 
 /datum/discipline_power/presence/majesty/proc/apply_pacifism(mob/living/carbon/human/hearer)
 	if(hearer && (hearer in affected_targets))
@@ -399,16 +396,12 @@
 
 // CRIMSON EDIT ADD START - Majesty pacifism breaks after being attacked
 /datum/discipline_power/presence/majesty/proc/watch_for_attacks(mob/living/carbon/human/attacked_mob)
-	attack_counts[attacked_mob] = 0
 	attacked_mob.AddElement(/datum/element/relay_attackers)
 	RegisterSignal(attacked_mob, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_attacked))
 
 /datum/discipline_power/presence/majesty/proc/on_attacked(mob/living/carbon/human/attacked_mob, atom/attacker, attack_flags)
 	SIGNAL_HANDLER
 	if(!(attack_flags & ATTACKER_DAMAGING_ATTACK))
-		return
-	attack_counts[attacked_mob] += 1
-	if(attack_counts[attacked_mob] < 2)
 		return
 	UnregisterSignal(attacked_mob, COMSIG_ATOM_WAS_ATTACKED)
 	affected_targets -= attacked_mob
