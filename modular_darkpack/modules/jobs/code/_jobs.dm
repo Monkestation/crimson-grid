@@ -200,7 +200,7 @@
 					cash_money = total_money * 0.2
 				if(5)
 					cash_money = total_money * 0.1
-		cash_money = min(floor(cash_money), cash_stack.max_amount)
+		cash_money = min(floor(cash_money), cash_stack.max_amount - 1)
 		if(cash_money > 0)
 			cash_stack.add(cash_money)
 		else
