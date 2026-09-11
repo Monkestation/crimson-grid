@@ -380,10 +380,10 @@
 /datum/discipline_power/presence/majesty/deactivate(mob/living/carbon/human/target)
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_PACIFISM, "Majesty")
-	UnregisterSignal(owner, COMSIG_ATOM_WAS_ATTACKED) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
+	UnregisterSignal(owner, list(COMSIG_MOB_APPLY_DAMAGE, COMSIG_ATOM_HITBY)) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 	for(var/mob/living/carbon/human/affected_target in affected_targets)
 		if(affected_target)
-			UnregisterSignal(affected_target, COMSIG_ATOM_WAS_ATTACKED) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
+			UnregisterSignal(affected_target, list(COMSIG_MOB_APPLY_DAMAGE, COMSIG_ATOM_HITBY)) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 			affected_target.remove_overlay(POWERS_LAYER)
 			to_chat(affected_target, span_hypnophrase("The overwhelming presence of [owner] fades, and your will returns to normal. You are still aware of what they did to you.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 			REMOVE_TRAIT(affected_target, TRAIT_PACIFISM, "Majesty")
@@ -396,14 +396,26 @@
 
 // CRIMSON EDIT ADD START - Majesty pacifism breaks after being attacked
 /datum/discipline_power/presence/majesty/proc/watch_for_attacks(mob/living/carbon/human/attacked_mob)
-	attacked_mob.AddElement(/datum/element/relay_attackers)
-	RegisterSignal(attacked_mob, COMSIG_ATOM_WAS_ATTACKED, PROC_REF(on_attacked))
+	RegisterSignal(attacked_mob, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(on_damaged))
+	RegisterSignal(attacked_mob, COMSIG_ATOM_HITBY, PROC_REF(on_hit_by_thrown))
 
-/datum/discipline_power/presence/majesty/proc/on_attacked(mob/living/carbon/human/attacked_mob, atom/attacker, attack_flags)
+/datum/discipline_power/presence/majesty/proc/on_damaged(mob/living/carbon/human/attacked_mob, damage, damagetype, def_zone, blocked, wound_bonus, exposed_wound_bonus, sharpness, attack_direction)
 	SIGNAL_HANDLER
-	if(!(attack_flags & ATTACKER_DAMAGING_ATTACK))
+	if(damagetype == STAMINA || isnull(attack_direction))
 		return
-	UnregisterSignal(attacked_mob, COMSIG_ATOM_WAS_ATTACKED)
+	break_majesty(attacked_mob)
+
+/datum/discipline_power/presence/majesty/proc/on_hit_by_thrown(mob/living/carbon/human/attacked_mob, atom/movable/hitting_atom)
+	SIGNAL_HANDLER
+	if(!isitem(hitting_atom))
+		return
+	var/obj/item/thrown_item = hitting_atom
+	if(thrown_item.damtype == STAMINA)
+		return
+	break_majesty(attacked_mob)
+
+/datum/discipline_power/presence/majesty/proc/break_majesty(mob/living/carbon/human/attacked_mob)
+	UnregisterSignal(attacked_mob, list(COMSIG_MOB_APPLY_DAMAGE, COMSIG_ATOM_HITBY))
 	affected_targets -= attacked_mob
 	REMOVE_TRAIT(attacked_mob, TRAIT_PACIFISM, "Majesty")
 	if(attacked_mob == owner)
