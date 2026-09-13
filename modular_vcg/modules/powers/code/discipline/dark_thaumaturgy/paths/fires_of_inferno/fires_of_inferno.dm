@@ -42,6 +42,11 @@
 	owner.adjust_fire_stacks(5, overwrite_color = COLOR_VERY_DARK_LIME_GREEN)
 	owner.ignite_mob()
 
+/datum/discipline_power/dark_thaumaturgy/path/inferno/post_gain()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_AURA_OF_INFERNO, FIRES_OF_INFERNO_TRAIT)
+	SEND_SIGNAL(owner, COMSIG_MOB_UPDATE_AURA)
+
 /datum/discipline_power/dark_thaumaturgy/path/inferno/lighter
 	name = "Lighter"
 	desc = "Touch the blood of a subject and gain information about the subject."

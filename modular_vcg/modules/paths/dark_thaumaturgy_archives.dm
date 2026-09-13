@@ -173,12 +173,12 @@
 			/obj/item/path_spellbook/path_of_pain/level2,
 			/obj/item/path_spellbook/path_of_pain/level3,
 			/obj/item/path_spellbook/path_of_pain/level4,
-			/obj/item/path_spellbook/path_of_pain/level5))
+			/obj/item/path_spellbook/path_of_pain/level5,
 			/obj/item/path_spellbook/fires_of_inferno/level1,
 			/obj/item/path_spellbook/fires_of_inferno/level2,
 			/obj/item/path_spellbook/fires_of_inferno/level3,
 			/obj/item/path_spellbook/fires_of_inferno/level4,
-			/obj/item/path_spellbook/fires_of_inferno/level5,
+			/obj/item/path_spellbook/fires_of_inferno/level5))
 			/* Not yet implemented!
 			/obj/item/path_spellbook/taking_of_spirit/level1,
 			/obj/item/path_spellbook/taking_of_spirit/level2,
