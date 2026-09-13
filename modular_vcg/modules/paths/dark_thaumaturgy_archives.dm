@@ -174,17 +174,17 @@
 			/obj/item/path_spellbook/path_of_pain/level3,
 			/obj/item/path_spellbook/path_of_pain/level4,
 			/obj/item/path_spellbook/path_of_pain/level5))
-			/* Not yet implemented!
 			/obj/item/path_spellbook/fires_of_inferno/level1,
 			/obj/item/path_spellbook/fires_of_inferno/level2,
 			/obj/item/path_spellbook/fires_of_inferno/level3,
 			/obj/item/path_spellbook/fires_of_inferno/level4,
 			/obj/item/path_spellbook/fires_of_inferno/level5,
+			/* Not yet implemented!
 			/obj/item/path_spellbook/taking_of_spirit/level1,
 			/obj/item/path_spellbook/taking_of_spirit/level2,
 			/obj/item/path_spellbook/taking_of_spirit/level3,
 			/obj/item/path_spellbook/taking_of_spirit/level4,
-			/obj/item/path_spellbook/taking_of_spirit/level5))*/
+			/obj/item/path_spellbook/taking_of_spirit/level5)) */
 
 		if(artifact.research_value >= 20)
 			to_chat(user, span_nicegreen("The Infernal hungrily consume the powerful artifact, granting you [artifact.research_value] favor and adding it to their collection!"))

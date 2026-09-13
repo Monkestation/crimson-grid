@@ -1,4 +1,4 @@
-//THIS IS A DARKPACK UI FILE
+//THIS IS A CRIMSON GRID UI FILE
 import { useBackend } from '../backend';
 import { Box, Button, Section, Table, DmIcon } from 'tgui-core/components';
 import { Window } from '../layouts';

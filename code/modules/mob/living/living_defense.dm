@@ -324,9 +324,11 @@
 		return FALSE
 	return TRUE
 
-/mob/living/fire_act(exposed_temperature, exposed_volume, fire_color) // CRIMSON GRID EDIT - Fire color
+// CRIMSON GRID ADD: DARK THAUMATURGY
+/mob/living/fire_act(exposed_temperature, exposed_volume, fire_color)
+// CRIMSON GRID ADD END: DARK THAUMATURGY
 	. = ..()
-	adjust_fire_stacks(3, overwrite_color = fire_color) // CRIMSON GRID EDIT - Fire color
+	adjust_fire_stacks(3, overwrite_color = fire_color) // CRIMSON GRID ADD: DARK THAUMATURGY
 	ignite_mob()
 
 /**
