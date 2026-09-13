@@ -1844,12 +1844,12 @@ GLOBAL_LIST_EMPTY(fire_appearances)
  * * fire_type: type Type of fire status effect that we apply, should be subtype of /datum/status_effect/fire_handler/fire_stacks
  */
 
-/mob/living/proc/adjust_fire_stacks(stacks, fire_type = /datum/status_effect/fire_handler/fire_stacks)
+/mob/living/proc/adjust_fire_stacks(stacks, fire_type = /datum/status_effect/fire_handler/fire_stacks, overwrite_color) // CRIMSON GRID EDIT - Fire color
 	if(stacks < 0)
 		if(HAS_TRAIT(src, TRAIT_NO_EXTINGUISH)) //You can't reduce fire stacks of the everlasting flames
 			return
 		stacks = max(-fire_stacks, stacks)
-	apply_status_effect(fire_type, stacks)
+	apply_status_effect(fire_type, stacks, FALSE, overwrite_color) // CRIMSON GRID EDIT - Fire color
 
 /mob/living/proc/adjust_wet_stacks(stacks, wet_type = /datum/status_effect/fire_handler/wet_stacks)
 	if(HAS_TRAIT(src, TRAIT_NO_EXTINGUISH)) //The everlasting flames will not be extinguished
@@ -1870,7 +1870,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
  * * remove_wet_stacks: bool If we remove all wet stacks upon doing this
  */
 
-/mob/living/proc/set_fire_stacks(stacks, fire_type = /datum/status_effect/fire_handler/fire_stacks, remove_wet_stacks = TRUE)
+/mob/living/proc/set_fire_stacks(stacks, fire_type = /datum/status_effect/fire_handler/fire_stacks, remove_wet_stacks = TRUE, overwrite_color) // CRIMSON GRID EDIT - Fire color
 	if(stacks < 0) //Shouldn't happen, ever
 		CRASH("set_fire_stacks received negative [stacks] fire stacks")
 
@@ -1881,7 +1881,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		remove_status_effect(fire_type)
 		return
 
-	apply_status_effect(fire_type, stacks, TRUE)
+	apply_status_effect(fire_type, stacks, TRUE, overwrite_color) // CRIMSON GRID EDIT - Fire color
 
 /mob/living/proc/set_wet_stacks(stacks, wet_type = /datum/status_effect/fire_handler/wet_stacks, remove_fire_stacks = TRUE)
 	if(stacks < 0)
@@ -1912,12 +1912,13 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if(their_fire_status && their_fire_status.on_fire)
 			var/firesplit = (fire_stacks + spread_to.fire_stacks) / 2
 			var/fire_type = (spread_to.fire_stacks > fire_stacks) ? their_fire_status.type : fire_status.type
-			set_fire_stacks(firesplit, fire_type)
-			spread_to.set_fire_stacks(firesplit, fire_type)
+			var/fire_color = fire_status.overwrite_color || their_fire_status.overwrite_color
+			set_fire_stacks(firesplit, fire_type, TRUE, fire_color)
+			spread_to.set_fire_stacks(firesplit, fire_type, TRUE, fire_color)
 			return
 
-		adjust_fire_stacks(-fire_stacks / 2, fire_status.type)
-		spread_to.adjust_fire_stacks(fire_stacks, fire_status.type)
+		adjust_fire_stacks(-fire_stacks / 2, fire_status.type, fire_status.overwrite_color)
+		spread_to.adjust_fire_stacks(fire_stacks, fire_status.type, fire_status.overwrite_color)
 		if(spread_to.ignite_mob())
 			log_message("bumped into [key_name(spread_to)] and set them on fire.", LOG_ATTACK)
 		return
@@ -1925,8 +1926,8 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(!their_fire_status || !their_fire_status.on_fire)
 		return
 
-	spread_to.adjust_fire_stacks(-spread_to.fire_stacks / 2, their_fire_status.type)
-	adjust_fire_stacks(spread_to.fire_stacks, their_fire_status.type)
+	spread_to.adjust_fire_stacks(-spread_to.fire_stacks / 2, their_fire_status.type, their_fire_status.overwrite_color)
+	adjust_fire_stacks(spread_to.fire_stacks, their_fire_status.type, their_fire_status.overwrite_color)
 	ignite_mob()
 
 /**

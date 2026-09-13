@@ -324,9 +324,9 @@
 		return FALSE
 	return TRUE
 
-/mob/living/fire_act()
+/mob/living/fire_act(exposed_temperature, exposed_volume, fire_color) // CRIMSON GRID EDIT - Fire color
 	. = ..()
-	adjust_fire_stacks(3)
+	adjust_fire_stacks(3, overwrite_color = fire_color) // CRIMSON GRID EDIT - Fire color
 	ignite_mob()
 
 /**

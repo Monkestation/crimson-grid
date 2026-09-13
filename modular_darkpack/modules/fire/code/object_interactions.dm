@@ -6,7 +6,7 @@
 /turf/proc/extinguish_turf()
 	return
 
-/turf/open/ignite_turf(power, fire_color)
+/turf/open/ignite_turf(power, fire_color, fire_type = /obj/effect/abstract/turf_fire) // CRIMSON GRID EDIT - Fire color
 	. = ..()
 	if(. & SUPPRESS_FIRE)
 		return
@@ -15,7 +15,7 @@
 		return
 	if(isgroundlessturf(src))
 		return
-	new /obj/effect/abstract/turf_fire(src, power, fire_color)
+	new fire_type(src, power, fire_color) // CRIMSON GRID EDIT - Fire color
 
 /turf/open/extinguish_turf(cooling_power = 1.2)
 	if(!air)
