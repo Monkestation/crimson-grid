@@ -100,5 +100,5 @@ GLOBAL_LIST_INIT(emotion_to_quality, sort_list(list(
 	"Daydreaming" = "absentmindedness",
 	"Psychotic" = "psychosis",
 	"Confidence" = "confidence",
-	"Inferno" = "corruption", // CRIMSON GRID ADD: DARK THAUMATURGY
+	"Corruption" = "corruption", // CRIMSON GRID ADD: DARK THAUMATURGY
 )))
