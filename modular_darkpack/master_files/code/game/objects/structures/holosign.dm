@@ -16,6 +16,9 @@
 	. = ..()
 	qdel(GetComponent((/datum/component/holographic_nature)))
 
+/obj/structure/holosign/barrier/police_tape/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
+	playsound(src, 'sound/items/poster/poster_ripped.ogg', 50, 1)
+
 /obj/structure/holosign/barrier/police_tape/update_icon_state()
 	SHOULD_CALL_PARENT(FALSE)
 	return SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON_STATE)

@@ -1,4 +1,3 @@
-
 /obj/item/holosign_creator/police_tape
 	name = "police barrier tape roll"
 	desc = "A roll of police tape used to block off crime scenes from the public."
@@ -10,3 +9,9 @@
 	holosign_type = /obj/structure/holosign/barrier/police_tape
 	creation_time = 1 SECONDS
 	max_signs = 9
+
+/obj/item/holosign_creator/police_tape/attack_self(mob/user)
+	if(LAZYLEN(signs))
+		for(var/obj/structure/holosign/hologram as anything in signs)
+			qdel(hologram)
+		balloon_alert(user, "tape cleared")
