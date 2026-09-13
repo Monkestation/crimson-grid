@@ -123,6 +123,7 @@
 /datum/discipline_power/dark_thaumaturgy/path/pain/agony_within
 	name = "Agony Within"
 	desc = "At some personal cost, inflict great pain upon another."
+	level = 4
 	target_type = TARGET_MOB
 	grouped_powers = list(
 		/datum/discipline_power/dark_thaumaturgy/path/pain/anguish,

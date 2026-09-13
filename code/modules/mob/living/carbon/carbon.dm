@@ -669,10 +669,10 @@
 
 	if(shown_health_amount == null)
 		shown_health_amount = health
-
-	if(HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES))  // CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+	// CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+	if(HAS_TRAIT(src, TRAIT_PREVENT_HEALTH_UPDATES))
 		shown_health_amount = maxHealth
-
+	// CRIMSON GRID ADD END: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 	if(shown_health_amount >= maxHealth)
 		health_hud.icon_state = "health0"
 	else if(shown_health_amount > 0 && maxHealth > 0)

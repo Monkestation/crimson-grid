@@ -9,7 +9,7 @@
 	var/activate_sound = 'modular_darkpack/modules/paths/sounds/open_book.ogg'
 	var/deactivate_sound = 'modular_darkpack/modules/paths/sounds/close_book.ogg'
 
-	var/datum/discipline/required_discipline = /datum/discipline/thaumaturgy
+	var/datum/discipline/required_discipline = /datum/discipline/thaumaturgy // CRIMSON GRID ADD: DARK THAUMATURGY
 	var/path_type = null
 	var/path_level = 1
 	var/do_after_time = 30 SECONDS
@@ -64,8 +64,10 @@
 		return
 
 	if(get_kindred_splat(user))
+		// CRIMSON GRID ADD: DARK THAUMATURGY
 		if(!user.get_discipline(required_discipline))
 			to_chat(user, span_warning("You must have knowledge of [required_discipline.name] to use this book!"))
+		// CRIMSON GRID ADD END: DARK THAUMATURGY
 			return
 		if(existing_path_discipline)
 			//Then we check if the level can be learned

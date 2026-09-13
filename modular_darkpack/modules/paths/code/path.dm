@@ -13,7 +13,9 @@
 	button_icon_state = "default"
 	overlay_icon_state = "default"
 
+// CRIMSON GRID ADD: DARK THAUMATURGY
 /datum/action/discipline/path/New(Target, datum/discipline/discipline)
 	. = ..()
 	button_icon = discipline.icon
 	button_icon_state = discipline.icon_state
+// CRIMSON GRID ADD END: DARK THAUMATURGY

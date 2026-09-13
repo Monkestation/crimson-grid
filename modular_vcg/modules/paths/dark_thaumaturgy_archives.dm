@@ -15,13 +15,13 @@
 	new /datum/data/vending_product("Path of Pain Spellbook (Level IV)",	/obj/item/path_spellbook/path_of_pain/level4,	240),
 	new /datum/data/vending_product("Path of Pain Spellbook (Level V)",	/obj/item/path_spellbook/path_of_pain/level5,	270),
 
-	/* Commented out until these have been added
 	new /datum/data/vending_product("Fires of Inferno Spellbook (Level I)",	/obj/item/path_spellbook/fires_of_inferno/level1,	130),
 	new /datum/data/vending_product("Fires of Inferno Spellbook (Level II)",	/obj/item/path_spellbook/fires_of_inferno/level2,	180),
 	new /datum/data/vending_product("Fires of Inferno Spellbook (Level III)",	/obj/item/path_spellbook/fires_of_inferno/level3,	210),
 	new /datum/data/vending_product("Fires of Inferno Spellbook (Level IV)",	/obj/item/path_spellbook/fires_of_inferno/level4,	240),
 	new /datum/data/vending_product("Fires of Inferno Spellbook (Level V)",	/obj/item/path_spellbook/fires_of_inferno/level5, 270),
 
+	/* Commented out until these have been added
 	new /datum/data/vending_product("Taking of Spirit Spellbook (Level I)",	/obj/item/path_spellbook/taking_of_spirit/level1,	130),
 	new /datum/data/vending_product("Taking of Spirit Spellbook (Level II)",	/obj/item/path_spellbook/taking_of_spirit/level2,	180),
 	new /datum/data/vending_product("Taking of Spirit Spellbook (Level III)",	/obj/item/path_spellbook/taking_of_spirit/level3,	210),
@@ -47,7 +47,6 @@
 
 )
 
-// are they antitribu?
 /obj/structure/retail/occult/baali/has_purchase_privileges(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
