@@ -213,5 +213,3 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 // Below are traits given by items/clothing being equiped or worn
 #define TRAIT_BRASSKNUCKLES "brassknuckles"
-
-// END TRAIT DEFINES
