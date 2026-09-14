@@ -16,6 +16,15 @@
 	. = ..()
 	qdel(GetComponent((/datum/component/holographic_nature)))
 
+/obj/structure/holosign/barrier/police_tape/CanAllowThrough(atom/movable/mover, border_dir)
+	. = ..()
+	if(.)
+		return
+	if(mover.pulledby && isliving(mover.pulledby))
+		var/mob/living/living_puller = mover.pulledby
+		if(allow_walk && living_puller.move_intent == MOVE_INTENT_WALK)
+			return TRUE
+
 /obj/structure/holosign/barrier/police_tape/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	playsound(src, 'sound/items/poster/poster_ripped.ogg', 50, 1)
 
