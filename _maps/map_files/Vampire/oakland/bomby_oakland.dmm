@@ -3075,12 +3075,6 @@
 /obj/effect/decal/shadow,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
-"aNc" = (
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor5-old"
-	},
-/turf/open/floor/wood/rough,
-/area/vtm/interior/laundromat)
 "aNg" = (
 /obj/machinery/sprinkler/area_managed,
 /turf/open/floor/wood/smooth/old,
@@ -36863,15 +36857,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
-"iOx" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 15;
-	name = "bars"
-	},
-/obj/structure/platform/lowwall/junk,
-/turf/open/floor/plating/rough,
-/area/vtm/interior/laundromat)
 "iOA" = (
 /obj/structure/ladder/manhole/down,
 /turf/open/floor/plating/sidewalkalt,
@@ -39761,9 +39746,7 @@
 /obj/effect/decal/graffiti{
 	icon_state = "graffiti9"
 	},
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor2-old"
-	},
+/obj/machinery/light/dim/directional/north,
 /turf/open/floor/wood/rough,
 /area/vtm/interior/laundromat)
 "jwA" = (
@@ -42164,9 +42147,6 @@
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/millennium_tower/f3)
 "kcu" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -53509,9 +53489,6 @@
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm)
 "mNW" = (
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor4-old"
-	},
 /obj/structure/vampipe{
 	icon_state = "piping35"
 	},
@@ -63902,15 +63879,7 @@
 /turf/open/floor/wood/old,
 /area/vtm/interior/shop)
 "pgY" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
-/obj/structure/roadblock{
-	dir = 1;
-	pixel_y = 17;
-	density = 0
-	},
-/obj/structure/sign/flag/japan{
+/obj/structure/sign/flag/china{
 	pixel_y = 30
 	},
 /turf/open/floor/plating/concrete{
@@ -67010,9 +66979,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church/staff)
 "pRN" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
+/obj/structure/closet/crate/freezer,
 /turf/open/misc/dirt,
 /area/vtm/interior/laundromat)
 "pRP" = (
@@ -85580,12 +85547,6 @@
 /obj/item/restraints/handcuffs/cable,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/giovanni/basement)
-"urZ" = (
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor6-old"
-	},
-/turf/open/floor/wood/rough,
-/area/vtm/interior/laundromat)
 "usb" = (
 /obj/structure/table/countertop/bubway,
 /obj/item/clothing/head/vampire/hardhat,
@@ -97039,6 +97000,12 @@
 /obj/structure/railing,
 /turf/open/floor/wood/old,
 /area/vtm)
+"xeQ" = (
+/obj/effect/decal/wallpaper/paper/low,
+/obj/structure/platform/lowwall/city/window,
+/obj/structure/curtain/bounty,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/laundromat)
 "xeS" = (
 /obj/effect/turf_decal/siding/grey/inner_corner{
 	dir = 1
@@ -167568,8 +167535,8 @@ uOx
 fOE
 szp
 szp
-iOx
-iOx
+szp
+szp
 szp
 szp
 tHA
@@ -167977,7 +167944,7 @@ wqF
 szp
 kAX
 kcu
-urZ
+fmH
 lax
 szp
 qMW
@@ -168181,7 +168148,7 @@ wqF
 szp
 szp
 pgY
-aNc
+fmH
 kLY
 szp
 qCc
@@ -169827,7 +169794,7 @@ seF
 seF
 xUq
 pId
-gOG
+xeQ
 bXK
 bXK
 fmD
