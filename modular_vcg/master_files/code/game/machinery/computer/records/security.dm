@@ -1,6 +1,6 @@
 
 /*
-* Ultra lazy way to restrict security records console to only police members
+* Ultra lazy way to restrict police records console to only police members
 * TODO: Change security records login function to use an actual username and password
 */
 /datum/memory/key/police_login
