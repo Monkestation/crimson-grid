@@ -133,7 +133,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		qdel(dummy.wear_neck)
 		character_appearance = new(dummy.appearance)
 		qdel(dummy)
-	// CRIMSON KEEP EDIT END
+	// CRIMSON GRID EDIT END
 
 	var/person_gender = "Other"
 	if(person.gender == "male")

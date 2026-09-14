@@ -6,8 +6,8 @@
 #define MAX_CRIME_NAME_LEN 24
 
 /obj/machinery/computer/records/security
-	name = "police records console"
-	desc = "Used to view and edit citizens' police records."
+	name = "police records console" // CRIMSON GRID EDIT - Original: name = "security records console"
+	desc = "Used to view and edit citizens' police records." // CRIMSON GRID EDIT - Original: desc = "Used to view and edit personnel's security records."
 	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/warrant")
 	icon_screen = "security"
 	icon_keyboard = "security_key"

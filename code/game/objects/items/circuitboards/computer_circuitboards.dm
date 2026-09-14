@@ -583,7 +583,7 @@
 	build_path = /obj/machinery/computer/prisoner/management
 
 /obj/item/circuitboard/computer/secure_data
-	name = "Police Records Console"
+	name = "Police Records Console" // CRIMSON GRID EDIT - Original: name = "Security Records Console"
 	greyscale_colors = CIRCUIT_COLOR_SECURITY
 	build_path = /obj/machinery/computer/records/security
 
