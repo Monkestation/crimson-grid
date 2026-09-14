@@ -3378,6 +3378,10 @@
 /area/vtm/interior/endron_facility)
 "aSj" = (
 /obj/machinery/sprinkler/area_managed,
+/obj/item/clothing/shoes/vampire/jackboots{
+	pixel_x = -14;
+	pixel_y = -21
+	},
 /turf/open/floor/city/toilet,
 /area/vtm/interior/police/upstairs)
 "aSp" = (
@@ -20751,8 +20755,15 @@
 /area/vtm/interior/supply)
 "eYM" = (
 /obj/structure/table/wood,
-/obj/item/camera/detective,
 /obj/structure/detectiveboard/directional/north,
+/obj/item/kirbyplants/darkpack/plant5{
+	pixel_y = 14;
+	pixel_x = -7
+	},
+/obj/item/taperecorder{
+	pixel_x = 3
+	},
+/obj/item/camera/detective,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/upstairs)
 "eYN" = (
@@ -22895,17 +22906,20 @@
 /area/vtm/interior/cog/pantry)
 "fxg" = (
 /obj/structure/table/wood,
+/obj/item/camera/detective,
+/obj/item/paper_bin{
+	pixel_y = 6
+	},
+/obj/item/pen{
+	pixel_y = 7
+	},
+/obj/item/folder/blue,
 /obj/item/flashlight/lamp{
 	light_color = "#FFA500";
 	light_range = 3;
 	pixel_x = -8;
 	pixel_y = 11
 	},
-/obj/item/taperecorder{
-	pixel_x = 3
-	},
-/obj/item/camera/detective,
-/obj/item/folder/blue,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/upstairs)
 "fxj" = (
@@ -52756,17 +52770,7 @@
 /turf/open/water/vamp_sewer/border,
 /area/vtm/interior/sewer)
 "mEy" = (
-/obj/structure/table/wood,
-/obj/item/kirbyplants/darkpack/plant5{
-	pixel_y = 14;
-	pixel_x = -7
-	},
-/obj/item/paper_bin{
-	pixel_y = 6
-	},
-/obj/item/pen{
-	pixel_y = 7
-	},
+/obj/machinery/computer/records/security,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/upstairs)
 "mED" = (
@@ -67899,6 +67903,18 @@
 "qdY" = (
 /turf/open/openspace,
 /area/vtm/interior)
+"qeh" = (
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/obj/machinery/recharger{
+	pixel_y = 5;
+	pixel_x = 6
+	},
+/turf/open/floor/city/toilet,
+/area/vtm/interior/police/upstairs)
 "qei" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -90422,6 +90438,7 @@
 /obj/structure/table/wood/billiard{
 	pixel_y = -7
 	},
+/obj/item/toy/cards/deck,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/upstairs)
 "vFb" = (
@@ -94134,10 +94151,6 @@
 "wxG" = (
 /obj/structure/chair/darkpack/blue{
 	dir = 8
-	},
-/obj/item/clothing/shoes/vampire/jackboots{
-	pixel_x = -14;
-	pixel_y = -21
 	},
 /obj/effect/landmark/start/darkpack/law_enforcement/sergeant,
 /turf/open/floor/city/toilet,
@@ -203351,7 +203364,7 @@ jBP
 gRp
 gRp
 aSj
-gRp
+iMK
 pwm
 rNr
 gRp
@@ -203555,7 +203568,7 @@ wvE
 sda
 mQH
 wxG
-iMK
+qeh
 pwm
 vNX
 oex

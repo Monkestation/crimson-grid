@@ -27,6 +27,9 @@
 	/// The character's voice, if they have one.
 	var/voice
 
+	/// Character's rank but only for records and can be modififed
+	var/recorded_rank = "Unknown" // CRIMSON GRID EDIT - Security console and records
+
 /datum/record/New(
 	age = 18,
 	blood_type = "?",
@@ -180,13 +183,13 @@
 
 /// A helper proc to get the front photo of a character from the record.
 /// Handles calling `get_photo()`, read its documentation for more information.
-/datum/record/crew/proc/get_front_photo()
-	return get_photo("photo_front", SOUTH)
+/datum/record/crew/proc/get_front_photo(with_height_chart) // CRIMSON GRID EDIT - Security console and records
+	return get_photo("photo_front", SOUTH, with_height_chart)
 
 /// A helper proc to get the side photo of a character from the record.
 /// Handles calling `get_photo()`, read its documentation for more information.
-/datum/record/crew/proc/get_side_photo()
-	return get_photo("photo_side", WEST)
+/datum/record/crew/proc/get_side_photo(with_height_chart) // CRIMSON GRID EDIT - Security console and records
+	return get_photo("photo_side", WEST, with_height_chart)
 
 /// A helper proc to recreate all photos of a character from the record.
 /datum/record/crew/proc/recreate_manifest_photos(add_height_chart)
@@ -220,14 +223,15 @@
  * Returns an empty `/icon` if there was no `character_appearance` entry in the `fields` list,
  * returns the generated/cached photo otherwise.
  */
-/datum/record/crew/proc/get_photo(field_name, orientation = SOUTH)
+/datum/record/crew/proc/get_photo(field_name, orientation = SOUTH, with_height_chart) // CRIMSON GRID EDIT - Security console and records
 	if(!field_name)
 		return
 	if(!character_appearance)
 		return new /icon()
-	var/obj/item/photo/existing_photo = LAZYACCESS(record_photos, field_name)
+	var/photo_name = "[field_name][with_height_chart ? "_height_chart" : ""]"
+	var/obj/item/photo/existing_photo = LAZYACCESS(record_photos, photo_name)
 	if(!existing_photo)
-		existing_photo = make_photo(field_name, orientation)
+		existing_photo = make_photo(field_name, orientation, with_height_chart)
 	return existing_photo
 
 /**
@@ -239,7 +243,7 @@
 /datum/record/crew/proc/make_photo(field_name, orientation, add_height_chart)
 	var/icon/picture_image
 	if(!isicon(character_appearance))
-		var/mutable_appearance/appearance = character_appearance
+		var/mutable_appearance/appearance = new(character_appearance)
 		appearance.setDir(orientation)
 		if(add_height_chart)
 			appearance.underlays += mutable_appearance('icons/obj/machines/photobooth.dmi', "height_chart", alpha = 125, appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM|KEEP_APART)
@@ -254,7 +258,8 @@
 
 	var/obj/item/photo/new_photo = new(null, picture)
 
-	LAZYSET(record_photos, field_name, new_photo)
+	var/photo_name = "[field_name][add_height_chart ? "_height_chart" : ""]" // CRIMSON GRID EDIT - Security console and records
+	LAZYSET(record_photos, photo_name, new_photo)
 	return new_photo
 
 /// Returns a paper printout of the current record's crime data.

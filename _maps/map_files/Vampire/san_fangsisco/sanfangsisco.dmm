@@ -4706,6 +4706,7 @@
 /area/vtm/interior)
 "biB" = (
 /obj/structure/table/wood/billiard,
+/obj/item/toy/cards/deck,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/upstairs)
 "biF" = (
@@ -9143,9 +9144,9 @@
 	pixel_y = -1
 	},
 /obj/structure/table,
-/obj/item/detective_scanner,
-/obj/item/detective_scanner,
-/obj/item/detective_scanner,
+/obj/item/detective_scanner/darkpack,
+/obj/item/detective_scanner/darkpack,
+/obj/item/detective_scanner/darkpack,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/police)
 "cmG" = (
@@ -24525,6 +24526,14 @@
 	pixel_x = -16
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/recharger{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/obj/machinery/recharger{
+	pixel_y = 5;
+	pixel_x = 6
+	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/police)
 "gjx" = (
@@ -52141,6 +52150,18 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/one,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
+"ntc" = (
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 5;
+	pixel_x = -5
+	},
+/obj/machinery/recharger{
+	pixel_y = 5;
+	pixel_x = 6
+	},
+/turf/open/floor/city/toilet,
+/area/vtm/interior/police/upstairs)
 "nte" = (
 /obj/machinery/light/directional/north,
 /turf/open/openspace,
@@ -58907,6 +58928,12 @@
 "pcM" = (
 /obj/structure/table/wood,
 /obj/item/camera/detective,
+/obj/item/flashlight/lamp{
+	light_color = "#FFA500";
+	light_range = 3;
+	pixel_x = -8;
+	pixel_y = 11
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
 "pcO" = (
@@ -84309,12 +84336,8 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior)
 "vDw" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp{
-	light_color = "#FFA500";
-	light_range = 3;
-	pixel_x = -8;
-	pixel_y = 11
+/obj/machinery/computer/records/security{
+	dir = 4
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
@@ -272648,8 +272671,8 @@ nPz
 jQt
 fhh
 hWB
-mDG
-jmL
+fhh
+ntc
 nPz
 ctC
 ntq
@@ -273416,7 +273439,7 @@ ntq
 vMH
 lTQ
 nPz
-nQS
+jmL
 mDG
 mDG
 kfm

@@ -30,6 +30,12 @@
 		JOB_EMERGENCY_DISPATCHER
 	)
 
+// CRIMSON GRID EDIT START - Security console and records
+/datum/job/vampire/police_officer/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	spawned.add_mob_memory(/datum/memory/key/police_login)
+// CRIMSON GRID END
+
 /datum/outfit/job/vampire/police_officer
 	name = JOB_POLICE_OFFICER
 	jobtype = /datum/job/vampire/police_officer

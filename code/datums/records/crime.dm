@@ -6,7 +6,7 @@
 	var/name
 	/// Details about the crime
 	var/details
-	/// Player that wrote the crime
+	/// Name of player that wrote the crime
 	var/author
 	/// Time of the crime
 	var/time

@@ -24,7 +24,7 @@
 
 /obj/machinery/computer/records/security/laptop
 	name = "security laptop"
-	desc = "A cheap Nanotrasen security laptop, it functions as a security records console. It's bolted to the table."
+	desc = "A cheap security laptop, it functions as a security records console. It's bolted to the table."
 	icon_state = MAP_SWITCH("laptop", "/obj/machinery/computer/records/security/laptop")
 	icon_screen = "seclaptop"
 	icon_keyboard = "laptop_key"
@@ -130,7 +130,7 @@
 			gender = target.gender,
 			name = target.name,
 			note = target.security_note,
-			rank = target.rank,
+			recorded_rank = target.recorded_rank, // CRIMSON GRID EDIT - Security console and records
 			species = target.species,
 			trim = target.trim,
 			wanted_status = target.wanted_status,
@@ -138,6 +138,7 @@
 		))
 
 	data["records"] = records
+	data["max_fine"] = CONFIG_GET(number/maxfine) // CRIMSON GRID EDIT - Security console and records
 
 	return data
 
@@ -223,7 +224,7 @@
 		input_details = strip_html_full(params["details"], MAX_MESSAGE_LEN)
 
 	if(params["fine"] == 0)
-		var/datum/crime/new_crime = new(name = input_name, details = input_details, author = usr)
+		var/datum/crime/new_crime = new(name = input_name, details = input_details, author = user.real_name)  // CRIMSON GRID EDIT - Security console and records
 		target.crimes += new_crime
 		investigate_log("New Crime: <strong>[input_name]</strong> | Added to [target.name] by [key_name(user)]. Their previous status was [target.wanted_status]", INVESTIGATE_RECORDS)
 		SSblackbox.ReportCitation(REF(new_crime), user.ckey, user.real_name, target.name, input_name, input_details)
@@ -233,7 +234,7 @@
 
 		return TRUE
 
-	var/datum/crime/citation/new_citation = new(name = input_name, details = input_details, author = usr, fine = params["fine"])
+	var/datum/crime/citation/new_citation = new(name = input_name, details = input_details, author = user.real_name, fine = params["fine"])  // CRIMSON GRID EDIT - Security console and records
 
 	target.citations += new_citation
 	new_citation.alert_owner(user, src, target.name, "You have been issued a [params["fine"]][MONEY_SYMBOL] citation for [input_name]. Fines are payable at Security.")
@@ -248,7 +249,7 @@
 	if(!editing_crime?.valid)
 		return FALSE
 
-	if(user != editing_crime.author && !has_armory_access(user)) // only warden/hos/command can edit crimes they didn't author
+	if(user.real_name != editing_crime.author && !has_armory_access(user)) // only warden/hos/command can edit crimes they didn't author
 		investigate_log("[user] attempted to edit crime: \"[editing_crime.name]\" for target: \"[target.name]\" but failed due to lacking armoury access and not being the author of the crime.", INVESTIGATE_RECORDS)
 		return FALSE
 
@@ -306,7 +307,7 @@
 		if(!to_void)
 			return FALSE
 
-	if(user != to_void.author && !has_armory_access(user))
+	if(user.real_name != to_void.author && !has_armory_access(user))
 		return FALSE
 
 	to_void.valid = FALSE
@@ -377,10 +378,12 @@
 			printable = wanted_poster
 
 		if("rapsheet")
+			/* CRIMSON GRID EDIT - Security console and records
 			var/list/crimes = target.crimes
 			if(!length(crimes))
 				balloon_alert(user, "no crimes")
 				return FALSE
+			*/
 
 			var/obj/item/paper/rapsheet = target.get_rapsheet(input_alias, input_header, input_description)
 			printable = rapsheet
@@ -448,7 +451,7 @@
 		entry["fingerprint"] = player_record.fingerprint
 		entry["gender"] = player_record.gender
 		entry["name"] = player_record.name
-		entry["rank"] = player_record.rank
+		entry["recorded_rank"] = player_record.recorded_rank // CRIMSON GRID EDIT - Security console and records
 		entry["record"] = REF(player_record)
 		entry["species"] = player_record.species
 
