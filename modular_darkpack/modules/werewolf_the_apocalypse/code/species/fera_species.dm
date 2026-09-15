@@ -400,7 +400,12 @@
 	movetypes = GROUND
 
 /datum/movespeed_modifier/shifter/dire
-	multiplicative_slowdown = -0.2
+	multiplicative_slowdown = -0.3 //CRIMSON GRID EDIT - original multiplicative_slowdown = -0.2
 
 /datum/movespeed_modifier/shifter/feral
-	multiplicative_slowdown = -0.35
+	multiplicative_slowdown = -0.4 //CRMISON GRID EDIT - original multiplicative_slowdown = -0.35
+
+//CRIMSON GRID ADDITON START
+/datum/movespeed_modifier/shifter/war
+	multiplicative_slowdown = -0.2
+//CRMISON GRID ADDITION END

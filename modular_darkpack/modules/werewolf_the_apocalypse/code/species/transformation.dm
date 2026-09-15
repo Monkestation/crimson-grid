@@ -110,9 +110,11 @@
 		var/previous_angle = owner.set_lying_angle(0)
 		owner.set_species(form_to_transform)
 		owner.set_lying_angle(previous_angle)
+		update_rage_effects()
 		return
 
 	owner.set_species(form_to_transform)
+	update_rage_effects()
 
 /datum/splat/werewolf/shifter/proc/is_breed_form()
 	if(!owner?.dna)
