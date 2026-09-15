@@ -365,6 +365,13 @@
 /obj/structure/table,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
+"aeQ" = (
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
+/turf/open/floor/carpet/darkpack/old,
+/area/vtm/interior/giovanni)
 "aeS" = (
 /obj/structure/chair/sofa/corp{
 	dir = 1
@@ -1447,6 +1454,11 @@
 /obj/structure/fluff/tv,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights/community)
+"aso" = (
+/obj/structure/table/wood,
+/obj/item/knife/vamp,
+/turf/open/floor/plating/rough/cave,
+/area/vtm/interior/giovanni/basement)
 "ast" = (
 /obj/darkpack_car/rand{
 	dir = 4
@@ -3766,7 +3778,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/tzimisce_manor)
 "aUY" = (
-/obj/machinery/light/small/red/dim/directional/west,
+/obj/machinery/light/small/red/directional/west,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni/basement)
 "aUZ" = (
@@ -3840,15 +3852,6 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/endron_facility/restricted)
-"aWb" = (
-/obj/effect/turf_decal/siding/white,
-/obj/structure/vampdoor/wood{
-	lock_id = "giovanni";
-	locked = 1;
-	lockpick_difficulty = 14
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/giovanni)
 "aWj" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -11773,7 +11776,7 @@
 /turf/open/floor/city/saint,
 /area/vtm/interior/oldchurch)
 "cVs" = (
-/obj/machinery/light/prince/directional/east,
+/obj/machinery/light/small/red/directional/east,
 /turf/open/water{
 	color = "#483C32"
 	},
@@ -12162,7 +12165,6 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
 "dcj" = (
-/obj/machinery/light/prince/directional/west,
 /turf/open/floor/iron/stairs{
 	dir = 8
 	},
@@ -12833,7 +12835,7 @@
 /obj/structure/table/wood,
 /obj/item/surgery_tray/full,
 /obj/item/restraints/handcuffs,
-/obj/machinery/light/small/red/dim/directional/east,
+/obj/machinery/light/small/directional/east,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/giovanni/basement)
 "dkU" = (
@@ -22570,11 +22572,14 @@
 /turf/closed/wall/vampwall/brick,
 /area/vtm/interior/supply)
 "fJS" = (
-/obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/giovanni,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "fJU" = (
@@ -23363,7 +23368,6 @@
 /area/vtm/interior/millennium_tower/f2)
 "fTD" = (
 /obj/structure/table/wood,
-/obj/item/lighter,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/giovanni/basement)
 "fTF" = (
@@ -34233,11 +34237,14 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
 "iLa" = (
-/obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/giovanni,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/six,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "iLb" = (
@@ -37591,11 +37598,14 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 1
 	},
-/obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/giovanni,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/giovanni)
 "jDX" = (
@@ -41664,6 +41674,18 @@
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/mansion)
+"kKy" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lantern{
+	light_color = "#013220";
+	pixel_y = 8
+	},
+/obj/item/lighter{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/rough,
+/area/vtm/interior/giovanni/basement)
 "kKI" = (
 /obj/structure/table,
 /obj/item/melee/vamp/tire{
@@ -41895,6 +41917,7 @@
 /obj/structure/chair/sofa/corp/left{
 	dir = 4
 	},
+/obj/machinery/light/small/red/directional/west,
 /turf/open/water{
 	color = "#483C32"
 	},
@@ -48678,7 +48701,10 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/millennium_tower/f4)
 "mAU" = (
-/obj/structure/vampdoor/wood,
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
 /obj/effect/mapping_helpers/door/access/giovanni,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/five,
@@ -49767,6 +49793,10 @@
 	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sewer)
+"mOs" = (
+/obj/machinery/light/small/red/dim/directional/north,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/giovanni/basement)
 "mOu" = (
 /obj/structure/railing{
 	pixel_y = -2
@@ -51859,6 +51889,7 @@
 	dir = 1;
 	pixel_y = 1
 	},
+/obj/item/storage/fancy/candle_box,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "npH" = (
@@ -53740,6 +53771,7 @@
 /area/vtm/interior/shop/gunshop)
 "nOu" = (
 /obj/machinery/light/small/red/dim/directional/east,
+/obj/machinery/light/small/red/directional/east,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/giovanni/basement)
 "nOv" = (
@@ -61343,9 +61375,8 @@
 /area/vtm/interior/shop/clothing_store)
 "pKe" = (
 /obj/structure/vampdoor/wood{
-	lock_id = "giovanni";
-	locked = 1;
-	lockpick_difficulty = 14
+	pixel_x = 0;
+	pixel_y = -6
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
@@ -70048,11 +70079,14 @@
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
 "rRW" = (
-/obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/giovanni,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/five,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "rSe" = (
@@ -70438,6 +70472,18 @@
 /obj/item/pen/fourcolor,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/bianchiBank)
+"rXR" = (
+/obj/effect/turf_decal/bordur,
+/obj/effect/mapping_helpers/door/access/giovanni,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/ten,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/giovanni)
 "rXV" = (
 /mob/living/basic/pet/cat/darkpack,
 /turf/open/floor/plating/sidewalkalt,
@@ -74212,11 +74258,6 @@
 /obj/structure/flora/bush/sparsegrass/style_random,
 /turf/open/misc/grass,
 /area/vtm)
-"sVN" = (
-/obj/structure/table/wood,
-/obj/item/knife/vamp,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/giovanni/basement)
 "sVP" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 1
@@ -75521,8 +75562,11 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/ghetto)
 "tmZ" = (
-/obj/structure/vampdoor/wood,
 /obj/effect/turf_decal/siding/white,
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "tna" = (
@@ -82625,6 +82669,14 @@
 	light_color = "#013220";
 	pixel_y = 8
 	},
+/obj/item/lighter{
+	pixel_x = -7;
+	pixel_y = 1
+	},
+/obj/item/storage/fancy/candle_box{
+	pixel_x = 11;
+	pixel_y = 2
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/giovanni/basement)
 "vez" = (
@@ -86972,7 +87024,10 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
 "woQ" = (
-/obj/structure/vampdoor/wood,
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
 /turf/open/floor/city/toilet,
 /area/vtm/interior/giovanni)
 "woS" = (
@@ -90217,7 +90272,7 @@
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/graveyard)
 "xeC" = (
-/obj/machinery/light/small/red/dim/directional/east,
+/obj/machinery/light/small/red/directional/east,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni/basement)
 "xeK" = (
@@ -91813,9 +91868,9 @@
 "xyZ" = (
 /obj/machinery/light/small/directional/west,
 /obj/structure/table/wood,
-/obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled,
-/obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled,
 /obj/effect/decal/cleanable/trash,
+/obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled,
+/obj/item/reagent_containers/cup/glass/bottle/wine/unlabeled,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/giovanni/basement)
 "xzb" = (
@@ -92909,7 +92964,7 @@
 /area/vtm/outside/pacificheights/forest)
 "xMx" = (
 /obj/structure/table/wood,
-/obj/machinery/light/small/red/dim/directional/west,
+/obj/machinery/light/small/red/directional/west,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni/basement)
 "xMy" = (
@@ -94569,11 +94624,14 @@
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/outside/park)
 "yku" = (
-/obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/giovanni,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /obj/effect/mapping_helpers/door/lock_difficulty/ten,
+/obj/structure/vampdoor/wood{
+	pixel_x = 0;
+	pixel_y = -6
+	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/giovanni/basement)
 "ykv" = (
@@ -105494,7 +105552,7 @@ rhf
 fBu
 wCj
 wOO
-lcf
+nZt
 mHl
 mHl
 mHl
@@ -106001,9 +106059,9 @@ rEY
 gql
 gql
 rhf
-vew
+kKy
 mHl
-rhf
+mOs
 rhf
 rhf
 rhf
@@ -106251,7 +106309,7 @@ mHl
 gql
 oMm
 oMm
-oMm
+aso
 gql
 gql
 gql
@@ -106265,7 +106323,7 @@ rhf
 bnI
 vGp
 wOO
-nOu
+btH
 mHl
 mRd
 rhf
@@ -106508,7 +106566,7 @@ lWX
 pwf
 oMm
 oMm
-oMm
+ycA
 gql
 lVG
 gql
@@ -107025,7 +107083,7 @@ gql
 gql
 lVG
 lWX
-sVN
+qEX
 gql
 xyZ
 rhf
@@ -108053,7 +108111,7 @@ dvN
 dvN
 dvN
 lWX
-ycA
+oMm
 dkO
 fTD
 rhf
@@ -169994,7 +170052,7 @@ oKy
 oKy
 hlf
 hlf
-uNJ
+aeQ
 hlf
 opx
 uJx
@@ -170508,7 +170566,7 @@ fvE
 fvE
 hlf
 hlf
-uNJ
+aeQ
 hlf
 hlf
 iLa
@@ -237592,7 +237650,7 @@ hlf
 wSJ
 hlf
 hlf
-xsQ
+rXR
 kno
 kno
 eRn
@@ -237842,7 +237900,7 @@ hlf
 hlf
 hlf
 kyB
-aWb
+tmZ
 hlf
 hlf
 hlf
