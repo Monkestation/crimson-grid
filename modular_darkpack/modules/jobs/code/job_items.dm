@@ -50,11 +50,11 @@
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
 	worn_icon_state = "red_id"
 
-	shows_name = TRUE
-
 /obj/item/card/clerk/harpy
 	name = "public relations manager lanyard"
 	desc = "A lanyard which denotes the wearer as a PR Manager of TransAmerica."
+
+	shows_name = TRUE
 
 /obj/item/card/tower_employee
 	name = "\improper Millennium Tower employee ID"
@@ -122,11 +122,11 @@
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
 
 	shows_name = TRUE
-	title_if_lastname_only = "Doctor"
 
 /obj/item/card/clinic/director
 	name = "clinic director's lanyard"
 	desc = "A badge which shows not only medical qualification, but also an authority over the clinic."
+
 	title_if_lastname_only = "Director"
 
 /obj/item/card/archive
@@ -271,16 +271,19 @@
 /obj/item/card/police/sergeant
 	name = "police sergeant badge"
 	desc = "A silver star with intricate silver engravings, indicating the wearer to be a sergeant of the San Francisco Police Department."
+
 	title_if_lastname_only = "Sergeant"
 
 /obj/item/card/police/captain
 	name = "police captain badge"
 	desc = "A gold star with intricate 10k gold-filled engravings, indicating the wearer to be a captain of the San Francisco Police Department."
+
 	title_if_lastname_only = "Captain"
 
 /obj/item/card/police/fbi
 	name = "fbi special agent badge"
 	desc = "A rather ornate badge made of polished gold-like metal. It has the words \"Federal Bureau of Investigation\" engraved on it."
+
 	title_if_lastname_only = "Special Agent"
 
 /obj/item/card/dispatcher
