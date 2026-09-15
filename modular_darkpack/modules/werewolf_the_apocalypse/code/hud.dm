@@ -56,10 +56,10 @@
 		if(!COOLDOWN_FINISHED(src, force_rage_cd))
 			return
 
-		clicker_splat.adjust_rage(1)
-		message_admins("[ADMIN_LOOKUPFLW(clicker)] manually gained rage.")
+		clicker_splat.adjust_rage(2)
+		message_admins("[ADMIN_LOOKUPFLW(clicker)] manually gained rage.") 
 		clicker.log_message("manually gained rage.", LOG_GAME, color="red")
-		COOLDOWN_START(src, force_rage_cd, 1 SCENES)
+		COOLDOWN_START(src, force_rage_cd, 2 SCENES)
 		return TRUE
 
 	if(!clicker.visible_to_sky())
