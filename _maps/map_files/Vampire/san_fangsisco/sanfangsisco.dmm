@@ -36261,15 +36261,6 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
-"jlp" = (
-/obj/structure/table,
-/obj/machinery/microwave{
-	desc = "Cooks and boils stuff, somehow.";
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/turf/open/floor/city/toilet,
-/area/vtm/interior/laundromat)
 "jlq" = (
 /mob/living/carbon/human/npc/walkby,
 /turf/open/floor/plating/sidewalk,
@@ -42059,6 +42050,12 @@
 /obj/structure/sign/flag/china{
 	pixel_y = 30
 	},
+/obj/structure/table,
+/obj/machinery/microwave{
+	desc = "Cooks and boils stuff, somehow.";
+	pixel_x = -3;
+	pixel_y = 5
+	},
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
 "kNd" = (
@@ -45841,7 +45838,6 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/vjanitor)
 "lKv" = (
-/obj/structure/table,
 /obj/underplate/stuff{
 	pixel_y = 8
 	},
@@ -45854,6 +45850,7 @@
 	pixel_x = 8;
 	pixel_y = 2
 	},
+/obj/structure/table,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
 "lKD" = (
@@ -80360,6 +80357,9 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/library)
+"utP" = (
+/turf/open/floor/plating/sidewalkalt,
+/area/vtm/interior)
 "utT" = (
 /obj/structure/table/wood,
 /obj/item/vamp/keys{
@@ -202749,7 +202749,7 @@ vPv
 vPv
 vPv
 gGS
-jTk
+utP
 jTk
 jTk
 acI
@@ -206838,7 +206838,7 @@ aOW
 ltG
 cMY
 lKv
-jlp
+cMY
 ltG
 mBz
 mCW
