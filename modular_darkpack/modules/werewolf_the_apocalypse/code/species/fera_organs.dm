@@ -93,7 +93,6 @@
 
 /datum/species/human/shifter/war/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
-	human.set_health(min(human.health, human.maxHealth))
 	qdel(human.GetComponent(/datum/component/regenerator))
 
 /datum/species/human/shifter/dire/on_species_gain(mob/living/carbon/human/species_fera_dire, datum/species/old_species, pref_load, regenerate_icons)
@@ -138,15 +137,47 @@
 		damage_mods += 0.8
 	if(damagetype == TOXIC)
 		damage_mods += 0.7
-	if(damagetype +=BURN)
+	if(damagetype ==BURN)
 		damage_mods += 0.9
-
 /datum/species/human/shifter/bestial/proc/damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
 	SIGNAL_HANDLER
 	if(damagetype == BRUTE)
 		damage_mods += 0.85
 	if(damagetype == TOXIC)
 		damage_mods += 0.8
+/datum/splat/werewolf/shifter/garou/on_gain()
+	. = ..()
+	RegisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS,PROC_REF(garou_damage_resistance))
+
+/datum/splat/werewolf/shifter/garou/proc/garou_damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
+	SIGNAL_HANDLER
+	if(!istype(owner.dna?.species, /datum/species/human/shifter/war))
+		return
+	if(damagetype == BRUTE)
+		damage_mods += 0.4
+	if(damagetype == AGGRAVATED)
+		damage_mods += 0.7
+	if(damagetype == TOXIC)
+		damage_mods += 0.65
+	if(damagetype == BURN)
+		damage_mods += 0.6
+/datum/splat/werewolf/shifter/garou/on_lose_or_destroy()
+	. = ..()
+	UnregisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
+
+/datum/splat/werewolf/shifter/corax/on_gain()
+	. = ..()
+	RegisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS,PROC_REF(corax_damage_resistance))
+/datum/splat/werewolf/shifter/corax/proc/corax_damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
+	SIGNAL_HANDLER
+	if(!istype(owner.dna?.species, /datum/species/human/shifter/war))
+		return
+	if(damagetype == BRUTE)
+		damage_mods += 0.9
+	if(damagetype == BURN)
+		damage_mods += 0.9
+/datum/splat/werewolf/shifter/corax/on_lose_or_destroy()
+	. = ..()
+	UnregisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
+
 //CRIMSON GRID ADDITION END
-
-
