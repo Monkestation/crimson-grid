@@ -437,7 +437,7 @@
 	if(!COOLDOWN_FINISHED(src, rage_damage_cd))
 		return
 	if(adjust_rage(1, FALSE))
-		COOLDOWN_START(src, rage_damage_cd, 15 SECONDS)
+		COOLDOWN_START(src, rage_damage_cd, 30 SECONDS)
 		return
 
 /datum/splat/werewolf/shifter/proc/on_owner_wound(datum/source,datum/wound/wound,obj/item/bodypart/limb)
