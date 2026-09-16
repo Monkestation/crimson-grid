@@ -86,7 +86,7 @@
 	. = ..()
 	var/datum/component/regenerator/regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 35, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour = COLOR_RED)
+		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 12.5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour = COLOR_RED)
 		regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
@@ -98,28 +98,55 @@
 
 /datum/species/human/shifter/dire/on_species_gain(mob/living/carbon/human/species_fera_dire, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
+	RegisterSignal(species_fera_dire, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_resistance))
 	var/datum/component/regenerator/regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 25, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour =  COLOR_RED_LIGHT)
+		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 10, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour =  COLOR_RED_LIGHT)
 		regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
 
 /datum/species/human/shifter/dire/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
+	UnregisterSignal(human, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
 	qdel(human.GetComponent(/datum/component/regenerator))
 
 /datum/species/human/shifter/bestial/on_species_gain(mob/living/carbon/human/species_fera_bestial, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
+	RegisterSignal(species_fera_bestial, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_resistance))
 	var/datum/component/regenerator/regenerator = species_fera_bestial.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_bestial.AddComponent(/datum/component/regenerator, regeneration_delay = 2 SECONDS, heals_wounds = TRUE, brute_per_second = 15, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour =  COLOR_FULL_TONER_BLACK)
+		species_fera_bestial.AddComponent(/datum/component/regenerator, regeneration_delay = 2 SECONDS, heals_wounds = FALSE, brute_per_second = 10, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour = COLOR_ALMOST_BLACK)
 		regenerator = species_fera_bestial.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
 
 /datum/species/human/shifter/bestial/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
+	UnregisterSignal(human, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
 	qdel(human.GetComponent(/datum/component/regenerator))
 
 //CRIMSION GRID ADDITION END
+
+//CRIMSON GRID ADDITION START - gives fera passive defensives per their species forms
+
+/datum/species/human/shifter/dire/proc/damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
+	SIGNAL_HANDLER
+	if(damagetype == BRUTE)
+		damage_mods += 0.65
+	if(damagetype == AGGRAVATED)
+		damage_mods += 0.8
+	if(damagetype == TOXIC)
+		damage_mods += 0.7
+	if(damagetype +=BURN)
+		damage_mods += 0.9
+
+/datum/species/human/shifter/bestial/proc/damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
+	SIGNAL_HANDLER
+	if(damagetype == BRUTE)
+		damage_mods += 0.85
+	if(damagetype == TOXIC)
+		damage_mods += 0.8
+//CRIMSON GRID ADDITION END
+
+

@@ -242,12 +242,14 @@
 
 /datum/species/human/shifter/bestial/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
+	RegisterSignal(human_who_gained_species, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_resistance)) //CRMISON GRID ADDITION
 	RegisterSignal(human_who_gained_species, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_fluff))
 	human_who_gained_species.update_appearance(UPDATE_OVERLAYS)
 	human_who_gained_species.update_transform(1.25)
 
 /datum/species/human/shifter/bestial/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
+	UnregisterSignal(human, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS) //CRMISON GRID ADDITION
 	UnregisterSignal(human, COMSIG_ATOM_UPDATE_OVERLAYS)
 	human.update_appearance(UPDATE_OVERLAYS)
 	human.update_transform()
