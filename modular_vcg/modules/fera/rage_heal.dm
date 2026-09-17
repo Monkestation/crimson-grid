@@ -28,7 +28,7 @@
 		return FALSE
 	if(owner.stat == DEAD)
 		if(feedback)
-			owner.balloon_alert(owner, "You cannot mend your flesh of aggravated damage while dead!")
+			owner.balloon_alert(owner, "you cannot mend your flesh of aggravated damage while dead!")
 		return FALSE
 	return TRUE
 
@@ -79,3 +79,4 @@
 	. = ..()
 	remove_power(/datum/action/cooldown/power/gift/rage_heal)
 
+#undef HEAL_AGGRAVATED_DAMAGE
