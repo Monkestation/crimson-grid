@@ -75,6 +75,7 @@
 
 	RegisterSignal(mouse_catcher, COMSIG_SCREEN_ELEMENT_CLICK, PROC_REF(on_catcher_click))
 
+/*
 /datum/status_effect/control_grab/tick(seconds_between_ticks)
 	. = ..()
 	if(!owner.client || INCAPACITATED_IGNORING(owner, INCAPABLE_GRAB))
@@ -116,6 +117,7 @@
 	else if(direction & WEST)
 		pixel_x_change = -ICON_SIZE_X/2
 	animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x + pixel_x_change, pixel_y = grabbed_atom.base_pixel_y + pixel_y_change)
+*/
 
 /datum/status_effect/control_grab/proc/clear_grab()
 	if(!grabbed_atom)
@@ -131,6 +133,7 @@
 	grabbed_atom.cut_overlay(kinesis_icon)
 	grabbed_atom = null
 	qdel(src)
+
 
 /datum/status_effect/control_grab/proc/range_check(atom/target)
 	if(!isturf(owner.loc))
@@ -151,8 +154,49 @@
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(!grabbed_atom)
 			return
-		launch()
+		move_target()
 		return
+
+/datum/status_effect/control_grab/proc/move_target()
+	if(!owner.client || INCAPACITATED_IGNORING(owner, INCAPABLE_GRAB))
+		clear_grab()
+		return
+	if(!range_check(grabbed_atom))
+		owner.balloon_alert(owner, "out of range!")
+		clear_grab()
+		return
+	if(mouse_catcher.mouse_params)
+		mouse_catcher.calculate_params()
+	if(!mouse_catcher.given_turf)
+		return
+	owner.setDir(get_dir(owner, grabbed_atom))
+	if(grabbed_atom.loc == mouse_catcher.given_turf)
+		if(grabbed_atom.pixel_x == mouse_catcher.given_x - ICON_SIZE_X/2 && grabbed_atom.pixel_y == mouse_catcher.given_y - ICON_SIZE_Y/2)
+			return
+		animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x + mouse_catcher.given_x - ICON_SIZE_X/2, pixel_y = grabbed_atom.base_pixel_y + mouse_catcher.given_y - ICON_SIZE_Y/2)
+		return
+	animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x + mouse_catcher.given_x - ICON_SIZE_X/2, pixel_y = grabbed_atom.base_pixel_y + mouse_catcher.given_y - ICON_SIZE_Y/2)
+	var/turf/next_turf = get_step_towards(grabbed_atom, mouse_catcher.given_turf)
+	if(grabbed_atom.Move(next_turf, get_dir(grabbed_atom, next_turf), 8))
+		if(isitem(grabbed_atom) && (owner in next_turf))
+			var/obj/item/grabbed_item = grabbed_atom
+			clear_grab()
+			grabbed_item.pickup(owner)
+			owner.put_in_hands(grabbed_item)
+		return
+
+	var/pixel_x_change = 0
+	var/pixel_y_change = 0
+	var/direction = get_dir(grabbed_atom, next_turf)
+	if(direction & NORTH)
+		pixel_y_change = ICON_SIZE_Y/2
+	else if(direction & SOUTH)
+		pixel_y_change = -ICON_SIZE_Y/2
+	if(direction & EAST)
+		pixel_x_change = ICON_SIZE_X/2
+	else if(direction & WEST)
+		pixel_x_change = -ICON_SIZE_X/2
+	animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x + pixel_x_change, pixel_y = grabbed_atom.base_pixel_y + pixel_y_change)
 
 /datum/status_effect/control_grab/proc/on_setanchored(atom/movable/grabbed_atom, anchorvalue)
 	SIGNAL_HANDLER
