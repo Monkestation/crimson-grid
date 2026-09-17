@@ -112,7 +112,6 @@
 
 /datum/species/human/shifter/bestial/on_species_gain(mob/living/carbon/human/species_fera_bestial, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
-	RegisterSignal(species_fera_bestial, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_resistance))
 	var/datum/component/regenerator/regenerator = species_fera_bestial.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
 		species_fera_bestial.AddComponent(/datum/component/regenerator, regeneration_delay = 2 SECONDS, heals_wounds = FALSE, brute_per_second = 10, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour = COLOR_ALMOST_BLACK)
@@ -122,7 +121,6 @@
 
 /datum/species/human/shifter/bestial/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
-	UnregisterSignal(human, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
 	qdel(human.GetComponent(/datum/component/regenerator))
 
 //CRIMSION GRID ADDITION END
@@ -139,12 +137,6 @@
 		damage_mods += 0.7
 	if(damagetype ==BURN)
 		damage_mods += 0.9
-/datum/species/human/shifter/bestial/proc/damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
-	SIGNAL_HANDLER
-	if(damagetype == BRUTE)
-		damage_mods += 0.85
-	if(damagetype == TOXIC)
-		damage_mods += 0.8
 /datum/splat/werewolf/shifter/garou/on_gain()
 	. = ..()
 	RegisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS,PROC_REF(garou_damage_resistance))
