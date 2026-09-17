@@ -320,6 +320,7 @@
 	auto_splats = list(/datum/splat/werewolf/shifter/corax)
 
 //CRMISON GRID ADDITION START - adds scaling rage speed and slowdown immunites based on rage amount
+
 /datum/splat/werewolf/proc/update_rage_effects()
 	if(!owner)
 		return
