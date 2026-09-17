@@ -318,12 +318,4 @@
 /mob/living/carbon/human/splat/corax
 	auto_splats = list(/datum/splat/werewolf/shifter/corax)
 
-//CRIMSON GRID ADDITION START - Rage heal for garou only
-/datum/splat/werewolf/shifter/garou/on_gain()
-	. = ..()
-	add_power(/datum/action/cooldown/power/gift/rage_heal)
 
-/datum/splat/werewolf/shifter/garou/on_lose_or_destroy()
-	. = ..()
-	remove_power(/datum/action/cooldown/power/gift/rage_heal)
-//CRIMSON GRID ADDITION END

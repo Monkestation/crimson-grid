@@ -70,3 +70,12 @@
 	W.heal_ordered_damage(heal_amount, list(AGGRAVATED))
 	W.update_damage_overlays()
 	return TRUE
+
+/datum/splat/werewolf/shifter/garou/on_gain()
+	. = ..()
+	add_power(/datum/action/cooldown/power/gift/rage_heal)
+
+/datum/splat/werewolf/shifter/garou/on_lose_or_destroy()
+	. = ..()
+	remove_power(/datum/action/cooldown/power/gift/rage_heal)
+
