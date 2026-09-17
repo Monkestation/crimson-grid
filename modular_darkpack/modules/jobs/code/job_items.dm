@@ -1,18 +1,20 @@
 
 /obj/item/card
 	var/shows_name = FALSE
-	/// Set this to a string to only have the last name of identity show up
+	/// Set this to a string to only have the last name of identity show up.
 	var/title_if_lastname_only = ""
-	var/listed_name
+	/// Uses alt_title passed from job preferences. title_if_lastname_only takes priority over this.
+	var/use_alt_title = FALSE
 
-/obj/item/card/proc/link_to_human(mob/living/carbon/human/linked)
+/obj/item/card/proc/link_to_human(mob/living/carbon/human/linked, alt_title)
 	if(!shows_name)
 		return
-	if(HAS_TRAIT(linked, TRAIT_ILLEGAL_IDENTITY))
-		listed_name = title_if_lastname_only ? "[title_if_lastname_only] [last_name(linked.dna.fake_name_identity)]" : linked.dna.fake_name_identity
-	else
-		listed_name = title_if_lastname_only ? "[title_if_lastname_only] [last_name(linked.real_name)]" : linked.real_name
-	name = "[initial(name)] - ([listed_name])"
+	var/listed_name = HAS_TRAIT(linked, TRAIT_ILLEGAL_IDENTITY) ? "[linked.dna.fake_name_identity]" : "[linked.real_name]"
+	if(title_if_lastname_only)
+		listed_name = "[title_if_lastname_only] [last_name(listed_name)]"
+	else if(use_alt_title)
+		listed_name = "[alt_title] [last_name(listed_name)]"
+	name = "\improper [initial(name)] - ([listed_name])"
 
 /obj/item/card/prince
 	name = "leader badge"
@@ -66,6 +68,7 @@
 	worn_icon_state = "green_id"
 
 	shows_name = TRUE
+	use_alt_title = TRUE
 
 /obj/item/card/bruiser
 	name = "bruiser badge"
@@ -122,6 +125,7 @@
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
 
 	shows_name = TRUE
+	use_alt_title = TRUE
 
 /obj/item/card/clinic/director
 	name = "clinic director's lanyard"
@@ -407,7 +411,7 @@
 	name = "\improper NPS Biologist lanyard"
 	desc = "You love the outdoors? Good, you are now taking care of a wide outdoors area."
 
-	title_if_lastname_only = "NPS Biologist"
+	title_if_lastname_only = "Park Biologist"
 
 /obj/item/card/pentex
 	name = "\improper " + MAIN_EVIL_COMPANY + " employee lanyard"
@@ -419,6 +423,7 @@
 	worn_icon_state = "green_id"
 
 	shows_name = TRUE
+	use_alt_title = TRUE
 
 /obj/item/card/pentex/branch_lead
 	name = "\improper " + MAIN_EVIL_COMPANY + " branch lead lanyard"
@@ -435,6 +440,8 @@
 /obj/item/card/pentex/affairs
 	name = "\improper " + MAIN_EVIL_COMPANY + " internal affairs lanyard"
 	desc = "And the lawyers are denying."
+
+	use_alt_title = FALSE
 
 /obj/item/card/pentex/secchief
 	name = "\improper " + MAIN_EVIL_COMPANY + " chief of security lanyard"

@@ -14,11 +14,11 @@
 	outfit = /datum/outfit/job/vampire/employee
 
 	alt_titles = list(
-		"Endron Employee",
-		"Endron Janitor",
-		"Endron Secretary",
-		"Endron Researcher",
-		"Endron Labourer"
+		"Employee",
+		"Janitor",
+		"Secretary",
+		"Researcher",
+		"Labourer"
 	)
 
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
