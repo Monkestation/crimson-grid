@@ -5,6 +5,45 @@
 	result = /obj/item/clothing/suit/vampire/trench/tzi
 	category = CAT_TZIMISCE
 
+/datum/crafting_recipe/tzi_heavyarmor // Requires 5 mulched humans and 3 blood points of vitae
+	name = "Bone Armor (Cuirass)"
+	desc = "A regal cuirass made of flesh and bone. An ancient recipe, rarely made today due to it's extraordinarily prohibitive cost. It is, however, exceptionally protective. Requires Vicissitude 3."
+	time = 15 SECONDS
+	reqs = list(/obj/item/stack/sheet/meat = 100, /obj/item/spine = 5, /datum/reagent/blood/vitae = 200, /datum/reagent/blood = 500)
+	structures = list(/obj/structure/table)
+	result = /obj/item/clothing/suit/vampire/bogatyr/heavy
+	category = CAT_TZIMISCE
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY // Maybe we fix this one day when our items are more sane
+
+/datum/crafting_recipe/tzi_heavyarmor/helmet
+	name = "Bone Armor (Helmet)"
+	desc = "A regal winged greathelm made of flesh and bone. An ancient recipe, rarely made today due to it's prohibitive cost. It is, however, exceptionally protective. Requires Vicissitude 3."
+	time = 10 SECONDS
+	reqs = list(/obj/item/stack/sheet/meat = 40, /obj/item/spine = 2, /datum/reagent/blood/vitae = 100, /datum/reagent/blood = 200)
+	result = /obj/item/clothing/head/vampire/bogatyr/heavy
+
+/datum/crafting_recipe/tzi_heavyarmor/check_requirements(mob/user, list/collected_requirements)
+	var/mob/living/living_user = astype(user)
+	var/datum/discipline/disc = living_user?.get_discipline(/datum/discipline/vicissitude)
+	if(disc.level >= 3)
+		return TRUE
+	else
+		return FALSE
+
+/datum/crafting_recipe/tzi_upgrade_armor
+	name = "Bone Armor (Upgrade)"
+	desc = "A regal golden helmet, reinforced with fleshcrafting."
+	time = 5 SECONDS
+	reqs = list(/obj/item/clothing/suit/vampire/bogatyr/heavy = 1, /obj/item/clothing/suit/vampire/bogatyr/captain = 1)
+	result = /obj/item/clothing/suit/vampire/bogatyr/captain/heavy
+	category = CAT_TZIMISCE
+
+/datum/crafting_recipe/tzi_upgrade_armor/helmet
+	name = "Bone Helmet (Upgrade)"
+	desc = "A set of regal golden armor, reinforced with fleshcrafting."
+	reqs = list(/obj/item/clothing/head/vampire/bogatyr/heavy = 1, /obj/item/clothing/head/vampire/bogatyr/captain = 1)
+	result = /obj/item/clothing/head/vampire/bogatyr/captain/heavy
+
 /datum/crafting_recipe/tzi_heart
 	name = "Second Heart (Antistun)"
 	time = 50

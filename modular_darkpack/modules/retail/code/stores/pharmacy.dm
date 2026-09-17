@@ -30,4 +30,9 @@
 		new /datum/data/vending_product("Brute Treatment Kit", /obj/item/storage/medkit/darkpack/brute, 700),
 		new /datum/data/vending_product("Oxygen Deprivation Kit", /obj/item/storage/medkit/darkpack/oxy, 700),
 // CRIMSON EDIT ADD END - Medkit to Pharmacy
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+		new /datum/data/vending_product("psicodine pill bottle", /obj/item/storage/pill_bottle/psicodine, 150),
+		new /datum/data/vending_product("multiver pill bottle", /obj/item/storage/pill_bottle/multiver, 150),
+		new /datum/data/vending_product("epinephrine medipen", /obj/item/reagent_containers/hypospray/medipen, 100),
+// CRIMSON EDIT ADD END - Shop Inventories Additions
 	)

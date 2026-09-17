@@ -10,7 +10,7 @@
 		/datum/discipline/dominate,
 		/datum/discipline/necromancy
 	)
-	clan_traits = list(TRAIT_ORGANOVORE)
+	subsplat_traits = list(TRAIT_ORGANOVORE)
 	male_clothes = /obj/item/clothing/under/vampire/emo
 	female_clothes = /obj/item/clothing/under/vampire/emo
 	whitelisted = FALSE

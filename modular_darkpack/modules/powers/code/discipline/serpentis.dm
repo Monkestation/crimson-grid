@@ -152,7 +152,7 @@
 	else
 		owner.st_add_stat_mod(STAT_STAMINA, 2, "Serpentis") // permanently on with no downsides according to dav20. its staying at fort one bro
 	ADD_TRAIT(owner, TRAIT_SERPENTIS_SKIN, DISCIPLINE_TRAIT(type)) //ideally this would either be blatantly obvious or not so much depending on the choice. I guess masq violating face trait will work for obvious.
-	owner.st_add_stat_mod(STAT_APPEARANCE, -(owner.st_get_stat(STAT_APPEARANCE) - 1), "Serpentis")
+	owner.st_add_stat_clamp(STAT_APPEARANCE, 0, "Serpentis")
 	/*
 	owner.Stun(duration_length)
 	owner.petrify(duration_length, "Serpentis")
@@ -167,7 +167,7 @@
 	else
 		owner.st_remove_stat_mod(STAT_STAMINA, 2, "Serpentis")
 	REMOVE_TRAIT(owner, TRAIT_SERPENTIS_SKIN, DISCIPLINE_TRAIT(type))
-	owner.st_remove_stat_mod(STAT_APPEARANCE, "Serpentis")
+	owner.st_remove_stat_clamp(STAT_APPEARANCE, "Serpentis")
 
 
 //THE FORM OF THE COBRA

@@ -9,3 +9,4 @@
 	excluded_clans = list(VAMPIRE_CLAN_NAGARAJA)
 	icon = FA_ICON_TEETH
 	failure_message = "You feel that you can once again feed normally."
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS

@@ -20,7 +20,7 @@
 	var/datum/splat/vampire/kindred/kindred = get_kindred_splat(human_holder)
 	if(kindred)
 		if(istype(kindred.clan, /datum/subsplat/vampire_clan/giovanni))
-			REMOVE_TRAIT(human_holder, TRAIT_PAINFUL_VAMPIRE_KISS, CLAN_TRAIT)
+			REMOVE_TRAIT(human_holder, TRAIT_PAINFUL_VAMPIRE_KISS, SUBSPLAT_TRAIT)
 
 			if(human_holder.chronological_age >= 300)
 				human_holder.rot_body(2)

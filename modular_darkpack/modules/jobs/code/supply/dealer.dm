@@ -9,10 +9,12 @@
 	outfit = /datum/outfit/job/vampire/dealer
 
 	display_order = JOB_DISPLAY_ORDER_DEALER
-	exp_required_type_department = EXP_TYPE_WAREHOUSE
 	departments_list = list(
 		/datum/job_department/supply,
 	)
+
+	exp_requirements = EXP_REQ_MINOR
+	exp_required_type_department = EXP_TYPE_WAREHOUSE
 
 	known_contacts = list(
 		JOB_PRINCE,

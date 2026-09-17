@@ -79,6 +79,7 @@
 
 	splat_traits = list(
 		TRAIT_FERA_RENOWN,
+		TRAIT_GAIA_CAERN_FRIEND, // Without them having there own tribes or declared alligence. This is the best way to determine.
 	)
 
 	// incompatible_splats = list(/datum/splat/werewolf/shifter) // TODO: Becoming a shifter should get rid of your kinfolk splat
@@ -105,6 +106,7 @@
 	var/list/transformation_list = list()
 	/// Stats added and removed upon gaining the species of the splat. Assoc list indexed by the species ids for each form
 	var/list/transformation_stats
+	var/list/transformation_stat_clamps
 	var/transform_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/transform.ogg'
 	COOLDOWN_DECLARE(transform_cd)
 	/**
@@ -224,7 +226,6 @@
 			STAT_STAMINA = 3,
 			STAT_DEXTERITY = 1,
 			STAT_MANIPULATION = -3,
-			// STAT_APPEARANCE = 0 // NOT YET SUPPORTED
 		),
 		SPECIES_FERA_DIRE = list(
 			STAT_STRENGTH = 3,
@@ -238,6 +239,11 @@
 			STAT_DEXTERITY = 2,
 			STAT_MANIPULATION = -3,
 		)
+	)
+	transformation_stat_clamps = list(
+		SPECIES_FERA_WAR = list(
+			STAT_APPEARANCE = 0
+		),
 	)
 	mimmicing_animal = /mob/living/basic/pet/dog/wolf
 
@@ -266,7 +272,6 @@
 			STAT_DEXTERITY = 1,
 			STAT_MANIPULATION = -2,
 			STAT_PERCEPTION = 3,
-			// STAT_APPEARANCE = 0 // NOT YET SUPPORTED
 		),
 		SPECIES_FERA_FERAL = list(
 			STAT_STRENGTH = -1,
@@ -274,6 +279,11 @@
 			STAT_MANIPULATION = -3,
 			STAT_PERCEPTION = 4,
 		)
+	)
+	transformation_stat_clamps = list(
+		SPECIES_FERA_WAR = list(
+			STAT_APPEARANCE = 0
+		),
 	)
 	transform_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/corax_transform.ogg'
 	mob_icons = list(

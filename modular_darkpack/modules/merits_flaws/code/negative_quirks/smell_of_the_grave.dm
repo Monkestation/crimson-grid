@@ -10,3 +10,4 @@ Mortals in your immediate presence become uncomfortable, so the difficulties of 
 	allowed_splats = list(SPLAT_KINDRED)
 	icon = FA_ICON_SPRAY_CAN
 	failure_message = span_notice("You feel like you smell a lot better.")
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS

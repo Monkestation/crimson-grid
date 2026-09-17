@@ -7,6 +7,7 @@ import {
   Box,
   Button,
   Floating,
+  Icon, // DARKPACK EDIT ADD
   Input,
   LabeledList,
   NumberInput, // DARKPACK EDIT
@@ -17,6 +18,7 @@ import { exhaustiveCheck } from 'tgui-core/exhaustive'; // DARKPACK EDIT ADD
 import { classes } from 'tgui-core/react';
 import { createSearch } from 'tgui-core/string';
 import { CharacterPreview } from '../../common/CharacterPreview';
+import { ConfirmModal } from '../components/ConfirmModal'; // DARKPACK EDIT ADD
 import { PageButton } from '../components/PageButton'; // DARKPACK EDIT ADD
 import { RandomizationButton } from '../components/RandomizationButton';
 import { features } from '../preferences/features';
@@ -34,8 +36,8 @@ import {
 import { useRandomToggleState } from '../useRandomToggleState';
 import { useServerPrefs } from '../useServerPrefs';
 import { DeleteCharacterPopup } from './DeleteCharacterPopup';
-import { MultiNameInput, NameInput } from './names';
 import { VocalsInput, VoiceInput } from './darkpack_vocals'; // DARKPACK EDIT ADDITION
+import { MultiNameInput, NameInput } from './names';
 
 const CLOTHING_CELL_SIZE = 48;
 const CLOTHING_SIDEBAR_ROWS = 12; // DARKPACK EDIT CHANGE - ORIGINAL: 9;
@@ -105,10 +107,11 @@ type ChoicedSelectionProps = {
   supplementalFeature?: string;
   supplementalValue?: unknown;
   onSelect: (value: string) => void;
+  isLocked?: (choice: string) => boolean; // DARKPACK EDIT ADD
 };
 
 function ChoicedSelection(props: ChoicedSelectionProps) {
-  const { catalog, supplementalFeature, supplementalValue } = props;
+  const { catalog, supplementalFeature, supplementalValue, isLocked } = props; // DARKPACK EDIT CHANGE - ORIGINAL: const { catalog, supplementalFeature, supplementalValue } = props;
   const [searchText, setSearchText] = useState('');
 
   if (!catalog.icons) {
@@ -154,6 +157,7 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
             <Stack wrap>
               {searchInCatalog(searchText, catalog.icons).map(
                 ([name, image], index) => {
+                  const locked = isLocked?.(name) ?? false; // DARKPACK EDIT ADD
                   return (
                     <Button
                       key={index}
@@ -161,11 +165,16 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
                         props.onSelect(name);
                       }}
                       selected={name === props.selected}
-                      tooltip={name}
+                      tooltip={
+                        locked
+                          ? `${name} (Not whitelisted!)`
+                          : name
+                      } // DARKPACK EDIT ADD
                       tooltipPosition="right"
                       style={{
                         height: `${CLOTHING_SELECTION_CELL_SIZE}px`,
                         width: `${CLOTHING_SELECTION_CELL_SIZE}px`,
+                        position: 'relative', // DARKPACK EDIT ADD
                       }}
                     >
                       <Box
@@ -177,8 +186,25 @@ function ChoicedSelection(props: ChoicedSelectionProps) {
                         style={{
                           transform:
                             'translateX(-50%) translateY(-50%) scale(0.8)',
+                          opacity: locked ? 0.4 : 1, // DARKPACK EDIT ADD
                         }}
                       />
+                      {/* DARKPACK EDIT START */}
+                      {locked && (
+                        <Box
+                          style={{
+                            position: 'absolute',
+                            bottom: '2px',
+                            right: '2px',
+                            fontSize: '11px',
+                            color: 'rgba(255,255,255,0.85)',
+                            pointerEvents: 'none',
+                          }}
+                        >
+                          <Icon name="lock" color="label" />
+                        </Box>
+                      )}
+                      {/* DARKPACK EDIT END */}
                     </Button>
                   );
                 },
@@ -257,6 +283,7 @@ type MainFeatureProps = {
   handleSelect: (newClothing: string) => void;
   randomization?: RandomSetting;
   setRandomization: (newSetting: RandomSetting) => void;
+  isLocked?: (choice: string) => boolean; // DARKPACK EDIT ADD
 };
 
 function MainFeature(props: MainFeatureProps) {
@@ -267,6 +294,7 @@ function MainFeature(props: MainFeatureProps) {
     handleSelect,
     randomization,
     setRandomization,
+    isLocked, // DARKPACK EDIT ADD
   } = props;
 
   const supplementalFeature = catalog.supplemental_feature;
@@ -288,6 +316,7 @@ function MainFeature(props: MainFeatureProps) {
             ]
           }
           onSelect={handleSelect}
+          isLocked={isLocked} // DARKPACK EDIT ADD
         />
       }
     >
@@ -413,7 +442,7 @@ export function PreferenceList(props: PreferenceListProps) {
                         value={value}
                       />
                     )}
-                  {/*DARKPACK EDIT END */}
+                    {/*DARKPACK EDIT END */}
                   </Stack.Item>
                 </Stack>
               </LabeledList.Item>
@@ -463,7 +492,13 @@ export function MainPage(props: MainPageProps) {
   const [multiNameInputOpen, setMultiNameInputOpen] = useState(false);
   const [vocalsInputOpen, setVocalsInputOpen] = useState(false); // DARKPACK EDIT ADDITION
   const [randomToggleEnabled] = useRandomToggleState();
-  const [pendingConfirm, setPendingConfirm] = useState<(() => void) | null>(null); // DARKPACK EDIT ADD - for popups
+  const [pendingConfirm, setPendingConfirm] = useState<(() => void) | null>(
+    null,
+  ); // DARKPACK EDIT ADD - for popups
+  // DARKPACK EDIT START
+  const whitelistSet = new Set(data.player_whitelists || []);
+  const isTrusted = whitelistSet.has('trusted');
+  // DARKPACK EDIT END
 
   const serverData = useServerPrefs();
 
@@ -492,8 +527,12 @@ export function MainPage(props: MainPageProps) {
     ...data.character_preferences.non_contextual,
   };
   // DARKPACK EDIT ADD START - tracking age changes
-  const immortalAgeValue = nonContextualPreferences.immortal_age as number | undefined;
-  const immortalAgeServerData = serverData?.immortal_age as { minimum: number; maximum: number; step: number } | undefined;
+  const immortalAgeValue = nonContextualPreferences.immortal_age as
+    | number
+    | undefined;
+  const immortalAgeServerData = serverData?.immortal_age as
+    | { minimum: number; maximum: number; step: number }
+    | undefined;
   // DARKPACK EDIT ADD END
 
   if (randomBodyEnabled) {
@@ -540,18 +579,21 @@ export function MainPage(props: MainPageProps) {
           maxHeight="auto"
           // DARKPACK EDIT ADD START
           overrides={{
-            immortal_age: immortalAgeValue !== undefined ? (
-              <NumberInput
-                value={immortalAgeValue}
-                minValue={immortalAgeServerData?.minimum ?? 0}
-                maxValue={immortalAgeServerData?.maximum ?? 1000}
-                step={immortalAgeServerData?.step ?? 1}
-                onChange={(value) => setPendingConfirm(() => () => {
-                  createSetPreference(act, 'immortal_age')(value);
-                  act('clear_discipline_levels');
-                })}
-              />
-            ) : undefined,
+            immortal_age:
+              immortalAgeValue !== undefined ? (
+                <NumberInput
+                  value={immortalAgeValue}
+                  minValue={immortalAgeServerData?.minimum ?? 0}
+                  maxValue={immortalAgeServerData?.maximum ?? 1000}
+                  step={immortalAgeServerData?.step ?? 1}
+                  onChange={(value) =>
+                    setPendingConfirm(() => () => {
+                      createSetPreference(act, 'immortal_age')(value);
+                      act('clear_discipline_levels');
+                    })
+                  }
+                />
+              ) : undefined,
           }}
           // DARKPACK EDIT ADD END
         />
@@ -597,60 +639,13 @@ export function MainPage(props: MainPageProps) {
       )}
       {/* DARKPACK EDIT START - popup for clan, age, etc. changes */}
       {pendingConfirm !== null && (
-        <Box
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'rgba(0,0,0,0.75)',
-            zIndex: 9999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+        <ConfirmModal
+          onConfirm={() => {
+            pendingConfirm?.();
+            setPendingConfirm(null);
           }}
-        >
-          <Box
-            style={{
-              background: '#1b1b1b',
-              border: '1px solid #555',
-              padding: '20px',
-              maxWidth: '380px',
-              width: '90%',
-            }}
-          >
-            <Box bold textAlign="center" fontSize={1.1} mb={1} mt={-1}>
-              Change Character Details?
-            </Box>
-            <Box color="label" mb={2}>
-              Changing significant character details (Clan, age, etc.) will wipe ALL of your existing disciplines.
-              This cannot be undone. Are you sure?
-            </Box>
-            <Stack textAlign="center" justify="center">
-              <Stack.Item>
-                <Button
-                  textAlign="center"
-                  onClick={() => setPendingConfirm(null)}
-                >
-                  Cancel
-                </Button>
-              </Stack.Item>
-              <Stack.Item>
-                <Button
-                  textAlign="center"
-                  color="bad"
-                  onClick={() => {
-                    pendingConfirm?.();
-                    setPendingConfirm(null);
-                  }}
-                >
-                  Proceed
-                </Button>
-              </Stack.Item>
-            </Stack>
-          </Box>
-        </Box>
+          onCancel={() => setPendingConfirm(null)}
+        />
       )}
       {/* DARKPACK EDIT END*/}
 
@@ -693,15 +688,15 @@ export function MainPage(props: MainPageProps) {
                 }}
               />
 
-            {/* DARKPACK EDIT ADDITION START */}
-            <Stack.Item position="relative">
-              <VoiceInput
-                openVocalsInput={() => {
-                  setVocalsInputOpen(true);
-                }}
-              />
-            </Stack.Item>
-            {/* DARKPACK EDIT ADDITION END */}
+              {/* DARKPACK EDIT ADDITION START */}
+              <Stack.Item position="relative">
+                <VoiceInput
+                  openVocalsInput={() => {
+                    setVocalsInputOpen(true);
+                  }}
+                />
+              </Stack.Item>
+              {/* DARKPACK EDIT ADDITION END */}
             </Stack.Item>
           </Stack>
         </Stack.Item>
@@ -732,7 +727,19 @@ export function MainPage(props: MainPageProps) {
                     }
                   : baseSelect;
               // DARKPACK EDIT END
-
+              // DARKPACK EDIT START - lock icons for whitelisted clans
+              const isChoiceLocked =
+                clothingKey === 'vampire_clan'
+                  ? (choice: string) => {
+                      const whitelistId = data.clan_names_to_key[choice];
+                      return (
+                        !!whitelistId &&
+                        !isTrusted &&
+                        !whitelistSet.has(whitelistId)
+                      );
+                    }
+                  : undefined;
+              // DARKPACK EDIT END
               return (
                 <Stack.Item key={clothingKey}>
                   {!catalog ? (
@@ -745,6 +752,7 @@ export function MainPage(props: MainPageProps) {
                       handleSelect={handleSelect}
                       randomization={randomizationOfMainFeatures[clothingKey]}
                       setRandomization={createSetRandomization(clothingKey)}
+                      isLocked={isChoiceLocked} // DARKPACK EDIT ADD
                     />
                   )}
                 </Stack.Item>

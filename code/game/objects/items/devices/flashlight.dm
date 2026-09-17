@@ -616,6 +616,7 @@
 	. = ..()
 	AddElement(/datum/element/floor_placeable)
 	AddElement(/datum/element/update_icon_updates_onmob)
+	ADD_TRAIT(src, TRAIT_ELEVATED_FLAME, INNATE_TRAIT) // DARKPACK EDIT ADD - TURF_FIRE
 
 /**
  * Just checks the wax level of the candle for displaying the correct sprite.

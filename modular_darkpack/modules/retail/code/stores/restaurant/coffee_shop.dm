@@ -1,5 +1,4 @@
 /obj/structure/retail/coffee_shop
-	name = "Coffee Shop"
 	desc = "Mmmm, Donuts... Overpriced, but warm. The best you'll be getting on a night like this."
 	owner_needed = FALSE
 	product_types = list(

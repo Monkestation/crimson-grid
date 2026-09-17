@@ -10,7 +10,7 @@
 		/datum/discipline/dominate,
 		/datum/discipline/necromancy
 	)
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_PAINFUL_VAMPIRE_KISS
 	)
 	male_clothes = /obj/item/clothing/under/vampire/suit

@@ -64,11 +64,14 @@
 /mob/living/basic/corvid/update_overlays()
 	. = ..()
 
-	var/mutable_appearance/eyes_overlay = mutable_appearance(icon, "eyes[HAS_TRAIT(src, TRAIT_MOVE_FLYING) ? "_flying" : ""]")
-	SET_PLANE(eyes_overlay, ABOVE_LIGHTING_PLANE, src)
+	/*
+	var/mutable_appearance/eyes_overlay = mutable_appearance(icon, "eyes[HAS_TRAIT(src, TRAIT_MOVE_FLYING) ? "_flying" : ""]", -EYES_LAYER, src)
 	eyes_overlay.color = sprite_eye_color
-	// eyes_overlay.layer = ABOVE_LIGHTING_LAYER
 	. += eyes_overlay
+	*/
+
+	var/mutable_appearance/emissive_overlay = emissive_appearance(icon, "eyes[HAS_TRAIT(src, TRAIT_MOVE_FLYING) ? "_flying" : ""]", src, effect_type = EMISSIVE_SPECULAR)
+	. += emissive_overlay
 
 /datum/action/innate/togglecorvidflight // this action handles corvid forms toggle their flight, and swaps their sprite to be of the relevant type.
 	name = "Toggle Flight"

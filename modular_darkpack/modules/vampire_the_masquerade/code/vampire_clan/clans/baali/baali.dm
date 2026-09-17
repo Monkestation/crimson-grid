@@ -11,7 +11,7 @@
 		/datum/discipline/daimoinon
 	)
 
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_REPELLED_BY_HOLINESS
 	)
 	male_clothes = /obj/item/clothing/under/vampire/baali

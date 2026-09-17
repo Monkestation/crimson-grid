@@ -8,10 +8,7 @@
 	supervisors = /datum/job/vampire/warder
 	req_admin_notify = 1
 	minimal_player_age = 25
-	exp_requirements = 50
-	exp_required_type = EXP_TYPE_GAIA
 	exp_required_type_department = EXP_TYPE_GAIA
-	exp_granted_type = EXP_TYPE_GAIA
 	config_tag = "GUARDIAN"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/guardian

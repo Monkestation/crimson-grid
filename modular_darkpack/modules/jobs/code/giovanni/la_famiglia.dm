@@ -36,3 +36,7 @@
 	l_pocket = /obj/item/smartphone/giovanni_famiglia
 	r_pocket = /obj/item/vamp/keys/giovanni
 	backpack_contents = list(/obj/item/card/credit=1)
+
+/datum/outfit/job/vampire/famiglia/post_equip(mob/living/carbon/human/H)
+	. = ..()
+	H.grant_language(/datum/language/italian, source = "job")

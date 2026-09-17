@@ -86,7 +86,8 @@ export type DisciplineInfo = {
 };
 // DARKPACK EDIT END - DISCIPLINES
 
-export type Splats = { // DARKPACK EDIT ADD START - SPLATS
+export type Splats = {
+  // DARKPACK EDIT ADD START - SPLATS
   name: string;
   desc: string;
   lore: string[];
@@ -230,7 +231,7 @@ export type PreferencesMenuData = {
     }
   >;
   job_preferences: JobPreference[];
-// DARKPACK EDIT ADD -  ALTERNATIVE_JOB_TITLES
+  // DARKPACK EDIT ADD -  ALTERNATIVE_JOB_TITLES
   job_alt_titles: Record<string, string>;
   keybindings: Record<string, string[]>;
   overflow_role: string;
@@ -249,6 +250,8 @@ export type PreferencesMenuData = {
   discipline_tier: string;
   discipline_tier_details: string;
   is_trusted: BooleanLike;
+  player_whitelists: string[]; // DARKPACK EDIT ADD - WHITELIST
+  clan_names_to_key: Record<string, string>; // DARKPACK EDIT ADD - WHITELIST
   max_trusted_generation: number;
   max_public_generation: number;
   highest_generation_limit: number;

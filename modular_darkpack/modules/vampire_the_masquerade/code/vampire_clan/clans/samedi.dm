@@ -10,7 +10,7 @@
 		/datum/discipline/thanatosis
 	)
 	alt_sprite = "rotten4"
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_MASQUERADE_VIOLATING_FACE
 	)
 	whitelisted = TRUE
