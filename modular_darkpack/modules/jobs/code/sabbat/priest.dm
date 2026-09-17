@@ -39,7 +39,7 @@
 		H.mind.add_antag_datum(/datum/antagonist/sabbatist/priest)
 
 /datum/antagonist/sabbatist/priest
-	antag_hud_name = "ductus_priest"
+	antag_hud_name = "priest" // CRIMSON EDIT - Sabbat Rank Icons - Original: "ductus_priest"
 
 /obj/item/sabbat_priest_tome
 	name = "Sabbat Priest's Tome"

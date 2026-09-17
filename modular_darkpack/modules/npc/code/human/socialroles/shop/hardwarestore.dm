@@ -15,4 +15,15 @@
 		"The cheap version will work... I hope.",
 		"Online tutorial got you here, huh?",
 		"I don't know what you're building and I've decided not to ask.",
+// CRIMSON GRID ADD START - Shop TLC
+		"Would you look at all that stuff...",
+		"We've got allen wrenches, gerbil feeders, toilet seats, electric heaters...",
+		"Matching salt-and-pepper shakers are out of stock.",
+		"Might I interest you in pesticides for fumigation... or high-performance lubrication?",
+		"Every 27th customer gets a ball-peen hammer, free of charge!",
+		"We've got a special pair of pliers for EVERY room of your house!",
+		"Absolutely NO returns for our automatic circumcisers.",
+		"You just can't wait, can you?",
+		"Our door opens when we say it does. Stop asking.",
+// CRIMSON GRID ADD END - Shop TLC
 	)
