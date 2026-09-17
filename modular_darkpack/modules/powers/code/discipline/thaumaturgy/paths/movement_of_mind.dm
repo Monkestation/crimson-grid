@@ -1,7 +1,7 @@
 /datum/discipline/path/mind_movement
 	name = "Movement of the Mind"
 	desc = "todo"
-	icon_state = "flames"
+	icon_state = "mind"
 	power_type = /datum/discipline_power/thaumaturgy/path/mind_movement
 
 
@@ -186,7 +186,8 @@
 /obj/item/path_spellbook/movement_of_mind
 	name = "Movement of the Mind spellbook"
 	desc = "todo"
-	icon_state = "flames_spellbook"
+	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
+	icon_state = "mind_spellbook"
 	path_type = /datum/discipline/path/mind_movement
 
 /obj/item/path_spellbook/movement_of_mind/debug
