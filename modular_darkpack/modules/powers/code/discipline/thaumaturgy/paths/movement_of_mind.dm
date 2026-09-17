@@ -32,17 +32,6 @@
 	target_type = TARGET_OBJ | TARGET_LIVING
 	range = 3
 
-/datum/discipline_power/thaumaturgy/path/mind_movement/five/activate(atom/target)
-	. = ..()
-	if(.)
-		return
-	owner.apply_status_effect(/datum/status_effect/control_grab, target)
-
-/datum/status_effect/control_grab
-	id = "control"
-	status_type = STATUS_EFFECT_REPLACE
-	alert_type = null
-
 	/// Atom we grabbed with kinesis.
 	var/atom/movable/grabbed_atom
 	/// Our mouse movement catcher.
@@ -50,22 +39,20 @@
 	/// Overlay we add to each grabbed atom.
 	var/mutable_appearance/kinesis_icon
 
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/activate(atom/target)
+	. = ..()
+	if(.)
+		return
+	// clear grab if we are holding something up already
+	if(grabbed_atom)
+		clear_grab()
+	grab_atom(target)
+
 /atom/movable/screen/fullscreen/cursor_catcher/control
 	icon_state = "kinesis"
 
-/datum/status_effect/control_grab/on_creation(mob/living/new_owner, atom/movable/target)
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/grab_atom(atom/target)
 	grabbed_atom = target
-	. = ..()
-
-/datum/status_effect/control_grab/on_apply()
-	. = ..()
-	grab_atom()
-
-/datum/status_effect/control_grab/on_remove()
-	. = ..()
-	clear_grab()
-
-/datum/status_effect/control_grab/proc/grab_atom()
 	if(isliving(grabbed_atom))
 		grabbed_atom.add_traits(list(TRAIT_IMMOBILIZED), REF(src))
 	RegisterSignal(grabbed_atom, COMSIG_MOVABLE_SET_ANCHORED, PROC_REF(on_setanchored))
@@ -77,7 +64,7 @@
 
 	RegisterSignal(mouse_catcher, COMSIG_SCREEN_ELEMENT_CLICK, PROC_REF(on_catcher_click))
 
-/datum/status_effect/control_grab/proc/clear_grab()
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/clear_grab()
 	if(!grabbed_atom)
 		return
 	. = grabbed_atom
@@ -90,10 +77,8 @@
 	owner.clear_fullscreen("kinesis")
 	grabbed_atom.cut_overlay(kinesis_icon)
 	grabbed_atom = null
-	qdel(src)
 
-
-/datum/status_effect/control_grab/proc/range_check(atom/target)
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/range_check(atom/target)
 	if(!isturf(owner.loc))
 		return FALSE
 	if(ismovable(target) && !isturf(target.loc))
@@ -102,7 +87,7 @@
 		return FALSE
 	return TRUE
 
-/datum/status_effect/control_grab/proc/on_catcher_click(atom/source, location, control, params, user)
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/on_catcher_click(atom/source, location, control, params, user)
 	SIGNAL_HANDLER
 
 	var/list/modifiers = params2list(params)
@@ -124,7 +109,7 @@
 		move_target()
 		return
 
-/datum/status_effect/control_grab/proc/move_target()
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/move_target()
 	if(!owner.client || INCAPACITATED_IGNORING(owner, INCAPABLE_GRAB))
 		clear_grab()
 		return
@@ -165,19 +150,19 @@
 		pixel_x_change = -ICON_SIZE_X/2
 	animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x + pixel_x_change, pixel_y = grabbed_atom.base_pixel_y + pixel_y_change)
 
-/datum/status_effect/control_grab/proc/on_setanchored(atom/movable/grabbed_atom, anchorvalue)
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/on_setanchored(atom/movable/grabbed_atom, anchorvalue)
 	SIGNAL_HANDLER
 
 	if(grabbed_atom.anchored)
 		clear_grab()
 
-/datum/status_effect/control_grab/proc/launch(atom/movable/launched_object, turf/launch_to)
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/launch(atom/movable/launched_object, turf/launch_to)
 	playsound(launched_object, 'sound/effects/magic/repulse.ogg', 100, TRUE)
 	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(launch_impact))
 	launched_object.throw_at(launch_to, range = 10, speed = launched_object.density ? 3 : 4, thrower = owner, spin = isitem(launched_object))
 
 //TODO: Rework to use rolls
-/datum/status_effect/control_grab/proc/launch_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/launch_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
 	SIGNAL_HANDLER
 
 	UnregisterSignal(source, COMSIG_MOVABLE_IMPACT)
