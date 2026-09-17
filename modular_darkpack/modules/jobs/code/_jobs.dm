@@ -149,10 +149,6 @@
 			for(var/i in 1 to number)
 				all_items += new path(wallet)
 
-	for(var/obj/item/card/found_card in all_items)
-		if(found_card.shows_name)
-			found_card.link_to_human(user)
-
 	var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[user.account_id]"]
 	var/obj/item/card/credit/credit_card = locate() in all_items
 	if(account && account.account_id == user.account_id)
@@ -211,19 +207,16 @@
 	var/country_of_origin = user.dna.country_of_origin
 	if(country_of_origin && wallet)
 		var/driving_skill = user.st_get_stat(STAT_DRIVE)
-		var/obj/item/card/drivers_license/license
 		if(country_of_origin == DEFAULT_COUNTRY_NAME)
 			if(!driving_skill)
-				license = new /obj/item/card/drivers_license/state_issued_id(wallet)
+				new /obj/item/card/drivers_license/state_issued_id(wallet)
 			else
-				license = new /obj/item/card/drivers_license(wallet)
-			license.link_to_human(user)
+				new /obj/item/card/drivers_license(wallet)
 		else
 			if(driving_skill)
 				license = new /obj/item/card/drivers_license/international(wallet)
 				license.link_to_human(user)
-			var/obj/item/passport/passport = new /obj/item/passport(wallet)
-			passport.link_human(user)
+			new /obj/item/passport(wallet)
 
 	if(wallet && HAS_TRAIT(user, TRAIT_WALLET_HATER)) // Applied from "spawn_wallet" preferences
 		var/list/wallet_contents = list()
