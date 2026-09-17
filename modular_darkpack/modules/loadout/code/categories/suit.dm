@@ -93,6 +93,30 @@
 	name = "Gray Bomber Jacket"
 	item_path = /obj/item/clothing/suit/vampire/bomber_jacket_gray
 
+/datum/loadout_item/suit/jacket/racingjacket
+	name = "Black and Yellow Racing Jacket"
+	item_path = /obj/item/clothing/suit/vampire/racing_jacket
+
+/datum/loadout_item/suit/jacket/racingjacket/blackblue
+	name = "Black and Blue Racing Jacket"
+	item_path = /obj/item/clothing/suit/vampire/racing_jacket/blackblue
+
+/datum/loadout_item/suit/jacket/racingjacket/whitered
+	name = "White and Red Racing Jacket"
+	item_path = /obj/item/clothing/suit/vampire/racing_jacket/whitered
+
+/datum/loadout_item/suit/jacket/racingjacket/whiteyellow
+	name = "White and Yellow Racing Jacket"
+	item_path = /obj/item/clothing/suit/vampire/racing_jacket/whiteyellow
+
+/datum/loadout_item/suit/jacket/racingjacket/bluewhite
+	name = "Blue and White Racing Jacket"
+	item_path = /obj/item/clothing/suit/vampire/racing_jacket/bluewhite
+
+/datum/loadout_item/suit/jacket/racingjacket/redwhite
+	name = "Red and White Racing Jacket"
+	item_path = /obj/item/clothing/suit/vampire/racing_jacket/redwhite
+
 // Trenchcoats
 /datum/loadout_item/suit/trenchcoat
 	abstract_type = /datum/loadout_item/suit/trenchcoat

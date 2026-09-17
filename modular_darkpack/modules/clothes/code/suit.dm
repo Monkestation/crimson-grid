@@ -653,3 +653,34 @@
 	name = "white shawl"
 	desc = "A white shawl."
 	icon_state = "shawl_white"
+
+/obj/item/clothing/suit/vampire/racing_jacket
+	name = "Black and Yellow racing jacket"
+	desc = "A black and yellow japanese racing jacket."
+	icon_state = "blackyellow_racejacket"
+	armor_type = /datum/armor/brown_leather_jacket
+
+/obj/item/clothing/suit/vampire/racing_jacket/blackblue
+	name = "Black and Blue racing jacket"
+	desc = "A black and blue japanese racing jacket."
+	icon_state = "blackblue_racejacket"
+
+/obj/item/clothing/suit/vampire/racing_jacket/whitered
+	name = "White and Red racing jacket"
+	desc = "A white and red japanese racing jacket."
+	icon_state = "whitered_racejacket"
+
+/obj/item/clothing/suit/vampire/racing_jacket/whiteyellow
+	name = "White and Yellow racing jacket"
+	desc = "A white and yellow japanese racing jacket."
+	icon_state = "whiteyellow_racejacket"
+
+/obj/item/clothing/suit/vampire/racing_jacket/bluewhite
+	name = "Blue and White racing jacket"
+	desc = "A blue and white japanese racing jacket."
+	icon_state = "bluewhite_racejacket"
+
+/obj/item/clothing/suit/vampire/racing_jacket/redwhite
+	name = "Red and White racing jacket"
+	desc = "A red and white japanese racing jacket."
+	icon_state = "redwhite_racejacket"
