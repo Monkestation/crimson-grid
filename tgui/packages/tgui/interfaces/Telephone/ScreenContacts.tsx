@@ -241,7 +241,7 @@ export const ScreenContacts = (props: {
                   setEnteredNumber(contact.number);
                   setApp(NavigableApps.Phone);
                 }}
-                onDelete={() => act('unblock', { name: contact.name })}
+                onDelete={() => act('unblock', { number: contact.number })}
               />
             ))}
           </Collapsible>
