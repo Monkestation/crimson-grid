@@ -101,7 +101,7 @@
 /datum/component/aura/proc/update_examine_message(mutable_appearance/aura_appearance)
 	var/mob/parent_mob = parent
 
-	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_CONFIDENCE)) //
+	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_CONFIDENCE))
 		examine_message = "[parent_mob.p_Their()] aura is swamped in so much superiority nothing else can be made out."
 		return
 
@@ -225,7 +225,7 @@
 	holder.color = null
 
 	var/mob/parent_mob = parent
-	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_CONFIDENCE)) //
+	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_CONFIDENCE))
 		return
 
 	if(output_color && has_pale_aura(parent_mob))
@@ -298,7 +298,7 @@
 	holder.vis_contents += aura_classic_image
 	holder.vis_contents += aura_smoke_image
 
-	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_CONFIDENCE)) //
+	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_CONFIDENCE))
 		return
 
 	if(HAS_TRAIT(parent_mob, TRAIT_DIABLERIE) && !HAS_TRAIT(parent_mob, TRAIT_HIDDEN_DIABLERIE))
