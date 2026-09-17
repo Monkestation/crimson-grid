@@ -20,6 +20,10 @@
 
 
 /datum/subsplat/vampire_clan/brujah/psychomania_effect(mob/living/target, mob/living/owner)
-	to_chat(target, span_warning("You see visions of an underground stone monument weeping blood."))
+	// CRIMSON GRID ADD: DARK THAUMATURGY. BEFORE:
+	/* to_chat(target, span_warning("You see visions of an underground stone monument weeping blood."))
 	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh3.ogg", 50, FALSE)
-	to_chat(target, span_cult("THE BEAST RAGES AGAINST THIS VISION!!"))
+	to_chat(target, span_cult("THE BEAST RAGES AGAINST THIS VISION!!")) */
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
