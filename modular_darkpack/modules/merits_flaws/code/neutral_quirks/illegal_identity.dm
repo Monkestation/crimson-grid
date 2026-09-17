@@ -28,8 +28,8 @@
 	if(!criminal)
 		return
 	for(var/item in criminal.gather_belongings()) // Relink passports and cards after quirk is applied
-		if(istype(item, /obj/item/passport))
-			var/obj/item/passport/passport = item
+		if(istype(item, /obj/item/identification))
+			var/obj/item/identification/passport = item
 			passport.link_human(criminal)
 			continue
 		if(istype(item, /obj/item/card))

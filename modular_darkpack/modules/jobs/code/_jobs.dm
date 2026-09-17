@@ -209,14 +209,13 @@
 		var/driving_skill = user.st_get_stat(STAT_DRIVE)
 		if(country_of_origin == DEFAULT_COUNTRY_NAME)
 			if(!driving_skill)
-				new /obj/item/card/drivers_license/state_issued_id(wallet)
+				new /obj/item/identification/drivers_license/state_issued_id(wallet)
 			else
-				new /obj/item/card/drivers_license(wallet)
+				new /obj/item/identification/drivers_license(wallet)
 		else
 			if(driving_skill)
-				license = new /obj/item/card/drivers_license/international(wallet)
-				license.link_to_human(user)
-			new /obj/item/passport(wallet)
+				new /obj/item/identification/drivers_license/international(wallet)
+			new /obj/item/identification/passport(wallet)
 
 	if(wallet && HAS_TRAIT(user, TRAIT_WALLET_HATER)) // Applied from "spawn_wallet" preferences
 		var/list/wallet_contents = list()

@@ -20,7 +20,7 @@
 			if(found_card.shows_name)
 				found_card.link_to_human(equipping, alt_title)
 			continue
-		if(istype(possible_item, /obj/item/passport))
-			var/obj/item/passport/found_passport = possible_item
-			found_passport.link_human(equipping)
+		if(istype(possible_item, /obj/item/identification))
+			var/obj/item/identification/found_identification = possible_item
+			found_identification.link_human(equipping)
 			continue
