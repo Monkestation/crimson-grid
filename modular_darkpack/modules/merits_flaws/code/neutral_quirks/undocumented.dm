@@ -18,5 +18,5 @@
 		return
 
 	for(var/item in undocumented.gather_belongings()) // prolly a faster way to do this
-		if(istype(item, /obj/item/passport) || istype(item, /obj/item/card/drivers_license))
+		if(istype(item, /obj/item/identification))
 			qdel(item)
