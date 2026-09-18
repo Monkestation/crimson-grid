@@ -31,7 +31,7 @@
 	violates_masquerade = TRUE
 	target_type = TARGET_OBJ | TARGET_LIVING
 	range = 3
-
+	toggled = TRUE
 	/// Atom we grabbed with kinesis.
 	var/atom/movable/grabbed_atom
 	/// Our mouse movement catcher.
@@ -42,11 +42,13 @@
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/activate(atom/target)
 	. = ..()
 	if(.)
+		deactivate()
 		return
-	// clear grab if we are holding something up already
-	if(grabbed_atom)
-		clear_grab()
 	grab_atom(target)
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/deactivate(atom/target, direct)
+	. = ..()
+	clear_grab()
 
 /atom/movable/screen/fullscreen/cursor_catcher/control
 	icon_state = "kinesis"
@@ -77,6 +79,7 @@
 	owner.clear_fullscreen("kinesis")
 	grabbed_atom.cut_overlay(kinesis_icon)
 	grabbed_atom = null
+	deactivate()
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/range_check(atom/target)
 	if(!isturf(owner.loc))
