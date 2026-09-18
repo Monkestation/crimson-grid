@@ -3066,12 +3066,6 @@
 /obj/effect/decal/shadow,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
-"aNc" = (
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor5-old"
-	},
-/turf/open/floor/wood/rough,
-/area/vtm/interior/laundromat)
 "aNg" = (
 /obj/machinery/sprinkler/area_managed,
 /turf/open/floor/wood/smooth/old,
@@ -33177,8 +33171,6 @@
 "hXU" = (
 /obj/structure/table/wood,
 /obj/machinery/light/directional/north,
-/obj/item/fireaxe/vamp,
-/obj/item/toy/crayon/spraycan,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "hXY" = (
@@ -36942,15 +36934,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
-"iOx" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 15;
-	name = "bars"
-	},
-/obj/structure/platform/lowwall/junk,
-/turf/open/floor/plating/rough,
-/area/vtm/interior/laundromat)
 "iOA" = (
 /obj/structure/ladder/manhole/down,
 /turf/open/floor/plating/sidewalkalt,
@@ -39834,9 +39817,7 @@
 /obj/effect/decal/graffiti{
 	icon_state = "graffiti9"
 	},
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor2-old"
-	},
+/obj/machinery/light/dim/directional/north,
 /turf/open/floor/wood/rough,
 /area/vtm/interior/laundromat)
 "jwA" = (
@@ -42248,9 +42229,6 @@
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/millennium_tower/f3)
 "kcu" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -44936,7 +44914,8 @@
 "kJk" = (
 /obj/structure/table/wood,
 /obj/item/fireaxe/vamp,
-/obj/item/toy/crayon/spraycan,
+/obj/item/fireaxe/vamp,
+/obj/item/fireaxe/vamp,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "kJm" = (
@@ -53456,9 +53435,6 @@
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm)
 "mNW" = (
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor4-old"
-	},
 /obj/structure/vampipe{
 	icon_state = "piping35"
 	},
@@ -60432,7 +60408,7 @@
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "orJ" = (
@@ -63851,15 +63827,7 @@
 /turf/open/floor/wood/old,
 /area/vtm/interior/shop)
 "pgY" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
-/obj/structure/roadblock{
-	dir = 1;
-	pixel_y = 17;
-	density = 0
-	},
-/obj/structure/sign/flag/japan{
+/obj/structure/sign/flag/china{
 	pixel_y = 30
 	},
 /turf/open/floor/plating/concrete{
@@ -66961,9 +66929,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church/staff)
 "pRN" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
+/obj/structure/closet/crate/freezer,
 /turf/open/misc/dirt,
 /area/vtm/interior/laundromat)
 "pRP" = (
@@ -76926,6 +76892,9 @@
 /area/vtm/interior/strip)
 "spx" = (
 /obj/structure/table/wood,
+/obj/item/toy/crayon/spraycan,
+/obj/item/toy/crayon/spraycan,
+/obj/item/toy/crayon/spraycan,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "spO" = (
@@ -82878,7 +82847,7 @@
 /obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "tMp" = (
@@ -85622,12 +85591,6 @@
 /obj/item/restraints/handcuffs/cable,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/giovanni/basement)
-"urZ" = (
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor6-old"
-	},
-/turf/open/floor/wood/rough,
-/area/vtm/interior/laundromat)
 "usb" = (
 /obj/structure/table/countertop/bubway,
 /obj/item/clothing/head/vampire/hardhat,
@@ -88334,8 +88297,6 @@
 "vaP" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/cigarettes/cigars/havana,
-/obj/item/fireaxe/vamp,
-/obj/item/toy/crayon/spraycan,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "vaQ" = (
@@ -167568,8 +167529,8 @@ uOx
 fOE
 szp
 szp
-iOx
-iOx
+szp
+szp
 szp
 szp
 tHA
@@ -167977,7 +167938,7 @@ wqF
 szp
 kAX
 kcu
-urZ
+fmH
 lax
 szp
 qMW
@@ -168181,7 +168142,7 @@ wqF
 szp
 szp
 pgY
-aNc
+fmH
 kLY
 szp
 qCc
@@ -169828,7 +169789,7 @@ seF
 xUq
 pId
 gOG
-bXK
+lao
 bXK
 fmD
 uFO
