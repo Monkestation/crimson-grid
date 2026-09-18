@@ -86,7 +86,7 @@
 	. = ..()
 	var/datum/component/regenerator/regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 12.5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour = COLOR_RED)
+		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 15, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour = COLOR_RED)
 		regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
@@ -100,7 +100,7 @@
 	RegisterSignal(species_fera_dire, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_resistance))
 	var/datum/component/regenerator/regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 10, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour =  COLOR_RED_LIGHT)
+		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 12.5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour =  COLOR_RED_LIGHT)
 		regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
@@ -114,7 +114,7 @@
 	. = ..()
 	var/datum/component/regenerator/regenerator = species_fera_bestial.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_bestial.AddComponent(/datum/component/regenerator, regeneration_delay = 2 SECONDS, heals_wounds = FALSE, brute_per_second = 10, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour = COLOR_ALMOST_BLACK)
+		species_fera_bestial.AddComponent(/datum/component/regenerator, regeneration_delay = 2 SECONDS, heals_wounds = FALSE, brute_per_second = 12.5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour = COLOR_ALMOST_BLACK)
 		regenerator = species_fera_bestial.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
@@ -130,12 +130,12 @@
 /datum/species/human/shifter/dire/proc/damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
 	SIGNAL_HANDLER
 	if(damagetype == BRUTE)
-		damage_mods += 0.65
+		damage_mods += 0.5
 	if(damagetype == AGGRAVATED)
 		damage_mods += 0.8
 	if(damagetype == TOXIC)
 		damage_mods += 0.7
-	if(damagetype ==BURN)
+	if(damagetype == BURN)
 		damage_mods += 0.9
 /datum/splat/werewolf/shifter/garou/on_gain()
 	. = ..()
@@ -165,11 +165,28 @@
 	if(!istype(owner.dna?.species, /datum/species/human/shifter/war))
 		return
 	if(damagetype == BRUTE)
-		damage_mods += 0.9
+		damage_mods += 0.8
 	if(damagetype == BURN)
-		damage_mods += 0.9
+		damage_mods += 0.8
+	if(damagetype == AGGRAVATED)
+		damage_mods += 0.8
 /datum/splat/werewolf/shifter/corax/on_lose_or_destroy()
 	. = ..()
 	UnregisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
-
+/datum/splat/werewolf/shifter/bestial/on_gain()
+	. = ..()
+	RegisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS,PROC_REF(bestial_damage_resistance))
+/datum/splat/werewolf/shifter/bestial/proc/bestial_damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
+	SIGNAL_HANDLER
+	if(damagetype == BRUTE)
+		damage_mods += 0.8
+	if(damagetype == AGGRAVATED)
+		damage_mods += 0.9
+	if(damagetype == TOXIC)
+		damage_mods += 0.9
+	if(damagetype == BURN)
+		damage_mods += 0.9
+/datum/splat/werewolf/shifter/bestial/on_lose_or_destroy()
+	. = ..()
+	UnregisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
 //CRIMSON GRID ADDITION END
