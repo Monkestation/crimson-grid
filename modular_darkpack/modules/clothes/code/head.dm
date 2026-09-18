@@ -332,10 +332,10 @@
 	desc = "A black helmet.. Deja Vu?.. "
 	icon_state = "black_bikehelmet"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
-	armor_type = /datum/armor/police_helmet
+	armor_type = /datum/armor/bike_helmet
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	masquerade_violating = TRUE
-	custom_price = 75
+	custom_price = 200
 
 /datum/armor/bike_helmet
 	melee = 30
