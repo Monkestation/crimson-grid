@@ -335,7 +335,6 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
 	armor_type = /datum/armor/bike_helmet
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-	masquerade_violating = TRUE
 	custom_price = 200
 
 /datum/armor/bike_helmet
