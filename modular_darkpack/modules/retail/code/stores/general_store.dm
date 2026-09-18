@@ -33,5 +33,6 @@
 		new /datum/data/vending_product("cardboard sheet", /obj/item/stack/sheet/cardboard, 10),
 		new /datum/data/vending_product("iron rods", /obj/item/stack/rods/ten, 30),
 		new /datum/data/vending_product("cable coil", /obj/item/stack/cable_coil/thirty, 30),
+		new /datum/data/vending_product("city-balanced radio", /obj/item/radio, 25),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 	)

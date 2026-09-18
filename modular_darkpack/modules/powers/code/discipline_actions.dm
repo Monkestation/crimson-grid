@@ -176,7 +176,8 @@
 
 	UnregisterSignal(owner, COMSIG_MOB_CLICKON)
 	targeting = FALSE
-	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
+	client.mouse_override_icon = initial(client.mouse_override_icon)
+	owner.update_mouse_pointer()
 
 /datum/action/discipline/proc/handle_click(mob/source, atom/target, click_parameters)
 	SIGNAL_HANDLER
@@ -207,7 +208,8 @@
 	SEND_SOUND(owner, sound('modular_darkpack/modules/deprecated/sounds/highlight.ogg', volume = 50))
 	RegisterSignal(owner, COMSIG_MOB_CLICKON, PROC_REF(handle_click))
 	targeting = TRUE
-	client.mouse_pointer_icon = 'modular_darkpack/modules/deprecated/icons/effects/mouse_pointers/discipline.dmi'
+	client.mouse_override_icon = 'modular_darkpack/modules/deprecated/icons/effects/mouse_pointers/discipline.dmi'
+	owner.update_mouse_pointer()
 
 /datum/action/discipline/proc/select()
 	background_icon_state = "bg_discipline_selected"
@@ -235,3 +237,26 @@
 			return
 		//TODO: middle click to swap loadout
 	. = ..()
+
+// CRIMSON EDIT ADD START - Discipline Active Indicator
+/datum/action/discipline/is_action_active(atom/movable/screen/movable/action_button/current_button)
+	for(var/datum/discipline_power/power as anything in discipline?.known_powers)
+		if(power.active)
+			return TRUE
+	return FALSE
+
+/datum/action/discipline/build_button_icon(atom/movable/screen/movable/action_button/button, update_flags = ALL, force = FALSE)
+	. = ..()
+
+	if(!button)
+		return
+
+	var/wants_glow = is_action_active(button)
+	if(wants_glow == !isnull(button.get_filter("discipline_active")))
+		return
+
+	if(wants_glow)
+		button.add_filter("discipline_active", 2, outline_filter(color = COLOR_GOLD, size = 1))
+	else
+		button.remove_filter("discipline_active")
+// CRIMSON EDIT ADD END - Discipline Active Indicator

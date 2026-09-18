@@ -108,6 +108,11 @@
 				((guestbook_flags & GUESTBOOK_DEPARTMENT) && length(common_departments)))
 				spawned.mind.guestbook.add_guest(spawned, player_mob, player_mob.mind.name, player_mob.mind.name, silent = TRUE)
 
+/datum/job/vampire
+	abstract_type = /datum/job/vampire
+	exp_required_type = EXP_TYPE_PLAYTIME
+	exp_granted_type = EXP_TYPE_PLAYTIME
+
 /**
  * This type is used to indicate a lack of a job.
  * The mind variable assigned_role will point here by default.

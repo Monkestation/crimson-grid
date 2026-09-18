@@ -8,7 +8,6 @@
 	outfit = /datum/outfit/job/vampire/fbi
 	job_flags = CITY_JOB_FLAGS
 	display_order = JOB_DISPLAY_ORDER_FBI
-	exp_required_type_department = EXP_TYPE_NATIONAL_SECURITY
 	departments_list = list(
 		/datum/job_department/police,
 	)

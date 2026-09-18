@@ -155,7 +155,7 @@
 	for(var/datum/record/crew/record in GLOB.manifest.general)
 		var/obj/item/paper/med_record_paper = new /obj/item/paper(src)
 		var/med_record_text = "<CENTER><B>Medical Record</B></CENTER><BR>"
-		med_record_text += "Name: [record.name] Rank: [record.rank]<BR>\nGender: [record.gender]<BR>\nAge: [record.age]<BR>"
+		med_record_text += "Name: [record.name] <BR>\nGender: [record.gender]<BR>\nAge: [record.age]<BR>" //CRIMSON GRID EDIT | PR: Makes Medical Cabinet not spout masquerade breaking things | OG: med_record_text += "Name: [record.name] Rank: [record.rank]<BR>\nGender: [record.gender]<BR>\nAge: [record.age]<BR>"
 		var/list/note_texts = list()
 		for(var/datum/medical_note/note as anything in record.medical_notes)
 			note_texts += note.content

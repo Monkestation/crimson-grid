@@ -65,6 +65,13 @@
 		return
 	if(!can_be_used_by(user))
 		return
+	//CRIMSON GRID ADD START PR: Occult Artifacts Stacking Nerf PR
+	var/artifact = src.type //Needed to clarify the kind of item to look for is this specific type and not all artifacts
+	var/list/artifacts = user.get_all_contents_type(artifact)
+	if(length(artifacts) >= 1) //if there's more than one artifact. (The reason why it's 1 instead of 2 is cause the list structured like an array and started the counting number at 0)
+		to_chat(user, span_danger("This excess copy of an artifact is made inert by the same resonances of the current copies held."))
+		return
+	//CRIMSON GRID ADD END
 	owner = user
 
 	var/datum/controller/subsystem/processing/subsystem = locate(subsystem_type) in Master.subsystems

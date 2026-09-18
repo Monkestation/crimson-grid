@@ -36,3 +36,12 @@
 
 	for (var/spritesheet_key in to_insert)
 		Insert(spritesheet_key, to_insert[spritesheet_key])
+
+/datum/preference_middleware/splat/get_ui_static_data(mob/user)
+	. = ..()
+
+	var/list/names_to_key = list()
+	for(var/datum/subsplat/vampire_clan/clan as anything in GLOB.vampire_clans)
+		names_to_key[clan::name] = clan::id
+	.["clan_names_to_key"] = names_to_key
+

@@ -8,10 +8,8 @@
 	supervisors = SUPERVISOR_TRADITIONS
 	req_admin_notify = 1
 	minimal_player_age = 14
-	exp_requirements = 180
-	exp_required_type = EXP_TYPE_CAMARILLA
+	exp_requirements = EXP_REQ_CRITICAL
 	exp_required_type_department = EXP_TYPE_CAMARILLA
-	exp_granted_type = EXP_TYPE_CAMARILLA
 	config_tag = "PRINCE"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/prince

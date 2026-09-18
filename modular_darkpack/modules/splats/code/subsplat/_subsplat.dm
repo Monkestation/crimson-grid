@@ -16,7 +16,7 @@
 	var/name
 	/// Description of what the splat is and what it does
 	var/desc
-	/// If set, the roleplay level that is displayed in prefrences as a guide to players.
+	/// If set, the roleplay level that is displayed in preferences as a guide to players.
 	var/roleplay_level
 	/// ID for trait sources and whatnot
 	var/id

@@ -5,7 +5,6 @@
 	total_positions = -1
 	spawn_positions = -1
 	outfit = /datum/outfit/job/vampire/citizen
-	exp_granted_type = EXP_TYPE_KINDRED
 	config_tag = "CITIZEN"
 	display_order = JOB_DISPLAY_ORDER_CITIZEN
 	departments_list = list(

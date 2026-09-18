@@ -266,6 +266,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_JAZZ_CLUB,
 		LOCKACCESS_CAMARILLA,
 		LOCKACCESS_JAZZ_CLUB_DELIVERY,
+		LOCKACCESS_STRIP, //CRIMSON GRID ADD | PR: Adds Strip Key Access to Toreador Primogen (They own the Club)
 	)
 	color = "#ff2fc4"
 

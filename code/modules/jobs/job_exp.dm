@@ -12,6 +12,10 @@ GLOBAL_PROTECT(exp_to_update)
 		return 0
 	if(!IS_XP_LOCKED(src))
 		return 0
+	// DARKPACK EDIT ADD START - (whitelist)
+	if(C.prefs?.has_whitelist(WHITELIST_TIMELIMITS))
+		return 0
+	// DARKPACK EDIT ADD END
 	if(CONFIG_GET(flag/use_exp_restrictions_admin_bypass) && check_rights_for(C,R_ADMIN))
 		return 0
 	var/isexempt = C.prefs.db_flags & DB_FLAG_EXEMPT

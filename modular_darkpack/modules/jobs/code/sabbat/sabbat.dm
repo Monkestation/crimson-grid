@@ -10,7 +10,7 @@
 
 /datum/antagonist/sabbatist/apply_innate_effects(mob/living/mob_override)
 	. = ..()
-	add_team_hud(owner.current)
+	add_team_hud(owner.current, /datum/antagonist/sabbatist) // CRIMSON EDIT - Sabbat Identifier Fix - Original: add_team_hud(owner.current)
 
 /datum/antagonist/sabbatist/on_removal()
 	to_chat(owner.current, span_userdanger("You are no longer the part of Sabbat!"))
