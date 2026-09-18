@@ -34,6 +34,7 @@
 	duration_length = 1 SCENES
 	cancelable = TRUE
 	vitae_cost = 1
+	frenzy_usable = FALSE
 
 /datum/discipline_power/visceratika/skin_of_the_chameleon/activate()
 	. = ..()
@@ -66,6 +67,7 @@
 	toggled = TRUE
 	var/datum/storyteller_roll/scry_the_hearthstone/scry_roll
 	var/area/monitoring_area
+	frenzy_usable = FALSE
 
 /datum/storyteller_roll/scry_the_hearthstone
 	bumper_text = "scry the hearthstone"
@@ -185,6 +187,7 @@
 	cooldown_length = 10 SECONDS
 	var/datum/weakref/exit_turf
 	var/datum/weakref/stone_turf
+	frenzy_usable = FALSE
 
 /datum/discipline_power/visceratika/bond_with_the_mountain/pre_activation_checks()
 	. = ..()

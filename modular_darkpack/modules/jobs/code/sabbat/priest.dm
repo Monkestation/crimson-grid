@@ -8,7 +8,7 @@
 	outfit = /datum/outfit/job/vampire/sabbatpriest
 	allowed_splats = list(SPLAT_KINDRED)
 	job_flags = CITY_JOB_FLAGS
-	exp_required_type_department = EXP_TYPE_SABBAT
+
 	departments_list = list(
 		/datum/job_department/sabbat,
 	)
@@ -39,7 +39,7 @@
 		H.mind.add_antag_datum(/datum/antagonist/sabbatist/priest)
 
 /datum/antagonist/sabbatist/priest
-	antag_hud_name = "ductus_priest"
+	antag_hud_name = "priest"
 
 /obj/item/sabbat_priest_tome
 	name = "Sabbat Priest's Tome"

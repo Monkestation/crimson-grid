@@ -552,6 +552,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		stack_trace("remove_current_slot() being called when there are no slots to go to, the client should prevent this")
 		return
 
+	discipline_levels = list() // DARKPACK EDIT ADD - remove disciplines when removing a character slot
 	savefile.remove_entry("character[default_slot]")
 	tainted_character_profiles = TRUE
 	switch_to_slot(closest_slot)

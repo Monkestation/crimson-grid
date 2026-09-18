@@ -159,6 +159,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 0
 	cooldown_length = 1 TURNS
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 
@@ -274,6 +275,7 @@
 	var/datum/storyteller_roll/disguise_voice_roll/disguise_roll
 	COOLDOWN_DECLARE(mind_read_cd)
 	COOLDOWN_DECLARE(implant_tht_cd)
+	frenzy_usable = FALSE
 
 /datum/storyteller_roll/telepathy_success
 	bumper_text = "mind reading"
@@ -416,6 +418,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 0
 	cooldown_length = 1 TURNS
+	frenzy_usable = FALSE
 
 /datum/discipline_power/auspex/psychic_projection/activate()
 	. = ..()

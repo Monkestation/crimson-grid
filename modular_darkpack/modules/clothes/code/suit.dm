@@ -205,6 +205,39 @@
 	desc = "A red hood with an ornate golden trim, marked with the emblem of House Tremere."
 	icon_state = "magister_hood"
 
+/obj/item/clothing/suit/hooded/robes/apprentice
+	name = "apprentice robes"
+	desc = "A purple robe with an ornate trim, marked with the emblem of House Tremere."
+	icon_state = "apprentice_robes"
+	hoodtype = /obj/item/clothing/head/hooded/robes_hood/apprentice
+
+/obj/item/clothing/head/hooded/robes_hood/apprentice
+	name = "apprentice hood"
+	desc = "A purple hood with an ornate trim, marked with the emblem of House Tremere."
+	icon_state = "apprentice_hood"
+
+/obj/item/clothing/suit/hooded/robes/tremere_capeless
+	name = "capeless tremere robes"
+	desc = "Black robes with red highlights, marked with the emblem of House Tremere."
+	icon_state = "tremere_robes_capeless"
+	hoodtype = /obj/item/clothing/head/hooded/robes_hood/tremere_capeless
+
+/obj/item/clothing/head/hooded/robes_hood/tremere_capeless
+	name = "tremere hood"
+	desc = "A black hood with red highlights, marked with the emblem of House Tremere."
+	icon_state = "tremere_hood_capeless"
+
+/obj/item/clothing/suit/hooded/robes/magister_capeless
+	name = "capeless magister robes"
+	desc = "A red robe with an ornate golden trim, marked with the emblem of House Tremere."
+	icon_state = "magister_robes_capeless"
+	hoodtype = /obj/item/clothing/head/hooded/robes_hood/magister_capeless
+
+/obj/item/clothing/head/hooded/robes_hood/magister_capeless
+	name = "magister hood"
+	desc = "A red hood with ornate trim, marked with the emblem of House Tremere."
+	icon_state = "magister_hood_capeless"
+
 /obj/item/clothing/suit/vampire/coat
 	name = "brown coat"
 	desc = "A warm and heavy brown coat."

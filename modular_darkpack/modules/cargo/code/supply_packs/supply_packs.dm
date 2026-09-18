@@ -160,3 +160,33 @@
 	cost = 4000
 	contains = list(/obj/structure/drill)
 	crate_name = "drill crate"
+
+/datum/supply_pack/medical/organs
+	name = "Organs (Ethically sourced)"
+	desc = "A crate of human organs. 'Ethically' is the name of our surgeon. Thank him!"
+	cost = 7500
+	crate_type = /obj/structure/closet/crate/freezer
+	crate_name = "organ freezer"
+	contains = list(
+		/obj/item/organ/heart,
+		/obj/item/organ/lungs,
+		/obj/item/organ/eyes,
+		/obj/item/organ/ears,
+		/obj/item/organ/tongue,
+		/obj/item/organ/liver,
+		/obj/item/organ/stomach,
+		/obj/item/organ/appendix)
+
+/datum/supply_pack/medical/organs/multi
+	name = "Organ Multi-pack (Ethically sourced)"
+	desc = "A crate full of LOTS of human organs. 'Ethically' is the name of our surgeon. Thank him!"
+	cost = 29500
+	contains = list(
+		/obj/item/organ/heart = 4,
+		/obj/item/organ/lungs = 4,
+		/obj/item/organ/eyes = 4,
+		/obj/item/organ/ears = 4,
+		/obj/item/organ/tongue = 4,
+		/obj/item/organ/liver = 4,
+		/obj/item/organ/stomach = 4,
+		/obj/item/organ/appendix = 4)

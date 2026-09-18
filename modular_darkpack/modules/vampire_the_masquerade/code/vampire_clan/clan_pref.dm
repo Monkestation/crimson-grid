@@ -17,3 +17,13 @@
 /datum/preference/choiced/subsplat/vampire_clan/post_set_preference(mob/user, value)
 	var/datum/subsplat/vampire_clan/clan = get_vampire_clan(value)
 	clan?.show_lore(user)
+
+/*
+/datum/preference/choiced/subsplat/vampire_clan/compile_constant_data()
+	var/list/data = ..()
+	var/list/names_to_key = list()
+	for(var/datum/subsplat/vampire_clan/clan in GLOB.vampire_clans)
+		names_to_key[clan.name] = clan.id
+	data["names_to_key"] = names_to_key
+	return data
+*/

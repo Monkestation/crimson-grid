@@ -7,11 +7,13 @@
 	config_tag = "VOIVODE"
 	outfit = /datum/outfit/job/vampire/voivode
 	job_flags = CITY_JOB_FLAGS
-	exp_required_type_department = EXP_TYPE_MANOR
 	departments_list = list(
 		/datum/job_department/manor,
 	)
 	display_order = JOB_DISPLAY_ORDER_VOIVODE
+
+	exp_required_type_department = EXP_TYPE_MANOR
+	exp_requirements = EXP_REQ_HEAD
 
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TZIMISCE)

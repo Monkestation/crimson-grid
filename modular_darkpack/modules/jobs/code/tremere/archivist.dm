@@ -7,7 +7,6 @@
 	config_tag = "CHANTRY_ARCHIVIST"
 	outfit = /datum/outfit/job/vampire/archivist
 	job_flags = CITY_JOB_FLAGS
-	exp_required_type_department = EXP_TYPE_CHANTRY
 	departments_list = list(
 		/datum/job_department/chantry,
 	)

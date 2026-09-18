@@ -58,8 +58,8 @@ ADMIN_VERB_AND_CONTEXT_MENU(matrix_mob_verb, R_ADMIN, "Matrix Mob", "Matrix (des
 
 	GLOB.joined_player_list -= despawning_mob.ckey
 
-	//handle_objectives()
 	SSmasquerade.matrix_masquerade_breacher(despawning_mob, TRUE)
+	despawning_mob.client?.prefs?.save_character()
 	despawning_mob.ghostize(FALSE)
 	QDEL_NULL(despawning_mob)
 
