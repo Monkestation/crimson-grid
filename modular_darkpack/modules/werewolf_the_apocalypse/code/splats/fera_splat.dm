@@ -84,6 +84,17 @@
 
 	// incompatible_splats = list(/datum/splat/werewolf/shifter) // TODO: Becoming a shifter should get rid of your kinfolk splat
 
+/datum/splat/werewolf/kinfolk/on_gain() //Currently just for granting language Garou Tongue or High Tongue that Kinfolk can learn.
+	. = ..()
+	owner.grant_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE, LANGUAGE_SPLAT) //Separated because Spoken and Hearing Components are separated
+	owner.grant_language(/datum/language/garou_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_SPLAT)
+
+/datum/splat/werewolf/kinfolk/on_lose_or_destroy()
+	. = ..()
+	if(!QDELING(owner))
+		owner.remove_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE, LANGUAGE_SPLAT) //Separated because Spoken and Hearing Components are separated
+		owner.remove_language(/datum/language/garou_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_SPLAT)
+
 /datum/splat/werewolf/shifter
 	abstract_type = /datum/splat/werewolf/shifter
 	splat_traits = list(

@@ -3,7 +3,7 @@
 /datum/language/shadowtongue
 	name = "Shadowtongue"
 	desc = "What a grand and intoxicating innocence."
-	key = "x"
+	//key = "x" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 40
 	sentence_chance = 0
 	between_word_sentence_chance = 10

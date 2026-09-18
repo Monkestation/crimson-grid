@@ -19,6 +19,7 @@
 
 	vitae_cost = 1 // All Melpominee powers below 5 dots cost blood except for Missing Voice
 	var/obj/effect/abstract/particle_holder/particle_generator
+	frenzy_usable = FALSE
 
 /datum/discipline_power/melpominee/proc/setup_particles()
 	if(!particle_generator)

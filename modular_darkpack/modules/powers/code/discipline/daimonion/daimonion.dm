@@ -27,6 +27,7 @@
 	range = 7
 	level = 1
 	vitae_cost = 0
+	frenzy_usable = FALSE
 
 	cancelable = TRUE
 	var/datum/storyteller_roll/sense_the_sin/sense_the_sin_roll
@@ -261,6 +262,7 @@
 	vitae_cost = 0
 	var/datum/storyteller_roll/condemnation/condemnation_roll
 	var/list/available_curses
+	frenzy_usable = FALSE
 
 /datum/storyteller_roll/condemnation
 	bumper_text = "condemnation"

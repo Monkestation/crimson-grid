@@ -59,6 +59,7 @@
 	name = "Dominate power name"
 	desc = "Dominate power description"
 	vitae_cost = 0 //No Dominate 1-5 abilities cost blood.
+	frenzy_usable = FALSE
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/dominate.ogg'
 
@@ -121,6 +122,9 @@
 
 	if(HAS_TRAIT(target, TRAIT_WEAK_WILLED))
 		theirpower -= 2
+
+	if(HAS_TRAIT(target, TRAIT_IN_FRENZY))
+		theirpower += 2
 
 	if((!(owner.obscured_slots & HIDEFACE))&(HAS_TRAIT(owner, TRAIT_DISFIGURED_APPEARANCE))) // Are we visibly disfigured?
 		theirpower += 2
