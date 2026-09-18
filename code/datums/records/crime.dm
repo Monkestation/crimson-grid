@@ -12,7 +12,7 @@
 	var/time
 	/// Whether the crime is active or not
 	var/valid = TRUE
-	/// Player that marked the crime as invalid
+	/// Name of player that marked the crime as invalid
 	var/voider
 
 /datum/crime/New(name = "Crime", details = "No details provided.", author = "Anonymous")
