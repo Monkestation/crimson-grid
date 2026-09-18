@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(city_time)
 /datum/controller/subsystem/city_time/Initialize(start_timeofday)
 	time_till_daytime = CONFIG_GET(number/time_till_day)
 	time_till_roundend = CONFIG_GET(number/time_till_roundend)
+	RegisterSignal(SSdcs, COMSIG_GLOB_WORLD_TOPIC_STATUS, PROC_REF(on_world_status))
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/city_time/fire()
@@ -83,3 +84,9 @@ SUBSYSTEM_DEF(city_time)
 	shifting_colors = FALSE
 #undef COLOR_CYCLES
 #undef TRANSITION_TIME
+
+/datum/controller/subsystem/city_time/proc/on_world_status(datum/source, list/entries)
+	SIGNAL_HANDLER
+
+	entries["time_till_daytime"] = time_till_daytime
+	entries["time_till_roundend"] = time_till_roundend

@@ -31,6 +31,7 @@
 	aggravating = FALSE
 	hostile = FALSE
 	violates_masquerade = TRUE
+	frenzy_usable = FALSE
 
 	multi_activate = TRUE
 	duration_length = 5 SECONDS
@@ -266,6 +267,7 @@
 	vitae_cost = 0
 
 	violates_masquerade = TRUE
+	frenzy_usable = FALSE
 
 	cooldown_length = 20 SECONDS
 
