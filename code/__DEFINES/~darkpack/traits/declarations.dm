@@ -112,6 +112,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 #define TRAIT_IN_FRENZY "in_frenzy"
 
+// Can't examine people
+#define TRAIT_CANNOT_FOCUS "cannot_focus"
+
 // Is the mob silenced (by Quietus 1 for example)
 #define TRAIT_SILENCED "silenced"
 // is the vampire weak to Dominate?
@@ -174,6 +177,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// If the mob can't have surgery done on it. See: Blood form Tzimisce
 #define TRAIT_SURGERY_INAPPLICABLE "surgery_inapplicable"
 // BELOW ARE ALL MERITS/FLAWS
+#define TRAIT_ABYSSAL_EYES "abyssal_eyes"
 #define TRAIT_ACUTE_HEARING "acute_hearing"
 #define TRAIT_ANIMAL_MUSK "animal_musk"
 #define TRAIT_ANTHROPIC_TASTE "anthropic_taste"
