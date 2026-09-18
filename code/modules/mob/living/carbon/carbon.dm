@@ -198,7 +198,6 @@
 			last_special = world.time + CLICK_CD_RANGE
 		cuff_resist(I)
 
-
 /**
  * Helper to break the cuffs from hands
  * @param {obj/item} cuffs - The cuffs to break
@@ -208,16 +207,16 @@
 /mob/living/carbon/proc/cuff_resist(obj/item/cuffs, breakouttime = null, cuff_break = 0)
 	if((cuff_break != INSTANT_CUFFBREAK) && (SEND_SIGNAL(src, COMSIG_MOB_REMOVING_CUFFS, cuffs) & COMSIG_MOB_BLOCK_CUFF_REMOVAL))
 		return //The blocking object should sent a fluff-appropriate to_chat about cuff removal being blocked
-	if(cuffs.item_flags & BEING_REMOVED)
+	if(DOING_INTERACTION(src, REF(cuffs) ))
 		to_chat(src, span_warning("You're already attempting to remove [cuffs]!"))
 		return
-	cuffs.item_flags |= BEING_REMOVED
+
 	if (isnull(breakouttime))
 		breakouttime = cuffs.breakouttime
 	if(!cuff_break)
 		visible_message(span_warning("[src] attempts to remove [cuffs]!"))
 		to_chat(src, span_notice("You attempt to remove [cuffs]... (This will take around [DisplayTimeText(breakouttime)] and you need to stand still.)"))
-		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM, cog_icon = null))
+		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM, cog_icon = null, interaction_key = REF(cuffs) ))
 			. = clear_cuffs(cuffs, cuff_break)
 		else
 			to_chat(src, span_warning("You fail to remove [cuffs]!"))
@@ -233,7 +232,6 @@
 
 	else if(cuff_break == INSTANT_CUFFBREAK)
 		. = clear_cuffs(cuffs, cuff_break)
-	cuffs.item_flags &= ~BEING_REMOVED
 
 /mob/living/carbon/proc/uncuff()
 	if (handcuffed)
@@ -798,7 +796,7 @@
 	return ..()
 
 /mob/living/carbon/can_be_revived()
-	if(HAS_TRAIT(src, TRAIT_HUSK))
+	if(HAS_TRAIT_NOT_FROM(src, TRAIT_HUSK, /datum/status_effect/zombie::id))
 		return FALSE
 	if(!HAS_TRAIT(src, TRAIT_BRAINLESS_CARBON) && !get_organ_by_type(/obj/item/organ/brain))
 		return FALSE
@@ -901,7 +899,7 @@
 	hand_bodyparts[lost_hand.held_index] = null
 
 ///Proc to hook behavior on bodypart additions. Do not directly call. You're looking for [/obj/item/bodypart/proc/try_attach_limb()].
-/mob/living/carbon/proc/add_bodypart(obj/item/bodypart/new_bodypart)
+/mob/living/carbon/proc/add_bodypart(obj/item/bodypart/new_bodypart, special, lazy)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	new_bodypart.on_adding(src)
@@ -912,7 +910,7 @@
 
 	// Apply a bodypart effect or merge with an existing one, for stuff like plant limbs regenning in light
 	for(var/datum/status_effect/grouped/bodypart_effect/effect_type as anything in new_bodypart.bodypart_effects)
-		apply_status_effect(effect_type, type, new_bodypart)
+		apply_status_effect(effect_type, type, new_bodypart, special, lazy)
 
 	// Tell the organs in the bodyparts that we are in a mob again
 	for(var/obj/item/organ/organ in new_bodypart)
@@ -1308,7 +1306,7 @@
 	if(isnull(dna))
 		return
 
-	if(istext(new_blood_type))
+	if(istext(new_blood_type) || ispath(new_blood_type, /datum/blood_type))
 		new_blood_type = get_blood_type(new_blood_type)
 	if(!istype(new_blood_type))
 		return

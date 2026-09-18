@@ -8,9 +8,21 @@
 	outfit = /datum/outfit/job/vampire/capo
 	job_flags = CITY_JOB_FLAGS
 	display_order = 1
-	exp_required_type_department = EXP_TYPE_GIOVANNI
 	departments_list = list(
 		/datum/job_department/giovanni,
+	)
+
+	exp_required_type_department = EXP_TYPE_GIOVANNI
+	exp_requirements = EXP_REQ_HEAD
+
+	known_contacts = list(
+		JOB_LA_FAMIGLIA,
+		JOB_LA_SQUADRA,
+		JOB_PRINCE,
+		JOB_SENESCHAL,
+		JOB_SHERIFF,
+		JOB_BARON,
+		JOB_EMISSARY
 	)
 
 	description = "Pure blood runs through your veins and, with it, old power. Throughout your long life you have learnt to hold onto two things and never let go: money, and family."
@@ -19,7 +31,7 @@
 	allowed_clans = list(VAMPIRE_CLAN_GIOVANNI)
 
 /datum/outfit/job/vampire/capo
-	name = "Capo"
+	name = JOB_CAPO
 	jobtype = /datum/job/vampire/capo
 
 	glasses = /obj/item/clothing/glasses/vampire/sun

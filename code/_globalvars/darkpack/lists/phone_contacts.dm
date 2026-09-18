@@ -15,6 +15,14 @@ GLOBAL_LIST_EMPTY(supply_network)
 GLOBAL_LIST_EMPTY(vampire_leader_network)
 GLOBAL_LIST_EMPTY(endron_network)
 GLOBAL_LIST_EMPTY(society_network)
+GLOBAL_LIST_EMPTY(civilian_network)
+GLOBAL_LIST_EMPTY(police_network)
+GLOBAL_LIST_EMPTY(medical_network)
+GLOBAL_LIST_EMPTY(garou_network)
+GLOBAL_LIST_EMPTY(sabbat_network)
+// CRIMSON EDIT ADD - Triad
+GLOBAL_LIST_EMPTY(triad_network)
+// CRIMSON EDIT END - Triad
 
 #define MILLENIUM_TOWER_NETWORK 1
 #define LASOMBRA_NETWORK 2
@@ -26,6 +34,14 @@ GLOBAL_LIST_EMPTY(society_network)
 #define VAMPIRE_LEADER_NETWORK 8
 #define ENDRON_NETWORK 9
 #define SOCIETY_OF_LEOPOLD_NETWORK 10
+#define CIVILIAN_NETWORK 11
+#define POLICE_NETWORK 12
+#define MEDICAL_NETWORK 13
+#define GAROU_NETWORK 14
+#define SABBAT_NETWORK 15
+// CRIMSON EDIT ADD - Triads
+#define TRIAD_NETWORK 16
+// CRIMSON EDIT END - Triads
 
 // An indexed list of all the different phone networks that connect the phones that are part of them together.
 GLOBAL_LIST_INIT(contact_networks, alist(
@@ -39,4 +55,12 @@ GLOBAL_LIST_INIT(contact_networks, alist(
 		VAMPIRE_LEADER_NETWORK = GLOB.vampire_leader_network,
 		ENDRON_NETWORK = GLOB.endron_network,
 		SOCIETY_OF_LEOPOLD_NETWORK = GLOB.society_network,
+		CIVILIAN_NETWORK = GLOB.civilian_network,
+		POLICE_NETWORK = GLOB.police_network,
+		MEDICAL_NETWORK = GLOB.medical_network,
+		GAROU_NETWORK = GLOB.garou_network,
+		SABBAT_NETWORK = GLOB.sabbat_network,
+		// CRIMSON EDIT ADD - Triads
+		TRIAD_NETWORK = GLOB.triad_network,
+		// CRIMSON EDIT END - Triads
 	))

@@ -8,10 +8,8 @@
 	supervisors = "the Board and the Branch Lead"
 	req_admin_notify = 1
 	minimal_player_age = 25
-	exp_requirements = 150
-	exp_required_type = EXP_TYPE_SPIRAL
+	exp_requirements = EXP_REQ_MINOR
 	exp_required_type_department = EXP_TYPE_SPIRAL
-	exp_granted_type = EXP_TYPE_SPIRAL
 	config_tag = "PENTEX_SECCHIEF"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/secchief
@@ -29,7 +27,9 @@
 	known_contacts = list(
 		JOB_PENTEX_LEAD,
 		JOB_PENTEX_EXEC,
-		JOB_PENTEX_AFFAIRS
+		JOB_PENTEX_AFFAIRS,
+		JOB_PENTEX_EMPLOYEE,
+		JOB_PENTEX_SEC
 	)
 
 	paycheck = PAYCHECK_COMMAND
@@ -38,7 +38,7 @@
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
 /datum/outfit/job/vampire/secchief
-	name = "Endron Chief of Security"
+	name = JOB_PENTEX_SEC_CHIEF
 	jobtype = /datum/job/vampire/secchief
 
 //	ears = /obj/item/p25radio
@@ -50,6 +50,6 @@
 	suit = /obj/item/clothing/suit/vampire/vest
 	belt = /obj/item/storage/belt/holster/detective/darkpack/endron
 	glasses = /obj/item/clothing/glasses/vampire/sun
-	l_pocket = /obj/item/smartphone // /secchief - todo subtype
+	l_pocket = /obj/item/smartphone/endron_sec_chief
 	r_pocket = /obj/item/vamp/keys/pentex
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1)

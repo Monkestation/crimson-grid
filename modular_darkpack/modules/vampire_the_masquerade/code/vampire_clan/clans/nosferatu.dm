@@ -12,7 +12,7 @@
 		/datum/discipline/potence,
 		/datum/discipline/obfuscate
 	)
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_MASQUERADE_VIOLATING_FACE,
 		TRAIT_VENTCRAWLER_ALWAYS,
 		TRAIT_TRUE_NIGHT_VISION //CRIMSON GRID ADDITION - NOSFERATU GET NIGHT VISION

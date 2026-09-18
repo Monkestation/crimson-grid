@@ -18,7 +18,7 @@
 	tribe_icon.blend_icon(uni_icon('modular_darkpack/modules/werewolf_the_apocalypse/icons/tribes.dmi', replacetext(LOWER_TEXT(value), " ", "_")), ICON_OVERLAY)
 	return tribe_icon
 
-/datum/preference/choiced/subsplat/fera_tribe/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/subsplat/fera_tribe/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/joining_round = !isdummy(target)
 	target.set_fera_tribe(value, joining_round)
 

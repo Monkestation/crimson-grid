@@ -8,8 +8,8 @@
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/supply_tech
 
+
 	display_order = JOB_DISPLAY_ORDER_SUPPLY
-	exp_required_type_department = EXP_TYPE_WAREHOUSE
 	departments_list = list(
 		/datum/job_department/supply,
 	)
@@ -20,8 +20,12 @@
 	maximum_immortal_age = 200
 	minimum_masquerade = 0
 
+	known_contacts = list(
+		JOB_DEALER
+	)
+
 /datum/outfit/job/vampire/supply_tech
-	name = "Supply Technician"
+	name = JOB_SUPPLY_TECH
 	jobtype = /datum/job/vampire/supply
 	uniform = /obj/item/clothing/under/vampire/suit
 	shoes = /obj/item/clothing/shoes/vampire/jackboots

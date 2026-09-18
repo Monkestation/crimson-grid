@@ -4,7 +4,6 @@
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Clinic Director"
-	exp_required_type_department = EXP_TYPE_CLINIC
 	config_tag = "DOCTOR"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/clinic_doctor
@@ -12,6 +11,12 @@
 	display_order = JOB_DISPLAY_ORDER_DOCTOR
 	departments_list = list(
 		/datum/job_department/clinic,
+	)
+
+	known_contacts = list(
+		JOB_CLINIC_DIRECTOR,
+		JOB_DOCTOR,
+		JOB_PRIMOGEN_MALKAVIAN
 	)
 
 	description = "Help your fellow kindred in all matters medicine related. Sell blood. Keep your human colleagues ignorant."
@@ -36,7 +41,7 @@
 
 
 /datum/outfit/job/vampire/clinic_doctor
-	name = "Doctor"
+	name = JOB_DOCTOR
 	jobtype = /datum/job/vampire/doctor
 
 	ears = /obj/item/radio/headset/darkpack
@@ -45,7 +50,7 @@
 	shoes = /obj/item/clothing/shoes/vampire/white
 	suit =  /obj/item/clothing/suit/vampire/labcoat
 	gloves = /obj/item/clothing/gloves/vampire/latex
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/doctor
 	r_pocket = /obj/item/vamp/keys/clinic
 	backpack_contents = list(/obj/item/card/credit=1, /obj/item/storage/medkit/darkpack/doctor=1)
 

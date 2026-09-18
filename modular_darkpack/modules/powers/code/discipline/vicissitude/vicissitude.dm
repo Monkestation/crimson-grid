@@ -45,6 +45,7 @@
 	cooldown_length = 1 TURNS
 	vitae_cost = 1
 	toggled = FALSE
+	frenzy_usable = FALSE
 
 /datum/discipline_power/vicissitude/malleable_visage/activate(atom/target)
 	. = ..()
@@ -64,6 +65,7 @@
 	range = 1
 	toggled = FALSE
 	cooldown_length = 1 TURNS
+	frenzy_usable = FALSE
 
 /datum/discipline_power/vicissitude/fleshcrafting/activate(atom/movable/target)
 	. = ..()
@@ -89,7 +91,6 @@
 		tzimisce_operations += /datum/surgery_operation/basic/tend_wounds/combo/upgraded/master
 		tzimisce_operations += /datum/surgery_operation/limb/add_plastic
 		tzimisce_operations += typesof(/datum/surgery_operation/limb/bioware)
-		tzimisce_operations += typesof(/datum/surgery_operation/organ/brainwash)
 		tzimisce_operations += typesof(/datum/surgery_operation/organ/lobotomy)
 		tzimisce_operations += typesof(/datum/surgery_operation/organ/pacify)
 		tzimisce_operations += /datum/surgery_operation/organ/eye_color_surgery
@@ -129,28 +130,48 @@
 
 	var/roll = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/bonecrafting)
 
-	if(target.stat >= HARD_CRIT)
+	if(target.stat == DEAD)
+		if(!do_after(
+			owner,
+			3 SECONDS,
+			target = target,
+			timed_action_flags = DO_AFTER_CHECK_NEXT_MOVE | IGNORE_INCAPACITATED
+		))
+			to_chat(owner, span_warning("You stopped before vivasecting the [target]'s corpse."))
+			return FALSE
+		if(QDELETED(target))
+			return FALSE
 		if(target.stat != DEAD)
-			target.death()
+			return FALSE
 		var/obj/item/bodypart/arm/right/r_arm = target.get_bodypart(BODY_ZONE_R_ARM)
 		var/obj/item/bodypart/arm/left/l_arm = target.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/leg/right/r_leg = target.get_bodypart(BODY_ZONE_R_LEG)
 		var/obj/item/bodypart/leg/left/l_leg = target.get_bodypart(BODY_ZONE_L_LEG)
+		var/obj/item/bodypart/head = target.get_bodypart(BODY_ZONE_HEAD)
+		var/obj/item/bodypart/chest = target.get_bodypart(BODY_ZONE_CHEST)
 		r_arm?.drop_limb()
 		l_arm?.drop_limb()
 		r_leg?.drop_limb()
 		l_leg?.drop_limb()
+		head?.drop_organs()
+		chest?.drop_organs()
 		new /obj/item/stack/sheet/meat/twenty(target.loc)
 		new /obj/item/guts(target.loc)
 		new /obj/item/spine(target.loc)
-		qdel(target)
+		target.gib(DROP_ALL_REMAINS)
 	else
 		target.emote("scream")
-		target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST)
+		var/target_zone = owner.zone_selected
+		var/obj/item/bodypart/limb = target.get_bodypart(target_zone)
+		if(!limb)
+			target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, BODY_ZONE_CHEST, wound_bonus = 10)
+			return
+		target.apply_damage(roll LETHAL_TTRPG_DAMAGE, BRUTE, target_zone, wound_bonus = 10)
 		if(roll >= 5)
-			target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
-			target.adjust_blood_pool(-(round(target.bloodpool * 0.5))) // A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
-
+			// A vampire who scores five or more successes on the roll (...) cause the affected vampire to lose half his blood points.
+			if((target_zone == BODY_ZONE_CHEST))
+				target.visible_message(span_danger("[target]'s rib cage curves inwards grotesquely!"), span_danger("Your feel your ribcages curve inwards and pierce your heart!"))
+				target.adjust_blood_pool(-(round(target.bloodpool * 0.5)))
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/horrid_form
@@ -159,27 +180,62 @@
 
 	level = 4
 	violates_masquerade = TRUE
-	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
+	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE // matches bloodform flags below to work while cuffed. Placeholder until cuffbreaking code is done.
 	target_type = NONE
 	vitae_cost = 2
 	aggravating = TRUE
 	cooldown_length = 1 TURNS
 	activate_sound = 'modular_darkpack/modules/powers/sounds/vicissitude.ogg'
-	var/datum/action/cooldown/spell/shapeshift/zulo/zulo_form
+	toggled = TRUE
+	duration_override = TRUE
+	var/activating = FALSE
 
+// generation-based activation method
 /datum/discipline_power/vicissitude/horrid_form/pre_activation_checks()
-	. = ..()
-	owner.do_jitter_animation(1 TURNS)
-	if(!do_after(owner, 1 TURNS, owner))
+	.=..()
+	if(activating) // Prevent multi-activation while the do_after is ongoing
+		to_chat(owner, span_warning("You are already attempting to fleshcraft yourself into a Zulo Warform!"))
 		return FALSE
-	return TRUE
+
+	//do_after timer based on generation; Gen 9 and below can spend more BP per turn, so it activates faster.
+	if(owner.get_generation() >= 10)
+		activating = TRUE
+		owner.do_jitter_animation(2 TURNS)
+		to_chat(owner, span_warning("Your body slowly starts to warp and twist into a horrifying war form..."))
+		var/zulo_interrupt_flags = IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM
+		if(HAS_TRAIT(owner, TRAIT_PROMETHEAN_CLAY)) // Promethean Clay makes self-vicissitude changes into reflexive actions (like free actions in other TTRPGs). Implemented here by making the 2-turn transformation for Gen 10+ vamps impossible to interrupt.
+			zulo_interrupt_flags |= IGNORE_INCAPACITATED
+		if(do_after(owner, 2 TURNS, timed_action_flags = zulo_interrupt_flags))
+			return TRUE
+		activating = FALSE
+		return FALSE
+	else if(owner.get_generation() <= 9)
+		if(HAS_TRAIT(owner, TRAIT_PROMETHEAN_CLAY)) // Promethean Clay makes self-vicissitude changes into reflexive actions (like free actions in other TTRPGs). For Gen 9 and less able to spend 2+ BP and change in one single TTRPG turn, easier to just make it an instant action.
+			owner.do_jitter_animation(2 SECONDS)
+			return TRUE
+		activating = TRUE
+		owner.do_jitter_animation(1 TURNS)
+		to_chat(owner, span_warning("Your body quickly starts to warp and twist into a horrifying war form..."))
+		if(do_after(owner, 1 TURNS, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
+			return TRUE
+		activating = FALSE
+		return FALSE
 
 /datum/discipline_power/vicissitude/horrid_form/activate()
 	. = ..()
-	if(!zulo_form)
-		zulo_form = new(owner)
-		zulo_form.Grant(owner)
-	zulo_form.Activate(owner)
+	activating = FALSE
+	owner.set_species(mrace = /datum/species/tzimisce_zulo_form, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)
+	owner.uncuff() // mimics bloodform for uncuffing. Placeholder until cuffbreaking code is done.
+
+
+/datum/discipline_power/vicissitude/horrid_form/deactivate()
+	. = ..()
+	owner.do_jitter_animation(2 SECONDS)
+	if(!do_after(owner, 2 SECONDS, owner, timed_action_flags = (IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE | IGNORE_HELD_ITEM)))
+		return FALSE
+	owner.set_species(mrace = /datum/species/human, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)
+	playsound(get_turf(owner), 'modular_darkpack/modules/powers/sounds/vicissitude.ogg', 100, TRUE, -6)
+	return TRUE
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

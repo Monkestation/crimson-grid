@@ -94,6 +94,7 @@
 		/datum/discipline_power/obfuscate/vanish_from_the_minds_eye,
 		/datum/discipline_power/obfuscate/cloak_the_gathering
 	)
+	frenzy_usable = FALSE
 
 /datum/discipline_power/obfuscate/cloak_of_shadows/pre_activation_checks()
 	. = ..()
@@ -136,6 +137,7 @@
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 
@@ -189,6 +191,7 @@
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0 // vitae cost handled in activate()
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 	grouped_powers = list(
@@ -276,11 +279,11 @@
 	if(target_splat?.clan?.alt_sprite)
 		owner.set_body_sprite(target_splat.clan.alt_sprite, target_splat.clan.alt_sprite_greyscale, TRUE)
 	else
-		if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_FACE in owner_splat.clan.clan_traits))
-			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, CLAN_TRAIT)
-		if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_EYES in owner_splat.clan.clan_traits))
-			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, CLAN_TRAIT)
-		if(original_sprite == "rotten4")
+		if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_FACE in owner_splat.clan.subsplat_traits))
+			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, SUBSPLAT_TRAIT)
+		if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_EYES in owner_splat.clan.subsplat_traits))
+			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, SUBSPLAT_TRAIT)
+		if(original_sprite == "rotten4" || original_sprite == "rotten3")
 			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, MAGIC_TRAIT)
 		owner.set_body_sprite(SPECIES_HUMAN, TRUE, TRUE)
 
@@ -296,11 +299,11 @@
 	original_dna.copy_dna(owner.dna, 0)
 	owner.name = original_name
 
-	if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_FACE in owner_splat.clan.clan_traits))
-		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, CLAN_TRAIT)
-	if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_EYES in owner_splat.clan.clan_traits))
-		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, CLAN_TRAIT)
-	if(original_sprite == "rotten4")
+	if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_FACE in owner_splat.clan.subsplat_traits))
+		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, SUBSPLAT_TRAIT)
+	if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_EYES in owner_splat.clan.subsplat_traits))
+		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, SUBSPLAT_TRAIT)
+	if(original_sprite == "rotten4" || original_sprite == "rotten3")
 		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, MAGIC_TRAIT)
 
 	owner.set_body_sprite(original_sprite, original_sprite_greyscale, TRUE)
@@ -359,6 +362,7 @@
 	level = 5
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 

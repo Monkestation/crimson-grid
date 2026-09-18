@@ -26,7 +26,7 @@ GLOBAL_LIST_INIT(territorial_type_choices, init_territorial_type_choices())
 		return FALSE
 	return /datum/quirk/darkpack/territorial::name in preferences.all_quirks
 
-/datum/preference/choiced/territorial/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/territorial/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/datum/quirk/darkpack/territorial/terr = target.get_quirk(/datum/quirk/darkpack/territorial)
 	if(!terr)
 		return
@@ -44,6 +44,7 @@ GLOBAL_LIST_INIT(territorial_type_choices, init_territorial_type_choices())
 	icon = FA_ICON_MAP_LOCATION_DOT
 	failure_message = "Who cares where anyone feeds, anyways?"
 	var/territory
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 
 /datum/quirk_constant_data/territorial
 	associated_typepath = /datum/quirk/darkpack/territorial

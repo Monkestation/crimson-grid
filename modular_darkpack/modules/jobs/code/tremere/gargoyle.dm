@@ -7,7 +7,6 @@
 	config_tag = "CHANTRY_GARGOYLE"
 	outfit = /datum/outfit/job/vampire/gargoyle
 	job_flags = CITY_JOB_FLAGS
-	exp_required_type_department = EXP_TYPE_CHANTRY
 	departments_list = list(
 		/datum/job_department/chantry,
 	)
@@ -19,10 +18,14 @@
 	minimum_masquerade = 3
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GARGOYLE)
-	known_contacts = list("Tremere Regent")
+	known_contacts = list(
+		JOB_CHANTRY_REGENT,
+		JOB_CHANTRY_ARCHIVIST,
+		JOB_CHANTRY_GARGOYLE
+	)
 
 /datum/outfit/job/vampire/gargoyle
-	name = "Chantry Gargoyle"
+	name = JOB_CHANTRY_GARGOYLE
 	jobtype = /datum/job/vampire/gargoyle
 	id = /obj/item/card/archive
 	glasses = /obj/item/clothing/glasses/vampire/red

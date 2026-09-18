@@ -33,5 +33,5 @@
 	zulo_icon.scale(32, 32)
 	return zulo_icon
 
-/datum/preference/choiced/zulo_form/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/zulo_form/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return

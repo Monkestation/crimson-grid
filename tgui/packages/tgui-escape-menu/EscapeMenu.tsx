@@ -2,6 +2,7 @@ import './styles/main.scss';
 
 import { useEffect, useReducer, useRef } from 'react';
 
+import { MentorPage } from './pages/MentorPage'; // DARKPACK EDIT CHANGE - MENTORS
 import { playCloseSounds, playOpenSounds } from './audio';
 import { AdminPage } from './pages/AdminPage';
 import { HomePage } from './pages/HomePage';
@@ -10,7 +11,7 @@ import { PlayersPage } from './pages/PlayersPage';
 import { QuitPage } from './pages/QuitPage';
 import { updateScaling } from './scaling';
 
-type Page = 'home' | 'admin' | 'players' | 'leave_body' | 'quit';
+type Page = 'home' | 'admin' | 'mentor' | 'players' | 'leave_body' | 'quit'; // DARKPACK EDIT CHANGE - MENTORS
 
 export type PlayerInfo = {
   ckey: string;
@@ -27,6 +28,7 @@ export type ServerState = {
   roundId: string;
   mapName: string;
   mapFeedbackLink: string | null;
+  mapWebmap: string | null;
   serverTime: string;
   shiftTime: string;
   timeDilation: string;
@@ -36,6 +38,8 @@ export type ServerState = {
   hasTicketNotification: boolean;
   resources: ResourceLink[];
   admins: PlayerInfo[];
+  mentors: PlayerInfo[]; // DARKPACK EDIT CHANGE - MENTORS
+  isMentor: boolean; // DARKPACK EDIT CHANGE - MENTORS
   players: PlayerInfo[];
   ignoredOffline: string[];
   suicideIcon: string | null;
@@ -176,6 +180,15 @@ export function EscapeMenu() {
             onClose={handleClose}
           />
         )}
+        {/* DARKPACK EDIT CHANGE START - MENTORS */}
+        {state.page === 'mentor' && (
+          <MentorPage
+            onNavigate={navigate}
+            onAction={handleAction}
+            onClose={handleClose}
+          />
+        )}
+        {/* DARKPACK EDIT END */}
         {state.page === 'players' && (
           <PlayersPage
             serverState={state.serverState}
@@ -216,6 +229,14 @@ function Details({ serverState }: { serverState: ServerState }) {
           </span>
         ) : (
           serverState.mapName || 'Loading...'
+        )}
+        {!!serverState.mapWebmap && (
+          <span
+            className="escape-menu__details-link"
+            onClick={() => Byond.command(`.url ${serverState.mapWebmap}`)}
+          >
+            {` (Open Map)`}
+          </span>
         )}
       </div>
       <div>Time Dilation: {serverState.timeDilation}%</div>

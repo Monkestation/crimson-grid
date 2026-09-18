@@ -27,4 +27,8 @@
 		new /datum/data/vending_product("black fur boots", /obj/item/clothing/shoes/vampire/blackfur, 35),
 		new /datum/data/vending_product("brown fur boots", /obj/item/clothing/shoes/vampire/brownfur, 35),
 		new /datum/data/vending_product("knee-high sneakers", /obj/item/clothing/shoes/vampire/pumped, 35),
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+		new /datum/data/vending_product("wallet", /obj/item/storage/wallet/darkpack, 25),
+		new /datum/data/vending_product("cloth", /obj/item/stack/sheet/cloth, 5),
+// CRIMSON EDIT ADD END - Shop Inventories Additions
 	)

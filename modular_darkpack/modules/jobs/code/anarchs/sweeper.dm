@@ -13,14 +13,20 @@
 		/datum/job_department/anarch,
 	)
 
-	known_contacts = list("Baron", "Bouncer", "Emissary", "Sweeper")
+	known_contacts = list(
+		JOB_BARON,
+		JOB_BRUISER,
+		JOB_EMISSARY,
+		JOB_TAPSTER,
+		JOB_SWEEPER
+	)
 	allowed_clans = list(VAMPIRE_CLAN_DAUGHTERS_OF_CACOPHONY, VAMPIRE_CLAN_TRUE_BRUJAH, VAMPIRE_CLAN_BRUJAH, VAMPIRE_CLAN_NOSFERATU, VAMPIRE_CLAN_GANGREL, VAMPIRE_CLAN_CITY_GANGREL, VAMPIRE_CLAN_TREMERE, VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_TZIMISCE, VAMPIRE_CLAN_CAITIFF, VAMPIRE_CLAN_VENTRUE, VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_GARGOYLE, VAMPIRE_CLAN_KIASYD, VAMPIRE_CLAN_CAPPADOCIAN, VAMPIRE_CLAN_SETITE, VAMPIRE_CLAN_HEALER_SALUBRI, VAMPIRE_CLAN_SAMEDI, VAMPIRE_CLAN_NAGARAJA)
 	allowed_splats = list(SPLAT_KINDRED)
 	description = "You are the observer of the anarchs. You watch out for any new kindred, suspicious individuals, and any new rumors near the anarch turf, and then report it to your anarchs."
 	minimum_masquerade = 2
 
 /datum/outfit/job/vampire/sweeper
-	name = "Sweeper"
+	name = JOB_SWEEPER
 	jobtype = /datum/job/vampire/sweeper
 
 	id = /obj/item/card/sweeper

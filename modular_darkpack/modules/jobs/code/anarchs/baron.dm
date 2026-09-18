@@ -13,14 +13,27 @@
 		/datum/job_department/anarch,
 	)
 
-	known_contacts = list("Bouncer", "Emissary", "Sweeper", "Prince", "Sheriff")
+	exp_requirements = EXP_REQ_HEAD
+	exp_required_type_department = EXP_TYPE_ANARCH
+
+	known_contacts = list(
+		JOB_BRUISER,
+		JOB_EMISSARY,
+		JOB_SWEEPER,
+		JOB_TAPSTER,
+		JOB_PRINCE,
+		JOB_SHERIFF,
+		JOB_SENESCHAL,
+		JOB_HARPY,
+		JOB_DEALER
+	)
 	allowed_clans = list(VAMPIRE_CLAN_DAUGHTERS_OF_CACOPHONY, VAMPIRE_CLAN_BAALI, VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_CAITIFF, VAMPIRE_CLAN_TRUE_BRUJAH, VAMPIRE_CLAN_BRUJAH, VAMPIRE_CLAN_NOSFERATU, VAMPIRE_CLAN_GANGREL, VAMPIRE_CLAN_CITY_GANGREL, VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_VENTRUE, VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_GARGOYLE, VAMPIRE_CLAN_SETITE, VAMPIRE_CLAN_SAMEDI, VAMPIRE_CLAN_NAGARAJA)
 	allowed_splats = list(SPLAT_KINDRED)
 	description = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality. While not a fan of the traditions, you still respect the Masquerade."
 	minimum_masquerade = 3
 
 /datum/outfit/job/vampire/baron
-	name = "Baron"
+	name = JOB_BARON
 	jobtype = /datum/job/vampire/baron
 
 	id = /obj/item/card/baron

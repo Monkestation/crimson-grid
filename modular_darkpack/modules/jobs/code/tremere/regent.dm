@@ -13,15 +13,23 @@
 	)
 	display_order = JOB_DISPLAY_ORDER_REGENT
 
+	exp_requirements = EXP_REQ_HEAD
+
 	description = "Lead the Chantry. You serve as both the Regent and Tremere Primogen. You report to the Tremere Lord of this region first, Prince second."
 	minimum_masquerade = 4
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE)
 
-	known_contacts = list("Prince")
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_CHANTRY_GARGOYLE,
+		JOB_CHANTRY_ARCHIVIST,
+		JOB_SHERIFF,
+		JOB_SENESCHAL
+	)
 
 /datum/outfit/job/vampire/regent
-	name = "Chantry Regent"
+	name = JOB_CHANTRY_REGENT
 	jobtype = /datum/job/vampire/regent
 
 	id = /obj/item/card/regent

@@ -153,12 +153,15 @@
 /datum/status_effect/knocked_out/on_apply()
 	owner.become_blind(TRAIT_STATUS_EFFECT(id))
 	owner.apply_status_effect(/datum/status_effect/grouped/see_no_names, TRAIT_STATUS_EFFECT(id))
+	owner.apply_status_effect(/datum/status_effect/grouped/static_look, TRAIT_STATUS_EFFECT(id))	//DARKPACK EDIT ADD - Static look on unconscious
 	owner.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_BLOCK_SECHUD, TRAIT_BLOCK_MEDHUD, TRAIT_INCAPACITATED, TRAIT_FLOORED), TRAIT_STATUS_EFFECT(id))
 	owner.update_eyes() // updates eyelids
 	RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(on_mob_statchange))
+	/* DARKPACK EDIT REMOVE - Frenzy Additions
 	RegisterSignal(owner, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(show_unconscious_hud))
 	if(GET_CLIENT(owner)) // let's not waste time giving the hud to non-player characters
 		show_unconscious_hud(owner)
+	*/
 	return TRUE
 
 /datum/status_effect/knocked_out/on_creation(mob/living/new_owner, ...)
@@ -171,15 +174,18 @@
 /datum/status_effect/knocked_out/on_remove()
 	owner.cure_blind(TRAIT_STATUS_EFFECT(id))
 	owner.remove_status_effect(/datum/status_effect/grouped/see_no_names, TRAIT_STATUS_EFFECT(id))
+	owner.remove_status_effect(/datum/status_effect/grouped/static_look, TRAIT_STATUS_EFFECT(id))	//DARKPACK EDIT ADD - Static look on unconscious
 	owner.remove_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_BLOCK_SECHUD, TRAIT_BLOCK_MEDHUD, TRAIT_INCAPACITATED, TRAIT_FLOORED), TRAIT_STATUS_EFFECT(id))
 	owner.update_eyes() // updates eyelids
-	UnregisterSignal(owner, list(COMSIG_MOB_CLIENT_LOGIN, COMSIG_MOB_STATCHANGE))
-	if(GET_CLIENT(owner))
-		hide_unconscious_hud(owner)
+	UnregisterSignal(owner, list(COMSIG_MOB_STATCHANGE))	//DARKPACK EDIT CHANGE - static_look effect - original: UnregisterSignal(owner, list(COMSIG_MOB_CLIENT_LOGIN, COMSIG_MOB_STATCHANGE))
+	//if(GET_CLIENT(owner)) DARKPACK EDIT REMOVAL - Frenzy Additions
+	//	hide_unconscious_hud(owner) DARKPACK EDIT REMOVAL - Frenzy Additions
+
 
 /datum/status_effect/knocked_out/tick(seconds_between_ticks)
 	owner.adjust_stamina_loss(-3 * seconds_between_ticks)
 
+/* // DARKPACK EDIT REMOVAL  - Frenzy Additions
 /// Global list of images that correspond to a mob's unconscious appearance
 GLOBAL_LIST_EMPTY(unconscious_appearances)
 
@@ -192,6 +198,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	SIGNAL_HANDLER
 
 	source.client?.images -= GLOB.unconscious_appearances
+*/ // DARKPACK EDIT REMOVAL - Frenzy Additions
 
 /datum/status_effect/knocked_out/proc/on_mob_statchange(mob/living/source, ...)
 	SIGNAL_HANDLER
@@ -268,7 +275,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 					sleep_quality = -0.2
 
 		var/turf/rest_turf = get_turf(owner)
-		var/is_sleeping_in_darkness = rest_turf.get_lumcount() <= LIGHTING_TILE_IS_DARK
+		var/is_sleeping_in_darkness = !rest_turf.check_lumcount_above(LIGHTING_TILE_IS_DARK)
 
 		// sleeping with a blindfold or in the dark helps us rest
 		if(owner.is_blind_from(EYES_COVERED) || is_sleeping_in_darkness)
@@ -538,11 +545,11 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	new /obj/effect/temp_visual/bleed(get_turf(owner))
 
 /datum/status_effect/stacking/saw_bleed/threshold_cross_effect()
-	owner.adjust_brute_loss(bleed_damage)
 	new /obj/effect/temp_visual/bleed/explode(get_turf(owner))
+	playsound(owner, SFX_DESECRATION, 100, TRUE, -1)
 	for(var/splatter_dir in GLOB.alldirs)
 		owner.create_splatter(splatter_dir)
-	playsound(owner, SFX_DESECRATION, 100, TRUE, -1)
+	owner.adjust_brute_loss(bleed_damage)
 
 /datum/status_effect/stacking/saw_bleed/bloodletting
 	id = "bloodletting"
@@ -583,7 +590,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	if(prob(10))
 		owner.emote(pick("gasp", "gag", "choke"))
 
-/datum/status_effect/neck_slice/get_examine_text()
+/datum/status_effect/neck_slice/get_examine_text(mob/examiner)
 	return span_warning("[owner.p_Their()] neck is cut and is bleeding profusely!")
 
 /// Applies a curse with various possible effects
@@ -724,7 +731,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	owner.remove_client_colour(REF(src))
 	to_chat(owner, span_warning("You snap out of your trance!"))
 
-/datum/status_effect/trance/get_examine_text()
+/datum/status_effect/trance/get_examine_text(mob/examiner)
 	return span_warning("[owner.p_They()] seem[owner.p_s()] slow and unfocused.")
 
 /datum/status_effect/trance/proc/hypnotize(datum/source, list/hearing_args)
@@ -1014,7 +1021,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	if(owner.remove_status_effect(/datum/status_effect/ants))
 		return COMPONENT_CLEANED|COMPONENT_CLEANED_GAIN_XP
 
-/datum/status_effect/ants/get_examine_text()
+/datum/status_effect/ants/get_examine_text(mob/examiner)
 	return span_warning("[owner.p_They()] [owner.p_are()] covered in ants!")
 
 /datum/status_effect/ants/tick(seconds_between_ticks)

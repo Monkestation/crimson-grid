@@ -8,10 +8,7 @@
 	supervisors = SUPERVISOR_PRINCE
 	req_admin_notify = 1
 	minimal_player_age = 10
-	exp_requirements = 180
-	exp_required_type = EXP_TYPE_CAMARILLA
-	exp_required_type_department = EXP_TYPE_CAMARILLA
-	exp_granted_type = EXP_TYPE_CAMARILLA
+	exp_requirements = EXP_REQ_MINOR
 	config_tag = "SENESCHAL"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/clerk
@@ -26,10 +23,23 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_DAUGHTERS_OF_CACOPHONY, VAMPIRE_CLAN_TRUE_BRUJAH, VAMPIRE_CLAN_BRUJAH, VAMPIRE_CLAN_TREMERE, VAMPIRE_CLAN_VENTRUE, VAMPIRE_CLAN_NOSFERATU, VAMPIRE_CLAN_GANGREL, VAMPIRE_CLAN_CITY_GANGREL, VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_MALKAVIAN, VAMPIRE_CLAN_DOMINATE_MALKAVIAN, VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_BANU_HAQIM_VIZIER, VAMPIRE_CLAN_SETITE, VAMPIRE_CLAN_TLACIQUE, VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_GARGOYLE, VAMPIRE_CLAN_KIASYD)
 
-	known_contacts = list("Prince","Sheriff","Tremere Regent","Dealer","Primogens")
+	known_contacts = list(
+		JOB_PRINCE,
+		JOB_SHERIFF,
+		JOB_CHANTRY_REGENT,
+		JOB_DEALER,
+		JOB_EMISSARY,
+		JOB_BARON,
+		JOB_PRIMOGEN_BANU_HAQIM,
+		JOB_PRIMOGEN_TOREADOR,
+		JOB_PRIMOGEN_LASOMBRA,
+		JOB_PRIMOGEN_MALKAVIAN,
+		JOB_PRIMOGEN_VENTRUE,
+		JOB_PRIMOGEN_NOSFERATU
+	)
 
 /datum/outfit/job/vampire/clerk
-	name = "Seneschal"
+	name = JOB_SENESCHAL
 	jobtype = /datum/job/vampire/clerk
 
 	ears = /obj/item/radio/headset/darkpack

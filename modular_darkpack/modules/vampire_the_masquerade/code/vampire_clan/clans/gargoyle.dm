@@ -10,7 +10,7 @@
 		/datum/discipline/potence,
 		/datum/discipline/visceratika
 	)
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_CANNOT_RESIST_MIND_CONTROL,
 		TRAIT_MASQUERADE_VIOLATING_FACE,
 		TRAIT_WEAK_TO_DOMINATE,

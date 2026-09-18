@@ -227,7 +227,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			// DARKPACK EDIT ADD START - (patches alot of minor exploits from midround char sheet manipulation)
 			if(!isnewplayer(usr) && ("[usr.client.prefs.default_slot]" in usr.persistent_client.joined_as_slots))
 				if(check_rights(R_ADMIN))
-					to_chat(usr, span_warning("Swapping between character slots midround is unsupported and can lead to false writes to prefrences."))
+					to_chat(usr, span_warning("Swapping between character slots midround is unsupported and can lead to false writes to preferences."))
 				else
 					to_chat(usr, span_warning("You cannot be spawned in as this character to swap character slots. Return to the lobby to change characters."))
 					return FALSE
@@ -590,7 +590,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			continue
 		// DARKPACK EDIT ADD END - TTRPG preferences
 
-		preference.apply_to_human(character, read_preference(preference.type))
+		preference.apply_to_human(character, read_preference(preference.type), src)
 
 	character.dna.real_name = character.real_name
 

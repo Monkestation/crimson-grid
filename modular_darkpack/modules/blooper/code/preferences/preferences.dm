@@ -9,7 +9,7 @@
 		return list("none")
 	return assoc_to_keys(SSblooper.blooper_list)
 
-/datum/preference/choiced/blooper/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/blooper/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.blooper = SSblooper.blooper_list[value]
 
 /datum/preference/choiced/blooper/is_accessible(datum/preferences/preferences)
@@ -32,7 +32,7 @@
 	minimum = 0
 	maximum = 100
 
-/datum/preference/numeric/blooper_speed/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/blooper_speed/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.blooper_speed = value
 
 /datum/preference/numeric/blooper_speed/create_default_value()
@@ -48,7 +48,7 @@
 	minimum = 0
 	maximum = 100
 
-/datum/preference/numeric/blooper_pitch/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/blooper_pitch/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.blooper_pitch = value
 
 /datum/preference/numeric/blooper_pitch/create_default_value()
@@ -64,7 +64,7 @@
 	minimum = 0
 	maximum = 100
 
-/datum/preference/numeric/blooper_pitch_range/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/blooper_pitch_range/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.blooper_pitch_range = value
 
 /datum/preference/numeric/blooper_pitch_range/create_default_value()
@@ -89,7 +89,7 @@
 	minimum = 0
 	maximum = 100
 
-/datum/preference/numeric/blooper_sound_volume/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/blooper_sound_volume/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return
 
 /datum/preference/numeric/blooper_sound_volume/create_default_value()

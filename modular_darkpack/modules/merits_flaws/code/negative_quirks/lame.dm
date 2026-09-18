@@ -50,5 +50,5 @@ Your walking speed is one-quarter that of a normal human, and running is impossi
 
 	return /datum/quirk/darkpack/lame::name in preferences.all_quirks
 
-/datum/preference/choiced/lame_leg/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/lame_leg/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return

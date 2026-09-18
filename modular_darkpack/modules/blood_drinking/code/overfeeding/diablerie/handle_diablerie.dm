@@ -32,7 +32,7 @@
 				message_admins("[ADMIN_LOOKUPFLW(src)] successfully Diablerized [ADMIN_LOOKUPFLW(victim)]")
 				log_attack("[key_name(src)] successfully Diablerized [key_name(victim)].")
 				if(victim.client)
-					var/datum/brain_trauma/special/imaginary_friend/trauma = gain_trauma(/datum/brain_trauma/special/imaginary_friend)
+					var/datum/brain_trauma/special/imaginary_friend/diablerie/trauma = gain_trauma(/datum/brain_trauma/special/imaginary_friend/diablerie)
 					trauma.friend.key = victim.key
 
 			make_diablerist()

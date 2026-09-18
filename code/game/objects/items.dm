@@ -434,7 +434,7 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 
 	if(item_flags & CRUEL_IMPLEMENT)
 		.[span_red("morbid")] = "It seems quite practical for particularly morbid procedures and experiments."
-	if(item_flags & BLUESPACE_INTERFERENCE)
+	if(HAS_TRAIT(src, TRAIT_BLUESPACE_INTERFERENCE))
 		.["bluespace-active"] = "It is highly active in bluespace and will cause malfunctions in teleporters."
 	if (siemens_coefficient == 0)
 		.["insulated"] = "It is made from a robust electrical insulator and will block any electricity passing through it!"
@@ -457,21 +457,19 @@ GAME_VERB_SRC(/obj/item, move_to_top, oview(1), "Move To Top", null)
 		. += research_scan(user)
 
 /obj/item/proc/research_scan(mob/user)
-	/// Research prospects, including boostable nodes and point values. Deliver to a console to know whether the boosts have already been used.
+	// Research prospects, including boostable nodes and point values. Deliver to a console to know whether the boosts have already been used.
 	var/list/research_msg = list("<font color='purple'>Research prospects:</font> ")
-	///Separator between the items on the list
+	// Separator between the items on the list
 	var/sep = ""
-	///Nodes that can be boosted
-	var/list/boostable_nodes = techweb_item_unlock_check(src)
-	if (boostable_nodes)
-		for(var/id in boostable_nodes)
-			var/datum/techweb_node/node = SSresearch.techweb_node_by_id(id)
-			if(!node)
-				continue
+	// Nodes that can be boosted
+	var/list/boostable_nodes = SSresearch.techweb_unlock_items[type]
+	if(length(boostable_nodes))
+		for(var/boost_path in boostable_nodes)
+			var/datum/techweb_node/node = SSresearch.techweb_nodes[boost_path]
 			research_msg += sep
 			research_msg += node.display_name
 			sep = ", "
-	var/list/points = techweb_item_point_check(src)
+	var/list/points = SSresearch.techweb_point_items[type]
 	if (length(points))
 		sep = ", "
 		research_msg += techweb_point_display_generic(points)
@@ -980,9 +978,14 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 	if(isturf(location))
 		location.hotspot_expose(flame_heat, 5)
 		// DARKPACK EDIT ADD START - TURF_FIRE
-		if(SEND_SIGNAL(location, COMSIG_TURF_OPEN_FLAME, flame_heat) & BLOCK_TURF_IGNITION)
-			return
 		var/turf/open/open_location = loc // NOT the location variable used earlier else cigarettes in mouths start fires
+		if(SEND_SIGNAL(open_location, COMSIG_TURF_OPEN_FLAME, flame_heat) & BLOCK_TURF_IGNITION)
+			return
+		// Checking src here incase we have... a flamable table. that should ignite its turf.
+		if(HAS_TRAIT(open_location, TRAIT_ELEVATED_TURF) && !HAS_TRAIT(src, TRAIT_ELEVATING_OBJECT))
+			return
+		if(HAS_TRAIT(src, TRAIT_ELEVATED_FLAME))
+			return
 		if(isopenturf(open_location) && open_location.flammability >= 1 && prob(open_location.flammability))
 			open_location.ignite_turf(2) // if there's enough flammability for a fire to sustain itself..
 		// DARKPACK EDIT ADD END
@@ -1841,7 +1844,7 @@ GAME_VERB_SRC(/obj/item, verb_pickup, oview(1), "Pick up", null)
 /obj/item/proc/item_start_equip(atom/target, obj/item/equipping, mob/user, show_visible_message = TRUE)
 
 	if(show_visible_message)
-		if(HAS_TRAIT(equipping, TRAIT_DANGEROUS_OBJECT))
+		if(HAS_TRAIT(equipping, TRAIT_DANGEROUS_EQUIP))
 			target.visible_message(
 				span_danger("[user] tries to put [equipping] on [target]."),
 				span_userdanger("[user] tries to put [equipping] on you."),

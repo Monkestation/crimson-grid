@@ -102,6 +102,12 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	feature_list[FEATURE_TAIL_MONKEY] = INIT_ACCESSORY(/datum/sprite_accessory/tails/monkey)
 	feature_list[FEATURE_TAIL_XENO] = INIT_ACCESSORY(/datum/sprite_accessory/tails/xeno)
 
+	// DARKPACK EDIT ADD START - WEREWOLF
+	feature_list[FEATURE_FERA_HAIR(SPLAT_GAROU)] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/fera_feature/hair/garou)
+	feature_list[FEATURE_FERA_BODY(SPLAT_GAROU)] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/fera_feature/body/garou)
+	feature_list[FEATURE_FERA_CLOTHES(SPLAT_GAROU)] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/fera_feature/clothes/garou)
+	// DARKPACK EDIT ADD END
+
 /// This proc just initializes all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
 /datum/controller/subsystem/accessories/proc/init_hair_gradients()
 	hair_gradients_list = list()

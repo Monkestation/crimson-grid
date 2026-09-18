@@ -8,3 +8,4 @@
 	lose_text = span_notice("Your teeth seemingly retract, leaving your voice louder than it was before.")
 	allowed_splats = list(SPLAT_KINDRED)
 	included_clans = list(VAMPIRE_CLAN_NAGARAJA)
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS

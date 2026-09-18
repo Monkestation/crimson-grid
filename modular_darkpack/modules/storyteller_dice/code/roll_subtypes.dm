@@ -79,6 +79,10 @@
 		. -= 1
 */
 
+/datum/storyteller_roll/damage/attacker_disarm
+	numerical = TRUE
+	applicable_stats = list(STAT_STRENGTH)
+
 /datum/storyteller_roll/shooting
 	bumper_text = "shooting"
 	applicable_stats = list(STAT_DEXTERITY, STAT_FIREARMS)
@@ -115,6 +119,11 @@
 	bumper_text = "bash door"
 	reroll_cooldown = 1 SCENES
 	applicable_stats = list(STAT_STRENGTH)
+
+/datum/storyteller_roll/bash_door/calculate_used_dice(mob/living/roller, bonus)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_HUGE_SIZE))
+		. += 2
 
 /datum/storyteller_roll/grappling
 	bumper_text = "grappling"

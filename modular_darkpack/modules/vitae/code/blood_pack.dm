@@ -1,4 +1,14 @@
-//Regular blooc packs are considered O-, due to being the all-purpose donation blood type.
+GLOBAL_LIST_INIT(human_blood_types, list(
+		/datum/blood_type/human/o_minus = 4,
+		/datum/blood_type/human/o_plus = 36,
+		/datum/blood_type/human/a_minus = 3,
+		/datum/blood_type/human/a_plus = 28,
+		/datum/blood_type/human/b_minus = 1,
+		/datum/blood_type/human/b_plus = 20,
+		/datum/blood_type/human/ab_minus = 1,
+		/datum/blood_type/human/ab_plus = 5,
+	))
+
 /obj/item/reagent_containers/blood
 	icon = 'modular_darkpack/modules/vitae/icons/bloodpack.dmi'
 	lefthand_file = 'modular_darkpack/modules/vitae/icons/lefthand.dmi'
@@ -49,79 +59,53 @@
 	custom_price = 5
 
 /obj/item/reagent_containers/blood/ab_plus
-	blood_type = BLOOD_TYPE_AB_PLUS
+	blood_type = /datum/blood_type/human/ab_plus
 
 /obj/item/reagent_containers/blood/ab_minus
-	blood_type = BLOOD_TYPE_AB_MINUS
+	blood_type = /datum/blood_type/human/ab_minus
+
 
 /obj/item/reagent_containers/blood/vitae
 	name = "\improper vampire vitae pack (full)"
-	blood_type = BLOOD_TYPE_KINDRED
+	blood_type = /datum/blood_type/kindred
+
 
 /////////////////////////////////////////////////////////////////
 
 /obj/item/reagent_containers/blood/bweedpack
 	name = "\improper elite blood pack (full)"
-	blood_type = null
+	start_blood_amount = 160
 
 /obj/item/reagent_containers/blood/bweedpack/Initialize(mapload)
+	blood_type = pick_weight(GLOB.human_blood_types)
 	. = ..()
 	reagents.add_reagent(/datum/reagent/drug/cannabis, 20)
 	reagents.add_reagent(/datum/reagent/toxin/lipolicide, 20)
-	reagents.add_reagent(/datum/reagent/blood, 160,
-		list("donor" = null,
-			"viruses" = null,
-			"blood_DNA" = null,
-			"blood_type" = random_human_blood_type_name(),
-			"resistances" = null,
-			"trace_chem" = null))
-	update_appearance()
 
 /obj/item/reagent_containers/blood/cokepack
 	name = "\improper elite blood pack (full)"
-	blood_type = null
+	start_blood_amount = 185
 
 /obj/item/reagent_containers/blood/cokepack/Initialize(mapload)
+	blood_type = pick_weight(GLOB.human_blood_types)
 	. = ..()
 	reagents.add_reagent(/datum/reagent/drug/methamphetamine, 15)
-	reagents.add_reagent(/datum/reagent/blood, 185,
-		list("donor" = null,
-			"viruses" = null,
-			"blood_DNA" = null,
-			"blood_type" = random_human_blood_type_name(),
-			"resistances" = null,
-			"trace_chem" = null))
-	update_appearance()
 
 /obj/item/reagent_containers/blood/morphpack
 	name = "\improper elite blood pack (full)"
-	blood_type = null
+	start_blood_amount = 180
 
 /obj/item/reagent_containers/blood/morphpack/Initialize(mapload)
+	blood_type = pick_weight(GLOB.human_blood_types)
 	. = ..()
 	reagents.add_reagent(/datum/reagent/toxin/chloralhydrate, 10)
 	reagents.add_reagent(/datum/reagent/medicine/morphine, 10)
-	reagents.add_reagent(/datum/reagent/blood, 180,
-		list("donor" = null,
-			"viruses" = null,
-			"blood_DNA" = null,
-			"blood_type" = random_human_blood_type_name(),
-			"resistances" = null,
-			"trace_chem" = null))
-	update_appearance()
 
 /obj/item/reagent_containers/blood/methpack
 	name = "\improper elite blood pack (full)"
-	blood_type = null
+	start_blood_amount = 185
 
 /obj/item/reagent_containers/blood/methpack/Initialize(mapload)
+	blood_type = pick_weight(GLOB.human_blood_types)
 	. = ..()
 	reagents.add_reagent(/datum/reagent/drug/methamphetamine, 15)
-	reagents.add_reagent(/datum/reagent/blood, 185,
-		list("donor" = null,
-			"viruses" = null,
-			"blood_DNA" = null,
-			"blood_type" = random_human_blood_type_name(),
-			"resistances" = null,
-			"trace_chem" = null))
-	update_appearance()

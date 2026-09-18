@@ -30,6 +30,9 @@ ON_CRIT_ADDITIONAL_DIE
 #If you can be barred from jobs for having too high of an age/generation
 #MAX_GEN_LIMITS
 
+##Whether we should allow artifact 'stacking', in other words, if a player has more than two of the same artifacts, if that artifact's powers should be applied twice
+#ARTIFACT_STACKING
+
 ##Artifact spawn chance from crates - note, crates usually drop random artifact subtype, so this probability is typically multiplied by the random probability
 ARTIFACT_CRATE_PROBABILITY 20
 ##Artifact spawn chance from mapped in random spots
@@ -50,6 +53,17 @@ ROUNDSTART_SPLATS splat_ghoul
 ROUNDSTART_SPLATS splat_kinfolk
 ROUNDSTART_SPLATS splat_garou
 ROUNDSTART_SPLATS splat_corax
+
+#WHITELISTED_SPLATS splat_garou
+#WHITELISTED_SPLATS splat_corax
+
+#WHITELISTED_CLANS baali
+#WHITELISTED_CLANS healer_salubri
+#WHITELISTED_CLANS warrior_salubri
+#WHITELISTED_CLANS true_brujah
+#WHITELISTED_CLANS cappadocian
+#WHITELISTED_CLANS harbinger
+
 
 ## If dead people and ghosts can LOOC to people who are alive.
 DISABLE_GHOST_LOOC
@@ -91,3 +105,15 @@ PASSIVE_BP_DRAIN_TIMER 12000
 DISCIPLINE_KEYBINDS
 ## Gives every single power a keybind, will majorly clutter the keybinds menu if uncommented in exchange for being very convenient for players
 #INDIVIDUAL_POWER_KEYBINDS
+
+## Configs how long between full moons. Defaults to realtime (default: 29.530588)
+LUNAR_CYCLE_INTERVAL 29.530588
+
+## Configs what kind of Lunar Cycle we want to use. A malformed number will result in a permanent new moon
+## 0 = Use LUNAR_CYCLE_INTERVAL (Default)
+## 1 = Lunar cycle advances every LUNAR_CYCLE_ROUNDS
+## 2 = Lunar cycle is random per round
+LUNAR_CYCLE_TYPE 0
+
+## If using LUNAR_CYCLE_TYPE 1, how many rounds does the moonphase last? (default: 1)
+LUNAR_CYCLE_ROUNDS 1

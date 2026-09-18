@@ -55,11 +55,22 @@
 		if(src in artifact_identifier?.get_all_contents())
 			bind(artifact_identifier)
 
+/obj/item/occult_artifact/proc/can_be_used_by(mob/living/user)
+	return TRUE
+
 /obj/item/occult_artifact/proc/bind(mob/user)
 	if(!identified)
 		return
 	if(owner) // Dont bind twice
 		return
+	if(!can_be_used_by(user))
+		return
+	if(!CONFIG_GET(flag/artifact_stacking))
+		var/list/artifacts = user.get_all_contents_type(type)
+		for(var/obj/item/occult_artifact/other_artifact in artifacts)
+			if(other_artifact.owner == user) // We already have a trinket bound. Please dont stack.
+				to_chat(user, span_danger("This excess copy of an artifact is made inert by the same resonances of the current copies held."))
+				return
 	owner = user
 
 	var/datum/controller/subsystem/processing/subsystem = locate(subsystem_type) in Master.subsystems
@@ -108,6 +119,10 @@
 
 	if(!can_be_identified_without_ritual)
 		to_chat(artifact_identifier, span_warning("You've seen some occult artifacts, trinkets, and powerful relics, but this, you've either never seen it before, or it's power can only be awakened by few..."))
+		return
+
+	if(!can_be_used_by(artifact_identifier))
+		to_chat(artifact_identifier, span_warning("There's a presence inside of this object that refuses to cooperate with you."))
 		return
 
 	to_chat(artifact_identifier, span_cult("You might have seen this before in an occult text. You start identifying it..."))

@@ -65,5 +65,5 @@ GLOBAL_LIST_INIT(fetish_merit_choice, generate_merit_fetishes())
 		return FALSE
 	return /datum/quirk/darkpack/item_quirk/fetish::name in preferences.all_quirks
 
-/datum/preference/choiced/fetish_merit/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/fetish_merit/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return

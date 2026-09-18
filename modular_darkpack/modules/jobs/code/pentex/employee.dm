@@ -8,10 +8,7 @@
 	supervisors = "the Board and the Branch Lead"
 	req_admin_notify = 1
 	minimal_player_age = 25
-	exp_requirements = 50
-	exp_required_type = EXP_TYPE_SPIRAL
 	exp_required_type_department = EXP_TYPE_SPIRAL
-	exp_granted_type = EXP_TYPE_SPIRAL
 	config_tag = "PENTEX_EMPLOYEE"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/employee
@@ -37,7 +34,10 @@
 	known_contacts = list(
 		JOB_PENTEX_LEAD,
 		JOB_PENTEX_EXEC,
-		JOB_PENTEX_AFFAIRS
+		JOB_PENTEX_AFFAIRS,
+		JOB_PENTEX_SEC_CHIEF,
+		JOB_PENTEX_SEC,
+		JOB_PENTEX_EMPLOYEE
 	)
 
 	paycheck = PAYCHECK_CREW
@@ -55,5 +55,5 @@
 	gloves = /obj/item/clothing/gloves/vampire/work
 	shoes = /obj/item/clothing/shoes/vampire
 	r_pocket = /obj/item/vamp/keys/pentex
-	l_pocket = /obj/item/smartphone // /employee - todo subtype
+	l_pocket = /obj/item/smartphone/endron_employee
 	backpack_contents = list(/obj/item/card/credit=1)

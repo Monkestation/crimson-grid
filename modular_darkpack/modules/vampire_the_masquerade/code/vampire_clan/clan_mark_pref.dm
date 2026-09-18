@@ -34,7 +34,7 @@
 		return GLOB.beast_marks_to_names_reverse[clan.default_accessory]
 	return pick(get_choices(preferences))
 
-/datum/preference/external_choiced/clan_mark/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/external_choiced/clan_mark/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	if(!value || (value == "none"))
 		return
 	var/datum/subsplat/vampire_clan/clan = target.get_clan()
@@ -68,7 +68,7 @@
 		return TRUE
 	return FALSE
 
-/datum/preference/toggle/gargoyle_legs_and_tail/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/toggle/gargoyle_legs_and_tail/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	if(!value)
 		return
 

@@ -7,7 +7,6 @@
 	config_tag = "CHANTRY_ARCHIVIST"
 	outfit = /datum/outfit/job/vampire/archivist
 	job_flags = CITY_JOB_FLAGS
-	exp_required_type_department = EXP_TYPE_CHANTRY
 	departments_list = list(
 		/datum/job_department/chantry,
 	)
@@ -19,10 +18,14 @@
 	minimum_masquerade = 3
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_TREMERE)
-	known_contacts = list("Tremere Regent")
+	known_contacts = list(
+		JOB_CHANTRY_REGENT,
+		JOB_CHANTRY_ARCHIVIST,
+		JOB_CHANTRY_GARGOYLE
+	)
 
 /datum/outfit/job/vampire/archivist
-	name = "Archivist"
+	name = JOB_CHANTRY_ARCHIVIST
 	jobtype = /datum/job/vampire/archivist
 
 	id = /obj/item/card/archive

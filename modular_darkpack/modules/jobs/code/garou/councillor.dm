@@ -8,10 +8,8 @@
 	supervisors = SUPERVISOR_LITANY
 	req_admin_notify = 1
 	minimal_player_age = 25
-	exp_requirements = 180
-	exp_required_type = EXP_TYPE_GAIA
+	exp_requirements = EXP_REQ_HEAD
 	exp_required_type_department = EXP_TYPE_GAIA
-	exp_granted_type = EXP_TYPE_GAIA
 	config_tag = "COUNCILLOR"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/councillor
@@ -25,19 +23,20 @@
 	)
 
 	known_contacts = list(
-		"Truthcatcher",
-		"Warder",
-		"Wyrmfoe",
-		"Guardian"
+		JOB_GAROU_TRUTHCATCHER,
+		JOB_GAROU_WARDER,
+		JOB_GAROU_WYRMFOE,
+		JOB_GAROU_GUARDIAN,
+		JOB_GAROU_COUNCIL
 	)
 
 /datum/outfit/job/vampire/councillor
-	name = "Sept Councillor"
+	name = JOB_GAROU_COUNCIL
 	jobtype = /obj/item/card/park_ranger/oversight
 
 	id = /obj/item/card/park_ranger/oversight
 	uniform =  /obj/item/clothing/under/vampire/turtleneck_white
 	suit = /obj/item/clothing/suit/vampire/coat/winter/alt
 	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
-	l_pocket = /obj/item/smartphone // DARKPACK TODO - Garou phone network. Glasswalkers only?
+	l_pocket = /obj/item/smartphone/garou_council // DARKPACK TODO - Garou phone network. Glasswalkers only?
 	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/card/credit/rich=1)

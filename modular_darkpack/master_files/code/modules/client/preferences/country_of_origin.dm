@@ -25,7 +25,7 @@
 /datum/preference/choiced/country_of_origin/create_default_value()
 	return "United States"
 
-/datum/preference/choiced/country_of_origin/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/country_of_origin/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return
 
 /datum/preference/choiced/state_of_origin
@@ -47,7 +47,7 @@
 /datum/preference/choiced/state_of_origin/create_default_value()
 	return "California"
 
-/datum/preference/choiced/state_of_origin/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/state_of_origin/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return
 
 /datum/preference/choiced/state_of_origin/is_accessible(datum/preferences/preferences)
@@ -57,7 +57,7 @@
 	var/country = preferences.read_preference(/datum/preference/choiced/country_of_origin)
 	return (country == "United States")
 
-/datum/preference/choiced/country_of_origin/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/country_of_origin/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/static/list/country_language_map
 	if(!country_language_map)
 		country_language_map = list(
@@ -114,6 +114,7 @@
 			"Belgium" = list(/datum/language/french),
 			"Benin" = list(/datum/language/french),
 			"Burkina Faso" = list(/datum/language/french),
+			"Canada" = list(/datum/language/french),
 			"Cameroon" = list(/datum/language/french),
 			"Central African Republic" = list(/datum/language/french),
 			"Chad" = list(/datum/language/french),

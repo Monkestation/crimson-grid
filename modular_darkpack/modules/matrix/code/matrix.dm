@@ -33,7 +33,9 @@
 	matrix_mob(user, src)
 	return TRUE
 
-ADMIN_VERB_AND_CONTEXT_MENU(matrix_mob_verb, R_ADMIN, "Matrix Mob", "Matrix (despawn) a mob.", ADMIN_CATEGORY_SECOND_CITY, mob/living/target in world)
+ADMIN_VERB_AND_CONTEXT_MENU(matrix_mob_verb, R_ADMIN, "Matrix Mob", "Matrix (despawn) a mob.", ADMIN_CATEGORY_SECOND_CITY, /mob/living)
+	VERB_ARG_TYPED(target, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob/living)
+
 	var/confirm = tgui_alert(user, "Are you sure you want to matrix this mob?", "Confirm", list("Yes", "No"))
 	if(confirm != "Yes")
 		return
@@ -56,8 +58,8 @@ ADMIN_VERB_AND_CONTEXT_MENU(matrix_mob_verb, R_ADMIN, "Matrix Mob", "Matrix (des
 
 	GLOB.joined_player_list -= despawning_mob.ckey
 
-	//handle_objectives()
 	SSmasquerade.matrix_masquerade_breacher(despawning_mob, TRUE)
+	despawning_mob.client?.prefs?.save_character()
 	despawning_mob.ghostize(FALSE)
 	QDEL_NULL(despawning_mob)
 

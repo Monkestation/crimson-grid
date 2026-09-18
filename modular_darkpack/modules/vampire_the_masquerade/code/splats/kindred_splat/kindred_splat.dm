@@ -97,10 +97,10 @@
 			tongue?.toxic_foodtypes = ~(GORE | MEAT | RAW) // nagarajas?
 
 	// Set blood type
-	owner.set_blood_type(BLOOD_TYPE_KINDRED)
+	owner.set_blood_type(/datum/blood_type/kindred)
 
-	// Apply temperature damage modifiers
-	owner.physiology.heat_mod *= 2
+	// Apply temperature & burn damage modifiers - Kindred do not get harmed by tempatures, but do by combustion/physical flame damage.
+	owner.physiology.burn_mod *= 2
 	owner.physiology.cold_mod *= 0.25
 
 
@@ -126,8 +126,8 @@
 	// Reset blood type
 	owner.set_blood_type()
 
-	// Reset temperature damage modifiers
-	owner.physiology.heat_mod *= 0.5
+	// Reset temperature & burn damage modifiers
+	owner.physiology.burn_mod *= 0.5
 	owner.physiology.cold_mod *= 4
 
 	// Reset bloodpool size from Generation
@@ -161,7 +161,7 @@
 	SIGNAL_HANDLER
 
 	// Kindred take half "bashing" damage, which is normally blunt damage but includes pointy things like bullets because they're undead
-	if ((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
+	if((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
 		damage_mods += 0.5
 
 /**

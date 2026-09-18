@@ -6,13 +6,13 @@
 	must_have_relevant_trait = TRUE
 	savefile_identifier = PREFERENCE_CHARACTER
 
-	minimum = 1
+	minimum = 0
 	maximum = 10
 
 /datum/preference/numeric/renown/create_default_value()
-	return 1
+	return 0
 
-/datum/preference/numeric/renown/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/renown/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/datum/splat/werewolf/splat = get_werewolf_splat(target)
 	if(!splat)
 		return
@@ -42,7 +42,7 @@
 /datum/preference/numeric/fera_rank/create_default_value()
 	return 0
 
-/datum/preference/numeric/fera_rank/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/fera_rank/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/datum/splat/werewolf/splat = get_werewolf_splat(target)
 	if(!splat)
 		return

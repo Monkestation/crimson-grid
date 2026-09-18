@@ -219,9 +219,9 @@
 		return clamp(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
 	return 0 // plays no sound
 
-/mob/living/proc/set_combat_mode(new_mode, silent = TRUE)
+/mob/living/proc/set_combat_mode(new_mode, silent = TRUE, force = FALSE)
 
-	if(HAS_TRAIT(src, TRAIT_COMBAT_MODE_LOCK))
+	if(HAS_TRAIT(src, TRAIT_COMBAT_MODE_LOCK) && !force)
 		return
 
 	if(combat_mode == new_mode)
@@ -848,6 +848,19 @@
 	//Take their lunch money
 	var/target_held_item = target.get_active_held_item()
 	var/append_message = weapon ? " with [weapon]" : ""
+
+	// DARKPACK EDIT ADD START - DISARM ROLLING
+	if(target_held_item)
+		var/disarm_difficulty = target.st_get_stat(STAT_STRENGTH)
+		var/disarm_roll = SSroll.storyteller_roll_datum(src, target, /datum/storyteller_roll/damage/attacker_disarm)
+		if(disarm_roll >= disarm_difficulty)
+			target.dropItemToGround(target_held_item)
+			append_message = "causing [target.p_them()] to drop [target_held_item]"
+			target.visible_message(span_danger("[target.name] drops \the [target_held_item]!"),
+				span_warning("You have the \the [target_held_item] yanked from your hand!"), null, COMBAT_MESSAGE_RANGE)
+
+	// DARKPACK EDIT ADD END
+
 	// If it's in our typecache, they're staggered and it exists, disarm. If they're knocked down, disarm too.
 	if(target_held_item && target.get_timed_status_effect_duration(/datum/status_effect/staggered) && is_type_in_typecache(target_held_item, GLOB.shove_disarming_types) || target_held_item && target.body_position == LYING_DOWN)
 		target.dropItemToGround(target_held_item)

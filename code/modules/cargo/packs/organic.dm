@@ -17,6 +17,7 @@
 	crate_name = "beekeeper suits"
 	crate_type = /obj/structure/closet/crate/hydroponics
 
+/* // DARKPACK EDIT REMOVAL - (Removing Monkey Cubes and Bees)
 /datum/supply_pack/organic/hydroponics/beekeeping_fullkit
 	name = "Beekeeping Starter Crate"
 	desc = "BEES BEES BEES. Contains three honey frames, a beekeeper suit and helmet, \
@@ -31,6 +32,7 @@
 				)
 	crate_name = "beekeeping starter crate"
 	crate_type = /obj/structure/closet/crate/hydroponics
+*/
 
 /datum/supply_pack/organic/randomized
 	test_ignored = TRUE
@@ -118,7 +120,7 @@
 	desc = "Get things cooking with this crate full of useful ingredients! \
 		Contains a dozen eggs, three bananas, and some flour, rice, milk, \
 		soymilk, salt, pepper, enzyme, sugar, and monkeymeat."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = CARGO_CRATE_VALUE * 3 // DARKPACK EDIT CHANGE - Unit test failure? - Original: 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/reagent_containers/condiment/flour,
 					/obj/item/reagent_containers/condiment/rice,
 					/obj/item/reagent_containers/condiment/milk,

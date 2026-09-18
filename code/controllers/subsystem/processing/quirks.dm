@@ -37,6 +37,7 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/darkpack/monochrome_vision, /datum/quirk/darkpack/wolf_sight), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 	list(/datum/quirk/darkpack/monochrome_vision, /datum/quirk/item_quirk/blindness/), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 	list(/datum/quirk/item_quirk/blindness, /datum/quirk/darkpack/wolf_sight), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/banned_transformation, /datum/quirk/darkpack/metamorph), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 	list(/datum/quirk/darkpack/thirst_of_ages, /datum/quirk/darkpack/organovore), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 ))
 

@@ -10,6 +10,7 @@
 /datum/outfit/job/assistant/gimmick/give_jumpsuit(mob/living/carbon/human/target)
 	return //dont do colorized and stuff, it messes with our uniforms
 
+/* // DARKPACK EDIT REMOVAL START - (Removes Monkey Cubes and Bees)
 /datum/outfit/job/assistant/gimmick/bee
 	name = "Gimmick Assistant - Bee"
 	suit = /obj/item/clothing/suit/hooded/bee_costume
@@ -24,6 +25,7 @@
 
 	discounted_pack = /datum/supply_pack/organic/hydroponics/beekeeping_fullkit
 	discount_pct_off = 0.7
+*/ // DARKPACK EDIT REMOVAL END
 
 /datum/outfit/job/assistant/gimmick/chicken
 	name = "Gimmick Assistant - Chicken"
