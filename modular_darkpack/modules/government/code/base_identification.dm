@@ -56,6 +56,7 @@
 		var/mob/living/carbon/human/dummy = new
 		dummy.equipOutfit(/datum/outfit/job/vampire/citizen, visuals_only = TRUE)
 		our_human.client?.prefs.safe_transfer_prefs_to(dummy)
+		dummy.set_clan(null)
 		dummy.dna.remove_all_mutations()
 		dummy.dna.update_dna_identity()
 		dummy.underlays += icon('icons/obj/machines/photobooth.dmi', "height_chart")
