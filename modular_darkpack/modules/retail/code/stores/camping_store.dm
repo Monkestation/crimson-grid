@@ -23,6 +23,10 @@
 		new /datum/data/vending_product("hunting rifle", /obj/item/gun/ballistic/automatic/darkpack/huntrifle),
 		new /datum/data/vending_product("7.52x51 ammo", /obj/item/ammo_box/darkpack/c762x51mm, 1000), // Crimson Grid Replacement - Was 5.56 Ammo Box
 		new /datum/data/vending_product("military parka", /obj/item/clothing/suit/vampire/coat/milparka,	90),
+		// CRIMSON GRID ADDITION BEGIN - Armory Ammunition Additions
+		new /datum/data/vending_product("Bodkin bolts", /obj/item/ammo_box/darkpack/arrows/bodkin, 800),
+		new /datum/data/vending_product("Broadhead bolts", /obj/item/ammo_box/darkpack/arrows/broadhead, 800),
+		// CRIMSON GRID ADDITION END - Armory Ammunition Additions
 	)
 	product_types = list(
 		/obj/item/fishing_rod,

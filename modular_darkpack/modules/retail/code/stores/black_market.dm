@@ -29,9 +29,23 @@
 		new /datum/data/vending_product("Compact Medical Kit", /obj/item/storage/medkit/tactical_lite, 1125),
 		new /datum/data/vending_product("Coroner's Surgical Kit", /obj/item/storage/medkit/coroner, 750),
 // CRIMSON EDIT ADD END - Medkit to Pharmacy
-		new /datum/data/vending_product("silver 9mm ammo", /obj/item/ammo_box/darkpack/c9mm/silver, 5000),
-		new /datum/data/vending_product("silver .45 ACP ammo", /obj/item/ammo_box/darkpack/c45acp/silver, 6000),
-		new /datum/data/vending_product("silver .44 ammo", /obj/item/ammo_box/darkpack/c44/silver, 7000),
-		new /datum/data/vending_product("silver 5.56 ammo", /obj/item/ammo_box/darkpack/c556/silver, 8000),
-		new /datum/data/vending_product("incendiary 5.56 ammo", /obj/item/ammo_box/darkpack/c556/incendiary, 9000)
+		new /datum/data/vending_product("silver 9mm ammo", /obj/item/ammo_box/darkpack/c9mm/silver, 2000), // Crimson Grid Edit - Was 5000
+		new /datum/data/vending_product("silver .45 ACP ammo", /obj/item/ammo_box/darkpack/c45acp/silver, 2500), // Crimson Grid Edit - Was 6000
+		new /datum/data/vending_product("silver .44 ammo", /obj/item/ammo_box/darkpack/c44/silver, 3000), // Crimson Grid Edit - Was 7000
+		new /datum/data/vending_product("silver 5.56 ammo", /obj/item/ammo_box/darkpack/c556/silver, 3000), // Crimson Grid Edit - Was 8000
+		new /datum/data/vending_product("incendiary 5.56 ammo", /obj/item/ammo_box/darkpack/c556/incendiary, 3000), // Crimson Grid Edit - Was 9000
+// CRIMSON EDIT START - Armory Ammunition Additions - Eventually wanna lock these behind high streetwise skill, can lower prices then
+		new /datum/data/vending_product(".45 Wiley Pete ammo", /obj/item/ammo_box/darkpack/c45acp/wp, 3000),
+		new /datum/data/vending_product(".44 Wiley Pete ammo", /obj/item/ammo_box/darkpack/c44/wp, 3000),
+		new /datum/data/vending_product(".50 AE Wiley Pete ammo", /obj/item/ammo_box/darkpack/c50ae/wp, 4000),
+		new /datum/data/vending_product(".50 AE HE ammo", /obj/item/ammo_box/darkpack/c50ae/he, 5000),
+		new /datum/data/vending_product("5.45 incendiary ammo", /obj/item/ammo_box/darkpack/c545/incendiary, 3500),
+		new /datum/data/vending_product(".50 BMG DU ammo", /obj/item/ammo_box/darkpack/c50/du, 6500),
+		new /datum/data/vending_product(".50 BMG API ammo", /obj/item/ammo_box/darkpack/c50/api, 6500),
+		new /datum/data/vending_product(".50 BMG raufoss ammo", /obj/item/ammo_box/darkpack/c50/rauf, 7500),
+		new /datum/data/vending_product("12g HE slugs", /obj/item/ammo_box/darkpack/c12g/he, 7000),
+		new /datum/data/vending_product("12g silver buckshot", /obj/item/ammo_box/darkpack/c12g/buck/silver, 4000),
+		new /datum/data/vending_product("12g flechette shells", /obj/item/ammo_box/darkpack/c12g/buck/flech, 2000),
+		new /datum/data/vending_product("silver crossbow bolts", /obj/item/ammo_box/darkpack/arrows/silver, 2500),
+// CRIMSON EDIT END - Armory Ammunition Addtions
 	)
