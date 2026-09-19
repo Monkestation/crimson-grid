@@ -471,40 +471,46 @@
 	contains = list(/obj/item/ammo_box/magazine/darkpack45smg, /obj/item/ammo_box/magazine/darkpack45smg, /obj/item/ammo_box/magazine/darkpack45smg)
 	crate_name = "ammo crate"
 
-/datum/supply_pack/weapons/armorlight
-	name = "Armor (3 civilian)"
-	desc = "Contains 3 types of body clothing and 3 types of light head protection."
-	cost = 1000
+/datum/supply_pack/armor
+	group = "Armor"
+
+/datum/supply_pack/armor/concealed
+	name = "Concealed armor x2"
+	desc = "Contains 2 pieces of lightweight armor."
+	cost = 3000
 	contains = list(
-		/obj/item/clothing/suit/vampire/trench,
-		/obj/item/clothing/suit/vampire/trench/alt,
-		/obj/item/clothing/suit/vampire/trench/archive,
-		/obj/item/clothing/head/vampire/police,
-		/obj/item/clothing/head/vampire/cowboy,
-		/obj/item/clothing/head/vampire/british
-	)
+		/obj/item/clothing/suit/vampire/trench/alt/armored,
+		/obj/item/clothing/suit/vampire/trench/armored)
 	crate_name = "armor crate"
 
-/datum/supply_pack/weapons/armorpolice
-	name = "Armor (police)"
-	desc = "Contains a single complect of full police protection."
+/datum/supply_pack/armor/civilian
+	name = "Bulletproof Vest x3"
+	desc = "Contains 3 units of bulletproof vests."
 	cost = 1000
-	contains = list(/obj/item/clothing/suit/vampire/vest,
+	contains = list(
+		/obj/item/clothing/suit/vampire/vest = 3)
+	crate_name = "armor crate"
+
+/datum/supply_pack/armor/police
+	name = "Police Armor"
+	desc = "Tactical Armor of unknown origin , you can see SFPD serial numbers scratched out of them."
+	cost = 1500
+	contains = list(/obj/item/clothing/suit/vampire/vest/police,
 					/obj/item/clothing/head/vampire/helmet)
 	crate_name = "armor crate"
 
-/datum/supply_pack/weapons/armorarmy
-	name = "Armor (army)"
-	desc = "Contains a single complect of full army protection."
-	cost = 1500
+/datum/supply_pack/armor/army
+	name = "Army Gear"
+	desc = "Surplus armor sourced from the local Travis Air Force Base."
+	cost = 2000
 	contains = list(/obj/item/clothing/suit/vampire/vest/army,
 					/obj/item/clothing/head/vampire/army)
 	crate_name = "armor crate"
 
-/datum/supply_pack/weapons/armoreod
+/datum/supply_pack/armor/eod
 	name = "Armor (EOD)"
 	desc = "Contains a single complect of full EOD protection."
-	cost = 2000
+	cost = 3000
 	contains = list(/obj/item/clothing/suit/vampire/eod,
 					/obj/item/clothing/head/vampire/eod)
 	crate_name = "armor crate"
