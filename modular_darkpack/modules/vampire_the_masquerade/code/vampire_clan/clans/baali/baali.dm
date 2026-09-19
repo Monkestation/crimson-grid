@@ -8,7 +8,8 @@
 	clan_disciplines = list(
 		/datum/discipline/obfuscate,
 		/datum/discipline/presence,
-		/datum/discipline/daimoinon
+		/datum/discipline/daimoinon,
+		/datum/discipline/dark_thaumaturgy //CRIMSON GRID ADDITION: Dark Thaumaturgy
 	)
 
 	subsplat_traits = list(
@@ -21,6 +22,10 @@
 	subsplat_keys = /obj/item/vamp/keys/baali
 
 /datum/subsplat/vampire_clan/baali/psychomania_effect(mob/living/target, mob/living/owner)
-	to_chat(target, span_notice("The sacred icons appearing before you lack the true substance of faith"))
+	// CRIMSON GRID ADD: DARK THAUMATURGY. BEFORE:
+	/* to_chat(target, span_notice("The sacred icons appearing before you lack the true substance of faith"))
 	new /datum/hallucination/delusion(target, TRUE, "repent", 200, 0)
-	to_chat(owner, span_notice("Your illusions are easily dispelled by [target]"))
+	to_chat(owner, span_notice("Your illusions are easily dispelled by [target]")) */
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+	// CRIMSON GRID ADD END: DARK THAUMATURGY

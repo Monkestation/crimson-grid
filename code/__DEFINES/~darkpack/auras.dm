@@ -22,6 +22,7 @@
 #define AURA_SPIRITUAL COLOR_GOLD // Gold
 #define AURA_SUSPICIOUS COLOR_STRONG_BLUE // Dark Blue
 #define AURA_CONFIDENCE COLOR_VIVID_YELLOW // Primarly for the Shadow Lords gift "Aura of Confidence"
+#define AURA_INFERNO COLOR_VERY_DARK_LIME_GREEN // CRIMSON GRID ADD: DARK THAUMATURGY
 
 // Modifier auras.
 #define AURA_ANXIOUS "Anxious" // Auras appear scrambled like static or white noise
@@ -68,6 +69,7 @@ GLOBAL_LIST_INIT(aura_list, sort_list(list(
 	"Daydreaming" = AURA_DAYDREAMING,
 	"Psychotic" = AURA_PSYCHOTIC,
 	"Confidence" = AURA_CONFIDENCE,
+	"Corruption" = AURA_INFERNO, // CRIMSON GRID ADD: DARK THAUMATURGY
 )))
 
 GLOBAL_LIST_INIT(emotion_to_quality, sort_list(list(
@@ -98,4 +100,5 @@ GLOBAL_LIST_INIT(emotion_to_quality, sort_list(list(
 	"Daydreaming" = "absentmindedness",
 	"Psychotic" = "psychosis",
 	"Confidence" = "confidence",
+	"Corruption" = "corruption", // CRIMSON GRID ADD: DARK THAUMATURGY
 )))

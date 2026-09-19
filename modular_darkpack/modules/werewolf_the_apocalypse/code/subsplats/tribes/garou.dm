@@ -123,6 +123,9 @@
 	target.visible_message(span_warning("[target] whines in animalistic fear"), span_cult("VISIONS OF BRIMSTONE AND FLAME FLASH BEFORE MY EYES"))
 	target.Paralyze(5 SECONDS)
 
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+
 /datum/subsplat/werewolf/tribe/garou/ronin
 	name = TRIBE_RONIN
 	desc = "Garou who, for one reason or another, find themselves as outcasts of the Nation."
