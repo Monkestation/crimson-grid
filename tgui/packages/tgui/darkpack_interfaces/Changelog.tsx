@@ -54,6 +54,7 @@ type ChangelogYaml = Record<string, AuthorChanges>;
 type ChangelogState = {
   loaded_text: ChangelogYaml | string;
   darkpack_text: ChangelogYaml | string;
+  crimson_text: ChangelogYaml | string; // CRIMSON EDIT ADD - SPLIT_CHANGELOG
   selectedDate: string;
   selectedIndex: number;
 };
@@ -71,6 +72,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     this.state = {
       loaded_text: 'Loading changelog data...',
       darkpack_text: 'Loading changelog data...',
+      crimson_text: 'Loading changelog data...', // CRIMSON EDIT ADD - SPLIT_CHANGELOG
       selectedDate: '',
       selectedIndex: 0,
     };
@@ -83,6 +85,12 @@ export class ChangelogContent extends Component<any, ChangelogState> {
   setEffigyData(darkpack_text) {
     this.setState({ darkpack_text });
   }
+
+  // CRIMSON EDIT ADD START - SPLIT_CHANGELOG
+  setCrimsonData(crimson_text) {
+    this.setState({ crimson_text });
+  }
+  // CRIMSON EDIT ADD END
 
   setSelectedDate(selectedDate) {
     this.setState({ selectedDate });
@@ -98,6 +106,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     if (attemptNumber > maxAttempts) {
       this.setData(`Failed to load data after ${maxAttempts} attempts`);
       this.setEffigyData(`Failed to load data after ${maxAttempts} attempts`);
+      this.setCrimsonData(`Failed to load data after ${maxAttempts} attempts`); // CRIMSON EDIT ADD - SPLIT_CHANGELOG
       return;
     }
 
@@ -106,14 +115,20 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     Promise.all([
       fetch(resolveAsset(`${date}.yml`)),
       fetch(resolveAsset(`darkpack_${date}.yml`)),
-    ]).then(async ([changelogData, darkpackData]) => {
-      if (!changelogData.ok && !darkpackData.ok) {
+      fetch(resolveAsset(`crimson_${date}.yml`)), // CRIMSON EDIT ADD - SPLIT_CHANGELOG
+    ]).then(async ([changelogData, darkpackData, crimsonData]) => {
+      // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
+      if (!changelogData.ok && !darkpackData.ok && !crimsonData.ok) {
+        // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
         const timeout = 50 + attemptNumber * 50;
 
         this.setData(`Loading changelog data${'.'.repeat(attemptNumber + 3)}`);
         this.setEffigyData(
           `Loading changelog data${'.'.repeat(attemptNumber + 3)}`,
         );
+        this.setCrimsonData(
+          `Loading changelog data${'.'.repeat(attemptNumber + 3)}`,
+        ); // CRIMSON EDIT ADD - SPLIT_CHANGELOG
 
         setTimeout(() => {
           this.getData(date, attemptNumber + 1);
@@ -141,6 +156,18 @@ export class ChangelogContent extends Component<any, ChangelogState> {
           }) as ChangelogYaml,
         );
       }
+     // CRIMSON EDIT ADD START - SPLIT_CHANGELOG
+      if (crimsonData.ok) {
+        const result = await crimsonData.text();
+
+        this.setCrimsonData(
+          yaml.load(result, {
+            schema: yaml.CORE_SCHEMA,
+          }) as ChangelogYaml,
+        );
+      }
+      // CRIMSON EDIT ADD END
+
     });
   };
 
@@ -210,8 +237,13 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     const { data } = useBackend<ChangelogData>();
     const { dates = [] } = data;
 
-    const { loaded_text, darkpack_text, selectedIndex, selectedDate } =
-      this.state;
+    const {
+      loaded_text,
+      darkpack_text,
+      crimson_text,
+      selectedIndex,
+      selectedDate,
+    } = this.state; // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
 
     const { dateChoices } = this;
 
@@ -227,6 +259,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
 
               this.setData('Loading changelog data...');
               this.setEffigyData('Loading changelog data...');
+              this.setCrimsonData('Loading changelog data...'); // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
               this.setSelectedIndex(index);
               this.setSelectedDate(dateChoices[index]);
 
@@ -248,6 +281,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
 
               this.setData('Loading changelog data...');
               this.setEffigyData('Loading changelog data...');
+              this.setCrimsonData('Loading changelog data...'); // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
               this.setSelectedIndex(index);
               this.setSelectedDate(value);
               window.scrollTo(
@@ -271,6 +305,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
 
               this.setData('Loading changelog data...');
               this.setEffigyData('Loading changelog data...');
+              this.setCrimsonData('Loading changelog data...'); // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
               this.setSelectedIndex(index);
               this.setSelectedDate(dateChoices[index]);
               window.scrollTo(
@@ -284,13 +319,13 @@ export class ChangelogContent extends Component<any, ChangelogState> {
         </Stack.Item>
       </Stack>
     );
-
+    // CRIMSON EDIT ADD BELOW - Original <h1>Darkpack: Second City</h1> and adds Darkpack: Second City to Thanks To
     const header = (
       <Section>
-        <h1>Darkpack: Second City</h1>
+        <h1>Crimson Grid</h1>
         <p>
           <b>Thanks to: </b>
-          The Final Nights, World of Darkness 13, RequiemSS13, TGstation,
+          Darkpack: Second City, The Final Nights, World of Darkness 13, RequiemSS13, TGstation,
           Baystation 12, /vg/station, NTstation, CDK Station devs,
           FacepunchStation, GoonStation devs, the original Space Station 13
           developers, Invisty for the title image and the countless others who
@@ -307,7 +342,7 @@ export class ChangelogContent extends Component<any, ChangelogState> {
         </p>
         <p>
           {'You can also join our discord '}
-          <a href="https://discord.gg/rmAbJcuChD">here</a>.
+          <a href="https://discord.gg/wT95uK8VZj">here</a>.
         </p>
         {dateDropdown}
       </Section>
@@ -405,9 +440,12 @@ export class ChangelogContent extends Component<any, ChangelogState> {
     const darkpackChangelog =
       typeof darkpack_text === 'object' ? darkpack_text : null;
 
+    const crimsonChangelog = typeof crimson_text === 'object' ? crimson_text : null; // CRIMSON EDIT ADD - SPLIT_CHANGELOG
+
     const combinedDates = new Set([
       ...(changelog ? Object.keys(changelog) : []),
       ...(darkpackChangelog ? Object.keys(darkpackChangelog) : []),
+      ...(crimsonChangelog ? Object.keys(crimsonChangelog) : []), // CRIMSON EDIT ADD - SPLIT_CHANGELOG
     ]);
 
     const changes = [...combinedDates]
@@ -416,6 +454,13 @@ export class ChangelogContent extends Component<any, ChangelogState> {
       .map((date) => (
         <Section key={date} title={dateformat(date, 'd mmmm yyyy', true)}>
           <Box ml={3}>
+            {/* CRIMSON EDIT ADD START - SPLIT_CHANGELOG */}
+            {crimsonChangelog?.[date] && (
+              <Section>
+                {this.renderChangelogEntries(crimsonChangelog[date], 'crimson')}
+              </Section>
+            )}
+            {/* CRIMSON EDIT ADD END */}
             {darkpackChangelog?.[date] && (
               <Section>
                 {this.renderChangelogEntries(

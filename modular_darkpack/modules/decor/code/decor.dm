@@ -194,7 +194,7 @@
 	icon_state = "piping1"
 	layer = ABOVE_ALL_MOB_LAYER
 	anchored = TRUE
-	var/datum/looping_sound/slow_drip/looping_drips
+/* 	var/datum/looping_sound/slow_drip/looping_drips
 	var/drip_chance = 5
 
 /obj/structure/vampipe/Initialize(mapload)
@@ -204,7 +204,7 @@
 
 /obj/structure/vampipe/Destroy(force)
 	. = ..()
-	QDEL_NULL(looping_drips)
+	QDEL_NULL(looping_drips) */
 
 
 /obj/structure/vamproofwall

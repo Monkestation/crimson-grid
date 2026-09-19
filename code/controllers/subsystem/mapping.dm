@@ -485,6 +485,12 @@ Used by the AI doomsday and the self-destruct nuke.
 		LoadGroup(FailedZs, "Umbra", current_map.umbra_map_path, current_map.umbra_map_file, default_traits = ZTRAITS_UMBRA)
 	else if (!isnull(current_map.minetype) && current_map.minetype != MINETYPE_NONE && current_map.minetype != MINETYPE_ICE)
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[current_map.minetype]' was set! This is being ignored! Update the maploader code!")
+	// CRIMSON GRID EDIT ADD
+	if(current_map.advzone_map_file)
+		LoadGroup(FailedZs, "Advzones", current_map.advzone_map_path, current_map.advzone_map_file, default_traits = ZTRAITS_ADVZONES)
+	else
+		INIT_ANNOUNCE("No exterior zone maps applicable for '[current_map.map_name].'")
+	// CRIMSON GRID EDIT ADD END
 	// DARKPACK EDIT CHANGE END
 #endif
 

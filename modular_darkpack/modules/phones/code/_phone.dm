@@ -324,6 +324,21 @@
 
 	var/mob/user = ui.user
 
+	// CRIMSON GRID ADDITION START - normal taps!!
+	if(COOLDOWN_FINISHED(src, tap_sound_cooldown))
+		var/static/list/ignored_actions_for_clicksound = list(
+			"terminal_sound",
+			"keyboard_click",
+			"viewing_newscaster_channel"
+		)
+
+		if(!(action in ignored_actions_for_clicksound) && ringer)
+			playsound(loc, 'modular_vcg/master_files/sounds/item/smartphone/aosp/Effect_Tick.ogg', 10, FALSE)
+			COOLDOWN_START(src, tap_sound_cooldown, 0.1 SECONDS)
+		if(action == "clicksound")
+			return
+	// CRIMSON GRID ADDITION END - normal taps!!
+
 	var/passed_number = params["number"]
 	switch(action)
 		if("call")
@@ -380,6 +395,16 @@
 				return TRUE
 
 		if("custom_background")
+			// CRIMSON EDIT START
+			if(!user.client?.is_donator())
+				var/patreon_link = CONFIG_GET(string/patreon_link)
+				var/twitch_link = CONFIG_GET(string/twitch_link)
+				var/notice = "This is a donator exclusive feature. You may only be able to set a background if you are a " + \
+					"[patreon_link ? "<a href='[patreon_link]'>": ""]Patreon supporter[patreon_link ? "</a>": ""] or " + \
+					"[twitch_link ? "<a href='[twitch_link]'>": ""]Twitch subscriber[twitch_link ? "</a>": ""]."
+				to_chat(user, span_notice(notice))
+				return
+			// CRIMSON EDIT END
 			to_chat(user, span_danger("Do NOT use images that can be considered offensive or obscene, or that contain references to something that happened after the year [CURRENT_STATION_YEAR]. Recommended image dimensions: 400x600 "))
 			custom_background = tgui_input_text(user, "Input background image URL", "Custom Background")
 			if(!custom_background)
@@ -558,10 +583,30 @@
 			return TRUE
 
 		if("keyboard_click")
+			/* //CRIMSON EDIT REMOVAL START
 			if(ringer)
 				playsound(loc, 'modular_darkpack/modules/phones/sounds/keyboard_click.ogg', 75, TRUE)
-			return TRUE
+			*/ // CRIMSON EDIT REMOVAL END
+			// CRIMSON EDIT ADDITION START
+			if(!ringer)
+				return TRUE
+			var/key_action = params["sound"]
+			var/static/alist/sound_map = alist(
+				"del" = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressDelete.ogg',
+				"ret" = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressReturn.ogg',
+				"spb" = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressSpacebar.ogg',
+			)
+			var/sound_to_play
+			if(!key_action)
+				sound_to_play = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressStandard.ogg'
+			else if(key_action in sound_map)
+				sound_to_play = sound_map[key_action]
+			else
+				sound_to_play = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressInvalid.ogg'
 
+			playsound(loc, sound_to_play, 35, FALSE)
+			// CRIMSON EDIT ADDITION END
+			return TRUE
 		if("send_message")
 			var/contact_number = params["contact_number"]
 			var/message_text = params["message_text"]

@@ -32,6 +32,13 @@
 
 // DARKPACK EDIT ADD END
 
+// CRIMSON EDIT ADD START
+
+#define JOB_UNAVAILABLE_DONATOR 18
+
+// CRIMSON EDIT ADD END
+
+
 /// Used when the `get_job_unavailable_error_message` proc can't make sense of a given code.
 #define GENERIC_JOB_UNAVAILABLE_ERROR "Error: Unknown job availability."
 

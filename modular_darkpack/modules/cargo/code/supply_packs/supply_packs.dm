@@ -115,7 +115,7 @@
 /datum/supply_pack/local/door_kit
 	name = "Door Repair Kit"
 	desc = "Contains a door repair kit that can be used to replace a broken door."
-	cost = 1000
+	cost = 200 // CRIMSON EDIT - Shop Inventories Additions - Original: cost = 1000
 	contains = list(/obj/item/door_repair_kit)
 
 /datum/supply_pack/local/medicalsupplies

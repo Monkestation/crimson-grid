@@ -11,7 +11,7 @@
 		/datum/job_department/citizen
 	)
 	job_flags = CITY_JOB_FLAGS
-	maximal_generation = 11
+	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 11
 	maximum_immortal_age = 100
 	minimum_masquerade = 0
 	alt_titles = list(

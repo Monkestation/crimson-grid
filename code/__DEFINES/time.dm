@@ -2,7 +2,7 @@
 #define MIDNIGHT_ROLLOVER 864000
 
 /// In-universe, SS13 is set 540 years in the future from the real-world day, hence this number for determining the year-offset for the in-game year.
-#define STATION_YEAR_OFFSET -17 // DARKPACK EDIT
+#define STATION_YEAR_OFFSET -17 // CRIMSON EDIT CHANGE
 
 ///Returns the time that has passed since the game started
 #define STATION_TIME_PASSED(...) (world.time - SSticker.round_start_time)

@@ -134,6 +134,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	randomise = get_default_randomization()
 
 	var/loaded_preferences_successfully = load_preferences()
+	discipline_trusted = TRUE // CRIMSON EDIT - Remove Trusted Whitelist
 	if(loaded_preferences_successfully)
 		if(load_character())
 			return

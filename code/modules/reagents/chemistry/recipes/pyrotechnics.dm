@@ -288,7 +288,7 @@
 	for(var/turf/target in RANGE_TURFS(1,T))
 		new /obj/effect/hotspot(target)
 	holder.chem_temp = 1000 // hot as shit
-	..()
+	// ..() Sure you can heat it, it won't explode now though. // CRIMSON EDIT CHANGE - No More Super Meth Bombs
 
 /datum/chemical_reaction/reagent_explosion/methsplosion/methboom2
 	required_reagents = list(/datum/reagent/diethylamine = 1, /datum/reagent/iodine = 1, /datum/reagent/phosphorus = 1, /datum/reagent/hydrogen = 1) //diethylamine is often left over from mixing the ephedrine.

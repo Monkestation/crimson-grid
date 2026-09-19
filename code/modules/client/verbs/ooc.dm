@@ -86,6 +86,14 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 	if(visible_unlock)
 		LAZYADD(key_tags, "byond_member")
 
+	// CRIMSON EDIT ADD START - donator
+	if(persistent_client.patreon.access_rank > 0 && prefs.read_preference(/datum/preference/toggle/patreon_public))
+		LAZYADD(key_tags, "emoji-patreon")
+
+	if(persistent_client.twitch.access_rank > 0 && prefs.read_preference(/datum/preference/toggle/twitch_public))
+		LAZYADD(key_tags, "emoji-twitch")
+	// CRIMSON EDIT ADD END - donator
+
 	if(LAZYLEN(key_tags))
 		var/datum/asset/spritesheet_batched/chat/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
 		for(var/icon_name in key_tags)
@@ -98,6 +106,7 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 		keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[keyname]</font>"
 
 	//The linkify span classes and linkify=TRUE below make ooc text get clickable chat href links if you pass in something resembling a url
+	/*  // CRIMSON EDIT REMOVAL START
 	for(var/client/receiver as anything in GLOB.clients)
 		if(!receiver.prefs) // Client being created or deleted. Despite all, this can be null.
 			continue
@@ -126,6 +135,43 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 				to_chat(receiver, "<span class='oocplain'><font color='[GLOB.OOC_COLOR]'><b>[span_prefix("OOC:")] <EM>[keyname]:</EM> <span class='message linkify'>[msg]</span></b></font></span>", avoid_highlighting = avoid_highlight)
 			else
 				to_chat(receiver, span_ooc(span_prefix("OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
+	*/ // CRIMSON EDIT REMOVAL END
+	// CRIMSON EDIT ADDITION START
+	// pronouns
+	var/pronouns = prefs.read_preference(/datum/preference/text/ooc_pronouns)
+
+	for(var/client/receiver as anything in GLOB.clients)
+		if(!receiver.prefs) // Client being created or deleted. Despite all, this can be null.
+			continue
+		if(!(get_chat_toggles(receiver) & CHAT_OOC))
+			continue
+		if(holder?.fakekey in receiver.prefs.ignoring)
+			continue
+		var/avoid_highlight = receiver == src
+		if(holder)
+			if(!holder.fakekey || receiver.holder)
+				var/keyfield_pre = "[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]"
+				var/keyfield = conditional_tooltip_alt(keyfield_pre, pronouns, length(pronouns))
+				if(check_rights_for(src, R_ADMIN))
+					var/ooc_color = prefs.read_preference(/datum/preference/color/ooc_color)
+					to_chat(receiver, span_adminooc("[CONFIG_GET(flag/allow_admin_ooccolor) && ooc_color ? "<font color=[ooc_color]>" :"" ][span_prefix("OOC:")] <EM>[keyfield]:</EM> <span class='message linkify'>[msg]</span>"), avoid_highlighting = avoid_highlight)
+				else
+					to_chat(receiver, span_adminobserverooc(span_prefix("OOC:</span> <EM>[keyfield]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
+			else
+				var/keyfield_pre = holder.fakekey ? holder.fakekey : key
+				var/keyfield = conditional_tooltip_alt(keyfield_pre, pronouns, length(pronouns))
+				if(GLOB.OOC_COLOR)
+					to_chat(receiver, span_oocplain("<font color='[GLOB.OOC_COLOR]'><b>[span_prefix("OOC:")] <EM>[keyfield]:</EM> <span class='message linkify'>[msg]</span></b></font>"), avoid_highlighting = avoid_highlight)
+				else
+					to_chat(receiver, span_ooc(span_prefix("OOC:</span> <EM>[keyfield]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
+
+		else if(!(key in receiver.prefs.ignoring))
+			var/keyfield = conditional_tooltip_alt(keyname, pronouns, length(pronouns))
+			if(GLOB.OOC_COLOR)
+				to_chat(receiver, span_oocplain("<font color='[GLOB.OOC_COLOR]'><b>[span_prefix("OOC:")] <EM>[keyfield]:</EM> <span class='message linkify'>[msg]</span></b></font>"), avoid_highlighting = avoid_highlight)
+			else
+				to_chat(receiver, span_ooc(span_prefix("OOC:</span> <EM>[keyfield]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
+	// CRIMSON EDIT ADDITION END
 
 
 /proc/toggle_ooc(toggle = null)
