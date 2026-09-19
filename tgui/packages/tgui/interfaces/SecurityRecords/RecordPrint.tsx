@@ -86,13 +86,16 @@ export const RecordPrint = (props) => {
             Missing
           </Button>
           <Button
-            disabled={innocent}
+            /*CRIMSON GRID REMOVAL - Security console and records*/
+            // disabled={innocent}
             icon="file-alt"
             onClick={() => swapTabs(PRINTOUT.Rapsheet)}
             selected={printType === PRINTOUT.Rapsheet}
-            tooltip={`Prints a standard paper with the record on it.${
-              innocent ? ' (Requires crimes)' : ''
-            }`}
+            // tooltip={`Prints a standard paper with the record on it.${
+            //   innocent ? ' (Requires crimes)' : ''
+            // }`}
+            /*CRIMSON GRID REMOVAL EDIT */
+            tooltip={`Prints a standard paper with the record on it.`}
             tooltipPosition="bottom"
           >
             Rapsheet

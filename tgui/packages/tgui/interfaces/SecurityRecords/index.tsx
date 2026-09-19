@@ -1,3 +1,5 @@
+import '../../styles/interfaces/SecurityRecords.scss';
+
 import { useBackend } from 'tgui/backend';
 import { Window } from 'tgui/layouts';
 import { Box, Button, Icon, NoticeBox, Stack } from 'tgui-core/components';
@@ -11,8 +13,8 @@ export const SecurityRecords = (props) => {
   const { authenticated } = data;
 
   return (
-    <Window title="Security Records" width={750} height={550}>
-      <Window.Content>
+    <Window title="Police Records" width={750} height={550}>
+      <Window.Content className="SecurityRecords">
         <Stack fill>{!authenticated ? <RestrictedView /> : <AuthView />}</Stack>
       </Window.Content>
     </Window>
@@ -31,9 +33,11 @@ const RestrictedView = (props) => {
           <Icon color="average" name="exclamation-triangle" size={15} />
         </Stack.Item>
         <Stack.Item align="center" grow>
+          {/* CRIMSON GRID EDIT START - Security console and records */}
           <Box color="red" fontSize="18px" bold mt={5}>
-            Nanotrasen SecurityHUB
+            California Law Enforcement Telecommunications System
           </Box>
+          {/* CRIMSON GRID EDIT END */}
         </Stack.Item>
         <Stack.Item>
           <NoticeBox align="right">

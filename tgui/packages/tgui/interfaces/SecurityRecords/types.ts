@@ -22,6 +22,7 @@ export type SecurityRecord = {
   name: string;
   note: string;
   rank: string;
+  recorded_rank: string; // CRIMSON KEEP EDIT START - Security console and records
   species: string;
   trim: string;
   wanted_status: string;

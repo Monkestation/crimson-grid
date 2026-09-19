@@ -67,7 +67,8 @@ export const SecurityRecordTabs = (props) => {
               Create
             </Button>
           </Stack.Item>
-          <Stack.Item>
+          {/* CRIMSON KEEP REMOVAL START - Security console and records */}
+          {/* <Stack.Item>
             <Button.Confirm
               content="Purge"
               disabled={!higher_access || !station_z}
@@ -75,7 +76,8 @@ export const SecurityRecordTabs = (props) => {
               onClick={() => act('purge_records')}
               tooltip="Wipe criminal record data."
             />
-          </Stack.Item>
+          </Stack.Item> */}
+          {/* CRIMSON KEEP REMOVAL END */}
         </Stack>
       </Stack.Item>
     </Stack>
