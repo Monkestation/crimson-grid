@@ -17,7 +17,9 @@
 		"Tower Cleaner",
 		"Tower Assistant",
 		"Tower Personal Driver",
-		"Tower Personal Attendant"
+		"Tower Personal Attendant",
+		"Tower Secretary",
+		"Tower Receptionist",
 	)
 
 	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
