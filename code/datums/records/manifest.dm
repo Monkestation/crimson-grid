@@ -126,6 +126,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	else if(person_client)
 		var/mob/living/carbon/human/dummy/consistent/dummy = new
 		person_client.prefs.safe_transfer_prefs_to(dummy)
+		dummy.set_clan(null)
 		dummy.dress_up_as_job(SSjob.get_job_type(/datum/job/vampire/citizen), visual_only = TRUE, player_client = person_client, consistent = TRUE)
 		qdel(dummy.back)
 		qdel(dummy.head)
