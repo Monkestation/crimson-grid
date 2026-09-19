@@ -34,6 +34,8 @@
 		return
 	log_message("exited frenzy.", LOG_ATTACK, color="red")
 
+	remove_status_effect(/datum/status_effect/frenzy/vampire_hunger)
+	remove_status_effect(/datum/status_effect/frenzy/flee)
 	remove_status_effect(/datum/status_effect/frenzy)
 
 /datum/storyteller_roll/frenzy
@@ -103,6 +105,8 @@
 	if(frenzy_result <= 0)
 		to_chat(src, span_userdanger("[flavor_text] sends you into a frenzy!"))
 		var/victim = get_closest_atom(/atom, get_frenzy_victims(), src)
+		if(!victim)
+			victim = src
 		enter_frenzy_mode(victim, source = "Kindred")
 		return
 
