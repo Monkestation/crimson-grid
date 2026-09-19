@@ -21,10 +21,10 @@
 		new /datum/data/vending_product("snub-nose revolver", /obj/item/gun/ballistic/revolver/darkpack/snub, 100),
 		new /datum/data/vending_product("Braddock .45 submachine gun", /obj/item/gun/ballistic/automatic/darkpack/mac10, 1200),
 		new /datum/data/vending_product("Braddock .45 magazine", /obj/item/ammo_box/magazine/darkpack45smg, 300), // CRIMSON EDIT ADD - Braddock Mags Buyable
-		new /datum/data/vending_product("cannabis package", /obj/item/food/grown/cannabis, 700),
+		new /datum/data/vending_product("cannabis bud", /obj/item/food/grown/cannabis, 175), // CRIMSON EDIT - Drug Fixes And Rework - Original: "cannabis package", 700
 		new /datum/data/vending_product("morphine syringe", /obj/item/reagent_containers/syringe/contraband/morphine, 800),
-		new /datum/data/vending_product("meth package", /obj/item/reagent_containers/cup/glass/baggie/meth, 800),
-		new /datum/data/vending_product("cocaine package", /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine, 800),
+		new /datum/data/vending_product("crank baggie", /obj/item/reagent_containers/applicator/baggie/meth, 200), // CRIMSON EDIT - Drug Fixes And Rework - Original: "meth package", /obj/item/reagent_containers/cup/glass/baggie/meth, 800
+		new /datum/data/vending_product("yayo baggie", /obj/item/reagent_containers/applicator/baggie/cocaine, 200), // CRIMSON EDIT - Drug Fixes And Rework - Original: "cocaine package", /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine, 800
 // CRIMSON EDIT ADD START - Medkit to Pharmacy
 		new /datum/data/vending_product("Compact Medical Kit", /obj/item/storage/medkit/tactical_lite, 1125),
 		new /datum/data/vending_product("Coroner's Surgical Kit", /obj/item/storage/medkit/coroner, 750),
