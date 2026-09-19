@@ -1,0 +1,165 @@
+2026-04-06:
+  FalloutFalcon:
+  - image: Stakes now have onfloors
+  - map: mapped glowshrooms no longer spread around
+  LucifersCoils:
+  - bugfix: You can now bloodheal without rolling while incapacitated.
+  - balance: Gangrel claws no longer have armor penetration or block chance
+  lobotomypilled:
+  - qol: Playing mortals shouldnt require constant mechanical upkeep.
+2026-04-13:
+  Enbyy:
+  - bugfix: Fixed Sabbat not having debit cards on spawn.
+  FalloutFalcon:
+  - map: Some maps now use darkpack chairs
+  - code_imp: Restructures code to prevent oversights from failure to add clans and
+      splats to a list
+  - bugfix: Stairs now layer properly
+  - rscadd: 'Adds the merits: Time Sense, Fair Glabro, Metamorph, Untamable, Pale
+      aura, Deceptive Aura'
+  - rscadd: 'Adds the flaws: Animal Musk, One Eye, Weakwilled, Pierced Veil'
+  - balance: An accurate display of city time for living mobs is now locked behind
+      time sense.
+  - bugfix: Derangement now appear as a selectable flaw again.
+  - spellcheck: '"Your" to "You" in a dominate to_chat'
+  - spellcheck: $ symbol appears before the cash value for stores
+  - image: Occult shop is no longer a cash register
+  Icarus-The-Sun:
+  - bugfix: Gives oxygen medical kits the right contents
+  LucifersCoils:
+  - bugfix: Doctors, Clinic Directors, Strippers, and Taxi Drivers no longer inherently
+      serve the Camarilla.
+  LucifersCoils, rosychu:
+  - rscadd: Added Banu Haqim Viziers, Dominate Malkavians, Tlacique, Ventrue antitribu,
+      and Warrior Setites to clan selection
+  - image: Replaced the Harbingers of Skulls, Followers of Set, Samedi, and Salubri
+      Warriors icons
+  Magisterium2022:
+  - balance: Removed BP costs for abilities that are free in V20 Core.
+  Stutternov:
+  - rscadd: Adds new Darkpack duffelbag subtype
+  - rscadd: Adds ability for new duffelbags to hold 2 exempt-list items (guns, melee
+      weapons, etc)
+  - rscadd: Adds new Darkpack moneybag subtype to hold proper cash, also added pre-spawn
+      variant bags
+  - bugfix: Fixes oversight on certain guns, making them have proper bulky weight
+      instead of normal
+  WhereAmO:
+  - rscadd: adds canvases and paper to the library shop
+  chazzyjazzy:
+  - bugfix: fixes untorpor bug
+  - bugfix: makes melee do something
+  - rscadd: You can now withdraw money from the cargo console with alt-click and add
+      with cash
+  dwinters99:
+  - map: removed 50% of exits from the Backrooms
+  - rscadd: 'Black Furies gift: Breath of the Wyld'
+  - rscadd: 'Bone Gnawers gift: Desperate Strength'
+  - rscadd: 'Fianna gift: Faerie Light'
+  - rscadd: 'Get of Fenris gift: Visage of Fenris'
+  lobotomypilled:
+  - balance: 'somewhat buffs the capabilities of the fetish, by making it able to
+      heal wounds, comment if that''s too strong.
+
+      :cl:'
+  - bugfix: fixing vitae's properties
+  - rscdel: 'removed the code preventing you from drinking from dead bodies.
+
+      :cl:'
+  lpeapnni:
+  - bugfix: fixed certain jobs not properly applying loadout clothing
+  - bugfix: fixed NPC hair colors being always white
+2026-04-20:
+  Biplume:
+  - balance: Aura Perception now rolls for success. Perception and Empathy against
+      difficulty 8.
+  - bugfix: Pale Aura now properly disguises Ghouls as Kindred.
+  - rscadd: Added the Paths of Death and the Soul, Ecstasy, variants of Lilith, Night,
+      Paradox, Self-Focus and the Warrior.
+  FalloutFalcon:
+  - balance: Werewolf passive healing heals two "dots"
+  - bugfix: Cargo deliveries now appear "already in stock" somewhere in supply, with
+      a strong preference for appearing on-top of a pallet
+  - qol: Supply yard cargo trains are see-through when behind
+  - balance: Tweaks a bunch of stores to have more intresting products
+  - balance: appendicitis is 40x rarer
+  - rscadd: Adds "One Arm" flaw
+  - balance: Messages and inputs can contain more text (even moreso for subtle)
+  Icarus-The-Sun:
+  - image: adds an onfloor for the fbi duty vest and havana cigar
+  - image: makes switchblades and the forensics kit use the correct icons
+  - rscadd: Adds food/condiments to the grocery store
+  - image: adds an onfloor sprite for the labcoat
+  - bugfix: fixes disappearing fridges
+  Stutternov:
+  - rscadd: Added failure messages to target and caster (if not present already) when
+      failing a dominate roll.
+  - rscdel: Removed Dom 3's 6 success roll.
+  - spellcheck: Not much of an actual spellcheck - reworded description of Dom 1 and
+      5 to be accurate to V20.
+  - balance: Added in accurate weapon weight for all darkpack guns. (SMGs and AR's
+      = medium, snipers/autoshotty = heavy)
+  - rscadd: Adds new prompt 'yes/no' prompt to diablerie.
+  - bugfix: Fixes check on diablerie on the drink dry proc, diablerie now able to
+      be done + no more FDing kindred just for hitting 0 BP
+  chazzyjazzy:
+  - bugfix: '''Blood To water'' -> ''Blood to water'''
+  - bugfix: vampires no longer get appendicitis
+  - rscadd: Adds Prey Exclusion, Amnesia, Vengeful, Victim of the Masquerade, and
+      Territorial flaws
+  - bugfix: auspex 2 no longer requires exactly 1 success to fire
+  - bugfix: auspex 2 failure to_chat actually prints
+  - rscadd: Adds Betrayer's Mark, Thaumaturgically Inept, and Mage Blood as Tremere-specific
+      flaws
+2026-04-27:
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  FalloutFalcon:
+  - bugfix: Normal AND razor claws both deal extra die of damage
+  - bugfix: fixed an issue where disciplines would appear on the wrong characters
+      in some instances
+  - bugfix: The umbra should now have its parallax again
+  - balance: Some jobs are restricted by auspice or tribe
+  - bugfix: Changing splats will properly update your emotion aura
+  Icarus-The-Sun:
+  - qol: Ashtrays, Cigars, Matchboxes and Malboro Golds are available in the smoke
+      shop.
+  - balance: Changes night vision granted by the pierce the veil ritual to be stronger
+  - qol: Adds canes to the pharmacy
+  - bugfix: Mixing Bowls can now be used.
+  - rscadd: Adds Dull Fangs as a flaw
+  - bugfix: Pliers can be used to remove fangs
+  Kolibri-B:
+  - rscadd: Added a few more objects that Obtenebration 5 can phase through
+  - bugfix: Fixes Obtenebration 5 not phasing through doors
+  Magisterium2022:
+  - rscadd: Gave Vicissitude owners the ability to performs surgeries on themselves.
+  - rscadd: Made Bloodform immune to cuffs, staking, and brute damage, ability to
+      pass through doors and mobs, alongside pacifism and masquerade violating appearance.
+  Marshmellow105:
+  - code_imp: removed duplicate setite areas
+  - bugfix: FBI agents spawn with a police radio again
+  - bugfix: FBI agent keys spawn in their pockets now to prevent bugs with loadout
+      items
+  - rscadd: Adds a subtype of glock magazine so Federal Agents dont have to roundstart
+      re-pack magazines with hollowpoint
+  chazzyjazzy:
+  - bugfix: makes *glasses work again
+  - bugfix: fixes a bug with guestbooks not displaying names correctly or at all or
+      duplicately
+  - bugfix: resolves harddeletes causing lag
+  - bugfix: removes Giovanni from tower employee
+  - bugfix: removes Gargoyle from tremere regent
+  - bugfix: adds ghouls to police sergeant
+  - bugfix: makes npcs all have hair colors now instead of all having white
+  - bugfix: npcs now properly get immobilized from stuns like Dominate
+  - bugfix: makes the wallet worn sprite invisible (it was ugly)
+  - bugfix: visceratika's dot 5 now allows walking through walls, it was bugged
+  - bugfix: quietus' dot 2 touch attack now can no longer be dropped
+  - bugfix: auspex 2 is no longer is free and infinite, was an unintended bug
+  - bugfix: identifying artifacts via tremere ritual now awards research points again
+  - rscadd: Adds Calling the Hungry Shade and Pierce the Veil Abyss Mysticism rituals
+      for Lasombras
+  - bugfix: you can no longer join with negative freebie points
+  limette, biplume:
+  - rscadd: eyes of the beast now glow in the dark and breach

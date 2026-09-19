@@ -16,6 +16,14 @@ const requireInterface = require.context(
   /^(?!.*\.test\.(tsx?|jsx?)).*\.(tsx?|jsx?)$/,
 );
 
+// DARKPACK EDIT ADD START
+const requireDarkpackInterface = require.context(
+  './darkpack_interfaces',
+  true,
+  /^(?!.*\.test\.(tsx?|jsx?)).*\.(tsx?|jsx?)$/,
+);
+// DARKPACK EDIT ADD END
+
 type RoutingErrorProps = {
   type: 'notFound' | 'missingExport' | 'unknown';
   name: string;
@@ -77,7 +85,9 @@ export function getRoutedComponent(name: string) {
     const interfacePathBuilder = interfacePathBuilders.shift()!;
     const interfacePath = interfacePathBuilder(name);
     try {
-      esModule = requireInterface(interfacePath);
+      // DARKPACK EDIT CHANGE START - We use getComponent instead to make sure our files are read
+      esModule = getComponent(interfacePath); // Replaces esModule = requireInterface(interfacePath);
+      // DARKPACK EDIT CHANGE NED
     } catch (err) {
       if (err.code !== 'MODULE_NOT_FOUND') {
         throw new Error('notFound');
@@ -96,6 +106,19 @@ export function getRoutedComponent(name: string) {
 
   return Component;
 }
+
+// DARKPACK EDIT ADD START - Adding our Interfaces to the list of UIs that are read.
+const getComponent = (interfacePath) => {
+  let esModule = null;
+  try {
+    esModule = requireDarkpackInterface(interfacePath);
+  } catch (err) {
+    esModule = requireInterface(interfacePath);
+  }
+
+  return esModule;
+};
+// DARKPACK EDIT ADD END
 
 export function RoutedComponent() {
   const { suspended, config, debug } = useAtomValue(backendStateAtom);

@@ -174,6 +174,7 @@
 	var/successes = 0
 	var/datum/storyteller_roll/anesthetic_touch/touch_roll // these are defined in valeren.dm
 	var/datum/storyteller_roll/anesthetic_touch/unwilling/touch_roll_unwilling
+	frenzy_usable = FALSE
 
 /datum/discipline_power/obeah/anesthetic_touch/pre_activation_checks(mob/living/target)
 	. = ..()
@@ -222,6 +223,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
 	target_type = TARGET_MOB // CRIMSON EDIT CHANGE - Healer Buff PR (Salubri and Theurges) - Original: target_type = TARGET_LIVING
 	range = 1
+	frenzy_usable = FALSE
 
 	violates_masquerade = TRUE
 	cooldown_length = 1 TURNS
@@ -249,6 +251,7 @@
 	willpower_cost = 2
 	cancelable = TRUE
 	var/datum/proximity_monitor/advanced/shepherds_watch/area_of_effect
+	frenzy_usable = FALSE
 
 /datum/discipline_power/obeah/shepherds_watch/activate(atom/target)
 	. = ..()
@@ -282,6 +285,7 @@
 	target_type = TARGET_LIVING
 	range = 1
 	var/datum/storyteller_roll/mens_sana/discipline_roll
+	frenzy_usable = FALSE
 
 /datum/storyteller_roll/mens_sana
 	bumper_text = "mens sana"
