@@ -97,7 +97,8 @@
 
 	floater.apply_damage(clamp((effective_stamina_entry_cost - athletics_skill) * gravity_modifier, 1, 100), STAMINA)
 	floater.mind?.adjust_experience(/datum/skill/athletics, (stamina_entry_cost * gravity_modifier) * 0.1)
-	// floater.apply_status_effect(/datum/status_effect/exercised, 15 SECONDS) // CRIMSON EDIT REMOVAL - No more screaming while swimming
+	if(!floater.has_status_effect(/datum/status_effect/exercised)) // CRIMSON EDIT ADD - No more screaming while swimming
+		floater.apply_status_effect(/datum/status_effect/exercised, 15 SECONDS)
 	floater.apply_status_effect(/datum/status_effect/swimming, ticking_stamina_cost, ticking_oxy_damage) // Apply the status anyway for when they stop riding
 
 /// The weight of our swimmers clothing, including slowdown, impacts the amount of stamina damage dealt on dipping in.
