@@ -90,7 +90,7 @@
 	var/list/data = ..()
 
 	data["available_statuses"] = WANTED_STATUSES()
-	data["current_user"] = user.real_name // CRIMSON GRID EDIT - Original: has_armory_access(user)
+	data["current_user"] = user.real_name // CRIMSON GRID EDIT - Original: user
 	data["higher_access"] = has_armory_access(user)
 
 	var/list/records = list()
@@ -311,7 +311,7 @@
 		return FALSE
 
 	to_void.valid = FALSE
-	to_void.voider = user.real_name
+	to_void.voider = user.real_name	// CRIMSON GRID EDIT - Original: user
 	investigate_log("[key_name(user)] has invalidated [target.name]'s crime: [to_void.name]", INVESTIGATE_RECORDS)
 
 	for(var/datum/crime/incident in target.crimes)
