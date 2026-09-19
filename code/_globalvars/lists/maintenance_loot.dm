@@ -27,13 +27,12 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/trash/sosjerky = 1,
 		*/
 		// DARKPACK ADD CHANGE START
-		/obj/effect/spawner/random/trash/food_packaging = 7,
+		/obj/effect/spawner/random/trash/food_packaging = 3, // CRIMSON EDIT CHANGE - Original: /obj/effect/spawner/random/trash/food_packaging = 7,
 		// DARKPACK ADD CHANGE END
 		/obj/item/trash/flare = 1,
 		/obj/item/trash/candle = 1,
-
 		/obj/item/c_tube = 1,
-		/obj/item/disk/data = 1,
+		///obj/item/disk/data = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/folder/yellow = 1,
 		/obj/item/hand_labeler = 1,
 		/obj/item/paper = 1,
@@ -44,7 +43,6 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/poster/random_official = 1,
 		/obj/item/stack/sheet/cardboard = 1,
 		/obj/item/storage/box = 1,
-
 		/obj/effect/decal/cleanable/ash = 1,
 		/obj/item/camera = 1,
 		/obj/item/camera_film = 1,
@@ -54,24 +52,25 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/light/bulb = 1,
 		/obj/item/light/tube = 1,
 		/obj/item/reagent_containers/cup/glass/drinkingglass = 1,
-
 		/obj/item/airlock_painter = 1,
 		/obj/item/airlock_painter/decal = 2,
 		/obj/item/clothing/mask/breath = 1,
 		/obj/item/rack_parts = 1,
 		/obj/item/shard = 1,
-
 		/obj/item/reagent_containers/applicator/pill/maintenance/achievement = 1,
 		/obj/item/toy/eightball = 1,
+		/obj/item/trash/popcorn = 1, // CRIMSON EDIT ADD - Making Garbage Better
+		/obj/item/trash/popcorn/salty = 1, // CRIMSON EDIT ADD - Making Garbage Better
 		) = 8,
 
-	list(//tier 1 stock parts
+	/* list(//tier 1 stock parts CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/stock_parts/capacitor = 1,
 		/obj/item/stock_parts/servo = 1,
 		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stock_parts/scanning_module = 1,
 		) = 1,
+	*/ // END OF CRIMSON EDIT REMOVAL - Making Garbage Better
 	))
 
 
@@ -94,8 +93,8 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 
 	list(//equipment
 		/obj/effect/spawner/random/clothing/gloves = 1,
-		/obj/item/clothing/glasses/meson = 1,
-		/obj/item/clothing/glasses/science = 1,
+		///obj/item/clothing/glasses/meson = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
+		///obj/item/clothing/glasses/science = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/clothing/gloves/color/black = 1,
 		/obj/item/clothing/gloves/color/fyellow = 1,
 		/obj/item/clothing/mask/gas = 1,
@@ -107,16 +106,17 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/storage/backpack = 1,
 		/obj/item/storage/belt/fannypack = 1,
 		/obj/item/storage/wallet/darkpack = 1, // DARKPACK EDIT CHANGE
-		) = 1,
+		) = 2, // CRIMSON EDIT CHANGE - Original: ) = 1
 
 	list(//construction and crafting
 		/obj/item/sign = 1,
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/rods/twentyfive = 1,
 		/obj/item/stack/sheet/iron/twenty = 1,
-		/obj/item/stack/sheet/mineral/plasma = 1,
-		/obj/item/stock_parts/power_store/cell = 1,
-		/obj/effect/spawner/random/engineering/vending_restock = 1,
+		///obj/item/stack/sheet/mineral/plasma = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
+		///obj/item/stock_parts/power_store/cell = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
+		///obj/effect/spawner/random/engineering/vending_restock = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
+
 		//assemblies
 		/obj/item/assembly/health = 1,
 		/obj/item/assembly/igniter = 1,
@@ -127,7 +127,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/assembly/timer = 1,
 		/obj/item/stack/package_wrap = 1,
 		/obj/item/stack/wrapping_paper = 1,
-		) = 1,
+		) = 2, // CRIMSON EDIT CHANGE - Original: ) = 1
 
 	list(//medical and chemicals
 		/obj/item/grenade/chem_grenade/cleaner = 1,
@@ -181,13 +181,13 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/emergency_bed = 1,
 		/obj/item/spear = 1,
 		/obj/item/weldingtool/largetank = 1,
-		/obj/item/market_uplink/blackmarket = 1,
+		///obj/item/market_uplink/blackmarket = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
 		) = 8,
 
 	list(//equipment
 		/obj/item/clothing/ears/earmuffs = 1,
-		/obj/item/clothing/glasses/hud/diagnostic = 1,
-		/obj/item/clothing/glasses/hud/health = 1,
+		///obj/item/clothing/glasses/hud/diagnostic = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
+		///obj/item/clothing/glasses/hud/health = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/clothing/glasses/salesman = 1,
 		/obj/item/clothing/glasses/nightmare_vision = 1,
 		/obj/item/clothing/glasses/welding = 1,
@@ -203,10 +203,10 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 
 	list(//strange objects
 		/obj/item/relic = 5,
-		) = 8,
+		) = 4, // CRIMSON EDIT CHANGE - Original: ) = 8
 
 	list(//construction and crafting
-		/obj/item/beacon = 1,
+		///obj/item/beacon = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/paper/fluff/stations/soap = 1, //recipes count as crafting.
 		/obj/item/plaque = 1,
 		/obj/item/seeds/kronkus = 3,
@@ -230,6 +230,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 			/obj/item/reagent_containers/cup/bottle/multiver = 1,
 			/obj/item/reagent_containers/hypospray/medipen = 1,
 			/obj/item/reagent_containers/syringe/convermol = 1,
+			/obj/item/reagent_containers/blood = 1, // CRIMSON EDIT ADD - Making Garbage Better
 			) = 4,
 		list(//drinks
 			/obj/item/reagent_containers/cup/glass/bottle/vodka = 1,
@@ -244,7 +245,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		list(//other chems
 			/obj/item/reagent_containers/cup/jerrycan/oil = 2, //Not the most exciting reagent, but a staple. And you get a cool can for your pyrotechnics.
 			/obj/item/reagent_containers/cup/jerrycan/space_cleaner = 2, //If you can't find the janitor, the medbay might also appreciate some readymade cleaner.
-			/obj/item/reagent_containers/cup/jerrycan/sus = 1, //what assitant wouldn't like a vibrant jug o' phlog?
+			///obj/item/reagent_containers/cup/jerrycan/sus = 1, // CRIMSON EDIT REMOVAL - Making Garbage Better
 			/obj/item/reagent_containers/cup/jerrycan/diethylamine = 1, //Im sure the botanist would appreciate it, but it is also really cool for maintenance science projects.
 			/obj/item/reagent_containers/cup/jerrycan/concrete_mix = 2,
 			) = 2,
@@ -267,14 +268,14 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 			/obj/item/food/ready_donk/donkhiladas = 1,
 			/obj/item/food/ready_donk/mac_n_cheese = 1,
 			) = 1,
-		/obj/item/food/monkeycube = 1,
+		///obj/item/food/monkeycube = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
 		) = 8,
 
-	list(//Donk Co. 'Donk Spike' flechette shells, these things show up everywhere in donkpocket boxes
+	/* list(//Donk Co. 'Donk Spike' flechette shells, these things show up everywhere in donkpocket boxes. CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/storage/box/donkpockets/donkpocketshell = 1,
 		) = 8,
-
-	list(//computer disks
+	*/
+	/* list(//computer disks CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/disk/computer/maintenance/scanner = 1,
 		/obj/item/disk/computer/maintenance/camera = 1,
 		/obj/item/disk/computer/maintenance/modsuit_control = 1,
@@ -284,11 +285,11 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/disk/computer/maintenance/theme = 3,
 	) = 4,
 
-	list(//modsuits
+	list(//modsuits CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/effect/spawner/random/mod/maint = 3,
 		/obj/item/mod/construction/broken_core = 1,
 		) = 4,
-
+*/ END OF CRIMSON EDIT REMOVAL - Making Garbage Better
 	list(//music
 		/obj/item/instrument/accordion = 5,
 		/obj/item/instrument/banjo = 5,
@@ -316,7 +317,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 
 GLOBAL_LIST_INIT(rarity_loot, list(//rare: really good items
 	list(//tools
-		/obj/item/assembly/flash/memorizer = 1,
+		///obj/item/assembly/flash/memorizer = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/flashlight/flashdark = 1,
 		/obj/item/knife/kitchen = 1,
 		/obj/item/melee/baton/security/cattleprod/teleprod = 1,
@@ -327,11 +328,11 @@ GLOBAL_LIST_INIT(rarity_loot, list(//rare: really good items
 		/obj/item/throwing_star = 1,
 		/obj/item/weldingtool/hugetank = 1,
 		/obj/item/fishing_rod/telescopic/master = 1,
-		/obj/item/spess_knife = 1,
-		/obj/item/gun/ballistic/automatic/pistol/doohickey = 1,
+		///obj/item/spess_knife = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
+		///obj/item/gun/ballistic/automatic/pistol/doohickey = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
 		) = 1,
 
-	list(//equipment
+	/*list(//equipment CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/clothing/glasses/hud/security = 1,
 		/obj/item/clothing/glasses/sunglasses = 1,
 		/obj/item/clothing/gloves/color/black/security = 1,
@@ -341,7 +342,7 @@ GLOBAL_LIST_INIT(rarity_loot, list(//rare: really good items
 		/obj/item/storage/belt/military/assault = 1,
 		/obj/item/storage/belt/security = 1,
 		) = 1,
-
+*/ //END OF CRIMSON EDIT REMOVAL - Making Garbage Better
 	list(//paint
 		/obj/item/paint/anycolor = 1,
 		/obj/item/paint/black = 1,
@@ -373,7 +374,7 @@ GLOBAL_LIST_INIT(rarity_loot, list(//rare: really good items
 		) = 1,
 
 	list(//misc
-		/obj/effect/spawner/random/occult/artifact = 10, // DARKPACK EDIT ADD
+		/obj/effect/spawner/random/occult/artifact = 1, // CRIMSON EDIT CHANGE - Original: /obj/effect/spawner/random/occult/artifact = 10,
 		/obj/item/book/granter/crafting_recipe/dusting/pipegun_prime = 1,
 		/obj/item/book/granter/crafting_recipe/trash_cannon = 1,
 		/* // DARKPACK EDIT REMOVAL
@@ -381,7 +382,7 @@ GLOBAL_LIST_INIT(rarity_loot, list(//rare: really good items
 		/obj/item/book/granter/crafting_recipe/dusting/detached_ratvarian_repeater = 1,
 		/obj/item/book/granter/sign_language = 1,
 		*/
-		/obj/item/disk/nuclear/fake = 1,
+		///obj/item/disk/nuclear/fake = 1, CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/item/disk/surgery/advanced_plastic_surgery = 1,
 		/* // DARKPACK EDIT REMOVAL
 		/obj/item/skillchip/brainwashing = 1,
@@ -395,7 +396,7 @@ GLOBAL_LIST_INIT(rarity_loot, list(//rare: really good items
 
 
 
-GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
+/* GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items, removed for CG for now, but can be re-added later if desired. CRIMSON EDIT REMOVAL - Making Garbage Better
 		/obj/effect/rune/teleport = 1,
 		/obj/item/clothing/head/helmet/abductor = 1,
 		/obj/item/clothing/shoes/jackboots/fast = 1,
@@ -412,14 +413,14 @@ GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
 			) = 1,
 		/obj/item/toy/cards/deck/tarot/haunted = 1,
 	))
-
+*/ //END OF CRIMSON EDIT REMOVAL - Making Garbage Better
 //Maintenance loot spawner pools
-#define maint_trash_weight 4500
-#define maint_common_weight 4500
-#define maint_uncommon_weight 900
-#define maint_rarity_weight 99
-#define maint_oddity_weight 1 //1 out of 10,000 would give metastation (180 spawns) a 2 in 111 chance of spawning an oddity per round, similar to xeno egg
-#define maint_holiday_weight 3500 // When holiday loot is enabled, it'll give every loot item a 25% chance of being a holiday item
+#define maint_trash_weight 450 // CRIMSON EDIT CHANGE - Original: #define maint_trash_weight 4500
+#define maint_common_weight 450 // CRIMSON EDIT CHANGE - Original: #define maint_common_weight 4500
+#define maint_uncommon_weight 100 // CRIMSON EDIT CHANGE - Original: #define maint_uncommon_weight 900
+#define maint_rarity_weight 10 // CRIMSON EDIT CHANGE - Original: #define maint_rarity_weight 99
+// #define maint_oddity_weight 1 //1 out of 10,000 would give metastation (180 spawns) a 2 in 111 chance of spawning an oddity per round, similar to xeno egg CRIMSON EDIT REMOVAL - Making Garbage Better
+#define maint_holiday_weight 350 // When holiday loot is enabled, it'll give every loot item a 25% chance of being a holiday item CRIMSON EDIT CHANGE - Original: #define maint_holiday_weight 3500
 
 //Loot pool used by default maintenance loot spawners
 GLOBAL_LIST_INIT(maintenance_loot, list(
@@ -427,13 +428,13 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	GLOB.common_loot = maint_common_weight,
 	GLOB.uncommon_loot = maint_uncommon_weight,
 	GLOB.rarity_loot = maint_rarity_weight,
-	GLOB.oddity_loot = maint_oddity_weight,
+	//GLOB.oddity_loot = maint_oddity_weight, CRIMSON EDIT REMOVAL - Making Garbage Better
 	))
 
 //Loot pool that is copied from maint loot but doesn't get changed due to holidays
 GLOBAL_LIST_INIT(dumpster_loot, GLOB.maintenance_loot.Copy())
 
-GLOBAL_LIST_INIT(ratking_trash, list(//Garbage: used by the regal rat mob when spawning garbage.
+GLOBAL_LIST_INIT(ratking_trash, list(//Garbage: used by the regal rat mob when spawning garbage. If you remove this, the rat king gets sad.
 			/obj/item/cigbutt,
 			/obj/item/trash/candy,
 			/obj/item/trash/cheesie,
@@ -451,3 +452,4 @@ GLOBAL_LIST_INIT(ratking_coins, list(//Coins: Used by the regal rat mob when spa
 			/obj/item/coin/silver,
 			/obj/item/coin/titanium,
 		))
+

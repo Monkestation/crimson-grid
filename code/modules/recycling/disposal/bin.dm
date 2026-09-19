@@ -172,7 +172,6 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 			var/pickedtrash = pick(GLOB.ratking_trash)
 			to_chat(king, span_notice("You just find more garbage and dirt. Lovely, but beneath you now."))
 			new pickedtrash(king.drop_location())
-
 	if (cheese)
 		return // We don't want them to eat your reward
 	var/rat_cap = CONFIG_GET(number/ratcap)
