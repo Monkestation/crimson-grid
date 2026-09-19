@@ -5,7 +5,7 @@
 	faction = FACTION_GAIA
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = /datum/job/vampire/warder
+	supervisors = SUPERVISOR_LITANY
 	req_admin_notify = 1
 	minimal_player_age = 25
 	exp_required_type_department = EXP_TYPE_GAIA
@@ -41,4 +41,5 @@
 	gloves = /obj/item/clothing/gloves/vampire/leather
 	suit = /obj/item/clothing/suit/vampire/jacket
 	l_pocket = /obj/item/smartphone/garou_guardian
-	backpack_contents = list(/obj/item/card/credit=1)
+	r_pocket = /obj/item/storage/wallet/darkpack
+	wallet_contents = list(/obj/item/vamp/keys/nps, /obj/item/card/credit = 1)

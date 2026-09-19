@@ -5,7 +5,7 @@
 	faction = FACTION_GAIA
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = /datum/job/vampire/councillor
+	supervisors = SUPERVISOR_LITANY
 	req_admin_notify = 1
 	minimal_player_age = 15
 	exp_requirements = 50
@@ -44,4 +44,4 @@
 	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
 	l_pocket = /obj/item/smartphone/garou_keeper
 	r_pocket = /obj/item/vamp/keys/nps
-	backpack_contents = list(/obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/card/credit = 1)

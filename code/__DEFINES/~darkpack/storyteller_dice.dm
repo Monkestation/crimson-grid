@@ -15,6 +15,8 @@
 #define ROLL_ADMIN "admin"
 /// Output is show to no one and is not logged
 #define ROLL_NONE "none"
+/// Output is shown to the roller only if it's a success.
+#define ROLL_PRIVATE_UNLESS_FAILURE "private_unless_failure"
 
 /// Time at which the roll was recorded
 #define OLD_ROLL_TIME 1

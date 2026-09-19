@@ -1,6 +1,8 @@
 #define CITY_NAME "San Francisco"
 #define CITY_POLICE_DEPARTMENT CITY_NAME + " Police Department"
 
+#define DEFAULT_COUNTRY_NAME "United States" // DARKPACK EDIT - Wallets and money splits, and identification.
+
 #define NEWSPAPER_COMPANY "Angel Times"
 #define PRIMARY_NIGHTCLUB_COMPANY "Dora"
 

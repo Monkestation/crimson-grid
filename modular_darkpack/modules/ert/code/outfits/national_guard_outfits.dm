@@ -1,3 +1,6 @@
+/datum/outfit/job/vampire/ert/national_guard
+	no_wallet = TRUE
+
 /datum/outfit/job/vampire/ert/national_guard/sergeant
 	name = "National Guard Sergeant"
 	ears = /obj/item/radio/headset/darkpack/military
