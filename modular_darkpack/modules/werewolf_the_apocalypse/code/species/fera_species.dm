@@ -297,6 +297,7 @@
 	custom_body_render = TRUE
 	custom_damage_render = TRUE
 	fallback_icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/garou_forms/crinos.dmi'
+	speed_mod = /datum/movespeed_modifier/shifter/war //CRIMSON GRID ADDITION
 
 /datum/species/human/shifter/war/visible_gender_override(mob/living/carbon/human/holder)
 	return "beast"
@@ -403,7 +404,12 @@
 	movetypes = GROUND
 
 /datum/movespeed_modifier/shifter/dire
-	multiplicative_slowdown = -0.2
+	multiplicative_slowdown = -0.3 //CRIMSON GRID EDIT - original multiplicative_slowdown = -0.2
 
 /datum/movespeed_modifier/shifter/feral
-	multiplicative_slowdown = -0.35
+	multiplicative_slowdown = -0.45 //CRMISON GRID EDIT - original multiplicative_slowdown = -0.35
+
+//CRIMSON GRID ADDITON START
+/datum/movespeed_modifier/shifter/war
+	multiplicative_slowdown = -0.25
+//CRMISON GRID ADDITION END
