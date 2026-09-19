@@ -309,11 +309,16 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 			if(!result)
 				character.give_st_power(discipline, level) // load em up
 
-	SSticker.OnRoundend(CALLBACK(src, PROC_REF(save_disciplines), character))
+	SSticker.OnRoundend(CALLBACK(src, PROC_REF(save_disciplines), character, default_slot)) // CRIMSON EDIT - Multidiscipline Bug Fix - Original: SSticker.OnRoundend(CALLBACK(src, PROC_REF(save_disciplines), character))
 
-/datum/preferences/proc/save_disciplines(mob/living/carbon/human/character)
+/datum/preferences/proc/save_disciplines(mob/living/carbon/human/character, character_slot) // CRIMSON EDIT - Multidiscipline Bug Fix - Original: /datum/preferences/proc/save_disciplines(mob/living/carbon/human/character)
 	if(QDELETED(character))
 		return
+
+	// CRIMSON EDIT ADD START - Multidiscipline Bug Fix
+	if(character_slot != default_slot)
+		return
+	// CRIMSON EDIT ADD END - Multidiscipline Bug Fix
 
 	var/datum/splat/vampire/vampire_splat = get_splat_with_discipline(character)
 	if(!vampire_splat)
