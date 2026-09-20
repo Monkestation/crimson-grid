@@ -446,7 +446,7 @@
 	if(get_garou_splat(human_who_gained_species))
 		human_who_gained_species.add_traits(list(TRAIT_HARDLY_WOUNDED, TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_NO_STAGGER, TRAIT_HATED_BY_DOGS, TRAIT_STRONG_STOMACH, TRAIT_STRONGPULL), SPECIES_TRAIT)
 
-/datum/species/human/shifter/feral/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
+/datum/species/human/shifter/war/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
 	human.remove_traits(list(TRAIT_HARDLY_WOUNDED, TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_NO_STAGGER, TRAIT_HATED_BY_DOGS, TRAIT_STRONG_STOMACH, TRAIT_STRONGPULL), SPECIES_TRAIT)
 
