@@ -70,7 +70,7 @@
 
 /datum/status_effect/frenzy/flee	//Generic fleeing frenzy
 	id = "fleeing frenzy"
-	frenzy_traits = list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA, TRAIT_CANNOT_FOCUS, TRAIT_ILLITERATE, TRAIT_CLUMSY)
+	frenzy_traits = list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA, TRAIT_CANNOT_FOCUS, TRAIT_ILLITERATE, TRAIT_CLUMSY, TRAIT_DISCOORDINATED_TOOL_USER)
 	// CRIMSON EDIT CHANGE - Original: frenzy_traits = list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA, TRAIT_CANNOT_FOCUS, TRAIT_ILLITERATE, TRAIT_PACIFISM)
 /atom/movable/screen/alert/status_effect/frenzy
 	name = "Frenzy"
