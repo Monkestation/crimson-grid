@@ -12,13 +12,63 @@
 	effect_sound = 'modular_darkpack/modules/paths/sounds/fireball.ogg'
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/one
+	name = "Force Bolt"
+	desc = "Cause a target to fall down."
 	level = 1
+	cooldown_length = 5 SECONDS
+	violates_masquerade = TRUE
+	target_type = TARGET_LIVING
+	range = 5
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/one/activate(atom/target)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/living_target = target
+
+	to_chat(living_target, span_warning("You feel forced into the ground!"))
+	living_target.Knockdown(5 SECONDS)
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/two
 	level = 2
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/three
+	name = "Flight"
+	desc = "Hoist yourself into the air."
 	level = 3
+	cooldown_length = 5 SECONDS
+	violates_masquerade = TRUE
+	target_type = NONE
+	toggled = TRUE
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/three/activate(atom/target)
+	. = ..()
+	if(.)
+		return
+
+	owner.AddComponent( \
+		/datum/component/jetpack, \
+		TRUE, \
+		1 NEWTONS, \
+		COMSIG_POWER_ACTIVATE, \
+		COMSIG_POWER_DEACTIVATE, \
+		null, \
+		null, \
+		null, \
+	)
+
+	owner.add_traits(list(TRAIT_MOVE_FLOATING, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
+	owner.add_movespeed_modifier(/datum/movespeed_modifier/jetpack/wings)
+	owner.AddElement(/datum/element/forced_gravity, 0)
+	owner.set_resting(FALSE, TRUE)
+	owner.refresh_gravity()
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/three/deactivate(atom/target)
+	. = ..()
+	owner.remove_traits(list(TRAIT_MOVE_FLOATING, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/jetpack/wings)
+	owner.RemoveElement(/datum/element/forced_gravity, 0)
+	owner.refresh_gravity()
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/four
 	level = 4
