@@ -36,7 +36,8 @@ GLOBAL_LIST_INIT(side_choice_hemiplegic, list(
 ))
 
 ///Options for the Junkie quirk to choose from
-// cg edits for existing drugs
+// CRIMSON EDIT ADDITION - ephedrine, cannabis, cocaine
+// CRIMSON EDIT REMOVAL - blastoff, krokodil, happiness
 GLOBAL_LIST_INIT(possible_junkie_addictions, setup_junkie_addictions(list(
 	/datum/reagent/medicine/morphine,
 	/datum/reagent/medicine/ephedrine,
@@ -46,7 +47,8 @@ GLOBAL_LIST_INIT(possible_junkie_addictions, setup_junkie_addictions(list(
 )))
 
 ///Options for the Smoker quirk to choose from
-// cg edits for existing smoke brands
+// CRIMSON EDIT ADDITION - dromedaryco, xeno
+// CRIMSON EDIT REMOVAL - base cigarette, midori, uplift, carp
 GLOBAL_LIST_INIT(possible_smoker_addictions, setup_smoker_addictions(list(
 	/obj/item/storage/fancy/cigarettes/dromedaryco,
 	/obj/item/storage/fancy/cigarettes/cigpack_robust,

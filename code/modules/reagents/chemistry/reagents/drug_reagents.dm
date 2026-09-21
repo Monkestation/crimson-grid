@@ -49,8 +49,8 @@
 	metabolization_rate = 0.125 * REAGENTS_METABOLISM
 	/// tracks if we cleared a monkey's aggressiveness value
 	var/cleared_aggressive = FALSE
+	addiction_types = list(/datum/addiction/hallucinogens = 60) // CRIMSON EDIT ADDITION - Gives Weed addiction for addict quirk/flaw
 
-	addiction_types = list(/datum/addiction/hallucinogens = 60) // CRIMSON EDIT ADDITION - Gives Weed addiction for addict quirk
 /datum/reagent/drug/cannabis/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	affected_mob.apply_status_effect(/datum/status_effect/stoned)
