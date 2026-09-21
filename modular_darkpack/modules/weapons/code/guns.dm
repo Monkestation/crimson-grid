@@ -956,3 +956,22 @@
 	spread = 25		//+25 from sawing off anyway, good fucking luck
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
+
+/obj/item/gun/ballistic/automatic/darkpack/musket/pistol
+	name = "antique pistol"
+	desc = "A antique pistol, likely from the mid 19th century. Luckily this appears to be a simple small cartrige loader; just load it, ram, cock, and fire!"
+	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
+	icon_state = "flintpistol"
+	inhand_icon_state = "flintpistol"
+	worn_icon_state = "flintpistol"
+	w_class = WEIGHT_CLASS_SMALL
+	weapon_weight = WEAPON_LIGHT
+	fire_delay = 35
+	burst_size = 1
+	recoil = 6	//lower due to less powder
+	spread = 16
+	w_class = WEIGHT_CLASS_SMALL
+	slot_flags = ITEM_SLOT_BELT
+	can_be_sawn_off	= FALSE
+	projectile_damage_multiplier = 0.9 //90 damage; it is a single-shot.
