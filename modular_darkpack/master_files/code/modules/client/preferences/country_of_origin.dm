@@ -114,6 +114,7 @@
 			"Belgium" = list(/datum/language/french),
 			"Benin" = list(/datum/language/french),
 			"Burkina Faso" = list(/datum/language/french),
+			"Canada" = list(/datum/language/french),
 			"Cameroon" = list(/datum/language/french),
 			"Central African Republic" = list(/datum/language/french),
 			"Chad" = list(/datum/language/french),
