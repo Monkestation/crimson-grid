@@ -41,3 +41,34 @@
 	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINFOLK)
 	icon = FA_ICON_WORM
 	failure_message = "You don't feel tainted anymore."
+
+/datum/quirk/item_quirk/addict
+	var/list/forbidden_splats = list(SPLAT_KINDRED)
+
+/datum/quirk/item_quirk/addict/add_to_holder(mob/living/new_holder, quirk_transfer = FALSE, client/client_source, unique = TRUE, announce = TRUE)
+	for(var/datum/splat/splat as anything in new_holder.splats)
+		if(splat.id in forbidden_splats)
+			return FALSE
+	return ..()
+
+/datum/quirk/item_quirk/addict/is_splat_appropriate(datum/splat/mob_splat)
+	if(!..())
+		return FALSE
+	var/datum/splat/splat_path = GLOB.splat_prototypes[mob_splat]
+	// If splat is null, just assume we have no splat.
+	var/splat_id = splat_path?.id ? splat_path.id : SPLAT_NONE
+	if(forbidden_splats && (splat_id in forbidden_splats))
+		return FALSE
+	return TRUE
+
+/datum/quirk/item_quirk/addict/smoker
+	darkpack_allowed = TRUE
+	value = -1
+
+/datum/quirk/item_quirk/addict/alcoholic
+	darkpack_allowed = TRUE
+	value = -1
+
+/datum/quirk/item_quirk/addict/junkie
+	darkpack_allowed = TRUE
+	value = -2

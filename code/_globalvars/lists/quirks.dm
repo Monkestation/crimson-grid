@@ -36,22 +36,22 @@ GLOBAL_LIST_INIT(side_choice_hemiplegic, list(
 ))
 
 ///Options for the Junkie quirk to choose from
+// cg edits for existing drugs
 GLOBAL_LIST_INIT(possible_junkie_addictions, setup_junkie_addictions(list(
-	/datum/reagent/drug/blastoff,
-	/datum/reagent/drug/krokodil,
 	/datum/reagent/medicine/morphine,
-	/datum/reagent/drug/happiness,
+	/datum/reagent/medicine/ephedrine,
+	/datum/reagent/drug/cannabis,
 	/datum/reagent/drug/methamphetamine,
+	/datum/reagent/drug/methamphetamine/cocaine,
 )))
 
 ///Options for the Smoker quirk to choose from
+// cg edits for existing smoke brands
 GLOBAL_LIST_INIT(possible_smoker_addictions, setup_smoker_addictions(list(
-	/obj/item/storage/fancy/cigarettes,
-	/obj/item/storage/fancy/cigarettes/cigpack_midori,
-	/obj/item/storage/fancy/cigarettes/cigpack_uplift,
+	/obj/item/storage/fancy/cigarettes/dromedaryco,
 	/obj/item/storage/fancy/cigarettes/cigpack_robust,
 	/obj/item/storage/fancy/cigarettes/cigpack_robustgold,
-	/obj/item/storage/fancy/cigarettes/cigpack_carp,
+	/obj/item/storage/fancy/cigarettes/cigpack_xeno,
 	/obj/item/storage/fancy/cigarettes/cigars,
 	/obj/item/storage/fancy/cigarettes/cigars/cohiba,
 	/obj/item/storage/fancy/cigarettes/cigars/havana,
