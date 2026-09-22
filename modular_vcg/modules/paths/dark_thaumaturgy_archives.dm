@@ -1,3 +1,5 @@
+#define FAVOR_MULTIPLIER 3
+
 /obj/structure/retail/occult/baali
 	icon = 'modular_darkpack/modules/deprecated/icons/64x64.dmi'
 	icon_state = "baali"
@@ -53,32 +55,62 @@
 		return human_user.get_discipline(/datum/discipline/dark_thaumaturgy)
 
 /obj/structure/retail/occult/baali/proc/calculate_favor(mob/living/carbon/human/sacrificed)
+	var/favor = 25
 	if(get_kindred_splat(sacrificed))
-		return ((GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17)) * 8 + 78) //the '8+78' creates a linear scale based on generation with 8 being 150 favor, 13th being 100 favor, and 16th being 78 favor.
+		favor = ((GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17)) * 8 + 78) //the '8+78' creates a linear scale based on generation with 8 being 150 favor, 13th being 100 favor, and 16th being 78 favor.
 	if(get_garou_splat(sacrificed) || get_corax_splat(sacrificed))
-		return 100
+		favor = 100
 	if(get_ghoul_splat(sacrificed))
-		return 50
-	return 25
+		favor = 50
+	return favor * FAVOR_MULTIPLIER
 
 /obj/structure/retail/occult/baali/attackby(obj/item/I, mob/user, params)
 	. = ..()
 	if(can_shop(user))
 		var/sacrifice = FALSE
+		var/upset = FALSE
 		if(ishuman(user))
 			var/mob/living/carbon/human/human_user = user
 			for(var/mob/living/carbon/human/sacrificed_human in get_turf(src))
 				if(sacrificed_human.stat < HARD_CRIT)
 					continue
+				if(!sacrificed_human.mind)
+					upset = TRUE
+					var/turf/throw_turf = get_edge_target_turf(sacrificed_human, pick(GLOB.alldirs))
+					sacrificed_human.safe_throw_at(throw_turf, 3, 1, src, spin = TRUE, force = MOVE_FORCE_STRONG, gentle = TRUE)
+					continue
 				human_user.infernal_favor += calculate_favor(sacrificed_human)
-				sacrificed_human.gib(DROP_ALL_REMAINS)
+				var/spawn_point = sacrificed_human.mind.assigned_role.get_roundstart_spawn_point()
+				if(spawn_point)
+					if(HAS_TRAIT_FROM(sacrificed_human, TRAIT_AURA_OF_INFERNO, DARK_THAUMATURGY_TRAIT))
+						to_chat(sacrificed_human, span_userdanger("YOUR SOUL IS DRAGGED INTO THE INFERNAL PLANE!"))
+						sacrificed_human.dust(drop_items = TRUE)
+						continue
+					to_chat(sacrificed_human, span_userdanger("SOMETHING TEARS AT YOUR SOUL! THE PAIN!"))
+					sacrificed_human.forceMove(spawn_point)
+					ADD_TRAIT(sacrificed_human, TRAIT_AURA_OF_INFERNO, DARK_THAUMATURGY_TRAIT)
+					SEND_SIGNAL(sacrificed_human, COMSIG_MOB_UPDATE_AURA)
+					sacrificed_human.AdjustSleeping(5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(on_wake_up), sacrificed_human), 5 SECONDS)
+					sacrificed_human.log_message("has been sacrificed the first time on baali rune by [key_name(user)].", LOG_GAME)
+					log_admin("[key_name(sacrificed_human)] has been sacrificed the first time on baali rune by [key_name(user)].")
+				else
+					sacrificed_human.dust(drop_items = TRUE)
 				sacrifice = TRUE
-		if(sacrifice)
-			playsound(get_turf(src), 'sound/effects/magic/demon_dies.ogg', 100, TRUE)
-			animate(src, color = initial(color), time = 0.5 SECONDS)
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
-		else
-			interface_interact(user)
+			if(upset)
+				to_chat(human_user, span_warning("THE INFERNAL DESIRE ONLY MINDFUL BEINGS!"))
+				human_user.adjust_fire_stacks(1, overwrite_color = COLOR_VERY_DARK_LIME_GREEN)
+			if(sacrifice || upset)
+				playsound(get_turf(src), 'sound/effects/magic/demon_dies.ogg', 100, TRUE)
+				animate(src, color = initial(color), time = 0.5 SECONDS)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
+			else
+				interface_interact(human_user)
+
+/obj/structure/retail/occult/baali/proc/on_wake_up(mob/living/carbon/human/sacrificed_human)
+	sacrificed_human.SetSleeping(0)
+	to_chat(sacrificed_human, span_warning("The pain fades, but you feel hollow. You won't survive a second time."))
+	to_chat(sacrificed_human, span_userdanger("YOU CANNOT REMEMBER WHO TOOK YOU, WHERE YOU WERE, OR ANYTHING THAT LED TO THIS MOMENT."))
 
 // BaaliSpellbookVendor.jsx in tgui/interfaces
 /obj/structure/retail/occult/baali/proc/interface_interact(mob/user, datum/tgui/ui)
@@ -204,7 +236,7 @@
 
 		var/mob/living/carbon/human/human_user = user
 
-		var/research_reward = 5 // base reward modified by spellbook
+		var/research_reward = 50
 		human_user.infernal_favor += research_reward
 
 		increment_stock(spellbook.type)
@@ -213,3 +245,5 @@
 
 		qdel(spellbook)
 		return ITEM_INTERACT_SUCCESS
+
+#undef FAVOR_MULTIPLIER
