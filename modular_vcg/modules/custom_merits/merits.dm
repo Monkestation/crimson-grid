@@ -34,7 +34,7 @@
 /datum/quirk/darkpack/wyrmtainted
 	name = "Wyrm Tainted"
 	desc = "For some reason you have the stink of the Wyrm about you."
-	value = -4
+	value = -1
 	mob_trait = TRAIT_WYRMTAINTED
 	gain_text = span_notice("You feel tainted.")
 	lose_text = span_notice("You don't feel tainted anymore.")
