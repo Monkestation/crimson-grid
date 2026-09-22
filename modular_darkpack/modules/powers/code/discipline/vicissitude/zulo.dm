@@ -98,9 +98,9 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 	RegisterSignal(human_who_gained_species, COMSIG_LIVING_DEATH, PROC_REF(revert_on_zulo_death))
 
 
-	// CRIMSON EDIT ADD START - Zulo Rege
+	// CRIMSON EDIT ADD START - Zulo Buffs
 	human_who_gained_species.physiology.brute_mod *= 0.6
-	// CRIMSON EDIT ADD END - Zulo Regen
+	// CRIMSON EDIT ADD END - Zulo Buffs
 
 /datum/species/tzimisce_zulo_form/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
