@@ -30,6 +30,7 @@
 	duration_length = 1 SCENES
 	cooldown_length = 2 SCENES
 	var/datum/proximity_monitor/advanced/silence_of_death/silence_field
+	frenzy_usable = FALSE
 
 /datum/discipline_power/quietus/silence_of_death/activate()
 	. = ..()

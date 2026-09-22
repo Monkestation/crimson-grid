@@ -256,6 +256,8 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_CITY_LOW_WALL S_TURF(91) ///obj/structure/platform/lowwall // DARKPACK EDIT ADD - WALLS
 #define SMOOTH_GROUP_FF_TABLES S_OBJ(92) ///obj/structure/table/countertop/fastfood // DARKPACK EDIT ADD - DECOR
 
+#define SMOOTH_GROUP_POLICE_TAPE S_OBJ(93) // /obj/structure/holosign/barrier/police_tape // DARKPACK EDIT ADD - Police tape
+
 /// Performs the work to set smoothing_groups and canSmoothWith.
 /// An inlined function used in both turf/Initialize and atom/Initialize.
 #define SETUP_SMOOTHING(...) \

@@ -94,6 +94,7 @@
 		/datum/discipline_power/obfuscate/vanish_from_the_minds_eye,
 		/datum/discipline_power/obfuscate/cloak_the_gathering
 	)
+	frenzy_usable = FALSE
 
 /datum/discipline_power/obfuscate/cloak_of_shadows/pre_activation_checks()
 	. = ..()
@@ -136,6 +137,7 @@
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 
@@ -189,6 +191,7 @@
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0 // vitae cost handled in activate()
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 	grouped_powers = list(
@@ -359,6 +362,7 @@
 	level = 5
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 

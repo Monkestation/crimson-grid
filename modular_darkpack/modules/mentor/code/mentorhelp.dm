@@ -1,101 +1,89 @@
-GAME_VERB(/client, mentorhelp, "Mentorhelp", "Mentor")
-	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
-	//clean the input msg
+//Make this null once Stat panel (Admin tab) is kill.
+GAME_VERB(/client, mentorhelp, "Mentorhelp", ADMIN_CATEGORY_MENTOR)
+	if(prefs.muted & MUTE_ADMINHELP)
+		to_chat(src,
+			type = MESSAGE_TYPE_MODCHAT,
+			html = "<span class='danger'>Error: MentorPM: You are muted from Mentorhelps. (muted).</span>",
+			confidential = TRUE)
+		return
+	var/msg = tgui_input_text(src, "Ask a question about game mechanics", "Mentorhelp")
+	//Cleans the input message
 	if(!msg)
 		return
-
-	//remove out mentorhelp verb temporarily to prevent spamming of mentors.
-	remove_verb(src, /client/verb/mentorhelp)
-	spawn(30 SECONDS) // Gotta love BYOND, god this is disgusting
-		add_verb(src, /client/verb/mentorhelp)	// 30 second cool-down for mentorhelp
-
-	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
-	if(!msg || !mob)
+	//This shouldn't happen, but just in case.
+	if(!mob)
 		return
 
-	var/show_char = CONFIG_GET(flag/mentors_mobname_only)
-	var/mentor_msg = span_mentor("<b>MENTORHELP:</b> <b>[key_name_mentor(src, TRUE, FALSE, TRUE, show_char)]</b>: [msg]")
-	log_mentor("MENTORHELP: [key_name_mentor(src, FALSE, FALSE, FALSE, FALSE)]: [msg]")
+	msg = sanitize(copytext(msg,1,MAX_MESSAGE_LEN))
+	var/mentor_msg = "<font color='purple'><span class='mentornotice'><b>MENTORHELP:</b> <b>[key_name_mentor(src, TRUE, FALSE)]</b>: </span><span class='message linkify'>[msg]</span></font>"
+	log_mentor("MENTORHELP: [key_name_mentor(src, null, FALSE, FALSE)]: [msg]")
 
-	for(var/mentor in GLOB.mentors)
-		var/client/mentor_client = mentor
-		if(mentor_client)
-			SEND_SOUND(mentor_client, 'sound/items/bikehorn.ogg')
-			to_chat(mentor_client, mentor_msg)
+	//Send the Mhelp to all Mentors/Admins
+	for(var/client/honked_clients in GLOB.mentors | GLOB.admins)
+		SEND_SOUND(honked_clients, 'sound/items/bikehorn.ogg')
+		to_chat(honked_clients,
+			type = MESSAGE_TYPE_MODCHAT,
+			html = mentor_msg,
+			confidential = TRUE)
 
-	to_chat(src, span_mentor("PM to-<b>Mentors</b>: [msg]"))
-	return
+	//Also show it to person Mhelping
+	to_chat(usr,
+		type = MESSAGE_TYPE_MODCHAT,
+		html = "<font color='purple'><span class='mentornotice'>PM to-<b>Mentors</b>:</span> <span class='message linkify'>[msg]</span></font>",
+		confidential = TRUE)
 
-/proc/get_mentor_counts()
-	. = list("total" = 0, "afk" = 0, "present" = 0)
-	for(var/mentor in GLOB.mentors)
-		var/client/mentor_client = mentor
-		.["total"]++
-		if(mentor_client.is_afk())
-			.["afk"]++
-		else
-			.["present"]++
+	GLOB.mentor_requests.mentorhelp(src, msg)
 
-/proc/key_name_mentor(whom, include_link = null, include_name = FALSE, include_follow = FALSE, char_name_only = FALSE)
-	var/mob/target_mob
-	var/client/target_client
+/proc/key_name_mentor(whom, include_link = null, include_name = TRUE, include_follow = TRUE, char_name_only = TRUE)
+	var/mob/user
+	var/client/chosen_client
 	var/key
 	var/ckey
 
 	if(!whom)
 		return "*null*"
+
 	if(istype(whom, /client))
-		target_client = whom
-		target_mob = target_client?.mob
-		key = target_client?.key
-		ckey = target_client?.ckey
+		chosen_client = whom
+		user = chosen_client.mob
+		key = chosen_client.key
+		ckey = chosen_client.ckey
 	else if(ismob(whom))
-		target_mob = whom
-		target_client = target_mob.client
-		key = target_mob.key
-		ckey = target_mob.ckey
+		user = whom
+		chosen_client = user.client
+		key = user.key
+		ckey = user.ckey
 	else if(istext(whom))
 		key = whom
 		ckey = ckey(whom)
-		target_client = GLOB.directory[ckey]
-		if(target_client)
-			target_mob = target_client?.mob
+		chosen_client = GLOB.directory[ckey]
+		if(chosen_client)
+			user = chosen_client.mob
 	else
 		return "*invalid*"
 
 	. = ""
 
 	if(!ckey)
-		include_link = FALSE
+		include_link = null
 
 	if(key)
-		if(include_link)
-			if(CONFIG_GET(flag/mentors_mobname_only))
-				. += "<a href='byond://?_src_=mentor;mentor_msg=[REF(target_mob)];[MentorHrefToken(TRUE)]'>"
-			else
-				. += "<a href='byond://?_src_=mentor;mentor_msg=[ckey];[MentorHrefToken(TRUE)]'>"
+		if(include_link != null)
+			. += "<a href='byond://?_src_=mentor;mentor_msg=[ckey];[MentorHrefToken(TRUE)]'>"
 
-		if(target_client && target_client?.holder && target_client?.holder.fakekey)
+		if(chosen_client && chosen_client.holder && chosen_client.holder.fakekey)
 			. += "Administrator"
-		else if (char_name_only && CONFIG_GET(flag/mentors_mobname_only))
-			if(istype(target_client?.mob,/mob/dead/new_player) || istype(target_client?.mob, /mob/dead/observer)) //If they're in the lobby or observing, display their ckey
-				. += key
-			else if(target_client && target_client?.mob) //If they're playing/in the round, only show the mob name
-				. += target_client?.mob.name
-			else //If for some reason neither of those are applicable and they're mentorhelping, show ckey
-				. += key
 		else
 			. += key
-		if(!target_client)
+		if(!chosen_client)
 			. += "\[DC\]"
 
-		if(include_link)
+		if(include_link != null)
 			. += "</a>"
 	else
 		. += "*no key*"
 
-	/*
 	if(include_follow)
-		. += " (<a href='byond://?_src_=mentor;mentor_follow=[REF(target_mob)];[MentorHrefToken(TRUE)]'>F</a>)"
-	*/
+		. += " (<a href='byond://?_src_=mentor;mentor_follow=[REF(user)];[MentorHrefToken(TRUE)]'>F</a>)"
+
 	return .
