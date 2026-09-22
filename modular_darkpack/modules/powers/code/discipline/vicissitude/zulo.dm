@@ -98,14 +98,9 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 	RegisterSignal(human_who_gained_species, COMSIG_LIVING_DEATH, PROC_REF(revert_on_zulo_death))
 
 
-	// CRIMSON EDIT ADD START - Zulo Armor and Regen
+	// CRIMSON EDIT ADD START - Zulo Armor
 	human_who_gained_species.apply_status_effect(/datum/status_effect/fortitude/three)
-	var/datum/component/regenerator/regenerator = human_who_gained_species.GetComponent(/datum/component/regenerator)
-	if(!regenerator)
-		human_who_gained_species.AddComponent(/datum/component/regenerator, regeneration_delay = 5 SECONDS, heals_wounds = TRUE, brute_per_second = 20, burn_per_second = 0, tox_per_second = 0, oxy_per_second =0, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour = COLOR_RED)
-		regenerator = human_who_gained_species.GetComponent(/datum/component/regenerator)
-	regenerator?.start_regenerating()
-	// CRIMSON EDIT ADD END - Zulo Armor and Regen
+	// CRIMSON EDIT ADD END - Zulo Armor
 
 /datum/species/tzimisce_zulo_form/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
@@ -130,7 +125,6 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 
 	// CRIMSON EDIT ADD START - Zulo Armor and Regen
 	human.remove_status_effect(/datum/status_effect/fortitude/three)
-	qdel(human.GetComponent(/datum/component/regenerator))
 	// CRIMSON EDIT ADD END - Zulo Armor and Regen
 
 /datum/species/tzimisce_zulo_form/proc/revert_on_zulo_death(mob/living/carbon/human/source)
