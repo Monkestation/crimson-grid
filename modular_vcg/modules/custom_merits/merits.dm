@@ -33,7 +33,7 @@
 
 /datum/quirk/darkpack/wyrmtainted
 	name = "Wyrm Tainted"
-	desc = "Due to some supernatural accident, an unfortunate quirk of heredity, or whatever reason, you have the stink of the Wyrm, a God of destruction in the eyes of most shapeshifters. Some shapeshifters are able to notice your stink and may seek to KILL you for it."
+	desc = "Due to some supernatural accident, an unfortunate quirk of heredity, or whatever reason, you have the stink of the Wyrm, a God of destruction in the eyes of most shapeshifters. Some shapeshifters are able to notice your stink and may seek to KILL you for your association with the Wyrm."
 	value = -1
 	mob_trait = TRAIT_WYRMTAINTED
 	gain_text = span_notice("You feel tainted.")
