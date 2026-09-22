@@ -28,7 +28,7 @@
 /obj/item/clothing/head/vampire/bikehelmet/yellow
 	name = "yellow bike helmet"
 	desc = "A yellow helmet.. Deja Vu?.. "
-	icon_state = "white_bikehelmet"
+	icon_state = "yellow_bikehelmet"
 
 /obj/item/clothing/head/vampire/bikehelmet/red
 	name = "red bike helmet"
