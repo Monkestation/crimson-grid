@@ -41,7 +41,19 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 		TRAIT_NO_BLOOD_OVERLAY,
 		TRAIT_TRANSFORM_UPDATES_ICON,
 		TRAIT_NO_CUFF, // hard to put cuffs on a warform that might even have multiple arms or be a were-beast. Waiting for cuffbreaking code.
-		TRAIT_MUTANT_COLORS
+		TRAIT_MUTANT_COLORS,
+		// CRIMSON EDIT ADD START - Zulo Trait Buffs
+		TRAIT_HARDENED_SOLES,
+		TRAIT_GRABRESISTANCE,
+		TRAIT_QUICK_CARRY,
+		TRAIT_STRENGTH,
+		TRAIT_NO_SLIP_WATER,
+		TRAIT_HEAD_INJURY_BLOCKED,
+		TRAIT_BRAWLING_KNOCKDOWN_BLOCKED,
+		TRAIT_FAT_IGNORE_SLOWDOWN,
+		TRAIT_BATON_RESISTANCE,
+		TRAIT_FEARLESS,
+		// CRIMSON EDIT ADD END - Zulo Trait Buffs
 	)
 	no_equip_flags = ITEM_SLOT_MASK | ITEM_SLOT_OCLOTHING | ITEM_SLOT_GLOVES | ITEM_SLOT_FEET | ITEM_SLOT_ICLOTHING | ITEM_SLOT_SUITSTORE | ITEM_SLOT_HEAD | ITEM_SLOT_EYES | ITEM_SLOT_EARS
 	var/obj/item/zulo_backpack_to_hide
@@ -86,6 +98,16 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 		human_who_gained_species.update_worn_back()
 	RegisterSignal(human_who_gained_species, COMSIG_LIVING_DEATH, PROC_REF(revert_on_zulo_death))
 
+
+	// CRIMSON EDIT ADD START - Zulo Armor and Regen
+	human_who_gained_species.apply_status_effect(/datum/status_effect/fortitude/three)
+	var/datum/component/regenerator/regenerator = human_who_gained_species.GetComponent(/datum/component/regenerator)
+	if(!regenerator)
+		human_who_gained_species.AddComponent(/datum/component/regenerator, regeneration_delay = 5 SECONDS, heals_wounds = TRUE, brute_per_second = 20, burn_per_second = 0, tox_per_second = 0, oxy_per_second =0, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour = COLOR_RED)
+		regenerator = human_who_gained_species.GetComponent(/datum/component/regenerator)
+	regenerator?.start_regenerating()
+	// CRIMSON EDIT ADD END - Zulo Armor and Regen
+
 /datum/species/tzimisce_zulo_form/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
 	if(human.client)
@@ -107,6 +129,10 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 		zulo_backpack_to_hide = null
 	UnregisterSignal(human, COMSIG_LIVING_DEATH)
 
+	// CRIMSON EDIT ADD START - Zulo Armor and Regen
+	human.remove_status_effect(/datum/status_effect/fortitude/three)
+	qdel(human.GetComponent(/datum/component/regenerator))
+	// CRIMSON EDIT ADD END - Zulo Armor and Regen
 
 /datum/species/tzimisce_zulo_form/proc/revert_on_zulo_death(mob/living/carbon/human/source)
 	source.set_species(mrace = /datum/species/human, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)
