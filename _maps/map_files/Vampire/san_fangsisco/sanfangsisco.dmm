@@ -15023,7 +15023,9 @@
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/turf/open/floor/plating/concrete,
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
 /area/vtm/interior)
 "dKN" = (
 /obj/structure/table/wood,
@@ -18618,7 +18620,9 @@
 "eGD" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/directional/north,
-/turf/open/floor/plating/concrete,
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
 /area/vtm/interior)
 "eGE" = (
 /obj/effect/landmark/npcwall,
@@ -44851,6 +44855,15 @@
 /obj/item/kitchen/fork,
 /turf/open/floor/carpet,
 /area/vtm/interior)
+"lob" = (
+/obj/structure/vampdoor/old{
+	dir = 8;
+	lock_id = "triad"
+	},
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
+/area/vtm/interior)
 "lod" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating/concrete,
@@ -45197,10 +45210,6 @@
 "lsz" = (
 /turf/open/floor/iron/stairs/black/right,
 /area/vtm/interior/wyrm_corrupted)
-"lsF" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/plating/concrete,
-/area/vtm/interior)
 "lsQ" = (
 /obj/effect/landmark/npcwall,
 /obj/structure/roadblock{
@@ -62086,6 +62095,12 @@
 /obj/effect/decal/cleanable/cardboard,
 /turf/open/misc/dirt/rails,
 /area/vtm/interior/supply)
+"pDW" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
+/area/vtm/interior)
 "pDY" = (
 /obj/structure/vampdoor/old,
 /obj/effect/decal/cleanable/dirt,
@@ -87232,10 +87247,6 @@
 /obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
-"vVn" = (
-/obj/machinery/light/directional/west,
-/turf/open/floor/plating/concrete,
-/area/vtm/interior)
 "vVw" = (
 /obj/machinery/griddle,
 /turf/open/floor/wood/smooth,
@@ -94121,10 +94132,6 @@
 /obj/effect/decal/cleanable/trash,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/setite/basement)
-"xHh" = (
-/obj/machinery/light/directional/south,
-/turf/open/floor/plating/concrete,
-/area/vtm/interior)
 "xHj" = (
 /obj/structure/chair/comfy/black{
 	dir = 8
@@ -138012,7 +138019,7 @@ ftY
 ftY
 jcc
 jcc
-xgh
+ydA
 jcc
 dvN
 dvN
@@ -138269,7 +138276,7 @@ jcc
 jcc
 jcc
 jcc
-xgh
+ydA
 jcc
 dvN
 dvN
@@ -138526,7 +138533,7 @@ dvN
 dvN
 dvN
 jcc
-xgh
+ydA
 jcc
 dvN
 dvN
@@ -138761,9 +138768,9 @@ mTj
 mTj
 mTj
 mTj
-eQD
-eQD
-eQD
+jcc
+jcc
+jcc
 rYq
 aiq
 ydA
@@ -138783,7 +138790,7 @@ dvN
 dvN
 jcc
 jcc
-xgh
+ydA
 jcc
 dvN
 dvN
@@ -139018,7 +139025,7 @@ mTj
 mTj
 mTj
 mTj
-bxo
+rYq
 aCP
 rnU
 nru
@@ -139040,7 +139047,7 @@ dvN
 dvN
 jcc
 eGD
-xgh
+ydA
 jcc
 dvN
 dvN
@@ -139275,7 +139282,7 @@ mTj
 mTj
 mTj
 mTj
-bxo
+rYq
 uuA
 utT
 ydA
@@ -139296,7 +139303,7 @@ dvN
 dvN
 dvN
 jcc
-xgh
+ydA
 jcc
 jcc
 dvN
@@ -139532,7 +139539,7 @@ eQD
 eQD
 eQD
 jcc
-bxo
+rYq
 iwr
 hVo
 ydA
@@ -139553,7 +139560,7 @@ qGw
 qGw
 qGw
 jcc
-xgh
+ydA
 jcc
 dvN
 dvN
@@ -139802,15 +139809,15 @@ ydA
 ydA
 ydA
 lyG
-xgh
-xgh
-xgh
-vVn
-xgh
-xgh
-xgh
-xgh
-xgh
+ydA
+ydA
+ydA
+hoD
+ydA
+ydA
+ydA
+ydA
+ydA
 jcc
 dvN
 dvN
@@ -140067,7 +140074,7 @@ dqn
 vSn
 dqn
 vSn
-nCr
+pDW
 jcc
 dvN
 dvN
@@ -140316,15 +140323,15 @@ ydA
 ydA
 ydA
 sAv
-xgh
-xgh
-xgh
-xgh
-xgh
-xgh
-xgh
-xgh
-xgh
+ydA
+ydA
+ydA
+ydA
+ydA
+ydA
+ydA
+ydA
+ydA
 jcc
 dvN
 dvN
@@ -140560,7 +140567,7 @@ eQD
 eQD
 eQD
 jcc
-bxo
+rYq
 fnU
 hVo
 ydA
@@ -140817,7 +140824,7 @@ mTj
 mTj
 mTj
 mTj
-bxo
+rYq
 kUd
 qEZ
 ydA
@@ -141074,7 +141081,7 @@ mTj
 mTj
 mTj
 mTj
-bxo
+rYq
 mPL
 eai
 lYm
@@ -141331,11 +141338,11 @@ jcc
 jcc
 jcc
 jcc
-eQD
-eQD
-eQD
-bxo
-ydA
+jcc
+jcc
+jcc
+rYq
+aiq
 ydA
 ydA
 ydA
@@ -141591,8 +141598,8 @@ vBl
 ncr
 lTK
 jGj
-vsh
-ydA
+rYq
+qEZ
 ydA
 ydA
 ydA
@@ -141849,10 +141856,10 @@ aCl
 oIo
 pqJ
 rYq
-ydA
+eai
+lYm
 ydA
 nNf
-ydA
 ydA
 ydA
 gyD
@@ -142105,10 +142112,10 @@ otc
 dmI
 dmI
 dmI
-rYq
 jcc
-nRc
 jcc
+jcc
+lob
 jcc
 jcc
 tFq
@@ -142362,10 +142369,10 @@ vBl
 sAq
 dmI
 dmI
-jcc
-vVn
-xgh
-jcc
+vsh
+hoD
+ydA
+ydA
 jcc
 ciO
 eji
@@ -142620,9 +142627,9 @@ sJL
 sJL
 hEa
 jcc
-xgh
-xgh
-jcc
+ydA
+ydA
+ydA
 jcc
 rQS
 eji
@@ -142877,9 +142884,9 @@ dmI
 dmI
 dmI
 jcc
-xgh
-xgh
-jcc
+ydA
+ydA
+ydA
 jcc
 wPw
 eji
@@ -143134,9 +143141,9 @@ dmI
 atU
 vyM
 jcc
-xgh
-xgh
 jcc
+jcc
+nRc
 jcc
 kLe
 eji
@@ -143391,9 +143398,9 @@ dmI
 aAN
 bOq
 jcc
-xgh
-xgh
-jcc
+ydA
+ydA
+ydA
 jcc
 eji
 eji
@@ -143648,8 +143655,8 @@ dmI
 cRt
 dmI
 jcc
-xgh
-xgh
+ydA
+ydA
 jcc
 jcc
 jcc
@@ -143905,8 +143912,8 @@ jcc
 jcc
 jcc
 jcc
-xgh
-xgh
+ydA
+ydA
 jcc
 kws
 lMe
@@ -144154,16 +144161,16 @@ ebH
 uBD
 xgh
 dKC
-xgh
-lsF
-xgh
-xgh
-xgh
-xgh
-xgh
-xgh
-xgh
-xHh
+ydA
+nNf
+ydA
+ydA
+ydA
+ydA
+ydA
+ydA
+ydA
+dOC
 jcc
 nCv
 lMe
