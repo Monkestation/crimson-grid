@@ -98,9 +98,9 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 	RegisterSignal(human_who_gained_species, COMSIG_LIVING_DEATH, PROC_REF(revert_on_zulo_death))
 
 
-	// CRIMSON EDIT ADD START - Zulo Armor
-	human_who_gained_species.apply_status_effect(/datum/status_effect/fortitude/three)
-	// CRIMSON EDIT ADD END - Zulo Armor
+	// CRIMSON EDIT ADD START - Zulo Rege
+	human_who_gained_species.physiology.brute_mod *= 0.6
+	// CRIMSON EDIT ADD END - Zulo Regen
 
 /datum/species/tzimisce_zulo_form/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
@@ -123,9 +123,9 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 		zulo_backpack_to_hide = null
 	UnregisterSignal(human, COMSIG_LIVING_DEATH)
 
-	// CRIMSON EDIT ADD START - Zulo Armor and Regen
-	human.remove_status_effect(/datum/status_effect/fortitude/three)
-	// CRIMSON EDIT ADD END - Zulo Armor and Regen
+	// CRIMSON EDIT ADD START - Zulo Buffs
+	human.physiology.brute_mod /= 0.6
+	// CRIMSON EDIT ADD END - Zulo Buffs
 
 /datum/species/tzimisce_zulo_form/proc/revert_on_zulo_death(mob/living/carbon/human/source)
 	source.set_species(mrace = /datum/species/human, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)
