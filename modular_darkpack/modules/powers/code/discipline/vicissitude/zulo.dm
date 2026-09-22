@@ -99,7 +99,7 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 
 
 	// CRIMSON EDIT ADD START - Zulo Buffs
-	human_who_gained_species.physiology.brute_mod *= 0.6
+	human_who_gained_species.physiology.brute_mod *= 0.5
 	// CRIMSON EDIT ADD END - Zulo Buffs
 
 /datum/species/tzimisce_zulo_form/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(zulo_z_offset, list(
 	UnregisterSignal(human, COMSIG_LIVING_DEATH)
 
 	// CRIMSON EDIT ADD START - Zulo Buffs
-	human.physiology.brute_mod /= 0.6
+	human.physiology.brute_mod /= 0.5
 	// CRIMSON EDIT ADD END - Zulo Buffs
 
 /datum/species/tzimisce_zulo_form/proc/revert_on_zulo_death(mob/living/carbon/human/source)
