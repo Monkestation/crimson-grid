@@ -69,7 +69,7 @@
 		new_emotion = "Confidence"
 
 	// Crimson Grid edit start | Change: Added fae aura for the Kiasyd.
-	if(HAS_TRAIT(changed_mob, TRAIT_AURA_OF_FAE))
+	if(HAS_TRAIT(changed_mob, TRAIT_FAE_AURA))
 		new_emotion = "Fae"
 	// Crimson Grid edit end
 
@@ -107,7 +107,7 @@
 		return
 
 	// Crimson Grid edit start | Change: Added fae aura for the Kiasyd.
-	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_FAE))
+	if(HAS_TRAIT(parent_mob, TRAIT_FAE_AURA))
 		examine_message = "[parent_mob.p_Their()] aura is a deep red, and seems to shimmer with rainbow highlights."
 		return
 	// Crimson Grid edit end
