@@ -14,7 +14,7 @@
 	name = "Thanatosis power name"
 	desc = "Thanatosis power description"
 
-// Crimson Grid edit start | Change: Gave blue fae skin to anyone with the thanatosis discipline.
+// Crimson Grid edit start | Change: Gave rotten skin to anyone with the thanatosis discipline.
 /datum/discipline/thanatosis/post_gain()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, type)
