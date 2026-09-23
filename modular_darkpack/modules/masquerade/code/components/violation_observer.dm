@@ -1,34 +1,40 @@
-// Used for things that detect masquerade violations.
-// Usually NPCs or cameras.
-/datum/component/violation_observer
-	dupe_mode = COMPONENT_DUPE_UNIQUE
-	var/datum/proximity_monitor/advanced/violation_check_aoe/area_of_effect
-	/// Time between us checking for violations
-	COOLDOWN_DECLARE(scan_cooldown)
-	var/list/breached_players
+/atom/movable
+	var/violation_observer = FALSE
+	COOLDOWN_DECLARE(masquerade_violation_cooldown)
 
-/datum/component/violation_observer/Initialize(add_area_of_effect) //Only add the AOE checker for NPCs and camera objects.
-	if(add_area_of_effect)
-		area_of_effect = new(parent, 7, TRUE, src)
-	breached_players = new()
+/atom/movable/proc/toggle_masquerade_sensitivity(new_listening_state)
+	// don't proceed if we're toggling to TRUE on something already listening
+	if(!isnull(new_listening_state) && new_listening_state == violation_observer)
+		return
 
-/datum/component/violation_observer/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_SEEN_MASQUERADE_VIOLATION, PROC_REF(on_observed_violation))
-	RegisterSignal(parent, COMSIG_MASQUERADE_REINFORCE, PROC_REF(on_masquerade_violation_reinforced))
-	RegisterSignals(parent, list(COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE), PROC_REF(on_death))
-
-/datum/component/violation_observer/UnregisterFromParent(force, silent)
-	QDEL_NULL(area_of_effect)
-	breached_players = null
-	UnregisterSignal(parent, list(COMSIG_SEEN_MASQUERADE_VIOLATION, COMSIG_MASQUERADE_REINFORCE, COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE))
-
-/datum/component/violation_observer/proc/toggle_area_of_effect(origin = parent)
-	if(area_of_effect)
-		QDEL_NULL(area_of_effect)
+	// if we don't pass an arg just flip the switch
+	if(isnull(new_listening_state))
+		violation_observer = !violation_observer
 	else
-		area_of_effect = new(origin, 7, TRUE, src)
+		violation_observer = new_listening_state
 
-/datum/component/violation_observer/proc/on_observed_violation(atom/source, mob/living/player_breacher)
+	if(violation_observer)
+		RegisterSignal(src, COMSIG_SEEN_MASQUERADE_VIOLATION, PROC_REF(on_observed_violation))
+		RegisterSignal(src, COMSIG_MASQUERADE_REINFORCE, PROC_REF(on_masquerade_violation_reinforced))
+		RegisterSignals(src, list(COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE), PROC_REF(on_masquerade_witness_death))
+	else
+		UnregisterSignal(src, list(COMSIG_SEEN_MASQUERADE_VIOLATION, COMSIG_MASQUERADE_REINFORCE, COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE))
+
+/atom/movable/proc/on_masquerade_violation()
+	if(!COOLDOWN_FINISHED(src, masquerade_violation_cooldown))
+		return
+	var/area/vtm/breacher_area = get_area(src)
+	if(!istype(breacher_area, /area/vtm))
+		return
+	if(breacher_area.zone_type != ZONE_MASQUERADE)
+		return
+	for(var/atom/movable/moving_atom in view(7, loc))
+		if(!moving_atom.violation_observer)
+			continue
+		SEND_SIGNAL(moving_atom, COMSIG_SEEN_MASQUERADE_VIOLATION, src)
+	COOLDOWN_START(src, masquerade_violation_cooldown, 1 TURNS)
+
+/atom/movable/proc/on_observed_violation(atom/source, atom/movable/player_breacher)
 	SIGNAL_HANDLER
 
 	if(!source || !player_breacher || ismundane(player_breacher)) //Humans cant break the masquerade. Because reasons.
@@ -36,6 +42,8 @@
 
 	if(isliving(source))
 		var/mob/living/mob_parent = source
+		if(mob_parent.stat == DEAD)
+			return
 		if(!INCAPACITATED_IGNORING(mob_parent, INCAPABLE_RESTRAINTS))
 			mob_parent.face_atom(player_breacher)
 	source.observe_masquerade_violation(player_breacher)
@@ -48,43 +56,48 @@
 	animate(exclamation, pixel_z = 32, alpha = 255, time = 0.5 SECONDS, easing = ELASTIC_EASING)
 
 	source.AddComponent(/datum/component/masquerade_hud, player_breacher)
-	breached_players += player_breacher
 	SSmasquerade.masquerade_breach(source, player_breacher, (isliving(source) ? MASQUERADE_REASON_NPC : MASQUERADE_REASON_OBJECT))
-	RegisterSignal(player_breacher, COMSIG_LIVING_DEATH, PROC_REF(on_breacher_death))
+	RegisterSignal(player_breacher, COMSIG_LIVING_DEATH, PROC_REF(on_breacher_death), override = TRUE) // override is for breaching multiple times on the same violation observer - on_breacher_death handles all violations, not just the breach created here, so we only need one register
 
 	return TRUE
 
-/datum/component/violation_observer/proc/on_masquerade_violation_reinforced(atom/source, mob/living/player_breacher)
+/atom/movable/proc/on_masquerade_violation_reinforced(atom/source, atom/movable/player_breacher)
 	SIGNAL_HANDLER
 
-	if(player_breacher in breached_players)
-		SEND_SIGNAL(source, COMSIG_MASQUERADE_HUD_DELETE, player_breacher)
-		SSmasquerade.masquerade_reinforce(source, player_breacher)
-		source.observe_masquerade_reinforce(player_breacher)
-		breached_players -= player_breacher
+	for(var/breach in SSmasquerade.masquerade_breachers)
+		if(breach[1] != player_breacher)
+			continue
+		if(breach[2] != src)
+			continue
+		SEND_SIGNAL(src, COMSIG_MASQUERADE_HUD_DELETE, player_breacher)
+		SSmasquerade.masquerade_reinforce(src, player_breacher)
+		src.observe_masquerade_reinforce(player_breacher)
 		UnregisterSignal(player_breacher, COMSIG_LIVING_DEATH)
 
 		return TRUE
 
-/datum/component/violation_observer/proc/on_death(atom/source)
+/atom/movable/proc/on_masquerade_witness_death()
 	SIGNAL_HANDLER
 
-	for(var/mob/player_breacher in breached_players)
-		if(!QDELETED(player_breacher))
-			SEND_SIGNAL(source, COMSIG_MASQUERADE_HUD_DELETE, player_breacher)
-			SSmasquerade.masquerade_reinforce(source, player_breacher)
-			source.observe_masquerade_reinforce(player_breacher)
-			breached_players -= player_breacher
+	for(var/breach in SSmasquerade.masquerade_breachers)
+		var/mob/living/player_breacher = breach[1]
+		var/atom/breach_witness = breach[2]
+		if(breach_witness != src)
+			continue
+		SEND_SIGNAL(src, COMSIG_MASQUERADE_HUD_DELETE, player_breacher)
+		SSmasquerade.masquerade_reinforce(src, player_breacher)
+		observe_masquerade_reinforce(player_breacher)
+		UnregisterSignal(player_breacher, COMSIG_LIVING_DEATH)
 
-/datum/component/violation_observer/proc/on_breacher_death(mob/living/dead_breacher, gibbed)
+/atom/movable/proc/on_breacher_death(mob/living/dead_breacher, gibbed)
 	SIGNAL_HANDLER
 
-	if(dead_breacher in breached_players)
-		var/atom/parent_atom = parent
-		SEND_SIGNAL(parent, COMSIG_MASQUERADE_HUD_DELETE, dead_breacher)
-		SSmasquerade.masquerade_reinforce(parent, dead_breacher)
-		parent_atom.observe_masquerade_reinforce(dead_breacher)
-		breached_players -= dead_breacher
+	for(var/breach in SSmasquerade.masquerade_breachers)
+		if(breach[1] != dead_breacher)
+			continue
+		SEND_SIGNAL(src, COMSIG_MASQUERADE_HUD_DELETE, dead_breacher)
+		SSmasquerade.masquerade_reinforce(src, dead_breacher)
+		observe_masquerade_reinforce(dead_breacher)
 		UnregisterSignal(dead_breacher, COMSIG_LIVING_DEATH)
 
 /atom/proc/observe_masquerade_violation(player_breacher)

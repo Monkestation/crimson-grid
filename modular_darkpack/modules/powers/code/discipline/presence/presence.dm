@@ -39,6 +39,9 @@
 	if((!(owner.obscured_slots & HIDEFACE))&(HAS_TRAIT(owner, TRAIT_DISFIGURED_APPEARANCE))) // Are we visibly disfigured?
 		theirpower += 2 // Increase the difficulty by two.
 
+	if(HAS_TRAIT(target, TRAIT_IN_FRENZY))
+		theirpower += 2
+
 	if(!get_kindred_splat(target)) // Is our target mortal?
 		if(HAS_TRAIT(owner, TRAIT_GRAVE_SMELL)) // Are we stinky?
 			theirpower += 1
@@ -102,6 +105,7 @@
 	vitae_cost = 1
 	var/successes = 0
 	var/list/affected_targets = list()
+	frenzy_usable = FALSE
 
 /datum/discipline_power/presence/awe/pre_activation_checks()
 	. = ..()
@@ -221,6 +225,7 @@
 	duration_length = 5 SECONDS
 	vitae_cost = 1
 	var/successes = 0
+	frenzy_usable = FALSE
 
 /datum/discipline_power/presence/entrancement/pre_activation_checks(mob/living/target)
 
@@ -265,6 +270,7 @@
 	vitae_cost = 1
 	var/successes = 0
 	var/mob/living/carbon/human/summon_target
+	frenzy_usable = FALSE
 
 /datum/discipline_power/presence/summon/pre_activation_checks(mob/living/target)
 	var/summon_target_name = tgui_input_text(owner, "Summon Target:", "Summon Target")
@@ -335,6 +341,7 @@
 	willpower_cost = 1
 	violates_masquerade = TRUE
 	var/list/affected_targets = list()
+	frenzy_usable = FALSE
 
 /datum/discipline_power/presence/majesty/pre_activation_checks(mob/living/target)
 	return TRUE

@@ -196,6 +196,7 @@
 	var/successes = 0
 	var/datum/storyteller_roll/anesthetic_touch/touch_roll
 	var/datum/storyteller_roll/anesthetic_touch/unwilling/touch_roll_unwilling
+	frenzy_usable = FALSE
 
 /datum/discipline_power/valeren/anesthetic_touch/pre_activation_checks(mob/living/target)
 	. = ..()
@@ -441,6 +442,7 @@
 	check_flags = DISC_CHECK_CAPABLE
 	toggled = TRUE
 	duration_length = 1 TURNS
+	frenzy_usable = FALSE
 
 /datum/discipline_power/valeren/vengeance_of_samiel/activate()
 	. = ..()
