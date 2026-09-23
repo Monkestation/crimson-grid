@@ -6,7 +6,7 @@
 #define AUSPICE_AHROUN "Ahroun"
 #define AUSPICE_GALLIARD "Galliard"
 
-#define AUSPICE_NONE "Stolen Moon"
+#define AUSPICE_NONE "Skin Dancer" // Crimson Grid edit | Change: Renamed stolen moon to skin dancer
 
 #define MOON_NEW "new moon"
 #define MOON_WAXING_CRESENT "waxing cresent"
