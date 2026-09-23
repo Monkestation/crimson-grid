@@ -74,6 +74,7 @@
 // JSON text files found in the tgstation/strings folder
 /// File location for brain damage traumas
 #define BRAIN_DAMAGE_FILE "traumas.json"
+#define CRIMSON_BRAIN_DAMAGE_FILE "crimson/brain_damage.json" // CRIMSON EDIT ADD - Drug Fixes And Rework
 /// File location for AI ion laws
 #define ION_FILE "ion_laws.json"
 /// File location for pirate names
