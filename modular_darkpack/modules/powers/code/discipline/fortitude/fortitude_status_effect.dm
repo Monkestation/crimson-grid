@@ -1,5 +1,4 @@
-#define BASHING_LETHAL_PROTECTION 10
-//Reduced from 15 to 10, reduces cap to 50% Reduction
+#define BASHING_LETHAL_PROTECTION 15
 #define AGGRAVATED_PROTECTION 10
 
 /datum/status_effect/fortitude
