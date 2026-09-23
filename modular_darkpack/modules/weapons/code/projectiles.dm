@@ -1,141 +1,249 @@
-// Handgun/Compact cartridges
+/obj/projectile/bullet/darkpack
+	abstract_type = /obj/projectile/bullet/darkpack
 
-// 9mm
-
+// 9x19mm Parabellum
 /obj/projectile/bullet/darkpack/vamp9mm
-	damage = 20
-	//Edit was 30, reduced to 20 5 damage per TT Damage value
+	name = "9mm bullet"
+	damage = 18
+	exposed_wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp9mm/plus
-	damage = 15
-	//Edit was 34, reduced to 15 AP Ammo
-	armour_penetration = 15
+	name = "9mm HV bullet"
+	damage = 22
+	armour_penetration = 10
 
-// 4.6mm
+/obj/projectile/bullet/darkpack/vamp9mm/silver
+	name = "9mm silver bullet"
 
-/obj/projectile/bullet/darkpack/vamp46mm
-	damage = 25
-	armour_penetration = 15
-	//Edit was 35, Reduced to 15, reducing armor across the board
+/obj/projectile/bullet/darkpack/vamp9mm/silver/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	fera_silver_damage(target, 2)
 
-// .45 Auto
-
+// .45 ACP
 /obj/projectile/bullet/darkpack/vamp45acp
-	damage = 25
-	//Edit was 35, reduced to 25 5 damage per TT Damage value
-	armour_penetration = 0
-
-/obj/projectile/bullet/darkpack/vamp45acp/silver
-	armour_penetration = 0
+	name = ".45 ACP bullet"
+	damage = 20
+	armour_penetration = 5
 
 /obj/projectile/bullet/darkpack/vamp45acp/HP
-	damage = 30
-	//Edit was 50, reduced to 30 5 damage per TT Damage value +5 for HP
-	armour_penetration = -10
+	name = ".45 ACP hollow point bullet"
+	damage = 25
+	armour_penetration = 0
+	wound_bonus = 5
+	wound_bonus = 5
+
+/obj/projectile/bullet/darkpack/vamp45acp/silver
+	name = ".45 ACP silver bullet"
+
+/obj/projectile/bullet/darkpack/vamp45acp/silver/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	fera_silver_damage(target, 3)
 
 // .44 Magnum
-
 /obj/projectile/bullet/darkpack/vamp44
-	damage = 30
-	//Edit was 45, reduced to 30 5 damage per TT Damage value
+	name = ".44 bullet"
+	damage = 35
 	armour_penetration = 15
-	//Edit was 25, reduced to 15
+	exposed_wound_bonus = -5
+	wound_bonus = 10
 
-// .50 Action Express
+/obj/projectile/bullet/darkpack/vamp44/silver
+	name = ".44 silver bullet"
+	//icon_state = "s44"
+
+/obj/projectile/bullet/darkpack/vamp44/silver/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	fera_silver_damage(target, 4)
+
+// .50 BMG/AE
+/obj/projectile/bullet/darkpack/vamp50
+	name = ".50 BMG bullet"
+	damage = 70
+	armour_penetration = 20
+	exposed_wound_bonus = 5
+	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp50ae
-	damage = 35
-	//Edit was 60, reduced to 35 5 damage per TT Damage value +5
-	armour_penetration = 10
+	name = ".50 AE bullet"
+	damage = 40
+	armour_penetration = 20
+	exposed_wound_bonus = 5
+	wound_bonus = 5
 
-// Rifle cartridges
-
-// 5.56mm
-
+// 5.56mm NATO
 /obj/projectile/bullet/darkpack/vamp556mm
-	damage = 28
-	//Edit was 33, reduced to 28 4 damage per TT Damage value AR round
-	armour_penetration = 10
-	//Edit was 33, Reduced to 10 5.56 is not an AP round
+	name = "5.56mm bullet"
+	damage = 45
+	armour_penetration = 25
+	exposed_wound_bonus = -5
+	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp556mm/incendiary
-	damage= 24
-	//CG Edit was 30, reduced to 24
-	armour_penetration = 5
-	//Edit was 15, reduced to 5
-
-// 5.45mm
-
-/obj/projectile/bullet/darkpack/vamp545mm
+	armour_penetration = 0
 	damage = 30
+	var/fire_stacks = 4
+
+/obj/projectile/bullet/darkpack/vamp556mm/incendiary/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/M = target
+		M.apply_damage(1 TTRPG_DAMAGE, BURN)
+		M.adjust_fire_stacks(fire_stacks)
+		M.ignite_mob()
+
+/obj/projectile/bullet/darkpack/vamp556mm/silver
+	name = "5.56mm silver bullet"
 	armour_penetration = 20
-	//Edit was 40, Reduced to 20, reducing armor across the board
 
-// 7.62x51mm
+/obj/projectile/bullet/darkpack/vamp556mm/silver/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	fera_silver_damage(target, 2)
 
-/obj/projectile/bullet/darkpack/vamp762x51mm
-	damage = 32
-	//CG Edit was 55, reduced to 32 4 Damage per TT Value +1 larger AR
+// 5.45x39mm
+/obj/projectile/bullet/darkpack/vamp545mm
+	name = "5.45mm bullet"
+	damage = 40
+	armour_penetration = 30
+	exposed_wound_bonus = -5
+	wound_bonus = 5
 
-/obj/projectile/bullet/darkpack/vamp762x51mm/silver
+// 4.6mm HK
+/obj/projectile/bullet/darkpack/vamp46mm
+	name = "4.6mm bullet"
+	damage = 19
+	armour_penetration = 30
 	exposed_wound_bonus = 0
+	wound_bonus = 0
+
+// 12 Gauge
+/obj/projectile/bullet/shotgun_slug/vamp
+	name = "12g shotgun slug"
+	damage = 70
+	armour_penetration = 15
+	exposed_wound_bonus = 5
+	wound_bonus = 10
+
+/obj/projectile/bullet/shotgun_slug/vamp/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/hit_person = target
+		var/datum/storyteller_roll/knockdown_roll = new()
+		knockdown_roll.applicable_stats = list(STAT_STRENGTH, STAT_DEXTERITY, STAT_ATHLETICS)
+		knockdown_roll.difficulty = 3 + (!isnull(firer) ? rand(1,2) : 0)
+		if(knockdown_roll.st_roll(target, firer ? firer : src) == ROLL_FAILURE)
+			hit_person.Knockdown(20)
+			to_chat(hit_person, span_danger("The force of a projectile sends you sprawling!"))
+
+/obj/projectile/bullet/shotgun_slug/vamp/silver
+	name = "12g silver shotgun slug"
+	armour_penetration = 10
+
+/obj/projectile/bullet/shotgun_slug/vamp/silver/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	fera_silver_damage(target, 3)
+
+/obj/projectile/bullet/darkpack/rubber
+	name = "12g shotgun rubber shot"
+	damage = 5
+	stamina = 50
+	exposed_wound_bonus = 5
+	wound_bonus = -5
+
+/obj/projectile/bullet/darkpack/incap
+	name = "12g shotgun incapacitation shot"
+	damage = 15
+	stamina = 80
+
+/obj/projectile/bullet/darkpack/shotpellet
+	name = "12g shotgun pellet"
+	damage = 9
+	range = 22 //range of where you can see + one screen after
+	armour_penetration = 10
+	exposed_wound_bonus = 10
+	wound_bonus = -5
+
+/obj/projectile/bullet/darkpack/shotpellet/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/M = target
+		M.Stun(4)
+
+/obj/projectile/bullet/darkpack/dragonsbreath
+	name = "12g shotgun incendiary pellet"
+	damage = 6
+	damage_type = BURN
+	range = 22 //range of where you can see + one screen after
+	armour_penetration = 0
+	exposed_wound_bonus = 0
+	wound_bonus = 0
+	var/fire_stacks = 1 // 1 stack per pellet but we have 9 pellets so it adds up
+
+/obj/projectile/bullet/darkpack/dragonsbreath/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	do_sparks(2, TRUE, src)
+	if(iscarbon(target))
+		var/mob/living/carbon/M = target
+		M.adjust_fire_stacks(fire_stacks)
+		M.ignite_mob()
+
+// Crossbow Bolt
+/obj/projectile/bullet/crossbow_bolt
+	name = "bolt"
+	damage = 45
+	armour_penetration = 75
+	exposed_wound_bonus = 30
+	wound_bonus = 30 //We're gonna make this hurt as much as possible.
+	sharpness = SHARP_POINTY
+	embed_type = /datum/embedding/crossbolt //YEEEEOUCH!!!!
+
+/datum/embedding/crossbolt
+	embed_chance = 90
+	fall_chance = 2
+	jostle_chance = 2
+	ignore_throwspeed_threshold = TRUE
+	pain_stam_pct = 0.5
+	pain_mult = 3
+	jostle_pain_mult = 3
+	rip_time = 3 SECONDS
+
+// 7.62x51mm NATO
+/obj/projectile/bullet/darkpack/vamp762x51mm
+	name = "7.62x51mm bullet"
+	damage = 55
+	armour_penetration = 25
+	exposed_wound_bonus = -5
 	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary
-	Damage = 28
-	//CG Edit was 40, reduced to 28 4 per TT damage -1 from parent for incen
-
-// .50 BMG
-/obj/projectile/bullet/darkpack/vamp50
-	damage = 60
-	//Edit was 120, reduced to 60 5 damage per TT Damage Estimating 12 damage
-	armour_penetration = 50
-	//Edit was 95, reduced to 50 Equiv to Heaviest Armor
-	exposed_wound_bonus = -10
-	wound_bonus = 20
-	sharpness = SHARP_EDGED
-
-// Shotgun ammunition
-
-/obj/projectile/bullet/darkpack/dragonsbreath
-	damage = 5
-	//Edit was 10, reduced to 5
-
-/obj/projectile/bullet/darkpack/shotpellet
-	damage = 5
-	//Edit was 12, reduced to 5
-	armour_penetration = -10
-
-/obj/projectile/bullet/shotgun_slug/vamp
+	armour_penetration = 5 //Big ass bullet
 	damage = 40
-	//Edit was 80, reduced to 40 5 damage per TT Damage
-	exposed_wound_bonus = 10
+	var/fire_stacks = 3 //This one comes in Semi-automatics
 
-// Special projectiles
+/obj/projectile/bullet/darkpack/vamp762x51mm/incendiary/on_hit(atom/target, blocked = FALSE, pierce_hit)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/M = target
+		M.apply_damage(2 TTRPG_DAMAGE, BURN)
+		M.adjust_fire_stacks(fire_stacks)
+		M.ignite_mob()
 
-/obj/projectile/bullet/darkpack/rubber
-	damage = 5
-	exposed_wound_bonus = 0
-	wound_bonus = -5
-	sharpness = NONE
-
-/obj/projectile/bullet/crossbow_bolt
-	damage = 25
-	//Edit was 45, reduced to 25 5 damage per TT Damage
+/obj/projectile/bullet/darkpack/vamp762x51mm/silver
+	name = "7.62x51mm silver bullet"
 	armour_penetration = 20
-	//Edit was 75, reduced to 20
+
+/obj/projectile/bullet/darkpack/vamp762x51mm/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
+	. = ..()
+	fera_silver_damage(target, 4)
 
 /obj/projectile/bullet/darkpack/vamp75
-	damage = 50
-	//Edit was 150, reduced to 50 5 damage per TT Damage Estimating 10 damage
-	armour_penetration = 20
-	//Edit was 60, reduced to 20
+	name = ".75 ball"
+	damage = 100
+	armour_penetration = 5
+	exposed_wound_bonus = 5
+	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp75/silver
-	armour_penetration = 10
-	//Edit was 50 reduced to 10
-
-
+	name = ".75 silver ball"
 	armour_penetration = 0
 
 /obj/projectile/bullet/darkpack/vamp75/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
