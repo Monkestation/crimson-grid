@@ -16,6 +16,14 @@
 
 	activate_sound = 'modular_darkpack/modules/deprecated/sounds/kiasyd.ogg'
 
+// Crimson Grid edit start | Change: Gave blue fae skin to anyone with the mytherceria discipline.
+/datum/discipline/mytherceria/post_gain()
+	. = ..()
+	owner.set_body_sprite("kiasyd")
+	owner.update_body_parts()
+	owner.update_body()
+// Crimson Grid edit end
+
 //FEY SIGHT
 /datum/discipline_power/mytherceria/fey_sight
 	name = "Fey Sight"

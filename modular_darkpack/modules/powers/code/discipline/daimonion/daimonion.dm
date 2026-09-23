@@ -18,6 +18,11 @@
 	activate_sound = 'modular_darkpack/modules/deprecated/sounds/protean_activate.ogg'
 	deactivate_sound = 'modular_darkpack/modules/deprecated/sounds/protean_deactivate.ogg'
 
+// Crimson Grid edit start | Change: Added beacon of the unholy to those with the daimonion discipline.
+/datum/discipline/daimonion/post_gain()
+	ADD_TRAIT(owner, TRAIT_BEACON_OF_THE_UNHOLY, type)
+// Crimson Grid edit end
+
 //SENSE THE SIN
 /datum/discipline_power/daimoinon/sense_the_sin
 	name = "Sense the Sin"
