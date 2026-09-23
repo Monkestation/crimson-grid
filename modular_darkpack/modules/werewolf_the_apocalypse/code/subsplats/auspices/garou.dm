@@ -148,4 +148,5 @@
 	name = AUSPICE_NONE
 	// DARKPACK TODO - WEREWOLF - (len lore)
 	desc = "Your not a dog are you."
+	subsplat_traits = list(TRAIT_WYRMTAINTED)
 	// Skin dancers get no gifts | Crimson Grid edit | Change: Renamed stolen moon to skin dancer.
