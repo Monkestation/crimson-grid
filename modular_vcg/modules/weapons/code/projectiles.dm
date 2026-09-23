@@ -3,106 +3,94 @@
 // 9mm
 
 /obj/projectile/bullet/darkpack/vamp9mm
-	damage = 30
-	exposed_wound_bonus = 10
-
-/obj/projectile/bullet/darkpack/vamp9mm/silver
-	exposed_wound_bonus = 10
+	damage = 20
+	//Edit was 30, reduced to 20 5 damage per TT Damage value
 
 /obj/projectile/bullet/darkpack/vamp9mm/plus
-	damage = 34
+	damage = 15
+	//Edit was 34, reduced to 15 AP Ammo
 	armour_penetration = 15
 
 // 4.6mm
 
 /obj/projectile/bullet/darkpack/vamp46mm
 	damage = 25
-	armour_penetration = 35
-	exposed_wound_bonus = -5
-	wound_bonus = 0
+	armour_penetration = 15
+	//Edit was 35, Reduced to 15, reducing armor across the board
 
 // .45 Auto
 
 /obj/projectile/bullet/darkpack/vamp45acp
-	damage = 35
+	damage = 25
+	//Edit was 35, reduced to 25 5 damage per TT Damage value
 	armour_penetration = 0
 
 /obj/projectile/bullet/darkpack/vamp45acp/silver
 	armour_penetration = 0
 
 /obj/projectile/bullet/darkpack/vamp45acp/HP
-	damage = 50
+	damage = 30
+	//Edit was 50, reduced to 30 5 damage per TT Damage value +5 for HP
 	armour_penetration = -10
-	exposed_wound_bonus = 5
-	wound_bonus = 10
 
 // .44 Magnum
 
 /obj/projectile/bullet/darkpack/vamp44
-	damage = 45
-	armour_penetration = 25
-	exposed_wound_bonus = 0
-	wound_bonus = 10
-
-/obj/projectile/bullet/darkpack/vamp44/silver
-	exposed_wound_bonus = -5
+	damage = 30
+	//Edit was 45, reduced to 30 5 damage per TT Damage value
+	armour_penetration = 15
+	//Edit was 25, reduced to 15
 
 // .50 Action Express
 
 /obj/projectile/bullet/darkpack/vamp50ae
-	damage = 60
+	damage = 35
+	//Edit was 60, reduced to 35 5 damage per TT Damage value +5
 	armour_penetration = 10
-	exposed_wound_bonus = 10
-	wound_bonus = 10
-	sharpness = SHARP_EDGED
 
 // Rifle cartridges
 
 // 5.56mm
 
 /obj/projectile/bullet/darkpack/vamp556mm
-	damage = 33
-	armour_penetration = 33
-	exposed_wound_bonus = -10
-	wound_bonus = 5
+	damage = 28
+	//Edit was 33, reduced to 28 4 damage per TT Damage value AR round
+	armour_penetration = 10
+	//Edit was 33, Reduced to 10 5.56 is not an AP round
 
 /obj/projectile/bullet/darkpack/vamp556mm/incendiary
-	armour_penetration = 15
-	exposed_wound_bonus = 5
-	wound_bonus = 10
-
-/obj/projectile/bullet/darkpack/vamp556mm/silver
-	wound_bonus = 10
+	damage= 24
+	//CG Edit was 30, reduced to 24
+	armour_penetration = 5
+	//Edit was 15, reduced to 5
 
 // 5.45mm
 
 /obj/projectile/bullet/darkpack/vamp545mm
 	damage = 30
-	armour_penetration = 40
-	exposed_wound_bonus = -10
-	wound_bonus = 10
-
+	armour_penetration = 20
+	//Edit was 40, Reduced to 20, reducing armor across the board
 
 // 7.62x51mm
 
 /obj/projectile/bullet/darkpack/vamp762x51mm
-	armour_penetration = 45
-	exposed_wound_bonus = -5
-	wound_bonus = 10
+	damage = 32
+	//CG Edit was 55, reduced to 32 4 Damage per TT Value +1 larger AR
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/silver
 	exposed_wound_bonus = 0
 	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary
-	armour_penetration = 15
-	exposed_wound_bonus = 5
-	wound_bonus = 10
+	Damage = 28
+	//CG Edit was 40, reduced to 28 4 per TT damage -1 from parent for incen
 
 // .50 BMG
 /obj/projectile/bullet/darkpack/vamp50
-	damage = 120
-	armour_penetration = 95
+	damage = 60
+	//Edit was 120, reduced to 60 5 damage per TT Damage Estimating 12 damage
+	armour_penetration = 50
+	//Edit was 95, reduced to 50 Equiv to Heaviest Armor
 	exposed_wound_bonus = -10
 	wound_bonus = 20
 	sharpness = SHARP_EDGED
@@ -110,23 +98,18 @@
 // Shotgun ammunition
 
 /obj/projectile/bullet/darkpack/dragonsbreath
-	damage = 10
-	armour_penetration = 0
-	exposed_wound_bonus = 5
-	wound_bonus = 5
-	var/firestacks = 2
+	damage = 5
+	//Edit was 10, reduced to 5
 
 /obj/projectile/bullet/darkpack/shotpellet
-	damage = 12
+	damage = 5
+	//Edit was 12, reduced to 5
 	armour_penetration = -10
 
 /obj/projectile/bullet/shotgun_slug/vamp
-	damage = 80
+	damage = 40
+	//Edit was 80, reduced to 40 5 damage per TT Damage
 	exposed_wound_bonus = 10
-	sharpness = SHARP_EDGED
-
-/obj/projectile/bullet/shotgun_slug/vamp/silver
-	exposed_wound_bonus = 5
 
 // Special projectiles
 
@@ -137,18 +120,17 @@
 	sharpness = NONE
 
 /obj/projectile/bullet/crossbow_bolt
-	damage = 45
-	armour_penetration = 75
-	exposed_wound_bonus = 30
-	wound_bonus = 30
+	damage = 25
+	//Edit was 45, reduced to 25 5 damage per TT Damage
+	armour_penetration = 20
+	//Edit was 75, reduced to 20
 
 /obj/projectile/bullet/darkpack/vamp75
-	damage = 150
-	armour_penetration = 60
-	exposed_wound_bonus = 15
-	wound_bonus = 15
-	sharpness = SHARP_EDGED
+	damage = 50
+	//Edit was 150, reduced to 50 5 damage per TT Damage Estimating 10 damage
+	armour_penetration = 20
+	//Edit was 60, reduced to 20
 
 /obj/projectile/bullet/darkpack/vamp75/silver
-	armour_penetration = 50
-
+	armour_penetration = 10
+	//Edit was 50 reduced to 10
