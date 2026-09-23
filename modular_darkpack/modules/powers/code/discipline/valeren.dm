@@ -23,6 +23,7 @@
 
 // Crimson Grid edit start | Change: Added third eye trait to anyone with the valeren discipline.
 /datum/discipline/valeren/post_gain()
+	. = ..()
 	ADD_TRAIT(owner, TRAIT_THIRD_EYE, type)
 // Crimson Grid edit end
 

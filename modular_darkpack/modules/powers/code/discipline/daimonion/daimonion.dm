@@ -20,6 +20,7 @@
 
 // Crimson Grid edit start | Change: Added beacon of the unholy to those with the daimonion discipline.
 /datum/discipline/daimonion/post_gain()
+	. = ..()
 	ADD_TRAIT(owner, TRAIT_BEACON_OF_THE_UNHOLY, type)
 // Crimson Grid edit end
 

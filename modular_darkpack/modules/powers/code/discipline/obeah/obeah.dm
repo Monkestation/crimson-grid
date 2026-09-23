@@ -18,6 +18,7 @@
 
 // Crimson Grid edit start | Change: Added third eye trait to anyone with the obeah discipline.
 /datum/discipline/obeah/post_gain()
+	. = ..()
 	ADD_TRAIT(owner, TRAIT_THIRD_EYE, type)
 // Crimson Grid edit end
 
