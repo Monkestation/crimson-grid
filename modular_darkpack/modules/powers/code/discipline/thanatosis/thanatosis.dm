@@ -14,15 +14,6 @@
 	name = "Thanatosis power name"
 	desc = "Thanatosis power description"
 
-// Crimson Grid edit start | Change: Gave rotten skin to anyone with the thanatosis discipline.
-/datum/discipline/thanatosis/post_gain()
-	. = ..()
-	ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, type)
-	owner.set_body_sprite("rotten4")
-	owner.update_body_parts()
-	owner.update_body()
-// Crimson Grid edit end
-
 //HAG'S WRINKLES
 /datum/discipline_power/thanatosis/hag_wrinkles
 	name = "Hag's Wrinkles"
