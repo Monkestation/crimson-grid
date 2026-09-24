@@ -71,7 +71,7 @@
 	weapon.remove_filter("blood_theft_outline")
 	weapon.color = initial(weapon.color)
 
-// Signal handler for landing a hit on the target
+/// Signal handler for landing a hit on the target
 /datum/component/blood_theft/proc/on_successful_attack(datum/source, mob/living/target, mob/user, list/modifiers)
 	SIGNAL_HANDLER
 
@@ -80,8 +80,7 @@
 
 	steal_blood(user, target)
 
-// Take BP from targets, appropriately adjust blood pools of both
-// Code based on Theft of Vitae
+/// Take BP from targets, appropriately adjust blood pools of both
 /datum/component/blood_theft/proc/steal_blood(mob/living/thief, mob/living/target)
 	// Make sure we can't steal more than we have left to
 	var/bp_theft_amount = clamp(theft_per_hit, 0, blood_to_steal)
