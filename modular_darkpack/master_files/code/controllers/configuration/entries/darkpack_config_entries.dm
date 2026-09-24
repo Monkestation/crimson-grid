@@ -11,3 +11,6 @@
 /datum/config_entry/number/passive_bp_drain_timer
 	default = 20 MINUTES
 	min_val = 1 MINUTES
+
+/datum/config_entry/flag/artifact_stacking
+	default = FALSE
