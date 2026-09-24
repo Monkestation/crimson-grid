@@ -79,6 +79,7 @@
 /// If an item has had its /datum/element/weapon_description initialized or not.
 #define WEAPON_DESCRIPTION_INITIALIZED (1<<18)
 #define ACTIVE_ONFLOOR_ICON (1<<19) // DARKPACK EDIT ADD - ONFLOOR_ICONS
+#define THAUMATURGICAL_ITEM (1<<20) // CRIMSON GRID EDIT ADD - Thaumaturgy rituals
 
 // Flags for the clothing_flags var on /obj/item/clothing
 
