@@ -1,8 +1,9 @@
 /obj/ritual_rune/thaumaturgy/spear_of_damnation
 	name = "wield the spear of damnation"
-	desc = "todo."
+	desc = "This ritual recalls the legend of Caine itself, dedicating a weapon to satisfy a vampire’s nature.\
+			Half the lethal damage inflicted by the weapon converts to blood points, filling the wielder’s pool."
 	icon_state = "rune9"
-	word = null
+	word = "#And he said, 'What hast thou done? the voice of thy brother’s blood crieth unto me from the ground.'" // Whisper this
 	level = 3
 	cost = 3
 
@@ -27,11 +28,12 @@
 
 	// Amount of blood we can steal equals to success count + thaum discipline level
 	var/blood_to_steal = ritual_roll_datum.last_sucess_amount + last_activator.get_discipline_dots(/datum/discipline/thaumaturgy)
-	// Amount of BP stolen is proportional to half lethal damage done
+	// Amount of BP harvested is proportional to half lethal damage done
 	var/theft_per_hit = round(weapon.force / (2 LETHAL_TTRPG_DAMAGE), 0.1)
 
 	weapon.AddComponent(/datum/component/blood_theft, blood_to_steal, theft_per_hit)
-	to_chat(last_activator, span_notice("[weapon] will siphon a total of [blood_to_steal] blood points out of the targets, stealing [theft_per_hit] per hit!"))
+	to_chat(last_activator, span_notice("[weapon] will siphon a total of [blood_to_steal] blood points, harvesting [theft_per_hit] per hit!"))
+	last_activator.visible_message(span_notice("[last_activator] writes something upon [weapon]!"))
 
 	qdel(src)
 
