@@ -35,7 +35,13 @@
 
 	qdel(src)
 
-/// Blood theft component
+/**
+ * Blood theft component
+ *
+ * Can be applied to any item, on hit takes target's blood points
+ * and gives them to the user
+ *
+ */
 /datum/component/blood_theft
 	/// How many bloodpoints we have left to steal
 	var/blood_to_steal
@@ -55,7 +61,6 @@
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(on_successful_attack))
 
 	var/obj/item/weapon = parent
-
 	weapon.add_filter("blood_theft_outline", 2, list("type" = "outline", "color" = "#c41515", "size" = 1))
 	weapon.color = "#c41515"
 
@@ -63,20 +68,21 @@
 	UnregisterSignal(parent, list(COMSIG_ITEM_ATTACK))
 
 	var/obj/item/weapon = parent
-
 	weapon.remove_filter("blood_theft_outline")
 	weapon.color = initial(weapon.color)
 
+// Signal handler for landing a hit on the target
 /datum/component/blood_theft/proc/on_successful_attack(datum/source, mob/living/target, mob/user, list/modifiers)
 	SIGNAL_HANDLER
 
-	if(!isliving(target))
+	if(!isliving(target) || !isliving(user))
 		return
 
 	steal_blood(user, target)
 
+// Take BP from targets, appropriately adjust blood pools of both
+// Code based on Theft of Vitae
 /datum/component/blood_theft/proc/steal_blood(mob/living/thief, mob/living/target)
-
 	// Make sure we can't steal more than we have left to
 	var/bp_theft_amount = clamp(theft_per_hit, 0, blood_to_steal)
 
@@ -96,12 +102,12 @@
 
 		var/blood_taken = clamp(bp_theft_amount, 0, target.bloodpool)
 		target.blood_volume = max(0, (target.blood_volume - (blood_taken * (70 * blood_coefficient))))
+		blood_to_steal -= blood_taken
 
 		var/blood_gained = blood_taken * max(1, target.bloodquality - 1)
 		target.adjust_blood_pool(-blood_gained)
 		thief.adjust_blood_pool(blood_gained)
 
-		blood_to_steal -= blood_gained
-
+	// Remove our component once we run out of blood to steal
 	if(blood_to_steal <= 0)
 		qdel(src)
