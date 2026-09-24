@@ -157,6 +157,13 @@
  */
 /datum/outfit/proc/post_equip(mob/living/carbon/human/user, visuals_only = FALSE)
 	//to be overridden for toggling internals, id binding, access etc
+// DARKPACK EDIT ADD START - Phone Fixes
+	var/obj/item/smartphone/daphon = locate() in user
+	if(!user?.client?.prefs || QDELETED(daphon)) // somehow
+		return
+	var/datum/preference/ringtone_pref = user.client.prefs.read_preference(/datum/preference/choiced/pda_ringtone_sound)
+	daphon.update_notification_sound(ringtone_pref)
+// DARKPACKEDIT ADD END - Phone Fixes
 	return
 
 #define EQUIP_OUTFIT_ITEM(item_path, slot_name) if(##item_path) { \
