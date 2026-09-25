@@ -16,11 +16,11 @@
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/obeah.ogg'
 
-// Crimson Grid edit start | Change: Added third eye trait to anyone with the obeah discipline.
+// Crimson Grid addition start | Change: Added third eye trait to anyone with the obeah discipline.
 /datum/discipline/obeah/post_gain()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_THIRD_EYE, type)
-// Crimson Grid edit end
+// Crimson Grid addition end
 
 /datum/discipline_power/obeah/sense_vitality
 	name = "Sense Vitality"
