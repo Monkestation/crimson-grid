@@ -106,6 +106,12 @@ DISCIPLINE_KEYBINDS
 ## Gives every single power a keybind, will majorly clutter the keybinds menu if uncommented in exchange for being very convenient for players
 #INDIVIDUAL_POWER_KEYBINDS
 
+## Flags for discipline teaching. Four settings here - full, rares disabled, in clans only, or disabled.
+## 0 - Full discipline teaching allowed
+## 1 - A player can only teach non-rare disciplines (potence, fortitude, etc allowed. temporis & thaumaturgy, disallowed)
+## 2 - A player can only teach in clan disciplines (A Gangrel can teach a Tremere Protean, but the Tremere can't teach anyone Protean)
+## 3 - Discipline teaching is fully disabled (no one will be able to teach anyone anything)
+DISCIPLINE_TEACHING 0
 ## Configs how long between full moons. Defaults to realtime (default: 29.530588)
 LUNAR_CYCLE_INTERVAL 29.530588
 
