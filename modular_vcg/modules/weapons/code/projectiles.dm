@@ -4,7 +4,6 @@
 
 /obj/projectile/bullet/darkpack/vamp9mm
 	damage = 20
-	//Edit was 30, reduced to 20 5 damage per TT Damage value
 
 /obj/projectile/bullet/darkpack/vamp9mm/plus
 	damage = 15
