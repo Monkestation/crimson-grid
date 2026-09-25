@@ -595,7 +595,7 @@
 	icon = 'modular_darkpack/modules/decor/icons/rugs64x64.dmi'
 	icon_state = "kopatich"
 
-/obj/effect/decal/baalirune
+/* /obj/effect/decal/baalirune // CRIMSON GRID ADD: DARK THAUMATURGY
 	name = "satanic rune"
 	pixel_w = -16
 	pixel_z = -16
@@ -629,7 +629,7 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
 	for(var/mob/living/dead_victim as anything in myriad_targets)
 		dead_victim.gib(DROP_ALL_REMAINS)
-	rune_in_use = FALSE
+	rune_in_use = FALSE */ // CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /obj/structure/vampstatue
 	name = "statue"

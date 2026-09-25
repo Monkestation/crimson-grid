@@ -67,6 +67,10 @@
 
 	if(HAS_TRAIT(changed_mob, TRAIT_AURA_OF_CONFIDENCE))
 		new_emotion = "Confidence"
+	// CRIMSON GRID ADD: DARK THAUMATURGY
+	if(HAS_TRAIT(changed_mob, TRAIT_AURA_OF_INFERNO))
+		new_emotion = "Corruption"
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 	if(current_aura == new_emotion)
 		return
@@ -99,6 +103,10 @@
 
 	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_CONFIDENCE))
 		examine_message = "[parent_mob.p_Their()] aura is swamped in so much superiority nothing else can be made out."
+		return
+
+	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_INFERNO))
+		examine_message = "[parent_mob.p_Their()] aura has obvious balefire stains."
 		return
 
 	switch(current_aura)

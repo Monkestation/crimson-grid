@@ -10,6 +10,7 @@
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/daimonion
 	signature_clan = VAMPIRE_CLAN_BAALI
+	max_selectable_level = 5
 
 /datum/discipline_power/daimonion
 	name = "Daimonion power name"
@@ -126,16 +127,28 @@
 
 	target_type = TARGET_HUMAN
 	range = 7
-	cooldown_length  = 30 SECONDS
+	cooldown_length = 30 SECONDS // CRIMSON GRID ADD: DARK THAUMATURGY
 	vitae_cost = 0
 
-	duration_length = 3 SECONDS
 	var/datum/storyteller_roll/fear_of_the_void_below/fear_of_the_void_below_roll
+	// CRIMSON GRID ADD: DARK THAUMATURGY
+	var/datum/storyteller_roll/fear_of_the_void_below_resist/fear_of_the_void_below_resist
+	var/success_count
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /datum/storyteller_roll/fear_of_the_void_below
 	bumper_text = "fear of the void below"
 	applicable_stats = list(STAT_WITS, STAT_INTIMIDATION)
 	roll_output_type = ROLL_PRIVATE
+	numerical = TRUE // CRIMSON GRID ADD: DARK THAUMATURGY
+
+// CRIMSON GRID ADD: DARK THAUMATURGY
+/datum/storyteller_roll/fear_of_the_void_below_resist
+	bumper_text = "control the beast"
+	applicable_stats = list(STAT_COURAGE)
+	roll_output_type = ROLL_NONE
+	numerical = TRUE
+// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /datum/discipline_power/daimonion/fear_of_the_void_below/pre_activation_checks(mob/living/target)
 	if(!fear_of_the_void_below_roll)
@@ -149,11 +162,37 @@
 
 /datum/discipline_power/daimonion/fear_of_the_void_below/activate(mob/living/carbon/human/target)
 	. = ..()
-	to_chat(target, span_warning("Your mind is enveloped by your greatest fear!"))
-	if(prob(50))
-		target.AdjustKnockdown(6 SECONDS, daze_amount = 4 SECONDS)
-	else
-		target.Immobilize(6 SECONDS)
+	// CRIMSON GRID ADD: DARK THAUMATURGY
+	if(!fear_of_the_void_below_roll)
+		fear_of_the_void_below_roll = new()
+	fear_of_the_void_below_roll.difficulty = target.st_get_stat(STAT_COURAGE) + 4
+	success_count = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/fear_of_the_void_below, difficulty = target.st_get_stat(STAT_COURAGE) + 4)
+	if(success_count <= 0)
+		to_chat(owner, span_warning("[target] has too much willpower to induce fear into them!"))
+		return
+	if(get_kindred_splat(target))
+		if(!fear_of_the_void_below_resist)
+			fear_of_the_void_below_resist = new()
+		var/resist_count = SSroll.storyteller_roll_datum(target, owner, /datum/storyteller_roll/fear_of_the_void_below_resist, difficulty = owner.st_get_stat(STAT_PERMANENT_WILLPOWER))
+		if(resist_count > success_count)
+			to_chat(owner, span_warning("You fail to envelop [target]'s mind as they subdue their their beast!"))
+			return
+	target.apply_status_effect(/datum/status_effect/dread_gaze)
+	target.emote("tremble")
+	target.emote(pick("scream","cry"))
+	to_chat(target, span_warning("Your greatest fear envelops you!"))
+	switch(success_count)
+		if(1)
+			target.adjust_confusion(3 SECONDS)
+		if(2)
+			GLOB.move_manager.move_away(target, owner, 10, target.cached_multiplicative_slowdown, 1 SCENES)
+			to_chat(target, span_userdanger("R U N !"))
+		if(3 to INFINITY)
+			target.Immobilize(3 SECONDS)
+			if(target.body_position == STANDING_UP)
+				target.toggle_resting()
+			target.adjust_temp_blindness(3 SECONDS) // You're "unconscious"
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 //CONFLAGRATION
 /datum/discipline_power/daimonion/conflagration
@@ -162,7 +201,7 @@
 
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
-	target_type = TARGET_LIVING
+	target_type = TARGET_LIVING | TARGET_TURF | TARGET_OBJ // CRIMSON GRID ADD: DARK THAUMATURGY
 	range = 7
 	activate_sound = 'modular_darkpack/modules/powers/sounds/daimonion_fireball.ogg'
 	aggravating = TRUE
@@ -171,10 +210,11 @@
 
 /obj/projectile/flames/baali
 	color = "#1c1f1d"
-	damage = 25
-	damage_type = AGGRAVATED
+	damage = 40 //CRIMSON GRID ADD: DARK THAUMATURGY
+	damage_type = BURN // CRIMSON GRID ADD END: DARK THAUMATURGY
 
-/datum/discipline_power/daimonion/conflagration/activate(mob/living/target)
+
+/datum/discipline_power/daimoinon/conflagration/activate(atom/target)
 	. = ..()
 	var/turf/start = get_turf(owner)
 	var/obj/projectile/flames/baali/created_fireball = new(start)
@@ -191,9 +231,11 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE
 	target_type = TARGET_LIVING
 	range = 7
+	cooldown_length = 30 SECONDS // CRIMSON GRID ADD: DARK THAUMATURGY
 	vitae_cost = 0
 
 	violates_masquerade = FALSE
+
 	var/datum/storyteller_roll/psychomania/psychomania_roll
 
 /datum/storyteller_roll/psychomania
@@ -204,9 +246,15 @@
 	if(!psychomania_roll)
 		psychomania_roll = new()
 
+	// CRIMSON GRID ADD: DARK THAUMATURGY
+	var/list/humanity_virtues = list(STAT_CONSCIENCE, STAT_SELF_CONTROL, STAT_COURAGE)
+	var/list/enlightenment_virtues = list(STAT_CONVICTION, STAT_INSTINCT, STAT_COURAGE)
+	var/list/current_virtues = target.is_enlightenment() ? enlightenment_virtues : humanity_virtues
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
+
 	//forces the subject's player to roll her lowest Virtue
 	var/datum/st_stat/virtue/lowest_virtue
-	for(var/virtue_type in subtypesof(/datum/st_stat/virtue))
+	for(var/virtue_type in current_virtues) // CRIMSON GRID ADD: DARK THAUMATURGY
 		var/datum/st_stat/virtue/target_stat = target.storyteller_stats["[virtue_type]"]
 		if(!lowest_virtue || target_stat.get_score() < lowest_virtue.get_score())
 			lowest_virtue = target_stat
@@ -234,15 +282,10 @@
 		kindred_splat.clan.psychomania_effect(target, owner)
 		return
 
-	var/ghoul_splat = get_ghoul_splat(target)
-	if(ghoul_splat)
-		to_chat(target, span_cult("SOMETHING IS COMING, WHAT IS IT?!!"))
-		var/obj/effect/client_image_holder/baali_demon/demon = new(get_turf(target), list(target))
-		RegisterSignal(demon, COMSIG_BAALI_DEMON_REACHED_TARGET, PROC_REF(on_demon_contact))
-		return
-
-	to_chat(target, span_cult("MY WORST NIGHTMARES FLASH BEFORE MY EYES"))
-	target.Paralyze(7 SECONDS)
+	to_chat(target, span_cult("SOMETHING IS COMING, WHAT IS IT?!!"))
+	var/obj/effect/client_image_holder/baali_demon/demon = new(get_turf(target), list(target))
+	RegisterSignal(demon, COMSIG_BAALI_DEMON_REACHED_TARGET, PROC_REF(on_demon_contact))
+	return
 
 /datum/discipline_power/daimonion/psychomania/proc/on_demon_contact(obj/effect/client_image_holder/baali_demon/source, mob/living/victim)
 	SIGNAL_HANDLER

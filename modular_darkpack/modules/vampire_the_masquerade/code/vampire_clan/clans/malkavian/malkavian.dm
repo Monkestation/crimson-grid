@@ -123,7 +123,11 @@
 	clicker.say(mad_speak, spans = list(malkavian_spans))
 
 /datum/subsplat/vampire_clan/malkavian/psychomania_effect(mob/living/target, mob/living/owner)
-	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/malklaugh.ogg", 50, FALSE)
+	// CRIMSON GRID ADD: DARK THAUMATURGY. BEFORE:
+	/* target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/malklaugh.ogg", 50, FALSE)
 	target.Paralyze(6 SECONDS)
 	target.visible_message(span_warning("[target] repeatedly bashes their head against the ground"), span_cult("THE WHISPERS ARE OVERTAKING ME"))
-	target.apply_damage(50, BRUTE, BODY_ZONE_HEAD)
+	target.apply_damage(50, BRUTE, BODY_ZONE_HEAD) */
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
