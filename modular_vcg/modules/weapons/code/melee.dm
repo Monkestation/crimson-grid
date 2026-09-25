@@ -26,7 +26,6 @@
 
 /obj/item/melee/sabre/vamp
 	armour_penetration = 40
-	block_chance = 60
 
 /obj/item/melee/sabre/rapier
 	block_chance = 40
