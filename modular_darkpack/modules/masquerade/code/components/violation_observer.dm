@@ -31,6 +31,10 @@
 	for(var/atom/movable/moving_atom in view(7, loc))
 		if(!moving_atom.violation_observer)
 			continue
+		if(istype(moving_atom, /mob/living))
+			var/mob/living/living_breach_witness = moving_atom
+			if(living_breach_witness.has_status_effect(/datum/status_effect/kissed) || living_breach_witness.has_status_effect(/datum/status_effect/delirium))
+				continue
 		SEND_SIGNAL(moving_atom, COMSIG_SEEN_MASQUERADE_VIOLATION, src)
 	COOLDOWN_START(src, masquerade_violation_cooldown, 1 TURNS)
 
