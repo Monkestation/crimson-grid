@@ -6,8 +6,8 @@
 	power_type = /datum/discipline_power/daimonion/path/inferno
 
 /datum/discipline_power/daimonion/path/inferno
-	name = "Daimonion: Fires of Inferno Power Name"
-	desc = "Daimonion: Fires of Inferno Power Description"
+	name = "Dark Thaumaturgy: Fires of Inferno Power Name"
+	desc = "Dark Thaumaturgy: Fires of Inferno Power Description"
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/thaum.ogg'
 

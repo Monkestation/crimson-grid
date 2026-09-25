@@ -6,8 +6,8 @@
 	power_type = /datum/discipline_power/daimonion/path/pain
 
 /datum/discipline_power/daimonion/path/pain
-	name = "Daimonion: Path of Pain Power Name"
-	desc = "Daimonion: Path of Pain Power Description"
+	name = "Dark Thaumaturgy: Path of Pain Power Name"
+	desc = "Dark Thaumaturgy: Path of Pain Power Description"
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/thaum.ogg'
 
