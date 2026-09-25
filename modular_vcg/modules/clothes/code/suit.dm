@@ -1,4 +1,3 @@
-//armor changes +10 base from the value of normal clothes
 /datum/armor/Class_1
 	melee = 20
 	bullet = 20
@@ -7,7 +6,6 @@
 	bomb = 20
 	fire = 20
 	acid = 20
-//CG Edit 10 armor per soak Biker Jacket Equiv
 
 /datum/armor/Class_2
 	melee = 30
@@ -15,7 +13,6 @@
 	bomb = 30
 	fire = 30
 	acid = 30
-//CG edit 10 armor per soak Leather Duster Equiv
 
 /datum/armor/Class_3
 	melee = 40
@@ -23,7 +20,6 @@
 	bomb = 40
 	fire = 40
 	acid = 40
-//CG edit 10 armor per soak Kevlar Equiv
 
 /datum/armor/Class_4
 	melee = 50
@@ -31,7 +27,6 @@
 	bomb = 50
 	fire = 50
 	acid = 50
-//CG Edit 10 Armor per soak Flak Equiv
 
 /datum/armor/Class_5
 	melee = 60
@@ -39,7 +34,6 @@
 	bomb = 60
 	fire = 60
 	acid = 60
-//CG Edit 10 Armor Per soak Riot Equiv
 
 /obj/item/clothing/suit/vampire/toggled
 	var/toggle_noun = "zip"
@@ -82,110 +76,86 @@
 	icon_state = "m65"
 	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
 
-	//CG Edit note, .2 slowdown per loss of dex on TT
-
-	/obj/item/clothing/suit/vampire/slickbackcoat
+/obj/item/clothing/suit/vampire/slickbackcoat
 	armor_type = /datum/armor/Class_1
-	//CG Edit Equiv to Reiforced Clothing
 
-	/obj/item/clothing/suit/vampire/jacket
+/obj/item/clothing/suit/vampire/jacket
 	armor_type = /datum/armor/Class_1
 	slowdown = .2
-	//CG edit Leather Coat Equiv
 
-	/obj/item/clothing/suit/vampire/jacket/fbi
+/obj/item/clothing/suit/vampire/jacket/fbi
 	armor_type = /datum/armor/Class_2
 	slowdown = .4
-	//CG Edit Leather Duster Equiv
 
-	/obj/item/clothing/suit/vampire/jacket/punk
+/obj/item/clothing/suit/vampire/jacket/punk
 	armor_type = /datum/armor/Class_2
 	slowdown = .4
-	//CG Edit Leather Duster Equiv
 
-	/obj/item/clothing/suit/vampire/jacket/better
+/obj/item/clothing/suit/vampire/jacket/better
 	armor_type = /datum/armor/Class_2
 	slowdown = .4
-	//CG Edit Leather Duster Equiv
 
-	/obj/item/clothing/suit/vampire/jacket/better/armored
+/obj/item/clothing/suit/vampire/jacket/better/armored
 	armor_type = /datum/armor/Class_3
 	slowdown = .4
-	//CG Edit Kevlar equiv with Duster slowdown
 
-	/obj/item/clothing/suit/vampire/trench/alt/armored
+/obj/item/clothing/suit/vampire/trench/alt/armored
 	armor_type = /datum/armor/Class_3
 	slowdown = .4
-	//CG Edit Leather Kevlar equiv with Duster slowdown
 
-	/obj/item/clothing/suit/vampire/trench/armored
+/obj/item/clothing/suit/vampire/trench/armored
 	armor_type = /datum/armor/Class_3
 	slowdown = .4
-	//CG Edit Leather Kevlar equiv with Duster slowdown
 
-	/obj/item/clothing/suit/vampire/trench
+/obj/item/clothing/suit/vampire/trench
 	armor_type = /datum/armor/Class_1
 	slowdown = .2
-	//CG edit Leather Coat Equiv
 
-	/obj/item/clothing/suit/vampire/trench/voivode
+/obj/item/clothing/suit/vampire/trench/voivode
 	armor_type = /datum/armor/Class_4
 	slowdown = .6
-	//CG edit Flak with +.1 slowdown
 
-	/obj/item/clothing/suit/vampire/vest
+/obj/item/clothing/suit/vampire/vest
 	armor_type = /datum/armor/Class_3
 	slowdown = .2
-	//CG Edit Kevlar
 
-	/obj/item/clothing/suit/vampire/vest/medieval
+/obj/item/clothing/suit/vampire/vest/medieval
 	armor_type = /datum/armor/Class_3
 	slowdown = .4
-	//CG Edit Steel Breastplate Equiv
 
-	/obj/item/clothing/suit/vampire/vest/police/captain
+/obj/item/clothing/suit/vampire/vest/police/captain
 	armor_type = /datum/armor/Class_4
 	slowdown = .2
-	//CG edit Flak with one less slow captain only
 
-	/obj/item/clothing/suit/vampire/vest/army
+/obj/item/clothing/suit/vampire/vest/army
 	armor_type = /datum/armor/Class_4
 	slowdown = .4
-	//CG edit Flak vest
 
-	/obj/item/clothing/suit/vampire/eod
+/obj/item/clothing/suit/vampire/eod
 	armor_type = /datum/armor/Class_5
 	slowdown = .6
-	//CG edit SWAT armor equiv
 
-	/obj/item/clothing/suit/vampire/bogatyr
+/obj/item/clothing/suit/vampire/bogatyr
 	armor_type = /datum/armor/Class_3
 	slowdown = .4
-	//CG edit Kevlar equiv with +1 slowdown
 
-	/obj/item/clothing/suit/vampire/bogatyr/captain
+/obj/item/clothing/suit/vampire/bogatyr/captain
 	armor_type = /datum/armor/Class_4
 	slowdown = .6
-	//CG edit Flak vest +1 slowdown
 
-	/obj/item/clothing/suit/vampire/bogatyr/captain/heavy
+/obj/item/clothing/suit/vampire/bogatyr/captain/heavy
 	armor_type = /datum/armor/Class_5
 	slowdown = .6
-	//CG edit SWAT armor equiv
 
-	/obj/item/clothing/suit/vampire/bogatyr/heavy
+/obj/item/clothing/suit/vampire/bogatyr/heavy
 	armor_type = /datum/armor/Class_5
 	slowdown = .8
-	//CG edit SWAT armor equiv +1 slowdown
 
-	/obj/item/clothing/suit/vampire/labcoat
+/obj/item/clothing/suit/vampire/labcoat
 	armor_type = /datum/armor/vampire_suit
-	//CG edit No Armor
 
-	/obj/item/clothing/suit/vampire/pentex_labcoat
+/obj/item/clothing/suit/vampire/pentex_labcoat
 	armor_type = /datum/armor/vampire_suit
-	//CG edit No Armor
 
-	/obj/item/clothing/suit/vampire/pentex_labcoat_alt
+/obj/item/clothing/suit/vampire/pentex_labcoat_alt
 	armor_type = /datum/armor/vampire_suit
-	//CG edit No Armor
