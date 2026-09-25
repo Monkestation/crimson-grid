@@ -68,6 +68,11 @@
 	if(HAS_TRAIT(changed_mob, TRAIT_AURA_OF_CONFIDENCE))
 		new_emotion = "Confidence"
 
+	// Crimson Grid addition start | Change: Added fae aura for the Kiasyd & suppressed aura for Path of the Scorched Heart.
+	if(HAS_TRAIT(changed_mob, TRAIT_FAE_AURA))
+		new_emotion = "Mischievous"
+	// Crimson Grid addition end
+
 	if(current_aura == new_emotion)
 		return
 
@@ -100,6 +105,12 @@
 	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_CONFIDENCE))
 		examine_message = "[parent_mob.p_Their()] aura is swamped in so much superiority nothing else can be made out."
 		return
+
+	// Crimson Grid addition start | Change: Added fae aura for the Kiasyd & suppressed aura for Path of the Scorched Heart.
+	if(HAS_TRAIT(parent_mob, TRAIT_FAE_AURA))
+		examine_message = "[parent_mob.p_Their()] aura is a deep red, and seems to shimmer with rainbow highlights."
+		return
+	// Crimson Grid addition end
 
 	switch(current_aura)
 		if(AURA_AFRAID)

@@ -50,6 +50,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DECEPTIVE_AURA "deceptive_aura"
 #define TRAIT_FRENETIC_AURA "frenetic_aura"
 #define TRAIT_HIDDEN_DIABLERIE "hidden_diablerie"
+#define TRAIT_FAE_AURA "fae_aura" // Crimson Grid addition | Change: Added fae aura trait for the Kiasyd.
 
 #define TRAIT_HIDDEN_WYRMTAINT "hidden_wyrmtaint"
 #define TRAIT_BLUSH_OF_HEALTH "blush_of_health"

@@ -6,4 +6,5 @@
 	value = 5
 	mob_trait = TRAIT_HIDDEN_WYRMTAINT
 	icon = FA_ICON_TEMPERATURE_HIGH
-	allowed_splats = list(SPLAT_KINDRED)
+	allowed_splats = list(SPLAT_KINDRED, SPLAT_GAROU)
+	excluded_auspices = list(AUSPICE_RAGABASH, AUSPICE_THEURGE, AUSPICE_PHILODOX, AUSPICE_AHROUN, AUSPICE_GALLIARD) // CRIMSON GRID EDIT | Change: Added auspice restrictions to prevent literally breaking crinos.

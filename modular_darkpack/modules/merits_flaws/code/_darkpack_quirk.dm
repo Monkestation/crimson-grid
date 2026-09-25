@@ -9,6 +9,8 @@
 	var/list/excluded_clans
 	/// Included clans for this quirk (exclusive to vampire). E.g "Only Cappadocians can take this flaw"
 	var/list/included_clans
+	/// Excluded auspices from this quirk (exclusive to garou). E.g "Ragabash cannot take this flaw" | Crimson Grid addition
+	var/list/excluded_auspices
 	/// Minimum Generation
 	var/minimum_generation
 	/// Unique failure message on joining the round (in case someone joins with an incompatible quirk on their savefile for some reason)
@@ -34,6 +36,12 @@
 	if(excluded_clans && get_kindred_splat(new_holder))
 		var/datum/splat/vampire/kindred/kindred_splat = get_kindred_splat(new_holder)
 		if(kindred_splat.clan && (kindred_splat.clan.id in excluded_clans))
+			to_chat(new_holder, span_warning("[failure_message]"))
+			return FALSE
+
+	if(excluded_auspices && get_garou_splat(new_holder))
+		var/datum/splat/werewolf/shifter/garou/garou_splat = get_garou_splat(new_holder)
+		if(garou_splat.auspice && (garou_splat.auspice.id in excluded_auspices))
 			to_chat(new_holder, span_warning("[failure_message]"))
 			return FALSE
 
@@ -74,6 +82,18 @@
 		return FALSE
 
 	if(included_clans && !(clan.id in included_clans))
+		return FALSE
+
+	return TRUE
+
+/datum/quirk/darkpack/proc/is_auspice_appropriate(datum/subsplat/werewolf/auspice)
+	if(!excluded_auspices)
+		return TRUE
+
+	if(!auspice)
+		return TRUE
+
+	if(excluded_auspices && (auspice.id in excluded_auspices))
 		return FALSE
 
 	return TRUE
