@@ -276,6 +276,17 @@
 		TRAIT_NO_LYING_ANGLE,
 		TRAIT_TRANSFORM_UPDATES_ICON,
 		TRAIT_HARDENED_SOLES,
+// CRIMSON EDIT ADD START - Warform Trait Buffs
+		TRAIT_QUICK_CARRY,
+		TRAIT_STRENGTH,
+		TRAIT_NO_SLIP_WATER,
+		TRAIT_HEAD_INJURY_BLOCKED,
+		TRAIT_BRAWLING_KNOCKDOWN_BLOCKED,
+		TRAIT_PUSHIMMUNE,
+		TRAIT_FAT_IGNORE_SLOWDOWN,
+		TRAIT_BATON_RESISTANCE,
+		TRAIT_FEARLESS,
+// CRIMSON EDIT ADD END - Warform Trait Buffs
 	)
 	form_causes_delirium = TRUE
 	veil_breaching_form = TRUE
@@ -314,6 +325,23 @@
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
 		TRAIT_HARDENED_SOLES,
+	//CRIMSON EDIT ADD START -Garou Trait Buffs
+		TRAIT_KEEN_NOSE,
+		TRAIT_QUICK_CARRY,
+		TRAIT_XRAY_HEARING,
+		TRAIT_GOOD_HEARING,
+		TRAIT_STRENGTH,
+		TRAIT_BATON_RESISTANCE,
+		TRAIT_HATED_BY_DOGS,
+		TRAIT_NO_SLIP_WATER,
+		TRAIT_HEAD_INJURY_BLOCKED,
+		TRAIT_NO_STAGGER,
+		TRAIT_BRAWLING_KNOCKDOWN_BLOCKED,
+		TRAIT_PUSHIMMUNE,
+		TRAIT_FAT_IGNORE_SLOWDOWN,
+		TRAIT_STRONG_STOMACH,
+		TRAIT_STRONGPULL,
+	// CRIMSON EDIT ADD END - Garou Trait Buffs
 	)
 	veil_breaching_form = TRUE
 
@@ -355,7 +383,6 @@
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
 	)
-
 	mutantbrain = /obj/item/organ/brain/fera
 	mutanttongue = /obj/item/organ/tongue/fera
 	species_language_holder = /datum/language_holder/primal
@@ -385,6 +412,10 @@
 
 /datum/species/human/shifter/feral/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
+	//CRIMSON GRID ADDITION START - Gives wolf feral form traits only so that corax do not inherit it aswell
+	if(get_garou_splat(human_who_gained_species))
+		human_who_gained_species.add_traits(list(TRAIT_XRAY_HEARING, TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_STRONG_STOMACH), SPECIES_TRAIT)
+	//CRIMSON GRID ADDITION END
 	if(HAS_TRAIT(human_who_gained_species, TRAIT_FERA_FLIGHT))
 		var/datum/action/innate/toggle_fera_flight/ability = new(human_who_gained_species)
 		ability.Grant(human_who_gained_species)
@@ -392,9 +423,11 @@
 
 /datum/species/human/shifter/feral/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
+	//CRIMSON GRID ADDITION START - Removes wolf feral form traits
+	human.remove_traits(list(TRAIT_XRAY_HEARING, TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_STRONG_STOMACH), SPECIES_TRAIT)
+	//CRIMSON GRID ADDITION END
 	for(var/datum/action/innate/toggle_fera_flight/action in human.actions)
 		action.Remove(human)
-
 	if(HAS_TRAIT(human, TRAIT_FERA_FLIGHT))
 		REMOVE_TRAIT(human, TRAIT_WADDLING, INNATE_TRAIT)
 
@@ -408,6 +441,19 @@
 /datum/movespeed_modifier/shifter/feral
 	multiplicative_slowdown = -0.35
 
+
+//CRIMSON GRID ADDITIONS - garou specific war form traits only
+
+/datum/species/human/shifter/war/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
+	. = ..()
+	if(get_garou_splat(human_who_gained_species))
+		human_who_gained_species.add_traits(list(TRAIT_HARDLY_WOUNDED, TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_NO_STAGGER, TRAIT_HATED_BY_DOGS, TRAIT_STRONG_STOMACH, TRAIT_STRONGPULL), SPECIES_TRAIT)
+
+/datum/species/human/shifter/war/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
+	. = ..()
+	human.remove_traits(list(TRAIT_HARDLY_WOUNDED, TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_NO_STAGGER, TRAIT_HATED_BY_DOGS, TRAIT_STRONG_STOMACH, TRAIT_STRONGPULL), SPECIES_TRAIT)
+
+//CRIMSON GRID ADDITION END
 // Handles simulating bootleg 'soak'; uses fortitude values.
 // More of a stop-gap till a soak/better system for Garou is added to simulate vampire-soaking.
 /datum/species/human/shifter/war/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
