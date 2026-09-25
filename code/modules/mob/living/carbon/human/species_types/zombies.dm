@@ -54,7 +54,7 @@
 	/// Amount healed per regen tick - if 0, no regen will occur
 	var/regen_amount = 0.5
 	/// The hand to give the zombie - if null, they will have normal hands
-	var/zombie_hand = /obj/item/mutant_hand/zombie
+	var/zombie_hand = null // CRIMSON EDIT CHANGE - Original: var/zombie_hand = /obj/item/mutant_hand/zombie
 	/// The movespeed modifier to apply to the zombie - if null, no movespeed modifier will be applied
 	var/movespeed_mod = /datum/movespeed_modifier/zombie
 	/// % Reduction to all physical damage the zombie takes
@@ -146,11 +146,13 @@
 	new_tongue.Insert(new_zombie, special = TRUE)
 	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 
+	/* CRIMSON EDIT REMOVE - Romerol
 	if(!isnull(zombie_hand))
 		new_zombie.AddComponent( \
 			/datum/component/mutant_hands, \
 			mutant_hand_path = zombie_hand, \
 		)
+	*/ // CRIMSON EDIT REMOVAL END - Romerol
 	if(regen_amount > 0)
 		new_zombie.AddComponent( \
 			/datum/component/regenerator, \
@@ -266,7 +268,7 @@
 /datum/status_effect/zombie/mindless
 	regen_time = 10 SECONDS
 	regen_amount = 0.2
-	zombie_hand = /obj/item/mutant_hand/zombie/weak
+	zombie_hand = null // CRIMSON EDIT CHANGE - Original: zombie_hand = /obj/item/mutant_hand/zombie/weak
 	movespeed_mod = /datum/movespeed_modifier/zombie/mindless
 
 /datum/status_effect/zombie/uninfected
