@@ -3,7 +3,8 @@
 	desc = "This ritual recalls the legend of Caine itself, dedicating a weapon to satisfy a vampire’s nature.\
 			Half the lethal damage inflicted by the weapon converts to blood points, filling the wielder’s pool."
 	icon_state = "rune9"
-	word = "#And he said, 'What hast thou done? the voice of thy brother’s blood crieth unto me from the ground.'" // Whisper this
+	// Whisper this because...we are saying it outloud as we engrave it I guess
+	word = "#And he said, 'What hast thou done? the voice of thy brother’s blood crieth unto me from the ground.'"
 	level = 3
 	cost = 3
 

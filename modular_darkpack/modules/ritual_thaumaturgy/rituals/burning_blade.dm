@@ -10,7 +10,8 @@
 	. = ..()
 	var/static/list/valid_weapons = list(
 		/obj/item/scythe/vamp,
-		/obj/item/katana/vamp
+		/obj/item/katana/vamp,
+		/obj/item/melee/sabre/rapier // CRIMSON GRID EDIT - Add rapier to burning blade
 	)
 
 	var/obj/item/weapon
