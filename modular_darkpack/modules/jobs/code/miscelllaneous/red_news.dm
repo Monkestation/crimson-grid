@@ -31,4 +31,4 @@
 	l_pocket = /obj/item/smartphone/red_news
 	backpack_contents = list(/obj/item/card/credit)
 	uniform = /obj/item/clothing/under/vampire/suit
-	l_hand = /obj/item/broadcast_camera
+	l_hand = /obj/item/broadcast_camera/darkpack
