@@ -11,7 +11,7 @@
 
 #define BREED_GAROU_HOMID "Garou Homid"
 #define BREED_LUPUS "Lupus"
-#define BREED_CRINOS "Metis" // Crimson Grid edit | Change: Renamed Crinos to Metis to better reflect W20 lore.
+#define BREED_CRINOS "Crinos"
 
 #define BREED_CORAX_HOMID "Corax Homid"
 #define BREED_CORVID "Corvid"
