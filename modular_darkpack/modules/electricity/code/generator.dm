@@ -77,3 +77,7 @@
 		if(last_sound_played+40 <= world.time)
 			last_sound_played = world.time
 			playsound(loc, 'modular_darkpack/modules/electricity/sounds/generator_loop.ogg', 25, FALSE)
+
+/obj/warehouse_generator/start_off/Initialize(mapload)
+	. = ..()
+	generator_shutdown()

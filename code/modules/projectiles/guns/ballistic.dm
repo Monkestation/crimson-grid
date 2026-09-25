@@ -649,7 +649,8 @@
 			if(gun == src || gun.weapon_weight >= WEAPON_MEDIUM)
 				continue
 			else if(can_trigger_gun(user, akimbo_usage = TRUE))
-				recoil_roll.difficulty += 1	//Akimboing gains +1 difficulty
+				if(!HAS_TRAIT(user, TRAIT_AMBIDEXTROUS)) // DARKPACK EDIT ADD - MERITS_FLAWS
+					recoil_roll.difficulty += 1	//Akimboing gains +1 difficulty
 		if(firing_burst == TRUE)
 			recoil_roll.difficulty += 1	//Bursts gains +1 difficulty
 		var/datum/component/automatic_fire/automatic_check = src.GetComponent(/datum/component/automatic_fire)

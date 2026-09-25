@@ -47,8 +47,6 @@
 	var/ringer = TRUE
 	// If the phone shows balloon alerts when ringing.
 	var/vibration = TRUE
-	// If the phone's microphone is muted.
-	var/muted = FALSE
 	// ID of the timer that the phone uses for ringing. Deleted once the user denies a phone call or misses it.
 	var/phone_ringing_timer = null
 	// The phone number of the phone calling us. If any.
@@ -81,7 +79,6 @@
 	wiki_book = new()
 	become_hearing_sensitive(ROUNDSTART_TRAIT)
 	RegisterSignal(src, COMSIG_MOVABLE_HEAR, PROC_REF(handle_hearing))
-	AddComponent(/datum/component/violation_observer, FALSE)
 	phone_background = "BG_[rand(1,18)]" // pick a random phone background when spawned
 
 /obj/item/smartphone/proc/update_initialized_contacts()
@@ -229,7 +226,8 @@
 	data["ringer"] = ringer
 	data["vibration"] = vibration
 	data["speaker_mode"] = (phone_radio.canhear_range == 3) ? TRUE : FALSE
-	data["muted"] = muted
+	data["muted"] = !phone_radio.get_broadcasting()
+	data["on_hold"] = !phone_radio.get_listening()
 
 	var/list/published_numbers = list()
 	for(var/contact, number in SSphones.published_phone_numbers)
@@ -277,6 +275,7 @@
 	data["time"] = server_timestamp("hh:mm", ic_time = TRUE)
 	data["date"] = server_timestamp("Day, Month DD, YYYY", ic_time = TRUE)
 	data["background_url"] = phone_background
+	data["city_name"] = SSmapping.current_map.map_name
 
 	var/list/conversations_list = list()
 	for(var/datum/phone_conversation/convo in conversations)
@@ -340,6 +339,7 @@
 			return
 	// CRIMSON GRID ADDITION END - normal taps!!
 
+	var/passed_number = params["number"]
 	switch(action)
 		if("call")
 			start_phone_call(user, params["number"])
@@ -415,15 +415,26 @@
 			return TRUE
 
 		if("add_contact")
-			var/number = tgui_input_text(user, "Input number", "Add Contact")
+			var/number = passed_number || tgui_input_text(user, "Input number", "Add Contact")
+			if(!number)
+				to_chat(user, span_danger("You must provide a number."))
+				return FALSE
 			if(length(number) > 15)
 				to_chat(user, span_danger("Entered number is too long"))
 				return FALSE
+			for(var/datum/phonecontact/contact as anything in contacts)
+				if(contact.number == number)
+					to_chat(user, span_danger("This phone number is already in your contacts list!"))
+					return FALSE
 			var/stripped_number = replacetext(number, " ", "") // remove spaces
 			var/new_contact_name = tgui_input_text(user, "Input name", "Add Contact")
-			if(!new_contact_name || !number)
-				to_chat(user, span_danger("You must provide both a name and a number."))
+			if(!new_contact_name)
+				to_chat(user, span_danger("You must provide a name for the contact."))
 				return FALSE
+			for(var/datum/phonecontact/contact as anything in contacts)
+				if(contact.number == number)
+					to_chat(user, span_danger("This phone number is already in your contacts list!"))
+					return FALSE
 
 			var/datum/phonecontact/new_contact = new()
 			new_contact.number = "[stripped_number]"
@@ -433,7 +444,7 @@
 			return TRUE
 
 		if("remove_contact")
-			var/number = tgui_input_text(user, "Input number", "Remove Contact")
+			var/number = passed_number || tgui_input_text(user, "Input number", "Remove Contact")
 			if(length(number) > 15)
 				to_chat(user, span_danger("Entered number is too long"))
 				return FALSE
@@ -445,13 +456,17 @@
 			return FALSE
 
 		if("block")
-			var/block_number = tgui_input_text(user, "Input number to block", "Block Contact")
+			var/block_number = passed_number || tgui_input_text(user, "Input number to block", "Block Contact")
 			if(!block_number)
 				to_chat(user, span_warning("You must provide a number."))
 				return FALSE
 			if(length(block_number) > 15)
 				to_chat(user, span_warning("Invalid number."))
 				return FALSE
+			for(var/datum/phonecontact/contact as anything in blocked_contacts)
+				if(contact.number == block_number)
+					to_chat(user, span_danger("This phone number is already blocked!"))
+					return FALSE
 
 			var/datum/phonecontact/blocked_contact = new()
 			block_number = replacetext(block_number, " ", "")
@@ -461,12 +476,12 @@
 			return TRUE
 
 		if("unblock")
-			var/result = tgui_input_text(user, "Input number to unblock", "Unblock Contact")
-			if(!result)
+			var/number = passed_number || tgui_input_text(user, "Input number to unblock", "Unblock Contact")
+			if(!number)
 				to_chat(user, span_warning("You must provide a number."))
 				return FALSE
 			for(var/datum/phonecontact/unblocked_contact in blocked_contacts)
-				if(unblocked_contact.name == result)
+				if(unblocked_contact.number == number)
 					blocked_contacts -= unblocked_contact
 					return TRUE
 			return FALSE
@@ -522,9 +537,19 @@
 			return TRUE
 
 		if("mute")
-			muted = !muted
-			phone_radio.set_listening(!muted)
-			balloon_alert(user, "[muted ? "muted" : "unmuted"]!")
+			if(!phone_radio.is_on())
+				return FALSE
+			phone_radio.set_broadcasting(!phone_radio.get_broadcasting())
+			balloon_alert(user, "[!phone_radio.get_broadcasting() ? "muted" : "unmuted"]!")
+
+		if("hold_call")
+			phone_radio.set_listening(!phone_radio.get_listening())
+			if(!phone_radio.get_listening())
+				phone_radio.set_on(FALSE) // do not use set_phone_radio() as it fully resets the radio
+				balloon_alert(user, "on hold!")
+			else
+				phone_radio.set_on(TRUE)
+				balloon_alert(user, "resumed!")
 
 		if("wiki")
 			wiki_book.display_content(user)
