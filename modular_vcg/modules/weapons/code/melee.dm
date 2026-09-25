@@ -24,12 +24,6 @@
 	embed_type = /datum/embedding/spear
 	wound_bonus = 15
 
-/obj/item/melee/sabre/vamp
-	armour_penetration = 40
-
-/obj/item/melee/sabre/rapier
-	block_chance = 40
-
 /obj/item/claymore/longsword
 	force = 2.5 LETHAL_TTRPG_DAMAGE
 	w_class = WEIGHT_CLASS_BULKY
