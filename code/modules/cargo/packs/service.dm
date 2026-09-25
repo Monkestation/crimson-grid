@@ -1,21 +1,20 @@
 /datum/supply_pack/service
-	group = "Service"
+	group = "Supplies"
+	crate_type = /obj/structure/closet/crate/cardboard
 
 /datum/supply_pack/service/cargo_supples
-	name = "Cargo Supplies Crate"
+	name = "office Supplies Crate"
 	desc = "Sold everything that wasn't bolted down? You can get right \
 		back to work with this crate containing stamps, an export scanner, \
 		destination tagger, hand labeler and some package wrapping."
 	cost = CARGO_CRATE_VALUE * 1.75
 	contains = list(/obj/item/stamp/granted,
 					/obj/item/stamp/denied,
-					/obj/item/universal_scanner,
-					/obj/item/dest_tagger,
 					/obj/item/hand_labeler,
 					/obj/item/stack/package_wrap,
 				)
 	crate_name = "cargo supplies crate"
-
+/*
 /datum/supply_pack/service/noslipfloor
 	name = "High-traction Floor Tiles"
 	desc = "Make slipping a thing of the past with thirty industrial-grade anti-slip floor tiles!"
@@ -23,7 +22,7 @@
 	access_view = ACCESS_JANITOR
 	contains = list(/obj/item/stack/tile/noslip/thirty)
 	crate_name = "high-traction floor tiles crate"
-
+*/
 /datum/supply_pack/service/janitor
 	name = "Janitorial Supplies Crate"
 	desc = "Fight back against dirt and grime with Nanotrasen's Janitorial Essentials™! \
@@ -38,10 +37,9 @@
 					/obj/item/storage/bag/trash,
 					/obj/item/reagent_containers/spray/cleaner,
 					/obj/item/rag,
-					/obj/item/grenade/chem_grenade/cleaner = 3,
 				)
 	crate_name = "janitorial supplies crate"
-
+/*
 /datum/supply_pack/service/janitor/janicart
 	name = "Janitorial Cart and Galoshes Crate"
 	desc = "The keystone to any successful janitor. As long as you have feet, this pair \
@@ -62,7 +60,7 @@
 	contains = list(/obj/item/watertank/janitor)
 	crate_name = "janitor backpack crate"
 	crate_type = /obj/structure/closet/crate/secure
-
+*/
 /* // DARKPACK EDIT REMOVAL
 /datum/supply_pack/service/mule
 	name = "MULEbot Crate"
@@ -76,7 +74,7 @@
 
 /datum/supply_pack/service/party
 	name = "Party Equipment"
-	desc = "Celebrate both life and death on the station with Nanotrasen's Party Essentials™! \
+	desc = "Celebrate both life and death on the station with O'Tolleys Party Essentials™! \
 		Contains seven colored glowsticks, six beers, six sodas, two ales, and a bottle of patron, \
 		goldschlager, and shaker!"
 	cost = CARGO_CRATE_VALUE * 5

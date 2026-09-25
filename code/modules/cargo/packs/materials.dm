@@ -1,5 +1,6 @@
 /datum/supply_pack/materials
-	group = "Canisters & Materials"
+	group = "Materials"
+	crate_type = /obj/structure/closet/crate/large // crimson grid edit
 
 /datum/supply_pack/materials/cardboard50
 	name = "50 Cardboard Sheets"
@@ -8,6 +9,7 @@
 	contains = list(/obj/item/stack/sheet/cardboard/fifty)
 	crate_name = "cardboard sheets crate"
 
+/* CRIMSON GRID EDIT //CARGO SUPPLY PACKS
 /datum/supply_pack/materials/license50
 	name = "50 Empty License Plates"
 	desc = "Create a bunch of license plates."
@@ -15,6 +17,7 @@
 	access_view = ACCESS_BRIG_ENTRANCE
 	contains = list(/obj/item/stack/license_plates/empty/fifty)
 	crate_name = "empty license plate crate"
+*/
 
 /datum/supply_pack/materials/plastic50
 	name = "50 Plastic Sheets"
@@ -23,12 +26,14 @@
 	contains = list(/obj/item/stack/sheet/plastic/fifty)
 	crate_name = "plastic sheets crate"
 
+/* CRIMSON GRID EDIT //CARGO SUPPLY PACKS
 /datum/supply_pack/materials/sandstone30
 	name = "30 Sandstone Blocks"
 	desc = "Neither sandy nor stony, these thirty blocks will still get the job done."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/stack/sheet/mineral/sandstone/thirty)
 	crate_name = "sandstone blocks crate"
+*/
 
 /datum/supply_pack/materials/wood50
 	name = "50 Wood Planks"
@@ -38,6 +43,7 @@
 	contains = list(/obj/item/stack/sheet/mineral/wood/fifty)
 	crate_name = "wood planks crate"
 
+/*
 /datum/supply_pack/materials/foamtank
 	name = "Firefighting Foam Tank Crate"
 	desc = "Contains a tank of firefighting foam. Also known as \"plasmaman's bane.\""
@@ -45,6 +51,7 @@
 	contains = list(/obj/structure/reagent_dispensers/foamtank)
 	crate_name = "foam tank crate"
 	crate_type = /obj/structure/closet/crate/large
+*/
 
 /datum/supply_pack/materials/fueltank
 	name = "Fuel Tank Crate"
@@ -54,6 +61,7 @@
 	crate_name = "fuel tank crate"
 	crate_type = /obj/structure/closet/crate/large
 
+/*
 /datum/supply_pack/materials/hightankfuel
 	name = "Large Fuel Tank Crate"
 	desc = "Contains a high-capacity fuel tank. Keep contents away from open flame."
@@ -62,7 +70,7 @@
 	contains = list(/obj/structure/reagent_dispensers/fueltank/large)
 	crate_name = "high-capacity fuel tank crate"
 	crate_type = /obj/structure/closet/crate/large
-
+*/
 /datum/supply_pack/materials/watertank
 	name = "Water Tank Crate"
 	desc = "Contains a tank of dihydrogen monoxide... sounds dangerous."
@@ -71,6 +79,7 @@
 	crate_name = "water tank crate"
 	crate_type = /obj/structure/closet/crate/large
 
+/*
 /datum/supply_pack/materials/gas_canisters
 	cost = CARGO_CRATE_VALUE * 0.05
 	contains = list(/obj/machinery/portable_atmospherics/canister)
@@ -109,3 +118,4 @@
 		canister_packs += pack
 
 	return canister_packs
+*/
