@@ -20,7 +20,7 @@
 			weapon = item
 			break
 	if(!weapon)
-		to_chat(last_activator, span_warning("You need a scythe or katana to enchant!"))
+		to_chat(last_activator, span_warning("You need a scythe, katana or a rapier to enchant!"))  // CRIMSON GRID EDIT - Add rapier to burning blade
 		return
 	if(!ritual_roll_datum)
 		return
