@@ -43,7 +43,7 @@
 // Fires of Inferno 4 - Flame-thrower
 
 /datum/action/cooldown/spell/cone/staggered/entropic_plume_infernal
-	name = "Entropic Plume"
+	name = "Infernal Entropic Plume"
 	desc = "Spews forth a disorienting plume that causes enemies to strike each other, \
 		briefly blinds them (increasing with range) and poisons them (decreasing with range). \
 		Also spreads rust in the path of the plume."
