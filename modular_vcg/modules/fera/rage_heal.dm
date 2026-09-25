@@ -1,4 +1,4 @@
-#define HEAL_AGGRAVATED_DAMAGE 50
+#define HEAL_AGGRAVATED_DAMAGE 30
 
 /datum/action/cooldown/power/gift/rage_heal
 	name = "Rage heal"
@@ -9,7 +9,7 @@
 	rage_cost = 2
 
 	var/datum/storyteller_roll/rage_heal/rage_heal_roll = new /datum/storyteller_roll/rage_heal
-
+	var/heal_amount = HEAL_AGGRAVATED_DAMAGE
 /datum/action/cooldown/power/gift/rage_heal/New()
 	. = ..()
 	check_flags = NONE
@@ -61,9 +61,8 @@
 	if(agg_before <= 0)
 		to_chat(W, span_warning("The rage rises within you, but it fails to find any aggravated damage to mend."))
 		return FALSE
-	var/heal_amount = HEAL_AGGRAVATED_DAMAGE
 	if(roll_result > 1)
-		heal_amount += (roll_result - 1) * 5
+		heal_amount = HEAL_AGGRAVATED_DAMAGE + ((roll_result - 1) * 5)
 	heal_amount = min(heal_amount, agg_before)
 	to_chat(W, span_warning("Your rage tears through the aggravated wounds on your body and heals you..."))
 	owner.visible_message(span_warning("[owner]'s aggravated wounds are closing at a terrifingly rapid pace!"))

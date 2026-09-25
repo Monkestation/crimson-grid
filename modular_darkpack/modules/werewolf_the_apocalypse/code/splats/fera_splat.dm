@@ -147,7 +147,6 @@
 	remove_power(/datum/action/cooldown/power/gift/howling)
 	UnregisterSignal(owner, COMSIG_LIVING_DEATH)
 
-
 /datum/splat/werewolf/shifter/splat_life(seconds_per_tick)
 	regain_gnosis_process(seconds_per_tick)
 	// Crinos heal in all forms. Lupus and homid born dont heal FAST FAST in their breed form.
@@ -317,5 +316,3 @@
 
 /mob/living/carbon/human/splat/corax
 	auto_splats = list(/datum/splat/werewolf/shifter/corax)
-
-
