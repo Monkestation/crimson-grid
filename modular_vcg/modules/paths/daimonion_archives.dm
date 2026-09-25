@@ -52,7 +52,7 @@
 /obj/structure/retail/occult/baali/has_purchase_privileges(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
-		return human_user.get_discipline(/datum/discipline/daimoinon)
+		return human_user.get_discipline(/datum/discipline/daimonion)
 
 /obj/structure/retail/occult/baali/proc/calculate_favor(mob/living/carbon/human/sacrificed)
 	var/favor = 25
@@ -126,7 +126,7 @@
 		var/mob/living/carbon/human/human_user = user
 		.["user"]["points"] = human_user.infernal_favor
 		.["user"]["name"] = "[human_user.real_name]"
-		.["user"]["has_daimonion"] = !!human_user.get_discipline(/datum/discipline/daimoinon)
+		.["user"]["has_daimonion"] = !!human_user.get_discipline(/datum/discipline/daimonion)
 		.["user"]["has_privileges"] = has_purchase_privileges(human_user)
 	else
 		.["user"]["points"] = 0

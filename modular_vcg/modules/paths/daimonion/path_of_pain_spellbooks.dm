@@ -5,7 +5,7 @@
 	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	icon_state = "pain_spellbook"
 	path_type = /datum/discipline/path/pain
-	required_discipline = /datum/discipline/daimoinon
+	required_discipline = /datum/discipline/daimonion
 
 /obj/item/path_spellbook/path_of_pain/level1
 	name = "path of pain spellbook (level I)"

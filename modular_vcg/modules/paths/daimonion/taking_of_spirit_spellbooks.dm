@@ -5,7 +5,7 @@
 	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	icon_state = "spirit_spellbook"
 	path_type = /datum/discipline/path/spirit
-	required_discipline = /datum/discipline/daimoinon
+	required_discipline = /datum/discipline/daimonion
 
 /obj/item/path_spellbook/taking_of_spirit/level1
 	name = "taking of spirit spellbook (level I)"
