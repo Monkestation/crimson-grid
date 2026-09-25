@@ -7,13 +7,16 @@ type ServerState = {
   stationName: string;
   canLeaveBody: boolean;
   canAdminHelp: boolean;
+  isMentor: boolean; // DARKPACK EDIT CHANGE - MENTORS
   hasTicketNotification: boolean;
   resources: ResourceLink[];
 };
 
 type Props = {
   serverState: ServerState;
-  onNavigate: (page: 'admin' | 'players' | 'leave_body' | 'quit') => void;
+  onNavigate: (
+    page: 'admin' | 'mentor' | 'players' | 'leave_body' | 'quit', // DARKPACK EDIT CHANGE - MENTORS
+  ) => void;
   onAction: (action: string) => void;
   onClose: () => void;
   showResources: boolean;
@@ -86,6 +89,22 @@ export function HomePage({
           >
             Admin Help
           </MenuButton>
+          {/* DARKPACK EDIT START - MENTORS */}
+          {serverState.isMentor ? (
+            <MenuButton onClick={() => onNavigate('mentor')}>
+              Mentor Help
+            </MenuButton>
+          ) : (
+            <MenuButton
+              onClick={() => {
+                onAction('mentorhelp');
+                onClose();
+              }}
+            >
+              Mentor Help
+            </MenuButton>
+          )}
+          {/* DARKPACK EDIT END */}
           <MenuButton
             onClick={() => onNavigate('leave_body')}
             disabled={!serverState.canLeaveBody}

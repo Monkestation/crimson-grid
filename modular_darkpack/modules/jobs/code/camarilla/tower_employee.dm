@@ -22,7 +22,7 @@
 		"Tower Receptionist",
 	)
 
-	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
+	maximal_generation = 9
 	maximum_immortal_age = 200
 	known_contacts = list(
 		JOB_PRINCE,

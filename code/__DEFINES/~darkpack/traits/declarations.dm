@@ -112,6 +112,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 #define TRAIT_IN_FRENZY "in_frenzy"
 
+// Can't examine people
+#define TRAIT_CANNOT_FOCUS "cannot_focus"
+
 // Is the mob silenced (by Quietus 1 for example)
 #define TRAIT_SILENCED "silenced"
 // is the vampire weak to Dominate?
@@ -174,17 +177,21 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// If the mob can't have surgery done on it. See: Blood form Tzimisce
 #define TRAIT_SURGERY_INAPPLICABLE "surgery_inapplicable"
 // BELOW ARE ALL MERITS/FLAWS
+#define TRAIT_ABYSSAL_EYES "abyssal_eyes"
 #define TRAIT_ACUTE_HEARING "acute_hearing"
+#define TRAIT_AMBIDEXTROUS "ambidextrous"
 #define TRAIT_ANIMAL_MUSK "animal_musk"
 #define TRAIT_ANTHROPIC_TASTE "anthropic_taste"
 #define TRAIT_BANNED_TRANSFORMATION "banned_transformation"
 #define TRAIT_BEACON_OF_THE_UNHOLY "beacon_of_the_unholy"
 #define TRAIT_BETRAYERS_MARK "betrayers_mark"
 #define TRAIT_CALM_HEART "calm_heart"
+#define TRAIT_COLDLY_LOGICAL "coldly_logical"
 #define TRAIT_DISFIGURED_APPEARANCE "disfigured_appearance"
 #define TRAIT_DULLFANGS "dullfangs"
 #define TRAIT_EAT_FOOD "eat_food"
 #define TRAIT_EFFICIENT_DIGESTION "efficient_digestion"
+#define TRAIT_ENCHANTING_VOICE "enchanting_voice"
 #define TRAIT_FAIR_GLABRO "fair_glabro"
 #define TRAIT_GLOWING_EYES "glowing_eyes"
 #define TRAIT_GRAVE_SMELL "grave_smell"
@@ -192,6 +199,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_HORRIFIC_APPEARANCE "horrific_appearance"
 #define TRAIT_HUGE_SIZE "huge_size"
 #define TRAIT_ILLEGAL_IDENTITY "illegal_identity" // GOVERNMENT
+#define TRAIT_IRON_WILL "iron_will"
 #define TRAIT_MERIT_UNTAMABLE "merit_untamable"
 #define TRAIT_METAMORPH "metamorph"
 #define TRAIT_MONSTROUS "monstrous"

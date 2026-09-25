@@ -31,6 +31,8 @@
 	var/hostile = FALSE
 	/// If use of this power creates a visible Masquerade breach.
 	var/violates_masquerade = FALSE
+	/// Can this be used while in frenzy
+	var/frenzy_usable = TRUE
 
 	/* HOW AND WHEN IT'S ACTIVATED AND DEACTIVATED */
 	/// If this Discipline doesn't automatically expire, but rather periodically drains blood.
@@ -70,6 +72,11 @@
 	src.owner = discipline.owner
 
 /datum/discipline_power/Destroy(force)
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled && active)
+		owner?.clear_alert(DISCIPLINE_ACTIVE_ALERT(src))
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
+
 	for(var/timer_id in duration_timers)
 		deltimer(timer_id)
 	duration_timers = null
@@ -269,6 +276,11 @@
 		//feedback is sent by the proc preventing activation
 		return FALSE
 
+	if(!frenzy_usable && HAS_TRAIT(owner, TRAIT_IN_FRENZY))
+		if(alert)
+			to_chat(owner, span_warning("You cannot do this while in frenzy!"))
+		return FALSE
+
 	//can't activate if the owner isn't capable of it
 	if (!can_activate_untargeted(alert))
 		return FALSE
@@ -449,6 +461,13 @@
 
 	do_caster_notification(target)
 	do_logging(target)
+
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled)
+		var/atom/movable/screen/alert/discipline_active/indicator = owner.throw_alert(DISCIPLINE_ACTIVE_ALERT(src), /atom/movable/screen/alert/discipline_active)
+		if (istype(indicator))
+			indicator.set_power(src)
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
 
 	owner.update_action_buttons()
 
@@ -662,6 +681,11 @@
 	if (deactivate_sound)
 		owner.playsound_local(owner, deactivate_sound, 50, FALSE)
 
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled)
+		owner.clear_alert(DISCIPLINE_ACTIVE_ALERT(src))
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
+
 	owner.update_action_buttons()
 
 /**
@@ -725,6 +749,8 @@
 	else
 		to_chat(owner, span_warning("You don't have enough blood to keep [src] active!"))
 		try_deactivate(target)
+
+	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 /**
  * Overridable proc that allows for extra modular code
