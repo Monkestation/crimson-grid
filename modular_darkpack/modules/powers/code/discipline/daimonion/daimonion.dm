@@ -1,5 +1,5 @@
-/datum/discipline/daimoinon
-	name = "Daimoinon"
+/datum/discipline/daimonion
+	name = "Daimonion"
 	desc = {"Draw power from the demons and infernal nature of Hell. Use subtle power to manipulate people and when you must, draw upon fire itself and protect yourself.
 ● Sense the Sin: Perception + Empathy vs. target's Self-Control + 4
 ●● Fear of the Void Below: Wits + Intimidation vs. target's Courage + 4
@@ -8,18 +8,18 @@
 ●●●●● Condemnation: Intelligence + Occult vs. target's Willpower"}
 	icon_state = "daimonion"
 	clan_restricted = TRUE
-	power_type = /datum/discipline_power/daimoinon
+	power_type = /datum/discipline_power/daimonion
 	signature_clan = VAMPIRE_CLAN_BAALI
 
-/datum/discipline_power/daimoinon
-	name = "Daimoinon power name"
-	desc = "Daimoinon power description"
+/datum/discipline_power/daimonion
+	name = "Daimonion power name"
+	desc = "Daimonion power description"
 
 	activate_sound = 'modular_darkpack/modules/deprecated/sounds/protean_activate.ogg'
 	deactivate_sound = 'modular_darkpack/modules/deprecated/sounds/protean_deactivate.ogg'
 
 //SENSE THE SIN
-/datum/discipline_power/daimoinon/sense_the_sin
+/datum/discipline_power/daimonion/sense_the_sin
 	name = "Sense the Sin"
 	desc = "Sense the sins and cruelties of your victim."
 
@@ -37,7 +37,7 @@
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
 	roll_output_type = ROLL_PRIVATE
 
-/datum/discipline_power/daimoinon/sense_the_sin/pre_activation_checks(mob/living/target)
+/datum/discipline_power/daimonion/sense_the_sin/pre_activation_checks(mob/living/target)
 	if(!sense_the_sin_roll)
 		sense_the_sin_roll = new()
 	sense_the_sin_roll.difficulty = max(target.st_get_stat(STAT_SELF_CONTROL), target.st_get_stat(STAT_INSTINCT)) + 4
@@ -47,7 +47,7 @@
 	else
 		return TRUE
 
-/datum/discipline_power/daimoinon/sense_the_sin/activate(mob/living/carbon/human/target)
+/datum/discipline_power/daimonion/sense_the_sin/activate(mob/living/carbon/human/target)
 	. = ..()
 	if(target.st_get_stat(STAT_CHARISMA) <= 2)
 		to_chat(owner, span_notice("They are not social or influencing."))
@@ -99,7 +99,7 @@
 				return
 			*/
 
-/datum/discipline_power/daimoinon/sense_the_sin/proc/baali_get_stolen_disciplines(mob/living/target, mob/living/owner)
+/datum/discipline_power/daimonion/sense_the_sin/proc/baali_get_stolen_disciplines(mob/living/target, mob/living/owner)
 	if(!owner || !target)
 		return
 	var/datum/splat/vampire/kindred/vampire = get_kindred_splat(target)
@@ -117,7 +117,7 @@
 			to_chat(owner, span_warning("[target] has stolen [discipline.name]!"))
 
 //FEAR OF THE VOID BELOW
-/datum/discipline_power/daimoinon/fear_of_the_void_below
+/datum/discipline_power/daimonion/fear_of_the_void_below
 	name = "Fear of the Void Below"
 	desc = "Induce fear in a target."
 
@@ -149,7 +149,17 @@
 	numerical = TRUE
 // CRIMSON GRID ADD END: DARK THAUMATURGY
 
-/datum/discipline_power/daimoinon/fear_of_the_void_below/activate(mob/living/carbon/human/target)
+/datum/discipline_power/daimonion/fear_of_the_void_below/pre_activation_checks(mob/living/target)
+	if(!fear_of_the_void_below_roll)
+		fear_of_the_void_below_roll = new()
+	fear_of_the_void_below_roll.difficulty = target.st_get_stat(STAT_COURAGE) + 4
+	var/roll = fear_of_the_void_below_roll.st_roll(owner, target)
+	if(roll != ROLL_SUCCESS)
+		to_chat(owner, span_warning("[target] has too much willpower to induce fear into them!"))
+		return FALSE
+	return TRUE
+
+/datum/discipline_power/daimonion/fear_of_the_void_below/activate(mob/living/carbon/human/target)
 	. = ..()
 	// CRIMSON GRID ADD: DARK THAUMATURGY
 	if(!fear_of_the_void_below_roll)
@@ -184,7 +194,7 @@
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 //CONFLAGRATION
-/datum/discipline_power/daimoinon/conflagration
+/datum/discipline_power/daimonion/conflagration
 	name = "Conflagration"
 	desc = "Draw out the destructive essence of the Beyond."
 
@@ -202,6 +212,7 @@
 	damage = 40 //CRIMSON GRID ADD: DARK THAUMATURGY
 	damage_type = BURN // CRIMSON GRID ADD END: DARK THAUMATURGY
 
+
 /datum/discipline_power/daimoinon/conflagration/activate(atom/target)
 	. = ..()
 	var/turf/start = get_turf(owner)
@@ -211,7 +222,7 @@
 	created_fireball.fire(angle, target)
 
 //PSYCHOMANIA
-/datum/discipline_power/daimoinon/psychomania
+/datum/discipline_power/daimonion/psychomania
 	name = "Psychomania"
 	desc = "Bring forth the target's greatest fear."
 
@@ -230,7 +241,7 @@
 	bumper_text = "psychomania"
 	roll_output_type = ROLL_PRIVATE
 
-/datum/discipline_power/daimoinon/psychomania/pre_activation_checks(mob/living/target)
+/datum/discipline_power/daimonion/psychomania/pre_activation_checks(mob/living/target)
 	if(!psychomania_roll)
 		psychomania_roll = new()
 
@@ -257,7 +268,7 @@
 	to_chat(owner, span_warning("[target] is too pure to manifest their fears!"))
 	return FALSE
 
-/datum/discipline_power/daimoinon/psychomania/activate(mob/living/target)
+/datum/discipline_power/daimonion/psychomania/activate(mob/living/target)
 	. = ..()
 
 	var/datum/splat/werewolf/shifter/garou_splat = get_shifter_splat(target)
@@ -275,13 +286,13 @@
 	RegisterSignal(demon, COMSIG_BAALI_DEMON_REACHED_TARGET, PROC_REF(on_demon_contact))
 	return
 
-/datum/discipline_power/daimoinon/psychomania/proc/on_demon_contact(obj/effect/client_image_holder/baali_demon/source, mob/living/victim)
+/datum/discipline_power/daimonion/psychomania/proc/on_demon_contact(obj/effect/client_image_holder/baali_demon/source, mob/living/victim)
 	SIGNAL_HANDLER
 	source.on_contact(victim)
 	step_away(victim, get_turf(source))
 
 //CONDEMNATION
-/datum/discipline_power/daimoinon/condemnation
+/datum/discipline_power/daimonion/condemnation
 	name = "Condemnation"
 	desc = "Condemn a soul to suffering."
 
@@ -300,7 +311,7 @@
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
 	roll_output_type = ROLL_PRIVATE
 
-/datum/discipline_power/daimoinon/condemnation/activate(mob/living/target)
+/datum/discipline_power/daimonion/condemnation/activate(mob/living/target)
 	. = ..()
 
 	if(target.has_status_effect(/datum/status_effect/condemnation))
