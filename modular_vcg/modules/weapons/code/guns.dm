@@ -41,9 +41,6 @@
 /obj/item/gun/ballistic/automatic/darkpack/ar15
 	recoil = 3
 
-/obj/item/gun/ballistic/automatic/darkpack/fal
-	recoil = 3
-
 /obj/item/gun/ballistic/automatic/darkpack/huntrifle
 	recoil = 1
 
