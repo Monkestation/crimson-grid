@@ -289,6 +289,11 @@
 	if(safety)
 		return NONE
 
+//DARKPACK EDIT ADD - Rotshreck vampires should run from fire not extinguish it. (Technically other forms of frenzy are affected by this, but they shouldn't be thinking complexly enough to extinguish fire anyways.)
+	if (HAS_TRAIT(user, TRAIT_IN_FRENZY))	
+		balloon_alert(user, "you can't do this in frenzy!")
+		return .
+// DARKPACK EDIT ADD END
 	if (src.reagents.total_volume < 1)
 		balloon_alert(user, "it's empty!")
 		return .

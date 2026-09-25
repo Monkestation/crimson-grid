@@ -59,6 +59,7 @@
 	name = "Dominate power name"
 	desc = "Dominate power description"
 	vitae_cost = 0 //No Dominate 1-5 abilities cost blood.
+	frenzy_usable = FALSE
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/dominate.ogg'
 
@@ -115,6 +116,9 @@
 
 	var/theirpower = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
 
+	if(HAS_TRAIT(target, TRAIT_IRON_WILL))
+		theirpower += 3
+
 	//tremere have built-in safeguards to easily dominate their stone servitors
 	if(HAS_TRAIT(target, TRAIT_WEAK_TO_DOMINATE))
 		theirpower -= 2
@@ -122,8 +126,14 @@
 	if(HAS_TRAIT(target, TRAIT_WEAK_WILLED))
 		theirpower -= 2
 
+	if(HAS_TRAIT(target, TRAIT_IN_FRENZY))
+		theirpower += 2
+
 	if((!(owner.obscured_slots & HIDEFACE))&(HAS_TRAIT(owner, TRAIT_DISFIGURED_APPEARANCE))) // Are we visibly disfigured?
 		theirpower += 2
+
+	if(HAS_TRAIT(owner, TRAIT_ENCHANTING_VOICE))
+		theirpower -= 2
 
 	if(!get_kindred_splat(target)) // Is our target mortal?
 		if(HAS_TRAIT(owner, TRAIT_GRAVE_SMELL)) // Are we stinky?

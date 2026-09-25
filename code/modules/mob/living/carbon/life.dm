@@ -362,6 +362,7 @@
 		// Enough to make the mob sleep.
 		if(n2o_pp > n2o_sleep_min)
 			Sleeping(max(AmountSleeping() + 40, 200))
+		breath_moles[/datum/gas/nitrous_oxide] -= breath_moles[/datum/gas/nitrous_oxide] //DARKPACK EDIT ADD - N2O Self-consumes
 	else if(n2o_pp > 0.01)
 		// No alert for small amounts, but the mob randomly feels euphoric.
 		if(prob(20))

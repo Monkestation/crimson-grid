@@ -92,7 +92,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	back = /obj/item/storage/backpack/satchel
 	glasses = /obj/item/clothing/glasses/sunglasses
-	head = /obj/item/clothing/head/vampire/pentex_yellowhardhat
+	head = /obj/item/clothing/head/vampire/hardhat/pentex_yellow
 	r_hand = /obj/item/gun/ballistic/shotgun/vampire
 	back = /obj/item/storage/backpack/satchel
 	backpack_contents = list(
@@ -112,7 +112,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	back = /obj/item/storage/backpack/satchel
 	glasses = /obj/item/clothing/glasses/sunglasses
-	head = /obj/item/clothing/head/vampire/pentex_whitehardhat
+	head = /obj/item/clothing/head/vampire/hardhat/pentex_white
 	belt = /obj/item/gun/ballistic/automatic/darkpack/huntrifle
 	back = /obj/item/storage/backpack/satchel
 	backpack_contents = list(
