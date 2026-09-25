@@ -12,8 +12,13 @@
 	. = ..()
 	. += span_notice("You are currently [user.visible_to_sky() ? "visible" : "not visible"] to the sun.")
 	if(get_kindred_splat(user))
-		. += span_warning("The sun will sear your flesh and bring final death.")
-
+//CRIMSON GRID EDIT ADD PR: Humanity 10 Vamps can walk under the Sun CHANGE: Made it clearer if you can walk under the sun or not.
+		var/mob/living/kindred = user
+		if(!kindred.is_enlightenment() && (kindred.st_get_stat(STAT_MORALITY)>=10))
+			. += span_green("Your dedication perserves you. For this few minutes the Sun shall not sear you")
+		else
+			. += span_warning("The sun will sear your flesh and bring final death.")
+//CRIMSON GRID EDIT END
 /datum/status_effect/sunlight_burning
 	id = "sunlight_burning"
 	alert_type = /atom/movable/screen/alert/status_effect/sunlight_burning

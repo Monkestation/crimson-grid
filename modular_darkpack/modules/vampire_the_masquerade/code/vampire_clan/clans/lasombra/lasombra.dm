@@ -39,11 +39,11 @@
 	var/gibberish_message = ""
 	var/total_stats = 0
 	if(istype(lasombra))
-		total_stats = lasombra.st_get_stat(STAT_TECHNOLOGY) * 3 // +3% chance per tech. 15 max, 18 avg, 24 beauty.9
+		total_stats = lasombra.st_get_stat(STAT_TECHNOLOGY) * 2 + lasombra.st_get_stat(STAT_OCCULT) * 2 // +2% for every stat, max 100% //CRIMSON EDIT — Original:total_stats = lasombra.st_get_stat(STAT_TECHNOLOGY) * 3
 	for(var/i = 1 to length(message))
 		var/char = message[i]
 		// Randomize or replace characters with gibberish
-		var/chance = 70 + total_stats // 70% + total_stats chance per point of social to keep intact.
+		var/chance = 80 + total_stats // 80% + total_stats, // CRIMSON EDIT — Original: 70 + total_stats
 		if(prob(chance))
 			gibberish_message += char
 		else

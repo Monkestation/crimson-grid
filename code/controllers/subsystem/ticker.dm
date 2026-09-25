@@ -79,6 +79,7 @@ SUBSYSTEM_DEF(ticker)
 	var/atom/movable/screen/reboot_timer/reboot_hud
 	/// ID of round reboot timer, if it exists
 	var/reboot_timer = null
+	var/real_round_start_time = 0 // CRIMSON EDIT ADDITION
 
 /datum/controller/subsystem/ticker/Initialize()
 	var/list/provisional_title_music = flist("[global.config.directory]/title_music/sounds/")
@@ -136,9 +137,18 @@ SUBSYSTEM_DEF(ticker)
 			for(var/channel_tag in CONFIG_GET(str_list/channel_announce_new_game))
 				send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), channel_tag)
 
+			// CRIMSON EDIT ADDITION START
+			for(var/client/C in GLOB.clients)
+				C.playtitlemusic()
+			// CRIMSON EDIT ADDITION END
+
 			current_state = GAME_STATE_PREGAME
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 			fire()
+			// CRIMSON EDIT ADD START - lobby_notices
+			if (length(config.lobby_notices))
+				config.ShowLobbyNotices(world)
+			// CRIMSON END ADD
 		if(GAME_STATE_PREGAME)
 			//lobby stats for statpanels
 			totalPlayers = LAZYLEN(GLOB.new_player_list)
@@ -187,6 +197,7 @@ SUBSYSTEM_DEF(ticker)
 				toggle_dooc(TRUE)
 				declare_completion(force_ending)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
+				SEND_SIGNAL(src, COMSIG_TICKER_ROUND_ENDED) // CRIMSON EDIT ADDITION
 
 		if(GAME_STATE_FINISHED)
 			if(ready_for_reboot)
@@ -281,6 +292,7 @@ SUBSYSTEM_DEF(ticker)
 
 	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
 	round_start_timeofday = world.timeofday // DARKPACK EDIT ADD
+	real_round_start_time = REALTIMEOFDAY // CRIMSON EDIT ADDITION
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
@@ -499,7 +511,7 @@ SUBSYSTEM_DEF(ticker)
 		shuffle(GLOB.available_depts),
 	)
 
-	var/captainless = TRUE
+	// var/captainless = TRUE // CRIMSON EDIT REMOVAL
 
 	var/highest_rank = length(SSjob.chain_of_command) + 1
 	var/list/spare_id_candidates = list()
@@ -544,7 +556,7 @@ SUBSYSTEM_DEF(ticker)
 			SSjob.equip_rank(new_player_living, player_assigned_role, new_player_mob.client)
 		player_assigned_role.after_roundstart_spawn(new_player_living, new_player_mob.client)
 		if(picked_spare_id_candidate == new_player_mob)
-			captainless = FALSE
+			// captainless = FALSE // CRIMSON EDIT REMOVAL
 			var/acting_captain = !is_captain_job(player_assigned_role)
 			SSjob.promote_to_captain(new_player_living, acting_captain)
 			OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce), player_assigned_role.get_captaincy_announcement(new_player_living)))
@@ -561,12 +573,14 @@ SUBSYSTEM_DEF(ticker)
 			SEND_SIGNAL(new_player_living, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
 		CHECK_TICK
 
+	/* // CRIMSON EDIT REMOVAL START
 	if(captainless)
 		for(var/mob/dead/new_player/new_player_mob as anything in GLOB.new_player_list)
 			var/mob/living/carbon/human/new_player_human = new_player_mob.new_character
 			if(new_player_human)
 				to_chat(new_player_mob, span_notice("Captainship not forced on anyone."))
 			CHECK_TICK
+	*/
 
 
 /datum/controller/subsystem/ticker/proc/decide_security_officer_departments(
@@ -695,6 +709,7 @@ SUBSYSTEM_DEF(ticker)
 				Master.SetRunLevel(RUNLEVEL_GAME)
 			if(GAME_STATE_FINISHED)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
+				SEND_SIGNAL(src, COMSIG_TICKER_ROUND_ENDED) // CRIMSON EDIT ADDITION
 
 /datum/controller/subsystem/ticker/proc/send_news_report()
 	var/news_message

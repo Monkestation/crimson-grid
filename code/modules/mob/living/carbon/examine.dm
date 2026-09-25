@@ -321,6 +321,11 @@
 		ADD_NEWLINE_IF_NECESSARY(.)
 		. += "<b>Quirks:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]"
 
+	// CRIMSON EDIT ADD START
+	if((isobserver(user) || isrevenant(user)) && user.invisibility <= see_invisible)
+		. += span_revennotice("[t_He] can see you!")
+	// CRIMSON EDIT ADD END
+
 	SEND_SIGNAL(src, COMSIG_ATOM_EXAMINE, user, .)
 	if(length(.))
 		.[1] = "<span class='info'>" + .[1]

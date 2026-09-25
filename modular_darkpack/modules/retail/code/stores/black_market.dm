@@ -2,10 +2,11 @@
 /obj/structure/retail/black_market
 	products_list = list(
 		new /datum/data/vending_product("lighter", /obj/item/lighter/greyscale, 10),
+		new /datum/data/vending_product("rolling paper", /obj/item/rollingpaper, 10), // CRIMSON EDIT ADD - Shop Inventories Additions
 		new /datum/data/vending_product("zippo lighter", /obj/item/lighter, 20),
 		new /datum/data/vending_product("Bailer", /obj/item/reagent_containers/cup/watering_can/metal, 20),
 		new /datum/data/vending_product("Weed Seed", /obj/item/seeds/cannabis, 20),
-		new /datum/data/vending_product("cannabis puff", /obj/item/cigarette/rollie/cannabis, 40),
+		new /datum/data/vending_product("cannabis joint", /obj/item/cigarette/rollie/cannabis, 40), // CRIMSON EDIT - Shop Inventories Additions - Original: "cannabis puff"
 		new /datum/data/vending_product("bong", /obj/item/bong, 50),
 		new /datum/data/vending_product("lockpick", /obj/item/vamp/keys/hack, 50),
 		new /datum/data/vending_product("LSD pill bottle", /obj/item/storage/pill_bottle/lsd, 50),
@@ -13,15 +14,21 @@
 		new /datum/data/vending_product("switchblade", /obj/item/switchblade/vamp, 85),
 		new /datum/data/vending_product("knuckledusters", /obj/item/clothing/gloves/vampire/brassknuckles, 100),
 		new /datum/data/vending_product("stake", /obj/item/vampire_stake, 100),
+		new /datum/data/vending_product("duffelbag", /obj/item/storage/backpack/duffelbag,	100), // CRIMSON EDIT ADD - Adds Duffelbags to Black Market
 		new /datum/data/vending_product("Surgery dufflebag", /obj/item/storage/backpack/duffelbag/sec/surgery, 100),
 		new /datum/data/vending_product("Handcuffs", /obj/item/restraints/handcuffs, 50),
 		new /datum/data/vending_product("Black bag", /obj/item/clothing/head/vampire/blackbag, 50),
 		new /datum/data/vending_product("snub-nose revolver", /obj/item/gun/ballistic/revolver/darkpack/snub, 100),
 		new /datum/data/vending_product("Braddock .45 submachine gun", /obj/item/gun/ballistic/automatic/darkpack/mac10, 1200),
+		new /datum/data/vending_product("Braddock .45 magazine", /obj/item/ammo_box/magazine/darkpack45smg, 300), // CRIMSON EDIT ADD - Braddock Mags Buyable
 		new /datum/data/vending_product("cannabis package", /obj/item/food/grown/cannabis, 700),
 		new /datum/data/vending_product("morphine syringe", /obj/item/reagent_containers/syringe/contraband/morphine, 800),
 		new /datum/data/vending_product("meth package", /obj/item/reagent_containers/cup/glass/baggie/meth, 800),
 		new /datum/data/vending_product("cocaine package", /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine, 800),
+// CRIMSON EDIT ADD START - Medkit to Pharmacy
+		new /datum/data/vending_product("Compact Medical Kit", /obj/item/storage/medkit/tactical_lite, 1125),
+		new /datum/data/vending_product("Coroner's Surgical Kit", /obj/item/storage/medkit/coroner, 750),
+// CRIMSON EDIT ADD END - Medkit to Pharmacy
 		new /datum/data/vending_product("silver 9mm ammo", /obj/item/ammo_box/darkpack/c9mm/silver, 5000),
 		new /datum/data/vending_product("silver .45 ACP ammo", /obj/item/ammo_box/darkpack/c45acp/silver, 6000),
 		new /datum/data/vending_product("silver .44 ammo", /obj/item/ammo_box/darkpack/c44/silver, 7000),

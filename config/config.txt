@@ -12,6 +12,9 @@ $include map_vote.txt
 ## DARKPACK EDIT ADD START
 $include darkpack_config.txt
 ## DARKPACK EDIT ADD END
+## CRIMSON EDIT ADD START
+$include crimson/config.txt
+## CRIMSON EDIT ADD END
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
@@ -183,6 +186,9 @@ IPINTEL_REJECT_BAD
 
 ## Set to prevent anyone but those ckeys listed in config/whitelist.txt and config/admins.txt from joining your server
 #USEWHITELIST
+
+### CRIMSON EDIT ADDITION - Set to enable donators and people with byond memberships through the whitelist.
+#WHITELIST_ALLOW_DONATORS
 
 ## The address shown for the game server in the TGS check command
 # PUBLIC_ADDRESS ss13.example.com:2506

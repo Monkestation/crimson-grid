@@ -24,9 +24,11 @@
 
 	to_chat(owner, span_notice("You feel your skin thickening..."))
 	owner.add_traits(list(TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), GIFT_TRAIT)
+	owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 /datum/status_effect/resist_pain/on_remove()
 	owner.remove_traits(list(TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), GIFT_TRAIT)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	to_chat(owner, span_warning("Your skin is thin again..."))
 
 	return ..()
@@ -109,6 +111,10 @@
 		to_chat(owner, span_purple("[victim] smells like kin[secondary_descriptor ? "...<br>...and of [secondary_descriptor]." : "."]"))
 	else
 		var/successes = SSroll.storyteller_roll_datum(owner, null, /datum/storyteller_roll/gift/scent_of_the_true_form, bonus = PRIMAL_URGE_PLACEHOLDER)
+		// CRIMSON EDIT ADD START - true_form oversuccess fix
+		if (successes > 4)
+			successes = 4
+		// CRIMSON EDIT ADD END - true_form oversuccess fix
 		switch(successes)
 			if(0)
 				to_chat(owner, span_purple("You can't exactly tell what [victim] smells like."))
@@ -116,7 +122,7 @@
 				to_chat(owner, span_purple("[victim] smells mundane."))
 			if(2 to 3)
 				if(get_kindred_splat(victim))
-					to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
+					to_chat(owner, span_purple("[victim] smells of [HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT) ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 				if(get_shifter_splat(victim) && !get_garou_splat(victim))
 					to_chat(owner, span_purple("They smell of kin, but not Garou."))
 //				if(ishungrydead(victim))
@@ -131,7 +137,7 @@
 					to_chat(owner, span_purple("[victim] smells mundane."))
 			if(4)
 				if(get_kindred_splat(victim))
-					to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
+					to_chat(owner, span_purple("[victim] smells of [HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT) ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 				if(get_ghoul_splat(victim))
 					to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 				if(get_shifter_splat(victim) && !get_garou_splat(victim))
