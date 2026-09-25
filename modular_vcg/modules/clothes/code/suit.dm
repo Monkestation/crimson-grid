@@ -81,75 +81,75 @@
 
 /obj/item/clothing/suit/vampire/jacket
 	armor_type = /datum/armor/Class_1
-	slowdown = .2
+	slowdown = 0.2
 
 /obj/item/clothing/suit/vampire/jacket/fbi
 	armor_type = /datum/armor/Class_2
-	slowdown = .4
+	slowdown = 0.4
 
-/obj/item/clothing/suit/vampire/jacket/punk
+obj/item/clothing/suit/vampire/jacket/punk
 	armor_type = /datum/armor/Class_2
-	slowdown = .4
+	slowdown = 0.4
 
-/obj/item/clothing/suit/vampire/jacket/better
+obj/item/clothing/suit/vampire/jacket/better
 	armor_type = /datum/armor/Class_2
-	slowdown = .4
+	slowdown = 0.4
 
-/obj/item/clothing/suit/vampire/jacket/better/armored
+obj/item/clothing/suit/vampire/jacket/better/armored
 	armor_type = /datum/armor/Class_3
-	slowdown = .4
+	slowdown = 0.4
 
-/obj/item/clothing/suit/vampire/trench/alt/armored
+obj/item/clothing/suit/vampire/trench/alt/armored
 	armor_type = /datum/armor/Class_3
-	slowdown = .4
+	slowdown = 0.4
 
-/obj/item/clothing/suit/vampire/trench/armored
+obj/item/clothing/suit/vampire/trench/armored
 	armor_type = /datum/armor/Class_3
-	slowdown = .4
+	slowdown = 0.4
 
-/obj/item/clothing/suit/vampire/trench
+obj/item/clothing/suit/vampire/trench
 	armor_type = /datum/armor/Class_1
-	slowdown = .2
+	slowdown = 0.2
 
-/obj/item/clothing/suit/vampire/trench/voivode
+obj/item/clothing/suit/vampire/trench/voivode
 	armor_type = /datum/armor/Class_4
-	slowdown = .6
+	slowdown = 0.6
 
-/obj/item/clothing/suit/vampire/vest
+obj/item/clothing/suit/vampire/vest
 	armor_type = /datum/armor/Class_3
-	slowdown = .2
+	slowdown = 0.2
 
-/obj/item/clothing/suit/vampire/vest/medieval
+obj/item/clothing/suit/vampire/vest/medieval
 	armor_type = /datum/armor/Class_3
-	slowdown = .4
+	slowdown = 0.4
 
-/obj/item/clothing/suit/vampire/vest/police/captain
+obj/item/clothing/suit/vampire/vest/police/captain
 	armor_type = /datum/armor/Class_4
-	slowdown = .2
+	slowdown = 0.2
 
-/obj/item/clothing/suit/vampire/vest/army
+obj/item/clothing/suit/vampire/vest/army
 	armor_type = /datum/armor/Class_4
-	slowdown = .4
+	slowdown = 0.4
 
-/obj/item/clothing/suit/vampire/eod
+obj/item/clothing/suit/vampire/eod
 	armor_type = /datum/armor/Class_5
-	slowdown = .6
+	slowdown = 0.6
 
-/obj/item/clothing/suit/vampire/bogatyr
+obj/item/clothing/suit/vampire/bogatyr
 	armor_type = /datum/armor/Class_3
-	slowdown = .4
+	slowdown = 0.4
 
 /obj/item/clothing/suit/vampire/bogatyr/captain
 	armor_type = /datum/armor/Class_4
-	slowdown = .6
+	slowdown = 0.6
 
 /obj/item/clothing/suit/vampire/bogatyr/captain/heavy
 	armor_type = /datum/armor/Class_5
-	slowdown = .6
+	slowdown = 0.6
 
 /obj/item/clothing/suit/vampire/bogatyr/heavy
 	armor_type = /datum/armor/Class_5
-	slowdown = .8
+	slowdown = 0.8
 
 /obj/item/clothing/suit/vampire/labcoat
 	armor_type = /datum/armor/vampire_suit
