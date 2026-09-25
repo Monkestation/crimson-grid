@@ -68,7 +68,7 @@
 	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary
-	Damage = 28
+	damage = 28
 
 // .50 BMG
 /obj/projectile/bullet/darkpack/vamp50
