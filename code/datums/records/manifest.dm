@@ -116,7 +116,26 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	var/obj/item/card/id/id_card = person.get_idcard(hand_first = FALSE)
 	var/assignment = id_card?.get_trim_assignment() || person.mind.assigned_role.title
 
-	var/mutable_appearance/character_appearance = new(appearance_proxy?.appearance || person.appearance)
+	// CRIMSON GRID EDIT - Security console and records
+	if(!person_client)
+		person_client = person.client
+
+	var/mutable_appearance/character_appearance
+	if(appearance_proxy)
+		character_appearance = new(appearance_proxy.appearance)
+	else if(person_client)
+		var/mob/living/carbon/human/dummy/consistent/dummy = new
+		person_client.prefs.safe_transfer_prefs_to(dummy)
+		dummy.set_clan(null)
+		dummy.dress_up_as_job(SSjob.get_job_type(/datum/job/vampire/citizen), visual_only = TRUE, player_client = person_client, consistent = TRUE)
+		qdel(dummy.back)
+		qdel(dummy.head)
+		qdel(dummy.wear_mask)
+		qdel(dummy.wear_neck)
+		character_appearance = new(dummy.appearance)
+		qdel(dummy)
+	// CRIMSON GRID EDIT END
+
 	var/person_gender = "Other"
 	if(person.gender == "male")
 		person_gender = "Male"
@@ -150,7 +169,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	new /datum/record/crew(
 		age = person.age,
 		blood_type = person.get_bloodtype()?.name || "UNKNOWN",
-		character_appearance = null, // DARKPACK EDIT - RECORDS, ORIGINAL: character_appearance = character_appearance
+		character_appearance = character_appearance,
 		dna_string = record_dna.unique_enzymes,
 		fingerprint = md5(record_dna.unique_identity),
 		gender = person_gender,

@@ -316,7 +316,7 @@
 					return
 
 				if(new_status == WANTED_ARREST)
-					var/datum/crime/new_crime = new(author = human_user, details = "Set by SecHUD.")
+					var/datum/crime/new_crime = new(author = human_user.real_name, details = "Set by SecHUD.")  // CRIMSON GRID EDIT - Security console and records
 					target_record.crimes += new_crime
 					investigate_log("SecHUD auto-crime | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
 
