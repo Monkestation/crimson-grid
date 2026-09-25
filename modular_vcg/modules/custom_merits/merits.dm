@@ -31,3 +31,13 @@
 	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL)
 	failure_message = "You feel your teeth becoming normal again."
 
+/datum/quirk/darkpack/wyrmtainted
+	name = "Wyrm Tainted"
+	desc = "Due to some supernatural accident, an unfortunate quirk of heredity, or whatever reason, you have the stink of the Wyrm, a God of destruction in the eyes of most shapeshifters. Some shapeshifters are able to notice your stink and may seek to KILL you for your association with the Wyrm."
+	value = -1
+	mob_trait = TRAIT_WYRMTAINTED
+	gain_text = span_notice("You feel tainted.")
+	lose_text = span_notice("You don't feel tainted anymore.")
+	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINFOLK)
+	icon = FA_ICON_WORM
+	failure_message = "You don't feel tainted anymore."
