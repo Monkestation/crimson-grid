@@ -17,6 +17,7 @@
 	owner.apply_status_effect(/datum/status_effect/grouped/static_look, TRAIT_STATUS_EFFECT(id))
 	owner.add_blocked_language(subtypesof(/datum/language), language_flags = UNDERSTOOD_LANGUAGE, source = id)
 	owner.add_traits(frenzy_traits, TRAIT_STATUS_EFFECT(id))
+	owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	return TRUE
 
 /datum/status_effect/frenzy/on_creation(mob/living/new_owner, atom/frenzy_target)
@@ -44,6 +45,7 @@
 	owner.remove_status_effect(/datum/status_effect/grouped/see_no_names, TRAIT_STATUS_EFFECT(id))
 	owner.remove_status_effect(/datum/status_effect/grouped/static_look, TRAIT_STATUS_EFFECT(id))
 	owner.remove_blocked_language(subtypesof(/datum/language), language_flags = UNDERSTOOD_LANGUAGE, source = id)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	owner.remove_traits(frenzy_traits, TRAIT_STATUS_EFFECT(id))
 	var/mob/living/carbon/carbon_owner = astype(owner)
 	carbon_owner?.exit_frenzy_mode()
