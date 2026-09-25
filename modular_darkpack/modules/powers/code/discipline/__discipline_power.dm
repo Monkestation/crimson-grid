@@ -31,6 +31,8 @@
 	var/hostile = FALSE
 	/// If use of this power creates a visible Masquerade breach.
 	var/violates_masquerade = FALSE
+	/// Can this be used while in frenzy
+	var/frenzy_usable = TRUE
 
 	/* HOW AND WHEN IT'S ACTIVATED AND DEACTIVATED */
 	/// If this Discipline doesn't automatically expire, but rather periodically drains blood.
@@ -272,6 +274,11 @@
 		signal_return |= SEND_SIGNAL(target, COMSIG_POWER_TRY_ACTIVATE_ON, src)
 	if (signal_return & POWER_PREVENT_ACTIVATE)
 		//feedback is sent by the proc preventing activation
+		return FALSE
+
+	if(!frenzy_usable && HAS_TRAIT(owner, TRAIT_IN_FRENZY))
+		if(alert)
+			to_chat(owner, span_warning("You cannot do this while in frenzy!"))
 		return FALSE
 
 	//can't activate if the owner isn't capable of it
@@ -742,6 +749,8 @@
 	else
 		to_chat(owner, span_warning("You don't have enough blood to keep [src] active!"))
 		try_deactivate(target)
+
+	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 /**
  * Overridable proc that allows for extra modular code
