@@ -3,11 +3,11 @@
 	desc = "A path of Dark Thaumaturgy that allows the manipulation of pain. Violates Masquerade."
 	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	icon_state = "pain"
-	power_type = /datum/discipline_power/dark_thaumaturgy/path/pain
+	power_type = /datum/discipline_power/daimonion/path/pain
 
-/datum/discipline_power/dark_thaumaturgy/path/pain
-	name = "Dark Thaumaturgy: Path of Pain Power Name"
-	desc = "Dark Thaumaturgy: Path of Pain Power Description"
+/datum/discipline_power/daimonion/path/pain
+	name = "Daimonion: Path of Pain Power Name"
+	desc = "Daimonion: Path of Pain Power Description"
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/thaum.ogg'
 
@@ -25,7 +25,7 @@
 	numerical = TRUE
 	roll_output_type = ROLL_PRIVATE_AND_TARGET
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/activate(atom/target)
+/datum/discipline_power/daimonion/path/pain/activate(atom/target)
 	. = ..()
 	success_count = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/path_of_pain, difficulty = (level + 3))
 	if(success_count < 0)
@@ -38,10 +38,10 @@
 		return TRUE
 	return FALSE
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/proc/pain_botch_effect()
+/datum/discipline_power/daimonion/path/pain/proc/pain_botch_effect()
 	owner.apply_status_effect(/datum/status_effect/pain_botch)
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/numbing
+/datum/discipline_power/daimonion/path/pain/numbing
 	name = "Numbing"
 	desc = "Become one with pain, ignoring the negative effects of pain as you become wounded."
 
@@ -50,7 +50,7 @@
 	hostile = FALSE
 	duration_length = 1 SCENES
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/numbing/activate(atom/target)
+/datum/discipline_power/daimonion/path/pain/numbing/activate(atom/target)
 	if(..())
 		return
 	ADD_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES, PATH_OF_PAIN_TRAIT)
@@ -61,7 +61,7 @@
 	owner.visible_message(span_notice("[owner] twitches in pleasure!"), \
 			span_notice("You twitch in pleasure!"))
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/numbing/deactivate(atom/target)
+/datum/discipline_power/daimonion/path/pain/numbing/deactivate(atom/target)
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES, PATH_OF_PAIN_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_AGEUSIA, PATH_OF_PAIN_TRAIT)
@@ -69,7 +69,7 @@
 	REMOVE_TRAIT(owner, TRAIT_NOSOFTCRIT, PATH_OF_PAIN_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_NOHARDCRIT, PATH_OF_PAIN_TRAIT)
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/anguish
+/datum/discipline_power/daimonion/path/pain/anguish
 	name = "Anguish"
 	desc = "Infict pain upon another, causing them to writhe in agony."
 	level = 2
@@ -77,12 +77,12 @@
 	target_type = TARGET_MOB
 	aggravating = FALSE
 	grouped_powers = list(
-		/datum/discipline_power/dark_thaumaturgy/path/pain/shattering,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths
+		/datum/discipline_power/daimonion/path/pain/shattering,
+		/datum/discipline_power/daimonion/path/pain/agony_within,
+		/datum/discipline_power/daimonion/path/pain/hundred_deaths
 	)
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/anguish/activate(mob/living/target)
+/datum/discipline_power/daimonion/path/pain/anguish/activate(mob/living/target)
 	if(..())
 		return
 	var/stamina_loss = success_count TTRPG_DAMAGE
@@ -94,18 +94,18 @@
 		owner.visible_message(span_notice("[owner] grabs their chest in pain!"), \
 			span_notice("You grab your chest, feeling burning pain!"))
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/shattering
+/datum/discipline_power/daimonion/path/pain/shattering
 	name = "Shattering"
 	desc = "Inflict sigificant wounds upon another, causing them true pain."
 	level = 3
 	target_type = TARGET_MOB
 	grouped_powers = list(
-		/datum/discipline_power/dark_thaumaturgy/path/pain/anguish,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths
+		/datum/discipline_power/daimonion/path/pain/anguish,
+		/datum/discipline_power/daimonion/path/pain/agony_within,
+		/datum/discipline_power/daimonion/path/pain/hundred_deaths
 	)
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/shattering/activate(mob/living/target)
+/datum/discipline_power/daimonion/path/pain/shattering/activate(mob/living/target)
 	if(..())
 		return
 	owner.apply_damage(1 TTRPG_DAMAGE, BRUTE)
@@ -120,18 +120,18 @@
 		owner.visible_message(span_warning("[owner]'s body does a horrifying cracking sound!"), \
 			span_warning("You hear a horrifying cracking sound coming from your body!"))
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within
+/datum/discipline_power/daimonion/path/pain/agony_within
 	name = "Agony Within"
 	desc = "At some personal cost, inflict great pain upon another."
 	level = 4
 	target_type = TARGET_MOB
 	grouped_powers = list(
-		/datum/discipline_power/dark_thaumaturgy/path/pain/anguish,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/shattering,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths
+		/datum/discipline_power/daimonion/path/pain/anguish,
+		/datum/discipline_power/daimonion/path/pain/shattering,
+		/datum/discipline_power/daimonion/path/pain/hundred_deaths
 	)
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within/activate(mob/living/target)
+/datum/discipline_power/daimonion/path/pain/agony_within/activate(mob/living/target)
 	if(..())
 		return
 	var/list/damage_choices = list(0, 10, 20, 30, 40)
@@ -154,18 +154,18 @@
 			span_warning("Blood-thorn threads tear your flesh!"))
 	// There should be fortitude soak too but it's not implemented on cg and I'm not coding it
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths
+/datum/discipline_power/daimonion/path/pain/hundred_deaths
 	name = "Hundred Deaths"
 	desc = "Tear flesh from bones, crush bones, and rip internal organs with a single glance or word"
 	level = 5
 	target_type = TARGET_MOB
 	grouped_powers = list(
-		/datum/discipline_power/dark_thaumaturgy/path/pain/anguish,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/shattering,
-		/datum/discipline_power/dark_thaumaturgy/path/pain/agony_within,
+		/datum/discipline_power/daimonion/path/pain/anguish,
+		/datum/discipline_power/daimonion/path/pain/shattering,
+		/datum/discipline_power/daimonion/path/pain/agony_within,
 	)
 
-/datum/discipline_power/dark_thaumaturgy/path/pain/hundred_deaths/activate(mob/living/target)
+/datum/discipline_power/daimonion/path/pain/hundred_deaths/activate(mob/living/target)
 	var/will_success = SSroll.storyteller_roll_datum(owner, owner, /datum/storyteller_roll/path_of_pain, difficulty = 6)
 	if(will_success <= 0)
 		return

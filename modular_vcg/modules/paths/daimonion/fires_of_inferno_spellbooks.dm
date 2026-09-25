@@ -5,7 +5,7 @@
 	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	icon_state = "inferno_spellbook"
 	path_type = /datum/discipline/path/inferno
-	required_discipline = /datum/discipline/dark_thaumaturgy
+	required_discipline = /datum/discipline/daimoinon
 
 /obj/item/path_spellbook/fires_of_inferno/level1
 	name = "fires of inferno spellbook (level I)"

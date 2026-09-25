@@ -52,7 +52,7 @@
 /obj/structure/retail/occult/baali/has_purchase_privileges(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
-		return human_user.get_discipline(/datum/discipline/dark_thaumaturgy)
+		return human_user.get_discipline(/datum/discipline/daimoinon)
 
 /obj/structure/retail/occult/baali/proc/calculate_favor(mob/living/carbon/human/sacrificed)
 	var/favor = 25
@@ -82,13 +82,13 @@
 				human_user.infernal_favor += calculate_favor(sacrificed_human)
 				var/spawn_point = sacrificed_human.mind.assigned_role.get_roundstart_spawn_point()
 				if(spawn_point)
-					if(HAS_TRAIT_FROM(sacrificed_human, TRAIT_AURA_OF_INFERNO, DARK_THAUMATURGY_TRAIT))
+					if(HAS_TRAIT_FROM(sacrificed_human, TRAIT_AURA_OF_INFERNO, DAIMONION_TRAIT))
 						to_chat(sacrificed_human, span_userdanger("YOUR SOUL IS DRAGGED INTO THE INFERNAL PLANE!"))
 						sacrificed_human.dust(drop_items = TRUE)
 						continue
 					to_chat(sacrificed_human, span_userdanger("SOMETHING TEARS AT YOUR SOUL! THE PAIN!"))
 					sacrificed_human.forceMove(spawn_point)
-					ADD_TRAIT(sacrificed_human, TRAIT_AURA_OF_INFERNO, DARK_THAUMATURGY_TRAIT)
+					ADD_TRAIT(sacrificed_human, TRAIT_AURA_OF_INFERNO, DAIMONION_TRAIT)
 					SEND_SIGNAL(sacrificed_human, COMSIG_MOB_UPDATE_AURA)
 					sacrificed_human.AdjustSleeping(5 SECONDS)
 					addtimer(CALLBACK(src, PROC_REF(on_wake_up), sacrificed_human), 5 SECONDS)
@@ -126,12 +126,12 @@
 		var/mob/living/carbon/human/human_user = user
 		.["user"]["points"] = human_user.infernal_favor
 		.["user"]["name"] = "[human_user.real_name]"
-		.["user"]["has_dark_thaumaturgy"] = !!human_user.get_discipline(/datum/discipline/dark_thaumaturgy)
+		.["user"]["has_daimonion"] = !!human_user.get_discipline(/datum/discipline/daimoinon)
 		.["user"]["has_privileges"] = has_purchase_privileges(human_user)
 	else
 		.["user"]["points"] = 0
 		.["user"]["name"] = "Unknown"
-		.["user"]["has_dark_thaumaturgy"] = FALSE
+		.["user"]["has_daimonion"] = FALSE
 		.["user"]["has_privileges"] = FALSE
 
 	.["product_records"] = list()
