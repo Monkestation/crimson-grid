@@ -29,6 +29,7 @@
 	cancelable = TRUE
 	duration_length = 1 HOURS
 	var/datum/storyteller_roll/hags_wrinkles/hags_wrinkles_roll
+	frenzy_usable = FALSE
 
 /datum/storyteller_roll/hags_wrinkles
 	bumper_text = "hag's wrinkles"
@@ -156,6 +157,7 @@
 	cancelable = TRUE
 	duration_length = 0
 	cooldown_length = 1 TURNS
+	frenzy_usable = FALSE
 
 	var/datum/action/cooldown/spell/shapeshift/samedi_ash/dust_transformation
 

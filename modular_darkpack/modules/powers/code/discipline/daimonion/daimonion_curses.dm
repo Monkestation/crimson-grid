@@ -1,11 +1,11 @@
-/datum/movespeed_modifier/daimoinon_curse
+/datum/movespeed_modifier/daimonion_curse
 	multiplicative_slowdown = 0.4
 
 /datum/status_effect/condemnation
 	abstract_type = /datum/status_effect/condemnation
 	id = null
 	tick_interval = STATUS_EFFECT_NO_TICK
-	alert_type = /atom/movable/screen/alert/status_effect/daimoinon_condemnation
+	alert_type = /atom/movable/screen/alert/status_effect/daimonion_condemnation
 	var/name = "Condemnation"
 	var/genrequired = 13
 	var/bloodcost = 1
@@ -70,10 +70,10 @@
 
 /datum/status_effect/condemnation/success_weakness/on_apply()
 	. = ..()
-	owner.add_movespeed_modifier(/datum/movespeed_modifier/daimoinon_curse)
+	owner.add_movespeed_modifier(/datum/movespeed_modifier/daimonion_curse)
 	to_chat(owner, span_userdanger(span_bold("You feel like a great curse was placed on you!")))
 
-/atom/movable/screen/alert/status_effect/daimoinon_condemnation
+/atom/movable/screen/alert/status_effect/daimonion_condemnation
 	name = "Condemnation"
 	desc = "You've been cursed by infernal magic - permanently weakening your body."
 	icon_state = "crucible"
