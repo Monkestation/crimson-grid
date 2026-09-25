@@ -7,7 +7,6 @@
 
 /obj/projectile/bullet/darkpack/vamp9mm/plus
 	damage = 15
-	//Edit was 34, reduced to 15 AP Ammo
 	armour_penetration = 15
 
 // 4.6mm
