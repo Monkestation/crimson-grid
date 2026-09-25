@@ -54,6 +54,10 @@
 /datum/component/blood_theft/Initialize(blood_to_steal, theft_per_hit)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
+
+	src.blood_to_steal = blood_to_steal
+	src.theft_per_hit = theft_per_hit
+
 	return ..()
 
 /datum/component/blood_theft/RegisterWithParent()
