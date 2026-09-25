@@ -12,3 +12,9 @@
 
 /obj/item/darkpack/spear
 	force = 2 LETHAL_TTRPG_DAMAGE
+
+/obj/item/melee/sabre/rapier
+	icon = 'modular_vcg/modules/weapons/icons/weapons.dmi'
+	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
+	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/weapons/icons/weapons_onfloor.dmi')
