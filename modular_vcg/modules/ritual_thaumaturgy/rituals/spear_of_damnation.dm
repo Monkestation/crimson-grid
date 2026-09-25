@@ -53,25 +53,19 @@
 /datum/component/blood_theft/Initialize(blood_to_steal, theft_per_hit)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
-
-	src.blood_to_steal = blood_to_steal
-	src.theft_per_hit = theft_per_hit
-
 	return ..()
 
 /datum/component/blood_theft/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(on_successful_attack))
-
-	var/obj/item/weapon = parent
-	weapon.add_filter("blood_theft_outline", 2, list("type" = "outline", "color" = "#c41515", "size" = 1))
-	weapon.color = "#c41515"
+	RegisterSignal(parent, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /datum/component/blood_theft/UnregisterFromParent()
 	UnregisterSignal(parent, list(COMSIG_ITEM_ATTACK))
 
-	var/obj/item/weapon = parent
-	weapon.remove_filter("blood_theft_outline")
-	weapon.color = initial(weapon.color)
+/datum/component/blood_theft/proc/on_examine(datum/source, mob/viewer, list/examine_list)
+	SIGNAL_HANDLER
+
+	examine_list += span_cult("You can see some strange words engraved on the [parent]...")
 
 /// Signal handler for landing a hit on the target
 /datum/component/blood_theft/proc/on_successful_attack(datum/source, mob/living/target, mob/user, list/modifiers)

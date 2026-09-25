@@ -47,7 +47,6 @@
 	weapon.damtype = AGGRAVATED
 	weapon.icon_state = weapon.icon_state + "_burning"
 	weapon.inhand_icon_state = weapon.inhand_icon_state + "_burning"
-	weapon.item_flags |= THAUMATURGICAL_ITEM
 
 	return ..()
 
@@ -61,7 +60,6 @@
 	weapon.damtype = original_damtype
 	weapon.icon_state = original_icon_state
 	weapon.inhand_icon_state = original_inhand_icon_state
-	weapon.item_flags &= ~THAUMATURGICAL_ITEM
 
 /datum/component/burning_blade/proc/on_hit_living()
 	SIGNAL_HANDLER
