@@ -147,7 +147,7 @@
 	var/static/items_inside = list(
 		/obj/item/reagent_containers/hypospray/medipen/ifak = 3,
 		/obj/item/stack/medical/wrap/gauze = 1,
-		/obj/item/healthanalyzer = 1,
+		/obj/item/healthanalyzer/simple = 1,
 	)
 	generate_items_inside(items_inside,src)
 
