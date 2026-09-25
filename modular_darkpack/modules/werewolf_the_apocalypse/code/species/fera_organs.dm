@@ -132,14 +132,14 @@
 
 /datum/species/human/shifter/dire/proc/damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
 	SIGNAL_HANDLER
-	if(damagetype == BRUTE)
+	if((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
 		damage_mods += 0.5
-	if(damagetype == AGGRAVATED)
-		damage_mods += 0.8
 	if(damagetype == TOXIC)
 		damage_mods += 0.7
 	if(damagetype == BURN)
 		damage_mods += 0.9
+	if(damagetype == AGGRAVATED)
+		damage_mods += 0.75
 /datum/splat/werewolf/shifter/garou/on_gain()
 	. = ..()
 	RegisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS,PROC_REF(garou_damage_resistance))
@@ -148,14 +148,14 @@
 	SIGNAL_HANDLER
 	if(!istype(owner.dna?.species, /datum/species/human/shifter/war))
 		return
-	if(damagetype == BRUTE)
-		damage_mods += 0.4
-	if(damagetype == AGGRAVATED)
-		damage_mods += 0.7
+	if((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
+		damage_mods += 0.5
 	if(damagetype == TOXIC)
-		damage_mods += 0.65
+		damage_mods += 0.75
 	if(damagetype == BURN)
-		damage_mods += 0.6
+		damage_mods += 0.8
+	if(damagetype == AGGRAVATED)
+		damage_mods += 0.75
 /datum/splat/werewolf/shifter/garou/on_lose_or_destroy()
 	. = ..()
 	UnregisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
@@ -167,12 +167,12 @@
 	SIGNAL_HANDLER
 	if(!istype(owner.dna?.species, /datum/species/human/shifter/war))
 		return
-	if(damagetype == BRUTE)
-		damage_mods += 0.8
+	if((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
+		damage_mods += 0.9
 	if(damagetype == BURN)
-		damage_mods += 0.8
+		damage_mods += 0.9
 	if(damagetype == AGGRAVATED)
-		damage_mods += 0.8
+		damage_mods += 0.9
 /datum/splat/werewolf/shifter/corax/on_lose_or_destroy()
 	. = ..()
 	UnregisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
@@ -181,10 +181,8 @@
 	RegisterSignal(owner,COMSIG_MOB_APPLY_DAMAGE_MODIFIERS,PROC_REF(bestial_damage_resistance))
 /datum/splat/werewolf/shifter/bestial/proc/bestial_damage_resistance(datum/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
 	SIGNAL_HANDLER
-	if(damagetype == BRUTE)
+	if((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
 		damage_mods += 0.8
-	if(damagetype == AGGRAVATED)
-		damage_mods += 0.9
 	if(damagetype == TOXIC)
 		damage_mods += 0.9
 	if(damagetype == BURN)
