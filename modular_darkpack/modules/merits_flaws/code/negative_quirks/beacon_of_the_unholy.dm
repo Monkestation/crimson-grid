@@ -8,5 +8,5 @@
 	mob_trait = TRAIT_BEACON_OF_THE_UNHOLY
 	icon = FA_ICON_LIGHTBULB
 	allowed_splats = list(SPLAT_KINDRED)
-	disallowed_clans = list(VAMPIRE_CLAN_BAALI) // Crimson Grid edit | Change: Added Baali since they already have it innately.
+	excluded_clans = list(VAMPIRE_CLAN_BAALI) // Crimson Grid edit | Change: Added Baali since they already have it innately.
 	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
