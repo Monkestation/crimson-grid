@@ -1,0 +1,163 @@
+2026-06-01:
+  Biplume:
+  - rscadd: Garou now have their feet set as claws in Crinos, Hispo, and Lupus
+  FalloutFalcon:
+  - rscadd: 'The changing breed: Corax'
+  - rscadd: Corax gift "Enemy Ways" which gives an assessment of nearby enemies
+  - rscadd: Corax "eye drinking" a pseudo-gift that allows the fera to speak to the
+      dead and see there death
+  - balance: Razor claws lower the difficulty of claw attacks along with the existing
+      bonuses
+  - refactor: Splits up alot of stuff onto vars and procs to be overrided by other
+      changing breeds
+  - code_imp: Deaths now record some information for use in powers that speak to the
+      dead
+  - code_imp: Fixes the splat prio unit test
+  - bugfix: Spirit speech now works
+  - rscadd: '5 pt merit: Unbondable'
+  - rscadd: '5 pt merit: Touch of the Wyld'
+  - qol: merits wont be displayed if you cant take them
+  Stutternov:
+  - balance: Protean 2, 4, and 5 have proper delays added in accordance with TT discipline
+      use.
+  chazzyjazzy:
+  - bugfix: fixes artifacts from being unbinded from the user when placed into a satchel
+  - bugfix: fixes the odious chalice so that it works
+2026-06-08:
+  FalloutFalcon:
+  - bugfix: Occult blood research should now work
+  - spellcheck: Tree stumps dont reference ss13
+  - rscadd: Descriptions of subsplats are now displayed when you select them
+  - code_imp: Removes old useless fire barrel subtype in favor of interactive one
+  - bugfix: Fixes corax "fur" color entry
+  TheCarnalest:
+  - bugfix: Garou no longer go upside down when transforming into Homid while resting
+  - bugfix: The Mage Blood disadvantage no longer removes Bloodheal
+  chazzyjazzy:
+  - rscadd: adds the bomb trapped sarcophagus
+  - rscadd: adds the sarcophagus & key random event
+  - code_imp: removes hard deletes on area texts by cutting out the qdeletion method
+      for making the text disappear, just setting the text to be invisible instead
+  - rscadd: sarcophagus event's announcement now only fires 20% of the time for added
+      stealth
+  - bugfix: sarcophagus event will now fire only once per round max
+  ellie:
+  - rscadd: adds dragon's breath shotgun ammo
+2026-06-15:
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  Dusk-a:
+  - balance: Gives Corax the proper amount of gnosis they should have
+  FalloutFalcon:
+  - bugfix: Characters who have tzimisce selectected internally will not have a zulo
+      preference if not the proper splat
+  - bugfix: underplates layer above tables again
+  - bugfix: Corax can have form specific flavor text like Garou
+  - bugfix: Corax and Garou fur colors wont override one another
+  - balance: Locks plants mutating behind a "strange" tray. (To be mapped inside pentex
+      labs)
+  - balance: Removes the exotic seed crate from cargo
+  - code_imp: ritual book pulls vars from runes in a same method
+  - balance: Reworks melee to roll damage based off two rolls (to parody the TTRPG
+      and brawl)
+  - balance: Protean claws use brawl
+  - refactor: Removes snowflake protean claws damage buff in favor of generic melee
+      code
+  - bugfix: balefire no longer runtimes
+  FalloutFalcon, Major00:
+  - rscadd: 'Adds new gifts: Jam Weapon (Children of Gaia), Control Simple Machine
+      (Glasswalker), Hidden Killer (Red Talon), Aura of confidence & Fatal Flaw (Shadow
+      Lords), Speed of Thought (Silent Striders), Bane Protector (BSD)'
+  - rscadd: Adds some little lesser banes
+  - qol: powers that spend willpower log it to chat
+  - qol: removes pointless to_chat that just says "you cast gift" as most have better
+      built in feedback
+  - image: '"Tribe gifts: Part 1" gifts now have unique icons'
+  - code_imp: adds signal that code can hook onto to change bonus dice of rolls
+  FalloutFalcon, somniworld:
+  - image: Replaces the corax war form hud icon with a better icon
+  Icarus-The-Sun:
+  - rscadd: Adds Hemophiliac, Lame, Light Sensitive, Permanent Wound, and Short flaws
+  Marshmellow105:
+  - bugfix: fixed stone floors using cave floor icons
+  Stutternov:
+  - rscadd: Adds forced-flee movement to terrifying presence.
+  - rscadd: Adds extended action debuff+stun to terrifying presence.
+  chazzyjazzy:
+  - rscadd: adds artifacts to dumpsters and the fishing loot table
+  dwinters99, Major00, INFRARED_BARON:
+  - rscadd: sleeping bags
+  - rscadd: carwash rollers, torches, and grates (2 kinds)
+  - rscadd: fallout shelter signs (2 kinds)
+  - rscadd: bollards (4 kinds)
+  - image: new urinal sprite
+  - rscadd: new table type + addons
+  - rscadd: cigarette shelves
+  - rscadd: metal rack
+  - rscadd: commercial freezers
+  - image: onfloors for ketchup, mustard, forks, knives, and spoons
+  - rscadd: new trash and alleyway sprites (all by INFRARED_BARON)
+  - rscadd: lectern and pulpit
+2026-06-22:
+  Ambrose997:
+  - bugfix: Daimonori damage now also applies to the blood curse ritual.
+  FalloutFalcon:
+  - rscadd: Two options for intercepting long range clicks for melee attacks
+  - config: Configs for "Swing" or "Directional" attacks
+  - qol: All discs should now display what stats they rolled with
+  - bugfix: scorpions touch poison will properly consider fortitude
+  - refactor: replaces `SSroll.storyteller_roll` completly with `SSroll.storyteller_roll_datum`
+  - balance: Frenzy rolls are only show to the roller and target
+  - bugfix: Wolf Sight merit properly updates vision
+  - rscadd: Readds briefcases, canes, and crutches to loadout
+  - bugfix: The masquerade will no longer breach from any message spoken near an NPC
+  - config: Income repsects punishing 0 dots flag
+  - qol: Adds tooltip for claimable doors and cars
+  - bugfix: LOOC does not filter into Local tab
+  - rscadd: Pulling teeth now actually spawns a tooth which can me examined
+  - refactor: Tweaks how rolls with cool-down use the old results
+  Stutternov:
+  - bugfix: Fixes Obtenebrate embedding issue
+  - balance: Makes Obten 5 TT accurate with burns, agg damage, etc.
+  bomby, enchantedcrocolisk:
+  - rscadd: readds 4.6mm ammoboxes and the sprites for them and associated bullets
+  - bugfix: pistols now fit back into dutybelts
+  - map: added mp7 to runtimetown gun table
+  - code_imp: dutybelts have had their contents changed to include pepperspray batons
+      and handcuffs
+  chazzyjazzy:
+  - rscadd: adds 'donning the mask of shadows' a level two thaumaturgy ritual which
+      is just a fake, bad obfuscate
+  - bugfix: katanas can be worn on the belt slot once more
+  - bugfix: fixes the music subsystem not firing for most players
+  - bugfix: fixes protean 1 not making eyes glow red
+  - rscadd: adds 'inscription' ritual for tremeres which allows them to inscribe a
+      ritual onto a parchment for non thaumaturgists to use
+  - rscadd: adds 'eyes of the night hawk' ritual for thaumaturgy where thaumaturgists
+      can posess a crow
+  - qol: all ritual tomes now print a sorted list rather than a mishmash
+  dwinters99:
+  - code_imp: randomized trash and SOME randomized turfs now retain icon_state var-edits
+2026-06-29:
+  Ambrose997:
+  - rscadd: Added the katana as one of the blade options for the Burning Blade ritual.
+  - bugfix: saves the inhand_icon_state before restoring to original_icon_state to
+      avoid the wrong sprite being used.
+  - rscadd: adds a clarification for the victim that they should respond in vague
+      thoughts or symbolism
+  - admin: admins now see every usage of auspex 4 mind reading
+  - balance: Increases telepathy cooldown to 9 minutes.
+  FalloutFalcon:
+  - balance: tweaks alot of loot pools to have less tg items and more darkpack ones
+  - bugfix: Aggravated damage now transfers to limbs when changing species (such as
+      via fera shapeshifting)
+  - bugfix: Showing flavor text while masked checks the holder not the reader
+  - balance: Melee force and attack difficulty is more inline with TTRPG numbers
+  - rscadd: Item outlines and tooltips now match colors of the huds we use.
+  - qol: Going through transfer points brings items your dragging or buckled to with
+      you
+  Icarus-The-Sun:
+  - rscadd: Adds Acute Sense Merit
+  - rscadd: Adds Disfigured, Glowing Eyes, and Smell of the Grave flaws
+  buffyuwu:
+  - qol: Country of Origin now grants the appropriate languages

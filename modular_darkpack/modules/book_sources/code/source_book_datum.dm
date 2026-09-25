@@ -32,7 +32,7 @@ GLOBAL_LIST_INIT(source_book_priority, list(
 /datum/source_book/wta20
 	name = "Werewolf The Apocalypse 20th Anniversary Edition"
 	offical_status = SOURCE_OFFICAL
-	
+
 /datum/source_book/gt_tmr
 	name = "The Black Hand Guide to The Tal'Mahe'Ra"
 	offical_status = SOURCE_OFFICAL
@@ -47,6 +47,10 @@ GLOBAL_LIST_INIT(source_book_priority, list(
 
 /datum/source_book/mta20/bos
 	name = "The Book of Secrets"
+
+/datum/source_book/huntershunted1
+	name = "The Hunters Hunted (1st Edition)"
+	offical_status = SOURCE_OFFICAL
 
 /datum/source_book/htr3
 	name = "Hunter the Reckoning Revised Edition"
