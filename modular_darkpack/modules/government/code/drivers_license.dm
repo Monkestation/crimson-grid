@@ -1,4 +1,4 @@
-/obj/item/card/drivers_license
+/obj/item/identification/drivers_license
 	name = "driver's license"
 	desc = "An identification card allowing its holder to own and operate motor vehicles. Doubles as a valid form of identification."
 	icon = 'modular_darkpack/modules/government/icons/docs.dmi'
@@ -6,49 +6,52 @@
 	worn_icon_state = ""
 	slot_flags = NONE
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/government/icons/docsonfloor.dmi')
-	/// Issuing state
+
 	var/issuing_state = "California"
-	/// Owner
-	var/owner = ""
-	/// If the ID is a counterfit.
-	var/fake = FALSE
-	/// If the NAME does not belong to the person.
-	var/fake_identity = FALSE
-	var/datum/storyteller_roll/investigation/examine_roll
+	var/organ_donor
 
-/obj/item/card/drivers_license/Initialize(mapload)
+	var/additional_text = ""
+
+/obj/item/identification/drivers_license/link_human(mob/living/carbon/human/user)
 	. = ..()
-	var/mob/living/carbon/human/user = null
-	if(ishuman(loc)) // In pockets
-		user = loc
-	else if(ishuman(loc?.loc)) // In backpack
-		user = loc.loc
-	if(user)
-		link_human(user)
 
-/obj/item/card/drivers_license/proc/link_human(mob/living/carbon/human/user)
-	if(HAS_TRAIT(user, TRAIT_ILLEGAL_IDENTITY))
-		fake = TRUE
-		fake_identity = TRUE
-
-	if(fake_identity)
-		owner = user.generate_random_mob_name(TRUE)
+	if(fake)
+		organ_donor = user.dna.fake_organ_donor
 	else
-		owner = user.real_name
-	if(user.client?.prefs)
-		var/pref_country = user.client.prefs.read_preference(/datum/preference/choiced/country_of_origin)
-		if(pref_country == "United States")
-			var/pref_state = user.client.prefs.read_preference(/datum/preference/choiced/state_of_origin)
-			if(pref_state)
-				issuing_state = pref_state
+		organ_donor = user.dna.organ_donor
 
-/obj/item/card/drivers_license/examine(mob/user)
+	if(user.dna.country_of_origin == DEFAULT_COUNTRY_NAME)
+		issuing_state = user.dna.state_of_origin
+
+/obj/item/identification/drivers_license/examine(mob/user)
 	. = ..()
-	if(!examine_roll)
-		examine_roll = new()
-		examine_roll.reroll_cooldown = 1 SCENES
-	var/roll_result = examine_roll.st_roll(user, src)
-	if(owner)
-		. += span_notice("It reads as belonging to [owner], issued by the state of [issuing_state].")
-		if(fake && (roll_result == ROLL_SUCCESS))
-			. += span_notice("It looks like a crude counterfeit.")
+	if(!owner)
+		return
+
+	var/id_examine = span_slightly_larger(separator_hr("You examine [src]...</em>"))
+	id_examine += "<div class='img_by_text_container'>"
+	id_examine += "[icon2html(get_owner_id_photo(), user, extra_classes = "hugeicon")]"
+	id_examine += "<div class='img_text'>"
+	var/organ_donor_text = organ_donor ? "YES" : "NO"
+	var/additional_blurb = additional_text ? " &bull; [additional_text]" : ""
+	id_examine += span_notice(jointext(list(
+		" &bull; Name: [owner]",
+		" &bull; Birth Year: [dob]",
+		" &bull; Issuing State: [issuing_state]",
+		" &bull; Issued Year: [issued_year]",
+		" &bull; Expiry Year: [expiry_year]",
+		" &bull; Gender: [owner_gender]",
+		" &bull; Organ Donor: [organ_donor_text]",
+		additional_blurb,
+	), "<br>"))
+	id_examine += "</div>" // container
+	id_examine += "</div>" // text
+
+	. += boxed_message(id_examine)
+	if(our_human == user)
+		return
+
+	if(fake)
+		var/roll_result = examine_roll.st_roll(user, src)
+		if(roll_result == ROLL_SUCCESS)
+			. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")

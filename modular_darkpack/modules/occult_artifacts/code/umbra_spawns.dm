@@ -37,7 +37,7 @@
 
 /obj/effect/mob_spawn/corpse/human/garou
 	mob_type = /mob/living/carbon/human/splat/garou
-	outfit = /datum/outfit/job/vampire/guardian
+	outfit = /datum/outfit/job/vampire/guardian/no_wallet
 	outfit_override = list("r_pocket" = /obj/item/stack/dollar/rand)
 
 /datum/controller/subsystem/minor_mapping/proc/spawn_umbra_artifacts(amount)

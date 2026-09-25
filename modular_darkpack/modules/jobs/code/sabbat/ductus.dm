@@ -34,7 +34,7 @@
 	l_pocket = /obj/item/smartphone/sabbat_ductus
 	r_pocket = /obj/item/vamp/keys/sabbat
 	uses_default_clan_clothes = TRUE
-	backpack_contents = list(/obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/card/credit = 1)
 
 /datum/outfit/job/vampire/sabbatductus/pre_equip(mob/living/carbon/human/H)
 	. = ..()

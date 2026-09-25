@@ -220,29 +220,6 @@
 		bank_account.payday(STARTING_PAYCHECKS, free = TRUE)
 		account_id = bank_account.account_id
 		bank_account.replaceable = FALSE
-		// DARKPACK EDIT ADD - (Finance affects starting money)
-		var/finance = st_get_stat(STAT_FINANCE)
-		switch(finance)
-			if(0)
-				if(!CONFIG_GET(flag/punishing_zero_dots))
-					bank_account.account_balance = rand(50, 100)
-					bank_account.paycheck_amount = 15
-			if(1)
-				bank_account.account_balance = rand(100, 200)
-				bank_account.paycheck_amount = 40
-			if(2)
-				bank_account.account_balance = rand(300, 600)
-				bank_account.paycheck_amount = 80
-			if(3)
-				bank_account.account_balance = rand(800, 1200)
-				bank_account.paycheck_amount = 120
-			if(4)
-				bank_account.account_balance = rand(1200, 1600)
-				bank_account.paycheck_amount = 160
-			if(5)
-				bank_account.account_balance = rand(2000, 3000)
-				bank_account.paycheck_amount = 250
-		// DARKPACK EDIT ADD END
 		add_mob_memory(/datum/memory/key/account, remembered_id = account_id)
 		add_mob_memory(/datum/memory/key/bank_pin, remembered_id = bank_account.bank_pin) // DARKPACK EDIT ADD
 
