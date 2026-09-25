@@ -4266,6 +4266,14 @@
 "aZM" = (
 /turf/open/floor/cult,
 /area/vtm/interior/chantry/basement)
+"aZT" = (
+/obj/effect/decal/cleanable/litter,
+/obj/item/feather{
+	pixel_y = -9;
+	pixel_x = -6
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm)
 "aZY" = (
 /obj/structure/chair/stool/bar/darkpack/black,
 /obj/machinery/sprinkler/area_managed,
@@ -17281,6 +17289,10 @@
 	dir = 4
 	},
 /area/vtm/interior/giovanni/basement)
+"eep" = (
+/obj/item/feather,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm)
 "eew" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -42062,6 +42074,17 @@
 	},
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/chinatown)
+"kia" = (
+/obj/item/feather{
+	pixel_y = -5;
+	pixel_x = 2
+	},
+/obj/item/feather{
+	pixel_x = -14;
+	pixel_y = 3
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm)
 "kij" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 6
@@ -53067,6 +53090,13 @@
 /obj/effect/decal/cleanable/trash,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights/community)
+"mUO" = (
+/obj/item/feather{
+	pixel_x = -14;
+	pixel_y = 3
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm)
 "mUV" = (
 /obj/effect/turf_decal/asphalt{
 	icon_state = "decal7"
@@ -337743,7 +337773,7 @@ nlr
 kno
 jpM
 kno
-jpM
+aZT
 xmr
 kno
 kno
@@ -337997,7 +338027,7 @@ cbp
 cbp
 cbp
 vVB
-kno
+kia
 xsc
 seP
 cKS
@@ -338257,7 +338287,7 @@ exL
 kno
 rKf
 kuG
-kno
+eep
 fcI
 kno
 kno
@@ -338512,7 +338542,7 @@ lWV
 cbp
 fwp
 seP
-kno
+eep
 kno
 qUK
 yaj
@@ -339024,8 +339054,8 @@ wSo
 wSo
 wSo
 cbp
-kno
-kno
+eep
+mUO
 tvQ
 ntq
 ntq
