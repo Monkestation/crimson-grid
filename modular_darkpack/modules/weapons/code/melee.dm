@@ -414,6 +414,7 @@
 	// Made up
 	force = 2 TTRPG_DAMAGE
 	throwforce = 2 TTRPG_DAMAGE
+	throw_range = 4
 
 	attack_verb_continuous = list("bludgeons", "bashes", "beats")
 	attack_verb_simple = list("bludgeon", "bash", "beat", "smacks")
@@ -422,6 +423,10 @@
 	//grid_width = 2 GRID_BOXES
 	//grid_height = 1 GRID_BOXES
 	var/broken = FALSE
+
+/obj/item/melee/vamp/brick/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/falling_hazard, damage = 50, wound_bonus = 20, hardhat_safety = TRUE, crushes = FALSE, impact_sound = 'sound/items/weapons/genhit3.ogg')
 
 /obj/item/melee/vamp/brick/after_throw(datum/callback/callback)
 	if(prob(75))

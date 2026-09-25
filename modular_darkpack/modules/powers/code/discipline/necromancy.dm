@@ -39,21 +39,19 @@
 	bumper_text = "shroudsight"
 	applicable_stats = list(STAT_PERCEPTION, STAT_AWARENESS)
 	difficulty = 7
-	reroll_cooldown = 1 SCENES
 	roll_output_type = ROLL_PRIVATE
 
 /datum/discipline_power/necromancy/shroudsight
 	name = "Shroudsight"
 	desc = "See in darkness clearly and see ghosts present."
-
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS
-	vitae_cost = 1
+	vitae_cost = 0
 
 	activate_sound = 'modular_darkpack/modules/ritual_necromancy/sounds/necromancy1on.ogg'
 	deactivate_sound = 'modular_darkpack/modules/ritual_necromancy/sounds/necromancy1off.ogg'
 
-	cooldown_length = 3 SCENES
+	cooldown_length = 10 SECONDS
 	duration_length = 1 SCENES
 
 	var/datum/storyteller_roll/shroudsight/roll_datum
@@ -61,11 +59,12 @@
 /datum/discipline_power/necromancy/shroudsight/pre_activation_checks(mob/living/target)
 	if(!roll_datum)
 		roll_datum = new()
-
 	var/roll_result = roll_datum.st_roll(owner)
-	if(roll_result == ROLL_COOLDOWN)
-		return FALSE
-	return roll_result == ROLL_SUCCESS
+	if(roll_result == ROLL_SUCCESS)
+		return TRUE
+
+	do_cooldown(cooldown_length)
+	return FALSE
 
 /datum/discipline_power/necromancy/shroudsight/activate()
 	. = ..()
@@ -219,7 +218,8 @@
 
 			ADD_TRAIT(corpsebuff, TRAIT_NOSOFTCRIT, NECROMANCY_TRAIT)
 			ADD_TRAIT(corpsebuff, TRAIT_NOHARDCRIT, NECROMANCY_TRAIT)
-			//ADD_TRAIT(corpsebuff, TRAIT_IGNOREDAMAGESLOWDOWN, NECROMANCY_TRAIT)
+			ADD_TRAIT(corpsebuff, TRAIT_ANALGESIA, NECROMANCY_TRAIT)
+			corpsebuff.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 			corpsebuff.add_movespeed_modifier(/datum/movespeed_modifier/corpsebuff)
 			corpsebuff.do_jitter_animation(2 SECONDS)
 		else //everyone else eats tox and CC
@@ -251,7 +251,8 @@
 				part.brute_modifier = initial(part.brute_modifier)
 			REMOVE_TRAIT(corpsebuff, TRAIT_NOSOFTCRIT, NECROMANCY_TRAIT)
 			REMOVE_TRAIT(corpsebuff, TRAIT_NOHARDCRIT, NECROMANCY_TRAIT)
-			//REMOVE_TRAIT(corpsebuff, TRAIT_IGNOREDAMAGESLOWDOWN, NECROMANCY_TRAIT)
+			REMOVE_TRAIT(corpsebuff, TRAIT_ANALGESIA, NECROMANCY_TRAIT)
+			corpsebuff.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 			corpsebuff.remove_movespeed_modifier(/datum/movespeed_modifier/corpsebuff)
 		else
 			corpsebuff.remove_movespeed_modifier(/datum/movespeed_modifier/corpsenerf)

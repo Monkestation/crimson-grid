@@ -2,14 +2,14 @@
 	name = "infernal demon"
 	image_icon = 'modular_darkpack/modules/deprecated/icons/32x48.dmi'
 	image_state = "baali"
-	var/mob/living/target //person who had daimoinon 4 used on them
+	var/mob/living/target //person who had daimonion 4 used on them
 	COOLDOWN_DECLARE(move_cooldown)
 
 /obj/effect/client_image_holder/baali_demon/Initialize(mapload, list/mobs_which_see_us)
 	. = ..()
 	for(var/mob/living/possible_target as anything in mobs_which_see_us)
 		target = possible_target
-		break // daimoinon only has a demon chasing after one target at a time but parent init asks for a list.
+		break // daimonion only has a demon chasing after one target at a time but parent init asks for a list.
 	var/turf/closed/wall = locate(/turf/closed) in range(7, target)
 	if(!wall)
 		return INITIALIZE_HINT_QDEL
