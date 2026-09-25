@@ -35,10 +35,10 @@
 	 * - exhaust_swimmer_prob: The likelihood that someone suffers stamina damage when entering a swimming tile.
 	 */
 	var/is_swimming_tile = FALSE
-	var/stamina_entry_cost = 7
-	var/ticking_stamina_cost = 5
+	var/stamina_entry_cost = 3 // CRIMSON EDIT - No more screaming while swimming - Original: var/stamina_entry_cost = 7
+	var/ticking_stamina_cost = 2 // CRIMSON EDIT - No more screaming while swimming - Original: var/ticking_stamina_cost = 5
 	var/ticking_oxy_damage = 2
-	var/exhaust_swimmer_prob = 30
+	var/exhaust_swimmer_prob = 15 // CRIMSON EDIT - No more screaming while swimming - Original: var/exhaust_swimmer_prob = 30
 
 	var/datum/reagent/reagent_to_extract = /datum/reagent/water
 
