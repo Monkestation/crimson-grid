@@ -3389,6 +3389,20 @@
 	},
 /turf/open/floor/carpet/red,
 /area/vtm/interior)
+"aSF" = (
+/obj/effect/mapping_helpers/door/access/clinic,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/structure/vampdoor{
+	name = "Operation Room 4"
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/grey,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/clinic)
 "aSG" = (
 /obj/structure/hedge,
 /obj/machinery/light/prince/directional/north,
@@ -8335,6 +8349,10 @@
 	dir = 6
 	},
 /turf/open/floor/carpet/darkpack/bluesilver,
+/area/vtm/interior/clinic)
+"cah" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
 "cak" = (
 /obj/structure/table/countertop/green,
@@ -16967,6 +16985,20 @@
 /obj/item/ammo_box/magazine/vamp762x51PSG1,
 /turf/open/floor/city/factory,
 /area/vtm/interior/police/upstairs)
+"eck" = (
+/obj/effect/mapping_helpers/door/access/clinic,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/structure/vampdoor{
+	name = "Operation Room 3"
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/grey,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/clinic)
 "ecu" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 4;
@@ -18310,6 +18342,12 @@
 /obj/structure/railing,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior/millennium_tower/f3)
+"etJ" = (
+/obj/machinery/light/small/directional/east,
+/obj/structure/sink/directional/south,
+/obj/structure/mirror/directional/north,
+/turf/open/floor/city/toilet,
+/area/vtm/interior/clinic)
 "etL" = (
 /obj/structure/toilet{
 	dir = 1
@@ -31078,6 +31116,11 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/apartment)
+"hvq" = (
+/obj/item/statuebust/hippocratic,
+/obj/structure/table/wood,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic/haven)
 "hvv" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -33825,7 +33868,7 @@
 /obj/effect/mapping_helpers/door/bash_difficulty/six,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/structure/vampdoor{
-	name = "Operation Room"
+	name = "Operation Room 2"
 	},
 /obj/effect/turf_decal/siding/grey{
 	dir = 1
@@ -35020,6 +35063,13 @@
 	},
 /turf/open/floor/city/industrial,
 /area/vtm/interior/sewer/nosferatu_warren)
+"isb" = (
+/obj/structure/table,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/obj/item/cane/crutch,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/clinic)
 "isn" = (
 /obj/machinery/light/small/red/directional/south,
 /obj/structure/bed/maint,
@@ -46162,7 +46212,7 @@
 /area/vtm/interior/cog/caern)
 "kZS" = (
 /obj/fusebox/transformer{
-	name = "hospital transformer"
+	name = "clinic transformer"
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/clinic)
@@ -49714,10 +49764,8 @@
 /turf/closed/wall/vampwall/painted,
 /area/vtm/interior/hotel)
 "lSr" = (
-/obj/structure/toilet{
-	dir = 4;
-	pixel_y = 8
-	},
+/obj/machinery/shower/directional/north,
+/obj/structure/curtain,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/clinic)
 "lSw" = (
@@ -57223,16 +57271,15 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
 "nIc" = (
-/obj/structure/table,
-/obj/structure/reagent_dispensers/water_cooler{
-	pixel_y = 23;
-	density = 0;
-	pixel_x = -1
-	},
-/obj/item/storage/box/drinkingglasses{
-	pixel_x = 9;
-	pixel_y = 1
-	},
+/obj/structure/closet/secure_closet/freezer/fridge/all_access,
+/obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice,
+/obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice,
+/obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice,
+/obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice,
+/obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice,
+/obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice,
+/obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice,
+/obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
 "nIe" = (
@@ -59117,6 +59164,7 @@
 /obj/structure/table/wood,
 /obj/structure/noticeboard/directional/north,
 /obj/item/vamp/keys/camarilla,
+/obj/item/clothing/mask/vampire/venetian_mask/jester,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/clinic/haven)
 "odT" = (
@@ -84647,6 +84695,20 @@
 /obj/underplate,
 /turf/open/floor/city/industrial,
 /area/vtm/interior/nosferatu_office)
+"ueF" = (
+/obj/effect/mapping_helpers/door/access/clinic,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/structure/vampdoor{
+	name = "Operation Room 1"
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/grey,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/clinic)
 "ueL" = (
 /obj/structure/vampdoor/prison{
 	dir = 4
@@ -85174,15 +85236,11 @@
 /turf/open/floor/carpet/royalblack,
 /area/vtm/interior/giovanni)
 "ulq" = (
-/obj/structure/closet/secure_closet/freezer/fridge/all_access,
-/obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice,
-/obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice,
-/obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice,
-/obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice,
-/obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice,
-/obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice,
-/obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice,
-/obj/item/reagent_containers/cup/glass/bottle/juice/pineapplejuice,
+/obj/structure/table,
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = 9;
+	pixel_y = 1
+	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
 "ulu" = (
@@ -88511,6 +88569,13 @@
 /obj/effect/decal/wallpaper/blue,
 /turf/closed/wall/vampwall/city,
 /area/vtm/interior/ghetto)
+"vdt" = (
+/obj/structure/toilet{
+	dir = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/city/toilet,
+/area/vtm/interior/clinic)
 "vdw" = (
 /obj/structure/dresser,
 /turf/open/floor/carpet/darkpack/old,
@@ -133429,7 +133494,7 @@ sPq
 bMO
 kpw
 kpw
-kpw
+hvq
 jUU
 wCu
 kpw
@@ -178102,7 +178167,7 @@ vND
 joX
 rjY
 mMo
-ieH
+eck
 fXH
 fXH
 jJB
@@ -178110,7 +178175,7 @@ joX
 dLP
 fXH
 fXH
-ieH
+ueF
 rjY
 aiZ
 mMo
@@ -178918,7 +178983,7 @@ joX
 joX
 rjY
 mMo
-ieH
+aSF
 fXH
 fXH
 jJB
@@ -219516,10 +219581,10 @@ pOi
 pNh
 riJ
 joX
-efS
+cah
 aAO
 mKX
-tci
+efS
 joX
 joX
 joX
@@ -219720,17 +219785,17 @@ ivH
 kaD
 qWF
 joX
-ulq
+kaD
 nob
 jZz
-tci
+ulq
 joX
 mVG
 kCP
 uKX
 mem
 wPK
-tci
+isb
 joX
 kaD
 mPT
@@ -219924,10 +219989,10 @@ joX
 nio
 joX
 joX
-nIc
+kaD
 skv
 lMM
-tci
+nIc
 joX
 wxv
 kfz
@@ -221353,8 +221418,8 @@ qqg
 cfi
 gzK
 joX
-tdc
-uMy
+etJ
+vdt
 lZy
 joX
 joX
