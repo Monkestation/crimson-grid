@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(aura_list, sort_list(list(
 	"Daydreaming" = AURA_DAYDREAMING,
 	"Psychotic" = AURA_PSYCHOTIC,
 	"Confidence" = AURA_CONFIDENCE,
-	"Fae" = AURA_FAE, // Crimson Grid addition | Change: Added fae aura for the Kiasyd.
+	"Mischievous" = AURA_FAE, // Crimson Grid addition | Change: Added fae aura for the Kiasyd.
 )))
 
 GLOBAL_LIST_INIT(emotion_to_quality, sort_list(list(
@@ -100,5 +100,6 @@ GLOBAL_LIST_INIT(emotion_to_quality, sort_list(list(
 	"Daydreaming" = "absentmindedness",
 	"Psychotic" = "psychosis",
 	"Confidence" = "confidence",
-	"Fae" = "fae", // Crimson Grid addition | Change: Added fae aura for the Kiasyd.
+	"Mischievous" = "mischievous", // Crimson Grid addition | Change: Added fae aura for the Kiasyd.
+	"Suppressed" = "suppressed" // Crimson Grid addition | Change: Added suppressed aura for Path of the Scorched Heart.
 )))

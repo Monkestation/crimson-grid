@@ -116,7 +116,7 @@
 		// /datum/action/cooldown/power/gift/resist_pain, // DARKPACK TODO - (Selectable Gifts)
 		// /datum/action/cooldown/power/gift/sense_wyrm, // DARKPACK TODO - (Selectable Gifts)
 	)
-	subsplat_traits = list(TRAIT_WYRMTAINTED)
+	subsplat_traits = list(TRAIT_WYRMTAINTED, TRAIT_WYRMTAINTED_SPRITE) // CRIMSON GRID EDIT | Change: Added Wyrmtainted srite trait to BSD
 
 /datum/subsplat/werewolf/tribe/garou/blackspiraldancers/psychomania_effect(mob/living/target, mob/living/owner)
 	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh3.ogg", 50, FALSE)
