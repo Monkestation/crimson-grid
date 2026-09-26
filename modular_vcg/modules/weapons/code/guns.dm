@@ -29,6 +29,7 @@
 	recoil = 2
 
 /obj/item/gun/ballistic/automatic/darkpack/mac10
+	name = "\improper Braddock 9mm"
 	recoil = 4
 
 /obj/item/gun/ballistic/automatic/darkpack/mac10/super
@@ -41,8 +42,15 @@
 /obj/item/gun/ballistic/automatic/darkpack/ar15
 	recoil = 3
 
+/obj/item/gun/ballistic/automatic/darkpack/fal
+	recoil = 3
+
 /obj/item/gun/ballistic/automatic/darkpack/huntrifle
 	recoil = 1
+
+/obj/item/gun/ballistic/automatic/darkpack/huntrifle/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/gun/ballistic/automatic/darkpack/ak74
 	recoil = 3
@@ -66,6 +74,8 @@
 // Sniper
 /obj/item/gun/ballistic/automatic/darkpack/sniper
 	recoil = 6
+	item_flags = SLOWS_WHILE_IN_HAND | IMMUTABLE_SLOW
+	slowdown = 3
 
 /obj/item/gun/ballistic/automatic/darkpack/sniper/Initialize(mapload)
 	. = ..()
@@ -91,8 +101,17 @@
 /obj/item/gun/ballistic/automatic/darkpack/autoshotgun
 	recoil = 4
 
+
+// Magazine Modifications
+
 /obj/item/ammo_box/magazine/darkpack556/hunt
 	name = "rifle magazine (7.62x51mm)"
 	caliber = CALIBER_762NATO
 	ammo_type = /obj/item/ammo_casing/vampire/c762x51mm
 	max_ammo = 8
+
+/obj/item/ammo_box/magazine/darkpack45smg
+	name = "9mm SMG magazine"
+	ammo_type = /obj/item/ammo_casing/vampire/c9mm
+	caliber = CALIBER_9MMPARA
+
