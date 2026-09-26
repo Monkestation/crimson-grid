@@ -49,7 +49,7 @@
 
 /datum/discipline_power/daimonion/path/inferno/lighter
 	name = "Lighter"
-	desc = "Touch the blood of a subject and gain information about the subject."
+	desc = "Conjure a spark of infernal fire."
 
 	level = 1
 	range = 7
@@ -64,7 +64,7 @@
 
 /datum/discipline_power/daimonion/path/inferno/stovetop
 	name = "Stovetop"
-	desc = "Touch the blood of a subject and gain information about the subject."
+	desc = "Hurl infernal flames at a target, igniting them."
 
 	level = 2
 	range = 2
@@ -83,7 +83,7 @@
 
 /datum/discipline_power/daimonion/path/inferno/blowtorch
 	name = "Blowtorch"
-	desc = "Touch the blood of a subject and gain information about the subject."
+	desc = "Unleash a concentrated beam of infernal fire at a target."
 
 	level = 3
 	range = 7
@@ -100,7 +100,7 @@
 
 /datum/discipline_power/daimonion/path/inferno/flamethrower
 	name = "Flame-thrower"
-	desc = "Touch the blood of a subject and gain information about the subject."
+	desc = "Spray a cone of infernal fire across a target area."
 
 	level = 4
 	range = 7
