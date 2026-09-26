@@ -589,11 +589,18 @@
 	return isclosedturf(here_turf)
 
 /obj/effect/decal/kopatich
-	name = "hide carpet"
+	name = "grizzly bear rug"
 	pixel_w = -16
 	pixel_z = -16
 	icon = 'modular_darkpack/modules/decor/icons/rugs64x64.dmi'
 	icon_state = "kopatich"
+
+/obj/effect/decal/kopatich2
+	name = "black bear rug"
+	pixel_w = -16
+	pixel_z = -16
+	icon = 'modular_darkpack/modules/decor/icons/rugs64x64.dmi'
+	icon_state = "kopatich2"
 
 /obj/effect/decal/baalirune
 	name = "satanic rune"

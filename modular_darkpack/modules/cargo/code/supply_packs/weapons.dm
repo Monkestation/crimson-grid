@@ -228,6 +228,13 @@
 	contains = list(/obj/item/gun/ballistic/automatic/darkpack/musket, /obj/item/ammo_box/darkpack/c75)
 	crate_name = "weapon crate"
 
+/datum/supply_pack/weapons/flintpistol
+	name = "Weapon (antique pistol)"
+	desc = "Contains a .75 caliber antique flintlock pistol."
+	cost = 2750
+	contains = list(/obj/item/gun/ballistic/automatic/darkpack/musket/pistol, /obj/item/ammo_box/darkpack/c75)
+	crate_name = "weapon crate"
+
 /datum/supply_pack/weapons/weaponcrossbow
 	name = "Weapon (crossbow)"
 	desc = "Contains a crossbow."
