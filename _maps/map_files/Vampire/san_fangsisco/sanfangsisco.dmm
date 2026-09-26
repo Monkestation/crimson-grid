@@ -192,10 +192,7 @@
 /area/vtm/interior/chantry/basement)
 "acu" = (
 /obj/structure/vampdoor/prison{
-	dir = 8;
-	pixel_x = 1;
-	pixel_y = -14;
-	lock_id = "giovanni"
+	dir = 8
 	},
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/access/triad,
@@ -934,18 +931,6 @@
 	},
 /turf/open/floor/city/toilet,
 /area/vtm/interior/hotel)
-"akW" = (
-/obj/structure/vampdoor/old{
-	dir = 8;
-	lock_id = "triad";
-	locked = 1;
-	lockpick_difficulty = 16
-	},
-/obj/effect/mapping_helpers/door/access/triad,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "akZ" = (
 /obj/structure/vampdoor/reinf{
 	dir = 8
@@ -6272,7 +6257,7 @@
 /turf/open/floor/carpet,
 /area/vtm/interior/cog/caern)
 "bBi" = (
-/obj/structure/chair/wood{
+/obj/structure/chair/wood/darkpack/red{
 	dir = 1
 	},
 /turf/open/floor/carpet/orange,
@@ -10284,7 +10269,7 @@
 /area/vtm/interior)
 "cAF" = (
 /obj/fusebox,
-/obj/structure/chair/wood{
+/obj/structure/chair/wood/darkpack/red{
 	dir = 8
 	},
 /turf/open/floor/wood/old,
@@ -10712,9 +10697,7 @@
 /area/vtm/interior)
 "cGz" = (
 /obj/structure/vampdoor/old{
-	dir = 8;
-	lock_id = "triad";
-	lockpick_difficulty = 9
+	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
@@ -18491,11 +18474,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/jazzclub)
 "eGm" = (
-/obj/structure/vampdoor/old{
-	lock_id = "triad";
-	lockpick_difficulty = 16;
-	locked = 1
-	},
+/obj/structure/vampdoor/old,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
@@ -19228,11 +19207,7 @@
 /area/vtm/interior/laundromat)
 "ePx" = (
 /obj/structure/vampdoor/old{
-	lock_id = "triad";
-	lockpick_difficulty = 11;
-	locked = 1;
-	pixel_x = 0;
-	pixel_y = -8
+	pixel_x = 0
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
@@ -24167,11 +24142,7 @@
 	dir = 4
 	},
 /obj/structure/vampdoor/old{
-	dir = 8;
-	lock_id = "triad";
-	locked = 1;
-	lockpick_difficulty = 16;
-	name = "Shady Laundromat door"
+	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/seven,
@@ -26937,11 +26908,7 @@
 /area/vtm/interior/supply)
 "gLA" = (
 /obj/structure/vampdoor/old{
-	lock_id = "triad";
-	locked = 1;
-	lockpick_difficulty = 16;
-	pixel_x = 0;
-	pixel_y = -7
+	pixel_x = 0
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
@@ -27331,11 +27298,6 @@
 /obj/structure/table/countertop/green,
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
-"gQw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/carpet/purple,
-/area/vtm/interior/laundromat)
 "gQE" = (
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/sidewalk,
@@ -28389,11 +28351,7 @@
 	dir = 1
 	},
 /obj/structure/vampdoor/simple{
-	lock_id = "triad";
-	lockpick_difficulty = 9;
-	locked = 1;
-	pixel_x = 0;
-	pixel_y = -8
+	pixel_x = 0
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
@@ -31409,9 +31367,7 @@
 /turf/open/openspace,
 /area/vtm)
 "hRk" = (
-/obj/structure/chair/plastic{
-	pixel_y = 4
-	},
+/obj/structure/chair/plastic/darkpack,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/laundromat)
 "hRo" = (
@@ -31542,8 +31498,7 @@
 /obj/effect/mapping_helpers/door/bash_difficulty/five,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/structure/vampdoor/woodglass{
-	pixel_x = 0;
-	pixel_y = -8
+	pixel_x = 0
 	},
 /obj/effect/mapping_helpers/door/unlock,
 /obj/structure/sign/city/store/reddragon{
@@ -37499,10 +37454,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/vampdoor/simple{
 	lock_id = "triad";
-	lockpick_difficulty = 9;
-	locked = 1;
-	pixel_x = 0;
-	pixel_y = -8
+	pixel_x = 0
 	},
 /obj/effect/mapping_helpers/door/lock_difficulty/two,
 /obj/effect/mapping_helpers/door/unlock,
@@ -44224,12 +44176,7 @@
 /area/vtm/interior/tzimisce_sanctum)
 "liI" = (
 /obj/effect/turf_decal/siding/white,
-/obj/structure/vampdoor/old{
-	lock_id = "laundromat";
-	locked = 1;
-	lockpick_difficulty = 11;
-	name = "Laundromat door"
-	},
+/obj/structure/vampdoor/old,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/seven,
 /obj/effect/mapping_helpers/door/lock,
@@ -45733,6 +45680,14 @@
 /obj/structure/platform/lowwall/painted,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/bianchiBank)
+"lFJ" = (
+/obj/effect/turf_decal/siding/brown{
+	dir = 4
+	},
+/turf/open/floor/carpet/darkpack{
+	color = "#FFD9C0"
+	},
+/area/vtm/interior/laundromat)
 "lFK" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -46527,7 +46482,7 @@
 /turf/open/floor/plating/roofwalk,
 /area/vtm/interior/tzimisce_manor)
 "lQx" = (
-/obj/structure/chair/wood{
+/obj/structure/chair/wood/darkpack/red{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -46784,7 +46739,7 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
 "lTY" = (
-/obj/structure/chair/wood/wings{
+/obj/structure/chair/wood/darkpack/red{
 	dir = 1
 	},
 /turf/open/floor/wood/smooth,
@@ -47637,13 +47592,9 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/structure/vampdoor/simple{
-	lock_id = "triad";
-	lockpick_difficulty = 9;
-	locked = 1;
-	pixel_x = 0;
-	pixel_y = -9
+	pixel_x = 0
 	},
-/turf/open/floor/city/toilet,
+/turf/open/floor/wood/smooth,
 /area/vtm/interior/laundromat)
 "meN" = (
 /obj/effect/turf_decal/bordur{
@@ -48686,9 +48637,7 @@
 /area/vtm/interior/chantry)
 "mtG" = (
 /obj/structure/vampdoor/old{
-	dir = 8;
-	lock_id = "triad";
-	lockpick_difficulty = 9
+	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
@@ -52660,11 +52609,7 @@
 /area/vtm/interior/sewer)
 "ntb" = (
 /obj/structure/vampdoor/old{
-	dir = 8;
-	lock_id = "triad";
-	locked = 1;
-	lockpick_difficulty = 16;
-	name = "Shady Laundromat door"
+	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
@@ -53696,7 +53641,7 @@
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "nGL" = (
-/obj/structure/chair/wood,
+/obj/structure/chair/wood/darkpack/red,
 /turf/open/floor/carpet/orange,
 /area/vtm/interior/laundromat)
 "nGP" = (
@@ -54390,11 +54335,7 @@
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
 /obj/structure/vampdoor/simple{
-	lock_id = "triad";
-	lockpick_difficulty = 9;
-	locked = 1;
-	pixel_x = 0;
-	pixel_y = -8
+	pixel_x = 0
 	},
 /obj/effect/mapping_helpers/door/lock_difficulty/seven,
 /obj/effect/mapping_helpers/door/bash_difficulty/seven,
@@ -54634,18 +54575,6 @@
 /obj/item/clothing/head/vampire/police,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/police/upstairs)
-"nRc" = (
-/obj/structure/vampdoor/old{
-	dir = 8;
-	lock_id = "triad";
-	lockpick_difficulty = 11;
-	locked = 1
-	},
-/obj/effect/mapping_helpers/door/access/triad,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "nRh" = (
 /obj/machinery/light/prince/directional/east,
 /turf/open/floor/city/toilet,
@@ -55584,10 +55513,7 @@
 /area/vtm/interior/millennium_tower/f4)
 "odY" = (
 /obj/structure/vampdoor/simple{
-	dir = 8;
-	lock_id = "triad";
-	locked = 1;
-	lockpick_difficulty = 9
+	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/five,
@@ -55679,10 +55605,6 @@
 /obj/structure/table/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop)
-"ofx" = (
-/obj/structure/chair/stool/bar,
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/laundromat)
 "ofB" = (
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
 /turf/open/floor/plating/sidewalk/poor,
@@ -56301,7 +56223,7 @@
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/chantry)
 "oor" = (
-/obj/structure/chair/wood{
+/obj/structure/chair/wood/darkpack/red{
 	dir = 4
 	},
 /turf/open/floor/wood/old,
@@ -56775,8 +56697,13 @@
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights/old)
 "otZ" = (
-/obj/structure/vampfence/rich,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/vampfence/rich{
+	dir = 4;
+	pixel_y = 8;
+	name = "bars"
+	},
+/obj/structure/platform/lowwall/brick_old,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
 "ouf" = (
@@ -58433,21 +58360,14 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
 "oNJ" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 1
-	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/seven,
 /obj/effect/mapping_helpers/door/bash_difficulty/seven,
 /obj/structure/vampdoor/simple{
-	lock_id = "triad";
-	lockpick_difficulty = 9;
-	locked = 1;
-	pixel_x = 0;
-	pixel_y = -8
+	pixel_x = 0
 	},
-/turf/open/floor/wood/smooth/old,
+/turf/open/floor/plating/sidewalkalt,
 /area/vtm/interior/laundromat)
 "oNL" = (
 /obj/effect/turf_decal/bordur{
@@ -58854,19 +58774,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/police)
-"oSi" = (
-/obj/structure/vampdoor/old{
-	lock_id = "triad";
-	locked = 1;
-	lockpick_difficulty = 16;
-	pixel_x = 0;
-	pixel_y = -8
-	},
-/obj/effect/mapping_helpers/door/access/triad,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/turf/open/floor/plating/rough,
-/area/vtm/interior)
 "oSs" = (
 /obj/structure/chair/pew/right{
 	dir = 4
@@ -59797,20 +59704,17 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
 "pgq" = (
-/obj/effect/turf_decal/siding/white,
+/obj/effect/turf_decal/siding/dark_brown,
 /obj/structure/vampdoor/old{
-	lock_id = "laundromat";
-	locked = 1;
-	lockpick_difficulty = 11;
-	name = "Laundromat door";
-	pixel_x = 0;
-	pixel_y = -7
+	pixel_x = 0
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/one,
 /obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/turf/open/floor/wood/smooth,
+/turf/open/floor/carpet/darkpack{
+	color = "#FFD9C0"
+	},
 /area/vtm/interior/laundromat)
 "pgt" = (
 /turf/open/floor/wood/old,
@@ -61695,12 +61599,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
-"pFs" = (
-/obj/structure/chair/wood/wings{
-	dir = 4
-	},
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/laundromat)
 "pFt" = (
 /obj/structure/flora/rock/darkpack_big,
 /obj/effect/turf_decal/weather/dirt,
@@ -62847,10 +62745,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
 "pUv" = (
-/obj/structure/vampdoor/old{
-	lock_id = "triad";
-	lockpick_difficulty = 11
-	},
+/obj/structure/vampdoor/old,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock_difficulty/seven,
@@ -64965,9 +64860,8 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/sewer)
 "qwp" = (
-/obj/structure/chair/wood{
-	dir = 4;
-	pixel_y = 4
+/obj/structure/chair/plastic/darkpack{
+	dir = 4
 	},
 /obj/effect/landmark/start/darkpack/triad/blue_lanterns,
 /turf/open/floor/wood/smooth/old,
@@ -65148,12 +65042,6 @@
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
-"qyl" = (
-/obj/structure/chair/plastic{
-	dir = 4
-	},
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/laundromat)
 "qyp" = (
 /obj/machinery/light/floor/lamppost/one{
 	dir = 4
@@ -65812,12 +65700,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/sewer)
-"qHC" = (
-/obj/structure/chair/wood{
-	dir = 8
-	},
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/laundromat)
 "qHD" = (
 /turf/open/floor/plating/sidewalk,
 /area/vtm)
@@ -66189,6 +66071,10 @@
 "qLB" = (
 /turf/open/floor/carpet,
 /area/vtm/interior/anarch)
+"qLE" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood/parquet,
+/area/vtm/interior/laundromat)
 "qLF" = (
 /obj/structure/vampdoor/old{
 	dir = 4
@@ -67456,18 +67342,6 @@
 	icon_state = "Newton"
 	},
 /turf/closed/wall/vampwall/rich/old,
-/area/vtm/interior)
-"rbk" = (
-/obj/structure/vampdoor/old{
-	dir = 8;
-	lock_id = "triad";
-	lockpick_difficulty = 16;
-	locked = 1
-	},
-/obj/effect/mapping_helpers/door/access/triad,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/turf/open/floor/plating/rough,
 /area/vtm/interior)
 "rbl" = (
 /turf/open/misc/dirt,
@@ -78165,7 +78039,7 @@
 /turf/closed/wall/vampwall/painted,
 /area/vtm/interior/banu/haven)
 "tLu" = (
-/obj/structure/chair/wood{
+/obj/structure/chair/plastic/darkpack{
 	dir = 8
 	},
 /turf/open/floor/wood/smooth/old,
@@ -81563,8 +81437,7 @@
 /area/vtm/interior/strip)
 "uES" = (
 /obj/structure/vampdoor/old{
-	dir = 8;
-	lock_id = "triad"
+	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
@@ -82071,9 +81944,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/chinatown)
 "uLV" = (
-/obj/effect/decal/wallpaper/paper/stripe{
-	color = "#ad4043"
-	},
+/obj/effect/decal/wallpaper/paper/fancy/red,
 /turf/closed/wall/vampwall/old,
 /area/vtm/interior/laundromat)
 "uLX" = (
@@ -83212,9 +83083,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
 "uZX" = (
-/obj/machinery/vending/cigarette{
-	dir = 4
-	},
+/obj/machinery/vending/cigarette/shelf,
 /turf/open/floor/carpet/black,
 /area/vtm/interior/laundromat)
 "uZZ" = (
@@ -84641,7 +84510,6 @@
 /area/vtm/interior/police/upstairs)
 "vtz" = (
 /obj/structure/vampdoor/prison{
-	lockpick_difficulty = 11;
 	lock_id = "triad"
 	},
 /obj/effect/mapping_helpers/door/access/triad,
@@ -85926,10 +85794,7 @@
 /area/vtm/interior/banu)
 "vMx" = (
 /obj/structure/vampdoor/simple{
-	dir = 8;
-	locked = 1;
-	lock_id = "laundromat";
-	lockpick_difficulty = 9
+	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/five,
@@ -90507,9 +90372,7 @@
 /obj/item/storage/box/drinkingglasses,
 /obj/item/storage/box/drinkingglasses,
 /obj/machinery/light/prince/directional/north,
-/obj/structure/table/wood/bar{
-	color = "#654321"
-	},
+/obj/structure/table/wood/bar,
 /turf/open/floor/carpet/black,
 /area/vtm/interior/laundromat)
 "wVt" = (
@@ -90571,18 +90434,14 @@
 	dir = 1
 	},
 /obj/structure/vampdoor/simple{
-	lock_id = "triad";
-	lockpick_difficulty = 11;
-	locked = 1;
-	pixel_x = 0;
-	pixel_y = -8
+	pixel_x = 0
 	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/five,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
-/turf/open/floor/wood/moon,
+/turf/open/floor/wood/smooth,
 /area/vtm/interior/laundromat)
 "wWd" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
@@ -92168,7 +92027,6 @@
 	dir = 1
 	},
 /obj/machinery/light/small/directional/east,
-/obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
@@ -94328,9 +94186,7 @@
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/millennium_tower)
 "xQU" = (
-/obj/structure/chair/comfy/black{
-	dir = 1
-	},
+/obj/structure/chair/stool/bar/darkpack/red,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/laundromat)
 "xQX" = (
@@ -94729,9 +94585,7 @@
 /turf/open/misc/dirt,
 /area/vtm/interior/cog/caern)
 "xWd" = (
-/obj/structure/table/wood/bar{
-	color = "#654321"
-	},
+/obj/structure/table/wood/bar,
 /turf/open/floor/carpet/black,
 /area/vtm/interior/laundromat)
 "xWg" = (
@@ -137769,7 +137623,7 @@ jcc
 jcc
 jcc
 jcc
-rbk
+uES
 jcc
 otZ
 otZ
@@ -138281,7 +138135,7 @@ iHq
 sFf
 qkQ
 iHq
-oSi
+ePx
 lMe
 uqu
 lMe
@@ -139302,7 +139156,7 @@ dvN
 dvN
 jcc
 jcc
-akW
+cGz
 jcc
 jcc
 jcc
@@ -141879,7 +141733,7 @@ jcc
 jcc
 jcc
 jcc
-nRc
+uES
 jcc
 jcc
 jcc
@@ -203321,7 +203175,7 @@ jTk
 uLV
 bgk
 wxq
-bLk
+qLE
 vuU
 muw
 vuU
@@ -205632,7 +205486,7 @@ jTk
 wdq
 uLV
 hPT
-gQw
+fsh
 iDQ
 fsh
 iDQ
@@ -205888,7 +205742,7 @@ gGS
 jTk
 jTk
 oNJ
-gQw
+uDR
 nVF
 pTN
 fBl
@@ -206152,7 +206006,7 @@ jyF
 pTN
 fBl
 pTN
-iDQ
+dYZ
 jxQ
 wRj
 rGm
@@ -213324,9 +213178,9 @@ iCJ
 qHr
 mCW
 bly
-ofx
-qyl
-pFs
+xQU
+qVm
+qVm
 bly
 yec
 lym
@@ -213837,7 +213691,7 @@ lym
 sLV
 mCW
 mCW
-ofx
+xQU
 kVv
 ruw
 fex
@@ -214096,8 +213950,8 @@ mCW
 mCW
 pTO
 mCW
-qHC
-qHC
+iUi
+xQU
 pTO
 cNN
 lym
@@ -273197,8 +273051,8 @@ hBz
 iYm
 dsp
 ici
-dsp
-dsp
+lFJ
+lFJ
 wua
 dsp
 soa
