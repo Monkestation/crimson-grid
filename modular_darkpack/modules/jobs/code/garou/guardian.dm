@@ -43,3 +43,7 @@
 	l_pocket = /obj/item/smartphone/garou_guardian
 	r_pocket = /obj/item/storage/wallet/darkpack
 	wallet_contents = list(/obj/item/vamp/keys/nps, /obj/item/card/credit = 1)
+
+/datum/outfit/job/vampire/guardian/no_wallet
+	name = "Guardian (No Wallet)"
+	no_wallet = TRUE
