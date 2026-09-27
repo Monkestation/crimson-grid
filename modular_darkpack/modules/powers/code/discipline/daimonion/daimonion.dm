@@ -10,7 +10,7 @@
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/daimonion
 	signature_clan = VAMPIRE_CLAN_BAALI
-	max_selectable_level = 5
+	max_selectable_level = 5 	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /datum/discipline_power/daimonion
 	name = "Daimonion power name"
