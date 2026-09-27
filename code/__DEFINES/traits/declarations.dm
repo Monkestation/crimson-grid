@@ -1737,7 +1737,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Objects with this trait may become a new prison for a revenant, in the event of its ectoplasm dispersing
 #define TRAIT_COZY_REVENANT_HOME "cozy_revenant_home"
 
-/// CG ADD: Mobs with this trait have a distinct infernal green aura
-#define TRAIT_AURA_OF_INFERNO "aura_of_inferno" /// CG: ADD: Baali content
+#define TRAIT_AURA_OF_INFERNO "aura_of_inferno" /// CRIMSON EDIT ADD: Baali content
 
 // END TRAIT DEFINES
