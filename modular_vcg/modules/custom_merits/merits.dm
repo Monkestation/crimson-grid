@@ -39,5 +39,5 @@
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL)
 	included_clans = list(VAMPIRE_CLAN_MALKAVIAN)
 
-/datum/quirk/darkpack/typing_quirk/add(client/client_source)
+/datum/quirk/darkpack/homestuck/add(client/client_source)
 	quirk_holder.AddComponent(/datum/component/speechmod, replacements = list("a"="4", "A"="4", "i"="1", "I"="1", "e"="3", "E"="3"), uppercase = TRUE)
