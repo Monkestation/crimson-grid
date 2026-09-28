@@ -78,3 +78,14 @@
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "fear"
 
+// CRIMSON EDIT ADDITION START - Makes it so fleeing frenzy's combat is debilitating instead of pacifism
+/datum/status_effect/frenzy/flee/on_apply()
+	. = ..()
+	if(!.)
+		return
+	owner.st_add_stat_clamp(STAT_MELEE, 0, type)
+
+/datum/status_effect/frenzy/flee/on_remove()
+	owner.st_remove_stat_clamp(STAT_MELEE, type)
+	return ..()
+// CRIMSON EDIT ADDITION END
