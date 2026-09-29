@@ -46,6 +46,7 @@
 	anchored = TRUE
 	density = FALSE // CRIMSON EDIT CHANGE - Original: density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
+	flourescent = FALSE // I dont think they are.
 
 /obj/machinery/light/floor/lamppost/Initialize(mapload)
 	. = ..()
@@ -194,8 +195,8 @@
 	icon_state = "piping1"
 	layer = ABOVE_ALL_MOB_LAYER
 	anchored = TRUE
-/* 	var/datum/looping_sound/slow_drip/looping_drips
-	var/drip_chance = 5
+	var/datum/looping_sound/slow_drip/looping_drips
+	var/drip_chance = 1
 
 /obj/structure/vampipe/Initialize(mapload)
 	. = ..()
@@ -204,7 +205,7 @@
 
 /obj/structure/vampipe/Destroy(force)
 	. = ..()
-	QDEL_NULL(looping_drips) */
+	QDEL_NULL(looping_drips)
 
 
 /obj/structure/vamproofwall
@@ -594,7 +595,7 @@
 	icon = 'modular_darkpack/modules/decor/icons/rugs64x64.dmi'
 	icon_state = "kopatich"
 
-/obj/effect/decal/baalirune
+/* /obj/effect/decal/baalirune // CRIMSON GRID ADD: DARK THAUMATURGY
 	name = "satanic rune"
 	pixel_w = -16
 	pixel_z = -16
@@ -628,7 +629,7 @@
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, update_atom_colour)), 0.5 SECONDS)
 	for(var/mob/living/dead_victim as anything in myriad_targets)
 		dead_victim.gib(DROP_ALL_REMAINS)
-	rune_in_use = FALSE
+	rune_in_use = FALSE */ // CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /obj/structure/vampstatue
 	name = "statue"
