@@ -1,13 +1,16 @@
+/datum/action/beastmaster_command
+	abstract_type = /datum/action/beastmaster_command
+	button_icon = 'icons/hud/radial_pets.dmi'
+	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
+
 //action buttons
-/datum/action/beastmaster_command_toggle_follow
+/datum/action/beastmaster_command/toggle_follow
 	name = "Command: Stay"
 	desc = "Toggle between Follow and Stay for all minions."
-	button_icon = 'icons/hud/radial_pets.dmi'
 	button_icon_state = "halt"
-	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
 	var/is_following = TRUE  // Track current state
 
-/datum/action/beastmaster_command_toggle_follow/Trigger(mob/clicker, trigger_flags)
+/datum/action/beastmaster_command/toggle_follow/Trigger(mob/clicker, trigger_flags)
 	. = ..()
 	if(!.)
 		return
@@ -52,14 +55,12 @@
 			if(stay_cmd)
 				stay_cmd.try_activate_command(H, radial_command = FALSE)
 
-/datum/action/beastmaster_command_end_aggression
+/datum/action/beastmaster_command/end_aggression
 	name = "Command: End Aggression"
 	desc = "Order all minions to stop attacking."
-	button_icon = 'icons/hud/radial_pets.dmi'
 	button_icon_state = "free"
-	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
 
-/datum/action/beastmaster_command_end_aggression/Trigger(mob/clicker, trigger_flags)
+/datum/action/beastmaster_command/end_aggression/Trigger(mob/clicker, trigger_flags)
 	. = ..()
 	if(!.)
 		return
@@ -76,7 +77,6 @@
 		var/datum/ai_controller/controller = minion.ai_controller
 		if(controller)
 			controller.cancel_current_plan()
-			controller.clear_blackboard_key(BB_CURRENT_TARGET)
 			controller.clear_blackboard_key(BB_CURRENT_TARGET_HIDING_LOCATION)
 			controller.clear_blackboard_key(BB_CURRENT_PET_TARGET)
 

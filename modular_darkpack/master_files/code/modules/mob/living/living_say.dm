@@ -1,4 +1,9 @@
 /mob/living/send_speech(message_raw, message_range = 6, obj/source = src, bubble_type = bubble_icon, list/spans, datum/language/message_language = null, list/message_mods = list(), forced = null, tts_message, list/tts_filter)
+	if(HAS_TRAIT(src, TRAIT_IN_FRENZY))
+		var/list/random_emote = list("growl", "hiss") //I would include *scream but for some reason it isn't working.
+		emote(pick(random_emote))
+		return
+
 	. = ..()
 	if(!blooper)
 		return

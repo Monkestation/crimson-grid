@@ -71,6 +71,8 @@
 
 	// DARKPACK EDIT ADD START
 	var/known_name = face_name ? null : (examiner ? GET_GUESTBOOK_NAME(examiner, src) : null)
+	if(known_name && examiner != src && GET_GUESTBOOK_ENTRY(examiner, src)) // If this is a guestbook name, show original name too
+		known_name += ", [src]"
 	// DARKPACK EDIT ADD END
 
 	// Just go down the list of stuff we recorded

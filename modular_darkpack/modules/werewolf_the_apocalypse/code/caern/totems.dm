@@ -130,7 +130,7 @@
 
 	if(friendly_tribes)
 		var/datum/splat/werewolf/friends_splat = get_werewolf_splat(potential_friend)
-		if(!friends_splat) // RN the only totem effect relys on a werewolf splat
+		if(!(friends_splat?.tribe)) // RN the only totem effect relys on a werewolf splat
 			return FALSE
 		if(!(friends_splat.tribe.name in friendly_tribes))
 			return FALSE

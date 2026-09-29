@@ -5,7 +5,7 @@
 	return null
 
 /mob/living/carbon/examine(mob/user)
-	if(HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE) && !isobserver(user))
+	if((HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE) || HAS_TRAIT(user, TRAIT_CANNOT_FOCUS)) && !isobserver(user))	//DARKPACK EDIT ADD: TRAIT THAT MAKES YOU UNABLE TO EXAMINE PEOPLE
 		return list(span_warning("You're struggling to make out any details..."))
 
 	var/t_He = p_They()

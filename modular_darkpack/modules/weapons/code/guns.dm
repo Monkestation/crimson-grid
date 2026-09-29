@@ -306,7 +306,7 @@
 /obj/item/gun/ballistic/automatic/darkpack/mac10
 	name = "\improper Braddock .45"
 	desc = "A box filled with bullets. The high cyclic rate and low weight means it's only good for spraying and then praying. Uses .45 caliber rounds."
-	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
+	icon = 'modular_darkpack/modules/weapons/icons/weapons48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "mac10"
 	inhand_icon_state = "mac10"
@@ -377,7 +377,7 @@
 /obj/item/gun/ballistic/automatic/darkpack/mp7
 	name = "\improper HK MP7"
 	desc = "A Machine Pistol recently adopted by the German Military. Comes loaded with armor-piercing rounds, use responsibly."
-	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
+	icon = 'modular_darkpack/modules/weapons/icons/weapons48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "mp7"
 	inhand_icon_state = "mp7"
@@ -576,6 +576,50 @@
 	. = ..()
 	AddComponent(/datum/component/automatic_fire, rof)
 
+/obj/item/ammo_box/magazine/darkpack762x51fal
+	name = "battle rifle magazine (7.62x51mm)"
+	icon = 'modular_darkpack/modules/weapons/icons/ammo.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
+	icon_state = "308mag"
+	ammo_type = /obj/item/ammo_casing/vampire/c762x51mm
+	caliber = CALIBER_762NATO
+	max_ammo = 20
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+/obj/item/gun/ballistic/automatic/darkpack/fal
+	name = "battle rifle"
+	desc = "A hard hitting rifle firing a full power 7.62 cartridge."
+	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
+	icon_state = "fal"
+	inhand_icon_state = "fal"
+	worn_icon_state = "fal"
+	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_MEDIUM
+	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack762x51fal
+	burst_size = 1
+	fire_delay = 3
+	spread = 2
+	recoil = 5
+	bolt_type = BOLT_TYPE_LOCKING
+	show_bolt_icon = FALSE
+	mag_display = TRUE
+	fire_sound = 'modular_darkpack/modules/deprecated/sounds/sniper.ogg'
+	masquerade_violating = FALSE
+	serial_type = "BR"
+
+/obj/item/gun/ballistic/automatic/darkpack/fal/automatic
+	name = "military battle rifle"
+	desc = "A hard hitting rifle firing a full power 7.62 cartridge. This one is a military variant capable of automatic fire."
+	icon_state = "falgreen"
+	inhand_icon_state = "falgreen"
+	worn_icon_state = "falgreen"
+	var/rof = 0.2 SECONDS //300 RPM
+
+/obj/item/gun/ballistic/automatic/darkpack/fal/automatic/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/automatic_fire, rof)
+
 /obj/item/ammo_box/magazine/internal/darkpack/lever
 	name = "lever action internal magazine"
 	ammo_type = /obj/item/ammo_casing/vampire/c44
@@ -671,7 +715,7 @@
 /obj/item/gun/ballistic/automatic/darkpack/autosniper
 	name = "auto-sniper rifle"
 	desc = "A semi-automatic marksman rifle. This particular model is very popular in video games as of late."
-	icon = 'modular_darkpack/modules/deprecated/icons/48x32.dmi'
+	icon = 'modular_darkpack/modules/weapons/icons/weapons48x32.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "psg1"
 	inhand_icon_state = "psg1"
@@ -701,8 +745,8 @@
 	serial_type = "DS"
 
 /obj/item/ammo_box/magazine/vamp762x51PSG1
-	name = "PSG1 magazine (7.62x51mm)"
-	desc = "A magazine for the PSG1 loaded in 7.62 NATO."
+	name = "Auto-sniper magazine (7.62 NATO)"
+	desc = "A magazine for an Automatic Sniper rifle loaded in 7.62 NATO."
 	icon = 'modular_darkpack/modules/weapons/icons/ammo.dmi'
 	//lefthand_file = 'code/modules/wod13/lefthand.dmi'
 	//righthand_file = 'code/modules/wod13/righthand.dmi'

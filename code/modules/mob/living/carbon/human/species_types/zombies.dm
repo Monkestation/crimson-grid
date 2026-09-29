@@ -3,7 +3,7 @@
 	name = "High-Functioning Zombie"
 	id = SPECIES_ZOMBIE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN
-	mutanttongue = /obj/item/organ/tongue/zombie // not necessary as status effect gives it, but for tests
+	//mutanttongue = /obj/item/organ/tongue/zombie // not necessary as status effect gives it, but for tests DARKPACK EDIT REMOVE - Removes /tg/ zombie outbreaks
 
 /datum/species/zombie/check_roundstart_eligible()
 	if(check_holidays(HALLOWEEN))
@@ -54,7 +54,7 @@
 	/// Amount healed per regen tick - if 0, no regen will occur
 	var/regen_amount = 0.5
 	/// The hand to give the zombie - if null, they will have normal hands
-	var/zombie_hand = /obj/item/mutant_hand/zombie
+	var/zombie_hand = null // CRIMSON EDIT CHANGE - Original: var/zombie_hand = /obj/item/mutant_hand/zombie
 	/// The movespeed modifier to apply to the zombie - if null, no movespeed modifier will be applied
 	var/movespeed_mod = /datum/movespeed_modifier/zombie
 	/// % Reduction to all physical damage the zombie takes
@@ -122,16 +122,19 @@
 	add_zombie_biotypes()
 
 	// Ensures we have an infection organ even if we were applied by something else
+	/* // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	var/obj/item/organ/zombie_infection/infection = new_zombie.get_organ_slot(ORGAN_SLOT_ZOMBIE)
 	if(isnull(infection))
 		infection = new()
 		infection.Insert(new_zombie)
 		RegisterSignal(infection, COMSIG_ORGAN_REMOVED, PROC_REF(organ_removed))
+	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 
 	var/obj/item/bodypart/head/head = new_zombie.get_bodypart(BODY_ZONE_HEAD)
 	if(!QDELETED(head))
 		head.can_dismember = TRUE
 
+	/* // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	var/obj/item/organ/tongue/old_tongue = new_zombie.get_organ_slot(ORGAN_SLOT_TONGUE)
 	if(!QDELETED(old_tongue))
 		old_tongue.Remove(new_zombie, special = TRUE)
@@ -141,12 +144,15 @@
 
 	var/obj/item/organ/tongue/zombie/new_tongue = new()
 	new_tongue.Insert(new_zombie, special = TRUE)
+	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 
+	/* CRIMSON EDIT REMOVE - Romerol
 	if(!isnull(zombie_hand))
 		new_zombie.AddComponent( \
 			/datum/component/mutant_hands, \
 			mutant_hand_path = zombie_hand, \
 		)
+	*/ // CRIMSON EDIT REMOVAL END - Romerol
 	if(regen_amount > 0)
 		new_zombie.AddComponent( \
 			/datum/component/regenerator, \
@@ -262,7 +268,7 @@
 /datum/status_effect/zombie/mindless
 	regen_time = 10 SECONDS
 	regen_amount = 0.2
-	zombie_hand = /obj/item/mutant_hand/zombie/weak
+	zombie_hand = null // CRIMSON EDIT CHANGE - Original: zombie_hand = /obj/item/mutant_hand/zombie/weak
 	movespeed_mod = /datum/movespeed_modifier/zombie/mindless
 
 /datum/status_effect/zombie/uninfected

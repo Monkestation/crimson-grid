@@ -3,10 +3,10 @@
  * This prevents us from merging a crate that sells for more that it costs to buy.
  */
 
+/* // DARKPACK EDIT REMOVAL START - (Selling Component, DARKPACK TODO: See about readding this.)
 /datum/unit_test/cargo_crate_sanity
 
 /datum/unit_test/cargo_crate_sanity/Run()
-
 	for(var/crate in subtypesof(/datum/supply_pack))
 		var/datum/supply_pack/new_crate = allocate(crate)
 		if(new_crate.test_ignored)
@@ -42,3 +42,5 @@
 		new_crate = null
 		minimum_cost = null
 		export_log = null
+
+*/ // DARKPACK EDIT REMOVAL END

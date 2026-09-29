@@ -196,6 +196,7 @@
 	var/successes = 0
 	var/datum/storyteller_roll/anesthetic_touch/touch_roll
 	var/datum/storyteller_roll/anesthetic_touch/unwilling/touch_roll_unwilling
+	frenzy_usable = FALSE
 
 /datum/discipline_power/valeren/anesthetic_touch/pre_activation_checks(mob/living/target)
 	. = ..()
@@ -223,7 +224,8 @@
 	var/chosen_option = show_radial_menu(owner, target, choices, radius = 38, require_near = TRUE)
 	switch(chosen_option)
 		if("Soothe Pain")
-			ADD_TRAIT(target, TRAIT_IGNORESLOWDOWN, type)
+			owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+			ADD_TRAIT(target, TRAIT_ANALGESIA, type)
 			addtimer(CALLBACK(src, PROC_REF(end_soothe_pain), target), (successes TURNS) + soothe_duration_length)
 		if("Put To Sleep")
 			if(get_kindred_splat(target))
@@ -234,7 +236,8 @@
 	return TRUE
 
 /datum/discipline_power/valeren/anesthetic_touch/proc/end_soothe_pain(mob/living/target)
-	REMOVE_TRAIT(target, TRAIT_IGNORESLOWDOWN, type)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	REMOVE_TRAIT(target, TRAIT_ANALGESIA, type)
 
 /datum/discipline_power/valeren/burning_touch
 	name = "Burning Touch"
@@ -441,6 +444,7 @@
 	check_flags = DISC_CHECK_CAPABLE
 	toggled = TRUE
 	duration_length = 1 TURNS
+	frenzy_usable = FALSE
 
 /datum/discipline_power/valeren/vengeance_of_samiel/activate()
 	. = ..()

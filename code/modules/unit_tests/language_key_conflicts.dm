@@ -1,4 +1,3 @@
-/* // DARKPACK EDIT REMOVAL - (Due to modularity we are bound to have key conflicts as I dont want to/cant remove all the old TG langauges. Fuck my stupid downstream life.)
 /// This test ensures that multiple languages aren't mapped to the same prefix key.
 /datum/unit_test/language_key_conflicts
 
@@ -14,4 +13,4 @@
 			TEST_FAIL("[name] ([language]) uses the '[key]' prefix, which is also used by [conflicting_language::name] ([conflicting_language])!")
 		else
 			used_keys[key] = language
-*/
+

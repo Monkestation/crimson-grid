@@ -66,7 +66,7 @@
 		to_chat(clicker, span_warning("You need to be outside to look at the moon!"))
 		return
 
-	to_chat(clicker, span_notice("The phase of the Moon is a [GLOB.moon_state]."))
+	to_chat(clicker, span_notice("The phase of the Moon is a [get_moon_state()]."))
 
 	if(looked_at_moon)
 		return
@@ -79,7 +79,7 @@
 
 	var/rage_amount = 1
 	// W20 p. 145
-	switch(GLOB.moon_state)
+	switch(get_moon_state())
 		if(MOON_NEW)
 			rage_amount = 1
 		if(MOON_WANING_GIBBOUS, MOON_WANING_CRESCENT)
@@ -89,7 +89,7 @@
 		if(MOON_FULL)
 			rage_amount = 4
 
-	if(clicker_splat?.auspice && (GLOB.moon_state in clicker_splat.auspice.moons_born_under))
+	if(clicker_splat?.auspice && (get_moon_state() in clicker_splat.auspice.moons_born_under))
 		rage_amount = MAX_RAGE
 
 	clicker_splat.adjust_rage(rage_amount, TRUE)
@@ -97,7 +97,7 @@
 
 /atom/movable/screen/auspice/update_icon_state()
 	if(looked_at_moon)
-		icon_state = "[GLOB.moon_state]"
+		icon_state = "[get_moon_state()]"
 	return ..()
 
 

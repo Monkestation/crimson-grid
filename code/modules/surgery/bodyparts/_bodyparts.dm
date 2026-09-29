@@ -759,6 +759,14 @@
 		else if (sharpness & SHARP_POINTY)
 			wounding_type = WOUND_PIERCE
 
+	// DARKPACK EDIT CHANGE START - AGGRAVATED_DAMAGE - Check sharpness of BURN_WOUND and apply slash/pierce wounds; for Fera/Protean which deal agg with bladed implements
+	if(wounding_type == WOUND_BURN && sharpness)
+		if(sharpness & SHARP_EDGED)
+			wounding_type = WOUND_SLASH
+		else if (sharpness & SHARP_POINTY)
+			wounding_type = WOUND_PIERCE
+	// DARKPACK EDIT CHANGE END
+
 	if(owner) // i tried to modularize the below, but the modifications to wounding_dmg and wounding_type cant be extracted to a proc
 		var/easy_dismember = HAS_TRAIT(owner, TRAIT_EASYDISMEMBER) // if we have easydismember, we don't reduce damage when redirecting damage to different types (slashing weapons on mangled/skinless limbs attack at 100% instead of 50%)
 

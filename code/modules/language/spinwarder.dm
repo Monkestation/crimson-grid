@@ -3,7 +3,7 @@
 /datum/language/spinwarder
 	name = "Spinwarder"
 	desc = "The official language of the Spinward Stellar Coalition, as inherited from the Third Soviet Union."
-	key = "s"
+	// key = "s" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 20
 	sentence_chance = 0
 	between_word_sentence_chance = 10
