@@ -8294,10 +8294,11 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
 "bYj" = (
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -6
-	},
+/obj/effect/mapping_helpers/door/access/giovanni,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/structure/vampdoor/wood,
+/obj/effect/mapping_helpers/door/unlock,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/giovanni)
 "bYr" = (
@@ -13485,10 +13486,7 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -6
-	},
+/obj/structure/vampdoor/wood,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/giovanni)
 "dpF" = (
@@ -18187,10 +18185,7 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
 "eyn" = (
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
+/obj/structure/vampdoor/wood,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/giovanni)
 "eyp" = (
@@ -18709,18 +18704,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/setite)
-"eFh" = (
-/obj/effect/turf_decal/bordur,
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
-/obj/effect/mapping_helpers/door/access/giovanni,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/giovanni)
 "eFn" = (
 /obj/machinery/light/small/directional/east,
 /obj/item/kirbyplants/random,
@@ -18858,10 +18841,7 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/six,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -6
-	},
+/obj/structure/vampdoor/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "eGN" = (
@@ -20331,10 +20311,7 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/five,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
+/obj/structure/vampdoor/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "eZF" = (
@@ -20799,10 +20776,7 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
+/obj/structure/vampdoor/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "ffi" = (
@@ -51485,10 +51459,7 @@
 /area/vtm/outside/financialdistrict)
 "mTA" = (
 /obj/effect/turf_decal/siding/white,
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -7
-	},
+/obj/structure/vampdoor/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "mTD" = (
@@ -53378,14 +53349,11 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/sewer/nosferatu_town)
 "nqW" = (
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
 /obj/effect/mapping_helpers/door/access/giovanni,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/six,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/structure/vampdoor/wood,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/giovanni/basement)
 "nqZ" = (
@@ -69870,14 +69838,11 @@
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/museum)
 "rpM" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 1
-	},
-/obj/structure/vampdoor/wood{
-	lock_id = "giovanni";
-	locked = 1;
-	lockpick_difficulty = 14
-	},
+/obj/effect/mapping_helpers/door/access/giovanni,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/structure/vampdoor/wood,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/giovanni)
 "rpN" = (
@@ -77607,14 +77572,6 @@
 	},
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
-"thF" = (
-/obj/effect/turf_decal/siding/white,
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/giovanni)
 "thO" = (
 /obj/effect/landmark/event_spawn/szlachta,
 /turf/open/floor/plating/rough,
@@ -80397,10 +80354,7 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
+/obj/structure/vampdoor/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni)
 "tWP" = (
@@ -85676,14 +85630,11 @@
 /turf/open/misc/grass,
 /area/vtm/outside/financialdistrict)
 "vor" = (
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
 /obj/effect/mapping_helpers/door/access/giovanni,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/five,
 /obj/effect/mapping_helpers/door/lock_difficulty/five,
+/obj/structure/vampdoor/wood,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/giovanni)
 "vot" = (
@@ -86885,13 +86836,6 @@
 "vEB" = (
 /turf/closed/wall/vampwall/rich/old,
 /area/vtm/interior/cog/pantry)
-"vEC" = (
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/giovanni)
 "vEJ" = (
 /obj/effect/turf_decal/asphaltline/alt,
 /turf/open/floor/plating/asphalt,
@@ -89475,10 +89419,7 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -6
-	},
+/obj/structure/vampdoor/wood,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/giovanni/basement)
 "wnQ" = (
@@ -92762,13 +92703,6 @@
 	},
 /turf/open/floor/plating/roofwalk,
 /area/vtm)
-"xdW" = (
-/obj/structure/vampdoor/wood{
-	pixel_x = 0;
-	pixel_y = -8
-	},
-/turf/open/floor/carpet/darkpack/old,
-/area/vtm/interior/giovanni)
 "xec" = (
 /obj/machinery/microwave{
 	desc = "Cooks and boils stuff, somehow.";
@@ -170692,7 +170626,7 @@ hlf
 hlf
 hlf
 hlf
-xdW
+bYj
 hlf
 hlf
 hlf
@@ -171206,7 +171140,7 @@ hlf
 hlf
 hlf
 hlf
-xdW
+bYj
 hlf
 hlf
 hlf
@@ -235461,7 +235395,7 @@ noL
 hlf
 rCT
 kyB
-eFh
+tWL
 kno
 kno
 xfP
@@ -239576,7 +239510,7 @@ bqB
 xxT
 hlf
 hlf
-thF
+mTA
 vrC
 eKU
 uJx
@@ -240077,7 +240011,7 @@ ntq
 ntq
 gcL
 its
-vEC
+eGM
 kyB
 kyB
 kyB
@@ -240597,7 +240531,7 @@ hlf
 hlf
 hlf
 kyB
-thF
+eGM
 hlf
 hlf
 hlf
