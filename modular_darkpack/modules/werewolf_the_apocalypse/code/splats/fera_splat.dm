@@ -42,6 +42,7 @@
 		else
 			return FALSE
 
+	update_rage_effects() //CRIMSON GRID ADDITION - passive rage effects
 	owner.update_werewolf_hud()
 	return TRUE
 
@@ -152,6 +153,7 @@
 
 /datum/splat/werewolf/shifter/on_lose_or_destroy()
 	. = ..()
+	clear_rage_effects() //CRIMSON GRID ADDITION - passive rage effects
 	if(!QDELETED(owner))
 		owner.set_species(/datum/species/human)
 
@@ -327,3 +329,30 @@
 
 /mob/living/carbon/human/splat/corax
 	auto_splats = list(/datum/splat/werewolf/shifter/corax)
+
+//CRMISON GRID ADDITION START - adds scaling rage speed and slowdown immunites based on rage amount
+
+/datum/splat/werewolf/proc/update_rage_effects()
+	if(!owner)
+		return
+	var/is_fighting_form = istype(owner.dna?.species, /datum/species/human/shifter/war) || istype(owner.dna?.species, /datum/species/human/shifter/dire)
+	var/rage_slowdown = -0.01 * clamp(rage, 0, permanent_rage)
+	if(rage >= 3 && is_fighting_form)
+		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/shifter/rage,multiplicative_slowdown = rage_slowdown)
+	if(rage < 3 && is_fighting_form)
+		owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
+	if(rage >= 6 && is_fighting_form)
+		owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	if(rage < 6 && is_fighting_form)
+		owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+
+/datum/movespeed_modifier/shifter/rage
+	variable = TRUE
+
+/datum/splat/werewolf/shifter/proc/clear_rage_effects()
+	if(!owner)
+		return
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+
+//CRMISON GRID ADDITION END

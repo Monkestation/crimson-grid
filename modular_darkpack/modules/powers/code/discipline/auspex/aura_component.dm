@@ -67,6 +67,10 @@
 
 	if(HAS_TRAIT(changed_mob, TRAIT_AURA_OF_CONFIDENCE))
 		new_emotion = "Confidence"
+	// CRIMSON GRID ADD: DARK THAUMATURGY
+	if(HAS_TRAIT(changed_mob, TRAIT_AURA_OF_INFERNO))
+		new_emotion = "Corruption"
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 	// Crimson Grid addition start | Change: Added fae aura for the Kiasyd & suppressed aura for Path of the Scorched Heart.
 	if(HAS_TRAIT(changed_mob, TRAIT_FAE_AURA))
@@ -111,6 +115,11 @@
 		examine_message = "[parent_mob.p_Their()] aura is a deep red, and seems to shimmer with rainbow highlights."
 		return
 	// Crimson Grid addition end
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
+	if(HAS_TRAIT(parent_mob, TRAIT_AURA_OF_INFERNO))
+		examine_message = "[parent_mob.p_Their()] aura has obvious balefire stains."
+		return
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 	switch(current_aura)
 		if(AURA_AFRAID)
