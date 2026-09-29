@@ -146,6 +146,8 @@ pools for a turn or two after the manifestation.
 	var/resistence_stat = target.st_get_stat(STAT_SELF_CONTROL)
 	if(get_kindred_splat(target))
 		resistence_stat = target.st_get_stat(owner.is_enlightenment() ? STAT_CONVICTION : STAT_SELF_CONTROL)
+	if(HAS_TRAIT(target, TRAIT_IRON_WILL))
+		resistence_stat += 3
 	var/theirpower = target.st_get_stat(STAT_PERCEPTION) + resistence_stat
 	mypower = SSroll.storyteller_roll_datum(owner, difficulty = theirpower, applic_stats = list(STAT_MANIPULATION, STAT_SUBTERFUGE), numerical = TRUE)
 	if(mypower <= 0)
@@ -435,6 +437,8 @@ determines the duration.
 
 /datum/discipline_power/dementation/total_insanity/pre_activation_checks(mob/living/carbon/human/target)
 	theirpower = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
+	if(HAS_TRAIT(target, TRAIT_IRON_WILL))
+		theirpower += 3
 	mypower = SSroll.storyteller_roll_datum(owner, difficulty = theirpower, applic_stats = list(STAT_MANIPULATION, STAT_INTIMIDATION), numerical = TRUE)
 	if(mypower <= 0)
 		to_chat(owner, span_warning("[target]'s mind is too powerful to corrupt!"))

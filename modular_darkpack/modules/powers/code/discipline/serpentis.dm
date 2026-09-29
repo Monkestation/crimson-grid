@@ -93,7 +93,7 @@
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
 	target_type = TARGET_LIVING
-	range = 6
+	range = 2//CRIMSON EDIT LOWERED RANGE
 	effect_sound = 'modular_darkpack/modules/powers/sounds/tongue.ogg'
 	aggravating = TRUE
 	hostile = TRUE
@@ -121,7 +121,7 @@
 /datum/discipline_power/serpentis/the_tongue_of_the_asp/activate(mob/living/target)
 	. = ..()
 	target.adjust_blood_pool(-2)
-	target.apply_damage(12 * successes, AGGRAVATED)
+	target.apply_damage(5 * successes, AGGRAVATED)//CRIMSON GRID CHANGE LOWERED DAMAGE
 	owner.adjust_blood_pool(2)
 	var/obj/item/ammo_casing/magic/tentacle/casing = new (get_turf(owner))
 	casing.fire_casing(target, owner, null, null, null, ran_zone(), 0,  owner)
