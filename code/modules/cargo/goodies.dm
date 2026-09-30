@@ -1,4 +1,4 @@
-
+/* CRIMSON GRID REMOVAL GOODIES DONT WORK ANYWAYS feel free to readd individual items as a diferent category winout the ORDER_GOODY flag
 /datum/supply_pack/goody
 	access = NONE
 	group = "Goodies"
@@ -461,3 +461,4 @@
 	desc = "A single broadcast camera which broadcasts to the station's entertainment monitors, for all your theatrical needs."
 	cost = PAYCHECK_COMMAND * 8
 	contains = list(/obj/item/broadcast_camera/cargo)
+*/

@@ -2,6 +2,7 @@
 // This means the supply has to peddle off spare goods.
 /datum/supply_pack/local
 	group = "Local stock"
+	crate_type = /obj/structure/closet/crate/large
 
 /datum/supply_pack/local/vegetable_supplies //behold, ordering legal things.
 	name = "Community Produce Seed Pack" //aimed at helping the poorest members of community.
@@ -37,6 +38,12 @@
 		// /obj/item/seeds/forgetmenot = 3,
 	)
 	crate_name = "flower crate"
+
+/datum/supply_pack/local/gas_can
+	name = "Gas Cans"
+	desc = "Contains gas cans."
+	cost = /obj/item/gas_can/full::custom_price * 4
+	contains = list(/obj/item/gas_can/full = 5)
 
 /*
 /datum/supply_pack/local/hydro_tray
@@ -79,17 +86,6 @@
 		)
 	crate_name = "hydro crate"
 
-
-/datum/supply_pack/local/weed_supplies
-	name = "Weed Supplies"
-	desc = "Contains a bailer and some seeds. No trays."
-	cost = 100
-	contains = list(
-		/obj/item/reagent_containers/cup/watering_can/metal,
-		/obj/item/seeds/cannabis = 5,
-	)
-	crate_name = "hydro crate"
-
 /* Does nothing atm
 /datum/supply_pack/local/methlab
 	name = "Lab Equipment"
@@ -118,6 +114,8 @@
 	cost = 200 // CRIMSON EDIT - Shop Inventories Additions - Original: cost = 1000
 	contains = list(/obj/item/door_repair_kit)
 
+// MEDICAL CRIMSON GRID //
+
 /datum/supply_pack/local/medicalsupplies
 	name = "Medical Supplies"
 	desc = "Contains some first aid supplies."
@@ -129,14 +127,7 @@
 		/obj/item/stack/medical/ointment = 4
 	)
 
-/datum/supply_pack/local/cuffs
-	name = "Boxs of Handcuffs"
-	desc = "Contains boxs of handcuffs."
-	cost = 400
-	contains = list(/obj/item/storage/box/handcuffs = 4)
-	crate_name = "handcuff crate"
-
-/datum/supply_pack/local/potassiodide
+/datum/supply_pack/medical/potassiodide
 	name = "Potassium Iodide"
 	desc = "Contains bottles of potassium iodide."
 	cost = /obj/item/storage/pill_bottle/potassiodide::custom_price * 4
@@ -147,19 +138,6 @@
 	desc = "Contains bottles of ephedrine."
 	cost = /obj/item/storage/pill_bottle/ephedrine::custom_price * 4
 	contains = list(/obj/item/storage/pill_bottle/ephedrine = 5)
-
-/datum/supply_pack/local/gas_can
-	name = "Gas Cans"
-	desc = "Contains gas cans."
-	cost = /obj/item/gas_can/full::custom_price * 4
-	contains = list(/obj/item/gas_can/full = 5)
-
-/datum/supply_pack/local/thermal_drill
-	name = "Thermal Drill"
-	desc = "Contains a thermal drill."
-	cost = 4000
-	contains = list(/obj/structure/drill)
-	crate_name = "drill crate"
 
 /datum/supply_pack/medical/organs
 	name = "Organs (Ethically sourced)"
@@ -190,3 +168,75 @@
 		/obj/item/organ/liver = 4,
 		/obj/item/organ/stomach = 4,
 		/obj/item/organ/appendix = 4)
+
+/datum/supply_pack/medical/organs/multi
+	name = "Pharmacy supplies"
+	desc = "A crate full of an assortment of prescription pills"
+	cost = 2000
+	contains = list(
+		/obj/item/storage/pill_bottle/mannitol = 3,
+		/obj/item/storage/pill_bottle/iron = 3,
+		/obj/item/storage/pill_bottle/probital = 3,
+		/obj/item/storage/pill_bottle/potassiodide = 3,
+		/obj/item/storage/pill_bottle/epinephrine = 3,
+		/obj/item/storage/pill_bottle/multiver = 3)
+
+/datum/supply_pack/medical/chemistry_kit
+	name = "Chemistry Tools"
+	desc = "A crate full of an assortment of chemistry tools"
+	contains = list(
+		/obj/item/storage/box/syringes,
+		/obj/item/storage/box/beakers,
+		/obj/item/storage/box/beakers/big)
+
+/datum/supply_pack/medical/bodybag
+	name = "Body bags"
+	desc = "A crate full of an assortment of body bags"
+	contains = list(/obj/item/storage/box/bodybags = 2)
+
+// Contraband (ilegal shit)
+/datum/supply_pack/contraband
+	group = "Contraband"
+	crate_type = /obj/structure/closet/crate/large
+
+/datum/supply_pack/contraband
+	name = "Lockpicks x3"
+	desc = "A box of lockpicks"
+	cost = 400
+	contains = list(/obj/item/vamp/keys/hack = 3)
+
+/datum/supply_pack/contraband/cuffs
+	name = "Boxs of Handcuffs"
+	desc = "Contains boxs of handcuffs."
+	cost = 400
+	contains = list(/obj/item/storage/box/handcuffs = 4)
+	crate_name = "handcuff crate"
+
+/datum/supply_pack/contraband/thermal_drill
+	name = "Thermal Drill"
+	desc = "Contains a thermal drill."
+	cost = 4000
+	contains = list(/obj/structure/drill)
+	crate_name = "drill crate"
+
+/datum/supply_pack/contraband/interrogation
+	name = "Interrogation Kit"
+	desc = "An assortment of supplies with the sole purpose of inflicting pain on an individual"
+	cost = 4000
+	contains = list(
+		/obj/item/wirecutters/pliers,
+		/obj/item/vampire_stake,
+		/obj/item/clothing/head/vampire/blackbag,
+		/obj/item/storage/backpack/duffelbag/sec/surgery,
+		)
+	crate_name = "grim crate"
+
+/datum/supply_pack/contraband/weed
+	name = "Cannabis Seeds"
+	desc = "Contains a bailer and some seeds. No trays."
+	cost = 700
+	contains = list(
+		/obj/item/seeds/cannabis = 2,
+	)
+	crate_name = "seeds crate"
+

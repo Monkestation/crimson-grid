@@ -6,9 +6,9 @@
 /datum/supply_pack/medical/bloodpacks
 	name = "Blood Pack Variety Crate"
 	desc = "Contains ten different blood packs for reintroducing blood to patients."
-	cost = CARGO_CRATE_VALUE * 7
+	cost = 2000
 	contains = list(
-		/obj/item/reagent_containers/blood/random = 10,
+		/obj/item/reagent_containers/blood/random = 4,
 		/obj/item/paper/fluff/jobs/medical/blood_types,
 	)
 	crate_name = "blood freezer"
@@ -63,58 +63,36 @@
 /datum/supply_pack/medical/defibs
 	name = "Defibrillator Crate"
 	desc = "Contains two defibrillators for bringing the recently deceased back to life."
-	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/defibrillator/loaded = 2)
+	cost = 2000
+	contains = list(/obj/item/defibrillator/loaded)
 	crate_name = null
 	crate_type = /obj/structure/closet/crate/deforest
 
 /datum/supply_pack/medical/iv_drip
 	name = "IV Drip Crate"
 	desc = "Contains a single IV drip for administering blood to patients."
-	cost = CARGO_CRATE_VALUE * 2
+	cost = 1000
 	contains = list(/obj/machinery/iv_drip)
 	crate_name = null
 	crate_type = /obj/structure/closet/crate/deforest
 
 /datum/supply_pack/medical/supplies
-	name = "Medical Supplies Crate"
+	name = "Medical Crate"
 	desc = "Contains a random assortment of medical supplies. German doctor not included."
-	cost = CARGO_CRATE_VALUE * 4
+	cost = 2000
 	contains = list(
-		/obj/item/reagent_containers/cup/bottle/multiver,
-		/obj/item/reagent_containers/cup/bottle/epinephrine,
-		/obj/item/reagent_containers/cup/bottle/morphine,
-		/obj/item/reagent_containers/cup/bottle/toxin,
-		/obj/item/reagent_containers/cup/beaker/large,
-		/obj/item/reagent_containers/applicator/pill/insulin,
 		/obj/item/stack/medical/wrap/gauze,
-		/obj/item/storage/box/bandages,
-		/obj/item/storage/box/beakers,
-		/obj/item/storage/box/medigels,
-		/obj/item/storage/box/syringes,
-		/obj/item/storage/box/bodybags,
 		/obj/item/storage/medkit/regular,
 		/obj/item/storage/medkit/o2,
 		/obj/item/storage/medkit/toxin,
 		/obj/item/storage/medkit/brute,
 		/obj/item/storage/medkit/fire,
-		/obj/item/defibrillator/loaded,
-		/obj/item/reagent_containers/blood/o_minus,
-		/obj/item/storage/pill_bottle/mining,
-		/obj/item/reagent_containers/applicator/pill/neurine,
-		/obj/item/stack/medical/bone_gel = 2,
-		/obj/item/vending_refill/medical,
-		/obj/item/vending_refill/drugs,
+		/obj/item/stack/medical/bone_gel = 4,
 	)
 	crate_name = null
 	crate_type = /obj/structure/closet/crate/deforest
-	test_ignored = TRUE
 
-/datum/supply_pack/medical/supplies/fill(obj/container)
-	for(var/i in 1 to 10)
-		var/item = pick(contains)
-		new item(container)
-
+/*
 /datum/supply_pack/medical/experimentalmedicine
 	name = "Experimental Medicine Crate"
 	desc = "A crate containing the medication required for living with Hereditary Manifold Sickness, Sansufentanyl."
@@ -122,13 +100,13 @@
 	contains = list(/obj/item/storage/pill_bottle/sansufentanyl = 2)
 	crate_name = null
 	crate_type = /obj/structure/closet/crate/interdyne_normal
-
+*/
 /datum/supply_pack/medical/surgery
 	name = "Surgical Supplies Crate"
 	desc = "Do you want to perform surgery, but don't have one of those fancy \
 		shmancy degrees? Just get started with this crate containing a DeForest surgery tray, \
 		Sterilizine spray and collapsible roller bed."
-	cost = CARGO_CRATE_VALUE * 6
+	cost = 1000
 	contains = list(
 		/obj/item/surgery_tray/full,
 		/obj/item/reagent_containers/medigel/sterilizine,
@@ -143,7 +121,7 @@
 		should last several days, with a large pump to fill containers with. Direct injection \
 		of saline should be left to medical professionals as the pump is capable of overdosing \
 		patients."
-	cost = CARGO_CRATE_VALUE * 6
+	cost = 2000
 	access = ACCESS_MEDICAL
 	contains = list(/obj/machinery/iv_drip/saline)
 	crate_type = /obj/structure/closet/crate/large
@@ -236,6 +214,7 @@
 	contains = list(/obj/item/reagent_containers/cup/bottle/inversing_buffer)
 	crate_name = "chiral inversing buffer crate"
 
+/*
 /datum/supply_pack/medical/handheld_crew_monitor
 	name = "Handheld Crew Monitor Crate"
 	desc = "A crate containing three handheld crew monitors"
@@ -256,3 +235,4 @@
 	contains = list(/obj/item/circuitboard/machine/wall_healer)
 	crate_name = null
 	crate_type = /obj/structure/closet/crate/deforest
+*/
