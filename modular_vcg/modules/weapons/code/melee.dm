@@ -1,3 +1,6 @@
+/obj/item/chainsaw/vamp
+	force_on = 3 LETHAL_TTRPG_DAMAGE
+
 /obj/item/knife/vamp
 	throwforce = 1 LETHAL_TTRPG_DAMAGE
 	embed_type = /datum/embedding/combat_knife/weak
@@ -6,9 +9,6 @@
 	force = 1.5 LETHAL_TTRPG_DAMAGE
 	throwforce = 1 LETHAL_TTRPG_DAMAGE
 	embed_type = /datum/embedding/combat_knife/weak
-
-/obj/item/chainsaw/vamp
-	force_on = 3 LETHAL_TTRPG_DAMAGE
 
 /obj/item/melee/vamp/tire
 	force = 1 LETHAL_TTRPG_DAMAGE
@@ -23,5 +23,3 @@
 	throw_speed = 4
 	embed_type = /datum/embedding/spear
 	wound_bonus = 15
-
-
