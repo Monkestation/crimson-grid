@@ -22,6 +22,6 @@
 	playsound(
 		source = source,
 		soundin = sound_to_play,
-		vol = HAS_TRAIT(crossed, TRAIT_LIGHT_STEP) ? 20 : 50,
+		vol = (HAS_TRAIT(crossed, TRAIT_LIGHT_STEP) || HAS_TRAIT(crossed, TRAIT_OBFUSCATED)) ? 20 : 50, // DARKPACK EDIT CHANGE - POWERS
 		vary = TRUE,
 	)

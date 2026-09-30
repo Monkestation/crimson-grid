@@ -187,7 +187,7 @@
 		bang(get_turf(src), M, user)
 
 /obj/item/card/hunter/proc/bang(turf/turf, mob/living/living_mob, mob/living/user)
-	if(living_mob.stat == DEAD) //They're dead!
+	if(living_mob.stat == DEAD || living_mob == user || living_mob.mind?.holy_role)//CRIMSON EDIT MAKE SURE LEOPOLDS DONT FLASH SELF
 		return
 	living_mob.show_message(span_warning(span_bold("GOD SEES YOU!")), MSG_AUDIBLE)
 
@@ -196,9 +196,9 @@
 		living_mob.pointed(user)
 
 	var/distance = max(0, get_dist(get_turf(src), turf))
-	if(living_mob.flash_act(affect_silicon = 1))
-		living_mob.Paralyze(max(10/max(1, distance), 5))
-		living_mob.Knockdown(max(100/max(1, distance), 40))
+	living_mob.flash_act(affect_silicon = 1)//CRIMSON EDIT REMOVED CARING ABOUT FLASH PROTECTION GOD SUPERCEEDS SUNGLASSES
+	living_mob.Paralyze(max(10/max(1, distance), 5))
+	living_mob.Knockdown(max(100/max(1, distance), 40))
 
 /obj/item/card/hunter/attack(mob/living/target, mob/living/user)
 	. = ..()
@@ -206,7 +206,7 @@
 		return
 	if(!COOLDOWN_FINISHED(src, detonation_timer))
 		return
-	if(HAS_TRAIT(target, TRAIT_REPELLED_BY_HOLINESS))
+	if(HAS_TRAIT(target, TRAIT_REPELLED_BY_HOLINESS) && target != user && !target.mind?.holy_role)
 		COOLDOWN_START(src, detonation_timer, 30 SECONDS)
 		lightningbolt(target)
 		to_chat(target, span_userdanger("The gods have punished you for your sins!"))
