@@ -31,3 +31,17 @@
 	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL)
 	failure_message = "You feel your teeth becoming normal again."
 
+/datum/quirk/darkpack/garou_language
+	name = "Garou Language"
+	desc = "Through being a kinfolk prior to embrace or extensive study, you understand and speak the language of the garou."
+	icon = FA_ICON_DOG
+	value = 5
+	allowed_splats = list(SPLAT_KINDRED)
+
+/datum/quirk/darkpack/garou_language/add(client/client_source)
+	quirk_holder.grant_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE|UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
+	quirk_holder.grant_language(/datum/language/primal_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
+
+/datum/quirk/darkpack/garou_language/remove()
+	quirk_holder.remove_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE|UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
+	quirk_holder.remove_language(/datum/language/primal_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
