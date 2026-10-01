@@ -1043,6 +1043,9 @@
 /obj/effect/mapping_helpers/door/access/brujah,
 /turf/open/floor/city/factory,
 /area/vtm/interior)
+"amR" = (
+/turf/open/floor/plating/rough,
+/area/vtm/interior/anarch)
 "amW" = (
 /obj/effect/turf_decal/siding/wood/light{
 	dir = 4
@@ -7914,6 +7917,17 @@
 "bUq" = (
 /turf/open/floor/carpet/green,
 /area/vtm/interior/banu)
+"bUt" = (
+/obj/effect/turf_decal/siding/wideplating/dark,
+/obj/machinery/light/small/red/directional/north,
+/obj/item/toy/crayon/white{
+	pixel_y = 13
+	},
+/obj/structure/signboard{
+	pixel_y = 19
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/anarch)
 "bUy" = (
 /turf/open/water/hot_spring,
 /area/vtm/interior/strip)
@@ -8960,6 +8974,12 @@
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/strip)
+"cgq" = (
+/obj/structure/table/wood,
+/obj/machinery/processor,
+/obj/item/knife,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/anarch)
 "cgu" = (
 /obj/effect/decal/pallet,
 /obj/structure/bed/maint{
@@ -42283,6 +42303,7 @@
 	pixel_y = 10;
 	pixel_x = 12
 	},
+/obj/item/pen/fountain,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch)
 "kda" = (
@@ -57067,6 +57088,13 @@
 "nFc" = (
 /turf/closed/wall/vampwall/rustbad,
 /area/vtm/interior/sewer)
+"nFg" = (
+/obj/effect/turf_decal/siding/wideplating/dark/corner{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/anarch)
 "nFl" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -65962,14 +65990,20 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/museum)
 "pHx" = (
-/obj/structure/curtain/cloth{
-	color = "#525252"
+/obj/structure/table/wood,
+/obj/underplate{
+	pixel_y = 6
 	},
-/obj/effect/decal/cleanable/litter,
-/obj/effect/turf_decal/siding/wideplating/dark{
-	dir = 1
+/obj/underplate,
+/obj/underplate{
+	pixel_y = 4
 	},
-/turf/open/floor/wood/smooth/old,
+/obj/structure/platform/lowwall/bar,
+/obj/effect/decal/wallpaper/grey/low{
+	color = "#6d6d6d"
+	},
+/obj/item/reagent_containers/condiment/ketchup,
+/turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "pHz" = (
 /obj/effect/decal/rugs,
@@ -72646,6 +72680,12 @@
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/misc/grass,
 /area/vtm)
+"rmb" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/turf/open/floor/plating/rough,
+/area/vtm/interior/anarch)
 "rmd" = (
 /obj/structure/sink/directional/east,
 /obj/structure/toilet{
@@ -74416,8 +74456,8 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/chinatown)
 "rGg" = (
-/obj/structure/chair/stool/bar/darkpack/black,
-/turf/open/floor/carpet/darkpack/old,
+/obj/effect/decal/rugs,
+/turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "rGp" = (
 /obj/structure/closet/crate/bin,
@@ -75612,8 +75652,8 @@
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior/tzimisce_manor)
 "rYe" = (
-/obj/structure/extinguisher_cabinet/directional/east,
-/turf/open/floor/carpet/darkpack/old,
+/obj/machinery/griddle,
+/turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "rYf" = (
 /obj/effect/decal/fakelattice{
@@ -75859,6 +75899,7 @@
 /obj/effect/turf_decal/siding/wideplating/dark/corner{
 	dir = 8
 	},
+/obj/structure/chair/stool/bar/darkpack/red,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch)
 "sbI" = (
@@ -76745,9 +76786,23 @@
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/giovanni)
 "snp" = (
-/obj/structure/table/wood,
-/obj/structure/platform/lowwall/bar,
 /obj/machinery/computer/security/telescreen/entertainment/directional/north,
+/obj/effect/decal/rugs,
+/obj/structure/rack/tall/metal_shelf,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/clothing/suit/apron/chef,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "snu" = (
@@ -77478,8 +77533,20 @@
 /turf/open/water/vamp_sewer,
 /area/vtm/interior/setite)
 "svC" = (
-/obj/structure/chair/stool/bar/darkpack/red,
-/turf/open/floor/carpet/darkpack/old,
+/obj/structure/closet/secure_closet/freezer/fridge/all_access,
+/obj/item/storage/box/ingredients/american,
+/obj/item/storage/box/ingredients/vegetarian,
+/obj/item/storage/fancy/egg_box,
+/obj/item/reagent_containers/condiment/milk{
+	name = "full cream milk"
+	},
+/obj/item/reagent_containers/condiment/milk{
+	name = "full cream milk"
+	},
+/obj/item/storage/box/ingredients/carnivore,
+/obj/item/storage/box/ingredients/vegetarian,
+/obj/item/storage/box/ingredients/american,
+/turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "svU" = (
 /obj/structure/bookcase/random/nonfiction,
@@ -85297,8 +85364,9 @@
 	},
 /area/vtm/interior/sewer/police)
 "unf" = (
+/obj/machinery/deepfryer,
 /obj/machinery/light/small/red/directional/north,
-/turf/open/floor/carpet/darkpack/old,
+/turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "unk" = (
 /obj/effect/decal/wallpaper/grey/low{
@@ -88390,6 +88458,15 @@
 /obj/structure/platform/lowwall/rich,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/theatre)
+"vbH" = (
+/obj/structure/table/wood,
+/obj/effect/decal/wallpaper/grey/low{
+	color = "#6d6d6d"
+	},
+/obj/structure/platform/lowwall/bar,
+/obj/structure/desk_bell,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/anarch)
 "vbJ" = (
 /obj/effect/turf_decal/bordur/corner,
 /turf/open/floor/plating/sidewalk,
@@ -146656,8 +146733,8 @@ dSH
 dSH
 kBM
 snp
-dpa
-dpa
+rmb
+rmb
 ivd
 dkB
 sGz
@@ -146861,7 +146938,7 @@ dSH
 efc
 svC
 rGg
-svC
+rGg
 pHx
 sbE
 gcL
@@ -147064,10 +147141,10 @@ dSH
 dSH
 raU
 unf
-sGz
-sGz
-fUl
-mNF
+rGg
+amR
+uSP
+fQA
 sGz
 eqY
 ciQ
@@ -147267,11 +147344,11 @@ iQQ
 dSH
 dSH
 ivd
-sGz
+cgq
 rYe
-sGz
-fUl
-mNF
+rGg
+vbH
+fyl
 sGz
 eqY
 tsD
@@ -147474,8 +147551,8 @@ kBM
 kBM
 kBM
 kBM
-dJu
-utQ
+uHB
+bUt
 cls
 eqY
 jkk
@@ -148087,7 +148164,7 @@ mcz
 rps
 tqc
 fUl
-bwx
+nFg
 rvK
 ocQ
 pld

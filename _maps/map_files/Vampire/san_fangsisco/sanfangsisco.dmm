@@ -4542,6 +4542,7 @@
 	dir = 6
 	},
 /obj/structure/table/wood,
+/obj/structure/desk_bell,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "bcX" = (
@@ -17134,6 +17135,10 @@
 /area/vtm/interior/cog/caern)
 "ehv" = (
 /obj/machinery/light/directional/north,
+/obj/structure/signboard{
+	pixel_y = 17
+	},
+/obj/item/toy/crayon/white,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch)
 "ehw" = (
@@ -22592,18 +22597,12 @@
 /turf/open/misc/dirt,
 /area/vtm/interior/cog/caern)
 "fBG" = (
-/obj/structure/closet/secure_closet/freezer/fridge/all_access,
-/obj/item/storage/box/ingredients/american,
-/obj/item/storage/box/ingredients/vegetarian,
-/obj/item/storage/fancy/egg_box,
-/obj/item/reagent_containers/condiment/milk{
-	name = "full cream milk"
-	},
-/obj/item/reagent_containers/condiment/milk{
-	name = "full cream milk"
-	},
-/obj/item/storage/box/ingredients/carnivore,
-/obj/structure/sign/poster/random/directional/north,
+/obj/item/kitchen/fork/plastic,
+/obj/item/kitchen/fork/plastic,
+/obj/item/kitchen/fork/plastic,
+/obj/item/kitchen/spoon/plastic,
+/obj/item/kitchen/spoon/plastic,
+/obj/item/kitchen/spoon/plastic,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "fBI" = (
@@ -27027,13 +27026,11 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/oldchurch)
 "gGf" = (
+/obj/machinery/deepfryer,
 /obj/effect/turf_decal/siding/white{
-	dir = 4
+	dir = 10
 	},
-/obj/structure/vampdoor/glass{
-	dir = 8
-	},
-/turf/open/floor/plating/sidewalk/poor,
+/turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "gGP" = (
 /obj/effect/turf_decal/bordur{
@@ -40917,6 +40914,11 @@
 /obj/effect/turf_decal/asphaltline,
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/financialdistrict)
+"kki" = (
+/obj/machinery/griddle,
+/obj/machinery/light/directional/north,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/anarch)
 "kkn" = (
 /obj/machinery/shower/directional/west,
 /obj/structure/curtain,
@@ -48976,8 +48978,14 @@
 /area/vtm/interior/techshop)
 "mjm" = (
 /obj/structure/table/wood,
-/obj/underplate,
+/obj/underplate{
+	pixel_y = 6
+	},
 /obj/effect/turf_decal/siding/white,
+/obj/underplate,
+/obj/underplate{
+	pixel_y = 4
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "mjs" = (
@@ -54132,6 +54140,10 @@
 /mob/living/carbon/human/npc/walkby,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/chinatown)
+"nAH" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/anarch)
 "nAM" = (
 /obj/effect/decal/pallet,
 /obj/structure/closet/crate/large,
@@ -55645,6 +55657,8 @@
 /obj/underplate/stuff{
 	pixel_y = 8
 	},
+/obj/item/clothing/suit/apron/chef,
+/obj/item/pen/fountain,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "nQS" = (
@@ -62937,7 +62951,6 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/millennium_tower/f4)
 "pKt" = (
-/obj/effect/turf_decal/siding/white,
 /obj/structure/vampdoor/simple,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
@@ -82548,12 +82561,9 @@
 /turf/open/misc/grass,
 /area/vtm/graveyard)
 "uEh" = (
-/obj/structure/table/wood,
-/obj/underplate,
-/obj/structure/curtain/bounty{
-	pixel_x = -32
-	},
-/turf/open/floor/wood/smooth/old,
+/obj/effect/turf_decal/siding/white,
+/obj/item/trash/popcorn/salty,
+/turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "uEk" = (
 /obj/effect/decal/carpet{
@@ -89570,6 +89580,10 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch)
+"wsx" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet/darkpack,
+/area/vtm/interior/anarch)
 "wsy" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -90665,6 +90679,23 @@
 	},
 /turf/open/floor/carpet/red,
 /area/vtm/interior/millennium_tower)
+"wGg" = (
+/obj/structure/closet/secure_closet/freezer/fridge/all_access,
+/obj/item/storage/box/ingredients/american,
+/obj/item/storage/box/ingredients/vegetarian,
+/obj/item/storage/fancy/egg_box,
+/obj/item/reagent_containers/condiment/milk{
+	name = "full cream milk"
+	},
+/obj/item/reagent_containers/condiment/milk{
+	name = "full cream milk"
+	},
+/obj/item/storage/box/ingredients/carnivore,
+/obj/structure/sign/poster/random/directional/north,
+/obj/item/storage/box/ingredients/vegetarian,
+/obj/item/storage/box/ingredients/american,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/anarch)
 "wGp" = (
 /obj/structure/table,
 /obj/item/emergency_bed,
@@ -93548,9 +93579,24 @@
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior/tzimisce_sanctum)
 "xoz" = (
-/obj/structure/table/wood,
-/obj/machinery/griddle,
-/obj/machinery/light/directional/north,
+/obj/structure/rack/wide/wood_shelf/alt,
+/obj/item/reagent_containers/condiment/pack/ketchup{
+	pixel_w = 22
+	},
+/obj/item/reagent_containers/condiment/pack/ketchup{
+	pixel_w = 10
+	},
+/obj/item/reagent_containers/condiment/pack/ketchup{
+	pixel_w = 14
+	},
+/obj/item/reagent_containers/condiment/pack/ketchup{
+	pixel_w = 18
+	},
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "xoA" = (
@@ -93958,6 +94004,12 @@
 /obj/machinery/light/prince/directional/north,
 /turf/open/floor/wood/old,
 /area/vtm/interior/tzimisce_manor)
+"xto" = (
+/obj/structure/table/wood,
+/obj/machinery/processor,
+/obj/item/knife,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/anarch)
 "xtG" = (
 /obj/effect/decal/wallpaper/paper/rich,
 /turf/closed/wall/vampwall/rich/old,
@@ -95690,6 +95742,10 @@
 	},
 /turf/open/misc/grass,
 /area/vtm/interior/cog/caern)
+"xQz" = (
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/city/toilet,
+/area/vtm/interior/anarch)
 "xQD" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating/rough/cave,
@@ -246292,10 +246348,10 @@ fkk
 giR
 giR
 fkk
+vWS
 fkk
-giR
-giR
-gGf
+fkk
+fkk
 fkk
 fkk
 fkk
@@ -246540,20 +246596,20 @@ krr
 ntq
 ntq
 brr
-mVa
-fLm
+iVF
+gGf
 fkk
-xnW
+pMC
 pMC
 bTe
 hNd
 cRh
-pMC
-bTe
-uEh
-cRh
+nAH
 pMC
 pMC
+pKt
+aOU
+fLm
 hBS
 qEE
 aOU
@@ -246797,20 +246853,20 @@ krr
 ntq
 ntq
 brr
+kki
+uEh
+fkk
+pMC
+pMC
+ubc
+pek
+jyv
+pMC
+pMC
+pMC
+fkk
 aFn
-aOU
-pKt
-pMC
-pMC
-ubc
-pek
-jyv
-pMC
-ubc
-pek
-jyv
-pMC
-pMC
+xQz
 hBS
 pWl
 aOU
@@ -247054,8 +247110,8 @@ krr
 ntq
 ntq
 brr
-fkk
-fkk
+xto
+iZB
 fkk
 ehv
 pMC
@@ -247065,9 +247121,9 @@ pMC
 pMC
 pMC
 pMC
-pMC
-pMC
-kWn
+fkk
+fkk
+fkk
 hBS
 qEE
 aOU
@@ -247311,9 +247367,9 @@ krr
 ntq
 ntq
 brr
-iVF
-wsX
-iZB
+wGg
+lcU
+nzB
 pMC
 vwp
 qtE
@@ -247838,7 +247894,7 @@ pyH
 pyH
 pyH
 pyH
-pyH
+wsx
 hBS
 big
 xlz
