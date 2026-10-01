@@ -37,3 +37,7 @@
 /datum/loadout_item/uniform/tripp_jeans_red
 	name = "red tripp jeans"
 	item_path = /obj/item/clothing/under/vampire/tripp_jeans/red
+
+/datum/loadout_item/uniform/gothic
+	name = "gothic getup"
+	item_path = /obj/item/clothing/under/vampire/gothic
