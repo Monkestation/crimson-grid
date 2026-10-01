@@ -377,7 +377,5 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	return 0
 
 /datum/preference/numeric/bonus_discipline_points/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	. = ..()
-
 	return
 // CRIMSON EDIT ADD END - Diablerie progression

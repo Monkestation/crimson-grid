@@ -225,6 +225,8 @@
 /datum/splat/vampire/kindred/proc/on_kindred_death(mob/living/carbon/human/kindred, gibbed)
 	SIGNAL_HANDLER
 
+	kindred.roll_final_death_discipline_loss() // CRIMSON EDIT ADD - Diablerie progression
+
 	if(gibbed)
 		return
 
@@ -267,3 +269,53 @@
 			set_generation(var_value)
 
 	return ..()
+
+// CRIMSON EDIT ADD START - Diablerie progression
+/**
+ * prob(25) to lose each out of clan discipline on final death
+ *
+ * Forgotten disciplines are removed from the character sheet. Their points are refunded,
+ * except for any that were spent above the immortal age budget, which are lost instead.
+ */
+/mob/living/carbon/human/proc/roll_final_death_discipline_loss()
+	if(!GLOB.canon_event)
+		return
+	var/datum/preferences/prefs = client?.prefs
+	if(!prefs)
+		return
+
+	var/base_budget = get_discipline_point_budget(prefs.read_preference(/datum/preference/numeric/immortal_age))["points"]
+	var/points_spent = 0
+	var/points_lost = 0
+	var/list/clan_disciplines = get_clan()?.clan_disciplines || list()
+	var/list/lost_disciplines = list()
+	for(var/discipline_key in prefs.discipline_levels)
+		var/level = prefs.discipline_levels[discipline_key] || 0
+		points_spent += level
+		var/discipline_type = ispath(discipline_key) ? discipline_key : text2path(discipline_key)
+		if(!discipline_type || (discipline_type in clan_disciplines))
+			continue
+		if(prob(25))
+			lost_disciplines[discipline_key] = discipline_type
+			points_lost += level
+
+	if(!length(lost_disciplines))
+		return
+
+	var/points_over_budget = max(0, points_spent - base_budget)
+	var/bonus_points = max(0, prefs.read_preference(/datum/preference/numeric/bonus_discipline_points) - min(points_lost, points_over_budget))
+
+	if(!write_preference_midround(/datum/preference/numeric/bonus_discipline_points, bonus_points))
+		return
+
+	var/list/lost_names = list()
+	for(var/discipline_key in lost_disciplines)
+		var/datum/discipline/discipline_type = lost_disciplines[discipline_key]
+		prefs.discipline_levels -= discipline_key
+		remove_st_power(discipline_type)
+		lost_names += initial(discipline_type.name)
+	prefs.save_character()
+
+	to_chat(src, span_userdanger("As your soul slips away, your mastery of [english_list(lost_names)] fades with it."))
+	log_game("[key_name(src)] lost [english_list(lost_names)] on final death. Bonus discipline points are now [bonus_points].")
+// CRIMSON EDIT ADD END - Diablerie progression
