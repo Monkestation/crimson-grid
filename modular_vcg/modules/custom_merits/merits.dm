@@ -46,3 +46,13 @@
 	quirk_holder.remove_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE|UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
 	quirk_holder.remove_language(/datum/language/primal_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
 	
+/datum/quirk/darkpack/homestuck
+	name = "Home Stuck"
+	desc = "Your speech is hard to understand for others."
+	value = 0
+	icon = FA_ICON_HOUSE_USER
+	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL)
+	included_clans = list(VAMPIRE_CLAN_MALKAVIAN)
+
+/datum/quirk/darkpack/homestuck/add(client/client_source)
+	quirk_holder.AddComponent(/datum/component/speechmod, replacements = list("a"="4", "A"="4", "i"="1", "I"="1", "e"="3", "E"="3"), uppercase = TRUE)
