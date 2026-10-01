@@ -14,7 +14,6 @@
 	righthand_file = 'modular_vcg/modules/custom_weapon/icons/righthand.dmi'
 	ONFLOOR_ICON_HELPER('modular_vcg/modules/custom_weapon/icons/weapon_onfloor.dmi')
 	inhand_icon_state = "hk51"
-	worn_icon_state = "mp5"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/darkpack762x51fal
 	spawn_magazine_type = /obj/item/ammo_box/magazine/darkpack762x51fal/hk51
 	burst_size = 1
