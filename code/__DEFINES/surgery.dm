@@ -186,10 +186,13 @@ DEFINE_BITFIELD(operation_flags, list(
 /// The specific target of the operation, usually a bodypart or organ, generally redundant
 #define OPERATION_TARGET "target"
 // For tend wounds - only reason these aren't local is we use them in unit testing
+// V - Searching the codebase for OPERATION_BURN_HEAL gives me nothing and only brute gets tested, so I assume that it isn't desired for everything here.
 #define OPERATION_BRUTE_HEAL "brute_heal"
 #define OPERATION_BURN_HEAL "burn_heal"
+#define OPERATION_AGG_HEAL "agg_heal"
 #define OPERATION_BRUTE_MULTIPLIER "brute_multiplier"
 #define OPERATION_BURN_MULTIPLIER "burn_multiplier"
+#define OPERATION_AGG_MULTIPLIER "agg_multiplier"
 
 /// Used in string formatting to print a limb as "John's right arm" or "the human right arm"
 #define FORMAT_LIMB_OWNER(limb) (limb.owner ? "[limb.owner]'s [limb.plaintext_zone]" : limb)

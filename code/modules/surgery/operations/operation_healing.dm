@@ -4,6 +4,8 @@
 #define BURN_SURGERY (1<<1)
 /// Allow combo healing operation
 #define COMBO_SURGERY (1<<2)
+/// Allow agg healing operation
+#define AGG_SURGERY (1<<3)
 
 /datum/surgery_operation/basic/tend_wounds
 	name = "tend wounds"
@@ -26,17 +28,19 @@
 	/// Radial slice datums for every healing option we can provide
 	VAR_PRIVATE/list/cached_healing_options
 	/// Bitflag of which healing types this operation can perform
-	var/can_heal = BRUTE_SURGERY | BURN_SURGERY
+	var/can_heal = BRUTE_SURGERY | BURN_SURGERY | AGG_SURGERY
 	/// Flat amount of healing done per operation
 	var/healing_amount = 5
+	/// Multiplier to healing done when healing agg damage.
+	var/agg_healing_factor = 0.4
 	/// The amount of damage healed scales based on how much damage the patient has times this multiplier
 	var/healing_multiplier = 0.07
 
 /datum/surgery_operation/basic/tend_wounds/all_required_strings()
-	return ..() + list("the patient must have brute or burn damage")
+	return ..() + list("the patient must have brute, burn, or necrosis damage")
 
 /datum/surgery_operation/basic/tend_wounds/state_check(mob/living/patient)
-	return patient.get_brute_loss() > 0 || patient.get_fire_loss() > 0
+	return patient.get_brute_loss() > 0 || patient.get_fire_loss() > 0 || patient.get_agg_loss() > 0
 
 /datum/surgery_operation/basic/tend_wounds/get_default_radial_image()
 	return image(/obj/item/storage/medkit)
@@ -44,7 +48,7 @@
 /datum/surgery_operation/basic/tend_wounds/get_radial_options(mob/living/patient, obj/item/tool, operating_zone)
 	var/list/options = list()
 
-	if(can_heal & COMBO_SURGERY)
+	if(can_heal & COMBO_SURGERY && (patient.get_brute_loss() > 0 || patient.get_fire_loss() > 0))
 		var/datum/radial_menu_choice/all_healing = LAZYACCESS(cached_healing_options, "[COMBO_SURGERY]")
 		if(!all_healing)
 			all_healing = new()
@@ -91,6 +95,21 @@
 			"[OPERATION_BURN_MULTIPLIER]" = healing_multiplier,
 		)
 
+	if((can_heal & AGG_SURGERY) && patient.get_agg_loss() > 0)
+		var/datum/radial_menu_choice/agg_healing = LAZYACCESS(cached_healing_options, "[AGG_SURGERY]")
+		if(!agg_healing)
+			agg_healing = new()
+			agg_healing.image = image(/obj/item/storage/medkit/tactical_lite)
+			agg_healing.name = "tend necrosis"
+			agg_healing.info = "Heal a patient's festering wounds."
+			LAZYSET(cached_healing_options, "[AGG_SURGERY]", agg_healing)
+
+		options[agg_healing] = list(
+			"[OPERATION_ACTION]" = "heal",
+			"[OPERATION_AGG_HEAL]" = healing_amount,
+			"[OPERATION_AGG_MULTIPLIER]" = healing_multiplier,
+		)
+
 	return options
 
 /datum/surgery_operation/basic/tend_wounds/can_loop(mob/living/patient, mob/living/operating_on, mob/living/surgeon, tool, list/operation_args)
@@ -99,24 +118,32 @@
 		return FALSE
 	var/brute_heal = operation_args[OPERATION_BRUTE_HEAL] > 0
 	var/burn_heal = operation_args[OPERATION_BURN_HEAL] > 0
+	var/agg_heal = operation_args[OPERATION_AGG_HEAL] > 0
 	if(brute_heal && burn_heal)
 		return patient.get_brute_loss() > 0 || patient.get_fire_loss() > 0
 	else if(brute_heal)
 		return patient.get_brute_loss() > 0
 	else if(burn_heal)
 		return patient.get_fire_loss() > 0
+	else if(agg_heal)
+		return patient.get_agg_loss() > 0
 	return FALSE
 
 /datum/surgery_operation/basic/tend_wounds/on_preop(mob/living/patient, mob/living/surgeon, tool, list/operation_args)
 	var/woundtype
 	var/brute_heal = operation_args[OPERATION_BRUTE_HEAL] > 0
 	var/burn_heal = operation_args[OPERATION_BURN_HEAL] > 0
+	var/agg_heal = operation_args[OPERATION_AGG_HEAL] > 0
 	if(brute_heal && burn_heal)
 		woundtype = "wounds"
 	else if(brute_heal)
 		woundtype = "bruises"
-	else //why are you trying to 0,0...?
+	else if(burn_heal)
 		woundtype = "burns"
+	else if(agg_heal)
+		woundtype = "festering wounds"
+	else
+		woundtype = "wounds"
 	display_results(
 		surgeon,
 		patient,
@@ -126,15 +153,17 @@
 	)
 	display_pain(patient, "Your [woundtype] sting like hell!")
 
-#define CONDITIONAL_DAMAGE_MESSAGE(brute, burn, combo_msg, brute_msg, burn_msg) "[(brute > 0 && burn > 0) ? combo_msg : (brute > 0 ? brute_msg : burn_msg)]"
+#define CONDITIONAL_DAMAGE_MESSAGE(brute, burn, agg, combo_msg, brute_msg, burn_msg, agg_msg) "[(brute > 0 && burn > 0) ? combo_msg : (brute > 0 ? brute_msg : (burn > 0 ? burn_msg : agg_msg))]"
 
 /// Returns a string letting the surgeon know roughly how much longer the surgery is estimated to take at the going rate
-/datum/surgery_operation/basic/tend_wounds/proc/get_progress(mob/living/surgeon, mob/living/patient, brute_healed, burn_healed)
+/datum/surgery_operation/basic/tend_wounds/proc/get_progress(mob/living/surgeon, mob/living/patient, brute_healed, burn_healed, agg_healed)
 	var/estimated_remaining_steps = 0
 	if(brute_healed > 0)
 		estimated_remaining_steps = max(0, (patient.get_brute_loss() / brute_healed))
 	if(burn_healed > 0)
 		estimated_remaining_steps = max(estimated_remaining_steps, (patient.get_fire_loss() / burn_healed)) // whichever is higher between brute or burn steps
+	if(agg_healed > 0)
+		estimated_remaining_steps = max(estimated_remaining_steps, (patient.get_agg_loss() / agg_healed))
 
 	var/progress_text
 
@@ -143,23 +172,25 @@
 			progress_text += ". Remaining brute: <font color='#ff3333'>[patient.get_brute_loss()]</font>"
 		if(burn_healed > 0 && patient.get_fire_loss() > 0)
 			progress_text += ". Remaining burn: <font color='#ff9933'>[patient.get_fire_loss()]</font>"
+		if(agg_healed > 0 && patient.get_agg_loss() > 0)
+			progress_text += ". Remaining necrosis: <font color='#6d16b4'>[patient.get_agg_loss()]</font>"
 		return progress_text
 
 	switch(estimated_remaining_steps)
 		if(-INFINITY to 1)
 			return
 		if(1 to 3)
-			progress_text += ", finishing up the last few [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, "signs of damage", "scrapes", "burn marks")]"
+			progress_text += ", finishing up the last few [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, agg_healed, "signs of damage", "scrapes", "burn marks", "discolored patches")]"
 		if(3 to 6)
-			progress_text += ", counting down the last few [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, "patches of trauma", "bruises", "blisters")] left to treat"
+			progress_text += ", counting down the last few [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, agg_healed, "patches of trauma", "bruises", "blisters", "discolored patches")] left to treat"
 		if(6 to 9)
-			progress_text += ", continuing to plug away at [patient.p_their()] extensive [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, "injuries", "rupturing", "roasting")]"
+			progress_text += ", continuing to plug away at [patient.p_their()] extensive [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, agg_healed, "injuries", "rupturing", "roasting", "festering wounds")]"
 		if(9 to 12)
 			progress_text += ", steadying yourself for the long surgery ahead"
 		if(12 to 15)
-			progress_text += ", though [patient.p_they()] still look[patient.p_s()] more like [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, "smooshed baby food", "ground beef", "burnt steak")] than a person"
+			progress_text += ", though [patient.p_they()] still look[patient.p_s()] more like [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, agg_healed, "smooshed baby food", "ground beef", "burnt steak", "rotten offal")] than a person"
 		if(15 to INFINITY)
-			progress_text += ", though you feel like you're barely making a dent in treating [patient.p_their()] [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, "broken", "pulped", "charred")] body"
+			progress_text += ", though you feel like you're barely making a dent in treating [patient.p_their()] [CONDITIONAL_DAMAGE_MESSAGE(brute_healed, burn_healed, agg_healed, "broken", "pulped", "charred", "fetid")] body"
 
 	return progress_text
 
@@ -186,6 +217,7 @@
 
 	var/brute_healed = operation_args[OPERATION_BRUTE_HEAL]
 	var/burn_healed = operation_args[OPERATION_BURN_HEAL]
+	var/agg_healed = operation_args[OPERATION_AGG_HEAL]
 
 	var/dead_multiplier = patient.stat == DEAD ? 0.2 : 1.0
 	var/accessibility_modifier = 1.0
@@ -196,13 +228,25 @@
 
 	var/brute_multiplier = operation_args[OPERATION_BRUTE_MULTIPLIER] * dead_multiplier * accessibility_modifier
 	var/burn_multiplier = operation_args[OPERATION_BURN_MULTIPLIER] * dead_multiplier * accessibility_modifier
+	var/agg_multiplier = operation_args[OPERATION_AGG_MULTIPLIER] * dead_multiplier * accessibility_modifier
 
 	brute_healed += round(patient.get_brute_loss() * brute_multiplier, DAMAGE_PRECISION)
 	burn_healed += round(patient.get_fire_loss() * burn_multiplier, DAMAGE_PRECISION)
+	agg_healed += round(patient.get_agg_loss() * agg_multiplier, DAMAGE_PRECISION)
 
+	// Little thing so that agg damage is weaker to heal respective to the others.
+	agg_healed = round(agg_healed * agg_healing_factor, DAMAGE_PRECISION)
+
+	/*
+	/	V - for some magical reason, agg loss CANNOT actually be healed this way.
+	/	Given that the agg damage element is literally the last element here and
+	/	it isn't used anywhere, I'm going to assume it's just broken.
+	*/
 	patient.heal_bodypart_damage(brute_healed, burn_healed)
+	patient.heal_ordered_damage(agg_healed, list(AGGRAVATED), TRUE)
 
-	user_msg += get_progress(surgeon, patient, brute_healed, burn_healed)
+
+	user_msg += get_progress(surgeon, patient, brute_healed, burn_healed, agg_healed)
 
 	if(HAS_MIND_TRAIT(surgeon, TRAIT_MORBID) && patient.stat != DEAD) //Morbid folk don't care about tending the dead as much as tending the living
 		surgeon.add_mood_event("morbid_tend_wounds", /datum/mood_event/morbid_tend_wounds)
@@ -226,13 +270,17 @@
 	)
 	var/brute_dealt = operation_args[OPERATION_BRUTE_HEAL] * 0.8
 	var/burn_dealt = operation_args[OPERATION_BURN_HEAL] * 0.8
+	var/agg_dealt = operation_args[OPERATION_AGG_HEAL] * 2.5
 	var/brute_multiplier = operation_args[OPERATION_BRUTE_MULTIPLIER] * 0.5
 	var/burn_multiplier = operation_args[OPERATION_BURN_MULTIPLIER] * 0.5
+	var/agg_multiplier = operation_args[OPERATION_AGG_MULTIPLIER] * 1.5
 
-	brute_dealt += round(patient.get_brute_loss() * brute_multiplier, 0.1)
-	burn_dealt += round(patient.get_fire_loss() * burn_multiplier, 0.1)
+	brute_dealt += round(patient.get_brute_loss() * brute_multiplier, DAMAGE_PRECISION)
+	burn_dealt += round(patient.get_fire_loss() * burn_multiplier, DAMAGE_PRECISION)
+	agg_dealt += round(patient.get_agg_loss() * agg_multiplier, DAMAGE_PRECISION)
 
-	patient.take_bodypart_damage(brute_dealt, burn_dealt, wound_bonus = CANT_WOUND)
+	// V - Agg mess ups deal brute damage since only supernatural things should cause agg. It does a lot though.
+	patient.take_bodypart_damage(brute_dealt + agg_dealt, burn_dealt, wound_bonus = CANT_WOUND)
 
 /datum/surgery_operation/basic/tend_wounds/upgraded
 	rnd_name = parent_type::rnd_name + "+"
@@ -267,3 +315,4 @@
 #undef BRUTE_SURGERY
 #undef BURN_SURGERY
 #undef COMBO_SURGERY
+#undef AGG_SURGERY
