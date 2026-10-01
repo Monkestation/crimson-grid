@@ -45,3 +45,4 @@
 /datum/quirk/darkpack/garou_language/remove()
 	quirk_holder.remove_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE|UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
 	quirk_holder.remove_language(/datum/language/primal_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_ATOM)
+	
