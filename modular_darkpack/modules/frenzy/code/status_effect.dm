@@ -17,6 +17,7 @@
 	owner.apply_status_effect(/datum/status_effect/grouped/static_look, TRAIT_STATUS_EFFECT(id))
 	owner.add_blocked_language(subtypesof(/datum/language), language_flags = UNDERSTOOD_LANGUAGE, source = id)
 	owner.add_traits(frenzy_traits, TRAIT_STATUS_EFFECT(id))
+	owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	return TRUE
 
 /datum/status_effect/frenzy/on_creation(mob/living/new_owner, atom/frenzy_target)
@@ -44,6 +45,7 @@
 	owner.remove_status_effect(/datum/status_effect/grouped/see_no_names, TRAIT_STATUS_EFFECT(id))
 	owner.remove_status_effect(/datum/status_effect/grouped/static_look, TRAIT_STATUS_EFFECT(id))
 	owner.remove_blocked_language(subtypesof(/datum/language), language_flags = UNDERSTOOD_LANGUAGE, source = id)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	owner.remove_traits(frenzy_traits, TRAIT_STATUS_EFFECT(id))
 	var/mob/living/carbon/carbon_owner = astype(owner)
 	carbon_owner?.exit_frenzy_mode()
@@ -70,11 +72,22 @@
 
 /datum/status_effect/frenzy/flee	//Generic fleeing frenzy
 	id = "fleeing frenzy"
-	frenzy_traits = list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA, TRAIT_CANNOT_FOCUS, TRAIT_ILLITERATE, TRAIT_PACIFISM)
-
+	frenzy_traits = list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA, TRAIT_CANNOT_FOCUS, TRAIT_ILLITERATE, TRAIT_CLUMSY, TRAIT_DISCOORDINATED_TOOL_USER)
+	// CRIMSON EDIT CHANGE - Original: frenzy_traits = list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA, TRAIT_CANNOT_FOCUS, TRAIT_ILLITERATE, TRAIT_PACIFISM)
 /atom/movable/screen/alert/status_effect/frenzy
 	name = "Frenzy"
 	desc = "FRENZY."
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "fear"
 
+// CRIMSON EDIT ADDITION START - Makes it so fleeing frenzy's combat is debilitating instead of pacifism
+/datum/status_effect/frenzy/flee/on_apply()
+	. = ..()
+	if(!.)
+		return
+	owner.st_add_stat_clamp(STAT_MELEE, 0, type)
+
+/datum/status_effect/frenzy/flee/on_remove()
+	owner.st_remove_stat_clamp(STAT_MELEE, type)
+	return ..()
+// CRIMSON EDIT ADDITION END

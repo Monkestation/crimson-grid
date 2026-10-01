@@ -181,7 +181,8 @@
 	if(ringer)
 		// playsound(src, 'modular_darkpack/modules/phones/sounds/text_receive.ogg', 50, TRUE, 0, 2) // This could prob use a better notification // CRIMSON EDIT REMOVAL
 		play_notification_sound() // CRIMSON EDIT ADDITION
-	balloon_alert_to_viewers("[app]:[title]", vision_distance = SAMETILE_MESSAGE_RANGE)
+	if(vibration || ringer)
+		balloon_alert_to_viewers("[app]:[title]", vision_distance = SAMETILE_MESSAGE_RANGE)
 
 #undef VIBRATION_LOOP_DURATION
 
