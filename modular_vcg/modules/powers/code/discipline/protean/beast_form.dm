@@ -60,6 +60,7 @@
 	attack_verb_simple = "claw"
 	attack_sound = 'sound/items/weapons/slash.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
+	can_breed = FALSE
 
 /mob/living/basic/pet/cat/protean/Initialize(mapload)
 	. = ..()
