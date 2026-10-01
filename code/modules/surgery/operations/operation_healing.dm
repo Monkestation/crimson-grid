@@ -237,11 +237,11 @@
 	// Little thing so that agg damage is weaker to heal respective to the others.
 	agg_healed = round(agg_healed * agg_healing_factor, DAMAGE_PRECISION)
 
-	/*
-	/	V - for some magical reason, agg loss CANNOT actually be healed this way.
-	/	Given that the agg damage element is literally the last element here and
-	/	it isn't used anywhere, I'm going to assume it's just broken.
-	*/
+	/**
+	 * V - for some magical reason, agg loss CANNOT actually be healed this way.
+	 * Given that the agg damage element is literally the last element here and
+	 * it isn't used anywhere, I'm going to assume it's just broken.
+	 */
 	patient.heal_bodypart_damage(brute_healed, burn_healed)
 	patient.heal_ordered_damage(agg_healed, list(AGGRAVATED), TRUE)
 
