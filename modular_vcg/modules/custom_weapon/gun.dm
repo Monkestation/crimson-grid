@@ -26,7 +26,7 @@
 	rack_sound = 'sound/items/weapons/gun/pistol/slide_lock.ogg'
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/rifle.ogg'
 	serial_type = "H&K"
-	var/rof = 0.2 SECONDS
+	var/rof = 0.15 SECONDS
 
 /obj/item/gun/ballistic/automatic/darkpack/hk51/Initialize(mapload)
 	. = ..()
