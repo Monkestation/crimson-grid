@@ -24,7 +24,7 @@
 	icon_state = "sheriffblade"
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 
-	force = 50 // Made up, same force as Brother's Keeper. Equivalent to 5 TTRPG damage.
+	force = 5 TTRPG_DAMAGE // Made up, same force as Brother's Keeper. Equivalent to 5 TTRPG damage.
 	attack_difficulty = 7
 	armour_penetration = 50 // Normally 75 pen, that pens army armor. Instead, 50. Pens bullet proof.
 	w_class = WEIGHT_CLASS_BULKY
