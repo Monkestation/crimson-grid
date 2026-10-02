@@ -10,7 +10,7 @@
 /obj/item/clothing/head/vampire/helmet
   armor_type = /datum/armor/Class_3
 
-obj/item/clothing/head/vampire/army
+/obj/item/clothing/head/vampire/army
   armor_type = /datum/armor/Class_4
 
 /obj/item/clothing/head/vampire/hardhat
