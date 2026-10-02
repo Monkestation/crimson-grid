@@ -47,6 +47,8 @@
 /mob/living/carbon/human/proc/steal_discipline_from(mob/living/carbon/human/victim)
 	if(!GLOB.canon_event)
 		return
+	if(HAS_TRAIT(src, TRAIT_NO_CANON) || HAS_TRAIT(victim, TRAIT_NO_CANON))
+		return
 	var/datum/splat/vampire/kindred/victim_splat = get_kindred_splat(victim)
 	if(!victim.mind || !victim_splat)
 		return

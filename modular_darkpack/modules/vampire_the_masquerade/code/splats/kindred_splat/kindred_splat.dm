@@ -280,6 +280,8 @@
 /mob/living/carbon/human/proc/roll_final_death_discipline_loss()
 	if(!GLOB.canon_event)
 		return
+	if(HAS_TRAIT(src, TRAIT_NO_CANON))
+		return
 	var/datum/preferences/prefs = client?.prefs
 	if(!prefs)
 		return
