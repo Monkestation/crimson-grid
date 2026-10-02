@@ -127,21 +127,71 @@
 	owner.st_set_stat(STAT_TEMPORARY_WILLPOWER, owner.st_get_stat(STAT_TEMPORARY_WILLPOWER) - willpower_drain_amount)
 
 /datum/discipline_power/daimonion/path/spirit/one
+	name = "Dark Thaumaturgy: Taking of Spirit One"
+	desc = "Drain the victims of willpower."
+
 	level = 1
 	willpower_drain_amount = 1
 
+	grouped_powers = list(
+		/datum/discipline_power/daimonion/path/spirit/two,
+		/datum/discipline_power/daimonion/path/spirit/three,
+		/datum/discipline_power/daimonion/path/spirit/four,
+		/datum/discipline_power/daimonion/path/spirit/five,
+	)
+
 /datum/discipline_power/daimonion/path/spirit/two
+	name = "Dark Thaumaturgy: Taking of Spirit Two"
+	desc = "Drain the victims of willpower."
+
 	level = 2
 	willpower_drain_amount = 2
 
+	grouped_powers = list(
+		/datum/discipline_power/daimonion/path/spirit/one,
+		/datum/discipline_power/daimonion/path/spirit/three,
+		/datum/discipline_power/daimonion/path/spirit/four,
+		/datum/discipline_power/daimonion/path/spirit/five,
+	)
+
 /datum/discipline_power/daimonion/path/spirit/three
+	name = "Dark Thaumaturgy: Taking of Spirit Three"
+	desc = "Drain the victims of willpower."
+
 	level = 3
 	willpower_drain_amount = 4
 
+	grouped_powers = list(
+		/datum/discipline_power/daimonion/path/spirit/one,
+		/datum/discipline_power/daimonion/path/spirit/two,
+		/datum/discipline_power/daimonion/path/spirit/four,
+		/datum/discipline_power/daimonion/path/spirit/five,
+	)
+
 /datum/discipline_power/daimonion/path/spirit/four
+	name = "Dark Thaumaturgy: Taking of Spirit Four"
+	desc = "Drain the victims of willpower."
+
 	level = 4
 	willpower_drain_amount = 6
 
+	grouped_powers = list(
+		/datum/discipline_power/daimonion/path/spirit/one,
+		/datum/discipline_power/daimonion/path/spirit/two,
+		/datum/discipline_power/daimonion/path/spirit/three,
+		/datum/discipline_power/daimonion/path/spirit/five,
+	)
+
 /datum/discipline_power/daimonion/path/spirit/five
+	name = "Dark Thaumaturgy: Taking of Spirit Five"
+	desc = "Drain the victims of willpower."
+
 	level = 5
 	willpower_drain_amount = 8
+
+	grouped_powers = list(
+		/datum/discipline_power/daimonion/path/spirit/one,
+		/datum/discipline_power/daimonion/path/spirit/two,
+		/datum/discipline_power/daimonion/path/spirit/three,
+		/datum/discipline_power/daimonion/path/spirit/four,
+	)
