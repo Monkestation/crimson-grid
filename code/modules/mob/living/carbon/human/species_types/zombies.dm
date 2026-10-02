@@ -54,7 +54,7 @@
 	/// Amount healed per regen tick - if 0, no regen will occur
 	var/regen_amount = 0.5
 	/// The hand to give the zombie - if null, they will have normal hands
-	var/zombie_hand = null // CRIMSON EDIT CHANGE - Original: var/zombie_hand = /obj/item/mutant_hand/zombie
+	var/zombie_hand = null // DARKPACK EDIT CHANGE - Removes /tg/ zombie infection outbreak - Original : var/zombie_hand = /obj/item/mutant_hand/zombie
 	/// The movespeed modifier to apply to the zombie - if null, no movespeed modifier will be applied
 	var/movespeed_mod = /datum/movespeed_modifier/zombie
 	/// % Reduction to all physical damage the zombie takes
@@ -146,13 +146,13 @@
 	new_tongue.Insert(new_zombie, special = TRUE)
 	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 
-	/* CRIMSON EDIT REMOVE - Romerol
+	/* // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	if(!isnull(zombie_hand))
 		new_zombie.AddComponent( \
 			/datum/component/mutant_hands, \
 			mutant_hand_path = zombie_hand, \
 		)
-	*/ // CRIMSON EDIT REMOVAL END - Romerol
+	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	if(regen_amount > 0)
 		new_zombie.AddComponent( \
 			/datum/component/regenerator, \
@@ -176,18 +176,21 @@
 /datum/status_effect/zombie/on_remove()
 	var/mob/living/carbon/human/was_zombie = owner
 
+	/* // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	var/obj/item/organ/tongue/zombie/old_tongue = was_zombie.get_organ_slot(ORGAN_SLOT_TONGUE)
 	var/obj/item/organ/tongue/removed_tongue_real = removed_tongue?.resolve()
+
 	if(!QDELETED(old_tongue))
 		qdel(old_tongue)
 	if(!QDELETED(removed_tongue_real))
 		removed_tongue_real.Insert(was_zombie, special = TRUE)
+	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 
 	var/obj/item/bodypart/head/head = was_zombie.get_bodypart(BODY_ZONE_HEAD)
 	if(!QDELETED(head))
 		head.can_dismember = initial(head.can_dismember)
 
-	qdel(was_zombie.GetComponent(/datum/component/mutant_hands))
+	//qdel(was_zombie.GetComponent(/datum/component/mutant_hands)) // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	qdel(was_zombie.GetComponent(/datum/component/regenerator))
 	LAZYREMOVE(was_zombie.physiology.max_stun_len, max_stun_length)
 	if(!isnull(movespeed_mod))
