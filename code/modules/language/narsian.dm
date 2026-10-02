@@ -1,7 +1,7 @@
 /datum/language/narsie
 	name = "Nar'Sian"
 	desc = "The ancient, blood-soaked, impossibly complex language of Nar'Sian cultists."
-	key = "n"
+	// key = "n" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 75 //very high due to the potential length of each syllable
 	sentence_chance = 10
 	between_word_sentence_chance = 5

@@ -641,6 +641,7 @@ DEFINE_BITFIELD(liked_foodtypes, list(
 	"BUGS" = BUGS,
 	"GORE" = GORE,
 	"STONE" = STONE,
+	"CHOCOLATE" = CHOCOLATE, //DARKPACK EDIT ADDITION - Chocolate
 ))
 
 DEFINE_BITFIELD(disliked_foodtypes, list(
@@ -665,6 +666,7 @@ DEFINE_BITFIELD(disliked_foodtypes, list(
 	"BUGS" = BUGS,
 	"GORE" = GORE,
 	"STONE" = STONE,
+	"CHOCOLATE" = CHOCOLATE, //DARKPACK EDIT ADDITION - Chocolate
 ))
 
 DEFINE_BITFIELD(toxic_foodtypes, list(
@@ -689,6 +691,7 @@ DEFINE_BITFIELD(toxic_foodtypes, list(
 	"BUGS" = BUGS,
 	"GORE" = GORE,
 	"STONE" = STONE,
+	"CHOCOLATE" = CHOCOLATE, //DARKPACK EDIT ADDITION - Chocolate
 ))
 
 DEFINE_BITFIELD(sharpness, list(

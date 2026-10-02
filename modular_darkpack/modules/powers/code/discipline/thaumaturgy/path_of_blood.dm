@@ -86,6 +86,7 @@
 	aggravating = FALSE
 	hostile = FALSE
 	violates_masquerade = FALSE
+	frenzy_usable = FALSE
 
 	grouped_powers = list(
 		/datum/discipline_power/thaumaturgy/blood_rage,
@@ -163,6 +164,7 @@
 	aggravating = FALSE
 	hostile = FALSE
 	violates_masquerade = FALSE
+	frenzy_usable = FALSE
 
 	grouped_powers = list(
 		/datum/discipline_power/thaumaturgy/a_taste_for_blood,
@@ -199,6 +201,7 @@
 	aggravating = FALSE
 	hostile = FALSE
 	violates_masquerade = FALSE
+	frenzy_usable = FALSE
 
 	grouped_powers = list()
 	var/activated = FALSE

@@ -1,0 +1,333 @@
+2026-01-04:
+  FalloutFalcon:
+  - admin: admin matrixing a mob now has a prompt to confirm
+2026-01-05:
+  FalloutFalcon:
+  - rscadd: Adds Oni and Devil gargoyle horns from TFN
+  dwinters99:
+  - rscadd: 'Garou Nation jobs: Councillor, Warder, Truthcatcher, Wyrmfoe, Guardian'
+  - rscadd: 'Pentex jobs: Branch Lead, Executive, Internal Affairs Agent, Security
+      Chief, Security Agent, Employee'
+  - code_imp: Defines for all the pentex subsidiaries and a lot of bloodlines ones
+      while i'm there
+2026-01-08:
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  FalloutFalcon:
+  - rscadd: readds illegal identity
+  - qol: passports, flashlights, and watches moved to loadouts
+  - qol: you can now take up to 6 pocket items
+  - rscadd: Bank pin is now found in the memories section similar to bank ID number
+  - bugfix: You can now tell you killed a raven or crow because it flips on its back
+2026-01-12:
+  XeonMations:
+  - rscadd: Added old mail to the game
+  - code_imp: Ticked a bunch of files.
+2026-01-13:
+  TheCarnalest:
+  - refactor: A sane framework for splats has been set up, and Kindred and Ghouls
+      have had their code swapped out entirely.
+2026-01-14:
+  FalloutFalcon:
+  - bugfix: No greek syllable names from random gen
+  - rscadd: readds a few items to retail stores
+  - bugfix: fixes some bad retail store prices
+  buffyuwu:
+  - rscadd: adds dementation
+  chazzyjazzy:
+  - code_imp: reimplements dominate
+  - rscadd: '''mask of a thousand faces'' now works as intended'
+  - code_imp: reimplemented obfuscate
+  - code_imp: reimplements presence
+2026-01-15:
+  FalloutFalcon:
+  - bugfix: keys are now treated as plural items
+  buffyuwu:
+  - rscadd: ports derangement quirk, basic malk hallucinations from bloodlines
+  chazzyjazzy:
+  - bugfix: fixed spellbook logic to match splat rework
+  - code_imp: quietus
+  dwinters99:
+  - code_imp: two additional levels of fog density added to effects.dm
+  - map: lots of updatepath fixes
+2026-01-16:
+  ArcaneMusic:
+  - bugfix: The Express Cargo Console can no longer buy goodie items.
+  - rscadd: The Express Cargo console can bypass the goodie purchasing protection
+      if Emagged.
+  - bugfix: Departmental Order requests may no longer bypass access restrictions,
+      and require access to place the order.
+  - rscadd: Departmental Order may explicitly bypass access restrictions if placed
+      using an agent ID.
+  ElGitificador:
+  - spellcheck: fixed heckacious larincks not being properly capitalized
+  Ezel:
+  - bugfix: Removes the intercomm in meta xenobio interior so it doesn't clip with
+      the shower anymore.
+  Ghommie:
+  - rscadd: Once installed, special PDA themes from maintenance disks will be present
+      on your roundstart PDA on future rounds (Sadly I couldn't figure out a way to
+      add those to the preferences UI yet). You can check which PDA themes you've
+      unlocked in the Progress tab of the achievements UI.
+  Jacquerel:
+  - rscadd: You can now also load stunprods into ballistas, make sure you turn them
+      on first though
+  - balance: The mounted ballista's damage, wound chance, and armour penetration is
+      now dependent on what kind of spear is loaded into it, and is generally a bit
+      lower
+  - balance: Mounted guns are less accurate when not wrenched down
+  - bugfix: Cancelling reloading a ballista now cancels the reload rather than completing
+      it.
+  - bugfix: You can pick up the exact same spear you fired out of a ballista, rather
+      than a totally new generic spear
+  - bugfix: It is possible to damage and destroy mounted guns with weapons
+  - code_imp: Reworked mounted guns to duplicate less code, please report any deviant
+      behaviour
+  - balance: Eldritch rusted tiles don't apply their effects to anyone who is jaunted
+      or in vents, and don't apply negative effects to people who are flying.
+  - balance: Heretic items which apply rust (grenades and eldritch reagent) check
+      the rust resistance level of the turf rather than always rusting it.
+  - bugfix: Rust Heretics ascending don't rust unrustable turfs, like space tiles.
+  JohnFulpWillard:
+  - refactor: ID checking for access has been reworked, please make a bug report if
+      anything that's supposed to grant access is not working.
+  LT3:
+  - code_imp: Code unit testing now checks emergency access and red alert access
+  Melbert:
+  - spellcheck: Corrects the blind message for manual cauterization
+  - rscadd: Hallucinations that don't make sense to trigger while unconscious or deaf
+      will no longer trigger while unconscious or deaf
+  - balance: 'Thermal vision mutation: Active duration 10s -> 30s  (with power, 30s->45s)'
+  - balance: 'Thermal vision mutation: Cooldown 25s -> 60s (with energy, 60s -> 30s)'
+  - balance: 'Thermal vision mutation: Eye damage 10 -> 7.5 (with sync, 7.5 -> 3.75)'
+  - balance: 'Thermal vision mutation: Eye damage is now affected by power chromosome
+      (with power, 7.5 -> 11.25)'
+  RikuTheKiller:
+  - rscadd: Added a new heavy roundstart/midround antagonist, the Blood Worm. Credit
+      to INFRARED_BARON for the sprites!
+  - bugfix: Removing traits based on a source no longer causes issues with trait signals.
+  - bugfix: High-priority effects no longer double-trigger due to subsystem issues.
+  - bugfix: Weighted averaging in reagent merging code has been band-aid fixed. It's
+      not the best, but it works.
+  - bugfix: Camera chunks, the biggest source of lag in the entire game, now run twice
+      as fast.
+  SapphoQueer:
+  - bugfix: The buttons for lavaland organs no longer show up after their removal
+      from your body.
+  SyncIt21:
+  - bugfix: photocopier does not charge for failed tasks
+  TheNobodyofimportance:
+  - bugfix: The Syndicate infiltrator no longer spawns in the nuclear base, and instead
+      spawns alongside nukies, eliminating lazyload clipping.
+  - bugfix: Clownops now spawn with a bananium bomb in their infiltrator.
+  Vect0r2:
+  - balance: people with immunodeficiency no longer can cure themselves automatically
+  carpotoxin:
+  - code_imp: Adding or removing rulesets from the queue list is done by procs instead
+      of directly editing the list.
+  loganuk:
+  - map: CATWALK - Chapel has had an upgrade, rejoice in a larger area
+  - map: CATWALK - Atmos & Engi had a quick tidy up
+  - map: CATWALK - Solar Arrays tweaked to be better
+  - map: CATWALK - South East Maintenance has changed
+  - map: CATWALK - Security expanded
+  - map: CATWALK - AI Sat fortified similar to Meta and other maps
+  - map: CATWALK - See full change log in PR
+2026-01-17:
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  FalloutFalcon:
+  - rscadd: Readds estrogen pill bottles. But you will no longer receive them in the
+      mail
+  chazzyjazzy:
+  - code_imp: reintroduces frenzy and morality paths, degeneration rolls, blood 'hunger',
+      reasons to stat into virtues
+  - refactor: moved humanity and morality to storyteller stats system
+2026-01-18:
+  Arturlang:
+  - bugfix: fixes star touch's cosmic bean making the victim forever unable to teleport
+      and leave trails
+  Melbert:
+  - rscadd: Adds stasis bodybags, unlocked with cryo tech. They put its occupants
+      (organ or mobs) in stasis, but wear down over time.
+  - rscadd: Adds triage cards to the medical vendor, a flavor item docs can use during
+      mass casualty events.
+  - qol: You can pin papers to closed bodybags. Keep organized with your autopsies.
+  - qol: You can interact with papers in folders and on clipboards
+  - qol: All forms of stasis stop brain tumors
+  - rscadd: Hangover effects depend on personality traits
+  - rscadd: All radios (intercoms and station-bounced) can have encryption keys installed
+      in them, rather than solely headsets and cyborgs.
+  - rscadd: Existing screwdriver interactions for station-bounced radios and intercoms
+      have been moved to right click. However, intercoms will still default to the
+      old behavior if they have no key installed.
+  - qol: Screentips for radios.
+  SmArtKar:
+  - bugfix: Fixed ID cards sometimes not functioning within wallets/PDAs
+  tontyGH:
+  - bugfix: As the AI, possessing an empty shell will no longer break your de-synchronization
+      protocols, which would trap your Nanotrasen-brand Silica-Soul(TM) inside of
+      it.
+2026-01-19:
+  ElGitificador:
+  - bugfix: fixed syndi surplus crate desc not naming their new tc value properly
+  Hatterhat, vinylspiders:
+  - bugfix: Voltaic combat cyberheart's lightning overlay should be more reliably
+      cleared in the event that it should be lost.
+  - bugfix: If your voltaic combat cyberheart is lost/removed while you're in voltaic
+      overdrive, you lose the overdrive.
+  Nari Harimoto:
+  - map: Nanotrasen found the budget to add a small circuit workshop to the engineering
+      department on every station except for tramstation.
+2026-01-20:
+  Ezel:
+  - balance: sabre, parsnip, gladius sheathe can now be worn on suit storages
+  - bugfix: mirrors gladius belt worn sprite so it doesn't overlap with belted revolvers
+  - image: adds mirrored belt sprites
+  LT3:
+  - bugfix: Fixed lights being able to run on emergency power forever
+  SmArtKar:
+  - qol: You can now clamp cables by RMBing them with wirecutters in order to prevent
+      them from connecting to other cables in a certain direction.
+  - refactor: Refactored cable interaction and some of connection code
+  carpotoxin:
+  - bugfix: fixed the queue'ing of roundstart antags
+  combustor:
+  - bugfix: Adds a request console to the CE's office in catwalk
+  vinylspiders:
+  - refactor: faction list structures have been refactored, please report any unusual
+      faction related behavior
+2026-01-21:
+  Fghj240:
+  - balance: advanced disease cures are now based on their symptoms
+  - balance: spaceacillin is a little worse at curing viruses
+  - balance: health analyzers can only detect a limited amount of unique advanced
+      disease cures
+  - balance: advanced disease resistance affects natural recovery
+  - balance: advanced disease cure resistance cap raised
+  - balance: advanced disease stage speed starts higher and scales slower
+  - balance: low level virus symptoms have had their stats increased
+  - balance: vomiting symptom thresholds slightly increased
+  - balance: you don't count as sleeping for the purpose of natural recovery if made
+      unconscious by means other than sleeping
+  Hardly:
+  - spellcheck: Fixed a typo with Deltastation's Server Room Entrance's camera.
+  Melbert:
+  - bugfix: Syncing instruments no longer fails if starting instrument is held
+2026-01-22:
+  Absolucy:
+  - refactor: Refactored turrets so they only process if something potentially "interesting"
+      is within its range.
+  ElGitificador:
+  - bugfix: fixed experimentor irradiate goo failure locking experimentor
+  Jacquerel:
+  - bugfix: You can't shoot yourself using a wand or staff that you can't use, or
+      that has no charge
+  - rscadd: Most wands and staves now do something funnier if you use them to kill
+      yourself
+  Melbert:
+  - balance: Pressure damage scales over time. It starts at 2 per second (pre-buff
+      value) but increases by 0.5 damage every 1.2 minutes you are exposed, up to
+      5 per second (requiring 7.2 full minutes of exposure).
+  - balance: Rebalanced Unstable Mutagen's / Uranium's botany use. It now always increases
+      instability (on par with L4Z), and occasionally increases instability even more
+      at the costs of some toxins. It also scales with volume
+  - rscadd: Adds "Toxin Resistance" gene to botany which makes the plant immune to
+      toxin damage. Given (and graftable from) Death Berries.
+  - rscadd: Adds "Toxin Adaptation" gene to botany which makes the plant heal from
+      toxin damage. Only in strange seeds (for now).
+  - code_imp: Cleaned up a smidge of botany code
+  SmArtKar:
+  - bugfix: Fixed people hanged on meat spikes sometimes rotating sideways
+  - rscadd: Multiple new reagents such as napalm, sorium, TATP, smoke/sonic/flash
+      powders and other explosives can now be used to rig cells or tools.
+  - rscadd: Plasma and gunpowder rigged items can now have controlled current requirement/delay
+      by adding some stabilizing agent alongside the main reagent.
+  - balance: Creating chemical smoke inside of a mob now makes them violently cough
+      it up, damaging their lungs a bit.
+  - bugfix: Chemically-rigged lightbulbs now once again explode.
+  - refactor: Refactored how power cells, welding tools, lightbulbs, cigarettes (and
+      now, lighters) handle being rigged with chemicals.
+  - code_imp: Dreamchecker no longer throws an error if you run the game with the
+      MAP_TEST flag
+  VigilDLX:
+  - bugfix: Fixed Medipen Refiller taking more than it refilled
+  lelandkemble:
+  - bugfix: Fixes light deconstruction succeeding when they're fully constructed,
+      and failing when they're not.
+  - map: Catwalk AI sat's door accesses have been brought in line with other maps
+  - bugfix: Paywall firing pins are registerable again, & they'll keep being registerable
+      after being unregistered.
+  necromanceranne:
+  - qol: The white ship has a unique GPS signal. Just look for the 'Distress Signal'
+      co-ordinate.
+  - balance: The infiltrator and blood-red modsuit have had their armor values swapped.
+  se:
+  - balance: Killing yourself with a tadpole now only bursts your chest open and not
+      your entire body, and frankly even that is pretty impressive work for a single
+      frog to manage.
+  - bugfix: Killing yourself in various other ways that gib or dust you will no longer
+      delete the items you were wearing, consistent with most of the other ways of
+      killing yourself that gib or dust you.
+2026-01-23:
+  ElGitificador:
+  - bugfix: fixed bear suit not hiding hands
+  FalloutFalcon:
+  - map: All mapped doors work off of helpers rather then varedits
+  Hardly:
+  - bugfix: Fixed hair dyes returning a TGUI error when trying to dye a hair.
+  JohnFulpWillard:
+  - bugfix: PDA's ring again.
+  Melbert:
+  - bugfix: Surgical state applied by wounds no longer persist after fix
+  SmArtKar:
+  - bugfix: Fixes digitigrade (and some other unique) limbs not being butcherable
+  - image: Digitigrade limbs now have unique bone sprites when butchered
+  chazzyjazzy:
+  - rscadd: firearms stat roll to reduce recoil
+  - bugfix: generation on prefs menu added back
+  - rscadd: claimable darkpack cars
+  lelandkemble:
+  - qol: Ghost health and chem scanning displays after examine information rather
+      than before
+  - map: AI satellite accesses have been made more consistent across maps.
+2026-01-24:
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  FalloutFalcon:
+  - admin: vv dropdown for adding and removing splats
+  - code_imp: replaces species with splats in prefrences
+  - map: Adds three modular rooms in the sewers of the mall
+  chazzyjazzy:
+  - bugfix: vampires that play citizen or sabbat now spawn with their clan clothes
+      rather than the greytider jumpsuit
+  - qol: any character with occult 3 or greater can identify occult artifacts and
+      use them
+  - balance: makes lockpicking and breaking doors down harder
+  - balance: Sabbat faction now has 8 slots instead of 4
+  - bugfix: Sabbat characters now spawn with the vinculum icon
+  - bugfix: Zombies now check to see if theres a graveyard worker before spawning
+  - rscadd: added a few extra lockaccesses including BH and Lasombra Primogen, Hunters
+      and Baron
+  lelandkemble:
+  - map: The last full wooden barricades on top of dense objects have been excised
+2026-01-28:
+  FalloutFalcon:
+  - bugfix: some areas should be outdoors again properly (like the upper sections
+      of the map)
+  - bugfix: fixes swapping stats around while spawned in
+  - bugfix: prevents swapping character slots to avoid stuff like masquarde being
+      dinged to the wrong character
+  - qol: bonus die on character sheet is displayed in white
+  - config: hardlocking things due to 0 dot abilites moved to config (off by default)
+  theselfish:
+  - rscadd: Loadout Masks now exist.
+2026-01-30:
+  XeonMations:
+  - bugfix: Fixes records showing species.
+  - map: added the ability to have multiple umbra choices based off json map config
+2026-01-31:
+  FalloutFalcon:
+  - bugfix: Spirit chime can now be placed on walls and floors
+  - bugfix: Spirit chime now detects auspex avatars again
+  - bugfix: Handling for placing spirit chime on table is much less jank

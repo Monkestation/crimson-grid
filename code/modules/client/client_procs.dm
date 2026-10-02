@@ -38,11 +38,6 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
 
-	// DARKPACK EDIT ADD BEGIN - MENTOR
-	if(mentor_client_procs(href_list))
-		return
-	// DARKPACK EDIT ADD END
-
 #ifndef TESTING
 	if (LOWER_TEXT(hsrc_command) == "_debug") //disable the integrated byond vv in the client side debugging tools since it doesn't respect vv read protections
 		return
@@ -1054,14 +1049,14 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[asay]")
 					else
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=")
-				// CRIMSON EDIT ADDITION START - MENTOR
+				// DARKPACK EDIT START - MENTORS
 				if(MENTOR_CHANNEL)
-					if(is_mentor())
-						var/msay = tgui_say_create_open_command(MENTOR_CHANNEL)
-						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[msay]")
+					if(mentor_datum)
+						var/mentorsay = tgui_say_create_open_command(MENTOR_CHANNEL)
+						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[mentorsay]")
 					else
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=")
-				// CRIMSON EDIT ADDITION END
+				// DARKPACK EDIT END
 	calculate_move_dir()
 
 /client/proc/change_view(new_size)
