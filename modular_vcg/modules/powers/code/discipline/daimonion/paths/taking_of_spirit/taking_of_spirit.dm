@@ -108,7 +108,7 @@
 			to_chat(target, span_hypnophrase("As you lose the last bits of your Willpower, you feel your emotions dull, the only one left is obeying [owner]."))
 			to_chat(target, span_info("You are now a soulless automaton, serving [owner] should be your utmost priority."))
 			target.visible_message(span_danger("[target] stares blankly, their gaze devoid of life."), \
-			span_notice("You stare blankly, your gaze devoid of life."))
+				span_notice("You stare blankly, your gaze devoid of life."))
 		ADD_TRAIT(target, TRAIT_TAKING_SPIRIT_KNOWLEDGE, TAKING_OF_SPIRIT_TRAIT)
 		if(LAZYLEN(parent_disc.drained_targets))
 			for(var/datum/weakref/ref in parent_disc.drained_targets)
