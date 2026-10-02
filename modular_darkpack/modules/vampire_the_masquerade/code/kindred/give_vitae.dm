@@ -74,6 +74,12 @@
 			continue
 		if(disc.type in seen_types)
 			continue
+		// CRIMSON GRID EDIT START - You can only share clan innate disciplines
+		var/mob/living/teacher = owner
+		var/datum/subsplat/vampire_clan/teacher_clan = teacher.get_clan()
+		if(!(disc.type in teacher_clan.clan_disciplines))
+			continue
+		// CRIMSON GRID EDIT END
 		seen_types += disc.type // prevent duplicates
 		discipline_entries += "[disc.name]"
 		disc_type["[disc.name]"] = disc.type
