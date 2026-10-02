@@ -378,4 +378,17 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 
 /datum/preference/numeric/bonus_discipline_points/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	return
+
+// wipe bonus discipline points
+/datum/preference_middleware/disciplines/pre_set_preference(mob/user, preference, value)
+	if(preference != "diablerist" || value)
+		return FALSE
+	var/bonus_discipline_points = preferences.read_preference(/datum/preference/numeric/bonus_discipline_points)
+	if(!bonus_discipline_points)
+		return FALSE
+	var/response = tgui_alert(user, "Turning off Diablerist will remove the [bonus_discipline_points] bonus discipline point\s this character earned through diablerie. If that leaves you with more dots than your immortal age allows, you will have to lower your disciplines before joining. Would you like to continue?", "Diablerie Points", list("Yes", "No"))
+	if(response != "Yes")
+		return TRUE
+	return FALSE
+
 // CRIMSON EDIT ADD END - Diablerie progression
