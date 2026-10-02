@@ -18,12 +18,6 @@
 	name = "sheriff's special"
 	desc = "A sword that was brought by the Sheriff from parts unknown. An odd but efficient design to say the least."
 	icon = 'modular_vcg/modules/weapons/icons/weapons64x32.dmi'
-/obj/item/fireaxe/vamp/battle
-	name = "battle axe"
-	desc = "For going medieval on someone. A beastly war axe with two heads!"
-	icon = 'modular_vcg/modules/weapons/icons/weapons.dmi'
-	icon_state = "battleaxe0"
-	base_icon_state = "battleaxe"
 	lefthand_file = 'modular_vcg/modules/weapons/icons/melee_lefthand.dmi'
 	righthand_file = 'modular_vcg/modules/weapons/icons/melee_righthand.dmi'
 	worn_icon = 'modular_vcg/modules/weapons/icons/worn_melee.dmi'
@@ -45,6 +39,18 @@
 	custom_price = 3750 // Sheriff's either dead or stupid.
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT // Should really be suit storage
 	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/fireaxe/vamp/battle
+	name = "battle axe"
+	desc = "For going medieval on someone. A beastly war axe with two heads!"
+	icon = 'modular_vcg/modules/weapons/icons/weapons.dmi'
+	icon_state = "battleaxe0"
+	base_icon_state = "battleaxe"
+	lefthand_file = 'modular_vcg/modules/weapons/icons/melee_lefthand.dmi'
+	righthand_file = 'modular_vcg/modules/weapons/icons/melee_righthand.dmi'
+	worn_icon = 'modular_vcg/modules/weapons/icons/worn_melee.dmi'
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/weapons/icons/weapons_onfloor.dmi')
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 
 	// WTA pg. 302
 	force_unwielded = 2 TTRPG_DAMAGE
