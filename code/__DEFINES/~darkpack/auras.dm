@@ -103,6 +103,6 @@ GLOBAL_LIST_INIT(emotion_to_quality, sort_list(list(
 	"Psychotic" = "psychosis",
 	"Confidence" = "confidence",
 	"Mischievous" = "mischievous", // Crimson Grid addition | Change: Added fae aura for the Kiasyd.
-	"Suppressed" = "suppressed" // Crimson Grid addition | Change: Added suppressed aura for Path of the Scorched Heart.
+	"Suppressed" = "suppressed", // Crimson Grid addition | Change: Added suppressed aura for Path of the Scorched Heart.
 	"Corruption" = "corruption", // CRIMSON GRID ADD: DARK THAUMATURGY
 )))
