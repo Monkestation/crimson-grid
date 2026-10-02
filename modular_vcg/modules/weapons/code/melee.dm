@@ -50,8 +50,6 @@
 
 	pixel_w = -8
 	custom_price = 3750 // Sheriff's either dead or stupid.
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT // Should really be suit storage
-	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/fireaxe/vamp/battle
 	name = "battle axe"
