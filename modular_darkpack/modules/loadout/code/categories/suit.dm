@@ -45,6 +45,12 @@
 /datum/loadout_item/suit/coat/leopardcoat
 	item_path = /obj/item/clothing/suit/vampire/coat/leopard
 
+//CRIMSON GRID ADDITION START: MILPARKA TO LOADOUT
+/datum/loadout_item/suit/jacket/military_parka
+	name = "Military Parka"
+	item_path = /obj/item/clothing/suit/vampire/coat/milparka
+//CRIMSON GRID ADDITION END
+
 /datum/loadout_item/suit/jacket/oversizedjacket
 	name = "Oversized Jacket"
 	item_path = /obj/item/clothing/suit/jacket/oversized
@@ -74,8 +80,20 @@
 	item_path = /obj/item/clothing/suit/vampire/fancy_red
 
 /datum/loadout_item/suit/jacket/black_leather
-	name = "Leather Jacket"
+	name = "Leather Jacket (Black)"
 	item_path = /obj/item/clothing/suit/vampire/jacket
+
+/datum/loadout_item/suit/jacket/black_leather_cut
+	name = "Cropped Leather Jacket (Black)"
+	item_path = /obj/item/clothing/suit/vampire/jacket/cropped
+
+/datum/loadout_item/suit/jacket/red_leather
+	name = "Leather Jacket (Red)"
+	item_path = /obj/item/clothing/suit/vampire/jacket/red
+
+/datum/loadout_item/suit/jacket/red_leather_cut
+	name = "Cropped Leather Jacket (Red)"
+	item_path = /obj/item/clothing/suit/vampire/jacket/cropped/red
 
 /datum/loadout_item/suit/jacket/military
 	name = "Jacket (Military)"
@@ -120,6 +138,12 @@
 /datum/loadout_item/suit/kasaya
 	name = "Kasaya"
 	item_path = /obj/item/clothing/suit/vampire/kasaya
+
+// CRIMSON GRID ADDITION START: HAZARD VEST TO LOADOUT
+/datum/loadout_item/suit/hazard_vest
+	name = "Hazard Vest"
+	item_path = /obj/item/clothing/suit/hazardvest
+//CRIMSON GRID ADDITION END
 
 /datum/loadout_item/suit/imam
 	name = "Imam Robe"
