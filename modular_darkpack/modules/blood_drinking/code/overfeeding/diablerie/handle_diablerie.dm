@@ -52,6 +52,8 @@
 	var/datum/splat/vampire/kindred/victim_splat = get_kindred_splat(victim)
 	if(!victim.mind || !victim_splat)
 		return
+	if(victim.stat == DEAD)
+		return
 	var/datum/preferences/prefs = client?.prefs
 	if(!prefs)
 		return
