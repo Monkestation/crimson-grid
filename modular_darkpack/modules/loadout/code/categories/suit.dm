@@ -80,8 +80,20 @@
 	item_path = /obj/item/clothing/suit/vampire/fancy_red
 
 /datum/loadout_item/suit/jacket/black_leather
-	name = "Leather Jacket"
+	name = "Leather Jacket (Black)"
 	item_path = /obj/item/clothing/suit/vampire/jacket
+
+/datum/loadout_item/suit/jacket/black_leather_cut
+	name = "Cropped Leather Jacket (Black)"
+	item_path = /obj/item/clothing/suit/vampire/jacket/cropped
+
+/datum/loadout_item/suit/jacket/red_leather
+	name = "Leather Jacket (Red)"
+	item_path = /obj/item/clothing/suit/vampire/jacket/red
+
+/datum/loadout_item/suit/jacket/red_leather_cut
+	name = "Cropped Leather Jacket (Red)"
+	item_path = /obj/item/clothing/suit/vampire/jacket/cropped/red
 
 /datum/loadout_item/suit/jacket/military
 	name = "Jacket (Military)"
