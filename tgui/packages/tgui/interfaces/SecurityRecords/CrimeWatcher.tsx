@@ -217,7 +217,7 @@ const CrimeAuthor = (props) => {
   if (!foundRecord) return;
 
   const { crew_ref } = foundRecord;
-  const { act, data } = useBackend<SecurityRecordsData>();
+  const { act, data } = useBackend<SecurityRecordsData>(); // CRIMSON EDIT - Original: const { act } = useBackend<SecurityRecordsData>();
 
   const { max_fine } = data; // CRIMSON GRID EDIT - Security console and records
   const [crimeName, setCrimeName] = useState('');
@@ -272,18 +272,18 @@ const CrimeAuthor = (props) => {
           placeholder="Type some details..."
         />
       </Stack.Item>
-      {/* CRIMSON GRID EDIT START - Security console and records */}
       <Stack.Item color="label">
+        {/* CRIMSON EDIT START - CLETS - Original: Fine (leave blank to arrest) */}
         Fine [Max: {max_fine}] (leave blank to arrest)
+        {/* CRIMSON EDIT END - CLETS */}
         <RestrictedInput
           fluid
           value={crimeFine}
-          maxValue={max_fine}
+          maxValue={max_fine} // CRIMSON EDIT - Original: maxValue={1000}
           onChange={setCrimeFine}
           onValidationChange={setCrimeFineIsValid}
         />
       </Stack.Item>
-      {/* CRIMSON GRID EDIT END */}
       <Stack.Item>
         <Button.Confirm
           disabled={!nameMeetsReqs || !crimeFineIsValid}

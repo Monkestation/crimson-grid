@@ -1,4 +1,4 @@
-import '../../styles/interfaces/SecurityRecords.scss';
+import '../../styles/interfaces/SecurityRecords.scss'; // CRIMSON EDIT ADD - CLETS
 
 import { useBackend } from 'tgui/backend';
 import { Window } from 'tgui/layouts';
@@ -12,6 +12,7 @@ export const SecurityRecords = (props) => {
   const { data } = useBackend<SecurityRecordsData>();
   const { authenticated } = data;
 
+  // CRIMSON EDIT - Original: <Window title="Security Records" width={750} height={550}> and <Window.Content> (no className)
   return (
     <Window title="Police Records" width={750} height={550}>
       <Window.Content className="SecurityRecords">
@@ -33,11 +34,11 @@ const RestrictedView = (props) => {
           <Icon color="average" name="exclamation-triangle" size={15} />
         </Stack.Item>
         <Stack.Item align="center" grow>
-          {/* CRIMSON GRID EDIT START - Security console and records */}
           <Box color="red" fontSize="18px" bold mt={5}>
+            {/* CRIMSON EDIT START - CLETS - Original: Nanotrasen SecurityHUB */}
             California Law Enforcement Telecommunications System
+            {/* CRIMSON EDIT END - CLETS */}
           </Box>
-          {/* CRIMSON GRID EDIT END */}
         </Stack.Item>
         <Stack.Item>
           <NoticeBox align="right">
