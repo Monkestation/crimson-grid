@@ -6,7 +6,7 @@
 /datum/supply_pack/medical/bloodpacks
 	name = "Blood Pack Variety Crate"
 	desc = "Contains ten different blood packs for reintroducing blood to patients."
-	cost = CARGO_CRATE_VALUE * 7
+	cost = CARGO_CRATE_VALUE * 20 // CRIMSON EDIT CHANGE - ORIGINAL: cost = CARGO_CRATE_VALUE * 7
 	contains = list(
 		/obj/item/reagent_containers/blood/random = 10,
 		/obj/item/paper/fluff/jobs/medical/blood_types,
