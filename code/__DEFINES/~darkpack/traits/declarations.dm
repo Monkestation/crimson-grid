@@ -20,6 +20,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ELEVATED_FLAME "elevated_flame" // TURF_FIRE
 
 // Mob traits
+/// Prevent any data being written to pref for this mob
+#define TRAIT_NO_CANON "no_canon"
 
 // If the user is unbondable via blood bonds.
 #define TRAIT_UNBONDABLE "unbondable"

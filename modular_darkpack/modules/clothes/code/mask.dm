@@ -93,3 +93,24 @@
 	name = "scary mask"
 	desc = "Do you like scary movies?"
 	icon_state = "chaser"
+
+//Bandanas use TG sprites except the inventory icon sprite, we use Flav's for that.
+/obj/item/clothing/mask/bandana/vampire
+	desc = "A bandana, perfect for covering your face, neck, or head!"
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/clothes/icons/clothing_onfloor.dmi')
+	greyscale_config_onfloor = /datum/greyscale_config/bandana/onfloor/vampire
+
+/obj/item/clothing/mask/bandana/striped/vampire
+	desc = "A striped bandana, perfect for covering your face, neck, or head!"
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/clothes/icons/clothing_onfloor.dmi')
+	greyscale_config_onfloor = /datum/greyscale_config/bandana/striped/onfloor/vampire
+
+/obj/item/clothing/mask/bandana/skull/vampire
+	desc = "A skull bandana, perfect for covering your face, neck, or head!"
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/clothes/icons/clothing_onfloor.dmi')
+	greyscale_config_onfloor = /datum/greyscale_config/bandana/skull/onfloor/vampire
+
+/obj/item/clothing/mask/facescarf/vampire
+	desc = "A heavy face scarf, perfect to keep your neck and face warm, or to cover your identity.."
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/clothes/icons/clothing_onfloor.dmi')
+	greyscale_config_onfloor = /datum/greyscale_config/facescarf/onfloor/vampire
