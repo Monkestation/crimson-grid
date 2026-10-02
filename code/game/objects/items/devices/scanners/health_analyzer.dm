@@ -228,14 +228,6 @@
 		var/any_embeds = carbontarget.has_embedded_objects()
 		if(any_damage || (mode == SCANNER_VERBOSE && (any_missing || any_wounded || any_embeds)))
 			render_list += "<hr>"
-			/**
-			 * V - We really need a way to see more than just "some festering wounds".
-			 * Since describing them as festering already diverges from the WoD lore I know, I'm leaning into
-			 * this description and considering it as a form of supernaturally-induced necrosis.
-			 * There is also the problem that it is pretty zealously used for many supernatural sources of damage
-			 * that would be better modeled by other damage types or maybe special wounds, but that overhaul is
-			 * left as an exercise to the reader or myself if I feel it at a later date.
-			 */
 			var/dmgreport = "<span class='info ml-1'>Body status:</span>\
 							<font face='Verdana'>\
 							<table class='ml-2'>\
