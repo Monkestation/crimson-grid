@@ -173,7 +173,6 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	name = "dark keys"
 	accesslocks = list(
 		LOCKACCESS_LASOMBRA,
-		LOCKACCESS_KIASYD,
 		LOCKACCESS_CHURCH
 	)
 	color = "#290355"
@@ -182,7 +181,6 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	name = "really dark keys"
 	accesslocks = list(
 		LOCKACCESS_LASOMBRA,
-		LOCKACCESS_KIASYD,
 		LOCKACCESS_CHURCH,
 		LOCKACCESS_PRIMOGEN,
 		LOCKACCESS_PRIMOGEN_LASOMBRA,
