@@ -34,9 +34,10 @@
 	worn_icon = 'modular_vcg/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_vcg/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "sheriffblade"
+	base_icon_state = "sheriffblade"
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 
-	force_unwielded = 2 LETHAL_TTRPG_DAMAGE // Dual wield it if you want to be good
+	force_unwielded = 2 TTRPG_DAMAGE // Dual wield if u want smth good.
 	force_wielded = 5 TTRPG_DAMAGE // Made up, same force as Brother's Keeper. Equivalent to 5 TTRPG damage.
 	attack_difficulty = 7
 	armour_penetration = 50 // Normally 75 pen, that pens army armor. Instead, 50. Pens bullet proof.
