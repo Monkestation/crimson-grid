@@ -49,7 +49,7 @@
 			crew_name = target.name,
 			crew_ref = REF(target),
 			notes = target.security_note,
-			rank = target.rank,
+			recorded_rank = target.recorded_rank, // CRIMSON GRID EDIT - Security console and records
 		))
 
 		records += record
