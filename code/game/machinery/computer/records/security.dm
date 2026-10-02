@@ -249,7 +249,7 @@
 	if(!editing_crime?.valid)
 		return FALSE
 
-	if(user.real_name != editing_crime.author && !has_armory_access(user)) // only warden/hos/command can edit crimes they didn't author
+	if(user.real_name != editing_crime.author && !has_armory_access(user)) // only warden/hos/command can edit crimes they didn't author // CRIMSON EDIT - Original:	if(user != editing_crime.author && !has_armory_access(user)) // only warden/hos/command can edit crimes they didn't author
 		investigate_log("[user] attempted to edit crime: \"[editing_crime.name]\" for target: \"[target.name]\" but failed due to lacking armoury access and not being the author of the crime.", INVESTIGATE_RECORDS)
 		return FALSE
 
@@ -307,7 +307,7 @@
 		if(!to_void)
 			return FALSE
 
-	if(user.real_name != to_void.author && !has_armory_access(user))
+	if(user.real_name != to_void.author && !has_armory_access(user)) // CRIMSON EDIT - Original: 	if(user != to_void.author && !has_armory_access(user))
 		return FALSE
 
 	to_void.valid = FALSE
