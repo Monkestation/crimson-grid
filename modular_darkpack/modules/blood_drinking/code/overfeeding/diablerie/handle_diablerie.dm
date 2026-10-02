@@ -35,9 +35,50 @@
 					var/datum/brain_trauma/special/imaginary_friend/diablerie/trauma = gain_trauma(/datum/brain_trauma/special/imaginary_friend/diablerie)
 					trauma.friend.key = victim.key
 
+			steal_discipline_from(victim) // CRIMSON EDIT ADD - Diablerie progression
 			make_diablerist()
 			adjust_brute_loss(-50, TRUE)
 			adjust_fire_loss(-50, TRUE)
 			victim.death()
 		if("No")	//Defaults to this if no if option not chosen to avoid issue.
 			return FALSE
+
+// CRIMSON EDIT ADD START - Diablerie progression
+/mob/living/carbon/human/proc/steal_discipline_from(mob/living/carbon/human/victim)
+	if(!GLOB.canon_event)
+		return
+	var/datum/splat/vampire/kindred/victim_splat = get_kindred_splat(victim)
+	if(!victim.mind || !victim_splat)
+		return
+	var/datum/preferences/prefs = client?.prefs
+	if(!prefs)
+		return
+
+	var/list/stealable_levels = list()
+	for(var/datum/action/discipline/discipline_action as anything in victim_splat.powers)
+		var/datum/discipline/discipline = discipline_action.discipline
+		if(!discipline?.selectable || ispath(discipline.type, /datum/discipline/path))
+			continue
+		// if its in OUR prefs, we already know it...
+		if((discipline.type in prefs.discipline_levels) || ("[discipline.type]" in prefs.discipline_levels))
+			continue
+		stealable_levels[discipline.type] = discipline.level
+
+	if(!length(stealable_levels))
+		to_chat(src, span_warning("[victim]'s soul holds no secrets you have not already mastered."))
+		return
+
+	var/datum/discipline/stolen_type = pick(stealable_levels)
+	var/points_gained = max(1, stealable_levels[stolen_type] - 1)
+	var/bonus_points = min(prefs.read_preference(/datum/preference/numeric/bonus_discipline_points) + points_gained, 20)
+
+	if(!write_preference_midround(/datum/preference/numeric/bonus_discipline_points, bonus_points))
+		return
+
+	prefs.discipline_levels["[stolen_type]"] = 0
+	prefs.save_character()
+
+	var/stolen_name = initial(stolen_type.name)
+	to_chat(src, span_cult("As [victim]'s soul becomes yours, you tear the secrets of [stolen_name] from it. You may spend [points_gained] discipline point\s on your character sheet next night."))
+	log_game("[key_name(src)] stole [stolen_name] and [points_gained] discipline point\s by diablerizing [key_name(victim)]. Bonus discipline points are now [bonus_points].")
+// CRIMSON EDIT ADD END - Diablerie progression
