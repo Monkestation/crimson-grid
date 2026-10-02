@@ -346,7 +346,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
 	tastes = list("pie" = 1, "dark chocolate" = 3)
-	foodtypes = GRAIN|DAIRY|SUGAR
+	foodtypes = GRAIN|DAIRY|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/pie/blumpkinpie
 	name = "blumpkin pie"
@@ -443,7 +443,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
 	tastes = list("pie" = 1, "smooth chocolate" = 1, "whipped cream" = 1)
-	foodtypes = GRAIN | DAIRY | SUGAR
+	foodtypes = GRAIN | DAIRY | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	slice_type = /obj/item/food/pieslice/frenchsilk
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -452,7 +452,7 @@
 	desc = "A slice of french silk pie, filled with a chocolate mousse and topped with a layer of whipped cream and chocolate shavings. Delicious enough to make you cry."
 	icon_state = "frenchsilkpieslice"
 	tastes = list("pie" = 1, "smooth chocolate" = 1, "whipped cream" = 1)
-	foodtypes = GRAIN | DAIRY | SUGAR
+	foodtypes = GRAIN | DAIRY | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/pie/shepherds_pie

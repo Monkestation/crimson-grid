@@ -125,6 +125,7 @@
 	student.reagents.expose(student, INGEST, 1, FALSE)
 
 	var/discipline_type = disc_type[chosen]
+	var/fail_to_save_reason = student.cant_save_midround_reason()
 	if(discipline_type)
 		var/datum/splat/vampire/student_splat = student ? get_splat_with_discipline(student) : null
 		if(student_splat && !student_splat.get_power(discipline_type))
@@ -137,12 +138,12 @@
 				to_chat(owner, span_warning("[student] is unable to learn [chosen]."))
 				message_admins("[ADMIN_LOOKUPFLW(owner)] tried to teach [chosen] to [ADMIN_LOOKUPFLW(student)], but doing so would've made [key_name(student)]'s sheet invalid due to the following: [violations]")
 				return FALSE
-			if(student.client?.prefs)
+			if(student.client?.prefs && !fail_to_save_reason)
 				student.client.prefs.discipline_levels["[discipline_type]"] = 0
 				student.client.prefs.save_character()
 
-	owner.log_message("taught [chosen] to [key_name(student)].", LOG_STATS)
-	message_admins("[ADMIN_LOOKUPFLW(owner)] taught [chosen] to [ADMIN_LOOKUPFLW(student)].")
+	owner.log_message("taught [chosen] to [key_name(student)]. Pref save info: [fail_to_save_reason || "can save"]", LOG_STATS)
+	message_admins("[ADMIN_LOOKUPFLW(owner)] taught [chosen] to [ADMIN_LOOKUPFLW(student)]. Pref save info: [fail_to_save_reason || "can save"]")
 	return TRUE
 
 // darkpack_config_entries.dm & darkpack_config.txt for server settings regarding discipline teaching permissions

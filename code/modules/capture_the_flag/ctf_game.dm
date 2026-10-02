@@ -150,6 +150,7 @@
 	if(player_mob.dna.species.outfit_important_for_life)
 		player_mob.set_species(/datum/species/human)
 
+	ADD_TRAIT(player_mob, TRAIT_NO_CANON, INNATE_TRAIT) // DARKPACK EDIT ADD
 	var/datum/mind/new_member_mind = new_team_member.mob.mind
 	if(new_member_mind)
 		player_mob.AddComponent( \
