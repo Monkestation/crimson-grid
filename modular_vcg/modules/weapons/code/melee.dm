@@ -56,6 +56,7 @@
 	custom_price = 3750 // Sheriff's either dead or stupid.
 
 /obj/item/sheriffblade/vamp/Initialize(mapload)
+	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=force_unwielded, force_wielded=force_wielded, icon_wielded="[base_icon_state]1")
 
 /obj/item/fireaxe/update_icon_state()
