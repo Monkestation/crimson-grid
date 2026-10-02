@@ -147,6 +147,6 @@
 /datum/subsplat/werewolf/auspice/garou/skin_dancer //Crimson Grid edit | Change: Renamed stolen moon to skin dancer
 	name = AUSPICE_NONE
 	// DARKPACK TODO - WEREWOLF - (len lore)
-	desc = "Your not a dog are you."
+	desc = "You're not a dog are you..."
 	subsplat_traits = list(TRAIT_WYRMTAINTED, TRAIT_WYRMTAINTED_SPRITE)
 	// Skin dancers get no gifts | Crimson Grid edit | Change: Renamed stolen moon to skin dancer & made them wyrmtainted.
