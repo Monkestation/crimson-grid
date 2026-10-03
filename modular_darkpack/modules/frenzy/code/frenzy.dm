@@ -48,6 +48,11 @@
 	bumper_text = "rotschrek"
 	applicable_stats = list(STAT_COURAGE)
 
+/datum/storyteller_roll/frenzy/rotschreck/calculate_used_dice(mob/living/roller, bonus)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_CALM_HEART))
+		. += 2
+
 /datum/storyteller_roll/frenzy/kindred
 
 // Specificly kindred as I dont really think brujah are meant to rotschreck easier.
