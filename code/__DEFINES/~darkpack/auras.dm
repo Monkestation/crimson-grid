@@ -22,6 +22,7 @@
 #define AURA_SPIRITUAL COLOR_GOLD // Gold
 #define AURA_SUSPICIOUS COLOR_STRONG_BLUE // Dark Blue
 #define AURA_CONFIDENCE COLOR_VIVID_YELLOW // Primarly for the Shadow Lords gift "Aura of Confidence"
+#define AURA_FAE COLOR_BUBBLEGUM_RED // Crimson Grid addition | Change: Adding fae aura.
 #define AURA_INFERNO COLOR_VERY_DARK_LIME_GREEN // CRIMSON GRID ADD: DARK THAUMATURGY
 
 // Modifier auras.
@@ -69,6 +70,7 @@ GLOBAL_LIST_INIT(aura_list, sort_list(list(
 	"Daydreaming" = AURA_DAYDREAMING,
 	"Psychotic" = AURA_PSYCHOTIC,
 	"Confidence" = AURA_CONFIDENCE,
+	"Mischievous" = AURA_FAE, // Crimson Grid addition | Change: Added fae aura for the Kiasyd.
 	"Corruption" = AURA_INFERNO, // CRIMSON GRID ADD: DARK THAUMATURGY
 )))
 
@@ -100,5 +102,7 @@ GLOBAL_LIST_INIT(emotion_to_quality, sort_list(list(
 	"Daydreaming" = "absentmindedness",
 	"Psychotic" = "psychosis",
 	"Confidence" = "confidence",
+	"Mischievous" = "mischievous", // Crimson Grid addition | Change: Added fae aura for the Kiasyd.
+	"Suppressed" = "suppressed", // Crimson Grid addition | Change: Added suppressed aura for Path of the Scorched Heart.
 	"Corruption" = "corruption", // CRIMSON GRID ADD: DARK THAUMATURGY
 )))
