@@ -66,7 +66,7 @@
 	if(SPT_PROB(1.5, seconds_per_tick))
 		owner.emote("drool")
 	else if(!IS_UNCONSCIOUS_OR_CRIT(owner) && SPT_PROB(1.5, seconds_per_tick))
-		owner.say(pick_list_replacements(BRAIN_DAMAGE_FILE, "brain_damage"), forced = "brain damage", filterproof = TRUE)
+		owner.say(pick_list_replacements(CRIMSON_BRAIN_DAMAGE_FILE, "brain_damage"), forced = "brain damage", filterproof = TRUE) // CRIMSON EDIT - Drug Fixes And Rework - Original: BRAIN_DAMAGE_FILE
 
 /datum/brain_trauma/mild/dumbness/on_lose()
 	REMOVE_TRAIT(owner, TRAIT_DUMB, TRAUMA_TRAIT)

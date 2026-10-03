@@ -570,6 +570,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_REFLECTIVE_EYES "reflective_eyes"
 /// Their eyes are bloodshot. Currently used to set special examine text on humans. Examine text is overridden by TRAIT_UNNATURAL_RED_GLOWY_EYES.
 #define TRAIT_BLOODSHOT_EYES "bloodshot_eyes"
+#define TRAIT_BLOWN_PUPILS "blown_pupils" // CRIMSON EDIT ADD - Drug Fixes And Rework
 /// This mob should never close UI even if it doesn't have a client
 #define TRAIT_PRESERVE_UI_WITHOUT_CLIENT "preserve_ui_without_client"
 /// This mob overrides certain SSlag_switch measures with this special trait

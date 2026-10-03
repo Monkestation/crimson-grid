@@ -424,6 +424,10 @@
 			. += span_warning("<B>[t_His] eyes are glowing with an unnatural red aura!</B>")
 		else if(HAS_TRAIT(src, TRAIT_BLOODSHOT_EYES))
 			. += span_warning("<B>[t_His] eyes are bloodshot!</B>")
+		// CRIMSON EDIT ADD START - Drug Fixes And Rework
+		else if(HAS_TRAIT(src, TRAIT_BLOWN_PUPILS))
+			. += span_warning("<B>[t_His] pupils are blown wide!</B>")
+		// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 // Yes there's a lot of copypasta here, we can improve this later when carbons are less dumb in general
 /mob/living/carbon/human/get_clothing_examine_info(mob/living/user)
@@ -462,6 +466,10 @@
 			. += span_warning("<B>[t_His] eyes are glowing with an unnatural red aura!</B>")
 		else if(HAS_TRAIT(src, TRAIT_BLOODSHOT_EYES))
 			. += span_warning("<B>[t_His] eyes are bloodshot!</B>")
+		// CRIMSON EDIT ADD START - Drug Fixes And Rework
+		else if(HAS_TRAIT(src, TRAIT_BLOWN_PUPILS))
+			. += span_warning("<B>[t_His] pupils are blown wide!</B>")
+		// CRIMSON EDIT ADD END - Drug Fixes And Rework
 	//ears
 	if(ears && !(obscured_slots & HIDEEARS) && !HAS_TRAIT(ears, TRAIT_EXAMINE_SKIP))
 		. += "[t_He] [t_has] [ears.examine_title(user)] on [t_his] ears."

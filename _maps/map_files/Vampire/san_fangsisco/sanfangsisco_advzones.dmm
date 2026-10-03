@@ -508,6 +508,10 @@
 /mob/living/basic/ghost,
 /turf/open/floor/plating/rough,
 /area/vtm/outside/forest)
+"eb" = (
+/obj/item/reagent_containers/applicator/baggie/cocaine,
+/turf/open/indestructible/necropolis/air,
+/area/vtm/interior/wyrm_corrupted)
 "ec" = (
 /obj/structure/microscope{
 	pixel_x = 0;
@@ -1437,6 +1441,14 @@
 	},
 /turf/open/floor/city/factory,
 /area/vtm/interior/endron_facility/restricted)
+"lf" = (
+/obj/structure/rack,
+/obj/item/clothing/head/vampire/hardhat/pentex_white,
+/obj/item/clothing/head/vampire/hardhat/pentex_white,
+/obj/item/clothing/head/vampire/hardhat/pentex_white,
+/obj/machinery/light/directional/north,
+/turf/open/floor/city/plating,
+/area/vtm/interior/endron_facility/restricted)
 "lg" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/warning{
 	dir = 1
@@ -2000,6 +2012,10 @@
 /obj/item/lighter,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/outside/forest)
+"pz" = (
+/obj/item/reagent_containers/applicator/baggie/meth,
+/turf/open/indestructible/necropolis/air,
+/area/vtm/interior/wyrm_corrupted)
 "pA" = (
 /obj/structure/vampfence/corner/rich{
 	dir = 1
@@ -3547,10 +3563,6 @@
 /obj/structure/flora/bush/flowers_br/style_random,
 /turf/open/misc/dirt,
 /area/vtm/graveyard)
-"Be" = (
-/obj/item/reagent_containers/cup/glass/baggie/meth,
-/turf/open/indestructible/necropolis/air,
-/area/vtm/interior/wyrm_corrupted)
 "Bh" = (
 /obj/structure/flora/bush/lavendergrass/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
@@ -3891,19 +3903,19 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/endron_facility/restricted)
-"Dl" = (
+"Dm" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "Airlock1"
+	},
+/turf/open/floor/iron/textured_edge,
+/area/vtm/interior/endron_facility/restricted)
+"Dn" = (
 /obj/structure/rack,
 /obj/machinery/light/directional/west,
 /obj/item/clothing/head/vampire/hardhat/pentex_yellow,
 /obj/item/clothing/head/vampire/hardhat/pentex_yellow,
 /obj/item/clothing/head/vampire/hardhat/pentex_yellow,
 /turf/open/floor/city/plating,
-/area/vtm/interior/endron_facility/restricted)
-"Dm" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "Airlock1"
-	},
-/turf/open/floor/iron/textured_edge,
 /area/vtm/interior/endron_facility/restricted)
 "Dr" = (
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -4681,14 +4693,6 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/interior/endron_facility)
-"ID" = (
-/obj/structure/rack,
-/obj/item/clothing/head/vampire/hardhat/pentex_white,
-/obj/item/clothing/head/vampire/hardhat/pentex_white,
-/obj/item/clothing/head/vampire/hardhat/pentex_white,
-/obj/machinery/light/directional/north,
-/turf/open/floor/city/plating,
-/area/vtm/interior/endron_facility/restricted)
 "IE" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/city/plating,
@@ -5597,10 +5601,6 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/interior/endron_facility)
-"Pc" = (
-/obj/item/reagent_containers/cup/glass/baggie/meth/cocaine,
-/turf/open/indestructible/necropolis/air,
-/area/vtm/interior/wyrm_corrupted)
 "Pd" = (
 /obj/effect/decal/pallet,
 /turf/open/floor/plating/concrete,
@@ -27579,7 +27579,7 @@ wA
 wA
 wA
 mi
-Dl
+Dn
 jJ
 ky
 ob
@@ -27836,7 +27836,7 @@ wA
 wA
 wA
 mi
-ID
+lf
 WW
 WW
 yZ
@@ -37392,11 +37392,11 @@ JD
 qi
 pZ
 yQ
-Be
+pz
 Pq
 Pq
 Pq
-Pc
+eb
 Pq
 hY
 Pq
@@ -37652,11 +37652,11 @@ Pq
 Pq
 Pq
 Pq
-Be
+pz
 Pq
 Pq
 Pq
-Be
+pz
 Pq
 Pq
 pZ
@@ -38164,7 +38164,7 @@ JD
 Ur
 Pq
 Pq
-Pc
+eb
 Pq
 Pq
 Pq
@@ -38681,7 +38681,7 @@ Pq
 Pq
 Pq
 Pq
-Pc
+eb
 Pq
 Pq
 Pq

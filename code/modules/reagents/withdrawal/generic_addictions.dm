@@ -32,9 +32,18 @@
 	symptoms = "Expresses a desire for stimulants, and when in withdrawal, experiences fatigue, slowness, and difficulty concentrating."
 	withdrawal_stage_messages = list("You feel a bit tired...You could really use a pick me up.", "You are getting a bit woozy...", "So...Tired...")
 
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/datum/addiction/stimulants/become_addicted(datum/mind/victim_mind)
+	. = ..()
+	to_chat(victim_mind.current, span_danger("You are hooked. You want more."))
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
+
 /datum/addiction/stimulants/withdrawal_enters_stage_1(mob/living/carbon/affected_carbon)
 	. = ..()
 	affected_carbon.add_actionspeed_modifier(/datum/actionspeed_modifier/stimulants)
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
+	to_chat(affected_carbon, span_warning("The wanting starts. It will pass if you can stay off it for a while."))
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /datum/addiction/stimulants/withdrawal_enters_stage_2(mob/living/carbon/affected_carbon)
 	. = ..()

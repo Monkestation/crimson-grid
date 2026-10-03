@@ -27,6 +27,15 @@
 	*/
 	reagents_add = list(/datum/reagent/drug/cannabis = 0.15)
 
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/obj/item/seeds/cannabis/Initialize(mapload, nogenes)
+	var/strain_amount = reagents_add[/datum/reagent/drug/cannabis]
+	if(strain_amount)
+		reagents_add = list()
+		reagents_add[pick(subtypesof(/datum/reagent/drug/cannabis))] = strain_amount
+	return ..()
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
+
 
 /obj/item/seeds/cannabis/rainbow
 	name = "rainbow weed seed pack"
@@ -123,21 +132,58 @@
 	seed = /obj/item/seeds/cannabis
 	icon = 'modular_darkpack/modules/drugs/icons/items.dmi' // DARKPACK EDIT CHANGE - DRUGS
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/drugs/icons/onfloor.dmi')// DARKPACK EDIT ADD - DRUGS
-	name = "cannabis leaf"
+	name = "cannabis bud" // CRIMSON EDIT - Drug Fixes And Rework - Original: cannabis leaf
 	desc = "They say that next year they're going to try to legalise it." // DARKPACK EDIT CHANGE
 	icon_state = "cannabis"
 	bite_consumption_mod = 4
 	foodtypes = VEGETABLES //i dont really know what else weed could be to be honest
 	tastes = list("cannabis" = 1)
 	wine_power = 20
+	decomposition_time = 15 MINUTES // CRIMSON EDIT ADD - Drug Fixes And Rework
+
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/obj/item/food/grown/cannabis/examine(mob/user)
+	. = ..()
+	for(var/datum/reagent/drug/cannabis/strain in reagents?.reagent_list)
+		if(strain.strain_desc)
+			. += span_notice(strain.strain_desc)
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 // DARKPACK EDIT ADD START
 /obj/item/food/grown/cannabis/Initialize(mapload, obj/item/seeds/new_seed)
 	. = ..()
-	AddComponent(/datum/component/selling, 100, "weed", TRUE, -1, 7)
+	AddComponent(/datum/component/selling, 25, "weed", TRUE, -1, 7) // CRIMSON EDIT - Drug Fixes And Rework - Original: 100
 	//In 2015 Cannabis was only legally distributed in California by medical dispensary. https://web.archive.org/web/20161109220853/http://www.times-standard.com/article/NJ/20161107/NEWS/161109826
 	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
+	update_appearance()
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
 // DARKPACK EDIT ADD END
+
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/obj/item/food/grown/cannabis/proc/get_strain()
+	for(var/datum/reagent/drug/cannabis/strain in reagents?.reagent_list)
+		if(strain.strain_icon_state)
+			return strain
+	return null
+
+/obj/item/food/grown/cannabis/update_name(updates)
+	. = ..()
+
+	var/datum/reagent/drug/cannabis/strain = get_strain()
+	if(strain)
+		name = "[strain.name] bud"
+
+/obj/item/food/grown/cannabis/update_icon_state()
+	. = ..()
+
+	var/datum/reagent/drug/cannabis/strain = get_strain()
+	if(!strain)
+		return
+	icon = 'modular_darkpack/modules/drugs/icons/cannabis_strains.dmi'
+	onflooricon = icon
+	icon_state = strain.strain_icon_state
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /obj/item/food/grown/cannabis/rainbow
 	seed = /obj/item/seeds/cannabis/rainbow

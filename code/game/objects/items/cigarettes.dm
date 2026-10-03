@@ -811,6 +811,13 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/cigarette/rollie/cannabis
 	list_reagents = list(/datum/reagent/drug/cannabis = 15)
 
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/obj/item/cigarette/rollie/cannabis/Initialize(mapload)
+	list_reagents = list()
+	list_reagents[pick(subtypesof(/datum/reagent/drug/cannabis))] = 15
+	return ..()
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
+
 /obj/item/cigarette/rollie/mindbreaker
 	list_reagents = list(/datum/reagent/toxin/mindbreaker = 35, /datum/reagent/toxin/lipolicide = 15)
 
@@ -1048,7 +1055,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/rollingpaper/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/ingredients_holder, /obj/item/cigarette/rollie, CUSTOM_INGREDIENT_ICON_NOCHANGE, ingredient_type=CUSTOM_INGREDIENT_TYPE_DRYABLE, max_ingredients=2)
+	AddComponent(/datum/component/ingredients_holder, /obj/item/cigarette/rollie, CUSTOM_INGREDIENT_ICON_NOCHANGE, ingredient_type=CUSTOM_INGREDIENT_TYPE_DRYABLE, max_ingredients=2, replacement_to_hand=TRUE) // CRIMSON EDIT - Drug Fixes And Rework - Original: no replacement_to_hand
 
 
 ///////////////

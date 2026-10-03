@@ -26,7 +26,7 @@
 	///Max units able to be stored inside the bong
 	var/chem_volume = 100
 	///Is it filled?
-	var/packeditem = FALSE
+	var/obj/item/packeditem // CRIMSON EDIT - Drug Fixes And Rework - Original: var/packeditem = FALSE
 
 	///How many reagents do we transfer each use?
 	var/reagent_transfer_per_use = 0
@@ -37,24 +37,45 @@
 	. = ..()
 	create_reagents(chem_volume, INJECTABLE | NO_REACT)
 
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/obj/item/bong/examine(mob/user)
+	. = ..()
+	if(!packeditem)
+		. += span_notice("It is empty.")
+		return
+	var/datum/reagent/drug/cannabis/strain
+	if(reagents)
+		strain = locate() in reagents.reagent_list
+	if(strain?.strain_desc)
+		. += span_notice("It is packed with [strain.name] cannabis. [bong_hits] hit\s remain.")
+		return
+	. += span_notice("It is packed with \a [packeditem]. [bong_hits] hit\s remain.")
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
+
 /obj/item/bong/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if((istype(tool, /obj/item/food/grown) || istype(tool, /obj/item/food/drug)))
 		if(packeditem)
 			to_chat(user, span_warning("It is already packed!"))
 			return ITEM_INTERACT_BLOCKING
 
+		/* // CRIMSON EDIT REMOVAL START - Drug Fixes And Rework
 		if(istype(tool, /obj/item/food/grown) && !HAS_TRAIT(tool, TRAIT_DRIED))
 			to_chat(user, span_warning("It has to be dried first!"))
 			return ITEM_INTERACT_BLOCKING
+		*/ // CRIMSON EDIT REMOVAL END - Drug Fixes And Rework
 
+		// CRIMSON EDIT ADD START - Drug Fixes And Rework
+		if(!user.transferItemToLoc(tool, src))
+			return ITEM_INTERACT_BLOCKING
+		// CRIMSON EDIT ADD END - Drug Fixes And Rework
 		to_chat(user, span_notice("You stuff [tool] into [src]."))
 		bong_hits = max_hits
-		packeditem = tool.name
+		packeditem = tool
 		update_name()
 		if(tool.reagents)
 			tool.reagents.trans_to(src, tool.reagents.total_volume, transferred_by = user)
 			reagent_transfer_per_use = reagents.total_volume / max_hits
-		qdel(tool)
+		//qdel(tool) // CRIMSON EDIT REMOVAL - Drug Fixes And Rework
 		return ITEM_INTERACT_SUCCESS
 	else
 		var/lighting_text = tool.ignition_effect(src, user)
@@ -67,6 +88,7 @@
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/bong/attack_self(mob/user)
+	/* // CRIMSON EDIT REMOVAL START - Drug Fixes And Rework
 	var/turf/location = get_turf(user)
 	if(lit)
 		user.visible_message(span_notice("[user] puts out [src]."), span_notice("You put out [src]."))
@@ -76,6 +98,43 @@
 		new /obj/effect/decal/cleanable/ash(location)
 		empty_out()
 	return
+	*/ // CRIMSON EDIT REMOVAL END - Drug Fixes And Rework
+	// CRIMSON EDIT ADD START - Drug Fixes And Rework
+	if(lit && packeditem && isliving(user))
+		interact_with_atom(user, user)
+		return
+	if(lit)
+		user.visible_message(span_notice("[user] puts out [src]."), span_notice("You put out [src]."))
+		put_out()
+		return
+	if(packeditem)
+		to_chat(user, span_warning("It is not lit!"))
+	// CRIMSON EDIT ADD END - Drug Fixes And Rework
+
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/obj/item/bong/item_ctrl_click(mob/user)
+	if(loc != user)
+		return NONE
+	if(lit)
+		user.visible_message(span_notice("[user] puts out [src]."), span_notice("You put out [src]."))
+		put_out()
+		return CLICK_ACTION_SUCCESS
+	if(!packeditem)
+		return CLICK_ACTION_BLOCKING
+	if(bong_hits >= max_hits && packeditem)
+		var/obj/item/unpacked = packeditem
+		reagents.trans_to(unpacked, reagents.total_volume)
+		packeditem = null
+		empty_out()
+		to_chat(user, span_notice("You tip [unpacked] back out of [src]."))
+		user.put_in_hands(unpacked)
+		return CLICK_ACTION_SUCCESS
+	var/atom/location = drop_location()
+	to_chat(user, span_notice("You empty [src] onto [location]."))
+	new /obj/effect/decal/cleanable/ash(location)
+	empty_out()
+	return CLICK_ACTION_SUCCESS
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /obj/item/bong/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isliving(interacting_with))
@@ -98,7 +157,7 @@
 	if(istype(pos))
 		for(var/i in 1 to smoke_range)
 			spawn_cloud(pos, smoke_range)
-	if(moan_chance > 0)
+	if(prob(10)) // CRIMSON EDIT - Drug Fixes And Rework - Original: if(moan_chance > 0)
 		if(prob(moan_chance))
 			playsound(interacting_with, pick('modular_darkpack/modules/drugs/sounds/lungbust_moan1.ogg','modular_darkpack/modules/drugs/sounds/lungbust_moan2.ogg', 'modular_darkpack/modules/drugs/sounds/lungbust_moan3.ogg'), 50, TRUE)
 			interacting_living.emote("moan")
@@ -110,6 +169,13 @@
 		put_out()
 		empty_out()
 	return ITEM_INTERACT_SUCCESS
+
+// CRIMSON EDIT ADD START - Drug Fixes And Rework
+/obj/item/bong/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(gone == packeditem)
+		packeditem = null
+// CRIMSON EDIT ADD END - Drug Fixes And Rework
 
 /obj/item/bong/proc/light(flavor_text = null)
 	if(lit)
@@ -144,7 +210,7 @@
 	icon_state = icon_off
 
 /obj/item/bong/proc/empty_out()
-	packeditem = FALSE
+	QDEL_NULL(packeditem) // CRIMSON EDIT - Drug Fixes And Rework - Original: packeditem = FALSE
 	bong_hits = 0
 	reagents.clear_reagents() //just to make sure
 
