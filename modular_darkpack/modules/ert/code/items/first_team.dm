@@ -50,7 +50,6 @@
 	inhand_icon_state = null
 	worn_icon = 'modular_darkpack/modules/ert/icons/worn.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ert/icons/onfloor.dmi')
-	brand = "pentex"
 
 /obj/item/clothing/head/vampire/darkpack_ert/firstteam_helmet
 	name = "\improper First Team helmet"
@@ -60,7 +59,7 @@
 	visor_flags_inv = HIDEFACE|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-
+	brand = "pentex"
 //------------ARMOR------------
 
 /obj/item/clothing/suit/vampire/darkpack_ert
@@ -77,7 +76,6 @@
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	max_integrity = 250
 	resistance_flags = NONE
-	brand = "pentex"
 
 /obj/item/clothing/suit/vampire/darkpack_ert/Initialize(mapload)
 	. = ..()
@@ -93,6 +91,7 @@
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	clothing_traits = list(TRAIT_BRAWLING_KNOCKDOWN_BLOCKED)
+	brand = "pentex"
 
 //------------SUIT------------
 
@@ -106,7 +105,6 @@
 	icon = 'modular_darkpack/modules/ert/icons/clothing.dmi'
 	worn_icon = 'modular_darkpack/modules/ert/icons/worn.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ert/icons/onfloor.dmi')
-	brand = "pentex"
 
 /obj/item/clothing/under/vampire/darkpack_ert/Initialize(mapload)
 	. = ..()

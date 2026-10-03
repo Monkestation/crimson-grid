@@ -297,6 +297,7 @@
 	custom_body_render = TRUE
 	custom_damage_render = TRUE
 	fallback_icon = 'modular_darkpack/modules/werewolf_the_apocalypse/icons/garou_forms/crinos.dmi'
+	speed_mod = /datum/movespeed_modifier/shifter/war //CRIMSON GRID ADDITION
 
 /datum/species/human/shifter/war/visible_gender_override(mob/living/carbon/human/holder)
 	return "beast"
@@ -403,11 +404,86 @@
 	movetypes = GROUND
 
 /datum/movespeed_modifier/shifter/dire
-	multiplicative_slowdown = -0.2
+	multiplicative_slowdown = -0.3 //CRIMSON GRID EDIT - original multiplicative_slowdown = -0.2
 
 /datum/movespeed_modifier/shifter/feral
-	multiplicative_slowdown = -0.35
+	multiplicative_slowdown = -0.45 //CRMISON GRID EDIT - original multiplicative_slowdown = -0.35
 
+//CRIMSON GRID ADDITON START
+/datum/movespeed_modifier/shifter/war
+	multiplicative_slowdown = -0.25
+//CRMISON GRID ADDITION END
+
+
+//CRIMSON GRID ADDITION START
+/datum/splat/werewolf/shifter
+	COOLDOWN_DECLARE(rage_damage_cd)
+	COOLDOWN_DECLARE(rage_wound_cd)
+	COOLDOWN_DECLARE(rage_botch_cd)
+
+/datum/splat/werewolf/shifter/garou/on_gain()
+	. = ..()
+	RegisterSignal(
+		owner,
+		COMSIG_MOB_AFTER_APPLY_DAMAGE,
+		PROC_REF(on_owner_damage)
+	)
+	RegisterSignal(
+		owner,
+		COMSIG_CARBON_GAIN_WOUND,
+		PROC_REF(on_owner_wound)
+	)
+	RegisterSignal(
+		owner,
+		COMSIG_LIVING_DICE_ROLLED,
+		PROC_REF(on_owner_botch)
+	)
+/datum/splat/werewolf/shifter/proc/on_owner_damage(datum/source,damage_dealt,damagetype,def_zone,blocked,sharpness,attack_direction,attacking_item,wound_clothing)
+
+	SIGNAL_HANDLER
+	if(damage_dealt < 30)
+		return
+	if(!COOLDOWN_FINISHED(src, rage_damage_cd))
+		return
+	if(adjust_rage(1, FALSE))
+		COOLDOWN_START(src, rage_damage_cd, 30 SECONDS)
+		return
+
+/datum/splat/werewolf/shifter/proc/on_owner_wound(datum/source,datum/wound/wound,obj/item/bodypart/limb)
+	SIGNAL_HANDLER
+	if(!COOLDOWN_FINISHED(src, rage_wound_cd))
+		return
+	if(adjust_rage(1 ,FALSE))
+		COOLDOWN_START(src, rage_wound_cd, 2 MINUTES)
+		return
+
+/datum/splat/werewolf/shifter/proc/on_owner_botch(mob/living/roller, datum/storyteller_roll/roll_datum, atom/target, output)
+	SIGNAL_HANDLER
+	if(output != ROLL_BOTCH)
+		return
+	if(!COOLDOWN_FINISHED(src, rage_botch_cd))
+		return
+	if(adjust_rage(1))
+		COOLDOWN_START(src, rage_botch_cd, 3 MINUTES)
+
+/datum/splat/werewolf/shifter/garou/on_lose_or_destroy()
+	. = ..()
+	if(!QDELETED(owner))
+		UnregisterSignal(
+			owner,
+			COMSIG_MOB_AFTER_APPLY_DAMAGE
+		)
+		UnregisterSignal(
+			owner,
+			COMSIG_CARBON_GAIN_WOUND
+		)
+		UnregisterSignal(
+			owner,
+			COMSIG_LIVING_DICE_ROLLED
+		)
+		owner.set_species(/datum/species/human)
+
+//CRIMSON GRID ADDITION END
 // Handles simulating bootleg 'soak'; uses fortitude values.
 // More of a stop-gap till a soak/better system for Garou is added to simulate vampire-soaking.
 /datum/species/human/shifter/war/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)

@@ -78,6 +78,8 @@
 /obj/item/organ/tongue/fera
 	name = "exotic tongue"
 	languages_native = list(/datum/language/garou_tongue, /datum/language/primal_tongue)
+	disliked_foodtypes = GROSS | CLOTH | BUGS
+	toxic_foodtypes = TOXIC | CHOCOLATE
 
 // Garou tongues can speak all default + garou tongue
 /obj/item/organ/tongue/fera/get_possible_languages()
