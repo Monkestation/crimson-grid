@@ -277,6 +277,7 @@
 	name = "Wallet"
 	item_path = /obj/item/storage/wallet/darkpack // DARKPACK EDIT CHANGE - ORIGINAL: item_path = /obj/item/storage/wallet
 
+/* DARKPACK EDIT REMOVAL
 /datum/loadout_item/pocket_items/wallet/insert_path_into_outfit(datum/outfit/outfit, mob/living/carbon/human/equipper, visuals_only = FALSE)
 	return
 
@@ -314,6 +315,7 @@
 		if(thing.w_class > wallet.atom_storage.max_specific_storage)
 			continue
 		wallet.atom_storage.attempt_insert(thing, override = TRUE, force = STORAGE_FULLY_LOCKED, messages = FALSE)
+*/
 
 /* // DARKPACK EDIT REMOVAL
 /datum/loadout_item/pocket_items/borg_me_dogtag

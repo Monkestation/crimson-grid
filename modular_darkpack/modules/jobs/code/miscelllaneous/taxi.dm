@@ -30,4 +30,4 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/smartphone/taxi
 	r_pocket = /obj/item/vamp/keys/taxi
-	backpack_contents = list(/obj/item/card/credit=1, /obj/item/melee/vamp/tire=1)
+	backpack_contents = list(/obj/item/card/credit = 1, /obj/item/melee/vamp/tire=1)

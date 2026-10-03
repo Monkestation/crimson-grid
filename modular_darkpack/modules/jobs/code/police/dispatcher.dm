@@ -32,7 +32,7 @@
 	uniform = /obj/item/clothing/under/vampire/office
 	ears = /obj/item/radio/headset/darkpack
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
-	id = /obj/item/card/government
+	id = /obj/item/card/dispatcher
 	l_pocket = /obj/item/smartphone/dispatch
-	r_pocket = /obj/item/vamp/keys/dispatch
-	backpack_contents = list(/obj/item/card/credit=1)
+	r_pocket = /obj/item/storage/wallet/darkpack
+	wallet_contents = list(/obj/item/vamp/keys/dispatch, /obj/item/card/credit = 1)

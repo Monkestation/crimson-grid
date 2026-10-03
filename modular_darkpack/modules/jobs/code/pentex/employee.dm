@@ -14,11 +14,11 @@
 	outfit = /datum/outfit/job/vampire/employee
 
 	alt_titles = list(
-		"Endron Employee",
-		"Endron Janitor",
-		"Endron Secretary",
-		"Endron Researcher",
-		"Endron Labourer"
+		"Employee",
+		"Janitor",
+		"Secretary",
+		"Researcher",
+		"Labourer"
 	)
 
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
@@ -56,4 +56,4 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	r_pocket = /obj/item/vamp/keys/pentex
 	l_pocket = /obj/item/smartphone/endron_employee
-	backpack_contents = list(/obj/item/card/credit=1)
+	backpack_contents = list(/obj/item/card/credit = 1)
