@@ -1,20 +1,29 @@
 /mob/living/carbon/human/proc/handle_diablerie(mob/living/victim)
+	if(!can_diablerize(victim)) // CRIMSON EDIT ADD - Diablerie progression
+		return FALSE
 
-	var/diablerie_prompt = tgui_alert(src, "Attempt to diablerize [victim]?", "Diablerize", list("Yes", "No"), "No")
+	var/diablerie_prompt = tgui_alert(src, "Attempt to diablerize [victim]?", "Diablerize", list("Yes", "No")) // CRIMSON EDIT CHANGE - Diablerie progression - Original: var/diablerie_prompt = tgui_alert(src, "Attempt to diablerize [victim]?", "Diablerize", list("Yes", "No"), "No")
 	switch(diablerie_prompt)
 		if("Yes")
+			// CRIMSON EDIT ADD START - Diablerie progression
+			if(!can_diablerize(victim))
+				to_chat(src, span_warning("The moment has passed."))
+				return FALSE
+			// CRIMSON EDIT ADD END - Diablerie progression
 			var/datum/splat/vampire/kindred/kindred = get_kindred_splat(src)
 			var/generation = get_generation()
 			var/victim_generation = victim.get_generation()
 
 			if(kindred)
-				SEND_SIGNAL(victim, COMSIG_PATH_HIT, -1, 0, FALSE)
+				SEND_SIGNAL(src, COMSIG_PATH_HIT, -1, 0, FALSE) // CRIMSON EDIT CHANGE - Diablerie progression - Original: SEND_SIGNAL(victim, COMSIG_PATH_HIT, -1, 0, FALSE)
 			if(victim_generation >= generation)
 				message_admins("[ADMIN_LOOKUPFLW(src)] successfully Diablerized [ADMIN_LOOKUPFLW(victim)]")
 				log_attack("[key_name(src)] successfully Diablerized [key_name(victim)].")
+				/* // CRIMSON EDIT REMOVAL START - Diablerie progression - Moved to bind_diablerie_victim()
 				if(victim.client)
 					var/datum/brain_trauma/special/imaginary_friend/trauma = gain_trauma(/datum/brain_trauma/special/imaginary_friend)
 					trauma.friend.key = victim.key
+				*/ // CRIMSON EDIT REMOVAL END - Diablerie progression
 			else
 				var/start_prob = 10
 				if(HAS_TRAIT(src, TRAIT_DIABLERIE))
@@ -31,11 +40,15 @@
 					return
 				message_admins("[ADMIN_LOOKUPFLW(src)] successfully Diablerized [ADMIN_LOOKUPFLW(victim)]")
 				log_attack("[key_name(src)] successfully Diablerized [key_name(victim)].")
+				/* // CRIMSON EDIT REMOVAL START - Diablerie progression - Moved to bind_diablerie_victim()
 				if(victim.client)
 					var/datum/brain_trauma/special/imaginary_friend/diablerie/trauma = gain_trauma(/datum/brain_trauma/special/imaginary_friend/diablerie)
 					trauma.friend.key = victim.key
+				*/ // CRIMSON EDIT REMOVAL END - Diablerie progression
 
 			steal_discipline_from(victim) // CRIMSON EDIT ADD - Diablerie progression
+			adjust_generation(victim) // CRIMSON EDIT ADD - Diablerie progression
+			bind_diablerie_victim(victim) // CRIMSON EDIT ADD - Diablerie progression
 			make_diablerist()
 			adjust_brute_loss(-50, TRUE)
 			adjust_fire_loss(-50, TRUE)
@@ -44,6 +57,23 @@
 			return FALSE
 
 // CRIMSON EDIT ADD START - Diablerie progression
+/mob/living/carbon/human/proc/can_diablerize(mob/living/victim)
+	if(QDELETED(victim) || victim.stat == DEAD || !get_kindred_splat(victim))
+		return FALSE
+	if(stat == DEAD || IS_UNCONSCIOUS_OR_CRIT(src) || !get_kindred_splat(src))
+		return FALSE
+	if(!Adjacent(victim) || victim.bloodpool > 0)
+		return FALSE
+	return TRUE
+
+/mob/living/carbon/human/proc/bind_diablerie_victim(mob/living/victim)
+	if(!victim.client)
+		return
+	var/datum/brain_trauma/special/imaginary_friend/diablerie/trauma = has_trauma_type(/datum/brain_trauma/special/imaginary_friend/diablerie)
+	if(!trauma)
+		trauma = gain_trauma(/datum/brain_trauma/special/imaginary_friend/diablerie)
+	trauma?.add_victim(victim)
+
 /mob/living/carbon/human/proc/steal_discipline_from(mob/living/carbon/human/victim)
 	if(!GLOB.canon_event)
 		return
