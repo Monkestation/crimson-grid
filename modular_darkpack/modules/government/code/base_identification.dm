@@ -12,13 +12,32 @@
 	/// If the ID is a counterfeit
 	var/fake = FALSE
 
-	var/mob/living/carbon/human/our_human
-	var/datum/universal_icon/our_photograph
+	var/owner_real_name
+	var/icon/our_photograph
 	var/datum/storyteller_roll/investigation/examine_roll
 
 /obj/item/identification/attack_self(mob/user, modifiers)
 	. = ..()
 	user.examinate(src)
+
+/obj/item/identification/examine(mob/user)
+	. = ..()
+	if(!owner_real_name)
+		return
+
+	. += get_owner_information(user)
+
+	if(owner_real_name == user.real_name)
+		return
+
+	if(!fake)
+		return
+	var/roll_result = examine_roll.st_roll(user, src)
+	if(roll_result == ROLL_SUCCESS)
+		. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
+
+/obj/item/identification/proc/get_owner_information(mob/user)
+	return ""
 
 /obj/item/identification/proc/link_human(mob/living/carbon/human/user)
 	if(HAS_TRAIT(user, TRAIT_ILLEGAL_IDENTITY))
@@ -49,22 +68,20 @@
 	examine_roll.difficulty = min(user.st_get_stat(STAT_STREETWISE) * 2, 10)
 	examine_roll.successes_needed = round(user.st_get_stat(STAT_STREETWISE))
 
-	our_human = user
+	owner_real_name = user.real_name
 
 /obj/item/identification/proc/get_owner_id_photo(force = FALSE)
-	if((!our_photograph && our_human) || (our_human && force))
-		var/mob/living/carbon/human/dummy = new
-		dummy.equipOutfit(/datum/outfit/job/vampire/citizen, visuals_only = TRUE)
-		our_human.client?.prefs.safe_transfer_prefs_to(dummy)
-		dummy.set_clan(null)
-		dummy.dna.remove_all_mutations()
-		dummy.dna.update_dna_identity()
-		dummy.underlays += icon('icons/obj/machines/photobooth.dmi', "height_chart")
-		var/datum/universal_icon/photograph = get_flat_uni_icon(dummy)
-		photograph.scale(128, 128)
-		photograph.crop(1,1,128,128)
-		our_photograph = photograph
-		qdel(dummy)
-		return our_photograph.to_icon()
-	else if(our_photograph)
-		return our_photograph.to_icon()
+	if(our_photograph)
+		return our_photograph
+
+	if(!owner_real_name)
+		return
+
+	var/datum/record/crew/record = find_record(owner_real_name)
+	if(!record)
+		return
+	var/obj/item/photo/mugshot = record.get_front_photo(TRUE)
+	our_photograph = icon(mugshot.picture.picture_image)
+	our_photograph.Scale(128, 128)
+	our_photograph.Crop(1, 1, 128, 128)
+	return our_photograph

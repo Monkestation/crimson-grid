@@ -19,10 +19,9 @@
 
 /obj/item/identification/passport/examine(mob/user)
 	. = ..()
-	if(!owner)
-		return
-
 	flick("passport0", src)
+
+/obj/item/identification/passport/get_owner_information(mob/user)
 	var/id_examine = span_slightly_larger(separator_hr("You examine [src]...</em>"))
 	id_examine += "<div class='img_by_text_container'>"
 	id_examine += "[icon2html(get_owner_id_photo(), user, extra_classes = "hugeicon")]"
@@ -38,11 +37,4 @@
 	id_examine += "</div>" // container
 	id_examine += "</div>" // text
 
-	. += boxed_message(id_examine)
-	if(our_human == user)
-		return
-
-	if(fake)
-		var/roll_result = examine_roll.st_roll(user, src)
-		if(roll_result == ROLL_SUCCESS)
-			. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
+	return boxed_message(id_examine)
