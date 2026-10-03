@@ -1,6 +1,8 @@
 /mob/living/carbon/human/proc/drinksomeblood(mob/living/drunk_from, first_drink = FALSE)
 	COOLDOWN_START(src, drinkblood_use_cd, 3 SECONDS)
 	update_drinking_overlay(drunk_from)
+	if(!HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS))
+		drunk_from.apply_status_effect(/datum/status_effect/kissed)
 
 	if(HAS_TRAIT(src, TRAIT_VICTIM_OF_THE_MASQUERADE))
 		var/datum/quirk/darkpack/victim_of_the_masquerade/votm = src.get_quirk(/datum/quirk/darkpack/victim_of_the_masquerade)
@@ -38,9 +40,6 @@
 	if(drunk_from.bloodpool <= 1 && drunk_from.maxbloodpool > 1)
 		to_chat(src, span_warning("You feel small amount of <b>BLOOD</b> in your victim."))
 
-	if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
-		SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
-
 	if(!do_after(src, 3 SECONDS, target = drunk_from, timed_action_flags = NONE, show_progress = FALSE))
 		remove_drinking_overlay(drunk_from)
 		if(!(SEND_SIGNAL(drunk_from, COMSIG_MOB_VAMPIRE_SUCKED, drunk_from) & COMPONENT_RESIST_VAMPIRE_KISS))
@@ -48,6 +47,7 @@
 		return
 
 	drunk_from.adjust_blood_pool(-1)
+	SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 	suckbar.icon_state = "[round(14*(drunk_from.bloodpool/drunk_from.maxbloodpool))]"
 
 	if(ishuman(drunk_from))
