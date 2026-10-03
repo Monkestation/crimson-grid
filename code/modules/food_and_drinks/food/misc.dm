@@ -581,7 +581,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
 	tastes = list("granola" = 1, "nuts" = 1, "chocolate" = 1, "raisin" = 1)
-	foodtypes = GRAIN|NUTS|FRUIT|SUGAR
+	foodtypes = GRAIN|NUTS|FRUIT|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
 
