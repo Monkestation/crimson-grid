@@ -17,3 +17,18 @@
 	name = "Earth's Bounty Food Pantry"
 	icon_state = "cog_pantry"
 	fire_controled = TRUE
+
+/area/vtm/interior/wyld
+
+/area/vtm/interior/wyld/caern
+	name = "Forest Caern"
+	icon_state = "cog_caern"
+	zone_type = ZONE_ELYSIUM
+	gauntlet_rating = 5
+
+/area/vtm/interior/wyld/caern/bawn
+	name = "Forest Bawn"
+
+/area/vtm/interior/wyld/caern/bawn/LateInitialize()
+	. = ..()
+	AddComponent(/datum/component/bawn_area, /obj/structure/werewolf_totem/generic/wyld)
