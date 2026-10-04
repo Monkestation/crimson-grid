@@ -26,6 +26,12 @@
 		JOB_FEDERAL_INVESTIGATOR
 	)
 
+// CRIMSON GRID EDIT START - Security console and records
+/datum/job/vampire/police_captain/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	spawned.add_mob_memory(/datum/memory/key/police_login)
+// CRIMSON GRID END
+
 /datum/outfit/job/vampire/police_captain
 	name = JOB_POLICE_CAPTAIN
 	jobtype = /datum/job/vampire/police_captain

@@ -1,25 +1,29 @@
 /obj/ritual_rune/thaumaturgy/burning_blade
 	name = "burning blade"
-	desc = "enchant a scythe to be consumed with flame and deal aggravated damage for a few swings."
+	desc = "enchant a scythe to be consumed with flame and deal aggravated damage for a few swings. Look closer to recall what you can enchant."
 	icon_state = "rune9"
 	word = "Blade of fire."
 	level = 2
 	cost = 3
+	/// List of weapons that can be enchanted
+	var/static/list/valid_weapons = list(
+		/obj/item/scythe/vamp,
+		/obj/item/katana/vamp,
+		/obj/item/knife/vamp,
+		/obj/item/melee/sabre/rapier,
+		/obj/item/claymore/longsword,
+		/obj/item/melee/sabre/vamp
+	)
 
 /obj/ritual_rune/thaumaturgy/burning_blade/complete()
 	. = ..()
-	var/static/list/valid_weapons = list(
-		/obj/item/scythe/vamp,
-		/obj/item/katana/vamp
-	)
-
 	var/obj/item/weapon
 	for(var/obj/item/item in get_turf(src))
 		if(is_type_in_list(item, valid_weapons))
 			weapon = item
 			break
 	if(!weapon)
-		to_chat(last_activator, span_warning("You need a scythe or katana to enchant!"))
+		to_chat(last_activator, span_warning("You need one of the compatible weapons to enchant!"))
 		return
 	if(!ritual_roll_datum)
 		return
@@ -27,6 +31,14 @@
 	weapon.AddComponent(/datum/component/burning_blade, charges)
 	to_chat(last_activator, span_notice("[weapon] ignites with an unholy flame for [charges] swings!"))
 	qdel(src)
+
+/obj/ritual_rune/thaumaturgy/burning_blade/examine_more(mob/user)
+	. = ..()
+	. += span_cult("<i>You recall some of the weapons that can be enchanted...</i>")
+	var/list/desc = list()
+	for(var/obj/item/weapon as anything in valid_weapons)
+		desc += "\a [initial(weapon.name)]"
+	. += "\t[span_cult("[desc.Join("\n\t")]")]"
 
 // Turns a scythe/katana into their "weapon_burning" icon state, allowing tremeres to deal aggravated damage for a few swings.
 /datum/component/burning_blade
