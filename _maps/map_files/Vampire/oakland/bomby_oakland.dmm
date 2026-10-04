@@ -443,11 +443,6 @@
 /obj/structure/chair/wood/darkpack{
 	dir = 8
 	},
-/obj/structure/curtain/bounty{
-	icon_state = "bounty-closed";
-	open = 0;
-	pixel_y = 33
-	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop)
 "afF" = (
@@ -3066,12 +3061,6 @@
 /obj/effect/decal/shadow,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
-"aNc" = (
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor5-old"
-	},
-/turf/open/floor/wood/rough,
-/area/vtm/interior/laundromat)
 "aNg" = (
 /obj/machinery/sprinkler/area_managed,
 /turf/open/floor/wood/smooth/old,
@@ -6868,13 +6857,6 @@
 /obj/effect/decal/wallpaper/blue,
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/jazzclub)
-"bHR" = (
-/obj/structure/curtain/bounty{
-	pixel_y = 15;
-	pixel_x = -32
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/laundromat)
 "bHZ" = (
 /obj/structure/bodycontainer/crematorium{
 	id = 11
@@ -9450,6 +9432,15 @@
 	},
 /turf/open/openspace,
 /area/vtm)
+"cli" = (
+/obj/effect/decal/wallpaper/red/low,
+/obj/structure/platform/lowwall/bar/window,
+/obj/structure/curtain/bounty{
+	pixel_y = 8;
+	pixel_x = 0
+	},
+/turf/open/floor/plating/rough,
+/area/vtm/interior/shop)
 "cll" = (
 /obj/effect/turf_decal/siding/wood/dark,
 /turf/open/floor/plating/sidewalkalt{
@@ -10712,7 +10703,8 @@
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/carpet/red,
 /area/vtm/interior/laundromat)
 "czZ" = (
@@ -12244,6 +12236,7 @@
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/nine,
+/obj/effect/mapping_helpers/door/bash_difficulty/nine,
 /turf/open/floor/wood/rough,
 /area/vtm/interior/laundromat)
 "cVn" = (
@@ -16795,6 +16788,9 @@
 /area/vtm/interior/jazzclub)
 "dZu" = (
 /obj/structure/platform/lowwall/city/window,
+/obj/structure/curtain/bounty{
+	pixel_y = 15
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/laundromat)
 "dZx" = (
@@ -23085,14 +23081,6 @@
 	},
 /turf/open/water/vamp_sewer,
 /area/vtm/interior/sewer)
-"fzP" = (
-/obj/structure/curtain/bounty{
-	icon_state = "bounty-closed";
-	open = 0;
-	pixel_y = 33
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/shop)
 "fzS" = (
 /obj/structure/chair/darkpack/green{
 	dir = 8
@@ -23723,6 +23711,7 @@
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/five,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
 "fHw" = (
@@ -28203,13 +28192,6 @@
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/misc/dirt,
 /area/vtm/outside/financialdistrict)
-"gMp" = (
-/obj/structure/curtain/bounty{
-	pixel_y = 15;
-	pixel_x = 32
-	},
-/turf/open/floor/carpet/red,
-/area/vtm/interior/laundromat)
 "gMq" = (
 /obj/structure/sign/flag/japan/directional/north,
 /turf/open/floor/wood/smooth/old,
@@ -33184,8 +33166,6 @@
 "hXU" = (
 /obj/structure/table/wood,
 /obj/machinery/light/directional/north,
-/obj/item/fireaxe/vamp,
-/obj/item/toy/crayon/spraycan,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "hXY" = (
@@ -36949,15 +36929,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
-"iOx" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 15;
-	name = "bars"
-	},
-/obj/structure/platform/lowwall/junk,
-/turf/open/floor/plating/rough,
-/area/vtm/interior/laundromat)
 "iOA" = (
 /obj/structure/ladder/manhole/down,
 /turf/open/floor/plating/sidewalkalt,
@@ -37421,6 +37392,7 @@
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop)
 "iTS" = (
@@ -39841,9 +39813,7 @@
 /obj/effect/decal/graffiti{
 	icon_state = "graffiti9"
 	},
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor2-old"
-	},
+/obj/machinery/light/dim/directional/north,
 /turf/open/floor/wood/rough,
 /area/vtm/interior/laundromat)
 "jwA" = (
@@ -40561,9 +40531,9 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/triad,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /obj/effect/mapping_helpers/door/unlock,
 /obj/effect/mapping_helpers/door/autoname,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/city/circled,
 /area/vtm/interior/laundromat)
 "jFS" = (
@@ -42255,9 +42225,6 @@
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/millennium_tower/f3)
 "kcu" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -44943,7 +44910,8 @@
 "kJk" = (
 /obj/structure/table/wood,
 /obj/item/fireaxe/vamp,
-/obj/item/toy/crayon/spraycan,
+/obj/item/fireaxe/vamp,
+/obj/item/fireaxe/vamp,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "kJm" = (
@@ -44988,10 +44956,10 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/industrial)
 "kKj" = (
+/obj/structure/platform/lowwall/brick_old/window,
 /obj/structure/curtain/bounty{
 	pixel_y = 15
 	},
-/obj/structure/platform/lowwall/brick_old/window,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/laundromat)
 "kKo" = (
@@ -45066,10 +45034,10 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/salubri)
 "kLe" = (
+/obj/structure/platform/lowwall/bar/window,
 /obj/structure/curtain/bounty{
 	pixel_y = 15
 	},
-/obj/structure/platform/lowwall/bar/window,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/shop)
 "kLl" = (
@@ -53454,9 +53422,6 @@
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm)
 "mNW" = (
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor4-old"
-	},
 /obj/structure/vampipe{
 	icon_state = "piping35"
 	},
@@ -58442,11 +58407,11 @@
 /turf/open/water/vamp_sewer/border,
 /area/vtm/interior/sewer)
 "nWH" = (
-/obj/structure/curtain/bounty,
 /obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "nWJ" = (
@@ -60438,7 +60403,8 @@
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/bash_difficulty/ten,
+/obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "orJ" = (
@@ -63857,15 +63823,7 @@
 /turf/open/floor/wood/old,
 /area/vtm/interior/shop)
 "pgY" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
-/obj/structure/roadblock{
-	dir = 1;
-	pixel_y = 17;
-	density = 0
-	},
-/obj/structure/sign/flag/japan{
+/obj/structure/sign/flag/china{
 	pixel_y = 30
 	},
 /turf/open/floor/plating/concrete{
@@ -66967,9 +66925,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church/staff)
 "pRN" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
+/obj/structure/closet/crate/freezer,
 /turf/open/misc/dirt,
 /area/vtm/interior/laundromat)
 "pRP" = (
@@ -70407,6 +70363,7 @@
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
 "qIP" = (
@@ -75573,6 +75530,7 @@
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "rXy" = (
@@ -76939,6 +76897,9 @@
 /area/vtm/interior/strip)
 "spx" = (
 /obj/structure/table/wood,
+/obj/item/toy/crayon/spraycan,
+/obj/item/toy/crayon/spraycan,
+/obj/item/toy/crayon/spraycan,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "spO" = (
@@ -77589,7 +77550,7 @@
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
 	},
-/obj/structure/sign/flag/japan{
+/obj/structure/sign/flag/china{
 	pixel_y = 30
 	},
 /turf/open/floor/carpet/red,
@@ -82891,7 +82852,8 @@
 /obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "tMp" = (
@@ -85630,12 +85592,6 @@
 /obj/item/restraints/handcuffs/cable,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/giovanni/basement)
-"urZ" = (
-/obj/effect/decal/cleanable/blood/old{
-	icon_state = "floor6-old"
-	},
-/turf/open/floor/wood/rough,
-/area/vtm/interior/laundromat)
 "usb" = (
 /obj/structure/table/countertop/bubway,
 /obj/item/clothing/head/vampire/hardhat,
@@ -88342,8 +88298,6 @@
 "vaP" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/cigarettes/cigars/havana,
-/obj/item/fireaxe/vamp,
-/obj/item/toy/crayon/spraycan,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "vaQ" = (
@@ -92702,7 +92656,8 @@
 /obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "wgt" = (
@@ -167581,8 +167536,8 @@ uOx
 fOE
 szp
 szp
-iOx
-iOx
+szp
+szp
 szp
 szp
 tHA
@@ -167990,7 +167945,7 @@ wqF
 szp
 kAX
 kcu
-urZ
+fmH
 lax
 szp
 qMW
@@ -168194,7 +168149,7 @@ wqF
 szp
 szp
 pgY
-aNc
+fmH
 kLY
 szp
 qCc
@@ -169841,7 +169796,7 @@ seF
 xUq
 pId
 gOG
-bXK
+lao
 bXK
 fmD
 uFO
@@ -208797,7 +208752,7 @@ bMy
 mjT
 kgF
 kgF
-mqi
+kKj
 kgF
 mGZ
 gAz
@@ -209001,7 +208956,7 @@ kPO
 mjT
 mGZ
 ufB
-bHR
+bXK
 uSw
 mGZ
 hfh
@@ -211048,10 +211003,10 @@ dsw
 bXK
 tMj
 bXK
-bHR
+bXK
 xlr
-bHR
-bHR
+bXK
+bXK
 bXK
 uFO
 mjT
@@ -211236,7 +211191,7 @@ mjT
 mjT
 mjT
 mjT
-qYu
+cli
 afD
 xQB
 wli
@@ -211440,8 +211395,8 @@ mjT
 mjT
 mjT
 mjT
-qYu
-fzP
+cli
+xQB
 xQB
 laJ
 syg
@@ -211864,7 +211819,7 @@ gzz
 vDf
 ftt
 iuL
-gMp
+bNG
 uFO
 vRP
 sZh
