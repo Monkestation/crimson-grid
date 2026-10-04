@@ -22,7 +22,7 @@
 	/// If TRUE our bloodiness decreases over time as we dry out
 	var/decay_bloodiness = TRUE
 	/// How long we have until the decal fully dries out
-	var/drying_time = 5 MINUTES
+	var/drying_time = 2 MINUTES // CRIMSON GRID EDIT: Reduced drying time to decrease amount of active timers
 	/// How much time it took us to dry from the start to the end
 	var/total_dry_time = null
 	/// Emissive value of the blood pool, if any
