@@ -141,3 +141,24 @@
 	name = "Mummy Mask"
 	item_path = /obj/item/clothing/mask/mummy
 
+// Bandanas
+/datum/loadout_item/mask/bandana
+	group = "Bandanas"
+	abstract_type = /datum/loadout_item/mask/bandana
+
+/datum/loadout_item/mask/bandana/normal_greyscale
+	name = "Bandana (Colorable)"
+	item_path = /obj/item/clothing/mask/bandana/vampire
+
+/datum/loadout_item/mask/bandana/striped_greyscale
+	name = "Bandana (Colorable, Striped)"
+	item_path = /obj/item/clothing/mask/bandana/striped/vampire
+
+/datum/loadout_item/mask/bandana/skull_greyscale
+	name = "Bandana (Colorable, Skull)"
+	item_path = /obj/item/clothing/mask/bandana/skull/vampire
+
+//Making this a bandana to group them together.
+/datum/loadout_item/mask/bandana/facescarf_greyscale
+	name = "Facescarf (Colorable)"
+	item_path = /obj/item/clothing/mask/facescarf/vampire
