@@ -1,11 +1,7 @@
 /obj/item/identification/drivers_license
 	name = "driver's license"
 	desc = "An identification card allowing its holder to own and operate motor vehicles. Doubles as a valid form of identification."
-	icon = 'modular_darkpack/modules/government/icons/docs.dmi'
 	icon_state = "drivers"
-	worn_icon_state = ""
-	slot_flags = NONE
-	ONFLOOR_ICON_HELPER('modular_darkpack/modules/government/icons/docsonfloor.dmi')
 
 	var/issuing_state = "California"
 	var/organ_donor
@@ -48,9 +44,7 @@
 /obj/item/identification/drivers_license/state_issued_id
 	name = "state issued identification"
 	desc = "An identification card issued by the state of California to serve as a valid form of identification. <b>Does NOT qualify as a license to drive!</b>"
-	icon = 'modular_darkpack/modules/government/icons/docs.dmi'
 	icon_state = "state_id"
-	ONFLOOR_ICON_HELPER('modular_darkpack/modules/government/icons/docsonfloor.dmi')
 	additional_text = span_boldwarning("NOT APPROVED TO OPERATE MOTOR VEHICLES")
 
 /obj/item/identification/drivers_license/international
