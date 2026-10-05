@@ -1,7 +1,6 @@
 /obj/item/identification/passport
 	name = "passport"
 	desc = "A book with someone's license, photo, and identifying information. Don't lose it!"
-	worn_icon = 'modular_darkpack/modules/clothes/icons/worn.dmi'
 	icon_state = "passport1"
 
 	/// Country of origin for the passport holder
