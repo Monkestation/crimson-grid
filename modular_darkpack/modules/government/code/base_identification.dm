@@ -2,6 +2,7 @@
 	icon = 'modular_darkpack/modules/government/icons/docs.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/government/icons/docsonfloor.dmi')
 	w_class = WEIGHT_CLASS_SMALL
+	worn_icon_state = "nothing"
 	slot_flags = ITEM_SLOT_ID
 
 	// Owner information
