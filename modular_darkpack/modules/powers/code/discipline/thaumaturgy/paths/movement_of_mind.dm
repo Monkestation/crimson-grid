@@ -41,22 +41,25 @@
 	target_type = NONE
 	toggled = TRUE
 
+/datum/discipline_power/thaumaturgy/path/mind_movement/three/post_gain()
+	. = ..()
+	owner.AddComponent( \
+		/datum/component/jetpack, \
+		TRUE, \
+		1 NEWTONS, \
+		COMSIG_MIND_FLIGHT_ACTIVE, \
+		COMSIG_MIND_FLIGHT_INACTIVE, \
+		null, \
+		CALLBACK(src, PROC_REF(can_fly)), \
+		CALLBACK(src, PROC_REF(can_fly)), \
+	)
+
 /datum/discipline_power/thaumaturgy/path/mind_movement/three/activate(atom/target)
 	. = ..()
 	if(.)
 		return
 
-	owner.AddComponent( \
-		/datum/component/jetpack, \
-		TRUE, \
-		1 NEWTONS, \
-		COMSIG_POWER_ACTIVATE, \
-		COMSIG_POWER_DEACTIVATE, \
-		null, \
-		null, \
-		null, \
-	)
-
+	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_ACTIVE, owner)
 	owner.add_traits(list(TRAIT_MOVE_FLOATING, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/jetpack/wings)
 	owner.AddElement(/datum/element/forced_gravity, 0)
@@ -65,10 +68,20 @@
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/three/deactivate(atom/target)
 	. = ..()
+	if(.)
+		return
+	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_INACTIVE, owner)
 	owner.remove_traits(list(TRAIT_MOVE_FLOATING, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/jetpack/wings)
 	owner.RemoveElement(/datum/element/forced_gravity, 0)
 	owner.refresh_gravity()
+
+/// Can fly checks, we don't need to do much because most conditions already deactivate our ability
+/datum/discipline_power/thaumaturgy/path/mind_movement/three/proc/can_fly()
+	var/mob/living/carbon/human/human = owner
+	if(IS_UNCONSCIOUS_OR_CRIT(human) || human.body_position == LYING_DOWN || isnull(human.client))
+		return FALSE
+	return TRUE
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/four
 	level = 4
@@ -215,7 +228,10 @@
 
 	UnregisterSignal(source, COMSIG_MOVABLE_IMPACT)
 
-// lure of flames spellbooks
+/**
+ * Spellbooks
+ *
+ */
 /obj/item/path_spellbook/movement_of_mind
 	name = "Movement of the Mind spellbook"
 	desc = "todo"
