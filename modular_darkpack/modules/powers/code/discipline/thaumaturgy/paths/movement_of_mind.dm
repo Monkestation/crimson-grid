@@ -4,13 +4,13 @@
 	icon_state = "mind"
 	power_type = /datum/discipline_power/thaumaturgy/path/mind_movement
 
-
 /datum/discipline_power/thaumaturgy/path/mind_movement
 	name = "Movement of the Mind Power Name"
 	desc = "Movement of the Mind Power Description"
 
 	effect_sound = 'modular_darkpack/modules/paths/sounds/fireball.ogg'
 
+// Force Bolt - Level 1
 /datum/discipline_power/thaumaturgy/path/mind_movement/one
 	name = "Force Bolt"
 	desc = "Cause a target to fall down."
@@ -32,11 +32,18 @@
 /datum/discipline_power/thaumaturgy/path/mind_movement/two
 	level = 2
 
+/**
+ * Flight - Level 3
+ *
+ * Simply lets the thaumaturge fly
+ */
 /datum/discipline_power/thaumaturgy/path/mind_movement/three
 	name = "Flight"
 	desc = "Hoist yourself into the air."
 	level = 3
+	check_flags = DISC_CHECK_CAPABLE
 	cooldown_length = 5 SECONDS
+	duration_length = 3 TURNS
 	violates_masquerade = TRUE
 	target_type = NONE
 	toggled = TRUE
@@ -51,7 +58,7 @@
 		COMSIG_MIND_FLIGHT_INACTIVE, \
 		null, \
 		CALLBACK(src, PROC_REF(can_fly)), \
-		CALLBACK(src, PROC_REF(can_fly)), \
+		null, \
 	)
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/three/activate(atom/target)
@@ -61,7 +68,6 @@
 
 	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_ACTIVE, owner)
 	owner.add_traits(list(TRAIT_MOVE_FLOATING, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
-	owner.add_movespeed_modifier(/datum/movespeed_modifier/jetpack/wings)
 	owner.AddElement(/datum/element/forced_gravity, 0)
 	owner.set_resting(FALSE, TRUE)
 	owner.refresh_gravity()
@@ -72,14 +78,13 @@
 		return
 	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_INACTIVE, owner)
 	owner.remove_traits(list(TRAIT_MOVE_FLOATING, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
-	owner.remove_movespeed_modifier(/datum/movespeed_modifier/jetpack/wings)
 	owner.RemoveElement(/datum/element/forced_gravity, 0)
 	owner.refresh_gravity()
 
-/// Can fly checks, we don't need to do much because most conditions already deactivate our ability
+/// Can fly checks, we check these if we want to be unable to fly but keep ability active
 /datum/discipline_power/thaumaturgy/path/mind_movement/three/proc/can_fly()
 	var/mob/living/carbon/human/human = owner
-	if(IS_UNCONSCIOUS_OR_CRIT(human) || human.body_position == LYING_DOWN || isnull(human.client))
+	if(isnull(human.client) || human.body_position == LYING_DOWN)
 		return FALSE
 	return TRUE
 
