@@ -46,7 +46,6 @@
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "baseball_red"
-	hair_mask = /datum/hair_mask/standard_hat_low
 
 /obj/item/clothing/head/baseballcap/vampire/blue
 	name = "blue baseball cap"
