@@ -55,7 +55,7 @@
 
 	var/list/choices = list()
 	for(var/obj/item/thing in target.get_all_contents())
-		if(isorgan(thing) || isbodypart(thing))
+		if(isorgan(thing) || isbodypart(thing) || HAS_TRAIT(thing, TRAIT_NODROP))
 			continue
 		choices[thing.name] = thing
 
