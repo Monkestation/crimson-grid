@@ -21,7 +21,13 @@
 	description = "Enforce the Law."
 	minimum_masquerade = 0
 
-	known_contacts = list("Police Captain")
+	known_contacts = list(JOB_POLICE_CAPTAIN)
+
+// CRIMSON GRID EDIT START - Security console and records
+/datum/job/vampire/fbi/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	spawned.add_mob_memory(/datum/memory/key/police_login)
+// CRIMSON GRID END
 
 /datum/outfit/job/vampire/fbi
 	name = JOB_FEDERAL_INVESTIGATOR

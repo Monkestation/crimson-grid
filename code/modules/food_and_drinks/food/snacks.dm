@@ -327,7 +327,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 	)
 	tastes = list("chocolate candy" = 3)
 	junkiness = 25
-	foodtypes = JUNKFOOD
+	foodtypes = JUNKFOOD|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -354,7 +354,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 	)
 	tastes = list("chocolate candy" = 2, "pretzel" = 1)
-	foodtypes = JUNKFOOD | GRAIN
+	foodtypes = JUNKFOOD | GRAIN | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/cnds/peanut_butter
 	name = "peanut butter C&Ds"
@@ -568,7 +568,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 	)
 	tastes = list("biscuit" = 1, "chocolate" = 1)
 	junkiness = 25
-	foodtypes = JUNKFOOD | GRAIN
+	foodtypes = JUNKFOOD | GRAIN | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -595,7 +595,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 	)
 	tastes = list("biscuit" = 1, "peanut butter" = 1)
-	foodtypes = JUNKFOOD | GRAIN | NUTS
+	foodtypes = JUNKFOOD | GRAIN | NUTS | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/sticko/pineapple
 	name = "\improper Sticko Pineapple"
@@ -608,7 +608,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/peanut_butter = 1,
 	)
 	tastes = list("biscuit" = 1, "pineapple" = 1)
-	foodtypes = JUNKFOOD | GRAIN | PINEAPPLE
+	foodtypes = JUNKFOOD | GRAIN | PINEAPPLE | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/sticko/yuyake
 	name = "\improper Sticko Yūyake"

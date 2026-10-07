@@ -15,7 +15,7 @@
 /mob/living/proc/st_set_stat(stat_path, amount)
 	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
 	var/score = given_stat?.set_score(amount)
-	given_stat.update_mob(src)
+	given_stat?.update_mob(src)
 	return score
 
 /// Changes a specific mob's stat from its stats list by the given amount.
@@ -26,45 +26,45 @@
 		score = given_stat?.increase_score(amount)
 	else
 		score = given_stat?.decrease_score(amount)
-	given_stat.update_mob(src)
+	given_stat?.update_mob(src)
 	return score
 
 /mob/living/proc/st_add_stat_mod(stat_path, amount, source)
 	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
 	var/score = given_stat?.add_stat_mod(amount, source)
-	given_stat.update_mob(src)
+	given_stat?.update_mob(src)
 	return score
 
 /mob/living/proc/st_remove_stat_mod(stat_path, source)
 	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
 	var/score = given_stat?.remove_stat_mod(source)
-	given_stat.update_mob(src)
+	given_stat?.update_mob(src)
 	return score
 
 
 /mob/living/proc/st_add_auto_successes(stat_path, amount, source)
 	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
 	var/score = given_stat?.add_auto_successes(amount, source)
-	given_stat.update_mob(src)
+	given_stat?.update_mob(src)
 	return score
 
 /mob/living/proc/st_remove_auto_successes(stat_path, source)
 	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
 	var/score = given_stat?.remove_auto_successes(source)
-	given_stat.update_mob(src)
+	given_stat?.update_mob(src)
 	return score
 
 
 /mob/living/proc/st_add_stat_clamp(stat_path, amount, source)
 	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
 	var/score = given_stat?.add_stat_clamps(amount, source)
-	given_stat.update_mob(src)
+	given_stat?.update_mob(src)
 	return score
 
 /mob/living/proc/st_remove_stat_clamp(stat_path, source)
 	var/datum/st_stat/given_stat = storyteller_stats[stat_path]
 	var/score = given_stat?.remove_stat_clamps(source)
-	given_stat.update_mob(src)
+	given_stat?.update_mob(src)
 	return score
 
 /mob/living/proc/replace_storyteller_stats(list/new_stat_list, initial = FALSE)
