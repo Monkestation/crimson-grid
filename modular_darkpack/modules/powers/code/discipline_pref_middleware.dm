@@ -36,12 +36,12 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	var/discipline_points_budget
 	if(ispath(splat, /datum/splat/vampire/kindred))
 		var/immortal_age = client.prefs.read_preference(/datum/preference/numeric/immortal_age)
-		discipline_points_budget = get_discipline_point_budget(immortal_age)["points"]
+		discipline_points_budget = get_discipline_point_budget(immortal_age)["points"] + client.prefs.read_preference(/datum/preference/numeric/bonus_discipline_points) // CRIMSON EDIT CHANGE - Diablerie progression - Original: discipline_points_budget = get_discipline_point_budget(immortal_age)["points"]
 	else if(ispath(splat, /datum/splat/vampire/ghoul))
 		discipline_points_budget = get_ghoul_discipline_budget(discipline_count)["points"]
 
 	// we are assuming that diablerists gain discipline points or disciplines.
-	if(discipline_points_spent > discipline_points_budget && !client.prefs.read_preference(/datum/preference/toggle/diablerist))
+	if(discipline_points_spent > discipline_points_budget) // CRIMSON EDIT CHANGE - Diablerie progression - Original: if(discipline_points_spent > discipline_points_budget && !client.prefs.read_preference(/datum/preference/toggle/diablerist))
 		tgui_alert(src, "You have [discipline_points_spent] discipline points spent, but your character is only allowed [discipline_points_budget]! Please fix your character preferences before joining.", "Discipline Points Overspent", list("OK"))
 		return FALSE
 
