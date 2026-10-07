@@ -103,8 +103,8 @@
 		return
 
 	var/datum/discipline/stolen_type = pick(stealable_levels)
-	var/points_gained = max(1, stealable_levels[stolen_type] - 1)
-	var/bonus_points = min(prefs.read_preference(/datum/preference/numeric/bonus_discipline_points) + points_gained, 20)
+	var/points_gained = max(1, stealable_levels[stolen_type] - 2)
+	var/bonus_points = min(prefs.read_preference(/datum/preference/numeric/bonus_discipline_points) + points_gained, 10)
 
 	if(!write_preference_midround(/datum/preference/numeric/bonus_discipline_points, bonus_points))
 		return

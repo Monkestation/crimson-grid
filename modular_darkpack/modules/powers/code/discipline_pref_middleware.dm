@@ -371,7 +371,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	savefile_identifier = PREFERENCE_CHARACTER
 	can_randomize = FALSE
 	minimum = 0
-	maximum = 20
+	maximum = 10
 
 /datum/preference/numeric/bonus_discipline_points/create_default_value()
 	return 0
