@@ -49,13 +49,13 @@
 	bumper_text = "willpower draining"
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 
 /datum/storyteller_roll/taking_of_spirit_resist
 	bumper_text = "willpower draining resist"
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 
 /datum/discipline_power/daimonion/path/spirit/can_activate(mob/living/target, alert)
 	. = ..()
