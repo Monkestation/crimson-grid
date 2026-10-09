@@ -18,6 +18,8 @@
 		/datum/job_department/camarilla,
 	)
 
+	tgui_icon = FA_ICON_WINE_GLASS
+
 	minimal_generation = 12
 	minimum_masquerade = 5
 	allowed_splats = list(SPLAT_KINDRED)

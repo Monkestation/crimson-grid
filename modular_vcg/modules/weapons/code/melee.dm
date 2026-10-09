@@ -30,6 +30,7 @@
 	desc = "For going medieval on someone. A beastly war axe with two heads!"
 	icon = 'modular_vcg/modules/weapons/icons/weapons.dmi'
 	icon_state = "battleaxe0"
+	inhand_icon_state = null
 	base_icon_state = "battleaxe"
 	lefthand_file = 'modular_vcg/modules/weapons/icons/melee_lefthand.dmi'
 	righthand_file = 'modular_vcg/modules/weapons/icons/melee_righthand.dmi'

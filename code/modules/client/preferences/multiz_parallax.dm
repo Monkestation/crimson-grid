@@ -15,5 +15,5 @@
 
 	for(var/group_key in my_hud.master_groups)
 		var/datum/plane_master_group/group = my_hud.master_groups[group_key]
-		group.build_planes_offset(my_hud, my_hud.current_plane_offset)
+		group.refresh_planes_offset()
 */ // DARKPACK EDIT END -- Offsets Z levels to give the appearance of building 'stacking'
