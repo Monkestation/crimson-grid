@@ -205,7 +205,7 @@
 /obj/item/clothing/neck/robe_cape
 	name = "robe cape"
 	desc = "A comfortable cape, draped down your back and held around your neck with a brooch."
-	icon = 'icons/obj/clothing/neck.dmi'
+	icon = 'icons/map_icons/clothing/neck.dmi' // CRIMSON EDIT CHANGE - ORIGINAL: icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "/obj/item/clothing/neck/robe_cape"
 	post_init_icon_state = "robe_cape"
 	worn_icon = 'icons/mob/clothing/neck.dmi'
