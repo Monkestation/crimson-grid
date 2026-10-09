@@ -1,3 +1,7 @@
+/datum/armor/blood_power
+	melee = 15
+	bullet = 15
+
 /datum/action/cooldown/blood_power
 	name = "Blood Power"
 	desc = "Use vitae to gain supernatural abilities."
@@ -15,7 +19,6 @@
 	// Activated for two "turns" as 5 seconds is acctually pretty short. Opens to door to let players set how long they are declaring it active for.
 	/// How many "turns" its activated for. Multiplies the blood cost.
 	var/turns_activated = 2
-	var/datum/armor/old_armor
 	var/list/obj/item/bodypart/strengthened_limbs
 
 /datum/action/cooldown/blood_power/IsAvailable(feedback)
@@ -51,8 +54,7 @@
 	to_chat(human_owner, span_notice("You use blood to become more powerful."))
 
 	// DARKPACK TODO - This can be represented by having stam do anything
-	old_armor = human_owner.physiology.armor
-	human_owner.physiology.armor = old_armor.generate_new_with_modifiers(list(MELEE = 15, BULLET = 15))
+	human_owner.add_inner_armor(/datum/armor/blood_power)
 
 	human_owner.st_add_stat_mod(STAT_STRENGTH, stat_buff_amount, "blood_power")
 	human_owner.st_add_stat_mod(STAT_DEXTERITY, stat_buff_amount, "blood_power")
@@ -78,7 +80,7 @@
 	var/mob/living/carbon/human/human_owner = owner
 	to_chat(human_owner, span_warning("You feel like your <b>BLOOD</b> power slowly decreases."))
 
-	human_owner.physiology.armor = old_armor
+	human_owner.remove_inner_armor(/datum/armor/blood_power)
 
 	human_owner.st_remove_stat_mod(STAT_STRENGTH, "blood_power")
 	human_owner.st_remove_stat_mod(STAT_DEXTERITY, "blood_power")

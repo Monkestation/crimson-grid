@@ -34,6 +34,8 @@
 	var/rank = 1
 	var/can_be_identified_without_ritual = TRUE
 
+	var/magic_type
+
 	var/grant_sound // = 'sound/effects/magic/swap.ogg'
 	var/ungrant_sound // = 'sound/effects/magic/teleport_diss.ogg'
 

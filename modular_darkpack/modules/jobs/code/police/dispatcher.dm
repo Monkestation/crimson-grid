@@ -14,6 +14,8 @@
 		/datum/job_department/clinic,
 	)
 
+	tgui_icon = FA_ICON_RADIO
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
 	//splat_slots = list(SPLAT_GHOUL = 1, SPLAT_KINFOLK = 1) CRIMSON EDIT REMOVAL - Triad & other Roles
 

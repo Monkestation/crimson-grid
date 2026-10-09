@@ -13,6 +13,8 @@
 		/datum/job_department/supply,
 	)
 
+	tgui_icon = FA_ICON_SACK_DOLLAR
+
 	exp_requirements = EXP_REQ_MINOR
 	exp_required_type_department = EXP_TYPE_WAREHOUSE
 

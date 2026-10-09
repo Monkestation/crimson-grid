@@ -16,6 +16,8 @@
 		/datum/job_department/clinic,
 	)
 
+	tgui_icon = FA_ICON_USER_MD
+
 	known_contacts = list(
 		JOB_DOCTOR,
 		JOB_PRIMOGEN_MALKAVIAN
