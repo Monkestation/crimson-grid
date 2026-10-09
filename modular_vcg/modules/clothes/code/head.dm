@@ -5,6 +5,7 @@
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "fedora_grey"
 	hair_mask = /datum/hair_mask/standard_hat_low
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
 
 /obj/item/clothing/head/fedora/vampire/Initialize(mapload)
 	. = ..()
@@ -26,6 +27,7 @@
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "flatcap_grey"
 	hair_mask = /datum/hair_mask/standard_hat_low
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
 
 /obj/item/clothing/head/flathat/vampire/Initialize(mapload)
 	. = ..()
@@ -46,6 +48,7 @@
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
 	icon_state = "baseball_red"
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
 
 /obj/item/clothing/head/baseballcap/vampire/blue
 	name = "blue baseball cap"
