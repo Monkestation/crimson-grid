@@ -48,10 +48,12 @@
 	bumper_text = "rotschrek"
 	applicable_stats = list(STAT_COURAGE)
 
-/datum/storyteller_roll/frenzy/rotschreck/calculate_used_dice(mob/living/roller, bonus)
+// CRIMSON EDIT ADD START - Calm Heart Rotschreck
+/datum/storyteller_roll/frenzy/rotschreck/using_bonus(mob/living/roller, atom/target, bonus_added)
 	. = ..()
 	if(HAS_TRAIT(roller, TRAIT_CALM_HEART))
 		. += 2
+// CRIMSON EDIT ADD END - Calm Heart Rotschreck
 
 /datum/storyteller_roll/frenzy/kindred
 
