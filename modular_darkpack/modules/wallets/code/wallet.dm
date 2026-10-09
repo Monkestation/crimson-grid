@@ -47,7 +47,7 @@
 	. = ..()
 	var/list/additional_types = list(
 		/obj/item/stack/dollar,
-		/obj/item/passport,
+		/obj/item/identification,
 		/obj/item/vamp/keys
 	)
 	set_holdable(can_hold_list = can_hold + additional_types)
