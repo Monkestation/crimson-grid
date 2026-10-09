@@ -28,7 +28,7 @@
 		return
 
 	// Amount of blood we can steal equals to success count + thaum discipline level
-	var/blood_to_steal = ritual_roll_datum.last_sucess_amount + last_activator.get_discipline_dots(/datum/discipline/thaumaturgy)
+	var/blood_to_steal = last_sucess_amount + last_activator.get_discipline_dots(/datum/discipline/thaumaturgy)
 	// Amount of BP harvested is proportional to half lethal damage done
 	var/theft_per_hit = round(weapon.force / (2 LETHAL_TTRPG_DAMAGE), 0.1)
 
