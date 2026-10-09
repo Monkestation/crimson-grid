@@ -140,8 +140,9 @@
 	human.remove_overlay(BODYPARTS_LAYER)
 	var/main_icon_state = ""
 	if(HAS_TRAIT(human, TRAIT_WYRMTAINTED_SPRITE))
-		main_icon_state += "spiral"
-	main_icon_state += fur_color
+		if(!HAS_TRAIT(human, TRAIT_HIDDEN_WYRMTAINT))
+			main_icon_state += "spiral"
+		main_icon_state += fur_color
 	if(should_append_flying_to_icon(human))
 		postfix_info += "_flying"
 	else if(human.body_position == LYING_DOWN)

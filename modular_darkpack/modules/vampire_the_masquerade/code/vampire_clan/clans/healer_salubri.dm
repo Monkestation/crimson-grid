@@ -12,7 +12,8 @@
 	)
 	subsplat_traits = list(
 		TRAIT_CONSENSUAL_FEEDING_ONLY,
-		TRAIT_IRRESISTIBLE_VITAE
+		TRAIT_IRRESISTIBLE_VITAE,
+		TRAIT_THIRD_EYE // Crimson Grid edit | Change: Added third eye trait to Salubri, they didn't have it before.
 	)
 	male_clothes = /obj/item/clothing/under/vampire/salubri
 	female_clothes = /obj/item/clothing/under/vampire/salubri/female
