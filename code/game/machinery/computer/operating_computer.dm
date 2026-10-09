@@ -195,6 +195,7 @@
 	data["patient"]["fireLoss"] = patient.get_fire_loss()
 	data["patient"]["toxLoss"] = patient.get_tox_loss()
 	data["patient"]["oxyLoss"] = patient.get_oxy_loss()
+	data["patient"]["aggLoss"] = patient.get_agg_loss()
 	data["patient"]["blood_level"] = patient.blood_volume
 	data["patient"]["standard_blood_level"] = BLOOD_VOLUME_NORMAL
 	data["patient"]["surgery_state"] = patient.get_surgery_state_as_list(deprecise_zone(target_zone))
