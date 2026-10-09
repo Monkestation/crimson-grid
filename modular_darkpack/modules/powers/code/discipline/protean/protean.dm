@@ -191,8 +191,8 @@
 
 /datum/discipline_power/protean/shape_of_the_beast/deactivate()
 	UnregisterSignal(owner, COMSIG_LIVING_RETURNED_FROM_SHAPESHIFT)
-	. = ..()
 	gangy_form.Remove(owner)
+	. = ..()
 	QDEL_NULL(gangy_form)
 	owner.Stun(1 TURNS)
 	owner.do_jitter_animation(15)

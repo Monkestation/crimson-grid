@@ -100,7 +100,6 @@
 	var/mob/living/living_owner = astype(owner)
 	living_owner?.apply_status_effect(/datum/status_effect/razor_claws)
 
-// DARKPACK TODO - Requires https://github.com/DarkPack13/SecondCity/pull/680 for its stat handling.
 /datum/status_effect/razor_claws
 	id = "razor_claws"
 	duration = 1 SCENES

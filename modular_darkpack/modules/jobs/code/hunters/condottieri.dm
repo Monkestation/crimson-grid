@@ -17,6 +17,8 @@
 		/datum/job_department/society_of_leopold,
 	)
 
+	tgui_icon = FA_ICON_CROSS
+
 	known_contacts = list(
 		JOB_ABBE,
 		JOB_INQUISITOR,
