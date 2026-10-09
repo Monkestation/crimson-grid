@@ -12,6 +12,8 @@
 		/datum/job_department/camarilla,
 	)
 
+	tgui_icon = FA_ICON_PAPERCLIP
+
 	alt_titles = list(
 		"Tower Employee",
 		"Tower Cleaner",

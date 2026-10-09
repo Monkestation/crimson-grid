@@ -12,6 +12,8 @@
 	)
 	display_order = JOB_DISPLAY_ORDER_ARCHIVIST
 
+	tgui_icon = FA_ICON_BOX_ARCHIVE
+
 	description = "Keep a census of events and provide information to neonates. Listen to the Regent Carefully. Study blood magic and protect the chantry."
 	maximal_generation = 9
 	maximum_immortal_age = 200

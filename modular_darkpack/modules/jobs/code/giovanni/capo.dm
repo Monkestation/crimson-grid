@@ -12,6 +12,8 @@
 		/datum/job_department/giovanni,
 	)
 
+	tgui_icon = FA_ICON_MONEY_CHECK_DOLLAR
+
 	exp_required_type_department = EXP_TYPE_GIOVANNI
 	exp_requirements = EXP_REQ_HEAD
 
