@@ -98,7 +98,7 @@
 /datum/discipline_power/thaumaturgy/a_taste_for_blood/activate(atom/target)
 	if(..())
 		return
-	var/datum/reagent/blood/blood = target.reagents.has_reagent(/datum/reagent/blood) || target.reagents.has_reagent(/datum/reagent/blood/vitae)
+	var/datum/reagent/blood/blood = target.reagents.has_reagent(/datum/reagent/blood, check_subtypes = TRUE)
 	if(!blood)
 		to_chat(owner, span_notice("This blood tastes bland."))
 		return

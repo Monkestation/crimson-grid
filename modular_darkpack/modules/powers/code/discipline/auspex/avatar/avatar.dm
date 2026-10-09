@@ -22,7 +22,7 @@
 	response_harm_continuous = "punches through"
 	response_harm_simple = "punch through"
 	unsuitable_atmos_damage = 0
-	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, STAMINA = 0, OXY = 0)
+	physiology = list(TOX = 0, STAMINA = 0, OXY = 0)
 	habitable_atmos = null
 	minimum_survivable_temperature = 0
 	maximum_survivable_temperature = INFINITY
