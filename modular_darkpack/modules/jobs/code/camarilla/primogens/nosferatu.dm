@@ -19,6 +19,8 @@
 		/datum/job_department/city_services
 	)
 
+	tgui_icon = FA_ICON_CROWN
+
 	minimal_generation = 12
 	minimum_immortal_age = 15
 	minimum_masquerade = 5
