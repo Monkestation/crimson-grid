@@ -10,6 +10,33 @@
 
 	effect_sound = 'modular_darkpack/modules/paths/sounds/fireball.ogg'
 
+/datum/discipline_power/thaumaturgy/path/mind_movement/proc/launch(atom/movable/launched_object, turf/launch_to)
+	playsound(launched_object, 'sound/effects/magic/repulse.ogg', 100, TRUE)
+	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
+	launched_object.throw_at(launch_to, range = 1 * success_count, speed = launched_object.density ? 3 : 4, thrower = owner, spin = isitem(launched_object))
+
+//TODO: Rework to use rolls
+/datum/discipline_power/thaumaturgy/path/mind_movement/proc/on_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
+	SIGNAL_HANDLER
+
+	UnregisterSignal(source, COMSIG_MOVABLE_IMPACT)
+	var/total_damage
+
+	if(success_count > 0)
+		total_damage = 5 * success_count
+
+	if(!total_damage)
+		return
+
+	if(isliving(source))
+		var/mob/living/living_source = source
+		living_source.apply_damage(total_damage, BRUTE)
+
+	if(isliving(hit_atom))
+		var/mob/living/living_atom = hit_atom
+		living_atom.apply_damage(total_damage, BRUTE)
+
+
 // Force Bolt - Level 1
 /datum/discipline_power/thaumaturgy/path/mind_movement/one
 	name = "Force Bolt"
@@ -33,12 +60,17 @@
 	desc = "placeholder"
 	level = 2
 	violates_masquerade = TRUE
-	target_type = TARGET_OBJ
+	target_type = NONE
+	toggled = TRUE
 	range = 5
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/two/activate(atom/target)
 	. = ..()
 	owner.dna.add_mutation(/datum/mutation/telekinesis, DISCIPLINE_TRAIT(type))
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/two/deactivate(atom/target, direct)
+	. = ..()
+	owner.dna.remove_mutation(/datum/mutation/telekinesis, DISCIPLINE_TRAIT(type))
 
 /**
  * Flight - Level 3
@@ -229,17 +261,6 @@
 
 	if(grabbed_atom.anchored)
 		clear_grab()
-
-/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/launch(atom/movable/launched_object, turf/launch_to)
-	playsound(launched_object, 'sound/effects/magic/repulse.ogg', 100, TRUE)
-	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(launch_impact))
-	launched_object.throw_at(launch_to, range = 10, speed = launched_object.density ? 3 : 4, thrower = owner, spin = isitem(launched_object))
-
-//TODO: Rework to use rolls
-/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/launch_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
-	SIGNAL_HANDLER
-
-	UnregisterSignal(source, COMSIG_MOVABLE_IMPACT)
 
 /**
  * Spellbooks
