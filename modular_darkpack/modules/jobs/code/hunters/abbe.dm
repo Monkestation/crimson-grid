@@ -27,6 +27,8 @@
 
 	allowed_splats = list(SPLAT_NONE)
 
+	tgui_icon = FA_ICON_CROSS
+
 /datum/outfit/job/vampire/abbe
 	name = JOB_ABBE
 	jobtype = /datum/job/vampire/abbe

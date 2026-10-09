@@ -16,6 +16,8 @@
 		/datum/job_department/camarilla,
 	)
 
+	tgui_icon = FA_ICON_SHIELD_HALVED
+
 	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 3

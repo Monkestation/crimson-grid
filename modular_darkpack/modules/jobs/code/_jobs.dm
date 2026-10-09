@@ -136,11 +136,6 @@
 
 	var/list/all_items = user.gather_belongings()
 
-	var/obj/item/smartphone/phone = locate() in all_items
-	if(phone)
-		phone.owner_weakref = WEAKREF(user)
-		phone.update_initialized_contacts()
-
 	// DARKPACK EDIT START - Wallets and money splits, and identification.
 	var/obj/item/storage/wallet/wallet = locate() in all_items
 	if(wallet)
@@ -245,11 +240,15 @@
 				((guestbook_flags & GUESTBOOK_JOB) && (src.type == player_mob_job.type)) || \
 				((guestbook_flags & GUESTBOOK_DEPARTMENT) && length(common_departments)))
 				spawned.mind.guestbook.add_guest(spawned, player_mob, player_mob.mind.name, player_mob.mind.name, silent = TRUE)
+	var/obj/item/smartphone/phone = locate() in spawned.contents
+	if(phone)
+		phone.update_initialized_contacts(spawned, player_client)
 
 /datum/job/vampire
 	abstract_type = /datum/job/vampire
 	exp_required_type = EXP_TYPE_PLAYTIME
 	exp_granted_type = EXP_TYPE_PLAYTIME
+	tgui_icon = FA_ICON_QUESTION
 
 /**
  * This type is used to indicate a lack of a job.

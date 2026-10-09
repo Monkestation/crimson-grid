@@ -66,7 +66,8 @@
 
 	QDEL_NULL(examine_roll)
 	examine_roll = new()
-	examine_roll.roll_output_type = ROLL_PRIVATE_UNLESS_FAILURE
+	examine_roll.roll_output_type = ROLL_FLAG_ROLLER
+	examine_roll.roll_output_type_on_fail = NONE
 	examine_roll.reroll_cooldown = 1 SCENES
 	examine_roll.difficulty = min(user.st_get_stat(STAT_STREETWISE) * 2, 10)
 	examine_roll.successes_needed = round(user.st_get_stat(STAT_STREETWISE))

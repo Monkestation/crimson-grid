@@ -13,6 +13,8 @@
 		/datum/job_department/anarch,
 	)
 
+	tgui_icon = FA_ICON_SHIELD_HALVED
+
 	alt_titles = list(
 	"Bouncer",
 	"Coyote",

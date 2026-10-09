@@ -14,6 +14,7 @@
 		/datum/job_department/supply,
 	)
 
+	tgui_icon = FA_ICON_BOX
 
 	description = "You work at the warehouse, moving boxes and selling not-quite legal goods to anyone who has the money."
 	maximal_generation = 9

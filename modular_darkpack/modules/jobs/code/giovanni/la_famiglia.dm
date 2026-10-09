@@ -13,6 +13,8 @@
 		/datum/job_department/giovanni,
 	)
 
+	tgui_icon = FA_ICON_MONEY_BILL_1_WAVE
+
 	known_contacts = list(
 		JOB_CAPO,
 		JOB_LA_SQUADRA,

@@ -240,7 +240,7 @@
 					if(do_after(human_user, 1 TURNS, src))
 						proc_unlock(50)
 						break_door(human_user)
-						take_damage(bash_roll.last_sucess_amount * 10, BRUTE, MELEE)
+						take_damage(1 TTRPG_DAMAGE, BRUTE, MELEE)
 					else
 						to_chat(human_user, span_danger("You must be standing next to the door to break it down."))
 				if(ROLL_FAILURE)

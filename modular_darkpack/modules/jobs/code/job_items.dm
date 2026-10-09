@@ -209,7 +209,6 @@
 	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_NECK | ITEM_SLOT_BELT
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
-	COOLDOWN_DECLARE(detonation_timer)
 
 /obj/item/card/hunter/silver
 	name = "silver cross"
@@ -219,22 +218,22 @@
 	name = "gothic cross"
 	icon_state = "hunter_gothic"
 
-/obj/item/card/hunter/attack_self(mob/user)
+/obj/item/card/hunter/attack_self(mob/living/user)
 	. = ..()
-	if(!COOLDOWN_FINISHED(src, detonation_timer))
-		return
 	if(!user.mind)
 		return
 	if(!user.mind?.holy_role)
 		return
-	COOLDOWN_START(src, detonation_timer, 30 SECONDS)
+	if(!COOLDOWN_FINISHED(user, true_faith_cd))
+		return
+	COOLDOWN_START(user, true_faith_cd, 30 SECONDS)
 	do_sparks(rand(5, 9), FALSE, user)
 	playsound(user.loc, 'modular_darkpack/modules/jobs/sounds/cross.ogg', 100, FALSE, 8, 0.9)
 	for(var/mob/living/M in get_hearers_in_view(4, src))
 		bang(get_turf(src), M, user)
 
 /obj/item/card/hunter/proc/bang(turf/turf, mob/living/living_mob, mob/living/user)
-	if(living_mob.stat == DEAD || living_mob == user || living_mob.mind?.holy_role)//CRIMSON EDIT MAKE SURE LEOPOLDS DONT FLASH SELF
+	if(living_mob.stat == DEAD || living_mob == user || living_mob.mind?.holy_role) // Can't flash yourself
 		return
 	living_mob.show_message(span_warning(span_bold("GOD SEES YOU!")), MSG_AUDIBLE)
 
@@ -243,7 +242,7 @@
 		living_mob.pointed(user)
 
 	var/distance = max(0, get_dist(get_turf(src), turf))
-	living_mob.flash_act(affect_silicon = 1)//CRIMSON EDIT REMOVED CARING ABOUT FLASH PROTECTION GOD SUPERCEEDS SUNGLASSES
+	living_mob.flash_act(affect_silicon = 1)
 	living_mob.Paralyze(max(10/max(1, distance), 5))
 	living_mob.Knockdown(max(100/max(1, distance), 40))
 
@@ -251,10 +250,10 @@
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		return
-	if(!COOLDOWN_FINISHED(src, detonation_timer))
+	if(!COOLDOWN_FINISHED(user, true_faith_cd))
 		return
 	if(HAS_TRAIT(target, TRAIT_REPELLED_BY_HOLINESS) && target != user && !target.mind?.holy_role)
-		COOLDOWN_START(src, detonation_timer, 30 SECONDS)
+		COOLDOWN_START(user, true_faith_cd, 30 SECONDS)
 		lightningbolt(target)
 		to_chat(target, span_userdanger("The gods have punished you for your sins!"))
 
