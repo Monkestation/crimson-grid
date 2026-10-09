@@ -11,7 +11,8 @@
 			continue
 
 		// DARKPACK EDIT ADD START
-		if(HAS_TRAIT(original_human, TRAIT_SCARRING_RESISTANT))
+		if(HAS_TRAIT(original_human, TRAIT_SCARRING_RESISTANT) && !original_human.has_quirk(/datum/quirk/darkpack/persistent_scars)) // CRIMSON EDIT CHANGE - ORIGINAL: if(HAS_TRAIT(original_human, TRAIT_SCARRING_RESISTANT))
+
 			continue
 		// DARKPACK EDIT ADD END
 
