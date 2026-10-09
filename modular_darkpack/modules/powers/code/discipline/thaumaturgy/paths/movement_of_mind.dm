@@ -15,7 +15,6 @@
 	name = "Force Bolt"
 	desc = "Cause a target to fall down."
 	level = 1
-	cooldown_length = 5 SECONDS
 	violates_masquerade = TRUE
 	target_type = TARGET_LIVING
 	range = 5
@@ -30,7 +29,16 @@
 	living_target.Knockdown(5 SECONDS)
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/two
+	name = "i forgot how its called"
+	desc = "placeholder"
 	level = 2
+	violates_masquerade = TRUE
+	target_type = TARGET_OBJ
+	range = 5
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/two/activate(atom/target)
+	. = ..()
+	owner.dna.add_mutation(/datum/mutation/telekinesis, DISCIPLINE_TRAIT(type))
 
 /**
  * Flight - Level 3
