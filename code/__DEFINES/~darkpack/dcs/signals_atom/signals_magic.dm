@@ -1,0 +1,1 @@
+#define COMSIG_ATOM_GET_MAGIC_SOURCES "atom_get_magic_sources"

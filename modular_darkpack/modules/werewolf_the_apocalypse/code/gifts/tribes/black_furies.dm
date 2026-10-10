@@ -34,7 +34,7 @@
 	if(!roll_datum)
 		roll_datum = new()
 	roll_datum.difficulty = roll_difficulty
-	roll_datum.roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_datum.roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 	var/roll_result = roll_datum.st_roll(caster, target, casting_splat.gnosis)
 
 	if(roll_result != ROLL_SUCCESS)

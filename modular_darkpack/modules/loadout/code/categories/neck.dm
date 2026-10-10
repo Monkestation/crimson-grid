@@ -23,3 +23,9 @@
 /datum/loadout_item/neck/prayer_beads
 	name = "Prayer Beads"
 	item_path = /obj/item/clothing/neck/vampire/prayerbeads
+
+//CRIMSON GRID ADDITION START: ADDS ROBE CAPE TO LOADOUT
+/datum/loadout_item/neck/robe_cape
+	name = "Robe Cape"
+	item_path = /obj/item/clothing/neck/robe_cape
+//CRIMSON GRID ADDITION END

@@ -1,0 +1,84 @@
+2026-10-01:
+  JohnFulpWillard:
+  - refactor: Sprinklers have been messed with a bit, please make a bug report if
+      behavior has changed.
+2026-10-02:
+  SELFHELL:
+  - rscadd: Remington Arms has had a restock in San-Francisco.
+  - rscadd: New SFX for the 11-87 Shotgun
+2026-10-03:
+  Breadcrombs, CCC23:
+  - bugfix: True Faith crosses now affects everyone regardless of wearing flash protection
+      or not as well as not flashing the user, cooldown on this has also been made
+      to be per item/cross.
+  Eagletanker:
+  - sound: 'Friendlyumbra: Added two new music tracks. Lux Umbrae, which plays in
+      the Gaian Caern, and Endron for the Planet, which plays in Pentex facilties.
+      Both are composed and preformed by Friendly Umbra. Go support her! https://youtube.com/@friendlyumbra'
+  FalloutFalcon:
+  - qol: Adds additional clarity if your prefs get adjusted midround
+  - bugfix: Minigame characters are immune to midround pref adjustments
+  - code_imp: Discipline sharing follows the same rules as other midround pref adjustments
+      like diablare
+  JohnFulpWillard:
+  - bugfix: Malkavians are now insane.
+  - bugfix: Dominate Malkavians and Regular Malkavians now share the same web.
+  - image: Changed splat icons, the pref menu should now open a little faster.
+  Stutternov:
+  - rscadd: Adds TG facescarf, TG bandanas, and alternative leather coats to the loadout
+      selection and stores.
+  breadcrombs:
+  - qol: Bloodpacks no longer splash when thrown
+  chazzyjazzy:
+  - rscadd: makes the 'academics' stat increase language familiarity
+2026-10-04:
+  JohnFulpWillard:
+  - bugfix: Gangrels turning their transformation ability off will now lose their
+      Discipline Active alert.
+2026-10-05:
+  FalloutFalcon:
+  - rscadd: All werewolf breeds have 3 unique gifts and every tribe now has atleast
+      1 unique gift.
+  - rscadd: Adds new werewolf gifts; Primal Anger, Shed, Apecraft's Blessings, City
+      Running, Master of Fire, Hare's Leap, Heightened Senses, Predator's Arsenal,
+      Falcon's Grasp, Channeling, Sense Magic, Beat of the Heart-Drum
+  - refactor: Rolls output targets are based on a set of flags giving more granular
+      control of targets including based on success
+  - qol: Changes out dice rolls are outputed to be built at the target so the target
+      can use the guestbook name of the mob who rolled
+  - balance: Slipping restraints now uses a system similar to breaking cuffs that
+      uses DEXTERITY + STEALTH to escape
+  - bugfix: Fixes oversight where bonus was not always properly added to dice pool
+      and only displayed visually
+  - code_imp: Rolls pass in an item used in the act if any
+  - code_imp: Cleans up helpers for dice roll values like difficulty
+  - code_imp: All magic items now return a "magic type" datum with information like
+      power or type of magic (e.g blood, spirit, time)
+  - code_imp: Adds effects to represent "lingering magic" left by most gifts or discs.
+  - code_imp: Reworks Fey Sight to detect items based on magic sources they give off
+      rather then all items on a person.
+  - code_imp: Organs track who they were last attached to.
+  - code_imp: adds a generic system for tracking mobs you've examined to be reused
+      for any power that calls for such (Beat of the heart-drum and multiple vampric
+      discs)
+  Uristthedorf:
+  - bugfix: Serpentis 1 no longer implies that it can mind control you.
+  breadcrombs:
+  - rscadd: Donning the Mask of Shadows makes those under it's effect harder to examine/inspect
+2026-10-07:
+  breadcrombs:
+  - balance: Vengeful and Coldly Logical have been made conflicting
+  - balance: Iron will can no longer be taken by gargoyles.
+  - bugfix: Enchanting voice now works for the 2 dementation powers that also checked
+      for iron will
+  - bugfix: Bloodheal can no longer remove starting eye quirks
+2026-10-08:
+  JohnFulpWillard:
+  - rscadd: Canadians now come from provinces.
+  - rscadd: You can now make your published phone number persistent for your character.
+  breadcrombs:
+  - qol: Vampire biting now only checks for if the mouth is covered rather than the
+      face hidden
+  chazzyjazzy:
+  - bugfix: fixes is_sabbat helpers not recognizing the ductus or priest as sabbat
+      members

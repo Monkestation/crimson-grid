@@ -79,6 +79,9 @@
 		new /datum/data/vending_product("brown coat", /obj/item/clothing/suit/vampire/coat,	15),
 		new /datum/data/vending_product("green coat", /obj/item/clothing/suit/vampire/coat/alt,	15),
 		new /datum/data/vending_product("jacket", /obj/item/clothing/suit/vampire/jacket,	15),
+		new /datum/data/vending_product("red jacket", /obj/item/clothing/suit/vampire/jacket/red, 15),
+		new /datum/data/vending_product("cropped black jacket", /obj/item/clothing/suit/vampire/jacket/cropped, 15),
+		new /datum/data/vending_product("cropped red jacket", /obj/item/clothing/suit/vampire/jacket/cropped/red, 15),
 		new /datum/data/vending_product("black coat", /obj/item/clothing/suit/vampire/coat/winter,	15),
 		new /datum/data/vending_product("red coat", /obj/item/clothing/suit/vampire/coat/winter/alt,	15),
 		new /datum/data/vending_product("yellow aviators", /obj/item/clothing/glasses/vampire/yellow,	20),
@@ -133,6 +136,6 @@
 		new /datum/data/vending_product("military jacket", /obj/item/clothing/suit/vampire/toggled/military_jacket, 25),
 		new /datum/data/vending_product("harness boots", /obj/item/clothing/shoes/vampire/harness_boots, 30),
 		new /datum/data/vending_product("brown harness boots", /obj/item/clothing/shoes/vampire/harness_boots/brown, 30),
-
+		new /datum/data/vending_product("wrist watch", /obj/item/watch, 20) // Crimson Edit Add - What time is it?
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 	)
