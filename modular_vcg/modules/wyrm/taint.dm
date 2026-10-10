@@ -4,7 +4,7 @@
 	color = "#000000"
 	taste_mult = 0
 	chemical_flags = REAGENT_INVISIBLE
-	metabolization_rate = 0.01 * REAGENTS_METABOLISM
+	metabolization_rate = 0.02 * REAGENTS_METABOLISM
 	self_consuming = TRUE
 	purge_multiplier = 0
 	var/taint_cycles = 40
@@ -38,7 +38,7 @@
 /datum/reagent/drug/happiness/magaloft
 	name = "Magaloft"
 
-/datum/reagent/medicine/happiness/magaloft/on_mob_life(mob/living/carbon/metabolizer, seconds_per_tick, metabolization_ratio)
+/datum/reagent/drug/happiness/magaloft/on_mob_life(mob/living/carbon/metabolizer, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	holder.add_reagent(/datum/reagent/wyrmtaint, 0.1 * metabolization_ratio * seconds_per_tick)
 
