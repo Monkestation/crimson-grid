@@ -35,6 +35,6 @@
 // CRIMSON EDIT ADD START - bitten by vamp mood
 /datum/mood_event/kissed
 	description = "I can't remember anything but I feel euphoric for some reason."
-	mood_change = 5
+	mood_change = 50
 	timeout = 5 MINUTES
 // CRIMSON EDIT ADD END - bitten by vamp mood
