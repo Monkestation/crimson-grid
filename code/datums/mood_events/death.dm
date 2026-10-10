@@ -86,8 +86,15 @@
 /datum/mood_event/conditional/see_death/proc/get_descriptor(mob/dead_mob)
 	if(is_pet(dead_mob))
 		return "[dead_mob]"
+	/* // CRIMSON EDIT REMOVAL START - Death mood dosen't use job names
 	if(dead_mob.name != "Unknown" && dead_mob.mind?.assigned_role?.job_flags & JOB_CREW_MEMBER)
 		return "the [LOWER_TEXT(dead_mob.mind?.assigned_role.title)]"
+	*/ // CRIMSON EDIT REMOVAL END - Death mood dosen't use job names
+	// CRIMSON EDIT ADDITION START - Death mood dosen't use job names
+	if(iscarbon(dead_mob))
+		var/mob/living/deadhuman = dead_mob
+		return "the [deadhuman.get_generic_name(prefixed = TRUE, lowercase = TRUE)]"
+	// CRIMSON EDIT ADDITION END - Death mood dosen't use job names
 	return "someone"
 
 /// Highest priority: Clown naivety about death
