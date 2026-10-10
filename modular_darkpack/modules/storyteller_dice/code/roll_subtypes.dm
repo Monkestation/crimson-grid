@@ -31,6 +31,12 @@
 /datum/storyteller_roll/attack/claw
 	bumper_text = "attack (claw)"
 
+// Cant tell wether this is meant to be to land or for damage dice.
+/datum/storyteller_roll/attack/claw/using_difficulty(mob/living/roller, atom/target)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_RAZOR_CLAWS))
+		. -= 1
+
 /datum/storyteller_roll/attack/sweep
 	bumper_text = "attack (sweep)"
 	difficulty = 8
@@ -48,7 +54,7 @@
 /datum/storyteller_roll/damage/punch
 	bumper_text = "damage (punch)"
 
-/datum/storyteller_roll/damage/punch/calculate_used_dice(mob/living/roller, bonus)
+/datum/storyteller_roll/damage/punch/using_bonus(mob/living/roller, atom/target, bonus_added)
 	. = ..()
 	if(HAS_TRAIT(roller, TRAIT_RAZOR_CLAWS)) // Your still using claws. A bit homebrew tho.
 		. += 1
@@ -57,27 +63,26 @@
 
 /datum/storyteller_roll/damage/bite
 	bumper_text = "damage (bite)"
-	// + 1
+	bonus = 1
 
 /datum/storyteller_roll/damage/kick
 	bumper_text = "damage (kick)"
-	// + 1
+	bonus = 1
 
 /datum/storyteller_roll/damage/claw
 	bumper_text = "damage (claw)"
-	// + 2
+	bonus = 2
 
-/datum/storyteller_roll/damage/claw/calculate_used_dice(mob/living/roller, bonus)
+/datum/storyteller_roll/damage/claw/using_bonus(mob/living/roller, atom/target, bonus_added)
 	. = ..()
 	if(HAS_TRAIT(roller, TRAIT_RAZOR_CLAWS))
 		. += 2
 
-/* DARKPACK TODO - (Requires https://github.com/DarkPack13/SecondCity/pull/683)
-/datum/storyteller_roll/damage/claw/calculate_used_difficulty(mob/living/roller)
+/datum/storyteller_roll/damage/claw/using_difficulty(mob/living/roller, atom/target)
 	. = ..()
 	if(HAS_TRAIT(roller, TRAIT_RAZOR_CLAWS))
 		. -= 1
-*/
+
 
 /datum/storyteller_roll/damage/attacker_disarm
 	numerical = TRUE
@@ -120,7 +125,7 @@
 	reroll_cooldown = 1 SCENES
 	applicable_stats = list(STAT_STRENGTH)
 
-/datum/storyteller_roll/bash_door/calculate_used_dice(mob/living/roller, bonus)
+/datum/storyteller_roll/bash_door/using_dice(mob/living/roller, bonus)
 	. = ..()
 	if(HAS_TRAIT(roller, TRAIT_HUGE_SIZE))
 		. += 2
@@ -141,11 +146,16 @@
 	bumper_text = "climbing"
 	applicable_stats = list(STAT_DEXTERITY, STAT_ATHLETICS)
 
+/datum/storyteller_roll/climbing/using_difficulty(mob/living/roller, atom/target)
+	. = ..()
+	if(roller.has_status_effect(/datum/status_effect/city_running)) // In theory could check for if its the city...
+		. -= 2
+
 // Mental Feats
 /datum/storyteller_roll/investigation
 	bumper_text = "investigation"
 	applicable_stats = list(STAT_PERCEPTION, STAT_INVESTIGATION)
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 
 // Made up shittttt
@@ -155,8 +165,21 @@
 	reroll_cooldown = 1 SCENES
 	difficulty = 8
 
+
+/datum/storyteller_roll/slip_restraints
+	bumper_text = "slip restraints"
+	applicable_stats = list(STAT_DEXTERITY, STAT_STEALTH)
+	// reroll_cooldown = 1 TURNS
+	difficulty = 8
+
+/datum/storyteller_roll/slip_restraints/using_difficulty(mob/living/roller, atom/target)
+	. = ..()
+	if(roller.has_status_effect(/datum/status_effect/shed))
+		. -= 2
+
+// Based on `Feats of Strength` WTA pg. 270
 /datum/storyteller_roll/restraint_break
 	bumper_text = "breaking restraints"
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
-	reroll_cooldown = 1 TURNS
+	// reroll_cooldown = 1 TURNS
 	difficulty = 9

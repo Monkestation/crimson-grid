@@ -12,6 +12,9 @@
 	departments_list = list(
 		/datum/job_department/church,
 	)
+
+	tgui_icon = FA_ICON_BOOK_BIBLE
+
 	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_CAPPADOCIAN, VAMPIRE_CLAN_BANU_HAQIM_VIZIER) //Each have pretty big religious influences, so!
 	maximal_generation = 11

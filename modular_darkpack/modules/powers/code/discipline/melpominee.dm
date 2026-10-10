@@ -105,7 +105,7 @@
 	successes_needed = 1
 	applicable_stats = list(STAT_WITS, STAT_PERFORMANCE)
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 	spammy_roll = TRUE
 
 /datum/discipline_power/melpominee/phantom_speaker
@@ -163,7 +163,7 @@
 	var/language = owner.get_selected_language()
 	var/message = owner.compose_message(owner, language, input_message)
 	// Composed message of all the people in listener_list
-	var/those_who_hear = "[jointext(listener_list, ", ", 1, length(listener_list))], and [listener_list[length(listener_list)]]."
+	var/those_who_hear = "[english_list(listener_list)]."
 
 	// The roll itself; wits+perception against diff 7
 	var/mob/living/caster = owner
@@ -270,12 +270,12 @@
 	bumper_text = "Siren's Beckoning"
 	applicable_stats = list(STAT_WITS, STAT_PERFORMANCE)
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 	spammy_roll = TRUE
 
 /datum/storyteller_roll/sirens_beckoning/victim // Difficulty is the siren's Appearance + Performance
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/discipline_power/melpominee/sirens_beckoning
 	name = "Siren's Beckoning"
