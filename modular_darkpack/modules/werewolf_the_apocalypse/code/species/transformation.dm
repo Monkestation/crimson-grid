@@ -8,7 +8,7 @@
 	bumper_text = "banned transformation bypass"
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	difficulty = 8
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 // Remeber if you remove homid being species that this will break.
 /datum/splat/werewolf/shifter/proc/transform_fera(datum/species/human/shifter/form_to_transform, costs_rage = FALSE, requires_roll = TRUE, force = FALSE)
@@ -93,7 +93,7 @@
 	ASYNC // We dont return anything important to death and we want to be able to sleep for metamorph
 		if(HAS_TRAIT(owner, TRAIT_METAMORPH))
 			var/datum/storyteller_roll/metamorph/roll_datum = new()
-			if(roll_datum.st_roll(owner, bonus = PRIMAL_URGE_PLACEHOLDER) == ROLL_SUCCESS)
+			if(roll_datum.st_roll(owner, bonus_added = PRIMAL_URGE_PLACEHOLDER) == ROLL_SUCCESS)
 				// First valid use of timeout discovered (we dont want to be able to hold it out)
 				var/choice = tgui_input_list(owner, "Revert to your choosen form", "Metamorph", transformation_list, get_breed_form_species(), 1 TURNS)
 				if(choice in transformation_list)

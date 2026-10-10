@@ -21,6 +21,8 @@
 		new /datum/data/vending_product("snub-nose revolver", /obj/item/gun/ballistic/revolver/darkpack/snub, 100),
 		new /datum/data/vending_product("Braddock .45 submachine gun", /obj/item/gun/ballistic/automatic/darkpack/mac10, 1200),
 		new /datum/data/vending_product("Braddock .45 magazine", /obj/item/ammo_box/magazine/darkpack45smg, 300), // CRIMSON EDIT ADD - Braddock Mags Buyable
+		new /datum/data/vending_product("sawn-off Remington 11-87 shotgun", /obj/item/gun/ballistic/shotgun/vamp_remington/sawnoff, 1600),
+		new /datum/data/vending_product("oil filter 11-87 suppressor", /obj/item/suppressor/darkpack_oil, 400),
 		new /datum/data/vending_product("cannabis package", /obj/item/food/grown/cannabis, 700),
 		new /datum/data/vending_product("morphine syringe", /obj/item/reagent_containers/syringe/contraband/morphine, 800),
 		new /datum/data/vending_product("meth package", /obj/item/reagent_containers/cup/glass/baggie/meth, 800),

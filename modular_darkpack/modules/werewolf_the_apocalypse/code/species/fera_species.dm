@@ -102,7 +102,6 @@
 /datum/species/human/shifter/proc/get_fur_color(mob/living/carbon/human/human)
 	return human.dna.features[FEATURE_FERA_FUR_COLOR] || "black"
 
-
 /datum/species/human/shifter/proc/get_feature_icon_state(mob/living/carbon/human/human, feature_key)
 	var/feature_dna = human.dna.features[feature_key]
 	if(!feature_dna)
@@ -123,7 +122,7 @@
 	if(shifter_splat)
 		icon_to_use = shifter_splat.mob_icons[id]
 
-	return icon_to_use ? icon_to_use : fallback_icon
+	return icon_to_use || fallback_icon
 
 /datum/species/human/shifter/update_body_parts(mob/living/carbon/human/human)
 	if(!custom_body_render)
@@ -279,6 +278,8 @@
 	)
 	form_causes_delirium = TRUE
 	veil_breaching_form = TRUE
+
+	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	species_language_holder = /datum/language_holder/crinos
 	mutanttongue = /obj/item/organ/tongue/fera
 	bodypart_overrides = list(
@@ -318,6 +319,7 @@
 	)
 	veil_breaching_form = TRUE
 
+	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	mutantbrain = /obj/item/organ/brain/fera
 	mutanttongue = /obj/item/organ/tongue/fera
 	species_language_holder = /datum/language_holder/primal
@@ -357,6 +359,7 @@
 		TRAIT_NO_CUFF,
 	)
 
+	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	mutantbrain = /obj/item/organ/brain/fera
 	mutanttongue = /obj/item/organ/tongue/fera
 	species_language_holder = /datum/language_holder/primal
@@ -399,6 +402,7 @@
 	if(HAS_TRAIT(human, TRAIT_FERA_FLIGHT))
 		REMOVE_TRAIT(human, TRAIT_WADDLING, INNATE_TRAIT)
 
+
 /datum/movespeed_modifier/shifter
 	abstract_type = /datum/movespeed_modifier/shifter
 	movetypes = GROUND
@@ -414,6 +418,76 @@
 	multiplicative_slowdown = -0.25
 //CRMISON GRID ADDITION END
 
+
+//CRIMSON GRID ADDITION START
+/datum/splat/werewolf/shifter
+	COOLDOWN_DECLARE(rage_damage_cd)
+	COOLDOWN_DECLARE(rage_wound_cd)
+	COOLDOWN_DECLARE(rage_botch_cd)
+
+/datum/splat/werewolf/shifter/garou/on_gain()
+	. = ..()
+	RegisterSignal(
+		owner,
+		COMSIG_MOB_AFTER_APPLY_DAMAGE,
+		PROC_REF(on_owner_damage)
+	)
+	RegisterSignal(
+		owner,
+		COMSIG_CARBON_GAIN_WOUND,
+		PROC_REF(on_owner_wound)
+	)
+	RegisterSignal(
+		owner,
+		COMSIG_LIVING_DICE_ROLLED,
+		PROC_REF(on_owner_botch)
+	)
+/datum/splat/werewolf/shifter/proc/on_owner_damage(datum/source,damage_dealt,damagetype,def_zone,blocked,sharpness,attack_direction,attacking_item,wound_clothing)
+
+	SIGNAL_HANDLER
+	if(damage_dealt < 30)
+		return
+	if(!COOLDOWN_FINISHED(src, rage_damage_cd))
+		return
+	if(adjust_rage(1, FALSE))
+		COOLDOWN_START(src, rage_damage_cd, 30 SECONDS)
+		return
+
+/datum/splat/werewolf/shifter/proc/on_owner_wound(datum/source,datum/wound/wound,obj/item/bodypart/limb)
+	SIGNAL_HANDLER
+	if(!COOLDOWN_FINISHED(src, rage_wound_cd))
+		return
+	if(adjust_rage(1 ,FALSE))
+		COOLDOWN_START(src, rage_wound_cd, 2 MINUTES)
+		return
+
+/datum/splat/werewolf/shifter/proc/on_owner_botch(mob/living/roller, datum/storyteller_roll/roll_datum, atom/target, output)
+	SIGNAL_HANDLER
+	if(output != ROLL_BOTCH)
+		return
+	if(!COOLDOWN_FINISHED(src, rage_botch_cd))
+		return
+	if(adjust_rage(1))
+		COOLDOWN_START(src, rage_botch_cd, 3 MINUTES)
+
+/datum/splat/werewolf/shifter/garou/on_lose_or_destroy()
+	. = ..()
+	if(!QDELETED(owner))
+		UnregisterSignal(
+			owner,
+			COMSIG_MOB_AFTER_APPLY_DAMAGE
+		)
+		UnregisterSignal(
+			owner,
+			COMSIG_CARBON_GAIN_WOUND
+		)
+		UnregisterSignal(
+			owner,
+			COMSIG_LIVING_DICE_ROLLED
+		)
+		owner.set_species(/datum/species/human)
+
+//CRIMSON GRID ADDITION END
 // Handles simulating bootleg 'soak'; uses fortitude values.
 // More of a stop-gap till a soak/better system for Garou is added to simulate vampire-soaking.
 /datum/species/human/shifter/war/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
@@ -436,17 +510,11 @@
 	. = ..()
 	if (!.)
 		return
-
-	if (ishuman(owner))
-		var/mob/living/carbon/human/human_owner = owner
-		human_owner.physiology.armor = human_owner.physiology.armor.add_other_armor(/datum/armor/werewolf)
+	owner.add_inner_armor(/datum/armor/werewolf)
 
 /datum/status_effect/werewolf_soaking/on_remove()
 	. = ..()
-
-	if (ishuman(owner))
-		var/mob/living/carbon/human/human_owner = owner
-		human_owner.physiology.armor = human_owner.physiology.armor.subtract_other_armor(/datum/armor/werewolf)
+	owner.remove_inner_armor(/datum/armor/werewolf)
 
 // Equal to Fortitude 4; 4x15 (60) for bash, 4x10 (40) for agg on fort 4
 // If it's too weak you can tune up to Fort 5 (75 bash and 60 agg) but that felt too strong when tried w/ Garou passive regen values.

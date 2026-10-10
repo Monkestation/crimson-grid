@@ -70,7 +70,7 @@
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/activate(mob/living/target)
 	. = ..()
 	target.face_atom(owner)
-	target.visible_message(span_hypnophrase("<b>[owner] hypnotizes [target] with [owner.p_their()] eyes!</b>"), span_warning("<b>[owner] hypnotizes you! Their words seem to become more convincing and hypnotic...</b>"))
+	target.visible_message(span_hypnophrase("<b>[owner] hypnotizes [target] with [owner.p_their()] eyes!</b>"), span_warning("<b>[owner] hypnotizes you! You can't seem to move or look away...</b>"))
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.remove_overlay(POWERS_LAYER)
