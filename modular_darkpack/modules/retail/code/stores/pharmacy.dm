@@ -34,6 +34,7 @@
 		new /datum/data/vending_product("psicodine pill bottle", /obj/item/storage/pill_bottle/psicodine, 150),
 		new /datum/data/vending_product("multiver pill bottle", /obj/item/storage/pill_bottle/multiver, 150),
 		new /datum/data/vending_product("epinephrine medipen", /obj/item/reagent_containers/hypospray/medipen, 100),
+		new /datum/data/vending_product("dental pliers", /obj/item/wirecutters/pliers, 300),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 // CRIMSON EDIT ADD START - Magadon Drugs
 		new /datum/data/vending_product("magafinil pill bottle", /obj/item/storage/pill_bottle/magafinil, 500),
