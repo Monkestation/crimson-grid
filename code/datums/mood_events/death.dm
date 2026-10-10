@@ -93,7 +93,7 @@
 	// CRIMSON EDIT ADDITION START - Death mood dosen't use job names
 	if(iscarbon(dead_mob))
 		var/mob/living/deadhuman = dead_mob
-		return "the [deadhuman.get_generic_name(lowercase = TRUE)]"
+		return "the [deadhuman.get_generic_name(prefixed = TRUE, lowercase = TRUE)]"
 	// CRIMSON EDIT ADDITION END - Death mood dosen't use job names
 	return "someone"
 
