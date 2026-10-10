@@ -12,6 +12,8 @@
 		/datum/job_department/sabbat,
 	)
 
+	tgui_icon = FA_ICON_CROSS
+
 	exp_requirements = EXP_REQ_HEAD
 	exp_required_type_department = EXP_TYPE_SABBAT
 
@@ -26,7 +28,7 @@
 	)
 
 /datum/antagonist/sabbatist/ductus
-	antag_hud_name = "ductus" // CRIMSON EDIT - Sabbat Rank Icons - Original: "ductus_priest"
+	antag_hud_name = "ductus"
 
 /datum/outfit/job/vampire/sabbatductus
 	name = JOB_SABBAT_DUCTUS

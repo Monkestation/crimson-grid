@@ -20,6 +20,8 @@
 		"Detective",
 	)
 
+	tgui_icon = FA_ICON_SHIELD
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE)
 
 	description = "Enforce the law. Keep the officers in line. Follow what the Captain says."
@@ -29,6 +31,12 @@
 		JOB_POLICE_CAPTAIN,
 		JOB_EMERGENCY_DISPATCHER
 	)
+
+// CRIMSON GRID EDIT START - Security console and records
+/datum/job/vampire/police_sergeant/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	spawned.add_mob_memory(/datum/memory/key/police_login)
+// CRIMSON GRID END
 
 /datum/outfit/job/vampire/police_sergeant
 	name = JOB_POLICE_SERGEANT

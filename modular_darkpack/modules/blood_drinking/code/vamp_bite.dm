@@ -71,7 +71,7 @@
 
 			// Thirst Of Ages flaw.
 			if(HAS_TRAIT(src, TRAIT_THIRST_OF_AGES))
-				if(!get_full_splat(bit_living))
+				if(!bit_living.get_full_splat())
 					to_chat(src, span_warning("Their blood isn't potent enough!"))
 					SEND_SOUND(src, sound('modular_darkpack/modules/blood_drinking/sounds/need_blood.ogg', volume = 75))
 					return
@@ -85,7 +85,7 @@
 				var/mob/living/carbon/human/bit_human = bit_living
 				bit_human.add_bite_animation()
 
-			var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
+			var/skipface = (wear_mask && (wear_mask.flags_cover & MASKCOVERSMOUTH)) || (head && (head.flags_cover & HEADCOVERSMOUTH))
 			if(!skipface)
 				if(get_kindred_splat(src) && HAS_TRAIT(src, TRAIT_NEEDS_BLOOD))
 					trigger_kindred_frenzy(bit_living, 6, 0, "The taste of blood while hungry")

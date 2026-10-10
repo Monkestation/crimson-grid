@@ -86,6 +86,7 @@
 	aggravating = FALSE
 	hostile = FALSE
 	violates_masquerade = FALSE
+	frenzy_usable = FALSE
 
 	grouped_powers = list(
 		/datum/discipline_power/thaumaturgy/blood_rage,
@@ -97,7 +98,7 @@
 /datum/discipline_power/thaumaturgy/a_taste_for_blood/activate(atom/target)
 	if(..())
 		return
-	var/datum/reagent/blood/blood = target.reagents.has_reagent(/datum/reagent/blood) || target.reagents.has_reagent(/datum/reagent/blood/vitae)
+	var/datum/reagent/blood/blood = target.reagents.has_reagent(/datum/reagent/blood, check_subtypes = TRUE)
 	if(!blood)
 		to_chat(owner, span_notice("This blood tastes bland."))
 		return
@@ -163,6 +164,7 @@
 	aggravating = FALSE
 	hostile = FALSE
 	violates_masquerade = FALSE
+	frenzy_usable = FALSE
 
 	grouped_powers = list(
 		/datum/discipline_power/thaumaturgy/a_taste_for_blood,
@@ -199,6 +201,7 @@
 	aggravating = FALSE
 	hostile = FALSE
 	violates_masquerade = FALSE
+	frenzy_usable = FALSE
 
 	grouped_powers = list()
 	var/activated = FALSE

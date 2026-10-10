@@ -1,4 +1,13 @@
-export type Channel = 'Say' | 'Radio' | 'Me' | 'Do' | 'OOC' | 'LOOC' | 'Admin' | 'Pray' | 'Mentor'; // DARKPACK EDIT CHANGE - LOOC,DO_EMOTES // CRIMSON EDIT CHANGE - MENTOR
+export type Channel =
+  | 'Say'
+  | 'Radio'
+  | 'Me'
+  | 'Do'
+  | 'OOC'
+  | 'LOOC'
+  | 'Admin'
+  | 'Pray'
+  | 'Mentor'; // DARKPACK EDIT CHANGE - LOOC,DO_EMOTES,MENTORS
 
 /**
  * ### ChannelIterator
@@ -8,9 +17,19 @@ export type Channel = 'Say' | 'Radio' | 'Me' | 'Do' | 'OOC' | 'LOOC' | 'Admin' |
  */
 export class ChannelIterator {
   private index: number = 0;
-  private readonly channels: Channel[] = ['Say', 'Radio', 'Me', 'Do', 'OOC', 'LOOC', 'Admin', 'Pray', 'Mentor']; // DARKPACK EDIT CHANGE - LOOC,DO_EMOTES CRIMSON EDIT CHANGE - MENTOR
-  private readonly blacklist: Channel[] = ['Admin', 'Mentor']; // CRIMSON EDIT CHANGE - MENTOR
-  private readonly quiet: Channel[] = ['OOC', 'LOOC', 'Admin', 'Pray', 'Mentor']; // DARKPACK EDIT CHANGE - LOOC // CRIMSON EDIT CHANGE - MENTOR
+  private readonly channels: Channel[] = [
+    'Say',
+    'Radio',
+    'Me',
+    'Do',
+    'OOC',
+    'LOOC',
+    'Admin',
+    'Pray',
+    'Mentor',
+  ]; // DARKPACK EDIT CHANGE - LOOC,DO_EMOTES,MENTORS
+  private readonly blacklist: Channel[] = ['Admin', 'Mentor']; // DARKPACK EDIT CHANGE - MENTORS
+  private readonly quiet: Channel[] = ['OOC', 'LOOC', 'Admin', 'Pray']; // DARKPACK EDIT CHANGE - LOOC
 
   public next(): Channel {
     if (this.blacklist.includes(this.channels[this.index])) {

@@ -17,7 +17,6 @@
 	. = ..()
 	REGISTER_REQUIRED_MAP_ITEM(1, 1)
 	GLOB.blood_hunt_announcers += src
-	AddComponent(/datum/component/violation_observer, FALSE)
 
 /obj/item/blood_hunt/Destroy(force)
 	GLOB.blood_hunt_announcers -= src

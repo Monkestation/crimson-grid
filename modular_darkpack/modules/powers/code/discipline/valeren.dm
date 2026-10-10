@@ -26,7 +26,7 @@
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
 	difficulty = 7
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE_ADMIN
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/discipline_power/valeren/sense_vitality
 	name = "Sense Vitality"
@@ -177,7 +177,7 @@
 	bumper_text = "anesthetic touch"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 
 /datum/storyteller_roll/anesthetic_touch/unwilling
 	bumper_text = "anesthetic touch (unwilling)"
@@ -196,6 +196,7 @@
 	var/successes = 0
 	var/datum/storyteller_roll/anesthetic_touch/touch_roll
 	var/datum/storyteller_roll/anesthetic_touch/unwilling/touch_roll_unwilling
+	frenzy_usable = FALSE
 
 /datum/discipline_power/valeren/anesthetic_touch/pre_activation_checks(mob/living/target)
 	. = ..()
@@ -223,7 +224,8 @@
 	var/chosen_option = show_radial_menu(owner, target, choices, radius = 38, require_near = TRUE)
 	switch(chosen_option)
 		if("Soothe Pain")
-			ADD_TRAIT(target, TRAIT_IGNORESLOWDOWN, type)
+			owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+			ADD_TRAIT(target, TRAIT_ANALGESIA, type)
 			addtimer(CALLBACK(src, PROC_REF(end_soothe_pain), target), (successes TURNS) + soothe_duration_length)
 		if("Put To Sleep")
 			if(get_kindred_splat(target))
@@ -234,7 +236,8 @@
 	return TRUE
 
 /datum/discipline_power/valeren/anesthetic_touch/proc/end_soothe_pain(mob/living/target)
-	REMOVE_TRAIT(target, TRAIT_IGNORESLOWDOWN, type)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	REMOVE_TRAIT(target, TRAIT_ANALGESIA, type)
 
 /datum/discipline_power/valeren/burning_touch
 	name = "Burning Touch"
@@ -258,13 +261,13 @@
 /datum/storyteller_roll/burning_touch_resist
 	bumper_text = "resist burning pain"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 
 /datum/storyteller_roll/burning_touch_focus
 	bumper_text = "focus through burning pain"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
 	spammy_roll = TRUE
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 
 /datum/status_effect/burning_touch
 	id = "burning_touch"
@@ -331,7 +334,7 @@
 	applicable_stats = list(STAT_STAMINA, STAT_MELEE)
 	difficulty = 7
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 
 /datum/discipline_power/valeren/armor_of_caines_fury
 	name = "Armor of Caine's Fury"
@@ -441,6 +444,7 @@
 	check_flags = DISC_CHECK_CAPABLE
 	toggled = TRUE
 	duration_length = 1 TURNS
+	frenzy_usable = FALSE
 
 /datum/discipline_power/valeren/vengeance_of_samiel/activate()
 	. = ..()
@@ -457,7 +461,7 @@
 
 	var/bonus = 5
 	var/datum/component/tackler/tackler
-	var/list/obj/item/bodypart/affected_bodyparts
+	var/list/datum/weakref/affected_bodyparts
 
 /datum/status_effect/vengeance_of_samiel/on_apply()
 	. = ..()
@@ -471,7 +475,7 @@
 		for (var/obj/item/bodypart/limb as anything in carbon_owner.bodyparts)
 			if (!istype(limb, /obj/item/bodypart/arm) && !istype(limb, /obj/item/bodypart/leg))
 				continue
-			LAZYADD(affected_bodyparts, limb)
+			LAZYADD(affected_bodyparts, WEAKREF(limb))
 			limb.unarmed_attack_sound = pick(list('sound/items/weapons/cqchit2.ogg', 'sound/items/weapons/cqchit1.ogg')) // i know kung fu
 	else if (isbasicmob(owner))
 		var/mob/living/basic/basic_owner = owner
@@ -484,12 +488,17 @@
 	owner.st_remove_stat_mod(STAT_DEXTERITY, bonus, "vengeance_of_samiel")
 	owner.st_remove_stat_mod(STAT_MELEE, bonus, "vengeance_of_samiel")
 	owner.st_remove_stat_mod(STAT_BRAWL, bonus, "vengeance_of_samiel")
-	if (iscarbon(owner))
-		for (var/obj/item/bodypart/limb in affected_bodyparts)
-			limb.unarmed_attack_sound = initial(limb.unarmed_attack_sound)
-	else if (isbasicmob(owner))
+
+	for(var/datum/weakref/limb_weakref in affected_bodyparts)
+		var/obj/item/bodypart/limb = limb_weakref.resolve()
+		if(!limb)
+			continue
+		limb.unarmed_attack_sound = limb::unarmed_attack_sound
+
+	if (isbasicmob(owner))
 		var/mob/living/basic/basic_owner = owner
-		basic_owner.attack_sound = initial(basic_owner.attack_sound)
+		basic_owner.attack_sound = basic_owner::attack_sound
+
 	LAZYCLEARLIST(affected_bodyparts)
 	UnregisterSignal(owner, COMSIG_MOB_ITEM_ATTACK)
 	qdel(tackler)

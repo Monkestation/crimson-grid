@@ -12,6 +12,8 @@
 		/datum/job_department/camarilla,
 	)
 
+	tgui_icon = FA_ICON_PAPERCLIP
+
 	alt_titles = list(
 		"Tower Employee",
 		"Tower Cleaner",
@@ -21,7 +23,7 @@
 		"Tower Personal Attendant"
 	)
 
-	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
+	maximal_generation = 9
 	maximum_immortal_age = 200
 	known_contacts = list(
 		JOB_PRINCE,

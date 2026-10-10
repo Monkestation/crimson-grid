@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(madness_network)
+
 /datum/subsplat/vampire_clan/malkavian
 	name = "Malkavian"
 	id = VAMPIRE_CLAN_MALKAVIAN
@@ -9,12 +11,11 @@
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/dementation,
-		/datum/discipline/obfuscate
+		/datum/discipline/obfuscate,
 	)
 	male_clothes = /obj/item/clothing/under/vampire/malkavian
 	female_clothes = /obj/item/clothing/under/vampire/malkavian/female
 	subsplat_keys = /obj/item/vamp/keys/malkav
-	var/list/mob/living/madness_network
 
 /datum/subsplat/vampire_clan/malkavian/dominate
 	name = "Dominate Malkavian"
@@ -24,22 +25,21 @@
 	clan_disciplines = list(
 		/datum/discipline/auspex,
 		/datum/discipline/dominate,
-		/datum/discipline/obfuscate
+		/datum/discipline/obfuscate,
 	)
 
 /datum/subsplat/vampire_clan/malkavian/on_gain(mob/living/carbon/human/gaining_mob, datum/splat/gaining_splat, joining_round)
 	. = ..()
-
 	var/datum/action/cooldown/malk_hivemind/hivemind = new(gaining_mob)
-	var/datum/action/cooldown/malk_speech/malk_font = new(gaining_mob)
 	hivemind.Grant(gaining_mob)
+	var/datum/action/cooldown/malk_speech/malk_font = new(gaining_mob)
 	malk_font.Grant(gaining_mob)
+
 	gaining_mob.add_quirk(/datum/quirk/darkpack/derangement)
 
-	// Madness Network handling
-	LAZYADD(madness_network, gaining_mob)
-	RegisterSignal(gaining_mob, COMSIG_MOB_SAY, PROC_REF(handle_say), override = TRUE)
-	RegisterSignal(gaining_mob, COMSIG_MOVABLE_HEAR, PROC_REF(handle_hear), override = TRUE)
+	GLOB.madness_network += gaining_mob
+	RegisterSignal(gaining_mob, COMSIG_MOB_SAY, PROC_REF(handle_say))
+	RegisterSignal(gaining_mob, COMSIG_MOVABLE_HEAR, PROC_REF(handle_hear))
 
 /datum/subsplat/vampire_clan/malkavian/on_lose(mob/living/carbon/human/losing_mob)
 	. = ..()
@@ -49,8 +49,9 @@
 			continue
 		malkavian_action.Remove(losing_mob)
 
-	// Remove Madness Network
-	LAZYREMOVE(madness_network, losing_mob)
+	losing_mob.remove_quirk(/datum/quirk/darkpack/derangement)
+
+	GLOB.madness_network -= losing_mob
 	UnregisterSignal(losing_mob, COMSIG_MOB_SAY)
 	UnregisterSignal(losing_mob, COMSIG_MOVABLE_HEAR)
 
@@ -71,7 +72,7 @@
 	say_in_madness_network(hearing_args[HEARING_RAW_MESSAGE])
 
 /datum/subsplat/vampire_clan/malkavian/proc/say_in_madness_network(message)
-	for (var/mob/living/malkavian in madness_network)
+	for (var/mob/living/malkavian in GLOB.madness_network)
 		to_chat(malkavian, span_ghostalert(message))
 
 /datum/action/cooldown/malk_hivemind
@@ -123,7 +124,11 @@
 	clicker.say(mad_speak, spans = list(malkavian_spans))
 
 /datum/subsplat/vampire_clan/malkavian/psychomania_effect(mob/living/target, mob/living/owner)
-	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/malklaugh.ogg", 50, FALSE)
+	// CRIMSON GRID ADD: DARK THAUMATURGY. BEFORE:
+	/* target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/malklaugh.ogg", 50, FALSE)
 	target.Paralyze(6 SECONDS)
 	target.visible_message(span_warning("[target] repeatedly bashes their head against the ground"), span_cult("THE WHISPERS ARE OVERTAKING ME"))
-	target.apply_damage(50, BRUTE, BODY_ZONE_HEAD)
+	target.apply_damage(50, BRUTE, BODY_ZONE_HEAD) */
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+	// CRIMSON GRID ADD END: DARK THAUMATURGY

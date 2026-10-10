@@ -1,7 +1,7 @@
 /datum/language/beachbum
 	name = "Beachtongue"
 	desc = "An ancient language from the distant Beach Planet. People magically learn to speak it under the influence of space drugs."
-	key = "u"
+	// key = "u" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 80
 	sentence_chance = 5
 	between_word_sentence_chance = 0

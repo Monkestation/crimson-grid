@@ -18,8 +18,10 @@
 		/datum/job_department/camarilla,
 	)
 
+	tgui_icon = FA_ICON_WINE_GLASS_EMPTY
+
 	minimal_generation = 12	//Uncomment when players get exp enough
-	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
+	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 5
 

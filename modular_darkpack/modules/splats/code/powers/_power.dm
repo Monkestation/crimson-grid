@@ -16,6 +16,9 @@
 	/// How much temporary willpower is required to use this ability
 	var/willpower_cost = 0
 
+	var/magic_type
+	var/spawns_magic_effect = TRUE
+
 /datum/action/cooldown/power/IsAvailable(feedback)
 	. = ..()
 
@@ -28,6 +31,11 @@
 
 	if(!handles_spend_resources)
 		spend_resources()
+
+	if(spawns_magic_effect && magic_type)
+		var/turf/used_turf = get_turf(owner)
+		if(used_turf)
+			spawn_magic_after_effect(used_turf, owner, rank, magic_type)
 
 	do_logging(target)
 

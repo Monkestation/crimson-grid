@@ -549,6 +549,7 @@
 		offerer.add_mood_event("high_five", /datum/mood_event/down_low)
 		rube.add_mood_event("high_five", /datum/mood_event/too_slow)
 		offerer.remove_status_effect(/datum/status_effect/offering/no_item_received/high_five)
+		offerer.client?.give_award(/datum/award/achievement/misc/down_low_too_slow, offerer)
 
 	qdel(src)
 
@@ -1208,11 +1209,14 @@
 
 /// Gets the placement for the alert based on its index
 /datum/hud/proc/get_ui_alert_placement(index)
-	// Only has support for 5 slots currently
-	if(index > 5)
+	if(index > 12) // DARKPACK EDIT CHANGE - ORIGINAL: if(index > 5)
 		return ""
 
-	return "EAST-1:28,CENTER+[6 - index]:[29 - (index * 2)]"
+	// DARKPACK EDIT ADD START
+	var/column = ROUND_UP(index / 4)
+	var/row = ((index - 1) % 4) + 1
+	// DARKPACK EDIT ADD END
+	return "EAST-[column]:28,CENTER:[255 - (row * 33)]" // DARKPACK EDIT CHANGE - ORIGINAL: return "EAST-1:28,CENTER+[6 - index]:[29 - (index * 2)]"
 
 // Re-render all alerts - also called in /datum/hud/show_hud() because it's needed there
 /datum/hud/proc/reorganize_alerts(mob/viewmob)

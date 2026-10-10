@@ -5,8 +5,9 @@
 	speed = 0.6
 	layer = 3
 
-/atom/movable/screen/parallax_layer/umbra/Initialize(mapload, datum/hud/hud_owner, client/owner)
+/atom/movable/screen/parallax_layer/umbra/Initialize(mapload, datum/hud/hud_owner, atom/movable/screen/parallax_home/home, template = FALSE)
 	. = ..()
+	var/client/owner = home.owner
 	if(!owner)
 		return
 	var/static/list/connections = list(

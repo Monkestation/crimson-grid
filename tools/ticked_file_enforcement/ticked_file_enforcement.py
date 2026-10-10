@@ -103,7 +103,7 @@ for code_file in scannable_files:
             continue
 
         post_error(f"Missing include for {dm_path}.")
-        #fail_no_include = True # RE-ENABLE THIS ONCE WE HAVE ALL OF OUR TICKED FILES DONE
+        fail_no_include = True
 
 if fail_no_include:
     sys.exit(1)

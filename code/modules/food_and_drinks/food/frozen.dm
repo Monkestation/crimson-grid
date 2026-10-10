@@ -409,6 +409,7 @@
 /obj/item/food/popsicle/jumbo
 	name = "jumbo ice cream"
 	desc = "A luxurious ice cream covered in rich chocolate. It seems smaller than you remember it being."
+	foodtypes = DAIRY | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_reagents = list(
 		/datum/reagent/consumable/hot_coco = 4,
 		/datum/reagent/consumable/cream = 2,
@@ -446,7 +447,7 @@
 		/datum/reagent/consumable/sugar = 2,
 	)
 	tastes = list("chopped hazelnuts", "waffle")
-	foodtypes = GRAIN|DAIRY|SUGAR
+	foodtypes = GRAIN|DAIRY|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
 	crafted_food_buff = /datum/status_effect/food/chilling

@@ -13,6 +13,8 @@
 		/datum/job_department/sabbat,
 	)
 
+	tgui_icon = FA_ICON_CROSS
+
 	description = "You are the Sabbat Priest. You are charged with the supervision of the ritae of your pack. You also serve as the second-in-command to the Ductus. Consecrate the Vaulderie for new Sabbat, consult your tome for rites to aid your pack, and ensure the Sabbat live on in Caine's favor. NOTE: BY PLAYING THIS ROLE YOU AGREE TO AND HAVE READ THE SERVER'S RULES ON ESCALATION FOR ANTAGS. KEEP THINGS INTERESTING AND ENGAGING FOR BOTH SIDES. KILLING PLAYERS JUST BECAUSE YOU CAN MAY RESULT IN A ROLEBAN."
 	minimum_masquerade = 0
 	display_order = JOB_DISPLAY_ORDER_SABBATPRIEST
@@ -39,7 +41,7 @@
 		H.mind.add_antag_datum(/datum/antagonist/sabbatist/priest)
 
 /datum/antagonist/sabbatist/priest
-	antag_hud_name = "priest" // CRIMSON EDIT - Sabbat Rank Icons - Original: "ductus_priest"
+	antag_hud_name = "priest"
 
 /obj/item/sabbat_priest_tome
 	name = "Sabbat Priest's Tome"
