@@ -189,7 +189,13 @@
 	for(var/mob/living/nearby in viewers(src))
 		if(nearby == src || IS_UNCONSCIOUS(nearby) || nearby.is_blind())
 			continue
+		/* // CRIMSON EDIT REMOVAL START - Evil vamps don't gaf about death
 		nearby.add_mood_event("saw_death", /datum/mood_event/conditional/see_death, src, dusted, gibbed)
+		*/ // CRIMSON EDIT REMOVAL END
+		// CRIMSON EDIT ADDITION START - Evil vamps don't gaf about death
+		if(!nearby.is_enlightenment())
+			nearby.add_mood_event("saw_death", /datum/mood_event/conditional/see_death, src, dusted, gibbed)
+		// CRIMSON EDIT ADDITION END - Evil vamps don't gaf about death
 		nearby.mind?.witnessed_death(src)
 
 	if(!gibbed && !dusted)
