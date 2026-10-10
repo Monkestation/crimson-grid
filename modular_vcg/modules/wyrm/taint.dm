@@ -19,7 +19,7 @@
 	REMOVE_TRAIT(affected_mob, TRAIT_WYRMTAINTED, type)
 
 /datum/reagent/medicine/modafinil/magafinil
-	name = "magafinil"
+	name = "Magafinil"
 
 /datum/reagent/medicine/modafinil/magafinil/on_mob_metabolize(mob/living/affected_mob)
 	. = ..()
@@ -34,3 +34,35 @@
 /datum/reagent/medicine/modafinil/magafinil/on_mob_life(mob/living/carbon/metabolizer, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	holder.add_reagent(/datum/reagent/wyrmtaint, 0.1 * metabolization_ratio * seconds_per_tick)
+
+/datum/reagent/drug/happiness/magaloft
+	name = "Magaloft"
+
+/datum/reagent/medicine/happiness/magaloft/on_mob_life(mob/living/carbon/metabolizer, seconds_per_tick, metabolization_ratio)
+	. = ..()
+	holder.add_reagent(/datum/reagent/wyrmtaint, 0.1 * metabolization_ratio * seconds_per_tick)
+
+/obj/item/reagent_containers/applicator/pill/magaloft
+	name = "magaloft pill"
+	desc = "Used to alleviate anxiety and depression, proven to have no side effects*."
+	list_reagents = list(/datum/reagent/drug/happiness/magaloft = 5)
+	icon_state = "pill_happy"
+	rename_with_volume = TRUE
+
+/obj/item/storage/pill_bottle/magaloft
+	name = "magaloft antidepressants"
+	desc = "Antidepressants with no proven side effects*."
+	spawn_count = 5
+	spawn_type = /obj/item/reagent_containers/applicator/pill/magaloft
+
+/obj/item/reagent_containers/applicator/pill/magafinil
+	name = "magafinil pill"
+	desc = "Used to treat symptoms of drowsiness and sudden loss of consciousness."
+	list_reagents = list(/datum/reagent/consumable/sugar = 5, /datum/reagent/medicine/synaptizine = 5, /datum/reagent/medicine/modafinil/magafinil = 3)
+	icon_state = "pill15"
+
+/obj/item/storage/pill_bottle/magafinil
+	name = "bottle of magafinil pills"
+	desc = "A bottle of magafinil pills used to help prevent drowsiness and increase alertness."
+	spawn_count = 7
+	spawn_type = /obj/item/reagent_containers/applicator/pill/magafinil
