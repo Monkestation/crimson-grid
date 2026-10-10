@@ -390,8 +390,6 @@
 	if (!.)
 		return
 
-
-
 	RegisterSignal(owner, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(reduce_damage))
 	RegisterSignal(owner, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_halo))
 	refresh_halo()
@@ -493,7 +491,6 @@
 	else if (isbasicmob(owner))
 		var/mob/living/basic/basic_owner = owner
 		basic_owner.attack_sound = basic_owner::attack_sound
-
 	LAZYCLEARLIST(affected_bodyparts)
 	UnregisterSignal(owner, COMSIG_MOB_ITEM_ATTACK)
 	qdel(tackler)
