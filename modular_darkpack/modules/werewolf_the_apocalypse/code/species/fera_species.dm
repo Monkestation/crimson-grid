@@ -386,6 +386,7 @@
 		TRAIT_NO_CUFF,
 	)
 
+	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	mutantbrain = /obj/item/organ/brain/fera
 	mutanttongue = /obj/item/organ/tongue/fera
 	species_language_holder = /datum/language_holder/primal
