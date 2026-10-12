@@ -121,7 +121,7 @@
 /datum/discipline_power/serpentis/the_tongue_of_the_asp/activate(mob/living/target)
 	. = ..()
 	var/blood_to_take = min(2, target.bloodpool) // CRIMSON EDIT ADDITION - Blood Drain Check
-	target.adjust_blood_pool(blood_to_take) // CRIMSON EDIT CHANGE - ORIGINAL: target.adjust_blood_pool(-2)
+	target.adjust_blood_pool(-blood_to_take) // CRIMSON EDIT CHANGE - ORIGINAL: target.adjust_blood_pool(-2)
 	target.apply_damage(6 * successes, AGGRAVATED)//CRIMSON GRID CHANGE LOWERED DAMAGE
 	owner.adjust_blood_pool(blood_to_take) // CRIMSON EDIT CHANGE - ORIGINAL: owner.adjust_blood_pool(2)
 	var/obj/item/ammo_casing/magic/tentacle/casing = new (get_turf(owner))
