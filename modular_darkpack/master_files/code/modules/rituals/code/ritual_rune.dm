@@ -22,10 +22,12 @@
 	var/required_discipline
 
 	var/datum/storyteller_roll/ritual_roll/ritual_roll_datum
+	var/last_sucess_amount = 0
 
 /datum/storyteller_roll/ritual_roll
 	bumper_text = "ritual"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
+	numerical = TRUE
 
 /obj/ritual_rune/Initialize(mapload)
 	. = ..()
@@ -83,14 +85,15 @@
 		ritual_roll_datum.difficulty = difficulty
 
 	var/roll_result = ritual_roll_datum.st_roll(last_activator, last_activator)
+	last_sucess_amount = roll_result
 	switch(roll_result)
-		if(ROLL_SUCCESS)
+		if(1 to INFINITY)
 			complete()
 			return TRUE
-		if(ROLL_FAILURE)
+		if(0)
 			ritual_failure()
 			return FALSE
-		if(ROLL_BOTCH)
+		if(-INFINITY to -1)
 			ritual_botch()
 			return FALSE
 

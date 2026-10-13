@@ -18,6 +18,8 @@
 		/datum/job_department/camarilla,
 	)
 
+	tgui_icon = FA_ICON_WINE_GLASS_EMPTY
+
 	minimal_generation = 12	//Uncomment when players get exp enough
 	maximal_generation = 9
 	maximum_immortal_age = 200

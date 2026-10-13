@@ -9,12 +9,11 @@
 	QDEL_NULL(examine_panel_tgui)
 	client?.images -= suckbar
 	QDEL_NULL(suckbar)
-	suckbar_loc = null
 	GLOB.masquerade_breakers_list -= src
 	return ..()
 
 /mob/living/carbon/resist_restraints()
-	var/obj/item/I = null
+	var/obj/item/I
 	if(handcuffed)
 		I = handcuffed
 		changeNext_move(I.resist_cooldown)
@@ -32,7 +31,27 @@
 
 	switch(resist_type)
 		if("Remove")
-			cuff_resist(I)
+			var/roll_difficulty = 0
+			switch(I.breakouttime)
+				if(5 SECONDS to 15 SECONDS)
+					roll_difficulty = 6
+				if(15 SECONDS to 30 SECONDS)
+					roll_difficulty = 7
+				if(30 SECONDS to 1 MINUTES)
+					roll_difficulty = 8
+				if(1 MINUTES to INFINITY)
+					roll_difficulty = 9
+			if(!roll_difficulty)
+				cuff_resist(I)
+
+			var/datum/storyteller_roll/slip_restraints/roll = new()
+			roll.difficulty = roll_difficulty
+			switch(roll.st_roll(src, I))
+				if(ROLL_SUCCESS)
+					cuff_resist(I, null, INSTANT_CUFFBREAK)
+				else
+					playsound(src, 'sound/effects/jingle.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+					visible_message(span_warning("[src] is trying to wiggle out of [I]!"))
 		if("Break")
 			var/missing_strength =  I.cuff_break_strength_needed - st_get_stat(STAT_STRENGTH)
 			if(missing_strength > 0)
@@ -44,8 +63,10 @@
 					if(ROLL_SUCCESS)
 						playsound(src, 'sound/effects/rock/rocktap3.ogg', 40, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 						cuff_resist(I, null, INSTANT_CUFFBREAK) // OUT WITH THE CUFFS
+					/* Not reachable rn
 					if(ROLL_COOLDOWN)
 						pass()
+					*/
 					else
 						playsound(src, 'sound/effects/jingle.ogg', 40, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 						visible_message(span_warning("[src] aggressively wrenches against [I]!"))

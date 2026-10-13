@@ -36,6 +36,8 @@
 		/datum/job_department/pentex,
 	)
 
+	tgui_icon = FA_ICON_VIRUSES
+
 	known_contacts = list(
 		JOB_PENTEX_LEAD,
 		JOB_PENTEX_AFFAIRS,

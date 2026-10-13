@@ -281,18 +281,8 @@
 	frenzy_usable = FALSE
 
 /datum/discipline_power/presence/summon/pre_activation_checks(mob/living/target)
-	var/summon_target_name = tgui_input_text(owner, "Summon Target:", "Summon Target")
-	if(!summon_target_name)
-		return FALSE
-	summon_target_name = sanitize_name(summon_target_name)
-
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(H.real_name == summon_target_name)
-			summon_target = H
-			break
-
-	if(!summon_target)
-		to_chat(owner, span_warning("You cannot sense anyone by that name."))
+	var/mob/living/summon_target = owner?.mind?.guestbook.pick_known_guy(owner)
+	if(!istype(summon_target))
 		return FALSE
 
 	//this ability has a difficulty of 4 or 5 or something for people the summoner has met, and 8 for those they've only met briefly.

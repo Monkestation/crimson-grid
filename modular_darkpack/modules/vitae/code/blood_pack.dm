@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(human_blood_types, list(
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/vitae/icons/onfloor.dmi')
 	icon_state = "blood100"
 	inhand_icon_state = "blood100"
-	initial_reagent_flags = OPENCONTAINER | REFILLABLE | DRAWABLE
+	initial_reagent_flags = OPENCONTAINER | NO_SPLASH | REFILLABLE | DRAWABLE
 
 /obj/item/reagent_containers/blood/Initialize(mapload, vol)
 	. = ..()
