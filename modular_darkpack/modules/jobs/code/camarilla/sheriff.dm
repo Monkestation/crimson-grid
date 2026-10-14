@@ -31,6 +31,8 @@
 		JOB_HOUND
 	)
 
+	tgui_icon = FA_ICON_SHIELD
+
 /datum/outfit/job/vampire/sheriff
 	name = JOB_SHERIFF
 	jobtype = /datum/job/vampire/sheriff

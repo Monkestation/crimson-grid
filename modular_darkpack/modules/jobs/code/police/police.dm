@@ -18,6 +18,8 @@
 		"Senior Police Officer",
 	)
 
+	tgui_icon = FA_ICON_SHIELD_HALVED
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
 	splat_slots = list(SPLAT_GHOUL = 2, SPLAT_KINFOLK = 2)
 
