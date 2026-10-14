@@ -77,7 +77,7 @@
 	. = ..()
 	if(!examine_roll)
 		examine_roll = new()
-	var/roll_result = examine_roll.st_roll(user, src)
+	var/roll_result = examine_roll.st_roll(user, src, using_item = src)
 	if(roll_result == ROLL_SUCCESS)
 		if(owners_splat)
 			var/datum/splat/splat_type = GLOB.splat_list[owners_splat]

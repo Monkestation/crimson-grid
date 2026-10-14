@@ -15,3 +15,5 @@
 #define MUSIC_HOLLYWOOD "hollywood"
 #define MUSIC_SANTAMONICA "santamonica"
 #define MUSIC_SAFE "saftey"
+#define MUSIC_ENDRON "endron"
+#define MUSIC_CAERN "caern"

@@ -898,7 +898,7 @@
 	icon_state = "[base_icon_state][!chambered ? "_empty" : ""][sawn_off ? "_sawn" : ""]"
 
 //Unique sawn-off checks
-/obj/item/gun/ballistic/shotgun/vampire/doublebarrel/sawoff(mob/user, obj/item/saw, handle_modifications = TRUE)
+/obj/item/gun/ballistic/shotgun/vampire/doublebarrel/do_sawoff()
 	. = ..()
 	w_class = WEIGHT_CLASS_NORMAL	//Lets you stow it in a bag
 	weapon_weight = WEAPON_MEDIUM	//Lets you one-hand it on sawing.

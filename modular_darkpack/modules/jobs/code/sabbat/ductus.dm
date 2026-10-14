@@ -12,6 +12,8 @@
 		/datum/job_department/sabbat,
 	)
 
+	tgui_icon = FA_ICON_CROSS
+
 	exp_requirements = EXP_REQ_HEAD
 	exp_required_type_department = EXP_TYPE_SABBAT
 

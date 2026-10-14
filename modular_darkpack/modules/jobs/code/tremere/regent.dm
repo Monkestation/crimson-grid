@@ -13,6 +13,8 @@
 	)
 	display_order = JOB_DISPLAY_ORDER_REGENT
 
+	tgui_icon = FA_ICON_BOOK
+
 	exp_requirements = EXP_REQ_HEAD
 
 	description = "Lead the Chantry. You serve as both the Regent and Tremere Primogen. You report to the Tremere Lord of this region first, Prince second."

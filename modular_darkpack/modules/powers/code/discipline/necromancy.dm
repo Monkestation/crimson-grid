@@ -39,7 +39,7 @@
 	bumper_text = "shroudsight"
 	applicable_stats = list(STAT_PERCEPTION, STAT_AWARENESS)
 	difficulty = 7
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/discipline_power/necromancy/shroudsight
 	name = "Shroudsight"

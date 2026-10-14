@@ -13,6 +13,8 @@
 		/datum/job_department/anarch,
 	)
 
+	tgui_icon = FA_ICON_WINE_GLASS_ALT
+
 	known_contacts = list(
 		JOB_BARON,
 		JOB_BRUISER,

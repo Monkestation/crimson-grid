@@ -41,17 +41,24 @@
 /datum/storyteller_roll/frenzy
 	abstract_type = /datum/storyteller_roll/frenzy
 	bumper_text = "frenzy"
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 	numerical = TRUE
 
 /datum/storyteller_roll/frenzy/rotschreck
 	bumper_text = "rotschrek"
 	applicable_stats = list(STAT_COURAGE)
 
+// CRIMSON EDIT ADD START - Calm Heart Rotschreck
+/datum/storyteller_roll/frenzy/rotschreck/using_bonus(mob/living/roller, atom/target, bonus_added)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_CALM_HEART))
+		. += 2
+// CRIMSON EDIT ADD END - Calm Heart Rotschreck
+
 /datum/storyteller_roll/frenzy/kindred
 
 // Specificly kindred as I dont really think brujah are meant to rotschreck easier.
-/datum/storyteller_roll/frenzy/kindred/calculate_used_difficulty(mob/living/roller)
+/datum/storyteller_roll/frenzy/kindred/using_difficulty(mob/living/roller, atom/target)
 	. = ..()
 	// V20 p.51
 	if(HAS_TRAIT(roller, TRAIT_DIFFICULT_FRENZY))
@@ -59,14 +66,14 @@
 	if(HAS_TRAIT(roller, TRAIT_UNCONTROLLABLE))
 		. = 10
 
-/datum/storyteller_roll/frenzy/kindred/calculate_used_dice(mob/living/roller, bonus)
+/datum/storyteller_roll/frenzy/kindred/using_bonus(mob/living/roller, atom/target, bonus_added)
 	. = ..()
 	if(HAS_TRAIT(roller, TRAIT_CALM_HEART))
 		. += 2
 
 /datum/storyteller_roll/frenzy/rage
 
-/datum/storyteller_roll/frenzy/rage/calculate_used_difficulty(mob/living/roller)
+/datum/storyteller_roll/frenzy/rage/using_difficulty(mob/living/roller, atom/target)
 	. = ..()
 	if(HAS_TRAIT(roller, TRAIT_DIFFICULT_RAGE))
 		. += 1
