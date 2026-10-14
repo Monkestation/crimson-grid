@@ -4,8 +4,10 @@
 /obj/item/bodypart/head/fera
 	// limb_id = SPECIES_FERA
 	head_flags = NONE
+	//CRIMSON GRID ADDITION START - fera species bite baseline armor penetration and bleeding hits
 	unarmed_sharpness = SHARP_EDGED
-	unarmed_pen = 20 //CRIMSON GRID ADDITION - fera species bite baseline armor penetration
+	unarmed_pen = 20
+	//CRMSON GRID ADDITION END
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 
 /obj/item/bodypart/head/fera/aggravated
