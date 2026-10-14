@@ -4,6 +4,8 @@
 /obj/item/bodypart/head/fera
 	// limb_id = SPECIES_FERA
 	head_flags = NONE
+	unarmed_sharpness = SHARP_EDGED
+	unarmed_pen = 20 //CRIMSON GRID ADDITION - fera species bite baseline armor penetration
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 
 /obj/item/bodypart/head/fera/aggravated
@@ -29,6 +31,7 @@
 	unarmed_attack_verbs = list("claw")
 	unarmed_attack_verbs_continuous = list("claws")
 	appendage_noun = "paw"
+	unarmed_pen = 35 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/slashmiss.ogg'
@@ -42,6 +45,7 @@
 	unarmed_attack_verbs = list("claw")
 	unarmed_attack_verbs_continuous = list("claws")
 	appendage_noun = "paw"
+	unarmed_pen = 35 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/slashmiss.ogg'
