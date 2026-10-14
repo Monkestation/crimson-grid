@@ -23,5 +23,6 @@
 		new /datum/data/vending_product("blue stripe", /obj/item/reagent_containers/cup/glass/bottle/beer/vampire/blue_stripe),
 		new /datum/data/vending_product("candle pack", /obj/item/storage/fancy/candle_box, 12),
 		new /datum/data/vending_product("bruise pack", /obj/item/stack/medical/bruise_pack),
-		new /datum/data/vending_product("respirator", /obj/item/clothing/mask/gas/vampire)
+		new /datum/data/vending_product("respirator", /obj/item/clothing/mask/gas/vampire),
+		new /datum/data/vending_product("wrist watch", /obj/item/watch, 20) // Crimson Edit Add - What time is it?
 	)

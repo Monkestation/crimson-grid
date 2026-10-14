@@ -11,6 +11,9 @@
 		/datum/job_department/city_services,
 	)
 	display_order = JOB_DISPLAY_ORDER_STREETJAN
+
+	tgui_icon = FA_ICON_SOAP
+
 	description = "Keep the streets clean. You are paid to keep your mouth shut about the things you see."
 	maximal_generation = 11
 	maximum_immortal_age = 100
