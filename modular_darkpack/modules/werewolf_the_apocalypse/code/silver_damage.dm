@@ -16,7 +16,7 @@
 		splat.adjust_gnosis(-1, TRUE)
 
 
-/obj/projectile/bullet/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0)
+/obj/projectile/bullet/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, blocked = 0) // CG add blocked arg for armour handling for silver
 	if(!istype(target))
 		return
 	if(!HAS_TRAIT(target, TRAIT_SILVER_WEAKNESS))
@@ -28,9 +28,9 @@
 
 		if(!shot_pup_splat.is_breed_form() || iscrinos(shot_pup))
 			// IDK. This is might TTRPG inaccurate RN because i think it should acctaully convert ALL the damage to agg not just add some agg to it.
-			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = min(ARMOR_MAX_BLOCK, BLOCKED)) // CG add def_zone and blocked args to make silver dmg not hit random locations or ignore armour
+			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = min(ARMOR_MAX_BLOCK, blocked)) // CG add def_zone and blocked args to make silver dmg not hit random locations or ignore armour
 
-/obj/item/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, gnosis_damage = 0)
+/obj/item/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, gnosis_damage = 0, list/attack_modifiers = null)
 	if(!istype(target))
 		return
 	if(!HAS_TRAIT(target, TRAIT_SILVER_WEAKNESS))
@@ -39,7 +39,11 @@
 	if(shot_pup_splat)
 		var/mob/living/carbon/human/shot_pup = target
 		shot_pup_splat.adjust_gnosis(-gnosis_damage, TRUE)
+		var/def_zone = LAZYACCESS(attack_modifiers, "silver_hit_zone")
+		if(isnull(def_zone))
+			return
+		var/silver_armor_block = LAZYACCESS(attack_modifiers, "silver_armor_block")
 
 		// W20 p. 290 - Werewolves dont take silver damage in breed form because they arent spirits
 		if(!shot_pup_splat.is_breed_form() || iscrinos(shot_pup))
-			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED)
+			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = silver_armor_block)
