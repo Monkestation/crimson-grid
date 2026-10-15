@@ -30,7 +30,7 @@
 			// IDK. This is might TTRPG inaccurate RN because i think it should acctaully convert ALL the damage to agg not just add some agg to it.
 			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = min(ARMOR_MAX_BLOCK, blocked)) // CG add def_zone and blocked args to make silver dmg not hit random locations or ignore armour
 
-/obj/item/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, gnosis_damage = 0, list/attack_modifiers = null)
+/obj/item/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, gnosis_damage = 0, list/attack_modifiers = null) // CG add attack_modifiers for silver damage hitzone and armour interactions
 	if(!istype(target))
 		return
 	if(!HAS_TRAIT(target, TRAIT_SILVER_WEAKNESS))
@@ -39,11 +39,11 @@
 	if(shot_pup_splat)
 		var/mob/living/carbon/human/shot_pup = target
 		shot_pup_splat.adjust_gnosis(-gnosis_damage, TRUE)
-		var/def_zone = LAZYACCESS(attack_modifiers, "silver_hit_zone")
-		if(isnull(def_zone))
+		var/def_zone = LAZYACCESS(attack_modifiers, "silver_hit_zone") // CG add handling for properly applying damage to actual hit zone rather than hitting random bodypart
+		if(isnull(def_zone)) // CG do not apply silver damage if no valid hitzone for some reason
 			return
-		var/silver_armor_block = LAZYACCESS(attack_modifiers, "silver_armor_block")
+		var/silver_armor_block = LAZYACCESS(attack_modifiers, "silver_armor_block") // CG add handling for reducing silver damage by armor block amount
 
 		// W20 p. 290 - Werewolves dont take silver damage in breed form because they arent spirits
 		if(!shot_pup_splat.is_breed_form() || iscrinos(shot_pup))
-			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = silver_armor_block)
+			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = silver_armor_block) // CG add def_zone and blocked for handling silver damage hit zone and armour interactions
