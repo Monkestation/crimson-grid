@@ -12,6 +12,7 @@
 		new /datum/data/vending_product("box of light bulbs", /obj/item/storage/box/lights/mixed, 80),
 // CRIMSON EDIT ADD START - Shop Inventories Additions
 		new /datum/data/vending_product("door repair kit", /obj/item/door_repair_kit, 300),
+		new /datum/data/vending_product("firecracker", /obj/item/grenade/firecracker, 50),
 		new /datum/data/vending_product("wooden plank", /obj/item/stack/sheet/mineral/wood, 10),
 		new /datum/data/vending_product("iron sheet", /obj/item/stack/sheet/iron, 10),
 		new /datum/data/vending_product("glass sheet", /obj/item/stack/sheet/glass, 10),

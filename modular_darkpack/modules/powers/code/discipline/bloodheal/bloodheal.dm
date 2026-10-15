@@ -13,7 +13,7 @@
 	bumper_text = "Bloodheal"
 	difficulty = 8
 	applicable_stats = list(STAT_STAMINA, STAT_SURVIVAL)
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/discipline_power/bloodheal
 	name = "Bloodheal power name"
@@ -100,15 +100,12 @@
 		eyes = new eyes_type()
 		eyes.Insert(owner, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 	owner.cure_blind(NO_EYES)
-	if(!owner.has_quirk(/datum/quirk/item_quirk/blindness))
-		owner.cure_blind(QUIRK_TRAIT)
 	owner.cure_blind(EYE_DAMAGE)
-	owner.cure_blind(EYE_SCARRING_TRAIT)
-	owner.cure_nearsighted(QUIRK_TRAIT)
 	owner.cure_nearsighted(EYE_DAMAGE)
-	if (eyes)
-		eyes.fix_scar(LEFT_EYE_SCAR)
-		eyes.fix_scar(RIGHT_EYE_SCAR)
+	if(!owner.has_quirk(/datum/quirk/item_quirk/scarred_eye))
+		if (eyes)
+			eyes.fix_scar(LEFT_EYE_SCAR)
+			eyes.fix_scar(RIGHT_EYE_SCAR)
 	owner.remove_status_effect(/datum/status_effect/temporary_blindness)
 	owner.remove_status_effect(/datum/status_effect/eye_blur)
 

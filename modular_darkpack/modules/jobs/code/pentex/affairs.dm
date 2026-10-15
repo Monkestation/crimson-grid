@@ -24,6 +24,8 @@
 		/datum/job_department/pentex,
 	)
 
+	tgui_icon = FA_ICON_BRIEFCASE
+
 	known_contacts = list(
 		JOB_PENTEX_LEAD,
 		JOB_PENTEX_EXEC,

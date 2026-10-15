@@ -7,3 +7,11 @@
 	var/light_aggravated_msg = "bruised and feels numb"
 	var/medium_aggravated_msg = "torn apart"
 	var/heavy_aggravated_msg = "like pieces are falling off"
+
+	/// Stores a weakref for the last owner assigned to the limb. NOT cleared when being dropped from the limb.
+	var/datum/weakref/last_owner
+
+
+/obj/item/bodypart/apply_ownership(mob/living/carbon/new_owner)
+	. = ..()
+	last_owner = WEAKREF(new_owner)

@@ -35,14 +35,14 @@
 
 /datum/subsplat/vampire_clan/gargoyle/on_gain(mob/living/carbon/human/gaining_mob, datum/splat/gaining_splat, joining_round)
 	. = ..()
-	gaining_mob.physiology.brute_mod = 0.8
+	MODIFY_PHYSIOLOGY(gaining_mob, BRUTE, 0.8)
 
 	var/obj/item/organ/wings/functional/gargoyle/wings = new()
 	wings.Insert(gaining_mob)
 
 /datum/subsplat/vampire_clan/gargoyle/on_lose(mob/living/carbon/human/losing_mob)
 	. = ..()
-	losing_mob.physiology.brute_mod = 1
+	MODIFY_PHYSIOLOGY(losing_mob, BRUTE, 1.25)
 
 	var/obj/item/organ/wings/functional/gargoyle/wings = losing_mob.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
 	if(wings)

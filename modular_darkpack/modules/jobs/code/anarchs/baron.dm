@@ -13,6 +13,8 @@
 		/datum/job_department/anarch,
 	)
 
+	tgui_icon = FA_ICON_GLASS_MARTINI
+
 	exp_requirements = EXP_REQ_HEAD
 	exp_required_type_department = EXP_TYPE_ANARCH
 
