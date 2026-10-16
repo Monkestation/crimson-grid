@@ -41,7 +41,7 @@
 	if(shot_pup_splat)
 		var/mob/living/carbon/human/shot_pup = target
 		shot_pup_splat.adjust_gnosis(-gnosis_damage, TRUE)
-		var/def_zone = LAZYACCESS(attack_modifiers, "silver_hit_zone") // CG add handling for properly applying damage to actual hit zone rather than hitting random bodypart
+		var/def_zone = LAZYACCESS(attack_modifiers, "silver_hit_zone") // CG add handling for properly applying silver damage to actual hit zone rather than hitting random bodypart
 		if(isnull(def_zone)) // CG do not apply silver damage if no valid hitzone for some reason
 			return
 		var/silver_armor_block = LAZYACCESS(attack_modifiers, "silver_armor_block") // CG add handling for reducing silver damage by armor block amount
