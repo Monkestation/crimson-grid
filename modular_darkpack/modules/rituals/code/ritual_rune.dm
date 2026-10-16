@@ -64,6 +64,7 @@
 * What happens when the user clicks on the rune. Ideally shouldn't be overriden.
 */
 /obj/ritual_rune/attack_hand(mob/user)
+	. = ..()
 	if(activated)
 		return
 
