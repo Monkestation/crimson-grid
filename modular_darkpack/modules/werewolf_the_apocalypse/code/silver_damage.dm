@@ -28,7 +28,7 @@
 
 		if(!shot_pup_splat.is_breed_form() || iscrinos(shot_pup))
 			// IDK. This is might TTRPG inaccurate RN because i think it should acctaully convert ALL the damage to agg not just add some agg to it.
-			if(blocked < 100) // CG added check here to make sure parried silver attacks are fully blocked as normal instead of capping at 90
+			if(blocked < 100) // CG added check here to make sure parried silver damage is fully blocked as normal instead of capping at 90 block
 				blocked = min(ARMOR_MAX_BLOCK, blocked)
 			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = blocked) // CG add def_zone and blocked args to make silver dmg not hit random locations or ignore armour
 
