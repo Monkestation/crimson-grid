@@ -28,7 +28,9 @@
 
 		if(!shot_pup_splat.is_breed_form() || iscrinos(shot_pup))
 			// IDK. This is might TTRPG inaccurate RN because i think it should acctaully convert ALL the damage to agg not just add some agg to it.
-			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = min(ARMOR_MAX_BLOCK, blocked)) // CG add def_zone and blocked args to make silver dmg not hit random locations or ignore armour
+			if(blocked < 100) // CG added check here to make sure parried silver attacks are fully blocked as normal instead of capping at 90
+				blocked = min(ARMOR_MAX_BLOCK, blocked)
+			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = blocked) // CG add def_zone and blocked args to make silver dmg not hit random locations or ignore armour
 
 /obj/item/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, gnosis_damage = 0, list/attack_modifiers = null) // CG add attack_modifiers for silver damage hitzone and armour interactions
 	if(!istype(target))
