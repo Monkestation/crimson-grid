@@ -5,6 +5,10 @@
 #define OVERRIDE_LOG_DIRECTORY_PARAMETER "log-directory"
 /// Prevent the master controller from starting automatically
 #define NO_INIT_PARAMETER "no-init"
+/// Load dmeow on world init. Unit tests only get it with this param.
+#define DMEOW_START_PARAMETER "dmeow"
+/// Load dmeow, try to compile every proc, write the report, and exit.
+#define DMEOW_CENSUS_PARAMETER "dmeow-census"
 
 GLOBAL_VAR(restart_counter)
 
@@ -142,12 +146,59 @@ GLOBAL_VAR(restart_counter)
 
 	ConfigLoaded()
 
+	if(DMEOW_CENSUS_PARAMETER in params)
+		run_dmeow_compile_census()
+		return
+
+	#ifdef UNIT_TESTS
+	if(DMEOW_START_PARAMETER in params)
+		immediately_init_dmeow()
+	#else
+	immediately_init_dmeow()
+	#endif
+
 	if(NO_INIT_PARAMETER in params)
 		return
 
 	Master.Initialize(10, FALSE, TRUE)
 
 	RunUnattendedFunctions()
+
+// no dmeow_perf_start() here on purpose: it takes the profiler's lock on every
+// proc call, and a normal round never reads the result.
+/world/proc/immediately_init_dmeow()
+	// byond-tracy can already have loaded it, from Genesis
+	if(!dmeow_loaded && !dmeow_init())
+		SEND_TEXT(world.log, "failed to initialize dmeow :(")
+		return
+	SEND_TEXT(world.log, "dmeow loaded, yay!")
+	if(!dmeow_set_hooks(TRUE))
+		SEND_TEXT(world.log, "failed to enable dmeow hooks :(")
+		return
+	dmeow_enable_counting(DMEOW_PERF_DEFAULT_THRESHOLD)
+	dmeow_counting_threshold = DMEOW_PERF_DEFAULT_THRESHOLD
+	// unit tests run on a fresh data/ every time, so it would never skip
+	#ifndef UNIT_TESTS
+	SEND_TEXT(world.log, "dmeow tracy: [dmeow_tracy_autostart()]")
+	dmeow_live_ab_maybe_start()
+	#endif
+
+// runs instead of Master.Initialize: the sweep never executes the procs it compiles,
+// so a full round buys nothing. primes the compile cache while it's at it.
+/world/proc/run_dmeow_compile_census()
+	if(!dmeow_init())
+		log_world("DMEOW_CENSUS: dmeow failed to load, nothing measured")
+		shutdown()
+		return
+
+	var/report = dmeow_compile_census(TRUE)
+	var/filename = "data/dmeow/census/headless_[rustg_unix_timestamp()].txt"
+	var/census_file = file(filename)
+	census_file << report
+	log_world("DMEOW_CENSUS: wrote [filename]")
+	log_world(report)
+	dmeow_shutdown()
+	shutdown()
 
 /// Initializes TGS and loads the returned revising info into GLOB.revdata
 /world/proc/InitTgs()
@@ -255,6 +306,7 @@ GLOBAL_VAR(restart_counter)
 
 	logger.init_logging()
 
+	Tracy.move_to_round(GLOB.round_id)
 	if(Tracy.trace_path)
 		rustg_file_write("[Tracy.trace_path]", "[GLOB.log_directory]/tracy.loc")
 
@@ -331,6 +383,8 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 			LAZYADD(fail_reasons, "Missing GLOB.log_directory!")
 	else
 		fail_reasons = list("Missing GLOB!")
+	if(GLOB?.log_directory)
+		dmeow_write_ci_stats()
 	if(!fail_reasons)
 		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
 	else
@@ -342,8 +396,8 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 /world/proc/check_hard_reboot()
 	if(!TgsAvailable())
 		return FALSE
-	// byond-tracy can't clean up itself, and thus we should always hard reboot if its enabled, to avoid an infinitely growing trace.
-	if(Tracy?.enabled)
+	// dmeow, and byond-tracy with it, can't be unloaded
+	if(dmeow_ever_initialized)
 		return TRUE
 	var/ruhr = CONFIG_GET(number/rounds_until_hard_restart)
 	switch(ruhr)
@@ -378,6 +432,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		shutdown_logging() // See comment below.
 		QDEL_NULL(Tracy)
 		QDEL_NULL(Debugger)
+		dmeow_shutdown()
 		TgsEndProcess()
 		return ..()
 
@@ -387,6 +442,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	QDEL_NULL(Tracy)
 	QDEL_NULL(Debugger)
+	dmeow_shutdown()
 
 	TgsReboot() // TGS can decide to kill us right here, so it's important to do it last
 
@@ -396,6 +452,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 /world/Del()
 	QDEL_NULL(Tracy)
 	QDEL_NULL(Debugger)
+	dmeow_shutdown()
 	. = ..()
 
 /world/proc/update_status()
@@ -555,6 +612,8 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 	if((command & PROFILE_STOP) || !global.config?.loaded || !CONFIG_GET(flag/forbid_all_profiling))
 		. = ..()
 
+#undef DMEOW_CENSUS_PARAMETER
+#undef DMEOW_START_PARAMETER
 #undef NO_INIT_PARAMETER
 #undef OVERRIDE_LOG_DIRECTORY_PARAMETER
 #undef USE_TRACY_PARAMETER

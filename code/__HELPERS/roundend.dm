@@ -214,6 +214,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 /datum/controller/subsystem/ticker/proc/declare_completion(was_forced = END_ROUND_AS_NORMAL)
 	set waitfor = FALSE
 
+	INVOKE_ASYNC(Tracy, TYPE_PROC_REF(/datum/tracy, flush))
+
 	for(var/datum/callback/roundend_callbacks as anything in round_end_events)
 		roundend_callbacks.InvokeAsync()
 	LAZYCLEARLIST(round_end_events)
@@ -302,6 +304,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	world.TgsTriggerEvent("tg-Roundend", wait_for_completion = TRUE)
 
 /datum/controller/subsystem/ticker/proc/standard_reboot()
+	Tracy.flush()
 	if(ready_for_reboot)
 		if(GLOB.station_was_nuked)
 			Reboot("Station destroyed by Nuclear Device.", "nuke")
