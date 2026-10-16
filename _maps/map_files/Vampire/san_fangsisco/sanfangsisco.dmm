@@ -6888,21 +6888,6 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/jazzclub)
-"bCd" = (
-/obj/structure/table/wood,
-/obj/item/fireaxe/vamp/battle{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/item/flashlight/lantern{
-	light_color = "#013220";
-	pixel_y = 26;
-	pixel_x = -1;
-	anchored = 1;
-	start_on = 1
-	},
-/turf/open/misc/dirt,
-/area/vtm/outside/forest)
 "bCe" = (
 /turf/open/floor/city/toilet,
 /area/vtm/interior/chantry)
@@ -52085,8 +52070,11 @@
 /turf/open/floor/city/circled,
 /area/vtm/interior/setite/basement)
 "mDs" = (
-/obj/item/occult_artifact/werewolf/dagger_of_retribution{
-	pixel_y = 6
+/obj/item/occult_artifact/werewolf/klaive{
+	pixel_y = 6;
+	desc = "A ritual weapon crafted by the Garou out of silver. This blade has a blue tint, due to the way it was crafted. This one belongs to the Sept Leader and to be used only in times of great strife. Better to not use it.";
+	identified = 1;
+	name = "Sept Keeper"
 	},
 /turf/open/misc/dirt,
 /area/vtm/outside/forest)
@@ -95659,10 +95647,18 @@
 	},
 /obj/structure/table/wood,
 /obj/item/darkpack/spear{
-	pixel_y = 3
+	pixel_y = 5
 	},
 /obj/item/darkpack/spear{
 	pixel_y = 10
+	},
+/obj/item/darkpack/spear{
+	pixel_y = 4;
+	pixel_x = -6
+	},
+/obj/item/darkpack/spear{
+	pixel_y = 2;
+	pixel_x = -11
 	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/outside/forest)
@@ -408449,8 +408445,8 @@ vmg
 vmg
 vmg
 vmg
-bCd
-lQn
+vmg
+rBv
 mBx
 kXB
 vmg
@@ -409477,8 +409473,8 @@ apU
 gKV
 apU
 vmg
-bCd
-lQn
+vmg
+vmg
 mBx
 kXB
 vmg
