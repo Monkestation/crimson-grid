@@ -340,11 +340,11 @@
 	var/rage_slowdown = -0.01 * clamp(rage, 0, permanent_rage)
 	if(rage >= 3 && is_fighting_form)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/shifter/rage,multiplicative_slowdown = rage_slowdown)
-	if(rage < 3 && is_fighting_form)
+	else
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
 	if(rage >= 6 && is_fighting_form)
 		owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	if(rage < 6 && is_fighting_form)
+	else
 		owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 /datum/movespeed_modifier/shifter/rage
