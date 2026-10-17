@@ -21,6 +21,12 @@
 	name = "Valeren power name"
 	desc = "Valeren power description"
 
+// Crimson Grid addition start | Change: Added third eye trait to anyone with the valeren discipline.
+/datum/discipline/valeren/post_gain()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_THIRD_EYE, type)
+// Crimson Grid addition end
+
 /datum/storyteller_roll/sense_vitality
 	bumper_text = "sense vitality"
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
