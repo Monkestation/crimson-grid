@@ -94,10 +94,11 @@
 					playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/drinkblood1.ogg', 30, TRUE) // CRIMSON EDIT CHANGE - ORIGINAL: playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/drinkblood1.ogg', 50, TRUE)
 
 					bit_living.visible_message(span_warning(span_bold("[src] bites [bit_living]'s neck!")), span_warning(span_bold("[src] bites your neck!")))
-				if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
-					SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 				else
 					playsound(src, 'modular_darkpack/modules/blood_drinking/sounds/kiss.ogg', 50, TRUE)
 					bit_living.visible_message(span_italics(span_bold("[src] kisses [bit_living]!")), span_userlove(span_bold("[src] kisses you!")))
 				log_combat(src, bit_living, "bit and is drinking blood from", "Drinker bloodpool : [bloodpool] ,  Victim bloodpool : [bit_living.bloodpool]")
+				if(!HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS))
+					bit_living.apply_status_effect(/datum/status_effect/kissed)
+				SEND_SIGNAL(src, COMSIG_MASQUERADE_VIOLATION)
 				drinksomeblood(bit_living, TRUE)
