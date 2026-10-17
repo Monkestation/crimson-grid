@@ -12,7 +12,7 @@
 		// If the thing is dense AND we're including mobs or the thing isn't a mob AND if there's a source atom and
 		// it cannot pass through the thing on the turf,  we consider the turf blocked.
 		if(atom_content.density && (!exclude_mobs || !ismob(atom_content)))
-			if(source_atom && atom_content.CanPass(source_atom, src))
+			if(source_atom && atom_content.CanPass(source_atom, get_dir(atom_content, source_atom)))
 				continue
 			blocking_content += content
 	return blocking_content
