@@ -284,6 +284,7 @@
 		TRAIT_PUSHIMMUNE,
 		TRAIT_FAT_IGNORE_SLOWDOWN,
 		TRAIT_BATON_RESISTANCE,
+		TRAIT_GRABRESISTANCE,
 // CRIMSON EDIT ADD END - Warform Trait Buffs
 	)
 	form_causes_delirium = TRUE
@@ -342,6 +343,7 @@
 		TRAIT_FAT_IGNORE_SLOWDOWN,
 		TRAIT_STRONG_STOMACH,
 		TRAIT_STRONGPULL,
+		TRAIT_GRABRESISTANCE,
 	// CRIMSON EDIT ADD END - Garou Trait Buffs
 	)
 	veil_breaching_form = TRUE
@@ -457,11 +459,11 @@
 /datum/species/human/shifter/war/on_species_gain(mob/living/carbon/human/human_who_gained_species, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	if(get_garou_splat(human_who_gained_species))
-		human_who_gained_species.add_traits(list(TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_NO_STAGGER, TRAIT_HATED_BY_DOGS, TRAIT_STRONG_STOMACH, TRAIT_STRONGPULL), SPECIES_TRAIT)
+		human_who_gained_species.add_traits(list(TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_NO_STAGGER, TRAIT_HATED_BY_DOGS, TRAIT_STRONG_STOMACH, TRAIT_STRONGPULL, TRAIT_STRONG_GRABBER), SPECIES_TRAIT)
 
 /datum/species/human/shifter/war/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
-	human.remove_traits(list(TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_NO_STAGGER, TRAIT_HATED_BY_DOGS, TRAIT_STRONG_STOMACH, TRAIT_STRONGPULL), SPECIES_TRAIT)
+	human.remove_traits(list(TRAIT_GOOD_HEARING, TRAIT_KEEN_NOSE, TRAIT_NO_STAGGER, TRAIT_HATED_BY_DOGS, TRAIT_STRONG_STOMACH, TRAIT_STRONGPULL, TRAIT_STRONG_GRABBER), SPECIES_TRAIT)
 //CRIMSON GRID ADDITIONS END
 //CRIMSON GRID ADDITION START
 /datum/splat/werewolf/shifter
