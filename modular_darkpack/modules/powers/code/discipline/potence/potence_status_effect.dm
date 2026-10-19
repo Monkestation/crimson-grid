@@ -31,8 +31,6 @@
 		var/mob/living/basic/basic_owner = owner
 		basic_owner.attack_sound = 'modular_darkpack/modules/powers/sounds/heavypunch.ogg'
 
-	RegisterSignal(owner, COMSIG_MOB_ITEM_ATTACK, PROC_REF(apply_melee_modifier))
-
 	tackler = owner.AddComponent(/datum/component/tackler, stamina_cost=0, base_knockdown = 1 SECONDS, range = 2 + level, speed = 1, skill_mod = 0, min_distance = 0)
 
 /datum/status_effect/potence/on_remove()
@@ -53,11 +51,4 @@
 
 	LAZYCLEARLIST(affected_bodyparts)
 
-	UnregisterSignal(owner, COMSIG_MOB_ITEM_ATTACK)
-
 	qdel(tackler)
-
-// This is bad and bypasses it being a strength dice thing. Remove the second melee has any usage of strength for damage
-/datum/status_effect/potence/proc/apply_melee_modifier(mob/source, mob/M, mob/user, list/modifiers, list/attack_modifiers)
-	SIGNAL_HANDLER
-	MODIFY_ATTACK_FORCE_MULTIPLIER(attack_modifiers, 1 + (0.4 * level))

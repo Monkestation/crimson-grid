@@ -7,6 +7,7 @@
 	icon_state = "matrix"
 
 /turf/closed/indestructible/the_matrix/attack_hand(mob/user)
+	. = ..()
 	if(!user.client)
 		return FALSE
 	if(!do_after(user, 10 SECONDS, src, interaction_key = DOAFTER_SOURCE_MATRIX))
@@ -26,6 +27,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 
 /obj/the_matrix/attack_hand(mob/user)
+	. = ..()
 	if(!user.client)
 		return FALSE
 	if(!do_after(user, 10 SECONDS, src, interaction_key = DOAFTER_SOURCE_MATRIX))
