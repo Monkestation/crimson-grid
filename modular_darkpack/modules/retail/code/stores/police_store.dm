@@ -16,6 +16,7 @@
 		/obj/item/taperecorder,
 		/obj/item/toy/crayon/white,
 		/obj/item/storage/box/evidence,
+		/obj/item/barrier_tape/police,
 		/obj/item/flashlight/seclite,
 		/obj/item/detective_scanner/darkpack,
 		/obj/item/storage/box/bodybags,
