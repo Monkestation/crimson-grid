@@ -17,6 +17,10 @@
 /obj/item/smartphone/ui_close(mob/user)
 	. = ..()
 	// Lock sound!
+	for (var/datum/tgui/window as anything in open_uis)
+		if(window.status != UI_INTERACTIVE || window.user == user)
+			continue
+		return
 	playsound(loc, 'modular_vcg/master_files/sounds/item/smartphone/aosp/Lock.ogg', 20, TRUE)
 	opened = FALSE
 	update_appearance(UPDATE_ICON_STATE)
