@@ -17,7 +17,7 @@
 
 /obj/projectile/bullet/darkpack/vamp9mm/silver/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	fera_silver_damage(target, 2, blocked = blocked) // CG pass blocked param to make silver dmg interact properly with armour
+	fera_silver_damage(target, 2, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 2)
 
 // .45 ACP
 /obj/projectile/bullet/darkpack/vamp45acp
