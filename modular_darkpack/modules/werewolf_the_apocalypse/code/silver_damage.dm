@@ -16,7 +16,7 @@
 		splat.adjust_gnosis(-1, TRUE)
 
 
-/obj/projectile/bullet/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, blocked = 0) // CG add blocked arg for armour handling for silver
+/obj/projectile/bullet/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, blocked = 0) // CRIMSON EDIT CHANGE - Original: /obj/projectile/bullet/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0)
 	if(!istype(target))
 		return
 	if(!HAS_TRAIT(target, TRAIT_SILVER_WEAKNESS))
