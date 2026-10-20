@@ -245,4 +245,3 @@ name = ".75 ball"
 /obj/projectile/bullet/darkpack/vamp75/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
 . = ..()
 	fera_silver_damage(target, 5, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 5)
-	// CG pass blocked param to make silver dmg interact properly with armour
