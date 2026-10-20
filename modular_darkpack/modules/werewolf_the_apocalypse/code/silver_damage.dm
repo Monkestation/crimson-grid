@@ -52,4 +52,4 @@
 
 		// W20 p. 290 - Werewolves dont take silver damage in breed form because they arent spirits
 		if(!shot_pup_splat.is_breed_form() || iscrinos(shot_pup))
-			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = silver_armor_block) // CG add def_zone and blocked for handling silver damage hit zone and armour interactions
+			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = silver_armor_block) // CRIMSON EDIT CHANGE - Original: shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED)
