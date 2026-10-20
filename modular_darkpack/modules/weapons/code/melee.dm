@@ -189,7 +189,7 @@
 
 /obj/item/claymore/longsword/keeper/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	. = ..()
-	fera_silver_damage(target, 5, 1, attack_modifiers) // CG pass attack_modifiers paramater for silver damage hit location and armour interactions
+	fera_silver_damage(target, 5, 1, attack_modifiers) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 5, 1)
 
 /obj/item/melee/baseball_bat/vamp
 	name = "baseball bat"
