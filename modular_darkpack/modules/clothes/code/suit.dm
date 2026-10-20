@@ -336,7 +336,7 @@
 	name = "Federal Bureau of Investigation jacket"
 	desc = "\"FBI OPEN UP!!\""
 	icon_state = "fbi"
-	armor_type = /datum/armor/vampire_jacket
+	armor_type = /datum/armor/armored_jackets // CRIMSON EDIT CHANGE - Original: armor_type = /datum/armor/vampire_jacket
 
 /obj/item/clothing/suit/vampire/jacket/cropped
 	name = "cropped black leather jacket"
@@ -386,7 +386,8 @@
 	wound = 35
 
 /obj/item/clothing/suit/vampire/jacket/better/armored
-	name = "armored leather jacket"
+	name = "leather jacket" // CRIMSON EDIT CHANGE - Original: name = "armored leather jacket"
+	desc = "A jacket of some sort, this one feels a bit more tougher and has some sort of protective lining." // CRIMSON EDIT ADD - Less Conspicuous Armor
 	armor_type = /datum/armor/armored_jackets
 
 /datum/armor/armored_jackets
@@ -401,13 +402,15 @@
 	wound = 25
 
 /obj/item/clothing/suit/vampire/trench/alt/armored
-	name = "armored brown trenchcoat"
+	name = "brown trenchcoat" // CRIMSON EDIT CHANGE - Original: name = "armored brown trenchcoat"
+	desc = "A jacket of some sort, this one feels a bit more tougher and has some sort of protective lining." // CRIMSON EDIT ADD - Less Conspicuous Armor
 	icon_state = "trench2"
 	max_integrity = 400
 	armor_type = /datum/armor/armored_jackets
 
 /obj/item/clothing/suit/vampire/trench/armored
-	name = "armored black trenchcoat"
+	name = "black trenchcoat" // CRIMSON EDIT CHANGE - Original: name = "armored black trenchcoat"
+	desc = "A jacket of some sort, this one feels a bit more tougher and has some sort of protective lining." // CRIMSON EDIT ADD - Less Conspicuous Armor
 	max_integrity = 400
 	armor_type = /datum/armor/armored_jackets
 
@@ -548,7 +551,7 @@
 	wound = 50
 
 /obj/item/clothing/suit/vampire/bogatyr
-	name = "bone armor"
+	name = "regal armor" // CRIMSON EDIT CHANGE - Original: name = "bone armor"
 	desc = "A regal set of armor made of unknown materials."
 	icon_state = "bogatyr_armor_light"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -561,18 +564,18 @@
 	armor_type = /datum/armor/bulletproof_vest
 
 /obj/item/clothing/suit/vampire/bogatyr/captain
-	name = "golden bone armor"
+	name = "golden regal armor" // CRIMSON EDIT CHANGE - Original: name = "golden bone armor"
 	icon_state = "bogatyr_captain_armor"
 	armor_type = /datum/armor/highly_protective_vest
 
 /obj/item/clothing/suit/vampire/bogatyr/captain/heavy // ! Craftable only.
-	name = "reinforced golden bone armor"
+	name = "reinforced golden regal armor" // CRIMSON EDIT CHANGE - Original: name = "reinforced golden bone armor"
 	armor_type = /datum/armor/eod_suit
 	w_class = WEIGHT_CLASS_BULKY
 	slowdown = 1
 
 /obj/item/clothing/suit/vampire/bogatyr/heavy
-	name = "heavy bone harness"
+	name = "heavy regal harness" // CRIMSON EDIT CHANGE - Original: name = "heavy bone harness"
 	icon_state = "bogatyr_armor"
 	armor_type = /datum/armor/eod_suit
 	w_class = WEIGHT_CLASS_BULKY
