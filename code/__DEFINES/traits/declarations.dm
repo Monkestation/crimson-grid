@@ -1747,4 +1747,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Mobs with this trait will appear as human to medical scanners even if they are not human
 #define TRAIT_HUMAN_DISGUISE "human_disguise"
 
+#define TRAIT_AURA_OF_INFERNO "aura_of_inferno" /// CRIMSON EDIT ADD: Baali content
+
+
 // END TRAIT DEFINES

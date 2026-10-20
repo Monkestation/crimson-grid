@@ -590,7 +590,7 @@
 
 /obj/item/clothing/suit/vampire/labcoat/director
 	name = "clinic director's labcoat"
-	desc = "Special labcoat for clinic director with Saint John Clinic's emblems."
+	desc = "Special labcoat for clinic director with Saint John's Clinic emblems."
 	icon_state = "director"
 
 /obj/item/clothing/suit/vampire/fancy_gray

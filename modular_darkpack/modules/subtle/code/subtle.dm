@@ -1,3 +1,5 @@
+/* CRIMSON EDIT REMOVE - Removes ERP
+
 #define SUBTLE_DEFAULT_DISTANCE world.view
 #define SUBTLE_MESSAGE_LEN MAX_MESSAGE_LEN * 2 // 4000 at the time of writing
 #define SUBTLE_ONE_TILE 1
@@ -209,3 +211,4 @@ GAME_VERB(/mob/living, subtler_verb, "Subtler Anti-Ghost", "IC")
 
 #undef SUBTLE_ONE_TILE_TEXT
 #undef SUBTLE_SAME_TILE_TEXT
+*/ // CRIMSON EDIT REMOVE - Removes ERP

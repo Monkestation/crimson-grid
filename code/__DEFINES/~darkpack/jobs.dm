@@ -211,6 +211,10 @@
 #define DEPARTMENT_GAIA "Garou Nation"
 #define DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD (1<<16)
 #define DEPARTMENT_SOCIETY_OF_LEOPOLD "Society of Leopold"
+// CRIMSON EDIT ADDITION - Triads
+#define DEPARTMENT_BITFLAG_TRIAD (1<<17)
+#define DEPARTMENT_TRIAD "Chinese Triad"
+// CRIMSON EDIT END - Triads
 
 DEFINE_BITFIELD(departments_bitflags, list(
 	"CITIZEN" = DEPARTMENT_BITFLAG_CITIZEN,
@@ -230,6 +234,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 	"MANOR" = DEPARTMENT_BITFLAG_MANOR,
 	"CITY_SERVICES" = DEPARTMENT_BITFLAG_CITY_SERVICES,
 	"SOCIETY_OF_LEOPOLD" = DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD,
+	"TRIAD" = DEPARTMENT_BITFLAG_TRIAD // CRIMSON GRID ADDITION - Triads
 ))
 
 /// Combination flag for jobs which are considered regular crew members of the station.

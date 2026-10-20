@@ -34,7 +34,7 @@ GAME_VERB_PROC(/client, cmd_mentor_say, "Mentorsay", null)
 		type = MESSAGE_TYPE_MODCHAT,
 		html = msg,
 		confidential = TRUE)
-
+	SSplexora.relay_mentor_say(src, html_decode(msg), holder ? "STAFF:" : "MENTOR") // CRIMSON EDIT ADD - Plexora
 	SSblackbox.record_feedback("tally", "mentor_verb", 1, "Msay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 // see /proc/check_asay_links(msg) we just check for mentor_datum instead of holder

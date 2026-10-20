@@ -8,7 +8,7 @@
 	// Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
 	var/list/alt_job_titles = list()
 	/// Whether this player is whitelisted to bypass discipline sheet validation limits /// LEGACY
-	var/discipline_trusted = FALSE
+	var/discipline_trusted = TRUE // CRIMSON EDIT CHANGE - Original: var/discipline_trusted = FALSE
 
 
 /datum/preferences/load_preferences()

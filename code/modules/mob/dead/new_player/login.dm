@@ -28,7 +28,10 @@
 	var/motd = global.config.motd
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
-
+	// CRIMSON EDIT ADD START - lobby_notices
+	if (SSticker.current_state != GAME_STATE_STARTUP && length(config.lobby_notices))
+		config.ShowLobbyNotices(src)
+	// CRIMSON EDIT ADD END
 	if(GLOB.admin_notice)
 		to_chat(src, span_notice("<b>Admin Notice:</b>\n \t [GLOB.admin_notice]"))
 
@@ -38,7 +41,11 @@
 
 	add_sight(SEE_TURFS)
 
-	client.playtitlemusic()
+	// CRIMSON EDIT CHANGE START
+	if(SSticker.current_state != GAME_STATE_STARTUP)
+		client.playtitlemusic()
+	// CRIMSON EDIT CHANGE END
+
 
 	var/datum/asset/asset_datum = get_asset_datum(/datum/asset/simple/lobby)
 	asset_datum.send(client)

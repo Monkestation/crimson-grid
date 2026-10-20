@@ -47,6 +47,19 @@
 		new /datum/data/vending_product("kitchen knife", /obj/item/knife, 26),
 		new /datum/data/vending_product("rolling pin", /obj/item/kitchen/rollingpin, 8),
 		new /datum/data/vending_product("mixing bowl", /obj/item/reagent_containers/cup/mixing_bowl),
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+		new /datum/data/vending_product("potato", /obj/item/food/grown/potato),
+		new /datum/data/vending_product("carrot", /obj/item/food/grown/carrotlike/carrot),
+		new /datum/data/vending_product("mushroom", /obj/item/food/grown/mushroom),
+		new /datum/data/vending_product("pumpkin", /obj/item/food/grown/pumpkin),
+		new /datum/data/vending_product("eggplant", /obj/item/food/grown/eggplant),
+		new /datum/data/vending_product("soybeans", /obj/item/food/grown/soybeans),
+		new /datum/data/vending_product("chili", /obj/item/food/grown/chili),
+		new /datum/data/vending_product("ketchup", /obj/item/reagent_containers/condiment/ketchup, 3),
+		new /datum/data/vending_product("mustard", /obj/item/reagent_containers/condiment/mustard, 3),
+		new /datum/data/vending_product("soy milk", /obj/item/reagent_containers/condiment/soymilk),
+		new /datum/data/vending_product("cheese wedge", /obj/item/food/cheese/wedge, 6),
+// CRIMSON EDIT ADD END - Shop Inventories Additions
 	)
 
 /obj/structure/retail/deli
@@ -63,4 +76,8 @@
 		new /datum/data/vending_product("fish fillet", /obj/item/food/fishmeat, 3),
 		new /datum/data/vending_product("cheese wheel", /obj/item/food/cheese/wheel, 12),
 		new /datum/data/vending_product("sandwich", /obj/item/food/sandwich, 3),
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+		new /datum/data/vending_product("raw pork", /obj/item/food/meat/slab/pig, 3),
+		new /datum/data/vending_product("raw meatloaf", /obj/item/food/raw_meatloaf, 4),
+// CRIMSON EDIT ADD END - Shop Inventories Additions
 	)

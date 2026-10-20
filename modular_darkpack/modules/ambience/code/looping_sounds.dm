@@ -1,4 +1,4 @@
-/datum/looping_sound/light_hum
+/* /datum/looping_sound/light_hum
 	mid_sounds = list(
 		'modular_darkpack/modules/ambience/sounds/ambient_objects/light_hum-01.ogg',
 		'modular_darkpack/modules/ambience/sounds/ambient_objects/light_hum-02.ogg',
@@ -13,7 +13,7 @@
 	falloff_exponent = 5 //Ultra quiet very fast
 	extra_range = -12
 	falloff_distance = 1 //Instant falloff after initial tile
-
+ */
 
 /datum/looping_sound/slow_drip
 	mid_sounds = list(

@@ -10,7 +10,8 @@
 		/datum/action/cooldown/power/gift/beat_of_the_heartdrum
 		// /datum/action/cooldown/power/gift/resist_pain, // DARKPACK TODO - (Selectable Gifts)
 	)
-	subsplat_keys = /obj/item/vamp/keys/nps
+	//subsplat_keys = /obj/item/vamp/keys/nps CRIMSON EDIT REMOVAL - Park Keys for Roles
+
 
 // V20 "Uktena"
 /datum/subsplat/werewolf/tribe/garou/ghostcouncil
@@ -20,7 +21,7 @@
 		/datum/action/cooldown/power/gift/sense_magic,
 		// /datum/action/cooldown/power/gift/spirit_speech, // DARKPACK TODO - (Selectable Gifts)
 	)
-	subsplat_keys = /obj/item/vamp/keys/nps
+//	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
 /datum/subsplat/werewolf/tribe/garou/hartwardens
 	name = TRIBE_FIANNA
@@ -28,7 +29,7 @@
 	gifts_provided = list(
 		/datum/action/cooldown/power/gift/faerie_light,
 	)
-	subsplat_keys = /obj/item/vamp/keys/nps
+//	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
 /datum/subsplat/werewolf/tribe/garou/glasswalkers
 	name = TRIBE_GLASS_WALKERS
@@ -64,7 +65,7 @@
 		// /datum/action/cooldown/power/gift/resist_pain, // DARKPACK TODO - (Selectable Gifts)
 		/datum/action/cooldown/power/gift/visage_of_fenris,
 	)
-	subsplat_keys = /obj/item/vamp/keys/nps
+//	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
 /datum/subsplat/werewolf/tribe/garou/blackfuries
 	name = TRIBE_BLACK_FURIES
@@ -72,7 +73,7 @@
 	gifts_provided = list(
 		/datum/action/cooldown/power/gift/breath_of_the_wyld,
 	)
-	subsplat_keys = /obj/item/vamp/keys/nps
+//	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
 /datum/subsplat/werewolf/tribe/garou/silentstriders
 	name = TRIBE_SILENT_STRIDERS
@@ -81,7 +82,7 @@
 		// /datum/action/cooldown/power/gift/sense_wyrm, // DARKPACK TODO - (Selectable Gifts)
 		/datum/action/cooldown/power/gift/speed_of_thought,
 	)
-	subsplat_keys = /obj/item/vamp/keys/nps
+//	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
 /datum/subsplat/werewolf/tribe/garou/shadowlords
 	name = TRIBE_SHADOW_LORDS
@@ -108,7 +109,7 @@
 		// /datum/action/cooldown/power/gift/inspiration, // DARKPACK TODO - (Selectable Gifts)
 		// /datum/action/cooldown/power/gift/sense_wyrm, // DARKPACK TODO - (Selectable Gifts)
 	)
-	subsplat_keys = /obj/item/vamp/keys/nps
+//	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
 /datum/subsplat/werewolf/tribe/garou/stargazers
 	name = TRIBE_STARGAZERS
@@ -118,7 +119,8 @@
 		// /datum/action/cooldown/power/gift/falling_touch, // DARKPACK TODO - (Selectable Gifts)
 		// /datum/action/cooldown/power/gift/sense_wyrm, // DARKPACK TODO - (Selectable Gifts)
 	)
-	subsplat_keys = /obj/item/vamp/keys/nps
+	//subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
+
 
 /datum/subsplat/werewolf/tribe/garou/blackspiraldancers
 	name = TRIBE_BLACK_SPIRAL_DANCERS
@@ -134,6 +136,11 @@
 	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh3.ogg", 50, FALSE)
 	target.visible_message(span_warning("[target] whines in animalistic fear"), span_cult("VISIONS OF BRIMSTONE AND FLAME FLASH BEFORE MY EYES"))
 	target.Paralyze(5 SECONDS)
+
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /datum/subsplat/werewolf/tribe/garou/ronin
 	name = TRIBE_RONIN

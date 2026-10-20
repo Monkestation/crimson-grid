@@ -139,6 +139,7 @@
 	var/obj/effect/dummy/lighting_obj/moblight/moblight_type = /obj/effect/dummy/lighting_obj/moblight/fire
 	/// Cached particle type
 	var/cached_state
+	var/overwrite_color // CRIMSON GRID ADD: DARK THAUMATURGY
 
 /datum/status_effect/fire_handler/fire_stacks/get_examine_text(mob/examiner)
 	if(owner.on_fire)
@@ -151,12 +152,22 @@
 
 	ignite()
 
-/datum/status_effect/fire_handler/fire_stacks/on_creation(mob/living/new_owner, new_stacks, forced = FALSE)
+// CRIMSON GRID ADD: DARK THAUMATURGY
+/datum/status_effect/fire_handler/fire_stacks/on_creation(mob/living/new_owner, new_stacks, forced = FALSE, overwrite_color = null)
+// CRIMSON GRID ADD END: DARK THAUMATURGY
 	. = ..()
 	RegisterSignal(owner, COMSIG_ATOM_TOUCHED_SPARKS, PROC_REF(owner_touched_sparks))
+	src.overwrite_color = overwrite_color // CRIMSON GRID ADD: DARK THAUMATURGY
 
 /datum/status_effect/fire_handler/fire_stacks/on_remove()
 	UnregisterSignal(owner, COMSIG_ATOM_TOUCHED_SPARKS)
+
+//CRIMSON GRID ADD: DARK THAUMATURGY
+/datum/status_effect/fire_handler/fire_stacks/refresh(effect, new_stacks, forced = FALSE, overwrite_color = null)
+	. = ..()
+	if(!isnull(overwrite_color))
+		src.overwrite_color = overwrite_color
+//CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /datum/status_effect/fire_handler/fire_stacks/cache_stacks()
 	. = ..()
@@ -165,6 +176,10 @@
 	var/stack_percent = stacks / stack_limit
 	moblight.set_light_power(max(0.5, round(moblight_type::light_power * stack_percent, 0.1)))
 	moblight.set_light_range(max(1.5, round(moblight_type::light_range * stack_percent, 0.1)))
+	// CRIMSON GRID ADD: DARK THAUMATURGY
+	if(overwrite_color)
+		moblight.set_light_color(overwrite_color)
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 /datum/status_effect/fire_handler/fire_stacks/tick(seconds_between_ticks)
 	if(stacks <= 0)
@@ -275,6 +290,7 @@
 	if(on_fire)
 		extinguish()
 	set_stacks(0)
+	overwrite_color = null // CRIMSON GRID ADD: DARK THAUMATURGY
 	UnregisterSignal(owner, COMSIG_ATOM_UPDATE_OVERLAYS)
 	owner.update_appearance(UPDATE_OVERLAYS)
 	return ..()
@@ -294,7 +310,13 @@
 	var/mutable_appearance/created_overlay = owner.get_fire_overlay(stacks, on_fire)
 	if(isnull(created_overlay))
 		return
-
+	// CRIMSON GRID ADD: DARK THAUMATURGY
+	if(overwrite_color)
+		var/mutable_appearance/colored_overlay = new()
+		colored_overlay.appearance = created_overlay
+		colored_overlay.color = overwrite_color
+		created_overlay = colored_overlay
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 	overlays |= created_overlay
 	overlays |= source.make_fire_emissive(created_overlay)
 

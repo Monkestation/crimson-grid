@@ -275,7 +275,7 @@
 /datum/status_effect/zombie/mindless
 	regen_time = 10 SECONDS
 	regen_amount = 0.2
-	zombie_hand = /obj/item/mutant_hand/zombie/weak
+	zombie_hand = null // CRIMSON EDIT CHANGE - Original: zombie_hand = /obj/item/mutant_hand/zombie/weak
 	movespeed_mod = /datum/movespeed_modifier/zombie/mindless
 
 /datum/status_effect/zombie/uninfected

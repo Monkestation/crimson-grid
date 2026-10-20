@@ -66,6 +66,19 @@
 	var/obj/effect/wall_frill/wall_frill
 	var/frill_icon = /obj/effect/wall_frill::icon
 
+/turf/closed/wall/vampwall/attackby(obj/item/W, mob/user, params)
+	return
+
+/turf/closed/wall/vampwall/attack_hand(mob/user)
+	return
+
+// CRIMSON EDIT ADD START - Welders no longer deconstruct city walls
+/turf/closed/wall/vampwall/try_decon(obj/item/I, mob/user)
+	if(I.tool_behaviour == TOOL_WELDER)
+		to_chat(user, span_warning("The wall is too solid to cut through."))
+	return FALSE
+// CRIMSON EDIT ADD END - Welders no longer deconstruct city walls
+
 /turf/closed/wall/vampwall/mouse_drop_receive(atom/dropped, mob/user, params)
 	. = ..()
 	if(!isliving(user))

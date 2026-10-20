@@ -154,6 +154,11 @@
 		if(JOB_UNAVAILABLE_FERA_AUSPICE)
 			return "Your character's auspice is incompatible for [jobtitle]."
 		// DARKPACK EDIT END
+		// CRIMSON EDIT ADD START
+		if(JOB_UNAVAILABLE_DONATOR)
+			return "You need to be a donator to have play as [jobtitle]."
+		// CRIMSON EDIT ADD END
+
 
 	return GENERIC_JOB_UNAVAILABLE_ERROR
 

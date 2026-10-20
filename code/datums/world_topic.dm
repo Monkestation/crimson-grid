@@ -34,7 +34,12 @@
 		if (input["format"] == "json")
 			. = list("error" = .)
 	else
-		. = Run(input)
+		// CRIMSON EDIT ADDITION START
+		if (input["json"])
+			. = Run(input + json_decode(input["json"]))
+		else
+			. = Run(input)
+		// CRIMSON EDIT ADDITION END
 	if (input["format"] == "json")
 		. = json_encode(.)
 	else if(islist(.))
@@ -83,6 +88,11 @@
 		++PRcounts[id]
 		if(PRcounts[id] > CONFIG_GET(number/pr_announcements_per_round))
 			return
+
+	// CRIMSON EDIT ADDITION START
+	if(findtext(input[keyword], @"[s]"))
+		return
+	// CRIMSON EDIT ADDITION END
 
 	var/final_composed = span_announce("PR: [input[keyword]]")
 	for(var/client/C in GLOB.clients)
