@@ -415,7 +415,7 @@
 
 //CRIMSON GRID ADDITON START
 /datum/movespeed_modifier/shifter/war
-	multiplicative_slowdown = -0.25
+	multiplicative_slowdown = -0.15
 //CRMISON GRID ADDITION END
 
 
