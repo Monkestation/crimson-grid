@@ -12,7 +12,7 @@
 	config_tag = "PRIMOGEN_BANU_HAQIM"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/banuprim
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_BANU
 	departments_list = list(
 		/datum/job_department/camarilla,
