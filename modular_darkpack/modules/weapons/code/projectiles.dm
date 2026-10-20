@@ -86,7 +86,7 @@
 @@ -53,7 +53,7 @@
 
 /obj/projectile/bullet/darkpack/vamp44/silver/on_hit(atom/target, blocked = 0, pierce_hit)
-. = ..()
+	. = ..()
 	fera_silver_damage(target, 4, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 4)
 
 // .50 BMG/AE
@@ -94,7 +94,7 @@
 @@ -97,7 +97,7 @@
 
 /obj/projectile/bullet/darkpack/vamp556mm/silver/on_hit(atom/target, blocked = 0, pierce_hit)
-. = ..()
+	. = ..()
 	fera_silver_damage(target, 2, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 2)
 
 // 5.45x39mm
@@ -235,7 +235,7 @@ name = "12g shotgun rubber shot"
 @@ -233,7 +233,7 @@
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
-. = ..()
+	. = ..()
 	fera_silver_damage(target, 4, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 4)
 
 /obj/projectile/bullet/darkpack/vamp75
@@ -243,5 +243,5 @@ name = ".75 ball"
 @@ -248,4 +248,5 @@
 
 /obj/projectile/bullet/darkpack/vamp75/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
-. = ..()
+	. = ..()
 	fera_silver_damage(target, 5, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 5)
