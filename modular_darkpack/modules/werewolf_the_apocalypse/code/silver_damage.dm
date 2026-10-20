@@ -43,10 +43,12 @@
 	if(shot_pup_splat)
 		var/mob/living/carbon/human/shot_pup = target
 		shot_pup_splat.adjust_gnosis(-gnosis_damage, TRUE)
-		var/def_zone = LAZYACCESS(attack_modifiers, "silver_hit_zone") // CG add handling for properly applying silver damage to actual hit zone rather than hitting random bodypart
-		if(isnull(def_zone)) // CG do not apply silver damage if no valid hitzone for some reason
+// CRIMSON EDIT ADD START - 418
+		var/def_zone = LAZYACCESS(attack_modifiers, "silver_hit_zone") 
+		if(isnull(def_zone)) 
 			return
-		var/silver_armor_block = LAZYACCESS(attack_modifiers, "silver_armor_block") // CG add handling for reducing silver damage by armor block amount
+		var/silver_armor_block = LAZYACCESS(attack_modifiers, "silver_armor_block") 
+// CRIMSON EDIT ADD END - 418
 
 		// W20 p. 290 - Werewolves dont take silver damage in breed form because they arent spirits
 		if(!shot_pup_splat.is_breed_form() || iscrinos(shot_pup))
