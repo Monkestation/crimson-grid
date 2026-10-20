@@ -15,4 +15,4 @@
 	bumper_text = "metamorph"
 	applicable_stats = list(STAT_WITS) // + PRIMAL_URGE
 	difficulty = 8
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER

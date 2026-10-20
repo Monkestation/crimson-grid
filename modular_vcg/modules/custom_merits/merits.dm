@@ -54,3 +54,10 @@
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/organ/cyberimp/arm/toolkit/tzimisce/arm_blade = new()
 	arm_blade.Insert(human_holder)
+
+/datum/quirk/darkpack/persistent_scars
+	name = "Persistent Scars"
+	desc = "You have scars that seem to persist for a longer time. "
+	value = 0
+	icon = FA_ICON_HAND_DOTS
+	allowed_splats = list(SPLAT_KINDRED)

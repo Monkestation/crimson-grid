@@ -16,4 +16,4 @@
 	bumper_text = "victim of the masquerade"
 	applicable_stats = list(STAT_TEMPORARY_WILLPOWER)
 	difficulty = 6
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER

@@ -13,6 +13,8 @@
 		/datum/job_department/police,
 	)
 
+	tgui_icon = FA_ICON_USER_SHIELD
+
 	exp_requirements = EXP_REQ_HEAD
 
 	allowed_splats = list(SPLAT_NONE)

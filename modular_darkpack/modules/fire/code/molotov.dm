@@ -17,6 +17,7 @@
 	explode()
 
 /obj/item/molotov/attackby(obj/item/I, mob/user, params)
+	. = ..()
 	if(I.get_temperature() && !active)
 		activate()
 

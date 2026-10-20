@@ -13,6 +13,8 @@
 		/datum/job_department/giovanni,
 	)
 
+	tgui_icon = FA_ICON_MONEY_BILL_WAVE
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GIOVANNI)
 	minimal_generation = 10

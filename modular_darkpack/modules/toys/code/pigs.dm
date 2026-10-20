@@ -18,6 +18,7 @@
 	playsound(src, hryuk, 70, TRUE)
 
 /obj/item/toy/rubberpig/attack_self(mob/user)
+	. = ..()
 	if(cooldown < world.time - 50)
 		var/hryuk = pick('modular_darkpack/modules/toys/sounds/pig1.ogg', 'modular_darkpack/modules/toys/sounds/pig2.ogg', 'modular_darkpack/modules/toys/sounds/pig3.ogg')
 		playsound(src, hryuk, 70, TRUE)

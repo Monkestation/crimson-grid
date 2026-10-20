@@ -5,12 +5,22 @@
 
 /datum/subsplat/werewolf/breed_form/garou/homid
 	name = BREED_GAROU_HOMID
+	gifts_provided = list(
+		/datum/action/cooldown/power/gift/apecrafts_blessings,
+		/datum/action/cooldown/power/gift/city_running,
+		/datum/action/cooldown/power/gift/master_of_fire,
+	)
 	start_gnosis = 1
 	breed_species = /datum/species/human/shifter/homid
 
 
 /datum/subsplat/werewolf/breed_form/garou/crinos
 	name = BREED_CRINOS
+	gifts_provided = list(
+		/datum/action/cooldown/power/gift/primal_anger,
+		// /datum/action/cooldown/power/gift/sense_wyrm, // DARKPACK TODO - (Selectable Gifts)
+		/datum/action/cooldown/power/gift/shed,
+	)
 	start_gnosis = 3
 	breed_species = /datum/species/human/shifter/war
 
@@ -22,6 +32,11 @@
 
 /datum/subsplat/werewolf/breed_form/garou/lupus
 	name = BREED_LUPUS
+	gifts_provided = list(
+		/datum/action/cooldown/power/gift/hares_leap,
+		/datum/action/cooldown/power/gift/heightened_senses,
+		/datum/action/cooldown/power/gift/predators_arsenal,
+	)
 	start_gnosis = 5
 	breed_species = /datum/species/human/shifter/feral
 
