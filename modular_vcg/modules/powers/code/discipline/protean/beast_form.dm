@@ -41,7 +41,7 @@
 	mob_size = MOB_SIZE_SMALL
 	speed = -0.6
 
-/mob/living/basic/cat/protean // Meow :3 - This needs to be it's own mob completely as the cat subtype is horrendously bugged as a player.
+/mob/living/basic/pet/cat/protean
 	name = "cat"
 	desc = "Kitty!!"
 	maxHealth = 300
@@ -52,18 +52,18 @@
 	melee_attack_cooldown = 4
 	mob_size = MOB_SIZE_SMALL
 	icon_state = "cat3"
-	base_icon_state = "cat"
+	icon_living = "cat3"
+	icon_dead = "cat3_dead"
+	base_icon_state = "cat3"
 	icon = 'modular_darkpack/master_files/icons/mobs/simple/pets.dmi'
 	attack_verb_continuous = "claws"
 	attack_verb_simple = "claw"
 	attack_sound = 'sound/items/weapons/slash.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
+	can_breed = FALSE
 
-/mob/living/basic/cat/protean/Initialize(mapload)
+/mob/living/basic/pet/cat/protean/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/pet_bonus, "purr", /datum/mood_event/pet_animal)
-	AddElement(/datum/element/footstep, footstep_type = FOOTSTEP_MOB_CLAW)
-	AddElement(/datum/element/can_be_held)
 	AddElement(/datum/element/swing_attack)
 
 /datum/action/cooldown/spell/shapeshift/gangrel/beast_form/Grant(mob/grant_to)
@@ -75,9 +75,9 @@
 				/mob/living/basic/bear/vampire/protean,
 				/mob/living/basic/pet/dog/darkpack/protean,
 				/mob/living/basic/corvid/protean,
-				/mob/living/basic/cat/protean
+				/mob/living/basic/pet/cat/protean,
 			)
-		if(grant_to_human.is_clan(/datum/subsplat/vampire_clan/setite/tlacique)) // Host requested
+		else if(grant_to_human.is_clan(/datum/subsplat/vampire_clan/setite/tlacique)) // Host requested
 			possible_shapes += list(
-				/mob/living/basic/cat/protean
+				/mob/living/basic/pet/cat/protean,
 			)

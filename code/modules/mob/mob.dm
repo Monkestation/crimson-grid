@@ -618,6 +618,7 @@ GAME_VERB_CONTEXT(/mob, examinate, "Examine", "", null, /atom)
 		result_combined = (atom_title ? fieldset_block("[atom_title].", jointext(result, "<br>"), "boxed_message") : boxed_message(jointext(result, "<br>")))
 
 	to_chat(src, span_infoplain(result_combined))
+	mind?.guestbook?.on_examine(src, examinify, result_combined) // DARKPACK EDIT ADD - GUESTBOOK
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, examinify)
 
 /// Handles adding examine messages for the target that are specific to this mob, e.g. a blood worm examining how much blood a living target has.
@@ -1603,10 +1604,6 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 
 	for(var/datum/callback/CB as anything in persistent_client.post_logout_callbacks)
 		CB.Invoke()
-
-	if(canon_client?.movingmob)
-		LAZYREMOVE(canon_client.movingmob.client_mobs_in_contents, src)
-		canon_client.movingmob = null
 
 	clear_important_client_contents()
 	canon_client = null

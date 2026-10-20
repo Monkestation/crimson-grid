@@ -13,6 +13,8 @@
 		/datum/job_department/clinic,
 	)
 
+	tgui_icon = FA_ICON_STAFF_SNAKE
+	
 	known_contacts = list(
 		JOB_CLINIC_DIRECTOR,
 		JOB_DOCTOR,

@@ -116,6 +116,9 @@
 
 	var/theirpower = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
 
+	if(HAS_TRAIT(target, TRAIT_IRON_WILL))
+		theirpower += 3
+
 	//tremere have built-in safeguards to easily dominate their stone servitors
 	if(HAS_TRAIT(target, TRAIT_WEAK_TO_DOMINATE))
 		theirpower -= 2
@@ -128,6 +131,9 @@
 
 	if((!(owner.obscured_slots & HIDEFACE))&(HAS_TRAIT(owner, TRAIT_DISFIGURED_APPEARANCE))) // Are we visibly disfigured?
 		theirpower += 2
+
+	if(HAS_TRAIT(owner, TRAIT_ENCHANTING_VOICE))
+		theirpower -= 2
 
 	if(!get_kindred_splat(target)) // Is our target mortal?
 		if(HAS_TRAIT(owner, TRAIT_GRAVE_SMELL)) // Are we stinky?
@@ -180,6 +186,7 @@
 //dominate involves capturing the victim's gaze, leaving them completely helpless as you hypnotically invade their mind.
 /datum/discipline_power/dominate/proc/immobilize_target(mob/living/carbon/human/target, duration = 5 SECONDS)
 	ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_GENERIC)
+	ADD_TRAIT(target, TRAIT_PACIFISM, "dominate") // CRIMSON EDIT ADD - DOM PACIFY
 	RegisterSignals(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT), PROC_REF(on_target_attacked))
 	if(do_after(owner, duration, target))
 		release_target(target)
@@ -199,6 +206,7 @@
 	UnregisterSignal(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT))
 	to_chat(target, span_danger("You feel your concentration become your own once more, able to look away from the commanding gaze."))
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_GENERIC)
+	REMOVE_TRAIT(target, TRAIT_PACIFISM, "dominate") // CRIMSON EDIT ADD - DOM PACIFY
 
 /mob/living/carbon/human/proc/post_dominate_checks(mob/living/carbon/human/dominate_target)
 	dominate_target?.remove_overlay(POWERS_LAYER)

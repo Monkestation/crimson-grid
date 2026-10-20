@@ -33,9 +33,14 @@
 	. = ..()
 	to_chat(owner, span_purple("Your fae senses reach out to detect what they're carrying..."))
 	for(var/obj/item/item in target.get_all_contents())
+		/* Magic limbs.... should be fine?
 		if(isorgan(item) || isbodypart(item))
 			continue
-		to_chat(owner, "- [item.name]")
+		*/
+		var/list/magic_sources = item.get_magic_sources()
+		if(!length(magic_sources))
+			continue
+		to_chat(owner, span_purple("- [item.examine_title(owner)]"))
 
 //DARKLING TRICKERY
 /datum/discipline_power/mytherceria/darkling_trickery
@@ -55,7 +60,7 @@
 
 	var/list/choices = list()
 	for(var/obj/item/thing in target.get_all_contents())
-		if(isorgan(thing) || isbodypart(thing))
+		if(isorgan(thing) || isbodypart(thing) || HAS_TRAIT(thing, TRAIT_NODROP))
 			continue
 		choices[thing.name] = thing
 

@@ -74,7 +74,7 @@
 		/datum/reagent/consumable/coco = 2,
 	)
 	tastes = list("chocolate" = 1)
-	foodtypes = JUNKFOOD | SUGAR
+	foodtypes = JUNKFOOD | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_1
@@ -98,7 +98,7 @@
 		/datum/reagent/consumable/sugar = 1,
 	)
 	tastes = list("chocolate" = 1)
-	foodtypes = JUNKFOOD | SUGAR
+	foodtypes = JUNKFOOD | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -114,7 +114,7 @@
 	)
 	trash_type = /obj/item/dice/fudge
 	tastes = list("fudge" = 1)
-	foodtypes = JUNKFOOD | SUGAR
+	foodtypes = JUNKFOOD | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -128,7 +128,7 @@
 		/datum/reagent/consumable/sugar = 1,
 	)
 	tastes = list("chocolate" = 3, "oranges" = 1)
-	foodtypes = JUNKFOOD|FRUIT|SUGAR|ORANGES
+	foodtypes = JUNKFOOD|FRUIT|SUGAR|ORANGES|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
@@ -143,7 +143,7 @@
 		/datum/reagent/consumable/coco = 1,
 	)
 	tastes = list("chocolate" = 1)
-	foodtypes = JUNKFOOD|SUGAR
+	foodtypes = JUNKFOOD|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_TINY
 
@@ -176,7 +176,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
 	tastes = list("chocolate" = 1, "peanuts" = 1)
-	foodtypes = SUGAR|JUNKFOOD|NUTS
+	foodtypes = SUGAR|JUNKFOOD|NUTS|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/bonbon/peanut_butter_cup
@@ -188,7 +188,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
 	tastes = list("chocolate" = 1, "peanut butter" = 1)
-	foodtypes = SUGAR|JUNKFOOD|NUTS
+	foodtypes = SUGAR|JUNKFOOD|NUTS|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	crafting_complexity = FOOD_COMPLEXITY_1
 
 // Gum

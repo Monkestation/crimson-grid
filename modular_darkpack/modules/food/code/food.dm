@@ -24,6 +24,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/food/icons/food_onfloor.dmi')
 	custom_price = 1
 	food_flags = FOOD_BITE_SPRITE
+	foodtypes = JUNKFOOD|GRAIN|DAIRY|FRIED|SUGAR|BREAKFAST|CHOCOLATE
 
 /obj/item/food/pizzaslice/square
 	name = "square pizza slice"
@@ -141,6 +142,7 @@
 /obj/item/food/vampire/icecream/chocolate
 	icon_state = "icecream1"
 	tastes = list("chocolate" = 2, "ice cream" = 2)
+	foodtypes = FRUIT | DAIRY | SUGAR | CHOCOLATE
 	food_reagents = list(/datum/reagent/consumable/hot_coco = 4, /datum/reagent/consumable/salt = 1,  /datum/reagent/consumable/cream = 2, /datum/reagent/consumable/vanilla = 1, /datum/reagent/consumable/sugar = 4)
 
 /obj/item/food/vampire/icecream/berry

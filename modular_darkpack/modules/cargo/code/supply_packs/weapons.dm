@@ -172,6 +172,13 @@
 	contains = list(/obj/item/gun/ballistic/shotgun/vampire/doublebarrel)
 	crate_name = "weapon crate"
 
+/datum/supply_pack/weapons/remington
+	name = "Weapon (Remington 11-87)"
+	desc = "Contains a Remington 11-87 Shotgun"
+	cost = 2100
+	contains = list(/obj/item/gun/ballistic/shotgun/vamp_remington)
+	crate_name = "weapon crate"
+
 /datum/supply_pack/weapons/thompson
 	name = "Weapon (Thompson)"
 	desc = "Contains a Thompson SMG."

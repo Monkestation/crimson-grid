@@ -67,7 +67,7 @@
 		/datum/reagent/consumable/salt = 2,
 	)
 	tastes = list("seeds" = 1, "nuts" = 1, "chocolate" = 1, "salt" = 1, "popcorn" = 1, "potato" = 1)
-	foodtypes = JUNKFOOD|GRAIN|FRIED|NUTS|VEGETABLES
+	foodtypes = JUNKFOOD|GRAIN|FRIED|NUTS|VEGETABLES|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
 
