@@ -34,7 +34,7 @@
 			shot_pup.apply_damage(dice TTRPG_DAMAGE, AGGRAVATED, def_zone = def_zone, blocked = blocked) 
 // CRIMSON EDIT ADD END - 418
 
-/obj/item/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, gnosis_damage = 0, list/attack_modifiers = null) // CG add attack_modifiers for silver damage hitzone and armour interactions
+/obj/item/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, gnosis_damage = 0, list/attack_modifiers = null) // CRIMSON EDIT CHANGE - Original: /obj/item/proc/fera_silver_damage(mob/living/carbon/human/target, dice = 0, gnosis_damage = 0)
 	if(!istype(target))
 		return
 	if(!HAS_TRAIT(target, TRAIT_SILVER_WEAKNESS))
