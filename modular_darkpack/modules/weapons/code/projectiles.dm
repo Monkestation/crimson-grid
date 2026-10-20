@@ -79,25 +79,23 @@
 	wound_bonus = 5
 
 /obj/projectile/bullet/darkpack/vamp556mm/incendiary
-	armour_penetration = 0
-	damage = 30
-	var/fire_stacks = 4
+	fera_silver_damage(target, 3, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 3)
 
-/obj/projectile/bullet/darkpack/vamp556mm/incendiary/on_hit(atom/target, blocked = 0, pierce_hit)
-	. = ..()
-	if(iscarbon(target))
-		var/mob/living/carbon/M = target
-		M.apply_damage(1 TTRPG_DAMAGE, BURN)
-		M.adjust_fire_stacks(fire_stacks)
-		M.ignite_mob()
+// .44 Magnum
+/obj/projectile/bullet/darkpack/vamp44
+@@ -53,7 +53,7 @@
 
-/obj/projectile/bullet/darkpack/vamp556mm/silver
-	name = "5.56mm silver bullet"
-	armour_penetration = 20
+/obj/projectile/bullet/darkpack/vamp44/silver/on_hit(atom/target, blocked = 0, pierce_hit)
+. = ..()
+	fera_silver_damage(target, 4, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 4)
+
+// .50 BMG/AE
+/obj/projectile/bullet/darkpack/vamp50
+@@ -97,7 +97,7 @@
 
 /obj/projectile/bullet/darkpack/vamp556mm/silver/on_hit(atom/target, blocked = 0, pierce_hit)
-	. = ..()
-	fera_silver_damage(target, 2, blocked = blocked) // CG pass blocked param to make silver dmg interact properly with armour
+. = ..()
+	fera_silver_damage(target, 2, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 2)
 
 // 5.45x39mm
 /obj/projectile/bullet/darkpack/vamp545mm
