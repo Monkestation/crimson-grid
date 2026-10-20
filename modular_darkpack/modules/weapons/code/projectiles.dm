@@ -228,23 +228,21 @@
 /obj/projectile/bullet/darkpack/vamp762x51mm/silver
 	name = "7.62x51mm silver bullet"
 	armour_penetration = 20
+	fera_silver_damage(target, 3, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 3)
+
+/obj/projectile/bullet/darkpack/rubber
+name = "12g shotgun rubber shot"
+@@ -233,7 +233,7 @@
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
-	. = ..()
-	fera_silver_damage(target, 4, blocked = blocked) // CG pass blocked param to make silver dmg interact properly with armour
+. = ..()
+	fera_silver_damage(target, 4, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 4)
 
 /obj/projectile/bullet/darkpack/vamp75
-	name = ".75 ball"
-	damage = 100
-	armour_penetration = 5
-	exposed_wound_bonus = 5
-	wound_bonus = 5
-
-/obj/projectile/bullet/darkpack/vamp75/silver
-	name = ".75 silver ball"
-	armour_penetration = 0
+name = ".75 ball"
+@@ -248,4 +248,5 @@
 
 /obj/projectile/bullet/darkpack/vamp75/silver/on_hit(atom/target, blocked = FALSE, pierce_hit)
-	. = ..()
-	fera_silver_damage(target, 5, blocked = blocked) //Same as silver longsword; it's a solid silver ball. As the founding fathers intended.
+. = ..()
+	fera_silver_damage(target, 5, blocked = blocked) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, 5)
 	// CG pass blocked param to make silver dmg interact properly with armour
