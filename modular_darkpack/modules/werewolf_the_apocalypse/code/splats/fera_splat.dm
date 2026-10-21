@@ -178,6 +178,7 @@
 			owner.adjust_organ_loss(ORGAN_SLOT_LIVER, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EYES, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EARS, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
+			owner.adjust_blood_volume(BLOOD_VOLUME_NORMAL * 0.10, maximum = BLOOD_VOLUME_NORMAL) //CRIMSON GRID ADDITION - blood restore effects to tg health
 		COOLDOWN_START(src, passive_healing_cd, 1 TURNS)
 
 	if(COOLDOWN_FINISHED(src, passive_regrowth_cd))
@@ -340,11 +341,11 @@
 	var/rage_slowdown = -0.01 * clamp(rage, 0, permanent_rage)
 	if(rage >= 3 && is_fighting_form)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/shifter/rage,multiplicative_slowdown = rage_slowdown)
-	if(rage < 3 && is_fighting_form)
+	else
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
 	if(rage >= 6 && is_fighting_form)
 		owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	if(rage < 6 && is_fighting_form)
+	else
 		owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 /datum/movespeed_modifier/shifter/rage
