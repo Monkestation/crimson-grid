@@ -23,6 +23,20 @@
 	name = "car trunk"
 	desc = "How did this get out of the car."
 
+/// Holds a visible rider so we can control its offset and layer without touching the mob itself.
+/obj/effect/car_rider_holder
+	name = "rider"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// Don't inherit the car's grey "broken" tint or alpha
+	appearance_flags = parent_type::appearance_flags | RESET_COLOR | RESET_ALPHA
+
+/// Draws the parts that sit over the rider. A vis_contents sibling of the rider holder, so the two sort by layer alone.
+/obj/effect/car_front_holder
+	name = "front"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 /datum/storage/car
 	animated = FALSE
 	max_slots = 40
@@ -108,6 +122,43 @@
 	/// sound loop for the engine
 	var/datum/looping_sound/car_engine/engine_sound_loop
 
+	/// Pixel offset used to center the sprite on the turf: -(icon_size - 32) / 2
+	var/visual_offset = -32
+
+	/// If FALSE, riders can get in and be pulled out even while the vehicle is locked.
+	var/lock_blocks_entry = TRUE
+	/// If TRUE, occupants stay drawn on the vehicle instead of being hidden inside it.
+	var/occupants_visible = FALSE
+
+	/// Icon state for the body, saved because icon_state itself becomes "empty"
+	var/body_icon_state
+	/// Greyscale body paint (under rider). Tinted by paint_color.
+	var/paint_overlay_state
+	/// Non-painted details drawn over the rider (handlebar clamp, fork, etc.)
+	var/front_overlay_state
+	/// Greyscale paint that draws over the rider (front fender, headlight shroud). Tinted by paint_color.
+	var/front_paint_overlay_state
+	/// Color applied to the greyscale paint overlays.
+	var/paint_color = "#ffffff"
+	/// The overlays currently applied by update_vehicle_overlays()
+	var/list/vehicle_overlays = list()
+
+	/// Layer offsets above CAR_LAYER. Order is body < rider < front.
+	var/rider_layer_offset = 0.1
+	var/front_layer_offset = 0.2
+	/// Where the rider sits relative to the vehicle origin
+	var/rider_pixel_x = 0
+	var/rider_pixel_y = 0
+	/// rider mob -> holder object
+	var/list/rider_holders = list()
+	/// Holder drawing the front parts over the rider
+	var/obj/effect/car_front_holder/front_holder
+
+	/// Lower divisor = sharper turns at low speed. min_turn_speed only applies while moving.
+	var/turn_speed_divisor = 10
+	var/min_turn_speed = 0
+	var/max_turn_speed = 3
+
 	COOLDOWN_DECLARE(impact_delay)
 	COOLDOWN_DECLARE(beep_cooldown)
 
@@ -147,7 +198,8 @@
 	last_pos["y"] = y
 	movement_vector = dir2angle(dir)
 
-	add_overlay(image(icon = src.icon, icon_state = src.icon_state, pixel_x = -32, pixel_y = -32))
+	body_icon_state = icon_state
+	update_vehicle_overlays()
 	icon_state = "empty"
 
 	var/static/list/loc_connections = list(
@@ -160,7 +212,66 @@
 	QDEL_NULL(engine_sound_loop)
 	QDEL_NULL(trunk)
 	empty_car()
+	QDEL_NULL(front_holder)
 	. = ..()
+
+/// Builds one overlay image, optionally tinted. Draws in order added, on the car's own layer.
+/obj/darkpack_car/proc/make_part_overlay(state, tint)
+	var/image/overlay_image = image(icon = icon, icon_state = state, pixel_x = visual_offset, pixel_y = visual_offset)
+	if(tint)
+		overlay_image.color = tint
+	return overlay_image
+
+/// Rebuilds the body and paint overlays (under the rider), then the front holder (over the rider).
+/obj/darkpack_car/proc/update_vehicle_overlays()
+	cut_overlay(vehicle_overlays)
+	vehicle_overlays = list()
+	vehicle_overlays += make_part_overlay(body_icon_state)
+	if(paint_overlay_state)
+		vehicle_overlays += make_part_overlay(paint_overlay_state, paint_color)
+	add_overlay(vehicle_overlays)
+	update_front_holder()
+
+/obj/darkpack_car/proc/update_front_holder()
+	if(!front_overlay_state && !front_paint_overlay_state)
+		return
+	if(!front_holder)
+		front_holder = new()
+		vis_contents += front_holder
+	front_holder.plane = plane
+	front_holder.layer = CAR_LAYER + front_layer_offset
+	front_holder.cut_overlays()
+	if(front_overlay_state)
+		front_holder.add_overlay(make_part_overlay(front_overlay_state))
+	if(front_paint_overlay_state)
+		front_holder.add_overlay(make_part_overlay(front_paint_overlay_state, paint_color))
+
+/obj/darkpack_car/proc/set_paint_color(new_color)
+	paint_color = new_color
+	update_vehicle_overlays()
+
+/// Draws a rider on top of the vehicle through a holder object, between the body and front layers.
+/obj/darkpack_car/proc/show_occupant(mob/living/rider)
+	var/obj/effect/car_rider_holder/holder = new()
+	holder.plane = plane
+	holder.layer = CAR_LAYER + rider_layer_offset
+	holder.pixel_x = rider_pixel_x
+	holder.pixel_y = rider_pixel_y
+	holder.setDir(dir)
+	rider.vis_flags |= (VIS_INHERIT_DIR | VIS_INHERIT_LAYER)
+	holder.vis_contents += rider
+	vis_contents += holder
+	rider_holders[rider] = holder
+
+/obj/darkpack_car/proc/hide_occupant(mob/living/rider)
+	var/obj/effect/car_rider_holder/holder = rider_holders[rider]
+	if(!holder)
+		return
+	holder.vis_contents -= rider
+	vis_contents -= holder
+	rider_holders -= rider
+	rider.vis_flags &= ~(VIS_INHERIT_DIR | VIS_INHERIT_LAYER)
+	qdel(holder)
 
 /obj/darkpack_car/click_alt(mob/user)
 	var/list/radial_menu_options = list(
@@ -180,7 +291,7 @@
 		atom_storage.open_storage(user)
 		return CLICK_ACTION_SUCCESS
 
-	if(locked)
+	if(locked && lock_blocks_entry)
 		to_chat(user, span_warning("[src] is locked!"))
 		return CLICK_ACTION_BLOCKING
 	var/mob/living/occupent = passanger_map[pick]
@@ -385,7 +496,7 @@
 	if(!isliving(dropped))
 		return
 
-	if(locked)
+	if(locked && lock_blocks_entry)
 		to_chat(user, span_warning("[src] is locked."))
 		return
 
@@ -434,6 +545,8 @@
 // Please only call via driver_enter or passanger_enter
 /obj/darkpack_car/proc/enter_car(mob/living/user)
 	user.forceMove(src)
+	if(occupants_visible)
+		show_occupant(user)
 	visible_message(span_notice("[user] enters [src]."), \
 		span_notice("You enter [src]."))
 	playsound(src, 'modular_darkpack/master_files/sounds/effects/door/door.ogg', 50, TRUE)
@@ -449,6 +562,8 @@
 		driver = null
 	if(dumpe in passengers)
 		passengers -= dumpe
+	if(occupants_visible)
+		hide_occupant(dumpe)
 	dumpe.forceMove(loc)
 
 	var/list/exit_side = list(
@@ -703,7 +818,9 @@
 		return
 	if(!ISADVANCEDTOOLUSER(user))
 		return
-	var/turn_speed = min(abs(speed_in_pixels) / 10, 3)
+	var/turn_speed = 0
+	if(speed_in_pixels != 0)
+		turn_speed = clamp(abs(speed_in_pixels) / turn_speed_divisor, min_turn_speed, max_turn_speed)
 	switch(direction)
 		if(NORTH)
 			controlling(1, 0)
@@ -754,6 +871,11 @@
 /obj/darkpack_car/proc/apply_vector_angle()
 	var/new_dir = angle2dir(movement_vector)
 	setDir(new_dir)
+	for(var/mob/living/rider in rider_holders)
+		var/obj/effect/car_rider_holder/holder = rider_holders[rider]
+		holder.setDir(new_dir)
+	if(front_holder)
+		front_holder.setDir(new_dir)
 
 	var/turn_state = round(SIMPLIFY_DEGREES(movement_vector + 22.5) / 45)
 	var/minus_angle = turn_state * 45

@@ -119,6 +119,7 @@
 		owned_car.driver = null
 	if(owner in owned_car.passengers)
 		owned_car.passengers -= owner
+	owned_car.hide_occupant(owner)
 	owner.forceMove(owned_car.loc)
 
 	var/list/exit_side = list(
