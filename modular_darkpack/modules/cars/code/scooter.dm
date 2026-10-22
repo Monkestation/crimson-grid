@@ -32,3 +32,6 @@
 	turn_speed_divisor = 5
 	min_turn_speed = 1
 	max_turn_speed = 6
+
+	max_speed = 96
+	eject_speed_threshold = 8

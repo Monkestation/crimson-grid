@@ -159,6 +159,11 @@
 	var/min_turn_speed = 0
 	var/max_turn_speed = 3
 
+	/// Top speed in speed_in_pixels units, multiplied by stage. 64 is the old fixed value.
+	var/max_speed = 64
+	/// Impacts at or above this speed (speed_in_pixels / 4) throw occupants out of the vehicle. 0 = never.
+	var/eject_speed_threshold = 0
+
 	COOLDOWN_DECLARE(impact_delay)
 	COOLDOWN_DECLARE(beep_cooldown)
 
@@ -214,6 +219,9 @@
 	empty_car()
 	QDEL_NULL(front_holder)
 	. = ..()
+
+/obj/darkpack_car/AllowClick()
+	return TRUE
 
 /// Builds one overlay image, optionally tinted. Draws in order added, on the car's own layer.
 /obj/darkpack_car/proc/make_part_overlay(state, tint)
@@ -440,7 +448,6 @@
 	. = ..()
 	if(user.loc == src)
 		. += "<b>Gas</b>: [gas]/[CAR_TANK_MAX]"
-
 	if(broken)
 		. += span_notice("It appears to be broken.")
 	var/healthpercent = (atom_integrity/max_integrity) * 100
@@ -595,6 +602,8 @@
 	var/prev_speed = round(abs(speed_in_pixels)/4)
 	if(!prev_speed)
 		return
+	//impact below can zero or reduce our speed.
+	var/travel_angle = speed_in_pixels < 0 ? SIMPLIFY_DEGREES(movement_vector + 180) : movement_vector
 
 	if(istype(bumped_atom, /obj/transfer_point_vamp))
 		COOLDOWN_START(src, impact_delay, 0.75 SECONDS)
@@ -655,8 +664,32 @@
 		var/driver_skill = clamp(driver.st_get_stat(STAT_DRIVE)/2, 1, 4)
 		dam = round(dam/driver_skill)
 		driver.apply_damage(prev_speed, BRUTE, BODY_ZONE_CHEST)
+	eject_occupants_on_impact(prev_speed, travel_angle, bumped_atom)
 	take_damage(dam)
 	return
+
+/// Throws everyone out of the vehicle, in the direction it was travelling, if the impact was fast enough.
+/obj/darkpack_car/proc/eject_occupants_on_impact(prev_speed, travel_angle, atom/bumped_atom)
+	if(!eject_speed_threshold || prev_speed < eject_speed_threshold)
+		return
+	if(isliving(bumped_atom))
+		var/mob/living/hit_mob = bumped_atom
+		if(hit_mob.mob_size <= MOB_SIZE_SMALL) // Running over a rat shouldn't launch you
+			return
+	var/list/occupants = list()
+	for(var/mob/living/rider in src)
+		occupants += rider
+	if(!length(occupants))
+		return
+	var/throw_distance = clamp(round(prev_speed / 3), 2, 7)
+	for(var/mob/living/rider as anything in occupants)
+		empty_occupent(rider)
+		rider.Knockdown(2 SECONDS)
+		rider.visible_message(span_danger("[rider] is thrown from [src]!"), \
+			span_userdanger("You are thrown from [src]!"))
+		var/turf/throw_target = get_turf_in_angle(travel_angle, get_turf(rider), throw_distance)
+		if(throw_target)
+			rider.throw_at(throw_target, throw_distance, 1)
 
 /obj/darkpack_car/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
@@ -856,7 +889,8 @@
 				speed_in_pixels = speed_in_pixels+adjusting_speed*3
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else
-				speed_in_pixels = min(stage*64, max(-stage*64, speed_in_pixels+adjusting_speed*stage))
+				var/top_speed = round(stage * max_speed)
+				speed_in_pixels = min(top_speed, max(-top_speed, speed_in_pixels+adjusting_speed*stage))
 				playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 10, FALSE)
 		else
 			if(adjusting_speed > 0 && speed_in_pixels < 0)
