@@ -1,3 +1,24 @@
+/datum/quirk/darkpack/thaumaturgical_sense
+	name = "Thaumaturgical Sense"
+	desc = "todo"
+	value = 2
+	icon = FA_ICON_EYE
+	allowed_splats = list(SPLAT_KINDRED)
+	included_clans = list(VAMPIRE_CLAN_TREMERE)
+	quirk_flags = QUIRK_HIDE_FROM_SCAN
+
+/datum/quirk/darkpack/thaumaturgical_sense/add_to_holder(mob/living/new_holder, quirk_transfer = FALSE, client/client_source, unique = TRUE, announce = TRUE)
+	var/thaum_dots = new_holder.get_discipline_dots(/datum/discipline/thaumaturgy)
+	var/auspex_dots = new_holder.get_discipline_dots(/datum/discipline/auspex)
+	if(thaum_dots < 1 || auspex_dots < 2)
+		to_chat(new_holder, span_warning("[failure_message]"))
+		return FALSE
+	return ..()
+
+/datum/quirk/darkpack/thaumaturgical_sense/add(client/client_source)
+	var/datum/action/cooldown/thaumaturgical_sense/action = new()
+	action.Grant(quirk_holder)
+
 /datum/action/cooldown/thaumaturgical_sense
 	name = "Thaumaturgical Sense"
 	button_icon = 'modular_darkpack/modules/powers/icons/actions.dmi'
@@ -7,9 +28,11 @@
 	overlay_icon_state = null
 	cooldown_time = 8 SECONDS
 
+	/// List of all images currently on our screen
 	var/list/all_images = list()
 	var/sense_range = 10
 
+	/// List of things related to thaumaturgy (also count in things like artifacts)
 	var/static/list/thaumaturgy_items = typecacheof(list(
 		/obj/ritual_rune/thaumaturgy,
 		/obj/item/occult_artifact/vampire,
@@ -18,6 +41,7 @@
 		/obj/item/path_spellbook,
 		/obj/item/ritual_tome/arcane,
 	))
+	/// List of things related to necromancy
 	var/static/list/necromancy_items = typecacheof(list(
 		/obj/ritual_rune/necromancy,
 		/obj/item/ritual_tome/necromancy,
@@ -28,12 +52,14 @@
 	do_pulse()
 	owner.emote("stare")
 
+/// Checks for atoms in range and checks if they are magical
 /datum/action/cooldown/thaumaturgical_sense/proc/do_pulse()
 	for(var/atom/checked_atom in orange(sense_range, get_turf(owner)))
 		if(!isobj(checked_atom) && !isliving(checked_atom))
 			continue
 		find_magic_source(checked_atom)
 
+/// Determines if item is magical on its own, is stored inside contents of an atom, or if living mob has a magical discipline
 /datum/action/cooldown/thaumaturgical_sense/proc/find_magic_source(atom/target)
 	if(determine_magic_item(target))
 		return
@@ -56,6 +82,7 @@
 
 	return FALSE
 
+/// Checks if item is in the typecache of magical items or is enchanted by a ritual, passes a color depending on the source of magic stain
 /datum/action/cooldown/thaumaturgical_sense/proc/determine_magic_item(atom/target, atom/object_owner)
 	// The checks could probably be done better but it works for now
 	// Could be flag on the objects maybe?
@@ -71,19 +98,21 @@
 
 	return FALSE
 
+/// Makes client actually see the image and animates it to pulse
 /datum/action/cooldown/thaumaturgical_sense/proc/show_image(atom/input, color, atom/object_owner)
 	if(!owner.client)
 		return
 	var/image/final_image = generate_image(input, color, object_owner)
 	owner.client.images += final_image
 	all_images += final_image
-	animate(final_image, alpha = 255, time = 0.5 SECONDS, loop = -1)
+	animate(final_image, alpha = 255, time = 0.5 SECONDS)
 	animate(alpha = 0, time = 2.5 SECONDS)
 
 	addtimer(CALLBACK(src, PROC_REF(delete_images)), 3 SECONDS)
 
 	return TRUE
 
+/// Remove images from client and list of our images
 /datum/action/cooldown/thaumaturgical_sense/proc/delete_images()
 	if(!isliving(owner))
 		return
@@ -93,6 +122,7 @@
 		all_images -= our_image
 		qdel(our_image)
 
+/// Actually generate our image
 /datum/action/cooldown/thaumaturgical_sense/proc/generate_image(atom/input, magic_color, atom/object_owner)
 	var/image/final_image = new
 	final_image.layer += ABOVE_MOB_LAYER
