@@ -70,9 +70,9 @@
 			break
 
 	var/garou_message = howl[shifter.id]
-	// CRIMSON GRID CHANGES START - 445 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
+	// CRIMSON GRID CHANGES START - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
 	var/howler_subject = shifter.id == SPLAT_GAROU ? "A wolf" : "A raven" // select message type for howl recognition
-	// CRIMSON GRID CHANGES PAUSE -- MORE TO FOLLOW - 445
+	// CRIMSON GRID CHANGES PAUSE -- MORE TO FOLLOW - 447
 	/*
 	var/tribe = living_mob.auspice.tribe.name
 	if (tribe)
@@ -86,7 +86,7 @@
 	var/howl_details
 	var/final_message
 	for(var/mob/living/howled_at in GLOB.player_list - owner)
-		// CG CHANGES RESUME - 445 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
+		// CG CHANGES RESUME - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
 		var/datum/splat/werewolf/shifter/listener_splat = get_shifter_splat(howled_at) // get recipient's splat info
 		if(listener_splat)
 			var/howler_name = LAZYACCESS(howled_at.mind?.guestbook?.known_names, living_mob.real_name) // directly read names from Guestbook so known howlers don't become unknown when masked
@@ -118,7 +118,7 @@
 			howler_message = replacetext(howler_message, howler_subject, howler_name) // change text if howler IS known
 			howl_details = get_message(howled_at, origin_turf)
 			final_message = howler_message + howl_details
-			// CG CHANGES END - 445 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
+			// CG CHANGES END - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
 			to_chat(howled_at, span_boldnotice(final_message))
 
 
