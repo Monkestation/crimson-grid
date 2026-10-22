@@ -28,9 +28,13 @@
 	do_pulse()
 	owner.emote("stare")
 
+/datum/action/cooldown/thaumaturgical_sense/proc/do_pulse()
+	for(var/atom/checked_atom in orange(sense_range, get_turf(owner)))
+		if(!isobj(checked_atom) && !isliving(checked_atom))
+			continue
+		find_magic_source(checked_atom)
+
 /datum/action/cooldown/thaumaturgical_sense/proc/find_magic_source(atom/target)
-	// The checks could probably be done better but it works for now
-	// Could be flag on the objects maybe?
 	if(determine_magic_item(target))
 		return
 
@@ -66,12 +70,6 @@
 			return show_image(target, COLOR_RED, object_owner)
 
 	return FALSE
-
-/datum/action/cooldown/thaumaturgical_sense/proc/do_pulse()
-	for(var/atom/checked_atom in orange(sense_range, get_turf(owner)))
-		if(!isobj(checked_atom) && !isliving(checked_atom))
-			continue
-		find_magic_source(checked_atom)
 
 /datum/action/cooldown/thaumaturgical_sense/proc/show_image(atom/input, color, atom/object_owner)
 	if(!owner.client)
