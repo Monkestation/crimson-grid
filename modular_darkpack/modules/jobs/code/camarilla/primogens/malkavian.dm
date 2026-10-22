@@ -15,7 +15,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_MALKAVIAN
 	departments_list = list(
-		///datum/job_department/clinic, CRIMSON EDIT REMOVAL - #206
+		/datum/job_department/clinic,
 		/datum/job_department/camarilla,
 	)
 
