@@ -92,7 +92,7 @@
 		return
 
 	var/obj/darkpack_car/owned_car = owner.loc
-	if(owned_car.locked && lock_blocks_entry)
+	if(owned_car.locked && owned_car.lock_blocks_entry)
 		to_chat(owner, span_notice("[owned_car] is locked."))
 		return
 	if(!owned_car.on)
