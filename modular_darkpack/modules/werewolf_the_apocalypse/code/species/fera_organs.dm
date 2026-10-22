@@ -134,6 +134,8 @@
 
 //CRIMSION GRID ADDITION END
 
+//CRMISION GRID ADDITION START - objects in hands for crinos form
+
 /obj/item/bodypart/arm/left/fera/aggravated/warform/Initialize(mapload)
 	held_hand_offset = new(
 		attached_part = src,
@@ -151,3 +153,5 @@
 		offset_y = list("south" = 10, "north" = 16 , "east" = 8 ,"west" = 9),
 	)
 	return ..()
+
+//CRIMSION GRID ADDITION END
