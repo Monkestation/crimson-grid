@@ -61,16 +61,17 @@
 		/obj/item/blood_hunt,
 		/obj/item/path_spellbook,
 		/obj/item/ritual_tome/arcane,
+		/obj/item/occult_book,
 	))
 
 /datum/action/cooldown/thaumaturgical_sense/Activate(atom/target)
 	. = ..()
 	var/roll_result = SSroll.storyteller_roll_datum(owner, roll_datum = /datum/storyteller_roll/thaumaturgical_sense)
+	owner.emote("stare")
 	if(roll_result < 1)
 		to_chat(owner, span_warning("You fail to detect any magic in the area!"))
 		return
 	do_pulse(roll_result)
-	owner.emote("stare")
 
 /// Checks for atoms in range and checks if they are magical
 /datum/action/cooldown/thaumaturgical_sense/proc/do_pulse(success_count)
