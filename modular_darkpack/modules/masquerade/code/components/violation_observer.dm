@@ -23,6 +23,8 @@
 /atom/movable/proc/on_masquerade_violation()
 	if(!COOLDOWN_FINISHED(src, masquerade_violation_cooldown))
 		return
+	if(HAS_TRAIT(src, TRAIT_OBFUSCATED))
+		return
 	var/area/vtm/breacher_area = get_area(src)
 	if(!istype(breacher_area, /area/vtm))
 		return
@@ -31,6 +33,10 @@
 	for(var/atom/movable/moving_atom in view(7, loc))
 		if(!moving_atom.violation_observer)
 			continue
+		if(istype(moving_atom, /mob/living))
+			var/mob/living/living_breach_witness = moving_atom
+			if(living_breach_witness.has_status_effect(/datum/status_effect/kissed) || living_breach_witness.has_status_effect(/datum/status_effect/delirium))
+				continue
 		SEND_SIGNAL(moving_atom, COMSIG_SEEN_MASQUERADE_VIOLATION, src)
 	COOLDOWN_START(src, masquerade_violation_cooldown, 1 TURNS)
 
@@ -38,6 +44,8 @@
 	SIGNAL_HANDLER
 
 	if(!source || !player_breacher || ismundane(player_breacher)) //Humans cant break the masquerade. Because reasons.
+		return
+	if(HAS_TRAIT(player_breacher, TRAIT_OBFUSCATED))
 		return
 
 	if(isliving(source))

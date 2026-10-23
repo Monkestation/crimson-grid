@@ -16,7 +16,7 @@
 		if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE) && (iscarbon(owner) ? !(owner.obscured_slots & HIDEFACE) : TRUE))
 			SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
-		if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES) && (iscarbon(owner) ? !(owner.obscured_slots & HIDEEYES) : TRUE))
+		if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES) && (iscarbon(owner) ? !(owner.is_eyes_covered()) : TRUE))
 			SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 		COOLDOWN_START(src, check_masq_violating_cooldown, 1 TURNS)

@@ -117,6 +117,8 @@ SUBSYSTEM_DEF(masquerade)
 
 // Save the player's masquerade level to their character sheet.
 /datum/controller/subsystem/masquerade/proc/save_persistent_masquerade(mob/living/player_breacher)
+	if(!CONFIG_GET(flag/persistent_masquerade))
+		return
 	var/mob/living/carbon/human/human_breacher = player_breacher
 	if(!istype(human_breacher))
 		return
