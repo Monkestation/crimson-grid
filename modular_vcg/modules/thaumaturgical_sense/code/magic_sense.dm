@@ -7,7 +7,7 @@
  *
  */
 /datum/quirk/darkpack/thaumaturgical_sense
-	name = "Thaumaturgical Sense"
+	name = "Thaumaturgical Sight"
 	desc = "Combined discipline of Auspex and Thaumaturgy, this allows the user can see magical auras, \
 		similar to how one would with Aura Perception. \
 		Information you gain about the subject depends on the amount of successes. \
@@ -37,7 +37,7 @@
 	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/action/cooldown/thaumaturgical_sense
-	name = "Thaumaturgical Sense"
+	name = "Thaumaturgical Sight"
 	desc = "With this ability, the user can see magical auras, similar to how one would with Aura Perception.\
 		Kindred stained with blood magic or magical artifacts will be highlighted."
 	button_icon = 'modular_darkpack/modules/powers/icons/actions.dmi'
@@ -49,6 +49,7 @@
 
 	/// List of all images currently on our screen
 	var/list/all_images = list()
+	/// Range of our sense
 	var/sense_range = 10
 
 	/// List of things related to thaumaturgy (also count in things like artifacts)
