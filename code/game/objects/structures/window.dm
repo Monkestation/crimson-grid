@@ -352,6 +352,8 @@
 	if(defenestration_immune || (resistance_flags & INDESTRUCTIBLE))
 		return FALSE
 	var/force = get_defenestration_force(victim, throwingdatum)
+	if(HAS_TRAIT(victim, TRAIT_HUGE_SIZE))
+		force *= 1.5
 	var/turf/window_turf = get_turf(src)
 	var/move_dir = get_dir(victim, src) || victim.dir
 
