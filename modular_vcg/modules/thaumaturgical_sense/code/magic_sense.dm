@@ -86,7 +86,7 @@
 		return
 
 	// Check if our contents have items
-	for(var/thing as anything in target.get_all_contents())
+	for(var/thing in target.get_all_contents())
 		if(determine_magic_item(thing, target))
 			break
 		continue
@@ -170,7 +170,7 @@
 	if(!isliving(owner))
 		return
 	var/mob/living/living_owner = owner
-	for(var/our_image as anything in all_images)
+	for(var/our_image in all_images)
 		living_owner.client?.images -= our_image
 		all_images -= our_image
 		qdel(our_image)
