@@ -354,6 +354,9 @@
 	var/force = get_defenestration_force(victim, throwingdatum)
 	if(HAS_TRAIT(victim, TRAIT_HUGE_SIZE))
 		force *= 1.5
+	if(!victim.is_clan(/datum/subsplat/vampire_clan/gargoyle))
+		force *= 2
+
 	var/turf/window_turf = get_turf(src)
 	var/move_dir = get_dir(victim, src) || victim.dir
 
