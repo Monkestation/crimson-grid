@@ -91,7 +91,7 @@
 		return
 
 	if(precise)
-		for(var/discipline as anything in known_disciplines)
+		for(var/datum/discipline/discipline as anything in known_disciplines)
 			to_chat(owner, span_cult("[target] has stains of [discipline.name]!"))
 
 	show_image(target)
@@ -101,8 +101,6 @@
 	// The checks could probably be done better but it works for now
 	// Could be flag on the objects maybe?
 	if(is_type_in_typecache(target, thaumaturgy_items))
-		return show_image(target, object_owner)
-	else if(is_type_in_typecache(target, necromancy_items))
 		return show_image(target, object_owner)
 	else
 		// Check for enchantments too
