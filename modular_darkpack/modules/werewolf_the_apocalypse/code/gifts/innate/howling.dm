@@ -70,9 +70,9 @@
 			break
 
 	var/garou_message = howl[shifter.id]
-	// CRIMSON GRID CHANGES START - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
+	// CRIMSON EDIT ADD START - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
 	var/howler_subject = shifter.id == SPLAT_GAROU ? "A wolf" : "A raven" // select message type for howl recognition
-	// CRIMSON GRID CHANGES PAUSE -- MORE TO FOLLOW - 447
+	// CRIMSON GRID ADD END - 447
 	/*
 	var/tribe = living_mob.auspice.tribe.name
 	if (tribe)
@@ -86,8 +86,8 @@
 	var/howl_details
 	var/final_message
 	for(var/mob/living/howled_at in GLOB.player_list - owner)
-		// CG CHANGES RESUME - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
-		var/datum/splat/werewolf/shifter/listener_splat = get_shifter_splat(howled_at) // get recipient's splat info
+		// CRIMSON EDIT ADD START - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
+		var/datum/splat/werewolf/shifter/listener_splat = get_shifter_splat(howled_at) // get recipient's splat info. Was: if(get_shifter_splat(howled_at)) 
 		if(listener_splat)
 			var/howler_name = LAZYACCESS(howled_at.mind?.guestbook?.known_names, living_mob.real_name) // directly read names from Guestbook so known howlers don't become unknown when masked
 			var/howler_message = garou_message // define this here so it isn't shared across the loop.
@@ -116,9 +116,11 @@
 			if(!howler_name)
 				howler_name = howler_subject // use generic howl text if howler is unknown
 			howler_message = replacetext(howler_message, howler_subject, howler_name) // change text if howler IS known
+			// CRIMSON EDIT ADD END - 447
 			howl_details = get_message(howled_at, origin_turf)
+			// CRIMSON EDIT ADD START - 447
 			final_message = howler_message + howl_details
-			// CG CHANGES END - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
+			// CRIMSON EDIT ADD END - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
 			to_chat(howled_at, span_boldnotice(final_message))
 
 
