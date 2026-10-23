@@ -39,6 +39,6 @@
 // CRIMSON EDIT ADD START - Magadon Drugs
 		new /datum/data/vending_product("magafinil pill bottle", /obj/item/storage/pill_bottle/magafinil, 200),
 		new /datum/data/vending_product("magaloft pill bottle", /obj/item/storage/pill_bottle/magaloft, 250),
-		new /datum/data/vending_product("magaversidin pill bottle", /obj/item/storage/pill_bottle/magaversidin, 400),
+		new /datum/data/vending_product("magaversidin pill bottle", /obj/item/storage/pill_bottle/magaversidin, 300),
 // CRIMSON EDIT ADD END - Magadon Drugs
 	)
