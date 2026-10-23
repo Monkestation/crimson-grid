@@ -130,10 +130,10 @@
 		if(!(their_discipline.type in our_known_paths))
 			// If we have five or more successes we can recognize the path without knowing it
 			if(success_count < 5)
-				to_chat(owner, span_cult("[target] seems to know path you can't recognize!"))
+				to_chat(owner, span_cult("[GET_GUESTBOOK_NAME(owner, target)] seems to know path you can't recognize!"))
 				continue
 
-		to_chat(owner, span_cult("[target] seems to know [their_discipline.name]!"))
+		to_chat(owner, span_cult("[GET_GUESTBOOK_NAME(owner, target)] seems to know [their_discipline.name]!"))
 
 	show_image(target)
 
@@ -158,10 +158,10 @@
 	var/image/final_image = generate_image(input, object_owner)
 	owner.client.images += final_image
 	all_images += final_image
-	animate(final_image, alpha = 255, time = 0.5 SECONDS)
-	animate(alpha = 0, time = 2.5 SECONDS)
+	animate(final_image, alpha = 255, time = 1 SECONDS)
+	animate(alpha = 0, time = 4 SECONDS)
 
-	addtimer(CALLBACK(src, PROC_REF(delete_images)), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(delete_images)), 5 SECONDS)
 
 	return TRUE
 
