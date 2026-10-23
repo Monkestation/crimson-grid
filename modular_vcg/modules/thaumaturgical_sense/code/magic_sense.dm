@@ -51,7 +51,7 @@
 	/// List of all images currently on our screen
 	var/list/all_images = list()
 	/// Range of our sense
-	var/sense_range = 10
+	var/sense_range = 8
 
 	/// List of things related to thaumaturgy (also count in things like artifacts)
 	var/static/list/thaumaturgy_items = typecacheof(list(
