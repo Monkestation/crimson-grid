@@ -338,6 +338,23 @@
 	if(hit_window.try_defenestrate(src, throwingdatum))
 		. |= COMPONENT_MOVABLE_IMPACT_NEVERMIND
 
+#define LANDING_BOTCH -1
+#define LANDING_ROUGH 0
+#define LANDING_CLEAN 1
+
+/obj/structure/window/proc/roll_landing(mob/living/victim)
+	var/datum/storyteller_roll/jump_landing/roll = new()
+	// Harder against sturdier windows
+	roll.difficulty = clamp(6 + (reinf ? 1 : 0) + (fulltile ? 1 : 0), 6, 9)
+	var/result = roll.st_roll(victim, src)
+	qdel(roll)
+	switch(result)
+		if(ROLL_SUCCESS)
+			return LANDING_CLEAN
+		if(ROLL_BOTCH)
+			return LANDING_BOTCH
+	return LANDING_ROUGH
+
 ///force a thrown body hits with.
 /obj/structure/window/proc/get_defenestration_force(mob/living/victim, datum/thrownthing/throwingdatum)
 	var/strength = 0
@@ -351,33 +368,105 @@
 /obj/structure/window/proc/try_defenestrate(mob/living/victim, datum/thrownthing/throwingdatum)
 	if(defenestration_immune || (resistance_flags & INDESTRUCTIBLE))
 		return FALSE
+
 	var/force = get_defenestration_force(victim, throwingdatum)
 	if(HAS_TRAIT(victim, TRAIT_HUGE_SIZE))
 		force *= 1.5
-	if(!victim.is_clan(/datum/subsplat/vampire_clan/gargoyle))
+	if(victim.is_clan(/datum/subsplat/vampire_clan/gargoyle))
 		force *= 2
+
+	var/mob/living/thrower = throwingdatum?.thrower?.resolve()
+	var/self_jump = (thrower && thrower == victim)
+
+	// Landing roll, only for self-thrown leaps
+	var/landing = LANDING_CLEAN
+	var/damage_mult = 1
+	if(self_jump)
+		landing = roll_landing(victim)
+		switch(landing)
+			if(LANDING_BOTCH)
+				damage_mult = 1.5
+			if(LANDING_ROUGH)
+				damage_mult = 1
+			if(LANDING_CLEAN)
+				damage_mult = 0.25
 
 	var/turf/window_turf = get_turf(src)
 	var/move_dir = get_dir(victim, src) || victim.dir
 
 	if(force >= atom_integrity)
-		// Shatter, then carry the victim through with reduced momentum
-		visible_message(span_danger("[victim] crashes through [src]!"))
 		var/remaining_force = force - atom_integrity
-		deconstruct(FALSE)
+		if(self_jump)
+			switch(landing)
+				if(LANDING_CLEAN)
+					visible_message(span_danger("[victim] sails through [src] and lands cleanly in a rain of glass!"))
+				if(LANDING_BOTCH)
+					visible_message(span_danger("[victim] smashes through [src] and tumbles out of control!"))
+				else
+					visible_message(span_danger("[victim] leaps through [src], shattering it!"))
+		else
+			visible_message(span_danger("[victim] crashes through [src]!"))
+
+		deconstruct(FALSE) // atom_deconstruct plays the break sound and spawns shards
 		victim.forceMove(window_turf)
-		victim.apply_damage(clamp(remaining_force * 0.25, 5, 25), BRUTE, victim.get_random_valid_zone(), sharpness = SHARP_EDGED)
-		victim.Knockdown(2 SECONDS)
-		var/atom/target = get_ranged_target_turf(window_turf, move_dir, 2)
-		addtimer(CALLBACK(victim, TYPE_PROC_REF(/atom/movable, throw_at), target, 2, 1, throwingdatum?.thrower, FALSE), 1)
+
+		var/shard_damage = clamp(remaining_force * 0.25, 5, 25)
+		if(self_jump)
+			shard_damage *= damage_mult
+		if(shard_damage > 0)
+			victim.apply_damage(shard_damage, BRUTE, victim.get_random_valid_zone(), sharpness = SHARP_EDGED)
+
+		var/atom/target
+		var/range = 2
+		var/speed = 1
+		if(self_jump && throwingdatum)
+			// Keep going toward the original jump destination
+			target = throwingdatum.target_turf
+			range = max(throwingdatum.maxrange - throwingdatum.dist_travelled, 1)
+			speed = throwingdatum.speed
+			switch(landing)
+				if(LANDING_BOTCH)
+					victim.Knockdown(3 SECONDS)
+					range = 1
+				if(LANDING_ROUGH)
+					victim.Knockdown(1 SECONDS)
+					range = max(round(range / 2), 1)
+		else
+			victim.Knockdown(2 SECONDS)
+			target = get_ranged_target_turf(window_turf, move_dir, 2)
+
+		// The original throw is mid-finalization, so re-throw next tick
+		addtimer(CALLBACK(victim, TYPE_PROC_REF(/atom/movable, throw_at), target, range, speed, thrower, FALSE), 1)
 		return TRUE
 
 	//boing
 	take_damage(force * 0.5, BRUTE, "", TRUE)
-	victim.visible_message(span_warning("[victim] slams into [src]!"), span_userdanger("You slam into [src]!"))
-	victim.apply_damage(5 + (force * 0.1), BRUTE, victim.get_random_valid_zone())
-	victim.Knockdown(1 SECONDS)
+	var/impact_damage = 5 + (force * 0.1)
+	if(self_jump)
+		impact_damage *= damage_mult
+		if(landing == LANDING_CLEAN)
+			victim.visible_message(span_notice("[victim] hits [src], absorbs the impact and rolls clear."), span_notice("You hit [src] but roll with it."))
+		else
+			victim.visible_message(span_warning("[victim] slams into [src]!"), span_userdanger("You slam into [src]!"))
+	else
+		victim.visible_message(span_warning("[victim] slams into [src]!"), span_userdanger("You slam into [src]!"))
+
+	if(impact_damage > 0)
+		victim.apply_damage(impact_damage, BRUTE, victim.get_random_valid_zone())
+
+	if(!self_jump)
+		victim.Knockdown(1 SECONDS)
+	else
+		switch(landing)
+			if(LANDING_BOTCH)
+				victim.Knockdown(3 SECONDS)
+			if(LANDING_ROUGH)
+				victim.Knockdown(2 SECONDS)
 	return TRUE
+
+#undef LANDING_BOTCH
+#undef LANDING_ROUGH
+#undef LANDING_CLEAN
 
 /obj/structure/window/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	. = ..()
