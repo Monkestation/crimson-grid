@@ -1,6 +1,17 @@
+/**
+ * Thaumaturgical Sense
+ *
+ * Combined discipline of Auspex 2 and Thaumaturgy 1
+ * But since we don't have any system for combined disciplines implemented
+ * We have it as a merit (temporarily)
+ *
+ */
 /datum/quirk/darkpack/thaumaturgical_sense
 	name = "Thaumaturgical Sense"
-	desc = "todo"
+	desc = "Combined discipline of Auspex and Thaumaturgy, this allows the user can see magical auras, \
+		similar to how one would with Aura Perception. \
+		Information you gain about the subject depends on the amount of successes. \
+		You must have at least two dots in Auspex and one dot in Thaumaturgy to use it."
 	value = 2
 	icon = FA_ICON_EYE
 	allowed_splats = list(SPLAT_KINDRED)
@@ -27,6 +38,8 @@
 
 /datum/action/cooldown/thaumaturgical_sense
 	name = "Thaumaturgical Sense"
+	desc = "With this ability, the user can see magical auras, similar to how one would with Aura Perception.\
+		Kindred stained with blood magic or magical artifacts will be highlighted."
 	button_icon = 'modular_darkpack/modules/powers/icons/actions.dmi'
 	button_icon_state = "thaumaturgy"
 	background_icon = 'modular_darkpack/master_files/icons/mob/actions/backgrounds.dmi'
@@ -110,6 +123,7 @@
 		if(!istype(their_discipline, /datum/discipline/thaumaturgy) && !istype(their_discipline, /datum/discipline/path))
 			continue
 		if(!(their_discipline.type in our_known_paths))
+			// If we have five or more successes we can recognize the path without knowing it
 			if(success_count < 5)
 				to_chat(owner, span_cult("[target] seems to know path you can't recognize!"))
 				continue
