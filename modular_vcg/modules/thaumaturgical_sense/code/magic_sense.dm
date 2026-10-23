@@ -19,8 +19,8 @@
 	quirk_flags = QUIRK_HIDE_FROM_SCAN
 
 /datum/quirk/darkpack/thaumaturgical_sense/add_to_holder(mob/living/new_holder, quirk_transfer = FALSE, client/client_source, unique = TRUE, announce = TRUE)
-	var/thaum_dots = new_holder.get_discipline_dots(/datum/discipline/thaumaturgy)
-	var/auspex_dots = new_holder.get_discipline_dots(/datum/discipline/auspex)
+	var/thaum_dots = new_holder?.get_discipline_dots(/datum/discipline/thaumaturgy)
+	var/auspex_dots = new_holder?.get_discipline_dots(/datum/discipline/auspex)
 	if(thaum_dots < 1 || auspex_dots < 2)
 		to_chat(new_holder, span_warning("[failure_message]"))
 		return FALSE
