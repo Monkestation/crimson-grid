@@ -61,3 +61,76 @@
 	value = 0
 	icon = FA_ICON_HAND_DOTS
 	allowed_splats = list(SPLAT_KINDRED)
+
+/datum/quirk/darkpack/wyrmtainted
+	name = "Wyrm Tainted"
+	desc = "Due to some supernatural accident, an unfortunate quirk of heredity, or whatever reason, you have the stink of the Wyrm, a God of destruction in the eyes of most shapeshifters. Some shapeshifters are able to notice your stink and may seek to KILL you for your association with the Wyrm."
+	value = -1
+	mob_trait = TRAIT_WYRMTAINTED
+	gain_text = span_notice("You feel tainted.")
+	lose_text = span_notice("You don't feel tainted anymore.")
+	allowed_splats = list(SPLAT_NONE, SPLAT_GHOUL, SPLAT_KINFOLK)
+	icon = FA_ICON_WORM
+	failure_message = "You don't feel tainted anymore."
+
+/datum/quirk/darkpack/item_quirk/gun_license
+	name = "Concealed Carry Permit"
+	desc = "You have a permit to carry small concealed firearms."
+	value = 2
+	icon = FA_ICON_GUN
+
+/datum/quirk/darkpack/item_quirk/gun_license/add_unique(client/client_source)
+	var/mob/living/carbon/human/holder = astype(quirk_holder)
+	var/obj/item/card/carry_permit/permit = new(get_turf(holder))
+	permit.link_human(holder)
+	give_item_to_holder(
+		permit,
+		list(
+			LOCATION_LPOCKET,
+			LOCATION_RPOCKET,
+			LOCATION_BACKPACK,
+			LOCATION_HANDS,
+		),
+		flavour_text = "This is your concealed carry permit.",
+		notify_player = TRUE,
+	)
+
+/obj/item/card/carry_permit
+	/// Owner
+	var/owner = ""
+	/// If the ID is a counterfit.
+	var/fake = FALSE
+	/// If the NAME does not belong to the person.
+	var/fake_identity = FALSE
+	var/datum/storyteller_roll/investigation/examine_roll
+
+/obj/item/card/carry_permit/Initialize(mapload)
+	. = ..()
+	var/mob/living/carbon/human/user = null
+	if(ishuman(loc)) // In pockets
+		user = loc
+	else if(ishuman(loc?.loc)) // In backpack
+		user = loc.loc
+	if(user)
+		link_human(user)
+
+/obj/item/card/carry_permit/proc/link_human(mob/living/carbon/human/user)
+	if(HAS_TRAIT(user, TRAIT_ILLEGAL_IDENTITY))
+		fake = TRUE
+		fake_identity = TRUE
+
+	if(fake_identity)
+		owner = user.generate_random_mob_name(TRUE)
+	else
+		owner = user.real_name
+
+/obj/item/card/carry_permit/examine(mob/user)
+	. = ..()
+	if(!examine_roll)
+		examine_roll = new()
+		examine_roll.reroll_cooldown = 1 SCENES
+	var/roll_result = examine_roll.st_roll(user, src)
+	if(owner)
+		. += span_notice("It reads as belonging to [owner], issued by the local police department.")
+		if(fake && (roll_result == ROLL_SUCCESS))
+			. += span_notice("It looks like a crude counterfeit.")
