@@ -22,13 +22,15 @@
 /datum/storyteller_roll/thaumaturgical_sense
 	difficulty = 8
 	applicable_stats = list(STAT_PERCEPTION, STAT_OCCULT)
+	numerical = TRUE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/action/cooldown/thaumaturgical_sense
 	name = "Thaumaturgical Sense"
 	button_icon = 'modular_darkpack/modules/powers/icons/actions.dmi'
 	button_icon_state = "thaumaturgy"
 	background_icon = 'modular_darkpack/master_files/icons/mob/actions/backgrounds.dmi'
-	background_icon_state = "bg_discipline"
+	background_icon_state = "bg_default"
 	overlay_icon_state = null
 	cooldown_time = 8 SECONDS
 
@@ -48,7 +50,7 @@
 
 /datum/action/cooldown/thaumaturgical_sense/Activate(atom/target)
 	. = ..()
-	var/roll_result = SSroll.storyteller_roll_datum(owner, roll_datum = /datum/storyteller_roll/thaumaturgical_sense, numerical = TRUE)
+	var/roll_result = SSroll.storyteller_roll_datum(owner, roll_datum = /datum/storyteller_roll/thaumaturgical_sense)
 	if(roll_result < 1)
 		to_chat(owner, span_warning("You fail to detect any magic in the area!"))
 		return
@@ -80,7 +82,9 @@
 
 	return
 
+/// Handles checking for magic disciplines and comparing paths at higher success counts
 /datum/action/cooldown/thaumaturgical_sense/proc/handle_living(mob/living/target, success_count)
+	// Don't bother if they have no thaum at all
 	if(!target.get_discipline(/datum/discipline/thaumaturgy))
 		return
 
@@ -94,7 +98,7 @@
 		return
 
 	var/list/our_known_paths = list()
-
+	// Store all paths we currently know to compare them
 	for(var/datum/action/discipline/disc_action as anything in vampire.powers)
 		var/datum/discipline/discipline = disc_action.discipline
 		if(!istype(discipline, /datum/discipline/thaumaturgy) && !istype(discipline, /datum/discipline/path))
@@ -161,9 +165,9 @@
 	final_image.alpha = 0
 	final_image.appearance_flags |= RESET_COLOR|KEEP_APART
 	if(ishuman(input) && !object_owner)
-		var/mutable_appearance/diablerie_image = mutable_appearance('modular_darkpack/modules/powers/icons/auras.dmi', "old_aura", ABOVE_MOB_LAYER + 1, owner, ABOVE_LIGHTING_PLANE)
-		diablerie_image.color = COLOR_RED
-		final_image.add_overlay(diablerie_image)
+		var/mutable_appearance/magic_image = mutable_appearance('modular_darkpack/modules/powers/icons/auras.dmi', "old_aura", ABOVE_MOB_LAYER + 1, owner, ABOVE_LIGHTING_PLANE)
+		magic_image.color = COLOR_RED
+		final_image.add_overlay(magic_image)
 	else
 		final_image.add_filter(name = "ray", priority = 1, params = list(
 			type = "rays",
