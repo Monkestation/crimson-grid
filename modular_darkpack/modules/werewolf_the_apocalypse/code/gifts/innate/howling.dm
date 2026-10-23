@@ -116,11 +116,9 @@
 			if(!howler_name)
 				howler_name = howler_subject // use generic howl text if howler is unknown
 			howler_message = replacetext(howler_message, howler_subject, howler_name) // change text if howler IS known
-			// CRIMSON EDIT ADD END - 447
-			howl_details = get_message(howled_at, origin_turf)
-			// CRIMSON EDIT ADD START - 447
-			final_message = howler_message + howl_details // CG edit, was: final_message = garou_message + howl_details
 			// CRIMSON EDIT ADD END - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
+			howl_details = get_message(howled_at, origin_turf)
+			final_message = howler_message + howl_details // CRIMSON EDIT ADD - was: final_message = garou_message + howl_details
 			to_chat(howled_at, span_boldnotice(final_message))
 
 
