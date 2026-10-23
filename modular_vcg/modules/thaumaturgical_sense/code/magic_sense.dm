@@ -8,7 +8,7 @@
  */
 /datum/quirk/darkpack/thaumaturgical_sense
 	name = "Thaumaturgical Sight"
-	desc = "Combined discipline of Auspex and Thaumaturgy, this allows the user can see magical auras, \
+	desc = "Combined discipline of Auspex and Thaumaturgy, this allows the user can see magical auras on people and items, \
 		similar to how one would with Aura Perception. \
 		Information you gain about the subject depends on the amount of successes. \
 		You must have at least two dots in Auspex and one dot in Thaumaturgy to use it."
