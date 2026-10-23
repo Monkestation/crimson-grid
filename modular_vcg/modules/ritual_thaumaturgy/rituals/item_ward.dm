@@ -3,6 +3,7 @@
 	desc = "Mark a material object with a glyph drawn out of blood\
 			Causing any ghoul who touches the object to feel intense pain."
 	icon_state = "rune9"
+	word = ""
 	level = 2
 	cost = 3
 	var/list/targeted_splats = list(SPLAT_GHOUL)
