@@ -206,6 +206,7 @@
 	/// The 'sharpness' of the limb. Could indicate claws, teeth or spines. Should default to NONE, or blunt.
 	var/unarmed_sharpness = NONE
 
+	var/unarmed_pen = 0 //CRMISON GRID ADDITION - limb unarmed penetration 
 	/// Traits that are given to the holder of the part. This does not update automatically on life(), only when the organs are initially generated or inserted!
 	var/list/bodypart_traits
 	/// The name of the trait source that the organ gives. Should not be altered during the events of gameplay, and will cause problems if it is.
