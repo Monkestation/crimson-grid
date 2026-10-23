@@ -116,7 +116,7 @@
 	desc = "A box full of amnestics MediPens."
 	illustration = "epipen"
 
-/obj/item/storage/box/medipens/PopulateContents()
+/obj/item/storage/box/amnestics/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/reagent_containers/hypospray/medipen/amnestics(src)
 
@@ -125,6 +125,6 @@
 	desc = "A box full of flubusters MediPens."
 	illustration = "epipen"
 
-/obj/item/storage/box/medipens/PopulateContents()
+/obj/item/storage/box/flubuster/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/reagent_containers/hypospray/medipen/flubuster(src)
