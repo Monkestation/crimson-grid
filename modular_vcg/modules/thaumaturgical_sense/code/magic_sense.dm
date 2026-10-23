@@ -19,6 +19,10 @@
 	var/datum/action/cooldown/thaumaturgical_sense/action = new()
 	action.Grant(quirk_holder)
 
+/datum/storyteller_roll/thaumaturgical_sense
+	difficulty = 8
+	applicable_stats = list(STAT_PERCEPTION, STAT_OCCULT)
+
 /datum/action/cooldown/thaumaturgical_sense
 	name = "Thaumaturgical Sense"
 	button_icon = 'modular_darkpack/modules/powers/icons/actions.dmi'
@@ -41,26 +45,27 @@
 		/obj/item/path_spellbook,
 		/obj/item/ritual_tome/arcane,
 	))
-	/// List of things related to necromancy
-	var/static/list/necromancy_items = typecacheof(list(
-		/obj/ritual_rune/necromancy,
-		/obj/item/ritual_tome/necromancy,
-	))
 
 /datum/action/cooldown/thaumaturgical_sense/Activate(atom/target)
 	. = ..()
-	do_pulse()
+	var/roll_result = SSroll.storyteller_roll_datum(owner, roll_datum = /datum/storyteller_roll/thaumaturgical_sense, numerical = TRUE)
+	var/precise = FALSE
+	if(roll_result < 1)
+		return
+	if(roll_result >= 3)
+		precise = TRUE
+	do_pulse(precise)
 	owner.emote("stare")
 
 /// Checks for atoms in range and checks if they are magical
-/datum/action/cooldown/thaumaturgical_sense/proc/do_pulse()
+/datum/action/cooldown/thaumaturgical_sense/proc/do_pulse(precise)
 	for(var/atom/checked_atom in orange(sense_range, get_turf(owner)))
 		if(!isobj(checked_atom) && !isliving(checked_atom))
 			continue
-		find_magic_source(checked_atom)
+		find_magic_source(checked_atom, precise)
 
 /// Determines if item is magical on its own, is stored inside contents of an atom, or if living mob has a magical discipline
-/datum/action/cooldown/thaumaturgical_sense/proc/find_magic_source(atom/target)
+/datum/action/cooldown/thaumaturgical_sense/proc/find_magic_source(atom/target, precise)
 	if(determine_magic_item(target))
 		return
 
@@ -71,38 +76,47 @@
 		continue
 
 	if(!isliving(target))
-		return FALSE
+		return
 
-	var/mob/living/living_target = target
-	// Thaum takes priority
-	if(living_target.get_discipline(/datum/discipline/thaumaturgy))
-		return show_image(target, COLOR_RED)
-	else if(living_target.get_discipline(/datum/discipline/necromancy))
-		return show_image(target, COLOR_GREEN)
+	handle_living(target, precise)
 
-	return FALSE
+	return
+
+/datum/action/cooldown/thaumaturgical_sense/proc/handle_living(mob/living/target, precise)
+	var/list/known_disciplines = list()
+	if(target.get_discipline(/datum/discipline/thaumaturgy))
+		known_disciplines += /datum/discipline/thaumaturgy
+
+	if(!length(known_disciplines))
+		return
+
+	if(precise)
+		for(var/discipline as anything in known_disciplines)
+			to_chat(owner, span_cult("[target] has stains of [discipline.name]!"))
+
+	show_image(target)
 
 /// Checks if item is in the typecache of magical items or is enchanted by a ritual, passes a color depending on the source of magic stain
 /datum/action/cooldown/thaumaturgical_sense/proc/determine_magic_item(atom/target, atom/object_owner)
 	// The checks could probably be done better but it works for now
 	// Could be flag on the objects maybe?
 	if(is_type_in_typecache(target, thaumaturgy_items))
-		return show_image(target, COLOR_RED, object_owner)
+		return show_image(target, object_owner)
 	else if(is_type_in_typecache(target, necromancy_items))
-		return show_image(target, COLOR_GREEN, object_owner)
+		return show_image(target, object_owner)
 	else
 		// Check for enchantments too
 		var/datum/component/thaum_enchantment = GetComponent(/datum/component/blood_theft) || GetComponent(/datum/component/burning_blade)
 		if(thaum_enchantment)
-			return show_image(target, COLOR_RED, object_owner)
+			return show_image(target, object_owner)
 
 	return FALSE
 
 /// Makes client actually see the image and animates it to pulse
-/datum/action/cooldown/thaumaturgical_sense/proc/show_image(atom/input, color, atom/object_owner)
+/datum/action/cooldown/thaumaturgical_sense/proc/show_image(atom/input, atom/object_owner)
 	if(!owner.client)
 		return
-	var/image/final_image = generate_image(input, color, object_owner)
+	var/image/final_image = generate_image(input, object_owner)
 	owner.client.images += final_image
 	all_images += final_image
 	animate(final_image, alpha = 255, time = 0.5 SECONDS)
@@ -123,7 +137,7 @@
 		qdel(our_image)
 
 /// Actually generate our image
-/datum/action/cooldown/thaumaturgical_sense/proc/generate_image(atom/input, magic_color, atom/object_owner)
+/datum/action/cooldown/thaumaturgical_sense/proc/generate_image(atom/input, atom/object_owner)
 	var/image/final_image = new
 	final_image.layer += ABOVE_MOB_LAYER
 	final_image.plane = ABOVE_LIGHTING_PLANE
@@ -132,13 +146,13 @@
 	final_image.appearance_flags |= RESET_COLOR|KEEP_APART
 	if(ishuman(input) && !object_owner)
 		var/mutable_appearance/diablerie_image = mutable_appearance('modular_darkpack/modules/powers/icons/auras.dmi', "old_aura", ABOVE_MOB_LAYER + 1, owner, ABOVE_LIGHTING_PLANE)
-		diablerie_image.color = magic_color
+		diablerie_image.color = COLOR_RED
 		final_image.add_overlay(diablerie_image)
 	else
 		final_image.add_filter(name = "ray", priority = 1, params = list(
 			type = "rays",
 			size = 15,
-			color = magic_color,
+			color = COLOR_RED,
 		))
 
 	final_image.add_filter("aura_glow", 1, gauss_blur_filter(1))
