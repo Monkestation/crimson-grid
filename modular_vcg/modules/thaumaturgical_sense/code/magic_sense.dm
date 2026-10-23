@@ -83,23 +83,18 @@
 	return
 
 /datum/action/cooldown/thaumaturgical_sense/proc/handle_living(mob/living/target, precise)
-	var/list/known_disciplines = list()
-	if(target.get_discipline(/datum/discipline/thaumaturgy))
-		known_disciplines += /datum/discipline/thaumaturgy
-
-	if(!length(known_disciplines))
+	if(!target.get_discipline(/datum/discipline/thaumaturgy))
 		return
 
 	if(precise)
-		for(var/datum/discipline/discipline as anything in known_disciplines)
-			to_chat(owner, span_cult("[target] has stains of [discipline.name]!"))
+		to_chat(owner, span_cult("[target] has stains of Thaumaturgy!"))
 
 	show_image(target)
 
 /// Checks if item is in the typecache of magical items or is enchanted by a ritual, passes a color depending on the source of magic stain
 /datum/action/cooldown/thaumaturgical_sense/proc/determine_magic_item(atom/target, atom/object_owner)
 	// The checks could probably be done better but it works for now
-	// Could be flag on the objects maybe?
+	// It's possible we can use get_magic_sources() instead, but a lot of items checked lack the effect
 	if(is_type_in_typecache(target, thaumaturgy_items))
 		return show_image(target, object_owner)
 	else
