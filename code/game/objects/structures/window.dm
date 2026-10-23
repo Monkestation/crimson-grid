@@ -38,6 +38,8 @@
 	var/dramatically_disappearing = FALSE
 	/// If we added a leaning component to ourselves
 	var/added_leaning = FALSE
+	/// Set TRUE on windows that should never be broken by thrown bodies
+	var/defenestration_immune = FALSE
 
 /datum/armor/structure_window
 	melee = 50
@@ -325,6 +327,52 @@
 			return FALSE
 	return TRUE
 
+
+/mob/living/pre_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	. = ..()
+	if(. & COMPONENT_MOVABLE_IMPACT_NEVERMIND)
+		return
+	var/obj/structure/window/hit_window = hit_atom
+	if(!istype(hit_window))
+		return
+	if(hit_window.try_defenestrate(src, throwingdatum))
+		. |= COMPONENT_MOVABLE_IMPACT_NEVERMIND
+
+///force a thrown body hits with.
+/obj/structure/window/proc/get_defenestration_force(mob/living/victim, datum/thrownthing/throwingdatum)
+	var/strength = 0
+	var/mob/living/thrower = throwingdatum?.thrower.resolve()
+	if(istype(thrower))
+		strength = thrower.st_get_stat(STAT_STRENGTH) || 1
+	var/speed = throwingdatum ? throwingdatum.speed : 1
+	// base + thrower strength + victim mass + throw speed
+	return 10 + (strength * 25) + (victim.maxHealth * 0.1) + (speed * 5)
+
+/obj/structure/window/proc/try_defenestrate(mob/living/victim, datum/thrownthing/throwingdatum)
+	if(defenestration_immune || (resistance_flags & INDESTRUCTIBLE))
+		return FALSE
+	var/force = get_defenestration_force(victim, throwingdatum)
+	var/turf/window_turf = get_turf(src)
+	var/move_dir = get_dir(victim, src) || victim.dir
+
+	if(force >= atom_integrity)
+		// Shatter, then carry the victim through with reduced momentum
+		visible_message(span_danger("[victim] crashes through [src]!"))
+		var/remaining_force = force - atom_integrity
+		deconstruct(FALSE)
+		victim.forceMove(window_turf)
+		victim.apply_damage(clamp(remaining_force * 0.25, 5, 25), BRUTE, victim.get_random_valid_zone(), sharpness = SHARP_EDGED)
+		victim.Knockdown(2 SECONDS)
+		var/atom/target = get_ranged_target_turf(window_turf, move_dir, 2)
+		addtimer(CALLBACK(victim, TYPE_PROC_REF(/atom/movable, throw_at), target, 2, 1, throwingdatum?.thrower, FALSE), 1)
+		return TRUE
+
+	//boing
+	take_damage(force * 0.5, BRUTE, "", TRUE)
+	victim.visible_message(span_warning("[victim] slams into [src]!"), span_userdanger("You slam into [src]!"))
+	victim.apply_damage(5 + (force * 0.1), BRUTE, victim.get_random_valid_zone())
+	victim.Knockdown(1 SECONDS)
+	return TRUE
 
 /obj/structure/window/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	. = ..()
