@@ -36,18 +36,14 @@
 	var/talk_finish_timer
 	// CRIMSON EDIT ADDITION END - drug dealing
 	COOLDOWN_DECLARE(annoyed_cooldown)
-	// CRIMSON EDIT ADDITION START - drug dealing
-	COOLDOWN_DECLARE(drug_line_cooldown)
-	// CRIMSON EDIT ADDITION END - drug dealing
+	COOLDOWN_DECLARE(drug_line_cooldown) // CRIMSON EDIT ADDITION - drug dealing
 	COOLDOWN_DECLARE(car_dodge)
 	var/hostile = FALSE
 	var/aggressive = FALSE
 	var/last_antagonised = 0
 	var/mob/living/danger_source
 	var/obj/effect/abstract/turf_fire/afraid_of_fire
-	// CRIMSON EDIT ADDITION START - drug dealing
-	var/mob/living/fleeing_from
-	// CRIMSON EDIT ADDITION END - drug dealing
+	var/mob/living/fleeing_from // CRIMSON EDIT ADDITION - drug dealing
 	var/mob/living/last_attacker
 	var/last_health = 100
 	var/mob/living/last_damager
