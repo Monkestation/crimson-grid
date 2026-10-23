@@ -70,7 +70,7 @@
 		return
 
 	// Check if our contents have items
-	for(var/thing as anything in target.contents)
+	for(var/thing as anything in target.get_all_contents())
 		if(determine_magic_item(thing, target))
 			break
 		continue
@@ -124,11 +124,11 @@
 	// It's possible we can use get_magic_sources() instead, but a lot of items checked lack the effect
 	if(is_type_in_typecache(target, thaumaturgy_items))
 		return show_image(target, object_owner)
-	else
-		// Check for enchantments too
-		var/datum/component/thaum_enchantment = GetComponent(/datum/component/blood_theft) || GetComponent(/datum/component/burning_blade)
-		if(thaum_enchantment)
-			return show_image(target, object_owner)
+
+	// Check for enchantments too
+	var/datum/component/thaum_enchantment = target.GetComponent(/datum/component/blood_theft) || target.GetComponent(/datum/component/burning_blade)
+	if(thaum_enchantment)
+		return show_image(target, object_owner)
 
 	return FALSE
 
@@ -169,12 +169,12 @@
 		magic_image.color = COLOR_RED
 		final_image.add_overlay(magic_image)
 	else
-		final_image.add_filter(name = "ray", priority = 1, params = list(
+		final_image.add_filter(name = "magic_rays", priority = 1, params = list(
 			type = "rays",
 			size = 15,
 			color = COLOR_RED,
 		))
 
-	final_image.add_filter("aura_glow", 1, gauss_blur_filter(1))
+	final_image.add_filter("magic_glow", 1, gauss_blur_filter(1))
 
 	return final_image
