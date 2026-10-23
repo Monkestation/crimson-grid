@@ -13,6 +13,7 @@
 		Information you gain about the subject depends on the amount of successes. \
 		You must have at least two dots in Auspex and one dot in Thaumaturgy to use it."
 	value = 2
+	ttrpg_sources = list(/datum/source_book/vtm20/lotc = 220)
 	icon = FA_ICON_EYE
 	allowed_splats = list(SPLAT_KINDRED)
 	included_clans = list(VAMPIRE_CLAN_TREMERE)
@@ -102,6 +103,8 @@
 	if(!target.get_discipline(/datum/discipline/thaumaturgy))
 		return
 
+	// We won't be able to precisely tell what magic they know if we have less than 3 successes
+	// Only sense it's presense
 	if(success_count < 3)
 		show_image(target)
 		return
