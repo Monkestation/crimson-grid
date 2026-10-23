@@ -1,4 +1,26 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/cardboard,
+/obj/effect/decal/graffiti/large,
+/obj/machinery/pc_server/mapped,
+/obj/effect/mapping_helpers/pc_server/network_name{
+	network_name = "SewerNet"
+	},
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
+"ab" = (
+/obj/machinery/computer/pc/debug,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
+"ac" = (
+/obj/effect/decal/cleanable/litter,
+/obj/machinery/camera/autoname/directional/east,
+/obj/effect/mapping_helpers/networked/network_id{
+	network_id = "SewerNet"
+	},
+/obj/effect/landmark/latejoin_masquerade,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "ad" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -7,6 +29,12 @@
 	dir = 4
 	},
 /turf/open/floor/plating/sidewalk/rich,
+/area/vtm/outside/pacificheights)
+"ae" = (
+/obj/effect/decal/cleanable/cardboard,
+/obj/structure/closet/cardboard,
+/obj/item/laptop,
+/turf/open/misc/beach/vamp,
 /area/vtm/outside/pacificheights)
 "ah" = (
 /obj/effect/turf_decal/bordur/corner,
@@ -307,11 +335,6 @@
 /obj/effect/spawner/random/trash/hobo_squat,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
-"gb" = (
-/obj/effect/decal/cleanable/cardboard,
-/obj/structure/closet/cardboard,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "gc" = (
 /mob/living/carbon/human/npc/shop,
 /turf/open/floor/plating/concrete,
@@ -1894,11 +1917,6 @@
 /obj/structure/ladder/manhole,
 /turf/open/openspace,
 /area/vtm/interior/techshop)
-"FG" = (
-/obj/effect/decal/cleanable/cardboard,
-/obj/effect/decal/graffiti/large,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "FH" = (
 /obj/structure/table/wood,
 /obj/machinery/chem_dispenser/drinks/fullupgrade{
@@ -2859,10 +2877,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/bubway)
-"Sj" = (
-/obj/effect/landmark/latejoin_masquerade,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "Sp" = (
 /obj/structure/table,
 /obj/item/stack/medical/bone_gel,
@@ -3574,7 +3588,7 @@ iJ
 lM
 VH
 Ef
-FG
+aa
 aM
 wO
 NR
@@ -3642,9 +3656,9 @@ QN
 hH
 Kz
 Ef
-Sj
-ok
-gb
+ab
+ac
+ae
 Bf
 UJ
 UJ
