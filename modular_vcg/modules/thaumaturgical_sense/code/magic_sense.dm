@@ -49,23 +49,21 @@
 /datum/action/cooldown/thaumaturgical_sense/Activate(atom/target)
 	. = ..()
 	var/roll_result = SSroll.storyteller_roll_datum(owner, roll_datum = /datum/storyteller_roll/thaumaturgical_sense, numerical = TRUE)
-	var/precise = FALSE
 	if(roll_result < 1)
+		to_chat(owner, span_warning("You fail to detect any magic in the area!"))
 		return
-	if(roll_result >= 3)
-		precise = TRUE
-	do_pulse(precise)
+	do_pulse(roll_result)
 	owner.emote("stare")
 
 /// Checks for atoms in range and checks if they are magical
-/datum/action/cooldown/thaumaturgical_sense/proc/do_pulse(precise)
+/datum/action/cooldown/thaumaturgical_sense/proc/do_pulse(success_count)
 	for(var/atom/checked_atom in orange(sense_range, get_turf(owner)))
 		if(!isobj(checked_atom) && !isliving(checked_atom))
 			continue
-		find_magic_source(checked_atom, precise)
+		find_magic_source(checked_atom, success_count)
 
 /// Determines if item is magical on its own, is stored inside contents of an atom, or if living mob has a magical discipline
-/datum/action/cooldown/thaumaturgical_sense/proc/find_magic_source(atom/target, precise)
+/datum/action/cooldown/thaumaturgical_sense/proc/find_magic_source(atom/target, success_count)
 	if(determine_magic_item(target))
 		return
 
@@ -78,16 +76,41 @@
 	if(!isliving(target))
 		return
 
-	handle_living(target, precise)
+	handle_living(target, success_count)
 
 	return
 
-/datum/action/cooldown/thaumaturgical_sense/proc/handle_living(mob/living/target, precise)
+/datum/action/cooldown/thaumaturgical_sense/proc/handle_living(mob/living/target, success_count)
 	if(!target.get_discipline(/datum/discipline/thaumaturgy))
 		return
 
-	if(precise)
-		to_chat(owner, span_cult("[target] has stains of Thaumaturgy!"))
+	if(success_count < 3)
+		show_image(target)
+		return
+
+	var/datum/splat/vampire/kindred/vampire = get_kindred_splat(owner)
+	var/datum/splat/vampire/kindred/vampire_target = get_kindred_splat(target)
+	if(!vampire || !vampire_target)
+		return
+
+	var/list/our_known_paths = list()
+
+	for(var/datum/action/discipline/disc_action as anything in vampire.powers)
+		var/datum/discipline/discipline = disc_action.discipline
+		if(!istype(discipline, /datum/discipline/thaumaturgy) && !istype(discipline, /datum/discipline/path))
+			continue
+		our_known_paths += discipline.type
+
+	for(var/datum/action/discipline/their_disc_action as anything in vampire_target.powers)
+		var/datum/discipline/their_discipline = their_disc_action.discipline
+		if(!istype(their_discipline, /datum/discipline/thaumaturgy) && !istype(their_discipline, /datum/discipline/path))
+			continue
+		if(!(their_discipline.type in our_known_paths))
+			if(success_count < 5)
+				to_chat(owner, span_cult("[target] seems to know path you can't recognize!"))
+				continue
+
+		to_chat(owner, span_cult("[target] seems to know [their_discipline.name]!"))
 
 	show_image(target)
 
