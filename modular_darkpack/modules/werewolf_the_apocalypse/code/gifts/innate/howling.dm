@@ -72,7 +72,7 @@
 	var/garou_message = howl[shifter.id]
 	// CRIMSON EDIT ADD START - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
 	var/howler_subject = shifter.id == SPLAT_GAROU ? "A wolf" : "A raven" // select message type for howl recognition
-	// CRIMSON GRID ADD END - 447
+	// CRIMSON EDIT ADD END - 447
 	/*
 	var/tribe = living_mob.auspice.tribe.name
 	if (tribe)
