@@ -78,7 +78,7 @@
 /obj/item/reagent_containers/applicator/pill/magaversidin
 	name = "magaversidin pill"
 	desc = "Used to treat symptoms of Alzheimer's."
-	list_reagents = list(/datum/reagent/medicine/neurine/magaversidin = 3)
+	list_reagents = list(/datum/reagent/medicine/neurine/magaversidin = 2)
 	icon_state = "pill17"
 
 /obj/item/reagent_containers/hypospray/medipen/flubuster
@@ -86,12 +86,14 @@
 	desc = "Very effective cold and flu relief product containing a broad and wide spectrum of all medicine and drugs from cold medicine to stimulants to painkillers."
 	list_reagents = list(/datum/reagent/medicine/stimulants = 20, /datum/reagent/medicine/omnizine = 10, /datum/reagent/wyrmtaint = 10, /datum/reagent/medicine/morphine = 5, /datum/reagent/drug/happiness/magaloft = 5)
 	volume = 50
+	amount_per_transfer_from_this = 50
 
 /obj/item/reagent_containers/hypospray/medipen/amnestics
 	name = "amnestics"
 	desc = "This medipen dosen't have any labels or anything."
 	list_reagents = list(/datum/reagent/medicine/neurine/magaversidin = 20)
 	volume = 20
+	amount_per_transfer_from_this = 20
 
 /obj/item/storage/pill_bottle/magaloft
 	name = "bottle of magaloft antidepressants"
