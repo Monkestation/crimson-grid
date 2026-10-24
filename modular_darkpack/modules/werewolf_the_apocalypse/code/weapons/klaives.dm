@@ -35,7 +35,7 @@
 
 /obj/item/occult_artifact/werewolf/klaive/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	. = ..()
-	fera_silver_damage(target, silver_damage, 1) // Copyed the other silver weapon. Not super accurate.
+	fera_silver_damage(target, silver_damage, 1, attack_modifiers) // CRIMSON EDIT CHANGE - Original: fera_silver_damage(target, silver_damage, 1)
 
 /obj/item/occult_artifact/werewolf/klaive/attack_self(mob/user, modifiers)
 	if(!identified)
