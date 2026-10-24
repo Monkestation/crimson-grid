@@ -40,6 +40,10 @@
 	vary_fire_sound = FALSE
 	fire_sound_volume = 85
 	recoil = 3
+// CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+// CRIMSON GRID EDIT END - FIXING RECOIL
+
 
 /obj/item/gun/ballistic/revolver/darkpack/magnum
 	name = "magnum revolver"
@@ -57,6 +61,9 @@
 	projectile_damage_multiplier = 1.2 //21.6 damage, slightly higher than the m1911, just so it is possible to kill NPCs within 6 bullets
 	recoil = 2
 	serial_type = "SN"
+// CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+// CRIMSON GRID EDIT END - FIXING RECOIL
 
 /obj/item/ammo_box/magazine/internal/cylinder/rev9mm
 	name = "revolver cylinder"
@@ -74,6 +81,10 @@
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	recoil = 3
+// CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+// CRIMSON GRID EDIT END - FIXING RECOIL
+
 
 /obj/item/ammo_box/magazine/m44
 	name = "handgun magazine (.44)"
@@ -95,6 +106,10 @@
 	recoil = 4
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/deagle.ogg'
 	serial_type = "MR"
+// CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+// CRIMSON GRID EDIT END - FIXING RECOIL
+
 
 /obj/item/ammo_box/magazine/m50
 	name = "handgun magazine (.50)"
@@ -115,6 +130,10 @@
 	fire_sound_volume = 125 //MY EARS
 	recoil = 5
 	weapon_weight = WEAPON_MEDIUM	//Firing .50 at 70 dam, think this is fair.
+// CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+// CRIMSON GRID EDIT END - FIXING RECOIL
+
 
 /obj/item/ammo_box/magazine/darkpack45acp
 	name = "pistol magazine (.45 ACP)"
@@ -136,6 +155,10 @@
 	vary_fire_sound = FALSE
 	fire_sound_volume = 100
 	serial_type = "CM"
+// CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+// CRIMSON GRID EDIT END - FIXING RECOIL
+
 
 /obj/item/ammo_box/magazine/glock9mm
 	name = "automatic pistol magazine (9mm)"
@@ -198,8 +221,9 @@
 	inhand_icon_state = "beretta"
 	w_class = WEIGHT_CLASS_SMALL
 	accepted_magazine_type = /obj/item/ammo_box/magazine/semi9mm
-	burst_size = 1
-	fire_delay = 0 //spam it
+//CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+//CRIMSON GRID EDIT END - FIXING RECOIL
 	dual_wield_spread = 10 //DUAL ELITES!
 	actions_types = list()
 	bolt_type = BOLT_TYPE_LOCKING
@@ -207,6 +231,7 @@
 	fire_sound_volume = 75
 	custom_price = 1200
 	serial_type = "BH"
+
 
 /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta/toreador
 	name = "\improper Sword Series S 9mm"
@@ -287,6 +312,7 @@
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/mp5.ogg'
 	serial_type = "H&K"
 	var/rof = 0.15 SECONDS
+
 
 /obj/item/gun/ballistic/automatic/darkpack/mp5/Initialize(mapload)
 	. = ..()
@@ -459,6 +485,9 @@
 	masquerade_violating = FALSE
 	custom_price = 2000
 	serial_type = "R&C"
+//CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+//CRIMSON GRID EDIT END - FIXING RECOIL
 
 /obj/item/ammo_box/magazine/darkpack545
 	name = "rifle magazine (5.45mm)"
@@ -607,6 +636,10 @@
 	fire_sound = 'modular_darkpack/modules/deprecated/sounds/sniper.ogg'
 	masquerade_violating = FALSE
 	serial_type = "BR"
+// CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+// CRIMSON GRID EDIT END - FIXING RECOIL
+
 
 /obj/item/gun/ballistic/automatic/darkpack/fal/automatic
 	name = "military battle rifle"
@@ -743,6 +776,9 @@
 	actions_types = list()
 	masquerade_violating = TRUE
 	serial_type = "DS"
+// CRIMSON GRID EDIT START - FIXING RECOIL
+	burst_fire_selection = FALSE
+// CRIMSON GRID EDIT END - FIXING RECOIL
 
 /obj/item/ammo_box/magazine/vamp762x51PSG1
 	name = "Auto-sniper magazine (7.62 NATO)"
