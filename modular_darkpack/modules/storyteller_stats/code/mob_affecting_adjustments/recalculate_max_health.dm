@@ -8,3 +8,4 @@
 		health = maxHealth
 	else if(health > 0)
 		health = max(health + maxHealth - old_max_health, 1)
+	max_stamina = maxHealth * 1.2
