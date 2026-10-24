@@ -160,12 +160,13 @@
 	var/tox_loss = target.get_tox_loss()
 	var/fire_loss = target.get_fire_loss()
 	var/brute_loss = target.get_brute_loss()
+	var/agg_loss = target.get_agg_loss()
 	var/mob_status = (IS_DEAD_OR_FAKING(target) ? span_alert("<b>Deceased</b>") : "<b>[round(target.health / target.maxHealth, 0.01) * 100]% healthy</b>")
 
 	if(HAS_TRAIT(target, TRAIT_FAKEDEATH) && target.stat != DEAD)
 		// if we don't appear to actually be in a "dead state", add fake oxyloss
-		if(oxy_loss + tox_loss + fire_loss + brute_loss < 200)
-			oxy_loss += 200 - (oxy_loss + tox_loss + fire_loss + brute_loss)
+		if(oxy_loss + tox_loss + fire_loss + brute_loss + agg_loss < 200)
+			oxy_loss += 200 - (oxy_loss + tox_loss + fire_loss + brute_loss + agg_loss)
 			oxy_loss = clamp(oxy_loss, 0, 200)
 
 	render_list += "[span_info("Analyzing results for <b>[target]</b> ([round_timestamp()]):")]<br><span class='info ml-1'>Overall status: [mob_status]</span><br>"
@@ -221,7 +222,7 @@
 	// Body part damage report
 	if(iscarbon(target))
 		var/mob/living/carbon/carbontarget = target
-		var/any_damage = brute_loss > 0 || fire_loss > 0 || oxy_loss > 0 || tox_loss > 0 || fire_loss > 0
+		var/any_damage = brute_loss > 0 || fire_loss > 0 || oxy_loss > 0 || tox_loss > 0 || fire_loss > 0 || agg_loss > 0
 		var/any_missing = length(carbontarget.get_missing_limbs())
 		var/any_wounded = length(carbontarget.all_wounds)
 		var/any_embeds = carbontarget.has_embedded_objects()
@@ -234,6 +235,7 @@
 							<td style='width:7em;'><font color='#ff0000'><b>Damage:</b></font></td>\
 							<td style='width:5em;'><font color='#ff3333'><b>Brute</b></font></td>\
 							<td style='width:4em;'><font color='#ff9933'><b>Burn</b></font></td>\
+							<td style='width:8em;'><font color='#6d16b4'><b>Necrosis</b></font></td>\
 							<td style='width:4em;'><font color='#00cc66'><b>Toxin</b></font></td>\
 							<td style='width:8em;'><font color='#00cccc'><b>Suffocation</b></font></td>\
 							</tr>\
@@ -241,6 +243,7 @@
 							<td><font color='#ff3333'><b>Overall:</b></font></td>\
 							<td><font color='#ff3333'><b>[ceil(brute_loss)]</b></font></td>\
 							<td><font color='#ff9933'><b>[ceil(fire_loss)]</b></font></td>\
+							<td><font color='#6d16b4'><b>[ceil(agg_loss)]</b></font></td>\
 							<td><font color='#00cc66'><b>[ceil(tox_loss)]</b></font></td>\
 							<td><font color='#33ccff'><b>[ceil(oxy_loss)]</b></font></td>\
 							</tr>"
@@ -254,18 +257,20 @@
 						dmgreport += "<td><font color='#cc3333'>[capitalize(parse_zone(zone))]:</font></td>"
 						dmgreport += "<td><font color='#cc3333'>-</font></td>"
 						dmgreport += "<td><font color='#ff9933'>-</font></td>"
+						dmgreport += "<td><font color='#6d16b4'>-</font></td>"
 						dmgreport += "</tr>"
 						dmgreport += "<tr><td colspan=6><span class='alert ml-2'>&rdsh; Physical trauma: [conditional_tooltip("Dismembered", "Reattach or replace surgically.", tochat)]</span></td></tr>"
 						continue
 					var/has_any_embeds = LAZYLEN(limb.embedded_objects) >= 1
 					var/has_any_wounds = length(limb.wounds) >= 1
-					var/is_damaged = limb.burn_dam > 0 || limb.brute_dam > 0
+					var/is_damaged = limb.burn_dam > 0 || limb.brute_dam > 0 || limb.aggravated_dam > 0
 					if(!is_damaged && (zone != BODY_ZONE_CHEST || (tox_loss <= 0 && oxy_loss <= 0)) && !has_any_embeds && !has_any_wounds)
 						continue
 					dmgreport += "<tr>"
 					dmgreport += "<td><font color='#cc3333'>[capitalize((limb.bodytype & BODYTYPE_ROBOTIC) ? limb.name : limb.plaintext_zone)]:</font></td>"
 					dmgreport += "<td><font color='#cc3333'>[limb.brute_dam > 0 ? ceil(limb.brute_dam) : "0"]</font></td>"
 					dmgreport += "<td><font color='#ff9933'>[limb.burn_dam > 0 ? ceil(limb.burn_dam) : "0"]</font></td>"
+					dmgreport += "<td><font color='#6d16b4'>[limb.aggravated_dam > 0 ? ceil(limb.aggravated_dam) : "0"]</font></td>"
 					if(zone == BODY_ZONE_CHEST) // tox/oxy is stored in the chest
 						dmgreport += "<td><font color='#00cc66'>[tox_loss > 0 ? ceil(tox_loss) : "0"]</font></td>"
 						dmgreport += "<td><font color='#33ccff'>[oxy_loss > 0 ? ceil(oxy_loss) : "0"]</font></td>"
