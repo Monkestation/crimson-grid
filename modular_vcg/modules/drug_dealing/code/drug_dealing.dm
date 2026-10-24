@@ -57,12 +57,18 @@
 	if(danger_source == user)
 		return ITEM_INTERACT_SUCCESS
 
+	// drug purchases reset after 10 minutes
+	if(COOLDOWN_FINISHED(src, drug_purchase_reset))
+		drug_purchases = 0
+
 	if(drug_price <= 0 || drug_purchases >= drug_purchase_limit)
 		cancel_talking()
 		realistic_say(pick(socialrole?.drug_refusal_phrases))
 		return ITEM_INTERACT_SUCCESS
 
 	drug_purchases++
+	if(drug_purchases == 1)
+		COOLDOWN_START(src, drug_purchase_reset, drug_purchase_reset_time)
 
 	if(!drug_sell_roll)
 		drug_sell_roll = new()

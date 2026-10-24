@@ -34,9 +34,10 @@
 	// CRIMSON EDIT ADDITION START - drug dealing
 	var/talk_start_timer
 	var/talk_finish_timer
+	COOLDOWN_DECLARE(drug_line_cooldown)
+	COOLDOWN_DECLARE(drug_purchase_reset)
 	// CRIMSON EDIT ADDITION END - drug dealing
 	COOLDOWN_DECLARE(annoyed_cooldown)
-	COOLDOWN_DECLARE(drug_line_cooldown) // CRIMSON EDIT ADDITION - drug dealing
 	COOLDOWN_DECLARE(car_dodge)
 	var/hostile = FALSE
 	var/aggressive = FALSE
@@ -87,11 +88,12 @@
 	var/drug_price = 0
 	var/drug_purchase_limit = 3 // so you can't just keep an NPC next to a weed farm
 	var/drug_purchases = 0
+	var/drug_purchase_reset_time = 10 MINUTES // how long until the purchase limit resets
 	var/datum/storyteller_roll/npc_drug_sale/drug_sell_roll
 	var/static/list/npc_buyable_categories = list(
 		"weed",
-		"meth",
-		"cocaine",
+//		"meth",  Uncomment when these are actually craftable drugs, accidentally left from first PR.
+//		"cocaine", ^^^^^
 	)
 	// CRIMSON EDIT ADDITION END - drug dealing
 
