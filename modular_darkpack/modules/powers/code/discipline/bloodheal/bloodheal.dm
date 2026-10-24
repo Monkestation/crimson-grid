@@ -1,5 +1,5 @@
 #define HEAL_BASHING_LETHAL_DAMAGE 30
-#define HEAL_AGGRAVATED_DAMAGE 6
+#define HEAL_AGGRAVATED_DAMAGE 15 // CRIMSON EDIT CHANGE - Original : 6
 
 /datum/discipline/bloodheal
 	name = "Bloodheal"
