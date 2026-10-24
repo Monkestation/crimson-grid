@@ -119,3 +119,10 @@
 		"Ass!",
 		"Dick!"
 	)
+	// CRIMSON EDIT ADDITION START - drug dealing
+	drug_refusal_phrases = list(
+		"I'll get you the money tommorow I promise..",
+		"Can't you go cheaper?",
+		"Too expensive.."
+	)
+	// CRIMSON EDIT ADDITION END - drug dealing
