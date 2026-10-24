@@ -183,3 +183,9 @@
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	// reroll_cooldown = 1 TURNS
 	difficulty = 9
+
+/datum/storyteller_roll/jump_landing
+	bumper_text = "land window crash"
+	applicable_stats = list(STAT_DEXTERITY, STAT_ATHLETICS)
+	// reroll_cooldown = 1 TURNS
+	difficulty = 8
