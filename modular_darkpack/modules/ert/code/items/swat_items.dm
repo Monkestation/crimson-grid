@@ -16,7 +16,7 @@
 	new /obj/item/melee/baton/vamp(src)
 
 /obj/item/card/swat
-	name = "Dogtags"
+	name = "dogtags"
 	desc = "The dogtags of an elite law enforcement officer. It prints the officer's name in case they're captured or killed."
 	icon = 'modular_darkpack/modules/ert/icons/badges.dmi'
 	icon_state = "dogtags"
@@ -24,8 +24,10 @@
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
 	worn_icon_state = "police_badge"
 
+	shows_name = TRUE
+
 /obj/item/card/lieutenant
-	name = "Officer Badge"
+	name = "elite officer badge"
 	desc = "The shiny badge of an elite law enforcement officer. It shines with golden authority."
 	icon = 'modular_darkpack/modules/ert/icons/badges.dmi'
 	icon_state = "leader"
@@ -33,14 +35,18 @@
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
 	worn_icon_state = "police_badge"
 
+	shows_name = TRUE
+
 /obj/item/card/first_aid
-	name = "First Aid Officer Card"
+	name = "first aid officer card"
 	desc = "The professional laminated card of a field medic. Did you know it's a war crime to specifically target field medics?"
 	icon = 'modular_darkpack/modules/ert/icons/badges.dmi'
 	icon_state = "first_aid"
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/ert/icons/badges_onfloor.dmi')
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
 	worn_icon_state = "grey_id"
+
+	shows_name = TRUE
 
 /obj/item/clothing/suit/vampire/darkpack_ert/swat_armor
 	name = "\improper SWAT vest"
