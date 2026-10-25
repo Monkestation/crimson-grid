@@ -295,7 +295,7 @@
 	electric_halo = electric_halo || mutable_appearance('icons/effects/effects.dmi', "electricity", EFFECTS_LAYER)
 	owner.add_overlay(electric_halo)
 
-	if(do_after(owner, 3 SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_HELD_ITEM)))
+	if(do_after(owner, 2 SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_HELD_ITEM)))  // CRIMSON EDIT CHANGE - Original: (owner, 3 SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_HELD_ITEM)))
 		if(get_dist(owner, target) <= range)
 			execute_zeus_fury(target)
 		else
@@ -307,7 +307,7 @@
 	owner.cut_overlay(electric_halo)
 
 	var/max_bounces = success_count // Lightning chain dependent upon successes - two successes, two targets hit
-	var/bolt_damage = 20 + (success_count * 4)
+	var/bolt_damage = 40 + (success_count * 4)  // CRIMSON EDIT CHANGE - Original: 20 + (success_count * 4)
 
 	playsound(get_turf(owner), 'sound/effects/magic/lightningbolt.ogg', min(50 + (success_count * 10), 100), TRUE, extrarange = success_count)
 
@@ -450,7 +450,7 @@
 
 	owner.Beam(target, icon_state="lightning[rand(1,12)]", time = 10)
 
-	target.adjust_fire_loss(20)
+	target.adjust_fire_loss(40)
 	target.adjust_jitter_up_to(3 SECONDS, 15)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
