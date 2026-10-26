@@ -38,7 +38,7 @@
 	if(!ritual_roll_datum)
 		return
 
-	var/charges = (last_sucess_amount + last_activator.get_discipline_dots(/datum/discipline/thaumaturgy))
+	var/charges = (last_sucess_amount)
 	weapon.AddComponent(/datum/component/ward_item, targeted_splats, charges)
 	to_chat(last_activator, span_notice("[weapon] will work as a ward for [charges] times"))
 	last_activator.visible_message(span_notice("[last_activator] incantates something upon [weapon]!"))
