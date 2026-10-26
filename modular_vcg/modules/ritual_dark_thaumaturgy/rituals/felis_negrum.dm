@@ -24,6 +24,10 @@
 			return
 		for(var/mob/living/carbon/human/human_target in src.loc)
 			if(human_target.real_name == target_name)
+				if(human_target.stat == DEAD)
+					to_chat(user, span_warning("The target must be alive! The rite fails to take hold."))
+					qdel(src)
+					return
 				found = TRUE
 				var/user_success_count = SSroll.storyteller_roll_datum(user, human_target, /datum/storyteller_roll/felis_negrum, difficulty = 6)
 				var/target_success_count = SSroll.storyteller_roll_datum(human_target, user, /datum/storyteller_roll/felis_negrum, difficulty = 6)
@@ -44,7 +48,7 @@
 						duration = 12 SCENES - human_target.st_get_stat(STAT_PERMANENT_WILLPOWER) // Nights in lore but too op
 					human_target.felis_negrum(duration)
 		if(!found)
-			to_chat(user, span_warning("The target must be on the rune!"))
+			to_chat(user, span_warning("The target must be on the rune! The rite fails to take hold."))
 		qdel(src)
 
 /mob/living/carbon/human/proc/felis_negrum(duration)

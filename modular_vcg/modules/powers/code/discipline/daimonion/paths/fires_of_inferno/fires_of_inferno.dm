@@ -54,6 +54,7 @@
 	level = 1
 	range = 1
 	target_type = TARGET_SELF
+	duration_length = 3 TURNS
 
 /datum/discipline_power/daimonion/path/inferno/lighter/activate(mob/living/target)
 	if(..())
