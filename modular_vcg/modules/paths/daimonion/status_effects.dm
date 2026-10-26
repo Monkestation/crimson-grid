@@ -15,3 +15,5 @@
 	name = "Unnatural Tremors"
 	desc = "Even after it passed you still find yourself shaking!"
 	icon_state = "hypnosis"
+
+#undef STAMINA_LOSS_PER_TICK

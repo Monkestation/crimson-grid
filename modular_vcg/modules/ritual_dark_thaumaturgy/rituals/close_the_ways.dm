@@ -44,13 +44,17 @@
 
 	if(!istype(item, /obj/item/flashlight/flare/candle))
 		return
+	INVOKE_ASYNC(src, PROC_REF(handle_candle_equip), item)
+
+/obj/ritual_rune/dark/close_the_ways/proc/handle_candle_equip(obj/item/flashlight/flare/candle/candle)
 	if(QDELETED(target))
 		UnregisterSignal(owner, COMSIG_MOB_EQUIPPED_ITEM)
 		qdel(src)
 		return
 	if(!owner.Adjacent(src))
 		return
-	var/obj/item/flashlight/flare/candle/candle = item
+	if(!istype(candle))
+		return
 	if(candle.light_on)
 		owner.say(target.real_name)
 		candle.visible_message(span_warning("The candle vanishes in a poof of smoke."))
