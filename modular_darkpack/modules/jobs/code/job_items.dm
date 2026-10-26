@@ -171,6 +171,7 @@
 	name = "gothic cross"
 	icon_state = "hunter_gothic"
 
+/*
 /obj/item/card/hunter/attack_self(mob/living/user)
 	. = ..()
 	if(!user.mind)
@@ -209,7 +210,7 @@
 		COOLDOWN_START(user, true_faith_cd, 30 SECONDS)
 		lightningbolt(target)
 		to_chat(target, span_userdanger("The gods have punished you for your sins!"))
-
+*/
 
 // POLICE
 /obj/item/card/police
