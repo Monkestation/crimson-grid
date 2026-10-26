@@ -58,6 +58,7 @@
 		flames_extinguished++
 		to_chat(owner, span_notice("[flames_needed-flames_extinguished] candles remain."))
 	if(flames_extinguished >= flames_needed)
+		owner.st_change_stat(STAT_PERMANENT_WILLPOWER, -2)
 		to_chat(owner, span_warning("As you extinguish the last candle, the rite takes hold."))
 		log_combat(owner, target, "Close the Ways")
 		UnregisterSignal(owner, COMSIG_MOB_EQUIPPED_ITEM)
