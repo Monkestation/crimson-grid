@@ -23,7 +23,7 @@
 	var/thaum_dots = new_holder?.get_discipline_dots(/datum/discipline/thaumaturgy)
 	var/auspex_dots = new_holder?.get_discipline_dots(/datum/discipline/auspex)
 	if(thaum_dots < 1 || auspex_dots < 2)
-		to_chat(new_holder, span_warning("[failure_message]"))
+		to_chat(new_holder, span_warning("Without appropriate mastery of Auspex and Thaumaturgy, your thaumaturgical sight fails to find any traces of Thaumaturgy."))
 		return FALSE
 	return ..()
 
