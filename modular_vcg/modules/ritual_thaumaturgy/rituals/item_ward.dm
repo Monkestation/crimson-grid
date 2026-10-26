@@ -48,6 +48,7 @@
 /datum/component/ward_item
 	var/list/targeted_splats
 	var/charges
+	var/datum/storyteller_roll/identify_occult/notice_roll
 
 /datum/component/ward_item/Initialize(targeted_splats, charges)
 	if(!isitem(parent))
@@ -68,7 +69,13 @@
 
 /datum/component/ward_item/proc/on_examine(datum/source, mob/viewer, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += span_cult("There's a weird glyph on it.")
+	if(!isliving(viewer))
+		return
+	if(!notice_roll)
+		notice_roll = new()
+		notice_roll.roll_output_type_on_fail = NONE
+	if(notice_roll.st_roll(viewer, parent) == ROLL_SUCCESS)
+		examine_list += span_cult("There's a weird glyph on it.")
 
 /datum/component/ward_item/proc/on_successful_attack(datum/source, mob/living/target, mob/user, list/modifiers)
 	SIGNAL_HANDLER
@@ -91,7 +98,7 @@
 
 	victim.apply_damage(3 LETHAL_TTRPG_DAMAGE, BRUTE)
 	victim.AdjustKnockdown(4 SECONDS, daze_amount = 3 SECONDS)
-	to_chat(victim, span_warning("You feel PAIN!"))
+	to_chat(victim, span_warning("You feel immense pain as you make contact with [parent]!"))
 	charges -= 1
 	if (charges <= 0)
 		qdel(src)
