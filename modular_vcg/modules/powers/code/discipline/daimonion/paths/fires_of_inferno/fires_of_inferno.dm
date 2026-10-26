@@ -49,18 +49,23 @@
 
 /datum/discipline_power/daimonion/path/inferno/lighter
 	name = "Lighter"
-	desc = "Conjure a spark of infernal fire."
+	desc = "Become the one with inferno, become rotschreck immune."
 
 	level = 1
-	range = 7
-	target_type = TARGET_MOB
+	range = 1
+	target_type = TARGET_SELF
 
 /datum/discipline_power/daimonion/path/inferno/lighter/activate(mob/living/target)
 	if(..())
 		return
-	to_chat(owner, span_warning("You conjure a spark of infernal flames, lighting [target]!"))
-	target.adjust_fire_stacks(1, overwrite_color = COLOR_VERY_DARK_LIME_GREEN)
-	target.ignite_mob()
+	to_chat(owner, span_notice("You become the one with inferno!"))
+	to_chat(owner, span_notice("You no longer fear fire."))
+	ADD_TRAIT(owner, ROTSCHRECK_IMMUNITY, FIRES_OF_INFERNO_TRAIT)
+
+/datum/discipline_power/daimonion/path/inferno/lighter/deactivate(atom/target, direct)
+	. = ..()
+	to_chat(owner, span_notice("Your fear of fire returns."))
+	REMOVE_TRAIT(owner, ROTSCHRECK_IMMUNITY, FIRES_OF_INFERNO_TRAIT)
 
 /datum/discipline_power/daimonion/path/inferno/stovetop
 	name = "Stovetop"

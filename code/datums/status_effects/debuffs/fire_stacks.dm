@@ -280,6 +280,7 @@
 /datum/status_effect/fire_handler/fire_stacks/proc/extinguish()
 	QDEL_NULL(moblight)
 	on_fire = FALSE
+	overwrite_color = null // CRIMSON GRID ADD: DARK THAUMATURGY 2 - GREEN FIRE FIX
 	owner.clear_mood_event("on_fire")
 	SEND_SIGNAL(owner, COMSIG_LIVING_EXTINGUISHED, owner)
 	cache_stacks()
