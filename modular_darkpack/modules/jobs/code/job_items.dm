@@ -171,7 +171,7 @@
 	name = "gothic cross"
 	icon_state = "hunter_gothic"
 
-/*
+/* //CRIMSON EDIT: Removes hunter cross stun
 /obj/item/card/hunter/attack_self(mob/living/user)
 	. = ..()
 	if(!user.mind)
