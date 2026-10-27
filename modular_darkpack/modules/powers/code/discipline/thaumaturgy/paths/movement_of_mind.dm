@@ -53,6 +53,7 @@
 	var/mob/living/living_target = target
 
 	to_chat(living_target, span_warning("You feel forced into the ground!"))
+	launch(living_target, get_edge_target_turf(owner, get_dir(owner, get_step_away(living_target, owner))))
 	living_target.Knockdown(5 SECONDS)
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/two
