@@ -2,6 +2,7 @@
 	id = "close_the_ways"
 	status_type = STATUS_EFFECT_REPLACE
 	duration = 15 MINUTES
+	alert_type = null
 
 /datum/status_effect/close_the_ways/on_creation(mob/living/new_owner, duration = 15 MINUTES)
 	src.duration = duration
