@@ -11,6 +11,29 @@
 
 	effect_sound = 'sound/effects/magic/repulse.ogg'
 
+/datum/discipline_power/thaumaturgy/path/mind_movement/pre_activation_checks(atom/target)
+	. = ..()
+	if(!can_be_targeted(target))
+		to_chat(owner, span_warning("[target.name] is either too heavy or bolted down!"))
+		return FALSE
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/proc/can_be_targeted(atom/target)
+	if(isturf(target))
+		return FALSE
+
+	if(isobj(target))
+		var/obj/target_obj = target
+		if(target_obj.anchored)
+			return FALSE
+
+	if(isitem(target))
+		var/obj/item/item_target = target
+		// Too heavy
+		if(item_target.w_class == WEIGHT_CLASS_GIGANTIC)
+			return FALSE
+
+	return TRUE
+
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/launch(atom/movable/launched_object, turf/launch_to)
 	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
 
@@ -130,6 +153,7 @@
 	level = 4
 	target_type = NONE
 	cooldown_length = 2 TURNS
+	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_TORPORED
 
 	/// Range in which targets get repulsed
 	var/repulse_range = 5
@@ -139,7 +163,7 @@
 	if(.)
 		return
 
-	for(var/atom/to_throw in view(repulse_range, get_turf(owner)))
+	for(var/atom/to_throw in range(repulse_range, get_turf(owner)))
 		if(to_throw == owner)
 			continue
 		if(!isitem(to_throw) && !isliving(to_throw))
