@@ -2,7 +2,7 @@
 	name = "Movement of the Mind"
 	desc = "todo"
 	icon_state = "mind"
-	icon = 'modular_darkpack/modules/paths/icons/paths.dmi'
+	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	power_type = /datum/discipline_power/thaumaturgy/path/mind_movement
 
 /datum/discipline_power/thaumaturgy/path/mind_movement
@@ -18,7 +18,7 @@
 		return FALSE
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/can_be_targeted(atom/target)
-	if(isturf(target))
+	if(!isobj(target) && !isliving(target))
 		return FALSE
 
 	if(isobj(target))
@@ -57,7 +57,6 @@
 	if(isliving(hit_atom))
 		var/mob/living/living_atom = hit_atom
 		living_atom.apply_damage(1 LETHAL_TTRPG_DAMAGE, BRUTE)
-
 
 // Force Bolt - Level 1
 /datum/discipline_power/thaumaturgy/path/mind_movement/one
@@ -167,6 +166,8 @@
 		if(to_throw == owner)
 			continue
 		if(!isitem(to_throw) && !isliving(to_throw))
+			continue
+		if(!can_be_targeted(to_throw))
 			continue
 		launch(to_throw, get_edge_target_turf(owner, get_dir(owner, get_step_away(to_throw, owner))))
 
