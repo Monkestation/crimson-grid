@@ -1,6 +1,6 @@
 /obj/item/path_spellbook/movement_of_mind
 	name = "Movement of the Mind spellbook"
-	desc = "todo"
+	desc = "A tome containing the secrets of telekinetically manipulating objects through blood magic."
 	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	icon_state = "mind_spellbook"
 	path_type = /datum/discipline/path/mind_movement
