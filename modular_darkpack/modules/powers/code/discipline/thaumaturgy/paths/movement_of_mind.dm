@@ -1,6 +1,13 @@
+/**
+ * Movement of the Mind
+ *
+ * This is based on older editions of the path
+ * Because it's easier to code and is just cooler
+ *
+ */
 /datum/discipline/path/mind_movement
 	name = "Movement of the Mind"
-	desc = "todo"
+	desc = "A path of Thaumaturgy that allows user to move objects and beings telekinetically."
 	icon_state = "mind"
 	icon = 'modular_vcg/modules/paths/icons/paths.dmi'
 	power_type = /datum/discipline_power/thaumaturgy/path/mind_movement
@@ -23,13 +30,13 @@
 		var/mob/living/living_target = launched_object
 		living_target.Knockdown(5 SECONDS)
 
-/// Do extra damage on impact or if the launched item hit a person
+/// Do extra damage on impact or if the launched item hit a person, or if the launched person hit a dense object
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/on_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
 	SIGNAL_HANDLER
 
 	UnregisterSignal(source, COMSIG_MOVABLE_IMPACT)
 
-	if(isliving(source))
+	if(isliving(source) && hit_atom.density)
 		var/mob/living/living_source = source
 		living_source.apply_damage(1 LETHAL_TTRPG_DAMAGE, BRUTE)
 
@@ -45,7 +52,7 @@
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/one
 	name = "Force Bolt"
-	desc = "Cause a target to fall down."
+	desc = "Forces the target to fall."
 	level = 1
 	violates_masquerade = FALSE
 	target_type = TARGET_LIVING
@@ -69,7 +76,7 @@
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/two
 	name = "Manipulate"
-	desc = "placeholder"
+	desc = "Manipulate allows the user to telekinetically control and use items."
 	level = 2
 	violates_masquerade = FALSE
 	target_type = NONE
@@ -91,7 +98,7 @@
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/three
 	name = "Flight"
-	desc = "You have learned to project your telekinetic strength inward, unfettering you from the constraints of gravity to ﬂy through the air."
+	desc = "Allows the user to lift themselves up using telekinetic force and fly."
 	level = 3
 	cooldown_length = 5 SECONDS
 	duration_length = 3 TURNS
@@ -146,7 +153,7 @@
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/four
 	name = "Repulse"
-	desc = "You have mastered the ability to project a telekinetic wave of potent force from your body, which violently repulses people (threatening enemies and allies alike) and small objects away from you."
+	desc = "Release a telekinetic wave, launching any living being and item away from yourself."
 	level = 4
 	target_type = NONE
 	cooldown_length = 2 TURNS
@@ -182,7 +189,7 @@
 	cooldown_length = 2 TURNS
 	violates_masquerade = TRUE
 	target_type = TARGET_OBJ | TARGET_LIVING
-	range = 3
+	range = 5
 
 	/// Atom we grabbed with kinesis.
 	var/atom/movable/grabbed_atom
@@ -214,6 +221,8 @@
 	if(isliving(grabbed_atom))
 		to_chat(grabbed_atom, span_userdanger("You feel strange force lift you into the air!"))
 		grabbed_atom.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
+		RegisterSignal(grabbed_atom, COMSIG_LIVING_RESIST, PROC_REF(on_resist))
+
 	RegisterSignal(grabbed_atom, COMSIG_MOVABLE_SET_ANCHORED, PROC_REF(on_setanchored))
 	RegisterSignal(grabbed_atom, COMSIG_MOVABLE_MOVED, PROC_REF(on_target_moved))
 	mouse_catcher = owner.overlay_fullscreen("control", /atom/movable/screen/fullscreen/cursor_catcher/control, 0)
@@ -226,8 +235,9 @@
 
 	// Animate getting lifted up
 	animate(grabbed_atom, 0.8 SECONDS, pixel_y = grabbed_atom.base_pixel_y + 10)
+	owner.setDir(get_dir(owner, grabbed_atom))
 
-	to_chat(owner, span_notice("You concentrate to lift [grabbed_atom.name] into the air! Right-click to let go of your target."))
+	to_chat(owner, span_notice("You concentrate to lift [grabbed_atom.name] into the air! Right-click to let go of your target or launch them."))
 
 /// Undo the grab, first clear any effects from us and then handle target
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/clear_grab()
@@ -239,14 +249,14 @@
 
 	if(!grabbed_atom)
 		return
-	UnregisterSignal(grabbed_atom, list(COMSIG_MOVABLE_SET_ANCHORED, COMSIG_MOVABLE_MOVED))
+	UnregisterSignal(grabbed_atom, list(COMSIG_MOVABLE_SET_ANCHORED, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_RESIST))
 	if(isliving(grabbed_atom))
 		grabbed_atom.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
 	if(!isitem(grabbed_atom))
 		animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x, pixel_y = grabbed_atom.base_pixel_y)
 	grabbed_atom = null
 
-/// If we are attacked/moved or grab was resisted out of we let go of it
+/// If we are attacked/moved we let go of the grab
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/break_concentration()
 	SIGNAL_HANDLER
 
@@ -256,7 +266,7 @@
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/range_check(atom/target)
 	if(ismovable(target) && !isturf(target.loc))
 		return FALSE
-	if(!can_see(owner, target, 10))
+	if(!can_see(owner, target, 5))
 		return FALSE
 	return TRUE
 
@@ -285,13 +295,6 @@
 		return
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/move_target()
-	if(!owner.client || INCAPACITATED_IGNORING(owner, INCAPABLE_GRAB))
-		clear_grab()
-		return
-	if(!range_check(grabbed_atom))
-		owner.balloon_alert(owner, "out of range!")
-		clear_grab()
-		return
 	if(mouse_catcher.mouse_params)
 		mouse_catcher.calculate_params()
 	if(!mouse_catcher.given_turf)
@@ -337,3 +340,26 @@
 	if(!range_check(target))
 		owner.balloon_alert(owner, "out of range!")
 		clear_grab()
+
+/// Handles resisting the control grab
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/on_resist(mob/living/resisting)
+	SIGNAL_HANDLER
+
+	var/datum/storyteller_roll/telekinesis_caster/control_roll = new()
+	var/control_result = control_roll.st_roll(owner, resisting)
+
+	var/datum/storyteller_roll/resisting_telekinesis/resist_roll = new()
+	var/resist_result = resist_roll.st_roll(resisting, owner)
+
+	if(resist_result > control_result)
+		clear_grab()
+
+/datum/storyteller_roll/telekinesis_caster
+	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
+	numerical = TRUE
+	spammy_roll = TRUE
+
+/datum/storyteller_roll/resisting_telekinesis
+	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
+	numerical = TRUE
+	spammy_roll = TRUE
