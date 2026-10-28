@@ -125,6 +125,7 @@
 	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_ACTIVE, owner)
 	owner.add_traits(list(TRAIT_MOVE_FLOATING, TRAIT_PASSTABLE, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
 	owner.AddElement(/datum/element/forced_gravity, 0)
+	owner.add_movespeed_modifier(/datum/movespeed_modifier/jetpack/wings)
 	owner.set_resting(FALSE, TRUE)
 	owner.refresh_gravity()
 
@@ -135,6 +136,7 @@
 	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_INACTIVE, owner)
 	owner.remove_traits(list(TRAIT_MOVE_FLOATING, TRAIT_PASSTABLE, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
 	owner.RemoveElement(/datum/element/forced_gravity, 0)
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/jetpack/wings)
 	owner.refresh_gravity()
 
 /// Can fly checks, we check these if we want to be unable to fly but keep ability active
