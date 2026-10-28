@@ -2,13 +2,14 @@
 	name = "Movement of the Mind"
 	desc = "todo"
 	icon_state = "mind"
+	icon = 'modular_darkpack/modules/paths/icons/paths.dmi'
 	power_type = /datum/discipline_power/thaumaturgy/path/mind_movement
 
 /datum/discipline_power/thaumaturgy/path/mind_movement
 	name = "Movement of the Mind Power Name"
 	desc = "Movement of the Mind Power Description"
 
-	effect_sound = 'modular_darkpack/modules/paths/sounds/fireball.ogg'
+	effect_sound = 'sound/effects/magic/repulse.ogg'
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/launch(atom/movable/launched_object, turf/launch_to)
 	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
@@ -56,16 +57,15 @@
 	var/mob/living/living_target = target
 
 	to_chat(living_target, span_warning("You feel forced into the ground!"))
-	launch(living_target, get_edge_target_turf(owner, get_dir(owner, get_step_away(living_target, owner))))
+	living_target.Knockdown(5 SECONDS)
 
+// Manipulate - Level 2
 /datum/discipline_power/thaumaturgy/path/mind_movement/two
 	name = "Manipulate"
 	desc = "placeholder"
 	level = 2
-	violates_masquerade = TRUE
 	target_type = NONE
 	toggled = TRUE
-	range = 5
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/two/activate(atom/target)
 	. = ..()
@@ -108,7 +108,6 @@
 	. = ..()
 	if(.)
 		return
-	owner.apply_status_effect(/datum/status_effect/thaum_flight)
 	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_ACTIVE, owner)
 	owner.add_traits(list(TRAIT_MOVE_FLOATING, TRAIT_PASSTABLE, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
 	owner.AddElement(/datum/element/forced_gravity, 0)
@@ -119,7 +118,6 @@
 	. = ..()
 	if(.)
 		return
-	owner.remove_status_effect(/datum/status_effect/thaum_flight)
 	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_INACTIVE, owner)
 	owner.remove_traits(list(TRAIT_MOVE_FLOATING, TRAIT_PASSTABLE, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
 	owner.RemoveElement(/datum/element/forced_gravity, 0)
@@ -228,8 +226,7 @@
 			return
 		var/turf/target_turf = mouse_catcher.given_turf
 		clear_grab()
-		if(get_turf(grabbed_atom) != target_turf)
-			launch(launched_object, target_turf)
+		launch(launched_object, target_turf)
 		return
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
