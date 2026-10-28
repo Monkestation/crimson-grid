@@ -24,7 +24,7 @@
 
 	var/throw_range = min(1 * success_count, isliving(launched_object) ? 3 : 6)
 
-	launched_object.throw_at(launch_to, throw_range, launched_object.density ? 3 : 4, null, isitem(launched_object), force = MOVE_FORCE_STRONG)
+	launched_object.throw_at(launch_to, throw_range, launched_object.density ? 3 : 4, null, isitem(launched_object))
 
 	if(isliving(launched_object))
 		var/mob/living/living_target = launched_object
