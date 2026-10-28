@@ -17,6 +17,7 @@
 		to_chat(owner, span_warning("[target.name] is either too heavy or bolted down!"))
 		return FALSE
 
+/// Check if target is bolted down or too heavy
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/can_be_targeted(atom/target)
 	if(!isobj(target) && !isliving(target))
 		return FALSE
@@ -34,6 +35,7 @@
 
 	return TRUE
 
+/// Handle launching the target
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/launch(atom/movable/launched_object, turf/launch_to)
 	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
 
@@ -45,6 +47,7 @@
 		var/mob/living/living_target = launched_object
 		living_target.Knockdown(5 SECONDS)
 
+/// Do extra damage on impact or if the launched item hit a person
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/on_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
 	SIGNAL_HANDLER
 
@@ -58,7 +61,12 @@
 		var/mob/living/living_atom = hit_atom
 		living_atom.apply_damage(1 LETHAL_TTRPG_DAMAGE, BRUTE)
 
-// Force Bolt - Level 1
+/**
+ * Force Bolt - Level 1
+ *
+ * Knocks the person down. Very simple.
+ *
+ */
 /datum/discipline_power/thaumaturgy/path/mind_movement/one
 	name = "Force Bolt"
 	desc = "Cause a target to fall down."
@@ -76,7 +84,13 @@
 	to_chat(living_target, span_warning("You feel forced into the ground!"))
 	living_target.Knockdown(5 SECONDS)
 
-// Manipulate - Level 2
+/**
+ * Manipulate - Level 2
+ *
+ * Works off just giving the thaumaturge telekinesis mutation.
+ * You can't really check for mutation subtypes so there might be some jank with it's behavior from leftover tg code...
+ *
+ */
 /datum/discipline_power/thaumaturgy/path/mind_movement/two
 	name = "Manipulate"
 	desc = "placeholder"
@@ -97,6 +111,7 @@
  * Flight - Level 3
  *
  * Simply lets the thaumaturge fly
+ *
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/three
 	name = "Flight"
@@ -112,7 +127,7 @@
 	owner.AddComponent( \
 		/datum/component/jetpack, \
 		TRUE, \
-		1 NEWTONS, \
+		1.5 NEWTONS, \
 		COMSIG_MIND_FLIGHT_ACTIVE, \
 		COMSIG_MIND_FLIGHT_INACTIVE, \
 		null, \
@@ -199,27 +214,30 @@
 
 /atom/movable/screen/fullscreen/cursor_catcher/control
 
+/// Do grab on the target, handle traits and signals
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/grab_atom(atom/target)
 	grabbed_atom = target
 	if(isliving(grabbed_atom))
 		to_chat(grabbed_atom, span_userdanger("You feel strange force lift you into the air!"))
 		grabbed_atom.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
 	RegisterSignal(grabbed_atom, COMSIG_MOVABLE_SET_ANCHORED, PROC_REF(on_setanchored))
+	RegisterSignal(grabbed_atom, COMSIG_MOVABLE_MOVED, PROC_REF(on_target_moved))
 	mouse_catcher = owner.overlay_fullscreen("control", /atom/movable/screen/fullscreen/cursor_catcher/control, 0)
 	mouse_catcher.assign_to_mob(owner)
 
 	RegisterSignal(mouse_catcher, COMSIG_SCREEN_ELEMENT_CLICK, PROC_REF(on_catcher_click))
 
 	owner.add_traits(list(TRAIT_IMMOBILIZED), REF(src))
-	RegisterSignals(owner, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT), PROC_REF(break_concentration))
+	RegisterSignals(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT), PROC_REF(break_concentration))
 
 	// Animate getting lifted up
 	animate(grabbed_atom, 0.8 SECONDS, pixel_y = grabbed_atom.base_pixel_y + 10)
 
 	to_chat(owner, span_notice("You concentrate to lift [grabbed_atom.name] into the air! Right-click to let go of your target."))
 
+/// Undo the grab, first clear any effects from us and then handle target
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/clear_grab()
-	UnregisterSignal(owner, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT))
+	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT))
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, REF(src))
 	mouse_catcher = null
 	owner.clear_fullscreen("control")
@@ -227,13 +245,14 @@
 
 	if(!grabbed_atom)
 		return
-	UnregisterSignal(grabbed_atom, list(COMSIG_MOVABLE_SET_ANCHORED))
+	UnregisterSignal(grabbed_atom, list(COMSIG_MOVABLE_SET_ANCHORED, COMSIG_MOVABLE_MOVED))
 	if(isliving(grabbed_atom))
 		grabbed_atom.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
 	if(!isitem(grabbed_atom))
 		animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x, pixel_y = grabbed_atom.base_pixel_y)
 	grabbed_atom = null
 
+/// If we are attacked/moved or grab was resisted out of we let go of it
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/break_concentration()
 	SIGNAL_HANDLER
 
@@ -241,8 +260,6 @@
 	clear_grab()
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/range_check(atom/target)
-	if(!isturf(owner.loc))
-		return FALSE
 	if(ismovable(target) && !isturf(target.loc))
 		return FALSE
 	if(!can_see(owner, target, 10))
@@ -318,4 +335,10 @@
 	SIGNAL_HANDLER
 
 	if(grabbed_atom.anchored)
+		clear_grab()
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/on_target_moved(atom/target)
+	SIGNAL_HANDLER
+
+	if(!range_check(target))
 		clear_grab()
