@@ -33,6 +33,7 @@
 		L.update(FALSE)
 
 /obj/warehouse_generator/attack_hand(mob/user)
+	. = ..()
 	if(COOLDOWN_FINISHED(src, generator_cooldown))
 		COOLDOWN_START(src, generator_cooldown, 10 SECONDS)
 		if(on)
@@ -77,3 +78,7 @@
 		if(last_sound_played+40 <= world.time)
 			last_sound_played = world.time
 			playsound(loc, 'modular_darkpack/modules/electricity/sounds/generator_loop.ogg', 25, FALSE)
+
+/obj/warehouse_generator/start_off/Initialize(mapload)
+	. = ..()
+	generator_shutdown()

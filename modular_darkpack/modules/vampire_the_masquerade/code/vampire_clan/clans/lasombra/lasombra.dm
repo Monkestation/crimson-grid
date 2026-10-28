@@ -22,9 +22,13 @@
 
 
 /datum/subsplat/vampire_clan/lasombra/psychomania_effect(mob/living/target, mob/living/owner)
-	to_chat(target, span_cult("THE SHADOWS BETRAY ME, SEEKING MY LIFE"))
+	// CRIMSON GRID ADD: DARK THAUMATURGY. BEFORE:
+	/* to_chat(target, span_cult("THE SHADOWS BETRAY ME, SEEKING MY LIFE"))
 	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/eldritchlaugh.ogg", 50, FALSE)
-	target.Paralyze(6 SECONDS)
+	target.Paralyze(6 SECONDS) */
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 // Not TTRPG accurate and is pending a rework to use real rolls after #633
 /proc/scramble_lasombra_message(message, mob/living/lasombra)

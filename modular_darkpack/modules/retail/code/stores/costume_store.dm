@@ -2,6 +2,10 @@
 	desc = "Purchase a mask for that ugly mug."
 	products_list = list(
 		new /datum/data/vending_product("balaclava", /obj/item/clothing/mask/vampire/balaclava, 10),
+		new /datum/data/vending_product("face scarf", /obj/item/clothing/mask/facescarf/vampire, 10),
+		new /datum/data/vending_product("bandana", /obj/item/clothing/mask/bandana/vampire, 10),
+		new /datum/data/vending_product("striped bandana", /obj/item/clothing/mask/bandana/striped/vampire, 10),
+		new /datum/data/vending_product("skull bandana", /obj/item/clothing/mask/bandana/skull/vampire, 10),
 		new /datum/data/vending_product("bear mask", /obj/item/clothing/mask/animal/small/bear, 13),
 		new /datum/data/vending_product("rat mask", /obj/item/clothing/mask/animal/small/rat, 10),
 		new /datum/data/vending_product("bee mask", /obj/item/clothing/mask/animal/small/bee, 12),

@@ -83,7 +83,7 @@
 		/obj/item/flashlight/seclite,
 		/obj/item/food/donut,
 		/obj/item/grenade,
-		/obj/item/holosign_creator/security,
+		/obj/item/holosign_creator/police_tape, // DARKPACK EDIT - Original: /obj/item/holosign_creator/security
 		/obj/item/knife/combat,
 		/obj/item/melee/baton,
 		/obj/item/radio,

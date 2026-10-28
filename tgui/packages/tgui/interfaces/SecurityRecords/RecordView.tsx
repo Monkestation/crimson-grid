@@ -3,6 +3,8 @@ import { useBackend, useLocalState } from 'tgui/backend';
 import {
   Box,
   Button,
+  Dropdown,
+  Input,
   LabeledList,
   NoticeBox,
   RestrictedInput,
@@ -11,10 +13,11 @@ import {
   Table,
 } from 'tgui-core/components';
 
+import { capitalize } from 'tgui-core/string';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { EditableText } from '../common/EditableText';
-import { CRIMESTATUS2COLOR, CRIMESTATUS2DESC } from './constants';
 import { CrimeWatcher } from './CrimeWatcher';
+import { CRIMESTATUS2COLOR, CRIMESTATUS2DESC } from './constants';
 import { getSecurityRecord } from './helpers';
 import { RecordPrint } from './RecordPrint';
 import type { SecurityRecordsData } from './types';
@@ -64,7 +67,7 @@ const RecordInfo = (props) => {
     gender,
     name,
     note,
-    rank,
+    recorded_rank, // CRIMSON KEEP EDIT START - Security console and records
     species,
     wanted_status,
     voice,
@@ -150,9 +153,15 @@ const RecordInfo = (props) => {
             <LabeledList.Item label="Name">
               <EditableText field="name" target_ref={crew_ref} text={name} />
             </LabeledList.Item>
+            {/* CRIMSON KEEP EDIT START - Security console and records */}
             <LabeledList.Item label="Job">
-              <EditableText field="rank" target_ref={crew_ref} text={rank} />
+              <EditableText
+                field="recorded_rank"
+                target_ref={crew_ref}
+                text={recorded_rank}
+              />
             </LabeledList.Item>
+            {/* CRIMSON KEEP EDIT END */}
             <LabeledList.Item label="Age">
               <RestrictedInput
                 minValue={min_age}
@@ -178,31 +187,69 @@ const RecordInfo = (props) => {
               />
             </LabeledList.Item> */}
             {/* DARKPACK EDIT REMOVAL END */}
+            {/* CRIMSON KEEP EDIT START - Security console and records */}
             <LabeledList.Item label="Gender">
-              <EditableText
+              {/* <EditableText
                 field="gender"
                 target_ref={crew_ref}
                 text={gender}
+              /> */}
+              <Dropdown
+                selected={capitalize(gender)}
+                options={['male', 'female', 'plural', 'neuter']}
+                width="6rem"
+                color="#666"
+                onSelected={(value) =>
+                  act('edit_field', {
+                    field: 'gender',
+                    ref: crew_ref,
+                    value: value,
+                  })
+                }
               />
             </LabeledList.Item>
             <LabeledList.Item color="good" label="Fingerprint">
-              <EditableText
-                color="good"
-                field="fingerprint"
-                target_ref={crew_ref}
-                text={fingerprint}
-              />
+              <Box
+                as="span"
+                color={!fingerprint ? 'grey' : 'good'}
+                style={{
+                  textDecoration: 'underline',
+                  textDecorationColor: 'white',
+                  textDecorationThickness: '1px',
+                  textUnderlineOffset: '1px',
+                }}
+              >
+                {!fingerprint ? '(none)' : fingerprint}
+              </Box>
             </LabeledList.Item>
-            <LabeledList.Item label="Voice">
+            {/* <LabeledList.Item label="Voice">
               <EditableText field="voice" target_ref={crew_ref} text={voice} />
-            </LabeledList.Item>
+            </LabeledList.Item> */}
             <LabeledList.Item label="Note">
-              <EditableText
+              {/* <EditableText
                 field="security_note"
                 target_ref={crew_ref}
                 text={note}
+              /> */}
+              <Input
+                as="span"
+                style={{
+                  textDecorationColor: 'white',
+                  textDecorationThickness: '1px',
+                  textUnderlineOffset: '1px',
+                }}
+                fluid={true}
+                value={note}
+                placeholder="None."
+                onChange={(value) =>
+                  act('set_note', {
+                    note: value,
+                    crew_ref: crew_ref,
+                  })
+                }
               />
             </LabeledList.Item>
+            {/* CRIMSON KEEP EDIT END */}
             {/* DARKPACK EDIT START - Flavor Text */}
             <LabeledList.Item label="Past Criminal Records">
               <Box maxWidth="100%" preserveWhitespace>

@@ -16,15 +16,18 @@
 		/obj/item/taperecorder,
 		/obj/item/toy/crayon/white,
 		/obj/item/storage/box/evidence,
+		/obj/item/barrier_tape/police,
 		/obj/item/flashlight/seclite,
 		/obj/item/detective_scanner/darkpack,
 		/obj/item/storage/box/bodybags,
 		/obj/item/restraints/handcuffs,
 		/obj/item/storage/medkit/darkpack/ifak,
 		/obj/item/radio/headset/darkpack/police,
+		/obj/item/melee/baton/security/handtaser,
 		/obj/item/gun/energy/taser/darkpack,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/melee/baton/vamp,
+		/obj/item/holosign_creator/police_tape,
 	)
 	products_list = list(
 		new /datum/data/vending_product("binoculars", /obj/item/binoculars, 20),

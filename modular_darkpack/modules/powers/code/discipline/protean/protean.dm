@@ -78,7 +78,7 @@
 
 /datum/discipline_power/protean/feral_claws/pre_activation_checks(atom/target)
 	. = ..()
-	if(do_after(owner, 1 TURNS, timed_action_flags = IGNORE_USER_LOC_CHANGE))
+	if(do_after(owner, 1 SECONDS, timed_action_flags = IGNORE_USER_LOC_CHANGE)) // CRIMSON GRID EDIT - 5-> 1 seconds ORIGINAL: if(do_after(owner, 1 TURNS, timed_action_flags = IGNORE_USER_LOC_CHANGE))
 		return TRUE
 	else
 		to_chat(owner, span_warning("You are rendered unable to transform!"))
@@ -191,8 +191,8 @@
 
 /datum/discipline_power/protean/shape_of_the_beast/deactivate()
 	UnregisterSignal(owner, COMSIG_LIVING_RETURNED_FROM_SHAPESHIFT)
-	. = ..()
 	gangy_form.Remove(owner)
+	. = ..()
 	QDEL_NULL(gangy_form)
 	owner.Stun(1 TURNS)
 	owner.do_jitter_animation(15)

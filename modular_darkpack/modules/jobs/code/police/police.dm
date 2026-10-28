@@ -1,8 +1,8 @@
 /datum/job/vampire/police_officer
 	title = JOB_POLICE_OFFICER
 	faction = FACTION_CITY
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 9 // CRIMSON EDIT CHANGE - Original: total_positions = 5
+	spawn_positions = 9 // CRIMSON EDIT CHANGE - Original: spawn_positions = 5
 	supervisors = SUPERVISOR_POLICE_CAPTAIN_AND_SERGEANT
 	config_tag = "POLICE_OFFICER"
 	outfit = /datum/outfit/job/vampire/police_officer
@@ -18,6 +18,8 @@
 		"Senior Police Officer",
 	)
 
+	tgui_icon = FA_ICON_SHIELD_HALVED
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
 	splat_slots = list(SPLAT_GHOUL = 2, SPLAT_KINFOLK = 2)
 
@@ -29,6 +31,12 @@
 		JOB_POLICE_SERGEANT,
 		JOB_EMERGENCY_DISPATCHER
 	)
+
+// CRIMSON GRID EDIT START - Security console and records
+/datum/job/vampire/police_officer/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	spawned.add_mob_memory(/datum/memory/key/police_login)
+// CRIMSON GRID END
 
 /datum/outfit/job/vampire/police_officer
 	name = JOB_POLICE_OFFICER

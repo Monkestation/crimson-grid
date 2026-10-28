@@ -17,6 +17,8 @@
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/temporis/temporis.ogg'
 
+	magic_subtype = MAGIC_SUBTYPE_BLOOD_TIME
+
 /datum/discipline_power/temporis/activate()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_TIMEWARPER, DISCIPLINE_TRAIT(type))
@@ -81,6 +83,7 @@
 	vitae_cost = 0 //You *can* spend a BP to boost this, but it'd extend time to hours or a day.
 
 	hostile = TRUE
+	frenzy_usable = FALSE
 
 	cooldown_length = 15 SECONDS
 
@@ -125,6 +128,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
 
 	violates_masquerade = TRUE
+	frenzy_usable = FALSE
 
 	cancelable = TRUE
 	duration_length = 10 SECONDS

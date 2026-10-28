@@ -12,7 +12,8 @@
 7. [Good Boy Points](#good-boy-points)
 8. [Porting features/sprites/sounds/tools from other codebases](#porting-featuresspritessoundstools-from-other-codebases)
 9. [Banned content](#banned-content)
-10. [A word on Git](#a-word-on-git)
+10. [AI/LLMs](#ai-and-llms)
+11. [A word on Git](#a-word-on-git)
 
 ## Reporting Issues
 
@@ -202,6 +203,9 @@ Do not add any of the following in a Pull Request or risk getting the PR closed:
 - Code which violates GitHub's [terms of service](https://github.com/site/terms).
 
 Just because something isn't on this list doesn't mean that it's acceptable. Use common sense above all else.
+
+## AI and LLMs
+This project does not accept any AI-generated contributions. All use of AI in the process of contributing to the project should be disclosed.
 
 ## A word on Git
 

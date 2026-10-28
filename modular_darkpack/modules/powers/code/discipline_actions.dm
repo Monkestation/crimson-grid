@@ -17,6 +17,7 @@
 	name = discipline.current_power.name
 	desc = discipline.current_power.desc
 
+	button_icon = discipline.icon // CRIMSON GRID ADD: DARK THAUMATURGY
 	button_icon_state = discipline.icon_state
 	overlay_icon_state = "1"
 

@@ -1,0 +1,195 @@
+2025-11-01:
+  FalloutFalcon:
+  - rscadd: Re implements the basic weather effects, only found in sewers or admin
+      bus atm
+  - bugfix: most walls should no longer become missing textures if placed weird
+  TheTrueSilverRat, chazzyjazzy, XeonMations:
+  - refactor: Added special checks for jobs
+  - rscadd: City jobs!
+  XeonMations:
+  - rscadd: Added pixelshifting  to the game.
+  chazzyjazzy:
+  - code_imp: remakes beastmaster subsystem and makes it easier to use
+2025-11-02:
+  Marshmellow105:
+  - rscdel: removes old elevator code/icons I think
+  - sound: added elevator door sounds
+  - image: added animated elevator doors and elevator buttons
+  XeonMations:
+  - rscadd: Added flavor text to the game
+2025-11-03:
+  FalloutFalcon:
+  - qol: vamprocks are now normal rocks that can be smashed
+  - map: random spawners for flora
+  - rscadd: wood plant trays
+  - qol: you can cut seeds out of plants with any sharp object
+  - refactor: weed is now normal botany, meaning it functions like how all the other
+      plants work
+  - image: pretty new crate and plant tray sprites by paynt
+  - bugfix: retail stores will use custom premium price if it doesnt have normal custom_price
+      nor passed in the retail store
+2025-11-05:
+  FalloutFalcon:
+  - sound: Adds wooden door knocking, Sounds where in the repo just unused.
+  - sound: Replaces the end of round sounds with bloopers from the HTP episode 6.2
+  - refactor: fishing has been TGified
+  chazzyjazzy:
+  - code_imp: reticks necromancy and remakes graveyard subsystem
+  dwinters99:
+  - rscadd: wod belts
+  - rscadd: TFN tasers
+2025-11-06:
+  dwinters99:
+  - map: viewport helpers for mapping
+2025-11-09:
+  dwinters99:
+  - bugfix: lizard and ethereal blood no longer spawns in blood freezers
+2025-11-11:
+  chazzyjazzy:
+  - code_imp: ticking thaumaturgy and file management for ritual thaumaturgy
+  dwinters99:
+  - balance: loadout cowboy hat changed to the unarmored variant
+2025-11-12:
+  FalloutFalcon:
+  - rscadd: deer are scared of darkpack cars lol
+2025-11-13:
+  FalloutFalcon:
+  - rscadd: Added a few new "City" traits
+  - rscdel: Disables all old station traits
+  - qol: thunder can be heard from MUCH MUCH further away
+  - admin: Only city traits that are real show up in the station trait select menu
+  - image: adds or fixes a few missing icon states
+  - qol: City Maps either open the wiki or navigate verb depending on input
+  - rscadd: NPC cap has been moved to map configs, expect less npcs in smaller maps.
+  - bugfix: NPC repopulate is called on round start to get up to the correct number
+  - bugfix: alt sprite for bonfires should behave better
+2025-11-14:
+  FalloutFalcon, Major00:
+  - image: Re-sprites drink and snack vending machine
+  Marshmellow105:
+  - bugfix: fixes shutters layering under shit
+2025-11-17:
+  FalloutFalcon:
+  - bugfix: NPCs should behave saner when it comes to being attacked
+  XeonMations:
+  - rscadd: Added phones
+  akbar-kurnia1:
+  - spellcheck: Reflavored the catatonic NPC message to be more generic.
+2025-11-18:
+  FalloutFalcon:
+  - bugfix: Tzi content and arcane book must be learned
+  dwinters99:
+  - code_imp: doors repathed
+2025-11-19:
+  Eli-Hodges:
+  - bugfix: fixed pixel shifting offset
+  - code_imp: changed logic to use in-built offset logic.
+  - spellcheck: Lowercased the name of elevators
+  FalloutFalcon:
+  - rscadd: 'Seperates non-diagetic music into its own subsystem
+
+      add Adds some placeholder sound environments for some of the area types, full
+      pass still required'
+  - refactor: ports shiptest's turf fire and spreading
+  - rscadd: Raven and crow basic mobs (corax kinfolk)
+  chazzyjazzy:
+  - code_imp: ticking vip barriers and now they work so
+2025-11-21:
+  Eli-Hodges:
+  - bugfix: runtime from elevator wire cutting
+  dwinters99:
+  - bugfix: NPC name and real_name now match
+  - rscadd: robes in loadout
+  - bugfix: NPCs are no longer catatonic. Just busy.
+2025-11-22:
+  FalloutFalcon:
+  - qol: examing the Sarcophagus lets you roll to auto decipher the cipher
+  KCartridge:
+  - rscadd: Fixed walls that are now good and awesome
+  - image: Removed old evil walls that were replaced yayyy
+  Marshmellow105:
+  - rscadd: adds old chairs back along with some new variants
+  dwinters99:
+  - image: technically unorphaned two phone sprites
+2025-11-23:
+  Eli-Hodges:
+  - spellcheck: Added improper grammar to the city police sign
+  FalloutFalcon, ghoulpen:
+  - image: deer sprites from ghoulpen
+  XeonMations:
+  - map: Updated updatepaths scripts to not miss some stuff.
+  dwinters99 & Major00 (Paynt):
+  - image: new hud by Major00 (Paynt)
+2025-11-24:
+  XeonMations:
+  - bugfix: Fixed phone call records not properly cllearing and dead NPCs not fully
+      restoring your masquerade.
+  - rscdel: Removed player shadow disc
+  dwinters99:
+  - image: old vehicle sprites
+2025-11-25:
+  FalloutFalcon:
+  - rscadd: city gangrel
+  - rscadd: reimplements protean
+  - rscadd: readds beast marks selection conveted to tgui pref
+  - balance: tunes back gangrel form health and damage
+  chazzyjazzy:
+  - image: flowers & trees now sway in the wind
+  dwinters99:
+  - map: fake platforms and low shadows
+2025-11-27:
+  Beautiful TG coders:
+  - code_imp: Monthly TG Pull. Thank you TG.
+  FalloutFalcon:
+  - bugfix: Doors no longer think they are on the tile above them
+  JohnFulpWillard:
+  - bugfix: Headslugs are now small.
+  XeonMations:
+  - rscadd: Added Auspex to the game
+  - balance: You are now more sensitive to noises and bright lights while using Heightened
+      Senses.
+  Y0SH1M4S73R:
+  - sound: Squid tongues have a distinctive effect on your text-to-speech voice.
+  buffyuwu:
+  - bugfix: fixes malkavian hivemind and madness speech features
+  dwinters99:
+  - bugfix: woodglass doors no longer are opaque
+  - rscdel: the Axe Gang is dead. Long live the Warehouse.
+  lelandkemble:
+  - bugfix: Ghosts can no longer try and fail to admire aquariums.
+2025-11-28:
+  Hawk-v3:
+  - rscadd: Reimplements the Fusebox.
+  chazzyjazzy:
+  - code_imp: readds vault doors and keypads
+  dwinters99:
+  - image: decor.dmi is fucking dead
+  - code_imp: repaths job start landmarks to be more sane
+  - code_imp: add missing job defines
+2025-11-29:
+  FalloutFalcon:
+  - rscadd: Bloodpool icon
+  - bugfix: Bloodpool calucations should acctually run and be ttrpg accurate
+  - rscadd: Readds Temporis.
+  FalloutFalcon, Major00:
+  - image: Resprites the TG lobby menu to be more vampyr
+  XeonMations:
+  - server: Defaulted some config changes.
+  chazzyjazzy:
+  - code_imp: readds necromancy & necromancy rituals
+  - code_imp: readds obtenebration & abyss mysticism rituals
+  dwinters99:
+  - code_imp: default ghoul dummy is now Heather Poe from VTMB
+  - bugfix: donut onfloors work
+  - bugfix: mothic and martian food sorted into misc food
+  - bugfix: sheaths have icons
+  - bugfix: lattices let you walk over water
+  - bugfix: fake platforms are on the right plane
+2025-11-30:
+  FalloutFalcon:
+  - bugfix: silver ammo now has onfloors
+  - bugfix: mapping now shows mag sprites properly
+  XeonMations:
+  - bugfix: Fixed the majority of hard deletes that we encountered thus far
+  - bugfix: Fixed blood hunts using name instead of real name, previously not showing
+      the hunted's name.

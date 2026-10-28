@@ -1,7 +1,7 @@
 /datum/language/piratespeak
 	name = "Piratespeak"
 	desc = "The language of space pirates."
-	key = "p"
+	// key = "p" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 100
 	sentence_chance = 10
 	between_word_sentence_chance = 10

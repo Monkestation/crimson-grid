@@ -27,7 +27,7 @@
 		return RANK_ADREN
 	if(glory >= 4 && honor >= 1 && wisdom >= 1)
 		return RANK_FOSTERN
-	if(glory >= 2 || honor >= 1)
+	if(glory >= 2 && honor >= 1)
 		return RANK_CLIATH
 	return RANK_CUB
 

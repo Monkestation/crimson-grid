@@ -73,6 +73,9 @@
 /obj/effect/turf_decal/asphaltline/alt
 	icon_state = "line_alt"
 
+/obj/effect/turf_decal/asphaltline/alt/offset
+	icon_state = "line_offset_alt"
+
 /obj/effect/turf_decal/asphaltline/Initialize(mapload)
 	icon_state = "[initial(icon_state)][rand(1, 3)]"
 	if(check_holidays(FESTIVE_SEASON))

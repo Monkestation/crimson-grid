@@ -2,7 +2,7 @@
 	name = "Gibbering"
 	desc = "It is theorized that any sufficiently brain-damaged person can speak this language."
 	flags = LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
-	key = "i"
+	// key = "i" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	syllables = list("m","n","gh","h","l","s","r","a","e","i","o","u")
 	space_chance = 0
 	sentence_chance = 0

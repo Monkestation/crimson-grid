@@ -80,6 +80,11 @@
 		power_throw += potential_spine.added_throw_speed
 		extra_throw_range += potential_spine.added_throw_range
 
+	// DARKPACK EDIT ADD START - Strength Based Throw Speed
+	var/strength = st_get_stat(STAT_STRENGTH)
+	power_throw += strength/5
+	// DARKPACK EDIT ADD END
+
 	if(HAS_TRAIT(src, TRAIT_HULK))
 		power_throw++
 	if(HAS_TRAIT(src, TRAIT_DWARF))

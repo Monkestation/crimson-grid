@@ -328,6 +328,28 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	storage.hide_contents(usr)
 	return TRUE
 
+/atom/movable/screen/storage_up
+	name = "go up a storage level"
+	plane = ABOVE_HUD_PLANE
+	icon = 'icons/hud/screen_midnight.dmi'
+	icon_state = "storage_up"
+	mouse_over_pointer = MOUSE_HAND_POINTER
+	hud_group_key = HUD_GROUP_STORAGE
+
+/atom/movable/screen/storage_up/Initialize(mapload, datum/hud/hud_owner, new_master)
+	. = ..()
+	master_ref = WEAKREF(new_master)
+
+/atom/movable/screen/storage_up/Click()
+	var/datum/storage/storage = master_ref?.resolve()
+	if(!storage)
+		return
+	var/datum/storage/up_storage = storage.parent.loc?.atom_storage
+	if(!up_storage)
+		return
+	up_storage.open_storage(usr)
+	return TRUE
+
 /atom/movable/screen/drop
 	name = "drop"
 	icon = 'icons/hud/screen_midnight.dmi'
@@ -988,12 +1010,19 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 			icon_key = "DEAD"
 		else if(SEND_SIGNAL(body_part, COMSIG_BODYPART_UPDATING_HEALTH_HUD, owner, overridable_key) & OVERRIDE_BODYPART_HEALTH_HUD)
 			icon_key = overridable_key[1] // thanks i hate it
+		// CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+		else if(HAS_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES))
+			icon_key = 0
+		// CRIMSON GRID ADD END: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 		else if(!owner.has_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy))
 			var/damage = body_part.get_damage() / body_part.max_damage
 			// calculate what icon state (1-5, or 0 if undamaged) to use based on damage
 			icon_key = clamp(ceil(damage * 5), 0, 5)
-
-		if(length(body_part?.wounds))
+		// CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+		if(HAS_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES))
+			LAZYREMOVE(animated_zones, part_zone)
+		// CRIMSON GRID ADD END: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+		else if(length(body_part?.wounds))
 			LAZYSET(animated_zones, part_zone, TRUE)
 		else
 			LAZYREMOVE(animated_zones, part_zone)
@@ -1151,8 +1180,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	if(!istype(hungry))
 		return
 
-	if(!ishuman(hungry) || CONFIG_GET(flag/disable_human_mood))
-		screen_loc = ui_mood // Slot in where mood normally is if mood is disabled
+	if(isnull(hungry.mob_mood))
+		screen_loc = ui_mood // Slot in where mood normally is if mood is not here (we arent a human)
 
 	// Burger next to the bar
 	food_image = image(icon = food_icon, icon_state = food_icon_state, pixel_x = -5)

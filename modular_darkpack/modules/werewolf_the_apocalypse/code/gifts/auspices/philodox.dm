@@ -24,9 +24,11 @@
 
 	to_chat(owner, span_notice("You feel your skin thickening..."))
 	owner.add_traits(list(TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), GIFT_TRAIT)
+	owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 /datum/status_effect/resist_pain/on_remove()
 	owner.remove_traits(list(TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), GIFT_TRAIT)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 	to_chat(owner, span_warning("Your skin is thin again..."))
 
 	return ..()
@@ -40,7 +42,7 @@
 /datum/storyteller_roll/gift/scent_of_the_true_form
 	applicable_stats = list(STAT_PERCEPTION)
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/action/cooldown/power/gift/scent_of_the_true_form
 	name = "Scent Of The True Form"
@@ -176,7 +178,7 @@
 	var/datum/storyteller_roll/roll_datum = new()
 	roll_datum.applicable_stats = list(STAT_INTELLIGENCE, STAT_EMPATHY)
 	roll_datum.difficulty = living_target.st_get_stat(STAT_MANIPULATION) + living_target.st_get_stat(STAT_SUBTERFUGE)
-	roll_datum.roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_datum.roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 	var/roll_result = roll_datum.st_roll(owner)
 
 	if(roll_result != ROLL_SUCCESS)

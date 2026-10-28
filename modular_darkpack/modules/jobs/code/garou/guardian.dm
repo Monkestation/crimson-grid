@@ -21,6 +21,8 @@
 		/datum/job_department/gaia,
 	)
 
+	tgui_icon = FA_ICON_SHIELD_DOG
+
 	known_contacts = list(
 		JOB_GAROU_COUNCIL,
 		JOB_GAROU_TRUTHCATCHER,

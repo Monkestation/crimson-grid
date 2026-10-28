@@ -8,7 +8,9 @@
 /// We will not be known by others, even if they pass checks in any way otherwise
 #define GUESTBOOK_FORGETMENOT (1 << 3)
 
+/// Whether a guestbook entry of mob for guest exists
+#define GET_GUESTBOOK_ENTRY(mob, guest) mob?.mind?.guestbook?.get_known_name(mob, guest)
 /// Differs from GET_GUESTBOOK_NAME_TRUE as it returns the known name OR the whole mob for situations where we directly embed into a string for text macros.
-#define GET_GUESTBOOK_NAME(mob, guest) (mob?.mind?.guestbook?.get_known_name(mob, guest) || guest)
+#define GET_GUESTBOOK_NAME(mob, guest) (GET_GUESTBOOK_ENTRY(mob, guest) || guest)
 /// Macro to get a STRING (never a mob) of the name we refer to them as.
-#define GET_GUESTBOOK_NAME_TRUE(mob, guest) (mob?.mind?.guestbook?.get_known_name(mob, guest) || guest.name)
+#define GET_GUESTBOOK_NAME_TRUE(mob, guest) (GET_GUESTBOOK_ENTRY(mob, guest) || guest.name)

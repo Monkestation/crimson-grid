@@ -1,0 +1,214 @@
+2026-07-06:
+  FalloutFalcon:
+  - bugfix: Rainstorms work again
+  - balance: All current events can now only trigger once
+  - balance: if the faulty grid city trait is active it wont ALSO trigger the blackout
+      event. Fuse-boxes should only break once therefore.
+  - balance: Small chance for blackout to only MOSTLY fuck up a fusebox
+  - rscadd: Klaives; the silvered blades of the fera
+  - qol: Clan and Tribe keys wont spawn if the map does not have any corresponding
+      doors
+  Icarus-The-Sun:
+  - bugfix: grocery store sells real spaghetti
+  Magisterium2022:
+  - bugfix: Fixes Sense the Sin outputting text to target instead of user.
+2026-07-13:
+  Ambrose997:
+  - code_imp: Mind reading success rolls after it's picked from the telepathy menu
+      rather than before.
+  - code_imp: Undisguised Implant Thought usage no longer requires a roll.
+  - code_imp: Separates the mind reading and implant thought cooldowns.
+  - balance: Mind Reading cooldown set to 3 Minutes.
+  - balance: Implant Thought cooldown set to 5 seconds.
+  - balance: Increases message length for the specific thought searches via mind reading
+      (From TFN).
+  - bugfix: Clicking "Cancel" on the telepathy menu no longer runs the highlighted
+      option anyway.
+  - bugfix: fixed previously unnoticed bug resulting from nested quotes clashing.
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  Dusk-a:
+  - balance: Crinos and Hispo no longer get stunned by broken glass
+  FalloutFalcon:
+  - balance: Bashing a door of its hinges scales distance thrown based on strength
+      and roll difficulty
+  SirSwagmeyer:
+  - rscadd: Adds eyes, ears, and limb regrowth for bloodheal.
+  - balance: buffed the bolt projectile and leopoldite armor a bit.
+  - bugfix: fixed the crossbow reloading issue
+  Stutternov:
+  - rscadd: Adds new sawn off variants of the AK, pump-shotgun, lever action, and
+      musket.
+  chazzyjazzy:
+  - rscadd: adds passive blood drain as a mechanic for vampires and ghouls which can
+      be toggled on in darkpack_config.txt with the default timer of 20 minutes
+  - config: adds passive blood drain config option
+  - config: adds passive blood drain timer config option
+  - rscadd: adds back oldbase's Mytherceria
+  - rscdel: removes the Mytherceria wards since there were only three of them and
+      one of them gave people motion sickness
+  - rscadd: adds the 'graveyard' random event in place of what we had before which
+      fires once per round with about the same rarity as the sarcophagus event. in
+      this event, 20% of the graves across the map will spawn 2 zombies max each
+  - rscadd: artifacts and all tremere spellbooks can now be sold at pawn shops
+  - rscadd: masquerade sensitive items can now be sold at pawnshops, but you may breach
+      if you don't pass a manip + subterfuge diff 8 roll
+  - rscadd: adds three new zombie types, the fat zombie, the skeleton, and the suit
+      zombie
+  - rscadd: the graveyard zombies now have bloodpoints and can be bitten
+  - rscadd: necromancy users can now purchase an 'obolus' (a coin forged from a Wraith's
+      soul) from the necromancy tome, which can be sold
+  - rscadd: necromancy users can now purchase graveyard keys from their necromancy
+      tome, giovanni start with them as they are assumed to control the graveyard's
+      mortal front
+  - rscadd: adds being able to speak to observer ghosts to necromancy 1 Shroudsight
+      similar to spirit speech for Garou
+  - balance: Shroudsight now has triple the cooldown (3 minutes -> 9 minutes) to compensate
+      for the 'talking to ghosts' trait which has been shown to be too powerful, it
+      also now has a vitae cost of 1
+  - rscadd: graveyard keys can now open and shut the graveyard gate
+  - bugfix: fixes shroudsight double-rolling, it now only rolls it's appropriate roll
+      datum (perception) + awareness
+  - rscdel: removes the 'graveyard keeper' role
+  - code_imp: deletes the 'graveyard' subsystem
+  - config: extends the lobby time to 5 minutes, 2 minutes was too short
+  - config: multiplies the time between events by 10x since they were firing once
+      every 2.5 minutes which is way too short in a 3 hour round
+2026-07-20:
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  FalloutFalcon:
+  - refactor: refactors beastmaster to handle taming a existing mob rather then spawning
+      a new one
+  - code_imp: deleting or killing a summon is handled much better
+  - qol: Attack information as it relates to rolls is now displayed in a weapons combat
+      information
+  - qol: Attacking with a weapon BELOW a single bonus dice no longer makes a roll
+      that includes your entire dice pool
+  - balance: Weapons with a dice pool that is not rounded turns the remainder into
+      a chance for a bonus dice.
+  - bugfix: Private rolling to admins properly displays to them
+  - bugfix: Vampire artifact spawner should only spawn vampire artifacts
+  Fghj240:
+  - qol: Ghosts can see alien embryo stage and all virus symptoms when health scanning
+  - code_imp: Health scanners now support multiple scan levels
+  - bugfix: Fixes medical kiosks not being able to identify advanced disease cures.
+  - rscdel: Removed ImmunoSilence and its trait
+  - balance: Aggressive healing has much lower stats
+  - map: Added sepsisillin pills to virology
+  - spellcheck: Clarified the description of aggressive healing
+  LT3:
+  - bugfix: Tram signs only update on signals from their linked tram
+  Lotte103:
+  - map: Added Thermomachines and Plasma Cannister to the HFR Room on Catwalk
+  - map: Replaced glass windows with reinforced plasmaglass windows in Atmos and Ordnance
+      on Catwalk. Improving safety and allowing Atmos to operate the gas turbine without
+      breaching the Atmos pump room.
+  Stutternov:
+  - bugfix: Fixes AK sawing oversight.
+  TealSeer:
+  - bugfix: fixed FaxBond not sending notifications when faxes are received
+  TheCarnalest:
+  - bugfix: Scry the Hearthstone now displays guestbook names.
+  - rscadd: Scry the Hearthstone now gives you direction and distance to players in
+      your area as well as alerting you when they leave and enter, but can no longer
+      be used outdoors.
+  lelandkemble:
+  - rscadd: Added craftable anti-mech tripwires. A mech that foolishly steps on one
+      will fall down and be immobilized temporarily. Don't let it fall on you!
+2026-07-22:
+  Art-gif-dotcom:
+  - bugfix: fixed dementation 4 working incorrectly
+  FalloutFalcon:
+  - bugfix: Scars wont save for vampires even if they have the box ticked
+  - code_imp: cleans up some random signal stuff
+  - bugfix: Pierced Veil should work as intended for delerium effects
+  - code_imp: changelog is generated once a day instead of a week
+  - rscadd: Endpost and Message+ now use a generic helper for displaying a notification
+      as a balloon alert.
+  - bugfix: Text messages properly use the phone numbers for the texters rather then
+      phones
+  - rscadd: The strange goat plushie has some extra interactions
+  - rscadd: Adds our plushies to a few spots that was missed, primarly the arcade
+      lootpool
+  NullDagaf:
+  - rscadd: you can now break the handcuffs apart instead of just wriggling yourself
+      out of them
+  SabKatTemp2:
+  - rscadd: Adds promethean clay merit
+2026-07-23:
+  Art-gif-dotcom:
+  - bugfix: fixed klaives not working properly
+2026-07-24:
+  TheCarnalest:
+  - qol: You can now use keybinds to select and cast Disciplines
+2026-07-25:
+  chazzyjazzy:
+  - image: adds one pixel to most clothing items to fix toes poking out
+2026-07-26:
+  Hardly:
+  - bugfix: Fixes guestbook revealing names even on masked people
+2026-07-27:
+  FalloutFalcon:
+  - rscadd: New weaker variant of acid turf.
+  - bugfix: Mobs with no defined AGG damage modifier will default to 100% taken.
+  - balance: Removed brawl/fist immunity from tendrils and golaith so they can be
+      used for adminbus/umbra
+  - bugfix: Non-water turfs now have the correct scoop-able material
+  - qol: If you have more then 5 character profiles in preferences, it displays as
+      a dropdown instead.
+2026-07-28:
+  Faengi:
+  - rscadd: Added Monochrome Vision flaw for Garou
+2026-07-29:
+  Faengi:
+  - rscadd: Added Cast-Iron Stomach as a merit
+  FalloutFalcon:
+  - bugfix: Guestbook should handle text macros better
+  - bugfix: Dogs are treated as an improper noun
+  - bugfix: Hunger is no longer accidentally soft-removed
+  - config: Hunger rate is on a config for easier tweaking
+  kimesik:
+  - bugfix: Fixed Condottieri's supervisor property.
+2026-07-30:
+  Absolucy:
+  - bugfix: Fixed a laggy hard delete related to disciplines.
+  FalloutFalcon:
+  - rscadd: Adds a large set of new ambiences to mostly replace the old ones.
+  - rscadd: Pipes and stalagmites have a chance to have dripping sounds playing
+  - rscadd: Light tubes have a chance to have an ambient buzz
+  - rscadd: Adds a `looping_sound_emitter` object for mapping that can be vareditted
+      to have a looping sound easier.
+  - bugfix: Fills in the gaps of the ambience buzzs and sounds so that Space ambience
+      no longer plays
+  - rscadd: The umbra now spawns corpses with fetishes and banes surronding them
+  - rscadd: 'Adds new minor werewolf fetish: Magpie''s Ears'
+  - rscadd: Adds merit to have a roundstart fetish owned by you.
+  - balance: Klaives are MUCH rarer from normal spawns
+  - bugfix: Improves handling for detecting a heartbeat to be more consistent
+  - code_imp: Fixes random runtimes
+  chazzyjazzy:
+  - rscadd: adds functionality for clearing masquerade breaches upon the death of
+      any mob/living, admins can also use the 'AdjustMasquerade' proc to restore people's
+      breaches now as it wasnt working before
+2026-07-31:
+  Absolucy:
+  - bugfix: made smartphone contacts lag the server less
+  Faengi:
+  - config: Added a config setting to limit high generations to a limited selection
+      of jobs
+  - rscadd: Gave the Society of Leopold intel reports to find breachers with
+  - rscadd: Added more breach phrases to the list
+  FalloutFalcon:
+  - balance: You can guestbook from a full screen width
+  - bugfix: Delirium will properly be applied
+  - admin: 2 VV topics for managing actions or gifts
+  buffyuwu:
+  - rscadd: Admins can now set generations below 8
+  chazzyjazzy:
+  - rscadd: Adds the red news reporter role which can broadcast to the city using
+      the captain-caster camera and mapped-in greenscreens as well as 'entertainment
+      monitors' and the mobile cameras
+  - rscadd: expands lore primers to help new players figure out what morality paths
+      are as well as some stuff about Garou, Clans, etc
+  - bugfix: fixes firearms recoil roll difficulty never being reset

@@ -164,7 +164,7 @@ SUBSYSTEM_DEF(dbcore)
 /datum/controller/subsystem/dbcore/proc/run_query(datum/db_query/query)
 	if(IsAdminAdvancedProcCall())
 		return
-	query.job_id = rustg_sql_query_async(connection, query.sql, json_encode(query.arguments))
+	query.job_id = rustg_sql_query_async(query.connection, query.sql, json_encode(query.arguments)) // CRIMSON EDIT - MONKE_CROSS_DB - ORIGINAL: query.job_id = rustg_sql_query_async(connection, query.sql, json_encode(query.arguments))
 
 /datum/controller/subsystem/dbcore/proc/queue_query(datum/db_query/query)
 	if(IsAdminAdvancedProcCall())

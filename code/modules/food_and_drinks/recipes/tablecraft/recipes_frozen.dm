@@ -291,7 +291,7 @@
 		/datum/reagent/consumable/sugar = 2
 	)
 	result = /obj/item/food/popsicle/jumbo
-	added_foodtypes = DAIRY
+	added_foodtypes = DAIRY | SUGAR | CHOCOLATE  //DARKPACK EDIT CHANGE: Chocolate
 	removed_foodtypes = JUNKFOOD
 	dish_category = DISH_FROZEN
 	meal_category = MEAL_DESSERT

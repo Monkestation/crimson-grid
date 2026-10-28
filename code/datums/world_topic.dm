@@ -258,6 +258,8 @@
 		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
 		// Shuttle timer, in seconds
 
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_WORLD_TOPIC_STATUS, .) // DARKPACK EDIT ADD
+
 /datum/world_topic/create_news_channel
 	keyword = "create_news_channel"
 	/// Lazylist of timers for actually creating the channel to give admins some time

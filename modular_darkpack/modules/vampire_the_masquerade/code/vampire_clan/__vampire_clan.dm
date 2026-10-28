@@ -35,7 +35,7 @@
 	/// If this Clan needs a whitelist to select and play
 	var/whitelisted = FALSE
 
-	/// daimoinon 1 text
+	/// daimonion 1 text
 	var/sense_the_sin_text = "has been abandoned by the cold ocean of the night with nobody to keep them afloat."
 
 /**

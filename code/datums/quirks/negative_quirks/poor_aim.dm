@@ -6,6 +6,7 @@
 	medical_record_text = "Patient possesses a strong tremor in both hands."
 	hardcore_value = 3
 	mail_goodies = list(/obj/item/cardboard_cutout) // for target practice
+	darkpack_allowed = TRUE // DARKPACK EDIT ADD - MERITS_FLAWS
 
 /datum/quirk/poor_aim/add(client/client_source)
 	RegisterSignal(quirk_holder, COMSIG_MOB_FIRED_GUN, PROC_REF(on_mob_fired_gun))

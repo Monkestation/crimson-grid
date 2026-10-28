@@ -31,6 +31,8 @@
 	var/hostile = FALSE
 	/// If use of this power creates a visible Masquerade breach.
 	var/violates_masquerade = FALSE
+	/// Can this be used while in frenzy
+	var/frenzy_usable = TRUE
 
 	/* HOW AND WHEN IT'S ACTIVATED AND DEACTIVATED */
 	/// If this Discipline doesn't automatically expire, but rather periodically drains blood.
@@ -49,6 +51,10 @@
 	var/cooldown_override = FALSE
 	/// List of Discipline power types that cannot be activated alongside this power and share a cooldown with it.
 	var/list/grouped_powers
+
+	var/magic_type = MAGIC_TYPE_BLOOD
+	var/magic_subtype
+	var/spawns_magic_effect = TRUE
 
 	/* NOT MEANT TO BE OVERRIDDEN */
 	/// Timer(s) tracking the duration of the power. Can have multiple if multi_activate is true.
@@ -274,6 +280,11 @@
 		//feedback is sent by the proc preventing activation
 		return FALSE
 
+	if(!frenzy_usable && HAS_TRAIT(owner, TRAIT_IN_FRENZY))
+		if(alert)
+			to_chat(owner, span_warning("You cannot do this while in frenzy!"))
+		return FALSE
+
 	//can't activate if the owner isn't capable of it
 	if (!can_activate_untargeted(alert))
 		return FALSE
@@ -461,6 +472,11 @@
 		if (istype(indicator))
 			indicator.set_power(src)
 	// CRIMSON EDIT ADD END - Discipline Active Indicator
+
+	if(spawns_magic_effect && magic_type)
+		var/turf/used_turf = get_turf(discipline.owner)
+		if(used_turf)
+			spawn_magic_after_effect(used_turf, discipline.owner, level, magic_type, magic_subtype)
 
 	owner.update_action_buttons()
 
@@ -742,6 +758,8 @@
 	else
 		to_chat(owner, span_warning("You don't have enough blood to keep [src] active!"))
 		try_deactivate(target)
+
+	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 /**
  * Overridable proc that allows for extra modular code

@@ -41,7 +41,8 @@ export function CargoExpress(props) {
               <Stack.Item bold color={'red'}>
                 <Icon mb={3} name={'lock'} size={7.5} />
                 <br />
-                {`Swipe a Cargo Technician-level ID card to unlock this interface.`}
+                {`Swipe a technician or business badge to unlock this interface.`}
+                {/* DARKPACK EDIT CHANGE - ORIGINAL: {`Swipe a Cargo Technician-level ID card to unlock this interface.`} */}
               </Stack.Item>
             </Stack>
           </Section>
