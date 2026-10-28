@@ -36,6 +36,3 @@
 #define COMSIG_POWER_DEACTIVATE "power_deactivate"
 ///from datum/discipline_power/deactivate()
 #define COMSIG_POWER_DEACTIVATE_ON "power_deactivate_on"
-
-#define COMSIG_MIND_FLIGHT_ACTIVE "mind_flight_active"
-#define COMSIG_MIND_FLIGHT_INACTIVE "mind_flight_inactive"
