@@ -234,22 +234,33 @@
 	icon_state = "cobra"
 	icon_living = "cobra"
 	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
-	speed = -1
+	speed = -0.4 //CRIMSON GRID EDIT - original mob speed = -1
 	maxHealth = 300
 	health = 300
 	melee_damage_lower = 30
 	melee_damage_upper = 30
+//CRIMSON GRID ADDATIONS START - lowers cobra melee swing speed, adds armor penetration,no slow down drag and changes their visual attacks
+	melee_attack_cooldown = 10
+	armour_penetration = 25
+	slowed_by_drag = FALSE
+	attack_vis_effect = ATTACK_EFFECT_BITE
+//CRMISON GRID ADDTION END
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/items/weapons/slash.ogg'
 	pixel_w = -8
-
+//CRIMSON GRID ADDTION START - adds swing attacks
+/mob/living/basic/cobra/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/swing_attack)
+//CRMISON GRID ADDTION END
 /mob/living/basic/cobra/typhon
 	name = "Typhonic beast"
 	desc = "A massive supernatural jackal with long, spiked ears, a hard, forked tail and a long snout."
 	icon = 'modular_darkpack/modules/deprecated/icons/icons.dmi'
 	icon_state = "protean4"
 	icon_living = "protean4"
+	attack_vis_effect = ATTACK_EFFECT_CLAW //CRIMSON GRID ADDITION - jackal man is all claw and no bite
 	mob_size = MOB_SIZE_LARGE
 	pixel_w = 0
 	initial_size = 1.4
