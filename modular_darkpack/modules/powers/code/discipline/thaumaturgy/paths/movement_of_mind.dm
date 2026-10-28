@@ -11,9 +11,12 @@
 	effect_sound = 'modular_darkpack/modules/paths/sounds/fireball.ogg'
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/launch(atom/movable/launched_object, turf/launch_to)
-	playsound(launched_object, 'sound/effects/magic/repulse.ogg', 100, TRUE)
 	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
 	launched_object.throw_at(launch_to, range = 1 * success_count, speed = launched_object.density ? 3 : 4, thrower = owner, spin = isitem(launched_object))
+
+	if(isliving(launched_object))
+		var/mob/living/living_target = launched_object
+		living_target.Knockdown(5 SECONDS)
 
 //TODO: Rework to use rolls
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/on_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
@@ -54,10 +57,9 @@
 
 	to_chat(living_target, span_warning("You feel forced into the ground!"))
 	launch(living_target, get_edge_target_turf(owner, get_dir(owner, get_step_away(living_target, owner))))
-	living_target.Knockdown(5 SECONDS)
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/two
-	name = "i forgot how its called"
+	name = "Manipulate"
 	desc = "placeholder"
 	level = 2
 	violates_masquerade = TRUE
@@ -80,7 +82,7 @@
  */
 /datum/discipline_power/thaumaturgy/path/mind_movement/three
 	name = "Flight"
-	desc = "Hoist yourself into the air."
+	desc = "You have learned to project your telekinetic strength inward, unfettering you from the constraints of gravity to ﬂy through the air."
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE
 	cooldown_length = 5 SECONDS
@@ -106,9 +108,9 @@
 	. = ..()
 	if(.)
 		return
-
+	owner.apply_status_effect(/datum/status_effect/thaum_flight)
 	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_ACTIVE, owner)
-	owner.add_traits(list(TRAIT_MOVE_FLOATING, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
+	owner.add_traits(list(TRAIT_MOVE_FLOATING, TRAIT_PASSTABLE, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
 	owner.AddElement(/datum/element/forced_gravity, 0)
 	owner.set_resting(FALSE, TRUE)
 	owner.refresh_gravity()
@@ -117,8 +119,9 @@
 	. = ..()
 	if(.)
 		return
+	owner.remove_status_effect(/datum/status_effect/thaum_flight)
 	SEND_SIGNAL(owner, COMSIG_MIND_FLIGHT_INACTIVE, owner)
-	owner.remove_traits(list(TRAIT_MOVE_FLOATING, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
+	owner.remove_traits(list(TRAIT_MOVE_FLOATING, TRAIT_PASSTABLE, TRAIT_IGNORING_GRAVITY, TRAIT_NOGRAV_ALWAYS_DRIFT), REF(src))
 	owner.RemoveElement(/datum/element/forced_gravity, 0)
 	owner.refresh_gravity()
 
@@ -130,7 +133,25 @@
 	return TRUE
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/four
+	name = "Repulse"
+	desc = "You have mastered the ability to project a telekinetic wave of potent force from your body, which violently repulses people (threatening enemies and allies alike) and small objects away from you."
 	level = 4
+	target_type = NONE
+
+	var/repulse_range = 5
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/four/activate(atom/target)
+	. = ..()
+	if(.)
+		return
+
+	playsound(owner, 'sound/effects/magic/repulse.ogg', 60, TRUE)
+	for(var/atom/to_throw as anything in range(repulse_range, owner))
+		if(!isitem(to_throw) && !isliving(to_throw))
+			continue
+		if(to_throw == owner)
+			continue
+		launch(to_throw, get_edge_target_turf(owner, get_dir(owner, get_step_away(to_throw, owner))))
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/five
 	name = "Control"
@@ -207,7 +228,8 @@
 			return
 		var/turf/target_turf = mouse_catcher.given_turf
 		clear_grab()
-		launch(launched_object, target_turf)
+		if(get_turf(grabbed_atom) != target_turf)
+			launch(launched_object, target_turf)
 		return
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
