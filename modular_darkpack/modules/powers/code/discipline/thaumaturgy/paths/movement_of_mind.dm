@@ -11,37 +11,13 @@
 
 	effect_sound = 'sound/effects/magic/repulse.ogg'
 
-/datum/discipline_power/thaumaturgy/path/mind_movement/pre_activation_checks(atom/target)
-	. = ..()
-	if(!can_be_targeted(target))
-		to_chat(owner, span_warning("[target.name] is either too heavy or bolted down!"))
-		return FALSE
-
-/// Check if target is bolted down or too heavy
-/datum/discipline_power/thaumaturgy/path/mind_movement/proc/can_be_targeted(atom/target)
-	if(!isobj(target) && !isliving(target))
-		return FALSE
-
-	if(isobj(target))
-		var/obj/target_obj = target
-		if(target_obj.anchored)
-			return FALSE
-
-	if(isitem(target))
-		var/obj/item/item_target = target
-		// Too heavy
-		if(item_target.w_class == WEIGHT_CLASS_GIGANTIC)
-			return FALSE
-
-	return TRUE
-
 /// Handle launching the target
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/launch(atom/movable/launched_object, turf/launch_to)
 	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
 
 	var/throw_range = min(1 * success_count, isliving(launched_object) ? 3 : 6)
 
-	launched_object.throw_at(launch_to, throw_range, launched_object.density ? 3 : 4, owner, isitem(launched_object))
+	launched_object.throw_at(launch_to, throw_range, launched_object.density ? 3 : 4, null, isitem(launched_object), force = MOVE_FORCE_STRONG)
 
 	if(isliving(launched_object))
 		var/mob/living/living_target = launched_object
@@ -177,7 +153,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_TORPORED
 
 	/// Range in which targets get repulsed
-	var/repulse_range = 5
+	var/repulse_range = 3
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/four/activate(atom/target)
 	. = ..()
@@ -188,8 +164,6 @@
 		if(to_throw == owner)
 			continue
 		if(!isitem(to_throw) && !isliving(to_throw))
-			continue
-		if(!can_be_targeted(to_throw))
 			continue
 		launch(to_throw, get_edge_target_turf(owner, get_dir(owner, get_step_away(to_throw, owner))))
 
@@ -221,11 +195,16 @@
 		return
 	grab_atom(target)
 
-/datum/discipline_power/thaumaturgy/path/mind_movement/five/pre_activation_checks(atom/target)
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/can_activate(atom/target)
 	. = ..()
 	if(grabbed_atom)
 		to_chat("Let go of your target first!")
 		return FALSE
+
+	if(isobj(target))
+		var/obj/target_obj = target
+		if(target_obj.anchored)
+			return FALSE
 
 /atom/movable/screen/fullscreen/cursor_catcher/control
 
@@ -356,4 +335,5 @@
 	SIGNAL_HANDLER
 
 	if(!range_check(target))
+		owner.balloon_alert(owner, "out of range!")
 		clear_grab()
