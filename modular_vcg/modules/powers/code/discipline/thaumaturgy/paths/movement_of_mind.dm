@@ -281,10 +281,10 @@
 		if(mouse_catcher.mouse_params)
 			mouse_catcher.calculate_params()
 		if(!mouse_catcher.given_turf)
-			clear_grab()
+			INVOKE_ASYNC(src, PROC_REF(clear_grab))
 			return
 		var/turf/target_turf = mouse_catcher.given_turf
-		clear_grab()
+		INVOKE_ASYNC(src, PROC_REF(clear_grab))
 		// Don't launch if we are putting them on turf they are on
 		if(!(launched_object in target_turf))
 			launch(launched_object, target_turf)
@@ -293,7 +293,7 @@
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(!grabbed_atom)
 			return
-		move_target()
+		INVOKE_ASYNC(src, PROC_REF(move_target))
 		return
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/move_target()
