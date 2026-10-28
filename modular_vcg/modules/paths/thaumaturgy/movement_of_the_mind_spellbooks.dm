@@ -27,5 +27,5 @@
 
 /obj/item/path_spellbook/movement_of_mind/level5
 	name = "movement of the mind (level V)"
-	desc = "The ultimate tome of telekinetic mastery, containing the most powerful telekinetic techniques. Allows the Thaumaturge to cast 'Control'."
+	desc = "The ultimate tome of telekinetic mastery, containing the most powerful telekinesis techniques. Allows the Thaumaturge to cast 'Control'."
 	path_level = 5

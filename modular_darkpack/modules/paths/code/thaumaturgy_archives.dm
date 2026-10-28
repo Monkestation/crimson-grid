@@ -16,6 +16,7 @@
 	new /datum/data/vending_product("Levinbolt Spellbook (Level III)",	/obj/item/path_spellbook/levinbolt/level3,	210),
 	new /datum/data/vending_product("Levinbolt Spellbook (Level IV)",	/obj/item/path_spellbook/levinbolt/level4,	240),
 	new /datum/data/vending_product("Levinbolt Spellbook (Level V)",	/obj/item/path_spellbook/levinbolt/level5, 270),
+
 	// CRIMSON GRID EDIT START - Movement of the Mind
 	new /datum/data/vending_product("Movement of the Mind Spellbook (Level I)",	/obj/item/path_spellbook/movement_of_mind/level1,	130),
 	new /datum/data/vending_product("Movement of the Mind Spellbook (Level II)",	/obj/item/path_spellbook/movement_of_mind/level2,	180),
