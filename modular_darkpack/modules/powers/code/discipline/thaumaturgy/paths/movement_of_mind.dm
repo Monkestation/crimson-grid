@@ -13,32 +13,27 @@
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/launch(atom/movable/launched_object, turf/launch_to)
 	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
-	launched_object.throw_at(launch_to, range = 1 * success_count, speed = launched_object.density ? 3 : 4, thrower = owner, spin = isitem(launched_object))
+
+	var/throw_range = min(1 * success_count, isliving(launched_object) ? 3 : 6)
+
+	launched_object.throw_at(launch_to, throw_range, launched_object.density ? 3 : 4, owner, isitem(launched_object))
 
 	if(isliving(launched_object))
 		var/mob/living/living_target = launched_object
 		living_target.Knockdown(5 SECONDS)
 
-//TODO: Rework to use rolls
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/on_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
 	SIGNAL_HANDLER
 
 	UnregisterSignal(source, COMSIG_MOVABLE_IMPACT)
-	var/total_damage
-
-	if(success_count > 0)
-		total_damage = 5 * success_count
-
-	if(!total_damage)
-		return
 
 	if(isliving(source))
 		var/mob/living/living_source = source
-		living_source.apply_damage(total_damage, BRUTE)
+		living_source.apply_damage(1 LETHAL_TTRPG_DAMAGE, BRUTE)
 
 	if(isliving(hit_atom))
 		var/mob/living/living_atom = hit_atom
-		living_atom.apply_damage(total_damage, BRUTE)
+		living_atom.apply_damage(1 LETHAL_TTRPG_DAMAGE, BRUTE)
 
 
 // Force Bolt - Level 1
@@ -46,7 +41,7 @@
 	name = "Force Bolt"
 	desc = "Cause a target to fall down."
 	level = 1
-	violates_masquerade = TRUE
+	violates_masquerade = FALSE
 	target_type = TARGET_LIVING
 	range = 5
 
@@ -64,6 +59,7 @@
 	name = "Manipulate"
 	desc = "placeholder"
 	level = 2
+	violates_masquerade = FALSE
 	target_type = NONE
 	toggled = TRUE
 
@@ -84,10 +80,8 @@
 	name = "Flight"
 	desc = "You have learned to project your telekinetic strength inward, unfettering you from the constraints of gravity to ﬂy through the air."
 	level = 3
-	check_flags = DISC_CHECK_CAPABLE
 	cooldown_length = 5 SECONDS
 	duration_length = 3 TURNS
-	violates_masquerade = TRUE
 	target_type = NONE
 	toggled = TRUE
 
@@ -135,7 +129,9 @@
 	desc = "You have mastered the ability to project a telekinetic wave of potent force from your body, which violently repulses people (threatening enemies and allies alike) and small objects away from you."
 	level = 4
 	target_type = NONE
+	cooldown_length = 2 TURNS
 
+	/// Range in which targets get repulsed
 	var/repulse_range = 5
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/four/activate(atom/target)
@@ -143,11 +139,10 @@
 	if(.)
 		return
 
-	playsound(owner, 'sound/effects/magic/repulse.ogg', 60, TRUE)
-	for(var/atom/to_throw as anything in range(repulse_range, owner))
-		if(!isitem(to_throw) && !isliving(to_throw))
-			continue
+	for(var/atom/to_throw in view(repulse_range, get_turf(owner)))
 		if(to_throw == owner)
+			continue
+		if(!isitem(to_throw) && !isliving(to_throw))
 			continue
 		launch(to_throw, get_edge_target_turf(owner, get_dir(owner, get_step_away(to_throw, owner))))
 
@@ -155,7 +150,7 @@
 	name = "Control"
 	desc = "Force a person or an object to move at your will."
 	level = 5
-	cooldown_length = 20 SECONDS
+	cooldown_length = 2 TURNS
 	violates_masquerade = TRUE
 	target_type = TARGET_OBJ | TARGET_LIVING
 	range = 3
@@ -164,8 +159,6 @@
 	var/atom/movable/grabbed_atom
 	/// Our mouse movement catcher.
 	var/atom/movable/screen/fullscreen/cursor_catcher/control/mouse_catcher
-	/// Overlay we add to each grabbed atom.
-	var/mutable_appearance/kinesis_icon
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/activate(atom/target)
 	. = ..()
@@ -173,36 +166,54 @@
 		return
 	grab_atom(target)
 
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/pre_activation_checks(atom/target)
+	. = ..()
+	if(grabbed_atom)
+		to_chat("Let go of your target first!")
+		return FALSE
+
 /atom/movable/screen/fullscreen/cursor_catcher/control
-	icon_state = "kinesis"
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/grab_atom(atom/target)
 	grabbed_atom = target
 	if(isliving(grabbed_atom))
-		grabbed_atom.add_traits(list(TRAIT_IMMOBILIZED), REF(src))
+		to_chat(grabbed_atom, span_userdanger("You feel strange force lift you into the air!"))
+		grabbed_atom.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
 	RegisterSignal(grabbed_atom, COMSIG_MOVABLE_SET_ANCHORED, PROC_REF(on_setanchored))
-	kinesis_icon = mutable_appearance(icon = 'icons/effects/effects.dmi', icon_state = "kinesis", layer = grabbed_atom.layer - 0.1, appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM|KEEP_APART)
-	kinesis_icon.overlays += emissive_appearance(icon = 'icons/effects/effects.dmi', icon_state = "kinesis", offset_spokesman = grabbed_atom)
-	grabbed_atom.add_overlay(kinesis_icon)
-	mouse_catcher = owner.overlay_fullscreen("kinesis", /atom/movable/screen/fullscreen/cursor_catcher/kinesis, 0)
+	mouse_catcher = owner.overlay_fullscreen("control", /atom/movable/screen/fullscreen/cursor_catcher/control, 0)
 	mouse_catcher.assign_to_mob(owner)
 
 	RegisterSignal(mouse_catcher, COMSIG_SCREEN_ELEMENT_CLICK, PROC_REF(on_catcher_click))
 
+	owner.add_traits(list(TRAIT_IMMOBILIZED), REF(src))
+	RegisterSignals(owner, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT), PROC_REF(break_concentration))
+
+	// Animate getting lifted up
+	animate(grabbed_atom, 0.8 SECONDS, pixel_y = grabbed_atom.base_pixel_y + 10)
+
+	to_chat(owner, span_notice("You concentrate to lift [grabbed_atom.name] into the air! Right-click to let go of your target."))
+
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/clear_grab()
+	UnregisterSignal(owner, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT))
+	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, REF(src))
+	mouse_catcher = null
+	owner.clear_fullscreen("control")
+	deactivate()
+
 	if(!grabbed_atom)
 		return
-	. = grabbed_atom
 	UnregisterSignal(grabbed_atom, list(COMSIG_MOVABLE_SET_ANCHORED))
-	mouse_catcher = null
 	if(isliving(grabbed_atom))
-		grabbed_atom.remove_traits(list(TRAIT_IMMOBILIZED), REF(src))
+		grabbed_atom.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED), REF(src))
 	if(!isitem(grabbed_atom))
 		animate(grabbed_atom, 0.2 SECONDS, pixel_x = grabbed_atom.base_pixel_x, pixel_y = grabbed_atom.base_pixel_y)
-	owner.clear_fullscreen("kinesis")
-	grabbed_atom.cut_overlay(kinesis_icon)
 	grabbed_atom = null
-	deactivate()
+
+/datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/break_concentration()
+	SIGNAL_HANDLER
+
+	to_chat(owner, span_warning("Being attacked breaks your concentration!"))
+	clear_grab()
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/range_check(atom/target)
 	if(!isturf(owner.loc))
@@ -226,7 +237,9 @@
 			return
 		var/turf/target_turf = mouse_catcher.given_turf
 		clear_grab()
-		launch(launched_object, target_turf)
+		// Don't launch if we are putting them on turf they are on
+		if(!(launched_object in target_turf))
+			launch(launched_object, target_turf)
 		return
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
