@@ -3,17 +3,17 @@
 // 9mm
 
 /obj/projectile/bullet/darkpack/vamp9mm
-	damage = 30
+	damage = 25
 	exposed_wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp9mm/hp
-	damage = 35
+	damage = 30
 	exposed_wound_bonus = 20
 	armour_penetration = -5
 	weak_against_armour = TRUE
 
 /obj/projectile/bullet/darkpack/vamp9mm/ap
-	damage = 25
+	damage = 20
 	exposed_wound_bonus = 0
 	wound_bonus = 5
 	armour_penetration = 25
@@ -22,7 +22,7 @@
 	exposed_wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp9mm/plus
-	damage = 34
+	damage = 29
 	armour_penetration = 15
 
 // 4.6mm
@@ -122,7 +122,6 @@
 	armour_penetration = 10
 	exposed_wound_bonus = 10
 	wound_bonus = 10
-	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/darkpack/vamp50ae/ap
 	damage = 50
@@ -267,7 +266,6 @@
 	armour_penetration = 80
 	exposed_wound_bonus = -10
 	wound_bonus = 20
-	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/darkpack/vamp50/du
 	damage = 100
@@ -335,9 +333,7 @@
 	fera_silver_damage(target, 1)
 
 /obj/projectile/bullet/shotgun_slug/vamp
-	damage = 80
 	exposed_wound_bonus = 10
-	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/shotgun_slug/vamp/ap
 	damage = 70
@@ -401,7 +397,6 @@
 	armour_penetration = 0
 	exposed_wound_bonus = 15
 	wound_bonus = 15
-	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/darkpack/vamp75/silver
 	armour_penetration = 2
