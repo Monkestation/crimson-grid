@@ -58,6 +58,12 @@
 	target_type = TARGET_LIVING
 	range = 5
 
+	grouped_powers = list(
+		/datum/discipline_power/thaumaturgy/path/mind_movement/three
+		/datum/discipline_power/thaumaturgy/path/mind_movement/four
+		/datum/discipline_power/thaumaturgy/path/mind_movement/five
+	)
+
 /datum/discipline_power/thaumaturgy/path/mind_movement/one/activate(atom/target)
 	. = ..()
 	if(.)
@@ -82,6 +88,10 @@
 	target_type = NONE
 	toggled = TRUE
 
+	grouped_powers = list(
+		/datum/discipline_power/thaumaturgy/path/mind_movement/five
+	)
+
 /datum/discipline_power/thaumaturgy/path/mind_movement/two/activate(atom/target)
 	. = ..()
 	owner.dna.add_mutation(/datum/mutation/telekinesis, DISCIPLINE_TRAIT(type))
@@ -104,6 +114,12 @@
 	duration_length = 3 TURNS
 	target_type = NONE
 	toggled = TRUE
+
+	grouped_powers = list(
+		/datum/discipline_power/thaumaturgy/path/mind_movement/one
+		/datum/discipline_power/thaumaturgy/path/mind_movement/four
+		/datum/discipline_power/thaumaturgy/path/mind_movement/five
+	)
 
 /datum/discipline_power/thaumaturgy/path/mind_movement/three/post_gain()
 	. = ..()
@@ -161,6 +177,12 @@
 	cooldown_length = 2 TURNS
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_TORPORED
 
+	grouped_powers = list(
+		/datum/discipline_power/thaumaturgy/path/mind_movement/one
+		/datum/discipline_power/thaumaturgy/path/mind_movement/three
+		/datum/discipline_power/thaumaturgy/path/mind_movement/five
+	)
+
 	/// Range in which targets get repulsed
 	var/repulse_range = 3
 
@@ -192,6 +214,14 @@
 	violates_masquerade = TRUE
 	target_type = TARGET_OBJ | TARGET_LIVING
 	range = 5
+
+	grouped_powers = list(
+		/datum/discipline_power/thaumaturgy/path/mind_movement/one
+		/datum/discipline_power/thaumaturgy/path/mind_movement/two
+		/datum/discipline_power/thaumaturgy/path/mind_movement/three
+		/datum/discipline_power/thaumaturgy/path/mind_movement/four
+		/datum/discipline_power/thaumaturgy/path/mind_movement/five
+	)
 
 	/// Atom we grabbed with kinesis.
 	var/atom/movable/grabbed_atom
