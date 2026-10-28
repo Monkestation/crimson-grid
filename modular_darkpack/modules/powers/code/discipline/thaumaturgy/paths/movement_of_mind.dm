@@ -161,6 +161,13 @@
 		return FALSE
 	return TRUE
 
+/**
+ * Repulse - Level 4
+ *
+ * Knocks back any item and person in the repulse range
+ * While also dealing extra damage on impact
+ *
+ */
 /datum/discipline_power/thaumaturgy/path/mind_movement/four
 	name = "Repulse"
 	desc = "You have mastered the ability to project a telekinetic wave of potent force from your body, which violently repulses people (threatening enemies and allies alike) and small objects away from you."
@@ -186,6 +193,14 @@
 			continue
 		launch(to_throw, get_edge_target_turf(owner, get_dir(owner, get_step_away(to_throw, owner))))
 
+/**
+ * Control - Level 5
+ *
+ * Lets us move our target around and throw them at things
+ * Can be resisted out of similar to aggressive grab
+ * Code shamelessly stolen from kinesis module
+ *
+ */
 /datum/discipline_power/thaumaturgy/path/mind_movement/five
 	name = "Control"
 	desc = "Force a person or an object to move at your will."
