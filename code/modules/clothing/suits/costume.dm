@@ -666,11 +666,12 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/costume/soviet
-	name = "soviet armored coat"
-	desc = "Conscript reporting! Sponsored by DonkSoft Co. for historical reenactment of the Third World War!"
+	name = "Soviet Greatcoat"
+	desc = "a Soviet Russian Greatcoat of dubious authenticity, claimed to have been used during the Russian civil war. likely just a replica"
 	icon_state = "soviet_suit"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	armor_type = /datum/armor/opulent_coat
 
 /obj/item/clothing/suit/costume/yuri
 	name = "yuri initiate coat"
