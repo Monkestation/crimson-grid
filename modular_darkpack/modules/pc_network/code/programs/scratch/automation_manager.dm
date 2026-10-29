@@ -133,7 +133,6 @@
 						return "Comparisons need something to read."
 					var/list/entry = list("type" = ctype, "source" = source, "op" = cond["op"], "key" = key, "value" = clean(cond["value"], 64))
 					switch(source)
-						if("var")
 						if("event")
 							if(draft.trigger_type != PC_TRIGGER_DEVICE)
 								return "Trigger data only works with a device trigger."
@@ -147,7 +146,8 @@
 								return "You lack clearance for '[def[AUTOMATION_NAME]]'."
 							entry["device"] = WEAKREF(A)
 						else
-							return "Unknown comparison source."
+							if(source != "var") //fuck you opendream
+								return "Unknown comparison source."
 					draft.conditions += list(entry)
 				else
 					return "Unknown condition type."
