@@ -671,7 +671,7 @@
 	icon_state = "soviet_suit"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor_type = /datum/armor/opulent_coat
+	armor_type = /datum/armor/opulent_coat // CRIMSON EDIT ADD - Soviet Greatcoat
 
 /obj/item/clothing/suit/costume/yuri
 	name = "yuri initiate coat"
