@@ -6,6 +6,7 @@
 	icon_keyboard = "computer_keyboard"
 	icon_screen = "computer_screen"
 	light_color = COLOR_BLUE_LIGHT
+	generate_map_preview = FALSE
 	var/datum/weakref/logged_account
 	var/obj/item/card/credit/inserted_card
 	var/list/installed_programs = list()
