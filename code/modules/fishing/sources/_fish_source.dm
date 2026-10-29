@@ -536,7 +536,7 @@ GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
 
 /datum/fish_source/proc/spawn_reward_from_explosion(atom/location, severity)
 	SIGNAL_HANDLER
-	if(fish_source_flags & FISH_SOURCE_FLAG_EXPLOSIVE_NONE)
+	if(TRUE) // CRIMSON EDIT CHANGE - removes fishing explosion reward - Original: if(fish_source_flags & FISH_SOURCE_FLAG_EXPLOSIVE_NONE)
 		return
 	var/multiplier = 1
 	if(fish_source_flags & FISH_SOURCE_FLAG_EXPLOSIVE_MALUS)
