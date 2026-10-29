@@ -93,8 +93,10 @@
 				if(existing && LOWER_TEXT(existing.name) == LOWER_TEXT(new_name))
 					to_chat(user, span_warning("A network with that name already exists."))
 					return
-			tune(new /datum/pc_network/player(new_name), user)
+			var/datum/pc_network/player/new_net = new /datum/pc_network/player(new_name)
+			tune(new_net, user)
 			to_chat(user, span_notice("You create the network [new_name] and tune the server to it."))
+			new_net.send_password_to(user)
 
 		if("Tune to network")
 			var/list/choices = list()
@@ -150,10 +152,15 @@
 			return net
 	return null
 
-/proc/get_or_create_player_network(net_name)
+/proc/get_or_create_player_network(net_name, mob/creator)
 	if(!istext(net_name) || !length(net_name))
 		return null
-	return find_pc_network_by_name(net_name) || new /datum/pc_network/player(net_name)
+	var/datum/pc_network/player/net = find_pc_network_by_name(net_name)
+	if(net)
+		return net
+	net = new /datum/pc_network/player(net_name)
+	net.send_password_to(creator)
+	return net
 
 /obj/machinery/pc_server/mapped
 	/// Name of the network to tune to on mapload. If null the server is just left untuned.

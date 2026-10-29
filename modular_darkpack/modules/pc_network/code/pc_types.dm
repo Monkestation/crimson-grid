@@ -16,6 +16,7 @@
 	installed_programs += new /datum/pc_program/saved_game/minesweeper(src)
 	installed_programs += new /datum/pc_program/saved_game/solitaire(src)
 	installed_programs += new /datum/pc_program/media_player(src)
+	installed_programs += new /datum/pc_program/cd_burner(src)
 
 /obj/machinery/computer/pc/debug/install_default_programs()
 	for(var/datum/pc_program/program as anything in subtypesof(/datum/pc_program))

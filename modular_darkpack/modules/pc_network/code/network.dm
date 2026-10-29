@@ -3,6 +3,31 @@ GLOBAL_DATUM_INIT(schrecknet, /datum/pc_network/schrecknet, new)
 GLOBAL_DATUM_INIT(public_network, /datum/pc_network, new)
 GLOBAL_VAR_INIT(player_network_counter, 0)
 
+/datum/memory/key/network_password
+	var/network_name
+	var/master_password
+
+/datum/memory/key/network_password/New(
+	datum/mind/memorizer_mind,
+	atom/protagonist,
+	atom/deuteragonist,
+	atom/antagonist,
+	network_name,
+	master_password,
+)
+	src.network_name = network_name
+	src.master_password = master_password
+	return ..()
+
+/datum/memory/key/network_password/get_names()
+	return list("The master password for the [network_name] network, [master_password].")
+
+/datum/memory/key/network_password/get_starts()
+	return list(
+		"[protagonist_name] typing [master_password] into a server console and committing it to memory.",
+		"A scrap of paper reading [network_name]: [master_password], which [protagonist_name] then burns.",
+	)
+
 /datum/storyteller_roll/hack_network
 	bumper_text = "hack network"
 	applicable_stats = list(STAT_COMPUTER)
@@ -19,6 +44,8 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	var/list/access_flags = list()         // required flags / clans / stats
 	var/is_restricted = FALSE
 	var/private = FALSE
+	/// Real name of whoever first created this network (for logs/admins)
+	var/creator_name
 
 	/// Master password for unconfigured or locked networks
 	var/master_password = "ChangeMe123!"
@@ -51,8 +78,7 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 
 /datum/pc_network/New()
 	GLOB.pc_networks[id] = src
-	if(id == PC_NETWORK_PUBLIC)
-		master_password = "[rand(1,1000000)]"
+	generate_network_password()
 	automation = new(src)
 
 /datum/component/networked/proc/set_network_by_name(net_name, allow_restricted = TRUE)
@@ -144,6 +170,21 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	automation?.on_mail(mail)
 	return TRUE
 
+/datum/pc_network/proc/generate_network_password(length = 10)
+	var/static/charset = "abcdefghjkmnpqrstuvwxyz23456789"
+	var/result = ""
+	for(var/i in 1 to length)
+		var/pos = rand(1, length(charset))
+		result += copytext(charset, pos, pos + 1)
+	master_password = result
+
+/datum/pc_network/proc/send_password_to(mob/user)
+	if(!user)
+		return
+	creator_name ||= user.real_name
+	to_chat(user, span_boldnotice("You are the owner of [name]. Its master password is: <b>[master_password]</b>. Keep it safe."))
+	user.mind?.add_memory(/datum/memory/key/network_password, network_name = name, master_password = master_password)
+
 /// A network made by players through a server. It exists only while at least one server is tuned to it.
 /// The servers' owners can make it private (hidden from PC network lists) and/or restricted.
 /// Tuning to or hacking into a private or restricted network needs a Computers roll.
@@ -159,6 +200,7 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 /datum/pc_network/player/New(new_name)
 	id = "player_[++GLOB.player_network_counter]"
 	name = new_name
+	master_password = generate_network_password()
 	. = ..()
 
 /datum/pc_network/player/join(device)
