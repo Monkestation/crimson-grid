@@ -36,6 +36,7 @@
 	worn_icon = 'modular_vcg/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_vcg/modules/weapons/icons/weapons_onfloor.dmi')
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
+	sharpness = SHARP_EDGED
 	/// How much damage to do unwielded
 	var/force_unwielded = 0
 	/// How much damage to do wielded
