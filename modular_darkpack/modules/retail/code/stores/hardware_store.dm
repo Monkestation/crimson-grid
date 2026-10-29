@@ -13,6 +13,7 @@
 // CRIMSON EDIT ADD START - Shop Inventories Additions
 		new /datum/data/vending_product("door repair kit", /obj/item/door_repair_kit, 300),
 		new /datum/data/vending_product("wooden plank", /obj/item/stack/sheet/mineral/wood, 10),
+		new /datum/data/vending_product("remote signaler", /obj/item/assembly/signaler, 50),
 		new /datum/data/vending_product("iron sheet", /obj/item/stack/sheet/iron, 10),
 		new /datum/data/vending_product("glass sheet", /obj/item/stack/sheet/glass, 10),
 		new /datum/data/vending_product("plastic sheet", /obj/item/stack/sheet/plastic, 10),
