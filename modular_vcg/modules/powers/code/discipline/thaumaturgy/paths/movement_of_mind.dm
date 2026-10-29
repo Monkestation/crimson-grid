@@ -59,8 +59,8 @@
 	range = 5
 
 	grouped_powers = list(
-		/datum/discipline_power/thaumaturgy/path/mind_movement/three
-		/datum/discipline_power/thaumaturgy/path/mind_movement/four
+		/datum/discipline_power/thaumaturgy/path/mind_movement/three,
+		/datum/discipline_power/thaumaturgy/path/mind_movement/four,
 		/datum/discipline_power/thaumaturgy/path/mind_movement/five
 	)
 
@@ -116,8 +116,8 @@
 	toggled = TRUE
 
 	grouped_powers = list(
-		/datum/discipline_power/thaumaturgy/path/mind_movement/one
-		/datum/discipline_power/thaumaturgy/path/mind_movement/four
+		/datum/discipline_power/thaumaturgy/path/mind_movement/one,
+		/datum/discipline_power/thaumaturgy/path/mind_movement/four,
 		/datum/discipline_power/thaumaturgy/path/mind_movement/five
 	)
 
@@ -178,8 +178,8 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_TORPORED
 
 	grouped_powers = list(
-		/datum/discipline_power/thaumaturgy/path/mind_movement/one
-		/datum/discipline_power/thaumaturgy/path/mind_movement/three
+		/datum/discipline_power/thaumaturgy/path/mind_movement/one,
+		/datum/discipline_power/thaumaturgy/path/mind_movement/three,
 		/datum/discipline_power/thaumaturgy/path/mind_movement/five
 	)
 
@@ -216,9 +216,9 @@
 	range = 5
 
 	grouped_powers = list(
-		/datum/discipline_power/thaumaturgy/path/mind_movement/one
-		/datum/discipline_power/thaumaturgy/path/mind_movement/two
-		/datum/discipline_power/thaumaturgy/path/mind_movement/three
+		/datum/discipline_power/thaumaturgy/path/mind_movement/one,
+		/datum/discipline_power/thaumaturgy/path/mind_movement/two,
+		/datum/discipline_power/thaumaturgy/path/mind_movement/three,
 		/datum/discipline_power/thaumaturgy/path/mind_movement/four
 	)
 
