@@ -42,7 +42,7 @@
 	var/force_wielded = 0
 
 	force_unwielded = 2 LETHAL_TTRPG_DAMAGE // Dual wield if u want smth good.
-	force_wielded = 5 LETHAL_TTRPG_DAMAGE // Made up, same force as Brother's Keeper. Equivalent to 5 TTRPG damage.
+	force_wielded = 5 TTRPG_DAMAGE
 	attack_difficulty = 7
 	armour_penetration = 50 // Normally 75 pen, that pens army armor. Instead, 50. Pens bullet proof.
 	w_class = WEIGHT_CLASS_BULKY
