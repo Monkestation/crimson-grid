@@ -236,7 +236,7 @@
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/can_activate(atom/target)
 	. = ..()
 	if(grabbed_atom)
-		to_chat("Let go of your target first!")
+		to_chat(owner, "Let go of your target first!")
 		return FALSE
 
 	if(isobj(target))
