@@ -132,6 +132,17 @@
 /obj/effect/mapping_helpers/pc/network_id/endron,
 /turf/open/floor/carpet/green,
 /area/vtm/interior/endron_facility/restricted)
+"aar" = (
+/obj/effect/decal/rugs,
+/obj/machinery/camera/directional/north{
+	network = list("Endron");
+	c_tag = "Endron Storage";
+	pixel_x = 11;
+	pixel_y = 24
+	},
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/turf/open/floor/city/plating,
+/area/vtm/interior/endron_facility/restricted)
 "aas" = (
 /obj/machinery/light/directional/north,
 /obj/weapon_showcase,
@@ -364,17 +375,6 @@
 /obj/machinery/computer/pc{
 	dir = 4
 	},
-/turf/open/floor/city/plating,
-/area/vtm/interior/endron_facility/restricted)
-"aaS" = (
-/obj/effect/decal/rugs,
-/obj/machinery/camera/directional/north{
-	network = list("Endron");
-	c_tag = "Endron Storage";
-	pixel_x = 11;
-	pixel_y = 24
-	},
-/obj/effect/mapping_helpers/pc/network_id/endron,
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
 "aaT" = (
@@ -365301,7 +365301,7 @@ dLJ
 dLJ
 dLJ
 mao
-aaS
+aar
 azl
 azl
 fDs
