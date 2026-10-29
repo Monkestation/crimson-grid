@@ -243,8 +243,7 @@
 	return TRUE
 
 
-/obj/machinery/computer/pc/click_alt(mob/user)
-	. = ..()
+/obj/machinery/computer/proc/logout(mob/user)
 	if(inserted_card)
 		user.put_in_hands(inserted_card)
 		inserted_card = null
@@ -388,6 +387,7 @@
 		if("logout")
 			logged_account = null
 			login_name = null
+			logout(usr)
 			return TRUE
 
 		if("install_floppy")
