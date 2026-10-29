@@ -1,4 +1,5 @@
 import { Box, Button, Icon, Section, Stack } from 'tgui-core/components';
+import { PcRichText } from './PcRichText';
 import { useProgram } from './useProgram';
 
 export const PcBookReader = (props, context) => {
@@ -31,7 +32,7 @@ export const PcBookReader = (props, context) => {
                 lineHeight: 1.5,
               }}
             >
-              {book.text}
+              <PcRichText text={book.text} />
             </Box>
           </Section>
         </Stack.Item>

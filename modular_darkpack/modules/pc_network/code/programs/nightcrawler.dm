@@ -112,7 +112,7 @@ GLOBAL_LIST_EMPTY(nightcrawler_photo_keys)
 		var/list/photo_keys = list()
 		for(var/i in length(current.messages) to 1 step -1)
 			var/datum/feed_message/M = current.messages[i]
-			var/list/split = split_story(strip_markdown(M.return_body(-1)))
+			var/list/split = split_story(M.return_body(-1))
 			var/photo_key = nightcrawler_photo_key(M)
 			if(photo_key)
 				photo_keys += photo_key

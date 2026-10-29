@@ -1,5 +1,6 @@
 import { Box, Button, NoticeBox } from 'tgui-core/components';
 import { NightcrawlerFeed } from './NightcrawlerFeed';
+import { PcRichText } from './PcRichText';
 import { useProgram } from './useProgram';
 
 const C = {
@@ -49,7 +50,7 @@ const Story = ({ s }) => (
         </Box>
       )}
       <Box style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
-        {s.body}
+        <PcRichText text={s.body} />
       </Box>
     </Box>
   </Box>

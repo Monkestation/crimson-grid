@@ -294,7 +294,7 @@
 		book.author = html_decode(query_book.item[1])
 		book.title = html_decode(query_book.item[2])
 		book.category = query_book.item[3]
-		book.content = strip_markdown(query_book.item[4])
+		book.content = query_book.item[4]
 		cache.books[key] = book
 		log_game("[downloaded_by] saved library book #[id] ([book.title]) to a PC.")
 	qdel(query_book)
