@@ -2,6 +2,8 @@
 /obj
 	var/network_auth
 	var/network_id
+	/// AUTOMATION_SIGNAL = list("network" = id, "allow_restricted" = FALSE), see /datum/component/networked
+	var/list/pc_network_switches
 
 /obj/proc/get_network_id()
 	var/datum/component/networked/net = GetComponent(/datum/component/networked)
@@ -19,7 +21,7 @@
 /obj/Initialize(mapload)
 	. = ..()
 	if(network_id)
-		AddComponent(/datum/component/networked, get_pc_actions(), network_id, get_pc_triggers(), get_pc_variables())
+		AddComponent(/datum/component/networked, get_pc_actions(), network_id, get_pc_triggers(), pc_network_switches, get_pc_variables())
 
 /obj/machinery/button
 	network_auth = PC_NETWORK_ADMIN
@@ -52,18 +54,7 @@
 	return attempt_press(user)
 
 /obj/item/assembly
-	/// Network this assembly starts on. Offline by default so crafted assemblies don't
-	/// flood the public network's device list; they join later via a switch signal / set_network().
-	var/pc_network_id = PC_NETWORK_OFFLINE
-	/// AUTOMATION_SIGNAL = list("network" = id, "allow_restricted" = FALSE), see /datum/component/networked
-	var/list/pc_network_switches
-
-/obj/item/assembly/proc/setup_pc_network()
-	var/list/pc_actions = get_pc_actions()
-	var/list/pc_triggers = get_pc_triggers()
-	if(!length(pc_actions) && !length(pc_triggers) && !length(pc_network_switches))
-		return
-	AddComponent(/datum/component/networked, pc_actions, pc_network_id, pc_triggers, pc_network_switches, get_pc_variables())
+	network_id = PC_NETWORK_OFFLINE
 
 /obj/item/assembly/signaler/get_pc_triggers()
 	return list(
