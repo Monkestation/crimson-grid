@@ -27,6 +27,7 @@
 
 /obj/machinery/computer/pc/unanchored
 	anchored = FALSE
+
 /obj/machinery/computer/pc/Initialize(mapload)
 	. = ..()
 	install_default_programs()
@@ -44,7 +45,7 @@
 	if(tool.use_tool(src, user, 6 SECONDS))
 		playsound(loc, 'sound/items/deconstruct.ogg', 50, vary = TRUE)
 		balloon_alert(user, "[anchored ? "un" : ""]secured")
-		anchored = FALSE
+		anchored = !anchored
 		return TRUE
 
 /obj/machinery/computer/pc/Destroy()
