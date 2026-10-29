@@ -665,9 +665,9 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/costume/soviet //crimson grid edit
-	name = "Soviet Greatcoat"
-	desc = "a Soviet Russian greatcoat of dubious authenticity. the museum plaque claims it to have been used during the Russian civil war. likely just a replica"
+/obj/item/clothing/suit/costume/soviet
+	name = "Soviet Greatcoat" // CRIMSON EDIT - Soviet Greatcoat - Original: 	name = "soviet armored coat"
+	desc = "a Soviet Russian greatcoat of dubious authenticity. the museum plaque claims it to have been used during the Russian civil war. likely just a replica"  // CRIMSON EDIT - Soviet Greatcoat - Original: 	desc = "Conscript reporting! Sponsored by DonkSoft Co. for historical reenactment of the Third World War!"
 	icon_state = "soviet_suit"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
