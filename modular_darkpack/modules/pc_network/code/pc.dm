@@ -201,6 +201,8 @@
 /obj/machinery/computer/pc/proc/can_access_schrecknet(mob/living/user)
 	if(is_admin)
 		return TRUE
+	if(!isliving(user))
+		return TRUE
 	return user.get_clan()
 
 /obj/machinery/computer/pc/attackby(obj/item/I, mob/user, params)
