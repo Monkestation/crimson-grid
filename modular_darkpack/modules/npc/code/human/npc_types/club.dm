@@ -1,5 +1,8 @@
 /mob/living/carbon/human/npc/walkby/club
 	staying = TRUE
+	// CRIMSON EDIT ADDITION START - drug dealing
+	drug_price = 2
+	// CRIMSON EDIT ADDITION END - drug dealing
 
 /mob/living/carbon/human/npc/walkby/club/Life()
 	. = ..()

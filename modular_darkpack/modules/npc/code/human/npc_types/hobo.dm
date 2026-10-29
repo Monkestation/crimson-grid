@@ -1,6 +1,11 @@
 /mob/living/carbon/human/npc/hobo
 	bloodquality = BLOOD_QUALITY_LOW
 	old_movement = TRUE
+	// CRIMSON EDIT ADDITION START - drug dealing
+	drug_price = 0.5
+	drug_purchase_limit = 1
+	drug_purchase_reset_time = 20 MINUTES
+	// CRIMSON EDIT ADDITION END - drug dealing
 
 /mob/living/carbon/human/npc/hobo/Initialize(mapload)
 	. = ..()

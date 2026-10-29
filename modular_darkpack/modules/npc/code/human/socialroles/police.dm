@@ -141,6 +141,13 @@
 	answer_phrases = list(
 		"I'm here to protect you."
 	)
+	// CRIMSON EDIT ADDITION START - drug dealing
+	drug_witness_phrases = list(
+		"Get on the ground!",
+		"SFPD! Freeze!",
+		"Drop the drugs!",
+	)
+	// CRIMSON EDIT ADDITION END - drug dealing
 	help_phrases = list(
 		"Lay down!",
 		"Stop right there!!",
