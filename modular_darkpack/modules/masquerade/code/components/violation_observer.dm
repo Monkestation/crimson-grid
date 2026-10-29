@@ -38,7 +38,7 @@
 	SIGNAL_HANDLER
 
 	if(!source || !player_breacher || ismundane(player_breacher)) //Humans cant break the masquerade. Because reasons.
-		return
+		return FALSE
 
 	if(isnpc(source))
 		var/mob/living/carbon/human/npc/npc_source = source
@@ -48,7 +48,7 @@
 	if(isliving(source))
 		var/mob/living/mob_parent = source
 		if(mob_parent.stat == DEAD)
-			return
+			return FALSE
 		if(!INCAPACITATED_IGNORING(mob_parent, INCAPABLE_RESTRAINTS))
 			mob_parent.face_atom(player_breacher)
 	source.observe_masquerade_violation(player_breacher)
