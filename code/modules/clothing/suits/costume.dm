@@ -668,7 +668,7 @@
 /obj/item/clothing/suit/costume/soviet
 	name = "Soviet Greatcoat" // CRIMSON EDIT - Soviet Greatcoat - Original: 	name = "soviet armored coat"
 	desc = "a Soviet Russian greatcoat of dubious authenticity. the museum plaque claims it to have been used during the Russian civil war. likely just a replica"  // CRIMSON EDIT - Soviet Greatcoat - Original: 	desc = "Conscript reporting! Sponsored by DonkSoft Co. for historical reenactment of the Third World War!"
-	icon_state = "soviet_suit"
+	icon_state = "greatcoat"
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	armor_type = /datum/armor/opulent_coat // CRIMSON EDIT ADD - Soviet Greatcoat
