@@ -243,7 +243,7 @@
 	return TRUE
 
 
-/obj/machinery/computer/proc/logout(mob/user)
+/obj/machinery/computer/pc/proc/logout(mob/user)
 	if(inserted_card)
 		user.put_in_hands(inserted_card)
 		inserted_card = null
