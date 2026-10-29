@@ -43,7 +43,7 @@ const TOOLS = [
   { id: 'pan', icon: 'hand-paper', label: 'Pan view (or middle/right-drag)' },
 ];
 
-const hex2 = (n) => ('0' + n.toString(16)).slice(-2);
+const hex2 = (n) => `0${n.toString(16)}`.slice(-2);
 
 const parseColor = (text) => {
   const m = /^#?([0-9a-f]{6})$/i.exec(String(text).trim());
@@ -514,7 +514,7 @@ export const PcPaint = (props, context) => {
       const p = canvasRef.current
         .getContext('2d')
         .getImageData(x, y, 1, 1).data;
-      if (p[3] > 0) setColor('#' + hex2(p[0]) + hex2(p[1]) + hex2(p[2])); //you can prefer all you want linters its not gonna change
+      if (p[3] > 0) setColor(`#${hex2(p[0])}${hex2(p[1])}${hex2(p[2])}`); //you can prefer all you want linters its not gonna change
       return;
     }
     if (!lay.visible) return;
@@ -756,7 +756,7 @@ export const PcPaint = (props, context) => {
               onChange={(a, b) => {
                 const v = readInput(a, b);
                 const p = parseColor(v);
-                if (p) setColor('#' + v.replace('#', '').toLowerCase());
+                if (p) setColor(`#${v.replace('#', '').toLowerCase()}`);
               }}
             />
           </Box>
@@ -985,7 +985,7 @@ export const PcPaint = (props, context) => {
                     compact
                     icon={l.visible ? 'eye' : 'eye-slash'}
                     onClick={(e) => {
-                      if (e && e.stopPropagation) e.stopPropagation();
+                      e?.stopPropagation?.();
                       l.visible = !l.visible;
                       redraw();
                     }}
