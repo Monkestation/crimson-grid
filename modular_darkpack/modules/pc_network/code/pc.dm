@@ -149,8 +149,15 @@
 /obj/machinery/computer/pc/multitool_act(mob/living/user, obj/item/multitool/tool)
 	var/datum/pc_network/player/net = tool.buffer
 	if(!istype(net))
-		balloon_alert(user, "no network paired!")
-		return ITEM_INTERACT_BLOCKING
+		// Nothing usable in the buffer, so store this PC's network instead (same as the server) so we can easily connect from laptops or to pubnet.
+		var/datum/pc_network/player/own_net = current_network
+		if(!istype(own_net))
+			balloon_alert(user, "not on a player network!")
+			return ITEM_INTERACT_BLOCKING
+		tool.set_buffer(own_net)
+		balloon_alert(user, "network paired")
+		to_chat(user, span_notice("You pair [tool] with [own_net.name]."))
+		return ITEM_INTERACT_SUCCESS
 	if(!hack_network(user, net.id))
 		return ITEM_INTERACT_BLOCKING
 	to_chat(user, span_notice("[net.name] is now available on [src]."))
