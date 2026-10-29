@@ -89,13 +89,6 @@
 		if(BURN)
 			playsound(loc, 'sound/items/tools/welder.ogg', 80, TRUE)
 
-/obj/structure/curtain/start_closed
-	icon_state = "bathroom-closed"
-
-/obj/structure/curtain/start_closed/Initialize(mapload)
-	. = ..()
-	close()
-
 /obj/structure/curtain/bounty
 	icon_type = "bounty"
 	icon_state = "bounty-open"
