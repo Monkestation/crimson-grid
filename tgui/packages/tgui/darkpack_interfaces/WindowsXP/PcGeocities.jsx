@@ -25,7 +25,9 @@ const sanitize = (html) => {
   const dangerousTags = doc.querySelectorAll(
     'script, iframe, object, embed, form, input, button, textarea, meta, link',
   );
-  dangerousTags.forEach((el) => el.remove()); // me when I'm a wrong linter
+  dangerousTags.forEach((el) => {
+    el.remove();
+  }); // me when I'm a wrong linter
 
   const allElements = doc.querySelectorAll('*');
   allElements.forEach((el) => {

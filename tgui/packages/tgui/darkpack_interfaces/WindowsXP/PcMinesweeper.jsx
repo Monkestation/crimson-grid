@@ -81,7 +81,9 @@ const floodReveal = (board, rows, cols, start) => {
     if (cell.revealed || cell.flagged) continue;
     cell.revealed = true;
     if (cell.adj === 0 && !cell.mine) {
-      neighbors(i, rows, cols).forEach((n) => stack.push(n));
+      neighbors(i, rows, cols).forEach((n) => {
+        stack.push(n);
+      });
     }
   }
   return next;
