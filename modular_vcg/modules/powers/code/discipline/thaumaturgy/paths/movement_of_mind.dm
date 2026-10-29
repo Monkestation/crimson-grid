@@ -220,7 +220,6 @@
 		/datum/discipline_power/thaumaturgy/path/mind_movement/two
 		/datum/discipline_power/thaumaturgy/path/mind_movement/three
 		/datum/discipline_power/thaumaturgy/path/mind_movement/four
-		/datum/discipline_power/thaumaturgy/path/mind_movement/five
 	)
 
 	/// Atom we grabbed with kinesis.
