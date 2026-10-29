@@ -41,6 +41,12 @@
 	belt = /obj/item/storage/belt/security/police
 	id = /obj/item/card/clinic
 	l_pocket = /obj/item/smartphone/clinic_officer
-	r_pocket = /obj/item/vamp/keys/clinics_director
+	r_pocket = /obj/item/vamp/keys/clinic_guard
 	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/ammo_box/magazine/glock9mm = 2)
 
+/obj/item/vamp/keys/clinic_guard
+	name = "clinic director keys"
+	accesslocks = list(
+		LOCKACCESS_CLINIC,
+		LOCKACCESS_DIRECTOR,
+	)
