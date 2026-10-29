@@ -94,13 +94,12 @@
 /datum/action/cooldown/power/gift/razor_claws/Activate(atom/target)
 	to_chat(owner, span_notice("You feel your claws sharpening..."))
 	playsound(owner, 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/gifts/razor_claws.ogg', 75, FALSE)
-	if(!do_after(owner, 1 TURNS))
+	if(!do_after(owner, 1 SECONDS)) // CRIMSON EDIT - Original : 	if(!do_after(owner, 1 TURNS))
 		return
 	. = ..()
 	var/mob/living/living_owner = astype(owner)
 	living_owner?.apply_status_effect(/datum/status_effect/razor_claws)
 
-// DARKPACK TODO - Requires https://github.com/DarkPack13/SecondCity/pull/680 for its stat handling.
 /datum/status_effect/razor_claws
 	id = "razor_claws"
 	duration = 1 SCENES

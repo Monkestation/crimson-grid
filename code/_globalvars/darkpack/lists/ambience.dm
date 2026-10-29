@@ -115,5 +115,6 @@ GLOBAL_LIST_INIT(music_assoc,list(
 	MUSIC_BAR = list('modular_darkpack/modules/ambience/sounds/music/naive.ogg'),
 	MUSIC_HOLLYWOOD = list('modular_darkpack/modules/ambience/sounds/music/hollywood.ogg', 'modular_darkpack/modules/ambience/sounds/music/open_season.ogg', 'modular_darkpack/modules/ambience/sounds/music/is_it_all_worth_it.ogg'),
 	MUSIC_SANTAMONICA = list('modular_darkpack/modules/ambience/sounds/music/santamonica.ogg'),
-	MUSIC_SAFE = list('modular_darkpack/modules/ambience/sounds/music/volition.ogg', 'modular_darkpack/modules/ambience/sounds/music/safe_room.ogg')
-	))
+	MUSIC_SAFE = list('modular_darkpack/modules/ambience/sounds/music/volition.ogg', 'modular_darkpack/modules/ambience/sounds/music/safe_room.ogg'),
+	MUSIC_ENDRON = list ('modular_darkpack/modules/ambience/sounds/music/endron_for_the_planet.ogg'),
+	MUSIC_CAERN = list ('modular_darkpack/modules/ambience/sounds/music/lux_umbrae.ogg')))

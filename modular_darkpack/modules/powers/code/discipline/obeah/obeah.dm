@@ -293,7 +293,7 @@
 	bumper_text = "mens sana"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_EMPATHY)
 	difficulty = 8
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 
 /datum/discipline_power/obeah/mens_sana/activate(atom/target)
 	. = ..()

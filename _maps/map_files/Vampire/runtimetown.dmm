@@ -30,6 +30,10 @@
 /obj/machinery/light/floor/lamppost/one,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
+"aK" = (
+/obj/effect/spawner/xmastree,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/techshop)
 "aL" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/wood/smooth/old,
@@ -405,6 +409,14 @@
 /obj/structure/cargo_take,
 /turf/open/misc/dirt,
 /area/vtm/outside/supply)
+"hR" = (
+/obj/structure/table/reinforced,
+/obj/structure/platform/lowwall/brick,
+/obj/structure/retail/police_equipment{
+	dir = 4
+	},
+/turf/open/floor/plating/rough,
+/area/vtm/interior/shop)
 "hT" = (
 /obj/structure/transport/linear/public,
 /obj/structure/table,
@@ -497,6 +509,7 @@
 /obj/machinery/button/door/directional/north{
 	id = "debughouse"
 	},
+/obj/effect/spawner/holiday_spawner/porch,
 /turf/open/misc/beach/vamp,
 /area/vtm/outside/pacificheights)
 "jg" = (
@@ -1546,8 +1559,8 @@
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights)
 "zv" = (
-/mob/living/carbon/human/npc/shop,
 /obj/machinery/light/directional/north,
+/mob/living/carbon/human/npc/police_armory_guy,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop)
 "zA" = (
@@ -4380,7 +4393,7 @@ pN
 Id
 Id
 Id
-Id
+aK
 xZ
 Id
 Id
@@ -5541,7 +5554,7 @@ uH
 GH
 GH
 Fg
-GH
+hR
 GH
 Fg
 sX

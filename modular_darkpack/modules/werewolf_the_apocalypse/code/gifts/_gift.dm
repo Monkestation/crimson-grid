@@ -11,6 +11,8 @@
 
 	check_flags = AB_CHECK_IMMOBILE|AB_CHECK_CONSCIOUS
 
+	magic_type = MAGIC_TYPE_SPIRIT
+
 	var/rage_cost = 0
 	var/gnosis_cost = 0
 
