@@ -130,6 +130,12 @@
 	desc = "A 7.62x51mm hollowpoint round. Often called a warcrime, and is in fact one when used in times of war. You don't care about that though."
 	projectile_type = /obj/projectile/bullet/darkpack/vamp762x51mm/hp
 
+// 7.62x54mm
+/obj/item/ammo_casing/vampire/c762x54mm
+	name = "7.62x54mm round"
+	desc = "A 7.62x54mm round. Used the world over by any forces."
+	projectile_type = /obj/projectile/bullet/crimsongrid/vamp762x54mm
+
 // 12 Gauge
 /obj/item/ammo_casing/vampire/c12g/ap
 	name = "12g AP slug shell"

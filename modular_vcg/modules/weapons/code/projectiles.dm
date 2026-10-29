@@ -261,6 +261,14 @@
 		M.adjust_fire_stacks(fire_stacks)
 		M.ignite_mob()
 
+// 7.62x54mm
+/obj/projectile/bullet/crimsongrid/vamp762x54mm
+	name = "7.62x54mm bullet"
+	damage = 55
+	armour_penetration = 25
+	exposed_wound_bonus = -5
+	wound_bonus = 5
+
 // .50 BMG
 /obj/projectile/bullet/darkpack/vamp50
 	damage = 100
