@@ -123,6 +123,7 @@
 	exposed_wound_bonus = 5
 	wound_bonus = 10
 
+/* // CRIMSON EDIT REMOVAL START - Shotgun stuns
 /obj/projectile/bullet/shotgun_slug/vamp/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(iscarbon(target))
@@ -133,6 +134,7 @@
 		if(knockdown_roll.st_roll(target, firer ? firer : src) == ROLL_FAILURE)
 			hit_person.Knockdown(20)
 			to_chat(hit_person, span_danger("The force of a projectile sends you sprawling!"))
+*/ // CRIMSON EDIT REMOVAL END
 
 /obj/projectile/bullet/shotgun_slug/vamp/silver
 	name = "12g silver shotgun slug"
@@ -162,11 +164,13 @@
 	exposed_wound_bonus = 10
 	wound_bonus = -5
 
+/* // CRIMSON EDIT REMOVAL START - Shotgun stuns
 /obj/projectile/bullet/darkpack/shotpellet/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		M.Stun(4)
+*/ // CRIMSON EDIT REMOVAL END
 
 /obj/projectile/bullet/darkpack/dragonsbreath
 	name = "12g shotgun incendiary pellet"
