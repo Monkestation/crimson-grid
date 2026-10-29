@@ -536,7 +536,8 @@ GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
 
 /datum/fish_source/proc/spawn_reward_from_explosion(atom/location, severity)
 	SIGNAL_HANDLER
-	if(TRUE) // CRIMSON EDIT CHANGE - removes fishing explosion reward - Original: if(fish_source_flags & FISH_SOURCE_FLAG_EXPLOSIVE_NONE)
+	/* CRIMSON EDIT REMOVAL START - removes fishing explosion reward
+	if(fish_source_flags & FISH_SOURCE_FLAG_EXPLOSIVE_NONE)
 		return
 	var/multiplier = 1
 	if(fish_source_flags & FISH_SOURCE_FLAG_EXPLOSIVE_MALUS)
@@ -562,6 +563,7 @@ GLOBAL_LIST_INIT(specific_fish_icons, generate_specific_fish_icons())
 			reward.pixel_y = rand(-9, 9)
 		if(severity >= EXPLODE_DEVASTATE)
 			reward.ex_act(EXPLODE_LIGHT)
+	CRIMSON EDIT REMOVAL END */
 
 /datum/fish_source/process(seconds_per_tick)
 	explosive_fishing_score -= EXPLOSIVE_FISHING_RECOVERY_RATE * seconds_per_tick
