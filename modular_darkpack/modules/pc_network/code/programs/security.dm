@@ -82,10 +82,6 @@
 	if(!net)
 		return FALSE
 
-	var/login = computer.login_name || "anonymous"
-	if(!net.has_access(login, PC_NETWORK_USER))
-		return FALSE
-
 	switch(action)
 		if("switch_camera")
 			var/obj/machinery/camera/cam = locate(params["camera"])

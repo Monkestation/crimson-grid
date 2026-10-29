@@ -126,6 +126,7 @@
 		// If login failed due to strict network lock, kick the login
 		logged_account = null
 		login_name = null
+		logout(usr)
 		return FALSE
 
 	current_network.known_users |= login_name
@@ -250,6 +251,7 @@
 
 /obj/machinery/computer/pc/proc/logout(mob/user)
 	if(inserted_card)
+		inserted_card.forceMove(get_turf(src))
 		user.put_in_hands(inserted_card)
 		inserted_card = null
 		logged_account = null
