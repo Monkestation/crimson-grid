@@ -15,13 +15,10 @@
 	data["role_hierarchy"] = net.role_hierarchy
 
 	var/list/users_list = list()
-	// Gather all known users from mailboxes or connected devices
-	var/list/known_users = net.mailboxes | list(computer.login_name)
-	for(var/uname in known_users)
-		if(!uname) continue
+	for(var/uname in net.known_users)
 		users_list += list(list(
 			"name" = uname,
-			"role" = net.get_user_role(uname)
+			"role" = net.get_user_role(uname),
 		))
 	data["users"] = users_list
 	return data
@@ -51,7 +48,9 @@
 
 			var/target_user = params["target"]
 			var/new_role = params["role"]
-			if(target_user && (new_role in net.role_hierarchy))
+			if(!(target_user in net.known_users))
+				return FALSE
+			if(new_role in net.role_hierarchy)
 				net.user_roles[target_user] = new_role
 				return TRUE
 

@@ -74,6 +74,12 @@
 	QDEL_LIST(switch_listeners)
 	return ..()
 
+/datum/component/networked/proc/set_network_by_name(net_name, allow_restricted = TRUE)
+	var/datum/pc_network/player/net = get_or_create_player_network(net_name)
+	if(!net)
+		return FALSE
+	return set_network(net.id, allow_restricted)
+
 /datum/component/networked/proc/attempt_network_join()
 	var/datum/pc_network/net = GLOB.pc_networks[network_id]
 	net?.join(parent)

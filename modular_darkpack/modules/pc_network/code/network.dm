@@ -30,7 +30,7 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 
 /datum/storyteller_roll/hack_network
 	bumper_text = "hack network"
-	applicable_stats = list(STAT_COMPUTER)
+	applicable_stats = list(STAT_COMPUTER, STAT_INTELLIGENCE)
 	// reroll_cooldown = 1 TURNS
 	roll_output_type = ROLL_FLAG_ROLLER
 	difficulty = 3
@@ -69,6 +69,8 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	var/list/event_log = list()
 	/// device_id -> weakref of every device currently on this network
 	var/list/connected_devices = list()
+	/// Names of every account that has logged in on this network
+	var/list/known_users = list()
 
 /datum/pc_network/schrecknet
 	id = PC_NETWORK_SCHRECKNET
@@ -80,12 +82,6 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	GLOB.pc_networks[id] = src
 	generate_network_password()
 	automation = new(src)
-
-/datum/component/networked/proc/set_network_by_name(net_name, allow_restricted = TRUE)
-	var/datum/pc_network/player/net = get_or_create_player_network(net_name)
-	if(!net)
-		return FALSE
-	return set_network(net.id, allow_restricted)
 
 /// Record an event on this network. Call from join(), leave() and failed hack attempts.
 /// Membership is always tracked; pass silent = TRUE (e.g. at mapload) to skip the log entry.
@@ -158,6 +154,13 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	if(A && is_connected(A))
 		return A
 	return null
+
+/datum/pc_network/proc/register_user(address, display_name)
+	if(!address || address == "anonymous")
+		return FALSE
+	address = LOWER_TEXT(address)
+	known_users[address] = display_name || address
+	return TRUE
 
 /datum/pc_network/proc/deliver_mail(datum/pc_mail/mail)
 	if(!mail?.to_address)

@@ -37,8 +37,6 @@
 	network_id = PC_NETWORK_PUBLIC
 
 /obj/effect/mapping_helpers/networked/network_id/payload(datum/component/networked/payload)
-	if(network_id == payload.network_id)
-		return
 	var/result
 	if(GLOB.pc_networks[network_id] || network_id == PC_NETWORK_OFFLINE)
 		result = payload.set_network(network_id, TRUE)

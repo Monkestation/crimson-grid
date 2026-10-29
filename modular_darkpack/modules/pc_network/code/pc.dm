@@ -127,6 +127,8 @@
 		login_name = null
 		return FALSE
 
+	current_network.known_users |= login_name
+
 	return TRUE
 
 /obj/machinery/computer/pc/proc/hack_network(mob/living/user, network_id)

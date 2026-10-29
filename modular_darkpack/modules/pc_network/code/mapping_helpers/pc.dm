@@ -48,8 +48,6 @@
 		if(!net)
 			log_mapping("[src] failed to find or create network [network_id] at [AREACOORD(src)]")
 			return
-	if(net == payload.current_network)
-		return
 
 	payload.current_network?.leave(payload)
 	payload.current_network = net

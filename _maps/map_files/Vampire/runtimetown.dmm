@@ -36,9 +36,33 @@
 /obj/item/laptop,
 /turf/open/misc/beach/vamp,
 /area/vtm/outside/pacificheights)
+"af" = (
+/obj/effect/decal/cleanable/litter,
+/obj/effect/mapping_helpers/pc/network_id/endron,
+/obj/machinery/computer/pc/debug,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "ah" = (
 /obj/effect/turf_decal/bordur/corner,
 /turf/open/floor/plating/sidewalk,
+/area/vtm/outside/pacificheights)
+"ak" = (
+/obj/machinery/pc_server/mapped,
+/obj/effect/mapping_helpers/pc_server/network_name/endron,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
+"al" = (
+/obj/effect/decal/cleanable/litter,
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/obj/machinery/camera/autoname/directional,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
+"am" = (
+/obj/effect/decal/cleanable/cardboard,
+/obj/effect/spawner/random/trash/rat,
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/obj/machinery/camera/autoname/directional,
+/turf/open/misc/beach/vamp,
 /area/vtm/outside/pacificheights)
 "an" = (
 /obj/structure/vampfence/corner/rich{
@@ -46,6 +70,19 @@
 	},
 /turf/open/misc/dirt,
 /area/vtm/graveyard)
+"ao" = (
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/obj/machinery/camera/autoname/directional,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
+"ap" = (
+/obj/effect/spawner/random/trash/grime{
+	spawn_loot_count = 30;
+	spawn_scatter_radius = 3
+	},
+/obj/machinery/camera/autoname/directional,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "av" = (
 /obj/structure/table,
 /obj/item/ammo_box/magazine/darkpack45acp,
@@ -889,10 +926,6 @@
 "oj" = (
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/pharmacy)
-"ok" = (
-/obj/effect/decal/cleanable/litter,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "om" = (
 /obj/structure/closet/secure_closet/freezer,
 /turf/open/floor/city/toilet,
@@ -1881,13 +1914,6 @@
 "EY" = (
 /turf/closed/wall/vampwall/rich,
 /area/vtm/outside/pacificheights)
-"Ff" = (
-/obj/effect/spawner/random/trash/grime{
-	spawn_loot_count = 30;
-	spawn_scatter_radius = 3
-	},
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "Fg" = (
 /turf/closed/wall/vampwall/brick,
 /area/vtm/interior/shop)
@@ -2202,11 +2228,6 @@
 /area/vtm/interior/anarch)
 "JP" = (
 /obj/effect/decal/cleanable/garbage,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
-"JR" = (
-/obj/effect/decal/cleanable/cardboard,
-/obj/effect/spawner/random/trash/rat,
 /turf/open/misc/beach/vamp,
 /area/vtm/outside/pacificheights)
 "Kc" = (
@@ -3521,13 +3542,13 @@ va
 zM
 Ef
 mw
-ok
+af
 NR
-NR
-Ff
-NR
-JR
-ok
+ak
+ap
+ao
+am
+al
 rL
 Vu
 Vu

@@ -21,7 +21,13 @@
 /obj/Initialize(mapload)
 	. = ..()
 	if(network_id)
-		AddComponent(/datum/component/networked, get_pc_actions(), network_id, get_pc_triggers(), pc_network_switches, get_pc_variables())
+		add_network_component()
+
+/obj/proc/add_network_component()
+	AddComponent(/datum/component/networked, get_pc_actions(), network_id, get_pc_triggers(), pc_network_switches, get_pc_variables())
+
+/obj/effect/add_network_component()
+	return
 
 /obj/machinery/button
 	network_auth = PC_NETWORK_ADMIN
