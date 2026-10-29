@@ -152,7 +152,7 @@
 	output_text += get_dice_display(rolled_dice, difficulty_amount, success_amount, hide_result)
 
 	var/roll_output_string
-	if(using_output_type == ROLL_PUBLIC) // A common combination of the bitfields, give it its own display.
+	if(using_output_type == (ROLL_PUBLIC)) // A common combination of the bitfields, give it its own display.
 		roll_output_string = "public"
 	else
 		roll_output_string = jointext(bitfield_to_list(using_output_type, ROLL_OUTPUT_IC), "+")
