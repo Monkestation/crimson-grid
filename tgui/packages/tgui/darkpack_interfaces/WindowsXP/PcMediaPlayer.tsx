@@ -21,7 +21,7 @@ type Track = {
 const readNumber = (a: any, b: any): number | null => {
   for (const v of [b, a]) {
     if (typeof v === 'number') return v;
-    if (typeof v === 'string' && v !== '' && !isNaN(Number(v))) {
+    if (typeof v === 'string' && v !== '' && !Number.isNaN(Number(v))) {
       return Number(v);
     }
   }
