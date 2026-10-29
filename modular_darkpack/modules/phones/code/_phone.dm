@@ -117,7 +117,7 @@
 			if(our_contact.number == sim_card.phone_number)
 				contact_network.contacts -= our_contact
 
-	remove_shared_particles(/particles/phone_ringing, delete_on_empty = FALSE)
+	remove_shared_particles("phone_ringing", delete_on_empty = FALSE)
 
 	lose_hearing_sensitivity(ROUNDSTART_TRAIT)
 	UnregisterSignal(src, COMSIG_MOVABLE_HEAR)
@@ -516,7 +516,7 @@
 			ringer = !ringer
 			balloon_alert(user, "ringer [ringer ? "on" : "off"]!")
 			if(!ringer)
-				remove_shared_particles(/particles/phone_ringing, delete_on_empty = FALSE)
+				remove_shared_particles("phone_ringing", delete_on_empty = FALSE)
 			return TRUE
 
 		if("vibration")

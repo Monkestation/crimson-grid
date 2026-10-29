@@ -272,22 +272,22 @@
 		skin_tone = pick(socialrole.s_tones)
 
 		if (age >= 55)
-			set_haircolor("#a2a2a2")
-			set_facial_haircolor(hair_color)
+			set_haircolor("#a2a2a2", update = FALSE)
+			set_facial_haircolor(hair_color, update = FALSE)
 		else
-			set_haircolor(pick(socialrole.hair_colors))
-			set_facial_haircolor(hair_color)
+			set_haircolor(pick(socialrole.hair_colors), update = FALSE)
+			set_facial_haircolor(hair_color, update = FALSE)
 		if (gender == MALE)
-			set_hairstyle(pick(socialrole.male_hair))
+			set_hairstyle(pick(socialrole.male_hair), update = FALSE)
 			if (prob(25) || age >= 25)
-				set_facial_hairstyle(pick(socialrole.male_facial))
+				set_facial_hairstyle(pick(socialrole.male_facial), update = FALSE)
 			else
-				set_facial_hairstyle("Shaved")
+				set_facial_hairstyle("Shaved", update = FALSE)
 			random_name = "[pick(m_names)] [pick(s_names)]"
 			fully_replace_character_name(newname = random_name)
 		else
-			set_hairstyle(pick(socialrole.female_hair))
-			set_facial_hairstyle("Shaved")
+			set_hairstyle(pick(socialrole.female_hair), update = FALSE)
+			set_facial_hairstyle("Shaved", update = FALSE)
 			random_name = "[pick(f_names)] [pick(s_names)]"
 			fully_replace_character_name(newname = random_name)
 
@@ -302,6 +302,8 @@
 			socks = random_socks()
 
 		update_body()
+		// needed to also redraw hair
+		update_hair()
 
 	// this should be refactored into just... applying a premade outfit
 	var/datum/outfit/O = new()
