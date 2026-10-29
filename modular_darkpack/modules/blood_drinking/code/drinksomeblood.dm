@@ -89,7 +89,7 @@
 		adjust_fire_loss(-10, TRUE)
 		update_damage_overlays()
 		update_health_hud()
-
+		add_mood_event("did kissing", /datum/mood_event/did_kiss) // CRIMSON EDIT ADD - vamp bite mood
 	if(drunk_from.bloodpool <= 0)
 		handle_drink_dry(drunk_from)
 		remove_drinking_overlay(drunk_from)
@@ -98,3 +98,10 @@
 	if(grab_state >= GRAB_PASSIVE)
 		stop_sound_channel(CHANNEL_BLOOD)
 		drinksomeblood(drunk_from)
+
+// CRIMSON EDIT ADD START - vamp bite mood
+/datum/mood_event/did_kiss
+	description = "Drinking blood from a body makes me feel euphoric."
+	mood_change = 50
+	timeout = 5 MINUTES
+// CRIMSON EDIT ADD END - vamp bite mood

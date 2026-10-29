@@ -7,14 +7,14 @@
 	config_tag = "DOCTOR"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/clinic_doctor
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_DOCTOR
 	departments_list = list(
 		/datum/job_department/clinic,
 	)
 
 	tgui_icon = FA_ICON_STAFF_SNAKE
-	
+
 	known_contacts = list(
 		JOB_CLINIC_DIRECTOR,
 		JOB_DOCTOR,
