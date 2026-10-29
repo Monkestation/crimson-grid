@@ -36,7 +36,7 @@
 	// Our own send-mail steps must not retrigger mail rules
 	if(mail.from_address == PC_AUTOMATION_ADDRESS)
 		return
-	var/to_var = lowertext(mail.to_address)
+	var/to_var = LOWER_TEXT(mail.to_address)
 	for(var/datum/pc_rule/R as anything in rules)
 		if(!R.enabled || R.trigger_type != PC_TRIGGER_MAIL || R.trigger_address != to_var)
 			continue
@@ -100,7 +100,7 @@
 				return "Timer needs an interval."
 			draft.trigger_interval = max(secs SECONDS, PC_AUTOMATION_MIN_TIMER)
 		if(PC_TRIGGER_MAIL)
-			draft.trigger_address = lowertext(clean(trig["address"], 64))
+			draft.trigger_address = LOWER_TEXT(clean(trig["address"], 64))
 			if(!draft.trigger_address)
 				return "Mail trigger needs an address."
 		else
@@ -178,7 +178,7 @@
 					return "Wait needs a duration."
 				draft.steps += list(list("type" = stype, "delay" = clamp(wait_s SECONDS, 1, PC_AUTOMATION_MAX_WAIT), "label" = "Wait"))
 			if(PC_STEP_MAIL)
-				var/to_var = lowertext(clean(step["to"], 64))
+				var/to_var = LOWER_TEXT(clean(step["to"], 64))
 				if(!to_var)
 					return "Send-mail needs a recipient."
 				draft.steps += list(list("type" = stype, "to" = to_var, "subject" = clean(step["subject"], 64), "body" = clean(step["body"], 256), "label" = "Mail [to_var]"))

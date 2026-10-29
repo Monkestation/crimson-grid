@@ -38,7 +38,7 @@
 		if("send")
 			var/datum/pc_mail/mail = new
 			mail.from_address = address
-			mail.to_address = lowertext(params["to"])
+			mail.to_address = LOWER_TEXT(params["to"])
 			mail.subject = params["subject"]
 			mail.body = params["body"]
 			mail.timestamp = time_to_twelve_hour()

@@ -37,7 +37,7 @@ GLOBAL_LIST_EMPTY(geocities_sites)
 
 /proc/geo_path(key)
 	var/static/regex/unsafe = regex(@"[^a-z0-9_\-]", "g")
-	var/safe = unsafe.Replace(lowertext(key), "_")
+	var/safe = unsafe.Replace(LOWER_TEXT(key), "_")
 	return "[GEO_DIR][copytext(safe, 1, 120)].json"
 
 /proc/geo_get_site(key)
@@ -62,17 +62,17 @@ GLOBAL_LIST_EMPTY(geocities_sites)
 	return S
 
 /proc/geo_sanitize_html(text)
-    text = copytext(text, 1, GEO_MAX_HTML + 1)
-    var/static/regex/bad_tags = regex(@"</?\s*(iframe|object|embed|link|meta|base|form|input|button|textarea|svg|math)\b[^>]*>", "gi")
-    var/static/regex/bad_attrs = regex(@{"\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)"}, "gi")
-    text = bad_tags.Replace(text, "")
-    text = bad_attrs.Replace(text, "")
-    return text
+	text = copytext(text, 1, GEO_MAX_HTML + 1)
+	var/static/regex/bad_tags = regex(@"</?\s*(iframe|object|embed|link|meta|base|form|input|button|textarea|svg|math)\b[^>]*>", "gi")
+	var/static/regex/bad_attrs = regex(@{"\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)"}, "gi")
+	text = bad_tags.Replace(text, "")
+	text = bad_attrs.Replace(text, "")
+	return text
 
 /proc/geo_sanitize_color(text)
 	var/static/regex/hex = regex(@"^#[0-9a-fA-F]{6}$")
 	if(istext(text) && hex.Find(text))
-		return lowertext(text)
+		return LOWER_TEXT(text)
 	return "#000080"
 
 /datum/pc_program/geocities

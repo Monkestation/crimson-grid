@@ -190,10 +190,10 @@
 	var/datum/bank_account/acc = get_logged_account()
 	if(acc && acc.account_holder)
 		// Convert "Rusty Venture" -> "rusty_venture"
-		var/formatted = lowertext(acc.account_holder)
+		var/formatted = LOWER_TEXT(acc.account_holder)
 		formatted = replacetext(formatted, " ", "_")
 		return formatted
-	return login_name ? lowertext(replacetext(login_name, " ", "_")) : "anonymous"
+	return login_name ? LOWER_TEXT(replacetext(login_name, " ", "_")) : "anonymous"
 
 /obj/machinery/computer/pc/proc/can_access_schrecknet(mob/living/user)
 	if(is_admin)

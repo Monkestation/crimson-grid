@@ -51,6 +51,8 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 
 /datum/pc_network/New()
 	GLOB.pc_networks[id] = src
+	if(id == PC_NETWORK_PUBLIC)
+		master_password = "[rand(1,1000000)]"
 	automation = new(src)
 
 /datum/component/networked/proc/set_network_by_name(net_name, allow_restricted = TRUE)
@@ -120,27 +122,27 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	log_event(NETWORK_LOG_LEAVE, device)
 
 /datum/pc_network/proc/is_connected(atom/device)
-    return !!device && (WEAKREF(device) in connected)
+	return !!device && (WEAKREF(device) in connected)
 
 /// Resolves a UI-supplied REF string, but only if it is actually on THIS network.
 /datum/pc_network/proc/resolve_device(ref_string)
-    if(!istext(ref_string) || !length(ref_string))
-        return null
-    var/atom/A = locate(ref_string)
-    if(A && is_connected(A))
-        return A
-    return null
+	if(!istext(ref_string) || !length(ref_string))
+		return null
+	var/atom/A = locate(ref_string)
+	if(A && is_connected(A))
+		return A
+	return null
 
 /datum/pc_network/proc/deliver_mail(datum/pc_mail/mail)
-    if(!mail?.to_address)
-        return FALSE
-    mail.timestamp ||= world.time
-    var/address = lowertext(mail.to_address)
-    if(!mailboxes[address])
-        mailboxes[address] = list()
-    mailboxes[address] += mail
-    automation?.on_mail(mail)
-    return TRUE
+	if(!mail?.to_address)
+		return FALSE
+	mail.timestamp ||= world.time
+	var/address = LOWER_TEXT(mail.to_address)
+	if(!mailboxes[address])
+		mailboxes[address] = list()
+	mailboxes[address] += mail
+	automation?.on_mail(mail)
+	return TRUE
 
 /// A network made by players through a server. It exists only while at least one server is tuned to it.
 /// The servers' owners can make it private (hidden from PC network lists) and/or restricted.

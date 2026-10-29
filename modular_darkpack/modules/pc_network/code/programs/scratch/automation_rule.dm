@@ -99,7 +99,7 @@
 				if("[automation.auto_vars[cond["key"]]]" == cond["value"])
 					return FALSE
 			if(PC_COND_MAIL_FROM)
-				if(!mail || lowertext(mail.from_address) != lowertext(cond["value"]))
+				if(!mail || LOWER_TEXT(mail.from_address) != LOWER_TEXT(cond["value"]))
 					return FALSE
 			if(PC_COND_MAIL_SUBJECT)
 				if(!mail || !findtext(mail.subject, cond["value"]))

@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(cd_burn_allowed_hosts, list(
 /datum/pc_program/cd_burner/proc/validate_url(url)
 	if(length(url) > CD_MAX_URL_LENGTH || !audio_url_regex.Find(url))
 		return "Invalid URL. Use a direct https link to an .ogg, .mp3, .wav or .mid file."
-	var/host = lowertext(audio_url_regex.group[1])
+	var/host = LOWER_TEXT(audio_url_regex.group[1])
 	if(!(host in GLOB.cd_burn_allowed_hosts))
 		return "That host isn't allowed. Allowed hosts: [english_list(GLOB.cd_burn_allowed_hosts)]."
 	return null

@@ -1,5 +1,3 @@
-//#define MM2_DEBUGGING
-
 #ifdef MM2_DEBUGGING
 #define MM2_DEBUG(x) message_admins("\[MEDIA MANAGER 2 DEBUG\] " + x)
 #define MEDIA_WINDOW_ID "mm2"
@@ -175,74 +173,10 @@
 			stack_trace(params["message"])
 	MM2_DEBUG("topic: [json_encode(href_list - "params", JSON_PRETTY_PRINT)]\nparams: [json_encode(params, JSON_PRETTY_PRINT)]")
 
-/client/verb/reload_mm2()
-	set name = "Force Reload Media Player"
-	set desc = "Forcefully reloads your client's media player (used for lobby and jukebox music)"
-	set category = "OOC"
-
+GAME_VERB_PROC(/client, reload_mm2, "Force Reload Media Player", "OOC")
 	if(!QDELETED(media_player))
 		QDEL_NULL(media_player)
 	media_player = new(src)
 
-#ifdef MM2_DEBUGGING
-/client/verb/mm2_play()
-	set name = "MM2: Play"
-	set category = "MM2"
-
-	var/url = trimtext(tgui_input_text(src, "What to play?", "Media Manager 2", default = "https://files.catbox.moe/29g5xp.mp3", encode = FALSE))
-	if(url)
-		media_player.play(url)
-		MM2_DEBUG("playing")
-
-/client/verb/mm2_pause()
-	set name = "MM2: Pause"
-	set category = "MM2"
-
-	media_player.pause()
-	MM2_DEBUG("paused")
-
-/client/verb/mm2_stop()
-	set name = "MM2: Stop"
-	set category = "MM2"
-
-	media_player.stop()
-	MM2_DEBUG("stopped")
-
-/client/verb/mm2_set_position()
-	set name = "MM2: Set Position"
-	set category = "MM2"
-
-	var/x = tgui_input_number(src, "Set X Value", "Media Manager 2", default = 0, min_value = -10, max_value = 10) || 0
-	var/y = tgui_input_number(src, "Set Y Value", "Media Manager 2", default = 0, min_value = -10, max_value = 10) || 0
-	media_player.set_position(x, y)
-	MM2_DEBUG("set pos to [x],[y]")
-
-/client/verb/mm2_set_time()
-	set name = "MM2: Set Time"
-	set category = "MM2"
-
-	var/time = tgui_input_number(src, "Set Time (Seconds)", "Media Manager 2", default = 0, min_value = 0, round_value = FALSE) || 0
-	media_player.set_time(time)
-	MM2_DEBUG("set time to [time]")
-
-/client/verb/mm2_reload_all()
-	set name = "MM2: Reload Base HTML/JS"
-	set category = "MM2"
-
-	reload_all_mm2()
-	MM2_DEBUG("reloaded all")
-
-/proc/reload_all_mm2()
-	var/did_re_init = FALSE
-	for(var/client/client in GLOB.clients)
-		var/datum/media_player/mm2 = client?.media_player
-		if(QDELETED(mm2))
-			continue
-		if(!did_re_init)
-			mm2.base_html = null
-			mm2.init_base_html()
-			did_re_init = TRUE
-		mm2.open()
-#endif
-
 #undef MEDIA_WINDOW_ID
+#undef MM2_DEBUG

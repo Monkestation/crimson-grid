@@ -90,7 +90,7 @@
 				return
 			for(var/net_id in GLOB.pc_networks)
 				var/datum/pc_network/existing = GLOB.pc_networks[net_id]
-				if(existing && lowertext(existing.name) == lowertext(new_name))
+				if(existing && LOWER_TEXT(existing.name) == LOWER_TEXT(new_name))
 					to_chat(user, span_warning("A network with that name already exists."))
 					return
 			tune(new /datum/pc_network/player(new_name), user)
@@ -143,10 +143,10 @@
 /proc/find_pc_network_by_name(net_name)
 	if(!istext(net_name))
 		return null
-	var/lowered = lowertext(net_name)
+	var/lowered = LOWER_TEXT(net_name)
 	for(var/net_id in GLOB.pc_networks)
 		var/datum/pc_network/player/net = GLOB.pc_networks[net_id]
-		if(istype(net) && lowertext(net.name) == lowered)
+		if(istype(net) && LOWER_TEXT(net.name) == lowered)
 			return net
 	return null
 

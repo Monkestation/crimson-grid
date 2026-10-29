@@ -134,3 +134,4 @@ ADMIN_VERB(manage_cd_burners, R_ADMIN, "Manage CD Burners", "Grant or revoke per
 			perms.revoke(target, user.mob)
 
 #undef CD_BURN_DENY_COOLDOWN
+#undef CD_BURN_PERMISSION_FILE
