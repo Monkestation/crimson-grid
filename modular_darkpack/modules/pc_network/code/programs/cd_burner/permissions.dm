@@ -59,8 +59,8 @@ GLOBAL_DATUM_INIT(cd_burn_permissions, /datum/cd_burn_permissions, new)
 	var/key = user.ckey
 	pending[key] = world.time
 	message_admins("<span class='adminnotice'>CD BURNER: [key_name_admin(user)] is requesting permission to burn CDs. \
-		<a href='?src=[REF(src)];approve=[key]'>Approve</a> | \
-		<a href='?src=[REF(src)];deny=[key]'>Deny</a></span>")
+		<a href='byond://?src=[REF(src)];approve=[key]'>Approve</a> | \
+		<a href='byond://?src=[REF(src)];deny=[key]'>Deny</a></span>")
 	return TRUE
 
 /datum/cd_burn_permissions/proc/resolve(target, approve, mob/admin)

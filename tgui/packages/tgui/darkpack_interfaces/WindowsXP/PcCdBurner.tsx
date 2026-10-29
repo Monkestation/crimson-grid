@@ -39,7 +39,7 @@ const parseDuration = (text: string): string => {
   if (trimmed.includes(':')) {
     const [m, s] = trimmed.split(':');
     const total = Number(m) * 60 + Number(s);
-    return isNaN(total) ? '' : String(total);
+    return Number.isNaN(total) ? '' : String(total);
   }
   return trimmed;
 };
@@ -86,15 +86,7 @@ export const PcCdBurner = (props, context) => {
         height: '100%',
       }}
     >
-      {!!data.message && (
-        <NoticeBox
-          mb={0}
-          success={!!data.message_good}
-          danger={!data.message_good}
-        >
-          {data.message}
-        </NoticeBox>
-      )}
+      {!!data.message && <NoticeBox mb={0}>{data.message}</NoticeBox>}
 
       <Section
         title="Burn Track"
@@ -118,7 +110,7 @@ export const PcCdBurner = (props, context) => {
               </NoticeBox>
             )}
             {data.permission === 'pending' && (
-              <NoticeBox warning>
+              <NoticeBox danger>
                 Your request is awaiting admin approval.
               </NoticeBox>
             )}
