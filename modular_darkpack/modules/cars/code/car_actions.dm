@@ -92,6 +92,9 @@
 		return
 
 	var/obj/darkpack_car/owned_car = owner.loc
+	if(owned_car.locked && owned_car.lock_blocks_entry)
+		to_chat(owner, span_notice("[owned_car] is locked."))
+		return
 	if(!owned_car.on)
 		if((owned_car.get_integrity() == owned_car.max_integrity) || (prob(100*(owned_car.get_integrity()/owned_car.max_integrity))))
 			owned_car.start_engine()
@@ -119,6 +122,7 @@
 		owned_car.driver = null
 	if(owner in owned_car.passengers)
 		owned_car.passengers -= owner
+	owned_car.hide_occupant(owner)
 	owner.forceMove(owned_car.loc)
 
 	var/list/exit_side = list(
