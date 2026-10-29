@@ -83,6 +83,7 @@
 
 /obj/item/smartphone/proc/update_initialized_contacts(mob/living/carbon/owner, client/owner_client)
 	owner_weakref = WEAKREF(owner)
+	var/contact_name = owner_client?.prefs?.read_preference(/datum/preference/text/phone_contact_name) || owner?.real_name // CRIMSON EDIT ADD - PR - Custom phone contact names
 	if(LAZYLEN(contact_networks_pre_init))
 		LAZYINITLIST(contact_networks)
 		for(var/list/contact_network_info as anything in contact_networks_pre_init)
@@ -96,14 +97,14 @@
 			var/datum/contact_network/contact_network = new(network_contacts, our_role)
 			contact_networks += contact_network
 
-			var/datum/contact/our_contact = new(owner.real_name, sim_card.phone_number, our_role, WEAKREF(src))
+			var/datum/contact/our_contact = new(contact_name, sim_card.phone_number, our_role, WEAKREF(src)) // CRIMSON EDIT CHANGE - PR - ORIGINAL: var/datum/contact/our_contact = new(owner.real_name, sim_card.phone_number, our_role, WEAKREF(src))
 			network_contacts |= our_contact
 
 	for(var/obj/item/smartphone/P as anything in GLOB.phones_list)
 		P.update_contacts()
 
 	if(important_contact_of && owner && sim_card.phone_number)
-		GLOB.important_contacts[important_contact_of] = new /datum/phonecontact(owner.real_name, sim_card.phone_number)
+		GLOB.important_contacts[important_contact_of] = new /datum/phonecontact(contact_name, sim_card.phone_number) // CRIMSON EDIT CHANGE - PR - ORIGINAL: GLOB.important_contacts[important_contact_of] = new /datum/phonecontact(owner.real_name, sim_card.phone_number)
 
 	var/name_pref = owner_client?.prefs?.read_preference(/datum/preference/text/phone_published_name)
 	if(name_pref)
