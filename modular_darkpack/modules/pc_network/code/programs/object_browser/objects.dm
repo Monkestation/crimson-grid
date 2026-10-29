@@ -34,7 +34,7 @@
 			AUTOMATION_DESC = "Trigger this secure button.",
 			AUTOMATION_CALLBACK = CALLBACK(src, TYPE_PROC_REF(/obj/machinery/button, pc_network_press)),
 			AUTOMATION_MIN_ROLE = network_auth,
-			AUTOMATION_ALLOW_AUTOMATE = FALSE,
+			AUTOMATION_ALLOW_AUTOMATE = TRUE,
 		)
 	)
 
