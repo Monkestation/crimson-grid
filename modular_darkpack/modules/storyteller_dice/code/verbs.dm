@@ -42,7 +42,7 @@ GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
 		return
 	var/roll_type = NONE
 	for(var/list/entry in roll_type_choice)
-		roll_type |= roll_choices.Find(entry[1]) + 1
+		roll_type |= (1 << (roll_choices.Find(entry[1]) - 1))
 
 
 	var/datum/storyteller_roll/custom_roll/custom_roll = new()
