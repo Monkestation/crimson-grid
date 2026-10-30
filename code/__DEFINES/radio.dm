@@ -101,6 +101,13 @@
 
 // DARKPACK EDIT ADD END
 
+// CRIMSON EDIT ADD START
+#define RADIO_CHANNEL_NPS_RANGERS "Rangers"
+#define RADIO_KEY_NPS_RANGERS "g"
+#define RADIO_COLOR_NPS_RANGERS "#87ae73"
+#define NETWORK_NPS_RANGERS "NPS Rangers Network"
+// CRIMSON EDIT ADD END
+
 #define RADIO_CHANNEL_CTF_RED "Red Team"
 #define RADIO_COLOR_CTF_RED "#ff0000"
 #define RADIO_CHANNEL_CTF_BLUE "Blue Team"
@@ -160,6 +167,10 @@
 #define FREQ_ANARCH 1509 // Anarch comms frequency, dark orange
 #define FREQ_ENDRON 1511 // Endron comms frequency, orange
 // DARKPACK EDIT ADD END
+
+// CRIMSON EDIT ADD START
+#define FREQ_NPS_RANGERS 1513 // NPS Rangers comms frequency, sage green
+// CRIMSON EDIT ADD END
 
 #define MAX_FREE_FREQ 1599 // -------------------------------------------------
 
