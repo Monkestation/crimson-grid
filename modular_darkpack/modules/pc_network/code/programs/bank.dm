@@ -47,7 +47,6 @@
 					if(success)
 						notify_tap(acc, T, amount)
 					return success
-			return acc.pay_debt(amount)
 	return FALSE
 
 /datum/pc_program/bank/notify_tap(datum/bank_account/payer, datum/bank_account/payee, amount)
