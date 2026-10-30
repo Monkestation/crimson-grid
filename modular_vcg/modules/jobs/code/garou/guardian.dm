@@ -10,4 +10,4 @@
 	suit = /obj/item/clothing/suit/vampire/vest/police/ranger
 	belt = /obj/item/storage/belt/security/police
 	r_pocket = /obj/item/vamp/keys/nps
-	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/storage/medkit/darkpack/ifak=1)
+	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/ammo_box/magazine/glock9mm = 2, /obj/item/storage/medkit/darkpack/ifak=1)
