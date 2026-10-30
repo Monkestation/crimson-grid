@@ -121,7 +121,6 @@ export const MedicalSummary = (props) => {
         <Photo src={rec.side} label="Side" />
       </Box>
       <Box mb={1}>
-        <Row label="Rank" value={rec.rank} />
         <Row label="Age" value={rec.age} />
         <Row label="Gender" value={rec.gender} />
         <Row label="Species" value={rec.species} />
