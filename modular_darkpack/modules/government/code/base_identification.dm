@@ -1,0 +1,91 @@
+/obj/item/identification
+	icon = 'modular_darkpack/modules/government/icons/docs.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/government/icons/docsonfloor.dmi')
+	w_class = WEIGHT_CLASS_SMALL
+	worn_icon_state = "nothing"
+	slot_flags = ITEM_SLOT_ID
+
+	// Owner information
+	var/owner = ""
+	var/dob
+	var/issued_year
+	var/expiry_year
+	var/owner_gender
+
+	/// If the ID is a counterfeit
+	var/fake = FALSE
+
+	var/owner_real_name
+	var/icon/our_photograph
+	var/datum/storyteller_roll/investigation/examine_roll
+
+/obj/item/identification/attack_self(mob/user, modifiers)
+	. = ..()
+	user.examinate(src)
+
+/obj/item/identification/examine(mob/user)
+	. = ..()
+	if(!owner_real_name)
+		return
+
+	. += get_owner_information(user)
+
+	if(owner_real_name == user.real_name)
+		return
+
+	if(!fake)
+		return
+	var/roll_result = examine_roll.st_roll(user, src)
+	if(roll_result == ROLL_SUCCESS)
+		. += span_boldwarning("It looks like a crude counterfeit; this document is forged!")
+
+/obj/item/identification/proc/get_owner_information(mob/user)
+	return ""
+
+/obj/item/identification/proc/link_human(mob/living/carbon/human/user)
+	if(HAS_TRAIT(user, TRAIT_ILLEGAL_IDENTITY))
+		fake = TRUE
+
+	if(fake)
+		owner = user.dna.fake_name_identity
+		dob = CURRENT_STATION_YEAR - user.dna.fake_age
+		issued_year = (dob + 18) + (round(((user.dna.fake_age - 18) / 8)) * 8) // This should be renewals roughly every 8 years after issuance at 18.
+		expiry_year = (dob + 18) + ((round(((user.dna.fake_age - 18) / 8)) + 1) * 8) // this math is probably wrong but FUCK IT
+		owner_gender = user.dna.fake_gender
+	else
+		owner = user.real_name
+		dob = CURRENT_STATION_YEAR - user.age
+		issued_year = (dob + 18) + (round(((user.age - 18) / 8)) * 8) // This should be renewals roughly every 8 years after issuance at 18.
+		expiry_year = (dob + 18) + ((round(((user.age - 18) / 8)) + 1) * 8) // this math is probably wrong but FUCK IT
+		if(user.gender == MALE)
+			owner_gender = "M"
+		else if(user.gender == FEMALE)
+			owner_gender = "F"
+		else
+			owner_gender = "X" // The X marker I think might not've existed yet as standard practice for ID documents in the US at this point in time, but as players can make non-binary characters, this doesn't hurt anyone to have and we should support it.
+
+	QDEL_NULL(examine_roll)
+	examine_roll = new()
+	examine_roll.roll_output_type = ROLL_FLAG_ROLLER
+	examine_roll.roll_output_type_on_fail = NONE
+	examine_roll.reroll_cooldown = 1 SCENES
+	examine_roll.difficulty = min(user.st_get_stat(STAT_STREETWISE) * 2, 10)
+	examine_roll.successes_needed = round(user.st_get_stat(STAT_STREETWISE))
+
+	owner_real_name = user.real_name
+
+/obj/item/identification/proc/get_owner_id_photo(force = FALSE)
+	if(our_photograph)
+		return our_photograph
+
+	if(!owner_real_name)
+		return
+
+	var/datum/record/crew/record = find_record(owner_real_name)
+	if(!record)
+		return
+	var/obj/item/photo/mugshot = record.get_front_photo(TRUE)
+	our_photograph = icon(mugshot.picture.picture_image)
+	our_photograph.Scale(128, 128)
+	our_photograph.Crop(1, 1, 128, 128)
+	return our_photograph
