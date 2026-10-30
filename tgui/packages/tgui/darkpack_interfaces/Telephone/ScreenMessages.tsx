@@ -1,7 +1,7 @@
 // THIS IS A DARKPACK UI FILE
 import { useEffect, useRef, useState } from 'react';
 import { useBackend } from 'tgui/backend';
-import { Box, Icon, Stack } from 'tgui-core/components';
+import { Box, Icon, Input, Stack } from 'tgui-core/components'; // CRIMSON EDIT CHANGE - ORIGINAL: import { Box, Icon, Stack } from 'tgui-core/components';
 import type { Data, NavigableApps } from '.';
 import { ContactElement } from './ScreenContacts';
 
@@ -548,31 +548,17 @@ export const ScreenMessages = (props: {
           backgroundColor="#f0f0f0"
           style={{ borderTop: '1px solid #ddd' }}
         >
-          <style>{`
-            @keyframes blink {
-              0%, 50% { opacity: 1; }
-              51%, 100% { opacity: 0; }
-            }
-            .cursor {
-              display: inline-block;
-              animation: blink 1s infinite;
-              margin-left: 2px;
-            }
-          `}</style>
-          <Box
-            p={0.5}
-            style={{
-              backgroundColor: '#fff',
-              borderRadius: '4px',
-              border: '1px solid #ccc',
-              minHeight: '2.5em',
-            }}
-          >
-            {messageText}
-            {messageText.length === 0 && selectedContact && (
-              <span className="cursor">|</span>
-            )}
-          </Box>
+          {/* CRIMSON EDIT CHANGE START - ORIGINAL: fake text box that only showed messageText */}
+          <Input
+            fluid
+            autoFocus
+            alwaysUpdate
+            value={messageText}
+            maxLength={1024}
+            onChange={setMessageText}
+            onEnter={handleSend}
+          />
+          {/* CRIMSON EDIT CHANGE END */}
         </Stack.Item>
         <Stack.Item mb={6}>
           <Keyboard onClick={handleKeyPress} />
