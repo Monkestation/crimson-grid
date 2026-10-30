@@ -687,6 +687,16 @@
 /obj/machinery/computer/pc,
 /turf/open/floor/carpet/red,
 /area/vtm/interior)
+"abH" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wideplating/blue{
+	dir = 8
+	},
+/obj/machinery/computer/pc/broadcaster{
+	dir = 4
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior)
 "abI" = (
 /obj/structure/table,
 /obj/structure/sign/flag/usa/directional/north,
@@ -1134,6 +1144,32 @@
 /obj/item/tape,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/clinic)
+"acP" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/grey/inner_corner{
+	dir = 1
+	},
+/obj/effect/decal/rugs,
+/obj/machinery/computer/security/telescreen/entertainment/directional/north,
+/obj/item/broadcast_camera/darkpack,
+/obj/item/broadcast_camera/darkpack,
+/obj/item/broadcast_camera/darkpack,
+/turf/open/floor/city/toilet,
+/area/vtm/interior)
+"acQ" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 6
+	},
+/obj/effect/turf_decal/trimline/purple/filled/warning{
+	dir = 6
+	},
+/obj/effect/mapping_helpers/pc_server/private,
+/obj/effect/mapping_helpers/pc_server/restricted,
+/obj/effect/mapping_helpers/pc_server/hack_difficulty/nine,
+/obj/effect/mapping_helpers/pc_server/network_name/endron,
+/obj/machinery/pc_server/mapped,
+/turf/open/floor/iron/white/textured,
+/area/vtm/interior/endron_facility/restricted)
 "acR" = (
 /obj/structure/table,
 /obj/structure/platform/lowwall/brick,
@@ -67174,15 +67210,6 @@
 /obj/item/melee/vamp/tire,
 /turf/open/floor/plating/asphalt,
 /area/vtm/interior/cabdepot)
-"psr" = (
-/obj/effect/turf_decal/siding/dark{
-	dir = 6
-	},
-/obj/effect/turf_decal/trimline/purple/filled/warning{
-	dir = 6
-	},
-/turf/open/floor/iron/white/textured,
-/area/vtm/interior/endron_facility/restricted)
 "psw" = (
 /obj/structure/table/countertop/bubway,
 /obj/structure/coclock,
@@ -81752,15 +81779,6 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/outside/pacificheights/community)
-"sRG" = (
-/obj/structure/table,
-/obj/effect/turf_decal/siding/grey/inner_corner{
-	dir = 1
-	},
-/obj/effect/decal/rugs,
-/obj/machinery/computer/security/telescreen/entertainment/directional/north,
-/turf/open/floor/city/toilet,
-/area/vtm/interior)
 "sRJ" = (
 /obj/structure/stairs/east,
 /turf/open/floor/plating/sidewalk,
@@ -139108,7 +139126,7 @@ fBd
 cMh
 utj
 rHo
-psr
+acQ
 icM
 dHe
 icM
@@ -185873,7 +185891,7 @@ eaz
 fcQ
 vam
 faP
-qbT
+abH
 qbT
 tlb
 qsQ
@@ -186480,7 +186498,7 @@ oqG
 pbo
 rNo
 lrt
-sRG
+acP
 kue
 gIf
 vam
