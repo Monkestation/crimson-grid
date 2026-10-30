@@ -64,7 +64,7 @@
 	return TRUE
 
 /datum/media_source/proc/get_volume(mob/target)
-	return volume
+	return volume * 0.5
 
 /datum/media_source/proc/get_balance(mob/target)
 	return 0
