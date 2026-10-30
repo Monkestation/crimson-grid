@@ -28,27 +28,36 @@
 			var/amount = text2num(params["amount"])
 			if(amount <= 0)
 				return FALSE
-			// Find account by name or pay_token and transfer
 			for(var/id in SSeconomy.bank_accounts_by_id)
 				var/datum/bank_account/T = SSeconomy.bank_accounts_by_id[id]
+				if(T == acc)
+					continue
 				if(T.account_holder == target_id || T.pay_token == target_id)
-					var/success = acc.transfer_money(T, amount, "PC Transfer")
+					var/success = T.transfer_money(acc, amount, "PC Transfer")
 					if(success)
 						notify_tap(acc, T, amount)
 					return success
+
 		if("pay_underling")
 			var/target_name = params["name"]
 			var/amount = text2num(params["amount"])
 			if(amount <= 0)
 				return FALSE
-			// Find account by name or pay_token and transfer
 			for(var/id in SSeconomy.bank_accounts_by_id)
 				var/datum/bank_account/T = SSeconomy.bank_accounts_by_id[id]
+				if(T == acc)
+					continue
 				if(T.account_holder == target_name || T.pay_token == target_name)
-					var/success = acc.transfer_money(T, amount, "Underling Stipend")
+					var/success = T.transfer_money(acc, amount, "Underling Stipend")
 					if(success)
 						notify_tap(acc, T, amount)
 					return success
+
+		if("pay_debt")
+			var/amount = text2num(params["amount"])
+			if(amount <= 0 || acc.account_debt <= 0)
+				return FALSE
+			return acc.pay_debt(min(amount, acc.account_debt)) > 0
 	return FALSE
 
 /datum/pc_program/bank/notify_tap(datum/bank_account/payer, datum/bank_account/payee, amount)
