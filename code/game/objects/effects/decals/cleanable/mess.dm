@@ -165,6 +165,7 @@
 	beauty = -100
 	clean_type = CLEAN_TYPE_HARD_DECAL
 	is_mopped = FALSE
+	pixel_y = 24 // DARKPACK EDIT CHANGE - Fixes cowbeb alignment
 
 /obj/effect/decal/cleanable/cobweb/cobweb2
 	icon_state = "cobweb2"
