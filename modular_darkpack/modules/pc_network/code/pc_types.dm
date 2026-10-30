@@ -28,6 +28,14 @@
 	. = ..()
 	installed_programs += new /datum/pc_program/nightcrawler_editor(src)
 
+/obj/machinery/computer/pc/clinic/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/medical_base/reader(src)
+
+/obj/machinery/computer/pc/clinic/head/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/medical_base/writer(src)
+
 /obj/machinery/computer/pc/network/install_default_programs()
 	. = ..()
 	installed_programs += new /datum/pc_program/browser(src)

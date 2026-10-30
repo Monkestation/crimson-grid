@@ -15,6 +15,8 @@ import { PcHacking } from './PcHacking';
 import { PcImageBoard } from './PcImageBoard';
 import { PcLibrary } from './PcLibrary';
 import { PcMediaPlayer } from './PcMediaPlayer';
+import { PcMedicalReader } from './PcMedicalReader';
+import { PcMedicalWriter } from './PcMedicalWriter';
 import { PcMinesweeper } from './PcMinesweeper';
 import { PcNetworkAutomation } from './PcNetworkAutomation';
 import { PcNetworkBrowser } from './PcNetworkBrowser';
@@ -58,6 +60,8 @@ const PROGRAM_COMPONENTS = {
   PcHacking,
   PcMediaPlayer,
   PcCdBurner,
+  PcMedicalReader,
+  PcMedicalWriter,
 };
 
 const XP = {

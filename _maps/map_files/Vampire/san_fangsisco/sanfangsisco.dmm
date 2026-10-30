@@ -377,6 +377,15 @@
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
+"aaS" = (
+/obj/structure/platform/lowwall/painted,
+/obj/structure/table,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/computer/pc/clinic{
+	dir = 4
+	},
+/turf/open/floor/plating/rough,
+/area/vtm/interior/clinic)
 "aaT" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -691,14 +700,6 @@
 /obj/machinery/computer/pc,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/techshop)
-"abE" = (
-/obj/structure/table/wood,
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/obj/machinery/computer/pc,
-/turf/open/floor/wood/herring,
-/area/vtm/interior/clinic)
 "abF" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/siding/wood/light/corner,
@@ -791,7 +792,7 @@
 "abT" = (
 /obj/structure/table,
 /obj/effect/turf_decal/siding/wood/dark/corner,
-/obj/machinery/computer/pc,
+/obj/machinery/computer/pc/clinic,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic)
 "abU" = (
@@ -1052,13 +1053,11 @@
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/anarch)
 "acF" = (
-/obj/structure/platform/lowwall/painted,
 /obj/structure/table,
-/obj/structure/window/reinforced/spawner/directional/south,
-/obj/machinery/computer/pc{
-	dir = 4
-	},
-/turf/open/floor/plating/rough,
+/obj/fusebox,
+/obj/effect/turf_decal/siding/dark_blue,
+/obj/machinery/pc_printer,
+/turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
 "acG" = (
 /obj/structure/table/wood,
@@ -1229,7 +1228,7 @@
 /obj/effect/turf_decal/siding/grey{
 	dir = 4
 	},
-/obj/machinery/computer/pc,
+/obj/machinery/computer/pc/clinic/head,
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/clinic)
 "adc" = (
@@ -1257,7 +1256,7 @@
 	pixel_x = 6
 	},
 /obj/effect/turf_decal/siding/wood/dark,
-/obj/machinery/computer/pc{
+/obj/machinery/computer/pc/clinic{
 	dir = 1
 	},
 /turf/open/floor/wood/herring,
@@ -3612,6 +3611,14 @@
 /obj/structure/billboard/darkpack/endron,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
+"akf" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
+	},
+/obj/machinery/computer/pc/clinic,
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic)
 "akg" = (
 /obj/structure/barrels{
 	icon_state = "barrel6"
@@ -97140,12 +97147,6 @@
 /obj/item/pushbroom,
 /turf/open/floor/city/plating,
 /area/vtm/interior/millennium_tower)
-"xjH" = (
-/obj/structure/table,
-/obj/fusebox,
-/obj/effect/turf_decal/siding/dark_blue,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/clinic)
 "xjL" = (
 /obj/effect/turf_decal/stock{
 	dir = 4
@@ -198797,7 +198798,7 @@ kCX
 mPc
 pGJ
 pGJ
-acF
+aaS
 okn
 jIU
 iWg
@@ -199308,7 +199309,7 @@ bUt
 gcl
 unt
 kCX
-xjH
+acF
 dLk
 dLk
 uHi
@@ -263042,7 +263043,7 @@ afB
 auh
 awQ
 vfS
-abE
+akf
 qBz
 lOH
 kQM
@@ -264854,7 +264855,7 @@ jcx
 cEW
 mCP
 vfS
-abE
+akf
 qBr
 bUt
 ntq

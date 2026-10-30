@@ -71,6 +71,8 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	var/list/connected_devices = list()
 	/// Names of every account that has logged in on this network
 	var/list/known_users = list()
+	/// lowercase crew name -> /datum/pc_medical_record (network-local overrides)
+	var/list/medical_records = list()
 
 /datum/pc_network/schrecknet
 	id = PC_NETWORK_SCHRECKNET
@@ -187,6 +189,24 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	creator_name ||= user.real_name
 	to_chat(user, span_boldnotice("You are the owner of [name]. Its master password is: <b>[master_password]</b>. Keep it safe."))
 	user.mind?.add_memory(/datum/memory/key/network_password, network_name = name, master_password = master_password)
+
+/datum/pc_network/proc/get_medical_record(crew_name)
+	return medical_records[LOWER_TEXT(crew_name)]
+
+/datum/pc_network/proc/set_medical_record(crew_name, text, editor)
+	var/key = LOWER_TEXT(crew_name)
+	var/datum/pc_medical_record/rec = medical_records[key]
+	if(!rec)
+		rec = new
+		rec.name = crew_name
+		medical_records[key] = rec
+	rec.text = text
+	rec.last_editor = editor
+	rec.last_edited = time_to_twelve_hour()
+	return rec
+
+/datum/pc_network/proc/clear_medical_record(crew_name)
+	medical_records -= LOWER_TEXT(crew_name)
 
 /// A network made by players through a server. It exists only while at least one server is tuned to it.
 /// The servers' owners can make it private (hidden from PC network lists) and/or restricted.

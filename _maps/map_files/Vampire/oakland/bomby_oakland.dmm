@@ -354,9 +354,8 @@
 "aaP" = (
 /obj/structure/table,
 /obj/structure/platform/lowwall/painted,
-/obj/machinery/computer/pc{
-	dir = 4
-	},
+/obj/fusebox,
+/obj/machinery/pc_printer,
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/clinic)
 "aaQ" = (
@@ -370,12 +369,12 @@
 /turf/open/floor/city/toilet,
 /area/vtm/interior)
 "aaR" = (
-/obj/structure/table,
-/obj/effect/turf_decal/siding/grey{
-	dir = 5
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
 	},
-/obj/machinery/computer/pc,
-/turf/open/floor/city/circled,
+/obj/machinery/computer/pc/clinic,
+/turf/open/floor/wood/herring,
 /area/vtm/interior/clinic)
 "aaS" = (
 /obj/structure/table/wood,
@@ -768,22 +767,6 @@
 /obj/machinery/computer/pc,
 /turf/open/floor/carpet,
 /area/vtm/interior/banu/haven)
-"abS" = (
-/obj/structure/table/wood,
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/obj/machinery/computer/pc,
-/turf/open/floor/wood/herring,
-/area/vtm/interior/clinic)
-"abT" = (
-/obj/structure/table/wood,
-/obj/structure/platform/lowwall/painted,
-/obj/machinery/computer/pc{
-	dir = 4
-	},
-/turf/open/floor/plating/rough,
-/area/vtm/interior/clinic)
 "abU" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/pc,
@@ -1580,6 +1563,29 @@
 /obj/structure/platform/lowwall/painted/window,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/techshop)
+"adU" = (
+/obj/structure/table,
+/obj/structure/platform/lowwall/painted,
+/obj/machinery/computer/pc/clinic{
+	dir = 4
+	},
+/turf/open/floor/city/plating_stone,
+/area/vtm/interior/clinic)
+"adV" = (
+/obj/structure/table,
+/obj/effect/turf_decal/siding/grey{
+	dir = 5
+	},
+/obj/machinery/computer/pc/clinic,
+/turf/open/floor/city/circled,
+/area/vtm/interior/clinic)
+"adW" = (
+/obj/structure/platform/lowwall/painted,
+/obj/machinery/computer/pc/clinic/head{
+	dir = 4
+	},
+/turf/open/floor/plating/rough,
+/area/vtm/interior/clinic)
 "aeb" = (
 /obj/structure/table,
 /obj/effect/turf_decal/siding/grey,
@@ -2714,12 +2720,6 @@
 "arx" = (
 /turf/closed/wall/vampwall/market,
 /area/vtm/interior/police/upstairs)
-"arG" = (
-/obj/structure/table,
-/obj/structure/platform/lowwall/painted,
-/obj/fusebox,
-/turf/open/floor/city/plating_stone,
-/area/vtm/interior/clinic)
 "arM" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -178549,7 +178549,7 @@ uff
 vHi
 joX
 bhT
-arG
+aaP
 xLs
 pMI
 cCq
@@ -178755,7 +178755,7 @@ joX
 bhT
 fqA
 rid
-aaP
+adU
 fUm
 jMK
 qHz
@@ -183227,7 +183227,7 @@ vAN
 pbo
 joX
 joX
-aaR
+adV
 lkh
 joX
 fTu
@@ -219355,7 +219355,7 @@ mjT
 mjT
 bhT
 jKv
-abT
+adW
 xiA
 vJX
 pQm
@@ -220166,7 +220166,7 @@ dWB
 ucX
 nHf
 xLH
-abS
+aaR
 mKx
 joX
 joX
@@ -221398,7 +221398,7 @@ kaD
 xKG
 pQm
 xLH
-abS
+aaR
 txx
 joX
 mjT
@@ -222002,7 +222002,7 @@ xEp
 cCq
 nHf
 xLH
-abS
+aaR
 bbj
 joX
 kaD
