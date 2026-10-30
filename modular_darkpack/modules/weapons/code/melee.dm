@@ -388,6 +388,9 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
 	custom_price = 20
+	cooldown = (0.8 SECONDS)
+	stamina_damage = 2 LETHAL_TTRPG_DAMAGE
+	knockdown_time = (0.4 SECONDS)
 
 /obj/item/switchblade/vamp
 	name = "switchblade"
