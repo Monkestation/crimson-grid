@@ -70,7 +70,7 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/human_user = user
 			for(var/mob/living/carbon/human/sacrificed_human in get_turf(src))
-				if(sacrificed_human.stat != SOFT_CRIT || sacrificed_human.stat != HARD_CRIT)
+				if(sacrificed_human.stat != SOFT_CRIT && sacrificed_human.stat != HARD_CRIT)
 					continue
 				if(!sacrificed_human.mind)
 					upset = TRUE
