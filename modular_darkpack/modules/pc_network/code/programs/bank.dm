@@ -39,6 +39,8 @@
 		if("pay_underling")
 			var/target_name = params["name"]
 			var/amount = text2num(params["amount"])
+			if(amount <= 0)
+				return FALSE
 			// Find account by name or pay_token and transfer
 			for(var/id in SSeconomy.bank_accounts_by_id)
 				var/datum/bank_account/T = SSeconomy.bank_accounts_by_id[id]
