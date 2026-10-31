@@ -31,3 +31,9 @@
 	return trim(copytext_char(raw, 1, max_len + 1))
 
 /datum/pc_program/proc/notify_tap(datum/bank_account/payer, datum/bank_account/payee, amount)
+
+/datum/pc_program/proc/get_lock_reason(mob/living/user)
+	return null
+
+/datum/pc_program/proc/get_ui_assets()
+	return

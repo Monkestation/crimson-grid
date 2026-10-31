@@ -267,7 +267,9 @@
 	return ..()
 
 /obj/machinery/computer/pc/ui_assets(mob/user)
-	return list(get_asset_datum(/datum/asset/simple/pc_xp))
+	. = list(get_asset_datum(/datum/asset/simple/pc_xp))
+	for(var/datum/pc_program/program as anything in installed_programs)
+		. |= program.get_ui_assets()
 
 /obj/machinery/computer/pc/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()

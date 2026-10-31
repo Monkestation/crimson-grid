@@ -24,6 +24,7 @@ import { PcNetworkLog } from './PcNetworkLog';
 import { PcNightcrawler } from './PcNightcrawler';
 import { PcNightcrawlerEditor } from './PcNightcrawlerEditor';
 import { PcNotepad } from './PcNotepad';
+import { PcOperating } from './PcOperating';
 import { PcPaint } from './PcPaint';
 import { PcPermissions } from './PcPermissions';
 import { PcPortraitPrinter } from './PcPortraitPicker';
@@ -62,6 +63,7 @@ const PROGRAM_COMPONENTS = {
   PcCdBurner,
   PcMedicalReader,
   PcMedicalWriter,
+  PcOperating,
 };
 
 const XP = {

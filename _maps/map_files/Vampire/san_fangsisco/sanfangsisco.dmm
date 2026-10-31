@@ -148,6 +148,14 @@
 /obj/weapon_showcase,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/gunshop)
+"aat" = (
+/obj/effect/decal/fakelattice{
+	density = 0
+	},
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery,
+/turf/open/misc/dirt,
+/area/vtm/interior/police/fed)
 "aau" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/pc,
@@ -3637,6 +3645,11 @@
 	},
 /turf/open/floor/plating/roofwalk,
 /area/vtm)
+"akj" = (
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery,
+/turf/open/floor/city/circled,
+/area/vtm/interior/clinic)
 "akk" = (
 /obj/machinery/light/warm/directional/south,
 /obj/structure/closet/crate/bin,
@@ -3792,6 +3805,11 @@
 	},
 /turf/open/floor/plating/canal,
 /area/vtm/interior/endron_facility/plant)
+"akH" = (
+/obj/machinery/computer/pc/clinic/surgery,
+/obj/structure/table,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior)
 "akI" = (
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalkalt,
@@ -4105,6 +4123,13 @@
 	},
 /turf/open/floor/plating/grate,
 /area/vtm/interior/endron_facility/plant)
+"alz" = (
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery{
+	dir = 1
+	},
+/turf/open/floor/city/circled,
+/area/vtm/interior/clinic)
 "alA" = (
 /obj/structure/sign/warning/no_smoking/circle/directional/north,
 /turf/open/floor/plating/grate,
@@ -4623,6 +4648,13 @@
 	},
 /turf/open/floor/city/factory,
 /area/vtm/interior/endron_facility/restricted)
+"anb" = (
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery{
+	dir = 1
+	},
+/turf/open/floor/city/circled,
+/area/vtm/interior/salubri)
 "anc" = (
 /obj/item/mop,
 /obj/effect/decal/cleanable/dirt,
@@ -4732,6 +4764,16 @@
 /obj/structure/chair/office,
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
+"anp" = (
+/obj/effect/turf_decal/trimline/dark_green/filled/warning{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery{
+	dir = 8
+	},
+/turf/open/floor/iron/white/textured,
+/area/vtm/interior/endron_facility/restricted)
 "anq" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
@@ -54164,10 +54206,6 @@
 	},
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/anarch)
-"mpR" = (
-/obj/machinery/computer/operating,
-/turf/open/floor/plating/concrete,
-/area/vtm/interior)
 "mpS" = (
 /obj/machinery/light/prince/directional/west{
 	pixel_y = 8
@@ -63572,16 +63610,6 @@
 /obj/machinery/light/prince/directional/west,
 /turf/open/floor/carpet/royalblack,
 /area/vtm/interior/tzimisce_manor)
-"oIv" = (
-/obj/machinery/computer/operating{
-	pixel_x = 0;
-	pixel_y = 1
-	},
-/obj/effect/turf_decal/trimline/dark_green/filled/warning{
-	dir = 8
-	},
-/turf/open/floor/iron/white/textured,
-/area/vtm/interior/endron_facility/restricted)
 "oIw" = (
 /obj/structure/rack/food{
 	dir = 4
@@ -65952,13 +65980,6 @@
 /obj/structure/chair/wood/darkpack/red,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/sewer)
-"pqn" = (
-/obj/effect/decal/fakelattice{
-	density = 0
-	},
-/obj/machinery/computer/operating,
-/turf/open/misc/dirt,
-/area/vtm/interior/police/fed)
 "pqq" = (
 /obj/structure/closet/crate,
 /obj/effect/decal/pallet,
@@ -81443,12 +81464,6 @@
 	dir = 6
 	},
 /turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic)
-"tiS" = (
-/obj/machinery/computer/operating{
-	dir = 1
-	},
-/turf/open/floor/city/circled,
 /area/vtm/interior/clinic)
 "tiW" = (
 /obj/structure/kitchenspike,
@@ -96965,10 +96980,6 @@
 /obj/effect/landmark/npcwall,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights)
-"xhz" = (
-/obj/machinery/computer/operating,
-/turf/open/floor/city/circled,
-/area/vtm/interior/clinic)
 "xhA" = (
 /obj/structure/flora/rock/pile/style_3,
 /turf/open/floor/plating/rough/cave,
@@ -101319,12 +101330,6 @@
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/laundromat)
-"ylT" = (
-/obj/machinery/computer/operating{
-	dir = 1
-	},
-/turf/open/floor/city/circled,
-/area/vtm/interior/salubri)
 "ylW" = (
 /obj/structure/sink/directional/west,
 /obj/effect/decal/cleanable/blood/old,
@@ -146234,7 +146239,7 @@ lMe
 lMe
 lMe
 jcc
-mpR
+akH
 xgh
 xgh
 mWQ
@@ -155415,7 +155420,7 @@ dvN
 dvN
 dvN
 cVR
-pqn
+aat
 aVb
 aVb
 aVb
@@ -201632,7 +201637,7 @@ dLk
 bUt
 fPs
 cnc
-tiS
+alz
 bUt
 oIb
 fQP
@@ -202650,7 +202655,7 @@ bUt
 pYW
 bUt
 bUt
-xhz
+akj
 cnc
 fPs
 bUt
@@ -202660,7 +202665,7 @@ pGJ
 bUt
 fPs
 cnc
-tiS
+alz
 bUt
 iog
 mXC
@@ -203688,7 +203693,7 @@ csj
 bUt
 fPs
 cnc
-tiS
+alz
 bUt
 iog
 mXC
@@ -218579,7 +218584,7 @@ jlv
 fmC
 vwc
 mDR
-ylT
+anb
 gZM
 bGK
 wEi
@@ -375605,7 +375610,7 @@ tZR
 sBF
 nHs
 fPl
-oIv
+anp
 rgM
 nHs
 sBF

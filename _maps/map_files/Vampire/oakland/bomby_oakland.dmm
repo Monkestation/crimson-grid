@@ -780,6 +780,14 @@
 /obj/machinery/pc_server/mapped,
 /turf/open/floor/iron/white/textured,
 /area/vtm/interior/endron_facility/restricted)
+"abT" = (
+/obj/machinery/defibrillator_mount/charging{
+	pixel_y = 30
+	},
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery,
+/turf/open/floor/iron/white/textured,
+/area/vtm/interior/endron_facility/restricted)
 "abU" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/pc,
@@ -1152,6 +1160,11 @@
 /obj/item/broadcast_camera/darkpack,
 /turf/open/floor/city/toilet,
 /area/vtm/interior)
+"acQ" = (
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery,
+/turf/open/floor/city/circled,
+/area/vtm/interior/clinic)
 "acR" = (
 /obj/structure/table,
 /obj/structure/platform/lowwall/brick,
@@ -1585,6 +1598,27 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
+"adX" = (
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery{
+	dir = 1
+	},
+/turf/open/floor/city/circled,
+/area/vtm/interior/clinic)
+"adY" = (
+/obj/effect/turf_decal/siding/grey/end{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery,
+/turf/open/floor/city/circled,
+/area/vtm/interior/clinic)
+"adZ" = (
+/obj/machinery/defibrillator_mount/directional/north,
+/obj/structure/table,
+/obj/machinery/computer/pc/clinic/surgery,
+/turf/open/floor/city/circled,
+/area/vtm/interior/salubri)
 "aeb" = (
 /obj/structure/table,
 /obj/effect/turf_decal/siding/grey,
@@ -7337,10 +7371,6 @@
 	},
 /turf/open/floor/carpet/green,
 /area/vtm/interior/banu)
-"bxk" = (
-/obj/machinery/computer/operating,
-/turf/open/floor/city/circled,
-/area/vtm/interior/clinic)
 "bxp" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -35116,19 +35146,6 @@
 	color = "#bfbfbf"
 	},
 /area/vtm/interior/anarch/basement)
-"hZo" = (
-/obj/machinery/computer/operating{
-	icon_keyboard = "laptop_key";
-	icon_screen = "medlaptop";
-	icon_state = "laptop";
-	pixel_y = 5
-	},
-/obj/machinery/defibrillator_mount/charging{
-	pixel_y = 30
-	},
-/obj/structure/table/countertop/purple,
-/turf/open/floor/iron/white/textured,
-/area/vtm/interior/endron_facility/restricted)
 "hZr" = (
 /obj/structure/rack,
 /obj/item/clothing/neck/large_scarf/blue,
@@ -57095,13 +57112,6 @@
 /obj/effect/spawner/random/stray_animal,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/ghetto)
-"ndM" = (
-/obj/effect/turf_decal/siding/grey/end{
-	dir = 8
-	},
-/obj/machinery/computer/operating,
-/turf/open/floor/city/circled,
-/area/vtm/interior/clinic)
 "ndO" = (
 /obj/structure/chair/comfy/darkpack/dark{
 	dir = 1
@@ -94571,11 +94581,6 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/bianchiBank)
-"vTG" = (
-/obj/machinery/computer/operating,
-/obj/machinery/defibrillator_mount/directional/north,
-/turf/open/floor/city/circled,
-/area/vtm/interior/salubri)
 "vTP" = (
 /obj/machinery/light/small/red/directional/west,
 /obj/structure/vampipe{
@@ -95404,12 +95409,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm)
-"wdd" = (
-/obj/machinery/computer/operating{
-	dir = 1
-	},
-/turf/open/floor/city/circled,
-/area/vtm/interior/clinic)
 "wdk" = (
 /turf/open/floor/iron/stairs/black/medium{
 	dir = 1
@@ -140146,7 +140145,7 @@ lFf
 rBX
 jyO
 cMh
-hZo
+abT
 imL
 imL
 fBd
@@ -180028,7 +180027,7 @@ yjJ
 pVI
 aiG
 ktB
-vTG
+adZ
 dnN
 dzC
 kRY
@@ -181399,9 +181398,9 @@ mMo
 joX
 gSR
 tlk
-wdd
+adX
 joX
-bxk
+acQ
 tlk
 gSR
 joX
@@ -182215,9 +182214,9 @@ qym
 joX
 gSR
 tlk
-wdd
+adX
 joX
-bxk
+acQ
 tlk
 gSR
 joX
@@ -182409,7 +182408,7 @@ nhF
 pbo
 pbo
 joX
-ndM
+adY
 kaD
 kaD
 lRZ

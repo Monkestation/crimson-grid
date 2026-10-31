@@ -32,6 +32,18 @@
 	. = ..()
 	installed_programs += new /datum/pc_program/medical_base/reader(src)
 
+/obj/machinery/computer/pc/clinic/surgery
+	skill_required_for_use = STAT_MEDICINE
+	skill_dots_minimum = 1
+
+/obj/machinery/computer/pc/clinic/surgery/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/operating(src)
+
+/obj/machinery/computer/pc/surgery/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/operating(src)
+
 /obj/machinery/computer/pc/clinic/head/install_default_programs()
 	. = ..()
 	installed_programs += new /datum/pc_program/medical_base/writer(src)
