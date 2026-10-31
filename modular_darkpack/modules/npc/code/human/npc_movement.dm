@@ -410,7 +410,6 @@
 			start_walk_loop()
 			walk_avoid = null
 
-	// Standing still: make sure we aren't still following an old loop
 	else
 		set_loop_mode(NPC_LOOP_NONE)
 
@@ -427,13 +426,15 @@
 		return
 	walk_loop_target = walktarget
 	walk_loop_delay = delay
-	GLOB.move_manager.jps_move(src, walktarget, delay, \
+	GLOB.move_manager.navmap_astar_move(src, walktarget, delay, \
 		repath_delay = 2 SECONDS, \
 		max_path_length = clamp(get_dist(src, walktarget) * 2, 40, 120), \
 		minimum_distance = max(stopturf, 1), \
 		simulated_only = TRUE, \
 		avoid = walk_avoid, \
-		skip_first = TRUE)
+		skip_first = TRUE, \
+		allow_multiz = FALSE, \
+		allow_nav_links = FALSE)
 
 /// Returns the first visible turf fire in range, or null.
 /mob/living/carbon/human/npc/proc/find_nearby_fire()

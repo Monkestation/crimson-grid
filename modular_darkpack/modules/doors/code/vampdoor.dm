@@ -11,7 +11,7 @@
 	anchored = TRUE
 	density = TRUE
 	opacity = TRUE
-	flags_1 = IGNORE_TURF_PIXEL_OFFSET_1
+	flags_1 = IGNORE_TURF_PIXEL_OFFSET_1 | NAV_ALWAYS_CONDITIONAL_1
 	pass_flags_self = PASSDOORS
 
 	max_integrity = 350
