@@ -70,6 +70,9 @@
 			break
 
 	var/garou_message = howl[shifter.id]
+	// CRIMSON EDIT ADD START - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
+	var/howler_subject = shifter.id == SPLAT_GAROU ? "A wolf" : "A raven" // select message type for howl recognition
+	// CRIMSON EDIT ADD END - 447
 	/*
 	var/tribe = living_mob.auspice.tribe.name
 	if (tribe)
@@ -83,9 +86,39 @@
 	var/howl_details
 	var/final_message
 	for(var/mob/living/howled_at in GLOB.player_list - owner)
-		if(get_shifter_splat(howled_at))
+		// CRIMSON EDIT ADD START - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
+		var/datum/splat/werewolf/shifter/listener_splat = get_shifter_splat(howled_at) // get recipient's splat info. Was: if(get_shifter_splat(howled_at)) 
+		if(listener_splat)
+			var/howler_name = LAZYACCESS(howled_at.mind?.guestbook?.known_names, living_mob.real_name) // directly read names from Guestbook so known howlers don't become unknown when masked
+			var/howler_message = garou_message // define this here so it isn't shared across the loop.
+			var/is_stolen_moon = istype(shifter.auspice, /datum/subsplat/werewolf/auspice/garou/stolen_moon) // Stolen Moon needs special handling, may become redunant as they shouldn't be able to Howl.
+			var/is_galliard = shifter.id == SPLAT_GAROU && istype(listener_splat.auspice, /datum/subsplat/werewolf/auspice/garou/galliard) // makes my head hurt less
+
+			if(is_stolen_moon && is_galliard) // Galliards can see Stolen Moons sound weird, and don't have a listed tribe
+				howler_message = replacetext(howler_message, "A wolf", "A strange, hollow wolf")
+				if(howler_name)
+					howler_message = replacetext(howler_message, "A strange, hollow wolf", "[howler_name], a strange, hollow wolf")
+
+			if(is_galliard && !is_stolen_moon && shifter.tribe && shifter.auspice && shifter.auspice.name != AUSPICE_NONE) // Galliards can see howler tribe and auspice, even for unknown howlers. Stolen Moons will not literally be shown.
+				var/howler_identity = "[shifter.auspice.name] of the [shifter.tribe.name]" // Galliards replace generic 'A wolf/raven' with Auspice / Tribe info and can see this for known howlers
+
+				if(shifter.auspice.name == AUSPICE_AHROUN) // set article based on auspice, display name/auspice/tribe combo depending on if howler is known
+					if(howler_name)
+						howler_name = "[howler_name], an [howler_identity]"
+					else
+						howler_name = "An [howler_identity]"
+				else
+					if(howler_name)
+						howler_name = "[howler_name], a [howler_identity]"
+					else
+						howler_name = "A [howler_identity]"
+
+			if(!howler_name)
+				howler_name = howler_subject // use generic howl text if howler is unknown
+			howler_message = replacetext(howler_message, howler_subject, howler_name) // change text if howler IS known
+			// CRIMSON EDIT ADD END - 447 - Allows howlers to be recognised if they are in Guestbook, and allow Galliards to identify Auspice and Tribe of howlers
 			howl_details = get_message(howled_at, origin_turf)
-			final_message = garou_message + howl_details
+			final_message = howler_message + howl_details // CRIMSON EDIT ADD - was: final_message = garou_message + howl_details
 			to_chat(howled_at, span_boldnotice(final_message))
 
 

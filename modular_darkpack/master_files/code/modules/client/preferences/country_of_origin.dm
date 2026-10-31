@@ -234,3 +234,47 @@
 		return FALSE
 	var/country = preferences.read_preference(/datum/preference/choiced/country_of_origin)
 	return (country == "Canada")
+
+/datum/preference/choiced/nation_of_origin
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "nation_of_origin"
+	priority = /datum/preference/choiced/country_of_origin::priority + 0.1
+	can_randomize = FALSE
+	must_be_accessible = TRUE
+
+/datum/preference/choiced/nation_of_origin/init_possible_values()
+	return list(
+		"England", "Wales", "Scotland", "Northern Ireland"
+	)
+
+/datum/preference/choiced/nation_of_origin/create_informed_default_value(datum/preferences/preferences)
+	if(prob(50))
+		return ..()
+	return pick(cached_values)
+
+/datum/preference/choiced/nation_of_origin/create_default_value()
+	return "England"
+
+/datum/preference/choiced/nation_of_origin/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	target.country_of_origin = "United Kingdom, [value]"
+	var/static/list/nation_language_map
+	if(!nation_language_map)
+		nation_language_map = list(
+			"Wales" = list(/datum/language/welsh),
+			"Scotland" = list(/datum/language/scottish),
+			"Northern Ireland" = list(/datum/language/irish),
+		)
+	var/list/languages = nation_language_map[value]
+	if(!languages)
+		return
+	for(var/language_type in languages)
+		if(!target.has_language(language_type))
+			target.grant_language(language_type, SPOKEN_LANGUAGE|UNDERSTOOD_LANGUAGE, source = "country_of_origin")
+
+/datum/preference/choiced/nation_of_origin/is_accessible(datum/preferences/preferences)
+	. = ..()
+	if(!.)
+		return FALSE
+	var/country = preferences.read_preference(/datum/preference/choiced/country_of_origin)
+	return (country == "United Kingdom")
