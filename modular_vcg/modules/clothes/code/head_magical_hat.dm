@@ -16,14 +16,9 @@
 	cooldown_time = 30 SECONDS
 	spell_requirements = NONE
 
-///datum/action/cooldown/spell/hat_trick/cast(atom/cast_on)
-//	. = ..()
-//	abracadabra(cast_on)
-
-///obj/item/clothing/head/voodoohat/vampire/magicvoodoohat/item_interaction(mob/living/user)
-
-//	abracadabra(user)a
-//return ITEM_INTERACT_SUCCESS
+/datum/action/cooldown/spell/hat_trick/cast(mob/magician/cast_on)
+	. = ..()
+	abracadabra(src)
 
 /obj/item/clothing/head/vampire/voodoohat/magic/proc/abracadabra(mob/magician)
 	if(!COOLDOWN_FINISHED(src, rabbit_cooldown))
