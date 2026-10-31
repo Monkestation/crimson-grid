@@ -12,11 +12,10 @@
 	desc = "Reach into your hat and pull out what awaits you inside!"
 	button_icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	button_icon_state = "voodoo_hat"
+	background_icon_state = "bg_void"
 
 	cooldown_time = 30 SECONDS
 	spell_requirements = NONE
-
-///obj/item/clothing/head/vampire/voodoohat/magic/proc/spell_cooldown(mob/caster)
 
 /datum/action/cooldown/spell/hat_trick/cast(mob/living/carbon/cast_on)
 	. = ..()
@@ -33,3 +32,4 @@
 		var/mob/living/basic/rabbit/bunbun = new(get_turf(cast_on))
 		bunbun.mob_try_pickup(cast_on, instant=TRUE)
 
+#undef RABBIT_CD_TIME
