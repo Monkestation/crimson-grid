@@ -250,6 +250,10 @@
 	return FALSE
 
 // CRIMSON GRID EDIT - NPC GRID
+#define NPC_LOOP_NONE 0
+#define NPC_LOOP_WALK 1
+#define NPC_LOOP_REACT 2 // combat or fleeing
+
 /mob/living/carbon/human/npc/proc/handle_automated_movement()
 	if (!can_npc_move())
 		return
@@ -271,7 +275,7 @@
 
 	// Combat behaviour
 	if (danger_source)
-		stop_walk_loop()
+		set_loop_mode(NPC_LOOP_REACT)
 
 		// Run away from the danger source if they aren't aggressive and have no weapon
 		if (!has_weapon && !aggressive)
@@ -305,18 +309,24 @@
 
 	// Running away from fire behaviour
 	else if (afraid_of_fire)
-		stop_walk_loop()
+		set_loop_mode(NPC_LOOP_REACT)
 		GLOB.move_manager.move_away(src, afraid_of_fire, 10, cached_multiplicative_slowdown)
 		if (prob(25))
 			emote("scream")
 
 	// Walking around behaviour
 	else if (walktarget && !staying)
-		start_walk_loop()
+		if(get_dist(src, walktarget) <= max(stopturf, 1))
+			// Arrived, let the next tick pick a new destination
+			walktarget = null
+			set_loop_mode(NPC_LOOP_NONE)
+		else
+			set_loop_mode(NPC_LOOP_WALK)
+			start_walk_loop()
 
-	// make sure we aren't still following an old walk loop
+	// Standing still: make sure we aren't still following an old loop
 	else
-		stop_walk_loop()
+		set_loop_mode(NPC_LOOP_NONE)
 
 	if (!has_weapon || danger_source || !spawned_weapon)
 		return
@@ -326,25 +336,17 @@
 		has_weapon = FALSE
 
 /mob/living/carbon/human/npc/proc/start_walk_loop()
-	if(walk_loop_target == walktarget && walk_loop_delay == cached_multiplicative_slowdown)
+	var/delay = cached_multiplicative_slowdown + 0.1 SECONDS
+	if(walk_loop_target == walktarget && walk_loop_delay == delay)
 		return
 	walk_loop_target = walktarget
-	walk_loop_delay = cached_multiplicative_slowdown
-	GLOB.move_manager.jps_move(src, walktarget, cached_multiplicative_slowdown, \
+	walk_loop_delay = delay
+	GLOB.move_manager.jps_move(src, walktarget, delay, \
 		repath_delay = 2 SECONDS, \
-		max_path_length = 40, \
-		minimum_distance = 0, \
+		max_path_length = clamp(get_dist(src, walktarget) * 2, 40, 120), \
+		minimum_distance = max(stopturf, 1), \
 		simulated_only = TRUE, \
 		skip_first = TRUE)
-
-/// Stops our walk loop if we have one. Call this before handing movement to combat/fire loops,
-/// and wherever walktarget is cleared or staying is set.
-/mob/living/carbon/human/npc/proc/stop_walk_loop()
-	if(!walk_loop_target)
-		return
-	walk_loop_target = null
-	walk_loop_delay = null
-	GLOB.move_manager.stop_looping(src)
 
 /// Returns the first visible turf fire in range, or null.
 /mob/living/carbon/human/npc/proc/find_nearby_fire()
@@ -357,5 +359,21 @@
 			continue
 		return fire
 	return null
+
+/mob/living/carbon/human/npc
+	var/loop_mode = NPC_LOOP_NONE
+
+/mob/living/carbon/human/npc/proc/set_loop_mode(new_mode)
+	if(loop_mode == new_mode)
+		return
+	if(loop_mode != NPC_LOOP_NONE)
+		GLOB.move_manager.stop_looping(src)
+	loop_mode = new_mode
+	walk_loop_target = null
+	walk_loop_delay = null
+
+#undef NPC_LOOP_NONE
+#undef NPC_LOOP_WALK
+#undef NPC_LOOP_REACT
 
 // CRIMSON GRID EDIT END - NPC GRID
