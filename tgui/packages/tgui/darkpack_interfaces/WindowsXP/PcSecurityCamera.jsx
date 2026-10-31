@@ -12,12 +12,27 @@ import { useProgram } from './useProgram';
 const rectsOverlap = (a, b) =>
   a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
 
+const toText = (a, b) => {
+  if (typeof b === 'string') {
+    return b;
+  }
+  if (typeof a === 'string') {
+    return a;
+  }
+  if (typeof a?.target?.value === 'string') {
+    return a.target.value;
+  }
+  return '';
+};
+
 export const PcSecurityCamera = (props, context) => {
   const { desktopRef, coverRects = [] } = props;
   const { act, data } = useProgram(props.programId, context);
-  const cameras = Array.isArray(data.cameras) ? data.cameras : [];
-  const mapRef = data.mapRef;
-  const activeCamera = data.activeCamera;
+  const cameras = (Array.isArray(data?.cameras) ? data.cameras : []).filter(
+    (cam) => cam?.ref,
+  );
+  const mapRef = data?.mapRef;
+  const activeCamera = data?.activeCamera;
 
   const [searchText, setSearchText] = useState('');
   const [activeCamRef, setActiveCamRef] = useState(null);
@@ -30,7 +45,7 @@ export const PcSecurityCamera = (props, context) => {
     if (activeCamera?.ref && !activeCamRef) {
       setActiveCamRef(activeCamera.ref);
     }
-  }, [activeCamera]);
+  }, [activeCamera, activeCamRef]);
 
   useLayoutEffect(() => {
     const el = feedRef.current;
@@ -79,9 +94,20 @@ export const PcSecurityCamera = (props, context) => {
     window.Byond?.winset?.(mapRef, { pos, size });
   });
 
-  const filteredCameras = cameras.filter((cam) =>
-    cam.name.toLowerCase().includes(searchText.toLowerCase()),
-  );
+  const query = String(searchText ?? '').toLowerCase();
+
+  const filteredCameras = cameras
+    .filter((cam) =>
+      String(cam?.name ?? '')
+        .toLowerCase()
+        .includes(query),
+    )
+    .sort((a, b) =>
+      String(a?.name ?? '').localeCompare(String(b?.name ?? ''), undefined, {
+        numeric: true,
+        sensitivity: 'base',
+      }),
+    );
 
   const selectedCamera =
     cameras.find((cam) => cam.ref === activeCamRef) ||
@@ -97,8 +123,7 @@ export const PcSecurityCamera = (props, context) => {
               fluid
               placeholder="Search cameras..."
               value={searchText}
-              onInput={(e, v) => setSearchText(v ?? e?.target?.value ?? '')}
-              onChange={(e, v) => setSearchText(v ?? e?.target?.value ?? '')}
+              onInput={(a, b) => setSearchText(toText(a, b))}
             />
           </Stack.Item>
           <Stack.Item grow>
@@ -120,7 +145,7 @@ export const PcSecurityCamera = (props, context) => {
             <Stack.Item>
               {selectedCamera?.status ? (
                 <NoticeBox info>
-                  {selectedCamera.name} [Signal Active]
+                  {selectedCamera.name || 'Unnamed camera'} [Signal Active]
                 </NoticeBox>
               ) : (
                 <NoticeBox danger>No input signal</NoticeBox>
@@ -192,7 +217,7 @@ const filteredCamerasList = (cameras, activeRef, setActiveRef, act) => {
         act('switch_camera', { camera: cam.ref });
       }}
     >
-      <Box fontWeight="bold">{cam.name}</Box>
+      <Box fontWeight="bold">{cam.name || 'Unnamed camera'}</Box>
     </Box>
   ));
 };
