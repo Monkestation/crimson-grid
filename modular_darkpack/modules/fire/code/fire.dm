@@ -21,6 +21,8 @@
 #define TURF_FIRE_STATE_MEDIUM 2
 #define TURF_FIRE_STATE_LARGE 3
 
+GLOBAL_LIST_EMPTY(turf_fires)
+
 /obj/effect/abstract/turf_fire
 	icon = 'modular_darkpack/modules/fire/icons/turf_fire.dmi'
 	base_icon_state = "red"
@@ -73,7 +75,7 @@
 	var/turf/open/open_turf = loc
 	if(open_turf.turf_fire)
 		return INITIALIZE_HINT_QDEL
-
+	GLOB.turf_fires += src //CRIMSON GRID EDIT - NPC GRID
 	/*
 	var/datum/gas_mixture/environment = open_turf.air
 	var/oxy = environment.get_moles(GAS_O2)
@@ -122,6 +124,7 @@
 	var/turf/open/open_turf = loc
 	open_turf.turf_fire = null
 	STOP_PROCESSING(SSturf_fire, src)
+	GLOB.turf_fires -= src //CRIMSON GRID EDIT - NPC GRID
 	return ..()
 
 /obj/effect/abstract/turf_fire/proc/process_waste()
