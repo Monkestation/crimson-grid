@@ -307,9 +307,9 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 				var/turf_link = TURF_LINK(M, turf_target)
 				rendered_message = "[turf_link] [message]"
 
-			to_chat(M, rendered_message, avoid_highlighting = speaker_key == M.key)
+			to_chat(M, rendered_message, avoid_highlighting = speaker_key == M.key, confidential = admin_only) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 		else
-			to_chat(M, message, avoid_highlighting = speaker_key == M.key)
+			to_chat(M, message, avoid_highlighting = speaker_key == M.key, confidential = admin_only) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 
 		// Ghost runechat
 		if(original_message && ((override & SEE_DEADCHAT_NORMAL) || M.see_invisible >= follow_target.invisibility) && (!SSlag_switch.measures[DISABLE_DEAD_RUNECHAT] || HAS_TRAIT(M, TRAIT_BYPASS_MEASURES)) && M.runechat_prefs_check(M))

@@ -650,6 +650,11 @@ UPLOAD_LIMIT_ADMIN 5242880
 ## Uncomment to allow admins with +DEBUG to queue the next round to run the byond-tracy profiler.
 #ALLOW_TRACY_QUEUE
 
+## Hides every ckey in replay recordings behind an alias (anon1, anon2, ...). The replay viewer shows
+## the ckeys again once someone types this key into it. Make it long and random: anyone holding a
+## recording can guess a short one offline. Leave it commented out to write ckeys as they are.
+#REPLAY_CKEY_KEY
+
 ## Tgui payloads larger than the 2kb limit for BYOND topic requests are split into roughly 1kb chunks and sent in sequence.
 ## This config option limits the maximum chunk count for which the server will accept a payload, default is 32
 TGUI_MAX_CHUNK_COUNT 32

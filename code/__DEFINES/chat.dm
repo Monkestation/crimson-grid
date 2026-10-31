@@ -44,7 +44,8 @@
 /// Used for debug messages to the admins
 #define debug_admins(msg) if (GLOB.debugging_enabled) to_chat(GLOB.admins, \
 	type = MESSAGE_TYPE_DEBUG, \
-	text = "DEBUG: [msg]")
+	text = "DEBUG: [msg]", \
+	confidential = TRUE) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 /// Used for debug messages to the server
 #define debug_world_log(msg) if (GLOB.debugging_enabled) log_world("DEBUG: [msg]")
 /// Adds a generic box around whatever message you're sending in chat. Really makes things stand out.

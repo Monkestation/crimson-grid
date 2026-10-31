@@ -433,7 +433,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/concatenated_message = msg.Join()
 	log_admin(concatenated_message)
-	to_chat(GLOB.admins, concatenated_message)
+	to_chat(GLOB.admins, concatenated_message, confidential = TRUE) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 
 /datum/controller/subsystem/ticker/proc/reopen_roundstart_suicide_roles()
 	var/include_command = CONFIG_GET(flag/reopen_roundstart_suicide_roles_command_positions)

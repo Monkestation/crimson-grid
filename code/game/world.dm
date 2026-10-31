@@ -142,6 +142,8 @@ GLOBAL_VAR(restart_counter)
 
 	ConfigLoaded()
 
+	SEND_TEXT(world.log, "replay recorder: [replay_recorder_begin()]") // CRIMSON EDIT ADDITION - REPLAYS
+
 	if(NO_INIT_PARAMETER in params)
 		return
 
@@ -372,6 +374,9 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 	FinishTestRun()
 	return
 	#else
+	// CRIMSON EDIT ADDITION START - REPLAYS - before a hard reboot kills the process, or the replay never gets its end
+	replay_recorder_end()
+	// CRIMSON EDIT ADDITION END
 	if(check_hard_reboot())
 		log_world("World hard rebooted at [server_timestamp()]")
 		SSplexora.notify_shutdown(PLEXORA_SHUTDOWN_KILLDD) // CRIMSON ADDITION
@@ -394,6 +399,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 	#endif
 
 /world/Del()
+	replay_recorder_end() // CRIMSON EDIT ADDITION - REPLAYS
 	QDEL_NULL(Tracy)
 	QDEL_NULL(Debugger)
 	. = ..()

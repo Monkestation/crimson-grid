@@ -154,9 +154,9 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 				var/keyfield = conditional_tooltip_alt(keyfield_pre, pronouns, length(pronouns))
 				if(check_rights_for(src, R_ADMIN))
 					var/ooc_color = prefs.read_preference(/datum/preference/color/ooc_color)
-					to_chat(receiver, span_adminooc("[CONFIG_GET(flag/allow_admin_ooccolor) && ooc_color ? "<font color=[ooc_color]>" :"" ][span_prefix("OOC:")] <EM>[keyfield]:</EM> <span class='message linkify'>[msg]</span>"), avoid_highlighting = avoid_highlight)
+					to_chat(receiver, span_adminooc("[CONFIG_GET(flag/allow_admin_ooccolor) && ooc_color ? "<font color=[ooc_color]>" :"" ][span_prefix("OOC:")] <EM>[keyfield]:</EM> <span class='message linkify'>[msg]</span>"), avoid_highlighting = avoid_highlight, confidential = !isnull(holder.fakekey)) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 				else
-					to_chat(receiver, span_adminobserverooc(span_prefix("OOC:</span> <EM>[keyfield]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
+					to_chat(receiver, span_adminobserverooc(span_prefix("OOC:</span> <EM>[keyfield]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight, confidential = !isnull(holder.fakekey)) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 			else
 				var/keyfield_pre = holder.fakekey ? holder.fakekey : key
 				var/keyfield = conditional_tooltip_alt(keyfield_pre, pronouns, length(pronouns))
@@ -171,6 +171,15 @@ GAME_VERB(/client, ooc, VERB_OOC, null)
 				to_chat(receiver, span_oocplain("<font color='[GLOB.OOC_COLOR]'><b>[span_prefix("OOC:")] <EM>[keyfield]:</EM> <span class='message linkify'>[msg]</span></b></font>"), avoid_highlighting = avoid_highlight)
 			else
 				to_chat(receiver, span_ooc(span_prefix("OOC:</span> <EM>[keyfield]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
+	// CRIMSON EDIT ADDITION END
+
+	// CRIMSON EDIT ADDITION START - REPLAYS - under the name players see, so a stealthed admin stays stealthed
+	if(GLOB.replay_recorder_running)
+		var/replay_keyfield = conditional_tooltip_alt(holder?.fakekey ? holder.fakekey : keyname, pronouns, length(pronouns))
+		if(GLOB.OOC_COLOR)
+			replay_record_global_chat(span_oocplain("<font color='[GLOB.OOC_COLOR]'><b>[span_prefix("OOC:")] <EM>[replay_keyfield]:</EM> <span class='message linkify'>[msg]</span></b></font>"), MESSAGE_TYPE_OOC)
+		else
+			replay_record_global_chat(span_ooc(span_prefix("OOC:</span> <EM>[replay_keyfield]:</EM> <span class='message linkify'>[msg]")), MESSAGE_TYPE_OOC)
 	// CRIMSON EDIT ADDITION END
 
 
