@@ -37,7 +37,7 @@
 	if(avoid_highlighting) message["avoidHighlighting"] = avoid_highlighting
 
 	// send it immediately
-	SSchat.send_immediate(target, message)
+	SSchat.send_immediate(target, message, confidential) // CRIMSON EDIT CHANGE - REPLAYS - ORIGINAL: SSchat.send_immediate(target, message)
 
 /**
  * Sends the message to the recipient (target).
@@ -61,7 +61,7 @@
 	confidential = FALSE
 )
 	if(isnull(Master) || !SSchat?.initialized || !MC_RUNNING(SSchat.init_stage))
-		to_chat_immediate(target, html, type, text, avoid_highlighting)
+		to_chat_immediate(target, html, type, text, avoid_highlighting, confidential = confidential) // CRIMSON EDIT CHANGE - REPLAYS - ORIGINAL: to_chat_immediate(target, html, type, text, avoid_highlighting)
 		return
 
 	// Useful where the integer 0 is the entire message. Use case is enabling to_chat(target, some_boolean) while preventing to_chat(target, "")
@@ -81,4 +81,4 @@
 	if(text) message["text"] = text
 	if(html) message["html"] = html
 	if(avoid_highlighting) message["avoidHighlighting"] = avoid_highlighting
-	SSchat.queue(target, message)
+	SSchat.queue(target, message, confidential) // CRIMSON EDIT CHANGE - REPLAYS - ORIGINAL: SSchat.queue(target, message)

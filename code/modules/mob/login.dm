@@ -31,6 +31,7 @@
 		return FALSE
 
 	canon_client = client
+	replay_record_client("mob", client.ckey, src) // CRIMSON EDIT ADDITION - REPLAYS
 	client.persistent_client.set_mob(src)
 
 	add_to_player_list()
