@@ -216,10 +216,14 @@
  * Renders an image of the target and all its surrounding tiles
  * Arguments passed from attempt_picture()
 */
-/obj/item/camera/proc/capture_image(atom/target, mob/user)
+/obj/item/camera/proc/capture_image(atom/target, mob/living/user)
 	PRIVATE_PROC(TRUE)
 	//Checking if we can target
 	var/turf/target_turf = get_turf(target)
+	//CRIMSON GRID EDIT START - PC
+	var/atom/actualized_mob = user
+	if(user.looking_holder)
+		actualized_mob = user.looking_holder
 	var/view_size = user?.client?.view || world.view
 	if(isnull(target_turf))
 		blending = FALSE
@@ -228,9 +232,10 @@
 		if(!SScameras.is_visible_by_cameras(target_turf))
 			blending = FALSE
 			return
-	else if(!(target_turf in view(view_size, user)))
+	else if((!(target_turf in view(view_size, actualized_mob))) && ismob(actualized_mob))
 		blending = FALSE
 		return
+	//CRIMSON GRID EDIT END - PC
 
 	//These vars will be reused later on
 	var/size_x = picture_size_x - 1

@@ -1,0 +1,76 @@
+///so idk if a var is better here tbh.
+
+/obj/machinery/computer/pc/proc/install_default_programs()
+	installed_programs += new /datum/pc_program/bank(src)
+	installed_programs += new /datum/pc_program/email(src)
+	installed_programs += new /datum/pc_program/records(src)
+	installed_programs += new /datum/pc_program/supply(src)
+	installed_programs += new /datum/pc_program/notepad(src)
+	installed_programs += new /datum/pc_program/imageboard(src)
+	installed_programs += new /datum/pc_program/paint(src)
+	installed_programs += new /datum/pc_program/geocities(src)
+	installed_programs += new /datum/pc_program/bountyboard(src)
+	installed_programs += new /datum/pc_program/library(src)
+	installed_programs += new /datum/pc_program/book_reader(src)
+	installed_programs += new /datum/pc_program/nightcrawler(src)
+	installed_programs += new /datum/pc_program/saved_game/minesweeper(src)
+	installed_programs += new /datum/pc_program/saved_game/solitaire(src)
+	installed_programs += new /datum/pc_program/media_player(src)
+	installed_programs += new /datum/pc_program/cd_burner(src)
+
+/obj/machinery/computer/pc/debug/install_default_programs()
+	for(var/datum/pc_program/program as anything in subtypesof(/datum/pc_program))
+		if(initial(program.abstract_type) == program)
+			continue
+		installed_programs += new program(src)
+
+/obj/machinery/computer/pc/broadcaster/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/nightcrawler_editor(src)
+
+/obj/machinery/computer/pc/clinic/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/medical_base/reader(src)
+
+/obj/machinery/computer/pc/clinic/surgery
+	skill_required_for_use = STAT_MEDICINE
+	skill_dots_minimum = 1
+
+/obj/machinery/computer/pc/clinic/surgery/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/operating(src)
+
+/obj/machinery/computer/pc/surgery/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/operating(src)
+
+/obj/machinery/computer/pc/clinic/head/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/medical_base/writer(src)
+
+/obj/machinery/computer/pc/network/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/browser(src)
+	installed_programs += new /datum/pc_program/automation(src)
+	installed_programs += new /datum/pc_program/permissions(src)
+	installed_programs += new /datum/pc_program/network_log(src)
+
+/obj/machinery/computer/pc/security/install_default_programs()
+	installed_programs += new /datum/pc_program/bank(src)
+	installed_programs += new /datum/pc_program/email(src)
+	installed_programs += new /datum/pc_program/records(src)
+	installed_programs += new /datum/pc_program/notepad(src)
+	installed_programs += new /datum/pc_program/imageboard(src)
+	installed_programs += new /datum/pc_program/paint(src)
+	installed_programs += new /datum/pc_program/geocities(src)
+	installed_programs += new /datum/pc_program/library(src)
+	installed_programs += new /datum/pc_program/book_reader(src)
+	installed_programs += new /datum/pc_program/nightcrawler(src)
+	installed_programs += new /datum/pc_program/saved_game/minesweeper(src)
+	installed_programs += new /datum/pc_program/saved_game/solitaire(src)
+	installed_programs += new /datum/pc_program/security_camera(src)
+
+/obj/machinery/computer/pc/library/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/checkout(src)
+	installed_programs += new /datum/pc_program/portrait_printer(src)
