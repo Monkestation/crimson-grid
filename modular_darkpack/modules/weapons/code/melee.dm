@@ -389,9 +389,9 @@
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
 	custom_price = 20
 	cooldown = (0.7 SECONDS)
-	stamina_damage = 2 LETHAL_TTRPG_DAMAGE
+	stamina_damage = 2.5 LETHAL_TTRPG_DAMAGE
 	knockdown_time = (0.3 SECONDS)
- stun_armour_penetration = 50 
+	stun_armour_penetration = 50 
 
 /obj/item/switchblade/vamp
 	name = "switchblade"
