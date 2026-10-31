@@ -1,8 +1,3 @@
-// How many recently visited activity points an NPC remembers (prevents ping-ponging between two points)
-#define NPC_RECENT_TARGETS 4
-// How far an NPC on asphalt will look for somewhere off the road to loiter
-#define NPC_SIDEWALK_SEARCH_RANGE 8
-
 /obj/effect/landmark/npc_spawn_point
 	icon = 'modular_darkpack/modules/deprecated/icons/effects/landmarks_static.dmi'
 	icon_state = "spawn"
@@ -113,14 +108,10 @@
 
 	if (staying)
 		return
-	// Don't pick a new destination while loitering
-	if (!walktarget && world.time >= loiter_until)
+	if (!walktarget)
 		walktarget = ChoosePath()
 	if(walktarget)
 		EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Set walktarget: [walktarget]", list(loc, get_turf(walktarget)))
-	// Loitering NPCs just stand around, skip the stuck detection below so they don't jitter
-	if (!walktarget && world.time < loiter_until)
-		return
 	if (loc == tupik_loc)
 		tupik_steps += 1
 	else
@@ -139,16 +130,6 @@
 		return
 	var/turf/old_loc = loc
 	var/turf/new_loc = get_turf(walktarget)
-	// Land on a free turf near the target instead of stacking everyone on the exact landmark turf
-	var/list/free_turfs = list()
-	for(var/turf/open/free_turf in range(2, new_loc))
-		if(free_turf.density)
-			continue
-		if(locate(/mob/living) in free_turf)
-			continue
-		free_turfs += free_turf
-	if(length(free_turfs))
-		new_loc = pick(free_turfs)
 	forceMove(new_loc)
 	EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Teleported using evil russian shitcode", list(old_loc, new_loc))
 
@@ -170,18 +151,10 @@
 				stopturf = 1
 				return get_step(location, direction)
 
-/// Remembers a destination we've just visited so ChoosePath doesn't send us straight back to it.
-/mob/living/carbon/human/npc/proc/remember_target(atom/target)
-	recent_targets += target
-	if(length(recent_targets) > NPC_RECENT_TARGETS)
-		recent_targets.Cut(1, 2)
-
 /mob/living/carbon/human/npc/proc/ChoosePath()
 	if(!old_movement)
 		var/list/possible_list = list()
 		for(var/obj/effect/landmark/npcactivity/N in GLOB.npc_activities)
-			if(N in recent_targets)
-				continue
 			if(get_dist(src, N) < 64)
 				var/turf/T = get_step(N, turn(get_dir(src, N), 180))
 				var/obj/effect/landmark/npcability/A = locate() in T
@@ -191,20 +164,18 @@
 					if(N.y > y-3 && N.y < y+3)
 						possible_list += N
 		if(!length(possible_list))
-			//any activity point that isn't right on top of us, isn't one we just visited, and isn't crowded
-			var/list/candidates = list()
+			var/atom/shitshit
 			for(var/obj/effect/landmark/npcactivity/N in GLOB.npc_activities)
-				if(N in recent_targets)
-					continue
-				var/dist = get_dist(src, N)
-				if(dist <= 1 || dist > 40)
-					continue
-				candidates += N
-			if(length(candidates))
-				return pick(candidates)
-			if(length(GLOB.npc_activities))
+				if(!shitshit)
+					shitshit = N
+				if(get_dist(src, N) > 1 && get_dist(src, N) < get_dist(src, shitshit))
+					shitshit = N
+			if(shitshit)
+				return shitshit
+			else if (length(GLOB.npc_activities))
 				return pick(GLOB.npc_activities)
-			return
+			else
+				return
 
 		return pick(possible_list)
 	else
@@ -242,38 +213,6 @@
 					return pick(north_steps, south_steps, east_steps)
 				else
 					return pick(north_steps, south_steps, west_steps)
-
-/// Finds the closest free open turf that isn't asphalt, or null if there isn't one in range.
-/mob/living/carbon/human/npc/proc/find_sidewalk_spot()
-	var/best = INFINITY
-	var/list/spots = list()
-	for(var/turf/open/T in range(NPC_SIDEWALK_SEARCH_RANGE, src))
-		if(T.density || istype(T, /turf/open/floor/plating/asphalt))
-			continue
-		if(locate(/mob/living) in T)
-			continue
-		var/dist = get_dist(src, T)
-		if(dist > best)
-			continue
-		if(dist < best)
-			best = dist
-			spots.Cut()
-		spots += T
-	if(length(spots))
-		return pick(spots)
-	return null
-
-/// Called when we arrive at a destination. If we're standing on asphalt, walk off it first, then idle for a while.
-/mob/living/carbon/human/npc/proc/start_loitering()
-	if(istype(get_turf(src), /turf/open/floor/plating/asphalt))
-		var/turf/spot = find_sidewalk_spot()
-		if(spot)
-			// loiter_until gets set once we actually reach the spot
-			loiter_spot = spot
-			walktarget = spot
-			stopturf = 0
-			return
-	loiter_until = world.time + rand(10 SECONDS, 30 SECONDS)
 
 /mob/living/carbon/human/npc/proc/can_npc_move()
 	if(stat >= HARD_CRIT)
@@ -321,7 +260,7 @@
 
 	if(!staying)
 		lifespan += 1
-	if(!walktarget && !staying && world.time >= loiter_until)
+	if(!walktarget && !staying)
 		stopturf = rand(1, 2)
 		walktarget = ChoosePath()
 		face_atom(walktarget)
@@ -337,9 +276,6 @@
 	// Combat behaviour
 	if (danger_source)
 		set_loop_mode(NPC_LOOP_REACT)
-		// Stop loitering so we resume walking once the fight is over
-		loiter_until = 0
-		loiter_spot = null
 
 		// Run away from the danger source if they aren't aggressive and have no weapon
 		if (!has_weapon && !aggressive)
@@ -381,34 +317,12 @@
 	// Walking around behaviour
 	else if (walktarget && !staying)
 		if(get_dist(src, walktarget) <= max(stopturf, 1))
-			// Arrived, let the next tick pick a new destination (after loitering)
-			var/reached_loiter_spot = (walktarget == loiter_spot)
-			if(!reached_loiter_spot)
-				remember_target(walktarget)
+			// Arrived, let the next tick pick a new destination
 			walktarget = null
-			walk_stuck_ticks = 0
 			set_loop_mode(NPC_LOOP_NONE)
-			if(reached_loiter_spot)
-				loiter_spot = null
-				loiter_until = world.time + rand(10 SECONDS, 30 SECONDS)
-			else
-				start_loitering()
 		else
 			set_loop_mode(NPC_LOOP_WALK)
-			// If we haven't moved for a few ticks, we're probably stuck behind someone: repath around them
-			if(loc == last_walk_pos)
-				walk_stuck_ticks++
-			else
-				walk_stuck_ticks = 0
-				last_walk_pos = loc
-			if(walk_stuck_ticks >= 3) // tune to your tick rate
-				var/turf/ahead = get_step(src, dir)
-				if(ahead && (locate(/mob/living) in ahead))
-					walk_avoid = ahead
-				walk_stuck_ticks = 0
-				walk_loop_target = null // forces start_walk_loop to rebuild the path
 			start_walk_loop()
-			walk_avoid = null
 
 	// Standing still: make sure we aren't still following an old loop
 	else
@@ -432,7 +346,6 @@
 		max_path_length = clamp(get_dist(src, walktarget) * 2, 40, 120), \
 		minimum_distance = max(stopturf, 1), \
 		simulated_only = TRUE, \
-		avoid = walk_avoid, \
 		skip_first = TRUE)
 
 /// Returns the first visible turf fire in range, or null.
@@ -453,18 +366,6 @@
 	var/walk_loop_target
 	/// The delay our current jps walk loop was built with, so we can rebuild it if slowdown changes.
 	var/walk_loop_delay
-	/// Where we were last time the walk branch ran, used to detect being stuck.
-	var/turf/last_walk_pos
-	/// How many walk ticks in a row we haven't moved.
-	var/walk_stuck_ticks = 0
-	/// A turf the next jps path should route around (the mob blocking us), cleared right after use.
-	var/turf/walk_avoid
-	/// Recently visited activity points, excluded from ChoosePath so we don't ping-pong.
-	var/list/recent_targets = list()
-	/// world.time until which we stand around instead of picking a new destination.
-	var/loiter_until = 0
-	/// The off-road turf we're walking to so we can loiter there. Null if we aren't heading to one.
-	var/turf/loiter_spot
 
 /mob/living/carbon/human/npc/proc/set_loop_mode(new_mode)
 	if(loop_mode == new_mode)
@@ -480,6 +381,3 @@
 #undef NPC_LOOP_REACT
 
 // CRIMSON GRID EDIT END - NPC GRID
-
-#undef NPC_RECENT_TARGETS
-#undef NPC_SIDEWALK_SEARCH_RANGE
