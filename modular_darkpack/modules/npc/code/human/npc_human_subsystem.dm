@@ -68,7 +68,10 @@ SUBSYSTEM_DEF(humannpcpool)
 /mob/living/carbon/human/npc/Initialize(mapload)
 	. = ..()
 	npc_cells = new(NPC_INTERESTING_DIST, NPC_INTERESTING_DIST, 1)
-	RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(npc_update_grid))
+	npc_set_new_cells()
+
+/mob/living/carbon/human/npc/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
+	. = ..() //we already self sig
 	npc_set_new_cells()
 
 /mob/living/carbon/human/npc/Destroy()
@@ -79,10 +82,6 @@ SUBSYSTEM_DEF(humannpcpool)
 	SShumannpcpool.active_npcs -= src
 	npc_processing = FALSE
 	return ..()
-
-/mob/living/carbon/human/npc/proc/npc_update_grid(datum/source)
-	SIGNAL_HANDLER
-	npc_set_new_cells()
 
 /mob/living/carbon/human/npc/proc/npc_set_new_cells()
 	if(isnull(npc_cells))
