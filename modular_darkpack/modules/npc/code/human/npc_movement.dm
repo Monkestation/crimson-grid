@@ -362,6 +362,10 @@
 
 /mob/living/carbon/human/npc
 	var/loop_mode = NPC_LOOP_NONE
+	/// The walktarget our current jps walk loop was built for. Null means no walk loop of ours is running.
+	var/walk_loop_target
+	/// The delay our current jps walk loop was built with, so we can rebuild it if slowdown changes.
+	var/walk_loop_delay
 
 /mob/living/carbon/human/npc/proc/set_loop_mode(new_mode)
 	if(loop_mode == new_mode)
