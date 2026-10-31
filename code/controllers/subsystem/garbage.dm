@@ -424,7 +424,7 @@ SUBSYSTEM_DEF(garbage)
 			SSgarbage.HardDelete(to_delete, TRUE) // CRIMSON GRID EDIT
 		#ifdef REFERENCE_TRACKING
 		if (QDEL_HINT_FINDREFERENCE) //qdel will, if REFERENCE_TRACKING is enabled, display all references to this object, then queue the object for deletion.
-			SSgarbage.Queue(to_delete)
+			SSgarbage.Queue(to_delete, TRUE) // CRIMSON GRID EDIT
 			INVOKE_ASYNC(to_delete, TYPE_PROC_REF(/datum, find_references))
 		if (QDEL_HINT_IFFAIL_FINDREFERENCE) //qdel will, if REFERENCE_TRACKING is enabled and the object fails to collect, display all references to this object.
 			SSgarbage.Queue(to_delete)
