@@ -39,6 +39,9 @@ GLOBAL_DATUM_INIT(cd_burn_permissions, /datum/cd_burn_permissions, new)
 		return "none"
 	if(user.client?.holder)
 		return "approved"
+	if(get_patreon_rank(user.ckey) > ACCESS_THANKS_RANK)
+		return "approved"
+
 	var/key = user.ckey
 	if(!key)
 		return "none"
