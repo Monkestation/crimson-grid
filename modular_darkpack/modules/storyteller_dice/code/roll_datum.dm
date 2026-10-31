@@ -83,7 +83,9 @@
 
 	var/list/rolled_dice = roll_dice(dice_amount, auto_success_amount)
 
-	var/success_amount = count_success(rolled_dice, difficulty_amount)
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	var/success_amount = count_success(rolled_dice, difficulty_amount, roller)
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 	var/output = roll_result(success_amount)
 	var/using_output_type = roll_output_type
 	if(!isnull(roll_output_type_on_fail))
@@ -258,7 +260,9 @@
 	return rolled_dice
 
 //Count the number of successes.
-/datum/storyteller_roll/proc/count_success(list/rolled_dice, difficulty)
+// CRIMSON GRID ADD: DARK THAUMATURGY 2
+/datum/storyteller_roll/proc/count_success(list/rolled_dice, difficulty, mob/living/roller)
+// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 	var/success_amount = 0
 	for(var/roll in rolled_dice)
 		switch(dice_face_success_type(roll, difficulty))
@@ -268,6 +272,10 @@
 				success_amount++
 			if(-1)
 				success_amount--
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	if(roller.has_status_effect(/datum/status_effect/close_the_ways))
+		success_amount--
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 	return success_amount
 
 //Count the number of successes.

@@ -311,6 +311,12 @@
 	light_color = COLOR_ORANGE
 	ricochets_max = 0
 	ricochet_chance = 0
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	var/ignite_chance = 10
+	var/fire_turf_chance = 10
+	var/ignite_color
+	var/fire_turf_type = /obj/effect/abstract/turf_fire
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 
 /obj/projectile/flames/on_hit(atom/target, blocked = FALSE, pierce_hit)
 	. = ..()
@@ -318,11 +324,11 @@
 		return
 	var/mob/living/L = target
 	// Chance to ignite target
-	if(prob(10))
-		L.adjust_fire_stacks(2)
+	if(prob(ignite_chance)) // CRIMSON GRID ADD: DARK THAUMATURGY 2
+		L.adjust_fire_stacks(2, overwrite_color = ignite_color) // CRIMSON GRID ADD END: DARK THAUMATURGY 2
 		L.ignite_mob()
-	if(prob(10))
+	if(prob(fire_turf_chance)) // CRIMSON GRID ADD: DARK THAUMATURGY 2
 		var/target_turf = get_turf(L)
-		new /obj/effect/abstract/turf_fire(target_turf)
+		new fire_turf_type(target_turf, 20, ignite_color) // CRIMSON GRID ADD: DARK THAUMATURGY 2
 	L.visible_message(span_danger("[target] is struck by supernatural flames!"), span_userdanger("You are burned by supernatural fire!"))
 	playsound(get_turf(target), 'modular_darkpack/modules/paths/sounds/fireball.ogg', 50, TRUE)
