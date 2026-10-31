@@ -249,6 +249,7 @@
 
 	return FALSE
 
+// CRIMSON GRID EDIT - NPC GRID
 /mob/living/carbon/human/npc/proc/handle_automated_movement()
 	if (!can_npc_move())
 		return
@@ -264,11 +265,14 @@
 	if (!isturf(loc))
 		return
 
-	// Checks for fire, clearing the stored fire if none is in view
-	afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
+	// Checks for fire, clearing the stored fire if none is in view.
+	// Skipped in combat, since the combat branch never reads it.
+	afraid_of_fire = danger_source ? null : find_nearby_fire()
 
 	// Combat behaviour
 	if (danger_source)
+		stop_walk_loop()
+
 		// Run away from the danger source if they aren't aggressive and have no weapon
 		if (!has_weapon && !aggressive)
 			GLOB.move_manager.move_away(src, danger_source, 10, cached_multiplicative_slowdown)
@@ -301,13 +305,18 @@
 
 	// Running away from fire behaviour
 	else if (afraid_of_fire)
+		stop_walk_loop()
 		GLOB.move_manager.move_away(src, afraid_of_fire, 10, cached_multiplicative_slowdown)
 		if (prob(25))
 			emote("scream")
 
 	// Walking around behaviour
 	else if (walktarget && !staying)
-		GLOB.move_manager.move_to(src, walktarget, 0, cached_multiplicative_slowdown)
+		start_walk_loop()
+
+	// make sure we aren't still following an old walk loop
+	else
+		stop_walk_loop()
 
 	if (!has_weapon || danger_source || !spawned_weapon)
 		return
@@ -315,3 +324,38 @@
 		npc_stow_weapon()
 	else
 		has_weapon = FALSE
+
+/mob/living/carbon/human/npc/proc/start_walk_loop()
+	if(walk_loop_target == walktarget && walk_loop_delay == cached_multiplicative_slowdown)
+		return
+	walk_loop_target = walktarget
+	walk_loop_delay = cached_multiplicative_slowdown
+	GLOB.move_manager.jps_move(src, walktarget, cached_multiplicative_slowdown, \
+		repath_delay = 2 SECONDS, \
+		max_path_length = 40, \
+		minimum_distance = 0, \
+		simulated_only = TRUE, \
+		skip_first = TRUE)
+
+/// Stops our walk loop if we have one. Call this before handing movement to combat/fire loops,
+/// and wherever walktarget is cleared or staying is set.
+/mob/living/carbon/human/npc/proc/stop_walk_loop()
+	if(!walk_loop_target)
+		return
+	walk_loop_target = null
+	walk_loop_delay = null
+	GLOB.move_manager.stop_looping(src)
+
+/// Returns the first visible turf fire in range, or null.
+/mob/living/carbon/human/npc/proc/find_nearby_fire()
+	if(!length(GLOB.turf_fires))
+		return null
+	for(var/obj/effect/abstract/turf_fire/fire as anything in GLOB.turf_fires)
+		if(fire.z != z || get_dist(src, fire) > DEFAULT_SIGHT_DISTANCE)
+			continue
+		if(!can_see(src, fire, DEFAULT_SIGHT_DISTANCE))
+			continue
+		return fire
+	return null
+
+// CRIMSON GRID EDIT END - NPC GRID

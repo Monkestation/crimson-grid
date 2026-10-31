@@ -614,9 +614,21 @@
 	. = ..()
 	if(!.)
 		return
+	///CRIMSON GRID EDIT - NPC GRID
 	var/atom/old_loc = moving.loc
-	var/turf/next = get_step_to(moving, target)
-	moving.Move(next, get_dir(moving, next), FALSE, !(flags & MOVEMENT_LOOP_NO_DIR_UPDATE))
+	var/update_dir = !(flags & MOVEMENT_LOOP_NO_DIR_UPDATE)
+
+	var/turf/next = get_step_towards(moving, target)
+	if(next)
+		moving.Move(next, get_dir(moving, next), FALSE, update_dir)
+
+	// Only pay for the search if the cheap step didn't work
+	if(moving && old_loc == moving.loc)
+		next = get_step_to(moving, target)
+		if(next)
+			moving.Move(next, get_dir(moving, next), FALSE, update_dir)
+	///CRIMSON GRID EDIT END - NPC GRID
+
 	return old_loc != moving?.loc ? MOVELOOP_SUCCESS : MOVELOOP_FAILURE
 
 /**
