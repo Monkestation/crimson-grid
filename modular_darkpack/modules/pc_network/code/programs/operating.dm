@@ -1,6 +1,6 @@
 /datum/pc_program/operating
 	name = "Operating Monitor"
-	icon_state = "operating"
+	icon_state = "user-doctor"
 	tgui_id = "PcOperating"
 
 	/// Linked operating table, if any

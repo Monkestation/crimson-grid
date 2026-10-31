@@ -230,7 +230,7 @@ export const PcOperating = (props, context) => {
                     placeholder="Search..."
                     value={search}
                     width="14em"
-                    onInput={(a, b) => setSearch(readText(a, b))}
+                    onChange={(a, b) => setSearch(readText(a, b))}
                   />
                 }
               >
