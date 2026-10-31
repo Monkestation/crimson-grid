@@ -36,4 +36,4 @@
 
 /datum/loadout_item/head/voodoo_hat
 	name = "Voodoo Hat"
-	item_path = /obj/item/clothing/head/voodoohat/vampire
+	item_path = /obj/item/clothing/head/vampire/voodoohat

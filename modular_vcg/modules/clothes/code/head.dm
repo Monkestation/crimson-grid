@@ -66,7 +66,7 @@
 	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
 	worn_icon = 'modular_vcg/modules/clothes/icons/worn_32x40.dmi'
 	icon_state = "voodoo_hat"
-	//hair_mask = /datum/hair_mask/standard_hat_low
+	worn_y_offset = 1
 	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
 	custom_price = 150
 
