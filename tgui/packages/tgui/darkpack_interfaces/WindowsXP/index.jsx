@@ -9,11 +9,13 @@ import { PcBookReader } from './PcBookReader';
 import { PcBountyBoard } from './PcBountyBoard';
 import { PcCdBurner } from './PcCdBurner';
 import { PcCheckout } from './PcCheckout';
+import { PcCommodities } from './PcCommodities';
 import { PcEmail } from './PcEmail';
 import { PcEtf } from './PcEtf';
 import { PcGeocities } from './PcGeocities';
 import { PcHacking } from './PcHacking';
 import { PcImageBoard } from './PcImageBoard';
+import { PcLedger } from './PcLedger';
 import { PcLibrary } from './PcLibrary';
 import { PcMediaPlayer } from './PcMediaPlayer';
 import { PcMedicalReader } from './PcMedicalReader';
@@ -68,6 +70,8 @@ const PROGRAM_COMPONENTS = {
   PcOperating,
   PcStockMarket,
   PcEtf,
+  PcCommodities,
+  PcLedger,
 };
 
 const XP = {

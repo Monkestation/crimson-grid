@@ -29,6 +29,11 @@
 	fire_controled = TRUE
 	domain = TRUE
 
+//CRIMSON GRID EDIT -PC NET
+/area/vtm/interior/bianchiBank/vault
+	name = "Bianchi Bank Vault"
+//CRIMSON GRID EDIT END -PC NET
+
 /area/vtm/interior/police
 	name = "\improper Police Station"
 	icon_state = "police"

@@ -615,13 +615,11 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/apartment)
 "aby" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 8
+/obj/machinery/atm{
+	pixel_y = 25
 	},
-/obj/machinery/pc_card_reader,
-/obj/structure/table/wood,
 /obj/effect/mapping_helpers/networked/network_id/bianchi,
-/turf/open/floor/carpet,
+/turf/open/floor/city/plating_stone,
 /area/vtm/interior/bianchiBank)
 "abz" = (
 /obj/structure/table,
@@ -1740,48 +1738,20 @@
 /obj/effect/mapping_helpers/pc/network_id/bianchi,
 /turf/open/floor/carpet,
 /area/vtm/interior/bianchiBank)
+"aeo" = (
+/turf/closed/wall/vampwall/painted,
+/area/vtm/interior/bianchiBank/vault)
 "aep" = (
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/effect/turf_decal/siding/grey/corner,
-/obj/effect/turf_decal/siding/grey/corner{
+/obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
-/obj/effect/turf_decal/siding/grey{
-	dir = 1
+/obj/machinery/pc_card_reader{
+	pixel_y = 13
 	},
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/structure/safe/floor,
-/obj/machinery/camera/directional/north,
+/obj/structure/table/wood,
 /obj/effect/mapping_helpers/networked/network_id/bianchi,
-/turf/open/floor/city/plating_mono,
+/obj/machinery/pc_card_reader/loan,
+/turf/open/floor/carpet,
 /area/vtm/interior/bianchiBank)
 "aeq" = (
 /obj/item/kirbyplants/darkpack/random,
@@ -1844,6 +1814,15 @@
 /obj/machinery/camera/directional/north,
 /turf/open/floor/carpet,
 /area/vtm/interior/bianchiBank)
+"aeA" = (
+/obj/weapon_showcase,
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeB" = (
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
 "aeC" = (
 /obj/machinery/light/prince/directional/south,
 /obj/effect/mapping_helpers/networked/network_id/bianchi,
@@ -1878,22 +1857,439 @@
 /obj/machinery/camera/directional/north,
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/bianchiBank)
+"aeI" = (
+/obj/effect/turf_decal/siding/grey{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 8
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeJ" = (
+/obj/structure/table,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -5;
+	pixel_x = -7
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = 9;
+	pixel_y = 4
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 10
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 10;
+	pixel_x = -12
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -11;
+	pixel_x = -12
+	},
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeK" = (
+/obj/structure/table,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred{
+	pixel_y = 21
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 15;
+	pixel_x = -5
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = -7
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 6
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = 10
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 10;
+	pixel_x = 9
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 10;
+	pixel_x = -12
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -1;
+	pixel_x = -8
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -11;
+	pixel_x = -12
+	},
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeL" = (
+/obj/effect/turf_decal/siding/grey{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 8
+	},
+/obj/machinery/sprinkler/area_managed,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
 "aeM" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/banu/haven)
+"aeN" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/stack/sheet/mineral/diamond/heart,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeO" = (
+/obj/structure/table,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -5;
+	pixel_x = -7
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = 9;
+	pixel_y = 4
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 10
+	},
+/obj/machinery/light/cold/directional/west,
+/obj/item/stack/dollar/hundred{
+	pixel_y = 10;
+	pixel_x = -12
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -1;
+	pixel_x = -8
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -11;
+	pixel_x = -12
+	},
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeP" = (
+/obj/structure/table,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -5;
+	pixel_x = -7
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = 9;
+	pixel_y = 4
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 10
+	},
+/obj/machinery/light/cold/directional/east,
+/obj/item/stack/dollar/hundred{
+	pixel_y = 10;
+	pixel_x = -12
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -11;
+	pixel_x = -12
+	},
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeQ" = (
+/obj/structure/vampfence/rich{
+	dir = 4;
+	pixel_y = 8
+	},
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
 "aeR" = (
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/apartment)
+"aeS" = (
+/obj/effect/turf_decal/siding/grey{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 8
+	},
+/obj/structure/vampdoor/prison,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/access/bank,
+/obj/effect/mapping_helpers/door/lock_difficulty/ten,
+/obj/effect/mapping_helpers/door/bash_difficulty/ten,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
 "aeT" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/ghetto)
+"aeU" = (
+/obj/structure/table,
+/obj/item/statuebust{
+	pixel_y = 9
+	},
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
 "aeV" = (
 /obj/effect/decal/coastline/corner,
 /turf/open/misc/beach/vamp,
 /area/vtm/outside/fishermanswharf)
+"aeW" = (
+/obj/structure/table,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = -5;
+	pixel_x = -7
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = 9;
+	pixel_y = 4
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 10
+	},
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeX" = (
+/obj/structure/table,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 50;
+	icon_state = "sheet-gold_3";
+	pixel_y = 9
+	},
+/obj/structure/lattice/pentex,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeY" = (
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/effect/turf_decal/siding/grey,
+/obj/effect/turf_decal/siding/grey{
+	dir = 1
+	},
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/structure/safe/floor,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"aeZ" = (
+/obj/structure/plaque/static_plaque/golden{
+	pixel_y = 28;
+	name = "Golden memorial plaque";
+	desc = "A gold emblazened plaque commemorating a long since deceased jazz star."
+	},
+/obj/effect/turf_decal/siding/grey,
+/obj/effect/turf_decal/siding/grey{
+	dir = 1
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"afa" = (
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/item/stack/dollar/hundred,
+/obj/effect/turf_decal/siding/grey/corner,
+/obj/effect/turf_decal/siding/grey/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 1
+	},
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/structure/safe/floor,
+/obj/machinery/camera/directional/north,
+/obj/effect/mapping_helpers/networked/network_id/bianchi,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"afb" = (
+/obj/effect/decal/painting{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/siding/grey,
+/obj/effect/turf_decal/siding/grey{
+	dir = 1
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"afc" = (
+/obj/effect/decal/wallpaper/grey,
+/turf/closed/wall/vampwall/painted,
+/area/vtm/interior/bianchiBank/vault)
+"afd" = (
+/obj/effect/turf_decal/siding/grey{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 8
+	},
+/obj/machinery/pc_area_scanner,
+/obj/effect/mapping_helpers/networked/network_id/bianchi,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank/vault)
+"afe" = (
+/obj/machinery/computer/pc/bank/loan{
+	dir = 8
+	},
+/obj/structure/table/wood,
+/turf/open/floor/carpet,
+/area/vtm/interior/bianchiBank)
 "afi" = (
 /obj/machinery/light/prince/directional/west{
 	pixel_y = 14
@@ -2215,44 +2611,6 @@
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior)
-"aiM" = (
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/effect/turf_decal/siding/grey,
-/obj/effect/turf_decal/siding/grey{
-	dir = 1
-	},
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/structure/safe/floor,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "aiN" = (
 /obj/structure/bed/dogbed,
 /obj/effect/turf_decal/siding/wood/dark{
@@ -6304,10 +6662,6 @@
 "bhB" = (
 /turf/cordon/secret,
 /area/misc/cordon)
-"bhC" = (
-/obj/effect/decal/wallpaper/grey,
-/turf/closed/wall/vampwall/painted,
-/area/vtm/interior/bianchiBank)
 "bhD" = (
 /obj/structure/table/wood,
 /turf/open/floor/city/factory,
@@ -19390,54 +19744,6 @@
 /obj/effect/landmark/npcbeacon,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
-"ejQ" = (
-/obj/structure/table,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred{
-	pixel_y = 21
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 15;
-	pixel_x = -5
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = -7
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 6
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = 10
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 10;
-	pixel_x = 9
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 10;
-	pixel_x = -12
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -1;
-	pixel_x = -8
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -11;
-	pixel_x = -12
-	},
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "eka" = (
 /obj/structure/bookcase/random/nonfiction,
 /turf/open/floor/wood/herring,
@@ -22668,11 +22974,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer/nosferatu_warren)
-"far" = (
-/obj/weapon_showcase,
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "fas" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -34723,51 +35024,6 @@
 /obj/structure/table/wood/fancy/red,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
-"hQy" = (
-/obj/structure/table,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred{
-	pixel_x = 8;
-	pixel_y = -5
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = -7;
-	pixel_y = 3
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -5;
-	pixel_x = -7
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = 9;
-	pixel_y = 4
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 10
-	},
-/obj/machinery/light/cold/directional/east,
-/obj/item/stack/dollar/hundred{
-	pixel_y = 10;
-	pixel_x = -12
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -11;
-	pixel_x = -12
-	},
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "hQN" = (
 /obj/structure/table/wood/fancy/red,
 /turf/open/floor/carpet/red,
@@ -37091,44 +37347,6 @@
 /obj/effect/turf_decal/stock,
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights)
-"isE" = (
-/obj/structure/table,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred{
-	pixel_x = 8;
-	pixel_y = -5
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = -7;
-	pixel_y = 3
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -5;
-	pixel_x = -7
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = 9;
-	pixel_y = 4
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 10
-	},
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "isJ" = (
 /obj/structure/flora/bush/style_random,
 /obj/structure/vampipe{
@@ -44096,50 +44314,6 @@
 	},
 /turf/open/floor/carpet/darkpack/bluesilver,
 /area/vtm/interior/salubri)
-"jYu" = (
-/obj/structure/table,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred{
-	pixel_x = 8;
-	pixel_y = -5
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = -7;
-	pixel_y = 3
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -5;
-	pixel_x = -7
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = 9;
-	pixel_y = 4
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 10
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 10;
-	pixel_x = -12
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -11;
-	pixel_x = -12
-	},
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "jYB" = (
 /obj/effect/decal/pallet,
 /turf/open/floor/wood/old,
@@ -44652,15 +44826,6 @@
 /obj/effect/landmark/npcwall,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
-"kfq" = (
-/obj/effect/turf_decal/siding/grey{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/grey{
-	dir = 8
-	},
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "kfs" = (
 /obj/structure/railing/corner{
 	dir = 1
@@ -48095,16 +48260,6 @@
 /obj/weapon_showcase,
 /turf/open/floor/city/plating,
 /area/vtm/interior/shop)
-"kWE" = (
-/obj/effect/turf_decal/siding/grey{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/grey{
-	dir = 8
-	},
-/obj/machinery/sprinkler/area_managed,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "kWM" = (
 /obj/structure/hedge,
 /turf/open/floor/city/factory,
@@ -54214,14 +54369,6 @@
 	},
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer/nosferatu_warren)
-"mqO" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 8
-	},
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "mqT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/litter,
@@ -58628,12 +58775,6 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower/f3)
-"ntO" = (
-/obj/machinery/atm{
-	pixel_y = 25
-	},
-/turf/open/floor/city/plating_stone,
-/area/vtm/interior/bianchiBank)
 "ntQ" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 2;
@@ -72871,10 +73012,6 @@
 /obj/effect/decal/cleanable/trash,
 /turf/open/floor/city/industrial,
 /area/vtm/interior/sewer/nosferatu_warren)
-"qIA" = (
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "qIF" = (
 /obj/structure/table/wood,
 /obj/structure/mirror{
@@ -76132,15 +76269,6 @@
 /obj/darkpack_car/track,
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights)
-"rxO" = (
-/obj/structure/table/wood/fancy/red,
-/obj/item/stack/sheet/mineral/diamond/heart,
-/obj/structure/window/reinforced/spawner/directional/north,
-/obj/structure/window/reinforced/spawner/directional/south,
-/obj/structure/window/reinforced/spawner/directional/west,
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "rxR" = (
 /obj/effect/turf_decal/bordur,
 /obj/structure/chair/pew/left,
@@ -79395,55 +79523,6 @@
 /obj/effect/decal/wallpaper/paper/darkred,
 /turf/closed/wall/vampwall/brick,
 /area/vtm/interior/littleitaly/apartments)
-"soH" = (
-/obj/structure/table,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred,
-/obj/item/stack/dollar/hundred{
-	pixel_x = 8;
-	pixel_y = -5
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = -7;
-	pixel_y = 3
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -5;
-	pixel_x = -7
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = 9;
-	pixel_y = 4
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 10
-	},
-/obj/machinery/light/cold/directional/west,
-/obj/item/stack/dollar/hundred{
-	pixel_y = 10;
-	pixel_x = -12
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -1;
-	pixel_x = -8
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = -11;
-	pixel_x = -12
-	},
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "soM" = (
 /obj/structure/chair/plastic/darkpack{
 	dir = 1
@@ -82178,20 +82257,6 @@
 	},
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/police/upstairs)
-"sWl" = (
-/obj/effect/turf_decal/siding/grey{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/grey{
-	dir = 8
-	},
-/obj/structure/vampdoor/prison,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/access/bank,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "sWn" = (
 /obj/structure/table,
 /turf/open/floor/plating/rough/cave,
@@ -94679,18 +94744,6 @@
 /obj/effect/decal/cleanable/trash,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/anarch)
-"vTz" = (
-/obj/structure/plaque/static_plaque/golden{
-	pixel_y = 28;
-	name = "Golden memorial plaque";
-	desc = "A gold emblazened plaque commemorating a long since deceased jazz star."
-	},
-/obj/effect/turf_decal/siding/grey,
-/obj/effect/turf_decal/siding/grey{
-	dir = 1
-	},
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "vTP" = (
 /obj/machinery/light/small/red/directional/west,
 /obj/structure/vampipe{
@@ -95112,14 +95165,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/outside/culture/italy)
-"vYQ" = (
-/obj/structure/table,
-/obj/item/statuebust{
-	pixel_y = 9
-	},
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "vYR" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/wood/smooth/old,
@@ -98528,16 +98573,6 @@
 /obj/effect/landmark/npcbeacon,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
-"wKD" = (
-/obj/structure/table,
-/obj/item/stack/sheet/mineral/gold{
-	amount = 50;
-	icon_state = "sheet-gold_3";
-	pixel_y = 9
-	},
-/obj/structure/lattice/pentex,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "wKF" = (
 /obj/effect/turf_decal/bordur/corner{
 	dir = 4
@@ -102575,16 +102610,6 @@
 /obj/structure/curtain,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/hotel)
-"xHL" = (
-/obj/effect/decal/painting{
-	pixel_y = 32
-	},
-/obj/effect/turf_decal/siding/grey,
-/obj/effect/turf_decal/siding/grey{
-	dir = 1
-	},
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "xHM" = (
 /obj/effect/turf_decal/bordur/corner{
 	dir = 4
@@ -181218,7 +181243,7 @@ iAi
 gvA
 iNl
 tIJ
-ntO
+aby
 efX
 pcK
 oAD
@@ -181422,7 +181447,7 @@ mkv
 mkv
 iIB
 tIJ
-ntO
+aby
 mkv
 mkv
 tPL
@@ -182027,7 +182052,7 @@ tBf
 aey
 fVw
 vaj
-aby
+aep
 pqH
 pqH
 pqH
@@ -182433,7 +182458,7 @@ xhs
 axY
 qnG
 qnG
-qnG
+afe
 vaj
 iUj
 iUj
@@ -183054,7 +183079,7 @@ mkv
 mkv
 iIB
 tIJ
-ntO
+aby
 mkv
 mkv
 tPL
@@ -183258,7 +183283,7 @@ mkv
 mkv
 khV
 tIJ
-ntO
+aby
 tIA
 vlY
 oAD
@@ -223423,13 +223448,13 @@ mjT
 mjT
 mjT
 mjT
-oAD
-oAD
-oAD
-oAD
-oAD
-oAD
-oAD
+aeo
+aeo
+aeo
+aeo
+aeo
+aeo
+aeo
 tIJ
 mkv
 fAW
@@ -223627,13 +223652,13 @@ mjT
 mjT
 mjT
 mjT
-bhC
-aiM
-vYQ
-mqO
-soH
-ejQ
-far
+afc
+aeY
+aeU
+aeQ
+aeO
+aeK
+aeA
 vAO
 kVp
 mkv
@@ -223831,13 +223856,13 @@ mjT
 mjT
 mjT
 mjT
-bhC
-vTz
-isE
-mqO
-qIA
-qIA
-qIA
+afc
+aeZ
+aeW
+aeQ
+aeB
+aeB
+aeB
 tIJ
 aev
 mkv
@@ -224035,13 +224060,13 @@ mjT
 mjT
 mjT
 mjT
-bhC
-aep
-kWE
-sWl
-kfq
-kWE
-kfq
+afc
+afa
+aeL
+aeS
+afd
+aeL
+aeI
 pQz
 mkv
 mkv
@@ -224239,13 +224264,13 @@ mjT
 mjT
 mjT
 mjT
-bhC
-xHL
-wKD
-mqO
-qIA
-qIA
-qIA
+afc
+afb
+aeX
+aeQ
+aeB
+aeB
+aeB
 tIJ
 kPG
 mkv
@@ -224443,13 +224468,13 @@ mjT
 mjT
 mjT
 mjT
-bhC
-aiM
-wKD
-mqO
-hQy
-rxO
-jYu
+afc
+aeY
+aeX
+aeQ
+aeP
+aeN
+aeJ
 vAO
 vJu
 omF
@@ -224647,13 +224672,13 @@ mjT
 mjT
 mjT
 mjT
-oAD
-oAD
-oAD
-oAD
-oAD
-oAD
-oAD
+aeo
+aeo
+aeo
+aeo
+aeo
+aeo
+aeo
 oAD
 oAD
 oAD

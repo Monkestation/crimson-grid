@@ -78,7 +78,13 @@
 /obj/machinery/computer/pc/bank/install_default_programs()
 	. = ..()
 	installed_programs += new /datum/pc_program/stocks(src)
+	installed_programs += new /datum/pc_program/commodities(src)
 
 /obj/machinery/computer/pc/bank/etf/install_default_programs()
 	. = ..()
 	installed_programs += new /datum/pc_program/etf(src)
+	installed_programs += new /datum/pc_program/ledger(src)
+
+/obj/machinery/computer/pc/bank/loan/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/ledger(src)

@@ -75,6 +75,7 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	var/list/medical_records = list()
 
 	var/datum/pc_etf/etf
+	var/datum/pc_treasury/treasury
 
 /datum/pc_network/schrecknet
 	id = PC_NETWORK_SCHRECKNET
@@ -87,6 +88,7 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	generate_network_password()
 	automation = new(src)
 	etf = new(src)
+	treasury = new(src)
 
 /// Record an event on this network. Call from join(), leave() and failed hack attempts.
 /// Membership is always tracked; pass silent = TRUE (e.g. at mapload) to skip the log entry.
@@ -231,6 +233,7 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 
 /datum/pc_network/Destroy()
 	QDEL_NULL(etf)
+	QDEL_NULL(treasury)
 	return ..()
 
 /datum/pc_network/player/join(device)

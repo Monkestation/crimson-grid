@@ -245,6 +245,10 @@ SUBSYSTEM_DEF(stocks)
 	var/garnish = 0
 	if(acc.account_debt > 0 && net > 0)
 		garnish = acc.pay_debt(min(round(net * STOCK_GARNISH), acc.account_debt)) || 0
+	//CRIMSON GRID EDIT - PC NET
+	if(net > 0)
+		garnish += SSlending.garnish_account(acc, net) || 0
+	//CRIMSON GRID EDIT END - PC NET
 
 	S.apply_trade_pressure(amount, FALSE)
 	return list("shares" = amount, "gross" = gross, "fee" = fee, "tax" = tax, "net" = net, "garnish" = garnish)

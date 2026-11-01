@@ -133,3 +133,19 @@
 
 #define STOCK_NEWS_CHANNEL "Night Exchange Wire"
 #define STOCK_NEWS_AUTHOR "Night Exchange Wire Desk"
+
+/// Interest compounds once every this many SSlending fires
+#define LENDING_INTEREST_FIRES 10
+/// Per-accrual rate on what a network has borrowed against its wealth
+#define LENDING_NETWORK_RATE 0.01
+/// Bounds for the per-accrual rate an operator can set on a loan to a person
+#define LENDING_MIN_RATE 0.005
+#define LENDING_MAX_RATE 0.10
+/// Fraction of every deposit into a borrower's account that goes to their open loans (like DEBT_COLLECTION_COEFF)
+#define LENDING_COLLECTION_COEFF 0.25
+
+#define COMMODITY_HISTORY_LEN 40
+#define COMMODITY_MAX_TRADE 500
+#define COMMODITY_COUPON_FIRES 10
+/// How hard price is pulled back toward the long-run trend line each tick
+#define COMMODITY_REVERSION 0.05
