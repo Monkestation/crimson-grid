@@ -3,7 +3,7 @@
 	desc = "Scans a credit or ID card and publishes it to the local network's ETF program for a short time so an operator can enroll the account."
 	icon = 'icons/obj/machines/turret_control.dmi'
 	icon_state = "control"
-	density = TRUE
+	density = FALSE
 	anchored = TRUE
 	network_id = PC_NETWORK_PUBLIC
 	var/scan_duration = 30 SECONDS
