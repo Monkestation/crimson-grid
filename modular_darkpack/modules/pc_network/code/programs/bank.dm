@@ -15,11 +15,22 @@
 	data["mining_points"] = acc.mining_points
 	data["history"] = acc.transaction_history
 	data["pay_token"] = acc.pay_token
+	var/datum/pc_network/net = computer.current_network
+	var/datum/pc_etf/etf = net?.etf
+	data["etf_available"] = !!etf
+	data["etf_enrolled"] = etf && (net.id in acc.etf_networks)
+	if(data["etf_enrolled"])
+		data["etf_shares"] = etf.shares_of(acc)
+		data["etf_nav"] = etf.nav()
+		data["etf_value"] = etf.value_of(acc)
+		data["etf_min"] = etf.min_transaction
 	return data
 
 /datum/pc_program/bank/ui_act(action, list/params, datum/tgui/ui)
 	. = ..()
 	var/datum/bank_account/acc = computer.get_logged_account()
+	var/datum/pc_network/net = computer.current_network
+	var/datum/pc_etf/etf = net?.etf
 	if(!acc)
 		return FALSE
 	switch(action)
@@ -58,6 +69,30 @@
 			if(amount <= 0 || acc.account_debt <= 0)
 				return FALSE
 			return acc.pay_debt(min(amount, acc.account_debt)) > 0
+
+		if("etf_deposit")
+			if(!etf || !(net.id in acc.etf_networks))
+				return FALSE
+			var/amount = round(text2num(params["amount"]))
+			if(amount < etf.min_transaction)
+				return FALSE
+			return etf.deposit(acc, amount)
+
+		if("etf_withdraw")
+			if(!etf || !(net.id in acc.etf_networks))
+				return FALSE
+			var/amount = round(text2num(params["amount"]))
+			return etf.withdraw(acc, amount)
+
+		if("etf_leave")
+			if(!etf || !(net.id in acc.etf_networks))
+				return FALSE
+			if(etf.shares_of(acc) > 0)
+				etf.withdraw(acc, 0)
+			acc.etf_networks -= net.id
+			if(ui.user)
+				to_chat(ui.user, span_notice("You left the [net.name] ETF."))
+			return TRUE
 	return FALSE
 
 /datum/pc_program/bank/notify_tap(datum/bank_account/payer, datum/bank_account/payee, amount)

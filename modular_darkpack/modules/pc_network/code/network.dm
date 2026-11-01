@@ -74,6 +74,8 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	/// lowercase crew name -> /datum/pc_medical_record (network-local overrides)
 	var/list/medical_records = list()
 
+	var/datum/pc_etf/etf
+
 /datum/pc_network/schrecknet
 	id = PC_NETWORK_SCHRECKNET
 	name = "SchreckNet"
@@ -84,6 +86,7 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	GLOB.pc_networks[id] = src
 	generate_network_password()
 	automation = new(src)
+	etf = new(src)
 
 /// Record an event on this network. Call from join(), leave() and failed hack attempts.
 /// Membership is always tracked; pass silent = TRUE (e.g. at mapload) to skip the log entry.
@@ -225,6 +228,10 @@ GLOBAL_VAR_INIT(player_network_counter, 0)
 	name = new_name
 	master_password = generate_network_password()
 	. = ..()
+
+/datum/pc_network/Destroy()
+	QDEL_NULL(etf)
+	return ..()
 
 /datum/pc_network/player/join(device)
 	. = ..()

@@ -560,10 +560,9 @@
 /area/vtm/interior/bianchiBank)
 "abl" = (
 /obj/structure/table/wood,
-/obj/structure/platform/lowwall/painted,
-/obj/machinery/camera/directional/north,
-/obj/effect/mapping_helpers/networked/network_id/bianchi,
-/turf/open/floor/plating/rough,
+/obj/machinery/computer/pc,
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/turf/open/floor/city/plating_stone,
 /area/vtm/interior/bianchiBank)
 "abm" = (
 /obj/structure/vampdoor/simple{
@@ -804,8 +803,10 @@
 /area/vtm/interior/clinic)
 "abU" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/pc,
-/turf/open/floor/city/plating_stone,
+/obj/structure/platform/lowwall/painted,
+/obj/machinery/camera/directional/north,
+/obj/effect/mapping_helpers/networked/network_id/bianchi,
+/turf/open/floor/plating/rough,
 /area/vtm/interior/bianchiBank)
 "abV" = (
 /obj/structure/table,
@@ -4910,6 +4911,16 @@
 	},
 /turf/open/floor/carpet/darkpack/greengold,
 /area/vtm/interior/endron_facility)
+"anF" = (
+/obj/structure/table/wood,
+/obj/item/pen/fourcolor,
+/obj/structure/platform/lowwall/painted,
+/obj/machinery/computer/pc/bank/etf{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/bianchiBank)
 "anG" = (
 /turf/open/floor/plating/granite,
 /area/vtm/interior/endron_facility)
@@ -5081,6 +5092,21 @@
 	},
 /turf/open/floor/plating/granite,
 /area/vtm/interior/endron_facility)
+"aob" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/vampirewater,
+/obj/item/reagent_containers/cup/glass/coffee/vampire{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/cup/glass/coffee/vampire{
+	pixel_y = 10
+	},
+/obj/structure/platform/lowwall/painted,
+/obj/effect/mapping_helpers/networked/network_id/bianchi,
+/obj/machinery/pc_card_reader,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/bianchiBank)
 "aoc" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/plating/granite,
@@ -21992,19 +22018,6 @@
 /obj/machinery/vending/cola/blue,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/unionsquare)
-"eaB" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/cup/glass/vampirewater,
-/obj/item/reagent_containers/cup/glass/coffee/vampire{
-	pixel_x = 5;
-	pixel_y = 10
-	},
-/obj/item/reagent_containers/cup/glass/coffee/vampire{
-	pixel_y = 10
-	},
-/obj/structure/platform/lowwall/painted,
-/turf/open/floor/plating/rough,
-/area/vtm/interior/bianchiBank)
 "eaD" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -25320,12 +25333,6 @@
 /obj/structure/table/wood/fancy/red,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
-"eRP" = (
-/obj/structure/table/wood,
-/obj/item/pen/fourcolor,
-/obj/structure/platform/lowwall/painted,
-/turf/open/floor/plating/rough,
-/area/vtm/interior/bianchiBank)
 "eRS" = (
 /obj/structure/lattice/pentex,
 /obj/effect/turf_decal/plaque{
@@ -119700,8 +119707,8 @@ pHv
 set
 set
 set
-eaB
-eRP
+aob
+anF
 set
 set
 vps
@@ -188829,7 +188836,7 @@ wjb
 wjb
 set
 set
-abl
+abU
 mnU
 mnU
 lro
@@ -189599,7 +189606,7 @@ wjb
 qRn
 wjb
 iMG
-abU
+abl
 hKP
 oLs
 qRn

@@ -10,6 +10,7 @@ import { PcBountyBoard } from './PcBountyBoard';
 import { PcCdBurner } from './PcCdBurner';
 import { PcCheckout } from './PcCheckout';
 import { PcEmail } from './PcEmail';
+import { PcEtf } from './PcEtf';
 import { PcGeocities } from './PcGeocities';
 import { PcHacking } from './PcHacking';
 import { PcImageBoard } from './PcImageBoard';
@@ -31,6 +32,7 @@ import { PcPortraitPrinter } from './PcPortraitPicker';
 import { PcRecords } from './PcRecords';
 import { PcSecurityCamera } from './PcSecurityCamera';
 import { PcSolitaire } from './PcSolitaire';
+import { PcStockMarket } from './PcStockMarket';
 import { PcSupply } from './PcSupply';
 
 //note this uses style = {} because I am not a chud.
@@ -64,6 +66,8 @@ const PROGRAM_COMPONENTS = {
   PcMedicalReader,
   PcMedicalWriter,
   PcOperating,
+  PcStockMarket,
+  PcEtf,
 };
 
 const XP = {
@@ -83,7 +87,7 @@ const XP = {
   startMenuTop: 'linear-gradient(180deg, #1160d0 0%, #0a4cb8 100%)',
 };
 
-const ICONS_PER_ROW = 5;
+const ICONS_PER_ROW = 7;
 const ICON_WIDTH = 76;
 const WINDOW_WIDTH = 740;
 const WINDOW_HEIGHT = 480;

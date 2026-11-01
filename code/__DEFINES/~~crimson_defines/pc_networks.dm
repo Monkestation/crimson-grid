@@ -115,3 +115,21 @@
  */
 #define CALCULATE_SOUND_VOLUME(volume, distance, max_distance, falloff_distance, falloff_exponent)\
 	((max(distance - falloff_distance, 0) ** (1 / falloff_exponent)) / ((max(max_distance, distance) - falloff_distance) ** (1 / falloff_exponent)) * volume)
+
+#define STOCK_HISTORY_LEN 40
+#define STOCK_DIVIDEND_FIRES 30
+#define STOCK_EVENT_CHANCE 10
+#define STOCK_NEWS_LEN 12
+#define STOCK_MAX_TRADE 1000
+#define STOCK_BIG_EVENT 0.06
+
+#define STOCK_LONG_TERM (30 MINUTES)
+#define STOCK_TAX_BASE 0.25
+#define STOCK_TAX_PER_DOT 0.04
+#define STOCK_FEE_BASE 0.03
+#define STOCK_FEE_PER_DOT 0.004
+#define STOCK_GARNISH 0.25
+#define STOCK_OUTLOOK_FINANCE 3
+
+#define STOCK_NEWS_CHANNEL "Night Exchange Wire"
+#define STOCK_NEWS_AUTHOR "Night Exchange Wire Desk"

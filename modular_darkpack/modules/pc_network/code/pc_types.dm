@@ -74,3 +74,11 @@
 	. = ..()
 	installed_programs += new /datum/pc_program/checkout(src)
 	installed_programs += new /datum/pc_program/portrait_printer(src)
+
+/obj/machinery/computer/pc/bank/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/stocks(src)
+
+/obj/machinery/computer/pc/bank/etf/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/etf(src)
