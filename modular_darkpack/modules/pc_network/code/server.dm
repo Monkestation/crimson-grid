@@ -177,7 +177,7 @@
 
 /obj/machinery/pc_server/mapped/post_machine_initialize()
 	. = ..()
-	if(!mapped_network_name || network)
+	if(!mapped_network_name)
 		return
 
 	// A mapped networked device may have already made the network.
