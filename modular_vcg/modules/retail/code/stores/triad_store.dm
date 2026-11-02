@@ -28,7 +28,7 @@
 	new /datum/data/vending_product("John Woo movie film gun ammo magazine", /obj/item/ammo_box/magazine/darkpack9mp5, 100),
 	new /datum/data/vending_product("Gun of Great power many dead", /obj/item/gun/ballistic/automatic/darkpack/sniper, 2000),
 	new /datum/data/vending_product("Ammo of destruction", 	/datum/supply_pack/weapons/ammo50bmg, 500),
-
+	new /datum/data/vending_product("pyrotechnics from John Woo film", 	/obj/item/grenade/flashbang, 300),
 
 
 
