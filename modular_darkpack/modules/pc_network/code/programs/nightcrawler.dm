@@ -34,14 +34,18 @@ GLOBAL_LIST_EMPTY(nightcrawler_photo_keys)
 	var/next_screen_refresh = 0
 	/// Same as SecurEye's screen, but NOT greyscale
 	var/atom/movable/screen/map_view/camera/cam_screen
+	/// Virtual radio inside the host computer that plays the broadcast audio
+	var/obj/item/radio/entertainment/speakers/speakers
 
 /datum/pc_program/nightcrawler/New(obj/machinery/computer/pc/host)
 	. = ..()
 	cam_screen = new
 	cam_screen.generate_view("pc_nightcrawler_[REF(src)]_map")
+	speakers = new(computer)
 
 /datum/pc_program/nightcrawler/Destroy()
 	QDEL_NULL(cam_screen)
+	QDEL_NULL(speakers)
 	camera_ref = null
 	return ..()
 
@@ -62,8 +66,6 @@ GLOBAL_LIST_EMPTY(nightcrawler_photo_keys)
 	if(!net || !net.has_access(computer.login_name || "anonymous", PC_NETWORK_USER))
 		return list()
 	var/list/live = list()
-	if(!net)
-		return live
 	for(var/datum/weakref/ref in net.connected)
 		var/obj/item/broadcast_camera/broadcaster = ref.resolve()
 		if(!istype(broadcaster) || !broadcaster.active)
@@ -89,6 +91,8 @@ GLOBAL_LIST_EMPTY(nightcrawler_photo_keys)
 
 	var/list/live = get_live_cameras()
 	data["live_count"] = length(live)
+	data["has_speakers"] = !!speakers
+	data["muted"] = speakers ? !speakers.should_be_listening : TRUE
 
 	var/list/channels_out = list()
 	for(var/datum/feed_channel/C as anything in GLOB.news_network.network_channels)
@@ -132,7 +136,6 @@ GLOBAL_LIST_EMPTY(nightcrawler_photo_keys)
 		if(user && length(photo_keys))
 			SSassets.transport.send_assets(user, photo_keys)
 
-	// The live feed is always shown beside the stories
 	var/obj/machinery/camera/active = camera_ref?.resolve()
 	if(!active || !(active in live))
 		active = length(live) ? live[1] : null
@@ -173,6 +176,12 @@ GLOBAL_LIST_EMPTY(nightcrawler_photo_keys)
 				return FALSE
 			camera_ref = WEAKREF(cam)
 			update_live_screen(TRUE)
+			return TRUE
+
+		if("toggle_mute")
+			if(!speakers)
+				return FALSE
+			speakers.toggle_mute()
 			return TRUE
 	return FALSE
 

@@ -5,6 +5,7 @@ const rectsOverlap = (a, b) =>
   a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
 
 // Same map-pane positioning as PcSecurityCamera, extracted so it can be reused.
+// The feed grows to fill whatever height its parent gives it (min 300px).
 export const NightcrawlerFeed = ({ mapRef, desktopRef, coverRects = [] }) => {
   const [covered, setCovered] = useState(false);
   const feedRef = useRef(null);
@@ -60,7 +61,8 @@ export const NightcrawlerFeed = ({ mapRef, desktopRef, coverRects = [] }) => {
       style={{
         position: 'relative',
         background: '#000',
-        height: 300,
+        flex: '1 1 auto',
+        minHeight: 300,
         overflow: 'hidden',
       }}
     >

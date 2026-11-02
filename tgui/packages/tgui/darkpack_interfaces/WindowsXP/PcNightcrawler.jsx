@@ -1,4 +1,5 @@
-import { Box, Button, NoticeBox } from 'tgui-core/components';
+import { useState } from 'react';
+import { Box, Button, NoticeBox, Tabs } from 'tgui-core/components';
 import { NightcrawlerFeed } from './NightcrawlerFeed';
 import { PcRichText } from './PcRichText';
 import { useProgram } from './useProgram';
@@ -72,12 +73,122 @@ const SectionTitle = ({ children, live }) => (
   </Box>
 );
 
+const StreamTab = ({ data, act, desktopRef, coverRects }) => {
+  const liveCams = Array.isArray(data.live_cameras) ? data.live_cameras : [];
+
+  return (
+    <Box
+      p={1}
+      style={{
+        flex: '1 1 auto',
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: 0,
+      }}
+    >
+      <SectionTitle live={liveCams.length > 0}>
+        {liveCams.length > 0 ? '● Live' : 'Live'}
+      </SectionTitle>
+      {liveCams.length === 0 ? (
+        <NoticeBox danger>Nobody is broadcasting right now.</NoticeBox>
+      ) : (
+        <>
+          <Box mb={1} style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+            {liveCams.length > 1 &&
+              liveCams.map((cam) => (
+                <Button
+                  key={cam.ref}
+                  icon="video"
+                  selected={data.activeCamera?.ref === cam.ref}
+                  onClick={() => act('switch_camera', { camera: cam.ref })}
+                >
+                  {cam.name}
+                </Button>
+              ))}
+            {!!data.has_speakers && (
+              <Button
+                ml="auto"
+                icon={data.muted ? 'volume-xmark' : 'volume-high'}
+                color={data.muted ? 'bad' : 'good'}
+                tooltip={data.muted ? 'Unmute broadcast audio' : 'Mute audio'}
+                onClick={() => act('toggle_mute')}
+              >
+                {data.muted ? 'Muted' : 'Audio on'}
+              </Button>
+            )}
+          </Box>
+          <NightcrawlerFeed
+            mapRef={data.mapRef}
+            desktopRef={desktopRef}
+            coverRects={coverRects}
+          />
+        </>
+      )}
+    </Box>
+  );
+};
+
+const FeedTab = ({ data, act }) => {
+  const channels = Array.isArray(data.channels) ? data.channels : [];
+  const stories = Array.isArray(data.stories) ? data.stories : [];
+
+  return (
+    <Box p={1}>
+      {!data.channel ? (
+        <>
+          <SectionTitle>Sections</SectionTitle>
+          {channels.length === 0 && (
+            <Box color="label">Nothing has been printed yet.</Box>
+          )}
+          {channels.map((ch) => (
+            <Box key={ch.id} mb={0.5}>
+              <Button
+                fluid
+                icon="folder-open"
+                onClick={() => act('open_channel', { id: ch.id })}
+              >
+                {ch.name} ({ch.count})
+              </Button>
+              {!!ch.desc && (
+                <Box ml={1} style={{ fontSize: '11px', color: C.muted }}>
+                  {ch.desc}
+                </Box>
+              )}
+            </Box>
+          ))}
+        </>
+      ) : (
+        <>
+          <Box mb={1}>
+            <Button icon="arrow-left" onClick={() => act('home')}>
+              Sections
+            </Button>
+            <Box
+              inline
+              ml={1}
+              bold
+              style={{ color: C.blood, fontSize: '15px', ...serif }}
+            >
+              {data.channel.name}
+            </Box>
+          </Box>
+          {stories.length === 0 && (
+            <Box color="label">No stories in this section.</Box>
+          )}
+          {stories.map((s) => (
+            <Story key={s.id} s={s} />
+          ))}
+        </>
+      )}
+    </Box>
+  );
+};
+
 export const PcNightcrawler = (props, context) => {
   const { desktopRef, coverRects = [] } = props;
   const { act, data } = useProgram(props.programId, context);
-  const channels = Array.isArray(data.channels) ? data.channels : [];
-  const stories = Array.isArray(data.stories) ? data.stories : [];
-  const liveCams = Array.isArray(data.live_cameras) ? data.live_cameras : [];
+  const [tab, setTab] = useState('stream');
+  const liveCount = data.live_count || 0;
 
   return (
     <div
@@ -105,99 +216,42 @@ export const PcNightcrawler = (props, context) => {
         Nightcrawler
       </div>
 
-      <div style={{ flex: '1 1 auto', display: 'flex', minHeight: 0 }}>
-        <div style={{ flex: '0 0 45%', overflowY: 'auto', minWidth: 0 }}>
-          <Box p={1}>
-            <SectionTitle live={liveCams.length > 0}>
-              {liveCams.length > 0 ? '● Live' : 'Live'}
-            </SectionTitle>
-            {liveCams.length === 0 ? (
-              <NoticeBox danger>Nobody is broadcasting right now.</NoticeBox>
-            ) : (
-              <>
-                {liveCams.length > 1 && (
-                  <Box mb={1}>
-                    {liveCams.map((cam) => (
-                      <Button
-                        key={cam.ref}
-                        icon="video"
-                        selected={data.activeCamera?.ref === cam.ref}
-                        onClick={() =>
-                          act('switch_camera', { camera: cam.ref })
-                        }
-                      >
-                        {cam.name}
-                      </Button>
-                    ))}
-                  </Box>
-                )}
-                <NightcrawlerFeed
-                  mapRef={data.mapRef}
-                  desktopRef={desktopRef}
-                  coverRects={coverRects}
-                />
-              </>
-            )}
-          </Box>
-        </div>
-
-        <div
-          style={{
-            flex: '1 1 auto',
-            overflowY: 'auto',
-            minWidth: 0,
-            borderLeft: `1px solid ${C.border}`,
-          }}
+      <Tabs fill={false} style={{ flex: '0 0 auto' }}>
+        <Tabs.Tab
+          icon="video"
+          selected={tab === 'stream'}
+          onClick={() => setTab('stream')}
         >
-          <Box p={1}>
-            {!data.channel ? (
-              <>
-                <SectionTitle>Sections</SectionTitle>
-                {channels.length === 0 && (
-                  <Box color="label">Nothing has been printed yet.</Box>
-                )}
-                {channels.map((ch) => (
-                  <Box key={ch.id} mb={0.5}>
-                    <Button
-                      fluid
-                      icon="folder-open"
-                      onClick={() => act('open_channel', { id: ch.id })}
-                    >
-                      {ch.name} ({ch.count})
-                    </Button>
-                    {!!ch.desc && (
-                      <Box ml={1} style={{ fontSize: '11px', color: C.muted }}>
-                        {ch.desc}
-                      </Box>
-                    )}
-                  </Box>
-                ))}
-              </>
-            ) : (
-              <>
-                <Box mb={1}>
-                  <Button icon="arrow-left" onClick={() => act('home')}>
-                    Sections
-                  </Button>
-                  <Box
-                    inline
-                    ml={1}
-                    bold
-                    style={{ color: C.blood, fontSize: '15px', ...serif }}
-                  >
-                    {data.channel.name}
-                  </Box>
-                </Box>
-                {stories.length === 0 && (
-                  <Box color="label">No stories in this section.</Box>
-                )}
-                {stories.map((s) => (
-                  <Story key={s.id} s={s} />
-                ))}
-              </>
-            )}
-          </Box>
-        </div>
+          {liveCount > 0 ? `Stream (${liveCount} live)` : 'Stream'}
+        </Tabs.Tab>
+        <Tabs.Tab
+          icon="newspaper"
+          selected={tab === 'feed'}
+          onClick={() => setTab('feed')}
+        >
+          Feed
+        </Tabs.Tab>
+      </Tabs>
+
+      <div
+        style={{
+          flex: '1 1 auto',
+          overflowY: 'auto',
+          minHeight: 0,
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        {tab === 'stream' ? (
+          <StreamTab
+            data={data}
+            act={act}
+            desktopRef={desktopRef}
+            coverRects={coverRects}
+          />
+        ) : (
+          <FeedTab data={data} act={act} />
+        )}
       </div>
     </div>
   );
