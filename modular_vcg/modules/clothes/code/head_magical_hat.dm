@@ -1,4 +1,3 @@
-#define RABBIT_CD_TIME (30 SECONDS)
 
 /obj/item/clothing/head/vampire/voodoohat/magic
 	name = "magical voodoo hat"
