@@ -22,6 +22,17 @@
 	new /datum/data/vending_product("Sun Light 44", /obj/item/ammo_box/darkpack/c44/wp, 2500),
 	new /datum/data/vending_product("50Ae White Powder", /obj/item/ammo_box/darkpack/c50ae/wp, 3000),
 	new /datum/data/vending_product("Type 74 Boiled Round", /obj/item/ammo_box/darkpack/c545/incendiary, 4000),
+	new /datum/data/vending_product("Traditional Tokarev as seen in John Woo Movies", /obj/item/gun/ballistic/automatic/pistol/darkpack/m1911, 100),
+	new /datum/data/vending_product("tokerev pistal magazien", /obj/item/ammo_box/magazine/darkpack45acp, 50),
+	new /datum/data/vending_product("other gun from John Woo movie film", /obj/item/gun/ballistic/automatic/darkpack/mp5, 800),
+	new /datum/data/vending_product("John Woo movie film gun ammo magazine", /obj/item/ammo_box/magazine/darkpack9mp5, 100),
+	new /datum/data/vending_product("Gun of Great power many dead", /obj/item/gun/ballistic/automatic/darkpack/sniper, 2000),
+	new /datum/data/vending_product("Ammo of destruction", 	/datum/supply_pack/weapons/ammo50bmg, 500),
+
+
+
+
+
 	//Incinidary Rounds remove these from warehouse keep 5.56 and 50bmg as the triad does not have them
 )
 
