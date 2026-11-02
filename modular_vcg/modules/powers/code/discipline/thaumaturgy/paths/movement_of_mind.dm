@@ -19,16 +19,19 @@
 	effect_sound = 'sound/effects/magic/repulse.ogg'
 
 /// Handle launching the target
-/datum/discipline_power/thaumaturgy/path/mind_movement/proc/launch(atom/movable/launched_object, turf/launch_to)
+/datum/discipline_power/thaumaturgy/path/mind_movement/proc/launch(atom/movable/launched_object, turf/launch_to, do_sound = FALSE)
 	RegisterSignal(launched_object, COMSIG_MOVABLE_IMPACT, PROC_REF(on_impact))
 
-	var/throw_range = min(1 * success_count, isliving(launched_object) ? 3 : 6)
+	var/throw_range = min(2 * success_count, isliving(launched_object) ? 6 : 8)
 
 	launched_object.throw_at(launch_to, throw_range, launched_object.density ? 3 : 4, null, isitem(launched_object))
 
 	if(isliving(launched_object))
 		var/mob/living/living_target = launched_object
 		living_target.Knockdown(5 SECONDS)
+
+	if(do_sound)
+		playsound(launched_object, 'sound/effects/magic/repulse.ogg', 100, TRUE)
 
 /// Do extra damage on impact or if the launched item hit a person, or if the launched person hit a dense object
 /datum/discipline_power/thaumaturgy/path/mind_movement/proc/on_impact(atom/movable/source, atom/hit_atom, datum/thrownthing/thrownthing)
@@ -316,7 +319,7 @@
 		INVOKE_ASYNC(src, PROC_REF(clear_grab))
 		// Don't launch if we are putting them on turf they are on
 		if(!(launched_object in target_turf))
-			launch(launched_object, target_turf)
+			launch(launched_object, target_turf, TRUE)
 		return
 
 	if(LAZYACCESS(modifiers, LEFT_CLICK))
