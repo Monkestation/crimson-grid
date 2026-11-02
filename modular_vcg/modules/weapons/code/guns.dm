@@ -152,7 +152,7 @@
 	inhand_icon_state = "pecheneg"
 	worn_icon_state = "pecheneg"
 
-	recoil = 6
+	recoil = 8
 	fire_delay = 6
 
 	w_class = WEIGHT_CLASS_BULKY
