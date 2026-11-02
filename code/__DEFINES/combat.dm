@@ -357,7 +357,7 @@ GLOBAL_LIST_INIT(all_precise_body_zones, list(BODY_ZONE_PRECISE_EYES, BODY_ZONE_
 /// IF an object is weak against armor, this is the value that any present armor is multiplied by
 #define ARMOR_WEAKENED_MULTIPLIER 2
 /// Armor can't block more than this as a percentage
-#define ARMOR_MAX_BLOCK 90
+#define ARMOR_MAX_BLOCK 75 // CRIMSON EDIT CHANGE - Original: #define ARMOR_MAX_BLOCK 90
 /// Calculates the new armour value after armour penetration. Can return negative values, and those must be caught.
 #define PENETRATE_ARMOUR(armour, penetration) (penetration >= 100 ? 0 : 100 * (armour - penetration) / (100 - penetration))
 
