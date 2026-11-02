@@ -9,4 +9,5 @@
 #define CALIBER_12G "12 gauge"
 #define CALIBER_CROSSBOWBOLT "bolt"
 #define CALIBER_762NATO "7.62x51mm NATO"
+#define CALIBER_762SOVIET "7.62x54mm" // Crimson Grid add
 #define CALIBER_75BALL ".75 ball"

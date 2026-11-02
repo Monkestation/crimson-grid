@@ -23,6 +23,10 @@
 		new /datum/data/vending_product("Braddock 9mm magazine", /obj/item/ammo_box/magazine/darkpack45smg, 300), // CRIMSON EDIT ADD - Braddock Mags Buyable
 		new /datum/data/vending_product("sawn-off Remington 11-87 shotgun", /obj/item/gun/ballistic/shotgun/vamp_remington/sawnoff, 1600),
 		new /datum/data/vending_product("oil filter 11-87 suppressor", /obj/item/suppressor/darkpack_oil, 400),
+// CRIMSON EDIT ADD START - Machinegun Kulak
+		new /datum/data/vending_product("Kulak 7.62 machinegun", /obj/item/gun/ballistic/automatic/machinegun/kulak, 14000),
+		new /datum/data/vending_product("Kulak 7.62 machinegun ammo box", /obj/item/ammo_box/magazine/machinegun/kulak, 2000),
+// CRIMSON EDIT ADD END - Machinegun Kulak
 		new /datum/data/vending_product("cannabis package", /obj/item/food/grown/cannabis, 700),
 		new /datum/data/vending_product("morphine syringe", /obj/item/reagent_containers/syringe/contraband/morphine, 800),
 		new /datum/data/vending_product("meth package", /obj/item/reagent_containers/cup/glass/baggie/meth, 800),
