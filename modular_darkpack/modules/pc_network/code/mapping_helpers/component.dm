@@ -17,13 +17,9 @@
 	for(var/atom/movable/thing in loc)
 		networked = thing.GetComponent(/datum/component/networked)
 		if(networked)
-			break
-	if(!networked)
-		log_mapping("[src] failed to find a networked device at [AREACOORD(src)]")
-		qdel(src)
-		return
+			payload(networked)
+			networked = null
 
-	payload(networked)
 	qdel(src)
 
 /obj/effect/mapping_helpers/networked/proc/payload(datum/component/networked/payload)
