@@ -37,8 +37,8 @@ the scar is received and an extra Gnosis point is spent.
 	if(living_target == owner)
 		return FALSE
 	if(get_kindred_splat(living_target))
-		var/datum/st_stat/morality_path/morality/stat_morality = living_target.st_get_stat(STAT_MORALITY)
-		if((stat_morality?.morality_path?.alignment != MORALITY_HUMANITY || stat_morality?.get_score() < 7) || HAS_TRAIT(src, TRAIT_HIDDEN_WYRMTAINT))
+		var/datum/st_stat/morality_path/morality/stat_morality = living_target?.storyteller_stats[STAT_MORALITY]
+		if((stat_morality?.morality_path?.alignment != MORALITY_HUMANITY || stat_morality?.get_score() < 7) && !HAS_TRAIT(src, TRAIT_HIDDEN_WYRMTAINT))
 			return FALSE
 // CRIMSON GRID EDIT END
 	. = ..()
