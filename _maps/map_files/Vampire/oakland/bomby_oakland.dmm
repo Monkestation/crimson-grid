@@ -20951,6 +20951,10 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
+"eUx" = (
+/obj/machinery/sprinkler/area_managed,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/chantry/basement)
 "eUA" = (
 /obj/structure/closet/crate/coffin,
 /turf/open/floor/wood/smooth/old,
@@ -25307,19 +25311,6 @@
 /obj/item/ammo_box/magazine/glock45acp,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/bianchiBank)
-"fUf" = (
-/obj/effect/turf_decal/bordur{
-	dir = 8
-	},
-/obj/structure/vampdoor/wood{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/door/access/chantry,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/turf/open/floor/plating/sidewalk,
-/area/vtm/interior/chantry/basement)
 "fUj" = (
 /obj/structure/roofstuff/alt2{
 	pixel_y = 5
@@ -26477,8 +26468,7 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/caves)
 "ghm" = (
-/obj/effect/turf_decal/bordur,
-/turf/open/water/vamp_sewer,
+/turf/open/floor/plating/sidewalk,
 /area/vtm/interior/sewer)
 "gho" = (
 /obj/effect/turf_decal/siding/wood/dark{
@@ -61527,8 +61517,18 @@
 /turf/open/floor/wood/rough,
 /area/vtm/interior/sewer)
 "ojy" = (
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/obj/structure/vampdoor/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/chantry,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/plating/sidewalk,
-/area/vtm/interior/sewer)
+/area/vtm/interior/chantry/basement)
 "ojz" = (
 /obj/effect/turf_decal/siding/grey/inner_corner{
 	dir = 8
@@ -79661,10 +79661,6 @@
 /obj/structure/lattice/grate,
 /turf/open/water/vamp_sewer,
 /area/vtm/interior/setite)
-"svD" = (
-/obj/machinery/sprinkler/area_managed,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/chantry/basement)
 "svU" = (
 /obj/structure/bookcase/random/nonfiction,
 /turf/open/floor/wood/smooth/old,
@@ -88281,6 +88277,10 @@
 /obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
+"uup" = (
+/obj/effect/turf_decal/bordur,
+/turf/open/water/vamp_sewer,
+/area/vtm/interior/sewer)
 "uut" = (
 /turf/open/floor/plating/concrete,
 /area/vtm/outside/culture/italy)
@@ -132129,7 +132129,7 @@ uvs
 uvs
 cNM
 eIR
-svD
+eUx
 hBe
 owK
 oBr
@@ -132537,7 +132537,7 @@ uvs
 uvs
 oBr
 oBr
-fUf
+ojy
 oBr
 oBr
 oBr
@@ -132741,7 +132741,7 @@ tuX
 tuX
 tuX
 tuX
-ojy
+ghm
 tuX
 uvs
 uvs
@@ -132944,8 +132944,8 @@ vlV
 hRf
 jcI
 fZF
+uup
 ghm
-ojy
 tuX
 uvs
 uvs
