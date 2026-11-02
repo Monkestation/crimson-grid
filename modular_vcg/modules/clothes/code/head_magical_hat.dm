@@ -31,4 +31,3 @@
 		var/mob/living/basic/rabbit/bunbun = new(get_turf(cast_on))
 		bunbun.mob_try_pickup(cast_on, instant=TRUE)
 
-#undef RABBIT_CD_TIME
