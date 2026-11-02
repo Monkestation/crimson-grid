@@ -588,10 +588,10 @@
 /area/vtm/interior/nosferatu_office)
 "abt" = (
 /obj/structure/table,
-/obj/machinery/computer/pc{
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/obj/machinery/computer/pc/bank/etf{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/pc/network_id/bianchi,
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/bianchiBank)
 "abu" = (
@@ -2280,13 +2280,23 @@
 /obj/effect/mapping_helpers/networked/network_id/bianchi,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/bianchiBank/vault)
-"aff" = (
+"afe" = (
 /obj/machinery/computer/pc/bank/loan{
 	dir = 8
 	},
 /obj/structure/table/wood,
 /obj/effect/mapping_helpers/networked/network_id/bianchi,
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
 /turf/open/floor/carpet,
+/area/vtm/interior/bianchiBank)
+"afg" = (
+/obj/structure/table,
+/obj/item/gun/ballistic/automatic/pistol/darkpack/glock21,
+/obj/item/ammo_box/magazine/glock45acp,
+/obj/item/ammo_box/magazine/glock45acp,
+/obj/effect/mapping_helpers/networked/network_id/bianchi,
+/obj/machinery/pc_cash_depositor,
+/turf/open/floor/city/plating_stone,
 /area/vtm/interior/bianchiBank)
 "afh" = (
 /obj/structure/table,
@@ -13670,13 +13680,6 @@
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
-"cMG" = (
-/obj/structure/table,
-/obj/item/gun/ballistic/automatic/pistol/darkpack/glock21,
-/obj/item/ammo_box/magazine/glock45acp,
-/obj/item/ammo_box/magazine/glock45acp,
-/turf/open/floor/city/plating_stone,
-/area/vtm/interior/bianchiBank)
 "cMQ" = (
 /obj/structure/vampdoor/wood{
 	dir = 4
@@ -182462,7 +182465,7 @@ xhs
 axY
 qnG
 qnG
-aff
+afe
 vaj
 iUj
 iUj
@@ -223054,7 +223057,7 @@ mjT
 tIJ
 mkv
 abt
-cMG
+afg
 oAD
 oAD
 oAD
