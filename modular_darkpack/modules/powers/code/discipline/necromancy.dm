@@ -71,6 +71,8 @@
 
 	ADD_TRAIT(owner, TRAIT_GHOST_VISION, NECROMANCY_TRAIT)
 	ADD_TRAIT(owner, TRAIT_LOCAL_SIXTHSENSE, NECROMANCY_TRAIT)
+	var/obj/item/organ/eyes/owners_eyes = owner.get_organ_by_type(/obj/item/organ/eyes)  // CRIMSON EDIT ADDITION - Shroudsight grants night vision temporarily
+	ADD_TRAIT(owner, TRAIT_TRUE_NIGHT_VISION, type) // CRIMSON EDIT ADDITION - Shroudsight grants night vision temporarily
 	owner.update_sight()
 
 	to_chat(owner, span_notice("You peek beyond the Shroud."))
@@ -80,6 +82,8 @@
 
 	REMOVE_TRAIT(owner, TRAIT_GHOST_VISION, NECROMANCY_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_LOCAL_SIXTHSENSE, NECROMANCY_TRAIT)
+	var/obj/item/organ/eyes/owners_eyes = owner.get_organ_by_type(/obj/item/organ/eyes) // CRIMSON EDIT ADDITION - Shroudsight grants night vision temporarily
+	REMOVE_TRAIT(owner, TRAIT_TRUE_NIGHT_VISION, type) // CRIMSON EDIT ADDITION - Shroudsight grants night vision temporarily
 	owner.update_sight()
 
 	to_chat(owner, span_warning("Your vision returns to the mortal realm."))
