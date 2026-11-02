@@ -858,9 +858,10 @@
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/supply)
 "acg" = (
+/obj/item/pen/blue,
 /obj/structure/table/wood/fancy/green,
-/obj/machinery/computer/pc{
-	dir = 8
+/obj/item/bouquet/sunflower{
+	desc = "A bright bouquet of sunflowers. It feels like you know who they are for. Attached is a letter: 'from R to M' "
 	},
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/giovanni)
@@ -1187,7 +1188,8 @@
 /area/vtm/interior/chantry)
 "acZ" = (
 /obj/structure/table/wood/fancy/red,
-/obj/machinery/computer/pc,
+/obj/machinery/computer/pc/network,
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
 /turf/open/floor/carpet/green,
 /area/vtm/interior/bianchiBank)
 "ada" = (
@@ -1485,12 +1487,13 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility/plant)
 "adR" = (
-/obj/machinery/camera/directional/south{
-	network = list("Endron");
-	c_tag = "Endron Processing 7"
+/obj/machinery/camera/directional/east{
+	c_tag = "Sewer Entrance 1";
+	network = list("Endron")
 	},
-/turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/plant)
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/turf/open/floor/plating/canal,
+/area/vtm/interior/endron_facility/restricted)
 "adS" = (
 /obj/machinery/button/elevator/directional/south{
 	pixel_x = -7;
@@ -1970,12 +1973,13 @@
 "afc" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Processing 8";
-	pixel_x = 11;
+	c_tag = "Sewer Entrance 2";
+	pixel_x = 12;
 	pixel_y = 24
 	},
-/turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/plant)
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/turf/open/floor/plating/canal,
+/area/vtm/interior/endron_facility/restricted)
 "afd" = (
 /obj/effect/decal/garou_glyph/conceal,
 /turf/open/floor/plating/concrete,
@@ -2517,11 +2521,17 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/endron_facility/restricted)
 "agN" = (
-/obj/machinery/camera/directional/east{
-	c_tag = "Sewer Entrance 1";
-	network = list("Endron")
+/obj/effect/turf_decal/trimline/dark_green/corner{
+	dir = 4
 	},
-/turf/open/floor/plating/canal,
+/obj/machinery/camera/directional/north{
+	network = list("Endron");
+	c_tag = "Endron Lab 4";
+	pixel_x = 11;
+	pixel_y = 24
+	},
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "agO" = (
 /obj/structure/chair/sofa/left/brown{
@@ -2653,11 +2663,12 @@
 "ahh" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Sewer Entrance 2";
-	pixel_x = 12;
+	c_tag = "Endron Lab 3";
+	pixel_x = 11;
 	pixel_y = 24
 	},
-/turf/open/floor/plating/canal,
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "ahi" = (
 /obj/effect/turf_decal/caution/red{
@@ -6193,24 +6204,22 @@
 "arc" = (
 /obj/machinery/camera/directional/north{
 	network = list("Endron");
-	c_tag = "Endron Lab 3";
+	c_tag = "Endron Prison 1";
 	pixel_x = 11;
 	pixel_y = 24
 	},
-/turf/open/floor/iron/small,
+/mob/living/carbon/human/npc/endronsecurity,
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility/restricted)
 "ard" = (
-/obj/effect/turf_decal/trimline/dark_green/corner{
+/obj/structure/table/wood/fancy/green,
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/obj/machinery/computer/pc/network{
 	dir = 4
 	},
-/obj/machinery/camera/directional/north{
-	network = list("Endron");
-	c_tag = "Endron Lab 4";
-	pixel_x = 11;
-	pixel_y = 24
-	},
-/turf/open/floor/iron/small,
-/area/vtm/interior/endron_facility/restricted)
+/turf/open/floor/carpet/darkpack/old,
+/area/vtm/interior/giovanni)
 "are" = (
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 6
@@ -7102,15 +7111,16 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/cog/caern)
 "asY" = (
-/obj/machinery/camera/directional/north{
-	network = list("Endron");
-	c_tag = "Endron Prison 1";
-	pixel_x = 11;
-	pixel_y = 24
+/obj/structure/table/wood,
+/obj/effect/decal/wallpaper/gold/low,
+/obj/item/pen/fountain/captain{
+	name = "Don's fountain pen"
 	},
-/mob/living/carbon/human/npc/endronsecurity,
-/turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/restricted)
+/obj/structure/platform/lowwall/painted,
+/obj/machinery/pc_cash_depositor,
+/obj/effect/mapping_helpers/networked/network_id/bianchi,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/bianchiBank)
 "asZ" = (
 /obj/machinery/oven/range{
 	pixel_x = 0;
@@ -7597,10 +7607,28 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/millennium_tower)
+"atZ" = (
+/obj/machinery/camera/directional/south{
+	network = list("Endron");
+	c_tag = "Endron Processing 7"
+	},
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/endron_facility/plant)
 "aua" = (
 /obj/effect/turf_decal/siding/wideplating/dark,
 /turf/closed/wall/vampwall/old,
 /area/vtm/interior/tzimisce_manor)
+"aub" = (
+/obj/machinery/camera/directional/north{
+	network = list("Endron");
+	c_tag = "Endron Processing 8";
+	pixel_x = 11;
+	pixel_y = 24
+	},
+/obj/effect/mapping_helpers/networked/network_id/endron,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/endron_facility/plant)
 "auc" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/plating/concrete,
@@ -7682,6 +7710,14 @@
 "aup" = (
 /turf/open/floor/city/toilet,
 /area/vtm/interior/salubri)
+"auq" = (
+/obj/structure/table/wood/fancy/green,
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/obj/machinery/computer/pc/security{
+	dir = 8
+	},
+/turf/open/floor/carpet/darkpack/old,
+/area/vtm/interior/giovanni)
 "aur" = (
 /obj/transfer_point_vamp/stairs{
 	id = "Endron_Stairs1";
@@ -17561,11 +17597,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/clothing_store)
-"cNr" = (
-/obj/item/pen/blue,
-/obj/structure/table/wood/fancy/green,
-/turf/open/floor/carpet/darkpack/old,
-/area/vtm/interior/giovanni)
 "cNC" = (
 /obj/structure/flora/rock/darkpack,
 /turf/open/floor/plating/asphalt,
@@ -59567,13 +59598,6 @@
 /obj/structure/platform/lowwall/brick/window,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/shop/smoke_shop)
-"nGr" = (
-/obj/item/bouquet/sunflower{
-	desc = "A bright bouquet of sunflowers. It feels like you know who they are for. Attached is a letter: 'from R to M' "
-	},
-/obj/structure/table/wood/fancy/green,
-/turf/open/floor/carpet/darkpack/old,
-/area/vtm/interior/giovanni)
 "nGu" = (
 /obj/effect/decal/cleanable/gasoline,
 /turf/open/floor/plating/rough,
@@ -101239,15 +101263,6 @@
 /obj/structure/sink/directional/east,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
-"ykm" = (
-/obj/structure/table/wood,
-/obj/effect/decal/wallpaper/gold/low,
-/obj/item/pen/fountain/captain{
-	name = "Don's fountain pen"
-	},
-/obj/structure/platform/lowwall/painted,
-/turf/open/floor/plating/rough,
-/area/vtm/interior/bianchiBank)
 "ykr" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -126187,7 +126202,7 @@ dvN
 dvN
 dvN
 mao
-ahh
+afc
 ahb
 agU
 agI
@@ -128503,7 +128518,7 @@ age
 age
 age
 age
-agN
+adR
 age
 age
 age
@@ -134252,7 +134267,7 @@ ivl
 aei
 adX
 adO
-adR
+atZ
 stf
 stf
 stf
@@ -134498,7 +134513,7 @@ oNM
 afr
 afo
 stf
-afc
+aub
 adO
 aeM
 aer
@@ -178715,7 +178730,7 @@ uJx
 mat
 gcL
 esx
-nGr
+ard
 gSo
 hlf
 kyB
@@ -179229,8 +179244,8 @@ uJx
 uJx
 gcL
 hlf
+auq
 acg
-cNr
 hlf
 kyB
 kyB
@@ -254136,7 +254151,7 @@ dqq
 ttF
 fOY
 pHv
-ykm
+asY
 cpt
 dSM
 rhL
@@ -374873,7 +374888,7 @@ nHs
 coK
 bcf
 sBF
-arc
+ahh
 bsW
 nHs
 tZR
@@ -376134,7 +376149,7 @@ tZR
 iHz
 tZR
 sBF
-asY
+arc
 dLs
 ekd
 tZR
@@ -379242,7 +379257,7 @@ dGw
 gLi
 xld
 sBF
-ard
+agN
 bsW
 tut
 sol

@@ -979,13 +979,6 @@
 /obj/machinery/light/prince/directional/north,
 /turf/open/floor/wood/herring,
 /area/vtm/interior/littleitaly)
-"act" = (
-/obj/structure/table/wood/fancy/royalblack,
-/obj/machinery/computer/pc{
-	dir = 1
-	},
-/turf/open/floor/carpet/royalblack,
-/area/vtm/interior/giovanni)
 "acu" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/pc{
@@ -2383,11 +2376,32 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/ghetto)
+"afu" = (
+/obj/structure/table,
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/obj/machinery/computer/pc/network{
+	dir = 4
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank)
+"afv" = (
+/obj/structure/table/wood/fancy/royalblack,
+/obj/machinery/computer/pc/network,
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/turf/open/floor/carpet/royalblack,
+/area/vtm/interior/giovanni)
 "afw" = (
 /obj/effect/turf_decal/bordur,
 /obj/effect/decal/graffiti,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
+"afx" = (
+/obj/item/clothing/head/fedora,
+/obj/structure/table/wood/fancy/royalblack,
+/obj/machinery/computer/pc/security,
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/turf/open/floor/carpet/royalblack,
+/area/vtm/interior/giovanni)
 "afB" = (
 /obj/structure/table/wood,
 /obj/item/storage/ashtray{
@@ -28295,11 +28309,6 @@
 /obj/item/reagent_containers/condiment/sugar,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/shop)
-"glH" = (
-/obj/item/clothing/head/fedora,
-/obj/structure/table/wood/fancy/royalblack,
-/turf/open/floor/carpet/royalblack,
-/area/vtm/interior/giovanni)
 "glJ" = (
 /obj/structure/transport/linear/public,
 /obj/effect/landmark/transport/transport_id{
@@ -65859,16 +65868,6 @@
 	},
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/chantry/basement)
-"oYX" = (
-/obj/structure/table,
-/obj/item/paper_bin{
-	pixel_y = 6
-	},
-/obj/item/pen{
-	pixel_y = 8
-	},
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "oYZ" = (
 /obj/structure/flora/bush/flowers_yw,
 /obj/structure/flora/bush/sparsegrass/style_random{
@@ -181235,7 +181234,7 @@ tIJ
 ttQ
 aet
 ael
-oYX
+afu
 vAO
 bYp
 efX
@@ -200764,7 +200763,7 @@ cFy
 aIk
 oFI
 qFv
-act
+afv
 aOh
 bON
 bKy
@@ -201172,7 +201171,7 @@ wYI
 ijU
 hyd
 gOz
-glH
+afx
 hcM
 jjw
 bKy
