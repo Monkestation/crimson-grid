@@ -3,7 +3,7 @@
 	desc = "This Gift allows the Garou to send her foe sprawling with but a touch."
 	button_icon_state = "falling_touch"
 	click_to_activate = TRUE
-	cooldown_time = 10 SECONDS
+	cooldown_time = 10 SECONDS //CRIMSON GRID ADDITION - cooldown 
 	rank = 1
 
 /datum/action/cooldown/power/gift/falling_touch/set_click_ability(mob/on_who)
