@@ -1186,12 +1186,6 @@
 	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/chantry)
-"acZ" = (
-/obj/structure/table/wood/fancy/red,
-/obj/machinery/computer/pc/network,
-/obj/effect/mapping_helpers/pc/network_id/bianchi,
-/turf/open/floor/carpet/green,
-/area/vtm/interior/bianchiBank)
 "ada" = (
 /obj/item/instrument/eguitar{
 	anchored = 1;
@@ -7633,6 +7627,25 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/gasstation)
+"aud" = (
+/obj/structure/table/wood/fancy/red,
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/obj/machinery/computer/pc/bank/etf/ceo,
+/turf/open/floor/carpet/green,
+/area/vtm/interior/bianchiBank)
+"aue" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/item/pen/fourcolor,
+/obj/machinery/computer/pc/bank/etf{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/bianchiBank)
 "auf" = (
 /obj/structure/vampdoor/reinf{
 	lock_id = "toreador";
@@ -7736,6 +7749,15 @@
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
+"auu" = (
+/obj/structure/table/wood,
+/obj/item/pen/fourcolor,
+/obj/machinery/computer/pc/bank/etf{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/pc/network_id/bianchi,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/bianchiBank)
 "auM" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 4
@@ -63391,15 +63413,6 @@
 /obj/effect/landmark/start/darkpack/anarch/bruiser,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch/basement)
-"oCq" = (
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp/green{
-	pixel_x = 2;
-	pixel_y = 9
-	},
-/obj/item/pen/fourcolor,
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/bianchiBank)
 "oCu" = (
 /obj/structure/vampdoor/wood,
 /turf/open/floor/mineral/plastitanium,
@@ -76869,11 +76882,6 @@
 	},
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/chantry/basement)
-"rXQ" = (
-/obj/structure/table/wood,
-/obj/item/pen/fourcolor,
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/bianchiBank)
 "rXY" = (
 /obj/effect/turf_decal/siding/grey{
 	dir = 10
@@ -120506,7 +120514,7 @@ wTq
 lIO
 lro
 aED
-oCq
+aue
 wjb
 way
 pHv
@@ -123590,7 +123598,7 @@ uWE
 lIO
 lro
 wjb
-rXQ
+auu
 mur
 set
 set
@@ -252868,7 +252876,7 @@ nut
 uIl
 qUY
 dSM
-acZ
+aud
 wfZ
 rhL
 uIl

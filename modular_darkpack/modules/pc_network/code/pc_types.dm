@@ -88,3 +88,10 @@
 /obj/machinery/computer/pc/bank/loan/install_default_programs()
 	. = ..()
 	installed_programs += new /datum/pc_program/ledger(src)
+
+/obj/machinery/computer/pc/bank/etf/ceo/install_default_programs()
+	. = ..()
+	installed_programs += new /datum/pc_program/browser(src)
+	installed_programs += new /datum/pc_program/automation(src)
+	installed_programs += new /datum/pc_program/permissions(src)
+	installed_programs += new /datum/pc_program/network_log(src)
