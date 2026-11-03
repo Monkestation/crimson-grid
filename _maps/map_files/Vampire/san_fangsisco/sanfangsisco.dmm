@@ -1117,7 +1117,6 @@
 	},
 /obj/effect/mapping_helpers/door/access/supply,
 /obj/effect/mapping_helpers/door/lock_difficulty/five,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/supply)
@@ -5710,9 +5709,9 @@
 	pixel_y = -6
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "bnv" = (
@@ -8072,9 +8071,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
 "bNX" = (
-/obj/structure/stairs/north{
-	dir = 2
-	},
+/obj/structure/stairs/south,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "bOm" = (
@@ -18717,7 +18714,7 @@
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/supply)
 "emu" = (
@@ -20084,12 +20081,12 @@
 	pixel_y = -6
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 6
 	},
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "eEJ" = (
@@ -27197,11 +27194,11 @@
 	pixel_y = -6
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/turf_decal/siding/wood/dark/end,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "gnz" = (
@@ -31464,7 +31461,6 @@
 /obj/effect/mapping_helpers/door/access/supply,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/five,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "hoq" = (
@@ -31889,7 +31885,6 @@
 /obj/effect/mapping_helpers/door/access/supply,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/five,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
@@ -37355,6 +37350,10 @@
 "iKD" = (
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sabbat_lair)
+"iKK" = (
+/obj/structure/stairs/east,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/supply)
 "iKN" = (
 /obj/structure/table,
 /obj/machinery/microwave{
@@ -42878,10 +42877,10 @@
 /area/vtm/interior/tzimisce_manor)
 "kcu" = (
 /obj/structure/vampdoor/prison,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/supply,
+/obj/effect/mapping_helpers/door/bash_difficulty/nine,
+/obj/effect/mapping_helpers/door/lock_difficulty/nine,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/supply)
 "kcx" = (
@@ -46915,12 +46914,12 @@
 	pixel_y = -6
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 10
 	},
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "lal" = (
@@ -52630,7 +52629,6 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/turf_decal/siding/white,
 /obj/effect/mapping_helpers/door/lock_difficulty/five,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/supply)
 "mqL" = (
@@ -53146,12 +53144,12 @@
 	pixel_y = -6
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 8
 	},
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/supply)
 "mxA" = (
@@ -53420,10 +53418,9 @@
 /obj/structure/vampdoor/wood{
 	pixel_y = -6
 	},
-/obj/effect/mapping_helpers/door/lock_difficulty/five,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/unlock,
 /obj/effect/landmark/npcwall,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "mBa" = (
@@ -63299,9 +63296,8 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/lock_difficulty/five,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/unlock,
+/obj/effect/mapping_helpers/door/lock_difficulty/two,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/supply)
 "oQT" = (
@@ -68663,9 +68659,8 @@
 	name = "Office";
 	dir = 4
 	},
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "qii" = (
@@ -77433,8 +77428,7 @@
 	},
 /obj/effect/mapping_helpers/door/access/supply,
 /obj/effect/mapping_helpers/door/unlock,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/five,
+/obj/effect/mapping_helpers/door/lock_difficulty/two,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "sft" = (
@@ -78187,8 +78181,7 @@
 	},
 /obj/effect/mapping_helpers/door/unlock,
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/lock_difficulty/five,
-/obj/effect/mapping_helpers/door/bash_difficulty/five,
+/obj/effect/mapping_helpers/door/lock_difficulty/two,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/supply)
 "sot" = (
@@ -79515,12 +79508,12 @@
 	pixel_y = -6
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/supply)
 "sDb" = (
@@ -89243,7 +89236,7 @@
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/chinatown)
 "uYn" = (
-/obj/structure/stairs/north{
+/obj/structure/stairs/west{
 	dir = 4
 	},
 /turf/open/floor/wood/smooth/old,
@@ -90992,8 +90985,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/supply,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/supply)
 "vsW" = (
@@ -94557,9 +94550,9 @@
 	pixel_y = -6
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/supply)
 "wlh" = (
@@ -95732,13 +95725,13 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/supply)
 "wAJ" = (
@@ -102248,13 +102241,13 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/access/supply,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/supply)
 "xZq" = (
@@ -277232,7 +277225,7 @@ ntq
 ntq
 kDe
 fKS
-uYn
+iKK
 uYn
 fKS
 fOQ
