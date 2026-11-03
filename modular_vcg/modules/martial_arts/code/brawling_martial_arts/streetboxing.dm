@@ -140,7 +140,7 @@
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_KICK)
 	playsound(attacker, 'modular_vcg/modules/martial_arts/sounds/hook.ogg', 70, TRUE, -1)
 	defender.visible_message(
-		span_warning("[attacker] strikes [defender] directly in the BALLS!!! owies"),
+		span_warning("[attacker] strikes [defender] directly in the groin!!! owies"),
 		span_userdanger("You hit [defender]'s lower abdomen!"),
 		span_hear("You hear a sickening sound of flesh hitting flesh!"),
 		COMBAT_MESSAGE_RANGE,
