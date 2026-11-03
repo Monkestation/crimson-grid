@@ -89,7 +89,7 @@
 	defender.apply_damage(10, BRUTE)
 	if(!iscrinos(defender))	//We check if defender is crinos. If they are? No knockdown; only a stun which you roll.
 		defender.Knockdown(3 SECONDS)
-	defender.Paralyze(3 SECONDS)
+	defender.Knockdown(6 SECONDS)
 	log_combat(attacker, defender, "slammed (CQB)")
 	return TRUE
 
@@ -111,8 +111,8 @@
 		playsound(attacker, 'sound/items/weapons/genhit1.ogg', 50, TRUE, -1)
 
 		var/helmet_protection = (defender.run_armor_check(BODY_ZONE_HEAD, MELEE) + (defender.st_get_stat(STAT_STAMINA) * 5))
-		defender.apply_effect(20 SECONDS, EFFECT_KNOCKDOWN, helmet_protection)
-		defender.apply_effect(10 SECONDS, EFFECT_UNCONSCIOUS, helmet_protection)
+		defender.apply_effect(10 SECONDS, EFFECT_KNOCKDOWN, helmet_protection)
+		defender.apply_effect(3 SECONDS, EFFECT_UNCONSCIOUS, helmet_protection)
 		//defender.adjust_organ_loss(ORGAN_SLOT_BRAIN, 15, 150) brain damage is the WORST
 
 	else
@@ -172,7 +172,7 @@
 	)
 	to_chat(attacker, span_danger("You lock [defender] into a restraining position!"))
 	defender.apply_damage(20, STAMINA)
-	defender.Paralyze(2 SECONDS)
+	defender.Stun(2 SECONDS)
 	restraining_mob = WEAKREF(defender)
 	addtimer(VARSET_CALLBACK(src, restraining_mob, null), 5 SECONDS, TIMER_UNIQUE)
 	return TRUE
@@ -197,12 +197,10 @@
 	if(old_grab_state == GRAB_PASSIVE)
 		if(attacker.combat_mode)
 			defender.drop_all_held_items()
-			attacker.setGrabState(GRAB_AGGRESSIVE) //Instant aggressive grab if on grab intent
-			defender.update_incapacitated()
 			log_combat(attacker, defender, "grabbed", addition="aggressively")
 			defender.visible_message(
-				span_warning("[attacker] violently grabs [defender]!"),
-				span_userdanger("You're grabbed violently by [attacker]!"),
+				span_warning("[attacker]  grabs [defender]!"),
+				span_userdanger("You're grabbed by [attacker]!"),
 				span_hear("You hear sounds of aggressive fondling!"),
 				COMBAT_MESSAGE_RANGE,
 				attacker,
@@ -265,7 +263,7 @@
 		playsound(attacker, 'sound/effects/hit_kick.ogg', 50, TRUE, -1)
 		attacker.do_attack_animation(defender)
 		defender.apply_damage(10, BRUTE)
-		defender.Knockdown(5 SECONDS)
+		defender.Knockdown(1 SECONDS)
 		log_combat(attacker, defender, "sweeped (CQC)")
 		reset_streak()
 		return MARTIAL_ATTACK_SUCCESS
@@ -318,7 +316,7 @@
 		//this is gonna be a tricky one to figure out
 		if(!get_kindred_splat(defender))
 			defender.SetSleeping(3 SECONDS)
-		defender.adjust_oxy_loss(50)
+		defender.adjust_oxy_loss(25)
 		restraining_mob = null
 		if(attacker.grab_state < GRAB_NECK && !HAS_TRAIT(attacker, TRAIT_PACIFISM))
 			attacker.setGrabState(GRAB_NECK)
