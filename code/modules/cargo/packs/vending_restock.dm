@@ -1,3 +1,4 @@
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/vending
 	group = "Vending Restocks"
 
@@ -225,3 +226,4 @@
 					/obj/item/vending_refill/wardrobe/law_wardrobe,
 				)
 	crate_name = "security department supply crate"
+*/

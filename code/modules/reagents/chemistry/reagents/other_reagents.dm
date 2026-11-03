@@ -3699,7 +3699,7 @@
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	var/units_per_wall = 10
 	var/units_per_floor = 2
-	var/turf/closed/wall/concrete/wall_type = /turf/closed/wall/concrete
+	var/turf/closed/wall/concrete/wall_type = /turf/closed/wall/vampwall/market
 	var/turf/open/floor/concrete/floor_type = /turf/open/floor/concrete
 
 /datum/reagent/concrete/expose_atom(atom/exposed_atom, reac_volume, methods)

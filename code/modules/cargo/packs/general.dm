@@ -1,12 +1,11 @@
 /datum/supply_pack/misc
-	group = "Miscellaneous Supplies"
+	group = "Стандартные поставки"
 
 /datum/supply_pack/misc/artsupply
-	name = "Art Supplies"
-	desc = "Make some happy little accidents with a rapid pipe cleaner layer, \
-		three spraycans, and lots of crayons!"
+	name = "Набор художника"
+	desc = "Устройте несколько маленьких счастливых случаев с помощью трех аэрозольных баллончиков и множества цветных карандашей!"
 	cost = CARGO_CRATE_VALUE * 1.8
-	contains = list(/obj/item/rcl,
+	contains = list(// /obj/item/rcl, // CORVAX EDIT
 					/obj/item/storage/toolbox/artistic,
 					/obj/item/storage/toolbox/crafter,
 					/obj/item/toy/crayon/spraycan = 3,
@@ -14,20 +13,21 @@
 					/obj/item/toy/crayon/white,
 					/obj/item/toy/crayon/rainbow,
 				)
-	crate_name = "art supply crate"
+	crate_name = "набор художника"
 	crate_type = /obj/structure/closet/crate/wooden
 
 /datum/supply_pack/misc/tattoo_kit
-	name = "Tattoo Kit"
-	desc = "A tattoo kit with some extra starting ink."
+	name = "Набор тату-мастера"
+	desc = "Набор для татуировки с дополнительными начальными чернилами."
 	cost = CARGO_CRATE_VALUE * 1.8
 	contains = list(
 		/obj/item/tattoo_kit,
 		/obj/item/toner = 2)
-	crate_name = "tattoo crate"
+	crate_name = "набор тату-мастера"
 	crate_type = /obj/structure/closet/crate/wooden
-	discountable = SUPPLY_PACK_STD_DISCOUNTABLE
+	// discountable = SUPPLY_PACK_STD_DISCOUNTABLE // CORVAX EDIT
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
 	desc = "Nanotrasen reminds all employees to never toy with powers outside their control."
@@ -54,10 +54,11 @@
 					/obj/structure/musician/piano/unanchored,
 				)
 	crate_type = /obj/structure/closet/crate/wooden
+*/
 
 /datum/supply_pack/misc/book_crate
-	name = "Book Crate"
-	desc = "Surplus from the Nanotrasen Archives, these seven books are sure to be good reads."
+	name = "Набор книг"
+	desc = "Эти семь книг, точно не затерявшихся где-то на складе, несомненно, будут полезны для чтения."
 	cost = CARGO_CRATE_VALUE * 3
 	access_view = ACCESS_LIBRARY
 	contains = list(/obj/item/book/codex_gigas,
@@ -95,10 +96,11 @@
 */
 
 /datum/supply_pack/misc/paper
-	name = "Bureaucracy Crate"
-	desc = "High stacks of papers on your desk are a big problem - make it pea-sized with \
-		these bureaucratic supplies! Contains six pens, some camera film, hand labeler supplies, \
-		a paper bin, a carbon paper bin, three folders, a laser pointer, two clipboards and two stamps."
+	name = "Бюрократический набор"
+	desc = "Большие стопки бумаг на вашем столе - большая проблема, поэтому сделайте их \
+		размером с горошину с помощью этих канцелярских принадлежностей! Содержит шесть \
+		ручек, немного фотопленки, принадлежности для ручной наклеивания этикеток, ящик для \
+		бумаги, копировальную бумагу, три папки, лазерную указку, два блокнота и две марки."
 	cost = CARGO_CRATE_VALUE * 3.2
 	contains = list(/obj/structure/filingcabinet/chestdrawer/wheeled,
 					/obj/item/camera_film,
@@ -118,16 +120,17 @@
 					/obj/item/storage/box/stamps,
 					/obj/item/laser_pointer/purple,
 				)
-	crate_name = "bureaucracy crate"
+	crate_name = "бюрократический набор"
 
 /datum/supply_pack/misc/fountainpens
-	name = "Calligraphy Crate"
-	desc = "Sign death warrants in style with these seven executive fountain pens."
+	name = "Ящик для каллиграфии"
+	desc = "Стильно подписывайте смертные приговоры с помощью этих семи перьевых ручек."
 	cost = CARGO_CRATE_VALUE * 1.45
 	contains = list(/obj/item/storage/box/fountainpens)
 	crate_type = /obj/structure/closet/crate/wooden
-	crate_name = "calligraphy crate"
+	crate_name = "ящик для каллиграфии"
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/misc/wrapping_paper
 	name = "Festive Wrapping Paper Crate"
 	desc = "Want to mail your loved ones gift-wrapped chocolates, stuffed animals, the Clown's severed head? \
@@ -150,6 +153,7 @@
 				)
 	crate_name = "coffin"
 	crate_type = /obj/structure/closet/crate/coffin
+*/
 
 /* // DARKPACK EDIT REMOVAL
 /datum/supply_pack/misc/empty
@@ -166,6 +170,7 @@
 	return
 */
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/misc/religious_supplies
 	name = "Religious Supplies Crate"
 	desc = "Keep your local chaplain happy and well-supplied, lest they call down judgement upon your \
@@ -178,30 +183,34 @@
 					/obj/item/clothing/under/misc/burial = 2,
 				)
 	crate_name = "religious supplies crate"
+*/
 
 /datum/supply_pack/misc/candles_bulk
-	name = "Candle Box Crate"
-	desc = "Keep your local chapel lit with three candle boxes!"
+	name = "Набор свечей"
+	desc = "Небольшой набор из трёх стандартных пачек красных восковых свечей."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/fancy/candle_box = 3)
 	crate_name = "candle box crate"
 
 /datum/supply_pack/misc/toner
-	name = "Toner Crate"
-	desc = "Spent too much ink printing butt pictures? Fret not, with these six toner refills, \
-		you'll be printing butts 'till the cows come home!'"
+	name = "Ящик с тонерами"
+	desc = "Потратили слишком много чернил на печать фотографий задниц? \
+		Не волнуйтесь, с этими шестью заправками тонера вы будете печатать \
+		задницы, пока не наступит утро!"
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/toner = 6)
-	crate_name = "toner crate"
+	crate_name = "ящик с тонерами"
 
 /datum/supply_pack/misc/toner_large
-	name = "Toner Crate (Large)"
-	desc = "Tired of changing toner cartridges? These six extra heavy duty refills contain \
-		roughly five times as much toner as the base model!"
+	name = "Ящик с тонерами (Большой)"
+	desc = "Устали от замены картриджей с тонером? В этих шести картриджах \
+		для заправки в особо тяжелых условиях содержится примерно в пять раз \
+		больше тонера, чем в базовой модели!"
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/item/toner/large = 6)
-	crate_name = "large toner crate"
+	crate_name = "большой ящик с тонерами"
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/misc/training_toolbox
 	name = "Training Toolbox Crate"
 	desc = "Hone your combat abiltities with two AURUMILL-Brand Training Toolboxes! \
@@ -209,6 +218,7 @@
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/training_toolbox = 2)
 	crate_name = "training toolbox crate"
+*/
 
 ///Special supply crate that generates random syndicate gear up to a determined TC value
 /datum/supply_pack/misc/syndicate
@@ -250,26 +260,26 @@
 	contents_uplink_type = uplink
 
 /datum/supply_pack/misc/papercutter
-	name = "Paper Cutters Crate"
-	desc = "Contains 3 office-grade paper cutters, equipped with sharp blades that can cut any paper into two thin slips.\
-		Comes with one replacement blade."
+	name = "Ящик с резчиком бумаги"
+	desc = "Содержит 3 канцелярских ножа для резки бумаги, оснащенных острыми лезвиями, которые позволяют разрезать любую бумагу на две тонкие полоски. \
+		В комплекте есть одно сменное лезвие."
 	cost = CARGO_CRATE_VALUE * 3.5
 	contains = list(
 		/obj/item/papercutter = 3,
 		/obj/item/hatchet/cutterblade = 1,
 	)
-	crate_name = "paper cutters crate"
+	crate_name = "ящик с резчиком бумаги"
 
 /datum/supply_pack/misc/water_cooler
-	name = "Liquid Cooler - Water"
-	desc = "A liquid cooler, stocked with the freshest water in all the Periphery. Perfect for wasting time at the office!"
+	name = "Кулер с водой"
+	desc = "Кулер для жидкости, наполненный самой свежей водой из всех периферийных устройств. Идеально подходит для того, чтобы тратить время в офисе!"
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/structure/reagent_dispensers/water_cooler/jugless = 1, /obj/item/reagent_containers/cooler_jug/water = 1)
 	crate_name = "water cooler crate"
 
 /datum/supply_pack/misc/punch_cooler
-	name = "Liquid Cooler - Fruit Punch"
-	desc = "A liquid cooler, stocked with exotic fruit punch that can heal injuries! Be sure to remain near the liquid cooler while drinking, for your own health and safety. Seriously, do NOT drink this stuff away from the cooler."
+	name = "Кулер с фруктовым пуншом"
+	desc = "Кулер для жидкости, наполненный экзотическим фруктовым пуншем, который может залечить травмы! Обязательно оставайтесь рядом с кулером во время питья, для вашего же здоровья и безопасности. Серьезно, не пейте этот напиток вдали от кулера."
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/structure/reagent_dispensers/water_cooler/jugless = 1, /obj/item/reagent_containers/cooler_jug/punch = 1)
 	crate_name = "punch cooler crate"

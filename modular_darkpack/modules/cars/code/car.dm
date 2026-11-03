@@ -538,7 +538,7 @@
 			log_combat(driver, L, "hit with", src)
 	var/dam = prev_speed
 	if(driver)
-		var/driver_skill = clamp(driver.st_get_stat(STAT_DRIVE)/2, 1, 4)
+		var/driver_skill = clamp(1+get_driver_skill()/2, 1, 3.5)	// CORVAX EDIT
 		dam = round(dam/driver_skill)
 		driver.apply_damage(prev_speed, BRUTE, BODY_ZONE_CHEST)
 	take_damage(dam)
@@ -550,6 +550,17 @@
 	last_pos["y"] = y
 
 /obj/darkpack_car/process(seconds_per_tick)
+	if(is_stuck_in_water())
+		if(on)
+			stop_engine()
+			playsound(src, 'modular_darkpack/modules/cars/sounds/stop.ogg', 60, FALSE)
+			if(driver)
+				to_chat(driver, span_warning("Вода заливает двигатель — [declent_ru(NOMINATIVE)] глохнет!"))
+
+		if(speed_in_pixels != 0)
+			halt_car()
+
+		return
 	car_move()
 
 /obj/darkpack_car/proc/car_move()
@@ -581,7 +592,8 @@
 			true_movement_angle = SIMPLIFY_DEGREES(used_vector+180)
 
 		// Here lies the Car Backwards Long Jump - 2021-2025
-		var/turf/check_turf = get_turf_in_angle(true_movement_angle, src.loc, 3)
+		var/steps_ahead = max(3, CEILING(abs(used_speed) / 32, 1) + 1)	// CORVAX EDIT
+		var/turf/check_turf = get_turf_in_angle(true_movement_angle, src.loc, steps_ahead)	// CORVAX EDIT
 
 		handle_npc_dodge(check_turf, true_movement_angle)
 
@@ -704,7 +716,7 @@
 		return
 	if(!ISADVANCEDTOOLUSER(user))
 		return
-	var/turn_speed = min(abs(speed_in_pixels) / 10, 3)
+	var/turn_speed = min(abs(speed_in_pixels) / 10, 2 + get_driver_skill() * 0.4)	// CORVAX EDIT
 	switch(direction)
 		if(NORTH)
 			controlling(1, 0)
@@ -724,23 +736,27 @@
 			controlling(0, -turn_speed)
 
 /obj/darkpack_car/proc/controlling(adjusting_speed, adjusting_turn)
-	var/drift = clamp(driver.st_get_stat(STAT_DRIVE)/4, 0.25, 4)
+	var/skill = get_driver_skill()	// CORVAX EDIT
+	var/drift = clamp(1.5 - skill * 0.2, 0.5, 1.5)	// CORVAX EDIT
+	var/accel_mult = 1 + skill * 0.15	// CORVAX EDIT
+	var/brake_mult = 1 + skill * 0.1	// CORVAX EDIT
+
 	var/adjust_true = adjusting_turn
 	if(speed_in_pixels != 0)
-		movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true)
+		movement_vector = SIMPLIFY_DEGREES(movement_vector + adjust_true)	// CORVAX EDIT
 		apply_vector_angle()
 	if(adjusting_speed)
 		if(on)
 			if(adjusting_speed > 0 && speed_in_pixels <= 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 5, FALSE)
-				speed_in_pixels = speed_in_pixels+adjusting_speed*3
+				speed_in_pixels = speed_in_pixels+adjusting_speed*3*brake_mult	// CORVAX EDIT
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
 				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 5, FALSE)
-				speed_in_pixels = speed_in_pixels+adjusting_speed*3
+				speed_in_pixels = speed_in_pixels+adjusting_speed*3*brake_mult	// CORVAX EDIT
 				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else
-				speed_in_pixels = min(stage*64, max(-stage*64, speed_in_pixels+adjusting_speed*stage))
+				speed_in_pixels = min(stage*64, max(-stage*64, speed_in_pixels+adjusting_speed*stage*accel_mult))	// CORVAX EDIT
 				playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 5, FALSE)
 		else
 			if(adjusting_speed > 0 && speed_in_pixels < 0)
@@ -766,6 +782,10 @@
 /obj/darkpack_car/proc/start_engine()
 	if(on)
 		return
+	if(is_stuck_in_water())	// CORVAX EDIT
+		if(driver)
+			to_chat(driver, span_warning("Вода залила двигатель — [declent_ru(NOMINATIVE)] не заводится."))
+		return
 	START_PROCESSING(SScarpool, src)
 	on = TRUE
 	engine_sound_loop.start()
@@ -784,6 +804,28 @@
 		return
 	playsound(src, 'modular_darkpack/modules/cars/sounds/open.ogg', 50, TRUE)
 	locked = FALSE
+
+// CORVAX EDIT START
+/obj/darkpack_car/proc/get_driver_skill()
+	if(!driver)
+		return 0
+	return clamp(driver.st_get_stat(STAT_DRIVE), 0, 5)
+
+/obj/darkpack_car/proc/is_stuck_in_water()
+	return istype(get_turf(src), /turf/open/water/beach/vamp)
+
+/obj/darkpack_car/proc/halt_car()
+	speed_in_pixels = 0
+	animate(src)
+	forceMove(locate(last_pos["x"], last_pos["y"], z))
+	pixel_x = last_pos["x_pix"]
+	pixel_y = last_pos["y_pix"]
+
+	for(var/mob/living/rider in src)
+		if(rider.client)
+			rider.client.pixel_x = 0
+			rider.client.pixel_y = 0
+// CORVAX EDIT END
 
 #undef DOAFTER_SOURCE_CAR
 #undef CAR_TANK_MAX

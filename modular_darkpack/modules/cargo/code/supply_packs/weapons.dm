@@ -495,7 +495,7 @@
 /datum/supply_pack/weapons/armorpolice
 	name = "Броня (полицейская)"
 	desc = "Полный комплект полицейской защиты."
-	cost = 1000
+	cost = 2000 // CORVAX EDIT
 	contains = list(/obj/item/clothing/suit/vampire/vest,
 					/obj/item/clothing/head/vampire/helmet)
 	crate_name = "ящик с бронёй"
@@ -503,11 +503,12 @@
 /datum/supply_pack/weapons/armorarmy
 	name = "Броня (армейская)"
 	desc = "Полный комплект армейской защиты."
-	cost = 1500
+	cost = 4000 // CORVAX EDIT
 	contains = list(/obj/item/clothing/suit/vampire/vest/army,
 					/obj/item/clothing/head/vampire/army)
 	crate_name = "ящик с бронёй"
 
+/* CORVAX EDIT : TRANSFER TO EMERGENCY
 /datum/supply_pack/weapons/armoreod
 	name = "Броня (сапёрная)"
 	desc = "Полный комплект сапёрной защиты."
@@ -515,3 +516,4 @@
 	contains = list(/obj/item/clothing/suit/vampire/eod,
 					/obj/item/clothing/head/vampire/eod)
 	crate_name = "ящик с бронёй"
+*/

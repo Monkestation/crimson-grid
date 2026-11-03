@@ -1,10 +1,10 @@
 /datum/supply_pack/emergency
-	group = "Emergency"
+	group = "Аварийные поставки"
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /datum/supply_pack/emergency/bio
-	name = "Biological Emergency Crate"
-	desc = "This crate includes 2 complete bio suits, along with a box containing sterile masks and latex gloves, providing effective protection against viruses."
+	name = "Снаряжение противобиологической угрозы"
+	desc = "В этот ящик входят 2 комплекта биокостюмов, а также коробка со стерильными масками и латексными перчатками, обеспечивающими эффективную защиту от вирусов."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/clothing/head/bio_hood/general = 2,
 					/obj/item/clothing/suit/bio_suit/general = 2,
@@ -14,7 +14,7 @@
 					/obj/item/storage/box/masks,
 					/obj/item/storage/box/gloves,
 				)
-	crate_name = "bio suit crate"
+	crate_name = "ящик"
 
 /* // DARKPACK EDIT REMOVAL
 /datum/supply_pack/emergency/equipment
@@ -34,33 +34,37 @@
 */
 
 /datum/supply_pack/emergency/bomb
-	name = "Explosive Emergency Crate"
-	desc = "Science gone bonkers? Beeping behind the airlock? Buy now and be the hero the station des... \
-		I mean needs! (time not included). Contains one bomb suit and hood, gas mask, and bomb defusal tools."
-	cost = CARGO_CRATE_VALUE * 2
-	contains = list(/obj/item/clothing/head/utility/bomb_hood,
-					/obj/item/clothing/suit/utility/bomb_suit,
-					/obj/item/clothing/mask/gas,
+	name = "Набор снаряжения сапёра"
+	desc = "Тяжёлый защитный костюм с шлемом, респиратор и базовый набор инструментов для работы \
+		с подозрительными предметами: отвёртка, кусачки. Поставляется для полицейских подразделений и \
+		частных подрядчиков Сан-Франциско. Инструкция по эксплуатации в комплект не входит."
+	cost = CARGO_CRATE_VALUE * 90 // CORVAX EDIT
+	contains = list(/obj/item/clothing/head/vampire/eod, // CORVAX EDIT
+					/obj/item/clothing/suit/vampire/eod, // CORVAX EDIT
+					// /obj/item/clothing/mask/gas, // CORVAX EDIT
 					/obj/item/screwdriver,
 					/obj/item/wirecutters,
-					/obj/item/multitool,
+					// /obj/item/multitool, // CORVAX EDIT
 				)
-	crate_name = "bomb suit crate"
+	crate_name = "набор снаряжения сапёра"
 
 /datum/supply_pack/emergency/firefighting
-	name = "Firefighting Crate"
-	desc = "Only you can prevent station fires. Partner up with two firefighter suits, gas masks, \
-		flashlights, large oxygen tanks, extinguishers, and hardhats!"
+	name = "Комплект для пожаротушения"
+	desc = "Два защитных костюма пожарного, респираторы, фонари, баллоны со сжатым воздухом, \
+		промышленные огнетушители и каски. Поставляется для добровольных дружин, домовладельцев и \
+		частных подрядчиков. Городская пожарная служба напоминает: этот комплект не заменяет \
+		профессиональную подготовку и не даёт права входить в горящие здания."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/clothing/suit/utility/fire/firefighter = 2,
 					/obj/item/clothing/mask/gas = 2,
 					/obj/item/flashlight = 2,
 					/obj/item/tank/internals/oxygen/red = 2,
-					/obj/item/extinguisher/advanced = 2,
+					/obj/item/extinguisher = 2, // CORVAX EDIT
 					/obj/item/clothing/head/utility/hardhat/red = 2,
 				)
 	crate_name = "firefighting crate"
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/emergency/atmostank
 	name = "Firefighting Tank Backpack"
 	desc = "Mow down fires with this high-capacity fire fighting tank backpack."
@@ -82,6 +86,7 @@
 				)
 	crate_name = "internals crate"
 	crate_type = /obj/structure/closet/crate/internals
+*/
 
 /* // DARKPACK EDIT REMOVAL
 /datum/supply_pack/emergency/metalfoam
@@ -117,10 +122,11 @@
 */
 
 /datum/supply_pack/emergency/radiation
-	name = "Radiation Protection Crate"
-	desc = "Survive the Nuclear Apocalypse and Supermatter Engine alike with two sets of radiation suits. \
-		Each set contains a helmet, suit, and Geiger counter. We'll even throw in a bottle of vodka and some glasses too, \
-		considering the life-expectancy of people who order this."
+	name = "Комплект радиационной защиты"
+	desc = "Два комплекта защитной одежды с капюшонами, два дозиметра, бутылка водки и две стопки. \
+		Поставляется для частных подрядчиков, старых рентген-кабинетов и складов с промышленными изотопами. \
+		Городская служба здравоохранения Сан-Франциско напоминает: водка не снижает дозу облучения, а работа \
+		с источниками ионизирующего излучения требует лицензии и подготовки."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/clothing/head/utility/radiation = 2,
 					/obj/item/clothing/suit/utility/radiation = 2,
@@ -128,7 +134,7 @@
 					/obj/item/reagent_containers/cup/glass/bottle/vodka,
 					/obj/item/reagent_containers/cup/glass/drinkingglass/shotglass = 2,
 				)
-	crate_name = "radiation protection crate"
+	crate_name = "ящик с комплектом радиационной защиты"
 	crate_type = /obj/structure/closet/crate/radiation
 
 /* // DARKPACK EDIT REMOVAL

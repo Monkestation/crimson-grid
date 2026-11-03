@@ -172,7 +172,11 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 
 	var/generation = preferences.read_preference(/datum/preference/numeric/generation) // CORVAX EDIT ADD
 	data["max_immortal_age"] = get_max_immortal_age_for_generation(isnum(generation) ? generation : HIGHEST_GENERATION_LIMIT) // CORVAX EDIT ADD
-
+	// CORVAX EDIT ADD START
+	data["generation_locked"] = preferences.is_generation_locked()
+	data["diablerist_locked"] = preferences.is_diablerist_locked()
+	data["player_min_generation"] = get_player_min_generation(preferences)
+	// CORVAX EDIT END
 	return data
 
 /proc/get_discipline_point_budget(immortal_age)

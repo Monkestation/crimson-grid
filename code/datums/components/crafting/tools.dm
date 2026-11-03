@@ -110,6 +110,7 @@
 			return TRUE
 	return FALSE
  */
+/* CORVAX EDIT REMOVAL
 /datum/crafting_recipe/makeshift_radio_jammer
 	name = "Makeshift Radio Jammer"
 	result = /obj/item/jammer/makeshift
@@ -135,6 +136,7 @@
 /datum/crafting_recipe/jaws_of_recovery/New()
 	LAZYADD(blacklist, typecacheof(/obj/item/crowbar/power/paramedic, ignore_root_path = TRUE))
 	return ..()
+*/
 
 /datum/crafting_recipe/lantern
 	name = "Lantern"

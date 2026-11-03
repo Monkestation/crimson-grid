@@ -1,5 +1,5 @@
 /datum/supply_pack/organic
-	group = "Food & Hydroponics"
+	group = "Гидропоника"
 	crate_type = /obj/structure/closet/crate/freezer
 
 /datum/supply_pack/organic/hydroponics
@@ -7,14 +7,13 @@
 	crate_type = /obj/structure/closet/crate/hydroponics
 
 /datum/supply_pack/organic/hydroponics/beekeeping_suits
-	name = "Beekeeper Suit Crate"
-	desc = "Bee business booming? Better be benevolent and boost botany by \
-		bestowing bi-Beekeeper-suits! Contains two beekeeper suits and matching headwear."
+	name = "Набор пчеловода"
+	desc = "Пчелиный бизнес процветает? Тогда запаситесь двумя комплектами пчеловодной защиты с подходящими головными уборами."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/clothing/head/utility/beekeeper_head = 2,
 					/obj/item/clothing/suit/utility/beekeeper_suit = 2,
 				)
-	crate_name = "beekeeper suits"
+	crate_name = "набор пчеловода"
 	crate_type = /obj/structure/closet/crate/hydroponics
 
 /* // DARKPACK EDIT REMOVAL - (Removing Monkey Cubes and Bees)
@@ -36,7 +35,7 @@
 
 /datum/supply_pack/organic/randomized
 	test_ignored = TRUE
-	crate_name = "food crate"
+	crate_name = "ящик еды"
 
 /datum/supply_pack/organic/randomized/fill(obj/container)
 	for(var/i in 1 to 15)
@@ -44,9 +43,10 @@
 		new item(container)
 
 /datum/supply_pack/organic/randomized/chef
-	name = "Excellent Meat Crate"
-	desc = "The best cuts in the whole galaxy. Contains a random assortment of exotic meats."
+	name = "Ящик отборного мяса"
+	desc = "Лучшие отрубы в Сан-Франциско. Содержит случайный набор экзотического мяса для тех, кто не боится экспериментировать."
 	cost = CARGO_CRATE_VALUE * 4
+	order_flags = ORDER_INVISIBLE // CORVAX EDIT ADD
 	contains = list(
 		/obj/item/food/meat/slab/human/mutant/slime,
 		/obj/item/food/meat/slab/killertomato,
@@ -62,8 +62,8 @@
 	)
 
 /datum/supply_pack/organic/randomized/fruits
-	name = "Fruit Crate"
-	desc = "Rich in vitamins. Contains a lime, orange, watermelon, apple, berries and a lemon."
+	name = "Ящик фруктов"
+	desc = "Богато витаминами. Содержит лайм, апельсин, арбуз, яблоко, ягоды и лимон."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(
 		/obj/item/food/grown/citrus/lime,
@@ -75,8 +75,8 @@
 	)
 
 /datum/supply_pack/organic/randomized/vegetables
-	name = "Vegetables Crate"
-	desc = "Grown in vats. Contains a chili, corn, tomato, potato, carrot, chanterelle, onion, pumpkin, and cucumber."
+	name = "Ящик овощей"
+	desc = "Выращено в теплицах. Содержит перец чили, кукурузу, помидор, картофель, морковь, лисичку, лук, тыкву и огурец."
 	cost = CARGO_CRATE_VALUE * 1.8
 	contains = list(
 		/obj/item/food/grown/chili,
@@ -116,10 +116,8 @@
 */
 
 /datum/supply_pack/organic/food
-	name = "Food Crate"
-	desc = "Get things cooking with this crate full of useful ingredients! \
-		Contains a dozen eggs, three bananas, and some flour, rice, milk, \
-		soymilk, salt, pepper, enzyme, sugar, and monkeymeat."
+	name = "Ящик продуктов"
+	desc = "Всё для готовки: дюжина яиц, три банана, мука, рис, молоко, соевое молоко, соль, перец, энзимный размягчитель, сахар и бананы."
 	cost = CARGO_CRATE_VALUE * 3 // DARKPACK EDIT CHANGE - Unit test failure? - Original: 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/reagent_containers/condiment/flour,
 					/obj/item/reagent_containers/condiment/rice,
@@ -130,50 +128,46 @@
 					/obj/item/storage/fancy/egg_box,
 					/obj/item/reagent_containers/condiment/enzyme,
 					/obj/item/reagent_containers/condiment/sugar,
-					/obj/item/food/meat/slab/monkey,
+					// /obj/item/food/meat/slab/monkey, // CORVAX EDIT REMOVAL
 					/obj/item/food/grown/banana = 3,
 				)
-	crate_name = "food crate"
+	crate_name = "ящик продуктов"
 
 /datum/supply_pack/organic/cream_piee
-	name = "High-yield Clown-grade Cream Pie Crate"
-	desc = "Designed by Aussec's Advanced Warfare Research Division, \
-		these high-yield, Clown-grade cream pies are powered by a synergy \
-		of performance and efficiency. Guaranteed to provide maximum results."
+	name = "Ящик кремовых пирогов"
+	desc = "Набор высококачественных кремовых пирогов для розыгрышей, вечеринок и тех случаев, когда нужно произвести впечатление. Содержит спортивную сумку с пирогами."
 	cost = CARGO_CRATE_VALUE * 12
 	contains = list(/obj/item/storage/backpack/duffelbag/clown/cream_pie)
-	crate_name = "party equipment crate"
-	order_flags = ORDER_CONTRABAND
+	crate_name = "ящик кремовых пирогов"
+	order_flags = ORDER_INVISIBLE // CORVAX EDIT ADD
 	access = ACCESS_THEATRE
 	access_view = ACCESS_THEATRE
 	crate_type = /obj/structure/closet/crate/secure
 	discountable = SUPPLY_PACK_RARE_DISCOUNTABLE
 
 /datum/supply_pack/organic/hydroponics/supplies
-	name = "Hydroponics Crate"
-	desc = "Supplies for growing a great garden! Contains two bottles of ammonia, \
-		two Plant-B-Gone spray bottles, a hatchet, cultivator, plant analyzer, \
-		as well as a pair of leather gloves and a botanist's apron."
+	name = "Ящик для гидропоники"
+	desc = "Всё для хорошего сада: две бутылки аммиака, два спрея Plant-B-Gone, топорик, культиватор, кожаные перчатки и фартук садовника."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/reagent_containers/spray/plantbgone = 2,
 					/obj/item/reagent_containers/cup/bottle/ammonia = 2,
 					/obj/item/hatchet,
 					/obj/item/cultivator,
-					/obj/item/plant_analyzer,
+					// /obj/item/plant_analyzer, // CORVAX EDIT ADD
 					/obj/item/clothing/gloves/botanic_leather,
 					/obj/item/clothing/suit/apron,
 				)
-	crate_name = "hydroponics crate"
+	crate_name = "ящик для гидропоники"
 
 /datum/supply_pack/organic/hydroponics/hydrotank
-	name = "Hydroponics Backpack Crate"
-	desc = "Bring on the flood with this high-capacity backpack crate. \
-		Contains 500 units of life-giving H2O."
+	name = "Ранцевый бак для гидропоники"
+	desc = "Высокоёмкий ранцевый бак с 500 единицами живительной H2O. Для тех, кто решил, что шланга недостаточно."
 	cost = CARGO_CRATE_VALUE * 2
 	access = ACCESS_HYDROPONICS
 	contains = list(/obj/item/watertank)
-	crate_name = "hydroponics backpack crate"
+	crate_name = "ящик с ранцевым баком для гидропоники"
 	crate_type = /obj/structure/closet/crate/secure/hydroponics
+	order_flags = ORDER_INVISIBLE // CORVAX EDIT ADD
 
 /datum/supply_pack/organic/pizza
 	name = "Pizza Crate"
@@ -182,6 +176,7 @@
 	cost = CARGO_CRATE_VALUE * 10 // Best prices this side of the galaxy.
 	contains = list()
 	crate_name = "pizza crate"
+	order_flags = ORDER_INVISIBLE // CORVAX EDIT ADD
 
 	///Whether we've provided an infinite pizza box already this shift or not.
 	var/anomalous_box_provided = FALSE
@@ -275,18 +270,16 @@
 	of species, the individual will find the object edible and it will taste great according to their personal definitions, which vary significantly based on person and species.")
 
 /datum/supply_pack/organic/potted_plants
-	name = "Potted Plants Crate"
-	desc = "Spruce up the station with these lovely plants! Contains a random \
-		assortment of five potted plants from Nanotrasen's potted plant research division. \
-		Warranty void if thrown."
+	name = "Ящик горшечных растений"
+	desc = "Оживите помещение этими растениями. Содержит случайный набор из пяти горшечных растений из городского питомника. Гарантия не действует при метании."
 	cost = CARGO_CRATE_VALUE * 1.5
 	contains = list(/obj/item/kirbyplants/random = 5)
-	crate_name = "potted plants crate"
+	crate_name = "ящик горшечных растений"
 	crate_type = /obj/structure/closet/crate/wooden
 
 /datum/supply_pack/organic/seeds
-	name = "Seeds Crate"
-	desc = "Big things have small beginnings. Contains fifteen different seeds."
+	name = "Ящик семян"
+	desc = "Большое начинается с малого. Содержит пятнадцать разных семян."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/seeds/chili,
 					/obj/item/seeds/cotton,
@@ -305,13 +298,12 @@
 					/obj/item/seeds/sugarcane,
 					/obj/item/seeds/cucumber,
 				)
-	crate_name = "seeds crate"
+	crate_name = "ящик семян"
 	crate_type = /obj/structure/closet/crate/hydroponics
 
 /datum/supply_pack/organic/grill
-	name = "Grilling Starter Kit"
-	desc = "Hey dad I'm Hungry. Hi Hungry I'm THE NEW GRILLING STARTER KIT \
-		ONLY 5000 BUX GET NOW! Contains a grill and fuel."
+	name = "Набор для гриля"
+	desc = "Всё для первого выезда на природу: гриль, уголь, щипцы и банка энергетика. Соберите друзей и не забудьте про огнетушитель."
 	cost = CARGO_CRATE_VALUE * 4
 	crate_type = /obj/structure/closet/crate
 	contains = list(
@@ -320,19 +312,18 @@
 		/obj/item/reagent_containers/cup/soda_cans/monkey_energy,
 		/obj/machinery/grill/unwrenched,
 	)
-	crate_name = "grilling starter kit crate"
+	crate_name = "ящик с набором для гриля"
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /datum/supply_pack/organic/grillfuel
-	name = "Grilling Fuel Kit"
-	desc = "Contains propane and propane accessories. \
-		(Note: doesn't contain any actual propane.)"
+	name = "Топливо для гриля"
+	desc = "Пропан и всё для него. Содержит десять кусков угля и банку энергетика. (Примечание: пропана в комплекте нет.)"
 	cost = CARGO_CRATE_VALUE * 4
 	crate_type = /obj/structure/closet/crate
 	contains = list(/obj/item/stack/sheet/mineral/coal/ten,
 					/obj/item/reagent_containers/cup/soda_cans/monkey_energy,
 				)
-	crate_name = "grilling fuel kit crate"
+	crate_name = "ящик с топливом для гриля"
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
 /* // DARKPACK EDIT REMOVAL
@@ -363,100 +354,94 @@
 */
 
 /datum/supply_pack/organic/syrup
-	name = "Coffee Syrups Box"
-	desc = "A packaged box of various syrups, perfect for making your delicious coffee even more diabetic."
+	name = "Коробка кофейных сиропов"
+	desc = "Набор разных сиропов, чтобы ваш кофе стал ещё более диабетическим."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(
 		/obj/item/reagent_containers/cup/bottle/syrup_bottle/caramel,
 		/obj/item/reagent_containers/cup/bottle/syrup_bottle/liqueur,
-		/obj/item/reagent_containers/cup/bottle/syrup_bottle/korta_nectar,
+		// /obj/item/reagent_containers/cup/bottle/syrup_bottle/korta_nectar, // CORVAX EDIT REMOVAL
 	)
-	crate_name = "coffee syrups box"
+	crate_name = "коробка кофейных сиропов"
 	crate_type = /obj/structure/closet/crate/cardboard
 
 /datum/supply_pack/organic/syrup_contraband
-	order_flags = ORDER_CONTRABAND
-	name = "Contraband Syrups Box"
-	desc = "A packaged box containing illegal coffee syrups. Possession of these carries a penalty established in the galactic penal code."
+	order_flags = ORDER_INVISIBLE // CORVAX EDIT ADD
+	name = "Коробка нелегальных сиропов"
+	desc = "Коробка с нелегальными кофейными сиропами. Хранение и распространение преследуется по Уголовному кодексу штата Калифорния."
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(
 		/obj/item/reagent_containers/cup/bottle/syrup_bottle/laughsyrup = 2,
 	)
-	crate_name = "illegal syrups box"
+	crate_name = "коробка нелегальных сиропов"
 	crate_type = /obj/structure/closet/crate/cardboard
 
 /datum/supply_pack/organic/cooking_oil
-	name = "Cooking Oil Vat"
-	desc = "This high-grade cooking oil can make almost anything edible. \
-	From a plasma cutter to a Syndicate bomb, if it fits in the fryer, it's a snack. \
-	Contains a vat of cooking oil."
+	name = "Бак кулинарного масла"
+	desc = "Высококачественное кулинарное масло. Всё, что помещается во фритюрницу, становится закуской. Содержит бак кулинарного масла."
 	cost = CARGO_CRATE_VALUE * 4.75
 	contains = list(/obj/structure/reagent_dispensers/cooking_oil)
-	crate_name = "cooking oil crate"
+	crate_name = "ящик с кулинарным маслом"
 	crate_type = /obj/structure/closet/crate/wooden
 
 /datum/supply_pack/organic/beer_keg
-	name = "Beer Keg"
-	desc = "The perfect way to start your shift... or end it. \
-	Contains a full barrel of Nanotrasen brewed, low-grade alcoholic beverage, \
-	perfect for getting loose after a hard day of not dying."
+	name = "Бочка пива"
+	desc = "Идеальный способ начать смену... или закончить её. Содержит полную бочку дешёвого местного пива — чтобы расслабиться после тяжёлого дня, когда ты ещё жив."
 	cost = CARGO_CRATE_VALUE * 6.25
 	contains = list(/obj/structure/reagent_dispensers/keg/beer)
-	crate_name = "beer keg crate"
+	crate_name = "ящик с бочкой пива"
 	crate_type = /obj/structure/closet/crate/wooden
 
 /datum/supply_pack/organic/nutraslop
-	name = "Nutraslop Serving Dish"
-	desc = "A culinary masterpiece created from all of Nanotrasen's previous culinary... innovations. \
-	A single bite will transport you back to the taste of yesterday's prison rations. \
-	Contains a serving dish filled with Nutraslop."
+	name = "Блюдо с дешёвой столовой смесью"
+	desc = "Кулинарный шедевр, созданный из достижений местной пищевой промышленности. Один укус вернёт вас к вкусу вчерашнего тюремного пайка. Содержит блюдо с Nutraslop."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/structure/reagent_dispensers/servingdish/unanchored)
-	crate_name = "nutraslop serving dish crate"
-
+	crate_name = "ящик с блюдом Nutraslop"
+	order_flags = ORDER_INVISIBLE // CORVAX EDIT ADD
 
 /datum/supply_pack/organic/hydroponics/soil_normal
-	name = "NT-Ag Potting Soil Crate"
-	desc = "A crate containing sacks of regular, commercial soil."
+	name = "Ящик почвенной смеси"
+	desc = "Ящик с мешками обычной коммерческой почвы."
 	cost = CARGO_CRATE_VALUE * 2
-	crate_name = "potting soil crate"
+	crate_name = "ящик почвенной смеси"
 	contains = list(
 		/obj/item/soil_sack = 5,
 	)
 
 /datum/supply_pack/organic/hydroponics/soil_vermaculite
-	name = "NT-Ag Vermaculite Crate"
-	desc = "A crate containing sacks of NT-Ag vermaculite. Your favorite expanded mineral!"
+	name = "Ящик вермикулита"
+	desc = "Ящик с мешками вермикулита. Ваш любимый вспученный минерал!"
 	cost = CARGO_CRATE_VALUE * 2
-	crate_name = "vermaculite crate"
+	crate_name = "ящик вермикулита"
 	contains = list(
 		/obj/item/soil_sack/vermaculite = 3,
 	)
 
 /datum/supply_pack/organic/hydroponics/soil_gel
-	name = "NT-Ag Hydrogel Beads Crate"
-	desc = "A crate containing sacks of prehydrated superabsorbent gel beads. Everyone likes some nice beads."
+	name = "Ящик гидрогелевых шариков"
+	desc = "Ящик с мешками предварительно гидратированных суперабсорбирующих гелевых шариков. Всем нравятся хорошие шарики."
 	cost = CARGO_CRATE_VALUE * 2
-	crate_name = "hydrogel beads crate"
+	crate_name = "ящик гидрогелевых шариков"
 	contains = list(
 		/obj/item/soil_sack/gel = 3,
 	)
 
 
 /datum/supply_pack/organic/hydroponics/soil_coir
-	name = "NT-Ag Korta Coir Crate"
-	desc = "A crate containing sacks of korta root coir. Good for starting a mushroom farm!"
+	name = "Ящик кокосового волокна"
+	desc = "Ящик с мешками кокосового волокна. Отлично подходит для выращивания грибов."
 	cost = CARGO_CRATE_VALUE * 3
-	crate_name = "korta coir crate"
+	crate_name = "ящик кокосового волокна"
 	contains = list(
 		/obj/item/soil_sack/coir = 3,
 	)
 
 /datum/supply_pack/organic/hydroponics/soil_worm
-	name = "NT-Ag Worm Castings Crate"
-	desc = "A crate containing sacks of vermicompost. Worms not included! Or?.."
+	name = "Ящик вермикомпоста"
+	desc = "Ящик с мешками вермикомпоста. Черви не входят в комплект! Или.."
 	cost = CARGO_CRATE_VALUE * 4
-	crate_name = "worm castings crate"
+	crate_name = "ящик вермикомпоста"
 	contains = list(
 		/obj/item/soil_sack/worm = 3,
 	)

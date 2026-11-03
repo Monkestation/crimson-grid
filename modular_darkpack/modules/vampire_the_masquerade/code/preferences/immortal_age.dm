@@ -37,6 +37,8 @@
 		input = text2num(input)
 	if(!isnum(input))
 		input = minimum
+	if(!length(preferences?.exp))
+		return clamp(round(input), minimum, maximum)
 	var/gen = preferences?.read_preference(/datum/preference/numeric/generation)
 	var/max_age = min(maximum, get_max_immortal_age_for_generation(isnum(gen) ? gen : HIGHEST_GENERATION_LIMIT))
 	return clamp(round(input), minimum, max_age)

@@ -1,6 +1,7 @@
 /datum/supply_pack/costumes_toys
-	group = "Costumes & Toys"
+	group = "Развлечения"
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/costumes_toys/randomised
 	name = "Collectable Hats Crate"
 	desc = "Flaunt your status with three unique, highly-collectable hats!"
@@ -93,11 +94,11 @@
 					/obj/item/clothing/head/helmet/taghelm/red = 3,
 				)
 	crate_name = "laser tag crate"
+*/
 
 /datum/supply_pack/costumes_toys/knucklebones
-	name = "Knucklebones Game Crate"
-	desc = "A fun dice game definitely not invented by a cult. Consult your local chaplain regarding \
-		approved religious activity. Contains eighteen d6, one stick of chalk, and instructions on how to play."
+	name = "Ящик для игры в кости"
+	desc = "Набор для настольной игры в кости. В комплекте восемнадцать шестигранных кубиков, мел и правила. Игра не имеет отношения к культам; соблюдайте местные законы."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/dice/d6 = 18,
 					/obj/item/paper/guides/knucklebone,
@@ -106,6 +107,7 @@
 	crate_name = "knucklebones game crate"
 	crate_type = /obj/structure/closet/crate/wooden
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/costumes_toys/lasertag/pins
 	name = "Laser Tag Firing Pins Crate"
 	desc = "Three laser tag firing pins used in laser-tag units to ensure users are wearing their vests."
@@ -142,14 +144,13 @@
 				)
 	crate_name = "original costume crate"
 	crate_type = /obj/structure/closet/crate/wooden
+*/
 
 /datum/supply_pack/costumes_toys/costume
-	name = "Standard Costume Crate"
-	desc = "Supply the station's entertainers with the equipment of their trade with these \
-		Nanotrasen-approved costumes! Contains a full clown and mime outfit, along with a \
-		bike horn and a bottle of nothing."
-	cost = CARGO_CRATE_VALUE * 2
-	access = ACCESS_THEATRE
+	name = "Набор одежды артиста"
+	desc = "Стандартный набор для начинающих артистов. Два набора по цене одного!"
+	cost = CARGO_CRATE_VALUE * 3 // CORVAX EDIT
+	// access = ACCESS_THEATRE // CORVAX EDIT
 	contains = list(/obj/item/storage/backpack/clown,
 					/obj/item/clothing/shoes/clown_shoes,
 					/obj/item/clothing/mask/gas/clown_hat,
@@ -161,10 +162,10 @@
 					/obj/item/clothing/mask/gas/mime,
 					/obj/item/clothing/head/beret/frenchberet,
 					/obj/item/clothing/suit/toggle/suspenders,
-					/obj/item/reagent_containers/cup/glass/bottle/bottleofnothing,
+					// /obj/item/reagent_containers/cup/glass/bottle/bottleofnothing, // CORVAX EDIT
 					/obj/item/storage/backpack/mime,
 				)
-	crate_name = "standard costume crate"
+	crate_name = "набор артиста"
 	crate_type = /obj/structure/closet/crate/wooden
 
 /datum/supply_pack/costumes_toys/costume/fill(obj/container)
@@ -173,11 +174,10 @@
 	funny_gas_internals = pick(subtypesof(/obj/item/tank/internals/emergency_oxygen/engi/clown) - /obj/item/tank/internals/emergency_oxygen/engi/clown)
 	new funny_gas_internals(container)
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/costumes_toys/randomised/toys
-	name = "Toy Crate"
-	desc = "Who cares about pride and accomplishment? Skip the gaming and get straight \
-		to the sweet rewards with this product! Contains five random toys. Warranty void \
-		if used to prank research directors."
+	name = "Ящик с игрушками"
+	desc = "Пропустите скучные игры и сразу переходите к призам! Содержит пять случайных игрушек."
 	cost = CARGO_CRATE_VALUE * 8 // or play the arcade machines ya lazy bum
 	num_contained = 5
 	contains = list()
@@ -256,35 +256,36 @@
 
 	if(prob(30)) // a pair of googly eyes because funny
 		new /obj/item/storage/box/stickers/googly(crate)
+*/
 
 /datum/supply_pack/costumes_toys/pinata
-	name = "Corgi Pinata Kit"
-	desc = "This crate contains a pinata full of candy, a blindfold and a bat for smashing it."
+	name = "Набор пиньяты"
+	desc = "В этом ящике находится пиньята, полная конфет, повязка на глаза и бита, чтобы разбивать ее."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(
 		/obj/item/pinata,
 		/obj/item/melee/baseball_bat,
 		/obj/item/clothing/glasses/blindfold,
 	)
-	crate_name = "corgi pinata kit"
+	crate_name = "набор пиньяты"
 	crate_type = /obj/structure/closet/crate/wooden
 	discountable = SUPPLY_PACK_STD_DISCOUNTABLE
 
 /datum/supply_pack/costumes_toys/balloons
-	name = "Long Balloons Kit"
-	desc = "This crate contains a box of long balloons, plus a skillchip for non-clowns to join the fun! Extra layer of safety so clowns at CentCom won't get to them."
+	name = "Набор воздушных шариков"
+	desc = "Набор содержит 24 разноцветных воздушных шариков плотно упакованных в коробочку. Прямиком из Китая."
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(
 		/obj/item/storage/box/balloons,
-		/obj/item/skillchip/job/clown,
+		// /obj/item/skillchip/job/clown, // CORVAX EDIT
 	)
-	crate_name = "long balloons kit"
+	crate_name = "набор воздушных шариков"
 	crate_type = /obj/structure/closet/crate/wooden
 	discountable = SUPPLY_PACK_STD_DISCOUNTABLE
 
 /datum/supply_pack/costumes_toys/christmas
-	name = "Surplus Christmas Gifts"
-	desc = "This crate contains pre-wrapped gifts addressed to station employees, sourced at random from Nanotrasen surplus as part of a morale boosting initiative."
+	name = "Рождественский набор подарков"
+	desc = "В этом ящике находятся предварительно упакованные подарки, адресованные всем гражданам штата, которые были выбраны случайным образом в рамках инициативы по повышению морального духа страны."
 	cost = CARGO_CRATE_VALUE * 30
 	contains = list()
 	order_flags = ORDER_SPECIAL
@@ -316,4 +317,4 @@
 	parcel.update_icon()
 	parcel.drag_slowdown = crate.drag_slowdown
 	crate.forceMove(parcel)
-	parcel.name = "christmas gifts"
+	parcel.name = "рождественская посылка"

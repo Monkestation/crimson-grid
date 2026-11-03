@@ -1,4 +1,4 @@
-
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/goody
 	access = NONE
 	group = "Goodies"
@@ -479,3 +479,4 @@
 	desc = "A trendy hiphop track by F'norkiz Gamma, 'Groovepad'. Requires a boombox to play."
 	cost = PAYCHECK_CREW * 4
 	contains = list(/obj/item/music_tape/hiphop)
+*/

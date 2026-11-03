@@ -98,7 +98,25 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// The character profiles, saved so we can cheaply recompute them in ui_data only when necessary, without having to use expensive update_static_data calls.
 	var/list/cached_character_profiles
 
-	var/admin_generation_floor = null // CORVAX EDIT ADD
+	// CORVAX EDIT ADD START
+	var/admin_generation_floor = null
+	var/admin_generation_lock_round = null
+	var/generation_write_bypass = FALSE
+	// CORVAX EDIT ADD END
+
+// CORVAX EDIT ADD START
+/datum/preferences/proc/is_generation_locked()
+	if(!isnull(admin_generation_lock_round))
+		return TRUE
+	if(read_preference(/datum/preference/toggle/admin_generation_lock_forever))
+		return TRUE
+	if(read_preference(/datum/preference/toggle/diablerie_generation_locked))
+		return TRUE
+	return FALSE
+
+/datum/preferences/proc/is_diablerist_locked()
+	return read_preference(/datum/preference/toggle/diablerie_locked)
+// CORVAX EDIT ADD END
 
 /datum/preferences/Destroy(force)
 	QDEL_NULL(character_preview_view)
@@ -484,16 +502,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/validate_quirks()
 	var/datum/species/species_type = read_preference(/datum/preference/choiced/species)
 	var/datum/splat/splat_type = read_preference(/datum/preference/choiced/splats) // DARKPACK EDIT ADD - SPLATS
+	var/datum/st_stat/freebie/freebie_stat = preference_storyteller_stats[STAT_FREEBIE_POINTS] // CORVAX EDIT
 	var/list/quirks_removed
 	for(var/quirk_name in all_quirks)
 		var/quirk_path = SSquirks.quirks[quirk_name]
 		var/datum/quirk/quirk_prototype = SSquirks.quirk_prototypes[quirk_path]
 		if(!quirk_prototype.is_species_appropriate(species_type))
 			all_quirks -= quirk_name
+			freebie_stat?.increase_points(quirk_prototype.value) // CORVAX EDIT
 			LAZYADD(quirks_removed, quirk_prototype.get_display_name()) // CORVAX EDIT CHANGE - ORIGINAL: LAZYADD(quirks_removed, quirk_name)
 		// DARKPACK EDIT ADD START - SPLATS
 		if(!quirk_prototype.is_splat_appropriate(splat_type))
 			all_quirks -= quirk_name
+			freebie_stat?.increase_points(quirk_prototype.value) // CORVAX EDIT
 			LAZYADD(quirks_removed, quirk_prototype.get_display_name()) // CORVAX EDIT CHANGE - ORIGINAL: LAZYADD(quirks_removed, quirk_name)
 		// DARKPACK EDIT ADD END
 	var/list/feedback
@@ -503,9 +524,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(SSquirks.points_enabled && GetQuirkBalance() < 0)
 		LAZYADD(feedback, "Ваши черты сброшены.")
 		all_quirks = list()
+		// CORVAX EDIT START
+		if(freebie_stat)
+			freebie_stat.set_points(initial(freebie_stat.points) - freebie_stat.freebie_cost_spent)
+		// CORVAX EDIT END
 	if(LAZYLEN(feedback))
 		to_chat(parent, boxed_message(span_greentext(feedback.Join("\n"))))
 
+// CORVAX EDIT START
+/datum/preferences/proc/refresh_playtime_gating()
+	value_cache -= /datum/preference/numeric/generation
+	value_cache -= /datum/preference/numeric/immortal_age
+	read_preference(/datum/preference/numeric/generation)
+	read_preference(/datum/preference/numeric/immortal_age)
+	clamp_immortal_age_to_generation()
+// CORVAX EDIT END
 
 /**
  * Safely read a given preference datum from a given client.

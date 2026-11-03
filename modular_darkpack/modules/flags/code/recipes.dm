@@ -1,3 +1,4 @@
+/*
 /datum/crafting_recipe/gaypride
 	name = "флаг ЛГБТ-прайда"
 	reqs = list(
@@ -77,4 +78,4 @@
 	)
 	result = /obj/item/sign/flag/pride/inter
 	category = CAT_FURNITURE
-
+*/

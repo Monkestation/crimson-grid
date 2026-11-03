@@ -5,7 +5,12 @@
 
 	var/new_generation = generation
 	if(victim_generation < generation)
-		new_generation = max(generation - 1, MAX_TRUSTED_GENERATION)
+		new_generation = max(generation - 1, LOWEST_GENERATION_LIMIT)
 	kindred.set_generation(new_generation)
 
-	write_preference_midround(/datum/preference/numeric/generation, new_generation)
+	// CORVAX EDIT START
+	if(client?.prefs)
+		client.prefs.generation_write_bypass = TRUE
+		write_preference_midround(/datum/preference/numeric/generation, new_generation)
+		client.prefs.generation_write_bypass = FALSE
+	// CORVAX EDIT END

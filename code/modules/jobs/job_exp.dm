@@ -108,6 +108,7 @@ GLOBAL_PROTECT(exp_to_update)
 			play_records[rtype] = 0
 
 	prefs.exp = play_records
+	prefs.refresh_playtime_gating()	// CORVAX EDIT ADD
 
 //updates player db flags
 /client/proc/update_flag_db(newflag, state = FALSE)

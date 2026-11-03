@@ -7,9 +7,11 @@ import type { FeatureNumeric, FeatureValueProps, FeatureNumericData } from '../b
 function GenerationInput(props: FeatureValueProps<number, number, FeatureNumericData>) {
   const { handleSetValue, value } = props;
   const { data } = useBackend<PreferencesMenuData>();
-  const minGeneration = data.is_trusted
-    ? data.max_trusted_generation
-    : data.max_public_generation;
+  const minGeneration = // CORVAX EDIT
+    data.player_min_generation ??
+    (data.is_trusted
+      ? data.max_trusted_generation
+      : data.max_public_generation);
 
   return (
     <NumberInput
@@ -18,6 +20,7 @@ function GenerationInput(props: FeatureValueProps<number, number, FeatureNumeric
       maxValue={data.highest_generation_limit}
       step={1}
       value={value}
+      disabled={!!data.generation_locked} // CORVAX EDIT
     />
   );
 }

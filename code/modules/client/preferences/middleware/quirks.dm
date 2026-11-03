@@ -129,44 +129,53 @@
 /datum/preference_middleware/quirks/proc/give_quirk(list/params, mob/user)
 	var/quirk_name = params["quirk"]
 	// DARKPACK EDIT ADD - MERITS_FLAWS
-	var/datum/st_stat/freebie/freebie_points = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS]
+	// var/datum/st_stat/freebie/freebie_points = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS] // CORVAX EDIT
 	var/datum/quirk/quirk_type = SSquirks.quirks[quirk_name]
-	freebie_points.decrease_points(quirk_type.value)
-	// DARKPACK EDIT END - MERITS_FLAWS
-	preferences.validate_quirks()
+	if(isnull(quirk_type)) // CORVAX EDIT
+		tainted = TRUE
+		preferences.update_static_data(user, always_instant = TRUE)
+		return TRUE
+
 	var/list/new_quirks = preferences.all_quirks | quirk_name
-	if (SSquirks.filter_invalid_quirks(new_quirks) != new_quirks)
-		// If the client is sending an invalid give_quirk, that means that
-		// something went wrong with the client prediction, so we should
-		// catch it back up to speed.
+	if (SSquirks.filter_invalid_quirks(new_quirks) != new_quirks) // CORVAX EDIT
+		tainted = TRUE
+		preferences.update_static_data(user, always_instant = TRUE)
+		return TRUE
+
+	var/datum/st_stat/freebie/freebie_points = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS] // CORVAX EDIT ADD
+	if (!freebie_points.decrease_points(quirk_type.value)) // CORVAX EDIT
 		tainted = TRUE
 		preferences.update_static_data(user, always_instant = TRUE)
 		return TRUE
 
 	preferences.all_quirks = new_quirks
+	preferences.validate_quirks()
 	tainted = TRUE
 	preferences.character_preview_view?.update_body()
-
 	return TRUE
 
 /datum/preference_middleware/quirks/proc/remove_quirk(list/params, mob/user)
 	var/quirk_name = params["quirk"]
-	// DARKPACK EDIT ADD - MERITS_FLAWS
-	var/datum/st_stat/freebie/freebie_points = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS]
-	var/datum/quirk/quirk_type = SSquirks.quirks[quirk_name]
-	freebie_points.increase_points(quirk_type.value)
-	// DARKPACK EDIT END - MERITS_FLAWS
-	var/list/new_quirks = preferences.all_quirks - quirk_name
-	if ( \
-		!(quirk_name in preferences.all_quirks) \
-		|| SSquirks.filter_invalid_quirks(new_quirks) != new_quirks \
-	)
-		// If the client is sending an invalid remove_quirk, that means that
-		// something went wrong with the client prediction, so we should
-		// catch it back up to speed.
+
+	if (!(quirk_name in preferences.all_quirks)) // CORVAX EDIT
 		tainted = TRUE
 		preferences.update_static_data(user, always_instant = TRUE)
 		return TRUE
+
+	var/datum/quirk/quirk_type = SSquirks.quirks[quirk_name]
+	if(isnull(quirk_type)) // CORVAX EDIT
+		tainted = TRUE
+		preferences.update_static_data(user, always_instant = TRUE)
+		return TRUE
+
+	var/list/new_quirks = preferences.all_quirks - quirk_name
+	if (SSquirks.filter_invalid_quirks(new_quirks) != new_quirks) // CORVAX EDIT
+		tainted = TRUE
+		preferences.update_static_data(user, always_instant = TRUE)
+		return TRUE
+
+	var/datum/st_stat/freebie/freebie_points = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS] // CORVAX EDIT ADD
+	freebie_points.increase_points(quirk_type.value) // CORVAX EDIT ADD
 
 	preferences.all_quirks = new_quirks
 	tainted = TRUE

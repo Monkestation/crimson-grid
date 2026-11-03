@@ -49,10 +49,12 @@
 	if(!.)
 		return FALSE
 	var/obj/darkpack_car/owned_car = owner.loc
-	if(owned_car.stage < 3)
-		owned_car.stage = owned_car.stage+1
+
+	if(trigger_flags & TRIGGER_SECONDARY_ACTION) // CORVAX EDIT
+		owned_car.stage = owned_car.stage > 1 ? owned_car.stage - 1 : 3
 	else
-		owned_car.stage = 1
+		owned_car.stage = owned_car.stage < 3 ? owned_car.stage + 1 : 1
+
 	to_chat(owner, span_notice("Вы включаете [owned_car.stage]-ю передачу."))
 
 /datum/action/darkpack_car/baggage

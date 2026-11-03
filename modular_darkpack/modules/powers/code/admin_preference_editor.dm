@@ -45,6 +45,19 @@
 	data["highest_generation_limit"] = HIGHEST_GENERATION_LIMIT // CORVAX EDIT ADD
 	data["flavor_text"] = null
 	data["headshot"] = null
+	// CORVAX EDIT ADD START
+	data["max_immortal_age"] = null // CORVAX EDIT ADD
+	data["admin_generation_floor"] = target_prefs?.admin_generation_floor // CORVAX EDIT ADD
+	data["player_min_generation"] = target_prefs ? get_player_min_generation(target_prefs) : null // CORVAX EDIT ADD
+	data["lowest_generation_limit"] = LOWEST_GENERATION_LIMIT // CORVAX EDIT ADD
+	data["highest_generation_limit"] = HIGHEST_GENERATION_LIMIT // CORVAX EDIT ADD
+	data["generation_locked"] = target_prefs?.is_generation_locked() || FALSE
+	data["diablerist_locked"] = target_prefs?.is_diablerist_locked() || FALSE
+	data["admin_generation_lock_round"] = !isnull(target_prefs?.admin_generation_lock_round)
+	data["admin_generation_lock_forever"] = target_prefs?.read_preference(/datum/preference/toggle/admin_generation_lock_forever) || FALSE
+	data["diablerie_generation_locked"] = target_prefs?.read_preference(/datum/preference/toggle/diablerie_generation_locked) || FALSE
+	data["diablerie_locked"] = target_prefs?.read_preference(/datum/preference/toggle/diablerie_locked) || FALSE
+	// CORVAX EDIT END
 
 	var/list/connected = list()
 	var/list/invalid_ckeys = list()
@@ -240,28 +253,67 @@
 				return FALSE
 			new_floor = clamp(new_floor, LOWEST_GENERATION_LIMIT, HIGHEST_GENERATION_LIMIT)
 			target_prefs.admin_generation_floor = new_floor
-			var/save_data = target_prefs.get_save_data_for_savefile_identifier(PREFERENCE_CHARACTER)
-			if(save_data)
-				save_data["generation"] = new_floor
-			target_prefs.value_cache[/datum/preference/numeric/generation] = new_floor
 			target_prefs.clamp_immortal_age_to_generation(new_floor)
-			var/client/target_client = GLOB.directory[target_ckey]
-			if(target_client?.mob && ishuman(target_client.mob))
-				var/mob/living/carbon/human/target_mob = target_client.mob
-				get_kindred_splat(target_mob)?.set_generation(new_floor)
-			var/character_name = target_prefs.read_preference(/datum/preference/name/real_name)
-			target_prefs.save_character()
-			message_admins("[key_name_admin(ui.user)] locked [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name] to generation [new_floor] (admin floor).")
-			log_admin("[key_name_admin(ui.user)] locked [ADMIN_LOOKUPFLW(target_ckey)]'s character [character_name] to generation [new_floor] (admin floor).")
+			message_admins("[key_name_admin(ui.user)] set generation floor [new_floor] for [ADMIN_LOOKUPFLW(target_ckey)] (this round only).")
+			log_admin("[key_name_admin(ui.user)] set generation floor [new_floor] for [ADMIN_LOOKUPFLW(target_ckey)] (this round only).")
 			return TRUE
 
 		if("clear_generation_floor")
 			if(!target_prefs)
 				return FALSE
 			target_prefs.admin_generation_floor = null
-			target_prefs.save_character()
 			message_admins("[key_name_admin(ui.user)] cleared generation floor for [ADMIN_LOOKUPFLW(target_ckey)].")
 			log_admin("[key_name_admin(ui.user)] cleared generation floor for [ADMIN_LOOKUPFLW(target_ckey)].")
+			return TRUE
+
+		if("lock_generation_round")
+			if(!target_prefs || !selected_slot)
+				return FALSE
+			target_prefs.admin_generation_lock_round = SSticker.round_start_time
+			message_admins("[key_name_admin(ui.user)] locked generation for [ADMIN_LOOKUPFLW(target_ckey)] (this round only).")
+			log_admin("[key_name_admin(ui.user)] locked generation for [ADMIN_LOOKUPFLW(target_ckey)] (this round only).")
+			return TRUE
+
+		if("unlock_generation_round")
+			if(!target_prefs)
+				return FALSE
+			target_prefs.admin_generation_lock_round = null
+			message_admins("[key_name_admin(ui.user)] unlocked round generation lock for [ADMIN_LOOKUPFLW(target_ckey)].")
+			log_admin("[key_name_admin(ui.user)] unlocked round generation lock for [ADMIN_LOOKUPFLW(target_ckey)].")
+			return TRUE
+
+		if("lock_generation_forever")
+			if(!target_prefs || !selected_slot)
+				return FALSE
+			target_prefs.write_preference(GLOB.preference_entries[/datum/preference/toggle/admin_generation_lock_forever], TRUE)
+			target_prefs.save_character()
+			message_admins("[key_name_admin(ui.user)] PERMANENTLY locked generation for [ADMIN_LOOKUPFLW(target_ckey)].")
+			log_admin("[key_name_admin(ui.user)] PERMANENTLY locked generation for [ADMIN_LOOKUPFLW(target_ckey)].")
+			return TRUE
+
+		if("unlock_generation_forever")
+			if(!target_prefs)
+				return FALSE
+			target_prefs.write_preference(GLOB.preference_entries[/datum/preference/toggle/admin_generation_lock_forever], FALSE)
+			target_prefs.save_character()
+			message_admins("[key_name_admin(ui.user)] removed permanent generation lock for [ADMIN_LOOKUPFLW(target_ckey)].")
+			log_admin("[key_name_admin(ui.user)] removed permanent generation lock for [ADMIN_LOOKUPFLW(target_ckey)].")
+			return TRUE
+
+		if("unlock_diablerie_generation")
+			if(!target_prefs)
+				return FALSE
+			target_prefs.write_preference(GLOB.preference_entries[/datum/preference/toggle/diablerie_generation_locked], FALSE)
+			target_prefs.save_character()
+			message_admins("[key_name_admin(ui.user)] removed diablerie generation lock for [ADMIN_LOOKUPFLW(target_ckey)].")
+			return TRUE
+
+		if("unlock_diablerie_toggle")
+			if(!target_prefs)
+				return FALSE
+			target_prefs.write_preference(GLOB.preference_entries[/datum/preference/toggle/diablerie_locked], FALSE)
+			target_prefs.save_character()
+			message_admins("[key_name_admin(ui.user)] removed diablerie toggle lock for [ADMIN_LOOKUPFLW(target_ckey)].")
 			return TRUE
 		// CORVAX EDIT END
 

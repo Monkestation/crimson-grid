@@ -550,9 +550,11 @@ export function MainPage(props: MainPageProps) {
   const generationValue = contextualPreferences.generation as
     | number
     | undefined;
-  const minGeneration = data.is_trusted
-    ? data.max_trusted_generation
-    : data.max_public_generation;
+  const minGeneration =
+    data.player_min_generation ??
+    (data.is_trusted
+      ? data.max_trusted_generation
+      : data.max_public_generation);
   // CORVAX EDIT ADD END
 
   if (randomBodyEnabled) {
@@ -586,21 +588,26 @@ export function MainPage(props: MainPageProps) {
           maxHeight="auto"
           // CORVAX EDIT ADD START
           overrides={{
-            generation:
-              generationValue !== undefined ? (
-                <NumberInput
-                  value={generationValue}
-                  minValue={minGeneration}
-                  maxValue={data.highest_generation_limit}
-                  step={1}
-                  onChange={(value) =>
-                    setPendingConfirm(() => () => {
-                      createSetPreference(act, 'generation')(value);
-                      act('clear_discipline_levels');
-                    })
-                  }
-                />
-              ) : undefined,
+            diablerist: data.diablerist_locked ? (   // CORVAX EDIT ADD
+              <Box color="label" italic>
+                <Icon name="skull" mr={0.5} /> Заблокировано после диаблери
+              </Box>
+            ) : undefined,
+            generation: generationValue !== undefined ? (
+              <NumberInput
+                value={generationValue}
+                minValue={minGeneration}
+                maxValue={data.highest_generation_limit}
+                step={1}
+                disabled={!!data.generation_locked} // CORVAX EDIT ADD
+                onChange={(value) =>
+                  setPendingConfirm(() => () => {
+                    createSetPreference(act, 'generation')(value);
+                    act('clear_discipline_levels');
+                  })
+                }
+              />
+            ) : undefined,
           }}
           // CORVAX EDIT ADD END
         />

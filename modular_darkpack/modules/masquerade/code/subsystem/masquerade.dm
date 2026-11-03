@@ -221,6 +221,7 @@ SUBSYSTEM_DEF(masquerade)
 	for(var/player in GLOB.player_list)
 		SEND_SOUND(player, 'modular_darkpack/modules/masquerade/sound/masquerade_failure.ogg') //Alerting them of their demise.
 	addtimer(CALLBACK(src, PROC_REF(end_round)), 65 SECONDS)
+	SSweather.run_weather(/datum/weather/particle/rain_storm/blood)
 
 // Ending the actual round.
 /datum/controller/subsystem/masquerade/proc/end_round()

@@ -162,6 +162,7 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 
+/* CORVAX EDIT REMOVAL
 /datum/crafting_recipe/radio_containing/blackmarket_uplink
 	name = "Black Market Uplink"
 	result = /obj/item/market_uplink/blackmarket
@@ -175,3 +176,4 @@
 		/obj/item/analyzer = 1
 	)
 	category = CAT_EQUIPMENT
+*/

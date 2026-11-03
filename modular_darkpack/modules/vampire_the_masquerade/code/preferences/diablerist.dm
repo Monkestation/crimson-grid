@@ -10,3 +10,9 @@
 	if(value)
 		ADD_TRAIT(target, TRAIT_DIABLERIE, TRAIT_DIABLERIE)
 
+	// CORVAX EDIT ADD START
+/datum/preference/toggle/diablerist/is_valid(value, datum/preferences/preferences)
+	if(preferences?.is_diablerist_locked())
+		return value == TRUE
+	return ..()
+	// CORVAX EDIT END

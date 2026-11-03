@@ -1,5 +1,5 @@
 /datum/supply_pack/materials
-	group = "Canisters & Materials"
+	group = "Строительные материалы"
 
 /datum/supply_pack/materials/cardboard50
 	name = "50 листов картона"
@@ -71,6 +71,7 @@
 	crate_name = "ящик с канистрой воды"
 	crate_type = /obj/structure/closet/crate/large
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/materials/gas_canisters
 	cost = CARGO_CRATE_VALUE * 0.05
 	contains = list(/obj/machinery/portable_atmospherics/canister)
@@ -109,3 +110,4 @@
 		canister_packs += pack
 
 	return canister_packs
+*/

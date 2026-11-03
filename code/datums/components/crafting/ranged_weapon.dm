@@ -224,7 +224,7 @@
 	time = 5 SECONDS
 	category = CAT_WEAPON_RANGED
 	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
-
+/*
 /datum/crafting_recipe/rebarxbow
 	name = "Heated Rebar Crossbow"
 	result = /obj/item/gun/ballistic/rifle/rebarxbow
@@ -256,6 +256,7 @@
 	time = 1 SECONDS
 	category = CAT_WEAPON_RANGED
 	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
+*/
 
 /datum/crafting_recipe/pipegun_prime
 	name = "Regal Pipegun"

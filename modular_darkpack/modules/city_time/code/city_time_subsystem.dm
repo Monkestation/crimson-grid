@@ -31,22 +31,22 @@ SUBSYSTEM_DEF(city_time)
 		first_warning = TRUE
 		shifting_colors = TRUE
 		transition_light("#584d88")
-		to_chat(world, span_ghostalert("Ночь на исходе..."))
+		to_chat(world, span_revendanger("Ночь на исходе...")) // CORVAX EDIT
 
 	if(time_passed > time_till_daytime - 15 MINUTES && !second_warning && !shifting_colors)
 		second_warning = TRUE
 		shifting_colors = TRUE
 		transition_light("#dd80b0")
-		to_chat(world, span_ghostalert("Первые лучи солнца озаряют небо..."))
+		to_chat(world, span_revendanger("Первые лучи солнца озаряют небо...")) // CORVAX EDIT
 
 	if(time_passed > time_till_daytime && !daytime_started && !shifting_colors)
 		daytime_started = TRUE
 		shifting_colors = TRUE
 		transition_light("#faeacb", 1, 0.75)
-		to_chat(world, span_ghostalert("НОЧЬ ОКОНЧЕНА."))
+		to_chat(world, span_revendanger("НОЧЬ ОКОНЧЕНА.")) // CORVAX EDIT
 		// Close enough to round end.
 		INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
-		INVOKE_ASYNC(SSvote, TYPE_PROC_REF(/datum/controller/subsystem/vote, initiate_vote), /datum/vote/map_vote, vote_initiator_name = "Map Rotation", forced = TRUE)
+		// INVOKE_ASYNC(SSvote, TYPE_PROC_REF(/datum/controller/subsystem/vote, initiate_vote), /datum/vote/map_vote, vote_initiator_name = "Map Rotation", forced = TRUE) // CORVAX EDIT
 
 	if(time_passed > time_till_roundend && !roundend_started)
 		roundend_started = TRUE

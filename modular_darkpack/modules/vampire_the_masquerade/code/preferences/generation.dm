@@ -52,8 +52,12 @@
 /datum/preference/numeric/generation/is_valid(value, datum/preferences/preferences)
 	if(!isnum(value))
 		return FALSE
-	if(!isnull(preferences?.admin_generation_floor))
-		return value == preferences.admin_generation_floor
+	if(preferences?.generation_write_bypass)
+		return TRUE
+	if(preferences?.is_generation_locked())
+		return FALSE
+	if(!length(preferences?.exp))
+		return value >= LOWEST_GENERATION_LIMIT && value <= HIGHEST_GENERATION_LIMIT
 	var/min = get_player_min_generation(preferences)
 	return value >= min && value <= HIGHEST_GENERATION_LIMIT
 
@@ -62,8 +66,12 @@
 		input = text2num(input)
 	if(!isnum(input))
 		input = HIGHEST_GENERATION_LIMIT
-	if(!isnull(preferences?.admin_generation_floor))
-		return preferences.admin_generation_floor
+	if(preferences?.generation_write_bypass)
+		return clamp(round(input), LOWEST_GENERATION_LIMIT, HIGHEST_GENERATION_LIMIT)
+	if(preferences?.is_generation_locked())
+		return clamp(round(input), LOWEST_GENERATION_LIMIT, HIGHEST_GENERATION_LIMIT)
+	if(!length(preferences?.exp))
+		return clamp(round(input), LOWEST_GENERATION_LIMIT, HIGHEST_GENERATION_LIMIT)
 	var/min = get_player_min_generation(preferences)
 	return clamp(round(input), min, HIGHEST_GENERATION_LIMIT)
 

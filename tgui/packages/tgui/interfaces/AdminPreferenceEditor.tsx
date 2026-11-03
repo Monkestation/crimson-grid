@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
+import { BooleanLike } from 'tgui-core/react';
 import { Box, Button, Divider, DmIcon, Icon, Input, NumberInput, Section, Stack, Tooltip } from 'tgui-core/components';
 import { Window } from '../layouts';
 
@@ -44,13 +45,21 @@ type Data = {
   character_name: string | null;
   character_age: number | null;
   immortal_age: number | null;
-  max_immortal_age: number | null; // CORVAX EDIT START
+  max_immortal_age: number | null;
   clan_name: string | null;
   generation: number | null;
-  admin_generation_floor: number | null; // CORVAX EDIT START
-  player_min_generation: number | null; // CORVAX EDIT START
-  lowest_generation_limit: number; // CORVAX EDIT START
-  highest_generation_limit: number; // CORVAX EDIT START
+  admin_generation_floor: number | null;
+  player_min_generation: number | null;
+  lowest_generation_limit: number;
+  highest_generation_limit: number;
+  // CORVAX EDIT START - generation locks
+  generation_locked: BooleanLike;
+  diablerist_locked: BooleanLike;
+  admin_generation_lock_round: BooleanLike;
+  admin_generation_lock_forever: BooleanLike;
+  diablerie_locked: BooleanLike;
+  diablerie_generation_locked: BooleanLike;
+  // CORVAX EDIT END
   splat_name: string | null;
   flavor_text: string | null;
   headshot: string | null;
@@ -85,7 +94,7 @@ function DisciplineCard(props: DisciplineCardProps) {
     >
 
       <Section style={{ height: '100%', position: 'relative' }}>
-        {isOwned && (
+        {!!isOwned && (
           <Icon
             name="times"
             color="red"
@@ -129,7 +138,7 @@ function DisciplineCard(props: DisciplineCardProps) {
             >
               <Box bold textAlign="center">
                 {discipline.name}
-                {isClanDiscipline && (
+                {!!isClanDiscipline && (
                   <Box inline color="gold" ml={0.5}>
                     <Icon name="users-rectangle" />
                   </Box>
@@ -232,6 +241,131 @@ function WhitelistSection(props: {
   );
 }
 
+/**
+ * CORVAX EDIT ADD START
+ */
+function GenerationLocksSection(props: {
+  generation: number;
+  adminGenerationFloor: number | null;
+  adminGenerationLockRound: BooleanLike;
+  adminGenerationLockForever: BooleanLike;
+  diablerieLocked: BooleanLike;
+  diablerieGenerationLocked: BooleanLike;
+  onAct: (action: string, params?: Record<string, unknown>) => void;
+}) {
+  const {
+    generation,
+    adminGenerationFloor,
+    adminGenerationLockRound,
+    adminGenerationLockForever,
+    diablerieLocked,
+    diablerieGenerationLocked,
+    onAct,
+  } = props;
+
+  return (
+    <Section title="Generation Locks">
+      <Stack vertical>
+        <Stack.Item>
+          <Box color="label" inline>Floor:</Box>
+          {adminGenerationFloor === null ? (
+            <>
+              <Box inline bold ml={0.5}>none</Box>
+              <Button
+                ml={1}
+                icon="lock-open"
+                onClick={() => onAct('set_generation_floor', { floor: generation })}
+              >
+                Set floor = {generation}
+              </Button>
+            </>
+          ) : (
+            <>
+              <Box inline bold ml={0.5} color="green">{adminGenerationFloor}</Box>
+              <Button
+                ml={1}
+                color="red"
+                icon="times"
+                onClick={() => onAct('clear_generation_floor')}
+              >
+                Clear floor
+              </Button>
+            </>
+          )}
+        </Stack.Item>
+
+        {/* Round lock */}
+        <Stack.Item>
+          {!!adminGenerationLockRound ? (
+            <>
+              <Box inline color="red"><Icon name="lock" mr={0.5} />Round lock active</Box>
+              <Button
+                ml={1}
+                icon="lock-open"
+                onClick={() => onAct('unlock_generation_round')}
+              >
+                Unlock round
+              </Button>
+            </>
+          ) : (
+            <Button icon="lock" onClick={() => onAct('lock_generation_round')}>
+              Lock round
+            </Button>
+          )}
+        </Stack.Item>
+
+        {/* Forever lock */}
+        <Stack.Item>
+          {!!adminGenerationLockForever ? (
+            <>
+              <Box inline color="red"><Icon name="lock" mr={0.5} />Forever lock active</Box>
+              <Button
+                ml={1}
+                color="red"
+                icon="times"
+                onClick={() => onAct('unlock_generation_forever')}
+              >
+                Remove forever lock
+              </Button>
+            </>
+          ) : (
+            <Button color="orange" icon="lock" onClick={() => onAct('lock_generation_forever')}>
+              Lock forever
+            </Button>
+          )}
+        </Stack.Item>
+
+        {/* Diablerie locks */}
+        {!!diablerieLocked && (
+          <Stack.Item>
+            <Box inline color="red"><Icon name="skull" mr={0.5} />Diablerie toggle locked</Box>
+            <Button
+              ml={1}
+              icon="lock-open"
+              onClick={() => onAct('unlock_diablerie_toggle')}
+            >
+              Unlock toggle
+            </Button>
+          </Stack.Item>
+        )}
+        {!!diablerieGenerationLocked && (
+          <Stack.Item>
+            <Box inline color="red"><Icon name="skull" mr={0.5} />Diablerie generation locked</Box>
+            <Button
+              ml={1}
+              icon="lock-open"
+              onClick={() => onAct('unlock_diablerie_generation')}
+            >
+              Unlock generation
+            </Button>
+          </Stack.Item>
+        )}
+      </Stack>
+    </Section>
+  );
+}
+// CORVAX EDIT ADD END
+
 export function AdminPreferenceEditor() {
   const { act, data } = useBackend<Data>();
   const {
@@ -251,14 +385,22 @@ export function AdminPreferenceEditor() {
     character_name,
     character_age,
     immortal_age,
-    max_immortal_age, // CORVAX EDIT ADD
+    max_immortal_age,
     clan_name,
     splat_name,
     generation,
-    admin_generation_floor, // CORVAX EDIT ADD
-    player_min_generation, // CORVAX EDIT ADD
-    lowest_generation_limit, // CORVAX EDIT ADD
-    highest_generation_limit, // CORVAX EDIT ADD
+    admin_generation_floor,
+    player_min_generation,
+    lowest_generation_limit,
+    highest_generation_limit,
+    // CORVAX EDIT START - generation locks
+    generation_locked,
+    diablerist_locked,
+    admin_generation_lock_round,
+    admin_generation_lock_forever,
+    diablerie_locked,
+    diablerie_generation_locked,
+    // CORVAX EDIT END
     flavor_text,
     headshot,
     player_whitelists,
@@ -416,41 +558,21 @@ export function AdminPreferenceEditor() {
                               minValue={lowest_generation_limit}
                               maxValue={highest_generation_limit}
                               value={generation}
-                              disabled={isGenerationLocked}
+                              disabled={!!generation_locked}
                               onChange={(value: number) =>
                                 act('set_generation', { generation: value })
                               }
                             />
-                            {isGenerationLocked ? (
-                              <>
-                                <Box inline ml={1} color="green">
-                                  <Icon name="lock" mr={0.5} />
-                                  Locked by admin (floor: {admin_generation_floor})
-                                </Box>
-                                <Button
-                                  ml={1}
-                                  color="red"
-                                  icon="unlock"
-                                  onClick={() => act('clear_generation_floor')}
-                                >
-                                  Unlock
-                                </Button>
-                              </>
-                            ) : (
-                              <>
-                                {player_min_generation !== null && (
-                                  <Box inline ml={1} color="label" fontSize="0.85em">
-                                    (player min: {player_min_generation})
-                                  </Box>
-                                )}
-                                <Button
-                                  ml={1}
-                                  icon="lock"
-                                  onClick={() => act('set_generation_floor', { floor: generation })}
-                                >
-                                  Lock floor
-                                </Button>
-                              </>
+                            {!!generation_locked && (
+                              <Box inline ml={1} color="red">
+                                <Icon name="lock" mr={0.5} />
+                                Locked
+                              </Box>
+                            )}
+                            {!generation_locked && player_min_generation !== null && (
+                              <Box inline ml={1} color="label" fontSize="0.85em">
+                                (player min: {player_min_generation})
+                              </Box>
                             )}
                           </Stack.Item>
                         )}
@@ -469,6 +591,21 @@ export function AdminPreferenceEditor() {
                     </Stack.Item>
                   </Stack>
                 </Section>
+
+                {/* CORVAX EDIT ADD START - generation locks panel */}
+                {generation !== null && (
+                  <GenerationLocksSection
+                    generation={generation}
+                    adminGenerationFloor={admin_generation_floor}
+                    adminGenerationLockRound={admin_generation_lock_round}
+                    adminGenerationLockForever={admin_generation_lock_forever}
+                    diablerieLocked={diablerie_locked}
+                    diablerieGenerationLocked={diablerie_generation_locked}
+                    onAct={(action, params) => act(action, params)}
+                  />
+                )}
+                {/* CORVAX EDIT ADD END */}
+
                 <Divider />
                 {is_editing_character ? (
                   <Section>

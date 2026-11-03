@@ -1,5 +1,5 @@
 /datum/supply_pack/engineering
-	group = "Engineering"
+	group = "Инженерия"
 	crate_type = /obj/structure/closet/crate/engineering
 
 /* // DARKPACK EDIT REMOVAL
@@ -53,6 +53,7 @@
 		и двумя парами мезонных очков!"
 	cost = CARGO_CRATE_VALUE * 4
 	access_view = ACCESS_ENGINEERING
+	order_flags = ORDER_INVISIBLE // CORVAX EDIT ADD
 	contains = list(/obj/item/storage/belt/utility = 3,
 					/obj/item/clothing/suit/hazardvest = 3,
 					/obj/item/clothing/head/utility/welding = 3,
@@ -61,6 +62,7 @@
 				)
 	crate_name = "ящик инженерного снаряжения"
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/engineering/powergamermitts
 	name = "Ящик изолирующих перчаток"
 	desc = "Кость в горле современного общества. Практически не используются для инженерных работ. \
@@ -89,6 +91,7 @@
 	contains = list(/obj/machinery/power/port_gen/pacman)
 	crate_name = "ящик с генератором P.A.C.M.A.N"
 	crate_type = /obj/structure/closet/crate/nakamura
+*/
 
 /datum/supply_pack/engineering/power
 	name = "Ящик батареек"
@@ -122,6 +125,7 @@
 	cost = CARGO_CRATE_VALUE * 5
 	crate_name = "ящик с ящиками для инструментов"
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/engineering/portapump
 	name = "Ящик с портативными воздушными насосами"
 	desc = "Кто-то опять решил проветрить шаттл? Мы вас прикроем. \
@@ -157,6 +161,7 @@
 	contains = list(/obj/machinery/space_heater)
 	crate_name = "ящик обогревателей"
 	crate_type = /obj/structure/closet/crate/secure/engineering/atmos
+*/
 
 /* // DARKPACK EDIT REMOVAL
 /datum/supply_pack/engineering/bsa
@@ -345,6 +350,7 @@
 	crate_type = /obj/structure/closet/crate/engineering
 */
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/engineering/golfcart
 	name = "Ящик с комплектом запчастей для гольф кара"
 	desc = "Содержит детали для сборки карта, предназначенного для перемещения тяжелой техники и грузов по станции. \
@@ -354,15 +360,16 @@
 	contains = list(/obj/item/golfcart_kit = 1, /obj/item/key/golfcart = 2, /obj/item/stock_parts/power_store/cell/lead = 1)
 	crate_name = "ящик с комплектом запчастей для гольф кара"
 	crate_type = /obj/structure/closet/crate/engineering
+*/
 
 /datum/supply_pack/engineering/concrete_mix
-	name = "Concrete Mix"
-	desc = "Feeling lazy? Need a structure and quick? Use near-instant concrete mix! Just add water."
+	name = "Бетонная смесь"
+	desc = "Чувствуете скуку? Нужна структура и быстрота приготовления? Используйте бетонную смесь быстрого приготовления! Просто добавьте воды."
 	cost = CARGO_CRATE_VALUE * 5
 	access_view = ACCESS_ENGINEERING
 	contains = list(
 		/obj/item/reagent_containers/cup/jerrycan/concrete_mix = 2,
 		/obj/item/reagent_containers/cup/bucket = 1,
 	)
-	crate_name = "concrete mix crate"
+	crate_name = "ящик с бетонной смесью"
 	crate_type = /obj/structure/closet/crate/engineering

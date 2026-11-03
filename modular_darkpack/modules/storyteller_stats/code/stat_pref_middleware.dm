@@ -105,4 +105,17 @@
 
 	preferences.preference_storyteller_stats = list()
 	preferences.preference_storyteller_stats = create_new_stat_prefs(preferences.preference_storyteller_stats)
+
+	// CORVAX EDIT ADD
+	var/datum/st_stat/freebie/freebie_stat = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS]
+	if(freebie_stat)
+		var/quirk_balance = 0
+		for(var/quirk_name in preferences.all_quirks)
+			var/datum/quirk/quirk_type = SSquirks.quirks[quirk_name]
+			if(isnull(quirk_type))
+				continue
+			quirk_balance -= initial(quirk_type.value)
+		freebie_stat.set_points(freebie_stat.get_points() + quirk_balance)
+	// CORVAX EDIT END
+
 	return TRUE

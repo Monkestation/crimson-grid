@@ -1,23 +1,23 @@
 /datum/supply_pack/medical
-	group = "Medical"
+	group = "Медицина"
 	access_view = ACCESS_MEDICAL
 	crate_type = /obj/structure/closet/crate/medical/department
 
 /datum/supply_pack/medical/bloodpacks
-	name = "Blood Pack Variety Crate"
-	desc = "Contains ten different blood packs for reintroducing blood to patients."
+	name = "Ящик с разнообразными пакетами крови"
+	desc = "Содержит десять различных наборов крови для повторного введения пациентам."
 	cost = CARGO_CRATE_VALUE * 20 // CRIMSON EDIT CHANGE - ORIGINAL: cost = CARGO_CRATE_VALUE * 7
 	contains = list(
 		/obj/item/reagent_containers/blood/random = 10,
 		/obj/item/paper/fluff/jobs/medical/blood_types,
 	)
-	crate_name = "blood freezer"
+	crate_name = "морозильный ящик"
 	crate_type = /obj/structure/closet/crate/freezer
 
 /datum/supply_pack/medical/medipen_variety
-	name = "Medipen Variety-Pak"
-	desc = "Contains eight different medipens in three different varieties, \
-		to assist in quickly treating seriously injured patients."
+	name = "Набор различных медипенов"
+	desc = "Содержит восемь различных медипенов трех различных модификаций, \
+		которые помогают быстро оказать помощь тяжелораненым пациентам."
 	cost = CARGO_CRATE_VALUE * 3.5
 	contains = list(/obj/item/reagent_containers/hypospray/medipen = 2,
 					/obj/item/reagent_containers/hypospray/medipen/ekit = 3,
@@ -26,20 +26,19 @@
 	crate_type = /obj/structure/closet/crate/deforest
 
 /datum/supply_pack/medical/coroner_crate
-	name = "Autopsy Kit"
-	desc = "Contains an autopsy scanner, when you lose your own and really \
-		need to complete your dissection experiments."
+	name = "Набор аутопсии"
+	desc = "Содержит сканер для вскрытия."
 	cost = CARGO_CRATE_VALUE * 2.5
 	contains = list(
 		/obj/item/autopsy_scanner = 1,
-		/obj/item/storage/medkit/coroner = 1,
+		// /obj/item/storage/medkit/coroner = 1, // CORVAX EDIT
 	)
-	crate_name = "autopsy kit crate"
+	crate_name = "набор аутопсии"
 
 /datum/supply_pack/medical/chemical
-	name = "Chemical Starter Kit Crate"
-	desc = "Contains thirteen different chemicals, for all the fun experiments you can make."
-	cost = CARGO_CRATE_VALUE * 2.6
+	name = "Стартовый набор химика"
+	desc = "Содержит тринадцать различных химических веществ, которые помогут вам провести множество увлекательных экспериментов."
+	cost = CARGO_CRATE_VALUE * 10
 	contains = list(
 		/obj/item/reagent_containers/cup/bottle/hydrogen,
 		/obj/item/reagent_containers/cup/bottle/carbon,
@@ -58,19 +57,19 @@
 		/obj/item/reagent_containers/dropper,
 		/obj/item/storage/box/beakers,
 	)
-	crate_name = "chemical crate"
+	crate_name = "набор химика"
 
 /datum/supply_pack/medical/defibs
-	name = "Defibrillator Crate"
-	desc = "Contains two defibrillators for bringing the recently deceased back to life."
+	name = "Ящик дефиблиляторов"
+	desc = "Содержит два дефибриллятора для возвращения к жизни недавно умерших."
 	cost = CARGO_CRATE_VALUE * 5
 	contains = list(/obj/item/defibrillator/loaded = 2)
 	crate_name = null
 	crate_type = /obj/structure/closet/crate/deforest
 
 /datum/supply_pack/medical/iv_drip
-	name = "IV Drip Crate"
-	desc = "Contains a single IV drip for administering blood to patients."
+	name = "Ящик с капильницей"
+	desc = "Содержит одну капельницу для внутривенного введения крови пациентам."
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/machinery/iv_drip)
 	crate_name = null
@@ -80,6 +79,7 @@
 	name = "Medical Supplies Crate"
 	desc = "Contains a random assortment of medical supplies. German doctor not included."
 	cost = CARGO_CRATE_VALUE * 4
+	order_flags = ORDER_INVISIBLE // CORVAX EDIT ADD
 	contains = list(
 		/obj/item/reagent_containers/cup/bottle/multiver,
 		/obj/item/reagent_containers/cup/bottle/epinephrine,
@@ -116,18 +116,18 @@
 		new item(container)
 
 /datum/supply_pack/medical/experimentalmedicine
-	name = "Experimental Medicine Crate"
-	desc = "A crate containing the medication required for living with Hereditary Manifold Sickness, Sansufentanyl."
+	name = "Ящик экспериментального лекарства"
+	desc = "Ящик с лекарством, необходимым для жизни с наследственными множественными заболеваниями, - Сансуфентанилом."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/storage/pill_bottle/sansufentanyl = 2)
 	crate_name = null
 	crate_type = /obj/structure/closet/crate/interdyne_normal
 
 /datum/supply_pack/medical/surgery
-	name = "Surgical Supplies Crate"
-	desc = "Do you want to perform surgery, but don't have one of those fancy \
-		shmancy degrees? Just get started with this crate containing a DeForest surgery tray, \
-		Sterilizine spray and collapsible roller bed."
+	name = "Набор начинающего хирурга"
+	desc = "Вы хотите провести хирургическую операцию, но у вас нет диплома специалиста? \
+		Просто начните с этого набора, в котором находится хирургический лоток, стерилизующий спрей \
+		и складная кровать на роликах."
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(
 		/obj/item/surgery_tray/full,
@@ -137,6 +137,7 @@
 	crate_name = null
 	crate_type = /obj/structure/closet/crate/deforest
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/medical/salglucanister
 	name = "Heavy-Duty Saline Canister"
 	desc = "Contains a bulk supply of saline-glucose condensed into a single canister that \
@@ -147,6 +148,7 @@
 	access = ACCESS_MEDICAL
 	contains = list(/obj/machinery/iv_drip/saline)
 	crate_type = /obj/structure/closet/crate/large
+*/
 
 /* // DARKPACK EDIT REMOVAL
 /datum/supply_pack/medical/virus
@@ -236,6 +238,7 @@
 	contains = list(/obj/item/reagent_containers/cup/bottle/inversing_buffer)
 	crate_name = "chiral inversing buffer crate"
 
+/* CORVAX EDIT REMOVAL
 /datum/supply_pack/medical/handheld_crew_monitor
 	name = "Handheld Crew Monitor Crate"
 	desc = "A crate containing three handheld crew monitors"
@@ -256,3 +259,4 @@
 	contains = list(/obj/item/circuitboard/machine/wall_healer)
 	crate_name = null
 	crate_type = /obj/structure/closet/crate/deforest
+*/

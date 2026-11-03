@@ -257,6 +257,9 @@ export type PreferencesMenuData = {
   max_public_generation: number;
   highest_generation_limit: number;
   max_immortal_age: number; // CORVAX EDIT ADD
+  generation_locked: BooleanLike;       // CORVAX EDIT ADD
+  diablerist_locked: BooleanLike;       // CORVAX EDIT ADD
+  player_min_generation: number;        // CORVAX EDIT ADD
   // DARKPACK EDIT ADD END - DISCIPLINES
 
   // DARKPACK EDIT ADD START
