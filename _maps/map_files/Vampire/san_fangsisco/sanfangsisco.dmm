@@ -2927,6 +2927,12 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/city/plating,
 /area/vtm/interior/millennium_tower/f2)
+"aGi" = (
+/obj/structure/spacevine{
+	can_spread = 0
+	},
+/turf/closed/wall/vampwall/rock,
+/area/vtm/interior)
 "aGn" = (
 /obj/effect/turf_decal/bordur{
 	dir = 10
@@ -53341,16 +53347,14 @@
 /turf/open/misc/dirt,
 /area/vtm/interior/supply)
 "mzr" = (
-/obj/structure/vampdoor/oldwood,
 /obj/structure/spacevine{
 	can_spread = 0
 	},
 /obj/effect/landmark/npcwall,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/access/sabbat,
-/obj/effect/mapping_helpers/door/lock,
-/turf/open/misc/dirt,
+/turf/closed/wall/vampwall/rock{
+	density = 0;
+	color = "#BBBBBB"
+	},
 /area/vtm/interior/sabbat_lair)
 "mzs" = (
 /obj/structure/cargo_put,
@@ -69329,9 +69333,6 @@
 	dir = 4
 	},
 /area/vtm/interior/endron_facility/restricted)
-"qnh" = (
-/turf/open/floor/plating/rough,
-/area/vtm/interior/sabbat_lair)
 "qnl" = (
 /obj/effect/turf_decal/siding/thinplating/dark/corner,
 /turf/open/floor/plating/sidewalk/poor,
@@ -70902,6 +70903,15 @@
 /obj/structure/roadsign/warningpedestrian,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
+"qEv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/vampdoor/oldwood,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/access/sabbat,
+/turf/open/misc/dirt,
+/area/vtm/interior/sabbat_lair)
 "qEE" = (
 /obj/machinery/shower/directional/south,
 /obj/structure/curtain,
@@ -71320,6 +71330,12 @@
 /obj/structure/railing,
 /turf/open/floor/wood/old,
 /area/vtm/interior/bianchiBank)
+"qJU" = (
+/obj/structure/spacevine{
+	can_spread = 0
+	},
+/turf/closed/wall/vampwall/rock,
+/area/vtm/interior/sabbat_lair)
 "qJV" = (
 /obj/effect/turf_decal/siding/wideplating/green,
 /obj/structure/vampdoor/wood{
@@ -88177,6 +88193,15 @@
 	},
 /turf/open/floor/plating/grate,
 /area/vtm/interior/endron_facility/restricted)
+"uLO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/vampdoor/oldwood,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/access/sabbat,
+/turf/open/misc/dirt,
+/area/vtm/interior/sabbat_lair)
 "uLP" = (
 /obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/plating/rough/cave,
@@ -169316,7 +169341,7 @@ mTj
 mTj
 mTj
 mTj
-mTj
+aGi
 mTj
 mTj
 ovT
@@ -169577,9 +169602,9 @@ abP
 abP
 jzD
 ovT
+ovT
 wut
 kgJ
-qnh
 kLx
 kLx
 wut
@@ -169834,7 +169859,7 @@ abP
 vwN
 vwN
 mzr
-xuz
+uLO
 szh
 kLx
 xuz
@@ -170091,7 +170116,7 @@ vwN
 vwN
 vwN
 mzr
-xuz
+qEv
 kLx
 kLx
 xuz
@@ -170348,7 +170373,7 @@ vwN
 vwN
 vwN
 ovT
-qnh
+ovT
 hBz
 wut
 kLx
@@ -170604,7 +170629,7 @@ mqy
 vwN
 vwN
 abP
-ovT
+qJU
 ovT
 ovT
 ovT
@@ -171116,7 +171141,7 @@ abP
 vwN
 vwN
 vwN
-mTj
+aGi
 mTj
 mTj
 gye
