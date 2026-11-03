@@ -7169,10 +7169,6 @@
 /obj/item/cigarette/rollie,
 /turf/open/floor/wood/old,
 /area/vtm/interior)
-"bGx" = (
-/obj/effect/turf_decal/bordur/corner,
-/turf/open/openspace,
-/area/vtm)
 "bGD" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/wood/smooth/old,
@@ -12017,8 +12013,8 @@
 /obj/structure/vampdoor/reinf,
 /obj/effect/mapping_helpers/door/access/baali,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/baali)
 "cKu" = (
@@ -18031,6 +18027,14 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/clinic/haven)
+"eiY" = (
+/obj/structure/vampdoor/wood,
+/obj/effect/mapping_helpers/door/access/baali,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/bash_difficulty/five,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/baali)
 "ejb" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 6
@@ -25866,10 +25870,7 @@
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "gdF" = (
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = -4;
-	pixel_y = -11
-	},
+/obj/structure/flora/rock/pile/darkpack,
 /turf/open/floor/city/circled/large,
 /area/vtm/interior/baali)
 "gdQ" = (
@@ -28036,15 +28037,6 @@
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
-"gEz" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/siding/grey,
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = -4;
-	pixel_y = -5
-	},
-/turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
 "gEC" = (
 /obj/effect/turf_decal/siding/thinplating/dark/corner{
 	dir = 4
@@ -28121,19 +28113,6 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights/forest)
-"gFF" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/grey{
-	dir = 1
-	},
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = 6;
-	pixel_y = -15
-	},
-/turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
 "gFL" = (
 /obj/effect/turf_decal/siding/white,
 /obj/structure/hedge,
@@ -31350,12 +31329,6 @@
 "hvp" = (
 /turf/closed/wall/vampwall/brick,
 /area/vtm/interior/shop/otolleys)
-"hvr" = (
-/obj/effect/turf_decal/bordur{
-	dir = 8
-	},
-/turf/open/openspace,
-/area/vtm)
 "hvw" = (
 /obj/machinery/light/prince/directional/east,
 /obj/structure/tank_holder/extinguisher,
@@ -34963,12 +34936,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/theatre)
-"iqp" = (
-/obj/effect/turf_decal/bordur{
-	dir = 4
-	},
-/turf/open/openspace,
-/area/vtm)
 "iqv" = (
 /obj/machinery/light/directional/south,
 /obj/item/kirbyplants/darkpack/random,
@@ -35495,10 +35462,8 @@
 /turf/open/floor/wood/old,
 /area/vtm/interior/tzimisce_manor)
 "ixC" = (
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = 5;
-	pixel_y = -8
-	},
+/obj/structure/flora/rock/pile/darkpack,
+/obj/effect/turf_decal/darkpack/cave,
 /turf/open/floor/city/circled/large,
 /area/vtm/interior/baali)
 "ixF" = (
@@ -39708,12 +39673,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
-"jyG" = (
-/obj/effect/turf_decal/bordur/corner{
-	dir = 1
-	},
-/turf/open/openspace,
-/area/vtm)
 "jyJ" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/plating/sidewalk/poor,
@@ -49234,12 +49193,6 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/vtm/interior/millennium_tower/f4)
-"lML" = (
-/obj/effect/turf_decal/bordur/corner{
-	dir = 8
-	},
-/turf/open/openspace,
-/area/vtm)
 "lMO" = (
 /obj/machinery/light/directional/south,
 /obj/structure/table/wood,
@@ -49685,6 +49638,12 @@
 /obj/effect/turf_decal/siding/grey,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
+"lST" = (
+/obj/effect/turf_decal/darkpack/cave/corner{
+	dir = 8
+	},
+/turf/open/floor/city/circled/large,
+/area/vtm/interior/baali)
 "lSU" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
@@ -51637,10 +51596,7 @@
 /obj/effect/turf_decal/siding/grey{
 	dir = 1
 	},
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = -4;
-	pixel_y = -14
-	},
+/obj/structure/flora/rock/pile/darkpack,
 /turf/open/floor/city/circled/large,
 /area/vtm/interior/baali)
 "mru" = (
@@ -56596,12 +56552,6 @@
 	},
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/oldchurch)
-"nCE" = (
-/obj/effect/turf_decal/bordur/corner{
-	dir = 4
-	},
-/turf/open/openspace,
-/area/vtm)
 "nCH" = (
 /obj/structure/curtain/bounty{
 	icon_state = "bounty-closed";
@@ -58136,6 +58086,15 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/jazzclub)
+"nTb" = (
+/obj/machinery/light/cold/directional/south{
+	bulb_power = 0.5
+	},
+/obj/effect/turf_decal/darkpack/cave/corner{
+	dir = 4
+	},
+/turf/open/floor/city/circled/large,
+/area/vtm/interior/baali)
 "nTj" = (
 /obj/structure/rack/food/rand{
 	dir = 4;
@@ -62877,7 +62836,7 @@
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/jazzclub)
 "pbW" = (
-/obj/structure/chair/wood{
+/obj/structure/chair/wood/darkpack{
 	dir = 8
 	},
 /turf/open/floor/wood/smooth/old,
@@ -64562,14 +64521,6 @@
 	pixel_y = 17
 	},
 /turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
-"pyF" = (
-/obj/structure/vampdoor/wood,
-/obj/effect/mapping_helpers/door/access/baali,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/turf/open/floor/wood/smooth/old,
 /area/vtm/interior/baali)
 "pyH" = (
 /turf/open/floor/carpet/darkpack,
@@ -74286,8 +74237,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/baali,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/baali)
 "rLo" = (
@@ -78035,10 +77986,6 @@
 /obj/structure/ladder/manhole/down,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/financialdistrict)
-"sEb" = (
-/obj/effect/turf_decal/bordur,
-/turf/open/openspace,
-/area/vtm)
 "sEc" = (
 /obj/structure/table/wood,
 /obj/item/paper{
@@ -79729,14 +79676,8 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/cog/caern)
 "tbY" = (
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = 6;
-	pixel_y = 0
-	},
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = -5;
-	pixel_y = -13
-	},
+/obj/structure/flora/rock/pile/darkpack,
+/obj/structure/flora/rock/pile/darkpack,
 /turf/open/floor/city/circled/large,
 /area/vtm/interior/baali)
 "tbZ" = (
@@ -82266,12 +82207,6 @@
 /obj/structure/roadsign/street,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior)
-"tHx" = (
-/obj/effect/turf_decal/bordur{
-	dir = 1
-	},
-/turf/open/openspace,
-/area/vtm)
 "tHD" = (
 /obj/machinery/light/small/directional/south,
 /obj/structure/closet/secure_closet/freezer{
@@ -92232,15 +92167,6 @@
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/jazzclub)
-"wde" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/siding/grey,
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = 7;
-	pixel_y = -12
-	},
-/turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
 "wdp" = (
 /obj/structure/platform/lowwall/wood,
 /obj/structure/table/wood,
@@ -162515,7 +162441,7 @@ xie
 tMK
 yiM
 bMj
-wde
+eRM
 tMK
 nwu
 xAv
@@ -163032,7 +162958,7 @@ mvE
 rvQ
 tMK
 vUG
-wyf
+nTb
 mvE
 chJ
 chJ
@@ -163289,8 +163215,8 @@ kVj
 eRM
 tMK
 yiM
-kVj
-mvE
+yjd
+nqp
 chJ
 rOF
 rOF
@@ -163804,7 +163730,7 @@ xie
 tMK
 yiM
 ixC
-mvE
+nqp
 chJ
 sWU
 eKc
@@ -164060,7 +163986,7 @@ vfg
 xie
 tMK
 yiM
-kVj
+lST
 mvE
 chJ
 ksh
@@ -165081,7 +165007,7 @@ dvN
 dvN
 mvE
 luD
-gEz
+eRM
 tMK
 pMy
 mvE
@@ -165340,7 +165266,7 @@ mvE
 xAv
 xie
 tMK
-gFF
+mrt
 gNI
 eEo
 tMK
@@ -228312,7 +228238,7 @@ xnS
 bQB
 oMP
 oMP
-pyF
+lsD
 oMP
 bsq
 faT
@@ -229079,7 +229005,7 @@ afe
 jlv
 jlv
 jlv
-lsD
+eiY
 oMP
 oMP
 oAE
@@ -309527,13 +309453,13 @@ ntq
 ntq
 ntq
 ntq
-lML
-hvr
-hvr
-hvr
-hvr
-hvr
-bGx
+ntq
+ntq
+ntq
+ntq
+ntq
+ntq
+ntq
 ntq
 ntq
 sab
@@ -309784,13 +309710,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 sab
@@ -310041,13 +309967,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 sab
@@ -310298,13 +310224,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 eQD
@@ -310555,13 +310481,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 ser
@@ -310812,13 +310738,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 ser
@@ -311069,13 +310995,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 ser
@@ -311326,13 +311252,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 eQD
@@ -311583,13 +311509,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 jeA
 kTh
@@ -311840,13 +311766,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 jeA
 kTh
@@ -312097,13 +312023,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 jeA
 kTh
@@ -312354,13 +312280,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 cCQ
 cCQ
@@ -312611,13 +312537,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 nap
 tvV
@@ -312868,13 +312794,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 nap
 gNW
@@ -313125,13 +313051,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 eQD
 eQD
@@ -313382,13 +313308,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 lIL
 jGq
@@ -313639,13 +313565,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 lIL
 rba
@@ -313896,13 +313822,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 eQD
 eQD
@@ -314153,13 +314079,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 nap
 mkw
@@ -314410,13 +314336,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 nap
 mKW
@@ -314667,13 +314593,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 cCQ
 cCQ
@@ -314924,13 +314850,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 sEI
@@ -315181,13 +315107,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 sEI
@@ -315438,13 +315364,13 @@ ntq
 ntq
 ntq
 ntq
-tHx
 ntq
 ntq
 ntq
 ntq
 ntq
-sEb
+ntq
+ntq
 ntq
 ntq
 sEI
@@ -315695,13 +315621,13 @@ ntq
 ntq
 ntq
 ntq
-jyG
-iqp
-iqp
-iqp
-iqp
-iqp
-nCE
+ntq
+ntq
+ntq
+ntq
+ntq
+ntq
+ntq
 ntq
 ntq
 cCQ

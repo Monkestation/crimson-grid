@@ -3641,6 +3641,7 @@
 /obj/effect/mapping_helpers/door/access/baali,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/bash_difficulty/five,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/baali)
 "aTJ" = (
@@ -13126,9 +13127,6 @@
 /area/vtm/outside/baywalk)
 "ddP" = (
 /obj/structure/vampipe{
-	icon_state = "piping31"
-	},
-/obj/structure/vampipe{
 	icon_state = "piping32";
 	pixel_y = 17
 	},
@@ -16040,14 +16038,6 @@
 "dMI" = (
 /turf/closed/wall/vampwall/rich,
 /area/vtm/outside/giovanni/courtyard)
-"dMK" = (
-/obj/structure/flora/rock/pile/darkpack,
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = -6;
-	pixel_y = -14
-	},
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/baali)
 "dMQ" = (
 /obj/structure/chair/wood/darkpack{
 	dir = 1
@@ -16596,6 +16586,7 @@
 /area/vtm/outside/park)
 "dSB" = (
 /obj/item/pickaxe/mini,
+/obj/structure/flora/rock/pile/darkpack,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/baali)
 "dSH" = (
@@ -39396,7 +39387,7 @@
 /area/vtm)
 "jeC" = (
 /obj/structure/table,
-/obj/item/reagent_containers/blood,
+/obj/item/reagent_containers/blood/random,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/baali)
 "jeE" = (
@@ -54226,13 +54217,6 @@
 /obj/effect/landmark/start/darkpack/law_enforcement/sergeant,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/upstairs)
-"mBG" = (
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = -6;
-	pixel_y = -18
-	},
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/baali)
 "mBL" = (
 /obj/structure/carving_block,
 /turf/open/floor/carpet/orange,
@@ -54597,14 +54581,6 @@
 	},
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/giovanni/courtyard)
-"mGU" = (
-/obj/structure/flora/rock/pile/darkpack,
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = 8;
-	pixel_y = -13
-	},
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/baali)
 "mGV" = (
 /obj/structure/toilet{
 	dir = 4;
@@ -64517,13 +64493,6 @@
 /obj/effect/turf_decal/bordur/corner,
 /turf/open/water,
 /area/vtm/interior/bianchiBank)
-"oSk" = (
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = -4;
-	pixel_y = -10
-	},
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/baali)
 "oSl" = (
 /obj/machinery/light/prince/directional/south,
 /turf/open/floor/wood/herring,
@@ -80731,18 +80700,6 @@
 /obj/structure/table/wood,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/supply)
-"sHf" = (
-/obj/structure/flora/rock/pile/darkpack,
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = 9;
-	pixel_y = -17
-	},
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = -8;
-	pixel_y = -8
-	},
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/baali)
 "sHg" = (
 /obj/effect/decal/coastline{
 	dir = 6
@@ -81662,13 +81619,6 @@
 "sSj" = (
 /turf/open/misc/dirt,
 /area/vtm/interior)
-"sSo" = (
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = 9;
-	pixel_y = -9
-	},
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/baali)
 "sSr" = (
 /obj/structure/closet/crate/trashcart/laundry,
 /obj/item/clothing/under/suit/white,
@@ -84713,8 +84663,8 @@
 /obj/structure/vampdoor/wood,
 /obj/effect/mapping_helpers/door/access/baali,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/baali)
 "tEc" = (
@@ -91062,13 +91012,6 @@
 /obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/wood/old,
 /area/vtm/outside/fishermanswharf)
-"vaX" = (
-/obj/structure/flora/rock/pile/darkpack{
-	pixel_x = 8;
-	pixel_y = -14
-	},
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/baali)
 "vaY" = (
 /obj/effect/turf_decal/siding/grey{
 	dir = 4
@@ -104007,8 +103950,8 @@
 /obj/structure/vampdoor/reinf,
 /obj/effect/mapping_helpers/door/access/baali,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/baali)
 "ybh" = (
@@ -115354,7 +115297,7 @@ gpd
 sUt
 hge
 vFf
-kRM
+hge
 dfM
 gFd
 oPp
@@ -115558,7 +115501,7 @@ tuX
 tuX
 aej
 vFf
-kRM
+skK
 gCp
 nOa
 nOa
@@ -115771,7 +115714,7 @@ dfM
 jTT
 jTT
 tBn
-mGU
+oFY
 jTT
 uvs
 uvs
@@ -115973,7 +115916,7 @@ wLp
 jeC
 dfM
 jTT
-oSk
+oFY
 tBn
 tBn
 jTT
@@ -116382,7 +116325,7 @@ uvs
 jTT
 jTT
 tBn
-dMK
+oFY
 jTT
 jTT
 jTT
@@ -116787,12 +116730,12 @@ tuX
 uvs
 uvs
 jTT
-tBn
 oFY
+tBn
 tBn
 hIR
 eme
-tBn
+oFY
 jTT
 jTT
 uvs
@@ -116992,12 +116935,12 @@ uvs
 uvs
 jTT
 xet
-tBn
+oFY
 gbG
 dWj
 tBn
 tBn
-mBG
+oFY
 jTT
 uvs
 uvs
@@ -117195,13 +117138,13 @@ tuX
 uvs
 uvs
 jTT
+oFY
 tBn
 tBn
-vaX
 lFE
 hmG
 tBn
-tBn
+oFY
 jTT
 uvs
 uvs
@@ -117403,7 +117346,7 @@ jTT
 ner
 tBn
 tBn
-sHf
+tBn
 ner
 jTT
 jTT
@@ -117811,7 +117754,7 @@ uvs
 jTT
 jTT
 adC
-sSo
+oFY
 jTT
 jTT
 uvs
@@ -156356,7 +156299,7 @@ vGb
 uDw
 tow
 tML
-bef
+viN
 ude
 ude
 viN
