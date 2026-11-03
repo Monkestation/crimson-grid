@@ -1357,6 +1357,14 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire/blue_stripe,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
+"aql" = (
+/obj/structure/vampdoor/wood,
+/obj/effect/mapping_helpers/door/access/baali,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/bash_difficulty/five,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/baali)
 "aqm" = (
 /obj/effect/turf_decal/bordur,
 /obj/effect/landmark/npcbeacon,
@@ -10362,6 +10370,15 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/vtm/interior/tzimisce_manor)
+"cqh" = (
+/obj/machinery/light/cold/directional/south{
+	bulb_power = 0.5
+	},
+/obj/effect/turf_decal/darkpack/cave/corner{
+	dir = 4
+	},
+/turf/open/floor/city/circled/large,
+/area/vtm/interior/baali)
 "cqm" = (
 /obj/structure/chair/wood/darkpack/red{
 	dir = 8
@@ -12009,14 +12026,6 @@
 /obj/effect/turf_decal/siding/wood/dark/corner,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/jazzclub)
-"cKt" = (
-/obj/structure/vampdoor/reinf,
-/obj/effect/mapping_helpers/door/access/baali,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/turf/open/floor/plating/concrete,
-/area/vtm/interior/baali)
 "cKu" = (
 /obj/item/key/janitor,
 /turf/open/floor/plating/concrete,
@@ -17684,6 +17693,29 @@
 	},
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/tzimisce_manor)
+"efn" = (
+/obj/machinery/light/prince/directional/east,
+/obj/structure/closet/cabinet,
+/obj/item/clothing/shoes/vampire/heels,
+/obj/item/clothing/suit/vampire/vest/army{
+	masquerade_violating = 0;
+	name = "sheriff's vest"
+	},
+/obj/item/clothing/under/vampire/sheriff,
+/obj/item/clothing/under/vampire/sheriff/female,
+/obj/item/clothing/shoes/vampire,
+/obj/item/clothing/glasses/vampire/sun,
+/obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
+/obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
+/obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
+/obj/item/clothing/head/vampire/army{
+	desc = "Looks dangerous. Provides great protection against blunt force. Doesn't break the masquerade";
+	masquerade_violating = 0;
+	name = "sheriff's tactical helmet"
+	},
+/obj/item/sheriffblade/vamp,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/millennium_tower/f3)
 "efo" = (
 /obj/effect/turf_decal/bordur{
 	dir = 9
@@ -18027,14 +18059,6 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/clinic/haven)
-"eiY" = (
-/obj/structure/vampdoor/wood,
-/obj/effect/mapping_helpers/door/access/baali,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
-/obj/effect/mapping_helpers/door/bash_difficulty/five,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/baali)
 "ejb" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 6
@@ -19546,6 +19570,14 @@
 "eDf" = (
 /turf/closed/wall/vampwall/painted,
 /area/vtm/interior/clinic/haven)
+"eDj" = (
+/obj/structure/vampdoor/reinf,
+/obj/effect/mapping_helpers/door/access/baali,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/baali)
 "eDr" = (
 /obj/structure/table,
 /obj/structure/vampfence/rich{
@@ -25869,10 +25901,6 @@
 /obj/effect/turf_decal/trimline/dark_green/warning,
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
-"gdF" = (
-/obj/structure/flora/rock/pile/darkpack,
-/turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
 "gdQ" = (
 /obj/machinery/light/prince/directional/east,
 /turf/open/water,
@@ -35461,11 +35489,6 @@
 "ixp" = (
 /turf/open/floor/wood/old,
 /area/vtm/interior/tzimisce_manor)
-"ixC" = (
-/obj/structure/flora/rock/pile/darkpack,
-/obj/effect/turf_decal/darkpack/cave,
-/turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
 "ixF" = (
 /obj/structure/flora/bush/sparsegrass/style_random,
 /turf/open/water,
@@ -36933,6 +36956,11 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch/basement)
+"iQX" = (
+/obj/structure/flora/rock/pile/darkpack,
+/obj/effect/turf_decal/darkpack/cave,
+/turf/open/floor/city/circled/large,
+/area/vtm/interior/baali)
 "iRa" = (
 /obj/effect/decal/rugs,
 /obj/effect/decal/pallet,
@@ -42866,6 +42894,10 @@
 "kpk" = (
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/pacificheights)
+"kpm" = (
+/obj/structure/flora/rock/pile/darkpack,
+/turf/open/floor/city/circled/large,
+/area/vtm/interior/baali)
 "kpo" = (
 /obj/structure/vampipe{
 	icon_state = "piping32"
@@ -48635,6 +48667,16 @@
 /obj/machinery/light/prince/directional/west,
 /turf/open/floor/wood/old,
 /area/vtm/interior/jazzclub)
+"lGj" = (
+/obj/structure/vampdoor/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/baali,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/baali)
 "lGm" = (
 /obj/effect/turf_decal/bordur,
 /obj/effect/decal/cleanable/cardboard,
@@ -49638,12 +49680,6 @@
 /obj/effect/turf_decal/siding/grey,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
-"lST" = (
-/obj/effect/turf_decal/darkpack/cave/corner{
-	dir = 8
-	},
-/turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
 "lSU" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
@@ -49928,6 +49964,16 @@
 "lVM" = (
 /turf/open/floor/wood/smooth,
 /area/vtm/interior)
+"lVT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 1
+	},
+/obj/structure/flora/rock/pile/darkpack,
+/turf/open/floor/city/circled/large,
+/area/vtm/interior/baali)
 "lVX" = (
 /obj/effect/decal/cleanable/litter,
 /obj/effect/landmark/npcbeacon,
@@ -51589,16 +51635,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet/orange,
 /area/vtm/interior/laundromat)
-"mrt" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/grey{
-	dir = 1
-	},
-/obj/structure/flora/rock/pile/darkpack,
-/turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
 "mru" = (
 /obj/structure/filingcabinet/security{
 	pixel_x = 12;
@@ -57282,29 +57318,6 @@
 "nLx" = (
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf/ghetto)
-"nLy" = (
-/obj/machinery/light/prince/directional/east,
-/obj/structure/closet/cabinet,
-/obj/item/clothing/shoes/vampire/heels,
-/obj/item/clothing/suit/vampire/vest/army{
-	masquerade_violating = 0;
-	name = "sheriff's vest"
-	},
-/obj/item/clothing/under/vampire/sheriff,
-/obj/item/clothing/under/vampire/sheriff/female,
-/obj/item/clothing/shoes/vampire,
-/obj/item/clothing/glasses/vampire/sun,
-/obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
-/obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
-/obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
-/obj/item/clothing/head/vampire/army{
-	desc = "Looks dangerous. Provides great protection against blunt force. Doesn't break the masquerade";
-	masquerade_violating = 0;
-	name = "sheriff's tactical helmet"
-	},
-/obj/item/katana/vamp,
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/millennium_tower/f3)
 "nLz" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/structure/chair/comfy/shuttle{
@@ -58086,15 +58099,6 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/jazzclub)
-"nTb" = (
-/obj/machinery/light/cold/directional/south{
-	bulb_power = 0.5
-	},
-/obj/effect/turf_decal/darkpack/cave/corner{
-	dir = 4
-	},
-/turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
 "nTj" = (
 /obj/structure/rack/food/rand{
 	dir = 4;
@@ -62835,12 +62839,6 @@
 /obj/item/reagent_containers/cup/glass/drinkingglass/martini_glass,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/jazzclub)
-"pbW" = (
-/obj/structure/chair/wood/darkpack{
-	dir = 8
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/baali)
 "pbZ" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/wood/smooth/old,
@@ -65143,6 +65141,11 @@
 /obj/structure/curtain/bounty/start_closed,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/giovanni)
+"pGH" = (
+/obj/structure/flora/rock/pile/darkpack,
+/obj/structure/flora/rock/pile/darkpack,
+/turf/open/floor/city/circled/large,
+/area/vtm/interior/baali)
 "pGJ" = (
 /turf/open/floor/city/circled/large,
 /area/vtm/interior/clinic)
@@ -74231,16 +74234,6 @@
 	},
 /turf/open/floor/city/toilet/large,
 /area/vtm/interior/shop/bubway)
-"rLh" = (
-/obj/structure/vampdoor/wood{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/door/access/baali,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/baali)
 "rLo" = (
 /obj/effect/turf_decal/darkpack/grass{
 	dir = 6
@@ -79675,11 +79668,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/cog/caern)
-"tbY" = (
-/obj/structure/flora/rock/pile/darkpack,
-/obj/structure/flora/rock/pile/darkpack,
-/turf/open/floor/city/circled/large,
-/area/vtm/interior/baali)
 "tbZ" = (
 /obj/structure/railing{
 	dir = 10
@@ -96357,6 +96345,12 @@
 /obj/structure/chair/wood/darkpack/red,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
+"xde" = (
+/obj/structure/chair/wood/darkpack{
+	dir = 8
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/baali)
 "xdm" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
@@ -101351,6 +101345,12 @@
 /obj/structure/closet/crate/bin,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/clothing_store)
+"ylv" = (
+/obj/effect/turf_decal/darkpack/cave/corner{
+	dir = 8
+	},
+/turf/open/floor/city/circled/large,
+/area/vtm/interior/baali)
 "yly" = (
 /obj/effect/turf_decal/siding/grey/inner_corner{
 	dir = 1
@@ -162701,7 +162701,7 @@ tbN
 xie
 tMK
 yiM
-gdF
+kpm
 mvE
 chJ
 chJ
@@ -162958,7 +162958,7 @@ mvE
 rvQ
 tMK
 vUG
-nTb
+cqh
 mvE
 chJ
 chJ
@@ -163224,7 +163224,7 @@ eKc
 jqq
 jqq
 eKc
-cKt
+eDj
 xqR
 xqR
 owT
@@ -163729,7 +163729,7 @@ kVj
 xie
 tMK
 yiM
-ixC
+iQX
 nqp
 chJ
 sWU
@@ -163986,7 +163986,7 @@ vfg
 xie
 tMK
 yiM
-lST
+ylv
 mvE
 chJ
 ksh
@@ -164753,7 +164753,7 @@ kVj
 xie
 tMK
 yiM
-tbY
+pGH
 xie
 tMK
 yiM
@@ -165266,7 +165266,7 @@ mvE
 xAv
 xie
 tMK
-mrt
+lVT
 gNI
 eEo
 tMK
@@ -165527,7 +165527,7 @@ yiM
 bMj
 xie
 tMK
-mrt
+lVT
 rsn
 mvE
 dvN
@@ -228753,7 +228753,7 @@ kVS
 cBz
 bWj
 xnS
-rLh
+lGj
 bWj
 bWj
 bWj
@@ -229005,7 +229005,7 @@ afe
 jlv
 jlv
 jlv
-eiY
+aql
 oMP
 oMP
 oAE
@@ -229777,13 +229777,13 @@ jlv
 jlv
 jlv
 xnS
-pbW
-pbW
+xde
+xde
 hQh
 xnS
 naN
 kaM
-pbW
+xde
 oAE
 bWj
 dci
@@ -327185,7 +327185,7 @@ ntq
 ntq
 ntq
 oKq
-nLy
+efn
 bAK
 bAK
 bAK

@@ -3411,6 +3411,14 @@
 /obj/item/clothing/head/wig/natural,
 /turf/open/floor/city/factory,
 /area/vtm/interior/strip)
+"aRI" = (
+/obj/structure/vampdoor/wood,
+/obj/effect/mapping_helpers/door/access/baali,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/baali)
 "aRJ" = (
 /obj/effect/decal/pallet,
 /obj/structure/chair/plastic/darkpack{
@@ -3634,16 +3642,6 @@
 	},
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/strip)
-"aTH" = (
-/obj/structure/vampdoor/wood{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/door/access/baali,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
-/obj/effect/mapping_helpers/door/bash_difficulty/five,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/baali)
 "aTJ" = (
 /turf/open/floor/iron/stairs/black{
 	dir = 8
@@ -13125,13 +13123,6 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/baywalk)
-"ddP" = (
-/obj/structure/vampipe{
-	icon_state = "piping32";
-	pixel_y = 17
-	},
-/turf/open/floor/plating/canal,
-/area/vtm/interior/sewer)
 "ddR" = (
 /obj/structure/chair/comfy/darkpack/dark{
 	dir = 1
@@ -16426,6 +16417,11 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
+"dRf" = (
+/obj/item/pickaxe/mini,
+/obj/structure/flora/rock/pile/darkpack,
+/turf/open/floor/plating/rough/cave,
+/area/vtm/interior/baali)
 "dRg" = (
 /obj/effect/turf_decal/siding/dark,
 /obj/effect/turf_decal/trimline/purple/filled/warning,
@@ -16584,11 +16580,6 @@
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/park)
-"dSB" = (
-/obj/item/pickaxe/mini,
-/obj/structure/flora/rock/pile/darkpack,
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/baali)
 "dSH" = (
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights)
@@ -17158,50 +17149,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/tzimisce_sanctum)
-"dYX" = (
-/obj/structure/closet/cabinet,
-/obj/item/clothing/shoes/vampire/heels,
-/obj/item/clothing/suit/vampire/vest/army{
-	masquerade_violating = 0;
-	name = "sheriff's vest"
-	},
-/obj/item/clothing/under/vampire/sheriff,
-/obj/item/clothing/under/vampire/sheriff/female,
-/obj/item/clothing/shoes/vampire,
-/obj/item/clothing/glasses/vampire/sun,
-/obj/item/clothing/head/vampire/army{
-	desc = "Looks dangerous. Provides great protection against blunt force. Doesn't break the masquerade";
-	masquerade_violating = 0;
-	name = "sheriff's tactical helmet"
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 4;
-	pixel_x = -3
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_y = 4;
-	pixel_x = 5
-	},
-/obj/item/stack/dollar/hundred{
-	pixel_x = 7;
-	pixel_y = -7
-	},
-/obj/item/clothing/head/hats/hos/beret,
-/obj/machinery/light/prince/directional/north,
-/obj/item/katana/vamp{
-	color = "#ccffff";
-	desc = "A flimsy appearing replica katana. It looks quite sharp, despite being an apparent reference to Japanese animation. ";
-	force = 50;
-	name = "Sheriff's special";
-	pixel_y = 9
-	},
-/obj/item/masquerade_contract,
-/obj/item/masquerade_contract,
-/obj/item/masquerade_contract,
-/obj/item/masquerade_contract,
-/obj/item/masquerade_contract,
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/millennium_tower/f2)
 "dZb" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/rough/cave{
@@ -39385,11 +39332,6 @@
 /obj/structure/flora/darkpack_flower/paintbrush,
 /turf/open/misc/grass,
 /area/vtm)
-"jeC" = (
-/obj/structure/table,
-/obj/item/reagent_containers/blood/random,
-/turf/open/floor/city/toilet,
-/area/vtm/interior/baali)
 "jeE" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -42500,6 +42442,11 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/old,
 /area/vtm/interior)
+"jPO" = (
+/obj/structure/table,
+/obj/item/reagent_containers/blood/random,
+/turf/open/floor/city/toilet,
+/area/vtm/interior/baali)
 "jPV" = (
 /obj/effect/landmark/npcability,
 /obj/effect/landmark/npcbeacon,
@@ -49584,6 +49531,13 @@
 	},
 /turf/open/openspace,
 /area/vtm/interior/laundromat)
+"lyC" = (
+/obj/structure/vampipe{
+	icon_state = "piping32";
+	pixel_y = 17
+	},
+/turf/open/floor/plating/canal,
+/area/vtm/interior/sewer)
 "lyE" = (
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/littleitaly)
@@ -71963,6 +71917,44 @@
 /obj/vampire_computer,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior)
+"qDm" = (
+/obj/structure/closet/cabinet,
+/obj/item/clothing/shoes/vampire/heels,
+/obj/item/clothing/suit/vampire/vest/army{
+	masquerade_violating = 0;
+	name = "sheriff's vest"
+	},
+/obj/item/clothing/under/vampire/sheriff,
+/obj/item/clothing/under/vampire/sheriff/female,
+/obj/item/clothing/shoes/vampire,
+/obj/item/clothing/glasses/vampire/sun,
+/obj/item/clothing/head/vampire/army{
+	desc = "Looks dangerous. Provides great protection against blunt force. Doesn't break the masquerade";
+	masquerade_violating = 0;
+	name = "sheriff's tactical helmet"
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 4;
+	pixel_x = -3
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/obj/item/stack/dollar/hundred{
+	pixel_x = 7;
+	pixel_y = -7
+	},
+/obj/item/clothing/head/hats/hos/beret,
+/obj/machinery/light/prince/directional/north,
+/obj/item/masquerade_contract,
+/obj/item/masquerade_contract,
+/obj/item/masquerade_contract,
+/obj/item/masquerade_contract,
+/obj/item/masquerade_contract,
+/obj/item/sheriffblade/vamp,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/millennium_tower/f2)
 "qDq" = (
 /obj/structure/vampdoor,
 /obj/effect/turf_decal/siding/white{
@@ -74354,6 +74346,16 @@
 	},
 /turf/open/misc/grass/nosmooth,
 /area/vtm/outside/culture/italy)
+"rgP" = (
+/obj/structure/vampdoor/wood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/baali,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/bash_difficulty/five,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/baali)
 "rgX" = (
 /obj/structure/railing/corner{
 	dir = 8
@@ -84659,14 +84661,6 @@
 	},
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/jazzclub)
-"tDX" = (
-/obj/structure/vampdoor/wood,
-/obj/effect/mapping_helpers/door/access/baali,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/baali)
 "tEc" = (
 /obj/structure/table/wood,
 /obj/item/newspaper{
@@ -98336,6 +98330,14 @@
 /obj/effect/decal/wallpaper/paper/rich,
 /turf/closed/wall/vampwall/painted,
 /area/vtm/westfield_mall/interior)
+"wKp" = (
+/obj/structure/vampdoor/reinf,
+/obj/effect/mapping_helpers/door/access/baali,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/baali)
 "wKs" = (
 /obj/structure/vampipe{
 	icon_state = "piping32"
@@ -103946,14 +103948,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer/nosferatu_warren)
-"ybf" = (
-/obj/structure/vampdoor/reinf,
-/obj/effect/mapping_helpers/door/access/baali,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/turf/open/floor/plating/concrete,
-/area/vtm/interior/baali)
 "ybh" = (
 /obj/structure/railing/wooden_fence,
 /obj/effect/turf_decal/siding/wood/dark,
@@ -114889,7 +114883,7 @@ seh
 seh
 seh
 seh
-ddP
+lyC
 dfM
 drj
 nmI
@@ -115094,7 +115088,7 @@ fZF
 fZF
 fZF
 hge
-ybf
+wKp
 oPp
 oPp
 qkL
@@ -115913,7 +115907,7 @@ kRM
 gCp
 fFr
 wLp
-jeC
+jPO
 dfM
 jTT
 oFY
@@ -117548,7 +117542,7 @@ uvs
 uvs
 jTT
 jTT
-dSB
+dRf
 tBn
 tBn
 jTT
@@ -155896,7 +155890,7 @@ xHC
 egE
 egE
 egE
-tDX
+aRI
 seN
 udx
 udx
@@ -156303,7 +156297,7 @@ viN
 ude
 ude
 viN
-aTH
+rgP
 bef
 bef
 bef
@@ -214194,7 +214188,7 @@ wsF
 oLX
 jbH
 qeA
-dYX
+qDm
 oRr
 oRr
 fUn
