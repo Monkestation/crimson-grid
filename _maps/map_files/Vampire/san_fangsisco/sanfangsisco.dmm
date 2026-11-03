@@ -1835,6 +1835,18 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility/plant)
+"auD" = (
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 8
+	},
+/obj/structure/vampdoor/woodglass{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/unlock,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic/haven)
 "auM" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 4
@@ -4646,14 +4658,6 @@
 	},
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior/tzimisce_sanctum)
-"bbz" = (
-/obj/structure/vampdoor/prison,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
-/turf/open/floor/city/toilet,
-/area/vtm/interior/clinic/haven)
 "bbB" = (
 /obj/machinery/microwave{
 	desc = "Cooks and boils stuff, somehow.";
@@ -10372,6 +10376,15 @@
 /obj/effect/landmark/start/darkpack/camarilla/hound,
 /turf/open/floor/carpet/purple,
 /area/vtm/interior/millennium_tower/f2)
+"cnu" = (
+/obj/structure/window/reinforced/tinted/spawner/directional/west,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/water/hot_spring{
+	color = "#820505";
+	name = "rotten spring";
+	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
+	},
+/area/vtm/interior/clinic/haven)
 "cnA" = (
 /obj/machinery/vending/boozeomat,
 /obj/structure/table/wood,
@@ -10969,6 +10982,20 @@
 /obj/machinery/light/prince/directional/west,
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/tzimisce_manor)
+"cui" = (
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 8
+	},
+/obj/structure/vampdoor/reinf,
+/obj/effect/mapping_helpers/door/access/primogen_malkavian,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/turf/open/floor/city/clinic,
+/area/vtm/interior/clinic/haven)
 "cuk" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -12237,6 +12264,14 @@
 /mob/living/carbon/human/npc/bouncer/elysium,
 /turf/open/floor/city/plating,
 /area/vtm/interior/millennium_tower)
+"cIU" = (
+/obj/effect/turf_decal/siding/dark_brown,
+/obj/structure/vampdoor/woodglass,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/turf/open/floor/city/industrial,
+/area/vtm/interior/clinic/haven)
 "cIX" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -12981,6 +13016,14 @@
 /obj/effect/decal/support,
 /turf/open/water/beach/vamp,
 /area/vtm)
+"cUo" = (
+/obj/structure/window/reinforced/tinted/spawner/directional/west,
+/turf/open/water/hot_spring{
+	color = "#820505";
+	name = "rotten spring";
+	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
+	},
+/area/vtm/interior/clinic/haven)
 "cUq" = (
 /obj/structure/closet/crate/bin,
 /turf/open/floor/plating/sidewalkalt,
@@ -16654,14 +16697,6 @@
 	},
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/cog/caern)
-"dMy" = (
-/obj/structure/vampdoor/wood,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock,
-/turf/open/floor/wood/herring,
-/area/vtm/interior/clinic/haven)
 "dMD" = (
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/effect/turf_decal/weather/dirt{
@@ -22594,21 +22629,6 @@
 /obj/effect/landmark/start/darkpack/supply/tech,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/supply)
-"ffG" = (
-/obj/structure/vampdoor/oldwood{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/white{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/white{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/unlock,
-/turf/open/floor/city/toilet,
-/area/vtm/interior/clinic/haven)
 "ffH" = (
 /obj/structure/chair/wood/darkpack/red{
 	dir = 8
@@ -24738,14 +24758,6 @@
 /obj/item/pen/blue,
 /turf/open/floor/carpet/blue,
 /area/vtm/interior)
-"fFS" = (
-/obj/structure/vampdoor/old,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic/haven)
 "fFZ" = (
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalk,
@@ -25615,6 +25627,15 @@
 	},
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
+"fPM" = (
+/obj/structure/vampdoor/old,
+/obj/effect/turf_decal/siding/white,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic/haven)
 "fPQ" = (
 /obj/structure/table/wood,
 /obj/item/clothing/mask/vampire/venetian_mask/fancy,
@@ -25793,15 +25814,6 @@
 /obj/item/phone_book,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch/basement)
-"fRE" = (
-/obj/structure/vampdoor/old,
-/obj/effect/turf_decal/siding/white,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic/haven)
 "fRX" = (
 /obj/structure/flora/bush/sparsegrass/style_3,
 /turf/open/floor/plating/rough/cave,
@@ -26219,6 +26231,17 @@
 /obj/effect/decal/rugs,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/supply)
+"fWq" = (
+/obj/structure/sign/poster/random/directional/north,
+/obj/structure/vampdoor/woodglass{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/unlock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/turf_decal/siding/wood/dark,
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic/haven)
 "fWy" = (
 /obj/machinery/computer/security/telescreen/entertainment/directional/north,
 /obj/effect/turf_decal/siding/wood/dark/end{
@@ -28650,6 +28673,16 @@
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/millennium_tower/f2)
+"gzQ" = (
+/obj/structure/lattice/grate{
+	dir = 4
+	},
+/turf/open/water/hot_spring{
+	color = "#820505";
+	name = "rotten spring";
+	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
+	},
+/area/vtm/interior/clinic/haven)
 "gzT" = (
 /obj/structure/flora/bush/sparsegrass/style_random,
 /obj/effect/turf_decal/weather/dirt,
@@ -31210,6 +31243,22 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/vjanitor)
+"hfI" = (
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/access/primogen_malkavian,
+/obj/structure/vampdoor{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic/haven)
 "hfL" = (
 /turf/closed/wall/vampwall/old,
 /area/vtm/interior/shop)
@@ -33272,16 +33321,6 @@
 /mob/living/basic/turtle,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/outside/forest)
-"hFi" = (
-/obj/structure/lattice/grate{
-	dir = 4
-	},
-/turf/open/water/hot_spring{
-	color = "#820505";
-	name = "rotten spring";
-	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
-	},
-/area/vtm/interior/clinic/haven)
 "hFr" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/plating/concrete,
@@ -34649,6 +34688,14 @@
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility/restricted)
+"hWK" = (
+/obj/effect/turf_decal/siding/dark_brown,
+/obj/structure/vampdoor/woodglass,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/unlock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic/haven)
 "hWS" = (
 /obj/structure/chair/pew{
 	dir = 4
@@ -36700,16 +36747,6 @@
 "ixp" = (
 /turf/open/floor/wood/old,
 /area/vtm/interior/tzimisce_manor)
-"ixz" = (
-/obj/structure/vampdoor/oldwood{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock,
-/turf/open/floor/wood/old,
-/area/vtm/interior/clinic/haven)
 "ixL" = (
 /obj/effect/turf_decal/bordur{
 	dir = 10
@@ -39980,6 +40017,14 @@
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
+"jlA" = (
+/obj/structure/vampdoor/reinf,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/turf/open/floor/city/industrial/large,
+/area/vtm/interior/clinic/haven)
 "jlC" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/misc/grass,
@@ -40563,15 +40608,6 @@
 /obj/structure/sink/directional/south,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/bianchiBank)
-"jsT" = (
-/obj/effect/turf_decal/siding/dark_brown,
-/obj/structure/vampdoor/woodglass,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/unlock,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic/haven)
 "jsU" = (
 /obj/structure/closet,
 /obj/item/clothing/under/vampire/police,
@@ -45939,14 +45975,6 @@
 	},
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
-"kHo" = (
-/obj/structure/vampdoor/old,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/turf/open/floor/carpet/darkpack/old,
-/area/vtm/interior/clinic/haven)
 "kHq" = (
 /obj/structure/railing{
 	dir = 1;
@@ -47028,15 +47056,6 @@
 /obj/effect/abstract/cargo_landing_spot,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/supply)
-"kUA" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic/haven)
 "kUC" = (
 /obj/structure/city_map,
 /turf/open/floor/plating/sidewalk,
@@ -47069,19 +47088,6 @@
 /obj/effect/decal/cleanable/cardboard,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/supply)
-"kUS" = (
-/obj/effect/turf_decal/siding/dark_brown{
-	dir = 8
-	},
-/obj/structure/vampdoor/woodglass{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/door/unlock,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic/haven)
 "kUU" = (
 /obj/structure/flora/rock/stalagmite,
 /turf/open/floor/plating/rough/cave,
@@ -47141,22 +47147,6 @@
 /obj/structure/chair/sofa/corp/right,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/glasswalker)
-"kVL" = (
-/obj/effect/turf_decal/siding/dark_brown{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/dark_brown{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/access/primogen_malkavian,
-/obj/structure/vampdoor{
-	dir = 4
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic/haven)
 "kVT" = (
 /obj/effect/turf_decal/darkpack/cave/corner{
 	dir = 8
@@ -47437,20 +47427,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/vtm/interior/tzimisce_manor)
-"kYx" = (
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/obj/structure/vampdoor/reinf{
-	dir = 4;
-	name = "Security Office"
-	},
-/turf/open/floor/city/industrial/large,
-/area/vtm/interior/clinic/haven)
 "kYz" = (
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/city/plating_mono,
@@ -48380,15 +48356,6 @@
 	},
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
-"liP" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/obj/machinery/light/directional/east{
-	bulb_power = 0.5
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic/haven)
 "liQ" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4
@@ -48629,6 +48596,20 @@
 /obj/structure/platform/lowwall/market/window,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/shop/hardware_store)
+"lmy" = (
+/obj/structure/vampdoor/prison{
+	dir = 4;
+	pixel_y = -17;
+	pixel_x = -14
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/turf/open/floor/city/industrial/large,
+/area/vtm/interior/clinic/haven)
 "lmH" = (
 /obj/effect/turf_decal/bordur/corner{
 	dir = 4
@@ -49453,20 +49434,6 @@
 	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/jazzclub)
-"lwJ" = (
-/obj/effect/turf_decal/siding/dark_brown{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/dark_brown{
-	dir = 8
-	},
-/obj/structure/vampdoor/reinf,
-/obj/effect/mapping_helpers/door/access/primogen_malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock,
-/turf/open/floor/city/clinic,
-/area/vtm/interior/clinic/haven)
 "lwU" = (
 /obj/transfer_point_vamp/umbral/exit{
 	id = "umbra_supply"
@@ -50684,6 +50651,13 @@
 /obj/structure/vampfence/rich,
 /turf/open/misc/grass,
 /area/vtm/outside/giovanni/courtyard)
+"lJC" = (
+/obj/structure/vampdoor/old,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/turf/open/floor/carpet/darkpack/old,
+/area/vtm/interior/clinic/haven)
 "lJD" = (
 /obj/machinery/photocopier/gratis/prebuilt{
 	pixel_x = 0;
@@ -50923,6 +50897,15 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/bianchiBank)
+"lMb" = (
+/obj/structure/vampdoor/oldwood{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/turf/open/floor/wood/old,
+/area/vtm/interior/clinic/haven)
 "lMe" = (
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
@@ -52097,14 +52080,6 @@
 	},
 /turf/open/floor/wood/old,
 /area/vtm)
-"mac" = (
-/obj/structure/vampdoor/reinf,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/access/primogen_malkavian,
-/turf/open/floor/plating/rough/cave,
-/area/vtm/interior/clinic/haven)
 "mai" = (
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/plating/concrete,
@@ -52488,6 +52463,13 @@
 "mes" = (
 /turf/closed/wall/vampwall/junk/alt,
 /area/vtm/interior/ghetto)
+"meB" = (
+/obj/structure/vampdoor/wood,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic/haven)
 "meD" = (
 /obj/item/trash/can,
 /turf/open/floor/plating/rough,
@@ -54177,14 +54159,6 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/ghetto)
-"mzR" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/water/hot_spring{
-	color = "#820505";
-	name = "rotten spring";
-	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
-	},
-/area/vtm/interior/clinic/haven)
 "mzT" = (
 /obj/structure/chair/comfy/darkpack,
 /turf/open/floor/wood/smooth/old,
@@ -55265,20 +55239,6 @@
 /obj/structure/vampdoor/simple,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/hotel)
-"mOm" = (
-/obj/structure/vampdoor/prison{
-	dir = 4;
-	pixel_y = -17;
-	pixel_x = -14
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/turf/open/floor/city/industrial/large,
-/area/vtm/interior/clinic/haven)
 "mOn" = (
 /obj/effect/landmark/npcwall,
 /obj/effect/decal/cleanable/garbage,
@@ -56904,15 +56864,6 @@
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/financialdistrict)
-"ngr" = (
-/obj/effect/turf_decal/siding/dark_brown,
-/obj/structure/vampdoor/woodglass,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock,
-/turf/open/floor/city/industrial,
-/area/vtm/interior/clinic/haven)
 "ngt" = (
 /obj/structure/table,
 /obj/item/pen,
@@ -58290,6 +58241,14 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
+"nxW" = (
+/obj/structure/vampdoor/prison,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/turf_decal/stripes,
+/obj/effect/mapping_helpers/door/bash_difficulty/ten,
+/obj/effect/mapping_helpers/door/lock_difficulty/ten,
+/turf/open/floor/city/industrial/large,
+/area/vtm/interior/clinic/haven)
 "nxY" = (
 /obj/structure/dresser,
 /turf/open/floor/plating/rough,
@@ -58342,6 +58301,13 @@
 	},
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior/tzimisce_sanctum)
+"nyz" = (
+/obj/structure/vampdoor/old,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic/haven)
 "nyA" = (
 /obj/item/kirbyplants/random,
 /obj/structure/extinguisher_cabinet/directional/north,
@@ -62353,6 +62319,14 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/cog/caern)
+"ovx" = (
+/obj/structure/vampdoor/glass,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/turf/open/floor/city/plating,
+/area/vtm/interior/clinic/haven)
 "ovy" = (
 /obj/structure/closet/crate/dumpster,
 /turf/open/floor/plating/sidewalk/poor,
@@ -62726,6 +62700,17 @@
 /obj/item/flashlight/flare/candle/infinite,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/banu/haven)
+"ozL" = (
+/obj/structure/vampdoor/prison,
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/unlock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/turf/open/floor/carpet/darkpack/bluesilver,
+/area/vtm/interior/clinic/haven)
 "ozP" = (
 /obj/effect/landmark/npcwall,
 /turf/open/misc/dirt,
@@ -66304,6 +66289,14 @@
 /obj/effect/mapping_helpers/door/unlock,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/giovanni)
+"pub" = (
+/obj/structure/vampdoor/reinf,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/access/primogen_malkavian,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/turf/open/floor/plating/rough/cave,
+/area/vtm/interior/clinic/haven)
 "pui" = (
 /obj/effect/turf_decal/asphaltline/xing{
 	dir = 8;
@@ -66458,6 +66451,20 @@
 	},
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/chantry)
+"pvP" = (
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/structure/vampdoor/reinf{
+	dir = 4;
+	name = "Security Office"
+	},
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/turf/open/floor/city/industrial/large,
+/area/vtm/interior/clinic/haven)
 "pvR" = (
 /turf/open/floor/city/toilet,
 /area/vtm/interior/museum)
@@ -68360,6 +68367,14 @@
 	},
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/chantry/basement)
+"pSy" = (
+/obj/structure/vampdoor/prison,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/nine,
+/obj/effect/mapping_helpers/door/lock_difficulty/nine,
+/turf/open/floor/city/toilet,
+/area/vtm/interior/clinic/haven)
 "pSB" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -68599,15 +68614,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/hotel)
-"pVv" = (
-/obj/structure/window/reinforced/tinted/spawner/directional/west,
-/obj/effect/decal/cleanable/blood/gibs/down,
-/turf/open/water/hot_spring{
-	color = "#820505";
-	name = "rotten spring";
-	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
-	},
-/area/vtm/interior/clinic/haven)
 "pVB" = (
 /mob/living/basic/pet/cat/darkpack,
 /turf/open/floor/wood/smooth/old,
@@ -69049,16 +69055,6 @@
 	},
 /turf/closed/wall/vampwall/rock,
 /area/vtm/interior/sewer/nosferatu_town)
-"qbs" = (
-/obj/machinery/light/directional/north{
-	bulb_colour = "#800000"
-	},
-/turf/open/water/hot_spring{
-	color = "#820505";
-	name = "rotten spring";
-	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
-	},
-/area/vtm/interior/clinic/haven)
 "qbv" = (
 /obj/structure/flora/tree/vamp/pine,
 /turf/open/misc/dirt,
@@ -70436,6 +70432,14 @@
 /obj/structure/railing,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/arts)
+"qrO" = (
+/obj/structure/pinata,
+/turf/open/water/hot_spring{
+	color = "#820505";
+	name = "rotten spring";
+	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
+	},
+/area/vtm/interior/clinic/haven)
 "qrR" = (
 /obj/structure/vampdoor/old,
 /obj/effect/mapping_helpers/door/access/chantry,
@@ -71924,14 +71928,6 @@
 /obj/structure/table,
 /turf/open/floor/light,
 /area/vtm/interior/strip)
-"qHY" = (
-/obj/structure/vampdoor/glass,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
-/turf/open/floor/city/plating,
-/area/vtm/interior/clinic/haven)
 "qHZ" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 4
@@ -73289,6 +73285,12 @@
 "qXQ" = (
 /turf/open/floor/iron/white/smooth_large,
 /area/vtm/interior/endron_facility/restricted)
+"qXR" = (
+/obj/effect/turf_decal/siding/wood/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic/haven)
 "qYb" = (
 /obj/structure/platform/lowwall/market/window,
 /turf/open/floor/plating/rough,
@@ -73868,6 +73870,14 @@
 /obj/effect/landmark/npcwall,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/community)
+"rfL" = (
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/lock,
+/obj/structure/vampdoor/reinf,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic/haven)
 "rfR" = (
 /obj/structure/bed/maint,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -74489,19 +74499,6 @@
 /obj/underplate,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/shop/gummaguts)
-"rlt" = (
-/obj/structure/lattice/grate{
-	dir = 4
-	},
-/obj/machinery/light/directional/north{
-	bulb_colour = "#800000"
-	},
-/turf/open/water/hot_spring{
-	color = "#820505";
-	name = "rotten spring";
-	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
-	},
-/area/vtm/interior/clinic/haven)
 "rlx" = (
 /obj/structure/platform/lowwall/rich/window,
 /turf/open/floor/wood/tile,
@@ -76003,14 +76000,6 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior/tzimisce_manor)
-"rBR" = (
-/obj/structure/vampdoor/prison,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
-/obj/effect/mapping_helpers/door/lock_difficulty/nine,
-/obj/effect/turf_decal/stripes,
-/turf/open/floor/city/industrial/large,
-/area/vtm/interior/clinic/haven)
 "rBW" = (
 /obj/structure/rack,
 /obj/item/storage/box/syringes{
@@ -76460,17 +76449,6 @@
 /obj/structure/bonfire/fire_barrel,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
-"rHx" = (
-/obj/structure/vampdoor/prison,
-/obj/effect/turf_decal/siding/white{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/unlock,
-/turf/open/floor/carpet/darkpack/bluesilver,
-/area/vtm/interior/clinic/haven)
 "rHy" = (
 /obj/effect/turf_decal/bordur/corner{
 	dir = 8
@@ -78541,13 +78519,6 @@
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/vtm/interior/millennium_tower)
-"sgS" = (
-/turf/open/water/hot_spring{
-	color = "#820505";
-	name = "rotten spring";
-	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
-	},
-/area/vtm/interior/clinic/haven)
 "she" = (
 /obj/structure/railing{
 	dir = 8
@@ -78727,6 +78698,17 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/cog/caern)
+"sji" = (
+/obj/structure/vampdoor/prison,
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/unlock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/turf/open/floor/carpet/darkpack/bluesilver,
+/area/vtm/interior/clinic/haven)
 "sjk" = (
 /obj/structure/vampdoor,
 /turf/open/floor/plating,
@@ -80761,6 +80743,21 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic)
+"sHb" = (
+/obj/structure/vampdoor/oldwood{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/unlock,
+/obj/effect/mapping_helpers/door/lock_difficulty/two,
+/turf/open/floor/city/toilet,
+/area/vtm/interior/clinic/haven)
 "sHc" = (
 /obj/structure/chair/comfy/beige,
 /turf/open/floor/wood/smooth/old,
@@ -81369,12 +81366,6 @@
 /obj/darkpack_car/track/volkswagen,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/ghetto)
-"sPK" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic/haven)
 "sPO" = (
 /obj/effect/decal/cleanable/trash{
 	icon_state = "trash5"
@@ -81498,16 +81489,6 @@
 /obj/item/flashlight/flare/candle/infinite,
 /turf/open/misc/dirt,
 /area/vtm/interior/sabbat_lair)
-"sRy" = (
-/obj/structure/sign/poster/random/directional/north,
-/obj/structure/vampdoor/woodglass{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/unlock,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/turf/open/floor/wood/herring,
-/area/vtm/interior/clinic/haven)
 "sRB" = (
 /obj/structure/roadsign/warningtrafficlight,
 /turf/open/floor/plating/sidewalk,
@@ -83596,6 +83577,16 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/cog/pantry)
+"trF" = (
+/obj/machinery/light/directional/north{
+	bulb_colour = "#800000"
+	},
+/turf/open/water/hot_spring{
+	color = "#820505";
+	name = "rotten spring";
+	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
+	},
+/area/vtm/interior/clinic/haven)
 "trG" = (
 /obj/structure/table/wood,
 /obj/item/newspaper,
@@ -85458,6 +85449,19 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/techshop)
+"tPI" = (
+/obj/structure/lattice/grate{
+	dir = 4
+	},
+/obj/machinery/light/directional/north{
+	bulb_colour = "#800000"
+	},
+/turf/open/water/hot_spring{
+	color = "#820505";
+	name = "rotten spring";
+	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
+	},
+/area/vtm/interior/clinic/haven)
 "tPK" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -90328,6 +90332,13 @@
 /obj/effect/landmark/npcwall,
 /turf/open/misc/dirt,
 /area/vtm/outside/pacificheights/forest)
+"uXT" = (
+/turf/open/water/hot_spring{
+	color = "#820505";
+	name = "rotten spring";
+	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
+	},
+/area/vtm/interior/clinic/haven)
 "uXU" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 8
@@ -91393,14 +91404,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
-"vkZ" = (
-/obj/structure/pinata,
-/turf/open/water/hot_spring{
-	color = "#820505";
-	name = "rotten spring";
-	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
-	},
-/area/vtm/interior/clinic/haven)
 "vld" = (
 /obj/structure/vampdoor/wood{
 	dir = 4
@@ -92671,15 +92674,6 @@
 "vzD" = (
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/anarch/basement)
-"vzI" = (
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock,
-/obj/structure/vampdoor/reinf,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic/haven)
 "vzM" = (
 /turf/open/floor/city/church,
 /area/vtm/interior/church/haven)
@@ -94040,6 +94034,14 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
+"vRz" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/water/hot_spring{
+	color = "#820505";
+	name = "rotten spring";
+	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
+	},
+/area/vtm/interior/clinic/haven)
 "vRH" = (
 /obj/structure/closet,
 /obj/item/storage/box/evidence,
@@ -94823,6 +94825,14 @@
 	},
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
+"wag" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/water/hot_spring{
+	color = "#820505";
+	name = "rotten spring";
+	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
+	},
+/area/vtm/interior/clinic/haven)
 "wah" = (
 /obj/effect/turf_decal/siding/white,
 /obj/effect/turf_decal/siding/white{
@@ -96471,14 +96481,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/cog/caern)
-"wvo" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
-/turf/open/water/hot_spring{
-	color = "#820505";
-	name = "rotten spring";
-	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
-	},
-/area/vtm/interior/clinic/haven)
 "wvx" = (
 /obj/machinery/light/prince/directional/east,
 /turf/open/floor/wood/smooth,
@@ -96719,17 +96721,6 @@
 	},
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/tzimisce_manor)
-"wyh" = (
-/obj/structure/vampdoor/prison,
-/obj/effect/turf_decal/siding/white{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/unlock,
-/turf/open/floor/carpet/darkpack/bluesilver,
-/area/vtm/interior/clinic/haven)
 "wyr" = (
 /obj/effect/decal/rugs,
 /obj/structure/sink/directional/west,
@@ -98338,14 +98329,6 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/fishermanswharf)
-"wQB" = (
-/obj/structure/vampdoor/reinf,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
-/turf/open/floor/city/industrial/large,
-/area/vtm/interior/clinic/haven)
 "wQF" = (
 /obj/structure/railing{
 	dir = 1;
@@ -99453,14 +99436,6 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights/forest)
-"xcR" = (
-/obj/structure/window/reinforced/tinted/spawner/directional/west,
-/turf/open/water/hot_spring{
-	color = "#820505";
-	name = "rotten spring";
-	desc = "Pungent water kept warm through some questionable heat source, possibly a geothermal heat source far underground. Whatever it is, it feels 'safe' to swim, and you can even catch a glimpse of some guts swirling  through the water."
-	},
-/area/vtm/interior/clinic/haven)
 "xcT" = (
 /obj/structure/table/countertop/bacotell,
 /obj/structure/fluff/tv/order/two,
@@ -100858,6 +100833,10 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/giovanni/basement)
+"xrK" = (
+/obj/effect/turf_decal/siding/wood/dark,
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic/haven)
 "xrT" = (
 /obj/structure/closet/crate/bin,
 /obj/item/trash/sosjerky,
@@ -129403,7 +129382,7 @@ eDf
 eDf
 wLw
 mTl
-kHo
+lJC
 ecZ
 elL
 mIR
@@ -130431,7 +130410,7 @@ wLw
 hfa
 qax
 mTl
-fRE
+fPM
 mTl
 mTl
 mIR
@@ -130701,7 +130680,7 @@ bqH
 xKt
 msy
 msy
-qHY
+ovx
 ecZ
 ecZ
 ecZ
@@ -130939,8 +130918,8 @@ tyv
 eDf
 eDf
 eDf
-ixz
-ixz
+lMb
+lMb
 wLw
 dfJ
 mTl
@@ -131469,7 +131448,7 @@ tlG
 eDf
 eDf
 uCb
-kYx
+pvP
 eDf
 eDf
 eDf
@@ -131963,7 +131942,7 @@ cSf
 rro
 tNb
 uSr
-dMy
+meB
 erR
 erR
 kdw
@@ -131985,7 +131964,7 @@ phy
 phy
 phy
 tlG
-wyh
+sji
 pwa
 pwa
 kFN
@@ -132242,7 +132221,7 @@ tlG
 tlG
 tlG
 tlG
-rHx
+ozL
 tQV
 tQV
 iLR
@@ -132747,7 +132726,7 @@ rhB
 snz
 akQ
 ppy
-ngr
+cIU
 mTl
 rQY
 dTG
@@ -132991,7 +132970,7 @@ cSf
 rro
 rCW
 tNb
-dMy
+meB
 erR
 erR
 eDf
@@ -133004,7 +132983,7 @@ rhB
 cfL
 ppy
 akQ
-ngr
+cIU
 mTl
 rQY
 ihK
@@ -133259,8 +133238,8 @@ eDf
 eDf
 eDf
 cDS
-kUS
-kUS
+auD
+auD
 rro
 iOK
 rQY
@@ -133511,7 +133490,7 @@ erR
 erR
 erR
 erR
-jsT
+hWK
 mTl
 mTl
 dOW
@@ -133768,7 +133747,7 @@ erR
 erR
 erR
 erR
-jsT
+hWK
 mTl
 euw
 euw
@@ -134035,18 +134014,18 @@ mTl
 rro
 cHQ
 mTl
-fFS
+nyz
 mTl
 mTl
 mTl
-vzI
+rfL
 mTl
 wgy
 euf
 fuu
 eDf
 cPM
-ffG
+sHb
 mIR
 eDf
 eDf
@@ -134275,15 +134254,15 @@ nxc
 nxc
 cKC
 cKC
-sgS
-sgS
-xcR
-xcR
-pVv
+uXT
+uXT
+cUo
+cUo
+cnu
 eDf
 eDf
 eDf
-kVL
+hfI
 eDf
 mOR
 mOR
@@ -134532,11 +134511,11 @@ mIR
 mIR
 cKC
 cKC
-qbs
-sgS
-sgS
-sgS
-sgS
+trF
+uXT
+uXT
+uXT
+uXT
 kAj
 iYI
 kFk
@@ -134546,8 +134525,8 @@ gTI
 aBp
 wLw
 nDU
-tNb
-kUA
+xrK
+mTl
 mTl
 rro
 cDB
@@ -134786,13 +134765,13 @@ mIR
 cKC
 cKC
 cKC
-rlt
-hFi
+tPI
+gzQ
 qfb
-sgS
-vkZ
-wvo
-sgS
+uXT
+qrO
+wag
+uXT
 wdv
 kAj
 swJ
@@ -134803,8 +134782,8 @@ tNb
 sdI
 wLw
 cRH
-tNb
-sPK
+xrK
+mTl
 mTl
 eDf
 eDf
@@ -134813,7 +134792,7 @@ eDf
 eDf
 kwL
 tCn
-mOm
+lmy
 ylo
 eDf
 eDf
@@ -135041,17 +135020,17 @@ dvN
 mIR
 mIR
 cKC
-rlt
-hFi
-hFi
-hFi
+tPI
+gzQ
+gzQ
+gzQ
 qfb
-mzR
-sgS
-sgS
+vRz
+uXT
+uXT
 dRh
 etb
-lwJ
+cui
 uTV
 wel
 qTW
@@ -135060,8 +135039,8 @@ tNb
 qga
 wLw
 gju
-tNb
-liP
+xrK
+xAS
 eHq
 eDf
 kwL
@@ -135296,12 +135275,12 @@ mTj
 mTj
 mTj
 cKC
-rlt
-hFi
-hFi
-hFi
-hFi
-hFi
+tPI
+gzQ
+gzQ
+gzQ
+gzQ
+gzQ
 cKC
 kwD
 bob
@@ -135317,7 +135296,7 @@ tNb
 tNb
 eDf
 eDf
-sRy
+fWq
 eDf
 eDf
 eDf
@@ -135333,7 +135312,7 @@ urj
 iqN
 uws
 mTl
-bbz
+pSy
 xIU
 xIU
 eDf
@@ -135552,12 +135531,12 @@ vaP
 vaP
 vaP
 vaP
-mac
-hFi
-hFi
-hFi
-hFi
-hFi
+pub
+gzQ
+gzQ
+gzQ
+gzQ
+gzQ
 mIR
 cKC
 wHk
@@ -135574,7 +135553,7 @@ nLi
 gfw
 wLw
 hiQ
-tNb
+qXR
 wFa
 tmM
 knL
@@ -135582,7 +135561,7 @@ kwL
 lyL
 bJx
 msy
-rBR
+nxW
 msy
 msy
 icT
@@ -135843,11 +135822,11 @@ gOh
 auY
 msy
 msy
-wQB
+jlA
 mTl
 mTl
 mTl
-bbz
+pSy
 xIU
 xIU
 eDf
