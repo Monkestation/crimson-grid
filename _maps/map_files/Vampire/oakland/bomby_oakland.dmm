@@ -1275,9 +1275,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/realistic_fog/dense/strong,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/clinic/haven)
@@ -1968,8 +1968,8 @@
 /obj/structure/vampdoor/oldwood,
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "axm" = (
@@ -3261,10 +3261,10 @@
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/unlock,
-/obj/effect/mapping_helpers/door/lock_difficulty/two,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/clinic/haven)
 "aNB" = (
@@ -5123,13 +5123,6 @@
 	},
 /turf/open/floor/plating/roofwalk,
 /area/vtm)
-"bkm" = (
-/obj/machinery/elevator_control_panel/directional/north{
-	linked_elevator_id = "HospitalVisit";
-	preset_destination_names = list("1" = "Psych Ward", "2" = "Hospital Lobby", "3" = "Office's", "4" = "Long Term Care")
-	},
-/turf/open/water/vamp_sewer,
-/area/vtm/interior/sewer)
 "bkt" = (
 /obj/structure/chair/comfy/darkpack/dark{
 	dir = 1
@@ -10919,9 +10912,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/clinic/haven)
 "cxp" = (
@@ -12859,7 +12852,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "cXx" = (
@@ -16624,7 +16618,8 @@
 /obj/structure/vampdoor,
 /obj/effect/mapping_helpers/door/access/primogen_malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/bash_difficulty/seven,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "dRg" = (
@@ -17419,8 +17414,7 @@
 /obj/structure/vampdoor/oldwood,
 /obj/effect/mapping_helpers/door/unlock,
 /obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/two,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/clinic/haven)
 "dZJ" = (
@@ -17545,6 +17539,7 @@
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/clinic/haven)
 "ebn" = (
@@ -21978,8 +21973,8 @@
 	},
 /obj/structure/vampdoor/prison,
 /obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "fdy" = (
@@ -25660,6 +25655,16 @@
 	color = "#bfbfbf"
 	},
 /area/vtm/interior/police/fed)
+"fWw" = (
+/obj/structure/vampdoor,
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/unlock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/clinic/haven)
 "fWC" = (
 /obj/structure/table/wood,
 /obj/structure/platform/lowwall/rich/old,
@@ -29170,8 +29175,8 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock_difficulty/nine,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/clinic/haven)
 "gMa" = (
@@ -33148,8 +33153,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/two,
 /obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "hGu" = (
@@ -40176,9 +40182,9 @@
 "jmg" = (
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /obj/structure/vampdoor/oldwood,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "jmh" = (
@@ -46984,8 +46990,8 @@
 	},
 /obj/structure/vampdoor/prison,
 /obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "kPk" = (
@@ -48289,7 +48295,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /obj/effect/realistic_fog/dense/strong,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
@@ -49111,9 +49118,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/ten,
+/obj/effect/mapping_helpers/door/lock_difficulty/ten,
 /turf/open/floor/wood/rough,
 /area/vtm/interior/clinic/haven)
 "lnX" = (
@@ -49611,8 +49618,8 @@
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/bash_difficulty/nine,
+/obj/effect/mapping_helpers/door/lock_difficulty/nine,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "lvt" = (
@@ -50656,8 +50663,8 @@
 "lIC" = (
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /obj/structure/vampdoor,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/clinic/haven)
 "lID" = (
@@ -54937,8 +54944,8 @@
 "mGk" = (
 /obj/structure/vampdoor/prison,
 /obj/effect/mapping_helpers/door/access/malkavian,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "mGo" = (
@@ -59359,6 +59366,16 @@
 /obj/effect/turf_decal/siding/wood/light,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/setite)
+"nGk" = (
+/obj/structure/vampipe{
+	icon_state = "piping35"
+	},
+/obj/structure/vampdoor/prison,
+/obj/effect/mapping_helpers/door/access/malkavian,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/turf/open/floor/plating/canal,
+/area/vtm/interior/sewer)
 "nGm" = (
 /obj/machinery/light/prince/directional/south,
 /turf/open/floor/city/church,
@@ -63817,8 +63834,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/primogen_malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
+/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/clinic/haven)
 "oCP" = (
@@ -65814,16 +65831,6 @@
 /obj/structure/flora/bush/flowers_pp/style_random,
 /turf/open/misc/grass/nosmooth,
 /area/vtm/outside/baywalk)
-"pbA" = (
-/obj/structure/vampipe{
-	icon_state = "piping35"
-	},
-/obj/machinery/elevator_control_panel/directional/north{
-	linked_elevator_id = "HospitalVisit";
-	preset_destination_names = list("2" = "Psych Ward", "3" = "Hospital Lobby", "4" = "Office's", "5" = "Long Term Care")
-	},
-/turf/open/floor/plating/canal,
-/area/vtm/interior/sewer)
 "pbF" = (
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/plating/sidewalk/rich,
@@ -73465,10 +73472,11 @@
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "qOe" = (
@@ -78094,7 +78102,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "rTk" = (
@@ -94891,8 +94900,8 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/bash_difficulty/seven,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "vSZ" = (
@@ -95306,13 +95315,6 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights)
-"vXY" = (
-/obj/machinery/elevator_control_panel/directional/north{
-	linked_elevator_id = "HospitalVisit";
-	preset_destination_names = list("1" = "Psych Ward", "2" = "Hospital Lobby", "3" = "Office's", "4" = "Long Term Care")
-	},
-/turf/open/water/vamp_sewer/border,
-/area/vtm/interior/sewer)
 "vYa" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -97268,10 +97270,10 @@
 	},
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /obj/effect/turf_decal/siding/wood/rough{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/clinic/haven)
 "wtg" = (
@@ -97767,12 +97769,12 @@
 "wyy" = (
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/unlock,
-/obj/effect/mapping_helpers/door/lock_difficulty/two,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
 	},
 /obj/structure/vampdoor,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/clinic/haven)
 "wyD" = (
@@ -99968,16 +99970,6 @@
 	dir = 8
 	},
 /area/vtm/interior/endron_facility/plant)
-"wZi" = (
-/obj/structure/vampipe{
-	icon_state = "piping32"
-	},
-/obj/machinery/elevator_control_panel/directional/north{
-	linked_elevator_id = "HospitalVisit";
-	preset_destination_names = list("2" = "Psych Ward", "3" = "Hospital Lobby", "4" = "Office's", "5" = "Long Term Care")
-	},
-/turf/open/floor/plating/canalplating,
-/area/vtm/interior/sewer)
 "wZj" = (
 /obj/structure/railing{
 	dir = 4
@@ -140401,7 +140393,7 @@ diG
 pik
 dQe
 vLt
-fPo
+fWw
 dQe
 iGm
 xBr
@@ -143058,7 +143050,7 @@ hQT
 seh
 kJr
 seh
-wZi
+hQT
 pKv
 tuX
 tuX
@@ -143260,7 +143252,7 @@ hge
 hge
 hge
 hge
-vXY
+vFf
 hge
 hge
 gxA
@@ -143464,7 +143456,7 @@ fZF
 fZF
 mUK
 fZF
-bkm
+fZF
 fZF
 mUK
 fZF
@@ -143662,7 +143654,7 @@ gpd
 gpd
 gpd
 gpd
-kPj
+nGk
 gpd
 gpd
 gpd
@@ -143670,7 +143662,7 @@ gpd
 gpd
 gpd
 gpd
-pbA
+gpd
 gpd
 gpd
 gpd
