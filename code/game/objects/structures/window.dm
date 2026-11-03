@@ -38,8 +38,10 @@
 	var/dramatically_disappearing = FALSE
 	/// If we added a leaning component to ourselves
 	var/added_leaning = FALSE
+	// CRIMSON EDIT ADDITION START - Defenestration
 	/// Set TRUE on windows that should never be broken by thrown bodies
 	var/defenestration_immune = FALSE
+	// CRIMSON EDIT ADDITION END
 
 /datum/armor/structure_window
 	melee = 50

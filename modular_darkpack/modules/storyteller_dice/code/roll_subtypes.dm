@@ -184,8 +184,10 @@
 	// reroll_cooldown = 1 TURNS
 	difficulty = 9
 
+// CRIMSON EDIT ADDITION START - Defenestration
 /datum/storyteller_roll/jump_landing
 	bumper_text = "land window crash"
 	applicable_stats = list(STAT_DEXTERITY, STAT_ATHLETICS)
 	// reroll_cooldown = 1 TURNS
 	difficulty = 8
+// CRIMSON EDIT ADDITION END
