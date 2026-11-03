@@ -1,7 +1,7 @@
-#define UPPERCUT_COMBO "HDH"
-#define JAB_COMBO "GHH"
-#define CROSS_COMBO "DHH"
-#define DIRTY_COMBO "GGD"
+#define UPPERCUT_COMBO "HH"
+#define JAB_COMBO "DH"
+#define CROSS_COMBO "HG"
+#define DIRTY_COMBO "GH"
 
 /datum/martial_art/darkpack_boxing
 	name = "Street Boxing"
@@ -59,7 +59,6 @@
 		return uppercut(attacker, defender)
 
 	if(findtext(streak,JAB_COMBO))
-		reset_streak()
 		return jab_combo(attacker, defender)
 
 	if(findtext(streak,CROSS_COMBO))
@@ -72,14 +71,13 @@
 
 	return FALSE
 
-/// Frontal Kick: Harm Disarm combo, knocks back relative to Attacker Str - Defender Fort
 /datum/martial_art/darkpack_boxing/proc/uppercut(mob/living/attacker, mob/living/defender)
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_PUNCH)
 	uppercut_animation(attacker)
 	addtimer(CALLBACK(src, PROC_REF(reset_animation), attacker, FALSE), 0.1 SECONDS)
 	defender.visible_message(
-		span_warning("[attacker] uppercuts [defender] square in the jaw, sending you flying"),
-		span_userdanger("You are uppercut in the jaw by [attacker], sending you flying!"),
+		span_warning("[attacker] uppercuts [defender] in the jaw, sending them flying"),
+		span_userdanger("You are uppercut in the jaw by [attacker], showing you some old school!"),
 		span_hear("You hear a sickening sound of flesh hitting flesh!"),
 		COMBAT_MESSAGE_RANGE,
 		attacker,
@@ -91,6 +89,9 @@
 	defender.throw_at(throw_target, throw_distance, 4, attacker)
 	var/armor_block = defender.run_armor_check(BODY_ZONE_HEAD, MELEE)
 	defender.apply_damage(6 * attacker.st_get_stat(STAT_STRENGTH), attacker.get_attack_type(), BODY_ZONE_HEAD, blocked = armor_block)
+	defender.adjust_stamina_loss(60)
+	defender.Knockdown(2 SECONDS)
+	defender.adjust_temp_blindness(10 SECONDS)
 	//defender.apply_damage(damage_total, blocked = armor_block, attacker.get_attack_type(), BODY_ZONE_HEAD)
 	if(defender.is_clan(/datum/subsplat/vampire_clan/malkavian) || attacker.is_clan(/datum/subsplat/vampire_clan/malkavian))
 		playsound(attacker, 'modular_vcg/modules/martial_arts/sounds/bell.ogg', 50, TRUE, -1)
@@ -111,6 +112,7 @@
 	var/armor_block = defender.run_armor_check(attacker.zone_selected, MELEE)
 	defender.apply_damage(7 * roll_success, attacker.get_attack_type(), BODY_ZONE_HEAD, blocked = armor_block) //Hopefully shouldnt be too much of a problem, needs testing
 	defender.adjust_dizzy_up_to(10 SECONDS, 10 SECONDS)
+
 	log_combat(attacker, defender, "Jab Comboed (Boxing)")
 	return TRUE
 
@@ -126,9 +128,10 @@
 		attacker,
 	)
 	defender.apply_damage(20, STAMINA)
+	defender.apply_effect(0.5 SECONDS, EFFECT_UNCONSCIOUS, helmet_protection)
 	var/armor_block = defender.run_armor_check(BODY_ZONE_CHEST, MELEE)
 	defender.apply_damage(7 * attacker.st_get_stat(STAT_STRENGTH), attacker.get_attack_type(), BODY_ZONE_CHEST, blocked = armor_block)
-	log_combat(attacker, defender, "Cross Punched (Kung-Fu)")
+	log_combat(attacker, defender, "Cross Punched (Boxing)")
 	return TRUE
 
 /// Dirty Move: Liver Punch or something
@@ -136,7 +139,7 @@
 	attacker.do_attack_animation(defender, ATTACK_EFFECT_KICK)
 	playsound(attacker, 'modular_vcg/modules/martial_arts/sounds/hook.ogg', 70, TRUE, -1)
 	defender.visible_message(
-		span_warning("[attacker] strikes [defender] directly in the stomach!"),
+		span_warning("[attacker] strikes [defender] directly in the BALLS!!! owies"),
 		span_userdanger("You hit [defender]'s lower abdomen!"),
 		span_hear("You hear a sickening sound of flesh hitting flesh!"),
 		COMBAT_MESSAGE_RANGE,
@@ -194,6 +197,7 @@
 	add_to_streak("H", defender)
 	if(check_streak(attacker, defender))
 		return MARTIAL_ATTACK_SUCCESS
+	defender.adjust_eye_blur(3 SECONDS)
 
 	return MARTIAL_ATTACK_INVALID //You're gonna punch someone in the face normally and like it
 
@@ -309,10 +313,10 @@
 
 	. += "<b><i>You try to remember some of the basics of street boxing.</i></b>"
 
-	. += "[span_notice("Uppercut")]: Punch Shove Punch. Jump up and hit an opponent directly in the jaw, dealing significant damage and launching weaker foes away!"
-	. += "[span_notice("Jab Combo")]: Grab Punch Punch. Release a flurry of jabs into your opponent's head, disorienting and tiring them, along with dealing decent amounts of brute damage."
-	. += "[span_notice("Cross Punch")]: Shove Punch Punch. Throw a single, heavy punch directly at your opponents skull"
-	. += "[span_notice("Dirty Hit")]: Grab Grab Shove. Disregard the rules of the ring and punch the liver of your opponent, making them puke and keel over."
+	. += "[span_notice("Uppercut")]: Punch Punch. Jump up and hit an opponent directly in the jaw, dealing significant damage and launching weaker foes away!"
+	. += "[span_notice("Jab Combo")]: Shove Punch. Release a flurry of jabs into your opponent's head, disorienting and tiring them, along with dealing decent amounts of brute damage."
+	. += "[span_notice("Rabbit Punch")]: Shove Punch. Throw a single, heavy punch directly at your opponents skull"
+	. += "[span_notice("Dirty Hit")]: Grab Harm. Disregard the rules of the ring and punch the BALLS of your opponent, making them puke and keel over."
 	. += "[span_notice("Dodging")]: Like any trained boxer, you are able to avoid punches thrown at you while in Combat Mode. Throw mode greatly increases the avoidance chance"
 
 	return .
