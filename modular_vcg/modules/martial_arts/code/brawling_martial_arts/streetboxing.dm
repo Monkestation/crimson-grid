@@ -45,20 +45,21 @@
 		return
 
 	//Stops you from comboing unconcious people.
-	if(defender.IsUnconscious())
-		reset_streak()
-		return
+	//if(defender.IsUnconscious())
+		//reset_streak()
+		//return
 
 	//If you get knockedown or otherwise stunned your streak resets.
-	if(attacker.IsKnockdown() || attacker.IsParalyzed() || attacker.IsStun() || attacker.body_position == LYING_DOWN)
-		reset_streak()
-		return
+	//if(attacker.IsKnockdown() || attacker.IsParalyzed() || attacker.IsStun() || attacker.body_position == LYING_DOWN)
+		//reset_streak()
+		//return
 
 	if(findtext(streak,UPPERCUT_COMBO))
 		reset_streak()
 		return uppercut(attacker, defender)
 
 	if(findtext(streak,JAB_COMBO))
+		reset_streak()
 		return jab_combo(attacker, defender)
 
 	if(findtext(streak,CROSS_COMBO))
