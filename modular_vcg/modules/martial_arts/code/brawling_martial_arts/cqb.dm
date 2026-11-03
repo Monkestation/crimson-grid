@@ -196,7 +196,7 @@
 	defender.grabbedby(attacker, TRUE)
 	if(old_grab_state == GRAB_PASSIVE)
 		if(attacker.combat_mode)
-			defender.drop_all_held_items()
+			//defender.drop_all_held_items()
 			log_combat(attacker, defender, "grabbed", addition="aggressively")
 			defender.visible_message(
 				span_warning("[attacker]  grabs [defender]!"),
