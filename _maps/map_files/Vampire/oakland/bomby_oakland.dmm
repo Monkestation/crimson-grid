@@ -7013,6 +7013,12 @@
 /obj/structure/closet/crate/large,
 /turf/open/misc/dirt,
 /area/vtm/interior)
+"bGG" = (
+/obj/effect/turf_decal/bordur{
+	dir = 1
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/interior/millennium_tower/f2)
 "bGH" = (
 /obj/structure/hedge{
 	pixel_y = 6
@@ -11844,8 +11850,13 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/caves)
 "cLt" = (
-/obj/effect/landmark/start/darkpack/camarilla/hound,
-/turf/open/floor/mineral/plastitanium,
+/obj/structure/hedge,
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/siding/grey{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/grey,
+/turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower/f2)
 "cLy" = (
 /obj/structure/vampdoor/reinf{
@@ -17189,18 +17200,12 @@
 	},
 /obj/item/clothing/head/hats/hos/beret,
 /obj/machinery/light/prince/directional/north,
-/obj/item/katana/vamp{
-	color = "#ccffff";
-	desc = "A flimsy appearing replica katana. It looks quite sharp, despite being an apparent reference to Japanese animation. ";
-	force = 50;
-	name = "Sheriff's special";
-	pixel_y = 9
-	},
 /obj/item/masquerade_contract,
 /obj/item/masquerade_contract,
 /obj/item/masquerade_contract,
 /obj/item/masquerade_contract,
 /obj/item/masquerade_contract,
+/obj/item/sheriffblade/vamp,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/millennium_tower/f2)
 "dZb" = (
@@ -29716,6 +29721,15 @@
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/jazzclub)
+"gVv" = (
+/obj/structure/hedge,
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/siding/grey{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/grey,
+/turf/open/floor/plating/granite/black,
+/area/vtm/interior/millennium_tower/f2)
 "gVw" = (
 /obj/effect/turf_decal/siding/grey,
 /obj/effect/turf_decal/siding/grey,
@@ -84672,12 +84686,6 @@
 "tEs" = (
 /turf/open/floor/carpet,
 /area/vtm/interior/banu/haven)
-"tEt" = (
-/obj/effect/turf_decal/siding/grey,
-/obj/structure/hedge,
-/obj/machinery/light/directional/north,
-/turf/open/floor/plating/granite/black,
-/area/vtm/interior/millennium_tower/f2)
 "tEu" = (
 /obj/effect/turf_decal/asphaltline,
 /turf/open/floor/plating/asphalt,
@@ -94225,6 +94233,10 @@
 	},
 /turf/open/floor/city/industrial,
 /area/vtm/westfield_mall/interior)
+"vRF" = (
+/obj/effect/landmark/start/darkpack/camarilla/hound,
+/turf/open/floor/mineral/plastitanium,
+/area/vtm/interior/millennium_tower/f2)
 "vRP" = (
 /obj/structure/mirror{
 	pixel_y = 32
@@ -212498,9 +212510,9 @@ mjT
 mjT
 mjT
 mjT
+sCA
 eWc
-tEt
-oLX
+cLt
 oLX
 oLX
 oLX
@@ -212702,9 +212714,9 @@ mjT
 mjT
 mjT
 mjT
+bGG
 pjK
 iwa
-oLX
 wcD
 oLX
 oLX
@@ -212906,10 +212918,10 @@ mjT
 mjT
 mjT
 mjT
+bGG
 pjK
 iwa
-cLt
-oLX
+vRF
 oLX
 oLX
 egw
@@ -213110,9 +213122,9 @@ mjT
 mjT
 mjT
 mjT
+bGG
 pjK
 iwa
-oLX
 oLX
 oLX
 sCA
@@ -213314,9 +213326,9 @@ mjT
 mjT
 mjT
 mjT
+sCA
 eWc
-tEt
-oLX
+gVv
 oLX
 oLX
 qeA
