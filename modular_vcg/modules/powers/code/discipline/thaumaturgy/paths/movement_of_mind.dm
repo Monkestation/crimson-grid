@@ -47,6 +47,27 @@
 		var/mob/living/living_atom = hit_atom
 		living_atom.apply_damage(1 LETHAL_TTRPG_DAMAGE, BRUTE)
 
+/// Check grab or launch conditions
+/datum/discipline_power/thaumaturgy/path/mind_movement/proc/can_launch(atom/movable/target)
+	if(!ismovable(target))
+		return FALSE
+	if(iseffect(target))
+		return FALSE
+	if(target.anchored)
+		return FALSE
+	if(target.throwing)
+		return FALSE
+	if(target.move_resist >= MOVE_FORCE_OVERPOWERING)
+		return FALSE
+	if(isitem(target))
+		var/obj/item/item_target = target
+		if(item_target.w_class >= WEIGHT_CLASS_GIGANTIC)
+			return FALSE
+		if(item_target.item_flags & ABSTRACT)
+			return FALSE
+
+	return TRUE
+
 /**
  * Force Bolt - Level 1
  *
@@ -199,6 +220,8 @@
 			continue
 		if(!isitem(to_throw) && !isliving(to_throw))
 			continue
+		if(!can_launch(to_throw))
+			continue
 		launch(to_throw, get_edge_target_turf(owner, get_dir(owner, get_step_away(to_throw, owner))))
 
 /**
@@ -239,13 +262,12 @@
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/can_activate(atom/target)
 	. = ..()
 	if(grabbed_atom)
-		to_chat(owner, "Let go of your target first!")
+		to_chat(owner, span_warning("Let go of your target first!"))
 		return FALSE
 
-	if(isobj(target))
-		var/obj/target_obj = target
-		if(target_obj.anchored)
-			return FALSE
+	if(!can_launch(target))
+		to_chat(owner, span_warning("You can't lift [target] up!"))
+		return FALSE
 
 /atom/movable/screen/fullscreen/cursor_catcher/control
 
@@ -264,7 +286,6 @@
 
 	RegisterSignal(mouse_catcher, COMSIG_SCREEN_ELEMENT_CLICK, PROC_REF(on_catcher_click))
 
-	owner.add_traits(list(TRAIT_IMMOBILIZED), REF(src))
 	RegisterSignals(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT), PROC_REF(break_concentration))
 
 	// Animate getting lifted up
@@ -276,7 +297,6 @@
 /// Undo the grab, first clear any effects from us and then handle target
 /datum/discipline_power/thaumaturgy/path/mind_movement/five/proc/clear_grab()
 	UnregisterSignal(owner, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT))
-	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, REF(src))
 	mouse_catcher = null
 	owner.clear_fullscreen("control")
 	deactivate()
