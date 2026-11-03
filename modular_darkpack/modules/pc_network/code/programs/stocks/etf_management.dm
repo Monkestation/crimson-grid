@@ -39,7 +39,7 @@
 			"name" = S.name,
 			"shares" = etf.holdings[ticker],
 			"price" = S.price,
-			"value" = etf.holdings[ticker] * S.price,
+			"value" = round(S.trade_cost(etf.holdings[ticker], FALSE)),
 			"sector" = SSstocks.sector_labels[S.sector] || "Other",
 		))
 	data["holdings"] = holdings_out
@@ -70,6 +70,11 @@
 			"dividend" = S.dividend,
 			"history" = S.history.Copy(),
 			"owned" = etf.holdings[S.ticker] || 0,
+			"fundamental" = S.fundamental,
+			"held" = S.held,
+			"impact_k" = S.impact_k,
+			"float_shares" = S.float_shares,
+			"max_buyable" = S.max_buyable(),
 		))
 	data["stocks"] = stock_list
 
@@ -108,7 +113,7 @@
 				return FALSE
 			var/success = etf.buy_for_pool(ticker, amount)
 			if(!success && user)
-				to_chat(user, span_warning("Pool buy failed (insufficient cash or invalid)."))
+				to_chat(user, span_warning("Pool buy failed (insufficient cash, no shares left, or invalid)."))
 			return success
 
 		if("pool_sell")

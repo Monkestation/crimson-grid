@@ -29,6 +29,45 @@ const fmtUnits = (n) => (Number(n) || 0).toFixed(4);
 const pctChange = (now, before) =>
   before > 0 ? ((now - before) / before) * 100 : 0;
 
+const curveParams = (s) => {
+  const float = Number(s?.float_shares) || 1;
+  return {
+    k: (Number(s?.impact_k) || 0) / float,
+    F: Number(s?.fundamental) || 0,
+    h0: Number(s?.held) || 0,
+    cap: Math.max(0, Number(s?.max_buyable) || 0),
+  };
+};
+
+const curveCost = (s, shares, buying) => {
+  const { k, F, h0 } = curveParams(s);
+  if (shares <= 0) return 0;
+  if (!k) return F * shares;
+  const h1 = h0 + (buying ? shares : -shares);
+  return Math.abs((F * (Math.exp(k * h1) - Math.exp(k * h0))) / k);
+};
+
+const priceAfter = (s, shares, buying) => {
+  const { k, F, h0 } = curveParams(s);
+  const h1 = h0 + (buying ? shares : -shares);
+  return Math.max(1, F * Math.exp(k * h1));
+};
+
+// Largest buy the pool cash covers and the market allows.
+const maxAffordable = (s, cash) => {
+  const { k, F, h0, cap } = curveParams(s);
+  if (!(F > 0) || cash <= 0) return 0;
+  let n;
+  if (!k) {
+    n = Math.floor(cash / F);
+  } else {
+    n = Math.floor(Math.log(Math.exp(k * h0) + (cash * k) / F) / k - h0);
+  }
+  n = Math.min(n, cap);
+  while (n > 0 && Math.round(curveCost(s, n, true)) > cash) n--;
+  return Math.max(0, n);
+};
+
 export const PcEtf = (props, context) => {
   const { act, data = {} } = useProgram(props.programId, context);
 
@@ -38,12 +77,10 @@ export const PcEtf = (props, context) => {
 
   const holder = data.holder;
   const balance = Number(data.balance) || 0;
-  const debt = Number(data.debt) || 0;
   const networkName = data.network_name || 'No Network';
   const etfAvailable = !!data.etf_available;
   const pending = Array.isArray(data.pending) ? data.pending : [];
   const members = Array.isArray(data.members) ? data.members : [];
-  const holdings = Array.isArray(data.holdings) ? data.holdings : [];
   const stocks = Array.isArray(data.stocks) ? data.stocks : [];
   const etfNav = Number(data.etf_nav) || 0;
   const etfPoolValue = Number(data.etf_pool_value) || 0;
@@ -81,15 +118,32 @@ export const PcEtf = (props, context) => {
   const current =
     stocks.find((s) => s.ticker === selected) || stocks[0] || null;
   const price = Number(current?.price) || 0;
+  const fundamental = Number(current?.fundamental) || 0;
   const owned = Number(current?.owned) || 0;
   const history = Array.isArray(current?.history) ? current.history : [];
   const chartData = history.map((y, i) => [i, Number(y) || 0]);
   const minY = history.length ? Math.min(...history) * 0.98 : 0;
   const maxY = history.length ? Math.max(...history) * 1.02 : 1;
   const trending = pctChange(price, Number(current?.last_price) || price);
-  const buyCost = Math.round(price * amountNum);
-  const maxAffordable =
-    price > 0 ? Math.max(0, Math.floor(etfCash / price)) : 0;
+  const premium = fundamental > 0 ? (price / fundamental - 1) * 100 : 0;
+
+  // Buy preview, clamped to market depth
+  const maxBuyable = Number(current?.max_buyable) || 0;
+  const buyCount = Math.min(amountNum, maxBuyable);
+  const buyCost = current ? Math.round(curveCost(current, buyCount, true)) : 0;
+  const buyAvg = buyCount > 0 ? buyCost / buyCount : 0;
+  const buyAfter =
+    current && buyCount > 0 ? priceAfter(current, buyCount, true) : price;
+  const maxAfford = current ? maxAffordable(current, etfCash) : 0;
+
+  // Sell preview, clamped to pool holdings
+  const sellCount = Math.min(amountNum, owned);
+  const sellGross = current
+    ? Math.round(curveCost(current, sellCount, false))
+    : 0;
+  const sellAvg = sellCount > 0 ? sellGross / sellCount : 0;
+  const sellAfter =
+    current && sellCount > 0 ? priceAfter(current, sellCount, false) : price;
 
   return (
     <Box
@@ -237,9 +291,14 @@ export const PcEtf = (props, context) => {
                           }
                         />
                       </Box>
-                      <Box mb={1} style={{ color: '#555' }}>
+                      <Box mb={0.5} style={{ color: '#555' }}>
                         Sector: {current.sector} · Dividend:{' '}
                         {((Number(current.dividend) || 0) * 100).toFixed(1)}%
+                      </Box>
+                      <Box mb={0.5} fontSize="12px" style={{ color: '#555' }}>
+                        Demand premium: {premium >= 0 ? '+' : ''}
+                        {premium.toFixed(1)}% over fundamentals · Market depth
+                        left: {maxBuyable.toLocaleString()} shares
                       </Box>
                       <Box mb={1}>
                         Pool owns: <b>{owned}</b> shares
@@ -264,7 +323,7 @@ export const PcEtf = (props, context) => {
                           <Button
                             content="Max"
                             onClick={() =>
-                              setAmount(String(Math.max(1, maxAffordable)))
+                              setAmount(String(Math.max(1, maxAfford)))
                             }
                           />
                           <Button
@@ -276,20 +335,33 @@ export const PcEtf = (props, context) => {
                       </Stack>
 
                       <Box mt={0.5} fontSize="11px" style={{ color: '#555' }}>
-                        Buy cost: {fmtMoney(buyCost)} (pool cash{' '}
-                        {fmtMoney(etfCash)})
+                        Buy {buyCount}: {fmtMoney(buyCost)} · avg{' '}
+                        {fmtPrice(buyAvg)} · price → {fmtPrice(buyAfter)} (pool
+                        cash {fmtMoney(etfCash)})
+                        {amountNum > buyCount && (
+                          <Box inline style={{ color: RED }}>
+                            {' '}
+                            (market only has {maxBuyable} left)
+                          </Box>
+                        )}
                       </Box>
+                      {sellCount > 0 && (
+                        <Box fontSize="11px" style={{ color: '#555' }}>
+                          Sell {sellCount}: {fmtMoney(sellGross)} · avg{' '}
+                          {fmtPrice(sellAvg)} · price → {fmtPrice(sellAfter)}
+                        </Box>
+                      )}
 
                       <Box mt={1}>
                         <Button
                           icon="arrow-down"
                           content="Buy for Pool"
                           color="good"
-                          disabled={amountNum <= 0 || buyCost > etfCash}
+                          disabled={buyCount <= 0 || buyCost > etfCash}
                           onClick={() =>
                             act('pool_buy', {
                               ticker: current.ticker,
-                              amount: amountNum,
+                              amount: buyCount,
                             })
                           }
                         />
@@ -301,7 +373,7 @@ export const PcEtf = (props, context) => {
                           onClick={() =>
                             act('pool_sell', {
                               ticker: current.ticker,
-                              amount: Math.min(amountNum, owned),
+                              amount: sellCount,
                             })
                           }
                         />

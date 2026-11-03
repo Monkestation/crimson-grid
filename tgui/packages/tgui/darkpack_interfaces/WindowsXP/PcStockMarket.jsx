@@ -39,8 +39,57 @@ const fmtTime = (s) => {
   return `${m}m ${String(r).padStart(2, '0')}s`;
 };
 
+// price(h) = fundamental * e^(k * h), k = impact_k / float_shares.
+// Buying/selling walks the curve, so you pay/receive the average, not the spot.
+const curveParams = (s) => {
+  const float = Number(s?.float_shares) || 1;
+  return {
+    k: (Number(s?.impact_k) || 0) / float,
+    F: Number(s?.fundamental) || 0,
+    h0: Number(s?.held) || 0,
+    cap: Math.max(0, Number(s?.max_buyable) || 0),
+  };
+};
+
+const curveCost = (s, shares, buying) => {
+  const { k, F, h0 } = curveParams(s);
+  if (shares <= 0) return 0;
+  if (!k) return F * shares;
+  const h1 = h0 + (buying ? shares : -shares);
+  return Math.abs((F * (Math.exp(k * h1) - Math.exp(k * h0))) / k);
+};
+
+const priceAfter = (s, shares, buying) => {
+  const { k, F, h0 } = curveParams(s);
+  const h1 = h0 + (buying ? shares : -shares);
+  return Math.max(1, F * Math.exp(k * h1));
+};
+
+// Largest order the player can afford (cost + fee) and the market allows.
+const maxAffordable = (s, cash, feeRate) => {
+  const { k, F, h0, cap } = curveParams(s);
+  if (!(F > 0) || cash <= 0) return 0;
+  let n;
+  if (!k) {
+    n = Math.floor(cash / (F * (1 + feeRate)));
+  } else {
+    n = Math.floor(
+      Math.log(Math.exp(k * h0) + (cash * k) / (F * (1 + feeRate))) / k - h0,
+    );
+  }
+  n = Math.min(n, cap);
+  while (n > 0) {
+    const c = Math.round(curveCost(s, n, true));
+    if (c + Math.max(1, Math.round(c * feeRate)) <= cash) break;
+    n--;
+  }
+  return Math.max(0, n);
+};
+
 // oldest lots sell first, only short-term lots are taxed.
-const previewSale = (lots, price, sellShares, feeRate, taxRate, longTerm) => {
+// `gross` is the curve proceeds for the whole sale; lots are valued at its average.
+const previewSale = (lots, gross, sellShares, feeRate, taxRate, longTerm) => {
+  const avg = sellShares > 0 ? gross / sellShares : 0;
   let remaining = sellShares;
   let shortGain = 0;
   for (const lot of lots) {
@@ -50,11 +99,10 @@ const previewSale = (lots, price, sellShares, feeRate, taxRate, longTerm) => {
     const take = Math.min(shares, remaining);
     const takeCost = Math.round(cost * (take / shares));
     if (age < longTerm) {
-      shortGain += Math.round(price * take) - takeCost;
+      shortGain += Math.round(avg * take) - takeCost;
     }
     remaining -= take;
   }
-  const gross = Math.round(price * sellShares);
   const fee = Math.max(1, Math.round(gross * feeRate));
   const tax = Math.round(Math.max(0, shortGain) * taxRate);
   return { gross, fee, tax, net: Math.max(0, gross - fee - tax) };
@@ -100,6 +148,7 @@ export const PcStockMarket = (props, context) => {
     stocks.find((s) => s.ticker === selected) || stocks[0] || null;
 
   const price = Number(current?.price) || 0;
+  const fundamental = Number(current?.fundamental) || 0;
   const owned = Number(current?.owned) || 0;
   const costBasis = Number(current?.cost_basis) || 0;
   const lots = Array.isArray(current?.lots) ? current.lots : [];
@@ -108,16 +157,31 @@ export const PcStockMarket = (props, context) => {
   const minY = history.length ? Math.min(...history) * 0.98 : 0;
   const maxY = history.length ? Math.max(...history) * 1.02 : 1;
 
-  const buyCost = Math.round(price * amountNum);
-  const buyFee = Math.max(1, Math.round(buyCost * fee));
-  const maxAffordable =
-    price > 0 ? Math.max(0, Math.floor(balance / (price * (1 + fee)) - 1)) : 0;
+  // Demand premium: how far player holdings have pushed the price over fundamentals.
+  const premium = fundamental > 0 ? (price / fundamental - 1) * 100 : 0;
 
+  // Buy preview (clamped to what the market will actually sell)
+  const maxBuyable = Number(current?.max_buyable) || 0;
+  const buyCount = Math.min(amountNum, maxBuyable);
+  const buyCost = current ? Math.round(curveCost(current, buyCount, true)) : 0;
+  const buyFee = buyCount > 0 ? Math.max(1, Math.round(buyCost * fee)) : 0;
+  const buyAvg = buyCount > 0 ? buyCost / buyCount : 0;
+  const buyAfter =
+    current && buyCount > 0 ? priceAfter(current, buyCount, true) : price;
+  const maxAfford = current ? maxAffordable(current, balance, fee) : 0;
+
+  // Sell preview
   const sellCount = Math.min(amountNum, owned);
+  const sellGross = current
+    ? Math.round(curveCost(current, sellCount, false))
+    : 0;
   const sale =
     sellCount > 0
-      ? previewSale(lots, price, sellCount, fee, taxRate, longTerm)
+      ? previewSale(lots, sellGross, sellCount, fee, taxRate, longTerm)
       : null;
+  const sellAvg = sellCount > 0 ? sellGross / sellCount : 0;
+  const sellAfter =
+    current && sellCount > 0 ? priceAfter(current, sellCount, false) : price;
 
   const shortLots = lots.filter((l) => (Number(l[2]) || 0) < longTerm);
   const shortShares = shortLots.reduce((n, l) => n + (Number(l[0]) || 0), 0);
@@ -128,7 +192,10 @@ export const PcStockMarket = (props, context) => {
     ? longTerm - Math.max(...shortLots.map((l) => Number(l[2]) || 0))
     : 0;
 
-  const profit = owned > 0 ? Math.round(price * owned - costBasis) : 0;
+  // Value what you hold at what it would actually fetch, not the spot price.
+  const liquidation =
+    current && owned > 0 ? Math.round(curveCost(current, owned, false)) : 0;
+  const profit = owned > 0 ? liquidation - costBasis : 0;
   const trending = pctChange(price, Number(current?.last_price) || price);
 
   const outlookColor = (o) =>
@@ -293,12 +360,25 @@ export const PcStockMarket = (props, context) => {
                         </>
                       )}
                     </Box>
+                    <Box mb={0.5} fontSize="12px" style={{ color: '#555' }}>
+                      Demand premium:{' '}
+                      <Box
+                        inline
+                        bold
+                        style={{ color: upDown(-Math.abs(premium) + 0.0001) }}
+                      >
+                        {premium >= 0 ? '+' : ''}
+                        {premium.toFixed(1)}%
+                      </Box>{' '}
+                      over fundamentals · Market depth left:{' '}
+                      {maxBuyable.toLocaleString()} shares
+                    </Box>
                     <Box mb={0.5}>
                       You own: <b>{owned}</b> shares
                       {owned > 0 && (
                         <Box inline ml={1} style={{ color: upDown(profit) }}>
                           ({profit >= 0 ? '+' : ''}
-                          {profit.toLocaleString()} ₡)
+                          {profit.toLocaleString()} ₡ if sold now)
                         </Box>
                       )}
                     </Box>
@@ -334,7 +414,7 @@ export const PcStockMarket = (props, context) => {
                         <Button
                           content="Max"
                           onClick={() =>
-                            setAmount(String(Math.max(1, maxAffordable)))
+                            setAmount(String(Math.max(1, maxAfford)))
                           }
                         />
                         <Button
@@ -346,7 +426,15 @@ export const PcStockMarket = (props, context) => {
                     </Stack>
 
                     <Box mt={0.5} fontSize="11px" style={{ color: '#555' }}>
-                      Buy: {fmtMoney(buyCost)} + {fmtMoney(buyFee)} fee
+                      Buy {buyCount}: {fmtMoney(buyCost)} + {fmtMoney(buyFee)}{' '}
+                      fee · avg {fmtPrice(buyAvg)} · price →{' '}
+                      {fmtPrice(buyAfter)}
+                      {amountNum > buyCount && (
+                        <Box inline style={{ color: RED }}>
+                          {' '}
+                          (market only has {maxBuyable} left)
+                        </Box>
+                      )}
                     </Box>
                     {sale && (
                       <Box fontSize="11px" style={{ color: '#555' }}>
@@ -361,7 +449,8 @@ export const PcStockMarket = (props, context) => {
                             </Box>
                           </>
                         )}{' '}
-                        = <b>{fmtMoney(sale.net)}</b>
+                        = <b>{fmtMoney(sale.net)}</b> · avg {fmtPrice(sellAvg)}{' '}
+                        · price → {fmtPrice(sellAfter)}
                       </Box>
                     )}
 
@@ -370,11 +459,11 @@ export const PcStockMarket = (props, context) => {
                         icon="arrow-down"
                         content="Buy"
                         color="good"
-                        disabled={amountNum <= 0 || buyCost + buyFee > balance}
+                        disabled={buyCount <= 0 || buyCost + buyFee > balance}
                         onClick={() =>
                           act('buy', {
                             ticker: current.ticker,
-                            amount: amountNum,
+                            amount: buyCount,
                           })
                         }
                       />

@@ -1,12 +1,12 @@
 /datum/stock_lot
-    var/shares = 0
-    var/cost = 0
-    var/bought_at = 0
+	var/shares = 0
+	var/cost = 0
+	var/bought_at = 0
 
 /datum/stock_lot/New(shares, cost, bought_at)
-    src.shares = shares
-    src.cost = cost
-    src.bought_at = bought_at
+	src.shares = shares
+	src.cost = cost
+	src.bought_at = bought_at
 
 SUBSYSTEM_DEF(stocks)
 	name = "Night Exchange"
@@ -110,7 +110,7 @@ SUBSYSTEM_DEF(stocks)
 			var/datum/stock/S = stocks_by_ticker[ticker]
 			if(!S || S.dividend <= 0)
 				continue
-			total += round(count_shares(holdings[ticker]) * S.price * S.dividend)
+			total += round(count_shares(holdings[ticker]) * S.fundamental * S.dividend)
 		if(total > 0)
 			acc.adjust_money(total, "Night Exchange: dividends")
 			paid_any = TRUE
@@ -183,14 +183,36 @@ SUBSYSTEM_DEF(stocks)
 	for(var/ticker in holdings)
 		var/datum/stock/S = stocks_by_ticker[ticker]
 		if(S)
-			value += count_shares(holdings[ticker]) * S.price
+			value += S.trade_cost(count_shares(holdings[ticker]), FALSE)
 	return round(value)
+
+/// Quote for the UI: average fill price and the spot price after the order.
+/// Returns list("avg", "total", "price_after", "amount") or null.
+/datum/controller/subsystem/stocks/proc/quote(ticker, amount, buying)
+	var/datum/stock/S = stocks_by_ticker[ticker]
+	if(!S || amount < 1)
+		return null
+	if(buying)
+		amount = min(amount, S.max_buyable())
+		if(amount < 1)
+			return null
+	var/total = S.trade_cost(amount, buying)
+	return list(
+		"amount" = amount,
+		"total" = round(total),
+		"avg" = round(total / amount, 0.01),
+		"price_after" = S.price_after(amount, buying),
+	)
 
 /datum/controller/subsystem/stocks/proc/buy_shares(datum/bank_account/acc, ticker, amount, fee_rate)
 	var/datum/stock/S = stocks_by_ticker[ticker]
 	if(!S || amount < 1)
 		return FALSE
-	var/cost = round(S.price * amount)
+	amount = min(amount, S.max_buyable())
+	if(amount < 1)
+		return FALSE
+	// Cost is the integral along the bonding curve: you pay for your own price impact.
+	var/cost = round(S.trade_cost(amount, TRUE))
 	var/fee = max(1, round(cost * fee_rate))
 	var/total = cost + fee
 	if(!acc.has_money(total))
@@ -200,10 +222,12 @@ SUBSYSTEM_DEF(stocks)
 
 	var/list/lots = get_lots(acc, ticker, TRUE)
 	lots += new /datum/stock_lot(amount, total, world.time)
-	S.apply_trade_pressure(amount, TRUE)
+	S.apply_trade(amount, TRUE)
 	return TRUE
 
 /// Sells oldest shares first (FIFO). Returns a result list, or null on failure.
+/// Proceeds are the integral along the bonding curve, so selling pushes the price down
+/// and you receive the average, never the pre-sale spot price.
 /// Short-term gain (lots held under STOCK_LONG_TERM) is taxed; losses on short-term
 /// lots offset gains within the same sale but never create a refund.
 /datum/controller/subsystem/stocks/proc/sell_shares(datum/bank_account/acc, ticker, amount, fee_rate, tax_rate)
@@ -216,6 +240,10 @@ SUBSYSTEM_DEF(stocks)
 		return null
 	amount = min(amount, owned)
 
+	// Gross proceeds and average fill, computed before the lots are touched.
+	var/gross = round(S.trade_cost(amount, FALSE))
+	var/avg_fill = gross / amount
+
 	var/remaining = amount
 	var/short_gain = 0
 	for(var/datum/stock_lot/L as anything in lots.Copy())
@@ -224,7 +252,7 @@ SUBSYSTEM_DEF(stocks)
 		var/take = min(L.shares, remaining)
 		var/take_cost = round(L.cost * (take / L.shares))
 		if(world.time - L.bought_at < STOCK_LONG_TERM)
-			short_gain += round(S.price * take) - take_cost
+			short_gain += round(avg_fill * take) - take_cost
 		L.cost -= take_cost
 		L.shares -= take
 		remaining -= take
@@ -235,7 +263,6 @@ SUBSYSTEM_DEF(stocks)
 		var/list/holdings = portfolios["[acc.account_id]"]
 		holdings -= ticker
 
-	var/gross = round(S.price * amount)
 	var/fee = max(1, round(gross * fee_rate))
 	var/tax = round(max(0, short_gain) * tax_rate)
 	var/net = max(0, gross - fee - tax)
@@ -245,10 +272,8 @@ SUBSYSTEM_DEF(stocks)
 	var/garnish = 0
 	if(acc.account_debt > 0 && net > 0)
 		garnish = acc.pay_debt(min(round(net * STOCK_GARNISH), acc.account_debt)) || 0
-	//CRIMSON GRID EDIT - PC NET
 	if(net > 0)
 		garnish += SSlending.garnish_account(acc, net) || 0
-	//CRIMSON GRID EDIT END - PC NET
 
-	S.apply_trade_pressure(amount, FALSE)
+	S.apply_trade(amount, FALSE)
 	return list("shares" = amount, "gross" = gross, "fee" = fee, "tax" = tax, "net" = net, "garnish" = garnish)

@@ -43,6 +43,11 @@
 			"cost_basis" = SSstocks.cost_of(acc, S.ticker),
 			"lots" = lots_out,
 			"outlook" = show_outlook ? SSstocks.outlook_for(S) : null,
+			"fundamental" = S.fundamental,
+			"held" = S.held,
+			"impact_k" = S.impact_k,
+			"float_shares" = S.float_shares,
+			"max_buyable" = S.max_buyable(),
 		))
 	data["stocks"] = stock_list
 	return data
@@ -70,7 +75,7 @@
 			amount = min(amount, STOCK_MAX_TRADE)
 			var/success = SSstocks.buy_shares(acc, ticker, amount, fee_rate)
 			if(!success && user)
-				to_chat(user, span_warning("The Exchange declines the order: insufficient funds."))
+				to_chat(user, span_warning("The Exchange declines the order: insufficient funds, or no shares left to sell you."))
 			return success
 
 		if("sell", "sell_all")
