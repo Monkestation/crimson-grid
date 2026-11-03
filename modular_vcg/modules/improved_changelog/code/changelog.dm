@@ -1,3 +1,4 @@
+/* removed for now
 /datum/changelog
 	var/static/list/changelog_items = list()
 	var/static/list/dates
@@ -90,4 +91,4 @@
 		else
 			if(findtext_char(line, cl_pattern))
 				started = TRUE
-
+*/

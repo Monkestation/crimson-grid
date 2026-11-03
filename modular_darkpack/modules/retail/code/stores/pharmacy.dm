@@ -18,8 +18,9 @@
 		new /datum/data/vending_product("white cane", /obj/item/cane/white),
 		new /datum/data/vending_product("crutch", /obj/item/cane/crutch),
 		new /datum/data/vending_product("wooden crutch", /obj/item/cane/crutch/wood),
-// CRIMSON EDIT ADD START - Medkit to Pharmacy
 		new /datum/data/vending_product("empty blood bag", /obj/item/reagent_containers/blood/empty),
+		new /datum/data/vending_product("reflex hammer", /obj/item/reflexhammer, 30),
+// CRIMSON EDIT ADD START - Medkit to Pharmacy
 		new /datum/data/vending_product("Empty Medical Kit", /obj/item/storage/medkit/darkpack, 200),
 		new /datum/data/vending_product("Medical Kit", /obj/item/storage/medkit/darkpack/standard, 500),
 		new /datum/data/vending_product("Individual First Aid Kit", /obj/item/storage/medkit/darkpack/ifak, 500),
@@ -34,5 +35,10 @@
 		new /datum/data/vending_product("psicodine pill bottle", /obj/item/storage/pill_bottle/psicodine, 150),
 		new /datum/data/vending_product("multiver pill bottle", /obj/item/storage/pill_bottle/multiver, 150),
 		new /datum/data/vending_product("epinephrine medipen", /obj/item/reagent_containers/hypospray/medipen, 100),
+		new /datum/data/vending_product("dental pliers", /obj/item/wirecutters/pliers, 300),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
+// CRIMSON EDIT ADD START - Magadon Drugs
+		new /datum/data/vending_product("magafinil pill bottle", /obj/item/storage/pill_bottle/magafinil, 500),
+		new /datum/data/vending_product("magaloft pill bottle", /obj/item/storage/pill_bottle/magaloft, 600),
+// CRIMSON EDIT ADD END - Magadon Drugs
 	)

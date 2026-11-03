@@ -6,6 +6,7 @@
 	name = "candy"
 	desc = "It's nougat, love it or hate it."
 	icon_state = "candy"
+	inhand_icon_state = "candy"
 	trash_type = /obj/item/trash/candy
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 1,
@@ -87,6 +88,7 @@
 	name = "chips"
 	desc = "Commander Riker's What-The-Crisps."
 	icon_state = "chips"
+	inhand_icon_state = "chips"
 	trash_type = /obj/item/trash/chips
 	bite_consumption = 1
 	food_reagents = list(
@@ -224,6 +226,19 @@
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 
+/obj/item/food/nutrient_bar
+	name = "\improper Nutrient Bar"
+	icon_state = "nutrientbar"
+	desc = "A nutrieeint rich bar from inozhakust mash, with just enough sugar to not taste utterly horrid."
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 12,
+		/datum/reagent/consumable/sugar = 3,
+	)
+	tastes = list("cardboard" = 3, "sugar" = 2)
+	foodtypes = VEGETABLES
+	food_flags = FOOD_FINGER_FOOD
+	w_class = WEIGHT_CLASS_SMALL
+
 /obj/item/food/peanuts
 	name = "\improper Gallery's peanuts"
 	desc = "A favourite amongst the terminally angry."
@@ -327,7 +342,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 	)
 	tastes = list("chocolate candy" = 3)
 	junkiness = 25
-	foodtypes = JUNKFOOD
+	foodtypes = JUNKFOOD|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -354,7 +369,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 	)
 	tastes = list("chocolate candy" = 2, "pretzel" = 1)
-	foodtypes = JUNKFOOD | GRAIN
+	foodtypes = JUNKFOOD | GRAIN | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/cnds/peanut_butter
 	name = "peanut butter C&Ds"
@@ -568,7 +583,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 	)
 	tastes = list("biscuit" = 1, "chocolate" = 1)
 	junkiness = 25
-	foodtypes = JUNKFOOD | GRAIN
+	foodtypes = JUNKFOOD | GRAIN | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -595,7 +610,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/coco = 1,
 	)
 	tastes = list("biscuit" = 1, "peanut butter" = 1)
-	foodtypes = JUNKFOOD | GRAIN | NUTS
+	foodtypes = JUNKFOOD | GRAIN | NUTS | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/sticko/pineapple
 	name = "\improper Sticko Pineapple"
@@ -608,7 +623,7 @@ GLOBAL_LIST_INIT(safe_peanut_types, populate_safe_peanut_types())
 		/datum/reagent/consumable/peanut_butter = 1,
 	)
 	tastes = list("biscuit" = 1, "pineapple" = 1)
-	foodtypes = JUNKFOOD | GRAIN | PINEAPPLE
+	foodtypes = JUNKFOOD | GRAIN | PINEAPPLE | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/sticko/yuyake
 	name = "\improper Sticko Yūyake"

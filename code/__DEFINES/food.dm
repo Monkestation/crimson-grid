@@ -20,6 +20,7 @@
 #define GORE (1<<19)
 #define STONE (1<<20)
 #define EGG (1<<21)
+#define CHOCOLATE (1<<22) //DARKPACK EDIT ADDITION - Chocolate for lupus poisoning
 
 DEFINE_BITFIELD(foodtypes, list(
 	"MEAT" = MEAT,
@@ -44,6 +45,7 @@ DEFINE_BITFIELD(foodtypes, list(
 	"GORE" = GORE,
 	"STONE" = STONE,
 	"EGG" = EGG,
+	"CHOCOLATE" = CHOCOLATE, //DARKPACK EDIT ADDITION - Chocolate for lupus poisoning
 ))
 
 /// A list of food type names, in order of their flags
@@ -70,6 +72,7 @@ DEFINE_BITFIELD(foodtypes, list(
 	"GORE", \
 	"STONE", \
 	"EGG", \
+	"CHOCOLATE", \
 )
 
 /// IC meaning (more or less) for food flags
@@ -96,6 +99,7 @@ DEFINE_BITFIELD(foodtypes, list(
 	"Gore", \
 	"Rocks", \
 	"Eggs", \
+	"Chocolate", \
 )
 
 /// Food types assigned to all podperson organs

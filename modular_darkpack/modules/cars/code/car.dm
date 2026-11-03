@@ -257,7 +257,7 @@
 			return
 		var/datum/storyteller_roll/lockpick/our_roll = new()
 		our_roll.difficulty = lockpick_difficulty
-		switch(our_roll.st_roll(user, src))
+		switch(our_roll.st_roll(user, src, using_item = tool))
 			if(ROLL_SUCCESS)
 				to_chat(user, span_notice("You've managed to open [src]'s lock."))
 				playsound(src, 'modular_darkpack/modules/cars/sounds/open.ogg', 50, TRUE)

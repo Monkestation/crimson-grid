@@ -13,6 +13,8 @@
 		/datum/job_department/anarch,
 	)
 
+	tgui_icon = FA_ICON_GLASS_WHISKEY
+
 	alt_titles = list(
 		"Bartender",
 		"Barkeeper",

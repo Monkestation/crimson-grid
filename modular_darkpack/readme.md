@@ -1,4 +1,4 @@
-# The modularization handbook - Nova Sector style, v0.2
+# The modularization handbook - ~~Nova Sector style, v0.2~~ Darkpack style guide, v0.2
 
 ## Failure to follow this guide will result in your PR being denied.
 
@@ -149,7 +149,7 @@ Note, that it is possible to append code in front, or behind a core proc, in a m
 
 **Note about proc overrides: Just because you can, doesn't mean you should!!**
 
-In general they are a good idea and encouraged whenever it is possible to do so. However this is not a hard rule, and sometimes Nova edits are preferable. Just try to use your common sense about it.
+In general they are a good idea and encouraged whenever it is possible to do so. However this is not a hard rule, and sometimes Darkpack edits are preferable. Just try to use your common sense about it.
 
 For example: please do not copy paste an entire TG proc into a modular override, make one small change, and then bill it as 'fully modular'. These procs are an absolute nightmare to maintain because once something changes upstream you have to update the overridden proc.
 
@@ -157,7 +157,7 @@ Sometimes you aren't even aware the override exists if it compiles fine and does
 
 The best candidates for modular proc overrides are ones where you can just tack something on after calling the parent, or weave a parent call cleverly in the middle somewhere to achieve your desired effect.
 
-Performance should also be considered when you are overriding a hot proc (like Life() for example), as each additional call adds overhead. Nova edits are much more performant in those cases. For most procs this won't be something you have to think about, though.
+Performance should also be considered when you are overriding a hot proc (like Life() for example), as each additional call adds overhead. Darkpack edits are much more performant in those cases. For most procs this won't be something you have to think about, though.
 
 ### These modular overrides should be kept in `master_files`, and you should avoid putting them inside modules as much as possible.
 
@@ -325,7 +325,8 @@ This also applies to files, do not comment out entire files, just delete them in
 ## Modular TGUI
 
 TGUI is another exceptional case, since it uses javascript and isn't able to be modular in the same way that DM code is.
-ALL of the tgui files are located in `/tgui/packages/tgui/interfaces` and its subdirectories; there is no specific folder for Nova Sector UIs.
+Most of the tgui files are located in `/tgui/packages/tgui/interfaces` and its subdirectories;
+If possible put your files inside of `/tgui/packages/tgui/darkpack_interfaces`. These also act as master_files as they can be used to override interface exports.
 
 ### Modifying upstream files
 
@@ -376,7 +377,7 @@ If that is not possible, you can wrap your edit in curly brackets e.g.
 // THIS IS A DARKPACK UI FILE
 ```
 
-This way they are easily identifiable as modular TGUI .tsx/.jsx files. You do not have to do anything further, and there will never be any need for a Nova edit comment in a modular TGUI file.
+This way they are easily identifiable as modular TGUI .tsx/.jsx files. You do not have to do anything further, and there will never be any need for a Darkpack edit comment in a modular TGUI file.
 
 <!-- ## Exemplary PR's // TODO: REPLACE THESE!
 

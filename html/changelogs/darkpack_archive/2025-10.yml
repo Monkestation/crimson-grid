@@ -1,0 +1,133 @@
+2025-10-02:
+  KCartridge:
+  - rscadd: Stray Cats!
+  - image: cats can now hypothetically rest, and their lil tail wags when they do
+  - code_imp: cats are now basic instead of simple mobs
+  StarlightPrism:
+  - refactor: makes the plush a plush and the pig a toy+plush, you can now breed them
+  XeonMations:
+  - rscdel: Removed body weights
+2025-10-03:
+  FalloutFalcon:
+  - refactor: improves car code alot
+  - balance: cars no longer have snow flaked damage handling
+  - qol: alot of qol for car interactions
+  - qol: smoke particle effect to act as a true title indicator for cars
+  - qol: you can choose what seat to get into of a car and who you want to dump out
+  - bugfix: you can no longer use car buttons while dead, cuffed, or otherwise unavailable
+  - bugfix: car backwards long jumping is mostly impossible
+  XeonMations:
+  - rscadd: Added the masquerade system
+2025-10-04:
+  FalloutFalcon:
+  - qol: examine colored umbra minesweeper turfs to see how many mines are around
+  - qol: you can bump into safe umbra minesweeper to uncover them
+  - bugfix: umbra minesweeper acts more like minesweeper
+  - rscadd: Pride Flags! In loadouts and craftable!
+  - image: Pride flag sprites by Sylphet
+  XeonMations:
+  - refactor: Refactored animal NPCs, moves human NPCs into module
+2025-10-06:
+  FalloutFalcon:
+  - refactor: refactors old vampire food stuffs, mostly giving them sane tg paths.
+2025-10-08:
+  Hawk-v3:
+  - rscadd: Goat Plushie + loot lists for mapping random spawn plushies.
+  - rscadd: Tzimisce Plushie + loot lists for mapping random spawn plushies.
+2025-10-12:
+  FalloutFalcon:
+  - rscadd: Hub shows the ingame year after the city name.
+  XeonMations:
+  - code_imp: Proper traits organization, plus linter for globaltraits
+  chazzyjazzy:
+  - code_imp: Offsets transparency hud from lower z levels by 20 pixels to give the
+      appearance of coherent buildings
+2025-10-15:
+  FalloutFalcon:
+  - refactor: ghosts updated to use the existing basic mob subtype
+  dwinters99:
+  - rscdel: relationship system
+  - image: new default titlescreen
+  - rscdel: redundant click.dm
+  - image: new default species appearance
+2025-10-16:
+  KCartridge:
+  - rscdel: A lot of crafting recipes
+2025-10-17:
+  FalloutFalcon:
+  - balance: More stuff uses stats
+  - bugfix: fixed runtime from trying to play empty* sound
+2025-10-18:
+  Marshmellow105:
+  - image: removed some refs to ss13 and nanotrasen on icons
+  - code_imp: removed some refs to ss13 and nanotrasen in names and descs of things
+2025-10-21:
+  Marshmellow105:
+  - image: readded the wallening shutter sprites as replacements for the standard
+      TG ones
+  chazzyjazzy:
+  - code_imp: reimplements selling stuff
+2025-10-22:
+  XeonMations:
+  - bugfix: fixed a runtime relating to masquerade NPCs hearing things
+2025-10-23:
+  XeonMations:
+  - refactor: Refactored the kindred species
+  bomby, XeonMations:
+  - rscadd: Added a battering ram to the game
+  - code_imp: Tweaked some door code to be less bad.
+2025-10-24:
+  bomby, thatguythere03:
+  - rscadd: adds new police clothes
+  - rscadd: adds park ranger car with amber lightbar
+  - balance: SWAT officers now get police keys and an IFAK
+  - image: updated icons for the unmarked police car and original police gear
+  - map: added ranger car to runtimetown
+2025-10-25:
+  dwinters99:
+  - balance: Replaced jump windup with post-jump slowdown
+  - code_imp: Added skillchecks to carbon throw_impact code
+  - config: Jump windup and jump slowdown config options
+  - rscadd: Reimplement generators and fuseboxes
+2025-10-26:
+  Hawk-v3:
+  - rscadd: Wallclimbing- Now with forensics markers.
+  KCartridge:
+  - rscadd: Stray dogs
+  - rscadd: taming said stray dogs
+  - image: dog rests sprites
+  - image: re-done dog_dead sprites Courtesy of Paynt
+  XeonMations:
+  - rscdel: Removed experience from the game.
+  - rscadd: Added the ability to give vitae!
+  - code_imp: Removed some unnecessary files from the codebase
+  - bugfix: Fixed a hard delete relating to the madness network.
+2025-10-27:
+  FalloutFalcon:
+  - rscadd: Sunlight and daytime now have nice status effects
+  - admin: vote for extending time of day
+  - bugfix: lowwalls should act more like tables, mainly jumping over them.
+  XeonMations:
+  - rscadd: Added ghouls to the game.
+2025-10-29:
+  FalloutFalcon:
+  - balance: readds rats spawning in sewers but massivly restricts there spawning
+      conditions
+  - balance: snow now appears through the entire month of december
+  - bugfix: turf decals should now properly adjust there apparence
+  - code_imp: turf init should be a tiny bit faster
+2025-10-30:
+  FalloutFalcon:
+  - balance: Climbing down open space takes longer then using ladders but now also
+      uses your stats.
+  - refactor: Refactors climbing down to be doable by more then just humans
+2025-10-31:
+  Beautiful TG coders:
+  - code_imp: Monthly TG Pull. Thank you TG.
+  KCartridge, Paynt:
+  - rscadd: Colored countertops
+  Melbert:
+  - refactor: Refactored species unique organs slightly, particularly how they are
+      set up at game start. Report any oddities, like invisible tails or wings
+  dwinters99:
+  - rscadd: alt-click to conceal/reveal satchels

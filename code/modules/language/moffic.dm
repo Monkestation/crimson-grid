@@ -1,7 +1,7 @@
 /datum/language/moffic
 	name = "Moffic"
 	desc = "The language of the Mothpeople borders on complete unintelligibility."
-	key = "m"
+	// key = "m" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 5
 	sentence_chance = 0
 	between_word_sentence_chance = 10

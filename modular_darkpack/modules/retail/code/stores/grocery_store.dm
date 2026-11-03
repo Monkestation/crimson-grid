@@ -59,6 +59,9 @@
 		new /datum/data/vending_product("mustard", /obj/item/reagent_containers/condiment/mustard, 3),
 		new /datum/data/vending_product("soy milk", /obj/item/reagent_containers/condiment/soymilk),
 		new /datum/data/vending_product("cheese wedge", /obj/item/food/cheese/wedge, 6),
+		new /datum/data/vending_product("baguette", /obj/item/food/baguette, 14),
+		new /datum/data/vending_product("lollipop", /obj/item/food/lollipop, 3),
+		new /datum/data/vending_product("swirl lollipop", /obj/item/food/swirl_lollipop, 20),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 	)
 

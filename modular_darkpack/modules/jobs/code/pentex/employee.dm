@@ -8,10 +8,7 @@
 	supervisors = "the Board and the Branch Lead"
 	req_admin_notify = 1
 	minimal_player_age = 25
-	exp_requirements = 50
-	exp_required_type = EXP_TYPE_SPIRAL
 	exp_required_type_department = EXP_TYPE_SPIRAL
-	exp_granted_type = EXP_TYPE_SPIRAL
 	config_tag = "PENTEX_EMPLOYEE"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/employee
@@ -25,7 +22,7 @@
 	)
 
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
-	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
+	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 3
 
@@ -33,6 +30,8 @@
 	departments_list = list(
 		/datum/job_department/pentex,
 	)
+
+	tgui_icon = FA_ICON_BUSINESS_TIME
 
 	known_contacts = list(
 		JOB_PENTEX_LEAD,

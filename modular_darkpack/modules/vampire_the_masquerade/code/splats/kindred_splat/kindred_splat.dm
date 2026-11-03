@@ -99,9 +99,9 @@
 	// Set blood type
 	owner.set_blood_type(/datum/blood_type/kindred)
 
-	// Apply temperature damage modifiers
-	owner.physiology.heat_mod *= 2
-	owner.physiology.cold_mod *= 0.25
+	// Apply temperature & burn damage modifiers - Kindred do not get harmed by tempatures, but do by combustion/physical flame damage.
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_HEAT, 2)
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_COLD, 0.25)
 
 
 /datum/splat/vampire/kindred/on_lose()
@@ -126,9 +126,9 @@
 	// Reset blood type
 	owner.set_blood_type()
 
-	// Reset temperature damage modifiers
-	owner.physiology.heat_mod *= 0.5
-	owner.physiology.cold_mod *= 4
+	// Reset temperature & burn damage modifiers
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_HEAT, 0.5)
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_COLD, 4)
 
 	// Reset bloodpool size from Generation
 	owner.maxbloodpool = initial(owner.maxbloodpool)
@@ -161,7 +161,7 @@
 	SIGNAL_HANDLER
 
 	// Kindred take half "bashing" damage, which is normally blunt damage but includes pointy things like bullets because they're undead
-	if ((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
+	if((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
 		damage_mods += 0.5
 
 /**

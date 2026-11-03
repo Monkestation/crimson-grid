@@ -38,11 +38,6 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	if(!usr || usr != mob) //stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
 
-	// DARKPACK EDIT ADD BEGIN - MENTOR
-	if(mentor_client_procs(href_list))
-		return
-	// DARKPACK EDIT ADD END
-
 #ifndef TESTING
 	if (LOWER_TEXT(hsrc_command) == "_debug") //disable the integrated byond vv in the client side debugging tools since it doesn't respect vv read protections
 		return
@@ -653,7 +648,8 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	QDEL_NULL(void)
 	QDEL_NULL(tooltips)
 	QDEL_NULL(loot_panel)
-	QDEL_NULL(parallax_rock)
+	QDEL_LIST(parallax_instances)
+	eye_parallax = null
 	seen_messages = null
 	Master.UpdateTickRate()
 	..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
@@ -1022,7 +1018,12 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 		return
 	var/atom/old_eye = eye
 	eye = new_eye
+
+	// Draws to the default map
+	eye_parallax = create_parallax("")
+	eye_parallax.set_perspective(eye)
 	SEND_SIGNAL(src, COMSIG_CLIENT_SET_EYE, old_eye, new_eye)
+
 /**
  * Updates the keybinds for special keys
  *
@@ -1054,14 +1055,14 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[asay]")
 					else
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=")
-				// CRIMSON EDIT ADDITION START - MENTOR
+				// DARKPACK EDIT START - MENTORS
 				if(MENTOR_CHANNEL)
-					if(is_mentor())
-						var/msay = tgui_say_create_open_command(MENTOR_CHANNEL)
-						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[msay]")
+					if(mentor_datum)
+						var/mentorsay = tgui_say_create_open_command(MENTOR_CHANNEL)
+						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=[mentorsay]")
 					else
 						winset(src, "default-[REF(key)]", "parent=default;name=[key];command=")
-				// CRIMSON EDIT ADDITION END
+				// DARKPACK EDIT END
 	calculate_move_dir()
 
 /client/proc/change_view(new_size)
@@ -1088,6 +1089,29 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	generate_clickcatcher()
 	var/list/actualview = getviewsize(view)
 	void.UpdateGreed(actualview[1],actualview[2])
+
+/client/proc/apply_parallax()
+	if(length(parallax_instances))
+		screen |= parallax_instances
+
+/// Gets a parallax holder if one exists on the specified map
+/client/proc/get_parallax(map)
+	for(var/atom/movable/screen/parallax_home/instance as anything in parallax_instances)
+		if(instance.submap == map)
+			return instance
+
+/// Creates a new parallax holder if one does not already exist on the passed in map
+/client/proc/create_parallax(map)
+	var/atom/movable/screen/parallax_home/existing = get_parallax(map)
+	if(existing)
+		return existing
+	return new /atom/movable/screen/parallax_home(null, null, src, map)
+
+/// Deletes the parallax holder for the passed in map
+/client/proc/delete_parallax(map)
+	var/atom/movable/screen/parallax_home/existing = get_parallax(map)
+	if(existing)
+		qdel(existing)
 
 /client/proc/AnnouncePR(announcement)
 	if(get_chat_toggles(src) & CHAT_PULLR)

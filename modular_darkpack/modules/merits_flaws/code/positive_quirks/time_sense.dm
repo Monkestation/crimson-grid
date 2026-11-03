@@ -21,7 +21,7 @@
 	. = list()
 	if(HAS_TRAIT(src, TRAIT_TIME_SENSE))
 		. += "Local City Time: [server_timestamp("hh:mm", ic_time = TRUE, twelve_hour_clock = client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))] [server_timestamp("MMM YYYY", ic_time = TRUE)]"
-		. += "Phase of moon: [GLOB.moon_state]"
+		. += "Phase of moon: [get_moon_state()]"
 	else
 		. += "Local City Time: [CURRENT_STATION_YEAR]? Get a watch."
 

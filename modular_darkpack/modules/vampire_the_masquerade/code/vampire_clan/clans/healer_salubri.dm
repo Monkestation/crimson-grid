@@ -42,8 +42,12 @@
 	blink_animation = FALSE
 
 /datum/subsplat/vampire_clan/salubri/psychomania_effect(mob/living/target, mob/living/owner)
-	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh1.ogg", 50, FALSE)
+	// CRIMSON GRID ADD: DARK THAUMATURGY. BEFORE:
+	/* target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh1.ogg", 50, FALSE)
 	to_chat(target, span_warning("My third eye begins to reflexively open.."))
 	target.visible_message(span_warning("[target] tightly grasps their forehead, trying to conceal something"), span_cult("I MUST HIDE MY NATURE"))
 	target.apply_damage(50, BRUTE, BODY_ZONE_HEAD)
-	target.Paralyze(6 SECONDS)
+	target.Paralyze(6 SECONDS) */
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+	// CRIMSON GRID ADD END: DARK THAUMATURGY

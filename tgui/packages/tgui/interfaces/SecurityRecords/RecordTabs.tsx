@@ -13,7 +13,6 @@ import {
   Tabs,
 } from 'tgui-core/components';
 
-import { JOB2ICON } from '../common/JobToIcon';
 import { CRIMESTATUS2COLOR } from './constants';
 import { isRecordMatch } from './helpers';
 import type { SecurityRecord, SecurityRecordsData } from './types';
@@ -68,7 +67,8 @@ export const SecurityRecordTabs = (props) => {
               Create
             </Button>
           </Stack.Item>
-          <Stack.Item>
+          {/* CRIMSON KEEP REMOVAL START - Security console and records */}
+          {/* <Stack.Item>
             <Button.Confirm
               content="Purge"
               disabled={!higher_access || !station_z}
@@ -76,7 +76,8 @@ export const SecurityRecordTabs = (props) => {
               onClick={() => act('purge_records')}
               tooltip="Wipe criminal record data."
             />
-          </Stack.Item>
+          </Stack.Item> */}
+          {/* CRIMSON KEEP REMOVAL END */}
         </Stack>
       </Stack.Item>
     </Stack>
@@ -122,7 +123,7 @@ const CrewTab = (props: { record: SecurityRecord }) => {
       selected={isSelected}
     >
       <Box bold={isSelected} color={CRIMESTATUS2COLOR[wanted_status]}>
-        <Icon name={JOB2ICON[trim] || 'question'} /> {name}
+        <Icon name={trim || 'question'} /> {name}
       </Box>
     </Tabs.Tab>
   );

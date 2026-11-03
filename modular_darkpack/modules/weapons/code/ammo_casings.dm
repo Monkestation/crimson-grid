@@ -149,7 +149,7 @@
 	name = "12g dragon's breath shell casing"
 	desc = "An incendiary 12g shell casing."
 	projectile_type = /obj/projectile/bullet/darkpack/dragonsbreath
-	pellets = 8
+	pellets = 6		//Decresed due to damage output + firestacks
 	variance = 25
 	icon_state = "12d"
 	base_icon_state = "12d"

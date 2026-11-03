@@ -8,14 +8,11 @@
 	supervisors = SUPERVISOR_PRINCE
 	req_admin_notify = 1
 	minimal_player_age = 14
-	exp_requirements = 120
-	exp_required_type = EXP_TYPE_CAMARILLA
-	exp_required_type_department = EXP_TYPE_CAMARILLA
-	exp_granted_type = EXP_TYPE_CAMARILLA
+	exp_requirements = EXP_REQ_MINOR
 	config_tag = "SHERIFF"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/sheriff
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_SHERIFF
 	departments_list = list(
 		/datum/job_department/camarilla,
@@ -33,6 +30,8 @@
 		JOB_HARPY,
 		JOB_HOUND
 	)
+
+	tgui_icon = FA_ICON_SHIELD
 
 /datum/outfit/job/vampire/sheriff
 	name = JOB_SHERIFF

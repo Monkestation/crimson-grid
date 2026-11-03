@@ -5,12 +5,14 @@
 	total_positions = 2
 	spawn_positions = 2
 	outfit = /datum/outfit/job/vampire/red_news_reporter
-	exp_granted_type = EXP_TYPE_SPIRAL
 	config_tag = "RED_NEWS_REPORTER"
 	display_order = JOB_DISPLAY_ORDER_RED_NEWS_REPORTER
 	departments_list = list(
 		/datum/job_department/citizen
 	)
+
+	tgui_icon = FA_ICON_CAMERA
+
 	job_flags = CITY_JOB_FLAGS
 	minimum_masquerade = 0
 	alt_titles = list(
@@ -32,4 +34,4 @@
 	l_pocket = /obj/item/smartphone/red_news
 	backpack_contents = list(/obj/item/card/credit)
 	uniform = /obj/item/clothing/under/vampire/suit
-	l_hand = /obj/item/broadcast_camera
+	l_hand = /obj/item/broadcast_camera/darkpack

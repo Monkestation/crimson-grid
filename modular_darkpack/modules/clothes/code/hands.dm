@@ -70,6 +70,10 @@
 	desc = "Provides acid protection."
 	icon_state = "latex"
 	armor_type = /datum/armor/anti_acid_gloves
+	siemens_coefficient = /obj/item/clothing/gloves/latex::siemens_coefficient
+	clothing_traits = /obj/item/clothing/gloves/latex::clothing_traits
+	resistance_flags = /obj/item/clothing/gloves/latex::resistance_flags
+	equip_sound = /obj/item/clothing/gloves/latex::equip_sound
 
 /obj/item/clothing/gloves/vampire/white
 	name = "white gloves"

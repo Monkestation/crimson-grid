@@ -4,7 +4,6 @@
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = SUPERVISOR_SENESCHAL_PUBLIC
-	exp_granted_type = EXP_TYPE_CAMARILLA
 	config_tag = "TOWER_EMPLOYEE"
 	outfit = /datum/outfit/job/vampire/towerwork
 	job_flags = CITY_JOB_FLAGS
@@ -12,6 +11,8 @@
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
+
+	tgui_icon = FA_ICON_PAPERCLIP
 
 	alt_titles = list(
 		"Tower Employee",
@@ -22,7 +23,7 @@
 		"Tower Personal Attendant"
 	)
 
-	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
+	maximal_generation = 9
 	maximum_immortal_age = 200
 	known_contacts = list(
 		JOB_PRINCE,

@@ -94,6 +94,7 @@
 		/datum/discipline_power/obfuscate/vanish_from_the_minds_eye,
 		/datum/discipline_power/obfuscate/cloak_the_gathering
 	)
+	frenzy_usable = FALSE
 
 /datum/discipline_power/obfuscate/cloak_of_shadows/pre_activation_checks()
 	. = ..()
@@ -136,6 +137,7 @@
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 
@@ -189,6 +191,7 @@
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0 // vitae cost handled in activate()
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 	grouped_powers = list(
@@ -213,7 +216,8 @@
 	var/mob/living/carbon/human/target = examined
 	var/image/target_image = image(target)
 	to_chat(owner, span_info("You get a good look at your target and memorize their features."))
-	LAZYSET(cached_targets, target.name, list("image" = target_image, "target" = target))
+	// Oh this shit hella hard-dels.
+	LAZYSET(cached_targets, GET_GUESTBOOK_NAME_TRUE(examiner, target), list("image" = target_image, "target" = target))
 
 /datum/discipline_power/obfuscate/mask_of_a_thousand_faces/post_gain()
 	. = ..()
@@ -240,20 +244,10 @@
 
 /datum/discipline_power/obfuscate/mask_of_a_thousand_faces/activate()
 	. = ..()
+	var/mob/living/carbon/human/target = owner?.mind?.guestbook.pick_known_guy(owner)
 
-	var/list/display_targets = list()
-	for(var/target_name in cached_targets)
-		display_targets[target_name] = cached_targets[target_name]["image"]
-
-	var/chosen_name = show_radial_menu(owner, owner, display_targets, radius = 40, require_near = TRUE, tooltips = TRUE)
-	if(!chosen_name)
-		try_deactivate(direct = TRUE)
-		return
-
-	var/mob/living/carbon/human/target = cached_targets[chosen_name]["target"]
-
-	if(!target)
-		to_chat(owner, span_warning("You can't recall [chosen_name]'s features clearly enough!"))
+	if(!istype(target))
+		to_chat(owner, span_warning("You can't recall [target]'s features clearly enough!"))
 		try_deactivate(direct = TRUE)
 		return
 
@@ -359,6 +353,7 @@
 	level = 5
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 

@@ -1,7 +1,7 @@
 /datum/language/draconic
 	name = "Draconic"
 	desc = "The common language of lizard-people, composed of sibilant hisses and rattles."
-	key = "o"
+	//key = "o" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	flags = LANGUAGE_TONGUELESS_SPEECH
 	space_chance = 12
 	sentence_chance = 0

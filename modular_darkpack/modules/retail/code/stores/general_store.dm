@@ -26,6 +26,7 @@
 		new /datum/data/vending_product("coal", /obj/item/stack/sheet/mineral/coal, 10),
 		new /datum/data/vending_product("cloth", /obj/item/stack/sheet/cloth, 5),
 		new /datum/data/vending_product("door repair kit", /obj/item/door_repair_kit, 300),
+		new /datum/data/vending_product("firecracker", /obj/item/grenade/firecracker, 50),
 		new /datum/data/vending_product("wooden plank", /obj/item/stack/sheet/mineral/wood, 10),
 		new /datum/data/vending_product("iron sheet", /obj/item/stack/sheet/iron, 10),
 		new /datum/data/vending_product("glass sheet", /obj/item/stack/sheet/glass, 10),
@@ -33,5 +34,6 @@
 		new /datum/data/vending_product("cardboard sheet", /obj/item/stack/sheet/cardboard, 10),
 		new /datum/data/vending_product("iron rods", /obj/item/stack/rods/ten, 30),
 		new /datum/data/vending_product("cable coil", /obj/item/stack/cable_coil/thirty, 30),
+		new /datum/data/vending_product("city-balanced radio", /obj/item/radio, 25),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 	)

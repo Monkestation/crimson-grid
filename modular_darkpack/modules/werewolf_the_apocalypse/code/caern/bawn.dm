@@ -16,7 +16,7 @@
 
 /obj/effect/realistic_fog/bawn/LateInitialize()
 	for(var/obj/structure/werewolf_totem/totem in GLOB.totems)
-		if(istype(linked_totem, linked_totem_path))
+		if(istype(totem, linked_totem_path))
 			linked_totem = totem
 			RegisterSignal(totem, COMSIG_QDELETING, PROC_REF(on_totem_death))
 			break

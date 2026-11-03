@@ -11,68 +11,8 @@
   Absolucy:
   - code_imp: Minor code optimizations for APC processing.
   - bugfix: Healium crystals now properly update turf atmos.
-  FalloutFalcon:
-  - admin: darkpack traits can properly be added to mobs as an admin
-  - rscadd: Gio get italian again
-  - rscadd: Fera get tribe keys again
-  - bugfix: Default protean fight form swapped from dog to wolf
-  - bugfix: Animalism summon is a true wolf instead of renamed dog.
-  - rscadd: Gangrel protean has dog and corvid
-  - rscadd: Readds Language quirk
-  - qol: Balls hit in billiards are now purely based on success rather success being
-      a modifier.
-  - qol: Hit balls are all displayed on a single line to avoid spam.
-  - qol: Moved striking ball to right click to allow you to place the cue back onto
-      the table
-  - balance: punching things is mostly ttrpg accurate
-  - balance: punching basic mobs has mostly the same behavior as humans
-  - code_imp: adds a dice result output for you and the target.
-  - balance: Removed shroudsights night vision
-  - balance: Shroud sight requires a perception + awareness roll
-  - bugfix: Typhon's Brew actually shows up if you have Serpentis
-  - refactor: Reworks DISCIPLINE_KNOWLEDGE traits into checks for the disc
-  - code_imp: Some type casts on `attack_self`s mostly have type safety to prevent
-      run-times if you use it while not a human
-  - bugfix: Acid turfs wont hurt if under a catwalk
-  - bugfix: Fixes iconstate of button managment button
-  - rscadd: Chocolate bars now have random brand name.
-  - bugfix: Doors still break if you get more then then 1 success.
-  - refactor: Subtypes vampire clans under the same type as werewolf tribes, auspices,
-      and breeds.
-  FalloutFalcon, INFARED_BARON, Other spriters im presently finding hard to track down:
-  - image: Ports alot of sprites from mojave sun, mostly fluff props
-  SELFHELL:
-  - rscadd: Most Automatic Guns have gotten Full-Auto Capacity, please make an issue
-      report for extremely unfair TTKs
   TealSeer:
   - image: the HFR glows in the dark now
-  buffyuwu:
-  - refactor: redesigned the phone, added texting, a settings app, etc.
-  chazzyjazzy:
-  - rscadd: Auspex Telepathy now offers the user to pick between mind reading and
-      implanting thoughts
-  - rscadd: Adds rolls to Telepathy, reducing the free loophole to having to whisper
-  - rscadd: Gargoyles can toggle the legs and tail
-  - rscadd: adds Nagaraja
-  - rscadd: adds Samedi and their discipline Thanatosis
-  - rscadd: adds Giovanni atavism quirk, the Cappadocian accelerated corpse decay
-      quirk, and the 'Monstrous' appearance 0 masquerade breaching face quirk
-  - rscadd: adds Harbinger of Skulls
-  - rscadd: Cappadocian weakness is now limited to rotten1 and rotten2, with a quirk
-      designed to accelerate the corpse decay
-  - bugfix: removes Giovanni from Camarilla roles besides Tower Employee
-  - bugfix: removes Cappadocian from Giovanni Capo
-  - bugfix: vampires, ghouls, and garou can now play dealer
-  - code_imp: included_clans for darkpack quirks so we don't have a massive excluded_clans
-      list for quirks that are available for all clans minus one
-  - rscadd: Presence 5 (Majesty) now grants the pacifism trait to all those affected
-      after a timeframe based on a roll as people often use this ability to end fights
-  - balance: lowered cooldowns and duration lengths across a few Presence abilities
-      including Summon and Majesty
-  - rscdel: Removed the 'Resist Presence' willpower roll button to nullify any use
-      of Presence
-  - bugfix: added safety checks for gargoyle tail and legs and beastmarks
-  - bugfix: thaumaturgy archive now correctly handles stock
 2026-03-03:
   ArcaneMusic:
   - qol: Items shipping via the black market using the "launch" option now launch
@@ -179,8 +119,6 @@
   ArcaneMusic:
   - qol: After discovering a strange object's behavior, you can now rename it using
       a pen.
-  FalloutFalcon:
-  - rscadd: Readds rank 1/old code auspice gifts
   oranges:
   - rscadd: suicide act for shrink ray
   stylemistake:
@@ -273,14 +211,6 @@
 2026-03-16:
   ArcaneMusic:
   - bugfix: The cargo shuttle can no longer qdel your ghost mob.
-  FalloutFalcon:
-  - bugfix: Assignment of a faction ID was moved to the clan rather then discipline
-  - bugfix: Fixes a few NPCS not having AI controllers
-  - bugfix: Lasombra aren't hidden in ALL vis contents (like virtual z)
-  - code_imp: Darkpack versioning for preference save files
-  LucifersCoils:
-  - rscadd: Caitiff may now access the La Famiglia role
-  - rscdel: Removed all clans' access to La Famiglia
   Melbert:
   - qol: Revenant abilities indicate if they are locked, and better indicate if they
       are currently usable
@@ -303,20 +233,6 @@
   - refactor: Converted circuit printers/duplicators to item_interaction
   - refactor: Rewrote BCI implanters to use item_interaction
   - refactor: Converted bot construction to item_interaction
-  buffyuwu:
-  - qol: dice results now output to chat by default instead of balloon alerts
-  - rscadd: Added the Disciplines UI in character setup
-  - rscadd: Implements ghouling, embracing, and discipline teaching where disciplines
-      are concerned
-  - admin: Added an admin ui for discipline management
-  chazzyjazzy:
-  - rscadd: readds height
-  lpeapnni:
-  - bugfix: fixes eyes for both kiasyd and salubri
-  - code_imp: removes todo comments for gridventory stuff
-  - code_imp: Reimplemented permanent ghouling and embracing
-  minzeyes, XeonMations:
-  - rscadd: Reimplements Vicissitude
   timothymtorres:
   - rscadd: Spiders can now be tamed and ridden. They eat mouse, lizard, moth, fly,
       and worm meat and can only be tamed when they are spiderlings or young.
@@ -421,23 +337,9 @@
   - image: Generic surgical operations now have unique surgery radial icons
 2026-03-23:
   FalloutFalcon:
-  - rscadd: Fishing supplies can now be found in camping and hardware stores
-  - qol: You can now choose to report a bug upstream when making an issue report
-  - admin: All Second City verbs sorted into their own catagory
-  - admin: Setting starlight is R_ADMIN instead of R_FUN
-  - qol: Auras now layer underneath the mob
-  - code_imp: Fetches enlightenment directly from Path.
-  - bugfix: lock/unlock of doors displays as a notice (blue)
-  - refactor: Cleans up some syntax on splat helpers
-  - code_imp: List index for stats was made its type instead of a type as a string
+  - spellcheck: removed extra space on spraying an atmos machine with spray can
   LemonInTheDark:
   - admin: Subsystem flags are now displayed as flags instead of raw numbers in vv
-  LucifersCoils:
-  - spellcheck: Renamed Metis to Crinos
-  Marshmellow105:
-  - bugfix: endron bouncers now wear the correct uniforms, camarilla bouncers now
-      wear red turtlenecks and armoured vests
-  - rscadd: black, blue, and green variants of barstools
   Melbert:
   - qol: Audit log formats vendors without "the"
   - rscadd: Adds Thanatorenasia, a 0 point neutral quirk that turns your body into
@@ -451,14 +353,6 @@
       fall into a chasm.
   - bugfix: Fixed 2 exploits which would render you immune to falling down a specific
       chasm.
-  XeonMations:
-  - bugfix: Fixed some guestbook related bugs
-  chazzyjazzy:
-  - balance: finance rolls for selling clothes are now much more fair
-  dwinters99:
-  - rscadd: Melpominee
-  - code_imp: Moves Emotion to /mob
-  - code_imp: Proc to convert Emotion to a quality (i.e. Afraid -> fear)
   lelandkemble:
   - bugfix: Monkey dust now properly removes anti-stun properties when its imbiber
       is no longer a monkey
@@ -501,92 +395,139 @@
       disabled due to shuttle transit
   - bugfix: Glasses that were in the vending machine now still count for the completion
       of the Beach Bar virtual domain
+2026-03-26:
+  Absolucy:
+  - qol: Slime Link messages now notify listeners with a balloon alert.
+  ArcaneMusic:
+  - code_imp: supply packs can now be spawned using containers different than a crate.
+  - bugfix: The Random Supply Drop event can now spawn their items as opposed to runtiming.
+  LemonInTheDark:
+  - bugfix: the darken screen shake preference will no longer shake your screen underneath
+      the fullscreen overlay
+  Rhials:
+  - bugfix: The medisim shuttle docking port now aligns properly with most evac terminals.
+  RusselNotSCP:
+  - rscadd: Added three new liqueurs, with bottles available in the booze-o-mat.
+  - rscadd: Added 15 new cocktails that use the aforementioned liqueurs.
+  SyncIt21:
+  - bugfix: tearing a poster while placing it only creates a shred poster on the wall
+      but won't place a new one in hand
+  lelandkemble:
+  - bugfix: You can put a horn in a clown car
+  - map: Snow Cabin fake healing wand now holds on to its sprite
+  - bugfix: Tape can now secure prosthetic limbs again
+  - spellcheck: Immobile mobile defibrillator mounts are no longer called mobile
+  vinylspiders:
+  - bugfix: fixes an issue where casting spells after your mob gets deleted can leave
+      you in a permanently bugged state.
+2026-03-27:
+  ArcaneMusic:
+  - rscadd: Centcom is now offering the ability to purchase airflow blocking plastic
+      flaps, and the ability to refill the cargo shuttle with air for the low, low
+      installation fee of 8,000 credits. Inquire today under the "Imports" category!
+  Melbert:
+  - bugfix: Hallucinating yourself as another mob will no longer disable all of your
+      light sources
+  - qol: Health analyzer lung reports are appended by the lung organs rather than
+      at the bottom of the readout
+  TealSeer:
+  - bugfix: fixed a few bugs related to arm implant surgery
+  - code_imp: added missing bitflags to bitfield defines
+2026-03-28:
+  DATA-xPUNGED:
+  - admin: When forcing an earthquake, admins can now pick their precise position
+      on the station.
+  Hatterhat:
+  - qol: Installing electronics into windoors/interior doors only moves the electronics
+      out of your hand on a successful installation.
+  JohnFulpWillard:
+  - qol: The stat panel entry for space suits has been replaced with the HUD element.
+      You can now hover over it to see exact cell percentage, and click it to turn
+      the regulator on, while it'll also display when it's off.
+  - qol: Changeling's stat panel entry has been moved to the HUD & Antag panel. Also
+      added some extra explanations on how Changelings work in there.
+  Melbert:
+  - bugfix: You can remove embeds during surgery
+  - bugfix: Gibbed heads don't look debrained despite having a brain
+  - rscdel: '"Cloning Lab" is no longer a traitor codeword.'
+  SyncIt21:
+  - refactor: random recipes like metalgen & secret sause have been refactored. Please
+      report bugs on github
+  - bugfix: you cannot install infinite water recyclers in the sink frame
+  - bugfix: you can attach sink frames to walls in most cases regardless of what's
+      on the wall(except when there is already a light fixture, camera or another
+      sink)
+  Twaticus:
+  - image: resprites chicken nugget box and adds 3 new food related containers, new
+      nugget box, a wing bucket, and a fry sleeve.
+  lelandkemble:
+  - spellcheck: Changed spacing an punctuation in thanatorenasia offer to ghosts
+  - bugfix: You can no longer create infinite plasteel with girders
+  vinylspiders:
+  - bugfix: fixes an issue where the 'slow shuttle' station trait can sometimes not
+      be applied properly
+2026-03-29:
+  Hatterhat:
+  - bugfix: Integrated circuit shells now only explode if they draw too much power
+      in a minute, rather than being doomed to explode if it uses too much power over
+      its entire lifetime, following complaints from at least one guy. Nanotrasen
+      representatives claim that this is entirely unrelated to missing shipments of
+      explosive alloys.
+  - balance: Upgraded exoscanners no longer have skyrocketing power draw when upgraded,
+      following an incident where a station's chief engineer declared vendetta upon
+      their Cargo department for drawing an excessive amount of power, resulting in
+      massive casualties.
+  Jacquerel:
+  - qol: Blood worms can drag themselves onto corpses to infest them as an alternative
+      to pressing the action button.
+  Melbert:
+  - admin: Admins can ban from "recovered crew", "blood worm", "fugitive" / "fugitive
+      hunter", "glitch", and "paradox clone"
+  - admin: Mind Magnification Monkeys are now affected by a sentience ban (previously
+      unbannable)
+  - balance: The Psyker hunter ship now has a bandolier and two holsters for their
+      shotgun and revolvers, as well as some backup knives.
+  - balance: The Psyker hunter ship now has a box of bandages and an emergency medkit.
+  - balance: All Psyker hunters now spawn with a headset set to a shared frequency.
+  - balance: Psyker headsets now prevent their echolocation from being disabled due
+      to deafness.
+  - balance: Psyker hunters now spawn with flavorful eyewear. The Psyker Seer now
+      spawns with the thermal monocle (which was previously on the ship).
+  - balance: Gore will now heal Psykers.
+  - qol: Height is now an element of DNA, meaning it can be changed via genetics or
+      radstorms and is carried between genetic copies (Changlings, etc)
+  - bugfix: Fix stray 0 in heretic UI
+  SmArtKar:
+  - bugfix: Fixed stack items not being refunded by failed heretic summon rituals
+  - bugfix: Fixed parallax runtiming horribly whenever parallax SS doesnt pick a random
+      layer to display
+  SyncIt21:
+  - bugfix: Any effect that changes the theme of the environment no longer break turf
+      mounted objects
+  - bugfix: destroying plating with lava/water etc will destroy any object mounted
+      to it
+  Time-Green:
+  - bugfix: Ethereal crystal revive no longer breaks if you change species midway
+      through
+  Yobrocharlie:
+  - rscadd: Added the academy back, its now a fetch quest.
 2026-03-30:
-  FalloutFalcon:
-  - bugfix: Capitilized file extenstions for headshots are allowed
-  - bugfix: Garou now properly get a small health boost according to the stam bonus
-      the forms provide
-  - code_imp: Updating a stat properly updates all modifers for stats
-  - qol: Crates, closets, body bags, graves, and most other things will protect you
-      from the sun if you are inside of them
-  - rscadd: You can change your fera renown (and therfore rank) in prefrences
-  - qol: Some of the prefs are better sorted
-  LucifersCoils:
-  - balance: Anyone can now bash doors, but bashing a reinforced door is extra difficult.
-  - rscadd: Setites now take two extra stacks of damage from sunlight.
-  buffyuwu:
-  - rscadd: '@XeonMations Ports emotes from skyrat/nova'
-  - bugfix: fixed an issue where some guns had the base ss13 ammo type. now all guns
-      correctly have their darkpack ammo type counterparts
-  - rscadd: adds particle based auras
-  - rscadd: adds much more variety to examine flavortexts for all (and lackthereof)
-      gender(s)
-  - rscadd: Adds more hallucinations to malkavians! look out for your mother to scold
-      you, with different scolding phrases depending on your immortal age. e.g. milennial
-      vamps get told to stop watching TV, 1920s vamps get told to go tend to the horses
-  - refactor: 'greatly increased the time between npcs stopping to talk after being
-      bumped/grabbed and them starting to move again. this should make it easier to
-      pull one away to feed on. TODO: refactor it completely so that it''s more interactive
-      for kindred'
-  - refactor: no longer uses a lot of the vtm13 era glassware that have static names
-      and icons. with the modern tg glassware, drinks will automatically change glasses
-      to the appropriate ones for the drinks you mix into them
-  - refactor: derangement hallucination speech is easier to distinguish and uses more
-      artistic styling
-  - refactor: refactors discipline middleware a bit. you will now be prompted if you
-      try to join with 0 dots assigned, and if you try to change age you will have
-      to wipe your discs.
-  - refactor: phone sound volume for keyboard clicks have been increased, and apps
-      now play a sound when you open them, too. phone navigation should thereby be
-      audible to other players, making it harder to hide that you're on your phone
-  - bugfix: trusted status now saves from the secondcity disc admin menu when set/unset
-  - bugfix: your generation now properly applies. previously everyone was silently
-      defaulted to gen 10 due to the pref not being fully implemented
-  - bugfix: endbrowser navigation buttons now work on every endbrowser screen as intended
-  - bugfix: phones no longer display new text notifications twice, and the simulated
-      delay between receiving the text and the notification now correctly fires. this
-      delay is intended to give the phones a 'realistic' carrier lag time between
-      when the text arrives and when you get notified for a new text, just like real
-      phones
-  - bugfix: fixed missing sprite for broken tube lights
-  - bugfix: fixed missing sprite for sheaths
-  - rscadd: added a warning if you try to join a round before assigning disc dots.
-      this should help new and/or excited players from accidentally spawning in with
-      0 disciplines. you can choose to accept the warning and continue with just the
-      clan commons; rares must always be assigned through the menu or via an admin
-  - bugfix: '@XeonMations fixed kiss status effect for mortals being infinite. now
-      it will fade after 30 seconds. avoids requiring excessive logic (previously
-      the idea was to have it be a status effect WHILE being bitten, but this is unnecessary
-      and not performant. a simple expire time will do)'
-  - bugfix: fixes satchels showing an error sprite when concealed
-  - bugfix: you can now use boozeomats and they no longer shout space station slogans
-      at you
-  - bugfix: fixed an issue where malkavians who tried to search someone's mind would
-      be stuck with a pop up window until they relog
-  - bugfix: fixed an issue where ghouls werent getting the malkavian clan discipline
-      where appropriate. now anyone with the dementate discipline will receive it,
-      as it should be
-  chazzyjazzy:
-  - rscadd: readds Gargoyle Statue Form
-  - rscadd: finance affects roundstart cash
-  - rscadd: Reimplements Visceratika
-  - balance: artifact spawn rate is now handled by a config entry
+  SmArtKar:
+  - bugfix: Fixes press badges and other miscellaneous objects failing to make the
+      user examine them.
+  - admin: Some non-critical VV actions such as mutation/organ/quirk modification
+      have been converted to TGUI
+  - admin: VV dropdown has gotten a refresh and now boasts a brand-new searchbar
+  TheRyeGuyWhoWillNowDie:
+  - bugfix: cyborgs are made properly unconscious when emagged
+  Time-Green:
+  - bugfix: Coroner cytology grown organs can mutate again
+  Tsar-Salat:
+  - bugfix: firebreath will light objects on fire more consistently
 2026-03-31:
-  FalloutFalcon:
-  - bugfix: Mundane Club Workers can enter the club
-  - bugfix: Fixed coins allowing for infinite expenditure at a retail store
-  - code_imp: Fixes runtime from kinfolk not having an auspice to check when deciding
-      rank. They default to a cub.
-  XeonMations:
-  - rscadd: Added Salubri Healers
-  - rscadd: Added Salubri Warriors
-  - bugfix: Fixes fera options appearing on non-fera splats
-  chazzyjazzy:
-  - rscadd: Adds Gargoyle wings and flight
-  - rscdel: Removes firing pin authorization
-  - bugfix: fixes masquerade violating face trait
-  - bugfix: Fixes invisible glass sprites
-  - rscadd: Adds level two Thaumaturgy Burning Blade ritual
-  - bugfix: fixes ritual drawing actions having level = 1 when people had higher levels
-      selected
-  - rscadd: re-adds Daimonion
+  KingkumaArt:
+  - bugfix: Fixes mech energy guns draining 100x less than intended.
+  Melbert:
+  - bugfix: Radio jammers no longer brick headsets forever
+  SmArtKar:
+  - bugfix: Fixed z-transition mirages not mirroring all objects on the other z level

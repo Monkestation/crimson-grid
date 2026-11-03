@@ -1,7 +1,7 @@
 /datum/language/mushroom
 	name = "Mushroom"
 	desc = "A language that consists of the sound of periodic gusts of spore-filled air being released."
-	key = "y"
+	// key = "y" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	sentence_chance = 0
 	sentence_chance = 0
 	between_word_sentence_chance = 10

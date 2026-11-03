@@ -8,15 +8,16 @@
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/supply_tech
 
+
 	display_order = JOB_DISPLAY_ORDER_SUPPLY
-	exp_required_type_department = EXP_TYPE_WAREHOUSE
 	departments_list = list(
 		/datum/job_department/supply,
 	)
 
+	tgui_icon = FA_ICON_BOX
 
 	description = "You work at the warehouse, moving boxes and selling not-quite legal goods to anyone who has the money."
-	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
+	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 0
 

@@ -3,7 +3,7 @@
 	name = "High-Functioning Zombie"
 	id = SPECIES_ZOMBIE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN
-	mutanttongue = /obj/item/organ/tongue/zombie // not necessary as status effect gives it, but for tests
+	//mutanttongue = /obj/item/organ/tongue/zombie // not necessary as status effect gives it, but for tests DARKPACK EDIT REMOVE - Removes /tg/ zombie outbreaks
 
 /datum/species/zombie/check_roundstart_eligible()
 	if(check_holidays(HALLOWEEN))
@@ -54,7 +54,7 @@
 	/// Amount healed per regen tick - if 0, no regen will occur
 	var/regen_amount = 0.5
 	/// The hand to give the zombie - if null, they will have normal hands
-	var/zombie_hand = /obj/item/mutant_hand/zombie
+	var/zombie_hand = null // DARKPACK EDIT CHANGE - Removes /tg/ zombie infection outbreak - Original : var/zombie_hand = /obj/item/mutant_hand/zombie
 	/// The movespeed modifier to apply to the zombie - if null, no movespeed modifier will be applied
 	var/movespeed_mod = /datum/movespeed_modifier/zombie
 	/// % Reduction to all physical damage the zombie takes
@@ -107,11 +107,11 @@
 		return FALSE
 
 	var/mob/living/carbon/human/new_zombie = owner
-	LAZYADD(new_zombie.physiology.max_stun_len, max_stun_length)
+	RegisterSignal(new_zombie, COMSIG_HUMAN_SPEC_STUN, PROC_REF(on_spec_stun))
 	if(!isnull(movespeed_mod))
 		new_zombie.add_movespeed_modifier(movespeed_mod)
-	new_zombie.physiology.stamina_mod *= stamina_modifier // Zombie stam resist
-	new_zombie.physiology.damage_resistance += damage_modifier
+	MODIFY_PHYSIOLOGY(new_zombie, STAMINA, stamina_modifier) // Zombie stam resist
+	new_zombie.damage_resistance += damage_modifier
 	new_zombie.add_traits(unique_traits | zombie_traits, TRAIT_STATUS_EFFECT(id))
 	new_zombie.lighting_cutoff_red = 25
 	new_zombie.lighting_cutoff_green = 35
@@ -122,16 +122,19 @@
 	add_zombie_biotypes()
 
 	// Ensures we have an infection organ even if we were applied by something else
+	/* // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	var/obj/item/organ/zombie_infection/infection = new_zombie.get_organ_slot(ORGAN_SLOT_ZOMBIE)
 	if(isnull(infection))
 		infection = new()
 		infection.Insert(new_zombie)
 		RegisterSignal(infection, COMSIG_ORGAN_REMOVED, PROC_REF(organ_removed))
+	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 
 	var/obj/item/bodypart/head/head = new_zombie.get_bodypart(BODY_ZONE_HEAD)
 	if(!QDELETED(head))
 		head.can_dismember = TRUE
 
+	/* // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	var/obj/item/organ/tongue/old_tongue = new_zombie.get_organ_slot(ORGAN_SLOT_TONGUE)
 	if(!QDELETED(old_tongue))
 		old_tongue.Remove(new_zombie, special = TRUE)
@@ -141,12 +144,15 @@
 
 	var/obj/item/organ/tongue/zombie/new_tongue = new()
 	new_tongue.Insert(new_zombie, special = TRUE)
+	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 
+	/* // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	if(!isnull(zombie_hand))
 		new_zombie.AddComponent( \
 			/datum/component/mutant_hands, \
 			mutant_hand_path = zombie_hand, \
 		)
+	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	if(regen_amount > 0)
 		new_zombie.AddComponent( \
 			/datum/component/regenerator, \
@@ -170,24 +176,27 @@
 /datum/status_effect/zombie/on_remove()
 	var/mob/living/carbon/human/was_zombie = owner
 
+	/* // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	var/obj/item/organ/tongue/zombie/old_tongue = was_zombie.get_organ_slot(ORGAN_SLOT_TONGUE)
 	var/obj/item/organ/tongue/removed_tongue_real = removed_tongue?.resolve()
+
 	if(!QDELETED(old_tongue))
 		qdel(old_tongue)
 	if(!QDELETED(removed_tongue_real))
 		removed_tongue_real.Insert(was_zombie, special = TRUE)
+	*/ // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 
 	var/obj/item/bodypart/head/head = was_zombie.get_bodypart(BODY_ZONE_HEAD)
 	if(!QDELETED(head))
 		head.can_dismember = initial(head.can_dismember)
 
-	qdel(was_zombie.GetComponent(/datum/component/mutant_hands))
+	//qdel(was_zombie.GetComponent(/datum/component/mutant_hands)) // DARKPACK EDIT REMOVAL - Removes /tg/ zombie infection outbreak
 	qdel(was_zombie.GetComponent(/datum/component/regenerator))
-	LAZYREMOVE(was_zombie.physiology.max_stun_len, max_stun_length)
+	UnregisterSignal(was_zombie, COMSIG_HUMAN_SPEC_STUN)
 	if(!isnull(movespeed_mod))
 		was_zombie.remove_movespeed_modifier(movespeed_mod)
-	was_zombie.physiology.stamina_mod /= stamina_modifier
-	was_zombie.physiology.damage_resistance -= damage_modifier
+	MODIFY_PHYSIOLOGY(was_zombie, STAMINA, 1 / stamina_modifier)
+	was_zombie.damage_resistance -= damage_modifier
 	was_zombie.remove_traits(zombie_traits | unique_traits, TRAIT_STATUS_EFFECT(id))
 	was_zombie.lighting_cutoff_red = initial(was_zombie.lighting_cutoff_red)
 	was_zombie.lighting_cutoff_green = initial(was_zombie.lighting_cutoff_green)
@@ -215,6 +224,10 @@
 	if(owner.mob_biotypes & MOB_ORGANIC)
 		owner.mob_biotypes &= ~MOB_ORGANIC
 		removed_biotypes = MOB_ORGANIC
+
+/datum/status_effect/zombie/proc/on_spec_stun(list/amount)
+	SIGNAL_HANDLER
+	amount[1] = min(amount[1], max_stun_length)
 
 /datum/status_effect/zombie/proc/remove_zombie_biotypes()
 	owner.mob_biotypes &= ~added_biotypes
@@ -262,7 +275,7 @@
 /datum/status_effect/zombie/mindless
 	regen_time = 10 SECONDS
 	regen_amount = 0.2
-	zombie_hand = /obj/item/mutant_hand/zombie/weak
+	zombie_hand = null // CRIMSON EDIT CHANGE - Original: zombie_hand = /obj/item/mutant_hand/zombie/weak
 	movespeed_mod = /datum/movespeed_modifier/zombie/mindless
 
 /datum/status_effect/zombie/uninfected

@@ -9,10 +9,7 @@
 	config_tag = "HARPY"
 	req_admin_notify = 1
 	minimal_player_age = 10
-	exp_requirements = 180
-	exp_required_type = EXP_TYPE_CAMARILLA
-	exp_required_type_department = EXP_TYPE_CAMARILLA
-	exp_granted_type = EXP_TYPE_CAMARILLA
+
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/harpy
 
@@ -21,8 +18,10 @@
 		/datum/job_department/camarilla,
 	)
 
+	tgui_icon = FA_ICON_WINE_GLASS_EMPTY
+
 	minimal_generation = 12	//Uncomment when players get exp enough
-	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
+	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 5
 

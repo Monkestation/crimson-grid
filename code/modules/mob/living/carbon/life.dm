@@ -362,6 +362,7 @@
 		// Enough to make the mob sleep.
 		if(n2o_pp > n2o_sleep_min)
 			Sleeping(max(AmountSleeping() + 40, 200))
+		breath_moles[/datum/gas/nitrous_oxide] -= breath_moles[/datum/gas/nitrous_oxide] //DARKPACK EDIT ADD - N2O Self-consumes
 	else if(n2o_pp > 0.01)
 		// No alert for small amounts, but the mob randomly feels euphoric.
 		if(prob(20))
@@ -743,8 +744,8 @@
 	if(HAS_TRAIT(src, TRAIT_STABLELIVER) || HAS_TRAIT(src, TRAIT_LIVERLESS_METABOLISM))
 		return
 
-	adjust_tox_loss(0.6 * seconds_per_tick, forced = TRUE)
-	adjust_organ_loss(pick(ORGAN_SLOT_HEART, ORGAN_SLOT_LUNGS, ORGAN_SLOT_STOMACH, ORGAN_SLOT_EYES, ORGAN_SLOT_EARS), 0.5* seconds_per_tick)
+	adjust_tox_loss(0.6 * seconds_per_tick, forced = TRUE) //liver failure should kill slimepeople (or any human mob with toxin-lover or toxin-immune traits)
+	adjust_organ_loss(pick(ORGAN_SLOT_HEART, ORGAN_SLOT_LUNGS, ORGAN_SLOT_STOMACH, ORGAN_SLOT_EYES, ORGAN_SLOT_EARS), 0.5 * seconds_per_tick)
 
 /mob/living/carbon/proc/undergoing_liver_failure()
 	var/obj/item/organ/liver/liver = get_organ_slot(ORGAN_SLOT_LIVER)

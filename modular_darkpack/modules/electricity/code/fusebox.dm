@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(fuseboxes)
 				return ITEM_INTERACT_BLOCKING
 
 			var/datum/storyteller_roll/fusebox_repair/fusebox_roll = new()
-			var/successes = fusebox_roll.st_roll(user, src)
+			var/successes = fusebox_roll.st_roll(user, src, using_item = tool)
 			var/repair_amount = successes * 40
 			if(repair_amount > 0)
 				repair_damage(repair_amount)

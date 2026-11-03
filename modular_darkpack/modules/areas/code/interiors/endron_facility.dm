@@ -2,7 +2,7 @@
 	name = MAIN_EVIL_COMPANY + " Facility"
 	icon_state = "supply"
 	zone_type = ZONE_NO_MASQUERADE
-	music_index = MUSIC_FOREST
+	music_index = MUSIC_ENDRON
 	fire_controled = FALSE
 	gauntlet_rating = 8
 	domain = TRUE
@@ -11,7 +11,6 @@
 	name = MAIN_EVIL_COMPANY + " Facility Restricted"
 	icon_state = "graveyard"
 	zone_type = ZONE_NO_MASQUERADE
-	music_index = MUSIC_FOREST
 	fire_controled = FALSE
 
 /area/vtm/interior/endron_facility/helipad
@@ -24,6 +23,7 @@
 	name = "Endron Forest Worksite"
 	icon_state = "supply"
 	zone_type = ZONE_NO_MASQUERADE
+	music_index = MUSIC_FOREST
 	fire_controled = TRUE
 	gauntlet_rating = 6
 
@@ -31,6 +31,7 @@
 	name = "Endron Processing Plant"
 	icon_state = "supply"
 	zone_type = "masquerade"
+	music_index = MUSIC_FOREST
 	fire_controled = TRUE
 
 /area/vtm/interior/endron_facility/restricted

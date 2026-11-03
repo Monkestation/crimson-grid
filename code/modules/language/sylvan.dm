@@ -2,7 +2,7 @@
 /datum/language/sylvan
 	name = "Sylvan"
 	desc = "A complicated, ancient language spoken by sentient plants."
-	key = "h"
+	// key = "h" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 10
 	sentence_chance = 0
 	between_word_sentence_chance = 10

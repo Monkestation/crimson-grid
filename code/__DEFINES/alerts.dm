@@ -28,6 +28,7 @@
 #define ALERT_SHOES_KNOT "shoealert"
 #define ALERT_RADIOACTIVE_AREA "radioactive_area"
 #define ALERT_UNPOSSESS_OBJECT "unpossess_object"
+#define ALERT_BLOODWORM_INFO "bloodworm_info"
 
 //antag related
 #define ALERT_HYPNOSIS "hypnosis"
@@ -75,3 +76,5 @@
 #define ALERT_BITRUNNER_GLITCH "bitrunning_glitch"
 
 #define ALERT_SILICON_RECORDING "silicon_recording"
+
+#define DISCIPLINE_ACTIVE_ALERT(power) "discipline_power_[power.type]" // CRIMSON EDIT ADD - Discipline Active Indicator

@@ -205,7 +205,7 @@
 /obj/item/clothing/neck/robe_cape
 	name = "robe cape"
 	desc = "A comfortable cape, draped down your back and held around your neck with a brooch."
-	icon = 'icons/obj/clothing/neck.dmi'
+	icon = 'icons/map_icons/clothing/neck.dmi' // CRIMSON EDIT CHANGE - ORIGINAL: icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "/obj/item/clothing/neck/robe_cape"
 	post_init_icon_state = "robe_cape"
 	worn_icon = 'icons/mob/clothing/neck.dmi'
@@ -503,8 +503,8 @@
 	fire = 50
 	acid = 40
 
-/obj/item/clothing/neck/petcollar/mob_can_equip(mob/M, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE, indirect_action = FALSE)
-	if(!ismonkey(M) && !human_wearable)
+/obj/item/clothing/neck/petcollar/mob_can_equip(mob/mob, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE, indirect_action = FALSE)
+	if(!HAS_TRAIT(mob, TRAIT_LESSER_HUMANOID) && !human_wearable)
 		return FALSE
 	return ..()
 

@@ -7,6 +7,7 @@
 	icon_state = "matrix"
 
 /turf/closed/indestructible/the_matrix/attack_hand(mob/user)
+	. = ..()
 	if(!user.client)
 		return FALSE
 	if(!do_after(user, 10 SECONDS, src, interaction_key = DOAFTER_SOURCE_MATRIX))
@@ -26,6 +27,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 
 /obj/the_matrix/attack_hand(mob/user)
+	. = ..()
 	if(!user.client)
 		return FALSE
 	if(!do_after(user, 10 SECONDS, src, interaction_key = DOAFTER_SOURCE_MATRIX))
@@ -58,8 +60,8 @@ ADMIN_VERB_AND_CONTEXT_MENU(matrix_mob_verb, R_ADMIN, "Matrix Mob", "Matrix (des
 
 	GLOB.joined_player_list -= despawning_mob.ckey
 
-	//handle_objectives()
 	SSmasquerade.matrix_masquerade_breacher(despawning_mob, TRUE)
+	despawning_mob.client?.prefs?.save_character()
 	despawning_mob.ghostize(FALSE)
 	QDEL_NULL(despawning_mob)
 

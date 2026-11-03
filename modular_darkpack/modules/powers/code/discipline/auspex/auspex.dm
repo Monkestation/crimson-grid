@@ -108,7 +108,7 @@
 	bumper_text = "aura reading"
 	difficulty = 8
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 //AURA PERCEPTION
 /datum/discipline_power/auspex/aura_perception
@@ -159,6 +159,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 0
 	cooldown_length = 1 TURNS
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 
@@ -274,18 +275,19 @@
 	var/datum/storyteller_roll/disguise_voice_roll/disguise_roll
 	COOLDOWN_DECLARE(mind_read_cd)
 	COOLDOWN_DECLARE(implant_tht_cd)
+	frenzy_usable = FALSE
 
 /datum/storyteller_roll/telepathy_success
 	bumper_text = "mind reading"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_SUBTERFUGE)
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/storyteller_roll/disguise_voice_roll
 	bumper_text = "disguise voice"
 	applicable_stats = list(STAT_MANIPULATION, STAT_SUBTERFUGE)
 	numerical = FALSE
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/discipline_power/auspex/telepathy/pre_activation_checks(mob/living/target)
 	. = ..()
@@ -351,7 +353,7 @@
 
 			log_directed_talk(owner, target, input_message, LOG_SAY, "Telepathy")
 			to_chat(owner, span_notice("You project your thoughts into [GET_GUESTBOOK_NAME(owner, target)]'s mind: \"[input_message]\""))
-			to_chat(target, span_boldannounce("You hear the voice of [target?.mind?.guestbook?.get_known_name(target, disguised_voice) ? target?.mind?.guestbook?.get_known_name(target, disguised_voice) : disguised_voice] in your thoughts: \"[input_message]\""))
+			to_chat(target, span_boldannounce("You hear the voice of [target?.mind?.guestbook?.get_known_name(target, disguised_voice) || disguised_voice] in your thoughts: \"[input_message]\""))
 			COOLDOWN_START(src, implant_tht_cd, 5 SECONDS)
 
 		if(TELEPATHY_MIND_READING)
@@ -416,6 +418,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 0
 	cooldown_length = 1 TURNS
+	frenzy_usable = FALSE
 
 /datum/discipline_power/auspex/psychic_projection/activate()
 	. = ..()

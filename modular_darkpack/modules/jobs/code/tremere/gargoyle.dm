@@ -7,11 +7,12 @@
 	config_tag = "CHANTRY_GARGOYLE"
 	outfit = /datum/outfit/job/vampire/gargoyle
 	job_flags = CITY_JOB_FLAGS
-	exp_required_type_department = EXP_TYPE_CHANTRY
 	departments_list = list(
 		/datum/job_department/chantry,
 	)
 	display_order = JOB_DISPLAY_ORDER_GARGOYLE
+
+	tgui_icon = FA_ICON_HILL_ROCKSLIDE
 
 	description = "You serve the local Chantry as either a guard dog, enforcer, or scout, a shock troop for the Mages of Clan Tremere. You serve the Tremere still, despise most of your kind being freed long ago, whether thats out of duty, mental enslavement, or having nowhere else to go. Among your Masters you are a second class citizen - yet you remain. Guard the Chantry and the Masters as your people always have."
 	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9

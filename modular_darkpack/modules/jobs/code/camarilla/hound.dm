@@ -7,20 +7,18 @@
 	spawn_positions = 7
 	supervisors = SUPERVISOR_SHERIFF
 	minimal_player_age = 7
-	exp_requirements = 20
-	exp_required_type = EXP_TYPE_CAMARILLA
-	exp_required_type_department = EXP_TYPE_CAMARILLA
-	exp_granted_type = EXP_TYPE_CAMARILLA
 	config_tag = "HOUND"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/hound
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_HOUND
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
 
-	maximal_generation = 8 // Crimson Grid Edit - Lock Adjustments - Was 9
+	tgui_icon = FA_ICON_SHIELD_HALVED
+
+	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 3
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL)

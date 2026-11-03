@@ -54,14 +54,7 @@
 	else
 		owner = user.real_name
 
-	if(user.client?.prefs)
-		var/pref_country = user.client.prefs.read_preference(/datum/preference/choiced/country_of_origin)
-		if(pref_country)
-			country_of_origin = pref_country
-			if(pref_country == "United States")
-				var/pref_state = user.client.prefs.read_preference(/datum/preference/choiced/state_of_origin)
-				if(pref_state)
-					country_of_origin = "[pref_state], United States"
+	country_of_origin = user.country_of_origin
 
 /obj/item/passport/examine(mob/user)
 	. = ..()

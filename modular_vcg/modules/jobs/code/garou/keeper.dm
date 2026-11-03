@@ -18,6 +18,7 @@
 
 	allowed_splats = list(SPLAT_GAROU, SPLAT_KINFOLK)
 	allowed_tribes = TRIBE_LIST_GAIA
+	allowed_auspice = list(AUSPICE_RAGABASH, AUSPICE_THEURGE, AUSPICE_PHILODOX, AUSPICE_AHROUN, AUSPICE_GALLIARD)
 
 	display_order = JOB_DISPLAY_ORDER_KEEPER
 	departments_list = list(

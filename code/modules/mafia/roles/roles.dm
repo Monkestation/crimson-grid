@@ -133,6 +133,7 @@
 		)
 	body.PossessByPlayer(player.key)
 	ADD_TRAIT(body, TRAIT_CORPSELOCKED, MAFIA_TRAIT)
+	ADD_TRAIT(body, TRAIT_NO_CANON, INNATE_TRAIT) // DARKPACK EDIT ADD
 
 /**
  * Tests kill immunities, if nothing prevents the kill, kills this role.

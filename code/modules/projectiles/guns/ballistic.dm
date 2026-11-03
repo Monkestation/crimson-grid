@@ -106,8 +106,14 @@
 	var/must_hold_to_load = FALSE
 	///Whether the gun can be sawn off by sawing tools
 	var/can_be_sawn_off = FALSE
-	var/suppressor_x_offset ///pixel offset for the suppressor overlay on the x axis.
-	var/suppressor_y_offset ///pixel offset for the suppressor overlay on the y axis.
+	///Added recoil of sawn off guns
+	var/sawoff_bonus_recoil = 1
+	///Starts presawn-off
+	var/spawn_sawn_off = FALSE
+	///pixel offset for the suppressor overlay on the x axis.
+	var/suppressor_x_offset
+	///pixel offset for the suppressor overlay on the y axis.
+	var/suppressor_y_offset
 	/// Check if you are able to see if a weapon has a bullet loaded in or not.
 	var/hidden_chambered = FALSE
 
@@ -177,6 +183,9 @@
 		chamber_round()
 	else
 		chamber_round(replace_new_round = TRUE)
+	if(spawn_sawn_off)
+		do_sawoff()
+
 	update_appearance()
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, PROC_REF(instant_reload))
 
@@ -604,7 +613,7 @@
 		install_suppressor(tool)
 		return ITEM_INTERACT_SUCCESS
 
-	if (can_be_sawn_off && sawoff(user, tool))
+	if (can_be_sawn_off && try_sawoff(user, tool))
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/gun/ballistic/proc/load_gun(obj/item/ammo, mob/living/user)
@@ -649,14 +658,15 @@
 			if(gun == src || gun.weapon_weight >= WEAPON_MEDIUM)
 				continue
 			else if(can_trigger_gun(user, akimbo_usage = TRUE))
-				recoil_roll.difficulty += 1	//Akimboing gains +1 difficulty
+				if(!HAS_TRAIT(user, TRAIT_AMBIDEXTROUS)) // DARKPACK EDIT ADD - MERITS_FLAWS
+					recoil_roll.difficulty += 1	//Akimboing gains +1 difficulty
 		if(firing_burst == TRUE)
 			recoil_roll.difficulty += 1	//Bursts gains +1 difficulty
 		var/datum/component/automatic_fire/automatic_check = src.GetComponent(/datum/component/automatic_fire)
 		if(automatic_check)
 			recoil_roll.difficulty += 2	//Full-auto gains +2 difficulty
 
-		var/recoil_reduction = recoil_roll.st_roll(user, src)
+		var/recoil_reduction = recoil_roll.st_roll(user, src, using_item = src)
 		recoil = max(initial(recoil) - recoil_reduction, 0)
 		spread = max(initial(spread) - recoil_reduction, 0)
 		COOLDOWN_START(src, recoil_skill_check, 1 SCENES)
@@ -667,6 +677,11 @@
 		chambered.serial_type_index = serial_type
 	// DARKPACK EDIT ADD END
 	return ..()
+
+/obj/item/gun/ballistic/calculate_recoil(mob/living/user, recoil_amount)
+	if(sawn_off)
+		recoil_amount += sawoff_bonus_recoil
+	. = ..()
 
 /obj/item/gun/ballistic/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
 	if(isnull(chambered))
@@ -853,7 +868,7 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	)))
 
 ///Handles all the logic of sawing off guns,
-/obj/item/gun/ballistic/proc/sawoff(mob/user, obj/item/saw, handle_modifications = TRUE)
+/obj/item/gun/ballistic/proc/try_sawoff(mob/user, obj/item/saw)
 	if(!saw.get_sharpness() || (!is_type_in_typecache(saw, GLOB.gun_saw_types) && saw.tool_behaviour != TOOL_SAW)) //needs to be sharp. Otherwise turned off eswords can cut this.
 		return
 	if(sawn_off)
@@ -874,10 +889,14 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	if(sawn_off)
 		return
 	user.visible_message(span_notice("[user] shortens [src]!"), span_notice("You shorten [src]."))
+	. = do_sawoff()
+	update_appearance()
+
+/obj/item/gun/ballistic/proc/do_sawoff()
+	SHOULD_CALL_PARENT(TRUE)
 	sawn_off = TRUE
 	SEND_SIGNAL(src, COMSIG_GUN_SAWN_OFF)
-	if(!handle_modifications)
-		return TRUE
+
 	name = "sawn-off [src.name]"
 	desc = sawn_desc
 	update_weight_class(WEIGHT_CLASS_NORMAL)
@@ -890,8 +909,6 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 	worn_icon_state = "gun"
 	slot_flags &= ~ITEM_SLOT_BACK //you can't sling it on your back
 	slot_flags |= ITEM_SLOT_BELT //but you can wear it on your belt (poorly concealed under a trenchcoat, ideally)
-	recoil = SAWN_OFF_RECOIL
-	update_appearance()
 	return TRUE
 
 /obj/item/gun/ballistic/wrench_act(mob/living/user, obj/item/I)

@@ -8,10 +8,14 @@
 	outfit = /datum/outfit/job/vampire/capo
 	job_flags = CITY_JOB_FLAGS
 	display_order = 1
-	exp_required_type_department = EXP_TYPE_GIOVANNI
 	departments_list = list(
 		/datum/job_department/giovanni,
 	)
+
+	tgui_icon = FA_ICON_MONEY_CHECK_DOLLAR
+
+	exp_required_type_department = EXP_TYPE_GIOVANNI
+	exp_requirements = EXP_REQ_HEAD
 
 	known_contacts = list(
 		JOB_LA_FAMIGLIA,

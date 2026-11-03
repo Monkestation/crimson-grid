@@ -230,6 +230,7 @@
 	desc = "A thermoplastic hard helmet used to protect the head from injury."
 	icon_state = "hardhat"
 	armor_type = /datum/armor/construction_helmet
+	hair_mask = /datum/hair_mask/standard_hat_middle
 	custom_price = 50
 
 /datum/armor/construction_helmet
@@ -262,7 +263,7 @@
 	wound = 40
 
 /obj/item/clothing/head/vampire/bogatyr
-	name = "bone helmet"
+	name = "regal helmet" // CRIMSON EDIT CHANGE - Original: name = "bone helmet"
 	desc = "A regal helmet made of unknown materials."
 	icon_state = "bogatyr_helmet_light"
 	armor_type = /datum/armor/police_helmet
@@ -273,17 +274,17 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/head/vampire/bogatyr/captain
-	name = "golden bone helmet"
+	name = "golden regal helmet" // CRIMSON EDIT CHANGE - Original: name = "golden bone helmet"
 	icon_state = "bogatyr_captain_helmet"
 	armor_type = /datum/armor/bogatyr_helmet
 
 /obj/item/clothing/head/vampire/bogatyr/captain/heavy // ! Craftable only.
-	name = "reinforced golden bone helmet"
+	name = "reinforced golden regal helmet" // CRIMSON EDIT CHANGE - Original: name = "reinforced golden bone helmet"
 	armor_type = /datum/armor/eod_helmet
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/head/vampire/bogatyr/heavy
-	name = "heavy bone greathelm"
+	name = "heavy regal greathelm" // CRIMSON EDIT CHANGE - Original: name = "heavy bone greathelm"
 	icon_state = "bogatyr_helmet"
 	armor_type = /datum/armor/eod_helmet
 	w_class = WEIGHT_CLASS_BULKY
@@ -338,23 +339,22 @@
 	icon_state = "prayer_veil"
 	flags_inv = HIDEEARS|HIDEHAIR
 
-/obj/item/clothing/head/vampire/pentex_yellowhardhat
+/obj/item/clothing/head/vampire/hardhat/pentex_yellow
 	name = "\improper " + MAIN_EVIL_COMPANY + " hardhat"
 	desc = "A yellow hardhat. This one has an " + MAIN_EVIL_COMPANY + "  logo on it!"
 	icon_state = "pentex_hardhat_yellow"
-	flags_inv = HIDEHAIR
 
-/obj/item/clothing/head/vampire/pentex_whitehardhat
+/obj/item/clothing/head/vampire/hardhat/pentex_white
 	name = "\improper " + MAIN_EVIL_COMPANY + " hardhat"
 	desc = "A white hardhat. This one has an " + MAIN_EVIL_COMPANY + " logo on it!"
 	icon_state = "pentex_hardhat_white"
-	flags_inv = HIDEHAIR
 
 /obj/item/clothing/head/vampire/pentex_beret
 	name = "First Team beret"
 	desc = "A black beret with a mysterious golden insigna bearing a spiral."
 	icon_state = "pentex_beret"
-	flags_inv = HIDEHAIR
+	armor_type = /datum/armor/armored_hat
+	hair_mask = /datum/hair_mask/standard_hat_middle
 
 /obj/item/clothing/head/vampire/blackbag
 	name = "black bag"
@@ -375,6 +375,7 @@
 	user.cure_blind("blindfold_[REF(src)]")
 
 /obj/item/clothing/head/vampire/blackbag/attack(mob/living/target, mob/living/user)
+	. = ..()
 	var/obj/item/clothing/head/H = target.get_item_by_slot(ITEM_SLOT_HEAD)
 	if(H?.clothing_flags & SNUG_FIT)
 		to_chat(user, span_warning("You can't fit the blackbag over [target.p_their()] headgear!"))

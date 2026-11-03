@@ -162,7 +162,7 @@
 	icon = 'modular_darkpack/modules/decor/icons/flora64x64.dmi'
 	pixel_w = -16
 	var/datum/looping_sound/slow_drip/looping_drips
-	var/drip_chance = 75
+	var/drip_chance = 50
 
 /obj/structure/flora/rock/stalagmite/Initialize(mapload)
 	. = ..()

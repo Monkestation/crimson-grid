@@ -1,7 +1,7 @@
 /datum/language/carptongue
 	name = "Carptongue"
 	desc = "Various fishy sounds that might make sense to space carps."
-	key = "c"
+	// key = "c" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	icon_state = "fish"
 	flags = LANGUAGE_NO_STUTTER|LANGUAGE_TONGUELESS_SPEECH
 	sentence_chance = 0

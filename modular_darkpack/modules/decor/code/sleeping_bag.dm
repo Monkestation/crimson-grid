@@ -57,6 +57,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/decor/icons/bed_onfloor.dmi')
 
 /obj/item/sleeping_bag/attack_self(mob/user)
+	. = ..()
 	deploy_bed(user, user.loc)
 
 /obj/item/sleeping_bag/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)

@@ -86,8 +86,8 @@
 
 	// DARKPACK EDIT ADD START - AMBIENCE
 	var/flourescent = TRUE // Bulbs are flouresenct and likely to hum.
-	/* var/datum/looping_sound/light_hum/light_hum
-	var/hum_chance = 50 */
+	var/datum/looping_sound/light_hum/light_hum
+	var/hum_chance = 5
 	// DARKPACK EDIT ADD END
 
 // create a new lighting fixture
@@ -438,7 +438,7 @@
 		return ITEM_INTERACT_SUCCESS
 
 	// attempt to stick weapon into light socket
-	if(status != LIGHT_EMPTY || user.combat_mode)
+	if(status != LIGHT_EMPTY || user.combat_mode || istype(tool, /obj/item/lightreplacer))
 		return NONE
 
 	if(tool.item_flags & ABSTRACT)
@@ -449,6 +449,7 @@
 		do_sparks(3, TRUE, src)
 		if (prob(75))
 			electrocute_mob(user, get_area(src), src, (rand(7,10) * 0.1), TRUE)
+
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/light/screwdriver_act(mob/living/user, obj/item/tool)

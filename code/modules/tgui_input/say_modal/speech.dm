@@ -63,11 +63,11 @@
 			client.mob.do_verb(entry)
 			return TRUE
 		// DARKPACK EDIT ADD END
-		//CRIMSON EDIT ADD START - MENTOR
+		// DARKPACK EDIT ADD START - MENTORS
 		if(MENTOR_CHANNEL)
-			INVOKE_ASYNC(SSverbs, TYPE_PROC_REF(/datum/controller/subsystem/verbs, invoke), client, /datum/verb_metadata/client/cmd_mentor_say, entry)
+			client.cmd_mentor_say(entry)
 			return TRUE
-		//CRIMSON EDIT ADD END
+		// DARKPACK EDIT ADD END
 	return FALSE
 
 /**

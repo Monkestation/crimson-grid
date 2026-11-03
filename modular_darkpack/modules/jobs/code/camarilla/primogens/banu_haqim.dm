@@ -8,18 +8,17 @@
 	supervisors = SUPERVISOR_TRADITIONS
 	req_admin_notify = 1
 	minimal_player_age = 14
-	exp_requirements = 180
-	exp_required_type = EXP_TYPE_CAMARILLA
-	exp_required_type_department = EXP_TYPE_CAMARILLA
-	exp_granted_type = EXP_TYPE_CAMARILLA
+	exp_requirements = EXP_REQ_HEAD
 	config_tag = "PRIMOGEN_BANU_HAQIM"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/banuprim
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_BANU
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
+
+	tgui_icon = FA_ICON_CROWN
 
 	minimal_generation = 12
 	minimum_immortal_age = 50

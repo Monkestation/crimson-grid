@@ -4,7 +4,12 @@
 	var/default_location = "icons/"
 	/// additional_icon_locations is for downstream modularity support for finding missing sprites in additonal DMI file locations.
 	/// Make sure these locations are also present in tools/deploy.sh
-	var/additional_icon_locations
+	// DARKPACK EDIT CHANGE START
+	var/additional_icon_locations = list(
+		"modular_darkpack/modules/",
+		"modular_darkpack/master_files/",
+	)
+	// DARKPACK EDIT CHANGE END
 
 /datum/unit_test/missing_icons/proc/generate_possible_icon_states_list(directory_path)
 	if(!directory_path)

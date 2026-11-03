@@ -330,7 +330,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	//Station Goals
 	parts += goal_report()
 	//Economy & Money
-	parts += market_report()
+//	parts += market_report() //DARKPACK EDIT - ROUNDEND REPORT
 	//Player Achievements
 	parts += cheevo_report()
 
@@ -340,7 +340,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 /datum/controller/subsystem/ticker/proc/survivor_report(popcount)
 	var/list/parts = list()
-	// var/station_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED // CRIMSON EDIT REMOVAL
+	//var/station_evacuated = FALSE //DARKPACK EDIT - ROUNDEND REPORT - ORIGINAL: EMERGENCY_ESCAPED_OR_ENDGAMED CRIMSON EDIT REMOVAL
 
 	if(GLOB.round_id)
 		var/statspage = CONFIG_GET(string/roundstatsurl)
@@ -563,6 +563,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		parts += "The most affluent crew member at shift end was <b>[mr_moneybags.account_holder] with [mr_moneybags.account_balance]</b> [MONEY_SYMBOL]!</div>"
 	else
 		parts += "Somehow, nobody made any money this shift! This'll result in some budget cuts...</div>"
+	SSblackbox.record_feedback("amount", "mail_opened", SSeconomy.mail_opened)
+	parts += "The crew delivered and opened [SSeconomy.mail_opened] pieces of mail[(SSeconomy.mail_opened > 1) ? "!" : "..."]<br>"
 	return parts.Join()
 
 /**

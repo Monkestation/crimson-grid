@@ -103,7 +103,7 @@
 
 	UnregisterSignal(owner, COMSIG_LIVING_PRE_DICE_ROLLED)
 
-/datum/status_effect/fatal_flaw/proc/on_dice_rolled(mob/living/roller, datum/storyteller_roll/roll_datum, atom/target)
+/datum/status_effect/fatal_flaw/proc/on_dice_rolled(mob/living/roller, datum/storyteller_roll/roll_datum, atom/target, atom/using_item, bonus, difficulty)
 	SIGNAL_HANDLER
 
 	if(!istype(roll_datum, /datum/storyteller_roll/damage))
@@ -112,7 +112,7 @@
 	if(!target || (target != target_ref?.resolve()))
 		return
 
-	. += 1 // One extra dice
+	*bonus += 1 // One extra dice
 
 
 /atom/movable/screen/alert/status_effect/gift/fatal_flaw

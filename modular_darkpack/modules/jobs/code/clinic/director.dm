@@ -4,14 +4,19 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Hospital Administrator"
-	exp_required_type_department = EXP_TYPE_CLINIC
 	config_tag = "CLINIC_DIRECTOR"
 	outfit = /datum/outfit/job/vampire/clinic_director
 	job_flags = CITY_JOB_FLAGS
+
+	exp_required_type_department = EXP_TYPE_CLINIC
+	exp_requirements = EXP_REQ_HEAD
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_CLINICS_DIRECTOR
 	departments_list = list(
 		/datum/job_department/clinic,
 	)
+
+	tgui_icon = FA_ICON_USER_MD
 
 	known_contacts = list(
 		JOB_DOCTOR,

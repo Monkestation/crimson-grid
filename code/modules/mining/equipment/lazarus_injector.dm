@@ -25,6 +25,9 @@
 	///So you can't revive boss monsters or robots with it
 	var/revive_type = SENTIENCE_ORGANIC
 
+	///make it so taming is optional // DARKPACK EDIT ADD START - MEDICAL
+	var/should_tame = TRUE	// DARKPACK EDIT ADD END - MEDICAL
+
 /obj/item/lazarus_injector/interact_with_atom(atom/target, mob/living/user, list/modifiers)
 	if(!loaded)
 		return NONE
@@ -40,8 +43,10 @@
 	if(target_animal.stat != DEAD)
 		balloon_alert(user, "it's not dead!")
 		return ITEM_INTERACT_BLOCKING
-
-	target_animal.lazarus_revive(user, malfunctioning)
+	if(should_tame) // DARKPACK EDIT ADD START - MEDICAL
+		target_animal.lazarus_revive(user, malfunctioning)
+	else
+		target_animal.revive(HEAL_ALL) // DARKPACK EDIT ADD END - MEDICAL
 	expend(target_animal, user)
 	return ITEM_INTERACT_SUCCESS
 

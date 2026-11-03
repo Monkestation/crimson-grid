@@ -92,7 +92,6 @@
 			name = product.name,
 			price = product.price,
 			stock = product.amount,
-			dimensions = product.icon_dimension,
 			ref = REF(product)
 		)
 		.["product_records"] += list(product_data)
