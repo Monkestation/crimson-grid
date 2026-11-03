@@ -330,6 +330,7 @@
 	return TRUE
 
 
+// CRIMSON EDIT ADDITION START - Defenestration
 /mob/living/pre_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	if(. & COMPONENT_MOVABLE_IMPACT_NEVERMIND)
@@ -340,22 +341,13 @@
 	if(hit_window.try_defenestrate(src, throwingdatum))
 		. |= COMPONENT_MOVABLE_IMPACT_NEVERMIND
 
-#define LANDING_BOTCH -1
-#define LANDING_ROUGH 0
-#define LANDING_CLEAN 1
-
 /obj/structure/window/proc/roll_landing(mob/living/victim)
 	var/datum/storyteller_roll/jump_landing/roll = new()
 	// Harder against sturdier windows
 	roll.difficulty = clamp(6 + (reinf ? 1 : 0) + (fulltile ? 1 : 0), 6, 9)
 	var/result = roll.st_roll(victim, src)
 	qdel(roll)
-	switch(result)
-		if(ROLL_SUCCESS)
-			return LANDING_CLEAN
-		if(ROLL_BOTCH)
-			return LANDING_BOTCH
-	return LANDING_ROUGH
+	return result
 
 ///force a thrown body hits with.
 /obj/structure/window/proc/get_defenestration_force(mob/living/victim, datum/thrownthing/throwingdatum)
@@ -381,16 +373,16 @@
 	var/self_jump = (thrower && thrower == victim)
 
 	// Landing roll, only for self-thrown leaps
-	var/landing = LANDING_CLEAN
+	var/landing = ROLL_SUCCESS
 	var/damage_mult = 1
 	if(self_jump)
 		landing = roll_landing(victim)
 		switch(landing)
-			if(LANDING_BOTCH)
+			if(ROLL_BOTCH)
 				damage_mult = 1.5
-			if(LANDING_ROUGH)
+			if(ROLL_FAILURE)
 				damage_mult = 1
-			if(LANDING_CLEAN)
+			if(ROLL_SUCCESS)
 				damage_mult = 0.25
 
 	var/turf/window_turf = get_turf(src)
@@ -400,9 +392,9 @@
 		var/remaining_force = force - atom_integrity
 		if(self_jump)
 			switch(landing)
-				if(LANDING_CLEAN)
+				if(ROLL_SUCCESS)
 					visible_message(span_danger("[victim] sails through [src] and lands cleanly in a rain of glass!"))
-				if(LANDING_BOTCH)
+				if(ROLL_BOTCH)
 					visible_message(span_danger("[victim] smashes through [src] and tumbles out of control!"))
 				else
 					visible_message(span_danger("[victim] leaps through [src], shattering it!"))
@@ -427,10 +419,10 @@
 			range = max(throwingdatum.maxrange - throwingdatum.dist_travelled, 1)
 			speed = throwingdatum.speed
 			switch(landing)
-				if(LANDING_BOTCH)
+				if(ROLL_BOTCH)
 					victim.Knockdown(3 SECONDS)
 					range = 1
-				if(LANDING_ROUGH)
+				if(ROLL_FAILURE)
 					victim.Knockdown(1 SECONDS)
 					range = max(round(range / 2), 1)
 		else
@@ -446,7 +438,7 @@
 	var/impact_damage = 5 + (force * 0.1)
 	if(self_jump)
 		impact_damage *= damage_mult
-		if(landing == LANDING_CLEAN)
+		if(landing == ROLL_SUCCESS)
 			victim.visible_message(span_notice("[victim] hits [src], absorbs the impact and rolls clear."), span_notice("You hit [src] but roll with it."))
 		else
 			victim.visible_message(span_warning("[victim] slams into [src]!"), span_userdanger("You slam into [src]!"))
@@ -460,15 +452,13 @@
 		victim.Knockdown(1 SECONDS)
 	else
 		switch(landing)
-			if(LANDING_BOTCH)
+			if(ROLL_BOTCH)
 				victim.Knockdown(3 SECONDS)
-			if(LANDING_ROUGH)
+			if(ROLL_FAILURE)
 				victim.Knockdown(2 SECONDS)
 	return TRUE
 
-#undef LANDING_BOTCH
-#undef LANDING_ROUGH
-#undef LANDING_CLEAN
+// CRIMSON EDIT ADDITION END
 
 /obj/structure/window/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	. = ..()
