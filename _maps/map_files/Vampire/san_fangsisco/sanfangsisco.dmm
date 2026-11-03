@@ -9565,14 +9565,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/hotel)
-"cfF" = (
-/obj/structure/vampdoor/prison,
-/obj/effect/mapping_helpers/door/access/park_ranger,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/ten,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
-/turf/open/misc/dirt,
-/area/vtm/outside/forest)
 "cfH" = (
 /obj/effect/turf_decal/asphaltline/alt/white,
 /obj/effect/turf_decal/asphaltline/alt{
@@ -11341,6 +11333,16 @@
 /obj/item/clothing/suit/vampire/vest,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
+"cAz" = (
+/obj/structure/vampdoor/prison{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/park_ranger,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/turf/open/misc/dirt,
+/area/vtm/outside/forest)
 "cAB" = (
 /obj/structure/table/wood,
 /obj/item/storage/box/bodybags,
@@ -22961,8 +22963,8 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/misc/dirt,
 /area/vtm/outside/forest)
 "fqv" = (
@@ -26225,16 +26227,6 @@
 /obj/structure/curtain,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior)
-"geU" = (
-/obj/structure/vampdoor/prison{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/door/access/park_ranger,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/nine,
-/obj/effect/mapping_helpers/door/bash_difficulty/nine,
-/turf/open/misc/dirt,
-/area/vtm/outside/forest)
 "geV" = (
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/closet/cabinet,
@@ -51603,8 +51595,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/park_ranger,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /obj/effect/mapping_helpers/door/lock_difficulty/nine,
+/obj/effect/mapping_helpers/door/bash_difficulty/nine,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/outside/forest)
 "mmi" = (
@@ -55017,8 +55009,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/park_ranger,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/obj/effect/mapping_helpers/door/unlock,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/outside/forest)
 "ndK" = (
@@ -69627,10 +69619,6 @@
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
-"qyH" = (
-/obj/effect/realistic_fog/bawn/gaia,
-/turf/closed/wall/vampwall/rock,
-/area/vtm/outside/forest)
 "qyI" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/siding/grey{
@@ -79596,6 +79584,16 @@
 /obj/darkpack_car/track/volkswagen,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/ghetto)
+"sPI" = (
+/obj/structure/vampdoor/wood{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/door/access/park_ranger,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/turf/open/misc/dirt,
+/area/vtm/outside/forest)
 "sPO" = (
 /obj/effect/decal/cleanable/trash{
 	icon_state = "trash5"
@@ -94261,6 +94259,11 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower/f4)
+"wqu" = (
+/turf/open/floor/iron/stairs/black/right{
+	dir = 4
+	},
+/area/vtm/outside/forest)
 "wqw" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 8
@@ -411659,7 +411662,7 @@ vmg
 jgl
 lQn
 lQn
-cfF
+lQn
 lQn
 lQn
 lQn
@@ -412435,7 +412438,7 @@ vmg
 vmg
 vmg
 vmg
-geU
+wIn
 vmg
 vmg
 vmg
@@ -414715,8 +414718,8 @@ dsd
 mZf
 vmg
 vVS
-vVS
-mdr
+wqu
+vmg
 vmg
 vmg
 vmg
@@ -415778,7 +415781,7 @@ vmg
 vmg
 vmg
 vmg
-wIn
+cAz
 vmg
 vmg
 vmg
@@ -416244,9 +416247,9 @@ vmg
 vmg
 vmg
 vmg
-qyH
 vmg
-qyH
+vmg
+vmg
 vmg
 vmg
 vmg
@@ -416502,7 +416505,7 @@ vmg
 vmg
 vmg
 vmg
-qyH
+vmg
 vmg
 vmg
 vmg
@@ -416758,7 +416761,7 @@ vmg
 vmg
 vmg
 vmg
-qyH
+vmg
 vmg
 vmg
 vmg
@@ -417014,7 +417017,7 @@ vmg
 vmg
 vmg
 vmg
-qyH
+vmg
 vmg
 vmg
 vmg
@@ -417270,9 +417273,9 @@ vmg
 vmg
 vmg
 vmg
-qyH
 vmg
-qyH
+vmg
+vmg
 vmg
 vmg
 vmg
@@ -417528,7 +417531,7 @@ vmg
 vmg
 vmg
 vmg
-qyH
+vmg
 vmg
 vmg
 vmg
@@ -417542,7 +417545,7 @@ vmg
 vmg
 vmg
 vmg
-iOI
+sPI
 vmg
 asH
 veG
@@ -417799,7 +417802,7 @@ vmg
 vmg
 vmg
 vmg
-lQn
+iOI
 vmg
 vmg
 vmg
