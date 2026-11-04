@@ -18,6 +18,7 @@
 	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 0
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_SABBATPACK
 	whitelisted = TRUE
 

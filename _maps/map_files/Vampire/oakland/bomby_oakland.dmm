@@ -7013,6 +7013,12 @@
 /obj/structure/closet/crate/large,
 /turf/open/misc/dirt,
 /area/vtm/interior)
+"bGG" = (
+/obj/effect/turf_decal/bordur{
+	dir = 1
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/interior/millennium_tower/f2)
 "bGH" = (
 /obj/structure/hedge{
 	pixel_y = 6
@@ -8374,7 +8380,7 @@
 	},
 /obj/structure/flora/darkpack_flower/paintbrush,
 /turf/open/misc/grass,
-/area/space)
+/area/vtm)
 "bXA" = (
 /obj/structure/table/wood,
 /obj/item/plate{
@@ -11844,8 +11850,13 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/caves)
 "cLt" = (
-/obj/effect/landmark/start/darkpack/camarilla/hound,
-/turf/open/floor/mineral/plastitanium,
+/obj/structure/hedge,
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/siding/grey{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/grey,
+/turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower/f2)
 "cLy" = (
 /obj/structure/vampdoor/reinf{
@@ -14951,9 +14962,6 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/jazzclub)
-"dyA" = (
-/turf/closed/wall/vampwall/painted,
-/area/space)
 "dyE" = (
 /obj/effect/turf_decal/bordur{
 	dir = 6
@@ -17192,18 +17200,12 @@
 	},
 /obj/item/clothing/head/hats/hos/beret,
 /obj/machinery/light/prince/directional/north,
-/obj/item/katana/vamp{
-	color = "#ccffff";
-	desc = "A flimsy appearing replica katana. It looks quite sharp, despite being an apparent reference to Japanese animation. ";
-	force = 50;
-	name = "Sheriff's special";
-	pixel_y = 9
-	},
 /obj/item/masquerade_contract,
 /obj/item/masquerade_contract,
 /obj/item/masquerade_contract,
 /obj/item/masquerade_contract,
 /obj/item/masquerade_contract,
+/obj/item/sheriffblade/vamp,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/millennium_tower/f2)
 "dZb" = (
@@ -18433,7 +18435,7 @@
 /obj/structure/platform/lowwall/painted/window,
 /obj/structure/platform/lowwall/painted/window,
 /turf/open/floor/plating/rough,
-/area/space)
+/area/vtm)
 "emJ" = (
 /obj/structure/roofstuff/vent/autotiling,
 /obj/structure/roofstuff/alt1{
@@ -29719,6 +29721,15 @@
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/jazzclub)
+"gVv" = (
+/obj/structure/hedge,
+/obj/machinery/light/directional/north,
+/obj/effect/turf_decal/siding/grey{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/grey,
+/turf/open/floor/plating/granite/black,
+/area/vtm/interior/millennium_tower/f2)
 "gVw" = (
 /obj/effect/turf_decal/siding/grey,
 /obj/effect/turf_decal/siding/grey,
@@ -57047,7 +57058,7 @@
 /obj/structure/flora/darkpack_flower/primrose,
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/misc/grass,
-/area/space)
+/area/vtm)
 "nkX" = (
 /obj/effect/decal/pallet,
 /obj/structure/closet/crate/large,
@@ -68116,7 +68127,7 @@
 	},
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/misc/grass,
-/area/space)
+/area/vtm)
 "pJu" = (
 /obj/effect/turf_decal/trimline/purple/corner{
 	dir = 1
@@ -69223,9 +69234,6 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/banu)
-"pVP" = (
-/turf/open/misc/grass,
-/area/space)
 "pVU" = (
 /obj/structure/fence/corner{
 	dir = 8
@@ -72233,7 +72241,7 @@
 "qGR" = (
 /obj/structure/flora/darkpack_flower/paintbrush,
 /turf/open/misc/grass,
-/area/space)
+/area/vtm)
 "qGU" = (
 /obj/effect/turf_decal/siding/wideplating/dark{
 	dir = 8
@@ -83804,7 +83812,7 @@
 "tta" = (
 /obj/structure/flora/bush/flowers_yw/style_random,
 /turf/open/misc/grass,
-/area/space)
+/area/vtm)
 "ttg" = (
 /obj/structure/table/wood,
 /turf/open/floor/carpet/darkpack/bluesilver,
@@ -84678,12 +84686,6 @@
 "tEs" = (
 /turf/open/floor/carpet,
 /area/vtm/interior/banu/haven)
-"tEt" = (
-/obj/effect/turf_decal/siding/grey,
-/obj/structure/hedge,
-/obj/machinery/light/directional/north,
-/turf/open/floor/plating/granite/black,
-/area/vtm/interior/millennium_tower/f2)
 "tEu" = (
 /obj/effect/turf_decal/asphaltline,
 /turf/open/floor/plating/asphalt,
@@ -94231,6 +94233,10 @@
 	},
 /turf/open/floor/city/industrial,
 /area/vtm/westfield_mall/interior)
+"vRF" = (
+/obj/effect/landmark/start/darkpack/camarilla/hound,
+/turf/open/floor/mineral/plastitanium,
+/area/vtm/interior/millennium_tower/f2)
 "vRP" = (
 /obj/structure/mirror{
 	pixel_y = 32
@@ -100578,7 +100584,7 @@
 	},
 /obj/structure/flora/darkpack_flower/primrose,
 /turf/open/misc/grass,
-/area/space)
+/area/vtm)
 "xlZ" = (
 /obj/structure/table,
 /obj/structure/extinguisher_cabinet/directional/north,
@@ -102966,7 +102972,7 @@
 	pixel_y = 4
 	},
 /turf/open/misc/grass,
-/area/space)
+/area/vtm)
 "xOL" = (
 /obj/item/kirbyplants/darkpack/random,
 /turf/open/floor/city/plating_mono,
@@ -212504,9 +212510,9 @@ mjT
 mjT
 mjT
 mjT
+sCA
 eWc
-tEt
-oLX
+cLt
 oLX
 oLX
 oLX
@@ -212708,9 +212714,9 @@ mjT
 mjT
 mjT
 mjT
+bGG
 pjK
 iwa
-oLX
 wcD
 oLX
 oLX
@@ -212912,10 +212918,10 @@ mjT
 mjT
 mjT
 mjT
+bGG
 pjK
 iwa
-cLt
-oLX
+vRF
 oLX
 oLX
 egw
@@ -213116,9 +213122,9 @@ mjT
 mjT
 mjT
 mjT
+bGG
 pjK
 iwa
-oLX
 oLX
 oLX
 sCA
@@ -213320,9 +213326,9 @@ mjT
 mjT
 mjT
 mjT
+sCA
 eWc
-tEt
-oLX
+gVv
 oLX
 oLX
 qeA
@@ -222170,7 +222176,7 @@ kaD
 bEV
 pJq
 tta
-pVP
+wlT
 mjT
 mjT
 mjT
@@ -222780,7 +222786,7 @@ joX
 kaD
 mPT
 joX
-dyA
+eGA
 xOK
 qGR
 mjT
@@ -223596,9 +223602,9 @@ joX
 kaD
 mPT
 joX
-dyA
+eGA
 xOK
-pVP
+wlT
 mjT
 mjT
 mjT
@@ -224210,7 +224216,7 @@ kaD
 joX
 bXy
 pJq
-pVP
+wlT
 mjT
 mjT
 mjT
@@ -224616,9 +224622,9 @@ joX
 joX
 joX
 joX
-pVP
-pVP
-dyA
+wlT
+wlT
+eGA
 mjT
 mjT
 mjT

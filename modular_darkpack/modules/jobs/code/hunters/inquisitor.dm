@@ -10,7 +10,7 @@
 	config_tag = "INQUISITOR"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/inquisitor
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_INQUISITOR
 	departments_list = list(
 		/datum/job_department/society_of_leopold,
