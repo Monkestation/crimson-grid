@@ -95,4 +95,4 @@
 		stat_datum.update_mob(src, initial)
 
 /datum/preferences/proc/apply_stats_from_prefs(mob/living/carbon/human/character)
-	character.replace_storyteller_stats(preference_storyteller_stats.Copy(), TRUE)
+	character.replace_storyteller_stats(copy_stat_list(preference_storyteller_stats), TRUE) // CORVAX EDIT CHANGE - ORIGINAL: character.replace_storyteller_stats(preference_storyteller_stats.Copy(), TRUE)
