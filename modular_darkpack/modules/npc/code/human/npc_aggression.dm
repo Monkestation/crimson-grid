@@ -21,6 +21,7 @@
 			if(health != last_health)
 				last_health = health
 				last_damager = victim
+		remember_combatant(victim) // CORVAX EDIT ADD
 
 	if (!can_npc_move())
 		return

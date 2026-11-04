@@ -75,6 +75,11 @@ multiple modular subtrees with behaviors
 		PossessPawn(new_pawn)
 
 /datum/ai_controller/Destroy(force)
+	// CORVAX EDIT ADD START - a pawn in nullspace can't tell which z list still holds us
+	if(pawn && !get_turf(pawn))
+		for(var/list/z_controllers as anything in SSai_controllers.ai_controllers_by_zlevel)
+			z_controllers -= src
+	// CORVAX EDIT ADD END
 	UnpossessPawn(FALSE)
 	if(ai_status)
 		SSai_controllers.ai_controllers_by_status[ai_status] -= src
@@ -86,6 +91,8 @@ multiple modular subtrees with behaviors
 	if(ai_movement.moving_controllers[src])
 		ai_movement.stop_moving_towards(src)
 	QDEL_LIST(behavior_nodes)
+	override_slots = null // CORVAX EDIT ADD
+	polling_observers = null // CORVAX EDIT ADD
 	return ..()
 
 ///Overrides the current ai_movement of this controller with a new one
@@ -495,15 +502,18 @@ multiple modular subtrees with behaviors
 ///Called when the AI controller pawn changes z levels, we check if there's any clients on the new one and wake up the AI if there is.
 /datum/ai_controller/proc/on_changed_z_level(atom/source, turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
 	SIGNAL_HANDLER
+	// CORVAX EDIT CHANGE START - the client check returned before this bookkeeping, so every reverted shapeshift form left its controller in the z list
+	if(old_turf)
+		SSai_controllers.ai_controllers_by_zlevel[old_turf.z] -= src
+	if(new_turf)
+		SSai_controllers.ai_controllers_by_zlevel[new_turf.z] += src
 	if (ismob(pawn))
 		var/mob/mob_pawn = pawn
 		if((mob_pawn?.client && !continue_processing_when_client))
 			return
-	if(old_turf)
-		SSai_controllers.ai_controllers_by_zlevel[old_turf.z] -= src
 	if(isnull(new_turf))
 		return
-	SSai_controllers.ai_controllers_by_zlevel[new_turf.z] += src
+	// CORVAX EDIT CHANGE END
 	reset_ai_status()
 
 ///Abstract proc for initializing the pawn to the new controller

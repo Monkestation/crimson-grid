@@ -217,9 +217,12 @@
 	src.client.images |= current_image
 
 /mob/eye/imaginary_friend/Destroy()
-	owner.client?.images -= current_image
+	// CORVAX EDIT CHANGE START - a friend nobody took never got an owner, the runtime here hard deleted it. ORIGINAL: owner.client?.images and owner.imaginary_group without null checks
+	owner?.client?.images -= current_image
 	client?.images -= current_image
-	owner.imaginary_group -= src
+	owner?.imaginary_group -= src
+	owner = null
+	// CORVAX EDIT CHANGE END
 	return ..()
 
 /mob/eye/imaginary_friend/Hear(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, freq_name, freq_color, list/spans, list/message_mods = list(), message_range, source) // DARKPACK EDIT CHANGE - ORIGINAL: /mob/eye/imaginary_friend/Hear(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, freq_name, freq_color, list/spans, list/message_mods = list(), message_range)

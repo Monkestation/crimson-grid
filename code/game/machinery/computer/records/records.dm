@@ -20,7 +20,7 @@
 
 /obj/machinery/computer/records/ui_close(mob/user)
 	. = ..()
-	user.client?.screen_maps -= USER_PREVIEW_ASSIGNED_VIEW(user.ckey)
+	user.client?.clear_map(USER_PREVIEW_ASSIGNED_VIEW(user.ckey)) // CORVAX EDIT CHANGE - removing the key first left the preview in client.screen. ORIGINAL: user.client?.screen_maps -= USER_PREVIEW_ASSIGNED_VIEW(user.ckey)
 	if((LAZYLEN(open_uis) <= 1) && character_preview_view) //only delete the preview if we're the last one to close the console.
 		QDEL_NULL(character_preview_view)
 

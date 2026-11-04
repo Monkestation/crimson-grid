@@ -452,6 +452,8 @@ determines the duration.
 	return TRUE
 
 /datum/discipline_power/dementation/total_insanity/proc/self_attack(iteration)
+	if(QDELETED(attack_target)) // CORVAX EDIT ADD
+		return // CORVAX EDIT ADD
 	if(IS_UNCONSCIOUS_OR_CRIT(attack_target))
 		return
 	if(iteration <= 0)

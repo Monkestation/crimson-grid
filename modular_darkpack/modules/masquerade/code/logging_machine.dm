@@ -91,7 +91,8 @@
 		if(!do_after(user, clearing_time, src))
 			stop_sound()
 			break
-		var/obj/phone = saved_logs[1][2]
+		var/datum/weakref/phone_ref = saved_logs[1][2] // CORVAX EDIT CHANGE - ORIGINAL: var/obj/phone = saved_logs[1][2]
+		var/obj/phone = phone_ref?.resolve() // CORVAX EDIT ADD
 		if(phone)
 			SEND_SIGNAL(phone, COMSIG_ALL_MASQUERADE_REINFORCE)
 		saved_logs -= list(saved_logs[1]) //Clear the oldest logs first.
