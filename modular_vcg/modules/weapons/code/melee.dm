@@ -27,7 +27,7 @@
 
 /obj/item/sheriffblade/vamp
 	name = "sheriff's special"
-	desc = "A sword that was brought by the Sheriff from parts unknown. An odd but efficient design to say the least."
+	desc = "Меч, привезённый Шерифом из неизвестных краёв. Мягко говоря, необычная, но эффективная конструкция."
 	icon = 'modular_vcg/modules/weapons/icons/weapons64x32.dmi'
 	icon_state = "sheriffblade0"
 	base_icon_state = "sheriffblade"
