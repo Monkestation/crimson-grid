@@ -101,6 +101,9 @@
 /obj/item/clothing/suit/armor/riot/knight/yellow
 	slowdown = 0.5
 
+/obj/item/clothing/suit/armor/riot/knight/red
+	slowdown = 0.5
+
 /obj/item/clothing/suit/armor/riot/knight/blue
 	slowdown = 0.5
 
@@ -111,7 +114,3 @@
 /datum/armor/eod_suit
 	melee = 70
 	bullet = 70
-
-/obj/item/clothing/suit/armor/riot/knight/red
-	slowdown = 0.5
-
