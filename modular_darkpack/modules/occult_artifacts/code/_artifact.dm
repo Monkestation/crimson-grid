@@ -166,10 +166,12 @@
 	loot = null
 	loot_subtype_path = /obj/item/occult_artifact/vampire
 
-/obj/effect/spawner/random/occult/artifact/holy_only//Crimson edit Add Leopold Artifact Spawns
+//Crimson edit Add - Leopold Artifact Spawns
+/obj/effect/spawner/random/occult/artifact/holy_only
 	name = "random holy artifact"
 	loot = null
 	loot_subtype_path = /obj/item/occult_artifact/holy
+//Crimson edit Add - Leopold Artifact Spawns
 
 
 /obj/effect/spawner/random/occult/artifact/werewolf_only
