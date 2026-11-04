@@ -44,3 +44,7 @@ GLOBAL_LIST_EMPTY(turf_fires)
 		next = get_step_to(moving, target)
 		moving.Move(next, get_dir(moving, next), FALSE, update_dir)
 	return old_loc != moving?.loc ? MOVELOOP_SUCCESS : MOVELOOP_FAILURE
+
+/mob/living/carbon/human/npc/death(gibbed)
+	afraid_of_fire = null // dead NPCs stop scanning and would keep a burned out fire alive
+	return ..()

@@ -39,7 +39,8 @@ GLOBAL_LIST_EMPTY(madness_network)
 
 	gaining_mob.add_quirk(/datum/quirk/darkpack/derangement)
 
-	GLOB.madness_network += gaining_mob
+	if(!isdummy(gaining_mob)) // CORVAX EDIT ADD - preview mannequins don't join the network
+		GLOB.madness_network += gaining_mob
 	RegisterSignal(gaining_mob, COMSIG_MOB_SAY, PROC_REF(handle_say))
 	RegisterSignal(gaining_mob, COMSIG_MOVABLE_HEAR, PROC_REF(handle_hear))
 

@@ -640,6 +640,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 
 	SSambience.remove_ambience_client(src)
+	SSmusic?.remove_music_client(src) // CORVAX EDIT ADD - music kept every disconnected client
 	SSmouse_entered.hovers -= src
 	SSping.currentrun -= src
 	SSsound_tokens.clients_needing_update -= src

@@ -40,7 +40,7 @@
 	/// Which vampiric bloodline or Clan they fall into. Determines natural Disciplines. Singleton reference, never modify
 	var/datum/subsplat/vampire_clan/clan
 	/// The Kindred who created this Kindred, null unless Embraced in-round
-	var/mob/living/sire
+	var/datum/weakref/sire // CORVAX EDIT CHANGE - a hard reference hard deleted the sire. ORIGINAL: var/mob/living/sire
 
 	/// Timer tracking how long before the Kindred can wake up from torpor
 	COOLDOWN_DECLARE(torpor_timer)
@@ -53,7 +53,7 @@
 /datum/splat/vampire/kindred/New(generation, clan, mob/living/sire)
 	src.generation = generation
 	src.clan = clan
-	src.sire = sire
+	src.sire = WEAKREF(sire) // CORVAX EDIT CHANGE - ORIGINAL: src.sire = sire
 
 /datum/splat/vampire/kindred/on_gain()
 	if (!isdummy(owner))
@@ -135,6 +135,7 @@
 	owner.maxbloodpool = initial(owner.maxbloodpool)
 
 /datum/splat/vampire/kindred/on_lose_or_destroy()
+	GLOB.madness_network -= owner // CORVAX EDIT ADD - a deleted Malkavian never got removed and hard deleted
 	if (isdummy(owner))
 		return
 

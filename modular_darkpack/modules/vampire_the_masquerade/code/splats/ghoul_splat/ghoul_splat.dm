@@ -19,10 +19,10 @@
 	)
 
 	/// The Kindred this ghoul is blood bonded to
-	var/mob/living/domitor
+	var/datum/weakref/domitor // CORVAX EDIT CHANGE - a hard reference hard deleted the domitor. ORIGINAL: var/mob/living/domitor
 
 /datum/splat/vampire/ghoul/New(mob/living/domitor)
-	src.domitor = domitor
+	src.domitor = WEAKREF(domitor) // CORVAX EDIT CHANGE - ORIGINAL: src.domitor = domitor
 
 /datum/splat/vampire/ghoul/on_gain()
 	owner.give_st_power(/datum/discipline/bloodheal, 1)
@@ -30,7 +30,8 @@
 
 	// the below only runs if they have just been ghouled and domitor isnt null
 	// ghouls who join from the menu have their discs handled by the disc pref middleware
-	var/list/clan_disciplines = domitor?.get_clan()?.clan_disciplines
+	var/mob/living/domitor_mob = domitor?.resolve() // CORVAX EDIT ADD
+	var/list/clan_disciplines = domitor_mob?.get_clan()?.clan_disciplines // CORVAX EDIT CHANGE - ORIGINAL: var/list/clan_disciplines = domitor?.get_clan()?.clan_disciplines
 	if(length(clan_disciplines))
 		for(var/i in 1 to 3)
 			var/discipline = clan_disciplines[i]

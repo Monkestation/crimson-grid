@@ -214,10 +214,8 @@
 		return
 
 	var/mob/living/carbon/human/target = examined
-	var/image/target_image = image(target)
 	to_chat(owner, span_info("Вы внимательно всматриваетесь в чужое лицо и запоминаете его черты."))
-	// Oh this shit hella hard-dels.
-	LAZYSET(cached_targets, GET_GUESTBOOK_NAME_TRUE(examiner, target), list("image" = target_image, "target" = target))
+	LAZYSET(cached_targets, GET_GUESTBOOK_NAME_TRUE(examiner, target), TRUE) // CORVAX EDIT CHANGE - only the count is used, the stored image and mob hard deleted every examined human. ORIGINAL: list("image" = image(target), "target" = target)
 
 /datum/discipline_power/obfuscate/mask_of_a_thousand_faces/post_gain()
 	. = ..()

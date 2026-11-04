@@ -51,6 +51,8 @@ SUBSYSTEM_DEF(bloodhunt)
 	if(!owner.mind)
 		return
 
+	if(blood_target && !(blood_target in SSbloodhunt.hunted)) // CORVAX EDIT ADD - a stale target kept a deleted mob alive
+		blood_target = null // CORVAX EDIT ADD
 	if(!blood_target) // No target, attempt to find the first person being hunted
 		blood_target = SSbloodhunt.hunted?[1]
 

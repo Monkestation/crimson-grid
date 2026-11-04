@@ -196,8 +196,12 @@
 		if(sound_token_instance)
 			sound_token_instance.set_volume(volume_override || volume, FALSE) // Don't update, we'll do that after
 			sound_token_instance.update_sound(soundfile, TRUE, repeat_sound)
+		// CORVAX EDIT CHANGE START - a token that deletes itself stayed referenced here and hard deleted. ORIGINAL: always stored the new token
+		else if(delete_when_finished)
+			new /datum/sound_token(parent, soundfile, SOUND_RANGE + extra_range, volume_override || volume, falloff_exponent, falloff_distance, _delete_on_end = TRUE, _repeating = repeat_sound)
 		else
-			sound_token_instance = new /datum/sound_token(parent, soundfile, SOUND_RANGE + extra_range, volume_override || volume, falloff_exponent, falloff_distance, _delete_on_end = delete_when_finished, _repeating = repeat_sound)
+			sound_token_instance = new /datum/sound_token(parent, soundfile, SOUND_RANGE + extra_range, volume_override || volume, falloff_exponent, falloff_distance, _delete_on_end = FALSE, _repeating = repeat_sound)
+		// CORVAX EDIT CHANGE END
 		return
 	var/sound/sound_to_play = sound(soundfile)
 	sound_to_play.channel = sound_channel || SSsounds.random_available_channel()

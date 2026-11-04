@@ -15,3 +15,16 @@
 	return attacking_target_ref?.resolve() == attacker
 
 #undef NPC_SELF_DEFENSE_WINDOW
+
+/// Combat vars are plain references, without this every player an NPC ever fought could not be garbage collected
+/mob/living/carbon/human/npc/proc/remember_combatant(mob/living/combatant)
+	RegisterSignal(combatant, COMSIG_QDELETING, PROC_REF(forget_combatant), override = TRUE)
+
+/mob/living/carbon/human/npc/proc/forget_combatant(mob/living/source)
+	SIGNAL_HANDLER
+	if(danger_source == source)
+		danger_source = null
+	if(last_attacker == source)
+		last_attacker = null
+	if(last_damager == source)
+		last_damager = null
