@@ -37,15 +37,14 @@
 	speed = 1
 	hud_type = /datum/hud/avatar
 
-/mob/living/basic/avatar/Initialize(mapload)
+// CORVAX EDIT CHANGE START - spawning inside the body kept us in its recursive contents and hard deleted every avatar. ORIGINAL: Initialize(mapload) took the body from loc and abstract_move'd out
+/mob/living/basic/avatar/Initialize(mapload, mob/body)
 	. = ..()
 
-	var/mob/body = loc
 	if(ismob(body))
 		gender = body.gender
 		mind = body.mind //we don't transfer the mind but we keep a reference to it.
-
-	abstract_move(get_turf(body))
+// CORVAX EDIT CHANGE END
 
 	AddElement(/datum/element/movetype_handler)
 
