@@ -28,5 +28,8 @@
 		var/datum/bank_account/bank = SSeconomy.bank_accounts_by_id[account_id]
 		if(!istype(bank, /datum/bank_account))
 			continue
-		bank.adjust_money(-(round(bank.account_balance * (rand(85, 95) / 100))), "Financial Crisis") // leaves them with 5-15% of their savings
+		var/loss = round(bank.account_balance * (rand(85, 95) / 100)) // leaves them with 5-15% of their savings
+		bank.adjust_money(-loss, "Financial Crisis")
+		if (GLOB.bank_funds)
+			GLOB.bank_funds.registered_account.adjust_money(loss, "Financial Management")
 
