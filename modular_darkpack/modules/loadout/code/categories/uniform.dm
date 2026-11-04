@@ -72,10 +72,21 @@
 	name = "Suit (Princely)"
 	item_path = /obj/item/clothing/under/vampire/prince
 
+//CRIMSON GRID ADDITION START - New items to Loadout
+/datum/loadout_item/uniform/suit/scruffyhound
+	name = "Suit (Scruffy)"
+	item_path = /obj/item/clothing/under/vampire/hound
+//ADDITION END
+
 /datum/loadout_item/uniform/suit/prince_skirt
 	name = "Suit (Princely, Skirt)"
 	item_path = /obj/item/clothing/under/vampire/prince/female
 
+//CRIMSON GRID ADDITION - New Clothes to Loadout
+/datum/loadout_item/uniform/suit/toreador_suit
+	name = "Suit (White)"
+	item_path = /obj/item/clothing/under/vampire/primogen_toreador
+// ADDITION END
 // Skirts
 /datum/loadout_item/uniform/skirt
 	abstract_type = /datum/loadout_item/uniform/skirt
@@ -111,6 +122,12 @@
 /datum/loadout_item/uniform/pants/leather
 	name = "Pants (Leather)"
 	item_path = /obj/item/clothing/under/vampire/leatherpants
+
+//CRIMSON GRID ADDITION START - New items to loadout
+/datum/loadout_item/uniform/pants/whitepants
+	name = "Pants (White)"
+	item_path = /obj/item/clothing/under/vampire/primogen_malkavian
+//CRIMSON GRID ADDITION END
 
 // Bloodlines clan outfits
 /datum/loadout_item/uniform/flamboyant
@@ -188,6 +205,24 @@
 	name = "Dress Shirt (Brown)"
 	item_path = /obj/item/clothing/under/vampire/biker
 
+//CRIMSON GRID ADDITION START - New items to Loadout
+/datum/loadout_item/uniform/bogatyr
+	name = "Dress Shirt (Blue)"
+	item_path = /obj/item/clothing/under/vampire/bogatyr
+
+/datum/loadout_item/uniform/purple
+	name = "Dress Shirt (Purple)"
+	item_path = /obj/item/clothing/under/vampire/sexy
+
+/datum/loadout_item/uniform/milfatigues
+	name = "Military Fatigues"
+	item_path = /obj/item/clothing/under/vampire/military_fatigues
+
+/datum/loadout_item/uniform/hobo
+	name = "Dirty Shirt"
+	item_path = /obj/item/clothing/under/vampire/homeless
+//ADDITION END
+
 //Scene
 /datum/loadout_item/uniform/scenepink
 	item_path = /obj/item/clothing/under/vampire/scenepink
@@ -210,6 +245,16 @@
 	name = "Bartender Outfit (Skirt)"
 	item_path = /obj/item/clothing/under/vampire/bar/female
 
+//CRIMSON GRID ADDITION START - New items to Loadout
+/datum/loadout_item/uniform/catwoman
+	name = "Catsuit"
+	item_path = /obj/item/clothing/under/vampire/primogen_malkavian/female
+
+/datum/loadout_item/uniform/hobofem
+	name = "Dirty Clothes"
+	item_path = /obj/item/clothing/under/vampire/homeless/female
+//ADDITION END
+
 /datum/loadout_item/uniform/sleeveless_yellow
 	name = "Tank Top (Yellow)"
 	item_path = /obj/item/clothing/under/vampire/larry
@@ -226,6 +271,11 @@
 	name = "Crop Top (Black)"
 	item_path = /obj/item/clothing/under/vampire/black
 
+//CRIMSON GRID ADDITION START - New items to Loadout
+/datum/loadout_item/uniform/windbreaker
+	name = "Windbreaker"
+	item_path = /obj/item/clothing/under/vampire/voivode
+//ADDITION END
 
 /datum/loadout_item/uniform/burlesque
 	name = "Burlesque Outfit"
@@ -256,3 +306,17 @@
 /datum/loadout_item/uniform/gown_white
 	name = "white gown"
 	item_path = /obj/item/clothing/under/vampire/gown_white
+
+//CRIMSON GRID ADDITION START - New items to Loadout
+/datum/loadout_item/uniform/uniform_bubway
+	name = "Bubway uniform"
+	item_path = /obj/item/clothing/under/vampire/bubway
+
+/datum/loadout_item/uniform/uniform_gummaguts
+	name = "Gummaguts uniform"
+	item_path = /obj/item/clothing/under/vampire/gummaguts
+
+/datum/loadout_item/uniform/uniform_bacotell
+	name = "Bacotell uniform"
+	item_path = /obj/item/clothing/under/vampire/bacotell
+//ADDITION END
