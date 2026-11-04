@@ -34,12 +34,13 @@
 		poll_length = 30 SECONDS,\
 		poll_question = "Хотите ответить на вопрос?\nВопрос: [text_question]",\
 		assumed_control_message = "Вы - дух предка, призванный ответить на вопрос: [text_question]",\
-		after_assumed_control = CALLBACK(src, PROC_REF(ghost_name_prompt), TR)\
+		after_assumed_control = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(ancestor_ghost_name_prompt), TR)\
 	)
 
 	qdel(src)
 
-/obj/ritual_rune/thaumaturgy/question/proc/ghost_name_prompt(mob/living/basic/ghost/tremere/ghost_mob)
+// CORVAX EDIT CHANGE - the callback kept the deleted rune alive until someone took the ghost. ORIGINAL: /obj/ritual_rune/thaumaturgy/question/proc/ghost_name_prompt(mob/living/basic/ghost/tremere/ghost_mob)
+/proc/ancestor_ghost_name_prompt(mob/living/basic/ghost/tremere/ghost_mob)
 	message_admins("[key_name_admin(ghost_mob)] has become a Tremere Ghost.")
 
 	var/choice = tgui_alert(ghost_mob, "Хотите выбрать себе новое имя призрака?", "Имя призрака", list("Да", "Нет"), 10 SECONDS)

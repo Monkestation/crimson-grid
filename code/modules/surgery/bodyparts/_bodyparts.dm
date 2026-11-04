@@ -307,8 +307,13 @@
 
 	owner = null
 
+	// CORVAX EDIT CHANGE START - deleting an item empties the list through Exited and the macro runtimed on the null list. ORIGINAL: QDEL_LIST_ASSOC_VAL(applied_items)
 	if(LAZYLEN(applied_items))
-		QDEL_LIST_ASSOC_VAL(applied_items)
+		var/list/items_to_delete = applied_items
+		applied_items = null
+		for(var/category in items_to_delete)
+			qdel(items_to_delete[category])
+	// CORVAX EDIT CHANGE END
 	QDEL_LAZYLIST(scars)
 
 	// Overlays and textures may be owned by something else like a status effect,

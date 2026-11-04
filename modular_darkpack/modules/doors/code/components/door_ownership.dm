@@ -1,6 +1,7 @@
 /datum/component/door_ownership
 	/// Type of ownership (apartment, car, etc.)
 	var/ownership_type = LOCK_OWNERSHIP_APARTMENT
+	var/prompt_open = FALSE // CORVAX EDIT ADD
 
 /datum/component/door_ownership/Initialize()
 
@@ -51,7 +52,16 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/component/door_ownership/proc/award_key_async(mob/living/carbon/human/human, lock_id)
+	// CORVAX EDIT ADD START - a second open prompt kept the deleted component alive and gave out extra keys
+	if(prompt_open)
+		return
+	prompt_open = TRUE
+	award_key_prompts(human, lock_id)
+	if(!QDELETED(src))
+		prompt_open = FALSE
 
+/datum/component/door_ownership/proc/award_key_prompts(mob/living/carbon/human/human, lock_id)
+	// CORVAX EDIT ADD END
 	var/ownership_question
 	var/alert_title
 
@@ -66,11 +76,13 @@
 			ownership_question = "Это моя квартира?"
 			alert_title = "Квартира"
 
-	var/alert = tgui_alert(human, ownership_question, alert_title, list("Да", "Нет"))
-	if(alert != "Да")
+	var/alert = tgui_alert(human, ownership_question, alert_title, list("Да", "Нет"), 30 SECONDS) // CORVAX EDIT CHANGE - ORIGINAL: no timeout
+	if(alert != "Да" || QDELETED(src)) // CORVAX EDIT CHANGE - ORIGINAL: if(alert != "Да")
 		return
 
-	var/spare_key = tgui_alert(human, "Есть ли у меня запасной ключ?", alert_title, list("Да", "Нет"))
+	var/spare_key = tgui_alert(human, "Есть ли у меня запасной ключ?", alert_title, list("Да", "Нет"), 30 SECONDS) // CORVAX EDIT CHANGE - ORIGINAL: no timeout
+	if(QDELETED(src) || QDELETED(human)) // CORVAX EDIT ADD
+		return // CORVAX EDIT ADD
 
 	var/key_amount = 1
 	if(spare_key == "Да")

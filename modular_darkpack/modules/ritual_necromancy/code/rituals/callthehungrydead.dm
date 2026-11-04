@@ -24,7 +24,7 @@
 		poll_length = 30 SECONDS,\
 		poll_question = "Хотите поговорить с некромантом?\nЕго призыв: [text_question]",\
 		assumed_control_message = "Вы - призрак, которого призвал некромант: [text_question]",\
-		after_assumed_control = CALLBACK(src, PROC_REF(ghost_name_prompt), TR)\
+		after_assumed_control = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(necromancy_ghost_name_prompt), TR)\
 	)
 	//TR.key = TR.key
 	//TR.name = TR.name
@@ -32,7 +32,8 @@
 	visible_message(span_notice("Над руной медленно проступает [TR.declent_ru(NOMINATIVE)]..."))
 	qdel(src)
 
-/obj/ritual_rune/necromancy/question/proc/ghost_name_prompt(mob/living/basic/ghost/tremere/ghost_mob)
+// CORVAX EDIT CHANGE - the callback kept the deleted rune alive until someone took the ghost. ORIGINAL: /obj/ritual_rune/necromancy/question/proc/ghost_name_prompt(mob/living/basic/ghost/tremere/ghost_mob)
+/proc/necromancy_ghost_name_prompt(mob/living/basic/ghost/tremere/ghost_mob)
 	message_admins("[key_name_admin(ghost_mob)] has become a Bound Wraith.")
 
 	var/choice = tgui_alert(ghost_mob, "Хотите выбрать себе новое имя призрака?", "Имя призрака", list("Да", "Нет"), 10 SECONDS)

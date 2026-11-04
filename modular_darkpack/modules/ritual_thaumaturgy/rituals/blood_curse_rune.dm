@@ -23,7 +23,7 @@
 			return
 		living_user.say(word)
 		living_user.Immobilize(30)
-		last_activator = user
+		remember_activator(user) // CORVAX EDIT CHANGE - ORIGINAL: last_activator = user
 		activator_bonus = living_user.thaum_damage_plus
 		animate(src, color = rgb(255, 64, 64), time = 10)
 		complete()
@@ -68,6 +68,7 @@
 	// begin channeling
 	curse_target = target_name
 	channeler = user
+	RegisterSignal(user, COMSIG_QDELETING, PROC_REF(forget_activator), override = TRUE) // CORVAX EDIT ADD
 	channeling = TRUE
 
 	// Begin the curse ritual
