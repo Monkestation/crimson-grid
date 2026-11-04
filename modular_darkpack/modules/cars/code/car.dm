@@ -787,7 +787,7 @@
 			COOLDOWN_START(src, drive_sound_cooldown, 0.3 SECONDS)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
 	else if(throttle && on)
-		speed = clamp(speed + throttle * stage * 40 * seconds, -128, stage * 128)
+		speed = clamp(speed + throttle * stage * 40 * seconds, -128, stage * max_speed * 2) // CRIMSON EDIT CHANGE - Original: speed = clamp(speed + throttle * stage * 40 * seconds, -128, stage * 128)
 		if(COOLDOWN_FINISHED(src, drive_sound_cooldown))
 			COOLDOWN_START(src, drive_sound_cooldown, 0.3 SECONDS)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 10, FALSE)
@@ -798,7 +798,7 @@
 		return
 	if(speed < 0 && !driver.client?.prefs?.read_preference(/datum/preference/toggle/enable_legacy_driving_controls))
 		steering = -steering
-	var/turn_rate = min(abs(speed), 60) * seconds
+	var/turn_rate = clamp(abs(speed) / (turn_speed_divisor * 2), min_turn_speed, max_turn_speed) * 20 * seconds // CRIMSON EDIT CHANGE - Original: var/turn_rate = min(abs(speed), 60) * seconds
 	if(braking)
 		turn_rate *= 1 + clamp(driver.st_get_stat(STAT_DRIVE)/4, 0.25, 4)
 	movement_vector = SIMPLIFY_DEGREES(movement_vector + steering * turn_rate)
