@@ -293,7 +293,13 @@
 	SIGNAL_HANDLER
 	if(clicked_on != owner)
 		return NONE
-	if(LAZYACCESS(modifiers, SHIFT_CLICK))
+// CRIMSON EDIT ADD START - Taser buff/qol
+	if(LAZYACCESS(modifiers, SHIFT_CLICK) || LAZYACCESS(modifiers, ALT_CLICK) || LAZYACCESS(modifiers, CTRL_CLICK))
+		return NONE
+	if(source.get_active_held_item())
+		return NONE
+	if(source.combat_mode)
+// CRIMSON EDIT ADD END - Taser buff/qol
 		return NONE
 	end_tase()
 	source.changeNext_move(CLICK_CD_GRABBING)

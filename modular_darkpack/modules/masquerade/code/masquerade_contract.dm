@@ -26,7 +26,7 @@
 			location_info = "[get_area_name(turf)], X:[turf.x] Y:[turf.y] Z:[turf.z]"
 		else
 			location_info = "[get_area_name(turf)]"
-		to_chat(user, span_info("[breacher.real_name], Masquerade: [breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]"))
+		to_chat(user, span_info("[breacher.real_name], Masquerade Breaches: [5 - breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]")) // CRIMSON EDIT CHANGE - Original: to_chat(user, span_info("[breacher.real_name], Masquerade: [breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]"))
 
 	if(!GLOB.masquerade_breakers_list)
 		to_chat(user, span_info("No available Masquerade breakers in city..."))
@@ -74,11 +74,18 @@
 	w_class = WEIGHT_CLASS_SMALL
 	armor_type = /datum/armor/masquerade_contract
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	COOLDOWN_DECLARE(masq_timer) // CRIMSON EDIT ADD - MASQ TIMER
 
 /obj/item/intel_report/attack_self(mob/user, modifiers)
 	. = ..()
 	var/turf/current_location = get_turf(user)
 	to_chat(user, span_info("[span_bold("YOU")], [get_area_name(user)] X:[current_location.x] Y:[current_location.y] Z:[current_location.z]"))
+	// CRIMSON EDIT ADD START - MASQ TIMER
+	if(!COOLDOWN_FINISHED(src, masq_timer))
+		to_chat(user, span_warning("Please wait, the next batch of intel report is still being gathered."))
+		return
+	COOLDOWN_START(src, masq_timer, (SSmasquerade.masquerade_level * 2) SECONDS)
+	// CRIMSON EDIT ADD END - MASQ TIMER
 	for(var/mob/living/breacher in GLOB.supernatural_breakers_list)
 		var/location_info
 		var/turf/turf = get_turf(breacher)
@@ -90,3 +97,9 @@
 
 	if(!GLOB.supernatural_breakers_list)
 		to_chat(user, span_info("No available freaks of nature in city..."))
+
+// CRIMSON EDIT ADD START - Sell Valuables
+/obj/item/veil_contract/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/selling, 100, "watch", FALSE)
+// CRIMSON EDIT ADD END - Sell Valuables

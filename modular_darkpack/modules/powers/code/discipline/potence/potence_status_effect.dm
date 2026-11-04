@@ -16,7 +16,7 @@
 	if (!.)
 		return
 
-	owner.st_remove_stat_mod(STAT_STRENGTH, "Potence")
+	//owner.st_remove_stat_mod(STAT_STRENGTH, "Potence") CRIMSON EDIT REMOVAL - Nerfs on Potence, Fortitude, Melee, Guns, Recoil
 	owner.st_add_auto_successes(STAT_STRENGTH, level, "Potence")
 
 	if (iscarbon(owner))
@@ -37,7 +37,7 @@
 	. = ..()
 
 	owner.st_remove_auto_successes(STAT_STRENGTH, "Potence")
-	owner.st_add_stat_mod(STAT_STRENGTH, level, "Potence")
+	//owner.st_add_stat_mod(STAT_STRENGTH, level, "Potence") CRIMSON EDIT REMOVAL - Nerfs on Potence, Fortitude, Melee, Guns, Recoil
 
 	for(var/datum/weakref/limb_weakref in affected_bodyparts)
 		var/obj/item/bodypart/limb = limb_weakref.resolve()

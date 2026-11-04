@@ -1,20 +1,20 @@
 /datum/job/vampire/doctor
 	title = JOB_DOCTOR
 	faction = FACTION_CITY
-	total_positions = 4
-	spawn_positions = 4
+	total_positions = 8 // CRIMSON EDIT CHANGE - Original: total_positions = 4
+	spawn_positions = 8 // CRIMSON EDIT CHANGE - Original: spawn_positions = 4
 	supervisors = "the Clinic Director"
 	config_tag = "DOCTOR"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/clinic_doctor
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_DOCTOR
 	departments_list = list(
 		/datum/job_department/clinic,
 	)
 
 	tgui_icon = FA_ICON_STAFF_SNAKE
-	
+
 	known_contacts = list(
 		JOB_CLINIC_DIRECTOR,
 		JOB_DOCTOR,

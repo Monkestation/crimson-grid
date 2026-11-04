@@ -35,19 +35,22 @@
 	// DARKPACK EDIT CHANGE START - SPLIT_CHANGELOG
 	var/list/tg_files = flist("html/changelogs/archive/")
 	var/list/darkpack_files = flist("html/changelogs/darkpack_archive/")
+	var/list/crimson_files = flist("html/changelogs/crimson_archive/") // CRIMSON EDIT ADD - SPLIT_CHANGELOG
 
 	// for(var/archive_file in sort_list(flist("html/changelogs/archive/")))
-	for(var/archive_file in sort_list(tg_files |= darkpack_files))
+	for(var/archive_file in sort_list(tg_files |= darkpack_files |= crimson_files)) // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
 		var/archive_date = ymlRegex.Replace(archive_file, "")
 		data["dates"] = list(archive_date) + data["dates"]
 	// DARKPACK EDIT CHANGE END
 
 	return data
 
+
 // DARKPACK EDIT ADD START - SPLIT_CHANGELOG
 /datum/asset/simple/server_logos
 	assets = list(
 		"tg_16.png" = 'icons/ui/common/tg_16.png',
 		"darkpack_16.png" = 'icons/ui/common/darkpack_16.png',
+		"crimson_16.png" = 'icons/ui/common/cg_16.png', // CRIMSON EDIT ADD - SPLIT_CHANGELOG
 	)
 // DARKPACK EDIT ADD END

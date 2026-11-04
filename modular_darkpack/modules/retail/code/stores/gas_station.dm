@@ -8,6 +8,7 @@
 		new /datum/data/vending_product("malboro gold", /obj/item/storage/fancy/cigarettes/cigpack_robustgold, 80),
 		new /datum/data/vending_product("newport", /obj/item/storage/fancy/cigarettes/cigpack_xeno, 30),
 		new /datum/data/vending_product("camel", /obj/item/storage/fancy/cigarettes/dromedaryco, 30),
+		new /datum/data/vending_product("vape", /obj/item/vape, 170), // CRIMSON EDIT ADD
 		new /datum/data/vending_product("zippo lighter", /obj/item/lighter, 20),
 		new /datum/data/vending_product("lighter", /obj/item/lighter/greyscale, 10),
 		new /datum/data/vending_product("chocolate bar", /obj/item/food/chocolatebar),
@@ -22,5 +23,6 @@
 		new /datum/data/vending_product("blue stripe", /obj/item/reagent_containers/cup/glass/bottle/beer/vampire/blue_stripe),
 		new /datum/data/vending_product("candle pack", /obj/item/storage/fancy/candle_box, 12),
 		new /datum/data/vending_product("bruise pack", /obj/item/stack/medical/bruise_pack),
-		new /datum/data/vending_product("respirator", /obj/item/clothing/mask/gas/vampire)
+		new /datum/data/vending_product("respirator", /obj/item/clothing/mask/gas/vampire),
+		new /datum/data/vending_product("wrist watch", /obj/item/watch, 20) // Crimson Edit Add - What time is it?
 	)

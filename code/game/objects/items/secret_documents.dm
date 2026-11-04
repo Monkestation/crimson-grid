@@ -63,6 +63,7 @@
 
 /obj/item/documents/photocopy/Initialize(mapload, obj/item/documents/copy=null)
 	. = ..()
+	AddComponent(/datum/component/selling, 1, "documents", TRUE) // CRIMSON EDIT ADD - Sell Valuables
 	if(copy)
 		copy_type = copy.type
 		if(istype(copy, /obj/item/documents/photocopy)) // Copy Of A Copy Of A Copy
@@ -83,3 +84,9 @@
 	to_chat(user, span_notice("You forge the official seal with a [C.crayon_color] crayon. No one will notice... right?"))
 	update_appearance()
 	return ITEM_INTERACT_SUCCESS
+
+// CRIMSON EDIT ADD START - Sell Valuables
+/obj/item/documents/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/selling, 1000, "documents", TRUE)
+// CRIMSON EDIT ADD END - Sell Valuables

@@ -39,10 +39,19 @@
 		if(user.mind && is_sabbat_priest(user.mind.assigned_role) && has_buckled_mobs())
 			var/mob/living/buckled_mob = buckled_mobs[1]
 			if(buckled_mob.mind)
+				// CRIMSON EDIT ADD START - Sabbat Identifier Fix
+				if(!is_sabbatist(buckled_mob.mind.assigned_role))
+					to_chat(user, span_warning("The vitae rejects them. They must join the pack before they can lead it."))
+					return ITEM_INTERACT_BLOCKING
+				// CRIMSON EDIT ADD END - Sabbat Identifier Fix
 				// First, demote any existing Ductus to regular Sabbat Pack
-				for(var/mob/living/carbon/human/H in GLOB.player_list)
+				for(var/mob/living/carbon/human/H in GLOB.human_list) // CRIMSON EDIT - Sabbat Identifier Fix - Original: GLOB.player_list
 					if(H.mind && is_sabbat_ductus(H.mind.assigned_role))
 						H.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatpack))
+						// CRIMSON EDIT ADD START - Sabbat Identifier Fix
+						H.mind.remove_antag_datum(/datum/antagonist/sabbatist/ductus)
+						H.mind.add_antag_datum(/datum/antagonist/sabbatist)
+						// CRIMSON EDIT ADD END - Sabbat Identifier Fix
 						var/datum/antagonist/temp_antag = new()
 						//temp_antag.remove_antag_hud(ANTAG_HUD_REV, H)
 						//temp_antag.add_antag_hud(ANTAG_HUD_REV, "rev", H)
@@ -51,6 +60,10 @@
 						to_chat(H, span_cult("You feel your authority as Ductus slipping away... You are now a regular pack member..."))
 				// Then promote the new Ductus
 				buckled_mob.mind.set_assigned_role(SSjob.get_job_type(/datum/job/vampire/sabbatductus))
+				// CRIMSON EDIT ADD START - Sabbat Identifier Fix
+				buckled_mob.mind.remove_antag_datum(/datum/antagonist/sabbatist)
+				buckled_mob.mind.add_antag_datum(/datum/antagonist/sabbatist/ductus)
+				// CRIMSON EDIT ADD END - Sabbat Identifier Fix
 				var/datum/antagonist/temp_antag = new()
 				//temp_antag.add_antag_hud(ANTAG_HUD_REV, "rev_head", buckled_mob)
 				qdel(temp_antag)

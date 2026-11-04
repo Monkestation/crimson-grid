@@ -55,6 +55,7 @@
 	//thaumaturgy & necro path stuff
 	var/research_points = 0
 	var/collected_souls = 0
+	var/infernal_favor = 0 // CRIMSON GRID ADD: DARK THAUMATURGY
 
 	var/last_shown_area_name // AREAS
 

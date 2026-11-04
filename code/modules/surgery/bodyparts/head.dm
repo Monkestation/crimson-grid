@@ -84,7 +84,7 @@
 	var/datum/worn_feature_offset/worn_face_offset
 
 	/// Can this head be dismembered normally?
-	var/can_dismember = FALSE
+	var/can_dismember = TRUE // CRIMSON EDIT CHANGE - Original : var/can_dismember = FALSE
 
 /obj/item/bodypart/head/Initialize(mapload)
 	. = ..()
@@ -156,7 +156,7 @@
 	if (!can_dismember)
 		return FALSE
 
-	if(!HAS_TRAIT(owner, TRAIT_CURSED) && owner.stat < HARD_CRIT)
+	if(!HAS_TRAIT(owner, TRAIT_CURSED) && owner.stat != DEAD) // CRIMSON EDIT CHANGE - Original : if(!HAS_TRAIT(owner, TRAIT_CURSED) && owner.stat < HARD_CRIT)
 		return FALSE
 
 	return ..()

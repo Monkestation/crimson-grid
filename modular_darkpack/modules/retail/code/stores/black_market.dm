@@ -2,10 +2,11 @@
 /obj/structure/retail/black_market
 	products_list = list(
 		new /datum/data/vending_product("lighter", /obj/item/lighter/greyscale, 10),
+		new /datum/data/vending_product("rolling paper", /obj/item/rollingpaper, 10), // CRIMSON EDIT ADD - Shop Inventories Additions
 		new /datum/data/vending_product("zippo lighter", /obj/item/lighter, 20),
 		new /datum/data/vending_product("Bailer", /obj/item/reagent_containers/cup/watering_can/metal, 20),
 		new /datum/data/vending_product("Weed Seed", /obj/item/seeds/cannabis, 20),
-		new /datum/data/vending_product("cannabis puff", /obj/item/cigarette/rollie/cannabis, 40),
+		new /datum/data/vending_product("cannabis joint", /obj/item/cigarette/rollie/cannabis, 40), // CRIMSON EDIT - Shop Inventories Additions - Original: "cannabis puff"
 		new /datum/data/vending_product("bong", /obj/item/bong, 50),
 		new /datum/data/vending_product("lockpick", /obj/item/vamp/keys/hack, 50),
 		new /datum/data/vending_product("LSD pill bottle", /obj/item/storage/pill_bottle/lsd, 50),
@@ -13,20 +14,40 @@
 		new /datum/data/vending_product("switchblade", /obj/item/switchblade/vamp, 85),
 		new /datum/data/vending_product("knuckledusters", /obj/item/clothing/gloves/vampire/brassknuckles, 100),
 		new /datum/data/vending_product("stake", /obj/item/vampire_stake, 100),
+		new /datum/data/vending_product("duffelbag", /obj/item/storage/backpack/duffelbag,	100), // CRIMSON EDIT ADD - Adds Duffelbags to Black Market
 		new /datum/data/vending_product("Surgery dufflebag", /obj/item/storage/backpack/duffelbag/sec/surgery, 100),
 		new /datum/data/vending_product("Handcuffs", /obj/item/restraints/handcuffs, 50),
 		new /datum/data/vending_product("Black bag", /obj/item/clothing/head/vampire/blackbag, 50),
 		new /datum/data/vending_product("snub-nose revolver", /obj/item/gun/ballistic/revolver/darkpack/snub, 100),
-		new /datum/data/vending_product("Braddock .45 submachine gun", /obj/item/gun/ballistic/automatic/darkpack/mac10, 1200),
+		new /datum/data/vending_product("Braddock 9mm submachine gun", /obj/item/gun/ballistic/automatic/darkpack/mac10, 1200), // CRIMSON EDIT - Was .45 ACP
+		new /datum/data/vending_product("Braddock 9mm magazine", /obj/item/ammo_box/magazine/darkpack45smg, 300), // CRIMSON EDIT ADD - Braddock Mags Buyable
 		new /datum/data/vending_product("sawn-off Remington 11-87 shotgun", /obj/item/gun/ballistic/shotgun/vamp_remington/sawnoff, 1600),
 		new /datum/data/vending_product("oil filter 11-87 suppressor", /obj/item/suppressor/darkpack_oil, 400),
 		new /datum/data/vending_product("cannabis package", /obj/item/food/grown/cannabis, 700),
 		new /datum/data/vending_product("morphine syringe", /obj/item/reagent_containers/syringe/contraband/morphine, 800),
 		new /datum/data/vending_product("meth package", /obj/item/reagent_containers/cup/glass/baggie/meth, 800),
 		new /datum/data/vending_product("cocaine package", /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine, 800),
+// CRIMSON EDIT ADD START - Medkit to Pharmacy
+		new /datum/data/vending_product("Compact Medical Kit", /obj/item/storage/medkit/tactical_lite, 1125),
+		new /datum/data/vending_product("Coroner's Surgical Kit", /obj/item/storage/medkit/coroner, 750),
+// CRIMSON EDIT ADD END - Medkit to Pharmacy
 		new /datum/data/vending_product("silver 9mm ammo", /obj/item/ammo_box/darkpack/c9mm/silver, 5000),
 		new /datum/data/vending_product("silver .45 ACP ammo", /obj/item/ammo_box/darkpack/c45acp/silver, 6000),
 		new /datum/data/vending_product("silver .44 ammo", /obj/item/ammo_box/darkpack/c44/silver, 7000),
 		new /datum/data/vending_product("silver 5.56 ammo", /obj/item/ammo_box/darkpack/c556/silver, 8000),
-		new /datum/data/vending_product("incendiary 5.56 ammo", /obj/item/ammo_box/darkpack/c556/incendiary, 9000)
+		new /datum/data/vending_product("incendiary 5.56 ammo", /obj/item/ammo_box/darkpack/c556/incendiary, 9000),
+// CRIMSON EDIT START - Armory Ammunition Additions - Eventually wanna lock these behind high streetwise skill, can lower prices then
+		new /datum/data/vending_product(".45 Wiley Pete ammo", /obj/item/ammo_box/darkpack/c45acp/wp, 4000),
+		new /datum/data/vending_product(".44 Wiley Pete ammo", /obj/item/ammo_box/darkpack/c44/wp, 5000),
+		new /datum/data/vending_product(".50 AE Wiley Pete ammo", /obj/item/ammo_box/darkpack/c50ae/wp, 6000),
+		new /datum/data/vending_product(".50 AE HE ammo", /obj/item/ammo_box/darkpack/c50ae/he, 8000),
+		new /datum/data/vending_product("5.45 incendiary ammo", /obj/item/ammo_box/darkpack/c545/incendiary, 8000),
+		new /datum/data/vending_product(".50 BMG DU ammo", /obj/item/ammo_box/darkpack/c50/du, 6500),
+		new /datum/data/vending_product(".50 BMG API ammo", /obj/item/ammo_box/darkpack/c50/api, 6500),
+		new /datum/data/vending_product(".50 BMG raufoss ammo", /obj/item/ammo_box/darkpack/c50/rauf, 7500),
+		new /datum/data/vending_product("12g HE slugs", /obj/item/ammo_box/darkpack/c12g/he, 7000),
+		new /datum/data/vending_product("12g silver buckshot", /obj/item/ammo_box/darkpack/c12g/buck/silver, 4000),
+		new /datum/data/vending_product("12g flechette shells", /obj/item/ammo_box/darkpack/c12g/buck/flech, 2000),
+		new /datum/data/vending_product("silver crossbow bolts", /obj/item/ammo_box/darkpack/arrows/silver, 2500),
+// CRIMSON EDIT END - Armory Ammunition Addtions
 	)

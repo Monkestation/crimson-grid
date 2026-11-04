@@ -38,7 +38,7 @@ opt = argparse.ArgumentParser()
 opt.add_argument('ymlDir', help='The directory of YAML changelogs we will use.')
 
 args = opt.parse_args()
-archiveDir = os.path.join(args.ymlDir, 'darkpack_archive') # DARKPACK EDIT CHANGE - SPLIT_CHANGELOG
+archiveDir = os.path.join(args.ymlDir, 'crimson_archive') # DARKPACK EDIT CHANGE - SPLIT_CHANGELOG # CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
 
 all_changelog_entries = {}
 
@@ -109,7 +109,7 @@ for fileName in glob.glob(os.path.join(args.ymlDir, "*.yml")):
     name, ext = os.path.splitext(os.path.basename(fileName))
     if name.startswith('.'): continue
     if name == 'example': continue
-    if "darkpack" not in name: continue # DARKPACK EDIT CHANGE - SPLIT_CHANGELOG
+    if "crimson" not in name: continue # DARKPACK EDIT CHANGE - SPLIT_CHANGELOG # CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
     fileName = os.path.abspath(fileName)
     formattedDate = today.strftime(fileDateFormat)
     monthFile = os.path.join(archiveDir, formattedDate + '.yml')

@@ -93,7 +93,7 @@
 	var/i
 	for(i=1; i <= textLen; i++)
 		var/letter = uppertext(text[i])
-		var/icon/letter_icon = icon("icon" = 'icons/testing/Font_Minimal.dmi', "icon_state" = letter)
+		var/icon/letter_icon = icon("icon" = 'modular_vcg/icons/testing/Font_Minimal.dmi', "icon_state" = letter) // CRIMSON GRID EDIT - Original : 'icons/testing/Font_Minimal.dmi'
 		letter_icon.Shift(EAST, startX) //16 - (2*n)
 		letter_icon.Shift(SOUTH, 2)
 		letter_icon.SwapColor(rgb(255,255,255), color)

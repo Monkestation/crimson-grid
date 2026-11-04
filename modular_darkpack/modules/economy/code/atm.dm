@@ -6,7 +6,7 @@
 	anchored = TRUE
 
 	max_integrity = 250
-	damage_deflection = 20
+	damage_deflection = 50 // CRIMSON EDIT CHANGE - ORIGINAL: damage_deflection = 20
 
 	light_color = COLOR_GREEN
 	light_range = 2

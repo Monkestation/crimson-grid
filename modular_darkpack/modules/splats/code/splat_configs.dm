@@ -75,8 +75,8 @@ GLOBAL_LIST_EMPTY(default_player_whitelists)
 
 	if (!GLOB.default_player_whitelists.len)
 		var/alist/defs = alist(
-			WHITELIST_TRUSTED = FALSE,
-			WHITELIST_TIMELIMITS = FALSE,
+			WHITELIST_TRUSTED = TRUE, // CRIMSON EDIT CHANGE - Original: WHITELIST_TRUSTED = FALSE
+			WHITELIST_TIMELIMITS = TRUE, // CRIMSON EDIT CHANGE - Original: WHITELIST_TIMELIMITS = FALSE
 			SPLAT_NONE = TRUE,
 		)
 

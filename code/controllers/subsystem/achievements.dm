@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(achievements)
 	name = "Achievements"
-	ss_flags = SS_NO_FIRE
+	ss_flags = SS_NO_INIT | SS_NO_FIRE // CRIMSON GRID EDIT - we don't use these and they take forever to init
 	var/achievements_enabled = FALSE
 
 	///List of achievements

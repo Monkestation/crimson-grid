@@ -377,14 +377,14 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
 /// Evac display which shows shuttle timer or message set by Command.
 /obj/machinery/status_display/evac
 	current_mode = SD_PICTURE
-	current_picture = "default"  // Show the logo when we start round
+	current_picture = "ai_off"  // Show the logo when we start round // CRIMSON EDIT - Original: current_picture = "default"
 	var/frequency = FREQ_STATUS_DISPLAYS
 	var/friendc = FALSE      // track if Friend Computer mode
 	var/last_picture  // For when Friend Computer mode is undone
 	/// What mode we should go back to when the alert timer runs out
 	var/revert_mode = SD_PICTURE
 	/// What picture we should show when reverting back
-	var/revert_picture = "default"
+	var/revert_picture = "ai_off" // CRIMSON EDIT - Original: var/revert_picture = "default"
 	/// Timer for switching back to normal after showing alerts
 	var/alert_display_timer
 	/// How important our current display is (bigger number = more important)
@@ -465,7 +465,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 		return manual_display_state.Copy()
 
 	// Nothing special happening, just show the logo
-	return list("mode" = SD_PICTURE, "priority" = DISPLAY_PRIORITY_LOGO, "picture" = "default")
+	return list("mode" = SD_PICTURE, "priority" = DISPLAY_PRIORITY_LOGO, "picture" = "ai_off") // CRIMSON EDIT - Original:return list("mode" = SD_PICTURE, "priority" = DISPLAY_PRIORITY_LOGO, "picture" = "default")
 
 /// Tries to change what the display is showing, but respects priority levels
 /// Returns TRUE if we actually changed it, FALSE if something more important was already showing
@@ -484,7 +484,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 
 	// Store manually set displays (not temporary alerts, automated shuttle, or logo defaults)
 	// Logo selections shouldn't be treated as manual overrides since logo is the default anyway
-	var/is_logo_default = (new_mode == SD_PICTURE && (picture_state == "default" || picture_state == null))
+	var/is_logo_default = (new_mode == SD_PICTURE && (picture_state == "ai_off" || picture_state == null)) // CRIMSON EDIT - Original: var/is_logo_default = (new_mode == SD_PICTURE && (picture_state == "default" || picture_state == null))
 	if(priority >= DISPLAY_PRIORITY_MESSAGE && priority != DISPLAY_PRIORITY_ALERT_TEMP && priority != DISPLAY_PRIORITY_SHUTTLE && !is_logo_default)
 		manual_display_state = list(
 			"mode" = new_mode,
@@ -532,7 +532,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 			var/emergency_type = signal.data["emergency_type"]
 
 			// Check if this is just setting the logo back to default
-			if(picture_state == "default")
+			if(picture_state == "ai_off") // CRIMSON EDIT - Original: if(picture_state == "default")
 				// Clear any manual display state and reset to logo priority
 				manual_display_state = null
 				set_display_with_priority(SD_PICTURE, DISPLAY_PRIORITY_LOGO, picture_state = picture_state, force_override = TRUE)

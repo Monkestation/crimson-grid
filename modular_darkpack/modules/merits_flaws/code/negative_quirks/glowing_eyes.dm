@@ -12,6 +12,7 @@
 	mob_trait = TRAIT_GLOWING_EYES
 	allowed_splats = list(SPLAT_KINDRED)
 	excluded_clans = list(VAMPIRE_CLAN_KIASYD)// They already have masq violating eyes!
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 	/// Determines whether eyes glow outright or reflect light in the dark.
 	var/is_reflective = FALSE
 

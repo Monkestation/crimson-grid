@@ -22,9 +22,13 @@
 
 
 /datum/subsplat/vampire_clan/lasombra/psychomania_effect(mob/living/target, mob/living/owner)
-	to_chat(target, span_cult("THE SHADOWS BETRAY ME, SEEKING MY LIFE"))
+	// CRIMSON GRID ADD: DARK THAUMATURGY. BEFORE:
+	/* to_chat(target, span_cult("THE SHADOWS BETRAY ME, SEEKING MY LIFE"))
 	target.playsound_local(target, "modular_darkpack/modules/powers/sounds/daimonion_laughs/eldritchlaugh.ogg", 50, FALSE)
-	target.Paralyze(6 SECONDS)
+	target.Paralyze(6 SECONDS) */
+	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
+	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
+	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
 // Not TTRPG accurate and is pending a rework to use real rolls after #633
 /proc/scramble_lasombra_message(message, mob/living/lasombra)
@@ -39,11 +43,11 @@
 	var/gibberish_message = ""
 	var/total_stats = 0
 	if(istype(lasombra))
-		total_stats = lasombra.st_get_stat(STAT_TECHNOLOGY) * 3 // +3% chance per tech. 15 max, 18 avg, 24 beauty.9
+		total_stats = lasombra.st_get_stat(STAT_TECHNOLOGY) * 2 + lasombra.st_get_stat(STAT_OCCULT) * 2 // +2% for every stat, max 100% //CRIMSON EDIT — Original:total_stats = lasombra.st_get_stat(STAT_TECHNOLOGY) * 3
 	for(var/i = 1 to length(message))
 		var/char = message[i]
 		// Randomize or replace characters with gibberish
-		var/chance = 70 + total_stats // 70% + total_stats chance per point of social to keep intact.
+		var/chance = 80 + total_stats // 80% + total_stats, // CRIMSON EDIT — Original: 70 + total_stats
 		if(prob(chance))
 			gibberish_message += char
 		else
