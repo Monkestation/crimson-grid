@@ -12,7 +12,7 @@
 	config_tag = "SENESCHAL"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/clerk
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_CLERK
 	departments_list = list(
 		/datum/job_department/camarilla,

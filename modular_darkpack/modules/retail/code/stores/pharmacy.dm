@@ -18,8 +18,9 @@
 		new /datum/data/vending_product("Белая трость", /obj/item/cane/white),
 		new /datum/data/vending_product("Костыль", /obj/item/cane/crutch),
 		new /datum/data/vending_product("Деревянный костыль", /obj/item/cane/crutch/wood),
-// CRIMSON EDIT ADD START - Medkit to Pharmacy
 		new /datum/data/vending_product("Пустой пакет для крови", /obj/item/reagent_containers/blood/empty),
+		new /datum/data/vending_product("Неврологический молоточек", /obj/item/reflexhammer, 30),
+// CRIMSON EDIT ADD START - Medkit to Pharmacy
 		new /datum/data/vending_product("Пустая аптечка", /obj/item/storage/medkit/darkpack, 200),
 		new /datum/data/vending_product("Аптечка", /obj/item/storage/medkit/darkpack/standard, 500),
 		new /datum/data/vending_product("Индивидуальная аптечка", /obj/item/storage/medkit/darkpack/ifak, 500),

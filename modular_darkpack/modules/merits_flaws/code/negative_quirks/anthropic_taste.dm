@@ -9,3 +9,4 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	icon = FA_ICON_CAT
 	failure_message = "Вы чувствуете, что снова можете питаться кровью низших существ."
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS

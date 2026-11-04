@@ -16,6 +16,8 @@
 
 /obj/item/smartphone/ui_close(mob/user)
 	. = ..()
+	if(always_open)
+		return
 	// Lock sound!
 	for (var/datum/tgui/window as anything in open_uis)
 		if(window.status != UI_INTERACTIVE || window.user == user)
