@@ -31,7 +31,7 @@
 	if(do_after(usr, duration_length, usr))
 
 		activated = TRUE
-		last_activator = usr
+		remember_activator(usr) // CORVAX EDIT CHANGE - ORIGINAL: last_activator = usr
 
 		var/mob/living/target_body = pick(valid_bodies)
 
@@ -68,7 +68,7 @@
 				role_name = "разумного зомби",\
 				poll_length = 30 SECONDS,\
 				assumed_control_message = "Вы - разумный зомби: призрак, которому хозяин милостиво позволил вселиться в чужую плоть. Служите ему верно и наслаждайтесь вкусом жизни, которую у вас отняли.",\
-				after_assumed_control = CALLBACK(src, PROC_REF(on_zombie_possess), target_body),\
+				after_assumed_control = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(necromancy_zombie_possessed), target_body),\
 			)
 			qdel(src)
 			return
@@ -76,12 +76,13 @@
 		target_body.visible_message(span_ghostalert("[capitalize(target_body.declent_ru(NOMINATIVE))] вздрагивает и пробуждается к не-жизни!"))
 		qdel(src)
 
-/obj/ritual_rune/necromancy/zombie/proc/on_zombie_possess(mob/living/carbon/human/zombie)
+// CORVAX EDIT CHANGE START - the callback kept the deleted rune alive until someone took the body. ORIGINAL: rune procs on_zombie_possess and ask_zombie_name
+/proc/necromancy_zombie_possessed(mob/living/carbon/human/zombie)
 	zombie.visible_message(span_ghostalert("В труп вселяется призрак: [zombie.declent_ru(NOMINATIVE)] вздрагивает и пробуждается к не-жизни!"))
-	ask_zombie_name(zombie)
-	qdel(src)
+	necromancy_ask_zombie_name(zombie)
 
-/obj/ritual_rune/necromancy/zombie/proc/ask_zombie_name(mob/living/carbon/human/zombie)
+/proc/necromancy_ask_zombie_name(mob/living/carbon/human/zombie)
+// CORVAX EDIT CHANGE END
 	var/choice = tgui_alert(zombie, "Хотите выбрать себе новое имя зомби?", "Имя зомби", list("Да", "Нет"), 10 SECONDS)
 	if(choice == "Да")
 		var/chosen_zombie_name = tgui_input_text(zombie, "Каким будет ваше новое имя?", "Имя зомби")

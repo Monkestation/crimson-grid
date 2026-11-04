@@ -23,7 +23,7 @@
 		to_chat(user, span_warning("Руна ещё не остыла после прошлого вызова."))
 		return
 
-	last_activator = user
+	remember_activator(user) // CORVAX EDIT CHANGE - ORIGINAL: last_activator = user
 	issue_challenge(user)
 
 /obj/sabbatrune/proc/issue_challenge(mob/living/challenger)

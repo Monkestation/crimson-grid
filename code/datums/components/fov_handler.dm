@@ -89,7 +89,7 @@
 
 /datum/component/fov_handler/proc/remove_mask()
 	var/mob/parent_mob = parent
-	var/client/parent_client = parent_mob.client
+	var/client/parent_client = parent_mob.client || parent_mob.canon_client // CORVAX EDIT CHANGE - client is already null on logout, the blocker stayed on screen. ORIGINAL: parent_mob.client
 	if(!parent_client) //Love client volatility!!
 		return
 	applied_mask = FALSE

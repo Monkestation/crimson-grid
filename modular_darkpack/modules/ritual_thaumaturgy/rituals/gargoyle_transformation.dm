@@ -46,7 +46,7 @@
 	// Start the transformation process
 	if(do_after(usr, duration_length, usr))
 		activated = TRUE
-		last_activator = usr
+		remember_activator(usr) // CORVAX EDIT CHANGE - ORIGINAL: last_activator = usr
 
 		// Determine if we're creating a perfect gargoyle (2+ bodies) or regular (1 body)
 		var/perfect_gargoyle = (body_count >= 2)

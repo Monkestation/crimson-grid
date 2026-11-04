@@ -298,7 +298,8 @@
 			owner.dna.species.inherent_traits |= TRAIT_NOSOFTCRIT
 			ADD_TRAIT(owner, TRAIT_STAKE_IMMUNE, DISCIPLINE_TRAIT(type))
 			urn = new(owner.loc)
-			urn.own = owner
+			urn.set_owner(owner) // CORVAX EDIT CHANGE - ORIGINAL: urn.own = owner
+			RegisterSignal(urn, COMSIG_QDELETING, PROC_REF(on_urn_deleted)) // CORVAX EDIT ADD
 			//var/obj/item/organ/heart/heart = owner.get_organ_slot(ORGAN_SLOT_HEART) DARKPACK TODO - Vampire Organs need to be made useless
 			//heart.forceMove(urn)
 	else
@@ -331,5 +332,5 @@
 
 /obj/item/urn/Destroy()
 	. = ..()
-	if(own)
+	if(own && !QDELETED(own)) // CORVAX EDIT CHANGE - ORIGINAL: if(own)
 		own.death()

@@ -588,6 +588,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 					speakers.special_channels |= RADIO_SPECIAL_CENTCOM
 					speakers.set_frequency(FREQ_STATUS_DISPLAYS)
 				LAZYOR(active_displays, new_display)
+				RegisterSignal(new_display, COMSIG_QDELETING, PROC_REF(on_greenscreen_deleted), override = TRUE) // CORVAX EDIT ADD
 			set_display_with_priority(SD_GREENSCREEN, DISPLAY_PRIORITY_MESSAGE, force_override = TRUE)
 		if("friendcomputer")
 			// Friend Computer should only affect AI displays, not evac displays

@@ -74,7 +74,7 @@
 
 	living_user.say(word)
 	living_user.Immobilize(30)
-	last_activator = user
+	remember_activator(user) // CORVAX EDIT CHANGE - ORIGINAL: last_activator = user
 	if(activation_color)
 		animate(src, color = activation_color, time = 10)
 	if(length(sacrifices))

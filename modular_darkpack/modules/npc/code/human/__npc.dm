@@ -156,6 +156,7 @@
 	if(!drop_on_death_list?.len)
 		drop_on_death_list = list()
 	drop_on_death_list += my_item
+	RegisterSignal(my_item, COMSIG_QDELETING, PROC_REF(forget_sticky_item)) // CORVAX EDIT ADD
 
 /mob/living/carbon/human/npc/death(gibbed)
 	. = ..()

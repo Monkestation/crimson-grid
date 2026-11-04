@@ -36,12 +36,12 @@
 /datum/component/heartbeat_sensing/Destroy(force)
 	STOP_PROCESSING(SSfastprocess, src)
 	QDEL_NULL(client_colour)
+	// CORVAX EDIT CHANGE START - ORIGINAL: skipped receivers without a client and left them in the list
 	for(var/mob/living/echolocate_receiver as anything in receivers)
-		if(!echolocate_receiver.client)
-			continue
 		for(var/atom/rendered_atom as anything in receivers[echolocate_receiver])
-			echolocate_receiver.client.images -= receivers[echolocate_receiver][rendered_atom]["image"]
-		receivers -= list(echolocate_receiver)
+			echolocate_receiver.client?.images -= receivers[echolocate_receiver][rendered_atom]["image"]
+	receivers = null
+	// CORVAX EDIT CHANGE END
 	return ..()
 
 /datum/component/heartbeat_sensing/process(seconds_per_tick)
@@ -109,8 +109,10 @@
 /datum/component/heartbeat_sensing/proc/delete_images(from_when)
 	for(var/mob/living/echolocate_receiver as anything in receivers)
 		for(var/atom/rendered_atom as anything in receivers[echolocate_receiver])
-			if(receivers[echolocate_receiver][rendered_atom]["time"] <= from_when && echolocate_receiver.client)
-				echolocate_receiver.client.images -= receivers[echolocate_receiver][rendered_atom]["image"]
+			// CORVAX EDIT CHANGE START - without a client the entries were never dropped and kept every sensed mob alive. ORIGINAL: required echolocate_receiver.client
+			if(receivers[echolocate_receiver][rendered_atom]["time"] <= from_when)
+				echolocate_receiver.client?.images -= receivers[echolocate_receiver][rendered_atom]["image"]
 				receivers[echolocate_receiver] -= rendered_atom
+			// CORVAX EDIT CHANGE END
 		if(!length(receivers[echolocate_receiver]))
 			receivers -= echolocate_receiver
