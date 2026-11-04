@@ -101,10 +101,10 @@
 /obj/item/clothing/suit/armor/riot/knight/yellow
 	slowdown = 0.5
 
-/obj/item/clothing/suit/armor/riot/knight/red
+/obj/item/clothing/suit/armor/riot/knight/blue
 	slowdown = 0.5
 
-/obj/item/clothing/suit/armor/riot/knight/blue
+/obj/item/clothing/suit/armor/riot/knight/red
 	slowdown = 0.5
 
 /datum/armor/highly_protective_vest
