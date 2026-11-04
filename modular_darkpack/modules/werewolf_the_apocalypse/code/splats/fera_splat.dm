@@ -167,8 +167,9 @@
 	var/can_passively_heal = !(is_breed_form() && (get_breed_form_species() != /datum/species/human/shifter/war))
 	if(COOLDOWN_FINISHED(src, passive_healing_cd))
 		if(can_passively_heal)
-			// 2 to represent lethal. Fera passive regen closes burn, but not aggravated damage.
-			owner.heal_storyteller_health(2, heal_aggravated = FALSE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE)
+			// 2 to represent lethal. Fera passive regen closes burn (if we've the "can heal burn" gift), but not aggravated damage.
+			var/can_heal_burn = !!owner.has_status_effect(/datum/status_effect/master_of_fire)
+			owner.heal_storyteller_health(2, heal_aggravated = FALSE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = can_heal_burn)
 			// Keep organ healing ticking so internal damage recovers even between major regrowth pulses.
 			owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_HEART, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
@@ -177,6 +178,7 @@
 			owner.adjust_organ_loss(ORGAN_SLOT_LIVER, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EYES, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EARS, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
+			owner.adjust_blood_volume(BLOOD_VOLUME_NORMAL * 0.10, maximum = BLOOD_VOLUME_NORMAL) //CRIMSON GRID ADDITION - blood restore effects to tg health
 		COOLDOWN_START(src, passive_healing_cd, 1 TURNS)
 
 	if(COOLDOWN_FINISHED(src, passive_regrowth_cd))
@@ -339,11 +341,11 @@
 	var/rage_slowdown = -0.01 * clamp(rage, 0, permanent_rage)
 	if(rage >= 3 && is_fighting_form)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/shifter/rage,multiplicative_slowdown = rage_slowdown)
-	if(rage < 3 && is_fighting_form)
+	else
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
 	if(rage >= 6 && is_fighting_form)
 		owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	if(rage < 6 && is_fighting_form)
+	else
 		owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
 
 /datum/movespeed_modifier/shifter/rage

@@ -38,6 +38,10 @@
 	var/dramatically_disappearing = FALSE
 	/// If we added a leaning component to ourselves
 	var/added_leaning = FALSE
+	// CRIMSON EDIT ADDITION START - Defenestration
+	/// Set TRUE on windows that should never be broken by thrown bodies
+	var/defenestration_immune = FALSE
+	// CRIMSON EDIT ADDITION END
 
 /datum/armor/structure_window
 	melee = 50
@@ -97,7 +101,7 @@
 			. += span_notice("The window is <i>unscrewed</i> but <b>pried</b> into the frame.")
 		if(WINDOW_OUT_OF_FRAME)
 			if (anchored)
-				. += span_notice("The window is <b>screwed</b> to the floor.")
+				. += span_notice("The window is <b>screwed</b> to the floor. It can be <b>pried</b> into a more secure position.")
 			else
 				. += span_notice("The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.")
 
@@ -325,6 +329,136 @@
 			return FALSE
 	return TRUE
 
+
+// CRIMSON EDIT ADDITION START - Defenestration
+/mob/living/pre_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	. = ..()
+	if(. & COMPONENT_MOVABLE_IMPACT_NEVERMIND)
+		return
+	var/obj/structure/window/hit_window = hit_atom
+	if(!istype(hit_window))
+		return
+	if(hit_window.try_defenestrate(src, throwingdatum))
+		. |= COMPONENT_MOVABLE_IMPACT_NEVERMIND
+
+/obj/structure/window/proc/roll_landing(mob/living/victim)
+	var/datum/storyteller_roll/jump_landing/roll = new()
+	// Harder against sturdier windows
+	roll.difficulty = clamp(6 + (reinf ? 1 : 0) + (fulltile ? 1 : 0), 6, 9)
+	var/result = roll.st_roll(victim, src)
+	qdel(roll)
+	return result
+
+///force a thrown body hits with.
+/obj/structure/window/proc/get_defenestration_force(mob/living/victim, datum/thrownthing/throwingdatum)
+	var/strength = 0
+	var/mob/living/thrower = throwingdatum?.thrower.resolve()
+	if(istype(thrower))
+		strength = thrower.st_get_stat(STAT_STRENGTH) || 1
+	var/speed = throwingdatum ? throwingdatum.speed : 1
+	// base + thrower strength + victim mass + throw speed
+	return 10 + (strength * 25) + (victim.maxHealth * 0.1) + (speed * 5)
+
+/obj/structure/window/proc/try_defenestrate(mob/living/victim, datum/thrownthing/throwingdatum)
+	if(defenestration_immune || (resistance_flags & INDESTRUCTIBLE))
+		return FALSE
+
+	var/force = get_defenestration_force(victim, throwingdatum)
+	if(HAS_TRAIT(victim, TRAIT_HUGE_SIZE))
+		force *= 1.5
+	if(victim.is_clan(/datum/subsplat/vampire_clan/gargoyle))
+		force *= 2
+
+	var/mob/living/thrower = throwingdatum?.thrower?.resolve()
+	var/self_jump = (thrower && thrower == victim)
+
+	// Landing roll, only for self-thrown leaps
+	var/landing = ROLL_SUCCESS
+	var/damage_mult = 1
+	if(self_jump)
+		landing = roll_landing(victim)
+		switch(landing)
+			if(ROLL_BOTCH)
+				damage_mult = 1.5
+			if(ROLL_FAILURE)
+				damage_mult = 1
+			if(ROLL_SUCCESS)
+				damage_mult = 0.25
+
+	var/turf/window_turf = get_turf(src)
+	var/move_dir = get_dir(victim, src) || victim.dir
+
+	if(force >= atom_integrity)
+		var/remaining_force = force - atom_integrity
+		if(self_jump)
+			switch(landing)
+				if(ROLL_SUCCESS)
+					visible_message(span_danger("[victim] sails through [src] and lands cleanly in a rain of glass!"))
+				if(ROLL_BOTCH)
+					visible_message(span_danger("[victim] smashes through [src] and tumbles out of control!"))
+				else
+					visible_message(span_danger("[victim] leaps through [src], shattering it!"))
+		else
+			visible_message(span_danger("[victim] crashes through [src]!"))
+
+		deconstruct(FALSE) // atom_deconstruct plays the break sound and spawns shards
+		victim.forceMove(window_turf)
+
+		var/shard_damage = clamp(remaining_force * 0.25, 5, 25)
+		if(self_jump)
+			shard_damage *= damage_mult
+		if(shard_damage > 0)
+			victim.apply_damage(shard_damage, BRUTE, victim.get_random_valid_zone(), sharpness = SHARP_EDGED)
+
+		var/atom/target
+		var/range = 2
+		var/speed = 1
+		if(self_jump && throwingdatum)
+			// Keep going toward the original jump destination
+			target = throwingdatum.target_turf
+			range = max(throwingdatum.maxrange - throwingdatum.dist_travelled, 1)
+			speed = throwingdatum.speed
+			switch(landing)
+				if(ROLL_BOTCH)
+					victim.Knockdown(3 SECONDS)
+					range = 1
+				if(ROLL_FAILURE)
+					victim.Knockdown(1 SECONDS)
+					range = max(round(range / 2), 1)
+		else
+			victim.Knockdown(2 SECONDS)
+			target = get_ranged_target_turf(window_turf, move_dir, 2)
+
+		// The original throw is mid-finalization, so re-throw next tick
+		addtimer(CALLBACK(victim, TYPE_PROC_REF(/atom/movable, throw_at), target, range, speed, thrower, FALSE), 1)
+		return TRUE
+
+	//boing
+	take_damage(force * 0.5, BRUTE, "", TRUE)
+	var/impact_damage = 5 + (force * 0.1)
+	if(self_jump)
+		impact_damage *= damage_mult
+		if(landing == ROLL_SUCCESS)
+			victim.visible_message(span_notice("[victim] hits [src], absorbs the impact and rolls clear."), span_notice("You hit [src] but roll with it."))
+		else
+			victim.visible_message(span_warning("[victim] slams into [src]!"), span_userdanger("You slam into [src]!"))
+	else
+		victim.visible_message(span_warning("[victim] slams into [src]!"), span_userdanger("You slam into [src]!"))
+
+	if(impact_damage > 0)
+		victim.apply_damage(impact_damage, BRUTE, victim.get_random_valid_zone())
+
+	if(!self_jump)
+		victim.Knockdown(1 SECONDS)
+	else
+		switch(landing)
+			if(ROLL_BOTCH)
+				victim.Knockdown(3 SECONDS)
+			if(ROLL_FAILURE)
+				victim.Knockdown(2 SECONDS)
+	return TRUE
+
+// CRIMSON EDIT ADDITION END
 
 /obj/structure/window/take_damage(damage_amount, damage_type = BRUTE, damage_flag = "", sound_effect = TRUE, attack_dir, armour_penetration = 0)
 	. = ..()
@@ -942,6 +1076,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/titanium/spawner, 0
 
 /obj/structure/window/reinforced/survival_pod/unanchored
 	anchored = FALSE
+	state = WINDOW_OUT_OF_FRAME
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/window/reinforced/survival_pod/spawner, 0)
 

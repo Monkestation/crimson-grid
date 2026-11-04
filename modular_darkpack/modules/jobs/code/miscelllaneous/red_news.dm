@@ -10,6 +10,9 @@
 	departments_list = list(
 		/datum/job_department/citizen
 	)
+
+	tgui_icon = FA_ICON_CAMERA
+
 	job_flags = CITY_JOB_FLAGS
 	minimum_masquerade = 0
 	alt_titles = list(

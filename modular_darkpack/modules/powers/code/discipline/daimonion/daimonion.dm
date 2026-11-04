@@ -36,7 +36,7 @@
 /datum/storyteller_roll/sense_the_sin
 	bumper_text = "sense the sin"
 	applicable_stats = list(STAT_PERCEPTION, STAT_EMPATHY)
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/discipline_power/daimonion/sense_the_sin/pre_activation_checks(mob/living/target)
 	if(!sense_the_sin_roll)
@@ -139,14 +139,14 @@
 /datum/storyteller_roll/fear_of_the_void_below
 	bumper_text = "fear of the void below"
 	applicable_stats = list(STAT_WITS, STAT_INTIMIDATION)
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 	numerical = TRUE // CRIMSON GRID ADD: DARK THAUMATURGY
 
 // CRIMSON GRID ADD: DARK THAUMATURGY
 /datum/storyteller_roll/fear_of_the_void_below_resist
 	bumper_text = "control the beast"
 	applicable_stats = list(STAT_COURAGE)
-	roll_output_type = ROLL_NONE
+	roll_output_type = NONE
 	numerical = TRUE
 // CRIMSON GRID ADD END: DARK THAUMATURGY
 
@@ -213,8 +213,9 @@
 	damage = 40 //CRIMSON GRID ADD: DARK THAUMATURGY
 	damage_type = BURN // CRIMSON GRID ADD END: DARK THAUMATURGY
 
-
-/datum/discipline_power/daimoinon/conflagration/activate(atom/target)
+// CRIMSON GRID ADD: DAIMOINON -> DAIMONION
+/datum/discipline_power/daimonion/conflagration/activate(atom/target)
+// CRIMSON GRID ADD END: DAIMOINON -> DAIMONION
 	. = ..()
 	var/turf/start = get_turf(owner)
 	var/obj/projectile/flames/baali/created_fireball = new(start)
@@ -240,7 +241,7 @@
 
 /datum/storyteller_roll/psychomania
 	bumper_text = "psychomania"
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/discipline_power/daimonion/psychomania/pre_activation_checks(mob/living/target)
 	if(!psychomania_roll)
@@ -310,7 +311,7 @@
 /datum/storyteller_roll/condemnation
 	bumper_text = "condemnation"
 	applicable_stats = list(STAT_INTELLIGENCE, STAT_OCCULT)
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/discipline_power/daimonion/condemnation/activate(mob/living/target)
 	. = ..()

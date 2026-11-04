@@ -144,7 +144,7 @@
 		playsound(src, 'modular_darkpack/modules/billiards/sounds/poolball_strike.ogg', 75)
 
 		var/datum/storyteller_roll/pool_aiming/accuracy_roll = new()
-		var/accuracy_result = accuracy_roll.st_roll(user, src)
+		var/accuracy_result = accuracy_roll.st_roll(user, src, using_item = tool)
 		var/datum/storyteller_roll/pool_hits/amount_to_hit_roll = new()
 		var/amount_to_hit_result = amount_to_hit_roll.st_roll(user, src)
 		var/list/balls_sunk = list()
@@ -154,7 +154,7 @@
 			if(!sink_ball(user, choice, accuracy_result, amount_to_hit_result, balls_sunk = balls_sunk))
 				break
 		if(length(balls_sunk))
-			user.visible_message(span_notice("[user] sinks [jointext(balls_sunk, ", ")]. [length(get_balls_on_table())] left."), span_notice("You sink [jointext(balls_sunk, ", ")]!"))
+			user.visible_message(span_notice("[user] sinks [english_list(balls_sunk)]. [length(get_balls_on_table())] left."), span_notice("You sink [english_list(balls_sunk)]!"))
 		return ITEM_INTERACT_SUCCESS
 
 /datum/storyteller_roll/pool_aiming

@@ -110,6 +110,11 @@
 
 	var/adjusted_jump_range = clamp((BASE_JUMP_DISTANCE + 0.75 + max(0,(strength -1)) * 0.5 + athletics), 1, 6)
 
+	// WEREWOLF
+	var/datum/status_effect/hares_leap/hares_leap = jumper.has_status_effect(/datum/status_effect/hares_leap)
+	if(hares_leap)
+		adjusted_jump_range *= hares_leap.jump_modifier
+
 	var/distance = get_dist(jumper.loc, target)
 	var/turf/adjusted_target = target
 	if(distance > adjusted_jump_range)

@@ -90,8 +90,8 @@ GAME_VERB_DESC(/client, looc_wallpierce, "LOOC (Wallpierce)", "Local OOC, seen b
 
 	for(var/client/admin_client in GLOB.admins)
 		if(admin_seen[admin_client])
-			to_chat(admin_client, span_looc("[ADMIN_FLW(usr)] <span class='prefix'>LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
+			to_chat(admin_client, span_looc("[ADMIN_FLW(usr)] [span_prefix("LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:")] <EM>[src.key]/[src.mob.name]:</EM> [span_message("[msg]")]"))
 		else if(admin_client.prefs.read_preference(/datum/preference/toggle/see_looc))
-			to_chat(admin_client, span_rlooc("[ADMIN_FLW(usr)] <span class='prefix'>(R)LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:</span> <EM>[src.key]/[src.mob.name]:</EM> <span class='message'>[msg]</span>"))
+			to_chat(admin_client, span_rlooc("[ADMIN_FLW(usr)] [span_prefix("(R)LOOC[wall_pierce ? " (WALL PIERCE)" : ""]:")] <EM>[src.key]/[src.mob.name]:</EM> [span_message("[msg]")]"))
 
 #undef LOOC_RANGE

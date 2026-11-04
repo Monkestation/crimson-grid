@@ -17,11 +17,13 @@
 	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 3
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_PENTEX_SEC
 	departments_list = list(
 		/datum/job_department/pentex,
 	)
+
+	tgui_icon = FA_ICON_SHIELD_VIRUS
 
 	known_contacts = list(
 		JOB_PENTEX_LEAD,

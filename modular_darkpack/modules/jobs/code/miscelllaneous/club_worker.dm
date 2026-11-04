@@ -13,6 +13,8 @@
 		/datum/job_department/strip_club
 	)
 
+	tgui_icon = FA_ICON_COCKTAIL
+
 	known_contacts = list(
 		JOB_CLUB_WORKER,
 		JOB_PRIMOGEN_TOREADOR

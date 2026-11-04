@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(animal_spirits, world.file2list("modular_darkpack/modules/occul
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/occult_artifacts/icons/fetishes_onfloor.dmi')
 	icon_state = "dagger"
 	abstract_type = /obj/item/occult_artifact/werewolf
+	magic_type = MAGIC_TYPE_SPIRIT
 	var/spirit_name = "Glitchimus"
 	var/spirit_type = "ahelp"
 

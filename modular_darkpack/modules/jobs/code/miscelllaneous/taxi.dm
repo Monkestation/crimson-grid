@@ -13,6 +13,8 @@
 		/datum/job_department/city_services,
 	)
 
+	tgui_icon = FA_ICON_CAR
+
 	known_contacts = list(
 		JOB_TAXI_DRIVER
 	)

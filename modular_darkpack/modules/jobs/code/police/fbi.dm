@@ -7,6 +7,7 @@
 	config_tag = "FEDERAL_AGENT"
 	outfit = /datum/outfit/job/vampire/fbi
 	job_flags = CITY_JOB_FLAGS
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_FBI
 	departments_list = list(
 		/datum/job_department/police,
@@ -16,6 +17,8 @@
 		JOB_POLICE_CAPTAIN,
 		JOB_FEDERAL_INVESTIGATOR
 	)
+
+	tgui_icon = FA_ICON_USER_SECRET
 
 	allowed_splats = list(SPLAT_NONE)
 	description = "Enforce the Law."

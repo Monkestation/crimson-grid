@@ -55,6 +55,7 @@
 		QDEL_LIST(imaginary_group)
 	QDEL_LAZYLIST(diseases)
 	QDEL_LAZYLIST(quirks)
+	QDEL_NULL(inner_armor)
 
 	if(!isnull(unconscious_appearance))
 		// Not super necessary strictly speaking but just in case
@@ -566,7 +567,7 @@ GAME_VERB_HIDDEN(/mob/living, succumb, "succumb")
 	// DARKPACK EDIT CHANGE START - Torpor
 	if (HAS_TRAIT(src, TRAIT_CAN_ENTER_TORPOR) && !HAS_TRAIT(src, TRAIT_TORPOR))
 		log_message("Has [whispered ? "whispered his final words and" : ""]succumbed to Torpor with [round(health, 0.1)] points of health!", LOG_ATTACK)
-		adjust_oxy_loss(health - HEALTH_THRESHOLD_DEAD)
+		adjust_oxy_loss(health - dead_threshold)
 		updatehealth()
 		if(!whispered)
 			to_chat(src, span_notice("You have succumbed to Torpor."))
@@ -574,7 +575,7 @@ GAME_VERB_HIDDEN(/mob/living, succumb, "succumb")
 		torpor(DAMAGE_TRAIT)
 	else
 		log_message("Has [whispered ? "whispered his final words" : "succumbed to death"] with [round(health, 0.1)] points of health!", LOG_ATTACK)
-		adjust_oxy_loss(health - HEALTH_THRESHOLD_DEAD)
+		adjust_oxy_loss(health - dead_threshold)
 		updatehealth()
 		if(!whispered)
 			to_chat(src, span_notice("You have given up life and succumbed to death."))
@@ -1059,7 +1060,7 @@ GAME_VERB_PROC(/mob/living, mob_sleep, "Sleep", null)
 /mob/living/proc/can_be_revived()
 	if(HAS_TRAIT(src, TRAIT_NODEATH))
 		return TRUE
-	if(health > HEALTH_THRESHOLD_DEAD)
+	if(health > dead_threshold)
 		return TRUE
 	return FALSE
 

@@ -27,7 +27,7 @@
 		return
 	if(!ritual_roll_datum)
 		return
-	var/charges = ritual_roll_datum.last_sucess_amount
+	var/charges = last_sucess_amount
 	weapon.AddComponent(/datum/component/burning_blade, charges)
 	to_chat(last_activator, span_notice("[weapon] ignites with an unholy flame for [charges] swings!"))
 	qdel(src)
