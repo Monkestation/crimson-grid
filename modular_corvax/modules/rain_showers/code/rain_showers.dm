@@ -38,6 +38,18 @@ GLOBAL_LIST_EMPTY(street_blood)
 			continue
 		qdel(stain)
 
+/datum/weather/particle/rain_storm
+	/// A per-turf chance scaled with the city size into dozens of strikes and fires every second
+	var/thunder_strikes_per_second = 1 / 40
+
+/datum/weather/particle/rain_storm/setup_weather_turfs()
+	. = ..()
+	if(weather_flags & WEATHER_THUNDER)
+		thunder_turfs_per_tick = thunder_strikes_per_second * SSweather.wait / (1 SECONDS)
+
+/datum/weather/particle/rain_storm/endless
+	thunder_strikes_per_second = 1 / 30
+
 /datum/weather/particle/rain_storm/shower
 	name = "rain shower"
 	probability = 0
@@ -81,3 +93,9 @@ SUBSYSTEM_DEF(rain_showers)
 #undef RAIN_SHOWER_BASE_CHANCE
 #undef RAIN_SHOWER_STAINS_PER_PERCENT
 #undef RAIN_SHOWER_MAX_CHANCE
+
+// Drops cross the screen in about two and a half seconds, the base 30 second lifespan kept up to 8000 of them simulated on every client
+/particles/weather/rain_storm
+	count = 3000
+	lifespan = 4 SECONDS
+	max_spawn = 150
