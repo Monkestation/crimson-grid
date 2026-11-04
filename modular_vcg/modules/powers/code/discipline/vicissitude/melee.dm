@@ -7,7 +7,7 @@
 	righthand_file = 'modular_vcg/modules/powers/code/discipline/vicissitude/icons/righthand.dmi'
 	force = 2 LETHAL_TTRPG_DAMAGE
 	w_class = WEIGHT_CLASS_BULKY
-	block_chance = 40
+	block_chance = 0
 	armour_penetration = 40
 	sharpness = SHARP_EDGED
 	attack_verb_continuous = list("slashes", "cuts")
@@ -22,8 +22,3 @@
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_NATURAL, INNATE_TRAIT)
-
-/obj/item/melee/vampirearms/tzimisce/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
-	if(attack_type == PROJECTILE_ATTACK || attack_type == LEAP_ATTACK || attack_type == OVERWHELMING_ATTACK)
-		final_block_chance = 0 //Don't bring a sword to a gunfight, and also you aren't going to really block someone full body tackling you with a sword. Or a road roller, if one happened to hit you.
-	return ..()
