@@ -18,6 +18,11 @@
 	desc = "A fancy bomber jacket."
 	icon_state = "fur2"
 
+/obj/item/clothing/suit/vampire/toggled/bomber_jacket/black
+	name = "bomber jacket"
+	desc = "A fancy bomber jacket."
+	icon_state = "fur3"
+
 /obj/item/clothing/suit/vampire/toggled/plain_jacket
 	name = "plain brown jacket"
 	desc = "A plain brown jacket."
@@ -30,6 +35,11 @@
 	name = "plain black jacket"
 	desc = "A plain black jacket."
 	icon_state = "plain2"
+
+/obj/item/clothing/suit/vampire/toggled/plain_jacket/tan
+	name = "plain tan jacket"
+	desc = "A plain tan jacket."
+	icon_state = "plain3"
 
 /obj/item/clothing/suit/vampire/toggled/military_jacket
 	name = "military jacket"
@@ -97,10 +107,3 @@
 /obj/item/clothing/suit/armor/riot/knight/red
 	slowdown = 0.5
 
-/datum/armor/highly_protective_vest
-	melee = 55
-	bullet = 55
-
-/datum/armor/eod_suit
-	melee = 70
-	bullet = 70
