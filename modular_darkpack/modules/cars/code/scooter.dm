@@ -10,8 +10,8 @@
 	icon_state = "base"
 	visual_offset = -8
 
-	MAP_SWITCH(pixel_x = 0, pixel_x = -8)
-	MAP_SWITCH(pixel_y = 0, pixel_y = -8)
+	MAP_SWITCH(pixel_w = 0, pixel_x = -8)
+	MAP_SWITCH(pixel_z = 0, pixel_y = -8)
 
 	max_integrity = 150
 	max_passengers = 0
