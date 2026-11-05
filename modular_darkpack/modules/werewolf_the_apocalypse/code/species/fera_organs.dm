@@ -33,7 +33,7 @@
 	unarmed_attack_verbs = list("claw")
 	unarmed_attack_verbs_continuous = list("claws")
 	appendage_noun = "paw"
-	unarmed_pen = 35 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
+	unarmed_pen = 30 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/slashmiss.ogg'
@@ -47,7 +47,7 @@
 	unarmed_attack_verbs = list("claw")
 	unarmed_attack_verbs_continuous = list("claws")
 	appendage_noun = "paw"
-	unarmed_pen = 35 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
+	unarmed_pen = 30 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/slashmiss.ogg'
@@ -134,3 +134,24 @@
 
 //CRIMSION GRID ADDITION END
 
+//CRMISION GRID ADDITION START - objects in hands for crinos form
+
+/obj/item/bodypart/arm/left/fera/aggravated/warform/Initialize(mapload)
+	held_hand_offset = new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("south" = 10 , "north" = 12 , "east" = 16, "west" = -2),
+		offset_y = list("south" = 10, "north" = 16 , "east" = 10 ,"west" = 9),
+	)
+	return ..()
+
+/obj/item/bodypart/arm/right/fera/aggravated/warform/Initialize(mapload)
+	held_hand_offset = new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("south" = 10 , "north" = 12 , "east" = 18 ,"west" = -2),
+		offset_y = list("south" = 10, "north" = 16 , "east" = 8 ,"west" = 9),
+	)
+	return ..()
+
+//CRIMSION GRID ADDITION END
