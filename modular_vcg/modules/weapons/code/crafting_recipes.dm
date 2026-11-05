@@ -18,7 +18,7 @@
 /datum/crafting_recipe/pipebomb_ied
 	name = "Improvised Explosive Device"
 	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER)
-	time = 500
+	time = 50 SECONDS
 	reqs = list(
 	/obj/item/soil_sack/rich = 1,
 	/obj/item/stack/cable_coil = 15,
