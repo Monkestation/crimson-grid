@@ -1,13 +1,30 @@
 /obj/structure/table/wood/pizza_counter
-	name = "pizza order counter"
-	desc = "Customers come here to order pizza. Examine it to see the open orders."
+	name = "order counter"
+	desc = "Customers come here to order food. Examine it to see the open orders."
 	/// Side of the counter customers queue up on
 	var/customer_dir = SOUTH
 	/// While FALSE, no new customers come to the counter. Customers already waiting are still served.
 	var/accepting_orders = TRUE
-	var/list/datum/pizza_order/orders = list()
+	/// Order type > weight of being picked for a new customer. Subtypes below restrict this.
+	var/list/order_types = list(
+		/datum/food_order/pizza = 1,
+		/datum/food_order/burger = 1,
+	)
+	var/list/datum/food_order/orders = list()
 	/// Invisible activity point that draws NPCs over here
 	var/obj/effect/landmark/npcactivity/attractor
+
+/// Pizza only
+/obj/structure/table/wood/pizza_counter/pizza
+	name = "pizza order counter"
+	desc = "Customers come here to order pizza. Examine it to see the open orders."
+	order_types = list(/datum/food_order/pizza = 1)
+
+/// Burger only
+/obj/structure/table/wood/pizza_counter/burger
+	name = "burger order counter"
+	desc = "Customers come here to order burgers and fries. Examine it to see the open orders."
+	order_types = list(/datum/food_order/burger = 1)
 
 /obj/structure/table/wood/pizza_counter/Initialize(mapload)
 	. = ..()
@@ -19,10 +36,14 @@
 /obj/structure/table/wood/pizza_counter/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	GLOB.pizza_counters -= src
-	for(var/datum/pizza_order/order as anything in orders.Copy())
+	for(var/datum/food_order/order as anything in orders.Copy())
 		end_order(order)
 	QDEL_NULL(attractor)
 	return ..()
+
+/// Whether this counter hands out orders of the given type (used by the pizza station to ignore burger counters).
+/obj/structure/table/wood/pizza_counter/proc/takes_order_type(order_type)
+	return !!(order_type in order_types)
 
 /// Opens or closes the counter. Closing removes the activity point, so NPCs stop coming over.
 /obj/structure/table/wood/pizza_counter/proc/set_accepting_orders(new_state)
@@ -52,13 +73,13 @@
 	else
 		. += span_warning("It's closed to new customers. Use it with an empty hand to reopen it.")
 	if(!length(orders))
-		. += span_notice("No one is waiting for a pizza right now.")
+		. += span_notice("No one is waiting for an order right now.")
 		return
-	for(var/datum/pizza_order/order as anything in orders)
+	for(var/datum/food_order/order as anything in orders)
 		var/mob/living/carbon/human/npc/customer = order.get_customer()
 		if(QDELETED(customer))
 			continue
-		. += span_notice("[customer] wants a pizza with [order.describe()] ([max(round((order.deadline - world.time) / (1 SECONDS)), 0)]s left).")
+		. += span_notice("[customer] wants [order.describe_remaining()] ([max(round((order.deadline - world.time) / (1 SECONDS)), 0)]s left).")
 
 /obj/structure/table/wood/pizza_counter/process(seconds_per_tick)
 	service_orders()
@@ -75,7 +96,7 @@
 
 /// Only NPCs that have arrived somewhere and are idling can be pulled in
 /obj/structure/table/wood/pizza_counter/proc/can_take_order_from(mob/living/carbon/human/npc/candidate)
-	if(candidate.pizza_order || candidate.staying || candidate.walktarget || candidate.loiter_spot)
+	if(candidate.food_order || candidate.staying || candidate.walktarget || candidate.loiter_spot)
 		return FALSE
 	if(candidate.loiter_until <= world.time || candidate.danger_source || candidate.stat != STABLE)
 		return FALSE
@@ -97,10 +118,11 @@
 	return best || front
 
 /obj/structure/table/wood/pizza_counter/proc/take_order(mob/living/carbon/human/npc/customer)
-	var/datum/pizza_order/order = new(customer)
+	var/order_type = pick_weight(order_types)
+	var/datum/food_order/order = new order_type(customer)
 	order.counter = src
 	orders += order
-	customer.pizza_order = order
+	customer.food_order = order
 
 	var/turf/spot = find_customer_spot()
 	if(spot && get_dist(customer, spot) > 1)
@@ -108,17 +130,17 @@
 		customer.loiter_spot = spot
 		customer.walktarget = spot
 		customer.stopturf = 0
-	customer.say("Hey, can I get a pizza with [order.describe()]?")
+	customer.say("Hey, can I get [order.order_text()]?")
 
 /// Drops orders whose customer died, got scared off, or ran out of patience; keeps waiting customers parked.
 /obj/structure/table/wood/pizza_counter/proc/service_orders()
-	for(var/datum/pizza_order/order as anything in orders.Copy())
+	for(var/datum/food_order/order as anything in orders.Copy())
 		var/mob/living/carbon/human/npc/customer = order.get_customer()
-		if(QDELETED(customer) || customer.stat != STABLE || customer.danger_source || customer.pizza_order != order)
+		if(QDELETED(customer) || customer.stat != STABLE || customer.danger_source || customer.food_order != order)
 			end_order(order)
 			continue
 		if(world.time >= order.deadline)
-			customer.say("Forget it, I'll get a slice somewhere else.")
+			customer.say("Forget it, I'll get something somewhere else.")
 			end_order(order)
 			continue
 		if(!customer.walktarget)
@@ -126,29 +148,30 @@
 			customer.loiter_until = max(customer.loiter_until, world.time + 6 SECONDS)
 			customer.face_atom(src)
 
-/obj/structure/table/wood/pizza_counter/proc/end_order(datum/pizza_order/order)
+/obj/structure/table/wood/pizza_counter/proc/end_order(datum/food_order/order)
 	var/mob/living/carbon/human/npc/customer = order.get_customer()
-	if(customer && customer.pizza_order == order)
-		customer.pizza_order = null
+	if(customer && customer.food_order == order)
+		customer.food_order = null
 		customer.loiter_until = world.time + rand(1 SECONDS, 3 SECONDS)
 	orders -= order
 	qdel(order)
 
-/// Called when a player hands a pizza to a waiting customer.
-/obj/structure/table/wood/pizza_counter/proc/complete_order(datum/pizza_order/order, mob/living/user, obj/item/food/pizza/pizza)
+/// Called when a player hands food to a waiting customer. Each part (pizza, burger, fries) is
+/// graded, accepted and paid separately; the order ends once every part has been delivered.
+/obj/structure/table/wood/pizza_counter/proc/complete_order(datum/food_order/order, mob/living/user, obj/item/food/food)
 	var/mob/living/carbon/human/npc/customer = order.get_customer()
 	if(QDELETED(customer))
 		return
-	if(pizza.foodtypes & RAW)
+	if(food.foodtypes & RAW)
 		customer.say("This is still raw!")
 		return
 
-	var/score = order.grade(pizza)
-	var/payout = order.payout_for(score)
-	if(!payout)
+	var/list/result = order.submit(food)
+	if(!result)
 		customer.say("That's not what I ordered!")
 		return
 
+	var/score = result["score"]
 	if(score >= 90)
 		customer.say("Wow, that's perfect! Keep the change.")
 	else if(score >= 60)
@@ -156,9 +179,12 @@
 	else
 		customer.say("...Not quite what I asked for, but fine.")
 
-	qdel(pizza)
-	pay_user(user, customer, payout)
-	end_order(order)
+	qdel(food)
+	pay_user(user, customer, result["payout"])
+	if(order.is_complete())
+		end_order(order)
+	else
+		customer.say("Thanks. Still waiting on [order.describe_remaining()].")
 
 /obj/structure/table/wood/pizza_counter/proc/pay_user(mob/living/user, mob/living/customer, amount)
 	var/obj/item/stack/dollar/cash = new(get_turf(user), amount)
@@ -166,17 +192,18 @@
 	to_chat(user, span_notice("[customer] pays you $[amount]."))
 
 /mob/living/carbon/human/npc
-	/// The pizza order this NPC is currently waiting on, if any.
-	var/datum/pizza_order/pizza_order
+	/// The order this NPC is currently waiting on, if any. (Was pizza_order.)
+	var/datum/food_order/food_order
 
 /mob/living/carbon/human/npc/examine(mob/user)
 	. = ..()
-	if(pizza_order)
-		. += span_notice("[p_They()] [p_are()] waiting on a pizza with [pizza_order.describe()].")
+	if(food_order)
+		. += span_notice("[p_They()] [p_are()] waiting on [food_order.describe_remaining()].")
 
-/// Handing a pizza to a waiting customer completes their order.
+/// Handing food that satisfies a still-owed part of the order completes that part.
+/// Anything else falls through to normal interaction.
 /mob/living/carbon/human/npc/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(!pizza_order || stat != STABLE || !istype(tool, /obj/item/food/pizza) || !pizza_order.counter)
+	if(!food_order || stat != STABLE || !istype(tool, /obj/item/food) || !food_order.counter || !food_order.get_part(tool))
 		return ..()
-	pizza_order.counter.complete_order(pizza_order, user, tool)
+	food_order.counter.complete_order(food_order, user, tool)
 	return ITEM_INTERACT_SUCCESS

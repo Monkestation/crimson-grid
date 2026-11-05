@@ -149,15 +149,18 @@
 	for(var/obj/structure/table/wood/pizza_counter/counter as anything in nearby)
 		if(counter.accepting_orders)
 			any_open = TRUE
-		for(var/datum/pizza_order/order as anything in counter.orders)
-			var/mob/living/carbon/human/npc/customer = order.get_customer()
+		for(var/datum/food_order/order as anything in counter.orders)
+			if(!istype(order, /datum/food_order/pizza))
+				continue
+			var/datum/food_order/pizza/pizza_order = order
+			var/mob/living/carbon/human/npc/customer = pizza_order.get_customer()
 			if(QDELETED(customer))
 				continue
 			order_data += list(list(
 				"customer" = customer.real_name || customer.name,
-				"description" = order.describe(),
-				"seconds_left" = max(round((order.deadline - world.time) / (1 SECONDS)), 0),
-				"score" = held_pizza ? order.grade(held_pizza) : 0,
+				"description" = pizza_order.describe(),
+				"seconds_left" = max(round((pizza_order.deadline - world.time) / (1 SECONDS)), 0),
+				"score" = held_pizza ? pizza_order.grade(held_pizza) : 0,
 			))
 	data["orders"] = order_data
 	data["has_counter"] = !!length(nearby)

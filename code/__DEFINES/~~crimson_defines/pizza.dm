@@ -30,3 +30,26 @@
 #define PIZZA_STOCK_MAX 80
 /// Servings in a fresh box of toppings
 #define PIZZA_BOX_USES 40
+
+#define FOOD_PART_PIZZA "pizza"
+#define FOOD_PART_BURGER "burger"
+#define FOOD_PART_FRIES "fries"
+
+#define FOOD_ORDER_PATIENCE PIZZA_ORDER_PATIENCE
+
+//INSANE BURGER BALANCE.
+/// Pay for the bun alone
+#define BURGER_BASE_PAY 6
+/// Pay per patty
+#define BURGER_PATTY_COST 4
+/// Percent chance for a double burger
+#define BURGER_DOUBLE_CHANCE 20
+#define BURGER_MAX_PATTIES 2
+/// Percent chance that a requested topping is asked for more than once ("double cheese")
+#define BURGER_MULTI_TOPPING_CHANCE 30
+/// Percent chance a burger order also wants fries
+#define BURGER_FRIES_CHANCE 40
+/// Extra patience when fries are included
+#define BURGER_FRIES_PATIENCE (30 SECONDS)
+/// Points lost per wrong, extra or unwanted thing
+#define BURGER_WRONG_PENALTY 15

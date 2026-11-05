@@ -1,16 +1,10 @@
-/datum/pizza_order
-	var/datum/weakref/customer_ref
-	var/obj/structure/table/wood/pizza_counter/counter
+/datum/food_order/pizza
 	/// topping typepath -> PIZZA_SIDE_*
 	var/list/wanted = list()
-	var/deadline = 0
-	var/base_pay = PIZZA_BASE_PAY
 
-/datum/pizza_order/New(mob/living/carbon/human/npc/new_customer, patience = PIZZA_ORDER_PATIENCE)
-	. = ..()
-	customer_ref = WEAKREF(new_customer)
-	deadline = world.time + patience
-
+/datum/food_order/pizza/generate_order()
+	parts_left = list(FOOD_PART_PIZZA)
+	var/base = PIZZA_BASE_PAY
 	var/list/pool = assoc_to_keys(GLOB.pizza_toppings)
 	var/count = min(pick(1, 1, 2, 2, 3), length(pool))
 	// Sometimes the first two toppings are a half and half pizza
@@ -22,18 +16,11 @@
 			side = (index == 1) ? PIZZA_SIDE_LEFT : PIZZA_SIDE_RIGHT
 		wanted[topping_type] = side
 		var/datum/pizza_topping/topping = GLOB.pizza_toppings[topping_type]
-		base_pay += round(topping.cost * (side == PIZZA_SIDE_WHOLE ? 1 : 0.5))
-
-/datum/pizza_order/Destroy()
-	counter = null
-	customer_ref = null
-	return ..()
-
-/datum/pizza_order/proc/get_customer()
-	return customer_ref?.resolve()
+		base += round(topping.cost * (side == PIZZA_SIDE_WHOLE ? 1 : 0.5))
+	part_pay[FOOD_PART_PIZZA] = base
 
 /// "pepperoni on the left half, mushrooms on the right half" etc. Left/right is as seen on screen.
-/datum/pizza_order/proc/describe()
+/datum/food_order/pizza/describe()
 	var/list/parts = list()
 	for(var/topping_type in wanted)
 		var/datum/pizza_topping/topping = GLOB.pizza_toppings[topping_type]
@@ -46,8 +33,17 @@
 				parts += "[topping.name] all over"
 	return english_list(parts)
 
+/datum/food_order/pizza/order_text()
+	return "a pizza with [describe()]"
+
+/datum/food_order/pizza/identify_part(obj/item/item)
+	return istype(item, /obj/item/food/pizza) ? FOOD_PART_PIZZA : null
+
+/datum/food_order/pizza/grade_part(part, obj/item/item)
+	return grade(item)
+
 /// Scores a pizza from 0 to 100. Missing toppings and misplaced/unwanted toppings both cost points.
-/datum/pizza_order/proc/grade(obj/item/food/pizza/pizza)
+/datum/food_order/pizza/proc/grade(obj/item/food/pizza/pizza)
 	var/datum/component/pizza_toppings/toppings = pizza.GetComponent(/datum/component/pizza_toppings)
 	if(!toppings)
 		return 0
@@ -76,12 +72,3 @@
 
 	var/score = (coverage / length(wanted)) * 100 - wrong * 10
 	return clamp(round(score), 0, 100)
-
-/datum/pizza_order/proc/payout_for(score)
-	if(score >= 90)
-		return round(base_pay * 1.5)
-	if(score >= 60)
-		return base_pay
-	if(score >= 30)
-		return round(base_pay * 0.5)
-	return 0
