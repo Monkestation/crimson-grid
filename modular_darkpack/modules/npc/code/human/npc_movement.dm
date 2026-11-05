@@ -149,7 +149,8 @@
 		free_turfs += free_turf
 	if(length(free_turfs))
 		new_loc = pick(free_turfs)
-	forceMove(new_loc)
+	if(new_loc)
+		forceMove(new_loc)
 	EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Teleported using evil russian shitcode", list(old_loc, new_loc))
 
 /mob/living/carbon/human/npc/proc/CreateWay(direction)
