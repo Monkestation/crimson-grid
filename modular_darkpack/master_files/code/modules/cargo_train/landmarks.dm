@@ -1,5 +1,7 @@
 /obj/effect/landmark/cargo_train_stop
 	name = "cargo train stop"
+	var/travel_dir = WEST
+	var/leaving_dir = EAST
 
 /obj/effect/landmark/cargo_train_interior_entry
 	name = "cargo train interior entry"

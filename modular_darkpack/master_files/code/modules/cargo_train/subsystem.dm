@@ -3,8 +3,6 @@
 #define CARGO_TRAIN_DOCKED 2
 #define CARGO_TRAIN_DEPARTING 3
 
-/// Direction the train travels along the rails (rails run east-west).
-#define CARGO_TRAIN_TRAVEL_DIR WEST
 #define CARGO_TRAIN_LENGTH 3
 #define CARGO_TRAIN_CART_LENGTH 4     // turfs each cart occupies
 #define CARGO_TRAIN_STEP_DELAY (0.2 SECONDS)
@@ -45,11 +43,21 @@ SUBSYSTEM_DEF(cargo_train)
 	var/step_timer
 	var/dwell_timer
 
+	///we pull these from the stop basically the dir we travel in to leave and enter
+	var/leaving_dir
+	var/travelling_dir
+	// current direction the train is actually moving
+	var/movement_dir
+	var/departing_reverse = FALSE
+
 /datum/controller/subsystem/cargo_train/Initialize()
 	var/obj/effect/landmark/cargo_train_stop/stop = locate() in GLOB.landmarks_list
 	if(!stop)
 		log_mapping("Cargo train: no /obj/effect/landmark/cargo_train_stop mapped, train disabled.")
 		return SS_INIT_NO_NEED
+
+	leaving_dir = stop.leaving_dir
+	travelling_dir = stop.travel_dir
 
 	var/turf/stop_turf = get_turf(stop)
 	path = build_path(stop_turf)
@@ -76,16 +84,22 @@ SUBSYSTEM_DEF(cargo_train)
 /// Contiguous rails through the stop tile, ordered in travel direction.
 /datum/controller/subsystem/cargo_train/proc/build_path(turf/stop_turf)
 	var/list/line = list(stop_turf)
+
+	// Scan both ways along the track axis
 	var/turf/cursor = get_step(stop_turf, WEST)
 	while(istype(cursor, /turf/open/misc/dirt/rails))
 		line.Insert(1, cursor)
 		cursor = get_step(cursor, WEST)
+
 	cursor = get_step(stop_turf, EAST)
 	while(istype(cursor, /turf/open/misc/dirt/rails))
 		line += cursor
 		cursor = get_step(cursor, EAST)
-	if(CARGO_TRAIN_TRAVEL_DIR == WEST)
+
+	// travelling_dir is the direction the train moves while arriving / departing.
+	if(travelling_dir == WEST)
 		line = reverseList(line)
+
 	return line
 
 /datum/controller/subsystem/cargo_train/proc/load_interior()
@@ -128,6 +142,8 @@ SUBSYSTEM_DEF(cargo_train)
 		return FALSE
 	train_state = CARGO_TRAIN_ARRIVING
 	progress = 0
+	movement_dir = travelling_dir
+	departing_reverse = FALSE
 	train_step()
 	return TRUE
 
@@ -139,25 +155,47 @@ SUBSYSTEM_DEF(cargo_train)
 		dwell_timer = null
 
 	try_sell()
-	tracked_crates.Cut()   // clean up the delivery tracking list
+	 // clean up the delivery tracking list
+	tracked_crates.Cut()
 
 	train_state = CARGO_TRAIN_DEPARTING
+
+	// Decide whether we continue forward or reverse
+	if(leaving_dir == travelling_dir)
+		departing_reverse = FALSE
+		movement_dir = travelling_dir
+	else
+		departing_reverse = TRUE
+		movement_dir = leaving_dir
+
 	train_step()
 	return TRUE
 
 /datum/controller/subsystem/cargo_train/proc/train_step()
 	step_timer = null
-	progress++
+
+	if(departing_reverse)
+		progress--
+	else
+		progress++
+
 	for(var/i in 1 to length(segments))
 		place_segment(segments[i], progress - (i - 1) * CARGO_TRAIN_CART_LENGTH)
 
 	if(train_state == CARGO_TRAIN_ARRIVING && progress >= stop_index)
 		on_dock()
 		return
-	// tail has cleared the end of the track
-	if(train_state == CARGO_TRAIN_DEPARTING && (progress - (length(segments) - 1) * CARGO_TRAIN_CART_LENGTH) > length(path))
-		train_state = CARGO_TRAIN_STORED
-		return
+
+	if(train_state == CARGO_TRAIN_DEPARTING)
+		if(departing_reverse)
+			if(progress < 1)
+				train_state = CARGO_TRAIN_STORED
+				return
+		else
+			if((progress - (length(segments) - 1) * CARGO_TRAIN_CART_LENGTH) > length(path))
+				train_state = CARGO_TRAIN_STORED
+				return
+
 	step_timer = addtimer(CALLBACK(src, PROC_REF(train_step)), CARGO_TRAIN_STEP_DELAY, TIMER_STOPPABLE)
 
 /datum/controller/subsystem/cargo_train/proc/place_segment(obj/cargotrain/segment, index)
@@ -167,13 +205,20 @@ SUBSYSTEM_DEF(cargo_train)
 	var/turf/destination = path[index]
 	segment.forceMove(destination)
 	for(var/mob/living/crushed in destination)
-		crushed.Paralyze(30 SECONDS, ignore_canstun = TRUE)
-		crushed.apply_damage(30, BRUTE, BODY_ZONE_CHEST, wound_bonus = 30)
-		crushed.apply_damage(20, BRUTE, BODY_ZONE_HEAD, wound_bonus = 25)
-		crushed.apply_damage(15, BRUTE, BODY_ZONE_L_LEG, wound_bonus = 15)
-		crushed.apply_damage(15, BRUTE, BODY_ZONE_R_LEG, wound_bonus = 15)
-		crushed.apply_damage(15, BRUTE, BODY_ZONE_L_ARM, wound_bonus = 15)
-		crushed.apply_damage(15, BRUTE, BODY_ZONE_R_ARM, wound_bonus = 15)
+		if(crushed.stat == DEAD || crushed.body_position == LYING_DOWN)
+			crushed.gib(DROP_ALL_REMAINS)
+		else
+			var/atom/throw_target
+			crushed.Paralyze(30 SECONDS, ignore_canstun = TRUE)
+			if(!throw_target)
+				throw_target = get_edge_target_turf(src, turn(WEST, pick(45, -45)))
+			crushed.throw_at(throw_target, 200, 4)
+			crushed.apply_damage(30, BRUTE, BODY_ZONE_CHEST, wound_bonus = 30)
+			crushed.apply_damage(20, BRUTE, BODY_ZONE_HEAD, wound_bonus = 25)
+			crushed.apply_damage(15, BRUTE, BODY_ZONE_L_LEG, wound_bonus = 15)
+			crushed.apply_damage(15, BRUTE, BODY_ZONE_R_LEG, wound_bonus = 15)
+			crushed.apply_damage(15, BRUTE, BODY_ZONE_L_ARM, wound_bonus = 15)
+			crushed.apply_damage(15, BRUTE, BODY_ZONE_R_ARM, wound_bonus = 15)
 
 /datum/controller/subsystem/cargo_train/proc/on_dock()
 	train_state = CARGO_TRAIN_DOCKED
@@ -312,7 +357,6 @@ SUBSYSTEM_DEF(cargo_train)
 #undef CARGO_TRAIN_DOCKED
 #undef CARGO_TRAIN_DEPARTING
 
-#undef CARGO_TRAIN_TRAVEL_DIR
 #undef CARGO_TRAIN_LENGTH
 #undef CARGO_TRAIN_CART_LENGTH
 #undef CARGO_TRAIN_STEP_DELAY
