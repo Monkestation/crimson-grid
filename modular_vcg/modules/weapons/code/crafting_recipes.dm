@@ -23,8 +23,8 @@
 	/obj/item/soil_sack/rich = 1,
 	/obj/item/stack/cable_coil = 15,
 	/obj/item/smartphone = 1,
-	/obj/item/shard = 2
-	,/obj/item/grenade/pipebomb = 1)
+	/obj/item/shard = 2,
+	/obj/item/grenade/pipebomb = 1)
 	result = /obj/item/grenade/c4/pipebomb_ied
 	category = CAT_WEAPON_RANGED
 	crafting_flags = CRAFT_SKIP_MATERIALS_PARITY
