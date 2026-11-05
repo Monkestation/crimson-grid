@@ -8,6 +8,6 @@ GLOBAL_DATUM(bank_funds, /obj/item/card/credit/giovanniboss)
 	. = ..()
 	GLOB.bank_funds = src
 
-/obj/item/card/credit/giovanniboss/Destroy()
+/obj/item/card/credit/giovanniboss/Destroy(force)
 	if (GLOB.bank_funds == src)
 		GLOB.bank_funds = null
