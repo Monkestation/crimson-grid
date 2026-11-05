@@ -43,7 +43,7 @@
 
 /datum/discipline_power/necromancy/shroudsight
 	name = "Shroudsight"
-	desc = "See in darkness clearly and see ghosts present."
+	desc = "See and speak to nearby ghosts."
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 0
