@@ -23,8 +23,10 @@ SUBSYSTEM_DEF(cargo_train)
 	ss_flags = SS_NO_FIRE
 	dependencies = list(
 		/datum/controller/subsystem/atoms,
+		/datum/controller/subsystem/lighting,
 	)
 
+	///this only really exists in the weird case something is broken on init
 	var/enabled = FALSE
 	var/train_state = CARGO_TRAIN_STORED
 	/// Ordered turfs in travel order (index 1 = where the train enters).
