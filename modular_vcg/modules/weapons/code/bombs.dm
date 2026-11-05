@@ -12,7 +12,7 @@
 	shrapnel_radius = 1
 	throw_speed = 3
 	throw_range = 6
-	det_time = 30
+	det_time = 3 SECONDS
 
 /obj/item/grenade/pipebomb/attack_self(mob/user) // you need to light it
 	return
