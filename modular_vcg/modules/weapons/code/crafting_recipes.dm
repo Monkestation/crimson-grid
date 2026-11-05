@@ -1,7 +1,7 @@
 /datum/crafting_recipe/pipebomb
 	name = "Pipe Bomb"
 	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER)
-	time = 500
+	time = 50 SECONDS
 	reqs = list(/obj/item/stack/sheet/iron = 10,
 	/obj/item/stack/sheet/cloth = 1,
 	/obj/item/gas_can = 1,
