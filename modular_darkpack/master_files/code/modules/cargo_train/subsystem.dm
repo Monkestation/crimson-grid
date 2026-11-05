@@ -155,7 +155,7 @@ SUBSYSTEM_DEF(cargo_train)
 		dwell_timer = null
 
 	try_sell()
-	 // clean up the delivery tracking list
+	// clean up the delivery tracking list
 	tracked_crates.Cut()
 
 	train_state = CARGO_TRAIN_DEPARTING
