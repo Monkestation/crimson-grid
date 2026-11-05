@@ -326,6 +326,8 @@
 		walktarget = ChoosePath()
 		face_atom(walktarget)
 
+	if(!isnull(hardstop))
+		stopturf = hardstop
 	// Can't do anything if in a container
 	if (!isturf(loc))
 		return
@@ -380,7 +382,7 @@
 
 	// Walking around behaviour
 	else if (walktarget && !staying)
-		if(get_dist(src, walktarget) <= max(stopturf, 1))
+		if(get_dist(src, walktarget) <= max(stopturf, 0))
 			// Arrived, let the next tick pick a new destination (after loitering)
 			var/reached_loiter_spot = (walktarget == loiter_spot)
 			if(!reached_loiter_spot)
@@ -449,6 +451,9 @@
 	return null
 
 /mob/living/carbon/human/npc
+	///the hard passed in dist for stop turfs
+	var/hardstop
+
 	var/loop_mode = NPC_LOOP_NONE
 	/// The walktarget our current jps walk loop was built for. Null means no walk loop of ours is running.
 	var/walk_loop_target
