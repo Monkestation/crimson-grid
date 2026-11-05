@@ -24,3 +24,11 @@ $include plexora.txt
 #ENABLE_SPEECH_FILTER
 ## Ckeys that are not filtered
 #SPEECH_FILTER_BYPASS ckey
+
+## SS Central (the sscentral Red cog) for Discord links
+#SS_CENTRAL_URL http://127.0.0.1:8440
+#SS_CENTRAL_TOKEN mytoken
+## Address players open to log in with Discord, falls back to SS_CENTRAL_URL
+#SS_CENTRAL_PUBLIC_URL https://example.com/central
+## Ready, join and observe stay closed until the player links Discord, admins are exempt
+#FORCE_DISCORD_VERIFICATION
