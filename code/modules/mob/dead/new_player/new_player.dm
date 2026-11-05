@@ -162,7 +162,7 @@
 	if(!(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
 		return JOB_UNAVAILABLE_GENERIC
 	// DARKPACK EDIT ADD START - Admins bypass latejoin job restrictions
-	if(latejoin && check_rights_for(client, R_ADMIN))
+	if(check_rights_for(client, R_ADMIN))
 		return JOB_AVAILABLE
 	// DARKPACK EDIT ADD END
 	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
@@ -190,7 +190,7 @@
 			tgui_alert(usr, "You already have played this character in this round!")
 			return FALSE
 
-	var/error = IsJobUnavailable(rank, latejoin = TRUE) // DARKPACK EDIT CHANGE - ORIGINAL: var/error = IsJobUnavailable(rank)
+	var/error = IsJobUnavailable(rank)
 	if(error != JOB_AVAILABLE)
 		tgui_alert(usr, get_job_unavailable_error_message(error, rank))
 		return FALSE
