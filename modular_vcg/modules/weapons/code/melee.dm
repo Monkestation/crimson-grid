@@ -89,12 +89,19 @@
 
 /obj/item/katana/vamp
 	block_chance = 0
+	armour_penetration = 40
 
 /obj/item/melee/sabre/vamp
 	block_chance = 0
+	armour_penetration = 40
+
+/obj/item/melee/sabre/rapier
+	block_chance = 0
+	armour_penetration = 35
 
 /obj/item/claymore/longsword
 	block_chance = 0
+	armour_penetration = 50
 
 /obj/item/claymore/longsword/keeper
 	block_chance = 0
