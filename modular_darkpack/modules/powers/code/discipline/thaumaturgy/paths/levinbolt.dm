@@ -307,7 +307,7 @@
 	owner.cut_overlay(electric_halo)
 
 	var/max_bounces = success_count // Lightning chain dependent upon successes - two successes, two targets hit
-	var/bolt_damage = 40 + (success_count * 4)  // CRIMSON EDIT CHANGE - Original: 20 + (success_count * 4)
+	var/bolt_damage = 25 + (success_count * 4)  // CRIMSON EDIT CHANGE - Original: 20 + (success_count * 4)
 
 	playsound(get_turf(owner), 'sound/effects/magic/lightningbolt.ogg', min(50 + (success_count * 10), 100), TRUE, extrarange = success_count)
 
