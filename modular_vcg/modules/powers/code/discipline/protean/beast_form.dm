@@ -85,8 +85,8 @@
 	maxHealth = 400
 	health = 400
 	speed = -0.6
-	melee_damage_lower = 40
-	melee_damage_upper = 40
+	melee_damage_lower = 60
+	melee_damage_upper = 60
 	melee_attack_cooldown = 8
 	mob_size = MOB_SIZE_LARGE
 	icon_state = "jaguar"
