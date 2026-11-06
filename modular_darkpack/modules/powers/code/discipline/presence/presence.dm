@@ -286,15 +286,16 @@
 	frenzy_usable = FALSE
 
 /datum/discipline_power/presence/summon/pre_activation_checks(mob/living/target)
-	var/mob/living/summon_target = owner?.mind?.guestbook.pick_known_guy(owner)
-	if(!istype(summon_target))
+	var/mob/living/selected_target = owner?.mind?.guestbook.pick_known_guy(owner) // CORVAX EDIT CHANGE - ORIGINAL: var/mob/living/summon_target = owner?.mind?.guestbook.pick_known_guy(owner)
+	if(!istype(selected_target)) // CORVAX EDIT CHANGE - ORIGINAL: if(!istype(summon_target))
 		to_chat(owner, span_warning("Вы не можете никого призвать."))
 		return FALSE
 
 	//this ability has a difficulty of 4 or 5 or something for people the summoner has met, and 8 for those they've only met briefly.
 	//i thought that was too low and the ability for the misuse of this disc caused me to raise it to 7 difficulty
-	successes = presence_check(owner, summon_target, list(STAT_CHARISMA, STAT_SUBTERFUGE), 7)
+	successes = presence_check(owner, selected_target, list(STAT_CHARISMA, STAT_SUBTERFUGE), 7) // CORVAX EDIT CHANGE - ORIGINAL: successes = presence_check(owner, summon_target, list(STAT_CHARISMA, STAT_SUBTERFUGE), 7)
 	if(successes > 0)
+		summon_target = selected_target // CORVAX EDIT ADD - Сохраняем адресата для отправки приглашения и снятия эффекта.
 		return TRUE
 
 	do_cooldown(cooldown_length)
