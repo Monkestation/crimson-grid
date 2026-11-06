@@ -38,6 +38,8 @@
     for(var/obj/structure/retail/store in world)
         if(istype(store, /obj/structure/retail/commodity))
             continue
+		if(istype(store, /obj/structure/retail/occult))
+			continue
         for(var/datum/data/vending_product/product as anything in store.products_list)
             if(product.price <= 0)
                 continue
