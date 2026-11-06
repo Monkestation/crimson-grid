@@ -501,13 +501,12 @@
 	if(. || HAS_TRAIT(user, TRAIT_PACIFISM))
 		return
 	target.throwing?.finalize(hit = FALSE)
-	// Robbed this from door code, maybe it works?
+	// Robbed this from door code, maybe it works? Please tell me if i shouldnt be using this here, PLEASE, I DONT KNOW WHAT IM DOING
 	var/strength_dots = user.st_get_stat(STAT_STRENGTH)
 	var/throw_distance = clamp(rand(strength_dots - 1, strength_dots + 1), 1, 5)
 	var/atom/throw_target = get_edge_target_turf(target, user.dir)
 	user.visible_message(
-		span_danger("[user]'s swing with [src] sends [target] flying on a howling gust of wind!"),
-		span_danger("The wind behind [src] sends [target] flying!"),
+		span_danger("[user]'s swing with [src] sends [target] flying!"),
 	)
 	playsound(get_turf(src), 'modular_darkpack/modules/powers/sounds/heavypunch.ogg', 50, TRUE)
 	target.throw_at(throw_target, throw_distance, 4, user)
