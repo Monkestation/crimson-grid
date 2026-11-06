@@ -492,10 +492,10 @@
 	inhand_icon_state = "lucille"
 	worn_icon_state = "lucille"
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
-	var/knockback_min = 3
-	var/knockback_max = 6
-	var/knockback_speed = 4
-	var/crater_chance = 50
+	var/knockback_min = 2
+	var/knockback_max = 5
+	var/knockback_speed = 3
+	var/crater_chance = 60
 
 /obj/item/melee/baseball_bat/vamp/lucille/attack(mob/living/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
