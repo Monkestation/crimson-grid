@@ -4,20 +4,21 @@
 
 /datum/discipline_power/fortitude/two
 
-	duration_length = 3 TURNS
+	duration_length = 4 TURNS
 
 /datum/discipline_power/fortitude/three
 
-	duration_length = 3 TURNS
+	duration_length = 5 TURNS
 
 /datum/discipline_power/fortitude/four
 
-	duration_length = 3 TURNS
+	duration_length = 6 TURNS
 
 /datum/discipline_power/fortitude/five
 
-	duration_length = 3 TURNS
+	duration_length = 7 TURNS
 
+/* CORVAX EDIT V20
 /datum/discipline_power/fortitude/one/post_gain()
 	return
 
@@ -32,3 +33,4 @@
 
 /datum/discipline_power/fortitude/five/post_gain()
 	return
+*/

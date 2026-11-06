@@ -13,12 +13,14 @@
 		/datum/discipline/presence
 	)
 	subsplat_traits = list(
-		TRAIT_FEEDING_RESTRICTION
+		TRAIT_FEEDING_RESTRICTION,
+		TRAIT_VENTRUE_SENSE,
 	)
 	male_clothes = /obj/item/clothing/under/vampire/ventrue
 	female_clothes = /obj/item/clothing/under/vampire/ventrue/female
 	subsplat_keys = /obj/item/vamp/keys/ventrue
 
+/* CORVAX EDIT REMOVE
 /datum/subsplat/vampire_clan/ventrue/antitribu
 	name = "Ventrue antitribu"
 	ru_name = "Вентру-антитрибу"
@@ -31,3 +33,4 @@
 		/datum/discipline/fortitude,
 		/datum/discipline/auspex
 	)
+*/

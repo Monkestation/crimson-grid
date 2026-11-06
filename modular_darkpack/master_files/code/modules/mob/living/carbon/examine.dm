@@ -19,6 +19,13 @@
 		. += werewolf_splat.examine_other_human(src)
 	// WEREWOLF
 
+	// CORVAX EDIT START
+	if(HAS_TRAIT(user, TRAIT_VENTRUE_SENSE) && get_dist(user, src) <= 1)
+		var/ventrue_text = user.get_ventrue_blood_sense_text(src)
+		if(ventrue_text)
+			. += ventrue_text
+	// CORVAX EDIT END
+
 /mob/living/carbon/human/display_darkpack_examine_text(mob/user)
 	. = ..()
 

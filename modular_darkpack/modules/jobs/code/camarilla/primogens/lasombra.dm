@@ -10,7 +10,7 @@
 	minimal_player_age = 14
 	exp_requirements = EXP_REQ_HEAD
 	config_tag = "PRIMOGEN_LASOMBRA"
-	job_flags = CITY_JOB_FLAGS
+	// job_flags = CITY_JOB_FLAGS // CORVAX EDIT v20
 	outfit = /datum/outfit/job/vampire/lasombraprim
 
 	display_order = JOB_DISPLAY_ORDER_LASOMBRA
