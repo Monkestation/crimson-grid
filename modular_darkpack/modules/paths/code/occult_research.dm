@@ -2,9 +2,9 @@ SUBSYSTEM_DEF(occult_research)
 	name = "Occult Research"
 	ss_flags = SS_BACKGROUND|SS_NO_INIT
 	wait = 60 SECONDS // How often to process research points
-	var/base_research_rate = 1.5 // Base points per tick | CRIMSON EDIT CHANGE - Original: 0,5 for all of the research rates
-	var/necromancy_bonus = 1.5
-	var/obtenebration_bonus = 1.5
+	var/base_research_rate = 1.5 // Base points per tick | CRIMSON EDIT CHANGE - Original: var/base_research_rate = 0.5 // Base points per tick
+	var/necromancy_bonus = 1.5 // | CRIMSON EDIT CHANGE - var/necromancy_bonus = 0.5
+	var/obtenebration_bonus = 1.5 // | CRIMSON EDIT CHANGE - Original: var/obtenebration_bonus = 0.5
 	var/list/collected_blood //lazylist since i've noticed people haven't been using this feature so much
 	COOLDOWN_DECLARE(research_notification_cooldown)
 
