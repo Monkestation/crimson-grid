@@ -96,10 +96,12 @@
 
 	. = ..()
 
+// CRIMSON GRID EDIT - NPC GRID
+#define NPC_LOOP_NONE 0
+#define NPC_LOOP_WALK 1
+#define NPC_LOOP_REACT 2 // combat or fleeing
+
 /mob/living/carbon/human/npc/Life()
-	// huh, NPCs don't run Life() at all if they're dead
-	// this means NPCs' organs will never rot, they'll stop bleeding, their body will stay
-	// the temperature it was when they died, etc. remove?
 	if (stat == DEAD)
 		return
 
@@ -118,45 +120,44 @@
 
 	if (staying)
 		return
+
 	// Don't pick a new destination while loitering
 	if (!walktarget && world.time >= loiter_until)
 		walktarget = ChoosePath()
 	if(walktarget)
 		EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Set walktarget: [walktarget]", list(loc, get_turf(walktarget)))
-	// Loitering NPCs just stand around, skip the stuck detection below so they don't jitter
+
+	// Loitering NPCs just stand around, skip stuck detection below
 	if (!walktarget && world.time < loiter_until)
 		return
+
+	// Track stuck steps on the same turf
 	if (loc == tupik_loc)
 		tupik_steps += 1
 	else
 		tupik_loc = loc
 		tupik_steps = 0
 
-	if (tupik_steps <= 3)
-		return
-	var/turf/T = get_step(src, pick(NORTH, SOUTH, WEST, EAST))
-	face_atom(T)
-	step_to(src, T, 0)
+	// If we've been stuck on the same turf for more than 3 ticks
+	if (tupik_steps > 3)
+		tupik_steps = 0
 
-	if (!walktarget || old_movement)
+		// Remember the blocked target so we don't immediately retry it, then reset movement
+		if(walktarget)
+			remember_target(walktarget)
+			walktarget = null
+
+		set_loop_mode(NPC_LOOP_NONE)
+		loiter_spot = null
+		// Short pause before choosing a fresh destination
+		loiter_until = world.time + rand(2 SECONDS, 5 SECONDS)
+
+		// Try to take a random step aside to untangle from crowds
+		var/turf/side_step = get_step(src, pick(NORTH, SOUTH, WEST, EAST))
+		if(side_step && !side_step.density)
+			face_atom(side_step)
+			step_to(src, side_step, 0)
 		return
-	if (observed_by_player())
-		return
-	var/turf/old_loc = loc
-	var/turf/new_loc = get_turf(walktarget)
-	// Land on a free turf near the target instead of stacking everyone on the exact landmark turf
-	var/list/free_turfs = list()
-	for(var/turf/open/free_turf in range(2, new_loc))
-		if(free_turf.density)
-			continue
-		if(locate(/mob/living) in free_turf)
-			continue
-		free_turfs += free_turf
-	if(length(free_turfs))
-		new_loc = pick(free_turfs)
-	if(new_loc)
-		forceMove(new_loc)
-	EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Teleported using evil russian shitcode", list(old_loc, new_loc))
 
 /mob/living/carbon/human/npc/proc/CreateWay(direction)
 	var/turf/location = get_turf(src)
@@ -326,11 +327,6 @@
 		return TRUE
 
 	return FALSE
-
-// CRIMSON GRID EDIT - NPC GRID
-#define NPC_LOOP_NONE 0
-#define NPC_LOOP_WALK 1
-#define NPC_LOOP_REACT 2 // combat or fleeing
 
 /mob/living/carbon/human/npc/proc/handle_automated_movement()
 	if (!can_npc_move())
