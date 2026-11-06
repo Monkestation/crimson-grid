@@ -122,7 +122,7 @@
 
 /obj/item/clothing/mask/facehugger/kiasyd/leap_to(mob/living/hit_mob)
 	var/mob/living/carbon/human/target = astype(hit_mob)
-	if(target)
+	if(!target) // CORVAX EDIT CHANGE - ORIGINAL: if(target)
 		return FALSE
 	if(target.wear_mask && istype(target.wear_mask, /obj/item/clothing/mask/facehugger/kiasyd))
 		return FALSE
