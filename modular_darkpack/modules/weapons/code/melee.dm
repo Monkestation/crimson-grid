@@ -493,7 +493,7 @@
 	worn_icon_state = "lucille"
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	var/knockback_min = 2
-	var/knockback_max = 5
+	var/knockback_max = 4
 	var/knockback_speed = 3
 	var/crater_chance = 60
 
