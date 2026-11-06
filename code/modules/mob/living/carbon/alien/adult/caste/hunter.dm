@@ -1,8 +1,8 @@
 /mob/living/carbon/alien/adult/hunter
 	name = "alien hunter"
 	caste = "h"
-	maxHealth = 250 // CRIMSON EDIT CHANGE - Original: maxHealth = 125
-	health = 250 // CRIMSON EDIT CHANGE - Original: health = 125
+	maxHealth = 200 // CRIMSON EDIT CHANGE - Original: maxHealth = 125
+	health = 200 // CRIMSON EDIT CHANGE - Original: health = 125
 	icon_state = "alienh"
 	alien_speed = -0.3
 

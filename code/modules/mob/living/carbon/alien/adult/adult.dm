@@ -50,12 +50,10 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 
 // CRIMSON EDIT ADDITION START - Xeno carapace
 /datum/armor/xeno_carapace
-	melee = 15
 	bullet = 25
 	bomb = 15
 
 /datum/armor/xeno_carapace/royal
-	melee = 5
 	bullet = 5
 	bomb = 5
 // CRIMSON EDIT ADDITION END

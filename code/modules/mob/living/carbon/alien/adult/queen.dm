@@ -56,8 +56,8 @@
 /mob/living/carbon/alien/adult/royal/queen
 	name = "alien queen"
 	caste = "q"
-	maxHealth = 1000 // CRIMSON EDIT CHANGE - Original: maxHealth = 500
-	health = 1000 // CRIMSON EDIT CHANGE - Original: health = 500
+	maxHealth = 700 // CRIMSON EDIT CHANGE - Original: maxHealth = 500
+	health = 700 // CRIMSON EDIT CHANGE - Original: health = 500
 	icon_state = "alienq"
 	melee_damage_lower = 50
 	melee_damage_upper = 50
