@@ -65,8 +65,13 @@
 
 /datum/food_order/burger/describe()
 	var/text = describe_burger()
+	var/list/sides = list()
 	if(wanted_fries)
-		text += " and [describe_fries()]"
+		sides += describe_fries()
+	if(wanted_drink)
+		sides += describe_drink()
+	if(length(sides))
+		text += " and [english_list(sides)]"
 	return text
 
 /datum/food_order/burger/describe_remaining()
@@ -75,6 +80,8 @@
 		parts += describe_burger()
 	if(FOOD_PART_FRIES in parts_left)
 		parts += describe_fries()
+	if(FOOD_PART_DRINK in parts_left)
+		parts += describe_drink()
 	return english_list(parts)
 
 /datum/food_order/burger/identify_part(obj/item/item)

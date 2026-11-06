@@ -34,6 +34,7 @@
 #define FOOD_PART_PIZZA "pizza"
 #define FOOD_PART_BURGER "burger"
 #define FOOD_PART_FRIES "fries"
+#define FOOD_PART_DRINK "drink"
 
 #define FOOD_ORDER_PATIENCE PIZZA_ORDER_PATIENCE
 
@@ -70,3 +71,15 @@
 #define NPC_FOOD_CALLED 2
 /// Has the food; heading back to the chair / eating it
 #define NPC_FOOD_EATING 3
+
+#define FOOD_ORDER_DRINK_PATIENCE (30 SECONDS)
+#define FOOD_ORDER_DRINK_MIN_VOLUME 5
+
+GLOBAL_LIST_INIT(order_drinks, list(
+	/datum/reagent/consumable/space_cola = 10,
+	/datum/reagent/consumable/lemon_lime = 10,
+	/datum/reagent/consumable/orangejuice = 12,
+	/datum/reagent/consumable/icetea = 12,
+	/datum/reagent/consumable/coffee = 15,
+	/datum/reagent/water = 5,
+))

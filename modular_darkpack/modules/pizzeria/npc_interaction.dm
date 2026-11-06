@@ -215,18 +215,17 @@
 	orders -= order
 	qdel(order)
 
-/obj/structure/table/wood/pizza_counter/proc/grade_food(datum/food_order/order, obj/item/food/food)
-	return order.preview_score(food)
+/obj/structure/table/wood/pizza_counter/proc/grade_food(datum/food_order/order, obj/item/item)
+	return order.preview_score(item)
 
-/// Rings the bell for this counter: of the customers whose order has matching food sitting on the counter,
+/// Rings the bell for this counter: of the customers whose order has matching food or drink sitting on the counter,
 /// only the one with the best-graded match is called up. Returns how many were called (0 or 1).
 /obj/structure/table/wood/pizza_counter/proc/call_customers()
-	var/list/foods = list()
-	for(var/obj/item/food/food in get_turf(src))
-		if(food.foodtypes & RAW)
-			continue
-		foods += food
-	if(!length(foods))
+	var/list/items = list()
+	for(var/obj/item/item in get_turf(src))
+		if(is_orderable_item(item))
+			items += item
+	if(!length(items))
 		return 0
 
 	var/datum/food_order/best_order
@@ -238,8 +237,8 @@
 		// Already on their way
 		if(customer.food_phase == NPC_FOOD_CALLED)
 			continue
-		for(var/obj/item/food/food as anything in foods)
-			var/score = grade_food(order, food)
+		for(var/obj/item/item as anything in items)
+			var/score = grade_food(order, item)
 			if(score < 0)
 				continue
 			// Strictly greater, so ties go to the oldest order
@@ -259,22 +258,22 @@
 		customer.return_to_seat()
 		return
 	customer.face_atom(src)
-	var/list/foods = list()
-	for(var/obj/item/food/food in get_turf(src))
-		if(order.preview_score(food) >= 0)
-			foods += food
+	var/list/items = list()
+	for(var/obj/item/item in get_turf(src))
+		if(is_orderable_item(item) && order.preview_score(item) >= 0)
+			items += item
 	var/taken = 0
-	while(length(foods))
-		var/obj/item/food/best
+	while(length(items))
+		var/obj/item/best
 		var/best_score = -1
-		for(var/obj/item/food/food as anything in foods)
-			var/score = order.preview_score(food)
+		for(var/obj/item/item as anything in items)
+			var/score = order.preview_score(item)
 			if(score > best_score)
 				best_score = score
-				best = food
+				best = item
 		if(!best)
 			break
-		foods -= best
+		items -= best
 		// Re-check, since an earlier delivery may have filled this part
 		if(order.preview_score(best) < 0)
 			continue
@@ -287,17 +286,26 @@
 		customer.say("There's nothing here for me yet.")
 	customer.return_to_seat()
 
+/// Food (cooked) or a drink container: anything an order could accept.
+/obj/structure/table/wood/pizza_counter/proc/is_orderable_item(obj/item/item)
+	if(istype(item, /obj/item/food))
+		var/obj/item/food/food = item
+		return !(food.foodtypes & RAW)
+	return istype(item, /obj/item/reagent_containers/cup)
+
 /// Called when a player hands food to a waiting customer, or a called customer picks it up off the counter (user = null).
 /// Each part (pizza, burger, fries) is graded, accepted and paid separately; the order ends once every part has been delivered.
-/obj/structure/table/wood/pizza_counter/proc/complete_order(datum/food_order/order, mob/living/user, obj/item/food/food)
+/obj/structure/table/wood/pizza_counter/proc/complete_order(datum/food_order/order, mob/living/user, obj/item/item)
 	var/mob/living/carbon/human/npc/customer = order.get_customer()
 	if(QDELETED(customer))
 		return
-	if(food.foodtypes & RAW)
-		customer.say("This is still raw!")
-		return
+	if(istype(item, /obj/item/food))
+		var/obj/item/food/food = item
+		if(food.foodtypes & RAW)
+			customer.say("This is still raw!")
+			return
 
-	var/list/result = order.submit(food)
+	var/list/result = order.submit(item)
 	if(!result)
 		customer.say("That's not what I ordered!")
 		return
@@ -311,8 +319,8 @@
 		customer.say("...Not quite what I asked for, but fine.")
 
 	// The customer keeps the food to eat at their table
-	customer.held_food += food
-	food.forceMove(customer)
+	customer.held_food += item
+	item.forceMove(customer)
 	pay_user(user, customer, result["payout"])
 	if(order.is_complete())
 		end_order(order, TRUE)
@@ -351,7 +359,7 @@
 /// Handing food that satisfies a still-owed part of the order completes that part.
 /// Anything else falls through to normal interaction.
 /mob/living/carbon/human/npc/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(!food_order || stat != STABLE || !istype(tool, /obj/item/food) || !food_order.counter || !food_order.get_part(tool))
+	if(!food_order || stat != STABLE || !food_order.counter || !food_order.counter.is_orderable_item(tool) || !food_order.get_part(tool))
 		return ..()
 	food_order.counter.complete_order(food_order, user, tool)
 	return ITEM_INTERACT_SUCCESS

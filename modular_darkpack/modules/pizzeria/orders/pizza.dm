@@ -20,7 +20,7 @@
 	part_pay[FOOD_PART_PIZZA] = base
 
 /// "pepperoni on the left half, mushrooms on the right half" etc. Left/right is as seen on screen.
-/datum/food_order/pizza/describe()
+/datum/food_order/pizza/proc/describe_pizza()
 	var/list/parts = list()
 	for(var/topping_type in wanted)
 		var/datum/pizza_topping/topping = GLOB.pizza_toppings[topping_type]
@@ -33,8 +33,25 @@
 				parts += "[topping.name] all over"
 	return english_list(parts)
 
+/datum/food_order/pizza/describe()
+	var/text = "a pizza with [describe_pizza()]"
+	if(wanted_drink)
+		text += ", plus [describe_drink()]"
+	return text
+
 /datum/food_order/pizza/order_text()
-	return "a pizza with [describe()]"
+	var/text = "a pizza with [describe()]"
+	if(wanted_drink)
+		text += " and [describe_drink()]"
+	return text
+
+/datum/food_order/pizza/describe_remaining()
+	var/list/parts = list()
+	if(FOOD_PART_PIZZA in parts_left)
+		parts += "a pizza with [describe_pizza()]"
+	if(FOOD_PART_DRINK in parts_left)
+		parts += describe_drink()
+	return english_list(parts)
 
 /datum/food_order/pizza/identify_part(obj/item/item)
 	return istype(item, /obj/item/food/pizza) ? FOOD_PART_PIZZA : null
