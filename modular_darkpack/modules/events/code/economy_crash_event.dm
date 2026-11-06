@@ -32,27 +32,27 @@
 
 /datum/round_event/financial_crisis/start()
 
-    shock_market(2.1, 3.2)
+	shock_market(2.1, 3.2)
 
-    var/inflation = rand(220, 330) / 100
-    for(var/obj/structure/retail/store in world)
-        if(istype(store, /obj/structure/retail/commodity))
-            continue
+	var/inflation = rand(220, 330) / 100
+	for(var/obj/structure/retail/store in world)
+		if(istype(store, /obj/structure/retail/commodity))
+			continue
 		if(istype(store, /obj/structure/retail/occult))
 			continue
-        for(var/datum/data/vending_product/product as anything in store.products_list)
-            if(product.price <= 0)
-                continue
-            product.price = max(product.price + 1, round(product.price * inflation))
-        store.update_static_data_for_all_viewers()
+		for(var/datum/data/vending_product/product as anything in store.products_list)
+			if(product.price <= 0)
+				continue
+			product.price = max(product.price + 1, round(product.price * inflation))
+		store.update_static_data_for_all_viewers()
 
-    //packs increase
-    for(var/pack_id in SSshuttle.supply_packs)
-        var/datum/supply_pack/pack = SSshuttle.supply_packs[pack_id]
-        if(!istype(pack) || pack.cost <= 0)
-            continue
-        pack.cost = max(pack.cost + 1, round(pack.cost * inflation))
+	//packs increase
+	for(var/pack_id in SSshuttle.supply_packs)
+		var/datum/supply_pack/pack = SSshuttle.supply_packs[pack_id]
+		if(!istype(pack) || pack.cost <= 0)
+			continue
+		pack.cost = max(pack.cost + 1, round(pack.cost * inflation))
 
-    //we gotta do this cause static data
-    for(var/obj/machinery/computer/cargo/console in world)
-        console.update_static_data_for_all_viewers()
+	//we gotta do this cause static data
+	for(var/obj/machinery/computer/cargo/console in world)
+		console.update_static_data_for_all_viewers()
