@@ -16,6 +16,7 @@
 
 /mob/living/carbon/alien/adult/royal/Initialize(mapload)
 	. = ..()
+	add_inner_armor(/datum/armor/xeno_carapace/royal) // CRIMSON EDIT ADDITION
 	// as a wise man once wrote: "pull over that ass too fat"
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 	// that'd be a too cheeky shield bashing strat
@@ -55,8 +56,8 @@
 /mob/living/carbon/alien/adult/royal/queen
 	name = "alien queen"
 	caste = "q"
-	maxHealth = 500
-	health = 500
+	maxHealth = 1000 // CRIMSON EDIT CHANGE - Original: maxHealth = 500
+	health = 1000 // CRIMSON EDIT CHANGE - Original: health = 500
 	icon_state = "alienq"
 	melee_damage_lower = 50
 	melee_damage_upper = 50

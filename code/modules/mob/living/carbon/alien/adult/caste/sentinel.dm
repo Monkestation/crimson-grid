@@ -1,8 +1,8 @@
 /mob/living/carbon/alien/adult/sentinel
 	name = "alien sentinel"
 	caste = "s"
-	maxHealth = 150
-	health = 150
+	maxHealth = 300 // CRIMSON EDIT CHANGE - Original: maxHealth = 150
+	health = 300 // CRIMSON EDIT CHANGE - Original: health = 150
 	icon_state = "aliens"
 	alien_speed = 0.2
 
