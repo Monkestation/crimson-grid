@@ -213,8 +213,9 @@
 	damage = 40 //CRIMSON GRID ADD: DARK THAUMATURGY
 	damage_type = BURN // CRIMSON GRID ADD END: DARK THAUMATURGY
 
-
-/datum/discipline_power/daimoinon/conflagration/activate(atom/target)
+// CRIMSON GRID ADD: DAIMOINON -> DAIMONION
+/datum/discipline_power/daimonion/conflagration/activate(atom/target)
+// CRIMSON GRID ADD END: DAIMOINON -> DAIMONION
 	. = ..()
 	var/turf/start = get_turf(owner)
 	var/obj/projectile/flames/baali/created_fireball = new(start)

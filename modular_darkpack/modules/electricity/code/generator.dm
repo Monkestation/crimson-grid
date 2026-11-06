@@ -33,6 +33,7 @@
 		L.update(FALSE)
 
 /obj/warehouse_generator/attack_hand(mob/user)
+	. = ..()
 	if(COOLDOWN_FINISHED(src, generator_cooldown))
 		COOLDOWN_START(src, generator_cooldown, 10 SECONDS)
 		if(on)

@@ -158,6 +158,24 @@
 		new /datum/data/vending_product("military jacket", /obj/item/clothing/suit/vampire/toggled/military_jacket, 25),
 		new /datum/data/vending_product("harness boots", /obj/item/clothing/shoes/vampire/harness_boots, 30),
 		new /datum/data/vending_product("brown harness boots", /obj/item/clothing/shoes/vampire/harness_boots/brown, 30),
-		new /datum/data/vending_product("wrist watch", /obj/item/watch, 20) // Crimson Edit Add - What time is it?
+		new /datum/data/vending_product("wrist watch", /obj/item/watch, 20), 
+		new /datum/data/vending_product("beret", /obj/item/clothing/head/beret, 15),
+		new /datum/data/vending_product("mariniere", /obj/item/clothing/under/rank/civilian/mime, 60),
+		new /datum/data/vending_product("propeller hat", /obj/item/clothing/head/soft/propeller_hat, 25),
+		new /datum/data/vending_product("bow tie", /obj/item/clothing/neck/bowtie, 10),
+//shorts
+		new /datum/data/vending_product("brown shorts", /obj/item/clothing/under/shorts,	10),
+		new /datum/data/vending_product("jorts", /obj/item/clothing/under/shorts/jeanshorts,	10),
+		new /datum/data/vending_product("red shorts", /obj/item/clothing/under/shorts/red,	10),
+		new /datum/data/vending_product("green shorts", /obj/item/clothing/under/shorts/green,	10),
+		new /datum/data/vending_product("blue shorts", /obj/item/clothing/under/shorts/blue,	10),
+		new /datum/data/vending_product("black shorts", /obj/item/clothing/under/shorts/black,	10),
+		new /datum/data/vending_product("purple shorts", /obj/item/clothing/under/shorts/purple,	20),
+		new /datum/data/vending_product("grey shorts", /obj/item/clothing/under/shorts/grey,	10),
+//pants
+		new /datum/data/vending_product("slacks", /obj/item/clothing/under/pants/slacks,	10),
+		new /datum/data/vending_product("jeans", /obj/item/clothing/under/pants/jeans,	10),
+		new /datum/data/vending_product("track pants", /obj/item/clothing/under/pants/track,	10),
+		new /datum/data/vending_product("camo pants", /obj/item/clothing/under/pants/camo,	10),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 	)

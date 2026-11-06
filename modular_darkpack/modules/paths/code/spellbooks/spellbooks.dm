@@ -35,6 +35,7 @@
 		. += span_notice("You could try to clean off the dust to see what lies beneath.")
 
 /obj/item/path_spellbook/attack_self(mob/living/carbon/human/user)
+	. = ..()
 	if(!istype(user))
 		return FALSE
 

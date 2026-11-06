@@ -97,6 +97,11 @@
 	applicable_stats = list(STAT_CHARISMA, STAT_PERFORMANCE)
 	numerical = TRUE
 
+/datum/storyteller_roll/presence_awe/using_difficulty(mob/living/roller, atom/target)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_ENCHANTING_VOICE))
+		. -= 2
+
 // AWE
 /datum/discipline_power/presence/awe
 	name = "Awe"

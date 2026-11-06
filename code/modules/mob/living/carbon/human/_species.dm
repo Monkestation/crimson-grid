@@ -808,6 +808,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/limb_accuracy = attacking_bodypart.unarmed_effectiveness
 	// Limb sharpness determines the type of wounds this unarmed strike could possibly roll. By default, most limbs are blunt and have no sharpness.
 	var/limb_sharpness = attacking_bodypart.unarmed_sharpness
+	var/limb_penetration = attacking_bodypart.unarmed_pen //CRISON GRID ADDITION - limb armor piercing for unarmed attacks
 
 	if(grappled)
 		var/pummel_bonus = attacking_bodypart.unarmed_pummeling_bonus
@@ -874,6 +875,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	var/armor_block = target.run_armor_check(affecting, MELEE)
 
+	armor_block = max(0, armor_block - limb_penetration) //CRISON GRID ADDITION - unarmed attacks can pierce armor now
 	// In a brawl, drunkenness is a boon if you're a bit drunk but not too much. Else you're easier to hit.
 	// But, generally, getting hit while drunk is probably a good way to start throwing up
 	var/target_drunkenness = target.get_drunk_amount()
