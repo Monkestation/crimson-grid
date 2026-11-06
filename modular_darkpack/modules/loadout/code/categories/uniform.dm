@@ -319,4 +319,4 @@
 /datum/loadout_item/uniform/uniform_bacotell
 	name = "Bacotell uniform"
 	item_path = /obj/item/clothing/under/vampire/bacotell
-//ADDITION END
+//CRIMSON ADDITION END
