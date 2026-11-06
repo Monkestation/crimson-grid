@@ -470,8 +470,9 @@
 	. = ..()
 	AddComponent(/datum/component/selling, 400, "spear", FALSE)
 
+
 //Crimson Grid Addition: A Brujah's Primogen Best Friend
-/obj/item/melee/baseball_bat/vamp
+/obj/item/melee/baseball_bat/vamp/lucille
 	name = "Lucille"
 	desc = "A sturdy baseball bat armed with barbed wire, nails, and it's somehow constantly dragging wind around it, as if rebellious forces feed it's swing."
 	attack_verb_continuous = list("bludgeons", "bashes", "beats", "destroys")
@@ -491,4 +492,3 @@
 	inhand_icon_state = "lucille"
 	worn_icon_state = "lucille"
 	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
-
