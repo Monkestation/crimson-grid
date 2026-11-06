@@ -22,8 +22,10 @@ SUBSYSTEM_DEF(navmap)
 	var/topology_generation = 0
 	/// Changes when turf terrain-cost flags or their passability dependencies are invalidated.
 	var/nav_cost_generation = 0
-	/// Last effective terrain-cost flags published, keyed by turf coordinates.
+	// Last effective terrain-cost flags published, keyed by turf coordinates.
 	var/alist/published_nav_cost_flags = alist()
+	/// Weighted DM fallback searches that have consumed terrain costs.
+	var/list/datum/pathfind/navmap/active_cost_searches = list()
 	/// Weighted DM fallback searches that have consumed terrain costs.
 	var/topology_rebuild_in_progress = FALSE
 	var/alist/nav_links = alist()
