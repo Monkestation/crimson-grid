@@ -17,6 +17,7 @@
 	)
 
 	alt_titles = list(
+		JOB_CLINIC_LAWYER,
 		"Hospital Attorney",
 	)
 
