@@ -76,3 +76,14 @@
 		return null
 	parts_left -= part
 	return list("score" = score, "payout" = payout)
+
+/// Score this item would get, without delivering it. -1 if it would be rejected
+/// (wrong part, already delivered, or too low to pay out).
+/datum/food_order/proc/preview_score(obj/item/item)
+	var/part = get_part(item)
+	if(!part)
+		return -1
+	var/score = grade_part(part, item)
+	if(!payout_for(score, part_pay[part]))
+		return -1
+	return score

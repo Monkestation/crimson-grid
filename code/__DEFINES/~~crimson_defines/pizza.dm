@@ -53,3 +53,20 @@
 #define BURGER_FRIES_PATIENCE (30 SECONDS)
 /// Points lost per wrong, extra or unwanted thing
 #define BURGER_WRONG_PENALTY 15
+
+/// How far from the counter a customer will look for a chair
+#define PIZZA_SEAT_RANGE 8
+/// How close the player must be to a counter for the service bell to reach it
+#define SERVICE_BELL_RANGE 7
+/// How long after finishing a meal an NPC won't order (or walk to food activity points) again
+#define NPC_FOOD_COOLDOWN_MIN (2 MINUTES)
+#define NPC_FOOD_COOLDOWN_MAX (4 MINUTES)
+
+/// Not involved in a meal
+#define NPC_FOOD_NONE 0
+/// Ordered; heading to / sitting in a chair, waiting for the food
+#define NPC_FOOD_SEATED 1
+/// The service bell was rung; walking to the counter to collect the food
+#define NPC_FOOD_CALLED 2
+/// Has the food; heading back to the chair / eating it
+#define NPC_FOOD_EATING 3

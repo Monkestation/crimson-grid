@@ -40,6 +40,10 @@
 	icon = 'modular_darkpack/modules/deprecated/icons/effects/landmarks_static.dmi'
 	icon_state = "bullets"
 
+/// Activity point that draws NPCs to somewhere they can buy food.
+/obj/effect/landmark/npcactivity/food
+	name = "NPC Food Activity"
+
 /obj/effect/landmark/npcability
 	name = "NPC Ability"
 	icon = 'modular_darkpack/modules/deprecated/icons/effects/landmarks_static.dmi'
@@ -59,6 +63,7 @@
 	GLOB.alive_npc_list -= src
 	SShumannpcpool.try_repopulate()
 	GLOB.move_manager.stop_looping(src)
+	abandon_food()
 
 	if (!last_attacker || (get_dist(src, last_attacker) >= 10) || key || hostile)
 		return ..()
@@ -177,11 +182,20 @@
 	if(length(recent_targets) > NPC_RECENT_TARGETS)
 		recent_targets.Cut(1, 2)
 
+/// Whether ChoosePath is allowed to send us to this activity point right now.
+/mob/living/carbon/human/npc/proc/can_pick_activity(obj/effect/landmark/npcactivity/N)
+	if(N in recent_targets)
+		return FALSE
+	// Not hungry again yet
+	if(world.time < food_cooldown_until && istype(N, /obj/effect/landmark/npcactivity/food))
+		return FALSE
+	return TRUE
+
 /mob/living/carbon/human/npc/proc/ChoosePath()
 	if(!old_movement)
 		var/list/possible_list = list()
 		for(var/obj/effect/landmark/npcactivity/N in GLOB.npc_activities)
-			if(N in recent_targets)
+			if(!can_pick_activity(N))
 				continue
 			if(get_dist(src, N) < 64)
 				var/turf/T = get_step(N, turn(get_dir(src, N), 180))
@@ -194,17 +208,19 @@
 		if(!length(possible_list))
 			//any activity point that isn't right on top of us, isn't one we just visited, and isn't crowded
 			var/list/candidates = list()
+			var/list/anywhere = list()
 			for(var/obj/effect/landmark/npcactivity/N in GLOB.npc_activities)
-				if(N in recent_targets)
+				if(!can_pick_activity(N))
 					continue
+				anywhere += N
 				var/dist = get_dist(src, N)
 				if(dist <= 1 || dist > 40)
 					continue
 				candidates += N
 			if(length(candidates))
 				return pick(candidates)
-			if(length(GLOB.npc_activities))
-				return pick(GLOB.npc_activities)
+			if(length(anywhere))
+				return pick(anywhere)
 			return
 
 		return pick(possible_list)
@@ -327,7 +343,7 @@
 		walktarget = ChoosePath()
 		face_atom(walktarget)
 
-	if(!isnull(hardstop))
+	if(!isnull(hardstop) && !loiter_spot)
 		stopturf = hardstop
 	// Can't do anything if in a container
 	if (!isturf(loc))
@@ -343,6 +359,8 @@
 		// Stop loitering so we resume walking once the fight is over
 		loiter_until = 0
 		loiter_spot = null
+		// Get out of the chair and forget about dinner
+		abandon_food()
 
 		// Run away from the danger source if they aren't aggressive and have no weapon
 		if (!has_weapon && !aggressive)
@@ -383,8 +401,9 @@
 
 	// Walking around behaviour
 	else if (walktarget && !staying)
-		if(get_dist(src, walktarget) <= max(stopturf, 0))
-			// Arrived, let the next tick pick a new destination (after loitering)
+		var/arrive_dist = (loiter_spot && walktarget == loiter_spot) ? 0 : max(stopturf, 0)
+		var/at_counter = (food_phase == 2 && food_order?.counter && get_dist(src, food_order.counter) <= 1)
+		if(at_counter || get_dist(src, walktarget) <= arrive_dist)
 			var/reached_loiter_spot = (walktarget == loiter_spot)
 			if(!reached_loiter_spot)
 				remember_target(walktarget)
@@ -394,11 +413,22 @@
 			if(reached_loiter_spot)
 				loiter_spot = null
 				loiter_until = world.time + rand(10 SECONDS, 30 SECONDS)
+				// Sitting down, collecting food, etc. (see the food counter code)
+				on_loiter_spot_reached()
 			else
 				start_loitering()
 		else
 			set_loop_mode(NPC_LOOP_WALK)
 			// If we haven't moved for a few ticks, we're probably stuck behind someone: repath around them
+			//chud shit
+			if(loiter_spot && walktarget == loiter_spot && walk_stuck_ticks >= 2 && get_dist(src, walktarget) <= 3)
+				var/turf/spot_turf = get_turf(walktarget)
+				if(spot_turf && !spot_turf.density)
+					forceMove(spot_turf)
+					walk_stuck_ticks = 0
+					last_walk_pos = loc
+					return
+
 			if(loc == last_walk_pos)
 				walk_stuck_ticks++
 			else
@@ -429,15 +459,22 @@
 		return
 	walk_loop_target = walktarget
 	walk_loop_delay = delay
+	// Loiter spots (chairs, counter spots, sidewalk) are walked to exactly (dist 0); everything else stops 1+ away
+	var/min_dist = loiter_spot ? 0 : max(stopturf, 1)
 	GLOB.move_manager.navmap_astar_move(src, walktarget, delay, \
 		repath_delay = 2 SECONDS, \
 		max_path_length = clamp(get_dist(src, walktarget) * 2, 40, 120), \
-		minimum_distance = max(stopturf, 1), \
+		minimum_distance = min_dist, \
 		simulated_only = TRUE, \
 		avoid = walk_avoid, \
 		skip_first = TRUE, \
 		allow_multiz = FALSE, \
 		allow_nav_links = FALSE)
+
+/mob/living/carbon/human/npc/CanAllowThrough(atom/movable/mover, border_dir)
+	if(istype(mover, /mob/living/carbon/human/npc))
+		return TRUE
+	return ..()
 
 /// Returns the first visible turf fire in range, or null.
 /mob/living/carbon/human/npc/proc/find_nearby_fire()
@@ -472,6 +509,8 @@
 	var/loiter_until = 0
 	/// The off-road turf we're walking to so we can loiter there. Null if we aren't heading to one.
 	var/turf/loiter_spot
+	/// world.time before which we won't path to food activity points or order food (we just ate).
+	var/food_cooldown_until = 0
 
 /mob/living/carbon/human/npc/proc/set_loop_mode(new_mode)
 	if(loop_mode == new_mode)

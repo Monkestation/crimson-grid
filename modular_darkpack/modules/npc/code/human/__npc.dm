@@ -241,21 +241,6 @@
 
 	source.Annoy(helper)
 
-/mob/living/carbon/human/npc/Move(NewLoc, direct)
-	if (!can_npc_move())
-		GLOB.move_manager.stop_looping(src)
-
-	var/getaway = stopturf + 1
-
-	if (!old_movement)
-		getaway = 2
-
-	if (get_dist(src, walktarget) <= getaway)
-		GLOB.move_manager.stop_looping(src)
-		walktarget = null
-
-	. = ..()
-
 /mob/living/carbon/human/npc/grabbedby(mob/living/carbon/user, supress_message = FALSE)
 	. = ..()
 
