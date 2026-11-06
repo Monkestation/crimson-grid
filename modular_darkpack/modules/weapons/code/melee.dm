@@ -469,3 +469,26 @@
 /obj/item/darkpack/spear/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/selling, 400, "spear", FALSE)
+
+//Crimson Grid Addition: A Brujah's Primogen Best Friend
+/obj/item/melee/baseball_bat/vamp
+	name = "Lucille"
+	desc = "A sturdy baseball bat armed with barbed wire, nails, and it's somehow constantly dragging wind around it, as if rebellious forces feed it's swing."
+	attack_verb_continuous = list("bludgeons", "bashes", "beats", "destroys")
+	attack_verb_simple = list("bludgeon", "bash", "beat", "smacks", "destroy")
+	w_class = WEIGHT_CLASS_BULKY	//TG parent bat is huge
+
+	// WTA pg. 302
+	force = 2 TTRPG_DAMAGE
+	attack_difficulty = 4 // Slightly better to swing with the winds guiding it
+
+	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
+	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
+	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
+	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
+	icon_state = "lucille"
+	inhand_icon_state = "lucille"
+	worn_icon_state = "lucille"
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
+
