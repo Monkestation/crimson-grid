@@ -10,6 +10,7 @@
 
 // Clinic
 #define JOB_CLINIC_GUARD "Clinic Guard"
+#define JOB_CLINIC_LAWYER "General Counsel"
 
 
 // Display orders
@@ -22,6 +23,7 @@
 
 #define JOB_DISPLAY_ORDER_KEEPER 6
 
+#define JOB_DISPLAY_ORDER_CLINIC_LAWYER 2
 #define JOB_DISPLAY_ORDER_CLINIC_GUARD 3
 
 #define SUPERVISOR_TRIAD "the Mountain Master"

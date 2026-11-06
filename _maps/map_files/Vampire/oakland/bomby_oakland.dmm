@@ -20586,6 +20586,23 @@
 /obj/effect/turf_decal/asphaltline/alt,
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/financialdistrict)
+"eNT" = (
+/obj/structure/vampdoor/wood{
+	name = "Directors Office";
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/access/director,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/turf_decal/siding/grey{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/grey{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/clinic)
 "eNU" = (
 /obj/structure/railing{
 	dir = 9
@@ -33278,6 +33295,11 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
+"hHV" = (
+/obj/machinery/sprinkler/area_managed,
+/obj/structure/chair/office/darkpack/black,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "hHX" = (
 /obj/structure/closet/secure_closet/freezer/fridge/all_access,
 /obj/item/storage/box/ingredients/random,
@@ -45192,6 +45214,23 @@
 /obj/structure/table/wood/fancy/purple,
 /turf/open/floor/carpet/purple,
 /area/vtm/interior/jazzclub)
+"ksT" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/obj/structure/vampdoor/wood{
+	name = "Counsel Office";
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/access/director,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/clinic)
 "ksU" = (
 /obj/structure/table/wood,
 /obj/item/toy/figure/wizard{
@@ -54140,6 +54179,17 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower)
+"mvd" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 9
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_y = 0;
+	pixel_x = -10
+	},
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic)
 "mvk" = (
 /obj/effect/turf_decal/siding/wood/dark,
 /obj/machinery/sprinkler,
@@ -55247,16 +55297,11 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/millennium_tower)
 "mKx" = (
-/obj/effect/decal/carpet{
-	icon_state = "greencarpet";
-	pixel_x = -2;
-	pixel_y = 23
-	},
-/obj/structure/chair/office/darkpack/black{
+/obj/effect/turf_decal/siding/wood/dark,
+/obj/structure/chair/comfy/darkpack/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start/darkpack/hospital/doctor,
-/obj/effect/turf_decal/siding/wood/dark,
+/obj/effect/landmark/start/darkpack/hospital/clinic_lawyer,
 /turf/open/floor/wood/herring,
 /area/vtm/interior/clinic)
 "mKC" = (
@@ -79298,6 +79343,10 @@
 /obj/structure/roadsign/speedlimit40,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/culture)
+"siZ" = (
+/obj/structure/chair/office/darkpack/black,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "sjj" = (
 /obj/structure/chair/darkpack/green,
 /turf/open/floor/city/gummaguts,
@@ -85891,6 +85940,14 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights)
+"tKW" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 5
+	},
+/obj/vampire_computer,
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic)
 "tLf" = (
 /obj/structure/vampdoor/glass,
 /obj/effect/turf_decal/siding/beige,
@@ -100311,6 +100368,14 @@
 /obj/machinery/sprinkler/area_managed,
 /turf/open/floor/city/factory,
 /area/vtm/interior/setite)
+"xcb" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
+	},
+/obj/effect/decal/carpet,
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic)
 "xcc" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
@@ -220163,10 +220228,10 @@ eUm
 eUm
 eUm
 joX
-joX
-joX
-joX
-joX
+bEV
+bEV
+bEV
+bEV
 joX
 bhT
 jKv
@@ -220571,9 +220636,9 @@ yjO
 ocs
 xEp
 ucX
-pQm
-mQD
-mYW
+jKv
+siZ
+mvd
 sMU
 joX
 joX
@@ -220776,8 +220841,8 @@ ocs
 dWB
 ucX
 nHf
-xLH
-fUv
+hHV
+xcb
 mKx
 joX
 joX
@@ -220785,7 +220850,7 @@ joX
 joX
 joX
 bhT
-nBM
+eNT
 joX
 joX
 xEp
@@ -220980,8 +221045,8 @@ ocs
 xEp
 ucX
 eWm
-mQD
-qHA
+pQm
+tKW
 rLB
 joX
 kaD
@@ -221388,7 +221453,7 @@ ucj
 xEp
 joX
 joX
-byG
+ksT
 joX
 joX
 joX

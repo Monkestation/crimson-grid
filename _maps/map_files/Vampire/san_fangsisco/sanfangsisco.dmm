@@ -4822,10 +4822,6 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/museum)
-"bdB" = (
-/obj/item/kirbyplants/darkpack/random,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/clinic)
 "bdH" = (
 /obj/structure/weightmachine/weightlifter,
 /obj/effect/turf_decal/stripes/white/line{
@@ -4960,12 +4956,12 @@
 /area/vtm/interior/millennium_tower/f2)
 "beX" = (
 /obj/structure/table/wood,
-/obj/item/flashlight/lamp/green{
-	pixel_x = 14;
-	pixel_y = 10
-	},
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 9
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_y = 0;
+	pixel_x = -10
 	},
 /turf/open/floor/wood/herring,
 /area/vtm/interior/clinic)
@@ -11903,11 +11899,12 @@
 	},
 /obj/effect/turf_decal/siding/white,
 /obj/structure/vampdoor/wood{
-	name = "Office"
+	name = "Counsel Office"
 	},
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/six,
-/obj/effect/mapping_helpers/door/access/clinic,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/access/director,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
 "cFa" = (
@@ -21354,6 +21351,11 @@
 	},
 /turf/open/floor/city/toilet,
 /area/vtm/interior)
+"eQl" = (
+/obj/machinery/sprinkler/area_managed,
+/obj/structure/chair/office/darkpack/black,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "eQm" = (
 /obj/effect/turf_decal/siding/white,
 /obj/structure/vampdoor/wood,
@@ -34405,8 +34407,8 @@
 	},
 /obj/effect/mapping_helpers/door/access/director,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/six,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/seven,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
 "hSh" = (
@@ -46248,6 +46250,13 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/stairs/black/right,
 /area/vtm/interior/endron_facility/restricted)
+"kLp" = (
+/obj/structure/bookcase/random/reference{
+	pixel_y = 20;
+	density = 0
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "kLq" = (
 /turf/closed/wall/vampwall/rock,
 /area/vtm/interior/shop/camping_store)
@@ -46590,6 +46599,13 @@
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
+"kQe" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
+	},
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic)
 "kQf" = (
 /obj/structure/chair/comfy/darkpack,
 /turf/open/floor/carpet/green,
@@ -60719,6 +60735,10 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/carpet/red,
 /area/vtm/interior/baali)
+"oag" = (
+/obj/structure/chair/office/darkpack/black,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "oal" = (
 /obj/structure/flora/bush/style_random,
 /obj/effect/landmark/npcwall,
@@ -71405,11 +71425,11 @@
 	pixel_y = 15
 	},
 /obj/machinery/light/directional/south,
-/obj/structure/chair/office/darkpack/black{
+/obj/effect/turf_decal/siding/wood/dark,
+/obj/structure/chair/comfy/darkpack/dark{
 	dir = 1
 	},
-/obj/effect/landmark/start/darkpack/hospital/doctor,
-/obj/effect/turf_decal/siding/wood/dark,
+/obj/effect/landmark/start/darkpack/hospital/clinic_lawyer,
 /turf/open/floor/wood/herring,
 /area/vtm/interior/clinic)
 "qBv" = (
@@ -90989,6 +91009,13 @@
 /obj/effect/decal/cleanable/trash,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/sewer)
+"veQ" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/item/kirbyplants/darkpack/random,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "veR" = (
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/plating/rough,
@@ -101284,6 +101311,7 @@
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 5
 	},
+/obj/vampire_computer,
 /turf/open/floor/wood/herring,
 /area/vtm/interior/clinic)
 "xxT" = (
@@ -267668,10 +267696,10 @@ jcx
 jcx
 sSW
 oNY
-oYB
+veQ
 mCP
 mCP
-bdB
+mCP
 bUt
 ntq
 ntq
@@ -267926,10 +267954,10 @@ bki
 jcx
 oNY
 cLG
-eMu
+oag
 beX
 xGQ
-bUt
+bkT
 ntq
 ntq
 ntq
@@ -268183,10 +268211,10 @@ jcx
 jcx
 cEW
 mCP
-vfS
-kWd
+eQl
+kQe
 qBr
-bUt
+bkT
 ntq
 ntq
 ntq
@@ -268439,11 +268467,11 @@ jcx
 jcx
 jcx
 oNY
-sGY
-eMu
+kLp
+mCP
 xxO
 kso
-bUt
+bkT
 ntq
 ntq
 ntq
