@@ -8,5 +8,8 @@
 
 /obj/item/phone_book/attack_self(mob/user)
 	. = ..()
+	/* CORVAX EDIT REMOVAL START - PHONE_BOOK
 	for(var/i in SSphones.assigned_phone_numbers)
 		to_chat(user, "[SSphones.assigned_phone_numbers[i]]")
+	*/ // CORVAX EDIT REMOVAL END
+	show_directory(user) // CORVAX EDIT ADD - PHONE_BOOK
