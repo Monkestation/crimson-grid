@@ -20,9 +20,10 @@ GLOBAL_LIST_EMPTY(police_network)
 GLOBAL_LIST_EMPTY(medical_network)
 GLOBAL_LIST_EMPTY(garou_network)
 GLOBAL_LIST_EMPTY(sabbat_network)
-// CRIMSON EDIT ADD - Triad
+// CRIMSON EDIT ADD - Triad / Liaison
 GLOBAL_LIST_EMPTY(triad_network)
-// CRIMSON EDIT END - Triad
+GLOBAL_LIST_EMPTY(law_enforcement_liaison_network) // PR - Rangers/Police/FBI leadership network
+// CRIMSON EDIT END - Triad / Liaison
 
 #define MILLENIUM_TOWER_NETWORK 1
 #define LASOMBRA_NETWORK 2
@@ -39,9 +40,10 @@ GLOBAL_LIST_EMPTY(triad_network)
 #define MEDICAL_NETWORK 13
 #define GAROU_NETWORK 14
 #define SABBAT_NETWORK 15
-// CRIMSON EDIT ADD - Triads
+// CRIMSON EDIT ADD - Triads / Liaison
 #define TRIAD_NETWORK 16
-// CRIMSON EDIT END - Triads
+#define LAW_ENFORCEMENT_LIAISON_NETWORK 17
+// CRIMSON EDIT END - Triads / Liaison
 
 // An indexed list of all the different phone networks that connect the phones that are part of them together.
 GLOBAL_LIST_INIT(contact_networks, alist(
@@ -60,7 +62,8 @@ GLOBAL_LIST_INIT(contact_networks, alist(
 	MEDICAL_NETWORK = GLOB.medical_network,
 	GAROU_NETWORK = GLOB.garou_network,
 	SABBAT_NETWORK = GLOB.sabbat_network,
-	// CRIMSON EDIT ADD - Triads
+	// CRIMSON EDIT ADD - Triads / Liaison
 	TRIAD_NETWORK = GLOB.triad_network,
-	// CRIMSON EDIT END - Triads
+	LAW_ENFORCEMENT_LIAISON_NETWORK = GLOB.law_enforcement_liaison_network,
+	// CRIMSON EDIT END - Triads / Liaison
 ))
