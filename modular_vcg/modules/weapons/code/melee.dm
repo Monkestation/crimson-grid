@@ -15,7 +15,7 @@
 
 /obj/item/fireaxe/vamp
 	force_wielded = 2 LETHAL_TTRPG_DAMAGE
-	block_chance = 15
+	block_chance = 0
 
 /obj/item/darkpack/spear
 	force = 2 LETHAL_TTRPG_DAMAGE
@@ -47,7 +47,7 @@
 	attack_difficulty = 7
 	armour_penetration = 50 // Normally 75 pen, that pens army armor. Instead, 50. Pens bullet proof.
 	w_class = WEIGHT_CLASS_BULKY
-	block_chance = 45
+	block_chance = 0
 	attack_verb_continuous = list("slashes", "cuts")
 	attack_verb_simple = list("slash", "cut")
 	hitsound = 'sound/items/weapons/rapierhit.ogg'
@@ -80,9 +80,29 @@
 	// WTA pg. 302
 	force_unwielded = 2 TTRPG_DAMAGE
 	force_wielded = 2.5 LETHAL_TTRPG_DAMAGE
-	block_chance = 10
+	block_chance = 0
 	attack_speed = 9
 	attack_difficulty = 7
 
 	pixel_w = -8
 	custom_price = 2250  // credit to Infared Baron for the sprite
+
+/obj/item/katana/vamp
+	block_chance = 0
+	armour_penetration = 40
+
+/obj/item/melee/sabre/vamp
+	block_chance = 0
+	armour_penetration = 40
+
+/obj/item/melee/sabre/rapier
+	block_chance = 0
+	armour_penetration = 35
+
+/obj/item/claymore/longsword
+	w_class = WEIGHT_CLASS_BULKY
+	block_chance = 0
+	armour_penetration = 50
+
+/obj/item/claymore/longsword/keeper
+	block_chance = 0
