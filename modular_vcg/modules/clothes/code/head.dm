@@ -113,3 +113,7 @@
 	name = "white race helmet"
 	desc = "A white race helmet.. Deja Vu?.. "
 	icon_state = "white_racehelmet"
+
+/datum/armor/eod_helmet
+	melee = 55
+	bullet = 55

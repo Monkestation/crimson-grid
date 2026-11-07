@@ -40,6 +40,11 @@
 	if(!source || !player_breacher || ismundane(player_breacher)) //Humans cant break the masquerade. Because reasons.
 		return
 
+	if(isnpc(source))
+		var/mob/living/carbon/human/npc/npc_source = source
+		if(npc_source.client)
+			return
+
 	if(isliving(source))
 		var/mob/living/mob_parent = source
 		if(mob_parent.stat == DEAD)

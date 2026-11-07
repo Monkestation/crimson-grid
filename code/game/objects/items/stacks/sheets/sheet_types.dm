@@ -406,6 +406,12 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	else
 		return NONE
 
+// CRIMSON EDIT ADD START - Sell Wood
+/obj/item/stack/sheet/mineral/wood/Initialize(mapload, new_amount, merge = TRUE, list/mat_override = null, mat_amt = 1)
+	. = ..()
+	AddComponent(/datum/component/selling, 5, "wood", FALSE)
+// CRIMSON EDIT ADD END - Sell Wood
+
 /*
  * Bamboo
  */
