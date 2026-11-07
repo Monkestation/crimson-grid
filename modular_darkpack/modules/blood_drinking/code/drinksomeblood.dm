@@ -1,3 +1,15 @@
+/mob/living/proc/is_mortal_for_kiss()
+    if(get_kindred_splat(src))
+        return FALSE
+
+    if(get_garou_splat(src) || get_corax_splat(src))
+        return FALSE
+
+    if(get_full_splat() && !get_ghoul_splat(src))
+        return FALSE
+
+    return TRUE
+
 /mob/living/carbon/human/proc/drinksomeblood(mob/living/drunk_from, first_drink = FALSE)
 	COOLDOWN_START(src, drinkblood_use_cd, 3 SECONDS)
 	update_drinking_overlay(drunk_from)
@@ -45,6 +57,7 @@
 		remove_drinking_overlay(drunk_from)
 		// CORVAX EDIT ADD START
 		if(!HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS) \
+			&& drunk_from.is_mortal_for_kiss() \
 			&& !(SEND_SIGNAL(drunk_from, COMSIG_MOB_VAMPIRE_SUCKED, drunk_from) & COMPONENT_RESIST_VAMPIRE_KISS))
 			drunk_from.apply_status_effect(/datum/status_effect/kissed)
 		// CORVAX EDIT ADD END
@@ -129,7 +142,7 @@
 // CORVAX EDIT END
 // CRIMSON EDIT ADD START - vamp bite mood
 /datum/mood_event/did_kiss
-	description = "Drinking blood from a body makes me feel euphoric."
+	description = "Выпивая кровь из тела, я испытываю эйфорию."
 	mood_change = 50
 	timeout = 5 MINUTES
 // CRIMSON EDIT ADD END - vamp bite mood

@@ -90,7 +90,7 @@
 				if(get_kindred_splat(src) && HAS_TRAIT(src, TRAIT_NEEDS_BLOOD))
 					trigger_kindred_frenzy(bit_living, 6, 0, "Вкус крови на пике голода")
 
-				if(!HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS)) // CORVAX EDIT ADD
+				if(!HAS_TRAIT(src, TRAIT_PAINFUL_VAMPIRE_KISS) && bit_living.is_mortal_for_kiss()) // CORVAX EDIT
 					bit_living.Sleeping(30 SECONDS)
 					bit_living.Paralyze(40 SECONDS, TRUE)
 
