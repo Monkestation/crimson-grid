@@ -100,6 +100,7 @@
 	armour_penetration = 35
 
 /obj/item/claymore/longsword
+	w_class = WEIGHT_CLASS_BULKY
 	block_chance = 0
 	armour_penetration = 50
 
