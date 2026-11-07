@@ -39,7 +39,7 @@ GLOBAL_PROTECT(mentor_href_token)
 		return
 	owner.mob.reset_perspective(followed_guy)
 	following = followed_guy
-	to_chat(GLOB.admins, span_adminooc("<span class='prefix'>MENTOR:</span> <EM>[key_name(owner.mob)]</EM> is now following <EM>[key_name(followed_guy)]</span>"))
+	to_chat(GLOB.admins, span_adminooc("<span class='prefix'>MENTOR:</span> <EM>[key_name(owner.mob)]</EM> is now following <EM>[key_name(followed_guy)]</span>"), confidential = TRUE) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 	to_chat(owner.mob, span_info("Use \"Escape\" to stop following [key_name(followed_guy)]."))
 	log_mentor("[key_name(owner.mob)] began following [key_name(followed_guy)]")
 	RegisterSignal(owner.mob, COMSIG_MOB_KEYDOWN, PROC_REF(mentor_unfollow))
@@ -56,7 +56,7 @@ GLOBAL_PROTECT(mentor_href_token)
 	SIGNAL_HANDLER
 
 	UnregisterSignal(owner.mob, list(COMSIG_MOB_KEYDOWN, COMSIG_MOB_RESET_PERSPECTIVE))
-	to_chat(GLOB.admins, span_adminooc("<span class='prefix'>MENTOR:</span> <EM>[key_name(owner.mob)]</EM> stopped following [key_name(following)].</span>"))
+	to_chat(GLOB.admins, span_adminooc("<span class='prefix'>MENTOR:</span> <EM>[key_name(owner.mob)]</EM> stopped following [key_name(following)].</span>"), confidential = TRUE) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 	log_mentor("[key_name(owner.mob)] stopped following [key_name(following)].")
 	following = null
 

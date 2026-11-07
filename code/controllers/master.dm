@@ -305,7 +305,7 @@ ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "Vie
 				msg = "The [BadBoy.name] subsystem seems to be destabilizing the MC and will be put offline."
 				BadBoy.ss_flags |= SS_NO_FIRE
 		if(msg)
-			to_chat(GLOB.admins, span_boldannounce("[msg]"))
+			to_chat(GLOB.admins, span_boldannounce("[msg]"), confidential = TRUE) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 			log_world(msg)
 
 	if (istype(Master.subsystems))

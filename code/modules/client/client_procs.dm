@@ -261,6 +261,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
+	replay_record_client("login", ckey) // CRIMSON EDIT ADDITION - REPLAYS
 
 	var/reconnecting = FALSE
 	if(GLOB.persistent_clients_by_ckey[ckey])
@@ -620,6 +621,7 @@ GLOBAL_LIST_INIT(unrecommended_builds, list(
 
 	GLOB.clients -= src
 	GLOB.directory -= ckey
+	replay_record_client("logout", ckey) // CRIMSON EDIT ADDITION - REPLAYS
 	if(persistent_client)
 		persistent_client.set_client(null)
 	else

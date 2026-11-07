@@ -214,6 +214,11 @@
 		if(target.client?.prefs.read_preference(/datum/preference/toggle/sound_announcements))
 			SEND_SOUND(target, sound(sound_to_play))
 
+	// CRIMSON EDIT ADDITION START - REPLAYS
+	if(players == GLOB.player_list)
+		replay_record_global_chat(announcement)
+	// CRIMSON EDIT ADDITION END
+
 #undef MAJOR_ANNOUNCEMENT_TITLE
 #undef MAJOR_ANNOUNCEMENT_TEXT
 #undef MINOR_ANNOUNCEMENT_TITLE
