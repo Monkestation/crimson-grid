@@ -28,7 +28,7 @@
 			location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Masquerade Breaches: [5 - breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]")) // CRIMSON EDIT CHANGE - Original: to_chat(user, span_info("[breacher.real_name], Masquerade: [breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]"))
 
-	if(!GLOB.masquerade_breakers_list)
+	if(!length(GLOB.masquerade_breakers_list))
 		to_chat(user, span_info("No available Masquerade breakers in city..."))
 
 /obj/item/veil_contract
@@ -62,7 +62,7 @@
 			location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Veil: [breacher.masquerade_score], [location_info]"))
 
-	if(!GLOB.veil_breakers_list)
+	if(!length(GLOB.veil_breakers_list))
 		to_chat(user, span_info("No available Veil breakers in city..."))
 
 /obj/item/intel_report
@@ -95,7 +95,7 @@
 			location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Veil: [breacher.masquerade_score], [location_info]"))
 
-	if(!GLOB.supernatural_breakers_list)
+	if(!length(GLOB.supernatural_breakers_list))
 		to_chat(user, span_info("No available freaks of nature in city..."))
 
 // CRIMSON EDIT ADD START - Sell Valuables
