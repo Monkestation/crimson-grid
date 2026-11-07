@@ -11,7 +11,7 @@
 	exp_required_type_department = EXP_TYPE_CLINIC
 	exp_requirements = EXP_REQ_HEAD
 	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
-	display_order = JOB_DISPLAY_ORDER_CLINICS_DIRECTOR
+	display_order = JOB_DISPLAY_ORDER_CLINIC_LAWYER
 	departments_list = list(
 		/datum/job_department/clinic,
 	)
