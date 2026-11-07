@@ -28,3 +28,27 @@
 	icon = 'modular_darkpack/modules/pizzeria/icons/uniforms.dmi'
 	worn_icon = 'modular_darkpack/modules/pizzeria/icons/uniforms.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/pizzeria/icons/uniforms.dmi')
+
+/obj/item/clothing/head/vampire/burger
+	name = "otolley's pizzeria visor"
+	icon_state = "hat2"
+	worn_icon_state = "hat2_mob"
+	icon = 'modular_darkpack/modules/pizzeria/icons/uniforms.dmi'
+	worn_icon = 'modular_darkpack/modules/pizzeria/icons/uniforms.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/pizzeria/icons/uniforms.dmi')
+
+/obj/item/clothing/under/vampire/burger_outfit
+	name = "otolley's pizzeria uniform"
+	icon_state = "burger1"
+	icon = 'modular_darkpack/modules/pizzeria/icons/uniforms.dmi'
+	worn_icon = 'modular_darkpack/modules/pizzeria/icons/uniforms_worn.dmi'
+	worn_icon_state = "burger1_mob"
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/pizzeria/icons/uniforms.dmi')
+
+/obj/item/clothing/under/vampire/burger_outfit/skirt
+	name = "otolley's pizzeria uniform skirt"
+	icon_state = "burger2"
+	icon = 'modular_darkpack/modules/pizzeria/icons/uniforms.dmi'
+	worn_icon = 'modular_darkpack/modules/pizzeria/icons/uniforms_worn.dmi'
+	worn_icon_state = "burger2_mob"
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/pizzeria/icons/uniforms.dmi')

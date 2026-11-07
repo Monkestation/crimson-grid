@@ -4,7 +4,7 @@
 	/// Side of the counter customers queue up on
 	var/customer_dir = SOUTH
 	/// While FALSE, no new customers come to the counter. Customers already waiting are still served.
-	var/accepting_orders = TRUE
+	var/accepting_orders = FALSE
 	/// Order type > weight of being picked for a new customer. Subtypes below restrict this.
 	var/list/order_types = list(
 		/datum/food_order/pizza = 1,
