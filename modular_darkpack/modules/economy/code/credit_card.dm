@@ -10,9 +10,7 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/deprecated/icons/onfloor.dmi')
 	slot_flags = NONE
 
-	var/registered_name
 	var/datum/bank_account/registered_account
-	var/has_checked = FALSE
 	var/min_starting_wealth = 600
 	var/max_starting_wealth = 1000
 
@@ -66,8 +64,8 @@
 
 /obj/item/card/credit/examine(mob/user)
 	. = ..()
-	if(registered_name)
-		. += span_notice("The card bears a name: [registered_name].")
+	if(registered_account)
+		. += span_notice("The card has the bank ID: [registered_account.account_id].")
 
 /obj/item/card/credit/GetCreditCard()
 	return src
@@ -99,29 +97,11 @@
 	LAZYREMOVE(registered_account.bank_cards, src)
 	registered_account = null
 
-/datum/outfit/job/vampire/post_equip(mob/living/carbon/human/user, visuals_only = FALSE)
-	. = ..()
-
-	var/obj/item/storage/backpack/b = locate() in user
-	if(b)
-		var/obj/item/card/credit/card = locate() in b.contents
-		if(card && card.has_checked == FALSE)
-			card.registered_name = user.real_name
-
-			//card.update_label()
-			//card.update_icon()
-			var/datum/bank_account/account = SSeconomy.bank_accounts_by_id["[user.account_id]"]
-
-			if(account && account.account_id == user.account_id)
-				card.set_account(account)
-
-
 /obj/item/proc/GetCreditCard()
 	return null
 
 /obj/item/storage/wallet/GetCreditCard()
 	return locate(/obj/item/card/credit) in contents
-
 
 /mob/proc/get_creditcard(hand_first)
 	return
