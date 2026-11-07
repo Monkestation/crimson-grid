@@ -7,7 +7,7 @@
 	earliest_start = 50 MINUTES
 	category = EVENT_CATEGORY_BUREAUCRATIC
 	description = "Wall Street has crashed catastrophically causing all of Bianchi Bank's accounts to tank as people lose their savings."
-	darkpack_allowed = TRUE
+	darkpack_allowed = FALSE // CRIMSON EDIT - Original: 	darkpack_allowed = TRUE
 
 /datum/round_event/financial_crisis
 	start_when = 1
