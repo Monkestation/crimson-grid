@@ -49,6 +49,7 @@ multiple modular subtrees with behaviors
 	var/last_bt_tick = 0
 	///our current cell grid
 	var/datum/cell_tracker/our_cells
+	var/registered_z = null
 
 	// Movement related things here
 	///Reference to the movement datum we use. Is a type on initialize but becomes a ref afterwards.
@@ -86,6 +87,7 @@ multiple modular subtrees with behaviors
 	if(ai_movement.moving_controllers[src])
 		ai_movement.stop_moving_towards(src)
 	QDEL_LIST(behavior_nodes)
+	override_slots = null
 	return ..()
 
 ///Overrides the current ai_movement of this controller with a new one
@@ -322,8 +324,7 @@ multiple modular subtrees with behaviors
 	set_blackboard_key(BB_MY_PAWN, pawn, FALSE) //Don't track the datum we already handle qdel of pawn here.
 
 	var/turf/pawn_turf = get_turf(pawn)
-	if(pawn_turf)
-		SSai_controllers.ai_controllers_by_zlevel[pawn_turf.z] += src
+	set_registered_z(pawn_turf?.z)
 
 	SEND_SIGNAL(src, COMSIG_AI_CONTROLLER_POSSESSED_PAWN)
 	SEND_SIGNAL(pawn, COMSIG_PAWN_POSSESSED_BY_AI_CONTROLLER, src)
@@ -495,16 +496,23 @@ multiple modular subtrees with behaviors
 ///Called when the AI controller pawn changes z levels, we check if there's any clients on the new one and wake up the AI if there is.
 /datum/ai_controller/proc/on_changed_z_level(atom/source, turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
 	SIGNAL_HANDLER
+	set_registered_z(new_turf?.z)
 	if (ismob(pawn))
 		var/mob/mob_pawn = pawn
 		if((mob_pawn?.client && !continue_processing_when_client))
 			return
-	if(old_turf)
-		SSai_controllers.ai_controllers_by_zlevel[old_turf.z] -= src
 	if(isnull(new_turf))
 		return
-	SSai_controllers.ai_controllers_by_zlevel[new_turf.z] += src
 	reset_ai_status()
+
+/datum/ai_controller/proc/set_registered_z(new_z)
+	if(registered_z == new_z)
+		return
+	if(registered_z)
+		SSai_controllers.ai_controllers_by_zlevel[registered_z] -= src
+	registered_z = new_z
+	if(new_z)
+		SSai_controllers.ai_controllers_by_zlevel[new_z] += src
 
 ///Abstract proc for initializing the pawn to the new controller
 /datum/ai_controller/proc/TryPossessPawn(atom/new_pawn)
@@ -523,9 +531,7 @@ multiple modular subtrees with behaviors
 	clear_able_to_run()
 	if(ai_movement.moving_controllers[src])
 		ai_movement.stop_moving_towards(src)
-	var/turf/pawn_turf = get_turf(pawn)
-	if(pawn_turf)
-		SSai_controllers.ai_controllers_by_zlevel[pawn_turf.z] -= src
+	set_registered_z(null)
 	pawn.ai_controller = null
 	pawn = null
 	if(destroy)

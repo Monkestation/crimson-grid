@@ -136,7 +136,7 @@
  * checked_name - Optional arg, if guest is unset, checks the direct real_name against user's known_names list.
  */
 /datum/guestbook/proc/get_known_name(mob/user, mob/living/carbon/guest, checked_name)
-	if(guest)
+	if(ismob(guest))
 		if(user == guest)
 			return guest.real_name
 		var/mob/living/carbon/carbon_guest = astype(guest)

@@ -40,6 +40,7 @@ GLOBAL_LIST_EMPTY(madness_network)
 	GLOB.madness_network += gaining_mob
 	RegisterSignal(gaining_mob, COMSIG_MOB_SAY, PROC_REF(handle_say))
 	RegisterSignal(gaining_mob, COMSIG_MOVABLE_HEAR, PROC_REF(handle_hear))
+	RegisterSignal(gaining_mob, COMSIG_QDELETING, PROC_REF(on_malkavian_qdeleting))
 
 /datum/subsplat/vampire_clan/malkavian/on_lose(mob/living/carbon/human/losing_mob)
 	. = ..()
@@ -54,6 +55,7 @@ GLOBAL_LIST_EMPTY(madness_network)
 	GLOB.madness_network -= losing_mob
 	UnregisterSignal(losing_mob, COMSIG_MOB_SAY)
 	UnregisterSignal(losing_mob, COMSIG_MOVABLE_HEAR)
+	UnregisterSignal(losing_mob, COMSIG_QDELETING)
 
 /datum/subsplat/vampire_clan/malkavian/proc/handle_say(mob/living/source, list/speech_args)
 	SIGNAL_HANDLER
@@ -70,6 +72,11 @@ GLOBAL_LIST_EMPTY(madness_network)
 		return
 
 	say_in_madness_network(hearing_args[HEARING_RAW_MESSAGE])
+
+/datum/subsplat/vampire_clan/malkavian/proc/on_malkavian_qdeleting(mob/living/source)
+	SIGNAL_HANDLER
+
+	GLOB.madness_network -= source
 
 /datum/subsplat/vampire_clan/malkavian/proc/say_in_madness_network(message)
 	for (var/mob/living/malkavian in GLOB.madness_network)

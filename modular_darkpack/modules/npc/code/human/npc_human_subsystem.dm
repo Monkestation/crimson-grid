@@ -30,6 +30,18 @@ SUBSYSTEM_DEF(humannpcpool)
 	if(!resumed)
 		src.currentrun = GLOB.npc_list.Copy()
 
+	// if there's less than the amount of NPCs we want, spawn a new one.
+	if(length(GLOB.alive_npc_list) < SSmapping.current_map.max_npcs)
+		var/atom/chosen_spawn_point = pick(GLOB.npc_spawn_points)
+		var/creating_npc = pick(
+			/mob/living/carbon/human/npc/police, \
+			/mob/living/carbon/human/npc/bandit, \
+			/mob/living/carbon/human/npc/hobo, \
+			/mob/living/carbon/human/npc/walkby, \
+			/mob/living/carbon/human/npc/business \
+		)
+		new creating_npc(get_turf(chosen_spawn_point))
+
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 	while(length(currentrun))

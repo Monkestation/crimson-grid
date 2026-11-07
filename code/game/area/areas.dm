@@ -585,6 +585,8 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if(!arrived.important_recursive_contents?[RECURSIVE_CONTENTS_AREA_SENSITIVE])
 		return
 	for(var/atom/movable/recipient as anything in arrived.important_recursive_contents[RECURSIVE_CONTENTS_AREA_SENSITIVE])
+		if(isnull(recipient))
+			continue
 		SEND_SIGNAL(recipient, COMSIG_ENTER_AREA, src)
 
 	if(ismob(arrived))
@@ -603,6 +605,8 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if(!gone.important_recursive_contents?[RECURSIVE_CONTENTS_AREA_SENSITIVE])
 		return
 	for(var/atom/movable/recipient as anything in gone.important_recursive_contents[RECURSIVE_CONTENTS_AREA_SENSITIVE])
+		if(isnull(recipient))
+			continue
 		SEND_SIGNAL(recipient, COMSIG_EXIT_AREA, src)
 
 ///Divides total beauty in the room by roomsize to allow us to get an average beauty per tile.
