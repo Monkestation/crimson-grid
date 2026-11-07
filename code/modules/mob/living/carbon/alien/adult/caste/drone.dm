@@ -1,8 +1,8 @@
 /mob/living/carbon/alien/adult/drone
 	name = "alien drone"
 	caste = "d"
-	maxHealth = 125
-	health = 125
+	maxHealth = 200 // CRIMSON EDIT CHANGE - Original: maxHealth = 125
+	health = 200 // CRIMSON EDIT CHANGE - Original: health = 125
 	icon_state = "aliend"
 
 	default_organ_types_by_slot = list(

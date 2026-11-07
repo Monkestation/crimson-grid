@@ -283,6 +283,10 @@
 		return FALSE
 	if(M.get_organ_by_type(/obj/item/organ/alien/hivenode))
 		return FALSE
+	// CRIMSON EDIT ADDITION START - Kindred can't host
+	if(HAS_TRAIT(M, TRAIT_XENO_IMMUNE))
+		return FALSE
+	// CRIMSON EDIT ADDITION END
 	var/mob/living/carbon/C = M
 	if(ishuman(C) && !(C.dna.species.no_equip_flags & ITEM_SLOT_MASK))
 		var/mob/living/carbon/human/H = C

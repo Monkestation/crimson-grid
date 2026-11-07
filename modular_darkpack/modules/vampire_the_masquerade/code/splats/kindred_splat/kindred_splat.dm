@@ -18,6 +18,7 @@
 		TRAIT_DRINKS_BLOOD,
 		TRAIT_PALE_AURA,
 		TRAIT_SCARRING_RESISTANT,
+		TRAIT_XENO_IMMUNE, // CRIMSON EDIT ADDITION
 	)
 	splat_actions = list(
 		/datum/action/cooldown/mob_cooldown/give_vitae,

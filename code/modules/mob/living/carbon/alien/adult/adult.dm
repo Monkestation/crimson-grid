@@ -6,8 +6,8 @@
 	butcher_results = list(/obj/item/food/meat/slab/xeno = 5, /obj/item/stack/sheet/animalhide/xeno = 1)
 	limb_destroyer = 1
 	hud_type = /datum/hud/alien
-	melee_damage_lower = 20 //Refers to unarmed damage, aliens do unarmed attacks.
-	melee_damage_upper = 20
+	melee_damage_lower = 25 // CRIMSON EDIT CHANGE - Original: melee_damage_lower = 20 //Refers to unarmed damage, aliens do unarmed attacks.
+	melee_damage_upper = 25 // CRIMSON EDIT CHANGE - Original: melee_damage_upper = 20
 	max_grab = GRAB_AGGRESSIVE
 
 	var/caste = ""
@@ -46,6 +46,17 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 	. = ..()
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_CLAW, 0.5, -11)
 	AddElement(/datum/element/strippable, GLOB.strippable_alien_humanoid_items)
+	add_inner_armor(/datum/armor/xeno_carapace) // CRIMSON EDIT ADDITION
+
+// CRIMSON EDIT ADDITION START - Xeno carapace
+/datum/armor/xeno_carapace
+	bullet = 25
+	bomb = 15
+
+/datum/armor/xeno_carapace/royal
+	bullet = 5
+	bomb = 5
+// CRIMSON EDIT ADDITION END
 
 /mob/living/carbon/alien/adult/cuff_resist(obj/item/cuffs, breakouttime = null, cuff_break = 0)
 	playsound(src, 'sound/mobs/non-humanoids/hiss/hiss5.ogg', 40, TRUE, TRUE)  //Alien roars when starting to break free

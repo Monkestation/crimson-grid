@@ -92,7 +92,7 @@
 	bursting = TRUE
 	var/mob/chosen_one = SSpolling.poll_ghosts_for_target(
 		question = "An [span_notice("alien")] is bursting out of [span_danger(owner.real_name)]!",
-		role = ROLE_ALIEN,
+		// role = ROLE_ALIEN,
 		check_jobban = ROLE_ALIEN,
 		poll_time = 20 SECONDS,
 		checked_target = src,

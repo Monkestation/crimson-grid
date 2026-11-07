@@ -19,7 +19,7 @@
 	/// The maximum plasma this organ can store.
 	var/max_plasma = 250
 	/// The rate this organ regenerates its owners health at per damage type per second.
-	var/heal_rate = 2.5
+	var/heal_rate = 5 // CRIMSON EDIT CHANGE - Original: var/heal_rate = 2.5
 	/// The rate this organ regenerates plasma at per second.
 	var/plasma_rate = 5
 
