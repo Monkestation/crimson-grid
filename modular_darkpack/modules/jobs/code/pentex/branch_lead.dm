@@ -45,6 +45,12 @@
 
 	liver_traits = list(TRAIT_ROYAL_METABOLISM)
 
+/datum/job/vampire/branch_lead/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/datum/pc_network/network = GLOB.pc_networks[PC_NETWORK_ENDRON]
+	network?.generate_network_password()
+	network?.send_password_to(spawned)
+
 /datum/outfit/job/vampire/branch_lead
 	name = MAIN_EVIL_COMPANY + " Branch Lead"
 	jobtype = /datum/job/vampire/branch_lead

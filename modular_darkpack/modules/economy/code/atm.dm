@@ -33,7 +33,17 @@
 	if(logged_account)
 		. += span_notice("The screen is active with an account logged in.")
 
+	//CRIMSON GRID EDIT - PC
+	if(locked)
+		. += span_warning("It is locked out by the network.")
+	//CRIMSON GRID EDIT END - PC
+
 /obj/machinery/atm/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	//CRIMSON GRID EDIT - PC
+	if(locked && (is_creditcard(tool) || iscash(tool)))
+		to_chat(user, span_warning("[src] is locked out by the network."))
+		return ITEM_INTERACT_BLOCKING
+	//CRIMSON GRID EDIT END - PC
 	if(is_creditcard(tool))
 		var/obj/item/card/credit/card = tool
 		if(logged_in)
@@ -41,6 +51,7 @@
 			return ITEM_INTERACT_BLOCKING
 		logged_account = card.registered_account
 		to_chat(user, span_notice("Card swiped."))
+		SEND_SIGNAL(src, COMSIG_ATM_CARD_SWIPED) //CRIMSON GRID EDIT - PC
 		return ITEM_INTERACT_SUCCESS
 	else if(iscash(tool))
 		if(!logged_in)
@@ -80,6 +91,10 @@
 	. = ..()
 	if(.)
 		return
+	//CRIMSON GRID EDIT - PC
+	if(locked)
+		return FALSE
+	//CRIMSON GRID EDIT END - PC
 	if(!logged_account)
 		to_chat(usr, span_notice("You need to swipe your card before interacting with [src]."))
 		return FALSE
@@ -87,8 +102,10 @@
 		if("login")
 			if(params["bank_pin"] == logged_account.bank_pin)
 				logged_in = TRUE
+				SEND_SIGNAL(src, COMSIG_ATM_LOGIN) //CRIMSON GRID EDIT - PC
 				return TRUE
 			else
+				SEND_SIGNAL(src, COMSIG_ATM_LOGIN_FAILED) //CRIMSON GRID EDIT - PC
 				return FALSE
 		if("logout")
 			logged_in = FALSE
@@ -104,10 +121,12 @@
 			return TRUE
 		if("deposit")
 			if(inserted_cash > 0)
+				var/deposited = inserted_cash //CRIMSON GRID EDIT - PC
 				logged_account.adjust_money(inserted_cash, "ATM: Deposit")
 				to_chat(usr, span_notice("You have deposited [inserted_cash] [MONEY_NAME] into your card. Your new balance is [logged_account.account_balance] [MONEY_NAME]."))
 				total_stored_cash += inserted_cash
 				inserted_cash = 0
+				SEND_SIGNAL(src, COMSIG_ATM_DEPOSIT, deposited) //CRIMSON GRID EDIT - PC
 				return TRUE
 			else
 				to_chat(usr, span_notice("[src] is empty. Nothing to deposit."))
@@ -130,6 +149,10 @@
 		total_stored_cash -= drop_amount
 		amount_drawn += drop_amount
 	logged_account.adjust_money(-amount_drawn, "ATM: Withdraw")
+	//CRIMSON GRID EDIT - PC
+	if(amount_drawn)
+		SEND_SIGNAL(src, COMSIG_ATM_WITHDRAW, amount_drawn)
+	//CRIMSON GRID EDIT END - PC
 
 /obj/machinery/atm/proc/dump_cash()
 	while(total_stored_cash > 0)

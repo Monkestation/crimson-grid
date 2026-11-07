@@ -150,7 +150,7 @@
  * * amount - the quantity of credits that will be written off if the value is negative, or added if it is positive.
  * * reason - the reason for the appearance or loss of money
  */
-/datum/bank_account/proc/adjust_money(amount, reason)
+/datum/bank_account/proc/adjust_money(amount, reason, garnish_loans = TRUE)
 	if((amount < 0 && has_money(-amount)) || amount > 0)
 		var/debt_collected = 0
 		if(account_debt > 0 && amount > 0)
@@ -160,6 +160,8 @@
 			add_log_to_history(amount, reason)
 		if(debt_collected)
 			pay_debt(debt_collected, FALSE)
+		if(garnish_loans && amount > 0 && SSlending)
+			SSlending.garnish_account(src, amount - debt_collected)
 		return TRUE
 	return FALSE
 
