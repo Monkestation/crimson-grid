@@ -67,7 +67,6 @@
 	desc = "Used to alleviate anxiety and depression, proven to have no side effects*."
 	list_reagents = list(/datum/reagent/drug/happiness/magaloft = 5)
 	icon_state = "pill_happy"
-	rename_with_volume = TRUE
 
 /obj/item/reagent_containers/applicator/pill/magafinil
 	name = "magafinil pill"
@@ -84,6 +83,7 @@
 /obj/item/reagent_containers/hypospray/medipen/flubuster
 	name = "flubuster"
 	desc = "Very effective cold and flu relief product containing a broad and wide spectrum of all medicine and drugs from cold medicine to stimulants to painkillers."
+	brand = "magadon"
 	list_reagents = list(/datum/reagent/medicine/stimulants = 20, /datum/reagent/medicine/omnizine = 10, /datum/reagent/wyrmtaint = 10, /datum/reagent/medicine/morphine = 5, /datum/reagent/drug/happiness/magaloft = 5)
 	volume = 50
 	amount_per_transfer_from_this = 50
@@ -98,18 +98,21 @@
 /obj/item/storage/pill_bottle/magaloft
 	name = "bottle of magaloft antidepressants"
 	desc = "Antidepressants with no proven side effects*."
+	brand = "magadon"
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/magaloft
 
 /obj/item/storage/pill_bottle/magafinil
 	name = "bottle of magafinil pills"
 	desc = "A bottle of magafinil pills used to help prevent drowsiness and increase alertness."
+	brand = "magadon"
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/magafinil
 
 /obj/item/storage/pill_bottle/magaversidin
 	name = "bottle of magaversidin pills"
 	desc = "A bottle of magaversidin pills used to treat Alzheimer's. There is a back with a small and tiny fine print."
+	brand = "magadon"
 	spawn_count = 7
 	spawn_type = /obj/item/reagent_containers/applicator/pill/magaversidin
 
