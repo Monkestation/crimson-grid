@@ -15,8 +15,12 @@
 	var/humanity_loss_limit
 	///Does selling this object threaten the masquerade? if so, make a (stat) + subterfuge roll to avoid losing masq
 	var/masquerade_violating
+	// CRIMSON EDIT ADDITION START - drug dealing
+	/// is this accepted at the black market dealer (for weed nerf)
+	var/black_market_allowed = TRUE
+	// CRIMSON EDIT ADDITION END - drug dealing
 
-/datum/component/selling/Initialize(new_cost, new_object_category, new_illegal, new_humanity_loss, new_humanity_loss_limit, new_masquerade_sensitivity = FALSE)
+/datum/component/selling/Initialize(new_cost, new_object_category, new_illegal, new_humanity_loss, new_humanity_loss_limit, new_masquerade_sensitivity = FALSE, new_black_market_allowed = TRUE) // CRIMSON EDIT CHANGE - drug dealing
 	if(!isobj(parent)) //Only items can be sold
 		return COMPONENT_INCOMPATIBLE
 	cost = new_cost
@@ -25,6 +29,9 @@
 	humanity_loss = new_humanity_loss
 	humanity_loss_limit = new_humanity_loss_limit
 	masquerade_violating = new_masquerade_sensitivity
+	// CRIMSON EDIT ADDITION START - drug dealing
+	black_market_allowed = new_black_market_allowed
+	// CRIMSON EDIT ADDITION END - drug dealing
 
 //Whether it can be sold -- overriden by subtypes such as organs, which can only be sold if they have a certain health.
 /datum/component/selling/proc/can_sell()

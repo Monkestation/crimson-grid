@@ -232,6 +232,21 @@
 		"You almost ran me over!",
 		"What the fuck!?",
 	)
+	// CRIMSON EDIT ADDITION START - drug dealing
+	var/list/drug_purchase_phrases = list(
+		"Here you go.",
+	)
+	var/list/drug_refusal_phrases = list(
+		"That looks like crap.",
+		"Get lost."
+	)
+	var/list/drug_witness_phrases = list(
+		"I'm calling the cops!"
+	)
+	var/list/drug_turf_phrases = list(
+		"You're selling on the wrong turf!"
+	)
+	// CRIMSON EDIT ADDITION END - drug dealing
 
 	var/is_criminal = FALSE
 
