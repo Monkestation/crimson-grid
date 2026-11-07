@@ -19,8 +19,8 @@
 		new /datum/data/vending_product("Наручники", /obj/item/restraints/handcuffs, 50),
 		new /datum/data/vending_product("Чёрный мешок на голову", /obj/item/clothing/head/vampire/blackbag, 50),
 		new /datum/data/vending_product("Короткоствольный револьвер", /obj/item/gun/ballistic/revolver/darkpack/snub, 100),
-		new /datum/data/vending_product("Пистолет-пулемёт Braddock .45", /obj/item/gun/ballistic/automatic/darkpack/mac10, 1200), // CRIMSON EDIT - Was .45 ACP
-		new /datum/data/vending_product("Магазин для Braddock .45", /obj/item/ammo_box/magazine/darkpack45smg, 300), // CRIMSON EDIT ADD - Braddock Mags Buyable
+		new /datum/data/vending_product("Пистолет-пулемёт Braddock 9mm", /obj/item/gun/ballistic/automatic/darkpack/mac10, 3800), // CRIMSON EDIT - Was .45 ACP // CORAVX EDIT x3 cost
+		new /datum/data/vending_product("Магазин для Braddock 9mm", /obj/item/ammo_box/magazine/darkpack45smg, 900), // CRIMSON EDIT ADD - Braddock Mags Buyable // CORAVX EDIT x3 cost
 		new /datum/data/vending_product("Обрез Remington 11-87", /obj/item/gun/ballistic/shotgun/vamp_remington/sawnoff, 1600),
 		new /datum/data/vending_product("Глушитель из масляного фильтра для 11-87", /obj/item/suppressor/darkpack_oil, 400),
 		new /datum/data/vending_product("Пакет травы", /obj/item/food/grown/cannabis, 700),

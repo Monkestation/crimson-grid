@@ -12,18 +12,18 @@
 			owner.adjust_blood_pool(-1)
 			COOLDOWN_START(src, passive_bp_drain_cooldown, CONFIG_GET(number/passive_bp_drain_timer))
 
-    if(COOLDOWN_FINISHED(src, check_masq_violating_cooldown))
-        // CORVAX EDIT ADD START
-        var/has_witness = ishuman(owner) && owner.has_conscious_witness()
-        if(has_witness)
-            if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE) && !is_face_covered())
-                SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	if(COOLDOWN_FINISHED(src, check_masq_violating_cooldown))
+		// CORVAX EDIT ADD START
+		var/has_witness = ishuman(owner) && owner.has_conscious_witness()
+		if(has_witness)
+			if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE) && !is_face_covered())
+				SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
-            if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES) && !is_eyes_covered())
-                SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
-        // CORVAX EDIT ADD END
+			if(HAS_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES) && !is_eyes_covered())
+				SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+		// CORVAX EDIT ADD END
 
-        COOLDOWN_START(src, check_masq_violating_cooldown, 1 TURNS)
+		COOLDOWN_START(src, check_masq_violating_cooldown, 1 TURNS)
 
 	return
 
