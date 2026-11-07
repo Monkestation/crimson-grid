@@ -127,6 +127,16 @@
 	name = "Trenchcoat (Burgundy)"
 	item_path = /obj/item/clothing/suit/vampire/trench/archive
 
+//CRIMSON GRID ADDITION START - New items to Loadout
+/datum/loadout_item/suit/trenchcoat/navy
+	name = "Trenchcoat (Navy)"
+	item_path = /obj/item/clothing/suit/vampire/trench/voivode
+
+/datum/loadout_item/suit/trenchcoat/whitecoat
+	name = "Trenchcoat (White)"
+	item_path = /obj/item/clothing/suit/vampire/trench/malkav
+//ADDITION END
+
 // Hoodies
 /datum/loadout_item/suit/hoodie
 	item_path = /obj/item/clothing/suit/hooded/hoodie

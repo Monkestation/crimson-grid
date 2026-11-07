@@ -6,6 +6,10 @@
 	name = "Bomber Jacket (brown)"
 	item_path = /obj/item/clothing/suit/vampire/toggled/bomber_jacket/inverted
 
+/datum/loadout_item/suit/bomber_jacket_black
+	name = "Bomber Jacket (black)"
+	item_path = /obj/item/clothing/suit/vampire/toggled/bomber_jacket/black
+
 /datum/loadout_item/suit/plain_jacket
 	name = "Plain Jacket"
 	item_path = /obj/item/clothing/suit/vampire/toggled/plain_jacket
@@ -13,6 +17,10 @@
 /datum/loadout_item/suit/plain_jacket_black
 	name = "Plain Jacket (Black)"
 	item_path = /obj/item/clothing/suit/vampire/toggled/plain_jacket/black
+
+/datum/loadout_item/suit/plain_jacket_tan
+	name = "Plain Jacket (Tan)"
+	item_path = /obj/item/clothing/suit/vampire/toggled/plain_jacket/tan
 
 /datum/loadout_item/suit/military_jacket
 	name = "Military Jacket"
