@@ -94,6 +94,13 @@
 		return
 
 	var/obj/darkpack_car/owned_car = owner.loc
+
+	// CORVAX EDIT START
+	if(!owned_car.on && owned_car.is_stuck_in_water())
+		to_chat(owner, span_warning("Двигатель не заведётся — [owned_car.declent_ru(NOMINATIVE)] стоит в воде."))
+		return FALSE
+	// CORVAX EDIT END
+
 	if(!owned_car.on)
 		if((owned_car.get_integrity() == owned_car.max_integrity) || (prob(100*(owned_car.get_integrity()/owned_car.max_integrity))))
 			owned_car.start_engine()

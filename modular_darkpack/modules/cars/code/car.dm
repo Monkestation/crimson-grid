@@ -355,6 +355,8 @@
 
 	if(locked)
 		. += span_warning("Двери заперты.")
+	if(is_stuck_in_water())
+		. += span_warning("Машина стоит в воде — двигатель не заведётся.")
 	if(driver || length(passengers))
 		. += span_notice("\nВнутри сидят:")
 		for(var/mob/living/rider in src)
@@ -600,12 +602,11 @@
 			playsound(src, 'modular_darkpack/modules/cars/sounds/stop.ogg', 60, FALSE)
 			if(driver)
 				to_chat(driver, span_warning("Вода заливает двигатель — [declent_ru(NOMINATIVE)] глохнет!"))
-
-		if(speed_in_pixels != 0)
+		if(speed != 0 || offset_x != 0 || offset_y != 0)
 			halt_car()
-
+		if(!speed && !on && !light_on)
+			return PROCESS_KILL
 		return
-	car_move()
 	// CORVAX EDIT END
 	var/elapsed = min(world.time - last_process, world.tick_lag * 2)
 	last_process = world.time
@@ -632,11 +633,11 @@
 	else if(!speed && !on && !light_on)
 		return PROCESS_KILL
 
-		// Here lies the Car Backwards Long Jump - 2021-2025
-		var/steps_ahead = max(3, CEILING(abs(used_speed) / 32, 1) + 1)	// CORVAX EDIT
-		var/turf/check_turf = get_turf_in_angle(true_movement_angle, src.loc, steps_ahead)	// CORVAX EDIT
-
 /obj/darkpack_car/proc/update_speed(seconds)
+	var/skill = get_driver_skill()
+	var/accel_mult = 1 + skill * 0.15
+	var/brake_mult = 1 + skill * 0.1
+
 	var/throttle = 0
 	var/steering = 0
 	if(driver && COOLDOWN_FINISHED(src, impact_delay) && world.time - last_input_time <= world.tick_lag * 2)
@@ -645,14 +646,14 @@
 
 	var/braking = throttle * speed < 0
 	if(braking)
-		speed += throttle * 120 * seconds
+		speed += throttle * 120 * brake_mult * seconds
 		if(!on)
 			speed = throttle > 0 ? min(speed, 0) : max(speed, 0)
 		if(COOLDOWN_FINISHED(src, drive_sound_cooldown))
 			COOLDOWN_START(src, drive_sound_cooldown, 0.3 SECONDS)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
 	else if(throttle && on)
-		speed = clamp(speed + throttle * stage * 40 * seconds, -128, stage * 128)
+		speed = clamp(speed + throttle * stage * 40 * accel_mult * seconds, -128, stage * 128)
 		if(COOLDOWN_FINISHED(src, drive_sound_cooldown))
 			COOLDOWN_START(src, drive_sound_cooldown, 0.3 SECONDS)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 10, FALSE)
@@ -663,7 +664,10 @@
 		return
 	if(speed < 0 && !driver.client?.prefs?.read_preference(/datum/preference/toggle/enable_legacy_driving_controls))
 		steering = -steering
-	var/turn_rate = min(abs(speed), 60) * seconds
+
+	var/turn_mult = 1 + skill * 0.15
+	var/turn_rate = min(abs(speed), 60) * seconds * turn_mult
+
 	if(braking)
 		turn_rate *= 1 + clamp(driver.st_get_stat(STAT_DRIVE)/4, 0.25, 4)
 	movement_vector = SIMPLIFY_DEGREES(movement_vector + steering * turn_rate)
@@ -831,17 +835,16 @@
 	return istype(get_turf(src), /turf/open/water/beach/vamp)
 
 /obj/darkpack_car/proc/halt_car()
-	speed_in_pixels = 0
+	speed = 0
+	offset_x = 0
+	offset_y = 0
+	pixel_x = 0
+	pixel_y = 0
+	camera_lead_x = 0
+	camera_lead_y = 0
 	animate(src)
-	forceMove(locate(last_pos["x"], last_pos["y"], z))
-	pixel_x = last_pos["x_pix"]
-	pixel_y = last_pos["y_pix"]
-
 	for(var/mob/living/rider in src)
-		if(rider.client)
-			rider.client.pixel_x = 0
-			rider.client.pixel_y = 0
-// CORVAX EDIT END
+		reset_rider_camera(rider.client)
 
 #undef DOAFTER_SOURCE_CAR
 #undef CAR_TANK_MAX
