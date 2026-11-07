@@ -227,6 +227,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_JAZZ_CLUB,
 		LOCKACCESS_CAMARILLA,
 		LOCKACCESS_JAZZ_CLUB_DELIVERY,
+		LOCKACCESS_CLINIC, // CRIMSON GRID EDIT - Part of the Clinic
 	)
 	color = "#2c92ff"
 
@@ -358,7 +359,8 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	name = "clinic director keys"
 	accesslocks = list(
 		LOCKACCESS_CLINIC,
-		LOCKACCESS_DIRECTOR
+		LOCKACCESS_DIRECTOR,
+		LOCKACCESS_MALK, // CRIMSON GRID EDIT - Access to the Ward
 	)
 
 //===========================POLICE KEYS===========================
