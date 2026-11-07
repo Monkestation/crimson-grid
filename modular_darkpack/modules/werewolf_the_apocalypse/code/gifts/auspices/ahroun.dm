@@ -3,6 +3,7 @@
 	desc = "Этот Дар позволяет гару одним лишь касанием сбить врага с ног."
 	button_icon_state = "falling_touch"
 	click_to_activate = TRUE
+	cooldown_time = 10 SECONDS //CRIMSON GRID ADDITION - cooldown
 	rank = 1
 
 /datum/action/cooldown/power/gift/falling_touch/set_click_ability(mob/on_who)
@@ -22,8 +23,8 @@
 	var/datum/splat/werewolf/casting_splat = get_werewolf_splat(owner)
 	var/holding = caster.get_active_held_item()
 	if(caster.combat_mode)
-		victim.Knockdown(1 TURNS)
-		victim.Immobilize(1 TURNS)
+		victim.Knockdown(3 SECONDS) //CRIMSON GRID EDIT - original victim.Knockdown(1 TURNS)
+		victim.Immobilize(3 SECONDS) //CRIMSON GRID EDIT - original victim.Immobilize(1 TURNS)
 		playsound(caster, 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/gifts/falling_touch_activate.ogg', 75, FALSE) // red-tailed hawk sound mixed with disintegrate.ogg
 		SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 		if(holding)
@@ -37,7 +38,7 @@
 			caster.st_set_stat(STAT_TEMPORARY_WILLPOWER, max((caster.st_get_stat(STAT_TEMPORARY_WILLPOWER) - 1),0))
 			to_chat(caster, span_userdanger("Вы потратили <b>ВОЛЮ</b>, чтобы применить Дар \"[name]\"!"))
 	else
-		victim.Knockdown(1 TURNS)
+		victim.Knockdown(4 SECONDS) //CRIMSON GRID EDIT - original victim.Knockdown(1 TURNS)
 		to_chat(caster, span_notice("Одно лёгкое касание, и [victim.declent_ru(NOMINATIVE)] уже на земле!"))
 		to_chat(victim, span_userdanger("Вас сбивает с ног!"))
 

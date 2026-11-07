@@ -1,10 +1,10 @@
 /obj/ritual_rune/thaumaturgy/spear_of_damnation
 	name = "wield the spear of damnation"
-	desc = "This ritual recalls the legend of Caine itself, dedicating a weapon to satisfy a vampire’s nature.\
-			Half the lethal damage inflicted by the weapon converts to blood points, filling the wielder’s pool."
+	desc = "Этот ритуал обращается к самой легенде о Каине, посвящая оружие удовлетворению природы вампира.\
+			Половина летального урона, нанесённого этим оружием, превращается в пункты крови, наполняя запас владельца."
 	icon_state = "rune9"
 	// Whisper this because...we are saying it outloud as we engrave it I guess
-	word = "#And he said, 'What hast thou done? the voice of thy brother’s blood crieth unto me from the ground.'"
+	word = "#И сказал: 'что ты сделал? голос крови брата твоего вопиет ко Мне от земли.'"
 	level = 3
 	cost = 3
 
@@ -15,13 +15,13 @@
 
 	for(var/obj/item/item in get_turf(src))
 		if(!(item.get_sharpness() & SHARP_EDGED) && !(item.get_sharpness() & SHARP_POINTY))
-			to_chat(last_activator, span_warning("The item must be sharp!"))
+			to_chat(last_activator, span_warning("Предмет должен быть острым!"))
 			break
 		else
 			weapon = item
 
 	if(!weapon)
-		to_chat(last_activator, span_warning("You need an item to enchant!"))
+		to_chat(last_activator, span_warning("Вам нужен предмет для зачарования!"))
 		return
 
 	if(!ritual_roll_datum)
@@ -33,9 +33,8 @@
 	var/theft_per_hit = round(weapon.force / (2 LETHAL_TTRPG_DAMAGE), 0.1)
 
 	weapon.AddComponent(/datum/component/blood_theft, blood_to_steal, theft_per_hit)
-	to_chat(last_activator, span_notice("[weapon] will siphon a total of [blood_to_steal] blood points, harvesting [theft_per_hit] per hit!"))
-	last_activator.visible_message(span_notice("[last_activator] writes something upon [weapon]!"))
-
+	to_chat(last_activator, span_notice("[capitalize(weapon.declent_ru(NOMINATIVE))] впитает в общей сложности [blood_to_steal] пунктов крови, собирая [theft_per_hit] за удар!"))
+	last_activator.visible_message(span_notice("[capitalize(last_activator.declent_ru(NOMINATIVE))] что-то пишет на [weapon.declent_ru(PREPOSITIONAL)]!"))
 	qdel(src)
 
 /**
@@ -70,7 +69,7 @@
 /datum/component/blood_theft/proc/on_examine(datum/source, mob/viewer, list/examine_list)
 	SIGNAL_HANDLER
 
-	examine_list += span_cult("You can see some strange words engraved on the [parent]...")
+	examine_list += span_cult("Вы видите какие-то странные слова, выгравированные на [parent.declent_ru(PREPOSITIONAL)]...")
 
 /// Signal handler for landing a hit on the target
 /datum/component/blood_theft/proc/on_successful_attack(datum/source, mob/living/target, mob/user, list/modifiers)
