@@ -6412,6 +6412,15 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/strip)
+"bzr" = (
+/obj/structure/vampipe{
+	icon_state = "piping43"
+	},
+/obj/structure/vampipe{
+	icon_state = "piping38"
+	},
+/turf/open/water/vamp_sewer,
+/area/vtm/interior/sewer)
 "bzy" = (
 /obj/effect/turf_decal/siding/wood/dark/corner{
 	dir = 4
@@ -20098,11 +20107,9 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/sewer/nosferatu_warren)
 "eIR" = (
-/obj/structure/noticeboard/directional/north,
-/obj/structure/chair/wood/darkpack/red{
-	dir = 4
-	},
-/turf/open/floor/carpet/red,
+/obj/machinery/light/directional/north,
+/obj/structure/bookcase/random/kindred,
+/turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
 "eIU" = (
 /obj/effect/decal/wallpaper/stone/low/tilt{
@@ -20956,6 +20963,10 @@
 /obj/structure/sign/painting/library{
 	pixel_y = 32
 	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/chantry/basement)
+"eUx" = (
+/obj/machinery/sprinkler/area_managed,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
 "eUA" = (
@@ -26471,16 +26482,8 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/caves)
 "ghm" = (
-/obj/structure/sign/painting/library{
-	pixel_y = 32
-	},
-/obj/structure/table/wood,
-/obj/vampire_computer{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/turf/open/floor/carpet/red,
-/area/vtm/interior/chantry/basement)
+/turf/open/floor/plating/sidewalk,
+/area/vtm/interior/sewer)
 "gho" = (
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
@@ -41867,15 +41870,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/sewer/police)
 "jHm" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
-/obj/machinery/light/directional/north,
-/obj/structure/filingcabinet/chestdrawer{
-	pixel_x = -7;
-	pixel_y = 17;
-	density = 0
-	},
+/obj/structure/closet/crate/wooden,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
 "jHq" = (
@@ -61545,32 +61540,17 @@
 /turf/open/floor/wood/rough,
 /area/vtm/interior/sewer)
 "ojy" = (
-/obj/structure/table/wood,
-/obj/item/paper_bin{
-	pixel_y = 5;
-	pixel_x = 7
+/obj/effect/turf_decal/bordur{
+	dir = 8
 	},
-/obj/item/pen{
-	pixel_x = 9;
-	pixel_y = 5
+/obj/structure/vampdoor/wood{
+	dir = 4
 	},
-/obj/item/folder/red{
-	pixel_x = -6;
-	pixel_y = -2
-	},
-/obj/item/folder/red{
-	pixel_x = -12;
-	pixel_y = -1
-	},
-/obj/item/folder/blue{
-	pixel_x = -5;
-	pixel_y = 9
-	},
-/obj/item/folder/yellow{
-	pixel_x = -12;
-	pixel_y = 10
-	},
-/turf/open/floor/carpet/red,
+/obj/effect/mapping_helpers/door/access/chantry,
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/turf/open/floor/plating/sidewalk,
 /area/vtm/interior/chantry/basement)
 "ojz" = (
 /obj/effect/turf_decal/siding/grey/inner_corner{
@@ -62673,8 +62653,8 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church)
 "owK" = (
-/obj/structure/bookcase/random/kindred,
 /obj/machinery/light/directional/south,
+/obj/structure/closet/crate/wooden,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
 "owP" = (
@@ -88314,6 +88294,10 @@
 /obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
+"uup" = (
+/obj/effect/turf_decal/bordur,
+/turf/open/water/vamp_sewer,
+/area/vtm/interior/sewer)
 "uut" = (
 /turf/open/floor/plating/concrete,
 /area/vtm/outside/culture/italy)
@@ -131961,10 +131945,10 @@ uvs
 uvs
 uvs
 cNM
+hBe
+hBe
 jHm
-kPh
-hhA
-fsu
+jHm
 oBr
 ohl
 cNM
@@ -132166,8 +132150,8 @@ uvs
 uvs
 cNM
 eIR
-pmv
-hjH
+eUx
+hBe
 owK
 oBr
 ohl
@@ -132369,10 +132353,10 @@ uvs
 uvs
 uvs
 cNM
-ghm
-ojy
-hjH
 fsu
+hBe
+hBe
+hBe
 oBr
 ohl
 cNM
@@ -132574,7 +132558,7 @@ uvs
 uvs
 oBr
 oBr
-oBr
+ojy
 oBr
 oBr
 oBr
@@ -132777,9 +132761,9 @@ tuX
 tuX
 tuX
 tuX
-uvs
-uvs
-uvs
+tuX
+ghm
+tuX
 uvs
 uvs
 uvs
@@ -132979,11 +132963,11 @@ vlV
 uBA
 vlV
 hRf
-jcI
+bzr
+ikt
+uup
+ghm
 tuX
-uvs
-uvs
-uvs
 uvs
 uvs
 uvs
@@ -133185,9 +133169,9 @@ tuX
 tuX
 xfZ
 tuX
-uvs
-uvs
-uvs
+tuX
+tuX
+tuX
 uvs
 uvs
 uvs
