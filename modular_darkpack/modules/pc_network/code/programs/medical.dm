@@ -115,7 +115,6 @@
 		var/datum/pc_medical_record/local = net.get_medical_record(crew.name)
 		records += list(list(
 			"name" = crew.name,
-			"rank" = crew.rank,
 			"edited" = !!local,
 			"has_attachment" = !!local?.attachment_image,
 		))

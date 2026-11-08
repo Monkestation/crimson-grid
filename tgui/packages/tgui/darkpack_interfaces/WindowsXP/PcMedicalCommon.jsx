@@ -55,19 +55,14 @@ export const MedicalDirectory = (props) => {
   const [search, setSearch] = useState('');
   const q = search.trim().toLowerCase();
   const shown = records.filter(
-    (r) =>
-      !q ||
-      String(r.name).toLowerCase().includes(q) ||
-      String(r.rank || '')
-        .toLowerCase()
-        .includes(q),
+    (r) => !q || String(r.name).toLowerCase().includes(q),
   );
   return (
     <Stack fill vertical>
       <Stack.Item>
         <Input
           fluid
-          placeholder="Search name or rank"
+          placeholder="Search name"
           value={search}
           onInput={(a, b) => setSearch(readInput(a, b))}
           onChange={(a, b) => setSearch(readInput(a, b))}
@@ -100,7 +95,7 @@ export const MedicalDirectory = (props) => {
               <Box
                 style={{ color: '#444', fontSize: '11px', marginTop: '2px' }}
               >
-                {rec.rank} {rec.edited ? '[Edited on network]' : ''}{' '}
+                {rec.edited ? '[Edited on network]' : ''}{' '}
                 {rec.has_attachment ? '[Photo attached]' : ''}
               </Box>
             </Box>
