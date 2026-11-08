@@ -47,7 +47,7 @@
 
 /datum/job/vampire/branch_lead/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
-	var/datum/pc_network/network = GLOB.pc_networks[PC_NETWORK_ENDRON]
+	var/datum/pc_network/network = find_pc_network_by_name(PC_NETWORK_ENDRON)
 	network?.generate_network_password()
 	network?.send_password_to(spawned)
 

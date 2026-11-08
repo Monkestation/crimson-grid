@@ -32,12 +32,6 @@
 	allowed_splats = list(SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_GIOVANNI)
 
-/datum/job/vampire/capo/after_spawn(mob/living/spawned, client/player_client)
-	. = ..()
-	var/datum/pc_network/network = GLOB.pc_networks[PC_NETWORK_BIANCHI_BANK]
-	network?.generate_network_password()
-	network?.send_password_to(spawned)
-
 /datum/outfit/job/vampire/capo
 	name = JOB_CAPO
 	jobtype = /datum/job/vampire/capo
@@ -76,3 +70,6 @@
 	var/obj/structure/vaultdoor/pincode/bank/door = locate() in GLOB.vault_doors
 	if(door)
 		spawned.mind.add_memory(/datum/memory/key/bank_vault_code, remembered_code = door.pincode)
+	var/datum/pc_network/network = find_pc_network_by_name(PC_NETWORK_BIANCHI_BANK)
+	network?.generate_network_password()
+	network?.send_password_to(spawned)
