@@ -23,6 +23,22 @@
 	name = "car trunk"
 	desc = "How did this get out of the car."
 
+// CRIMSON EDIT ADDITION START - Scooter
+/// Holds a visible rider so we can control its offset and layer without touching the mob itself.
+/obj/effect/car_rider_holder
+	name = "rider"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// Don't inherit the car's grey "broken" tint or alpha
+	appearance_flags = parent_type::appearance_flags | RESET_COLOR | RESET_ALPHA
+
+/// Draws the parts that sit over the rider. A vis_contents sibling of the rider holder, so the two sort by layer alone.
+/obj/effect/car_front_holder
+	name = "front"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+// CRIMSON EDIT ADDITION END
+
 /datum/storage/car
 	animated = FALSE
 	max_slots = 40
@@ -118,6 +134,50 @@
 	/// sound loop for the engine
 	var/datum/looping_sound/car_engine/engine_sound_loop
 
+	// CRIMSON EDIT ADDITION START - Scooter
+	/// Pixel offset used to center the sprite on the turf: -(icon_size - 32) / 2
+	var/visual_offset = 0
+
+	/// If FALSE, riders can get in and be pulled out even while the vehicle is locked.
+	var/lock_blocks_entry = TRUE
+	/// If TRUE, occupants stay drawn on the vehicle instead of being hidden inside it.
+	var/occupants_visible = FALSE
+
+	/// Icon state for the body, saved because icon_state itself becomes "empty"
+	var/body_icon_state
+	/// Greyscale body paint (under rider). Tinted by paint_color.
+	var/paint_overlay_state
+	/// Non-painted details drawn over the rider (handlebar clamp, fork, etc.)
+	var/front_overlay_state
+	/// Greyscale paint that draws over the rider (front fender, headlight shroud). Tinted by paint_color.
+	var/front_paint_overlay_state
+	/// Color applied to the greyscale paint overlays.
+	var/paint_color = "#ffffff"
+	/// The overlays currently applied by update_vehicle_overlays()
+	var/list/vehicle_overlays = list()
+
+	/// Layer offsets above CAR_LAYER. Order is body < rider < front.
+	var/rider_layer_offset = 0.1
+	var/front_layer_offset = 0.2
+	/// Where the rider sits relative to the vehicle origin
+	var/rider_pixel_x = 0
+	var/rider_pixel_y = 0
+	/// rider mob -> holder object
+	var/list/rider_holders = list()
+	/// Holder drawing the front parts over the rider
+	var/obj/effect/car_front_holder/front_holder
+
+	/// Lower divisor = sharper turns at low speed. min_turn_speed only applies while moving.
+	var/turn_speed_divisor = 10
+	var/min_turn_speed = 0
+	var/max_turn_speed = 3
+
+	/// Top speed in speed_in_pixels units, multiplied by stage. 64 is the old fixed value.
+	var/max_speed = 64
+	/// Impacts at or above this speed (speed_in_pixels / 4) throw occupants out of the vehicle. 0 = never.
+	var/eject_speed_threshold = 0
+	// CRIMSON EDIT ADDITION END
+
 	COOLDOWN_DECLARE(impact_delay)
 	COOLDOWN_DECLARE(beep_cooldown)
 	COOLDOWN_DECLARE(hit_cooldown)
@@ -158,6 +218,12 @@
 	gas = rand(100, CAR_TANK_MAX)
 	movement_vector = dir2angle(dir)
 
+	// CRIMSON EDIT ADDITION START - Scooter
+	body_icon_state = icon_state
+	update_vehicle_overlays()
+	icon_state = "empty"
+	// CRIMSON EDIT ADDITION END
+
 
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_MAGICALLY_UNLOCKED = PROC_REF(on_magic_unlock),
@@ -169,7 +235,71 @@
 	QDEL_NULL(engine_sound_loop)
 	QDEL_NULL(trunk)
 	empty_car()
+	QDEL_NULL(front_holder) // CRIMSON EDIT ADDITION - Scooter
 	. = ..()
+
+// CRIMSON EDIT ADDITION START - Scooter
+/obj/darkpack_car/AllowClick()
+	return TRUE
+
+/// Builds one overlay image, optionally tinted. Draws in order added, on the car's own layer.
+/obj/darkpack_car/proc/make_part_overlay(state, tint)
+	var/image/overlay_image = image(icon = icon, icon_state = state, pixel_x = visual_offset, pixel_y = visual_offset)
+	if(tint)
+		overlay_image.color = tint
+	return overlay_image
+
+/// Rebuilds the body and paint overlays (under the rider), then the front holder (over the rider).
+/obj/darkpack_car/proc/update_vehicle_overlays()
+	cut_overlay(vehicle_overlays)
+	vehicle_overlays = list()
+	vehicle_overlays += make_part_overlay(body_icon_state)
+	if(paint_overlay_state)
+		vehicle_overlays += make_part_overlay(paint_overlay_state, paint_color)
+	add_overlay(vehicle_overlays)
+	update_front_holder()
+
+/obj/darkpack_car/proc/update_front_holder()
+	if(!front_overlay_state && !front_paint_overlay_state)
+		return
+	if(!front_holder)
+		front_holder = new()
+		vis_contents += front_holder
+	front_holder.plane = plane
+	front_holder.layer = CAR_LAYER + front_layer_offset
+	front_holder.cut_overlays()
+	if(front_overlay_state)
+		front_holder.add_overlay(make_part_overlay(front_overlay_state))
+	if(front_paint_overlay_state)
+		front_holder.add_overlay(make_part_overlay(front_paint_overlay_state, paint_color))
+
+/obj/darkpack_car/proc/set_paint_color(new_color)
+	paint_color = new_color
+	update_vehicle_overlays()
+
+/// Draws a rider on top of the vehicle through a holder object, between the body and front layers.
+/obj/darkpack_car/proc/show_occupant(mob/living/rider)
+	var/obj/effect/car_rider_holder/holder = new()
+	holder.plane = plane
+	holder.layer = CAR_LAYER + rider_layer_offset
+	holder.pixel_x = rider_pixel_x
+	holder.pixel_y = rider_pixel_y
+	holder.setDir(dir)
+	rider.vis_flags |= (VIS_INHERIT_DIR | VIS_INHERIT_LAYER)
+	holder.vis_contents += rider
+	vis_contents += holder
+	rider_holders[rider] = holder
+
+/obj/darkpack_car/proc/hide_occupant(mob/living/rider)
+	var/obj/effect/car_rider_holder/holder = rider_holders[rider]
+	if(!holder)
+		return
+	holder.vis_contents -= rider
+	vis_contents -= holder
+	rider_holders -= rider
+	rider.vis_flags &= ~(VIS_INHERIT_DIR | VIS_INHERIT_LAYER)
+	qdel(holder)
+// CRIMSON EDIT ADDITION END
 
 /obj/darkpack_car/click_alt(mob/user)
 	var/list/radial_menu_options = list(
@@ -189,7 +319,7 @@
 		atom_storage.open_storage(user)
 		return CLICK_ACTION_SUCCESS
 
-	if(locked)
+	if(locked && lock_blocks_entry) // CRIMSON EDIT CHANGE - Original: if(locked)
 		to_chat(user, span_warning("[src] is locked!"))
 		return CLICK_ACTION_BLOCKING
 	var/mob/living/occupent = passanger_map[pick]
@@ -395,7 +525,7 @@
 	if(!isliving(dropped))
 		return
 
-	if(locked)
+	if(locked && lock_blocks_entry) // CRIMSON EDIT CHANGE - Original: if(locked)
 		to_chat(user, span_warning("[src] is locked."))
 		return
 
@@ -445,6 +575,10 @@
 /obj/darkpack_car/proc/enter_car(mob/living/user)
 	RegisterSignal(user, COMSIG_MOB_LOGOUT, PROC_REF(on_rider_logout))
 	user.forceMove(src)
+	// CRIMSON EDIT ADDITION START - Scooter
+	if(occupants_visible)
+		show_occupant(user)
+	// CRIMSON EDIT ADDITION END
 	visible_message(span_notice("[user] enters [src]."), \
 		span_notice("You enter [src]."))
 	playsound(src, 'modular_darkpack/master_files/sounds/effects/door/door.ogg', 50, TRUE)
@@ -456,6 +590,10 @@
 
 //Dump one guy out of the car.
 /obj/darkpack_car/proc/empty_occupant(mob/living/dumpe)
+	// CRIMSON EDIT ADDITION START - Scooter
+	if(occupants_visible)
+		hide_occupant(dumpe)
+	// CRIMSON EDIT ADDITION END
 	dumpe.forceMove(loc)
 
 	var/list/exit_side = list(
@@ -506,6 +644,11 @@
 
 /obj/darkpack_car/Bump(atom/bumped_atom)
 	. = ..()
+	// CRIMSON EDIT ADDITION START - Scooter
+	//impact below can zero or reduce our speed.
+	var/travel_angle = speed < 0 ? SIMPLIFY_DEGREES(movement_vector + 180) : movement_vector
+	// CRIMSON EDIT ADDITION END
+
 	if(istype(bumped_atom, /obj/transfer_point_vamp))
 		COOLDOWN_START(src, impact_delay, 0.75 SECONDS)
 		return
@@ -575,7 +718,33 @@
 		var/driver_skill = clamp(driver.st_get_stat(STAT_DRIVE)/2, 1, 4)
 		dam = round(dam/driver_skill)
 		driver.apply_damage(impact_damage, BRUTE, BODY_ZONE_CHEST)
+	eject_occupants_on_impact(impact_damage, travel_angle, bumped_atom) // CRIMSON EDIT ADDITION - Scooter
 	take_damage(dam)
+
+// CRIMSON EDIT ADDITION START - Scooter
+/// Throws everyone out of the vehicle, in the direction it was travelling, if the impact was fast enough.
+/obj/darkpack_car/proc/eject_occupants_on_impact(prev_speed, travel_angle, atom/bumped_atom)
+	if(!eject_speed_threshold || prev_speed < eject_speed_threshold)
+		return
+	if(isliving(bumped_atom))
+		var/mob/living/hit_mob = bumped_atom
+		if(hit_mob.mob_size <= MOB_SIZE_SMALL) // Running over a rat shouldn't launch you
+			return
+	var/list/occupants = list()
+	for(var/mob/living/rider in src)
+		occupants += rider
+	if(!length(occupants))
+		return
+	var/throw_distance = clamp(round(prev_speed / 3), 2, 7)
+	for(var/mob/living/rider as anything in occupants)
+		empty_occupant(rider)
+		rider.Knockdown(2 SECONDS)
+		rider.visible_message(span_danger("[rider] is thrown from [src]!"), \
+			span_userdanger("You are thrown from [src]!"))
+		var/turf/throw_target = get_turf_in_angle(travel_angle, get_turf(rider), throw_distance)
+		if(throw_target)
+			rider.throw_at(throw_target, throw_distance, 1)
+// CRIMSON EDIT ADDITION END
 
 /obj/darkpack_car/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
@@ -633,7 +802,7 @@
 			COOLDOWN_START(src, drive_sound_cooldown, 0.3 SECONDS)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
 	else if(throttle && on)
-		speed = clamp(speed + throttle * stage * 40 * seconds, -128, stage * 128)
+		speed = clamp(speed + throttle * stage * 40 * seconds, -128, stage * max_speed * 2) // CRIMSON EDIT CHANGE - Original: speed = clamp(speed + throttle * stage * 40 * seconds, -128, stage * 128)
 		if(COOLDOWN_FINISHED(src, drive_sound_cooldown))
 			COOLDOWN_START(src, drive_sound_cooldown, 0.3 SECONDS)
 			playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 10, FALSE)
@@ -644,7 +813,7 @@
 		return
 	if(speed < 0 && !driver.client?.prefs?.read_preference(/datum/preference/toggle/enable_legacy_driving_controls))
 		steering = -steering
-	var/turn_rate = min(abs(speed), 60) * seconds
+	var/turn_rate = clamp(abs(speed) / (turn_speed_divisor * 2), min_turn_speed, max_turn_speed) * 20 * seconds // CRIMSON EDIT CHANGE - Original: var/turn_rate = min(abs(speed), 60) * seconds
 	if(braking)
 		turn_rate *= 1 + clamp(driver.st_get_stat(STAT_DRIVE)/4, 0.25, 4)
 	movement_vector = SIMPLIFY_DEGREES(movement_vector + steering * turn_rate)
@@ -769,7 +938,15 @@
 /obj/darkpack_car/proc/apply_vector_angle()
 	// angle2dir truncates fractional angles, so derive the dir from the same rounding as the residual turn
 	var/sprite_angle = round(SIMPLIFY_DEGREES(movement_vector + 22.5) / 45) * 45
+	var/new_dir = angle2dir(sprite_angle) // CRIMSON EDIT ADDITION - Scooter
 	setDir(angle2dir(sprite_angle))
+	// CRIMSON EDIT ADDITION START - Scooter
+	for(var/mob/living/rider in rider_holders)
+		var/obj/effect/car_rider_holder/holder = rider_holders[rider]
+		holder.setDir(new_dir)
+	if(front_holder)
+		front_holder.setDir(new_dir)
+	// CRIMSON EDIT ADDITION END
 
 	var/matrix/M = matrix()
 	M.Turn(movement_vector - sprite_angle)
