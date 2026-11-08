@@ -1,9 +1,9 @@
 /datum/round_event_control/darkpack/financial_crisis
 	name = "Financial Crisis"
 	typepath = /datum/round_event/financial_crisis
-	weight = 2
+	weight = 0
 	min_players = 5
-	max_occurrences = 1
+	max_occurrences = 0
 	earliest_start = 35 MINUTES
 	category = EVENT_CATEGORY_BUREAUCRATIC
 	description = "Wall Street has crashed catastrophically causing all of Bianchi Bank's accounts to tank as people lose their savings."
