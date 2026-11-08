@@ -479,10 +479,17 @@
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "vengeful_maw"
+	inhand_icon_state = "vengeful_maw"
 
+	attack_verb_continuous = list("shred", "rip", "ravage")
+	attack_verb_simple = list("shred", "rip", "ravage")
 	force = 3 LETHAL_TTRPG_DAMAGE
-	block_chance = 40
-	attack_difficulty = 6 // This thing is extremely poorly balanced, and cannot have a good two handed grip
+	wound_bonus = 2
+	sharpness = SHARP_EDGED
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
+	resistance_flags = FIRE_PROOF
+	attack_speed = CLICK_CD_SLOW
 
 /obj/item/claymore/vengeful_maw/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	. = ..()
