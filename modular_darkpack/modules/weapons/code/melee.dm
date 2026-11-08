@@ -480,7 +480,7 @@
 	w_class = WEIGHT_CLASS_BULKY	//TG parent bat is huge
 
 	// WTA pg. 302
-	force = 2 TTRPG_DAMAGE
+	force = 3 TTRPG_DAMAGE
 	attack_difficulty = 4 // Slightly better to swing with the winds guiding it
 
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
