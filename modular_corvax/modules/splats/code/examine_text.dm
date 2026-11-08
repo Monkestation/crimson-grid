@@ -2,12 +2,6 @@
 	if(!HAS_TRAIT(src, TRAIT_VENTRUE_SENSE))
 		return null
 
-	if(get_corax_splat(examined))
-		return "<span class='danger'>Ваше чувство крови в недоумении. Эта кровь не похожа ни на смертную, ни на витэ. Она легкая, воздушная, с привкусом озона, пыли и старых перьев. В ней слышен шепот теней и эхо чужих секретов. Вы осознаете, что перед вами порождение мира духов — оборотень-ворон.</span>"
-
-	if(get_garou_splat(examined))
-		return "<span class='danger'>Ваше чувство крови в смятении. Эта кровь обжигающе-дикая, полная первобытной ярости и звериного мускуса. Она пахнет лесом, кровью и чем-то необузданным. Смертная кровь так не пахнет. Это витэ порождения самой Геи — оборотня.</span>"
-
 	if(!ishuman(examined))
 		return null
 
@@ -20,11 +14,50 @@
 		else
 			return "<span class='notice'>Вы чувствуете запах обычной, смертной крови. В ней нет ничего примечательного для вашего рода.</span>"
 
-	var/gen = examined.get_generation()
+	var/observer_gen = 13
+	var/mob/living/living_observer = astype(src, /mob/living)
+	if(living_observer)
+		observer_gen = living_observer.get_generation()
+
+	var/target_gen = examined.get_generation()
 	var/clan_id = target_kindred.clan?.id
 	var/message = "<span class='danger'>Ваше чувство крови обостряется. Кровь [examined.ru_p_them()] — это витэ сородича.\n"
 
-	switch(gen)
+	var/error_chance = 0
+
+	switch(observer_gen)
+		if(1 to 4) error_chance = 0
+		if(5 to 6) error_chance = 10
+		if(7 to 9) error_chance = 25
+		if(10 to 12) error_chance = 40
+		if(13 to 100) error_chance = 60
+
+	if(target_gen < observer_gen)
+		error_chance += (observer_gen - target_gen) * 5
+
+	if(target_gen > observer_gen)
+		error_chance -= (target_gen - observer_gen) * 5
+		if(error_chance < 0) error_chance = 0
+
+	error_chance = clamp(error_chance, 0, 85)
+
+	if(prob(error_chance))
+		var/list/all_clans = list(
+			VAMPIRE_CLAN_BRUJAH, VAMPIRE_CLAN_GANGREL, VAMPIRE_CLAN_MALKAVIAN,
+			VAMPIRE_CLAN_NOSFERATU, VAMPIRE_CLAN_TOREADOR, VAMPIRE_CLAN_TREMERE,
+			VAMPIRE_CLAN_LASOMBRA, VAMPIRE_CLAN_TZIMISCE, VAMPIRE_CLAN_CAITIFF,
+			VAMPIRE_CLAN_BANU_HAQIM, VAMPIRE_CLAN_SETITE, VAMPIRE_CLAN_GIOVANNI,
+			VAMPIRE_CLAN_CAPPADOCIAN, VAMPIRE_CLAN_SAMEDI, VAMPIRE_CLAN_GARGOYLE,
+			VAMPIRE_CLAN_KIASYD, VAMPIRE_CLAN_BAALI, VAMPIRE_CLAN_TRUE_BRUJAH,
+			VAMPIRE_CLAN_OLD_CLAN_TZIMISCE
+		)
+
+		all_clans -= clan_id
+
+		if(length(all_clans))
+			clan_id = pick(all_clans)
+
+	switch(target_gen)
 		if(1 to 3)
 			message += "Эта кровь первозданна! От неё веет абсолютной, божественной мощью и леденящей душу Тьмой. Кажется, будто сама вечность смотрит на вас в ответ через эту кровь.\n"
 		if(4)
@@ -38,7 +71,7 @@
 		if(12, 13)
 			message += "Сила этой крови угасает, она водяниста. Она принадлежит неонату.\n"
 		else
-			if(gen >= 14)
+			if(target_gen >= 14)
 				message += "Это витэ слабокровного! В ней почти нет силы.\n"
 
 	if(clan_id)
