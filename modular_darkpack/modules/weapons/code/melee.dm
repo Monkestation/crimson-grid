@@ -469,3 +469,30 @@
 /obj/item/darkpack/spear/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/selling, 400, "spear", FALSE)
+
+/obj/item/claymore/vengeful_maw
+	name = "Vengeful Maw"
+	desc = "An archaic weapon, created using the bones of dead Garou, this dreadful weapon has a insatiable thirst, drinking from anything it can."
+	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
+	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
+	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
+	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
+	icon_state = "vengeful_maw"
+
+	force = 3 LETHAL_TTRPG_DAMAGE
+	block_chance = 40
+	attack_difficulty = 6 // This thing is extremely poorly balanced, and cannot have a good two handed grip
+
+/obj/item/claymore/vengeful_maw/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
+	. = ..()
+	if(!isliving(target) || !isliving(user))
+		return
+	var/mob/living/victim = target
+	var/mob/living/wielder = user
+	if(victim.bloodpool <= 0)
+		to_chat(wielder, span_warning("The maw tries to drink, but winces at the lack of blood from [victim]."))
+		return
+	victim.adjust_blood_pool(-1)
+	wielder.adjust_blood_pool(0.4)
+	to_chat(wielder, span_notice("The maw drinks from [victim], and you feel the blood flow into you."))
