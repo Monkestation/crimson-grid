@@ -80,6 +80,13 @@
 		drunk_from.adjust_brute_loss(20, TRUE)
 		drunk_from.emote("scream") // CORVAX EDIT ADD
 
+	if(HAS_TRAIT(src, TRAIT_VITAE_ADDICTION) && get_kindred_splat(drunk_from))
+		var/datum/splat/vampire/kindred/drinker_kindred = get_kindred_splat(src)
+		if(drinker_kindred && (drinker_kindred.clan?.id == VAMPIRE_CLAN_BANU_HAQIM))
+			adjust_agg_loss(45, TRUE)
+			to_chat(src, span_userdanger("Проклятие Тремер обжигает вашу кровь!"))
+			playsound(source, SFX_SEAR, 50, TRUE)
+
 	//Ventrue can suck on normal people, but not homeless people and animals.
 	//BLOOD_QUALITY_LOV - 1, BLOOD_QUALITY_NORMAL - 2, BLOOD_QUALITY_HIGH - 3. Blue blood gives +1 to suction
 	if(HAS_TRAIT(src, TRAIT_FEEDING_RESTRICTION) && drunk_from.bloodquality < BLOOD_QUALITY_NORMAL)
