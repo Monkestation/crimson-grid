@@ -5650,11 +5650,6 @@
 /obj/structure/cable/layer1,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/glasswalker)
-"bmr" = (
-/obj/effect/landmark/bawn_entrance/gaia,
-/obj/structure/curtain/bounty,
-/turf/open/misc/dirt,
-/area/vtm/outside/forest)
 "bmx" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/misc/grass,
@@ -8220,6 +8215,10 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/police)
+"bPk" = (
+/obj/effect/realistic_fog/bawn/gaia,
+/turf/open/misc/dirt,
+/area/vtm/outside/forest)
 "bPm" = (
 /obj/effect/decal/wallpaper/paper/fancy/red,
 /turf/closed/wall/vampwall/junk,
@@ -18925,6 +18924,11 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/cog/pantry)
+"eoR" = (
+/obj/structure/flora/rock/darkpack,
+/obj/structure/glowshroom/single,
+/turf/open/floor/plating/rough/cave,
+/area/vtm/outside/forest)
 "eoZ" = (
 /obj/structure/chair/comfy/darkpack/dark{
 	dir = 1;
@@ -45697,6 +45701,10 @@
 "kLq" = (
 /turf/closed/wall/vampwall/rock,
 /area/vtm/interior/shop/camping_store)
+"kLt" = (
+/obj/effect/landmark/bawn_entrance/gaia,
+/turf/open/misc/dirt,
+/area/vtm/outside/forest)
 "kLv" = (
 /obj/structure/chair/comfy/darkpack/dark,
 /turf/open/floor/carpet/lone,
@@ -81474,10 +81482,6 @@
 /obj/structure/table,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
-"ten" = (
-/obj/effect/realistic_fog/bawn/gaia,
-/turf/open/floor/plating/rough/cave,
-/area/vtm/outside/forest)
 "tes" = (
 /obj/effect/landmark/npcactivity,
 /turf/open/floor/plating/sidewalk/rich,
@@ -82282,6 +82286,14 @@
 /obj/structure/flora/darkpack_flower/flax,
 /turf/open/misc/grass,
 /area/vtm)
+"tpf" = (
+/obj/structure/spacevine{
+	can_spread = 0;
+	pixel_y = 26
+	},
+/obj/effect/realistic_fog/bawn/gaia,
+/turf/open/misc/dirt,
+/area/vtm/outside/forest)
 "tpi" = (
 /obj/effect/turf_decal/bordur{
 	dir = 10
@@ -413715,9 +413727,9 @@ vmg
 vmg
 vmg
 vmg
-owb
+tpf
 lQn
-lQn
+bPk
 vmg
 lQn
 cuo
@@ -414227,9 +414239,9 @@ nom
 exQ
 lQn
 lQn
-lQn
-lQn
-dDM
+kLt
+bPk
+eoR
 vmg
 vmg
 vmg
@@ -414484,7 +414496,7 @@ qSV
 cHL
 nvG
 vWU
-ddQ
+vmg
 vmg
 vmg
 vmg
@@ -416068,11 +416080,11 @@ vmg
 vmg
 mBx
 lQn
-bAU
+mBx
 lQn
 lQn
 lQn
-jRk
+lQn
 vmg
 vmg
 vmg
@@ -416322,7 +416334,7 @@ lQn
 vmg
 vmg
 xeK
-ten
+mBx
 mBx
 mBx
 lQn
@@ -416577,7 +416589,7 @@ mBx
 lQn
 lQn
 lQn
-bmr
+dTt
 lQn
 mBx
 vmg
