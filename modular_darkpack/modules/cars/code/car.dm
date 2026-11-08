@@ -635,7 +635,7 @@
 
 /obj/darkpack_car/proc/update_speed(seconds)
 	var/skill = get_driver_skill()
-	var/accel_mult = 1 + skill * 0.15
+	var/accel_mult = 1 + skill * 0.1
 	var/brake_mult = 1 + skill * 0.1
 
 	var/throttle = 0
@@ -665,11 +665,12 @@
 	if(speed < 0 && !driver.client?.prefs?.read_preference(/datum/preference/toggle/enable_legacy_driving_controls))
 		steering = -steering
 
-	var/turn_mult = 1 + skill * 0.15
-	var/turn_rate = min(abs(speed), 60) * seconds * turn_mult
+	var/turn_rate = min(abs(speed), 60) * seconds
+	turn_rate *= 1 + skill * 0.05
 
 	if(braking)
-		turn_rate *= 1 + clamp(driver.st_get_stat(STAT_DRIVE)/4, 0.25, 4)
+		turn_rate *= 1 + clamp(skill / 4, 0.25, 2)
+
 	movement_vector = SIMPLIFY_DEGREES(movement_vector + steering * turn_rate)
 	apply_vector_angle()
 
