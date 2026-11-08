@@ -115,6 +115,9 @@
 /obj/effect/mapping_helpers/door/access/cappadocian
 	lock_id = LOCKACCESS_CAPPADOCIAN
 
+/obj/effect/mapping_helpers/door/access/tlacique
+	lock_id = LOCKACCESS_TLACIQUE
+
 /obj/effect/mapping_helpers/door/access/salubri
 	lock_id = LOCKACCESS_SALUBRI
 

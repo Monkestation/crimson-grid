@@ -260,6 +260,12 @@
 	name = "Community Center Basement"
 	zone_type = ZONE_ELYSIUM
 
+/area/vtm/interior/tlacique/basement
+	name = "Garden Shop Basement"
+	icon_state = "hotel"
+	domain = TRUE
+	zone_type = ZONE_ELYSIUM
+
 /area/vtm/interior/ghetto
 	name = "Ghetto Apartments"
 	icon_state = "ghetto_interior"
