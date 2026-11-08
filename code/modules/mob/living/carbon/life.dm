@@ -738,7 +738,9 @@
 	if(liver)
 		return
 
+	/* // CORVAX EDIT REMOVAL - same per tick restart as in the liver
 	reagents.end_metabolization(src, keep_liverless = TRUE) //Stops trait-based effects on reagents, to prevent permanent buffs
+	*/
 	reagents.metabolize(src, seconds_per_tick, can_overdose = TRUE, liverless = TRUE)
 
 	if(HAS_TRAIT(src, TRAIT_STABLELIVER) || HAS_TRAIT(src, TRAIT_LIVERLESS_METABOLISM))
