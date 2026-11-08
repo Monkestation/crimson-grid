@@ -263,6 +263,10 @@
 	// Can't do anything if in a container
 	if (!isturf(loc))
 		return
+	// CORVAX EDIT ADD START
+	if (!danger_source && npc_is_dormant())
+		return
+	// CORVAX EDIT ADD END
 
 	// Checks for fire, clearing the stored fire if none is in view
 	update_fire_fear() // CORVAX EDIT CHANGE - ORIGINAL: afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)

@@ -136,7 +136,9 @@
 	. = ..()
 	//If your liver is failing, then we use the liverless version of metabolize
 	if((organ_flags & ORGAN_FAILING) || HAS_TRAIT(owner, TRAIT_LIVERLESS_METABOLISM))
+		/* // CORVAX EDIT REMOVAL - metabolize restarts every reagent right away, so this only reran their start and end effects every tick
 		owner.reagents.end_metabolization(keep_liverless = TRUE)
+		*/
 		owner.reagents.metabolize(owner, seconds_per_tick, can_overdose = TRUE, liverless = TRUE)
 		return
 

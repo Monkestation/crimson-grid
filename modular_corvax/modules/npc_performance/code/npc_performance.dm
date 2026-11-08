@@ -48,3 +48,34 @@ GLOBAL_LIST_EMPTY(turf_fires)
 /mob/living/carbon/human/npc/death(gibbed)
 	afraid_of_fire = null // dead NPCs stop scanning and would keep a burned out fire alive
 	return ..()
+
+#define NPC_WAKE_RANGE 12
+#define NPC_WAKE_LEVELS_ABOVE 2
+
+/mob/living/carbon/human/npc
+	var/dormant = FALSE
+	COOLDOWN_DECLARE(dormancy_check_cooldown)
+
+/// Nobody can see a wandering NPC this far from every player, so it skips the steps and lets the stuck teleport carry it instead
+/mob/living/carbon/human/npc/proc/npc_is_dormant()
+	if(!COOLDOWN_FINISHED(src, dormancy_check_cooldown))
+		return dormant
+	COOLDOWN_START(src, dormancy_check_cooldown, 2 SECONDS)
+	var/now_dormant = !player_nearby()
+	if(now_dormant && !dormant)
+		GLOB.move_manager.stop_looping(src)
+	dormant = now_dormant
+	return dormant
+
+/mob/living/carbon/human/npc/proc/player_nearby()
+	var/turf/level = get_turf(src)
+	for(var/i in 0 to NPC_WAKE_LEVELS_ABOVE)
+		if(!level)
+			return FALSE
+		if(length(SSspatial_grid.orthogonal_range_search(level, SPATIAL_GRID_CONTENTS_TYPE_CLIENTS, NPC_WAKE_RANGE)))
+			return TRUE
+		level = GET_TURF_ABOVE(level)
+	return FALSE
+
+#undef NPC_WAKE_RANGE
+#undef NPC_WAKE_LEVELS_ABOVE
