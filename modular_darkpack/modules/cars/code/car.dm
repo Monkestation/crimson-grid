@@ -23,6 +23,7 @@
 	name = "car trunk"
 	desc = "How did this get out of the car."
 
+// CRIMSON EDIT ADDITION START - Scooter
 /// Holds a visible rider so we can control its offset and layer without touching the mob itself.
 /obj/effect/car_rider_holder
 	name = "rider"
@@ -36,6 +37,7 @@
 	name = "front"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+// CRIMSON EDIT ADDITION END
 
 /datum/storage/car
 	animated = FALSE
@@ -132,6 +134,7 @@
 	/// sound loop for the engine
 	var/datum/looping_sound/car_engine/engine_sound_loop
 
+	// CRIMSON EDIT ADDITION START - Scooter
 	/// Pixel offset used to center the sprite on the turf: -(icon_size - 32) / 2
 	var/visual_offset = 0
 
@@ -173,6 +176,7 @@
 	var/max_speed = 64
 	/// Impacts at or above this speed (speed_in_pixels / 4) throw occupants out of the vehicle. 0 = never.
 	var/eject_speed_threshold = 0
+	// CRIMSON EDIT ADDITION END
 
 	COOLDOWN_DECLARE(impact_delay)
 	COOLDOWN_DECLARE(beep_cooldown)
@@ -214,9 +218,11 @@
 	gas = rand(100, CAR_TANK_MAX)
 	movement_vector = dir2angle(dir)
 
+	// CRIMSON EDIT ADDITION START - Scooter
 	body_icon_state = icon_state
 	update_vehicle_overlays()
 	icon_state = "empty"
+	// CRIMSON EDIT ADDITION END
 
 
 	var/static/list/loc_connections = list(
@@ -229,9 +235,10 @@
 	QDEL_NULL(engine_sound_loop)
 	QDEL_NULL(trunk)
 	empty_car()
-	QDEL_NULL(front_holder)
+	QDEL_NULL(front_holder) // CRIMSON EDIT ADDITION - Scooter
 	. = ..()
 
+// CRIMSON EDIT ADDITION START - Scooter
 /obj/darkpack_car/AllowClick()
 	return TRUE
 
@@ -292,6 +299,7 @@
 	rider_holders -= rider
 	rider.vis_flags &= ~(VIS_INHERIT_DIR | VIS_INHERIT_LAYER)
 	qdel(holder)
+// CRIMSON EDIT ADDITION END
 
 /obj/darkpack_car/click_alt(mob/user)
 	var/list/radial_menu_options = list(
@@ -311,7 +319,7 @@
 		atom_storage.open_storage(user)
 		return CLICK_ACTION_SUCCESS
 
-	if(locked && lock_blocks_entry)
+	if(locked && lock_blocks_entry) // CRIMSON EDIT CHANGE - Original: if(locked)
 		to_chat(user, span_warning("[src] is locked!"))
 		return CLICK_ACTION_BLOCKING
 	var/mob/living/occupent = passanger_map[pick]
@@ -460,6 +468,7 @@
 	. = ..()
 	if(user.loc == src)
 		. += "<b>Gas</b>: [gas]/[CAR_TANK_MAX]"
+
 	if(broken)
 		. += span_notice("It appears to be broken.")
 	var/healthpercent = (atom_integrity/max_integrity) * 100
@@ -516,7 +525,7 @@
 	if(!isliving(dropped))
 		return
 
-	if(locked && lock_blocks_entry)
+	if(locked && lock_blocks_entry) // CRIMSON EDIT CHANGE - Original: if(locked)
 		to_chat(user, span_warning("[src] is locked."))
 		return
 
@@ -566,8 +575,10 @@
 /obj/darkpack_car/proc/enter_car(mob/living/user)
 	RegisterSignal(user, COMSIG_MOB_LOGOUT, PROC_REF(on_rider_logout))
 	user.forceMove(src)
+	// CRIMSON EDIT ADDITION START - Scooter
 	if(occupants_visible)
 		show_occupant(user)
+	// CRIMSON EDIT ADDITION END
 	visible_message(span_notice("[user] enters [src]."), \
 		span_notice("You enter [src]."))
 	playsound(src, 'modular_darkpack/master_files/sounds/effects/door/door.ogg', 50, TRUE)
@@ -579,8 +590,10 @@
 
 //Dump one guy out of the car.
 /obj/darkpack_car/proc/empty_occupant(mob/living/dumpe)
+	// CRIMSON EDIT ADDITION START - Scooter
 	if(occupants_visible)
 		hide_occupant(dumpe)
+	// CRIMSON EDIT ADDITION END
 	dumpe.forceMove(loc)
 
 	var/list/exit_side = list(
@@ -631,8 +644,10 @@
 
 /obj/darkpack_car/Bump(atom/bumped_atom)
 	. = ..()
+	// CRIMSON EDIT ADDITION START - Scooter
 	//impact below can zero or reduce our speed.
 	var/travel_angle = speed < 0 ? SIMPLIFY_DEGREES(movement_vector + 180) : movement_vector
+	// CRIMSON EDIT ADDITION END
 
 	if(istype(bumped_atom, /obj/transfer_point_vamp))
 		COOLDOWN_START(src, impact_delay, 0.75 SECONDS)
@@ -702,12 +717,11 @@
 	if(driver)
 		var/driver_skill = clamp(driver.st_get_stat(STAT_DRIVE)/2, 1, 4)
 		dam = round(dam/driver_skill)
-
 		driver.apply_damage(impact_damage, BRUTE, BODY_ZONE_CHEST)
-	eject_occupants_on_impact(impact_damage, travel_angle, bumped_atom)
-
+	eject_occupants_on_impact(impact_damage, travel_angle, bumped_atom) // CRIMSON EDIT ADDITION - Scooter
 	take_damage(dam)
 
+// CRIMSON EDIT ADDITION START - Scooter
 /// Throws everyone out of the vehicle, in the direction it was travelling, if the impact was fast enough.
 /obj/darkpack_car/proc/eject_occupants_on_impact(prev_speed, travel_angle, atom/bumped_atom)
 	if(!eject_speed_threshold || prev_speed < eject_speed_threshold)
@@ -730,6 +744,7 @@
 		var/turf/throw_target = get_turf_in_angle(travel_angle, get_turf(rider), throw_distance)
 		if(throw_target)
 			rider.throw_at(throw_target, throw_distance, 1)
+// CRIMSON EDIT ADDITION END
 
 /obj/darkpack_car/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
@@ -923,13 +938,15 @@
 /obj/darkpack_car/proc/apply_vector_angle()
 	// angle2dir truncates fractional angles, so derive the dir from the same rounding as the residual turn
 	var/sprite_angle = round(SIMPLIFY_DEGREES(movement_vector + 22.5) / 45) * 45
-	var/new_dir = angle2dir(sprite_angle)
+	var/new_dir = angle2dir(sprite_angle) // CRIMSON EDIT ADDITION - Scooter
 	setDir(angle2dir(sprite_angle))
+	// CRIMSON EDIT ADDITION START - Scooter
 	for(var/mob/living/rider in rider_holders)
 		var/obj/effect/car_rider_holder/holder = rider_holders[rider]
 		holder.setDir(new_dir)
 	if(front_holder)
 		front_holder.setDir(new_dir)
+	// CRIMSON EDIT ADDITION END
 
 	var/matrix/M = matrix()
 	M.Turn(movement_vector - sprite_angle)
