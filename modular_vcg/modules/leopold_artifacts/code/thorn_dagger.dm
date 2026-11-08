@@ -2,7 +2,7 @@
 	name = "Odd Vine"
 	desc = "An Odd Vine"
 	true_name = "Dagger of Thorns"
-	true_desc = "A Dagger made of thorns that inflicts aggravated wounds and destroys one blood with each hit."
+	true_desc = "A Dagger made of thorns that destroys one blood with each hit and attacks at superhuman speed."
 
 	icon = 'modular_vcg/modules/leopold_artifacts/icons/relics.dmi'
 	icon_state = "thorn_dagger"
