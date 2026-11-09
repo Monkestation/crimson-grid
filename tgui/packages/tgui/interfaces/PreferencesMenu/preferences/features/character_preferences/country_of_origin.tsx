@@ -16,3 +16,8 @@ export const province_of_origin: FeatureChoiced = {
     name: 'Province of Origin',
     component: FeatureDropdownInput,
 };
+
+export const nation_of_origin: FeatureChoiced = {
+    name: 'Nation of Origin',
+    component: FeatureDropdownInput,
+};
