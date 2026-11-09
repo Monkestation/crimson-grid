@@ -181,7 +181,7 @@
 			old_baseturfs
 		))
 
-		var/turf/closed/wall/vampwall/rock/earth_wall = nearby_turf.ChangeTurf(/turf/closed/wall/vampwall/rock)
+		var/turf/closed/wall/vampwall/earth_wall = nearby_turf.ChangeTurf(/turf/closed/wall)
 		if(!earth_wall)
 			continue
 
@@ -244,7 +244,7 @@
 			old_baseturfs
 		))//same behavior as previous ability but this one can heal and locks you in place
 
-		var/turf/closed/wall/vampwall/rock/earth_wall = nearby_turf.ChangeTurf(/turf/closed/wall/vampwall/rock)
+		var/turf/closed/wall/earth_wall = nearby_turf.ChangeTurf(/turf/closed/wall)
 		if(!earth_wall)
 			continue
 
