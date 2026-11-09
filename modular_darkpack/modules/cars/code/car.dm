@@ -119,6 +119,10 @@
 	/// sound loop for the engine
 	var/datum/looping_sound/car_engine/engine_sound_loop
 
+	// CORVAX EDIT START
+	var/driver_skill = 0
+	// CORVAX EDIT END
+
 	COOLDOWN_DECLARE(impact_delay)
 	COOLDOWN_DECLARE(beep_cooldown)
 	COOLDOWN_DECLARE(hit_cooldown)
@@ -429,6 +433,7 @@
 	if(driver)
 		return
 	driver = user
+	driver_skill = clamp(user.st_get_stat(STAT_DRIVE), 0, 5)	// CORVAX EDIT ADD
 	for(var/car_action in subtypesof(/datum/action/darkpack_car))
 		var/datum/action/darkpack_car/new_action = new car_action()
 		new_action.Grant(user)
@@ -487,6 +492,7 @@
 	var/mob/living/rider = gone
 	if(rider == driver)
 		driver = null
+		driver_skill = 0	// CORVAX EDIT ADD
 	else
 		passengers -= rider
 	UnregisterSignal(rider, COMSIG_MOB_LOGOUT)
@@ -575,9 +581,9 @@
 			log_combat(driver, hit_mob, "hit with", src)
 	var/dam = impact_damage
 	if(driver)
-		var/driver_skill = clamp(1+get_driver_skill()/2, 1, 3.5)	// CORVAX EDIT
-		dam = round(dam/driver_skill)
-		driver.apply_damage(impact_damage, BRUTE, BODY_ZONE_CHEST)
+		var/crash_resist = 1 + driver_skill * 0.5	// CORVAX EDIT
+		dam = round(dam / crash_resist)	// CORVAX EDIT
+		driver.apply_damage(round(impact_damage / crash_resist), BRUTE, BODY_ZONE_CHEST)	// CORVAX EDIT
 	take_damage(dam)
 
 /obj/darkpack_car/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
@@ -602,8 +608,6 @@
 			playsound(src, 'modular_darkpack/modules/cars/sounds/stop.ogg', 60, FALSE)
 			if(driver)
 				to_chat(driver, span_warning("Вода заливает двигатель — [declent_ru(NOMINATIVE)] глохнет!"))
-		if(speed != 0 || offset_x != 0 || offset_y != 0)
-			halt_car()
 		if(!speed && !on && !light_on)
 			return PROCESS_KILL
 		return
@@ -634,7 +638,7 @@
 		return PROCESS_KILL
 
 /obj/darkpack_car/proc/update_speed(seconds)
-	var/skill = get_driver_skill()
+	var/skill = driver_skill	// CORVAX EDIT
 	var/accel_mult = 1 + skill * 0.1
 	var/brake_mult = 1 + skill * 0.1
 
@@ -827,25 +831,9 @@
 	locked = FALSE
 
 // CORVAX EDIT START
-/obj/darkpack_car/proc/get_driver_skill()
-	if(!driver)
-		return 0
-	return clamp(driver.st_get_stat(STAT_DRIVE), 0, 5)
-
 /obj/darkpack_car/proc/is_stuck_in_water()
-	return istype(get_turf(src), /turf/open/water/beach/vamp)
-
-/obj/darkpack_car/proc/halt_car()
-	speed = 0
-	offset_x = 0
-	offset_y = 0
-	pixel_x = 0
-	pixel_y = 0
-	camera_lead_x = 0
-	camera_lead_y = 0
-	animate(src)
-	for(var/mob/living/rider in src)
-		reset_rider_camera(rider.client)
+	return istype(get_turf(src), /turf/open/water)
+// CORVAX EDIT END
 
 #undef DOAFTER_SOURCE_CAR
 #undef CAR_TANK_MAX
