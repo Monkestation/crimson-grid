@@ -1,11 +1,11 @@
 /datum/discipline/path_of_earth
 	name = "Path of Earth"
 	desc = {"Gives Power over the earth allowing one to use it to immobilize their enemies
-	● Grasp of Earth: Charisma + Empathy
-	●● The Haunting: Manipulation + Subterfuge
-	●●● Eyes of Chaos: Perception + Occult
-	●●●● Voice of Madness: Manipulation + Empathy
-	●●●●● Total Insanity: Manipulation + Intimidation"}
+	● Grasp of Earth: Willpower
+	●● Endurance Of Stone: Willpower
+	●●● Hungry Earth Willpower
+	●●●● Earths Embrace: Willpower
+	●●●●● Kupalas Fury: Willpower"}
 	icon = 'modular_vcg/modules/powers/icons/actions.dmi'
 	icon_state = "koldunic"
 	clan_restricted = TRUE
@@ -135,7 +135,7 @@
 			owner.apply_damage(20, BRUTE)
 			to_chat(owner, span_danger("The earth refuses your will injuring you"))
 			return
-	// Earthquake-style warning: shake the target turf and nearby viewers.
+	// Earthquake shake
 	target_turf.Shake(pixelshiftx = 0.1, pixelshifty = 0.1, duration = 1 SECONDS)
 
 	for(var/mob/viewer in viewers(7, target_turf))
@@ -211,7 +211,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 2
 	duration_length = 45 SECONDS
-	cooldown_length = 480 SECONDS
+	cooldown_length = 240 SECONDS
 	cancelable = TRUE
 
 	var/list/encased_tile_data = list()
@@ -243,6 +243,7 @@
 			nearby_turf.type,
 			old_baseturfs
 		))//same behavior as previous ability but this one can heal and locks you in place
+		owner.visible_message(span_warning("The ground erupts upward with a deafening rumble!"))
 
 		var/turf/closed/wall/vampwall/rock/earth_wall = nearby_turf.ChangeTurf(/turf/closed/wall/vampwall/rock)
 		if(!earth_wall)
@@ -289,3 +290,48 @@
 		current_turf.ChangeTurf(saved_tile[4], saved_tile[5])
 
 	encased_tile_data.Cut()
+
+/datum/discipline_power/path_of_earth/kupalas_fury
+	name = "Kupalas Fury"
+	desc = "The earth shall tremble at your grasp"
+	level = 5
+	check_flags = DISC_CHECK_CONSCIOUS
+	vitae_cost = 5
+	cooldown_length = 480 SECONDS
+	target_type = TARGET_TURF
+	range = 15
+/datum/discipline_power/path_of_earth/kupalas_fury/activate(target)
+	. = ..()
+
+
+	var/turf/target_turf = get_turf(target)
+	if(!target_turf)
+		return
+
+	for(var/turf/shaking_turf in range(2, target_turf))
+		shaking_turf.Shake(pixelshiftx = 0.1, pixelshifty = 0.1, duration = 5 SECONDS)
+
+	for(var/mob/viewer in viewers(2, target_turf))
+		shake_camera(viewer, 3 SECONDS, 1)
+		viewer.playsound_local(
+			viewer,
+			pick(
+				'sound/ambience/earth_rumble/earth_rumble_distant1.ogg',
+				'sound/ambience/earth_rumble/earth_rumble_distant2.ogg',
+				'sound/ambience/earth_rumble/earth_rumble_distant3.ogg',
+				'sound/ambience/earth_rumble/earth_rumble_distant4.ogg',
+			),
+			75,
+		)
+	addtimer(CALLBACK(src, PROC_REF(kupala_impact), target_turf.x, target_turf.y, target_turf.z), 5 SECONDS)
+	to_chat(owner, span_notice("The earth trembles near [target]; it looks like an earthquake is about to hit."))
+
+/datum/discipline_power/path_of_earth/kupalas_fury/proc/kupala_impact(x, y, z)
+	var/turf/impact_center = locate(x, y, z)
+	if(!impact_center)
+		return
+
+	impact_center.visible_message(span_userdanger("The ground erupts in a violent quake!"))
+
+	for(var/mob/living/victim in range(2, impact_center))
+		victim.apply_damage(40, BRUTE)
