@@ -248,6 +248,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
 
+/* CORVAX EDIT REMOVE
 /obj/item/scooter_frame/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/stack/sheet/iron))
 		return NONE
@@ -260,6 +261,7 @@
 	new /obj/vehicle/ridden/scooter/skateboard/improvised(user.loc)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
+*/
 
 /obj/item/scooter_frame/wrench_act(mob/living/user, obj/item/tool)
 	to_chat(user, span_notice("Вы разбираете [declent_ru(ACCUSATIVE)]."))
@@ -271,6 +273,7 @@
 /obj/vehicle/ridden/scooter/skateboard/wrench_act(mob/living/user, obj/item/tool)
 	return
 
+/* CORVAX EDIT REMOVE
 /obj/vehicle/ridden/scooter/skateboard/improvised/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	. = ..()
 	if (.)
@@ -290,6 +293,7 @@
 		skaterskoot.buckle_mob(skaterboy)
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
+*/
 
 /obj/vehicle/ridden/scooter/skateboard/improvised/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()

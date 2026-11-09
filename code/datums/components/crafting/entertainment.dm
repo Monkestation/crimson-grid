@@ -86,6 +86,7 @@
 	skill_required_for_use = STAT_OCCULT // DARKPACK EDIT ADD - STORYTELER_STATS
 	skill_dots_minimum = 4 // DARKPACK EDIT ADD - STORYTELER_STATS
 
+/* CORVAX EDIT REMOVE
 /datum/crafting_recipe/skateboard
 	name = "Skateboard"
 	result = /obj/vehicle/ridden/scooter/skateboard/improvised
@@ -107,6 +108,7 @@
 	)
 	category = CAT_ENTERTAINMENT
 	skill_dots_minimum = 1 // DARKPACK EDIT ADD - STORYTELER_STATS
+*/
 
 /datum/crafting_recipe/headpike
 	name = "Spike Head (Glass Spear)"
