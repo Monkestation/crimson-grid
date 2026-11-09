@@ -54,6 +54,14 @@
 	bulb_colour = "#FFDDCC"
 	bulb_power = 0.6
 
+/obj/machinery/light/warmer
+	bulb_colour = "#"#e6a429"
+
+/obj/machinery/light/warmer/dim
+	bulb_colour = "#"#e6a429"
+	nightshift_allowed = FALSE
+	bulb_power = 0.6
+
 // the smaller bulb light fixture
 
 /obj/machinery/light/small
@@ -198,6 +206,10 @@ LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/blacklight)
 // ---- Dim tubes
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/dim)
 
+// ---- Warmer Light Tubes
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/warmer)
+
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/warmer/dim)
 
 // -------- Bulb lights
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/small)
