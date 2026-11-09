@@ -6,7 +6,6 @@
 	●●● Eyes of Chaos: Perception + Occult
 	●●●● Voice of Madness: Manipulation + Empathy
 	●●●●● Total Insanity: Manipulation + Intimidation"}
-	icon = 'modular_vcg/modules/powers/icons/actions.dmi'
 	icon_state = "koldunic"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/path_of_earth
@@ -16,7 +15,7 @@
 	name = "path of earth power name"
 	desc = "path of earth power description"
 
-	activate_sound = 'modular_darkpack/modules/powers/sounds/visceratika.ogg'//placeholder sound ignore
+	activate_sound = 'modular_darkpack/modules/powers/sounds/serpentis.ogg'//placeholder sound ignore
 
 
 /datum/discipline_power/path_of_earth/grasp_of_earth
