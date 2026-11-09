@@ -10567,6 +10567,11 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/jerrycan/left4zed{
+	pixel_y = -2;
+	pixel_x = -1
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/flower_shop)
 "cty" = (
@@ -11997,6 +12002,10 @@
 /obj/effect/decal/cleanable/trash,
 /turf/open/water/beach/vamp/deep,
 /area/vtm)
+"cLn" = (
+/obj/machinery/light/warm/directional/north,
+/turf/open/misc/dirt,
+/area/vtm/interior/tlacique/basement)
 "cLr" = (
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/caves)
@@ -18756,6 +18765,24 @@
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/strip)
+"eoc" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/table/wood,
+/obj/item/shovel/spade{
+	pixel_x = -6
+	},
+/obj/item/cultivator{
+	pixel_y = 6;
+	pixel_x = -2
+	},
+/obj/item/secateurs{
+	pixel_y = 7;
+	pixel_x = 6
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/shop/flower_shop)
 "eoh" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plating/rough,
@@ -22267,6 +22294,13 @@
 /obj/machinery/sprinkler,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/fed)
+"fgF" = (
+/obj/structure/spacevine{
+	can_spread = 0
+	},
+/obj/effect/decal/cleanable/crayon/scribble14,
+/turf/closed/wall/vampwall/wood,
+/area/vtm/interior/tlacique/basement)
 "fgG" = (
 /turf/closed/wall/vampwall/redbrick,
 /area/vtm/interior/apartment)
@@ -28134,10 +28168,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "gzG" = (
-/obj/machinery/light/prince/directional/north{
-	bulb_power = 0.5;
-	bulb_colour = "#cf8616"
-	},
+/obj/machinery/light/warm/directional/north,
 /turf/open/misc/grass,
 /area/vtm/interior/tlacique/basement)
 "gzI" = (
@@ -31717,10 +31748,6 @@
 	dir = 8
 	},
 /obj/structure/table/wood,
-/obj/item/reagent_containers/cup/jerrycan/left4zed{
-	pixel_y = -2;
-	pixel_x = -1
-	},
 /turf/open/floor/carpet/darkpack/greengold,
 /area/vtm/interior/shop/flower_shop)
 "hpw" = (
@@ -36071,9 +36098,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church/staff)
 "ipr" = (
-/obj/machinery/light/dim/directional/south{
-	bulb_colour = "#cf8616"
-	},
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/flower_shop)
 "ipt" = (
@@ -38860,6 +38885,11 @@
 	},
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/clinic)
+"iVj" = (
+/obj/structure/lattice/grate,
+/obj/structure/brazier,
+/turf/open/water/bloodwave,
+/area/vtm/interior/tlacique/basement)
 "iVn" = (
 /turf/open/floor/glass,
 /area/vtm)
@@ -42931,9 +42961,7 @@
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer/nosferatu_warren)
 "jSd" = (
-/obj/machinery/light/dim/directional/south{
-	bulb_colour = "#cf8616"
-	},
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/carpet/darkpack/greengold,
 /area/vtm/interior/shop/flower_shop)
 "jSh" = (
@@ -52222,10 +52250,6 @@
 	pixel_x = -10
 	},
 /obj/item/shovel/vamp,
-/obj/machinery/light/prince/directional/north{
-	bulb_power = 0.5;
-	bulb_colour = "#cf8616"
-	},
 /turf/open/misc/grass,
 /area/vtm/interior/tlacique/basement)
 "maS" = (
@@ -57637,6 +57661,13 @@
 	color = "#bfbfbf"
 	},
 /area/vtm/interior/setite)
+"nnn" = (
+/obj/structure/spacevine{
+	can_spread = 0
+	},
+/obj/effect/decal/cleanable/crayon/scribble5,
+/turf/closed/wall/vampwall/wood,
+/area/vtm/interior/tlacique/basement)
 "nnu" = (
 /obj/effect/decal/coastline{
 	dir = 1
@@ -61159,6 +61190,10 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
+"ocu" = (
+/obj/effect/decal/cleanable/crayon/scribble8,
+/turf/closed/wall/vampwall/wood,
+/area/vtm/interior/tlacique/basement)
 "ocA" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -62139,9 +62174,7 @@
 /turf/open/misc/grass/nosmooth,
 /area/vtm/outside/baywalk)
 "olx" = (
-/obj/machinery/light/dim/directional/south{
-	bulb_colour = "#cf8616"
-	},
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/tlacique/basement)
 "oly" = (
@@ -65280,15 +65313,6 @@
 	},
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer)
-"oXr" = (
-/obj/machinery/light/prince/directional/north{
-	bulb_power = 0.8;
-	bulb_colour = "#cf8616"
-	},
-/turf/open/floor/sandstone{
-	color = "#695640"
-	},
-/area/vtm/interior/tlacique/basement)
 "oXu" = (
 /obj/effect/decal/cleanable/litter,
 /obj/effect/turf_decal/bordur,
@@ -68285,6 +68309,10 @@
 	},
 /turf/open/floor/city/factory,
 /area/vtm/interior/giovanni)
+"pHa" = (
+/obj/machinery/light/warm/directional/east,
+/turf/open/misc/dirt,
+/area/vtm/interior/tlacique/basement)
 "pHd" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
@@ -73159,14 +73187,6 @@
 	},
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/chantry/basement)
-"qMP" = (
-/obj/machinery/hydroponics/simple/wooden,
-/obj/machinery/light/prince/directional/north{
-	bulb_power = 0.5;
-	bulb_colour = "#cf8616"
-	},
-/turf/open/misc/dirt,
-/area/vtm/interior/tlacique/basement)
 "qMT" = (
 /obj/item/kirbyplants/random/fullysynthetic,
 /obj/structure/flora/bush/style_random,
@@ -79594,17 +79614,6 @@
 	dir = 9
 	},
 /obj/structure/table/wood,
-/obj/item/shovel/spade{
-	pixel_x = -6
-	},
-/obj/item/cultivator{
-	pixel_y = 6;
-	pixel_x = -2
-	},
-/obj/item/secateurs{
-	pixel_y = 7;
-	pixel_x = 6
-	},
 /turf/open/floor/carpet/darkpack/greengold,
 /area/vtm/interior/shop/flower_shop)
 "spt" = (
@@ -139492,7 +139501,7 @@ uvs
 uvs
 xRF
 esJ
-qMP
+nak
 aXX
 aPi
 aPi
@@ -139697,7 +139706,7 @@ uvs
 xRF
 twQ
 nak
-aPi
+pHa
 aPi
 aPi
 aPi
@@ -140111,7 +140120,7 @@ esJ
 xRF
 xRF
 xRF
-aPi
+cLn
 aPi
 gUA
 xRF
@@ -141522,7 +141531,7 @@ uvs
 uvs
 xRF
 esJ
-oXr
+urx
 urx
 urx
 gqk
@@ -141535,7 +141544,7 @@ xRF
 xRF
 esJ
 esJ
-esJ
+ocu
 tyR
 aPi
 aPi
@@ -141544,7 +141553,7 @@ aPi
 ray
 aPi
 aPi
-twQ
+nnn
 uAs
 vwD
 uAs
@@ -141725,7 +141734,7 @@ uvs
 uvs
 xRF
 xRF
-twQ
+fgF
 urx
 urx
 urx
@@ -141734,7 +141743,7 @@ uNF
 lbN
 aPi
 gUA
-aPi
+uxc
 xRF
 xRF
 aAG
@@ -141929,7 +141938,7 @@ uvs
 xRF
 nfT
 vhR
-cqG
+iVj
 urx
 urx
 scF
@@ -142346,7 +142355,7 @@ vfE
 aPi
 gUA
 aPi
-aPi
+uxc
 xRF
 xRF
 aAG
@@ -182552,7 +182561,7 @@ jWS
 hqH
 hqH
 vvw
-ctx
+eoc
 ctx
 gWF
 gWF

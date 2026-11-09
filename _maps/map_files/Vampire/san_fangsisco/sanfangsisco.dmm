@@ -4945,10 +4945,7 @@
 /obj/item/storage/bag/plants{
 	pixel_y = 8
 	},
-/obj/machinery/light/prince/directional/west{
-	bulb_power = 0.5;
-	bulb_colour = "#cf8616"
-	},
+/obj/machinery/light/warm/directional/west,
 /turf/open/misc/dirt,
 /area/vtm/interior/tlacique/basement)
 "bdS" = (
@@ -9225,13 +9222,6 @@
 	},
 /turf/open/floor/plating/roofwalk,
 /area/vtm)
-"bYR" = (
-/obj/machinery/light/prince/directional/north{
-	bulb_power = 0.5;
-	bulb_colour = "#cf8616"
-	},
-/turf/open/misc/grass,
-/area/vtm/interior/tlacique/basement)
 "bZe" = (
 /obj/machinery/light/small/directional/south,
 /obj/structure/vampipe{
@@ -16895,7 +16885,6 @@
 /area/vtm/interior/shop/flower_shop)
 "dOn" = (
 /obj/structure/table,
-/obj/item/claymore/vengeful_maw,
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/hotel)
 "dOs" = (
@@ -19305,10 +19294,7 @@
 	dir = 8;
 	color = "#6d281e"
 	},
-/obj/machinery/light/prince/directional/east{
-	bulb_colour = "#cf8616";
-	bulb_power = 0.7
-	},
+/obj/machinery/light/warm/directional/east,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/flower_shop)
 "erN" = (
@@ -35405,6 +35391,10 @@
 "iiu" = (
 /turf/open/floor/plating/canal,
 /area/vtm/interior/endron_facility/plant)
+"iix" = (
+/obj/machinery/light/warm/directional/north,
+/turf/open/misc/grass,
+/area/vtm/interior/tlacique/basement)
 "iiy" = (
 /obj/structure/rack,
 /obj/item/clothing/head/vampire/beanie/black,
@@ -38101,6 +38091,10 @@
 /obj/effect/turf_decal/siding/wood/end,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/chantry)
+"iRG" = (
+/obj/effect/decal/cleanable/crayon/scribble,
+/turf/open/misc/dirt,
+/area/vtm/interior/tlacique/basement)
 "iRX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/dark_brown{
@@ -42334,10 +42328,7 @@
 /area/vtm/interior/church/staff)
 "jQk" = (
 /obj/machinery/hydroponics/simple/wooden,
-/obj/machinery/light/prince/directional/north{
-	bulb_power = 0.5;
-	bulb_colour = "#cf8616"
-	},
+/obj/machinery/light/warm/directional/north,
 /turf/open/misc/dirt,
 /area/vtm/interior/tlacique/basement)
 "jQn" = (
@@ -52203,9 +52194,7 @@
 /area/vtm/interior/shop/pawnshop)
 "mgd" = (
 /obj/item/kirbyplants/random,
-/obj/machinery/light/small/directional/north{
-	bulb_power = 0.6
-	},
+/obj/machinery/light/small/dim/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/flower_shop)
 "mgf" = (
@@ -76574,16 +76563,6 @@
 /obj/machinery/light/floor/lamppost/sidewalk,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
-"rPO" = (
-/obj/structure/spacevine{
-	can_spread = 0
-	},
-/obj/machinery/light/prince/directional/north{
-	bulb_power = 0.5;
-	bulb_colour = "#cf8616"
-	},
-/turf/closed/wall/vampwall/rock,
-/area/vtm/interior/tlacique/basement)
 "rPP" = (
 /obj/effect/decal/wallpaper/light,
 /turf/closed/wall/vampwall/city,
@@ -90167,6 +90146,13 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/fed)
+"vdG" = (
+/obj/structure/spacevine{
+	can_spread = 0
+	},
+/obj/effect/decal/cleanable/crayon/scribble5,
+/turf/closed/wall/vampwall/rock,
+/area/vtm/interior/tlacique/basement)
 "vdK" = (
 /obj/structure/chair/stool/bar/darkpack/blue,
 /obj/effect/decal/wallpaper/stone/low{
@@ -94664,6 +94650,13 @@
 	},
 /turf/open/floor/carpet/green,
 /area/vtm/interior/bianchiBank)
+"wgb" = (
+/obj/structure/spacevine{
+	can_spread = 0
+	},
+/obj/effect/decal/cleanable/crayon/scribble8,
+/turf/closed/wall/vampwall/wood,
+/area/vtm/interior/tlacique/basement)
 "wgc" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -101244,10 +101237,7 @@
 /turf/open/misc/dirt,
 /area/vtm/outside/forest)
 "xFm" = (
-/obj/machinery/light/prince/directional/north{
-	bulb_power = 0.5;
-	bulb_colour = "#cf8616"
-	},
+/obj/machinery/light/warm/directional/north,
 /turf/open/misc/dirt,
 /area/vtm/interior/tlacique/basement)
 "xFt" = (
@@ -131393,7 +131383,7 @@ jqS
 jqS
 jqS
 bWQ
-bYR
+eLV
 gtQ
 gVW
 bWQ
@@ -132433,7 +132423,7 @@ gVW
 gVW
 kiq
 aQU
-gVW
+iRG
 kCI
 tng
 kNs
@@ -132676,7 +132666,7 @@ ePh
 ePh
 ePh
 jqS
-xjf
+wgb
 jKd
 ygX
 gtQ
@@ -132934,8 +132924,8 @@ jqS
 jqS
 jqS
 bWQ
-rPO
-gtQ
+kZV
+eLV
 gtQ
 gVW
 xoq
@@ -133199,8 +133189,8 @@ bWQ
 bWQ
 jqS
 jqS
-kZV
-gtQ
+bWQ
+iix
 gVW
 gVW
 iov
@@ -134224,8 +134214,8 @@ gVW
 gVW
 eKW
 bWQ
-kZV
-gtQ
+bWQ
+iix
 gVW
 gVW
 gVW
@@ -134481,7 +134471,7 @@ gtQ
 gVW
 gVW
 bWQ
-jqS
+kZV
 nOj
 gVW
 rAS
@@ -134989,7 +134979,7 @@ bWQ
 bWQ
 cia
 pxJ
-kZV
+vdG
 uBz
 gVW
 gVW
