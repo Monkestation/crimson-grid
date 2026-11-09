@@ -55,10 +55,10 @@
 	bulb_power = 0.6
 
 /obj/machinery/light/warmer
-	bulb_colour = "#"#e6a429"
+	bulb_colour = "#e6a429"
 
 /obj/machinery/light/warmer/dim
-	bulb_colour = "#"#e6a429"
+	bulb_colour = "#e6a429"
 	nightshift_allowed = FALSE
 	bulb_power = 0.6
 

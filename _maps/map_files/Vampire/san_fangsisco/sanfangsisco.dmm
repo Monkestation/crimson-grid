@@ -4945,7 +4945,6 @@
 /obj/item/storage/bag/plants{
 	pixel_y = 8
 	},
-/obj/machinery/light/warm/directional/west,
 /turf/open/misc/dirt,
 /area/vtm/interior/tlacique/basement)
 "bdS" = (
@@ -19294,7 +19293,7 @@
 	dir = 8;
 	color = "#6d281e"
 	},
-/obj/machinery/light/warm/directional/east,
+/obj/machinery/light/warmer/directional/east,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/flower_shop)
 "erN" = (
@@ -20939,9 +20938,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/community)
 "eLV" = (
-/obj/structure/brazier{
-	pixel_y = 11
-	},
+/obj/structure/brazier,
 /turf/open/misc/grass,
 /area/vtm/interior/tlacique/basement)
 "eLZ" = (
@@ -35392,7 +35389,7 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/endron_facility/plant)
 "iix" = (
-/obj/machinery/light/warm/directional/north,
+/obj/machinery/light/warmer/directional/north,
 /turf/open/misc/grass,
 /area/vtm/interior/tlacique/basement)
 "iiy" = (
@@ -42328,7 +42325,7 @@
 /area/vtm/interior/church/staff)
 "jQk" = (
 /obj/machinery/hydroponics/simple/wooden,
-/obj/machinery/light/warm/directional/north,
+/obj/machinery/light/warmer/directional/north,
 /turf/open/misc/dirt,
 /area/vtm/interior/tlacique/basement)
 "jQn" = (
@@ -78785,6 +78782,14 @@
 /obj/structure/curtain/cloth/fancy,
 /turf/open/floor/wood/tile,
 /area/vtm/interior/laundromat)
+"sqF" = (
+/obj/structure/flora/bush/reed/style_random{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/obj/machinery/light/warmer/dim/directional/west,
+/turf/open/misc/grass,
+/area/vtm/interior/tlacique/basement)
 "sqH" = (
 /obj/structure/chair/comfy/darkpack/dark{
 	dir = 1
@@ -97434,6 +97439,11 @@
 /obj/effect/landmark/npcactivity,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/fishermanswharf/lower)
+"wOi" = (
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/machinery/light/warmer/directional/north,
+/turf/open/misc/dirt,
+/area/vtm/interior/tlacique/basement)
 "wOx" = (
 /obj/structure/table/wood,
 /obj/machinery/light/small/directional/south,
@@ -101237,7 +101247,7 @@
 /turf/open/misc/dirt,
 /area/vtm/outside/forest)
 "xFm" = (
-/obj/machinery/light/warm/directional/north,
+/obj/machinery/light/warmer/directional/north,
 /turf/open/misc/dirt,
 /area/vtm/interior/tlacique/basement)
 "xFt" = (
@@ -130363,7 +130373,7 @@ gVW
 gVW
 aAp
 jqS
-rAS
+wOi
 rAS
 gVW
 hBB
@@ -131136,7 +131146,7 @@ jqS
 jqS
 jqS
 jqS
-rTx
+sqF
 raP
 jqS
 jqS

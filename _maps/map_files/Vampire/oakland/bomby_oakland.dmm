@@ -8345,10 +8345,6 @@
 	pixel_y = 3;
 	pixel_x = 7
 	},
-/obj/machinery/light/prince/directional/west{
-	bulb_colour = "#cf8616";
-	bulb_power = 0.6
-	},
 /turf/open/misc/grass,
 /area/vtm/interior/tlacique/basement)
 "bVM" = (
@@ -10755,6 +10751,7 @@
 /obj/structure/platform/sandstone{
 	color = "#4f4840"
 	},
+/obj/machinery/light/warmer/directional/west,
 /turf/open/misc/dirt,
 /area/vtm/interior/tlacique/basement)
 "cvM" = (
@@ -11424,6 +11421,10 @@
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/wood/smooth/old,
 /area/vtm)
+"cDI" = (
+/obj/machinery/light/warmer/dim/directional/east,
+/turf/open/misc/dirt,
+/area/vtm/interior/tlacique/basement)
 "cDN" = (
 /obj/structure/filingcabinet{
 	pixel_x = -6
@@ -12002,10 +12003,6 @@
 /obj/effect/decal/cleanable/trash,
 /turf/open/water/beach/vamp/deep,
 /area/vtm)
-"cLn" = (
-/obj/machinery/light/warm/directional/north,
-/turf/open/misc/dirt,
-/area/vtm/interior/tlacique/basement)
 "cLr" = (
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/caves)
@@ -13007,10 +13004,6 @@
 /obj/item/melee/sabre/vamp,
 /obj/item/melee/sabre/vamp{
 	pixel_y = 6
-	},
-/obj/machinery/light/prince/directional/east{
-	bulb_colour = "#cf8616";
-	bulb_power = 0.6
 	},
 /turf/open/misc/grass,
 /area/vtm/interior/tlacique/basement)
@@ -28168,11 +28161,12 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/laundromat)
 "gzG" = (
-/obj/machinery/light/warm/directional/north,
+/obj/machinery/light/warmer/directional/north,
 /turf/open/misc/grass,
 /area/vtm/interior/tlacique/basement)
 "gzI" = (
 /obj/structure/chair/pew/right,
+/obj/machinery/light/warmer/directional/north,
 /turf/open/misc/grass,
 /area/vtm/interior/tlacique/basement)
 "gzJ" = (
@@ -36097,10 +36091,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church/staff)
-"ipr" = (
-/obj/machinery/light/warm/directional/south,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/shop/flower_shop)
 "ipt" = (
 /obj/structure/mirror/directional/north,
 /turf/open/floor/city/factory,
@@ -42960,10 +42950,6 @@
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer/nosferatu_warren)
-"jSd" = (
-/obj/machinery/light/warm/directional/south,
-/turf/open/floor/carpet/darkpack/greengold,
-/area/vtm/interior/shop/flower_shop)
 "jSh" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -61562,6 +61548,10 @@
 /obj/structure/table/wood,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/bianchiBank)
+"ofH" = (
+/obj/machinery/light/warmer/dim/directional/north,
+/turf/open/misc/dirt,
+/area/vtm/interior/tlacique/basement)
 "ofJ" = (
 /obj/effect/decal/pallet,
 /obj/effect/turf_decal/bordur{
@@ -68309,10 +68299,6 @@
 	},
 /turf/open/floor/city/factory,
 /area/vtm/interior/giovanni)
-"pHa" = (
-/obj/machinery/light/warm/directional/east,
-/turf/open/misc/dirt,
-/area/vtm/interior/tlacique/basement)
 "pHd" = (
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
@@ -71565,6 +71551,14 @@
 /obj/effect/decal/cleanable/trash,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/police/fed)
+"quv" = (
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
+	},
+/obj/structure/table/wood,
+/obj/machinery/light/warmer/directional/east,
+/turf/open/floor/carpet/darkpack/greengold,
+/area/vtm/interior/shop/flower_shop)
 "qux" = (
 /obj/structure/chair/stool/bar/darkpack/black,
 /turf/open/floor/city/plating,
@@ -77980,6 +77974,13 @@
 /obj/structure/roofstuff/vent_end,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
+"rUY" = (
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/structure/flora/bush/flowers_yw/style_random,
+/obj/structure/flora/bush/flowers_pp/style_random,
+/obj/machinery/light/warmer/directional/east,
+/turf/open/misc/grass,
+/area/vtm/interior/tlacique/basement)
 "rVe" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/plating/sidewalk,
@@ -88745,6 +88746,7 @@
 /obj/item/seeds/cannabis,
 /obj/structure/table/wood,
 /obj/structure/table/wood,
+/obj/machinery/light/warmer/directional/east,
 /turf/open/misc/dirt,
 /area/vtm/interior/tlacique/basement)
 "usK" = (
@@ -139706,7 +139708,7 @@ uvs
 xRF
 twQ
 nak
-pHa
+aPi
 aPi
 aPi
 aPi
@@ -140120,7 +140122,7 @@ esJ
 xRF
 xRF
 xRF
-cLn
+aPi
 aPi
 gUA
 xRF
@@ -140734,7 +140736,7 @@ aPi
 aPi
 gUA
 fhi
-lYR
+rUY
 xRF
 xRF
 xRF
@@ -141755,7 +141757,7 @@ gUA
 aPi
 aPi
 twQ
-aPi
+ofH
 aPi
 iNL
 aaX
@@ -142362,7 +142364,7 @@ aAG
 uxc
 aPi
 aPi
-aPi
+cDI
 fhi
 bvf
 aPi
@@ -142569,7 +142571,7 @@ wcF
 xRF
 xRF
 aAG
-aPi
+ofH
 aPi
 aPi
 gvI
@@ -182565,7 +182567,7 @@ eoc
 ctx
 gWF
 gWF
-ipr
+gWF
 uCS
 lHP
 rnX
@@ -183583,9 +183585,9 @@ iYm
 uCS
 tHw
 gWF
-sjG
+quv
 wVa
-jSd
+wVa
 uCS
 keR
 rnX
