@@ -6,7 +6,7 @@
 	●●● Eyes of Chaos: Perception + Occult
 	●●●● Voice of Madness: Manipulation + Empathy
 	●●●●● Total Insanity: Manipulation + Intimidation"}
-	icon_state = "path_of_earth"
+	icon_state = "koldunic"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/path_of_earth
 	signature_clan = VAMPIRE_CLAN_OLD_CLAN_TZIMISCE
