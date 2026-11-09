@@ -26,7 +26,7 @@
 	level = 1
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_SEE
 	target_type = TARGET_LIVING
-	range = 12
+	range = 7
 	vitae_cost = 1
 
 	aggravating = FALSE
@@ -35,7 +35,7 @@
 
 	multi_activate = TRUE
 	duration_length = 1.5 SECONDS
-	cooldown_length = 10 SECONDS
+	cooldown_length = 40 SECONDS
 
 /datum/discipline_power/path_of_earth/grasp_of_earth/proc/immobilize_target(mob/living/target, duration = 1.5 SECONDS)
 	ADD_TRAIT(target, TRAIT_IMMOBILIZED, DISCIPLINE_TRAIT(type))
@@ -116,7 +116,7 @@
 	vitae_cost = 2
 	cooldown_length = 40 SECONDS
 	target_type = TARGET_TURF
-	range = 12
+	range = 7
 /datum/discipline_power/path_of_earth/hungry_earth/activate(target)
 	. = ..()
 
