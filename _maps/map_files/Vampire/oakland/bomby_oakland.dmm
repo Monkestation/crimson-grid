@@ -78540,9 +78540,7 @@
 /turf/open/misc/grass/nosmooth,
 /area/vtm/interior/wyld/caern)
 "scF" = (
-/obj/effect/decal/cleanable/crayon{
-	color = "#96000a"
-	},
+/obj/effect/decal/cleanable/crayon/scribble6,
 /obj/effect/realistic_fog/dense,
 /turf/open/floor/sandstone{
 	color = "#695640"
@@ -104013,7 +104011,8 @@
 	can_spread = 0
 	},
 /turf/closed/wall/vampwall/rustbad{
-	color = "#BBBBBB"
+	color = "#BBBBBB";
+	density = 0
 	},
 /area/vtm/interior/tlacique/basement)
 "xTz" = (
