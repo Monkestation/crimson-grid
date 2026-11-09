@@ -296,7 +296,7 @@
 	desc = "The earth shall tremble at your grasp"
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS
-	vitae_cost = 5
+	vitae_cost = 4
 	cooldown_length = 480 SECONDS
 	target_type = TARGET_TURF
 	range = 15
@@ -334,4 +334,4 @@
 	impact_center.visible_message(span_userdanger("The ground erupts in a violent quake!"))
 
 	for(var/mob/living/victim in range(2, impact_center))
-		victim.apply_damage(40, BRUTE)
+		victim.apply_damage(80, BRUTE)
