@@ -31,13 +31,11 @@
 
 	aggravating = FALSE
 	hostile = TRUE
-	violates_masquerade = TRUE
-
 	multi_activate = TRUE
-	duration_length = 1.5 SECONDS
+	duration_length = 2 SECONDS
 	cooldown_length = 10 SECONDS
 
-/datum/discipline_power/path_of_earth/grasp_of_earth/proc/immobilize_target(mob/living/target, duration = 1.5 SECONDS)
+/datum/discipline_power/path_of_earth/grasp_of_earth/proc/immobilize_target(mob/living/target, duration = 2 SECONDS)
 	ADD_TRAIT(target, TRAIT_IMMOBILIZED, DISCIPLINE_TRAIT(type))
 
 /datum/discipline_power/path_of_earth/grasp_of_earth/proc/release_target(mob/living/target)
@@ -68,7 +66,7 @@
 	var/activating = FALSE
 	var/active_armor = FALSE
 	check_flags = DISC_CHECK_CONSCIOUS
-	vitae_cost = 2
+	vitae_cost = 1
 	toggled = TRUE
 	duration_length = 20 TURNS
 
@@ -113,7 +111,7 @@
 	desc = "Cause the earth to rise and swallow a area"
 	level = 3
 	check_flags = DISC_CHECK_CONSCIOUS
-	vitae_cost = 2
+	vitae_cost = 1
 	cooldown_length = 40 SECONDS
 	target_type = TARGET_TURF
 	range = 12
@@ -296,7 +294,7 @@
 	desc = "The earth shall tremble at your grasp"
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS
-	vitae_cost = 4
+	vitae_cost = 3
 	cooldown_length = 240 SECONDS
 	target_type = TARGET_TURF
 	range = 15
@@ -311,7 +309,7 @@
 	for(var/turf/shaking_turf in range(3, target_turf))
 		shaking_turf.Shake(pixelshiftx = 0.1, pixelshifty = 0.1, duration = 2.5 SECONDS)
 
-	for(var/mob/viewer in viewers(2, target_turf))
+	for(var/mob/viewer in viewers(4, target_turf))
 		shake_camera(viewer, 3 SECONDS, 1)
 		viewer.playsound_local(
 			viewer,
@@ -333,5 +331,6 @@
 
 	impact_center.visible_message(span_userdanger("The ground erupts in a violent quake!"))
 
-	for(var/mob/living/victim in range(2, impact_center))
-		victim.apply_damage(140, BRUTE)
+	for(var/mob/living/victim in range(3, impact_center))
+		victim.apply_damage(180, BRUTE)
+		victim.Knockdown(45 SECONDS)
