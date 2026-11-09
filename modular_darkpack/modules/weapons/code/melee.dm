@@ -479,9 +479,9 @@
 	attack_verb_simple = list("bludgeon", "bash", "beat", "smack", "destroy")
 	w_class = WEIGHT_CLASS_BULKY	//TG parent bat is huge
 
-	// WTA pg. 302
 	force = 3 TTRPG_DAMAGE
 	attack_difficulty = 4 // Slightly better to swing with the winds guiding it
+	wound_bonus = 2 // The rusted barbed wire really does SUCK to be hit with
 
 	icon = 'modular_darkpack/modules/weapons/icons/weapons.dmi'
 	lefthand_file = 'modular_darkpack/modules/deprecated/icons/lefthand.dmi'
