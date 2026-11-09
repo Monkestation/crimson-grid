@@ -107,6 +107,9 @@
 	name = "graffiti"
 	paint_colour = COLOR_CRAYON_ORANGE
 
+
+// Crimson Grid Addition: Credits to _______ (Waiting on Ook to give me the name)
+
 /obj/effect/decal/cleanable/crayon/scribble
 	icon_state = "scribble"
 
