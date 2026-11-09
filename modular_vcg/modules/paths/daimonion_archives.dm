@@ -8,6 +8,7 @@
 	owner_needed = FALSE
 	desc = "Ваши демонические познания позволяют просить милостей у Инфернальных сил."
 	name = "Infernal Rune"
+	resistance_flags = INDESTRUCTIBLE // CORVAX EDIT ADD
 
 	products_list = list(
 	// SPELLBOOKS
@@ -23,11 +24,11 @@
 	new /datum/data/vending_product("Гримуар Огней Преисподней (уровень IV)",	/obj/item/path_spellbook/fires_of_inferno/level4,	240),
 	new /datum/data/vending_product("Гримуар Огней Преисподней (уровень V)",	/obj/item/path_spellbook/fires_of_inferno/level5, 270),
 
-	new /datum/data/vending_product("Taking of Spirit Spellbook (Level I)",	/obj/item/path_spellbook/taking_of_spirit/level1,	130),
-	new /datum/data/vending_product("Taking of Spirit Spellbook (Level II)",	/obj/item/path_spellbook/taking_of_spirit/level2,	180),
-	new /datum/data/vending_product("Taking of Spirit Spellbook (Level III)",	/obj/item/path_spellbook/taking_of_spirit/level3,	210),
-	new /datum/data/vending_product("Taking of Spirit Spellbook (Level IV)",	/obj/item/path_spellbook/taking_of_spirit/level4,	240),
-	new /datum/data/vending_product("Taking of Spirit Spellbook (Level V)",	/obj/item/path_spellbook/taking_of_spirit/level5, 270),
+	new /datum/data/vending_product("Гримуар Лишения Духа (уровень I)",	/obj/item/path_spellbook/taking_of_spirit/level1,	130),
+	new /datum/data/vending_product("Гримуар Лишения Духа (уровень II)",	/obj/item/path_spellbook/taking_of_spirit/level2,	180),
+	new /datum/data/vending_product("Гримуар Лишения Духа (уровень III)",	/obj/item/path_spellbook/taking_of_spirit/level3,	210),
+	new /datum/data/vending_product("Гримуар Лишения Духа (уровень IV)",	/obj/item/path_spellbook/taking_of_spirit/level4,	240),
+	new /datum/data/vending_product("Гримуар Лишения Духа (уровень V)",	/obj/item/path_spellbook/taking_of_spirit/level5, 270),
 
 	// ARTIFACTS
 	// Lower tier artifacts
