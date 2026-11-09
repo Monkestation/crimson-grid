@@ -26,7 +26,7 @@
 	bloodquality = BLOOD_QUALITY_LOW
 	bloodpool = 2
 	maxbloodpool = 2
-	ai_controller = /datum/ai_controller/basic_controller/simple/simple_hostile_obstacles
+	ai_controller = /datum/ai_controller/basic_controller/szlachta/darkpack	// CORVAX EDIT
 	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 2)
 	default_blood_volume = BLOOD_VOLUME_NORMAL
 
@@ -106,3 +106,29 @@
 
 /mob/living/basic/szlachta/otherthing/hostile
 	faction = list(FACTION_HOSTILE)
+
+// CORVAX EDIT START
+/mob/living/basic/szlachta/Initialize(mapload)
+	. = ..()
+	cut_overlays()
+	update_body()
+	AddElement(/datum/element/ai_retaliate)
+
+/datum/targeting_strategy/basic/szlachta
+
+/datum/targeting_strategy/basic/szlachta/is_valid_target(mob/living/living_mob, atom/the_target, vision_range, datum/ai_controller/controller = null)
+	if(istype(the_target, /datum/targeting_strategy/basic/szlachta))
+		return FALSE
+
+	return ..()
+
+/datum/ai_controller/basic_controller/szlachta/darkpack
+	blackboard = list(
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/szlachta,
+		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
+		BB_VISION_RANGE = 9,
+	)
+	ai_movement = /datum/ai_movement/basic_avoidance
+
+	behavior_tree_json = "code/datums/ai/basic_mobs/simple_hostile.bt.json"
+// CORVAX EDIT END
