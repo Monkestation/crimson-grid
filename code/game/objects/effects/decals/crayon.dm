@@ -106,3 +106,66 @@
 /obj/effect/decal/cleanable/crayon/i/orange
 	name = "graffiti"
 	paint_colour = COLOR_CRAYON_ORANGE
+
+/obj/effect/decal/cleanable/crayon/l
+	icon_state = "scribble"
+
+/obj/effect/decal/cleanable/crayon/2
+	icon_state = "scribble1"
+
+/obj/effect/decal/cleanable/crayon/3
+	icon_state = "scribble2"
+
+/obj/effect/decal/cleanable/crayon/4
+	icon_state = "scribble3"
+
+/obj/effect/decal/cleanable/crayon/5
+	icon_state = "scribble4"
+
+/obj/effect/decal/cleanable/crayon/6
+	icon_state = "scribble5"
+
+/obj/effect/decal/cleanable/crayon/7
+	icon_state = "scribble6"
+
+/obj/effect/decal/cleanable/crayon/8
+	icon_state = "scribble7"
+
+/obj/effect/decal/cleanable/crayon/9
+	icon_state = "scribble8"
+
+/obj/effect/decal/cleanable/crayon/10
+	icon_state = "scribble9"
+
+/obj/effect/decal/cleanable/crayon/11
+	icon_state = "scribble10"
+
+/obj/effect/decal/cleanable/crayon/12
+	icon_state = "scribble11"
+
+/obj/effect/decal/cleanable/crayon/13
+	icon_state = "scribble12"
+
+/obj/effect/decal/cleanable/crayon/14
+	icon_state = "scribble13"
+
+/obj/effect/decal/cleanable/crayon/15
+	icon_state = "scribble14"
+
+/obj/effect/decal/cleanable/crayon/16
+	icon_state = "scribble15"
+
+/obj/effect/decal/cleanable/crayon/17
+	icon_state = "scribble16"
+
+/obj/effect/decal/cleanable/crayon/18
+	icon_state = "scribble17"
+
+/obj/effect/decal/cleanable/crayon/19
+	icon_state = "scribble18"
+
+/obj/effect/decal/cleanable/crayon/20
+	icon_state = "scribble19"
+
+/obj/effect/decal/cleanable/crayon/21
+	icon_state = "scribble20"
