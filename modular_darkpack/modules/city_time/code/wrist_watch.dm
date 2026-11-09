@@ -12,7 +12,10 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/deprecated/icons/onfloor.dmi')
 	custom_price = 20 // ECONOMY
 
-/obj/item/watch/examine(mob/user)
+/obj/item/watch/Initialize(mapload)
 	. = ..()
-	. += "[src]: <b>[server_timestamp("hh:mm:ss", ic_time = TRUE, twelve_hour_clock = user.client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))], [server_timestamp("MMM DD", ic_time = TRUE)]</b>"
-	. += "That should make it <b>[server_timestamp("Day", ic_time = TRUE)]</b>"
+	AddElement(/datum/element/readable_time)
+
+/obj/item/watch/attack_hand(mob/user, list/modifiers)
+	. = ..()
+	user.examinate(src)

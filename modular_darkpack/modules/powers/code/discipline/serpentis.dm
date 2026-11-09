@@ -238,10 +238,18 @@
 	health = 300
 	melee_damage_lower = 30
 	melee_damage_upper = 30
+
+	var/poison_reagent = /datum/reagent/toxin/viperspider
+	var/venom_dose = 5
+
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/items/weapons/slash.ogg'
 	pixel_w = -8
+
+/mob/living/basic/cobra/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/venomous, poison_reagent, venom_dose)
 
 /mob/living/basic/cobra/typhon
 	name = "Typhonic beast"
