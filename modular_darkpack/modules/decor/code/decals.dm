@@ -172,6 +172,33 @@
 /obj/effect/turf_decal/darkpack/cave/corner
 	icon_state = "cave_corner"
 
+/obj/effect/turf_decal/darkpack/endron
+	name = "Endron Logo"
+	icon = 'modular_darkpack/modules/decor/icons/endronlogo.dmi'
+	icon_state = "endron"
+	alpha = 110
+	color = "#439C1E"
+
+/obj/effect/turf_decal/darkpack/endron/one
+	icon_state = "endron1"
+
+/obj/effect/turf_decal/darkpack/endron/two
+	icon_state = "endron2"
+
+/obj/effect/turf_decal/darkpack/endron/three
+	icon_state = "endron3"
+
+/obj/effect/turf_decal/darkpack/endron/four
+	icon_state = "endron4"
+
+/obj/effect/turf_decal/darkpack/endron/five
+	icon_state = "endron5"
+
+/obj/effect/turf_decal/darkpack/endron/six
+	icon_state = "endron6"
+
+/obj/effect/turf_decal/darkpack/endron/seven
+	icon_state = "endron7"
 
 
 /obj/effect/turf_decal/siding/grey
