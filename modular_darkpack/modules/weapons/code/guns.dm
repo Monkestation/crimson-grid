@@ -942,7 +942,7 @@
 	icon_state = "spas15"
 	ammo_type = /obj/item/ammo_casing/vampire/c12g/buck
 	caliber = CALIBER_12G
-	max_ammo = 6
+	max_ammo = 9 // CRIMSON EDIT CHANGE - Original: max_ammo = 6
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/darkpack/autoshotgun

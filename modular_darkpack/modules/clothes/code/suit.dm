@@ -489,6 +489,16 @@
 	name = "police duty vest"
 	icon_state = "pdvest"
 	desc = "Lightweight, bulletproof vest with SFPD markings, tailored for active duty."
+	// CRIMSON EDIT ADD START - POLICE EQUIPMENT
+	allowed = list(
+		/obj/item/card/id,
+		/obj/item/flashlight,
+		/obj/item/melee/baton,
+		/obj/item/restraints/handcuffs,
+		/obj/item/gun/ballistic/shotgun/vampire,
+		/obj/item/gun/ballistic/automatic/darkpack/autoshotgun
+	)
+	// CRIMSON EDIT ADD END - POLICE EQUIPMENT
 	custom_price = 50
 
 /obj/item/clothing/suit/vampire/vest/police/fbivest
