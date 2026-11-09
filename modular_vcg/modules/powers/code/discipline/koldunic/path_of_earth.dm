@@ -153,7 +153,7 @@
 
 	to_chat(owner, span_notice("The ground rumbles around [target]"))
 	target_turf.visible_message(span_warning("The ground erupts upward with a deafening rumble!"))
-	addtimer(CALLBACK(src, PROC_REF(raise_earth_walls), target_turf.x, target_turf.y, target_turf.z), 2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(raise_earth_walls), target_turf.x, target_turf.y, target_turf.z), 1 SECONDS)
 
 /datum/discipline_power/path_of_earth/hungry_earth/proc/raise_earth_walls(x, y, z)
 	var/turf/target_turf = locate(x, y, z)
@@ -297,7 +297,7 @@
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 4
-	cooldown_length = 480 SECONDS
+	cooldown_length = 240 SECONDS
 	target_type = TARGET_TURF
 	range = 15
 /datum/discipline_power/path_of_earth/kupalas_fury/activate(target)
@@ -308,8 +308,8 @@
 	if(!target_turf)
 		return
 
-	for(var/turf/shaking_turf in range(2, target_turf))
-		shaking_turf.Shake(pixelshiftx = 0.1, pixelshifty = 0.1, duration = 5 SECONDS)
+	for(var/turf/shaking_turf in range(3, target_turf))
+		shaking_turf.Shake(pixelshiftx = 0.1, pixelshifty = 0.1, duration = 2.5 SECONDS)
 
 	for(var/mob/viewer in viewers(2, target_turf))
 		shake_camera(viewer, 3 SECONDS, 1)
@@ -323,7 +323,7 @@
 			),
 			75,
 		)
-	addtimer(CALLBACK(src, PROC_REF(kupala_impact), target_turf.x, target_turf.y, target_turf.z), 5 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(kupala_impact), target_turf.x, target_turf.y, target_turf.z), 2.5 SECONDS)
 	to_chat(owner, span_notice("The earth trembles near [target]; it looks like an earthquake is about to hit."))
 
 /datum/discipline_power/path_of_earth/kupalas_fury/proc/kupala_impact(x, y, z)
@@ -334,4 +334,4 @@
 	impact_center.visible_message(span_userdanger("The ground erupts in a violent quake!"))
 
 	for(var/mob/living/victim in range(2, impact_center))
-		victim.apply_damage(80, BRUTE)
+		victim.apply_damage(140, BRUTE)
