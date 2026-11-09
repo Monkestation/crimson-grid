@@ -3,17 +3,17 @@
 // 9mm
 
 /obj/projectile/bullet/darkpack/vamp9mm
-	damage = 25
+	damage = 30
 	exposed_wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp9mm/hp
-	damage = 30
+	damage = 35
 	exposed_wound_bonus = 20
 	armour_penetration = -5
 	weak_against_armour = TRUE
 
 /obj/projectile/bullet/darkpack/vamp9mm/ap
-	damage = 20
+	damage = 25
 	exposed_wound_bonus = 0
 	wound_bonus = 5
 	armour_penetration = 25
@@ -22,7 +22,7 @@
 	exposed_wound_bonus = 10
 
 /obj/projectile/bullet/darkpack/vamp9mm/plus
-	damage = 29
+	damage = 34
 	armour_penetration = 15
 
 // 4.6mm
@@ -35,7 +35,7 @@
 
 /obj/projectile/bullet/darkpack/vamp46mm/ap
 	damage = 20
-	armour_penetration = 45
+	armour_penetration = 55
 	exposed_wound_bonus = -10
 	wound_bonus = -5
 
@@ -86,7 +86,7 @@
 
 /obj/projectile/bullet/darkpack/vamp44/ep
 	damage = 33
-	armour_penetration = 65
+	armour_penetration = 90
 	exposed_wound_bonus = -10
 	wound_bonus = 10
 
@@ -122,10 +122,11 @@
 	armour_penetration = 10
 	exposed_wound_bonus = 10
 	wound_bonus = 10
+	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/darkpack/vamp50ae/ap
 	damage = 50
-	armour_penetration = 50
+	armour_penetration = 75
 	exposed_wound_bonus = 0
 	wound_bonus = 15
 
@@ -168,7 +169,7 @@
 
 /obj/projectile/bullet/darkpack/vamp556mm/ap
 	damage = 28
-	armour_penetration = 50
+	armour_penetration = 65
 	exposed_wound_bonus = -20
 	wound_bonus = 0
 
@@ -197,7 +198,7 @@
 
 /obj/projectile/bullet/darkpack/vamp545mm/ap
 	damage = 25
-	armour_penetration = 50
+	armour_penetration = 70
 	exposed_wound_bonus = -20
 	wound_bonus = 5
 
@@ -232,7 +233,7 @@
 
 /obj/projectile/bullet/darkpack/vamp762x51mm/ap
 	damage = 38
-	armour_penetration = 55
+	armour_penetration = 75
 	exposed_wound_bonus = -15
 	wound_bonus = 5
 
@@ -263,13 +264,14 @@
 // .50 BMG
 /obj/projectile/bullet/darkpack/vamp50
 	damage = 100
-	armour_penetration = 50
+	armour_penetration = 80
 	exposed_wound_bonus = -10
 	wound_bonus = 20
+	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/darkpack/vamp50/du
 	damage = 100
-	armour_penetration = 65
+	armour_penetration = 90
 	exposed_wound_bonus = 0
 	wound_bonus = 15
 	projectile_phasing = PASSTABLE | PASSGLASS | PASSGRILLE | PASSCLOSEDTURF | PASSMACHINE | PASSSTRUCTURE | PASSDOORS
@@ -277,7 +279,7 @@
 
 /obj/projectile/bullet/darkpack/vamp50/rauf
 	damage = 150
-	armour_penetration = 50
+	armour_penetration = 80
 	exposed_wound_bonus = 20
 	wound_bonus = 25
 	dismemberment = 50
@@ -294,7 +296,7 @@
 
 /obj/projectile/bullet/darkpack/vamp50/api
 	damage = 100
-	armour_penetration = 50
+	armour_penetration = 75
 	exposed_wound_bonus = 20
 	wound_bonus = 30
 	var/fire_stacks = 5
@@ -314,7 +316,6 @@
 	armour_penetration = 0
 	exposed_wound_bonus = 5
 	wound_bonus = 5
-	fire_stacks = 1
 
 /obj/projectile/bullet/darkpack/shotpellet
 	damage = 12
@@ -334,7 +335,9 @@
 	fera_silver_damage(target, 1)
 
 /obj/projectile/bullet/shotgun_slug/vamp
+	damage = 80
 	exposed_wound_bonus = 10
+	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/shotgun_slug/vamp/ap
 	damage = 70
@@ -398,6 +401,7 @@
 	armour_penetration = 0
 	exposed_wound_bonus = 15
 	wound_bonus = 15
+	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/darkpack/vamp75/silver
 	armour_penetration = 2

@@ -171,7 +171,6 @@
 	name = "gothic cross"
 	icon_state = "hunter_gothic"
 
-/* //CRIMSON EDIT: Removes hunter cross stun
 /obj/item/card/hunter/attack_self(mob/living/user)
 	. = ..()
 	if(!user.mind)
@@ -199,7 +198,6 @@
 	living_mob.flash_act(affect_silicon = 1)
 	living_mob.Paralyze(max(10/max(1, distance), 5))
 	living_mob.Knockdown(max(100/max(1, distance), 40))
-*/
 
 /obj/item/card/hunter/attack(mob/living/target, mob/living/user)
 	. = ..()
@@ -211,6 +209,7 @@
 		COOLDOWN_START(user, true_faith_cd, 30 SECONDS)
 		lightningbolt(target)
 		to_chat(target, span_userdanger("The gods have punished you for your sins!"))
+
 
 // POLICE
 /obj/item/card/police

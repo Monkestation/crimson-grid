@@ -334,8 +334,3 @@
 		target.apply_damage(success_count * damage_mult * success_multiplier_mortal + owner.thaum_damage_plus, AGGRAVATED)
 	else
 		target.apply_damage(success_count * damage_mult * success_multiplier_supernatural + owner.thaum_damage_plus, AGGRAVATED)
-	// CRIMSON EDIT ADDITION START - Actually boiling the blood
-	if(ishuman(target))
-		var/mob/living/carbon/human/human_target = target
-		human_target.adjust_coretemperature(success_count * 10)
-	// CRIMSON EDIT ADDITION END - Actually boiling the blood
