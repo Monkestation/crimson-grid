@@ -943,7 +943,7 @@
 	},
 /obj/effect/mapping_helpers/door/access/cleaning,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior/vjanitor)
 "alj" = (
@@ -3633,8 +3633,7 @@
 /obj/structure/vampdoor/reinf,
 /obj/effect/mapping_helpers/door/access/cleaning,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
-/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/vjanitor)
 "aOS" = (
@@ -9998,8 +9997,7 @@
 	},
 /obj/effect/mapping_helpers/door/access/cleaning,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
+/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/vjanitor)
 "ciX" = (
@@ -18365,9 +18363,9 @@
 /obj/structure/vampdoor/reinf,
 /obj/effect/mapping_helpers/door/access/cleaning,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/seven,
 /obj/effect/mapping_helpers/door/bash_difficulty/six,
 /obj/effect/turf_decal/trimline/yellow/warning,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/vjanitor)
 "ehv" = (
@@ -24179,8 +24177,7 @@
 	},
 /obj/effect/mapping_helpers/door/access/cleaning,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/vjanitor)
 "fBn" = (
@@ -43656,8 +43653,7 @@
 /obj/effect/mapping_helpers/door/access/cleaning,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/turf_decal/siding/white,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/vjanitor)
 "klb" = (
@@ -48091,7 +48087,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/door/bash_difficulty/five,
 /obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/vjanitor)
@@ -54535,8 +54530,10 @@
 /area/vtm/interior/supply)
 "mOe" = (
 /obj/structure/table/wood,
-/obj/machinery/chem_dispenser/drinks/fullupgrade,
 /obj/machinery/light/small/blacklight/directional/north,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	pixel_y = 18
+	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/banu)
 "mOi" = (
@@ -68151,8 +68148,8 @@
 	},
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
 /obj/effect/mapping_helpers/door/access/strip,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/strip)
 "pYs" = (
@@ -91972,6 +91969,8 @@
 	dir = 1
 	},
 /obj/structure/vampdoor/glass,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/obj/effect/mapping_helpers/door/access/cleaning,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior/vjanitor)
 "vEm" = (
@@ -96103,8 +96102,8 @@
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/mapping_helpers/door/bash_difficulty/seven,
 /obj/effect/mapping_helpers/door/access/strip,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/strip)
 "wCC" = (
@@ -96583,8 +96582,7 @@
 	},
 /obj/effect/mapping_helpers/door/access/cleaning,
 /obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
-/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/vjanitor)
 "wJh" = (
@@ -202299,8 +202297,8 @@ cVX
 (130,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 upn
@@ -202556,8 +202554,8 @@ cVX
 (131,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 upn
@@ -202813,8 +202811,8 @@ cVX
 (132,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 upn
@@ -203070,8 +203068,8 @@ cVX
 (133,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 qGw
