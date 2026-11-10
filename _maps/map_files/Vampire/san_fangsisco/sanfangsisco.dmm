@@ -6638,9 +6638,6 @@
 /area/vtm/interior/tzimisce_manor)
 "bxC" = (
 /obj/structure/stairs/west,
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/setite)
 "bxD" = (
@@ -17605,6 +17602,12 @@
 /obj/machinery/camera/directional/east,
 /turf/open/floor/city/plating,
 /area/vtm/interior/techshop)
+"dXT" = (
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 8
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/banu/haven)
 "dXV" = (
 /obj/effect/turf_decal/asphaltline/yellow{
 	dir = 4
@@ -20133,13 +20136,6 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/outside/unionsquare)
 "eDX" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1;
-	pixel_y = 16
-	},
 /turf/open/openspace,
 /area/vtm/interior/setite)
 "eEe" = (
@@ -21783,7 +21779,6 @@
 /area/vtm/interior)
 "eXP" = (
 /obj/machinery/vending/coffee,
-/obj/machinery/light/small/blacklight/directional/north,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/banu)
 "eXQ" = (
@@ -28219,6 +28214,12 @@
 /obj/item/storage/box/lights/mixed,
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower)
+"gyl" = (
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 4
+	},
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/banu)
 "gyn" = (
 /obj/effect/turf_decal/bordur{
 	dir = 6
@@ -32041,6 +32042,10 @@
 /mob/living/basic/szlachta/hostile,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/sewer)
+"htj" = (
+/obj/machinery/light/small/blacklight/directional/north,
+/turf/open/floor/wood/smooth,
+/area/vtm/interior/banu)
 "hto" = (
 /obj/effect/turf_decal/siding/white,
 /obj/effect/turf_decal/siding/white{
@@ -43257,10 +43262,6 @@
 /area/vtm/interior/endron_facility/plant)
 "keQ" = (
 /obj/structure/sign/poster/official/no_erp/directional/north,
-/obj/machinery/conveyor{
-	dir = 8;
-	id = 2053
-	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/vjanitor)
 "keR" = (
@@ -46493,13 +46494,6 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior)
-"kTp" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = 2053
-	},
-/turf/open/floor/plating/rough,
-/area/vtm/interior/vjanitor)
 "kTA" = (
 /obj/structure/chair/plastic/darkpack,
 /mob/living/carbon/human/npc/illegal{
@@ -63466,6 +63460,7 @@
 /area/vtm/outside/forest)
 "oQt" = (
 /obj/structure/table/wood,
+/obj/machinery/light/small/directional/north,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/banu)
 "oQx" = (
@@ -101125,13 +101120,6 @@
 /obj/item/food/meat/slab/chicken,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
-"xJl" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = 2053
-	},
-/turf/open/floor/plating/rough,
-/area/vtm/interior/vjanitor)
 "xJq" = (
 /obj/structure/tank_holder/extinguisher,
 /obj/fusebox,
@@ -101218,10 +101206,6 @@
 /area/vtm/outside/ghetto)
 "xKn" = (
 /obj/machinery/light/warm/dim/directional/north,
-/obj/machinery/conveyor{
-	dir = 8;
-	id = 2053
-	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/vjanitor)
 "xKo" = (
@@ -137754,7 +137738,7 @@ cVX
 cVX
 ghd
 xKn
-xJl
+jmD
 ghd
 xYl
 sQt
@@ -138010,8 +137994,8 @@ cVX
 (135,1,1) = {"
 cVX
 ghd
-kTp
-xJl
+jmD
+jmD
 ghd
 szb
 nCK
@@ -138267,8 +138251,8 @@ cVX
 (136,1,1) = {"
 cVX
 ghd
-kTp
-xJl
+jmD
+jmD
 ehu
 tjv
 nCK
@@ -138525,7 +138509,7 @@ cVX
 cVX
 ghd
 keQ
-xJl
+jmD
 ghd
 rWK
 nCK
@@ -138782,7 +138766,7 @@ cVX
 cVX
 ghd
 xKn
-xJl
+jmD
 ghd
 cKP
 hdA
@@ -226692,7 +226676,7 @@ jlv
 jlv
 jlv
 rec
-nPD
+htj
 fAv
 nPD
 qBY
@@ -226949,9 +226933,9 @@ jlv
 jlv
 jlv
 rec
-nPD
+gyl
 rec
-nPD
+cYX
 nPD
 qcx
 jXv
@@ -228236,7 +228220,7 @@ jlv
 jlv
 jlv
 rec
-cYX
+nPD
 nPD
 nPD
 iQD
@@ -292999,7 +292983,7 @@ ntq
 ntq
 ntq
 lqp
-mov
+dXT
 pwN
 oRt
 mov
