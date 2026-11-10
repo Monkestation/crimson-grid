@@ -8065,7 +8065,6 @@
 /obj/effect/mapping_helpers/door/access/banu,
 /obj/effect/mapping_helpers/door/lock,
 /obj/structure/curtain/cloth/fancy,
-/obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/five,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/banu/haven)
@@ -17160,7 +17159,6 @@
 "dTi" = (
 /obj/structure/vampdoor/glass,
 /obj/effect/mapping_helpers/door/access/banu,
-/obj/effect/mapping_helpers/door/lock,
 /obj/structure/curtain/cloth/fancy,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/bash_difficulty/five,
@@ -39103,6 +39101,10 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic)
+"jfT" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/carpet/royalblack,
+/area/vtm/interior/banu)
 "jgd" = (
 /obj/effect/turf_decal/bordur{
 	dir = 9
@@ -41173,6 +41175,10 @@
 /obj/machinery/light/warm/directional/west,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/forest)
+"jFb" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/carpet/royalblack,
+/area/vtm/interior/banu)
 "jFk" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 6
@@ -63382,7 +63388,6 @@
 "oQt" = (
 /obj/structure/table/wood,
 /obj/item/storage/box/matches,
-/obj/machinery/reagentgrinder,
 /obj/item/reagent_containers/cup/glass/mug/britcup{
 	pixel_y = 17
 	},
@@ -63397,6 +63402,10 @@
 /obj/item/reagent_containers/cup/glass/mug{
 	pixel_x = 13;
 	pixel_y = 10
+	},
+/obj/machinery/reagentgrinder{
+	pixel_y = 14;
+	pixel_x = -8
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/banu)
@@ -101854,6 +101863,10 @@
 /obj/item/reagent_containers/cup/glass/coffee/vampire/robust,
 /obj/item/reagent_containers/cup/glass/coffee/vampire/robust,
 /obj/fusebox,
+/obj/machinery/coffeemaker/impressa{
+	pixel_x = 0;
+	pixel_y = 7
+	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/banu)
 "xTz" = (
@@ -226581,7 +226594,7 @@ nCZ
 bBl
 jXv
 lnc
-jXv
+jfT
 gBQ
 oNS
 nZJ
@@ -227092,7 +227105,7 @@ rec
 mOe
 nPD
 nCZ
-jXv
+hOZ
 jXv
 uka
 jXv
@@ -228380,7 +228393,7 @@ vJn
 nCZ
 nZJ
 jXv
-jXv
+jFb
 gBQ
 dhR
 xbw
