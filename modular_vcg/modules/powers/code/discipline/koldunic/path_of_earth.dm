@@ -6,8 +6,8 @@
 	●●● Hungry Earth Willpower
 	●●●● Earths Embrace: Willpower
 	●●●●● Kupalas Fury: Willpower"}
-	icon = 'modular_vcg/modules/powers/icons/actions.dmi'
-	icon_state = "koldunic"
+	icon = 'modular_vcg/modules/powers/icons/koldun_icon2.dmi'
+	icon_state = "koldun_earth"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/path_of_earth
 	signature_clan = VAMPIRE_CLAN_OLD_CLAN_TZIMISCE
@@ -124,7 +124,6 @@
 	var/roll = SSroll.storyteller_roll_datum(owner, difficulty = 7, applic_stats = list(STAT_PERMANENT_WILLPOWER))
 	switch(roll)
 		if(ROLL_SUCCESS)
-			owner.damage_resistance += 20
 			to_chat(owner, span_green("You successfuly will the earth to encase the target"))
 		if(ROLL_FAILURE)
 			to_chat(owner, span_warning("You fail to harness the earth to encase your target"))
