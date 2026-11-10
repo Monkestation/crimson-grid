@@ -13804,7 +13804,7 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/door/access/pentex,
-/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/unlock,
 /obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/plating/grate,
 /area/vtm/interior/wyrm_corrupted)
@@ -16079,6 +16079,10 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop)
+"dNj" = (
+/obj/effect/realistic_fog/dense/strong,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/wyrm_corrupted/bawn)
 "dNk" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp{
@@ -22988,7 +22992,7 @@
 "fqW" = (
 /obj/effect/decal/garou_glyph/hive,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/plant)
+/area/vtm/interior/wyrm_corrupted/bawn)
 "fqX" = (
 /obj/effect/turf_decal/darkpack/cave{
 	dir = 9
@@ -25756,7 +25760,7 @@
 	},
 /obj/effect/decal/pallet,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/plant)
+/area/vtm/interior/wyrm_corrupted/bawn)
 "fZe" = (
 /obj/item/food/cannoli{
 	pixel_y = 10
@@ -25770,6 +25774,13 @@
 /obj/item/camera,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/supply)
+"fZl" = (
+/obj/structure/chair/plastic/darkpack{
+	dir = 4
+	},
+/obj/effect/landmark/bawn_entrance/wyrm,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/endron_facility/plant)
 "fZw" = (
 /obj/structure/table/wood,
 /obj/machinery/light/directional/west,
@@ -28142,6 +28153,13 @@
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/shop)
+"gBP" = (
+/obj/effect/decal/pallet,
+/obj/structure/closet/crate/large{
+	anchored = 1
+	},
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/wyrm_corrupted/bawn)
 "gBT" = (
 /obj/effect/decal/wallpaper/stone/low{
 	pixel_y = 24
@@ -33369,6 +33387,10 @@
 /obj/structure/platform/lowwall/rich/old/window,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/church)
+"hMp" = (
+/obj/machinery/sprinkler/area_managed,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/wyrm_corrupted/bawn)
 "hMy" = (
 /obj/effect/decal/rugs,
 /turf/open/floor/iron/white/textured,
@@ -36740,7 +36762,7 @@
 "iyI" = (
 /obj/effect/decal/garou_glyph/wyrm,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/plant)
+/area/vtm/interior/wyrm_corrupted/bawn)
 "iyM" = (
 /obj/effect/decal/graffiti{
 	icon_state = "graffiti9"
@@ -45259,6 +45281,10 @@
 /obj/machinery/light/broken/directional/south,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/clinic/haven)
+"kwu" = (
+/obj/effect/decal/pallet,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/wyrm_corrupted/bawn)
 "kwA" = (
 /turf/open/water/beach/vamp,
 /area/vtm)
@@ -52393,6 +52419,9 @@
 /obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
+"mgh" = (
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/wyrm_corrupted/bawn)
 "mgl" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/open/misc/dirt,
@@ -53733,7 +53762,7 @@
 /area/vtm/interior/endron_facility)
 "muX" = (
 /obj/structure/vampdoor,
-/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/unlock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/access/pentex,
 /turf/open/floor/plating/concrete,
@@ -55889,7 +55918,7 @@
 	anchored = 1
 	},
 /turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/plant)
+/area/vtm/interior/wyrm_corrupted/bawn)
 "mWs" = (
 /obj/effect/decal/carpet{
 	pixel_y = -12
@@ -59376,7 +59405,7 @@
 	pixel_x = 9
 	},
 /turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/plant)
+/area/vtm/interior/wyrm_corrupted/bawn)
 "nMA" = (
 /obj/structure/flora/tree/vamp/pine,
 /obj/effect/mine/stick,
@@ -73060,7 +73089,7 @@
 "qQF" = (
 /obj/effect/decal/garou_glyph/dancers,
 /turf/open/floor/plating/concrete,
-/area/vtm/interior/endron_facility/plant)
+/area/vtm/interior/wyrm_corrupted/bawn)
 "qQM" = (
 /obj/structure/table/wood,
 /obj/underplate{
@@ -82898,7 +82927,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/access/pentex,
-/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/unlock,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/plating/grate,
 /area/vtm/interior/wyrm_corrupted)
@@ -146683,7 +146712,7 @@ vgm
 vgm
 vgm
 sfI
-xOe
+gBP
 qQF
 fZd
 goA
@@ -146887,9 +146916,9 @@ vgm
 vgm
 vgm
 tip
-vcn
-vcn
-uzh
+mgh
+dNj
+kwu
 goA
 ruB
 ycd
@@ -147092,7 +147121,7 @@ vgm
 vgm
 xgF
 fqW
-jjJ
+hMp
 iyI
 goA
 ruB
@@ -147296,7 +147325,7 @@ vgm
 vgm
 sfI
 nMx
-vcn
+mgh
 mWi
 goA
 oNH
@@ -147704,7 +147733,7 @@ pLl
 nkX
 xOe
 xOe
-pLl
+fZl
 rFY
 goA
 eZm

@@ -52,6 +52,9 @@
 /obj/effect/realistic_fog/bawn/children_of_gaia
 	linked_totem_path = /obj/structure/werewolf_totem/children_of_gaia
 
+/obj/effect/realistic_fog/bawn/wyrm
+	linked_totem_path = /obj/structure/werewolf_totem/generic/wyrm
+
 /obj/effect/realistic_fog/bawn/proc/on_totem_death(atom/source)
 	SIGNAL_HANDLER
 
@@ -122,3 +125,6 @@
 
 /obj/effect/landmark/bawn_entrance/gaia/children_of_gaia
 	linked_totem_path = /obj/structure/werewolf_totem/children_of_gaia
+
+/obj/effect/landmark/bawn_entrance/wyrm
+	linked_totem_path = /obj/structure/werewolf_totem/generic/wyrm
