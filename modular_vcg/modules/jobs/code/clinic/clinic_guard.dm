@@ -17,7 +17,7 @@
 		"Hospise Orderly",
 	)
 
-	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE, SPLAT_GAROU, SPLAT_KINDRED)
+	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
 	splat_slots = list(SPLAT_GHOUL = 2, SPLAT_KINFOLK = 2)
 
 	description = "As an Orderly for the Hospital your main job is ensuring the security of medical staff, patients, and equipment."
