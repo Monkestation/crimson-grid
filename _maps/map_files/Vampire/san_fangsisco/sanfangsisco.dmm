@@ -1295,10 +1295,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/mansion)
-"apa" = (
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall/vampwall/brick_old,
-/area/vtm)
 "apb" = (
 /obj/machinery/oven/range,
 /obj/machinery/light/directional/north,
@@ -3799,12 +3795,6 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/supply)
-"aQQ" = (
-/obj/machinery/recycler/deathtrap{
-	dir = 4
-	},
-/turf/open/floor/plating/rough,
-/area/vtm/interior/vjanitor)
 "aQZ" = (
 /obj/structure/hedge{
 	pixel_y = 6
@@ -18366,15 +18356,6 @@
 	},
 /turf/open/misc/grass,
 /area/vtm/interior/cog/caern)
-"ehu" = (
-/obj/structure/vampdoor/reinf,
-/obj/effect/mapping_helpers/door/access/cleaning,
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/bash_difficulty/six,
-/obj/effect/turf_decal/trimline/yellow/warning,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
-/turf/open/floor/plating/canalplating,
-/area/vtm/interior/vjanitor)
 "ehv" = (
 /obj/machinery/light/directional/north,
 /obj/structure/signboard{
@@ -42582,11 +42563,6 @@
 /obj/structure/bonfire/prelit/fire_barrel,
 /turf/open/misc/dirt,
 /area/vtm/interior/sabbat_lair)
-"jVE" = (
-/obj/effect/decal/wallpaper/grey,
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall/vampwall/old,
-/area/vtm/interior/vjanitor)
 "jVY" = (
 /obj/structure/ladder/manhole/down,
 /turf/open/floor/plating/sidewalk,
@@ -43260,10 +43236,6 @@
 	},
 /turf/open/floor/plating/grate,
 /area/vtm/interior/endron_facility/plant)
-"keQ" = (
-/obj/structure/sign/poster/official/no_erp/directional/north,
-/turf/open/floor/plating/rough,
-/area/vtm/interior/vjanitor)
 "keR" = (
 /obj/structure/table,
 /obj/machinery/light/directional/north,
@@ -44906,12 +44878,6 @@
 /obj/structure/lattice/pentex,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/millennium_tower/f4)
-"kAo" = (
-/obj/machinery/recycler/deathtrap{
-	dir = 8
-	},
-/turf/open/floor/plating/rough,
-/area/vtm/interior/vjanitor)
 "kAp" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -62004,13 +61970,6 @@
 /obj/item/clothing/mask/vampire/venetian_mask/fancy,
 /turf/open/floor/cult,
 /area/vtm/interior/chantry/basement)
-"ozg" = (
-/obj/structure/disposalpipe/trunk,
-/obj/machinery/disposal/delivery_chute{
-	dir = 1
-	},
-/turf/open/floor/plating/sidewalk,
-/area/vtm)
 "ozi" = (
 /obj/structure/bonfire/fire_barrel,
 /turf/open/floor/plating/sidewalk/poor,
@@ -101204,10 +101163,6 @@
 /mob/living/basic/pet/dog/darkpack/gray,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
-"xKn" = (
-/obj/machinery/light/warm/dim/directional/north,
-/turf/open/floor/plating/rough,
-/area/vtm/interior/vjanitor)
 "xKo" = (
 /obj/structure/vampfence/rich{
 	dir = 4
@@ -101635,13 +101590,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/rough,
 /area/vtm/interior/police/fed)
-"xPX" = (
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/turf/open/floor/plating/concrete,
-/area/vtm/interior/vjanitor)
 "xPY" = (
 /obj/structure/platform/lowwall/rich/window,
 /turf/open/floor/plating/rough,
@@ -102376,9 +102324,6 @@
 /area/vtm/interior/supply)
 "xYl" = (
 /obj/effect/decal/cleanable/litter,
-/obj/machinery/conveyor_switch{
-	id = 2053
-	},
 /obj/structure/vampipe{
 	icon_state = "piping5";
 	pixel_y = 32
@@ -102964,6 +102909,7 @@
 	},
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/access/old_clan_tzimisce,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/tzimisce_manor)
 "yge" = (
@@ -137480,7 +137426,7 @@ cVX
 (133,1,1) = {"
 cVX
 ghd
-aQQ
+ghd
 ghd
 ghd
 roq
@@ -137737,8 +137683,8 @@ cVX
 (134,1,1) = {"
 cVX
 ghd
-xKn
-jmD
+ghd
+ghd
 ghd
 xYl
 sQt
@@ -137994,8 +137940,8 @@ cVX
 (135,1,1) = {"
 cVX
 ghd
-jmD
-jmD
+ghd
+ghd
 ghd
 szb
 nCK
@@ -138251,9 +138197,9 @@ cVX
 (136,1,1) = {"
 cVX
 ghd
-jmD
-jmD
-ehu
+ghd
+ghd
+ghd
 tjv
 nCK
 ghd
@@ -138508,8 +138454,8 @@ cVX
 (137,1,1) = {"
 cVX
 ghd
-keQ
-jmD
+ghd
+ghd
 ghd
 rWK
 nCK
@@ -138765,8 +138711,8 @@ cVX
 (138,1,1) = {"
 cVX
 ghd
-xKn
-jmD
+ghd
+ghd
 ghd
 cKP
 hdA
@@ -139023,7 +138969,7 @@ cVX
 cVX
 ghd
 ghd
-kAo
+ghd
 ghd
 ghd
 ghd
@@ -202759,8 +202705,8 @@ cVX
 (132,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 upn
@@ -203016,8 +202962,8 @@ cVX
 (133,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 qGw
@@ -203273,8 +203219,8 @@ cVX
 (134,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 qGw
@@ -203530,13 +203476,13 @@ cVX
 (135,1,2) = {"
 cVX
 qGw
-ntq
-ntq
-ozg
-apa
-apa
-jVE
-xPX
+qGw
+qGw
+qGw
+qGw
+qGw
+hOY
+mCk
 mCk
 mCk
 cKu
@@ -203787,8 +203733,8 @@ cVX
 (136,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 qGw
@@ -204044,8 +203990,8 @@ cVX
 (137,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 qGw
@@ -204301,8 +204247,8 @@ cVX
 (138,1,2) = {"
 cVX
 qGw
-ntq
-ntq
+qGw
+qGw
 qGw
 qGw
 qGw
