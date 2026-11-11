@@ -8714,7 +8714,6 @@
 /turf/open/floor/city/plating,
 /area/vtm/interior/setite)
 "cbb" = (
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -8737,6 +8736,8 @@
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/iron/dark/textured,
 /area/vtm/interior/endron_facility/restricted)
 "cbf" = (
@@ -14138,9 +14139,10 @@
 /area/vtm/outside/park)
 "doD" = (
 /obj/structure/vampdoor/wood,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "doF" = (
@@ -16550,8 +16552,8 @@
 "dSa" = (
 /obj/structure/platform/lowwall/market/window/reinforced,
 /obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexcurtain";
-	pixel_y = 16
+	pixel_y = 15;
+	id = "pentexcurtain"
 	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
@@ -19798,9 +19800,10 @@
 /obj/structure/vampdoor/old{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility)
 "eFi" = (
@@ -20091,6 +20094,7 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/iron/dark/textured,
 /area/vtm/interior/endron_facility/restricted)
 "eIQ" = (
@@ -21045,16 +21049,6 @@
 	},
 /turf/open/floor/wood/rough,
 /area/vtm/interior/sewer)
-"eVm" = (
-/obj/effect/turf_decal/siding/wood/dark/corner{
-	dir = 1
-	},
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexiaacurtain";
-	pixel_y = -24
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/endron_facility)
 "eVn" = (
 /obj/effect/decal/wallpaper/red/low,
 /obj/structure/platform/lowwall/rich/window,
@@ -28634,9 +28628,9 @@
 /obj/effect/turf_decal/siding/grey{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility)
 "gIU" = (
@@ -30118,13 +30112,6 @@
 /obj/structure/flora/bush/fullgrass/style_random,
 /turf/open/misc/grass/nosmooth,
 /area/vtm/outside/culture/italy)
-"gZD" = (
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexiaacurtain";
-	pixel_y = -24
-	},
-/turf/open/openspace,
-/area/vtm)
 "gZF" = (
 /obj/structure/railing/wooden_fence{
 	dir = 10
@@ -30999,16 +30986,6 @@
 /obj/structure/bed/maint,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/theatre)
-"hjl" = (
-/obj/effect/turf_decal/siding/wood/dark/corner{
-	dir = 1
-	},
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexexeccurtain";
-	pixel_y = -24
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/endron_facility)
 "hjo" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -34651,9 +34628,14 @@
 /turf/open/floor/iron/stairs/black/right,
 /area/vtm/interior/setite)
 "ida" = (
-/mob/living/basic/szlachta/tanker/hostile,
-/turf/open/indestructible/necropolis/air,
-/area/vtm/interior/endron_facility/restricted)
+/obj/structure/platform/lowwall/market/window,
+/obj/effect/decal/wallpaper/paper/darkgreen/low,
+/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
+	id = "pentexiaacurtain";
+	pixel_y = 8
+	},
+/turf/open/floor/city/plating,
+/area/vtm/interior/endron_facility)
 "idh" = (
 /obj/effect/decal/wallpaper/paper,
 /obj/effect/decal/wallpaper/papers/eight{
@@ -37849,6 +37831,7 @@
 	},
 /obj/effect/turf_decal/trimline/purple/filled/warning,
 /obj/structure/vampdoor/reinf,
+/obj/effect/mapping_helpers/door/bash_difficulty/ten,
 /turf/open/floor/iron/dark/textured,
 /area/vtm/interior/endron_facility/restricted)
 "iMi" = (
@@ -38353,12 +38336,13 @@
 /area/vtm/interior/sewer)
 "iSD" = (
 /obj/effect/mapping_helpers/door/access/pentex,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/door/lock,
 /obj/structure/vampdoor/old,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/iron/dark/small,
 /area/vtm/interior/endron_facility/restricted)
 "iSJ" = (
@@ -41703,13 +41687,6 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
-"jEU" = (
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexcurtain";
-	pixel_y = -24
-	},
-/turf/open/floor/city/plating,
-/area/vtm/interior/endron_facility)
 "jEY" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -44182,9 +44159,10 @@
 /area/vtm/interior/jazzclub)
 "kkt" = (
 /obj/structure/vampdoor/wood,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /obj/effect/mapping_helpers/door/unlock,
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "kkw" = (
@@ -45121,12 +45099,13 @@
 /obj/structure/vampdoor/wood{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
 /obj/effect/vip_barrier/endron{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "kva" = (
@@ -45851,7 +45830,6 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
 "kER" = (
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -45871,9 +45849,8 @@
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 4
 	},
-/obj/effect/turf_decal/trimline/purple/filled/warning{
-	dir = 8
-	},
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/iron/dark/textured,
 /area/vtm/interior/endron_facility/restricted)
 "kES" = (
@@ -49810,9 +49787,13 @@
 /turf/open/floor/wood/old,
 /area/vtm/interior)
 "lBL" = (
-/mob/living/basic/szlachta/fister/hostile,
-/obj/structure/meateor_fluff/abandoned_headcrab_egg,
-/turf/open/indestructible/necropolis/air,
+/obj/effect/turf_decal/trimline/purple/corner,
+/obj/machinery/shower/directional/south{
+	pixel_y = 31
+	},
+/obj/structure/sink/directional/south,
+/obj/structure/fluff/grate/drain/rusty,
+/turf/open/floor/iron/white/textured,
 /area/vtm/interior/endron_facility/restricted)
 "lBQ" = (
 /obj/structure/bonfire/alt,
@@ -53729,6 +53710,10 @@
 /area/vtm/interior/church/staff)
 "muW" = (
 /obj/structure/platform/lowwall/market/window/reinforced,
+/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
+	pixel_y = 8;
+	id = "pentexcurtain"
+	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "muX" = (
@@ -58002,9 +57987,6 @@
 /obj/effect/landmark/npcactivity,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/chinatown)
-"nva" = (
-/turf/open/indestructible/necropolis/air,
-/area/vtm/interior/endron_facility/restricted)
 "nvh" = (
 /turf/open/floor/mineral/titanium/white,
 /area/vtm/interior/millennium_tower/f3)
@@ -65630,6 +65612,9 @@
 /obj/item/clothing/under/vampire/pentex_executiveskirt,
 /obj/item/clothing/suit/vampire/pentex_labcoat,
 /obj/item/clothing/suit/vampire/pentex_labcoat,
+/obj/item/radio/headset/darkpack,
+/obj/item/radio/headset/darkpack,
+/obj/item/radio/headset/darkpack,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/endron_facility)
 "pfP" = (
@@ -65817,10 +65802,11 @@
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
 	},
-/obj/structure/vampdoor/woodglass,
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/structure/vampdoor/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/endron_facility)
 "phW" = (
@@ -67972,14 +67958,13 @@
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer)
 "pHK" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
+/obj/structure/platform/lowwall/market/window,
+/obj/effect/decal/wallpaper/trim/green,
 /obj/structure/curtain/cloth/fancy/mechanical/luxurious{
 	id = "pentexexeccurtain";
-	pixel_y = -24
+	pixel_y = 8
 	},
-/turf/open/floor/wood/smooth/old,
+/turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "pHM" = (
 /obj/effect/decal/cleanable/blood/splatter{
@@ -68642,7 +68627,7 @@
 /area/vtm/outside/forest)
 "pOy" = (
 /obj/machinery/light/cold/directional/north,
-/turf/open/water/bloodwave,
+/turf/open/floor/iron/white/textured,
 /area/vtm/interior/endron_facility/restricted)
 "pOA" = (
 /obj/effect/turf_decal/bordur{
@@ -72859,8 +72844,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/door/unlock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "qOl" = (
@@ -75420,14 +75406,13 @@
 /turf/open/floor/plating/granite/black,
 /area/vtm)
 "rud" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
+/obj/structure/platform/lowwall/market/window,
+/obj/effect/decal/wallpaper/paper/darkgreen/low,
 /obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexcurtain";
-	pixel_y = -24
+	pixel_y = 8;
+	id = "pentexcurtain"
 	},
-/turf/open/floor/wood/smooth/old,
+/turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "run" = (
 /obj/effect/mob_spawn/corpse/human/ciz3,
@@ -76581,6 +76566,10 @@
 "rHj" = (
 /obj/structure/platform/lowwall/market/window,
 /obj/effect/decal/wallpaper/paper/darkgreen/low,
+/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
+	id = "pentexexeccurtain";
+	pixel_y = 8
+	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "rHo" = (
@@ -81000,16 +80989,6 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/culture/italy)
-"sKS" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexiaacurtain";
-	pixel_y = -24
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/endron_facility)
 "sKV" = (
 /obj/effect/turf_decal/siding/grey/inner_corner{
 	dir = 1
@@ -82713,6 +82692,10 @@
 "tft" = (
 /obj/structure/platform/lowwall/market/window,
 /obj/effect/decal/wallpaper/trim/green,
+/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
+	id = "pentexiaacurtain";
+	pixel_y = 8
+	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "tfI" = (
@@ -83007,16 +82990,6 @@
 /obj/item/storage/box/bodybags,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/salubri)
-"tjB" = (
-/obj/effect/turf_decal/siding/wood/dark/corner{
-	dir = 1
-	},
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexcurtain";
-	pixel_y = -24
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/endron_facility)
 "tjI" = (
 /obj/structure/closet/crate/bin,
 /turf/open/floor/plating/rough,
@@ -85103,9 +85076,8 @@
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior)
 "tIS" = (
-/mob/living/basic/szlachta/hostile,
 /obj/structure/meateor_fluff/abandoned_headcrab_egg,
-/turf/open/indestructible/necropolis/air,
+/turf/open/floor/iron/white/textured,
 /area/vtm/interior/endron_facility/restricted)
 "tIV" = (
 /obj/structure/railing{
@@ -87274,6 +87246,7 @@
 /obj/structure/vampdoor/reinf{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/iron/dark/textured,
 /area/vtm/interior/endron_facility/restricted)
 "ugy" = (
@@ -88833,13 +88806,6 @@
 "uAP" = (
 /turf/open/floor/wood/rough,
 /area/vtm/outside/forest)
-"uAR" = (
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexexeccurtain";
-	pixel_y = -24
-	},
-/turf/open/openspace,
-/area/vtm)
 "uAU" = (
 /obj/structure/table/countertop/bubway,
 /obj/structure/fluff/tv/order/one{
@@ -88982,16 +88948,6 @@
 	},
 /turf/open/floor/city/toilet,
 /area/vtm/interior/baali)
-"uCx" = (
-/obj/effect/turf_decal/siding/wood/dark/corner{
-	dir = 4
-	},
-/obj/structure/curtain/cloth/fancy/mechanical/luxurious{
-	id = "pentexcurtain";
-	pixel_y = -24
-	},
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/endron_facility)
 "uCy" = (
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 4
@@ -90228,7 +90184,13 @@
 /turf/open/floor/city/factory,
 /area/vtm/interior/banu)
 "uQe" = (
-/turf/open/water/bloodwave,
+/obj/structure/bed{
+	pixel_y = 15
+	},
+/obj/item/bedsheet/purple{
+	pixel_y = 15
+	},
+/turf/open/floor/iron/white/textured,
 /area/vtm/interior/endron_facility/restricted)
 "uQC" = (
 /obj/structure/stone_tile/block/cracked,
@@ -90700,9 +90662,10 @@
 	dir = 1
 	},
 /obj/structure/vampdoor/wood,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility)
 "uWI" = (
@@ -91418,7 +91381,10 @@
 /area/vtm/interior)
 "vgp" = (
 /obj/structure/meateor_fluff/abandoned_headcrab_egg,
-/turf/open/indestructible/necropolis/air,
+/obj/effect/turf_decal/trimline/purple/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/white/textured,
 /area/vtm/interior/endron_facility/restricted)
 "vgC" = (
 /obj/machinery/light/dim/directional/south,
@@ -93548,6 +93514,7 @@
 /obj/effect/mapping_helpers/door/access/pentex,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/endron_facility)
 "vJc" = (
@@ -100655,9 +100622,9 @@
 /obj/effect/turf_decal/siding/grey{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/city/plating,
 /area/vtm/interior/endron_facility)
 "xmU" = (
@@ -101403,12 +101370,12 @@
 /obj/structure/vampdoor/wood{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
 /obj/effect/vip_barrier/endron/endron_backdoor{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/door/lock_difficulty/five,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility)
 "xwE" = (
@@ -103092,10 +103059,11 @@
 /area/vtm/interior/giovanni)
 "xQf" = (
 /obj/effect/turf_decal/siding/wood/dark,
-/obj/structure/vampdoor/woodglass,
-/obj/effect/mapping_helpers/door/lock_difficulty/six,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/access/pentex,
+/obj/effect/mapping_helpers/door/lock_difficulty/six,
+/obj/effect/mapping_helpers/door/bash_difficulty/six,
+/obj/structure/vampdoor/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/endron_facility)
 "xQh" = (
@@ -135407,9 +135375,9 @@ uvs
 uvs
 uvs
 uvs
-cMh
+hxA
 uQe
-uQe
+imL
 tIS
 vrt
 jwO
@@ -135611,10 +135579,10 @@ uvs
 uvs
 uvs
 uvs
-cMh
+hxA
 pOy
-ida
-nva
+hMy
+imL
 fme
 hMy
 imL
@@ -135815,9 +135783,9 @@ uvs
 uvs
 uvs
 uvs
-cMh
+hxA
 lBL
-nva
+uXp
 vgp
 vrt
 imL
@@ -217629,7 +217597,7 @@ qas
 qas
 qas
 qas
-uCx
+pDQ
 muW
 mjT
 mjT
@@ -217833,7 +217801,7 @@ cwU
 cwU
 cwU
 cwU
-rud
+vur
 muW
 mjT
 mjT
@@ -218021,7 +217989,7 @@ xEp
 xEp
 wmS
 mjT
-uAR
+mjT
 rHj
 thC
 ilu
@@ -218037,7 +218005,7 @@ cwU
 cwU
 nWJ
 cwU
-rud
+vur
 muW
 mjT
 mjT
@@ -218225,23 +218193,23 @@ xEp
 xEp
 wmS
 mjT
-uAR
+mjT
 rHj
 bbf
 xsM
 dlr
+vur
 pHK
-tft
 pij
 pij
-jEU
-rHj
+pij
+rud
 gdg
 cwU
 xCi
 xsM
 geU
-rud
+vur
 muW
 mjT
 mjT
@@ -218429,7 +218397,7 @@ rfu
 rfu
 vcO
 mjT
-uAR
+mjT
 rHj
 kOo
 ftl
@@ -218445,7 +218413,7 @@ srm
 mLy
 cWS
 srm
-tjB
+sXn
 muW
 mjT
 mjT
@@ -218638,12 +218606,12 @@ oZb
 fCI
 srm
 sTz
-hjl
-tft
+sXn
+pHK
 pij
 vyA
-jEU
-rHj
+pij
+rud
 vGt
 xAa
 dyL
@@ -219245,8 +219213,8 @@ xEp
 wmS
 mjT
 mjT
-gZD
-rHj
+mjT
+ida
 thC
 sgL
 cwU
@@ -219449,12 +219417,12 @@ xEp
 wmS
 mjT
 mjT
-gZD
-rHj
+mjT
+ida
 bbf
 xsM
 wzn
-sKS
+vur
 tft
 uRg
 cwU
@@ -219653,8 +219621,8 @@ xEp
 wmS
 mjT
 mjT
-gZD
-rHj
+mjT
+ida
 kOo
 mXc
 mXc
@@ -219862,7 +219830,7 @@ oZb
 fCI
 srm
 sTz
-eVm
+sXn
 tft
 uRg
 cwU
