@@ -88,6 +88,3 @@
 
 /obj/effect/decal/cleanable/crayon/scribble/scribble19
 	icon_state = "scribble18"
-
-/obj/effect/decal/cleanable/crayon/scribble/scribble20
-	icon_state = "scribble19"
