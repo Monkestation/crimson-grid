@@ -99,13 +99,6 @@
 	zone_type = ZONE_NO_MASQUERADE
 	fire_controled = FALSE
 
-/area/vtm/interior/wyrm_corrupted
-	name = "Wyrm Corruption"
-	icon_state = "graveyard"
-	zone_type = ZONE_NO_MASQUERADE
-	music_index = MUSIC_FOREST
-	fire_controled = FALSE
-
 /area/vtm/interior/strip_elysium
 	name = "Strip Club - Elysium"
 	icon_state = "prince"
