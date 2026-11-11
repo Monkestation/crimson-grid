@@ -12859,7 +12859,6 @@
 /obj/structure/flora/bush/sparsegrass/style_random,
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/structure/flora/bush/flowers_yw,
-/mob/living/basic/pet/dog/wolf/kinfolk/gray,
 /turf/open/misc/grass,
 /area/vtm/interior/wyld/caern)
 "cYG" = (
@@ -29850,7 +29849,6 @@
 /area/vtm/interior/shop)
 "gWz" = (
 /obj/structure/flora/rock/pile/darkpack,
-/mob/living/basic/pet/dog/wolf/kinfolk/brown,
 /turf/open/floor/plating/stone,
 /area/vtm/interior/wyld/caern)
 "gWB" = (
@@ -29953,10 +29951,6 @@
 "gXH" = (
 /turf/open/floor/city/plating_stone,
 /area/vtm/interior/chantry/basement)
-"gXM" = (
-/mob/living/basic/pet/dog/wolf/brown,
-/turf/open/misc/dirt,
-/area/vtm/interior/wyld/caern)
 "gXN" = (
 /turf/closed/wall/vampwall/brick,
 /area/vtm/interior/shop)
@@ -35480,6 +35474,9 @@
 /area/vtm/outside/forest)
 "imE" = (
 /obj/effect/landmark/npcwall,
+/obj/effect/vip_barrier/endron/endron_lab_2{
+	dir = 4
+	},
 /turf/closed/wall/vampwall/rust{
 	density = 0
 	},
@@ -38791,10 +38788,6 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/anarch/basement)
-"iYv" = (
-/mob/living/basic/pet/dog/wolf/kinfolk/ginger,
-/turf/open/floor/plating/stone,
-/area/vtm/interior/wyld/caern)
 "iYG" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -55885,9 +55878,7 @@
 "mWi" = (
 /obj/machinery/light/red/directional/south,
 /obj/effect/decal/pallet,
-/obj/structure/closet/crate/large{
-	anchored = 1
-	},
+/mob/living/carbon/human/npc/bouncer/endron/endron_lab_2,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/endron_facility/plant)
 "mWs" = (
@@ -79128,10 +79119,6 @@
 	},
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/strip)
-"spt" = (
-/mob/living/basic/pet/dog/wolf/kinfolk/gray,
-/turf/open/misc/grass,
-/area/vtm/interior/wyld/caern)
 "spx" = (
 /obj/structure/table/wood,
 /obj/item/toy/crayon/spraycan,
@@ -285816,7 +285803,7 @@ ooK
 sBz
 mae
 mae
-iYv
+iht
 iht
 deB
 xdb
@@ -286013,7 +286000,7 @@ xdx
 spC
 puc
 tts
-spt
+tts
 kaT
 aOe
 scw
@@ -286627,9 +286614,9 @@ tts
 eEL
 tts
 tts
-spt
+tts
 mGw
-gXM
+mGw
 deB
 xdb
 deB
