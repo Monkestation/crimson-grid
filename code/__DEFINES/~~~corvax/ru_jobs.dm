@@ -81,7 +81,7 @@
 //Anarchs
 #define JOB_BARON_RU "Барон"
 #define JOB_EMISSARY_RU "Эмиссар"
-#define JOB_SWEEPER_RU "Хаммелеон"
+#define JOB_SWEEPER_RU "Дозорный"
 #define JOB_BRUISER_RU "Громила"
 #define JOB_TAPSTER_RU "Трактирщик"
 //Chantry

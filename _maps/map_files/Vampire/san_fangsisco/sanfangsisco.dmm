@@ -6769,9 +6769,6 @@
 /area/vtm/interior/tzimisce_manor)
 "bxC" = (
 /obj/structure/stairs/west,
-/obj/structure/railing{
-	dir = 4
-	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/setite)
 "bxD" = (
@@ -20689,13 +20686,6 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/outside/unionsquare)
 "eDX" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/railing{
-	dir = 1;
-	pixel_y = 16
-	},
 /turf/open/openspace,
 /area/vtm/interior/setite)
 "eEe" = (
@@ -20979,10 +20969,6 @@
 	color = "#FFD9C0"
 	},
 /area/vtm/interior/laundromat)
-"eGT" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/wood/old,
-/area/vtm/interior/hotel)
 "eGU" = (
 /obj/structure/safe/floor{
 	pixel_y = 25
@@ -22564,9 +22550,9 @@
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights/old)
 "eZM" = (
-/obj/effect/decal/wallpaper/stone,
-/obj/effect/mapping_helpers/door/access/claimable,
-/turf/closed/wall/vampwall/brick_old,
+/obj/structure/closet/cardboard,
+/obj/machinery/light/directional/east,
+/turf/open/floor/wood/old,
 /area/vtm/interior/hotel)
 "eZN" = (
 /obj/effect/turf_decal/siding/white,
@@ -24653,6 +24639,24 @@
 /obj/item/folder/blue,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/banu/haven)
+"fyy" = (
+/obj/structure/table,
+/obj/item/flashlight/flare/candle/infinite{
+	anchored = 1;
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/blood/a_minus,
+/obj/item/reagent_containers/blood/a_minus{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/blood/a_minus{
+	pixel_x = 6;
+	pixel_y = -1
+	},
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/sewer)
 "fyA" = (
 /obj/structure/table,
 /obj/effect/spawner/random/occult/artifact,
@@ -30909,23 +30913,10 @@
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/tzimisce_manor)
 "gVF" = (
-/obj/structure/table,
-/obj/item/flashlight/flare/candle/infinite{
-	anchored = 1;
-	pixel_x = -10;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/blood/a_minus,
-/obj/item/reagent_containers/blood/a_minus{
-	pixel_x = 5;
-	pixel_y = 9
-	},
-/obj/item/reagent_containers/blood/a_minus{
-	pixel_x = 6;
-	pixel_y = -1
-	},
-/turf/open/floor/plating/concrete,
-/area/vtm/interior/sewer)
+/obj/structure/closet/cardboard,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood/old,
+/area/vtm/interior/hotel)
 "gVM" = (
 /obj/structure/platform/lowwall/painted/window,
 /obj/structure/curtain/cloth/fancy/mechanical/luxurious{
@@ -35321,10 +35312,6 @@
 	},
 /turf/open/floor/city/industrial,
 /area/vtm/interior/shop/hardware_store)
-"hXc" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/wood/old,
-/area/vtm/interior/hotel)
 "hXf" = (
 /obj/structure/dresser,
 /obj/structure/coclock,
@@ -49066,8 +49053,7 @@
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/strip)
 "lfL" = (
-/obj/structure/closet/cardboard,
-/obj/machinery/light/directional/west,
+/obj/machinery/light/directional/east,
 /turf/open/floor/wood/old,
 /area/vtm/interior/hotel)
 "lfS" = (
@@ -64125,8 +64111,7 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/northbeach)
 "oDa" = (
-/obj/structure/closet/cardboard,
-/obj/machinery/light/directional/east,
+/obj/machinery/light/directional/west,
 /turf/open/floor/wood/old,
 /area/vtm/interior/hotel)
 "oDc" = (
@@ -81489,7 +81474,7 @@
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/millennium_tower/f4)
 "szs" = (
-/obj/machinery/light/directional/west,
+/obj/machinery/light/directional/north,
 /turf/open/floor/wood/old,
 /area/vtm/interior/hotel)
 "szw" = (
@@ -99292,7 +99277,7 @@
 /area/vtm/outside/ghetto)
 "wFT" = (
 /obj/structure/closet/cardboard,
-/obj/machinery/light/directional/north,
+/obj/machinery/light/directional/west,
 /turf/open/floor/wood/old,
 /area/vtm/interior/hotel)
 "wFU" = (
@@ -101592,6 +101577,11 @@
 /obj/effect/mapping_helpers/door/access/malkavian,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/clinic/haven)
+"xfl" = (
+/obj/effect/decal/wallpaper/stone,
+/obj/effect/mapping_helpers/door/access/claimable,
+/turf/closed/wall/vampwall/brick_old,
+/area/vtm/interior/hotel)
 "xfm" = (
 /obj/structure/hedge{
 	pixel_y = 6
@@ -148981,7 +148971,7 @@ jdE
 gwI
 wTq
 dDN
-gVF
+fyy
 riV
 wTq
 gwI
@@ -222265,7 +222255,7 @@ oRW
 oAk
 dwi
 dwi
-eZM
+xfl
 xRI
 xyO
 kjk
@@ -287036,19 +287026,19 @@ vgI
 rwY
 taP
 taP
-szs
+oDa
 taP
 taP
 taP
 vgI
 taP
-szs
+oDa
 taP
 taP
 taP
 taP
 taP
-lfL
+wFT
 xRI
 taP
 taP
@@ -288316,7 +288306,7 @@ eFA
 eFA
 eFA
 cxT
-wFT
+gVF
 taP
 saD
 myH
@@ -289858,7 +289848,7 @@ qoU
 qoU
 qoU
 wNo
-hXc
+szs
 taP
 saD
 myH
@@ -291148,19 +291138,19 @@ vgI
 taP
 taP
 taP
-eGT
+lfL
 taP
 taP
 taP
 vgI
 xRI
-oDa
+eZM
 taP
 taP
 taP
 taP
 taP
-eGT
+lfL
 taP
 taP
 taP
