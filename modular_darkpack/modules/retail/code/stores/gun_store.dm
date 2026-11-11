@@ -25,4 +25,6 @@
 		new /datum/data/vending_product("machete", /obj/item/claymore/machete, 500),
 		new /datum/data/vending_product("taser", /obj/item/melee/baton/security/handtaser, 250),
 		new /datum/data/vending_product("pepperspray", /obj/item/reagent_containers/spray/pepper, 200),
+		new /datum/data/vending_product("gun holster", /obj/item/storage/belt/holster, 100),
+		new /datum/data/vending_product("security webbing", /obj/item/storage/belt/security/webbing, 100),
 	)
