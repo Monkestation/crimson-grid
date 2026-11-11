@@ -71,8 +71,9 @@
 
 	// owner.Stun(time_to_transform, ignore_canstun = TRUE)
 
-	for(var/obj/item/clothing/equipped in owner.get_equipped_items(INCLUDE_ABSTRACT))
-		equipped.take_damage(rand(25, 50), sound_effect = FALSE)
+	if(!HAS_TRAIT(owner, TRAIT_RITE_OF_TALISMAN_DEDICATION)) // CRIMSON EDIT ADD - PR - Rite of Talisman Dedication check
+		for(var/obj/item/clothing/equipped in owner.get_equipped_items(INCLUDE_ABSTRACT))
+			equipped.take_damage(rand(25, 50), sound_effect = FALSE)
 
 	var/matrix/ntransform = matrix(owner.transform)
 	ntransform.Scale(1.1, 1.1)
