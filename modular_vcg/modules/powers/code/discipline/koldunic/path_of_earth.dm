@@ -84,7 +84,7 @@
 /datum/discipline_power/path_of_earth/endurance_of_stone/activate()
 	. = ..()
 	activating = FALSE
-	var/roll = SSroll.storyteller_roll_datum(owner, difficulty = 7, applic_stats = list(STAT_PERMANENT_WILLPOWER))
+	var/roll = SSroll.storyteller_roll_datum(owner, difficulty = 7, applic_stats = list(STAT_STAMINA, STAT_OCCULT))
 	switch(roll)
 		if(ROLL_SUCCESS)
 			active_armor = TRUE
@@ -121,7 +121,7 @@
 	var/turf/target_turf = get_turf(target)
 	if(!target_turf)
 		return
-	var/roll = SSroll.storyteller_roll_datum(owner, difficulty = 7, applic_stats = list(STAT_PERMANENT_WILLPOWER))
+	var/roll = SSroll.storyteller_roll_datum(owner, difficulty = 7, applic_stats = list(STAT_STAMINA, STAT_OCCULT))
 	switch(roll)
 		if(ROLL_SUCCESS)
 			to_chat(owner, span_green("You successfuly will the earth to encase the target"))
@@ -304,7 +304,13 @@
 	var/turf/target_turf = get_turf(target)
 	if(!target_turf)
 		return
-
+	var/roll = SSroll.storyteller_roll_datum(owner, difficulty = 8, applic_stats = list(STAT_STAMINA, STAT_OCCULT))
+	switch(roll)
+		if(ROLL_SUCCESS)
+			to_chat(owner, span_green("You successfuly will the earth to tremble at your mere presence"))
+		if(ROLL_FAILURE)
+			to_chat(owner, span_warning("You fail to harness the earth to encase your target"))
+			return
 	for(var/turf/shaking_turf in range(3, target_turf))
 		shaking_turf.Shake(pixelshiftx = 0.1, pixelshifty = 0.1, duration = 2.5 SECONDS)
 
