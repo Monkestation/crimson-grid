@@ -503,3 +503,10 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	accesslocks = list(
 		"apartment"
 	)
+
+/obj/item/vamp/keys/red_news
+	name = "RED News Employee keys"
+	accesslocks = list(
+		LOCKACCESS_RED_NEWS
+	)
+	color = "#bd3327"
