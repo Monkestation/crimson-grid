@@ -1,4 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/misc/dirt,
+/area/vtm/outside/supply)
+"ab" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/misc/dirt,
+/area/vtm/outside/supply)
+"ac" = (
+/obj/effect/landmark/cargo_train_stop,
+/turf/open/misc/dirt/rails,
+/area/vtm/outside/supply)
 "ad" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -8,6 +24,18 @@
 	},
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/outside/pacificheights)
+"ae" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/misc/dirt/rails,
+/area/vtm/outside/supply)
+"ag" = (
+/obj/machinery/computer/cargo{
+	dir = 4
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/outside/supply)
 "ah" = (
 /obj/effect/turf_decal/bordur/corner,
 /turf/open/floor/plating/sidewalk,
@@ -59,13 +87,6 @@
 /obj/structure/roadsign/crosswalk,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights)
-"bs" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/abstract/cargo_landing_spot,
-/turf/open/misc/dirt,
-/area/vtm/outside/supply)
 "by" = (
 /obj/structure/retail/pharmacy{
 	dir = 8
@@ -565,13 +586,6 @@
 "jH" = (
 /turf/closed/wall/vampwall/brick,
 /area/vtm/interior/graveyard)
-"jK" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 5
-	},
-/obj/effect/abstract/cargo_landing_spot,
-/turf/open/misc/dirt,
-/area/vtm/outside/supply)
 "jQ" = (
 /obj/structure/vampfence/rich{
 	dir = 4
@@ -725,13 +739,6 @@
 "lX" = (
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
-"lY" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/obj/effect/abstract/cargo_landing_spot,
-/turf/open/misc/dirt,
-/area/vtm/outside/supply)
 "lZ" = (
 /obj/transfer_point_vamp{
 	id = "test_3"
@@ -993,12 +1000,6 @@
 "qs" = (
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/gasstation)
-"qt" = (
-/obj/machinery/computer/cargo/express{
-	dir = 4
-	},
-/turf/open/floor/plating/sidewalk/poor,
-/area/vtm/outside/supply)
 "qC" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	transport_linked_id = "DebugElevator3";
@@ -2308,11 +2309,6 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/outside/pacificheights)
-"LC" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/abstract/cargo_landing_spot,
-/turf/open/misc/dirt,
-/area/vtm/outside/supply)
 "LE" = (
 /obj/effect/gibspawner/human,
 /turf/open/floor/city/toilet,
@@ -2782,15 +2778,6 @@
 /obj/effect/spawner/random/vending/snackvend,
 /turf/open/misc/beach/vamp,
 /area/vtm/outside/pacificheights)
-"QZ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/item/supplypod_beacon{
-	anchored = 1
-	},
-/turf/open/misc/dirt/rails,
-/area/vtm/outside/supply)
 "Ri" = (
 /obj/structure/table,
 /obj/item/surgery_tray/full,
@@ -6040,10 +6027,10 @@ Gr
 VQ
 ik
 Ce
-qt
+ag
 FO
 Wa
-FT
+Lb
 Wa
 Wa
 Lb
@@ -6247,7 +6234,7 @@ Fs
 lN
 lN
 Wa
-Lb
+ac
 Wa
 Wa
 FT
@@ -6519,8 +6506,8 @@ Fs
 Wa
 Wa
 Ut
-QZ
-lY
+ae
+aa
 Wa
 FT
 mn
@@ -6586,7 +6573,7 @@ HJ
 Fs
 Wa
 Wa
-bs
+Mn
 Lb
 kj
 Wa
@@ -6654,7 +6641,7 @@ ik
 Fs
 Wa
 Wa
-bs
+Mn
 Lb
 kj
 Wa
@@ -6724,7 +6711,7 @@ Wa
 Wa
 Mn
 Lb
-LC
+kj
 Wa
 Lb
 Wa
@@ -6792,7 +6779,7 @@ Wa
 Wa
 Mn
 Lb
-LC
+kj
 Wa
 Lb
 sR
@@ -6858,7 +6845,7 @@ ik
 Fs
 Wa
 Wa
-jK
+ab
 wj
 rM
 Wa

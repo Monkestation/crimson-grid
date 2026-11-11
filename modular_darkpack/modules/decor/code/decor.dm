@@ -406,6 +406,7 @@
 	density = FALSE
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB | PASSGLASS | PASSCLOSEDTURF
 	movement_type = PHASING
+	bound_width = 128 // CRIMSON GRID EDIT - CARGO TRAINS
 	var/mob/living/starter
 
 /obj/cargotrain/Initialize(mapload)
@@ -420,7 +421,7 @@
 				if(ishuman(starter))
 					var/mob/living/carbon/human/H = starter
 					SEND_SIGNAL(H, COMSIG_PATH_HIT, -1, 0, FALSE)
-		L.gib()
+		//L.gib() // CRIMSON GRID EDIT - CARGO TRAIN
 	. = ..()
 
 /obj/cargocrate

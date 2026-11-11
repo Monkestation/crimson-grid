@@ -46,7 +46,7 @@
 	requestonly = TRUE
 
 /obj/machinery/computer/cargo/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	// DARKPACK EDIT ADD START - CARGO
+	// CRIMSON EDIT ADD START - CARGO
 	if(iscash(tool))
 		var/datum/bank_account/bank = SSeconomy.get_dep_account(cargo_account)
 		if(!bank)
@@ -155,6 +155,7 @@
 			"account" = order.paying_account ? order.paying_account.account_holder : "Cargo Department"
 		))
 
+	apply_train_ui_data(data)
 	return data
 
 /obj/machinery/computer/cargo/ui_static_data(mob/user)
@@ -396,9 +397,14 @@
 
 	switch(action)
 		if("send")
+			// CRIMSON GRID EDIT ADD START - CARGO TRAIN
+			return train_send(ui.user)
+			/*
 			if(!SSshuttle.supply.canMove())
 				say(safety_warning)
 				return
+			*/
+			// CRIMSON GRID EDIT ADD END
 			if(SSshuttle.supply_blocked)
 				say(blockade_warning)
 				return

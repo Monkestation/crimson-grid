@@ -70,11 +70,29 @@
 		return TRUE
 	if(neighbor?.loc == src)
 		return TRUE
+
 	var/turf/T = loc
 	if(!istype(T))
 		return FALSE
-	if(T.Adjacent(neighbor,target = neighbor, mover = src))
-		return TRUE
+	//CRIMSON GRID EDIT - CARGO TRAIN
+	var/atom/movable/multi_tile = neighbor
+	if(!istype(multi_tile) || (multi_tile.bound_width <= world.icon_size && multi_tile.bound_height <= world.icon_size))
+		return T.Adjacent(neighbor, target = neighbor, mover = src)
+
+	//using the bounds as a box we can check if you can interact with it from anywhere in the bound box.
+	var/turf/origin = multi_tile.loc
+	if(!istype(origin))
+		return FALSE
+
+	var/start_x = origin.x + (multi_tile.bound_x / world.icon_size)
+	var/start_y = origin.y + (multi_tile.bound_y / world.icon_size)
+	var/end_x   = start_x + (multi_tile.bound_width  / world.icon_size) - 1
+	var/end_y   = start_y + (multi_tile.bound_height / world.icon_size) - 1
+
+	for(var/turf/covered in block(locate(start_x, start_y, origin.z), locate(end_x, end_y, origin.z)))
+		if(T.Adjacent(covered, target = neighbor, mover = src))
+			return TRUE
+	//CRIMSON GRID EDIT END - CARGO TRAIN
 	return FALSE
 
 // This is necessary for storage items not on your person.
