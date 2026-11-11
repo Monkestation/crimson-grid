@@ -71,7 +71,7 @@
 
 	// owner.Stun(time_to_transform, ignore_canstun = TRUE)
 
-	if(!HAS_TRAIT(owner, TRAIT_RITE_OF_TALISMAN_DEDICATION)) // CRIMSON EDIT ADD - 546 - Rite of Talisman Dedication check
+	if(!HAS_TRAIT(owner, TRAIT_RITE_OF_TALISMAN_DEDICATION)) // CRIMSON EDIT ADD - 547 - Rite of Talisman Dedication check
 		for(var/obj/item/clothing/equipped in owner.get_equipped_items(INCLUDE_ABSTRACT))
 			equipped.take_damage(rand(25, 50), sound_effect = FALSE)
 
