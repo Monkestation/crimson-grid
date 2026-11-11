@@ -50,6 +50,25 @@
 
 	return JOB_AVAILABLE
 
+/*
+* decrement the splat slot count for the job if the player has a splat pref selected
+* stores their splat id on their mind so if they cryo we can check if this var is not null, if not, we can increment the splat slot count back up using their splat ID
+*/
+/datum/controller/subsystem/job/proc/take_splat_slot(mob/dead/new_player/player, datum/job/job)
+	if(!job.splat_slots)
+		return
+	var/client/player_client = GET_CLIENT(player)
+	if(!player_client)
+		return
+	var/splat_pref = player_client.prefs.read_preference(/datum/preference/choiced/splats)
+	var/player_splat = splat_pref
+	if(ispath(splat_pref))
+		var/datum/splat/splat_prototype = GLOB.splat_prototypes[splat_pref]
+		player_splat = splat_prototype.id
+	if(job.splat_slots[player_splat] > 0)
+		job.splat_slots[player_splat]--
+		player.mind.splat_slot_id = player_splat
+
 /datum/config_entry/flag/max_gen_limits //If you can be limited from a job for having too high a generation
 
 /datum/controller/subsystem/job/proc/check_kindred_prefs(client/player_client, mob/dead/new_player/player, datum/job/possible_job, debug_prefix = "", add_job_to_log = FALSE)
