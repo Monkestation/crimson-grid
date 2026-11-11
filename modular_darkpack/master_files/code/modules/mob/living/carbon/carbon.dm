@@ -49,7 +49,6 @@
 			switch(roll.st_roll(src, I))
 				if(ROLL_SUCCESS)
 					cuff_resist(I, null, INSTANT_CUFFBREAK)
-					st_change_stat(STAT_TEMPORARY_WILLPOWER, -1) // CRIMSON EDIT ADDITION - CUFF TEMP WP
 				else
 					playsound(src, 'sound/effects/jingle.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 					visible_message(span_warning("[src] is trying to wiggle out of [I]!"))
@@ -64,6 +63,7 @@
 					if(ROLL_SUCCESS)
 						playsound(src, 'sound/effects/rock/rocktap3.ogg', 40, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 						cuff_resist(I, null, INSTANT_CUFFBREAK) // OUT WITH THE CUFFS
+						st_change_stat(STAT_TEMPORARY_WILLPOWER, -1) // CRIMSON EDIT ADDITION - CUFF TEMP WP
 					/* Not reachable rn
 					if(ROLL_COOLDOWN)
 						pass()
