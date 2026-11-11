@@ -413,6 +413,10 @@
 	attack_verb_simple = list("rent")
 	squeak_override = list('sound/effects/magic/demon_attack1.ogg'=1)
 
+/obj/item/toy/plush/bubbleplush/marek
+	name = "Marek plushie"
+	desc = "A felt effigy made to honor one of Endron's leading bioscientists."
+
 /obj/item/toy/plush/ratplush
 	name = "\improper Ratvar plushie"
 	desc = "An adorable plushie of the clockwork justiciar himself with new and improved spring arm action."
