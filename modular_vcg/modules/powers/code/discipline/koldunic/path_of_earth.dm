@@ -331,5 +331,6 @@
 	impact_center.visible_message(span_userdanger("The ground erupts in a violent quake!"))
 
 	for(var/mob/living/victim in range(3, impact_center))
-		victim.apply_damage(150, BRUTE)
+		victim.apply_damage(80, BRUTE,BODY_ZONE_L_LEG)
+		victim.apply_damage(80, BRUTE,BODY_ZONE_R_LEG)
 		victim.Knockdown(45 SECONDS)
