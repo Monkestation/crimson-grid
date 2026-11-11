@@ -12,8 +12,7 @@
 
 /obj/item/smartphone/garou_guardian
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "NPS Ranger", USE_JOB_TITLE = FALSE), // Make Ranger titles consistently include NPS.
-		alist(NETWORK_ID = LAW_ENFORCEMENT_LIAISON_NETWORK, OUR_ROLE = "NPS Ranger", USE_JOB_TITLE = FALSE) // Share contacts with police sergeant/captain and FBI
+		alist(NETWORK_ID = GAROU_NETWORK, OUR_ROLE = "NPS Ranger", USE_JOB_TITLE = FALSE), // Make Ranger titles consistently include NPS. Standard Rangers are not in the liaison contact network.
 		)
 
 /obj/item/smartphone/garou_truthcatcher
