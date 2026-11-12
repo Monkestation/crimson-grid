@@ -12,7 +12,8 @@
 	)
 
 	subsplat_traits = list(
-		TRAIT_REPELLED_BY_HOLINESS
+		TRAIT_REPELLED_BY_HOLINESS,
+		TRAIT_BEACON_OF_THE_UNHOLY // Crimson Grid edit | Change: Added beacon of the unholy trait to Baali, they didn't have it before.
 	)
 	male_clothes = /obj/item/clothing/under/vampire/baali
 	female_clothes = /obj/item/clothing/under/vampire/baali/female

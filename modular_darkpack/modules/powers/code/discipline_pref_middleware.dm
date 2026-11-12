@@ -11,6 +11,11 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	/datum/discipline/obeah,
 	/datum/discipline/daimonion,
 	/datum/discipline/melpominee,
+	// Crimson Grid edit start | Change: Added Mytherceria, Vicissitude, & Thanatosis to rare disciplines list.
+	/datum/discipline/mytherceria,
+	/datum/discipline/vicissitude,
+	/datum/discipline/thanatosis,
+	// Crimson Grid edit end
 ))
 
 // warns a player if they have no discipline dots assigned before joining
