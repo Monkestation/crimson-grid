@@ -11,6 +11,8 @@
 // Clinic
 #define JOB_CLINIC_GUARD "Clinic Guard"
 
+// Primogens
+#define JOB_JAZZ_SERVANT "Jazz Club Servant"
 
 // Display orders
 #define JOB_DISPLAY_ORDER_MOUNTAIN_MASTER 1
