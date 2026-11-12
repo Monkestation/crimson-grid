@@ -46,6 +46,19 @@
 /datum/job/vampire/prince/get_captaincy_announcement(mob/living/captain)
 	return "Prince [captain.real_name] is in the city!"
 
+//CG Edit Start: Lets characters remember relevant keypad codes
+
+/datum/job/vampire/prince/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/obj/keypad/armory/armory_keypad = locate() in GLOB.keypads
+	if(armory_keypad)
+		spawned.mind.add_memory(/datum/memory/key/armory_code, remembered_code = armory_keypad.pincode)
+	var/obj/keypad/panic_room/panic_room_keypad = locate() in GLOB.keypads
+	if(panic_room_keypad)
+		spawned.mind.add_memory(/datum/memory/key/panic_room_code, remembered_code = panic_room_keypad.pincode)
+
+//CG Edit End.
+
 /datum/outfit/job/vampire/prince
 	name = JOB_PRINCE
 	jobtype = /datum/job/vampire/prince

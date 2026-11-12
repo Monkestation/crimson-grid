@@ -1,4 +1,7 @@
 GLOBAL_LIST_EMPTY(vault_doors)
+//CG Edit Start: Lets characters remember relevant keypad codes
+GLOBAL_LIST_EMPTY(keypads)
+//CG Edit End
 
 /proc/create_unique_pincode()
 	var/pincode = ""
@@ -20,8 +23,18 @@ GLOBAL_LIST_EMPTY(vault_doors)
 
 /obj/keypad/Initialize(mapload)
 	. = ..()
-	pincode = create_unique_pincode()
+//CG Edit Start: Lets characters remember relevant keypad codes
+	for(var/obj/keypad/keypad_candidate in GLOB.keypads)
+		if(keypad_candidate && keypad_candidate.id == id)
+			pincode = keypad_candidate.pincode
+	if(!pincode) pincode = create_unique_pincode()
+	GLOB.keypads.Add(src)
 	return INITIALIZE_HINT_LATELOAD
+
+/obj/keypad/Destroy(force)
+	GLOB.keypads.RemoveAll(src)
+	. = ..()
+//CG Edit End
 
 /obj/keypad/LateInitialize()
 	if(!id)
