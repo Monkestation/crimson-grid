@@ -51,3 +51,17 @@
 	l_pocket = /obj/item/smartphone/seneschal
 	r_pocket = /obj/item/vamp/keys/clerk
 	backpack_contents = list(/obj/item/phone_book=1, /obj/item/card/credit/seneschal=1)
+
+/// Start Crimson Grid Addition - Remembering Tower Armory And Safe Room Codes
+/datum/job/vampire/seneschal/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/obj/keypad/armory/door = locate() in GLOB.vault_doors
+	if(door)
+		spawned.mind.add_memory(/datum/memory/key/armory_code, remembered_code = door.pincode)
+
+/datum/job/vampire/seneschal/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/obj/keypad/panic_room/door = locate() in GLOB.vault_doors
+	if(door)
+		spawned.mind.add_memory(/datum/memory/key/panic_room_code, remembered_code = door.pincode)
+/// End Crimson Grid Addition - Remembering Tower Armory And Safe Room Codes
