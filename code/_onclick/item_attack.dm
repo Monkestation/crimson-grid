@@ -359,6 +359,10 @@
 			armour_penetration = attacking_item.armour_penetration,
 			weak_against_armour = attacking_item.weak_against_armour,
 		), ARMOR_MAX_BLOCK)
+// CRIMSON EDIT ADD - CG store hitzone for handling for silver damage hit location
+	LAZYSET(attack_modifiers, "silver_hit_zone", targeting) 
+	LAZYSET(attack_modifiers, "silver_armor_block", armor_block)
+// CRIMSON EDIT ADD - CG store hitzone for handling for silver damage hit location
 
 	var/final_force = CALCULATE_FORCE(attacking_item, attack_modifiers)
 	if(mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_SKELETAL)) // this should probably check hit bodypart for humanoids
