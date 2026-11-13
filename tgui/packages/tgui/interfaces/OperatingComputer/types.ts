@@ -44,7 +44,7 @@ export type OperationData = {
 
 export type damageType = {
   label: string;
-  type: 'bruteLoss' | 'fireLoss' | 'toxLoss' | 'oxyLoss';
+  type: 'bruteLoss' | 'fireLoss' | 'toxLoss' | 'oxyLoss' | 'aggLoss';
 };
 
 export const damageTypes: damageType[] = [
@@ -63,6 +63,10 @@ export const damageTypes: damageType[] = [
   {
     label: 'Respiratory',
     type: 'oxyLoss',
+  },
+  {
+    label: 'Necrosis',
+    type: 'aggLoss',
   },
 ];
 
