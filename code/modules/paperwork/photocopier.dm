@@ -462,8 +462,7 @@ GLOBAL_LIST_INIT(paper_blanks, init_paper_blanks())
 	if(copies_made.len)
 		if(!(obj_flags & EMAGGED) && attempt_charge(src, user, (copies_made.len - 1) * usage_cost) & COMPONENT_OBJ_CANCEL_CHARGE)
 			visible_message(
-				span_warning("An error message flashes across \the [src]'s screen."), \
-				span_warning("Failed to charge bank account. Scrapping copies.") \
+				span_warning("An error message flashes across \the [src]'s screen: : \"Failed to charge bank account. Scrapping copies.\"")
 			)
 			QDEL_LIST(copies_made)
 	else
