@@ -304,7 +304,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	if(urgent)
 		var/extra_message = CONFIG_GET(string/urgent_ahelp_message)
-		to_chat(initiator, span_boldwarning("Notified admins to prioritize your ticket"))
+		to_chat(initiator, span_boldwarning("Notified admins to prioritize your ticket"), confidential = TRUE) // CRIMSON EDIT CHANGE - REPLAYS - added confidential
 		var/datum/discord_embed/embed = format_embed_discord(message)
 		embed.content = extra_message
 		embed.footer = "This player requested an admin"

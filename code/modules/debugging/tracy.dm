@@ -20,7 +20,14 @@ GLOBAL_REAL(Tracy, /datum/tracy)
 /datum/tracy/Destroy()
 #ifndef OPENDREAM_REAL
 	if(enabled)
+		/* // CRIMSON EDIT REMOVAL START - REPLAYS
 		call_ext(TRACY_DLL_PATH, "destroy")()
+		*/ // CRIMSON EDIT REMOVAL END
+		// CRIMSON EDIT ADDITION START - REPLAYS
+		var/stop_result = byond_tracy_stop()
+		if(stop_result)
+			SEND_TEXT(world.log, "Error stopping byond-tracy: [stop_result]")
+		// CRIMSON EDIT ADDITION END
 #endif
 	return ..()
 
@@ -35,6 +42,7 @@ GLOBAL_REAL(Tracy, /datum/tracy)
 		SEND_TEXT(world.log, "Error initializing byond-tracy: [error]")
 		return FALSE
 
+	/* // CRIMSON EDIT REMOVAL START - REPLAYS
 	var/init_result = call_ext(TRACY_DLL_PATH, "init")("block")
 	if(length(init_result) != 0 && init_result[1] == ".") // if first character is ., then it returned the output filename
 		SEND_TEXT(world.log, "byond-tracy initialized (logfile: [init_result])")
@@ -53,6 +61,23 @@ GLOBAL_REAL(Tracy, /datum/tracy)
 		enabled = TRUE
 		SEND_TEXT(world.log, "byond-tracy initialized (no logfile)")
 		return TRUE
+	*/ // CRIMSON EDIT REMOVAL END
+	// CRIMSON EDIT ADDITION START - REPLAYS
+	var/init_result = byond_tracy_init()
+	if(init_result != "SUCCESS")
+		error = init_result
+		SEND_TEXT(world.log, "Error initializing byond-tracy: [init_result]")
+		return FALSE
+	var/start_result = byond_tracy_start()
+	if(start_result)
+		error = start_result
+		SEND_TEXT(world.log, "Error starting byond-tracy: [start_result]")
+		return FALSE
+	enabled = TRUE
+	trace_path = byond_tracy_status()["path"]
+	SEND_TEXT(world.log, "byond-tracy initialized (logfile: [trace_path])")
+	return TRUE
+	// CRIMSON EDIT ADDITION END
 #else
 	error = "OpenDream not supported"
 	return FALSE
