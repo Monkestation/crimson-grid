@@ -6,6 +6,10 @@
 	var/new_generation = generation
 	if(victim_generation < generation)
 		new_generation = max(generation - 1, MAX_TRUSTED_GENERATION)
+	// CRIMSON EDIT ADD START - Diablerie progression
+	if(new_generation >= generation)
+		return
+	// CRIMSON EDIT ADD END - Diablerie progression
 	kindred.set_generation(new_generation)
 
 	write_preference_midround(/datum/preference/numeric/generation, new_generation)
