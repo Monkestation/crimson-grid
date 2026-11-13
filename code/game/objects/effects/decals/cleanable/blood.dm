@@ -190,7 +190,7 @@
 	bloodiness = clamp((bloodiness + by_amount), 0, BLOOD_POOL_MAX)
 	if (bloodiness == 0)
 		dry()
-	else if (ignore_timer)
+	else if (!ignore_timer)
 		slow_dry(5 SECONDS * by_amount * BLOOD_TO_UNITS_MULTIPLIER)
 	return TRUE
 

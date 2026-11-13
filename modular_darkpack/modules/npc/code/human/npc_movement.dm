@@ -52,7 +52,6 @@
 
 /mob/living/carbon/human/npc/death()
 	GLOB.alive_npc_list -= src
-	SShumannpcpool.try_repopulate()
 	GLOB.move_manager.stop_looping(src)
 
 	if (!last_attacker || (get_dist(src, last_attacker) >= 10) || key || hostile)
@@ -136,20 +135,23 @@
 /mob/living/carbon/human/npc/proc/CreateWay(direction)
 	var/turf/location = get_turf(src)
 	for(var/distance = 1 to 50)
-		location = get_step(location, direction)
+		var/turf/next_location = get_step(location, direction)
+		if(!next_location)
+			return location
+		location = next_location
 		if(iswallturf(location))
 			return location
-		for(var/atom/A in location)
-			// DARKPACK TODO - reimplement decor
-			/*
-			if(A.density && !istype(A, /obj/structure/lamppost))
-				return location
-			*/
-			if(istype(A, /obj/effect/landmark/npcwall))
-				return get_step_towards(location, get_turf(src))
-			if(istype(A, /obj/effect/landmark/npcbeacon) && prob(50))
-				stopturf = 1
-				return get_step(location, direction)
+		// DARKPACK TODO - reimplement decor
+		/*
+		if(A.density && !istype(A, /obj/structure/lamppost))
+			return location
+		*/
+		if(locate(/obj/effect/landmark/npcwall) in location)
+			return get_step_towards(location, get_turf(src))
+		if((locate(/obj/effect/landmark/npcbeacon) in location) && prob(50))
+			stopturf = 1
+			return get_step(location, direction)
+	return location
 
 /mob/living/carbon/human/npc/proc/ChoosePath()
 	if(!old_movement)
@@ -214,6 +216,13 @@
 				else
 					return pick(north_steps, south_steps, west_steps)
 
+		var/list/far_ways = list()
+		for(var/turf/way in list(north_steps, south_steps, west_steps, east_steps))
+			if(get_dist(src, way) > 3)
+				far_ways += way
+		if(length(far_ways))
+			return pick(far_ways)
+
 /mob/living/carbon/human/npc/proc/can_npc_move()
 	if(stat >= HARD_CRIT)
 		return FALSE
@@ -255,9 +264,11 @@
 
 	if(!staying)
 		lifespan += 1
-	if(!walktarget && !staying)
+	if(!walktarget && !staying && COOLDOWN_FINISHED(src, choose_path_cooldown))
 		stopturf = rand(1, 2)
 		walktarget = ChoosePath()
+		if(!walktarget)
+			COOLDOWN_START(src, choose_path_cooldown, 2 SECONDS)
 		face_atom(walktarget)
 
 	// Can't do anything if in a container
@@ -265,7 +276,13 @@
 		return
 
 	// Checks for fire, clearing the stored fire if none is in view
-	afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
+	// view() is pricey and there's usually no fire anywhere, so only bother when one's close
+	afraid_of_fire = null
+	for(var/obj/effect/abstract/turf_fire/fire as anything in SSturf_fire.processing)
+		if(fire.z != z || get_dist(src, fire) > DEFAULT_SIGHT_DISTANCE)
+			continue
+		afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
+		break
 
 	// Combat behaviour
 	if (danger_source)
