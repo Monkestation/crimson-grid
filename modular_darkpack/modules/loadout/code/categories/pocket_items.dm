@@ -36,7 +36,7 @@
 
 /datum/loadout_item/pocket_items/wristwatch
 	name = "Wrist watch"
-	item_path = /obj/item/watch
+	item_path = /obj/item/clothing/watch
 
 /datum/loadout_item/pocket_items/gold_cross
 	name = "Cross (Gold)"

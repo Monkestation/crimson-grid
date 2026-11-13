@@ -11,6 +11,7 @@
 		new /datum/data/vending_product("vape", /obj/item/vape, 170), // CRIMSON EDIT ADD
 		new /datum/data/vending_product("zippo lighter", /obj/item/lighter, 20),
 		new /datum/data/vending_product("lighter", /obj/item/lighter/greyscale, 10),
+		new /datum/data/vending_product("gum", /obj/item/storage/box/gum, 5),
 		new /datum/data/vending_product("chocolate bar", /obj/item/food/chocolatebar),
 		new /datum/data/vending_product("chips", /obj/item/food/chips),
 		new /datum/data/vending_product("water bottle", /obj/item/reagent_containers/cup/glass/vampirewater),

@@ -27,6 +27,8 @@
 		new /datum/data/vending_product("taser", /obj/item/melee/baton/security/handtaser, 250),
 		new /datum/data/vending_product("pepperspray", /obj/item/reagent_containers/spray/pepper, 200),
 		new /datum/data/vending_product("holster", /obj/item/storage/belt/holster/detective/darkpack, 100), // CRIMSON EDIT ADD - Shop Inventories Additions
+		new /datum/data/vending_product("gun holster", /obj/item/storage/belt/holster, 100),
+		new /datum/data/vending_product("security webbing", /obj/item/storage/belt/security/webbing, 100),
 		// CRIMSON GRID ADDITION BEGIN - Armory Ammunition Additions
 		new /datum/data/vending_product("9mm +P ammo", /obj/item/ammo_box/darkpack/c9mm/plus, 800),
 		new /datum/data/vending_product("9mm AP ammo", /obj/item/ammo_box/darkpack/c9mm/ap, 1000),
