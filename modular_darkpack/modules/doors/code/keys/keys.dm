@@ -191,6 +191,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_THEATRE,
 		LOCKACCESS_CAMARILLA,
 		LOCKACCESS_PRIMOGEN_LASOMBRA,
+		LOCKACCESS_JAZZ_CLUB_DELIVERY,
 	)
 	color = "#4b039c"
 
@@ -258,7 +259,9 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_CAMARILLA,
 		LOCKACCESS_BANU,
 		LOCKACCESS_BANU_PRIMOGEN,
+		LOCKACCESS_JAZZ_CLUB_DELIVERY,
 	)
+
 /obj/item/vamp/keys/toreador/primogen
 	name = "really sexy keys"
 	accesslocks = list(
@@ -308,7 +311,8 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_PRIMOGEN,
 		LOCKACCESS_THEATRE,
 		LOCKACCESS_JAZZ_CLUB,
-		LOCKACCESS_CAMARILLA
+		LOCKACCESS_CAMARILLA,
+		LOCKACCESS_JAZZ_CLUB_DELIVERY,
 	)
 	color = "#ec8f3e"
 
@@ -506,3 +510,10 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	accesslocks = list(
 		"apartment"
 	)
+
+/obj/item/vamp/keys/red_news
+	name = "RED News Employee keys"
+	accesslocks = list(
+		LOCKACCESS_RED_NEWS
+	)
+	color = "#bd3327"

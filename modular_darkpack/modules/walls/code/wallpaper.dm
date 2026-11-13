@@ -28,11 +28,17 @@
 /obj/effect/decal/wallpaper/paint/gray
 	icon_state = "paint-gray"
 
+/obj/effect/decal/wallpaper/paint/gray/line
+	icon_state = "paint-gray-line"
+
 /obj/effect/decal/wallpaper/paint/gray/low
 	icon_state = "paint-gray_low"
 
 /obj/effect/decal/wallpaper/paint/red
 	icon_state = "paint-red"
+
+/obj/effect/decal/wallpaper/paint/red/line
+	icon_state = "paint-red-line"
 
 /obj/effect/decal/wallpaper/paint/red/low
 	icon_state = "paint-red_low"
@@ -40,17 +46,26 @@
 /obj/effect/decal/wallpaper/paint/yellow
 	icon_state = "paint-yellow"
 
+/obj/effect/decal/wallpaper/paint/yellow/line
+	icon_state = "paint-yellow-line"
+
 /obj/effect/decal/wallpaper/paint/yellow/low
 	icon_state = "paint-yellow_low"
 
 /obj/effect/decal/wallpaper/paint/green
 	icon_state = "paint-green"
 
+/obj/effect/decal/wallpaper/paint/green/line
+	icon_state = "paint-green-line"
+
 /obj/effect/decal/wallpaper/paint/green/low
 	icon_state = "paint-green_low"
 
 /obj/effect/decal/wallpaper/paint/blue
 	icon_state = "paint-blue"
+
+/obj/effect/decal/wallpaper/paint/blue/line
+	icon_state = "paint-blue-line"
 
 /obj/effect/decal/wallpaper/paint/blue/low
 	icon_state = "paint-blue_low"
