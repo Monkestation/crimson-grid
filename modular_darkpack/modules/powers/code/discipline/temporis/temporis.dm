@@ -17,6 +17,8 @@
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/temporis/temporis.ogg'
 
+	magic_subtype = MAGIC_SUBTYPE_BLOOD_TIME
+
 /datum/discipline_power/temporis/activate()
 	. = ..()
 	ADD_TRAIT(owner, TRAIT_TIMEWARPER, DISCIPLINE_TRAIT(type))

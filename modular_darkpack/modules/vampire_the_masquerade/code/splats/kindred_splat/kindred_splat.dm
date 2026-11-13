@@ -100,8 +100,8 @@
 	owner.set_blood_type(/datum/blood_type/kindred)
 
 	// Apply temperature & burn damage modifiers - Kindred do not get harmed by tempatures, but do by combustion/physical flame damage.
-	owner.physiology.burn_mod *= 2
-	owner.physiology.cold_mod *= 0.25
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_HEAT, 2)
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_COLD, 0.25)
 
 
 /datum/splat/vampire/kindred/on_lose()
@@ -127,8 +127,8 @@
 	owner.set_blood_type()
 
 	// Reset temperature & burn damage modifiers
-	owner.physiology.burn_mod *= 0.5
-	owner.physiology.cold_mod *= 4
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_HEAT, 0.5)
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_COLD, 4)
 
 	// Reset bloodpool size from Generation
 	owner.maxbloodpool = initial(owner.maxbloodpool)

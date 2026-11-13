@@ -239,7 +239,6 @@ export type PreferencesMenuData = {
   selected_quirks: string[];
   selected_personalities: typePath[] | null;
   max_personalities: number;
-  mood_enabled: BooleanLike;
   splat_disallowed_quirks: string[]; // DARKPACK EDIT CHANGE - SPLATS
   // DARKPACK EDIT ADD START - DISCIPLINES
   discipline_levels: Record<string, number>;

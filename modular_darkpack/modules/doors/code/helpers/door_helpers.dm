@@ -70,9 +70,11 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/payload(obj/structure/vampdoor/payload)
 	payload.lockpick_difficulty = lock_difficulty
 
+/* This doesnt really exist...
 /obj/effect/mapping_helpers/door/lock_difficulty/one
 	icon_state = "locklevel_trivial"
 	lock_difficulty = 1
+*/
 
 /obj/effect/mapping_helpers/door/lock_difficulty/two
 	icon_state = "locklevel_trivial"

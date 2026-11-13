@@ -200,6 +200,7 @@
 		aura_appearance = mutable_appearance('modular_darkpack/modules/powers/icons/auras.dmi', "aura", ABOVE_MOB_LAYER, parent_mob, ABOVE_GAME_PLANE)
 	else
 		aura_appearance = mutable_appearance('modular_darkpack/modules/powers/icons/auras.dmi', "aura_dead", ABOVE_MOB_LAYER, parent_mob, ABOVE_GAME_PLANE)
+
 	update_aura_colors(aura_appearance, holder)
 	update_aura_overlays(aura_appearance, holder)
 	update_aura_filters(aura_appearance, holder)

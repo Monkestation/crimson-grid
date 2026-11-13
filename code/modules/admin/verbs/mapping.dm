@@ -197,31 +197,33 @@ ADMIN_VERB(disable_communication, R_DEBUG, "Disable all communication verbs", "D
 ADMIN_VERB_VISIBILITY(create_mapping_job_icons, ADMIN_VERB_VISIBLITY_FLAG_MAPPING_DEBUG)
 ADMIN_VERB(create_mapping_job_icons, R_DEBUG, "Generate job landmarks icons", "Generates job starting location landmarks.", ADMIN_CATEGORY_MAPPING)
 	var/icon/final = icon()
-	// var/mob/living/carbon/human/dummy/consistent/mannequin = new(get_turf(usr))
-	// mannequin.setDir(SOUTH)
-	for(var/job_type in valid_subtypesof(/datum/job/vampire))
+
+	var/list/landmark_iconstates = list()
+	for(var/obj/effect/landmark/start/landmark as anything in valid_subtypesof(/obj/effect/landmark/start))
+		if(landmark::icon_state)
+			landmark_iconstates |= landmark::icon_state
+
+	for(var/job_type in valid_subtypesof(/datum/job/vampire)) // DARKPACK EDIT CHANGE
 		var/datum/job/job_datum = SSjob.get_job_type(job_type)
-		if(!job_datum.outfit)
+		if(!(job_datum.title in landmark_iconstates))
 			continue
-		/* DARKPACK CODE
-		mannequin.delete_equipment()
-		mannequin.dress_up_as_job(
-			equipping = job_datum,
-			visual_only = TRUE,
-			consistent = TRUE,
-		)
-		var/icon/job_icon = get_flat_existing_human_icon(mannequin, list(SOUTH))
-		final.Insert(job_icon, job_datum.title, frame = 1)
-		*/
-		// TG code, Test
-		var/icon/I = get_flat_human_icon(null, job_datum, null, "landmark_icons", list(SOUTH))
-		final.Insert(I, job_datum.title)
-	// qdel(mannequin)
+
+		switch(job_datum.title)
+			if(JOB_AI)
+				final.Insert(icon('icons/mob/silicon/ai.dmi', "ai", SOUTH, 1), JOB_AI)
+			if(JOB_CYBORG)
+				final.Insert(icon('icons/mob/silicon/robots.dmi', "robot", SOUTH, 1), JOB_CYBORG)
+			else
+				if(job_datum.outfit) //only screenshot icons with an outfit
+					var/icon/I = get_flat_human_icon(null, job_datum, null, "landmark_icons[rand(1,100)]", list(SOUTH))
+					final.Insert(I, job_datum.title)
+	//Also add the x
+	// DARKPACK EDIT CHANGE START
 	final.Insert(icon('modular_darkpack/modules/jobs/icons/landmarks_static.dmi', "x"), "x")
 	final.Insert(icon('icons/hud/screen_gen.dmi', "x", ""))
+	// DARKPACK EDIT CHANGE END
 
-	fcopy(final, "modular_darkpack/modules/jobs/icons/landmarks.dmi")
-// DARKPACK EDIT CHANGE END
+	fcopy(final, "modular_darkpack/modules/jobs/icons/landmarks.dmi") // DARKPACK EDIT CHANGE
 
 ADMIN_VERB_VISIBILITY(debug_z_levels, ADMIN_VERB_VISIBLITY_FLAG_MAPPING_DEBUG)
 ADMIN_VERB(debug_z_levels, R_DEBUG, "Debug Z-Levels", "Displays a list of all z-levels and their linkages.", ADMIN_CATEGORY_MAPPING)

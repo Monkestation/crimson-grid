@@ -42,7 +42,7 @@
 
 /datum/station_trait/faulty_power_grid/on_round_start()
 	. = ..()
-	for(var/obj/fusebox/F in GLOB.fuseboxes)
+	for(var/obj/fusebox/F as anything in GLOB.fuseboxes)
 		if(prob(75))
 			continue
 		F.take_damage(rand(50,200))

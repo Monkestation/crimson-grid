@@ -7,11 +7,14 @@
 	config_tag = "POLICE_CAPTAIN"
 	outfit = /datum/outfit/job/vampire/police_captain
 	job_flags = CITY_JOB_FLAGS
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_POLICE_CAPTAIN
 	exp_required_type_department = EXP_TYPE_POLICE
 	departments_list = list(
 		/datum/job_department/police,
 	)
+
+	tgui_icon = FA_ICON_USER_SHIELD
 
 	exp_requirements = EXP_REQ_HEAD
 
@@ -25,6 +28,12 @@
 		JOB_EMERGENCY_DISPATCHER,
 		JOB_FEDERAL_INVESTIGATOR
 	)
+
+// CRIMSON GRID EDIT START - Security console and records
+/datum/job/vampire/police_captain/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	spawned.add_mob_memory(/datum/memory/key/police_login)
+// CRIMSON GRID END
 
 /datum/outfit/job/vampire/police_captain
 	name = JOB_POLICE_CAPTAIN

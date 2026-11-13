@@ -784,6 +784,11 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	else
 		basemod *= 1 + round((drunkness ** 1.5) / 90, 0.1)
 
+	// DARKPACK EDIT ADD START - Medicine Surgery Speed
+	var/medicine_stat = surgeon.st_get_stat(STAT_MEDICINE)
+	basemod *= (1 - (0.02 * medicine_stat))
+	// DARKPACK EDIT ADD END
+
 	return basemod
 
 /// Gets the surgery speed modifier for a given mob, based off what sort of table/bed/whatever is on their turf.

@@ -9,6 +9,7 @@
 	icon = FA_ICON_USER_SHIELD
 	failure_message = "Your will isn't iron anymore."
 	allowed_splats = list(SPLAT_KINDRED)
+	excluded_clans = list(VAMPIRE_CLAN_GARGOYLE)
 
 /datum/quirk/darkpack/iron_will/human
 	name = "Iron Will (Non-Vampire)"

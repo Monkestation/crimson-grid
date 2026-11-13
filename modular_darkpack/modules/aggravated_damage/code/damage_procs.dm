@@ -15,17 +15,28 @@
 	return TRUE
 
 /mob/living/proc/adjust_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
-	if(!can_adjust_agg_loss(amount, forced, required_bodytype))
-		return 0
-	. = aggloss
-	aggloss = clamp((aggloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
-	. -= aggloss
-	if(. == 0) // no change, no need to update
-		return
-	if(updating_health)
-		updatehealth()
+	if(amount > 0 && !forced) //carbon mobs override this proc, so the damage modifier check is also performed on [limb/receive_damage()]
+		amount *= GET_PHYSIOLOGY(src, AGGRAVATED)
 
-/mob/living/carbon/adjust_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
+	if (!amount || !can_adjust_agg_loss(amount, forced, required_bodytype))
+		return 0
+	var/difference = aggloss
+	aggloss = clamp((aggloss + (amount * CONFIG_GET(number/damage_multiplier))), 0, maxHealth * 2)
+	difference -= aggloss
+
+	return on_damage_loss(amount, updating_health, forced, AGGRAVATED, difference)
+
+
+/mob/living/proc/set_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
+	if(!forced && HAS_TRAIT(src, TRAIT_GODMODE))
+		return 0
+	var/difference = aggloss
+	aggloss = amount
+	difference -= aggloss
+
+	return on_damage_loss(-difference, updating_health, forced, AGGRAVATED, difference)
+
+/mob/living/carbon/adjust_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
 	if(!can_adjust_agg_loss(amount, forced, required_bodytype))
 		return 0
 	if(amount > 0)
@@ -33,42 +44,26 @@
 	else
 		. = heal_overall_damage(aggravated = abs(amount), required_bodytype = required_bodytype, updating_health = updating_health, forced = forced)
 
-/mob/living/simple_animal/adjust_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
+/mob/living/simple_animal/adjust_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
 	if(!can_adjust_agg_loss(amount, forced, required_bodytype))
 		return 0
-	// Has to be structured diffrently to the other loss procs as we cant assume aggravated is in all damagecoeff
-	var/damage_modifier = 1
-	if(AGGRAVATED in damage_coeff)
-		damage_modifier = damage_coeff[AGGRAVATED]
+	var/damage_modifier = GET_PHYSIOLOGY(src, AGGRAVATED)
 	if(forced)
-		. = adjustHealth(amount * CONFIG_GET(number/damage_multiplier), updating_health, forced)
+		. = adjust_brute_loss(amount * CONFIG_GET(number/damage_multiplier), updating_health, forced)
 	else if(damage_modifier)
-		. = adjustHealth(amount * damage_modifier * CONFIG_GET(number/damage_multiplier), updating_health, forced)
+		. = adjust_brute_loss(amount * damage_modifier * CONFIG_GET(number/damage_multiplier), updating_health, forced)
 
-/mob/living/basic/adjust_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
+/mob/living/basic/adjust_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
 	if(!can_adjust_agg_loss(amount, forced, required_bodytype))
 		return 0
-	// Has to be structured diffrently to the other loss procs as we cant assume aggravated is in all damagecoeff
-	var/damage_modifier = 1
-	if(AGGRAVATED in damage_coeff)
-		damage_modifier = damage_coeff[AGGRAVATED]
+	var/damage_modifier = GET_PHYSIOLOGY(src, AGGRAVATED)
 	if(forced)
-		. = adjust_health(amount * CONFIG_GET(number/damage_multiplier), updating_health, forced)
+		. = adjust_brute_loss(amount * CONFIG_GET(number/damage_multiplier), updating_health, forced)
 	else if(damage_modifier)
-		. = adjust_health(amount * damage_modifier * CONFIG_GET(number/damage_multiplier), updating_health, forced)
+		. = adjust_brute_loss(amount * damage_modifier * CONFIG_GET(number/damage_multiplier), updating_health, forced)
 
-/mob/living/proc/set_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
-	if(!forced && HAS_TRAIT(src, TRAIT_GODMODE))
-		return 0
-	. = aggloss
-	aggloss = amount
-	. -= aggloss
-	if(. == 0) // no change, no need to update
-		return 0
-	if(updating_health)
-		updatehealth()
 
-/mob/living/carbon/set_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype)
+/mob/living/carbon/set_agg_loss(amount, updating_health = TRUE, forced = FALSE, required_bodytype = ALL)
 	if(!forced && HAS_TRAIT(src, TRAIT_GODMODE))
 		return FALSE
 	var/current = get_agg_loss()

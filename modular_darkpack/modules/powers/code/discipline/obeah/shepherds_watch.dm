@@ -1,7 +1,7 @@
 /datum/storyteller_roll/shepherds_watch
 	bumper_text = "shepherd's watch"
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
-	roll_output_type = ROLL_PRIVATE_ADMIN
+	roll_output_type = ROLL_FLAG_ROLLER
 	numerical = TRUE
 	spammy_roll = TRUE
 	difficulty = 1 // This changes for both.

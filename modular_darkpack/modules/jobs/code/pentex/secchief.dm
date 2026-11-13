@@ -18,11 +18,13 @@
 	minimum_masquerade = 4
 	// minimal_renown_rank = 3
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_SECCHIEF
 	departments_list = list(
 		/datum/job_department/pentex,
 	)
+
+	tgui_icon = FA_ICON_SHIELD_VIRUS
 
 	known_contacts = list(
 		JOB_PENTEX_LEAD,
@@ -52,4 +54,4 @@
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	l_pocket = /obj/item/smartphone/endron_sec_chief
 	r_pocket = /obj/item/vamp/keys/pentex
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1)
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1, /obj/item/clothing/mask/gas/darkpack/military/pentex=1)

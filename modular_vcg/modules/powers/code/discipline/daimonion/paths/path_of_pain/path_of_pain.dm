@@ -23,7 +23,7 @@
 /datum/storyteller_roll/path_of_pain
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	numerical = TRUE
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 
 /datum/discipline_power/daimonion/path/pain/activate(atom/target)
 	. = ..()

@@ -221,15 +221,7 @@
 		return FALSE
 	if(mind || client)
 		return FALSE
-	if(IsSleeping())
-		return FALSE
-	if(IsUnconscious())
-		return FALSE
-	if(IsParalyzed())
-		return FALSE
-	if(IsKnockdown())
-		return FALSE
-	if(IsStun())
+	if(IsIncapacitated())
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		return FALSE
@@ -245,6 +237,9 @@
 		return FALSE
 
 	return TRUE
+
+/mob/living/proc/IsIncapacitated() //If we're incapacitated in any way
+	return locate(/datum/status_effect/incapacitating) in status_effects || null
 
 /mob/living/carbon/human/npc/proc/observed_by_player()
 	for (var/mob/observing_mob in viewers(DEFAULT_SIGHT_DISTANCE, src))

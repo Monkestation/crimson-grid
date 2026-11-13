@@ -1,4 +1,4 @@
-#define BASHING_LETHAL_PROTECTION 15
+#define BASHING_LETHAL_PROTECTION 7 // CRIMSON EDIT CHANGE - Original: #define BASHING_LETHAL_PROTECTION 15
 #define AGGRAVATED_PROTECTION 10
 
 /datum/status_effect/fortitude
@@ -13,17 +13,11 @@
 	. = ..()
 	if (!.)
 		return
-
-	if (ishuman(owner))
-		var/mob/living/carbon/human/human_owner = owner
-		human_owner.physiology.armor = human_owner.physiology.armor.add_other_armor(armor_type)
+	owner.add_inner_armor(armor_type)
 
 /datum/status_effect/fortitude/on_remove()
 	. = ..()
-
-	if (ishuman(owner))
-		var/mob/living/carbon/human/human_owner = owner
-		human_owner.physiology.armor = human_owner.physiology.armor.subtract_other_armor(armor_type)
+	owner.remove_inner_armor(armor_type)
 
 // Status effect ranks
 /datum/status_effect/fortitude/one

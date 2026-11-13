@@ -23,7 +23,7 @@
 
 	var/datum/storyteller_roll/gift/enemy_ways/roll_datum = new()
 	// More successes normally grants geater information.
-	var/roll_result = roll_datum.st_roll(owner, bonus = PRIMAL_URGE_PLACEHOLDER)
+	var/roll_result = roll_datum.st_roll(owner, bonus_added = PRIMAL_URGE_PLACEHOLDER)
 	if(roll_result <= 0)
 		return TRUE
 

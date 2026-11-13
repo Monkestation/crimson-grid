@@ -4,6 +4,10 @@
 /obj/item/bodypart/head/fera
 	// limb_id = SPECIES_FERA
 	head_flags = NONE
+	//CRIMSON GRID ADDITION START - fera species bite baseline armor penetration and bleeding hits
+	unarmed_sharpness = SHARP_EDGED
+	unarmed_pen = 20
+	//CRMSON GRID ADDITION END
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 
 /obj/item/bodypart/head/fera/aggravated
@@ -29,6 +33,7 @@
 	unarmed_attack_verbs = list("claw")
 	unarmed_attack_verbs_continuous = list("claws")
 	appendage_noun = "paw"
+	unarmed_pen = 30 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/slashmiss.ogg'
@@ -42,6 +47,7 @@
 	unarmed_attack_verbs = list("claw")
 	unarmed_attack_verbs_continuous = list("claws")
 	appendage_noun = "paw"
+	unarmed_pen = 30 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/slashmiss.ogg'
@@ -78,6 +84,8 @@
 /obj/item/organ/tongue/fera
 	name = "exotic tongue"
 	languages_native = list(/datum/language/garou_tongue, /datum/language/primal_tongue)
+	disliked_foodtypes = GROSS | CLOTH | BUGS
+	toxic_foodtypes = TOXIC | CHOCOLATE
 
 // Garou tongues can speak all default + garou tongue
 /obj/item/organ/tongue/fera/get_possible_languages()
@@ -89,21 +97,20 @@
 	. = ..()
 	var/datum/component/regenerator/regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 35, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour = COLOR_RED)
+		species_fera_war.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 15, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour = COLOR_RED)
 		regenerator = species_fera_war.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
 
 /datum/species/human/shifter/war/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
-	human.set_health(min(human.health, human.maxHealth))
 	qdel(human.GetComponent(/datum/component/regenerator))
 
 /datum/species/human/shifter/dire/on_species_gain(mob/living/carbon/human/species_fera_dire, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	var/datum/component/regenerator/regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 25, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour =  COLOR_RED_LIGHT)
+		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 12.5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour =  COLOR_RED_LIGHT)
 		regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
@@ -116,7 +123,7 @@
 	. = ..()
 	var/datum/component/regenerator/regenerator = species_fera_bestial.GetComponent(/datum/component/regenerator)
 	if(!regenerator)
-		species_fera_bestial.AddComponent(/datum/component/regenerator, regeneration_delay = 2 SECONDS, heals_wounds = TRUE, brute_per_second = 15, burn_per_second = 5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(STAMINA , AGGRAVATED), outline_colour =  COLOR_FULL_TONER_BLACK)
+		species_fera_bestial.AddComponent(/datum/component/regenerator, regeneration_delay = 2 SECONDS, heals_wounds = FALSE, brute_per_second = 12.5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour = COLOR_ALMOST_BLACK)
 		regenerator = species_fera_bestial.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
 
@@ -124,5 +131,27 @@
 /datum/species/human/shifter/bestial/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
 	qdel(human.GetComponent(/datum/component/regenerator))
+
+//CRIMSION GRID ADDITION END
+
+//CRMISION GRID ADDITION START - objects in hands for crinos form
+
+/obj/item/bodypart/arm/left/fera/aggravated/warform/Initialize(mapload)
+	held_hand_offset = new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("south" = 10 , "north" = 12 , "east" = 16, "west" = -2),
+		offset_y = list("south" = 10, "north" = 16 , "east" = 10 ,"west" = 9),
+	)
+	return ..()
+
+/obj/item/bodypart/arm/right/fera/aggravated/warform/Initialize(mapload)
+	held_hand_offset = new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("south" = 10 , "north" = 12 , "east" = 18 ,"west" = -2),
+		offset_y = list("south" = 10, "north" = 16 , "east" = 8 ,"west" = 9),
+	)
+	return ..()
 
 //CRIMSION GRID ADDITION END

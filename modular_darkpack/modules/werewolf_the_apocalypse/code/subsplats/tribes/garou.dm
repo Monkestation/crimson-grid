@@ -2,16 +2,23 @@
 	abstract_type = /datum/subsplat/werewolf/tribe/garou
 	fera_restriction = SPLAT_GAROU
 
+// V20s "Wendigos"
 /datum/subsplat/werewolf/tribe/garou/galestalkers
 	name = TRIBE_GALESTALKERS
 	desc = "Tireless trackers and peerless hunters, the galestalkers carry the namesake of the wind that crosses the tundra."
-	gifts_provided = list()
-//	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
+	gifts_provided = list(
+		/datum/action/cooldown/power/gift/beat_of_the_heartdrum
+		// /datum/action/cooldown/power/gift/resist_pain, // DARKPACK TODO - (Selectable Gifts)
+	)
+	//subsplat_keys = /obj/item/vamp/keys/nps CRIMSON EDIT REMOVAL - Park Keys for Roles
 
+
+// V20 "Uktena"
 /datum/subsplat/werewolf/tribe/garou/ghostcouncil
 	name = TRIBE_UKTENA
 	desc = "Seekers of mystery and highly secretive, the Uktena is one of the most misunderstood tribes. Their ranks include guides, academics and the religious."
 	gifts_provided = list(
+		/datum/action/cooldown/power/gift/sense_magic,
 		// /datum/action/cooldown/power/gift/spirit_speech, // DARKPACK TODO - (Selectable Gifts)
 	)
 //	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
@@ -98,15 +105,22 @@
 	name = TRIBE_SILVER_FANGS
 	desc = "Commonly known as the 'Alphas' of the Garou Nation, their ranks consist of traditional rulers and wartime leaders. Known for being honorable and having courage, odd mental quirks have begun plaguing their young members, and the tribe is beginning to suffer from diseases of the spirit and mind."
 	gifts_provided = list(
+		/datum/action/cooldown/power/gift/falcons_grasp,
 		// /datum/action/cooldown/power/gift/inspiration, // DARKPACK TODO - (Selectable Gifts)
+		// /datum/action/cooldown/power/gift/sense_wyrm, // DARKPACK TODO - (Selectable Gifts)
 	)
 //	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
 
 /datum/subsplat/werewolf/tribe/garou/stargazers
 	name = TRIBE_STARGAZERS
 	desc = "The calmest of the Garou, they are well known for their introversion. They are the smallest of the remaining tribes, many of their kind wiped out by the Wyrm."
-	gifts_provided = list()
-//	subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
+	gifts_provided = list(
+		/datum/action/cooldown/power/gift/channeling,
+		// /datum/action/cooldown/power/gift/falling_touch, // DARKPACK TODO - (Selectable Gifts)
+		// /datum/action/cooldown/power/gift/sense_wyrm, // DARKPACK TODO - (Selectable Gifts)
+	)
+	//subsplat_keys = /obj/item/vamp/keys/nps //CRIMSON EDIT REMOVAL - Park Keys For Roles
+
 
 /datum/subsplat/werewolf/tribe/garou/blackspiraldancers
 	name = TRIBE_BLACK_SPIRAL_DANCERS

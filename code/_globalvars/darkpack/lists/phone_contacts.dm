@@ -45,22 +45,22 @@ GLOBAL_LIST_EMPTY(triad_network)
 
 // An indexed list of all the different phone networks that connect the phones that are part of them together.
 GLOBAL_LIST_INIT(contact_networks, alist(
-		MILLENIUM_TOWER_NETWORK = GLOB.millenium_tower_network,
-		LASOMBRA_NETWORK = GLOB.lasombra_network,
-		TREMERE_NETWORK = GLOB.tremere_network,
-		GIOVANNI_NETWORK = GLOB.giovanni_network,
-		TZMISCE_NETWORK = GLOB.tzmisce_network,
-		ANARCH_NETWORK = GLOB.anarch_network,
-		SUPPLY_NETWORK = GLOB.supply_network,
-		VAMPIRE_LEADER_NETWORK = GLOB.vampire_leader_network,
-		ENDRON_NETWORK = GLOB.endron_network,
-		SOCIETY_OF_LEOPOLD_NETWORK = GLOB.society_network,
-		CIVILIAN_NETWORK = GLOB.civilian_network,
-		POLICE_NETWORK = GLOB.police_network,
-		MEDICAL_NETWORK = GLOB.medical_network,
-		GAROU_NETWORK = GLOB.garou_network,
-		SABBAT_NETWORK = GLOB.sabbat_network,
-		// CRIMSON EDIT ADD - Triads
-		TRIAD_NETWORK = GLOB.triad_network,
-		// CRIMSON EDIT END - Triads
-	))
+	MILLENIUM_TOWER_NETWORK = GLOB.millenium_tower_network,
+	LASOMBRA_NETWORK = GLOB.lasombra_network,
+	TREMERE_NETWORK = GLOB.tremere_network,
+	GIOVANNI_NETWORK = GLOB.giovanni_network,
+	TZMISCE_NETWORK = GLOB.tzmisce_network,
+	ANARCH_NETWORK = GLOB.anarch_network,
+	SUPPLY_NETWORK = GLOB.supply_network,
+	VAMPIRE_LEADER_NETWORK = GLOB.vampire_leader_network,
+	ENDRON_NETWORK = GLOB.endron_network,
+	SOCIETY_OF_LEOPOLD_NETWORK = GLOB.society_network,
+	CIVILIAN_NETWORK = GLOB.civilian_network,
+	POLICE_NETWORK = GLOB.police_network,
+	MEDICAL_NETWORK = GLOB.medical_network,
+	GAROU_NETWORK = GLOB.garou_network,
+	SABBAT_NETWORK = GLOB.sabbat_network,
+	// CRIMSON EDIT ADD - Triads
+	TRIAD_NETWORK = GLOB.triad_network,
+	// CRIMSON EDIT END - Triads
+))

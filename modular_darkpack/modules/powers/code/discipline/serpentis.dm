@@ -70,7 +70,7 @@
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/activate(mob/living/target)
 	. = ..()
 	target.face_atom(owner)
-	target.visible_message(span_hypnophrase("<b>[owner] hypnotizes [target] with [owner.p_their()] eyes!</b>"), span_warning("<b>[owner] hypnotizes you! Their words seem to become more convincing and hypnotic...</b>"))
+	target.visible_message(span_hypnophrase("<b>[owner] hypnotizes [target] with [owner.p_their()] eyes!</b>"), span_warning("<b>[owner] hypnotizes you! You can't seem to move or look away...</b>"))
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.remove_overlay(POWERS_LAYER)
@@ -93,7 +93,7 @@
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
 	target_type = TARGET_LIVING
-	range = 2//CRIMSON EDIT LOWERED RANGE
+	range = 4 //CRIMSON EDIT LOWERED RANGE
 	effect_sound = 'modular_darkpack/modules/powers/sounds/tongue.ogg'
 	aggravating = TRUE
 	hostile = TRUE
@@ -120,9 +120,10 @@
 
 /datum/discipline_power/serpentis/the_tongue_of_the_asp/activate(mob/living/target)
 	. = ..()
-	target.adjust_blood_pool(-2)
-	target.apply_damage(5 * successes, AGGRAVATED)//CRIMSON GRID CHANGE LOWERED DAMAGE
-	owner.adjust_blood_pool(2)
+	var/blood_to_take = min(2, target.bloodpool) // CRIMSON EDIT ADDITION - Blood Drain Check
+	target.adjust_blood_pool(-blood_to_take) // CRIMSON EDIT CHANGE - ORIGINAL: target.adjust_blood_pool(-2)
+	target.apply_damage(6 * successes, AGGRAVATED)//CRIMSON GRID CHANGE LOWERED DAMAGE
+	owner.adjust_blood_pool(blood_to_take) // CRIMSON EDIT CHANGE - ORIGINAL: owner.adjust_blood_pool(2)
 	var/obj/item/ammo_casing/magic/tentacle/casing = new (get_turf(owner))
 	casing.fire_casing(target, owner, null, null, null, ran_zone(), 0,  owner)
 	qdel(casing)
@@ -233,15 +234,29 @@
 	icon_state = "cobra"
 	icon_living = "cobra"
 	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
-	speed = -1
+	speed = -0.4 //CRIMSON GRID EDIT - original mob speed = -1
 	maxHealth = 300
 	health = 300
 	melee_damage_lower = 30
 	melee_damage_upper = 30
+
+	var/poison_reagent = /datum/reagent/toxin/viperspider
+	var/venom_dose = 5
+//CRIMSON GRID ADDATIONS START - lowers cobra melee swing speed, adds armor penetration,no slow down drag and changes their visual attacks
+	melee_attack_cooldown = 10
+	armour_penetration = 25
+	slowed_by_drag = FALSE
+	attack_vis_effect = ATTACK_EFFECT_BITE
+//CRMISON GRID ADDTION END
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/items/weapons/slash.ogg'
 	pixel_w = -8
+
+/mob/living/basic/cobra/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/swing_attack) //CRIMSON GRID ADDTION - adds swing attacks
+	AddElement(/datum/element/venomous, poison_reagent, venom_dose)
 
 /mob/living/basic/cobra/typhon
 	name = "Typhonic beast"
@@ -249,6 +264,7 @@
 	icon = 'modular_darkpack/modules/deprecated/icons/icons.dmi'
 	icon_state = "protean4"
 	icon_living = "protean4"
+	attack_vis_effect = ATTACK_EFFECT_CLAW //CRIMSON GRID ADDITION - jackal man is all claw and no bite
 	mob_size = MOB_SIZE_LARGE
 	pixel_w = 0
 	initial_size = 1.4

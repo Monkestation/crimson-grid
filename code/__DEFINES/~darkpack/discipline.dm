@@ -62,3 +62,13 @@
 #define ABYSS_TENTACLE_MODE_AGGRESSIVE "Aggressive"
 #define ABYSS_TENTACLE_MODE_CONTROL "Control"
 #define ABYSS_TENTACLE_MODE_PASSIVE "Passive"
+
+// Defines for Discipline budgets
+// Fledgling - immortal age 0-10
+// Neonate - immortal age 11-100
+// Ancillae - immortal age 101-200
+// Elder - immortal age 201+
+#define DISCIPLINE_BUDGET_FLEDGLING 5
+#define DISCIPLINE_BUDGET_NEONATE 10
+#define DISCIPLINE_BUDGET_ANCILLAE 15
+#define DISCIPLINE_BUDGET_ELDER 18

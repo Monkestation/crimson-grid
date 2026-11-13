@@ -119,6 +119,7 @@
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_melee.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	icon_state = "rapier"
+	inhand_icon_state = "rapier"
 	// WTA pg. 302
 	force = 2 LETHAL_TTRPG_DAMAGE
 	armour_penetration = 50

@@ -15,6 +15,10 @@
 	. = ..()
 	owner.add_quirk(/datum/quirk/darkpack/derangement)
 
+/datum/discipline/dementation/post_loss()
+	owner.remove_quirk(/datum/quirk/darkpack/derangement)
+	return ..()
+
 /datum/discipline_power/dementation
 	name = "Dementation power name"
 	desc = "Dementation power description"
@@ -439,6 +443,8 @@ determines the duration.
 	theirpower = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
 	if(HAS_TRAIT(target, TRAIT_IRON_WILL))
 		theirpower += 3
+	if(HAS_TRAIT(owner, TRAIT_ENCHANTING_VOICE))
+		theirpower -= 2
 	mypower = SSroll.storyteller_roll_datum(owner, difficulty = theirpower, applic_stats = list(STAT_MANIPULATION, STAT_INTIMIDATION), numerical = TRUE)
 	if(mypower <= 0)
 		to_chat(owner, span_warning("[target]'s mind is too powerful to corrupt!"))

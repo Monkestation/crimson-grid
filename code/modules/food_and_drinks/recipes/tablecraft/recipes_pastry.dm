@@ -96,6 +96,7 @@
 		/obj/item/food/donut/plain = 1
 	)
 	result = /obj/item/food/donut/choco
+	added_foodtypes = DAIRY|SUGAR|BREAKFAST|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /datum/crafting_recipe/food/donut/blumpkin
 	name = "Blumpkin Donut"
@@ -172,6 +173,7 @@
 		/obj/item/food/donut/jelly/plain = 1
 	)
 	result = /obj/item/food/donut/jelly/choco
+	added_foodtypes = parent_type::added_foodtypes|CHOCOLATE  //DARKPACK EDIT ADDITION: Chocolate
 
 /datum/crafting_recipe/food/donut/jelly/blumpkin
 	name = "Blumpkin Jelly Donut"
@@ -249,6 +251,7 @@
 		/obj/item/food/chocolatebar = 1,
 		/obj/item/food/donut/jelly/slimejelly/plain = 1
 	)
+	added_foodtypes = parent_type::added_foodtypes|CHOCOLATE  //DARKPACK EDIT ADDITION: Chocolate
 	result = /obj/item/food/donut/jelly/slimejelly/choco
 
 /datum/crafting_recipe/food/donut/slimejelly/blumpkin
@@ -694,7 +697,7 @@
 		/obj/item/food/butterslice = 1
 	)
 	result = /obj/item/food/raw_brownie_batter
-	added_foodtypes = GRAIN|JUNKFOOD|SUGAR
+	added_foodtypes = GRAIN|JUNKFOOD|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	removed_foodtypes = MEAT|RAW|EGG
 	meal_category = MEAL_COMPONENT
 
@@ -709,7 +712,7 @@
 		/obj/item/food/butterslice = 1
 	)
 	result = /obj/item/food/peanut_butter_brownie_batter
-	added_foodtypes = GRAIN|JUNKFOOD|SUGAR|NUTS
+	added_foodtypes = GRAIN|JUNKFOOD|SUGAR|NUTS|CHOCOLATE  //DARKPACK EDIT CHANGE: Chocolate
 	removed_foodtypes = MEAT|RAW|EGG
 	meal_category = MEAL_COMPONENT
 

@@ -7,6 +7,7 @@
 	config_tag = "POLICE_SERGEANT"
 	outfit = /datum/outfit/job/vampire/police_sergeant
 	job_flags = CITY_JOB_FLAGS
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_POLICE_SERGEANT
 	exp_requirements = EXP_REQ_MINOR
 	departments_list = list(
@@ -20,6 +21,8 @@
 		"Detective",
 	)
 
+	tgui_icon = FA_ICON_SHIELD
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE)
 
 	description = "Enforce the law. Keep the officers in line. Follow what the Captain says."
@@ -29,6 +32,12 @@
 		JOB_POLICE_CAPTAIN,
 		JOB_EMERGENCY_DISPATCHER
 	)
+
+// CRIMSON GRID EDIT START - Security console and records
+/datum/job/vampire/police_sergeant/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	spawned.add_mob_memory(/datum/memory/key/police_login)
+// CRIMSON GRID END
 
 /datum/outfit/job/vampire/police_sergeant
 	name = JOB_POLICE_SERGEANT

@@ -12,6 +12,7 @@
 	quote = "Hm... this book is boring."
 
 /obj/item/vampirebook/attack_self(mob/living/carbon/human/user)
+	. = ..()
 	if(!COOLDOWN_FINISHED(src, read))
 		return
 	read_book(user)

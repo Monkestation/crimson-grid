@@ -10,11 +10,13 @@
 	config_tag = "HOUND"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/hound
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_HOUND
 	departments_list = list(
 		/datum/job_department/camarilla,
 	)
+
+	tgui_icon = FA_ICON_SHIELD_HALVED
 
 	maximal_generation = 9
 	maximum_immortal_age = 200
