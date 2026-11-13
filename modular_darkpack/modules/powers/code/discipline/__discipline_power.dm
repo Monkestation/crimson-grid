@@ -702,8 +702,11 @@
 /**
  * Overridable proc that allows for code to affect the power's owner
  * when it is gained. Triggered by parent /datum/discipline/post_gain().
+ * post_gain_applied - Whether this ability was already once given to the mob.
+ * For cases like Signal registration and such, it's important to work regardless of being the first time,
+ * while one-time use stuff like stat buffs should respect this arg.
  */
-/datum/discipline_power/proc/post_gain()
+/datum/discipline_power/proc/post_gain(post_gain_applied)
 	return
 
 /**

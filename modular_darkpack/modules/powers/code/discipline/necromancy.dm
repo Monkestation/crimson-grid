@@ -13,11 +13,12 @@
 	power_type = /datum/discipline_power/necromancy
 	signature_clan = VAMPIRE_CLAN_GIOVANNI
 
-/datum/discipline/necromancy/post_gain()
+/datum/discipline/necromancy/post_gain(post_gain_applied)
 	. = ..()
-	var/datum/action/ritual_drawing/necromancy/ritualist = new()
-	ritualist.Grant(owner)
-	ritualist.level = level
+	if(!post_gain_applied)
+		var/datum/action/ritual_drawing/necromancy/ritualist = new()
+		ritualist.Grant(owner)
+		ritualist.level = level
 
 /datum/discipline/necromancy/post_loss()
 	. = ..()
