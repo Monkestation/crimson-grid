@@ -81,15 +81,6 @@
 			continue
 		if(ispath(disc.type, /datum/discipline/path))
 			continue
-			//Crimson Edit Specifically prevents koldun sharing out of clan
-		if(disc.type in list(
-			/datum/discipline/path_of_earth,
-			/datum/discipline/path_of_flames,
-			))
-			var/datum/subsplat/vampire_clan/student_clan = student.get_clan()
-			if(!student_clan || (student_clan.id != VAMPIRE_CLAN_TZIMISCE && student_clan.id != VAMPIRE_CLAN_OLD_CLAN_TZIMISCE))
-				continue
-			//Crimson Edit Specifically prevents koldun sharing out of clan
 		if(disc.type in seen_types)
 			continue
 		if(!can_teach_discipline(owner, disc.type))
@@ -123,17 +114,7 @@
 
 	if(IS_UNCONSCIOUS_OR_CRIT(student))
 		return FALSE
-		var/discipline_type = disc_type[chosen]
-		//Crimson Edit Prevents out of clan koldun
-	if(discipline_type in list(
-		/datum/discipline/path_of_earth,
-		/datum/discipline/path_of_flames,
-	))
-		var/datum/subsplat/vampire_clan/student_clan = student.get_clan()
-		if(!student_clan || (student_clan.id != VAMPIRE_CLAN_TZIMISCE && student_clan.id != VAMPIRE_CLAN_OLD_CLAN_TZIMISCE))
-			to_chat(owner, span_warning("You cannot teach these Paths to someone outside the Tzimisce clans."))
-			return FALSE
-		//Crimson Edit Prevents out of clan koldun
+
 	var/mob/living/carbon/vamp = owner
 	if(vamp.bloodpool <= 1)
 		to_chat(vamp, span_danger("You don't have enough vitae!"))

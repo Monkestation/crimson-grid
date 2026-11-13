@@ -1,11 +1,11 @@
 /datum/discipline/path_of_earth
 	name = "Path of Earth"
 	desc = {"Gives Power over the earth allowing one to use it to immobilize their enemies
-	● Grasp of Earth: Stamina + Occult
-	●● Endurance Of Stone: Stamina + Occult
-	●●● Hungry Earth Stamina + Occult
-	●●●● Earths Embrace: Stamina + Occult
-	●●●●● Kupalas Fury: Stamina + Occult"}
+	● Grasp of Earth: Willpower
+	●● Endurance Of Stone: Willpower
+	●●● Hungry Earth Willpower
+	●●●● Earths Embrace: Willpower
+	●●●●● Kupalas Fury: Willpower"}
 	icon = 'modular_vcg/modules/powers/icons/koldun_icon2.dmi'
 	icon_state = "koldun_earth"
 	clan_restricted = TRUE
@@ -309,8 +309,7 @@
 		if(ROLL_SUCCESS)
 			to_chat(owner, span_green("You successfuly will the earth to tremble at your mere presence"))
 		if(ROLL_FAILURE)
-			to_chat(owner, span_warning("The earth denies your will shaking you to your core"))
-			owner.apply_damage(20, BRUTE)
+			to_chat(owner, span_warning("You fail to harness the earth to encase your target"))
 			return
 	for(var/turf/shaking_turf in range(3, target_turf))
 		shaking_turf.Shake(pixelshiftx = 0.1, pixelshifty = 0.1, duration = 2.5 SECONDS)
