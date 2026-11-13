@@ -271,7 +271,7 @@ export const DmTestTarget = new Juke.Target({
       '-trusted',
       '-verbose',
       '-params',
-      'log-directory=ci',
+      'log-directory=ci&dmeow',
     );
     Juke.rm('*.test.*');
     try {
