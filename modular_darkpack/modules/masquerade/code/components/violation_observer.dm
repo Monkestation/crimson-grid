@@ -23,6 +23,8 @@
 /atom/movable/proc/on_masquerade_violation()
 	if(!COOLDOWN_FINISHED(src, masquerade_violation_cooldown))
 		return
+	if(HAS_TRAIT(src, TRAIT_OBFUSCATED))
+		return
 	var/area/vtm/breacher_area = get_area(src)
 	if(!istype(breacher_area, /area/vtm))
 		return
@@ -31,6 +33,10 @@
 	for(var/atom/movable/moving_atom in view(7, loc))
 		if(!moving_atom.violation_observer)
 			continue
+		if(istype(moving_atom, /mob/living))
+			var/mob/living/living_breach_witness = moving_atom
+			if(living_breach_witness.has_status_effect(/datum/status_effect/kissed) || living_breach_witness.has_status_effect(/datum/status_effect/delirium))
+				continue
 		SEND_SIGNAL(moving_atom, COMSIG_SEEN_MASQUERADE_VIOLATION, src)
 	COOLDOWN_START(src, masquerade_violation_cooldown, 1 TURNS)
 
@@ -38,6 +44,10 @@
 	SIGNAL_HANDLER
 
 	if(!source || !player_breacher || ismundane(player_breacher)) //Humans cant break the masquerade. Because reasons.
+		return
+	if(HAS_TRAIT(player_breacher, TRAIT_OBFUSCATED))
+		return
+	if(SSmasquerade.has_open_breach(player_breacher, source))
 		return
 
 	if(isnpc(source))
@@ -94,11 +104,14 @@
 		observe_masquerade_reinforce(player_breacher)
 		UnregisterSignal(player_breacher, COMSIG_LIVING_DEATH)
 
+// er... yuck. remind me to rewrite this.
 /atom/movable/proc/on_breacher_death(mob/living/dead_breacher, gibbed)
 	SIGNAL_HANDLER
 
 	for(var/breach in SSmasquerade.masquerade_breachers)
 		if(breach[1] != dead_breacher)
+			continue
+		if(breach[2] != src)
 			continue
 		SEND_SIGNAL(src, COMSIG_MASQUERADE_HUD_DELETE, dead_breacher)
 		SSmasquerade.masquerade_reinforce(src, dead_breacher)

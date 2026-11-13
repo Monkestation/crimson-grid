@@ -759,6 +759,9 @@
 		to_chat(owner, span_warning("You don't have enough blood to keep [src] active!"))
 		try_deactivate(target)
 
+	if(active)
+		do_masquerade_violation(target)
+
 /**
  * Overridable proc that allows for extra modular code
  * in refreshing behaviour. Can do custom checks to see if activation

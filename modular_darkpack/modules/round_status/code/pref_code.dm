@@ -31,7 +31,7 @@
 	if(!(mind?.original_character_slot_index))
 		return "mind lacking orginal slot index"
 
-	var/mob/living/carbon/human/original_human = mind.original_character.resolve()
+	var/mob/living/carbon/human/original_human = mind.original_character?.resolve()
 	if(!original_human || (original_human != src))
 		return "not original character"
 
