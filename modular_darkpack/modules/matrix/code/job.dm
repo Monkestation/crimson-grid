@@ -6,6 +6,10 @@
 		return
 	job_debug("Freeing role: [job_datum.title]")
 	job_datum.current_positions = max(0, job_datum.current_positions - 1)
+	var/held_splat_id = despawning_mob.mind.splat_slot_id
+	if(held_splat_id)
+		job_datum.splat_slots[held_splat_id]++
+		despawning_mob.mind.splat_slot_id = null
 
 
 	//Getting it from prefs is untrustworthy as they could have unlocked there sheet. (even before the move to splats)

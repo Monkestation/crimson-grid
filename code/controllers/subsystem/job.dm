@@ -258,6 +258,7 @@ SUBSYSTEM_DEF(job)
 	player.mind.set_assigned_role(job)
 	unassigned -= player
 	job.current_positions++
+	take_splat_slot(player, job) // DARKPACK EDIT ADD - Splat Slots
 	return TRUE
 
 /datum/controller/subsystem/job/proc/find_occupation_candidates(datum/job/job, level = 0)
