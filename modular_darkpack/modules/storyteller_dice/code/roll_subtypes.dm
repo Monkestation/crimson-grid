@@ -180,7 +180,7 @@
 // Based on `Feats of Strength` WTA pg. 270
 /datum/storyteller_roll/restraint_break
 	bumper_text = "breaking restraints"
-	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
+	applicable_stats = list(STAT_TEMPORARY_WILLPOWER) // CRIMSON EDIT CHANGE - Original: applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	// reroll_cooldown = 1 TURNS
 	difficulty = 9
 
