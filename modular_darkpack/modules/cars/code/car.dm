@@ -1,11 +1,11 @@
 #define DOAFTER_SOURCE_CAR "doafter_car"
 #define CAR_TANK_MAX 1000
+#define CAR_TURF_CROSS_OFFSET 8
 
 /obj/effect/temp_visual/car
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "smoke"
 	layer = BELOW_MOB_LAYER
-	light_range = 1
 	duration = 0.5 SECONDS
 
 /obj/effect/temp_visual/telegraphing/car
@@ -13,6 +13,7 @@
 	duration = 0.5 SECONDS
 
 /datum/looping_sound/car_engine
+	volume = 60
 	start_sound = 'modular_darkpack/modules/cars/sounds/start.ogg'
 	start_length = 2 SECONDS
 	mid_sounds = list('modular_darkpack/modules/cars/sounds/work.ogg')
@@ -22,6 +23,22 @@
 /obj/car_trunk
 	name = "car trunk"
 	desc = "How did this get out of the car."
+
+// CRIMSON EDIT ADDITION START - Scooter
+/// Holds a visible rider so we can control its offset and layer without touching the mob itself.
+/obj/effect/car_rider_holder
+	name = "rider"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// Don't inherit the car's grey "broken" tint or alpha
+	appearance_flags = parent_type::appearance_flags | RESET_COLOR | RESET_ALPHA
+
+/// Draws the parts that sit over the rider. A vis_contents sibling of the rider holder, so the two sort by layer alone.
+/obj/effect/car_front_holder
+	name = "front"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+// CRIMSON EDIT ADDITION END
 
 /datum/storage/car
 	animated = FALSE
@@ -59,10 +76,11 @@
 	throwforce = 150
 
 
-	MAP_SWITCH(pixel_x = 0, pixel_x = -32)
-	MAP_SWITCH(pixel_y = 0, pixel_y = -32)
+	MAP_SWITCH(pixel_w = -32, pixel_x = -32)
+	MAP_SWITCH(pixel_z = -32, pixel_y = -32)
 
-	glide_size = 96
+	animate_movement = NO_STEPS
+	set_dir_on_move = FALSE
 
 	light_system = OVERLAY_LIGHT_DIRECTIONAL
 	light_color = COLOR_LIGHT_ORANGE
@@ -71,8 +89,18 @@
 	light_on = FALSE
 
 	var/movement_vector = 0 //0-359 degrees
-	var/speed_in_pixels = 0 // 16 pixels (turf is 2x2m) = 1 meter per 1 SECOND (process fire). Minus equals to reverse, max should be 444
-	var/last_pos = list("x" = 0, "y" = 0, "x_pix" = 0, "y_pix" = 0, "x_frwd" = 0, "y_frwd" = 0)
+	/// Pixels per second along movement_vector, negative when reversing.
+	var/speed = 0
+	/// Last direction the driver held, from relaymove.
+	var/input_dir = NONE
+	var/last_input_time = 0
+	var/last_process = 0
+	/// Exact position inside the tile in pixels. pixel_x/y get truncated to whole pixels, so movement is tracked here instead.
+	var/offset_x = 0
+	var/offset_y = 0
+	/// How far ahead of the car the riders' cameras are shifted, in pixels.
+	var/camera_lead_x = 0
+	var/camera_lead_y = 0
 
 	max_integrity = 400
 	integrity_failure = 0.25
@@ -85,7 +113,6 @@
 	var/list/passengers = list()
 	var/max_passengers = 3
 
-	var/speed = 1 //Future
 	var/stage = 1
 	var/on = FALSE
 	var/locked = TRUE
@@ -108,8 +135,55 @@
 	/// sound loop for the engine
 	var/datum/looping_sound/car_engine/engine_sound_loop
 
+	// CRIMSON EDIT ADDITION START - Scooter
+	/// Pixel offset used to center the sprite on the turf: -(icon_size - 32) / 2
+	var/visual_offset = 0
+
+	/// If FALSE, riders can get in and be pulled out even while the vehicle is locked.
+	var/lock_blocks_entry = TRUE
+	/// If TRUE, occupants stay drawn on the vehicle instead of being hidden inside it.
+	var/occupants_visible = FALSE
+
+	/// Icon state for the body, saved because icon_state itself becomes "empty"
+	var/body_icon_state
+	/// Greyscale body paint (under rider). Tinted by paint_color.
+	var/paint_overlay_state
+	/// Non-painted details drawn over the rider (handlebar clamp, fork, etc.)
+	var/front_overlay_state
+	/// Greyscale paint that draws over the rider (front fender, headlight shroud). Tinted by paint_color.
+	var/front_paint_overlay_state
+	/// Color applied to the greyscale paint overlays.
+	var/paint_color = "#ffffff"
+	/// The overlays currently applied by update_vehicle_overlays()
+	var/list/vehicle_overlays = list()
+
+	/// Layer offsets above CAR_LAYER. Order is body < rider < front.
+	var/rider_layer_offset = 0.1
+	var/front_layer_offset = 0.2
+	/// Where the rider sits relative to the vehicle origin
+	var/rider_pixel_x = 0
+	var/rider_pixel_y = 0
+	/// rider mob -> holder object
+	var/list/rider_holders = list()
+	/// Holder drawing the front parts over the rider
+	var/obj/effect/car_front_holder/front_holder
+
+	/// Lower divisor = sharper turns at low speed. min_turn_speed only applies while moving.
+	var/turn_speed_divisor = 10
+	var/min_turn_speed = 0
+	var/max_turn_speed = 3
+
+	/// Top speed in speed_in_pixels units, multiplied by stage. 64 is the old fixed value.
+	var/max_speed = 64
+	/// Impacts at or above this speed (speed_in_pixels / 4) throw occupants out of the vehicle. 0 = never.
+	var/eject_speed_threshold = 0
+	// CRIMSON EDIT ADDITION END
+
 	COOLDOWN_DECLARE(impact_delay)
 	COOLDOWN_DECLARE(beep_cooldown)
+	COOLDOWN_DECLARE(hit_cooldown)
+	COOLDOWN_DECLARE(smoke_cooldown)
+	COOLDOWN_DECLARE(drive_sound_cooldown)
 
 /obj/darkpack_car/Initialize(mapload)
 	. = ..()
@@ -143,12 +217,14 @@
 	*/
 
 	gas = rand(100, CAR_TANK_MAX)
-	last_pos["x"] = x
-	last_pos["y"] = y
 	movement_vector = dir2angle(dir)
 
-	add_overlay(image(icon = src.icon, icon_state = src.icon_state, pixel_x = -32, pixel_y = -32))
+	// CRIMSON EDIT ADDITION START - Scooter
+	body_icon_state = icon_state
+	update_vehicle_overlays()
 	icon_state = "empty"
+	// CRIMSON EDIT ADDITION END
+
 
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_MAGICALLY_UNLOCKED = PROC_REF(on_magic_unlock),
@@ -160,7 +236,71 @@
 	QDEL_NULL(engine_sound_loop)
 	QDEL_NULL(trunk)
 	empty_car()
+	QDEL_NULL(front_holder) // CRIMSON EDIT ADDITION - Scooter
 	. = ..()
+
+// CRIMSON EDIT ADDITION START - Scooter
+/obj/darkpack_car/AllowClick()
+	return TRUE
+
+/// Builds one overlay image, optionally tinted. Draws in order added, on the car's own layer.
+/obj/darkpack_car/proc/make_part_overlay(state, tint)
+	var/image/overlay_image = image(icon = icon, icon_state = state, pixel_x = visual_offset, pixel_y = visual_offset)
+	if(tint)
+		overlay_image.color = tint
+	return overlay_image
+
+/// Rebuilds the body and paint overlays (under the rider), then the front holder (over the rider).
+/obj/darkpack_car/proc/update_vehicle_overlays()
+	cut_overlay(vehicle_overlays)
+	vehicle_overlays = list()
+	vehicle_overlays += make_part_overlay(body_icon_state)
+	if(paint_overlay_state)
+		vehicle_overlays += make_part_overlay(paint_overlay_state, paint_color)
+	add_overlay(vehicle_overlays)
+	update_front_holder()
+
+/obj/darkpack_car/proc/update_front_holder()
+	if(!front_overlay_state && !front_paint_overlay_state)
+		return
+	if(!front_holder)
+		front_holder = new()
+		vis_contents += front_holder
+	front_holder.plane = plane
+	front_holder.layer = CAR_LAYER + front_layer_offset
+	front_holder.cut_overlays()
+	if(front_overlay_state)
+		front_holder.add_overlay(make_part_overlay(front_overlay_state))
+	if(front_paint_overlay_state)
+		front_holder.add_overlay(make_part_overlay(front_paint_overlay_state, paint_color))
+
+/obj/darkpack_car/proc/set_paint_color(new_color)
+	paint_color = new_color
+	update_vehicle_overlays()
+
+/// Draws a rider on top of the vehicle through a holder object, between the body and front layers.
+/obj/darkpack_car/proc/show_occupant(mob/living/rider)
+	var/obj/effect/car_rider_holder/holder = new()
+	holder.plane = plane
+	holder.layer = CAR_LAYER + rider_layer_offset
+	holder.pixel_x = rider_pixel_x
+	holder.pixel_y = rider_pixel_y
+	holder.setDir(dir)
+	rider.vis_flags |= (VIS_INHERIT_DIR | VIS_INHERIT_LAYER)
+	holder.vis_contents += rider
+	vis_contents += holder
+	rider_holders[rider] = holder
+
+/obj/darkpack_car/proc/hide_occupant(mob/living/rider)
+	var/obj/effect/car_rider_holder/holder = rider_holders[rider]
+	if(!holder)
+		return
+	holder.vis_contents -= rider
+	vis_contents -= holder
+	rider_holders -= rider
+	rider.vis_flags &= ~(VIS_INHERIT_DIR | VIS_INHERIT_LAYER)
+	qdel(holder)
+// CRIMSON EDIT ADDITION END
 
 /obj/darkpack_car/click_alt(mob/user)
 	var/list/radial_menu_options = list(
@@ -180,7 +320,7 @@
 		atom_storage.open_storage(user)
 		return CLICK_ACTION_SUCCESS
 
-	if(locked)
+	if(locked && lock_blocks_entry) // CRIMSON EDIT CHANGE - Original: if(locked)
 		to_chat(user, span_warning("[src] is locked!"))
 		return CLICK_ACTION_BLOCKING
 	var/mob/living/occupent = passanger_map[pick]
@@ -192,7 +332,7 @@
 	if(do_after(user, 5 SECONDS, src, interaction_key = DOAFTER_SOURCE_CAR))
 		user.visible_message(span_warning("[user] has managed to get [occupent] out of [src]."), \
 			span_warning("You've managed to get [occupent] out of [src]."))
-		empty_occupent(occupent)
+		empty_occupant(occupent)
 		return CLICK_ACTION_SUCCESS
 	else
 		to_chat(user, span_warning("You've failed to get [occupent] out of [src]."))
@@ -374,6 +514,7 @@
 	. = headlight_on
 	headlight_on = new_value
 	if(headlight_on)
+		START_PROCESSING(SScarpool, src)
 		add_overlay(headlight_image)
 	else
 		cut_overlay(headlight_image)
@@ -385,7 +526,7 @@
 	if(!isliving(dropped))
 		return
 
-	if(locked)
+	if(locked && lock_blocks_entry) // CRIMSON EDIT CHANGE - Original: if(locked)
 		to_chat(user, span_warning("[src] is locked."))
 		return
 
@@ -433,7 +574,12 @@
 
 // Please only call via driver_enter or passanger_enter
 /obj/darkpack_car/proc/enter_car(mob/living/user)
+	RegisterSignal(user, COMSIG_MOB_LOGOUT, PROC_REF(on_rider_logout))
 	user.forceMove(src)
+	// CRIMSON EDIT ADDITION START - Scooter
+	if(occupants_visible)
+		show_occupant(user)
+	// CRIMSON EDIT ADDITION END
 	visible_message(span_notice("[user] enters [src]."), \
 		span_notice("You enter [src]."))
 	playsound(src, 'modular_darkpack/master_files/sounds/effects/door/door.ogg', 50, TRUE)
@@ -441,14 +587,14 @@
 //Dump out all living from the car
 /obj/darkpack_car/proc/empty_car()
 	for(var/mob/living/L in src)
-		empty_occupent(L)
+		empty_occupant(L)
 
 //Dump one guy out of the car.
-/obj/darkpack_car/proc/empty_occupent(mob/living/dumpe)
-	if(driver == dumpe)
-		driver = null
-	if(dumpe in passengers)
-		passengers -= dumpe
+/obj/darkpack_car/proc/empty_occupant(mob/living/dumpe)
+	// CRIMSON EDIT ADDITION START - Scooter
+	if(occupants_visible)
+		hide_occupant(dumpe)
+	// CRIMSON EDIT ADDITION END
 	dumpe.forceMove(loc)
 
 	var/list/exit_side = list(
@@ -468,231 +614,315 @@
 		dumpe.Move(get_step(dumpe, pick(exit_alt)))
 
 	to_chat(dumpe, span_notice("You exit [src]."))
-	if(dumpe?.client)
-		dumpe.client.pixel_x = 0
-		dumpe.client.pixel_y = 0
 	playsound(src, 'modular_darkpack/master_files/sounds/effects/door/door.ogg', 50, TRUE)
-	for(var/datum/action/darkpack_car/C in dumpe.actions)
-		qdel(C)
+
+/obj/darkpack_car/Exited(atom/movable/gone, direction)
+	. = ..()
+	if(!isliving(gone))
+		return
+	var/mob/living/rider = gone
+	if(rider == driver)
+		driver = null
+	else
+		passengers -= rider
+	UnregisterSignal(rider, COMSIG_MOB_LOGOUT)
+	reset_rider_camera(rider.client)
+	for(var/datum/action/darkpack_car/car_action in rider.actions)
+		qdel(car_action)
+
+/// Signal proc for [COMSIG_MOB_LOGOUT]. The client is already detached by now, so the camera has to be reset through canon_client.
+/obj/darkpack_car/proc/on_rider_logout(mob/living/source)
+	SIGNAL_HANDLER
+
+	reset_rider_camera(source.canon_client)
+
+/obj/darkpack_car/proc/reset_rider_camera(client/rider_client)
+	if(!rider_client)
+		return
+	animate(rider_client)
+	rider_client.pixel_x = 0
+	rider_client.pixel_y = 0
 
 /obj/darkpack_car/Bump(atom/bumped_atom)
 	. = ..()
-	var/prev_speed = round(abs(speed_in_pixels)/4)
-	if(!prev_speed)
-		return
+	// CRIMSON EDIT ADDITION START - Scooter
+	//impact below can zero or reduce our speed.
+	var/travel_angle = speed < 0 ? SIMPLIFY_DEGREES(movement_vector + 180) : movement_vector
+	// CRIMSON EDIT ADDITION END
 
 	if(istype(bumped_atom, /obj/transfer_point_vamp))
 		COOLDOWN_START(src, impact_delay, 0.75 SECONDS)
-		/*
-		speed_in_pixels = 0
-		last_pos["x_pix"] = 0
-		last_pos["y_pix"] = 0
-		last_pos["x_frwd"] = 0
-		last_pos["y_frwd"] = 0
-		*/
 		return
 
-	if(istype(bumped_atom, /mob/living))
-		var/mob/living/hit_mob = bumped_atom
+	if(!COOLDOWN_FINISHED(src, hit_cooldown))
+		return
+
+	var/velocity_x = sin(movement_vector) * speed
+	var/velocity_y = cos(movement_vector) * speed
+	var/bump_dir = get_dir(src, bumped_atom)
+	var/impact_speed = 0
+	if(bump_dir & EAST)
+		impact_speed = max(impact_speed, velocity_x)
+	if(bump_dir & WEST)
+		impact_speed = max(impact_speed, -velocity_x)
+	if(bump_dir & NORTH)
+		impact_speed = max(impact_speed, velocity_y)
+	if(bump_dir & SOUTH)
+		impact_speed = max(impact_speed, -velocity_y)
+
+	var/mob/living/hit_mob = isliving(bumped_atom) ? bumped_atom : null
+	if(!hit_mob && impact_speed < abs(speed) * 0.5)
+		return
+
+	var/impact_damage = round(impact_speed / 8)
+	if(!impact_damage)
+		return
+	COOLDOWN_START(src, hit_cooldown, 0.5 SECONDS)
+
+	if(hit_mob)
 		switch(hit_mob.mob_size)
 			if(MOB_SIZE_HUGE) // zulo form
 				playsound(src, 'modular_darkpack/modules/cars/sounds/bump.ogg', 75, TRUE)
-				speed_in_pixels = 0
+				speed = 0
 				COOLDOWN_START(src, impact_delay, 2 SECONDS)
 				hit_mob.Paralyze(1 SECONDS)
 			if(MOB_SIZE_LARGE) // gangrel warforms, werewolves, bears
 				playsound(src, 'modular_darkpack/modules/cars/sounds/bump.ogg', 60, TRUE)
-				speed_in_pixels = round(speed_in_pixels * 0.35)
+				speed = round(speed * 0.35)
 				hit_mob.Knockdown(1 SECONDS)
 			if(MOB_SIZE_SMALL) //small animals
 				playsound(src, 'modular_darkpack/modules/cars/sounds/bump.ogg', 40, TRUE)
-				speed_in_pixels = round(speed_in_pixels * 0.75)
+				speed = round(speed * 0.75)
 				hit_mob.Knockdown(1 SECONDS)
 			else //everything else
 				playsound(src, 'modular_darkpack/modules/cars/sounds/bump.ogg', 50, TRUE)
-				speed_in_pixels = round(speed_in_pixels * 0.5)
+				speed = round(speed * 0.5)
 				hit_mob.Knockdown(1 SECONDS)
 	else
 		playsound(src, 'modular_darkpack/modules/cars/sounds/bump.ogg', 75, TRUE)
-		speed_in_pixels = 0
+		speed = 0
 		COOLDOWN_START(src, impact_delay, 2 SECONDS)
 
 	if(driver && istype(bumped_atom, /mob/living/carbon/human/npc))
 		var/mob/living/carbon/human/npc/NPC = bumped_atom
 		NPC.Aggro(driver, TRUE)
 
-	last_pos["x_pix"] = 0
-	last_pos["y_pix"] = 0
-	for(var/mob/living/L in src)
-		if(L.client)
-			L.client.pixel_x = 0
-			L.client.pixel_y = 0
-	if(istype(bumped_atom, /mob/living))
-		var/mob/living/L = bumped_atom
-		var/hit_dam = prev_speed
-		if(!HAS_TRAIT(L, TRAIT_TOUGH_FLESH))
+	if(hit_mob)
+		var/hit_dam = impact_damage
+		if(!HAS_TRAIT(hit_mob, TRAIT_TOUGH_FLESH))
 			hit_dam = hit_dam*2
-		L.apply_damage(hit_dam, BRUTE, BODY_ZONE_CHEST)
+		hit_mob.apply_damage(hit_dam, BRUTE, BODY_ZONE_CHEST)
 		if(driver)
-			log_combat(driver, L, "hit with", src)
-	var/dam = prev_speed
+			log_combat(driver, hit_mob, "hit with", src)
+	var/dam = impact_damage
 	if(driver)
 		var/driver_skill = clamp(driver.st_get_stat(STAT_DRIVE)/2, 1, 4)
 		dam = round(dam/driver_skill)
-		driver.apply_damage(prev_speed, BRUTE, BODY_ZONE_CHEST)
+		driver.apply_damage(impact_damage, BRUTE, BODY_ZONE_CHEST)
+	eject_occupants_on_impact(impact_damage, travel_angle, bumped_atom) // CRIMSON EDIT ADDITION - Scooter
 	take_damage(dam)
-	return
+
+// CRIMSON EDIT ADDITION START - Scooter
+/// Throws everyone out of the vehicle, in the direction it was travelling, if the impact was fast enough.
+/obj/darkpack_car/proc/eject_occupants_on_impact(prev_speed, travel_angle, atom/bumped_atom)
+	if(!eject_speed_threshold || prev_speed < eject_speed_threshold)
+		return
+	if(isliving(bumped_atom))
+		var/mob/living/hit_mob = bumped_atom
+		if(hit_mob.mob_size <= MOB_SIZE_SMALL) // Running over a rat shouldn't launch you
+			return
+	var/list/occupants = list()
+	for(var/mob/living/rider in src)
+		occupants += rider
+	if(!length(occupants))
+		return
+	var/throw_distance = clamp(round(prev_speed / 3), 2, 7)
+	for(var/mob/living/rider as anything in occupants)
+		empty_occupant(rider)
+		rider.Knockdown(2 SECONDS)
+		rider.visible_message(span_danger("[rider] is thrown from [src]!"), \
+			span_userdanger("You are thrown from [src]!"))
+		var/turf/throw_target = get_turf_in_angle(travel_angle, get_turf(rider), throw_distance)
+		if(throw_target)
+			rider.throw_at(throw_target, throw_distance, 1)
+// CRIMSON EDIT ADDITION END
 
 /obj/darkpack_car/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
-	last_pos["x"] = x
-	last_pos["y"] = y
+	if(!forced)
+		return
+	animate(src)
+	pixel_x = 0
+	pixel_y = 0
+	offset_x = 0
+	offset_y = 0
+	camera_lead_x = 0
+	camera_lead_y = 0
+	for(var/mob/living/rider in src)
+		reset_rider_camera(rider.client)
 
 /obj/darkpack_car/process(seconds_per_tick)
-	car_move()
+	var/elapsed = min(world.time - last_process, world.tick_lag * 2)
+	last_process = world.time
+	if(elapsed <= 0)
+		return
 
-/obj/darkpack_car/proc/car_move()
-	speed_in_pixels = max(speed_in_pixels, -64)
-	var/used_vector = movement_vector
-	var/used_speed = speed_in_pixels
-
-	if(gas <= 0)
+	var/seconds = elapsed / (1 SECONDS)
+	if(on && gas <= 0)
 		stop_engine()
 		if(driver)
 			to_chat(driver, span_warning("No fuel in the tank!"))
-	if(!on || !driver)
-		speed_in_pixels = (speed_in_pixels < 0 ? -1 : 1) * max(abs(speed_in_pixels) - 15, 0)
-		if(speed_in_pixels == 0 && !light_on)
-			return PROCESS_KILL
 
-	forceMove(locate(last_pos["x"], last_pos["y"], z))
-	if(on)
-		new /obj/effect/temp_visual/car(loc)
+	update_speed(seconds)
+	if(on && COOLDOWN_FINISHED(src, smoke_cooldown))
+		COOLDOWN_START(src, smoke_cooldown, 0.5 SECONDS)
+		var/obj/effect/temp_visual/car/smoke = new(loc)
+		smoke.pixel_x = pixel_x
+		smoke.pixel_y = pixel_y
 
-	pixel_x = last_pos["x_pix"]
-	pixel_y = last_pos["y_pix"]
-	var/moved_x = round(sin(used_vector)*used_speed)
-	var/moved_y = round(cos(used_vector)*used_speed)
-	var/bump_target
-	if(used_speed != 0)
-		var/true_movement_angle = used_vector
-		if(used_speed < 0)
-			true_movement_angle = SIMPLIFY_DEGREES(used_vector+180)
+	if(!throwing && speed)
+		move_car(seconds)
+	else if(camera_lead_x || camera_lead_y)
+		update_rider_cameras(seconds, offset_x, offset_y)
+	else if(!speed && !on && !light_on)
+		return PROCESS_KILL
 
-		// Here lies the Car Backwards Long Jump - 2021-2025
-		var/turf/check_turf = get_turf_in_angle(true_movement_angle, src.loc, 3)
+/obj/darkpack_car/proc/update_speed(seconds)
+	var/throttle = 0
+	var/steering = 0
+	if(driver && COOLDOWN_FINISHED(src, impact_delay) && world.time - last_input_time <= world.tick_lag * 2)
+		throttle = !!(input_dir & NORTH) - !!(input_dir & SOUTH)
+		steering = !!(input_dir & EAST) - !!(input_dir & WEST)
 
-		handle_npc_dodge(check_turf, true_movement_angle)
+	var/braking = throttle * speed < 0
+	if(braking)
+		speed += throttle * 120 * seconds
+		if(!on)
+			speed = throttle > 0 ? min(speed, 0) : max(speed, 0)
+		if(COOLDOWN_FINISHED(src, drive_sound_cooldown))
+			COOLDOWN_START(src, drive_sound_cooldown, 0.3 SECONDS)
+			playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
+	else if(throttle && on)
+		speed = clamp(speed + throttle * stage * 40 * seconds, -128, stage * max_speed * 2) // CRIMSON EDIT CHANGE - Original: speed = clamp(speed + throttle * stage * 40 * seconds, -128, stage * 128)
+		if(COOLDOWN_FINISHED(src, drive_sound_cooldown))
+			COOLDOWN_START(src, drive_sound_cooldown, 0.3 SECONDS)
+			playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 10, FALSE)
+	else if(!on || !driver)
+		speed = speed > 0 ? max(speed - 60 * seconds, 0) : min(speed + 60 * seconds, 0)
 
-		var/turf/hit_turf
-		var/list/in_line = get_line(src, check_turf)
-		for(var/turf/T in in_line)
-			if(debug_car)
-				// For visualising path of car.
-				new /obj/effect/temp_visual/telegraphing/car(T)
+	if(!steering || !speed)
+		return
+	if(speed < 0 && !driver.client?.prefs?.read_preference(/datum/preference/toggle/enable_legacy_driving_controls))
+		steering = -steering
+	var/turn_rate = clamp(abs(speed) / (turn_speed_divisor * 2), min_turn_speed, max_turn_speed) * 20 * seconds // CRIMSON EDIT CHANGE - Original: var/turn_rate = min(abs(speed), 60) * seconds
+	if(braking)
+		turn_rate *= 1 + clamp(driver.st_get_stat(STAT_DRIVE)/4, 0.25, 4)
+	movement_vector = SIMPLIFY_DEGREES(movement_vector + steering * turn_rate)
+	apply_vector_angle()
 
-			if(hit_turf == get_turf(src))
-				continue // Avoid spam bumping and trapping us inside of a dense turf.
+/obj/darkpack_car/proc/move_car(seconds)
+	var/start_x = offset_x
+	var/start_y = offset_y
+	var/step_x = sin(movement_vector) * speed * seconds
+	var/step_y = cos(movement_vector) * speed * seconds
+	var/new_x = start_x + step_x
+	var/new_y = start_y + step_y
+	var/from_x = start_x
+	var/from_y = start_y
+	var/crossed = FALSE
 
-			var/dist_to_hit = get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], T.x*32, T.y*32)
-			if(dist_to_hit <= abs(used_speed))
-				var/list/stuff = T.get_blocking_contents(FALSE, src)
-				if(length(stuff))
-					if(!hit_turf || dist_to_hit < get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32))
-						hit_turf = T
-						if(debug_car)
-							// For visualising hit tile of car.
-							new /obj/effect/temp_visual/telegraphing(T)
-		if(hit_turf)
-			if(COOLDOWN_FINISHED(src, impact_delay))
-				bump_target = pick(hit_turf.get_blocking_contents(FALSE, src))
-			// to_chat(world, "I can't pass that [hit_turf] at [hit_turf.x] x [hit_turf.y] cause of [pick(hit_turf.unpassable)] FUCK")
-			// var/bearing = get_angle_raw(x, y, pixel_x, pixel_y, hit_turf.x, hit_turf.y, 0, 0)
-			var/actual_distance = get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32)-32
-			moved_x = round(sin(true_movement_angle)*actual_distance)
-			moved_y = round(cos(true_movement_angle)*actual_distance)
-			if(last_pos["x"]*32+last_pos["x_pix"] > hit_turf.x*32)
-				moved_x = max((hit_turf.x*32+32)-(last_pos["x"]*32+last_pos["x_pix"]), moved_x)
-			if(last_pos["x"]*32+last_pos["x_pix"] < hit_turf.x*32)
-				moved_x = min((hit_turf.x*32-32)-(last_pos["x"]*32+last_pos["x_pix"]), moved_x)
-			if(last_pos["y"]*32+last_pos["y_pix"] > hit_turf.y*32)
-				moved_y = max((hit_turf.y*32+32)-(last_pos["y"]*32+last_pos["y_pix"]), moved_y)
-			if(last_pos["y"]*32+last_pos["y_pix"] < hit_turf.y*32)
-				moved_y = min((hit_turf.y*32-32)-(last_pos["y"]*32+last_pos["y_pix"]), moved_y)
-	var/turf/west_turf = get_step(src, WEST)
-	if(west_turf.is_blocked_turf())
-		moved_x = max(-8-last_pos["x_pix"], moved_x)
-	var/turf/east_turf = get_step(src, EAST)
-	if(east_turf.is_blocked_turf())
-		moved_x = min(8-last_pos["x_pix"], moved_x)
-	var/turf/north_turf = get_step(src, NORTH)
-	if(north_turf.is_blocked_turf())
-		moved_y = min(8-last_pos["y_pix"], moved_y)
-	var/turf/south_turf = get_step(src, SOUTH)
-	if(south_turf.is_blocked_turf())
-		moved_y = max(-8-last_pos["y_pix"], moved_y)
+	var/shift_x = 0
+	if(new_x > CAR_TURF_CROSS_OFFSET && step_x > 0)
+		shift_x = 1
+	else if(new_x < -CAR_TURF_CROSS_OFFSET && step_x < 0)
+		shift_x = -1
+	if(shift_x)
+		var/turf/old_turf = loc
+		var/turf/next_turf = get_step(old_turf, shift_x > 0 ? EAST : WEST)
+		step(src, shift_x > 0 ? EAST : WEST)
+		if(QDELETED(src) || (loc != old_turf && loc != next_turf))
+			return
+		if(loc == next_turf)
+			pixel_x -= ICON_SIZE_X * shift_x
+			new_x -= ICON_SIZE_X * shift_x
+			from_x -= ICON_SIZE_X * shift_x
+			crossed = TRUE
+		else if(shift_x > 0)
+			new_x = min(new_x, max(start_x, CAR_TURF_CROSS_OFFSET))
+		else
+			new_x = max(new_x, min(start_x, -CAR_TURF_CROSS_OFFSET))
 
-	move_car_riders(moved_x, moved_y)
+	var/shift_y = 0
+	if(new_y > CAR_TURF_CROSS_OFFSET && step_y > 0)
+		shift_y = 1
+	else if(new_y < -CAR_TURF_CROSS_OFFSET && step_y < 0)
+		shift_y = -1
+	if(shift_y)
+		var/turf/old_turf = loc
+		var/turf/next_turf = get_step(old_turf, shift_y > 0 ? NORTH : SOUTH)
+		step(src, shift_y > 0 ? NORTH : SOUTH)
+		if(QDELETED(src) || (loc != old_turf && loc != next_turf))
+			return
+		if(loc == next_turf)
+			pixel_y -= ICON_SIZE_Y * shift_y
+			new_y -= ICON_SIZE_Y * shift_y
+			from_y -= ICON_SIZE_Y * shift_y
+			crossed = TRUE
+		else if(shift_y > 0)
+			new_y = min(new_y, max(start_y, CAR_TURF_CROSS_OFFSET))
+		else
+			new_y = max(new_y, min(start_y, -CAR_TURF_CROSS_OFFSET))
 
-	animate(src, pixel_x = last_pos["x_pix"]+moved_x, pixel_y = last_pos["y_pix"]+moved_y, SScarpool.wait, 1)
-	update_last_pos(moved_x, moved_y)
+	offset_x = new_x
+	offset_y = new_y
+	animate(src, pixel_x = new_x, pixel_y = new_y, time = world.tick_lag, flags = ANIMATION_PARALLEL | ANIMATION_CONTINUE)
+	update_rider_cameras(seconds, from_x, from_y)
+	if(crossed)
+		handle_npc_dodge()
 
-	if(bump_target)
-		Bump(bump_target)
+/obj/darkpack_car/proc/handle_npc_dodge()
+	var/angle = speed < 0 ? REVERSE_ANGLE(movement_vector) : movement_vector
+	for(var/turf/line_turf in get_line(src, get_turf_in_angle(angle, loc, 3)))
+		if(debug_car)
+			new /obj/effect/temp_visual/telegraphing/car(line_turf)
+		for(var/mob/living/carbon/human/npc/dodger in line_turf)
+			if(!dodger.density || !COOLDOWN_FINISHED(dodger, car_dodge) || HAS_TRAIT(dodger, TRAIT_INCAPACITATED))
+				continue
+			var/list/dodge_direction = list(
+				SIMPLIFY_DEGREES(angle + 45),
+				SIMPLIFY_DEGREES(angle - 45),
+				SIMPLIFY_DEGREES(angle + 90),
+				SIMPLIFY_DEGREES(angle - 90),
+			)
+			for(var/dir_angle in dodge_direction)
+				if(get_step(dodger, angle2dir(dir_angle)).density)
+					dodge_direction.Remove(dir_angle)
+			if(!length(dodge_direction))
+				continue
+			step(dodger, angle2dir(pick(dodge_direction)), dodger.cached_multiplicative_slowdown)
+			COOLDOWN_START(dodger, car_dodge, 2 SECONDS)
+			if(prob(50))
+				dodger.realistic_say(pick(dodger.socialrole.car_dodged))
 
-/obj/darkpack_car/proc/handle_npc_dodge(turf/target, angle)
-	for(var/turf/T in get_line(src, target))
-		var/list/unpassable = T.get_blocking_contents(FALSE, src)
-		if(!length(unpassable))
-			continue
-		for(var/mob/living/carbon/human/npc/NPC in unpassable)
-			if(COOLDOWN_FINISHED(NPC, car_dodge) && !HAS_TRAIT(NPC, TRAIT_INCAPACITATED))
-				var/list/dodge_direction = list(
-					SIMPLIFY_DEGREES(angle + 45),
-					SIMPLIFY_DEGREES(angle - 45),
-					SIMPLIFY_DEGREES(angle + 90),
-					SIMPLIFY_DEGREES(angle - 90),
-				)
-				for(var/dir_angle in dodge_direction)
-					if(get_step(NPC, angle2dir(dir_angle)).density)
-						dodge_direction.Remove(dir_angle)
-				if(length(dodge_direction))
-					step(NPC, angle2dir(pick(dodge_direction)), NPC.cached_multiplicative_slowdown)
-					COOLDOWN_START(NPC, car_dodge, 2 SECONDS)
-					if(prob(50))
-						NPC.realistic_say(pick(NPC.socialrole.car_dodged))
+/// Animates the riders' cameras to follow the car, a little ahead of it. from_x/from_y is where the camera was heading last tick, in this tick's tile frame.
+/obj/darkpack_car/proc/update_rider_cameras(seconds, from_x, from_y)
+	var/old_lead_x = camera_lead_x
+	var/old_lead_y = camera_lead_y
+	var/lead_blend = min(seconds / 0.5, 1)
+	camera_lead_x += (sin(movement_vector) * speed * 0.5 - camera_lead_x) * lead_blend
+	camera_lead_y += (cos(movement_vector) * speed * 0.5 - camera_lead_y) * lead_blend
+	if(abs(camera_lead_x) < 0.5)
+		camera_lead_x = 0
+	if(abs(camera_lead_y) < 0.5)
+		camera_lead_y = 0
 
-/// Moves the client cameras of living inside of the car.
-/obj/darkpack_car/proc/move_car_riders(moved_x, moved_y)
 	for(var/mob/living/rider in src)
-		if(rider.client)
-			rider.client.pixel_x = last_pos["x_frwd"]
-			rider.client.pixel_y = last_pos["y_frwd"]
-			animate(rider.client, \
-				pixel_x = last_pos["x_pix"] + moved_x * 2, \
-				pixel_y = last_pos["y_pix"] + moved_y * 2, \
-				SScarpool.wait, 1)
-
-/obj/darkpack_car/proc/update_last_pos(moved_x, moved_y)
-	// Step 1: Move pixel and forward positions
-	last_pos["x_frwd"] = last_pos["x_pix"] + moved_x * 2
-	last_pos["y_frwd"] = last_pos["y_pix"] + moved_y * 2
-	last_pos["x_pix"] = last_pos["x_pix"] + moved_x
-	last_pos["y_pix"] = last_pos["y_pix"] + moved_y
-
-	// Step 2: Calculate how many whole tiles we moved (if we crossed tile boundaries)
-	var/x_add = (last_pos["x_pix"] < 0 ? -1 : 1) * round((abs(last_pos["x_pix"]) + 16) / 32)
-	var/y_add = (last_pos["y_pix"] < 0 ? -1 : 1) * round((abs(last_pos["y_pix"]) + 16) / 32)
-
-	// Step 3: Subtract tile offsets to wrap pixel position into 0–31 range
-	last_pos["x_frwd"] -= x_add * 32
-	last_pos["y_frwd"] -= y_add * 32
-	last_pos["x_pix"] -= x_add * 32
-	last_pos["y_pix"] -= y_add * 32
-
-	// Step 4: Update absolute turf coordinates with clamping
-	last_pos["x"] = clamp(last_pos["x"] + x_add, 1, world.maxx)
-	last_pos["y"] = clamp(last_pos["y"] + y_add, 1, world.maxy)
+		var/client/rider_client = rider.client
+		if(!rider_client)
+			continue
+		rider_client.pixel_x = from_x + old_lead_x
+		rider_client.pixel_y = from_y + old_lead_y
+		animate(rider_client, pixel_x = offset_x + camera_lead_x, pixel_y = offset_y + camera_lead_y, time = world.tick_lag, flags = ANIMATION_PARALLEL | ANIMATION_CONTINUE)
 
 /obj/darkpack_car/relaymove(mob/living/user, direction)
 	if(user != driver)
@@ -703,68 +933,30 @@
 		return
 	if(!ISADVANCEDTOOLUSER(user))
 		return
-	var/turn_speed = min(abs(speed_in_pixels) / 10, 3)
-	switch(direction)
-		if(NORTH)
-			controlling(1, 0)
-		if(NORTHEAST)
-			controlling(1, turn_speed)
-		if(NORTHWEST)
-			controlling(1, -turn_speed)
-		if(SOUTH)
-			controlling(-1, 0)
-		if(SOUTHEAST)
-			controlling(-1, turn_speed)
-		if(SOUTHWEST)
-			controlling(-1, -turn_speed)
-		if(EAST)
-			controlling(0, turn_speed)
-		if(WEST)
-			controlling(0, -turn_speed)
-
-/obj/darkpack_car/proc/controlling(adjusting_speed, adjusting_turn)
-	var/drift = clamp(driver.st_get_stat(STAT_DRIVE)/4, 0.25, 4)
-	var/adjust_true = adjusting_turn
-	if(speed_in_pixels != 0)
-		movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true)
-		apply_vector_angle()
-	if(adjusting_speed)
-		if(on)
-			if(adjusting_speed > 0 && speed_in_pixels <= 0)
-				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
-				speed_in_pixels = speed_in_pixels+adjusting_speed*3
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
-			else if(adjusting_speed < 0 && speed_in_pixels > 0)
-				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
-				speed_in_pixels = speed_in_pixels+adjusting_speed*3
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
-			else
-				speed_in_pixels = min(stage*64, max(-stage*64, speed_in_pixels+adjusting_speed*stage))
-				playsound(src, 'modular_darkpack/modules/cars/sounds/drive.ogg', 10, FALSE)
-		else
-			if(adjusting_speed > 0 && speed_in_pixels < 0)
-				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
-				speed_in_pixels = min(0, speed_in_pixels+adjusting_speed*3)
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
-			else if(adjusting_speed < 0 && speed_in_pixels > 0)
-				playsound(src, 'modular_darkpack/modules/cars/sounds/stopping.ogg', 10, FALSE)
-				speed_in_pixels = max(0, speed_in_pixels+adjusting_speed*3)
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
+	input_dir = direction
+	last_input_time = world.time
 
 /obj/darkpack_car/proc/apply_vector_angle()
-	var/new_dir = angle2dir(movement_vector)
-	setDir(new_dir)
-
-	var/turn_state = round(SIMPLIFY_DEGREES(movement_vector + 22.5) / 45)
-	var/minus_angle = turn_state * 45
+	// angle2dir truncates fractional angles, so derive the dir from the same rounding as the residual turn
+	var/sprite_angle = round(SIMPLIFY_DEGREES(movement_vector + 22.5) / 45) * 45
+	var/new_dir = angle2dir(sprite_angle) // CRIMSON EDIT ADDITION - Scooter
+	setDir(angle2dir(sprite_angle))
+	// CRIMSON EDIT ADDITION START - Scooter
+	for(var/mob/living/rider in rider_holders)
+		var/obj/effect/car_rider_holder/holder = rider_holders[rider]
+		holder.setDir(new_dir)
+	if(front_holder)
+		front_holder.setDir(new_dir)
+	// CRIMSON EDIT ADDITION END
 
 	var/matrix/M = matrix()
-	M.Turn(movement_vector - minus_angle)
+	M.Turn(movement_vector - sprite_angle)
 	transform = M
 
 /obj/darkpack_car/proc/start_engine()
 	if(on)
 		return
+	last_process = world.time
 	START_PROCESSING(SScarpool, src)
 	on = TRUE
 	engine_sound_loop.start()
@@ -786,3 +978,4 @@
 
 #undef DOAFTER_SOURCE_CAR
 #undef CAR_TANK_MAX
+#undef CAR_TURF_CROSS_OFFSET
