@@ -25,5 +25,5 @@
 		new /datum/data/vending_product("candle pack", /obj/item/storage/fancy/candle_box, 12),
 		new /datum/data/vending_product("bruise pack", /obj/item/stack/medical/bruise_pack),
 		new /datum/data/vending_product("respirator", /obj/item/clothing/mask/gas/vampire),
-		new /datum/data/vending_product("wrist watch", /obj/item/watch, 20) // Crimson Edit Add - What time is it?
+		new /datum/data/vending_product("wrist watch", /obj/item/clothing/watch, 20) // Crimson Edit Add - What time is it?
 	)
