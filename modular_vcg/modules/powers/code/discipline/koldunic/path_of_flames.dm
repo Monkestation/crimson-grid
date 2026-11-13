@@ -1,6 +1,6 @@
 /datum/discipline/path_of_flames
 	name = "Path of Flames"
-	desc = {"Gives Power over the earth allowing one to use it to immobilize their enemies
+	desc = {"Gives Power over flames allowing one to command firey death upon ones enemies
 	● Combust: Manipulation + Occult
 	●● Magma Surge: Manipulation + Occult
 	●●● Wall of Magma: Manipulation + Occult
