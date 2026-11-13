@@ -33,6 +33,16 @@
 
 	tgui_icon = FA_ICON_SHIELD
 
+//CG Edit Start: Lets characters remember relevant keypad codes
+
+/datum/job/vampire/sheriff/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/obj/keypad/armory/armory_keypad = locate() in GLOB.keypads
+	if(armory_keypad)
+		spawned.mind.add_memory(/datum/memory/key/armory_code, remembered_code = armory_keypad.pincode)
+
+//CG Edit End.
+
 /datum/outfit/job/vampire/sheriff
 	name = JOB_SHERIFF
 	jobtype = /datum/job/vampire/sheriff
