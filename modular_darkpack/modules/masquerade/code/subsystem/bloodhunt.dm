@@ -41,6 +41,8 @@ SUBSYSTEM_DEF(bloodhunt)
 /atom/movable/screen/alert/bloodhunt/Click()
 	if(!..())
 		return
+	if(!length(SSbloodhunt.hunted))
+		return
 	selected_target += 1
 	if(selected_target > length(SSbloodhunt.hunted))
 		selected_target = 1
@@ -56,6 +58,7 @@ SUBSYSTEM_DEF(bloodhunt)
 
 	if(!blood_target) //If there is noone being hunted, delete ourselves
 		qdel(src)
+		return
 
 	var/turf/P = get_turf(blood_target)
 	var/turf/Q = get_turf(owner)
