@@ -11,7 +11,7 @@
 // Clinic
 #define JOB_CLINIC_GUARD "Clinic Guard"
 
-// Primogens
+// Camarilla
 #define JOB_JAZZ_SERVANT "Jazz Club Servant"
 
 // Display orders
