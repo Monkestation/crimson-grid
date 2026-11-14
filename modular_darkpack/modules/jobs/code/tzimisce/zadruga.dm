@@ -1,8 +1,8 @@
 /datum/job/vampire/zadruga
 	title = JOB_ZADRUGA
 	faction = FACTION_SABBAT
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 5
+	spawn_positions = 5
 	supervisors = " the Laws of Hospitality"
 	config_tag = "ZADRUGA"
 	outfit = /datum/outfit/job/vampire/zadruga
