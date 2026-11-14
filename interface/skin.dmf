@@ -260,6 +260,14 @@ window "outputwindow"
 		saved-params = "splitter"
 		background-color = #ffc41f
 		left = "output_selector"
+    elem "mediapanel"
+		type = BROWSER
+		pos = 599,460
+		size = 1x1
+		anchor1 = 100,100
+		anchor2 = -1,-1
+		is-visible = false
+		saved-params = ""
 
 window "output_selector"
 	elem "output_selector"

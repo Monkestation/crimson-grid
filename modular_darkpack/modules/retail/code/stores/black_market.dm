@@ -51,5 +51,8 @@
 		new /datum/data/vending_product("12g flechette shells", /obj/item/ammo_box/darkpack/c12g/buck/flech, 2000),
 		new /datum/data/vending_product("silver crossbow bolts", /obj/item/ammo_box/darkpack/arrows/silver, 2500),
 // CRIMSON EDIT END - Armory Ammunition Addtions
+// CRIMSON EDIT - PCNET
+		new /datum/data/vending_product("intrusion suite", /obj/item/pc_floppy/intrusion, 2500),
+// CRIMSON EDIT END - PCNET
 		new /datum/data/vending_product("bodybag", /obj/item/bodybag, 100)
 	)
