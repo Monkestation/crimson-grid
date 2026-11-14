@@ -399,12 +399,6 @@
 	contact_networks_pre_init = list(
 		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "Clinic Orderly", USE_JOB_TITLE = FALSE)
 		)
-
-/obj/item/smartphone/tower_employee
-	contact_networks_pre_init = list(
-		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = "Jazz Club Servant", USE_JOB_TITLE = TRUE)
-		)
-
 // CRIMSON EDIT ADD END - Triads and Rolelocks
 
 
