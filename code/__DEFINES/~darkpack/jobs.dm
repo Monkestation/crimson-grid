@@ -218,7 +218,7 @@
 // CRIMSON EDIT END - Triads
 
 // CRIMSON EDIT ADDITION - Camarilla
-#define SUPERVISOR_PRIMOGEN_BANU_HAQIM "the Ventrue Primogen"
+#define SUPERVISOR_PRIMOGEN_VENTRUE "the Ventrue Primogen"
 // CRIMSON EDIT END - Camarilla
 
 
