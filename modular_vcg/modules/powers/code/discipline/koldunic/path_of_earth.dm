@@ -315,7 +315,7 @@
 	for(var/turf/shaking_turf in range(3, target_turf))
 		shaking_turf.Shake(pixelshiftx = 0.1, pixelshifty = 0.1, duration = 2.5 SECONDS)
 
-	for(var/mob/viewer in viewers(4, target_turf))
+	for(var/mob/viewer in viewers(7, target_turf))
 		shake_camera(viewer, 3 SECONDS, 1)
 		viewer.playsound_local(
 			viewer,
