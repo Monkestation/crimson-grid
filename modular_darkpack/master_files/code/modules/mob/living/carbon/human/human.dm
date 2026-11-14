@@ -12,7 +12,7 @@
 		if(!reason)
 			return
 		reason = sanitize(reason)
-		if(!SEND_SIGNAL(reporter, COMSIG_SEEN_MASQUERADE_VIOLATION, src))
+		if(!reporter.on_observed_violation(reporter, src))
 			return
 		message_admins("[ADMIN_LOOKUPFLW(reporter)] spotted [ADMIN_LOOKUPFLW(src)]'s Masquerade violation. Description: [reason]")
 		log_game("[ADMIN_LOOKUPFLW(reporter)] spotted [ADMIN_LOOKUPFLW(src)]'s Masquerade violation. Description: [reason]")
@@ -26,7 +26,7 @@
 			return
 		if(usr == src)
 			return
-		if(!SEND_SIGNAL(reporter, COMSIG_MASQUERADE_REINFORCE, src))
+		if(!reporter.on_masquerade_violation_reinforced(reporter, src))
 			return
 		message_admins("[ADMIN_LOOKUPFLW(reporter)] repaired [ADMIN_LOOKUPFLW(src)]'s Masquerade violation.")
 		log_game("[ADMIN_LOOKUPFLW(reporter)] repaired [ADMIN_LOOKUPFLW(src)]'s Masquerade violation.")
