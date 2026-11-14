@@ -26,11 +26,9 @@
 /datum/splat/werewolf/shifter/proc/stash_dedicated_items()
 	for(var/obj/item/worn as anything in owner.get_equipped_items(INCLUDE_POCKETS)) // held items are not included as this is unnecessary and may cause certain shenanigans
 		LAZYSET(dedicated_items, worn, owner.get_slot_by_item(worn)) // records item and slot, creates the list if it is needed
-		owner.temporarilyRemoveItemFromInventory(worn, force = TRUE, idrop = FALSE) // unequip and move into character's contents without dropping it or any dependencies
+		owner.temporarilyRemoveItemFromInventory(worn, force = TRUE, idrop = FALSE) // unequip and move into character's contents without dropping it or any dependencies, stashed items are deleted/dropped with everything else
 		for(var/atom/movable/stored as anything in worn.get_all_contents()) // close equipped containers such as bags when shifting so they are not accessible when not actually equipped
 			stored.atom_storage?.close_all()
-	if(LAZYLEN(dedicated_items))
-		RegisterSignal(owner, COMSIG_QDELETING, PROC_REF(drop_dedicated_items), override = TRUE) // check if the character was gibbed or somehow deleted, so we can drop items as a failsafe if so
 
 /datum/splat/werewolf/shifter/proc/restore_dedicated_items()
 	if(!LAZYLEN(dedicated_items) || owner.dna?.species?.no_equip_flags) // do nothing if current form can't equip anything (Lupus, Hispo, Crinos, etc) or if stash is empty
@@ -42,14 +40,6 @@
 				continue
 			if(!owner.equip_to_slot_if_possible(stashed, slot, disable_warning = TRUE, bypass_equip_delay_self = TRUE)) // puts back in original slot, ignores unequippable warnings and skips any equip delays, such as for armour
 				stashed.forceMove(owner.drop_location()) // failsafe to drop item on the ground if it can't be automatically re-equipped for some reason.
-	dedicated_items = null
-	UnregisterSignal(owner, COMSIG_QDELETING)
-
-/datum/splat/werewolf/shifter/proc/drop_dedicated_items(datum/source)
-	SIGNAL_HANDLER
-	for(var/obj/item/stashed as anything in dedicated_items)
-		if(!QDELETED(stashed))
-			stashed.forceMove(owner.drop_location()) // drop surviving items where the gibbed/deleted mob was. This is triggered while still in the process of deletion so drop_location() should still be valid
 	dedicated_items = null
 
 #undef DEDICATION_DEPENDENT_SLOTS
