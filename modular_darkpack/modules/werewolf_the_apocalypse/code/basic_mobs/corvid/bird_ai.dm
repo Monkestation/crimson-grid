@@ -24,7 +24,7 @@
 	target_key = BB_LOW_PRIORITY_HUNTING_TARGET
 	hunting_behavior = /datum/ai_behavior/hunt_target/find_shiney
 	finding_behavior = /datum/ai_behavior/find_hunt_target/find_shiney
-	hunt_targets = list(/obj/item/ammo_casing, /obj/item/watch, /obj/item/vamp/keys, /obj/item/occult_artifact, /obj/item/knife)
+	hunt_targets = list(/obj/item/ammo_casing, /obj/item/clothing/watch, /obj/item/vamp/keys, /obj/item/occult_artifact, /obj/item/knife)
 	hunt_range = 10
 
 /datum/ai_behavior/find_hunt_target/find_shiney

@@ -238,6 +238,10 @@
 	resistance_flags = FIRE_PROOF
 	obj_flags = CONDUCTS_ELECTRICITY
 
+/obj/item/melee/vamp/tire/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/kneecapping)
+
 /obj/item/knife/vamp
 	name = "knife"
 	desc = "Don't cut yourself accidentally."
@@ -388,6 +392,10 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
 	custom_price = 20
+
+/obj/item/melee/baton/vamp/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/kneecapping)
 
 /obj/item/switchblade/vamp
 	name = "switchblade"
