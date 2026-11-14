@@ -31,6 +31,7 @@
 		new /datum/data/vending_product("Compact Medical Kit", /obj/item/storage/medkit/tactical_lite, 1125),
 		new /datum/data/vending_product("Coroner's Surgical Kit", /obj/item/storage/medkit/coroner, 750),
 // CRIMSON EDIT ADD END - Medkit to Pharmacy
+		new /datum/data/vending_product("opium package", /obj/item/food/drug/opium, 800),
 		new /datum/data/vending_product("silver 9mm ammo", /obj/item/ammo_box/darkpack/c9mm/silver, 5000),
 		new /datum/data/vending_product("silver .45 ACP ammo", /obj/item/ammo_box/darkpack/c45acp/silver, 6000),
 		new /datum/data/vending_product("silver .44 ammo", /obj/item/ammo_box/darkpack/c44/silver, 7000),
@@ -50,4 +51,5 @@
 		new /datum/data/vending_product("12g flechette shells", /obj/item/ammo_box/darkpack/c12g/buck/flech, 2000),
 		new /datum/data/vending_product("silver crossbow bolts", /obj/item/ammo_box/darkpack/arrows/silver, 2500),
 // CRIMSON EDIT END - Armory Ammunition Addtions
+		new /datum/data/vending_product("bodybag", /obj/item/bodybag, 100)
 	)

@@ -12,18 +12,20 @@
 	power_type = /datum/discipline_power/thaumaturgy
 	max_selectable_level = 5
 
-/datum/discipline/thaumaturgy/post_gain()
+/datum/discipline/thaumaturgy/post_gain(post_gain_applied)
 	. = ..()
-	var/datum/action/ritual_drawing/thaumaturgy/thaumaturgy = new()
-	thaumaturgy.Grant(owner)
-	thaumaturgy.level = level
-	add_verb(owner, /mob/living/carbon/human/proc/check_research_points)
+	if(!post_gain_applied)
+		var/datum/action/ritual_drawing/thaumaturgy/thaumaturgy = new()
+		thaumaturgy.Grant(owner)
+		thaumaturgy.level = level
+		add_verb(owner, /mob/living/carbon/human/proc/check_research_points)
 
 /datum/discipline/thaumaturgy/post_loss()
 	. = ..()
 	for(var/datum/action/action as anything in owner.actions)
 		if(istype(action, /datum/action/ritual_drawing/thaumaturgy))
 			qdel(action)
+	remove_verb(owner, /mob/living/carbon/human/proc/check_research_points)
 
 
 /datum/storyteller_roll/thaumaturgy
@@ -334,3 +336,8 @@
 		target.apply_damage(success_count * damage_mult * success_multiplier_mortal + owner.thaum_damage_plus, AGGRAVATED)
 	else
 		target.apply_damage(success_count * damage_mult * success_multiplier_supernatural + owner.thaum_damage_plus, AGGRAVATED)
+	// CRIMSON EDIT ADDITION START - Actually boiling the blood
+	if(ishuman(target))
+		var/mob/living/carbon/human/human_target = target
+		human_target.adjust_coretemperature(success_count * 10)
+	// CRIMSON EDIT ADDITION END - Actually boiling the blood
