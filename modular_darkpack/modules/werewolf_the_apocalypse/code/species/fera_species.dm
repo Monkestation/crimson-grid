@@ -283,8 +283,8 @@
 	species_language_holder = /datum/language_holder/crinos
 	mutanttongue = /obj/item/organ/tongue/fera
 	bodypart_overrides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera/aggravated,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/fera/aggravated,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera/aggravated/warform, //CRIMSON GRID EDIT - original /obj/item/bodypart/arm/left/fera/aggravated
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/fera/aggravated/warform, //CRIMSON GRID EDIT - original /obj/item/bodypart/arm/right/fera/aggravated
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/fera/aggravated,
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/fera/heavy,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/fera/heavy,

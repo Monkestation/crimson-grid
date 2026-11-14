@@ -7,7 +7,7 @@
 	config_tag = "BARON"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/baron
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_BARON
 	departments_list = list(
 		/datum/job_department/anarch,
