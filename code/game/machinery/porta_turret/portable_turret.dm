@@ -1086,15 +1086,12 @@ DEFINE_BITFIELD(turret_flags, list(
 	stun_projectile_sound = 'sound/items/weapons/gun/pistol/shot.ogg'
 	icon_state = "syndie_off"
 	base_icon_state = "syndie"
-	faction = list(EVIL_COMPANY)
+	faction = list(FACTION_PENTEX)
 	turret_flags = TURRET_FLAG_SHOOT_CRIMINALS | TURRET_FLAG_SHOOT_ANOMALOUS | TURRET_FLAG_SHOOT_BORGS
 	desc = "A ballistic machine gun auto-turret."
 
 /obj/machinery/porta_turret/pentex/setup()
 	return
-
-/obj/machinery/porta_turret/pentex/assess_perp(mob/living/carbon/human/perp)
-	return 10 //Used in ruin. shoot everything not in their faction
 
 /obj/machinery/porta_turret/pentex/c9mm
 	stun_projectile = /obj/projectile/bullet/darkpack/vamp9mm/silver

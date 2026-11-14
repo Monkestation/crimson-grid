@@ -114,6 +114,8 @@
 	switch(current_aura)
 		if(AURA_AFRAID)
 			examine_message = "[parent_mob.p_Their()] aura burns a bright orange, tense and flickering at the edges."
+		if(AURA_CONFIDENCE)
+			examine_message = "[parent_mob.p_Their()] aura radiates a confident yellow."
 		if(AURA_AGGRESSIVE)
 			examine_message = "[parent_mob.p_Their()] aura radiates a deep purple, pulsing like an engine."
 		if(AURA_ANGRY)

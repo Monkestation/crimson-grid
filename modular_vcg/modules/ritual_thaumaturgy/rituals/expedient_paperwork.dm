@@ -4,7 +4,7 @@
 	icon_state = "rune5"
 	word = ""
 	level = 1
-	sacrifices = list(/obj/item/paper, /obj/item/watch) // we don't have dog hair
+	sacrifices = list(/obj/item/paper, /obj/item/clothing/watch) // we don't have dog hair
 	var/paperwork_name
 	var/paperwork_icon
 	var/static/list/paperwork_icons = list("docs_generic", "docs_part", "docs_verified", "docs_red", "docs_blue")
