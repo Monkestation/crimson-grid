@@ -217,6 +217,11 @@
 #define DEPARTMENT_TRIAD "Chinese Triad"
 // CRIMSON EDIT END - Triads
 
+// CRIMSON EDIT ADDITION - Camarilla
+#define SUPERVISOR_PRIMOGEN_BANU_HAQIM "the Ventrue Primogen"
+// CRIMSON EDIT END - Camarilla
+
+
 DEFINE_BITFIELD(departments_bitflags, list(
 	"CITIZEN" = DEPARTMENT_BITFLAG_CITIZEN,
 	"PRINCE" = DEPARTMENT_BITFLAG_PRINCE,
