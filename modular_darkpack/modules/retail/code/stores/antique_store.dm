@@ -25,8 +25,6 @@
 		new /datum/data/vending_product("Plate Armor (Yellow)", /obj/item/clothing/suit/armor/riot/knight/yellow, 2500),
 		new /datum/data/vending_product("Plate Helmet (Yellow)", /obj/item/clothing/head/helmet/knight/yellow, 500),
 		new /datum/data/vending_product("Plate Armor (Red)", /obj/item/clothing/suit/armor/riot/knight/red, 2500),
-		new /datum/data/vending_product("Plate Helmet (Red)", /obj/item/clothing/head/helmet/knight/red, 500)
+		new /datum/data/vending_product("Plate Helmet (Red)", /obj/item/clothing/head/helmet/knight/red, 500),
 		// Crimson Grid Edit - Shop Fixes
-	)
-
 	)
