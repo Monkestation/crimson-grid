@@ -22,8 +22,9 @@
 	toggled = TRUE
 	duration_length = 1 TURNS
 
-/datum/discipline_power/potence/post_gain()
-	owner.st_add_stat_mod(STAT_STRENGTH, level, "Potence")
+/datum/discipline_power/potence/post_gain(post_gain_applied)
+	if(!post_gain_applied)
+		owner.st_add_stat_mod(STAT_STRENGTH, level, "Potence")
 
 /datum/discipline_power/potence/post_loss()
 	owner.st_remove_stat_mod(STAT_STRENGTH, "Potence")
