@@ -13,6 +13,7 @@
 	duration = 0.5 SECONDS
 
 /datum/looping_sound/car_engine
+	volume = 60
 	start_sound = 'modular_darkpack/modules/cars/sounds/start.ogg'
 	start_length = 2 SECONDS
 	mid_sounds = list('modular_darkpack/modules/cars/sounds/work.ogg')
