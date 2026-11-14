@@ -22,7 +22,7 @@
 	)
 
 	alt_titles = list(
-		"JOB_JAZZ_SERVANT",
+		JOB_JAZZ_SERVANT,
 		"Waiter",
 		"Servant",
 		"Vallet",
