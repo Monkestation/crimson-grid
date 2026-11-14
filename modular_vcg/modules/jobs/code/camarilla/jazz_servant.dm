@@ -27,7 +27,7 @@
 		"Maître d'",
 		"Vallet",
 		"Sommelier",
-		"Major-Domo"
+		"Major-Domo",
 	)
 
 	tgui_icon = FA_ICON_WINE_GLASS_EMPTY
