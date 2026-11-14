@@ -60,6 +60,16 @@
 	icon_state = "baseball_green"
 	inhand_icon_state = null
 
+/obj/item/clothing/head/vampire/voodoohat
+	name = "voodoo hat"
+	desc = "a fantastically fancy hat worn by the eccentric."
+	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
+	worn_icon = 'modular_vcg/modules/clothes/icons/worn_32x40.dmi'
+	icon_state = "voodoo_hat"
+	worn_y_offset = 1
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
+	custom_price = 150
+
 /// ARMOR
 
 /obj/item/clothing/head/vampire/bikehelmet

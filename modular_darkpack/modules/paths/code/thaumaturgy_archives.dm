@@ -17,6 +17,13 @@
 	new /datum/data/vending_product("Levinbolt Spellbook (Level IV)",	/obj/item/path_spellbook/levinbolt/level4,	240),
 	new /datum/data/vending_product("Levinbolt Spellbook (Level V)",	/obj/item/path_spellbook/levinbolt/level5, 270),
 
+	// CRIMSON GRID EDIT START - Movement of the Mind
+	new /datum/data/vending_product("Movement of the Mind Spellbook (Level I)",	/obj/item/path_spellbook/movement_of_mind/level1,	130),
+	new /datum/data/vending_product("Movement of the Mind Spellbook (Level II)",	/obj/item/path_spellbook/movement_of_mind/level2,	180),
+	new /datum/data/vending_product("Movement of the Mind Spellbook (Level III)",	/obj/item/path_spellbook/movement_of_mind/level3,	210),
+	new /datum/data/vending_product("Movement of the Mind Spellbook (Level IV)",	/obj/item/path_spellbook/movement_of_mind/level4,	240),
+	new /datum/data/vending_product("Movement of the Mind Spellbook (Level V)",	/obj/item/path_spellbook/movement_of_mind/level5, 270),
+	// CRIMSON GRID EDIT END
 	// ARTIFACTS
 	// Lower tier artifacts
 	new /datum/data/vending_product("Weekapaug Thistle", /obj/item/occult_artifact/vampire/weekapaug_thistle, 75),
