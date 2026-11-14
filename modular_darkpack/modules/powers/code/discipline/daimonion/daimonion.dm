@@ -12,6 +12,14 @@
 	signature_clan = VAMPIRE_CLAN_BAALI
 	max_selectable_level = 5 	// CRIMSON GRID ADD END: DARK THAUMATURGY
 
+// CRIMSON GRID ADD: DARK THAUMATURGY 2
+/datum/discipline/daimonion/post_gain()
+	. = ..()
+	var/datum/action/ritual_drawing/dark_thaumaturgy/dark_thaumaturgy = new()
+	dark_thaumaturgy.Grant(owner)
+	dark_thaumaturgy.level = level
+// CRIMSON GRID ADD END: DARK THAUMATURGY 2
+
 /datum/discipline_power/daimonion
 	name = "Daimonion power name"
 	desc = "Daimonion power description"
@@ -160,24 +168,29 @@
 		return FALSE
 	return TRUE
 
-/datum/discipline_power/daimonion/fear_of_the_void_below/activate(mob/living/carbon/human/target)
+// CRIMSON GRID ADD: DARK THAUMATURGY 2
+/datum/discipline_power/daimonion/fear_of_the_void_below/pre_activation_checks(mob/living/target)
 	. = ..()
-	// CRIMSON GRID ADD: DARK THAUMATURGY
 	if(!fear_of_the_void_below_roll)
 		fear_of_the_void_below_roll = new()
 	fear_of_the_void_below_roll.difficulty = target.st_get_stat(STAT_COURAGE) + 4
 	success_count = SSroll.storyteller_roll_datum(owner, target, /datum/storyteller_roll/fear_of_the_void_below, difficulty = target.st_get_stat(STAT_COURAGE) + 4)
 	if(success_count <= 0)
 		to_chat(owner, span_warning("[target] has too much willpower to induce fear into them!"))
-		return
+		return FALSE
 	if(get_kindred_splat(target))
 		if(!fear_of_the_void_below_resist)
 			fear_of_the_void_below_resist = new()
 		var/resist_count = SSroll.storyteller_roll_datum(target, owner, /datum/storyteller_roll/fear_of_the_void_below_resist, difficulty = owner.st_get_stat(STAT_PERMANENT_WILLPOWER))
 		if(resist_count > success_count)
-			to_chat(owner, span_warning("You fail to envelop [target]'s mind as they subdue their their beast!"))
-			return
-	target.apply_status_effect(/datum/status_effect/dread_gaze)
+			to_chat(owner, span_warning("You fail to envelop [target]'s mind as they subdue their beast!"))
+			return FALSE
+// CRIMSON GRID ADD END: DARK THAUMMATURGY 2
+
+/datum/discipline_power/daimonion/fear_of_the_void_below/activate(mob/living/carbon/human/target)
+	. = ..()
+	// CRIMSON GRID ADD: DARK THAUMATURGY
+	target.apply_status_effect(/datum/status_effect/daimonion_dread) // CRIMSON GRID ADD: DARK THAUMATURGY 2
 	target.emote("tremble")
 	target.emote(pick("scream","cry"))
 	to_chat(target, span_warning("Your greatest fear envelops you!"))
@@ -203,6 +216,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
 	target_type = TARGET_LIVING | TARGET_TURF | TARGET_OBJ // CRIMSON GRID ADD: DARK THAUMATURGY
 	range = 7
+	cooldown_length = 30 SECONDS // CRIMSON GRID ADD: DARK THAUMATURGY 2
 	activate_sound = 'modular_darkpack/modules/powers/sounds/daimonion_fireball.ogg'
 	aggravating = TRUE
 	hostile = TRUE
@@ -212,6 +226,13 @@
 	color = "#1c1f1d"
 	damage = 40 //CRIMSON GRID ADD: DARK THAUMATURGY
 	damage_type = BURN // CRIMSON GRID ADD END: DARK THAUMATURGY
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	ignite_chance = 100
+	fire_turf_chance = 100
+	ignite_color = COLOR_VERY_DARK_LIME_GREEN
+	fire_turf_type = /obj/effect/abstract/turf_fire/infernal
+	hit_prone_targets = TRUE
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 
 // CRIMSON GRID ADD: DAIMOINON -> DAIMONION
 /datum/discipline_power/daimonion/conflagration/activate(atom/target)

@@ -213,6 +213,9 @@
 /obj/effect/mapping_helpers/door/access/pentex_leader
 	lock_id = LOCKACCESS_PENTEX_LEADER
 
+/obj/effect/mapping_helpers/door/access/red_news
+	lock_id = LOCKACCESS_RED_NEWS
+
 /obj/effect/mapping_helpers/door/access/npc
 	icon_state = "access_helper_rand"
 

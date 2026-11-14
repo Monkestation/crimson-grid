@@ -12,6 +12,10 @@
 	var/mob/living/caster_mob
 	/// Whether we're currently undoing the change
 	var/already_restored = FALSE
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	/// Whether you're allowed to transform back by clicking on an alert
+	var/allow_unshapeshift = TRUE
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 
 /datum/status_effect/shapechange_mob/on_creation(mob/living/new_owner, mob/living/caster)
 	// If the mob is shapechanging while being deleted (for example, a bitrunning avatar dying and getting booted out)
@@ -263,7 +267,11 @@
 	var/mob/living/living_user = usr
 	if(!istype(living_user))
 		return
-
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	var/datum/status_effect/shapechange_mob/shapeshift = living_user.has_status_effect(/datum/status_effect/shapechange_mob)
+	if(shapeshift?.allow_unshapeshift == FALSE)
+		return
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 	// Clicking the action will try to cast whatever spell shifted us in the first place
 	for(var/datum/action/cooldown/spell/shapeshift/shift_spell in living_user.actions)
 		if(istype(living_user, shift_spell.shapeshift_type))
