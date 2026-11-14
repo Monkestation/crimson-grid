@@ -1,5 +1,6 @@
 /datum/ert/darkpack
 	abstract_type = /datum/ert/darkpack
+	forced_splat = SPLAT_NONE
 
 /datum/ert/darkpack/swat
 	leader_role = /datum/antagonist/ert/darkpack/swat/leader
@@ -21,6 +22,7 @@
 	rename_team = "First Team"
 	mission = "Liquidate all hostile anomolous entities"
 	polldesc = "an elite FIRST Team"
+	supernatural_aware = TRUE
 
 /datum/ert/darkpack/pentex/budget
 	leader_role = /datum/antagonist/ert/darkpack/pentex/budget_leader
