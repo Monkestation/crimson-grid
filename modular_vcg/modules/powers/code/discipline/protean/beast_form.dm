@@ -228,3 +228,9 @@
 		new_shape.icon_dead = "[chosen_icon_state]_dead"
 	new_shape.update_appearance(UPDATE_ICON)
 	return new_shape
+
+/datum/action/cooldown/spell/shapeshift/gangrel/beast_form/do_shapeshift(mob/living/caster)
+	. = ..()
+	var/mob/living/new_shape = .
+	if(new_shape)
+		new_shape.grant_language(/datum/language/primal_tongue, source = LANGUAGE_ATOM)
