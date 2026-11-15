@@ -271,6 +271,11 @@
 	var/accurate_range = 100
 	/// If true directly targeted turfs can be hit
 	var/can_hit_turfs = FALSE
+	/// Hard cap on tile-steps a single hitscan shot may take over its whole life, ricochets included.
+	/// range gets reset on every ricochet, so this is what bounds mirror loops and stops
+	var/hitscan_max_steps = 300
+	/// Tile-steps this shot has taken so far
+	VAR_PRIVATE/hitscan_steps_taken = 0
 
 /obj/projectile/Initialize(mapload)
 	. = ..()
@@ -1069,7 +1074,7 @@
 			return movements_done
 
 		// Prevents long-range high-speed projectiles from ruining the server performance by moving 100 tiles per tick when subsystem is set to a high cap
-		if (TICK_CHECK)
+		if (!hitscan && TICK_CHECK)
 			// If we ran out of time, add whatever distance we're yet to pass to overrun debt to be processed next tick and break the loop
 			overrun += pixels_to_move
 			return movements_done
@@ -1094,7 +1099,7 @@
 	var/new_angle = closer_angle_difference(angle, angle_between_points(RETURN_PRECISE_POINT(src), new_point))
 	set_angle(angle + clamp(new_angle, -homing_turn_speed, homing_turn_speed))
 
-/// Attempts to force the projectile to move until the subsystem runs out of processing time, the projectile impacts something or gets frozen by timestop
+///this now just does everything at once so its actual hitscan, and we just pray we don't have infinite loops
 /obj/projectile/proc/process_hitscan()
 	if (isnull(movement_vector))
 		qdel(src)
@@ -1106,14 +1111,17 @@
 		if (QDELETED(src))
 			return
 
-		//if (!TICK_CHECK && !paused)
-			//continue
+		// Timestop shit
+		if (paused)
+			create_hitscan_point()
+			generate_hitscan_tracers(impact_point = FALSE, impact_visual = FALSE)
+			record_hitscan_start(offset = FALSE)
+			return
 
-		create_hitscan_point()
-		// Create tracers if we get timestopped or lagchunk so there aren't weird delays
-		generate_hitscan_tracers(impact_point = FALSE, impact_visual = FALSE)
-		record_hitscan_start(offset = FALSE)
-		return
+		//gwahhhh infinite loops
+		if (++hitscan_steps_taken >= hitscan_max_steps)
+			qdel(src)
+			return
 
 /// Creates (or wipes clean) list of tracer keypoints and creates a first point.
 /obj/projectile/proc/record_hitscan_start(offset = TRUE)
