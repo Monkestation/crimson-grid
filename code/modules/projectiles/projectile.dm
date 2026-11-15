@@ -1106,8 +1106,8 @@
 		if (QDELETED(src))
 			return
 
-		if (!TICK_CHECK && !paused)
-			continue
+		//if (!TICK_CHECK && !paused)
+			//continue
 
 		create_hitscan_point()
 		// Create tracers if we get timestopped or lagchunk so there aren't weird delays
