@@ -786,7 +786,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 
 	// DARKPACK EDIT ADD START - Medicine Surgery Speed
 	var/medicine_stat = surgeon.st_get_stat(STAT_MEDICINE)
-	basemod *= (1 - (0.02 * medicine_stat))
+	basemod *= (1 - (0.1 * medicine_stat))
 	// DARKPACK EDIT ADD END
 
 	return basemod
