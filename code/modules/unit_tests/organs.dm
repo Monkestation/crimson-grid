@@ -139,6 +139,7 @@
 	anime_dummy.set_species(/datum/species/human/felinid, pref_load = TRUE)
 	TEST_ASSERT(istype(anime_dummy.get_organ_slot(ORGAN_SLOT_EARS), /obj/item/organ/ears/cat), "Felinid with default ears set did not have cat ears on species gain.")
 
+/* // DARKPACK EDIT REMOVAL - (Removes /tg/ zombie infection outbreak)
 /datum/unit_test/zombie_cure
 
 /datum/unit_test/zombie_cure/Run()
@@ -150,3 +151,4 @@
 	TEST_ASSERT(dummy.has_status_effect(/datum/status_effect/zombie), "Zombie status effect was not applied successfully.")
 	infection.Remove(dummy)
 	TEST_ASSERT(!dummy.has_status_effect(/datum/status_effect/zombie), "Zombie status effect was not removed successfully upon losing the infection.")
+*/
