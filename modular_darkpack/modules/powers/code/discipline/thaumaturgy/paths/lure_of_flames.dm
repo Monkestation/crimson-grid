@@ -149,7 +149,7 @@
 	var/turf/start = get_turf(owner)
 	var/obj/projectile/flames/H = new(start)
 	H.firer = owner
-	H.damage = 25 + owner.thaum_damage_plus + success_count
+	H.damage = 35 + owner.thaum_damage_plus + success_count  // CRIMSON EDIT CHANGE - Original: 25 + owner.thaum_damage_plus + success_count
 	var/angle = get_angle(owner, target)
 	H.fire(angle, target)
 	to_chat(target, span_danger("A bolt of searing flame flies toward you!"))
@@ -178,7 +178,7 @@
 	if(.)
 		return
 
-	var/damage_amount = 25 + owner.thaum_damage_plus + success_count
+	var/damage_amount = 35 + owner.thaum_damage_plus + success_count // CRIMSON EDIT CHANGE - Original: 25 + owner.thaum_damage_plus + success_count
 	target.adjust_fire_loss(damage_amount)
 
 	target.adjust_fire_stacks(4 + success_count)
@@ -225,7 +225,7 @@
 		new /obj/effect/temp_visual/inferno_warning(T)
 	owner.visible_message(span_warning("Sparks begin to fly and the temperature begins to climb... what could be happening?!"))
 
-	if(!do_after(owner, 4 SECONDS))
+	if(!do_after(owner, 2 SECONDS))  // CRIMSON EDIT CHANGE - Original (owner, 4 SECONDS)
 		to_chat(owner, span_warning("Your firestorm casting was interrupted!"))
 		for(var/turf/T in affected_turfs) // delete all inferno warnings if casting was interrupted
 			for(var/obj/effect/temp_visual/inferno_warning/W in T)
@@ -233,7 +233,7 @@
 		return
 
 	// damage dealt to those standing in the zone is based on successes and so are the fire stacks
-	var/base_damage = 20 + (success_count * 5) + owner.thaum_damage_plus
+	var/base_damage = 40 + (success_count * 5) + owner.thaum_damage_plus // CRIMSON EDIT CHANGE - Original: 20 + (success_count * 5) + owner.thaum_damage_plus
 	var/fire_stacks_amount = 3 + success_count
 	var/ignite_chance = min(60 + (success_count * 10), 95) // 60% base, +10% per success, max 95%
 
@@ -301,7 +301,7 @@
 	icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	icon_state = "fireball"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
-	damage = 20
+	damage = 35 // CRIMSONT EDIT CHANGE - Original: 20
 	damage_type = BURN
 	hitsound_wall = 'sound/items/weapons/effects/searwall.ogg'
 	//flag = LASER
