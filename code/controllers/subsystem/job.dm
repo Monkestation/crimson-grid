@@ -602,6 +602,9 @@ SUBSYSTEM_DEF(job)
 	// DARKPACK EDIT ADD START - ALTERNATIVE_JOB_TITLES
 	// The alt job title, if user picked one, or the default
 	var/alt_title = player_client?.prefs.alt_job_titles?[job.title] || job.title
+	var/knows_masquerade = player_client.prefs.read_preference(/datum/preference/toggle/masquerade_knower)
+	if(knows_masquerade)
+		GLOB.human_knowers |= equipping
 	// DARKPACK EDIT ADD END
 	equipping.job = job.title
 

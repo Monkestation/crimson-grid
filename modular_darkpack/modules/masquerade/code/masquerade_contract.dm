@@ -16,7 +16,7 @@
 /obj/item/masquerade_contract/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!get_vampire_splat(user))
-		return
+		return FALSE
 	var/turf/current_location = get_turf(user)
 	to_chat(user, span_info("[span_bold("YOU")], [get_area_name(user)] X:[current_location.x] Y:[current_location.y] Z:[current_location.z]"))
 	for(var/mob/living/carbon/breacher in GLOB.masquerade_breakers_list)
@@ -28,8 +28,19 @@
 			location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Masquerade: [breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]"))
 
-	if(!GLOB.masquerade_breakers_list)
+	if(!length(GLOB.masquerade_breakers_list))
 		to_chat(user, span_info("No available Masquerade breakers in city..."))
+	return TRUE
+
+/obj/item/masquerade_contract/prince/attack_self(mob/user, modifiers)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!length(GLOB.human_knowers))
+		return
+	to_chat(user, span_info("Humans with knowledge of us:"))
+	for(var/mob/living/carbon/breacher in GLOB.human_knowers)
+		to_chat(user, span_info("[breacher.real_name]"))
 
 /obj/item/veil_contract
 	name = "\improper brass pocketwatch"
