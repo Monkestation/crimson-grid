@@ -109,6 +109,7 @@
 	reqs = list(/obj/item/stack/sheet/meat = 2, /obj/item/bodypart/arm/right = 2, /obj/item/bodypart/arm/left = 2, /obj/item/spine = 1)
 	result = /mob/living/basic/szlachta
 	category = CAT_TZIMISCE
+	crafting_flags = CRAFT_CHECK_MINION
 
 /datum/crafting_recipe/tzi_fister
 	name = "Punching Abomination"
@@ -116,7 +117,7 @@
 	reqs = list(/obj/item/stack/sheet/meat = 5, /obj/item/bodypart/arm/right = 1, /obj/item/bodypart/arm/left = 1, /obj/item/spine = 1, /obj/item/guts = 1)
 	result = /mob/living/basic/szlachta/fister
 	category = CAT_TZIMISCE
-	crafting_flags = CRAFT_CHECK_DENSITY
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_MINION
 
 /datum/crafting_recipe/tzi_tanker
 	name = "Fat Abomination"
@@ -124,4 +125,4 @@
 	reqs = list(/obj/item/stack/sheet/meat = 10, /obj/item/bodypart/arm/right = 1, /obj/item/bodypart/arm/left = 1, /obj/item/bodypart/leg/right = 1, /obj/item/bodypart/leg/left = 1, /obj/item/spine = 1, /obj/item/guts = 2)
 	result = /mob/living/basic/szlachta/tanker
 	category = CAT_TZIMISCE
-	crafting_flags = CRAFT_CHECK_DENSITY
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_CHECK_MINION

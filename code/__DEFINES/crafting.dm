@@ -40,6 +40,8 @@
 /// This craft will collect items used in the crafting recipe for check_requirements()
 /// Ugly microop but only a few recipes care about this, and we do a lot of work for it
 #define CRAFT_COLLECT_REQUIREMENTS (1<<11)
+/// Crafting will reference the Crafter's Beastmaster List
+#define CRAFT_CHECK_MINION (1<<12) // DARKPACK EDIT ADD
 
 //Crafting blacklist behaviors
 /// By default, blacklist the result if it's not in reqs
