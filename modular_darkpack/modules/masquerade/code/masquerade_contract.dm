@@ -73,7 +73,7 @@
 			location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Veil: [breacher.masquerade_score], [location_info]"))
 
-	if(!GLOB.veil_breakers_list)
+	if(!length(GLOB.veil_breakers_list))
 		to_chat(user, span_info("No available Veil breakers in city..."))
 
 /obj/item/intel_report
@@ -99,5 +99,5 @@
 			location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Veil: [breacher.masquerade_score], [location_info]"))
 
-	if(!GLOB.supernatural_breakers_list)
+	if(!length(GLOB.supernatural_breakers_list))
 		to_chat(user, span_info("No available freaks of nature in city..."))
