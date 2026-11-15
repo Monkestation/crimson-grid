@@ -256,3 +256,4 @@
 	cooldown_time = 5 SECONDS
 	revert_on_death = TRUE
 	die_with_shapeshifted_form = FALSE
+	owner_has_control = FALSE
