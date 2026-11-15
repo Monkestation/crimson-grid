@@ -28,6 +28,7 @@
 	music_index = MUSIC_CAERN
 	zone_type = ZONE_ELYSIUM
 	gauntlet_rating = 5
+	outdoors = FALSE
 
 /area/vtm/interior/wyld/caern/bawn
 	name = "Forest Bawn"
@@ -37,13 +38,3 @@
 	AddComponent(/datum/component/bawn_area, /obj/structure/werewolf_totem/generic/gaia)
 
 // CRIMSON EDITT ADD END - Oakland Forest
-
-
-
-/area/vtm/interior/wyld/caern
-	name = "Forest Caern"
-	icon_state = "cog_caern"
-	music_index = MUSIC_CAERN
-	zone_type = ZONE_ELYSIUM
-	gauntlet_rating = 5
-	outdoors = FALSE
