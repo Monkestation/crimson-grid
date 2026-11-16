@@ -19,3 +19,11 @@
 
 #define SPLAT_PRIO_SHIFTER 40 + SPLAT_PRIO_SPLAT
 #define SPLAT_PRIO_KINDRED 60 + SPLAT_PRIO_SPLAT
+
+#define VV_HK_ADD_SPLAT "add_splat"
+#define VV_HK_REMOVE_SPLAT "remove_splat"
+
+#define VV_HK_GIVE_ACTION "give_action"
+#define VV_HK_REMOVE_ACTION "remove_action"
+#define VV_HK_GIVE_POWER "give_power"
+#define VV_HK_REMOVE_POWER "remove_power"

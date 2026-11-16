@@ -10,6 +10,7 @@
 	icon = FA_ICON_EYE
 	failure_message = "Your blood resists the urge to open the third eye."
 	quirk_flags = QUIRK_CHANGES_APPEARANCE
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 
 /datum/quirk/darkpack/permanent_third_eye/add_to_holder(mob/living/new_holder, quirk_transfer, client/client_source, unique, announce)
 	. = ..()

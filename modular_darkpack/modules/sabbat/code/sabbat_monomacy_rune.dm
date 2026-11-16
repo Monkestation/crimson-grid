@@ -15,7 +15,7 @@
 /obj/sabbatrune/attack_hand(mob/living/user)
 	. = ..()
 
-	if(!is_sabbatist(user))
+	if(!is_sabbatist(user.mind.assigned_role))
 		to_chat(user, span_warning("You do not understand the power of this rune."))
 		return
 
@@ -34,7 +34,7 @@
 	var/mob/living/target = null
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		// if the target is not dead, is the challenger isnt targeting themselves, if the target is a sabbatist, and if one of the name datums match the name input
-		if(H.stat != DEAD && H != challenger && is_sabbatist(H) && (findtext(H.real_name, challenged_name) || findtext(H.name, challenged_name)))
+		if(H.stat != DEAD && H != challenger && is_sabbatist(H.mind?.assigned_role) && (findtext(H.real_name, challenged_name) || findtext(H.name, challenged_name)))
 			target = H
 
 	if(!target)

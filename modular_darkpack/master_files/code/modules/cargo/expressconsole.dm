@@ -1,6 +1,6 @@
 /obj/machinery/computer/cargo/express
 	req_access = list()
-	locked = FALSE
+	locked = TRUE
 	landingzone = /area/vtm/outside/supply
 
 /obj/machinery/computer/cargo/express/Initialize(mapload)

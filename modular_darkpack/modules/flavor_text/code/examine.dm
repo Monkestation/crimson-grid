@@ -30,7 +30,7 @@
 	var/nsfw_content = user.client?.prefs.read_preference(/datum/preference/toggle/nsfw_content_pref)
 	var/flavor_text_nsfw = ""
 	var/ooc_notes = ""
-	var/show_flavor_text_when_masked = holder.client?.prefs.read_preference(/datum/preference/toggle/show_flavor_text_when_masked)
+	var/show_flavor_text_when_masked = holder.client?.prefs.read_preference(/datum/preference/toggle/show_identity_when_masked)
 
 	if(ishuman(holder))
 		var/mob/living/carbon/human/holder_human = holder
@@ -80,7 +80,7 @@
 	var/preview_text = copytext_char(dna.features[main_flavor_text_key], 1, FLAVOR_PREVIEW_LIMIT)
 	// What examine_tgui.dm uses to determine if flavor text appears as "Obscured".
 	var/face_obscured = obscured_slots & HIDEFACE
-	if(!face_obscured || (face_obscured && client?.prefs.read_preference(/datum/preference/toggle/show_flavor_text_when_masked)))
+	if(!face_obscured || (face_obscured && client?.prefs.read_preference(/datum/preference/toggle/show_identity_when_masked)))
 		flavor_text_to_show = span_notice("[preview_text]... <a href='byond://?src=[REF(src)];view_flavortext=1;'>\[Look closer?\]</a>")
 
 	return flavor_text_to_show

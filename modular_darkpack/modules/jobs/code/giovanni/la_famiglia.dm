@@ -7,19 +7,29 @@
 	config_tag = "LA_FAMIGLIA"
 	outfit = /datum/outfit/job/vampire/famiglia
 	job_flags = CITY_JOB_FLAGS
-	display_order = 2
+	display_order = 4
 	exp_required_type_department = EXP_TYPE_GIOVANNI
 	departments_list = list(
 		/datum/job_department/giovanni,
 	)
 
+	tgui_icon = FA_ICON_MONEY_BILL_1_WAVE
+
+	known_contacts = list(
+		JOB_CAPO,
+		JOB_LA_SQUADRA,
+		JOB_LA_FAMIGLIA
+	)
+
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINDRED)
 	allowed_clans = list(VAMPIRE_CLAN_CAITIFF)
+	maximal_generation = 9
+	maximum_immortal_age = 200
 	description = "Your family is a strange one. Maybe you are strange too, because sitting next to your great uncles as an equal is something you are greatly interested in."
 	minimum_masquerade = 0
 
 /datum/outfit/job/vampire/famiglia
-	name = "La Famiglia"
+	name = JOB_LA_FAMIGLIA
 	jobtype = /datum/job/vampire/famiglia
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	uniform = /obj/item/clothing/under/vampire/suit
@@ -28,3 +38,7 @@
 	l_pocket = /obj/item/smartphone/giovanni_famiglia
 	r_pocket = /obj/item/vamp/keys/giovanni
 	backpack_contents = list(/obj/item/card/credit=1)
+
+/datum/outfit/job/vampire/famiglia/post_equip(mob/living/carbon/human/H)
+	. = ..()
+	H.grant_language(/datum/language/italian, source = "job")

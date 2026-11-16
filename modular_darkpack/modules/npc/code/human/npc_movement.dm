@@ -221,15 +221,7 @@
 		return FALSE
 	if(mind || client)
 		return FALSE
-	if(IsSleeping())
-		return FALSE
-	if(IsUnconscious())
-		return FALSE
-	if(IsParalyzed())
-		return FALSE
-	if(IsKnockdown())
-		return FALSE
-	if(IsStun())
+	if(IsIncapacitated())
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		return FALSE
@@ -245,6 +237,9 @@
 		return FALSE
 
 	return TRUE
+
+/mob/living/proc/IsIncapacitated() //If we're incapacitated in any way
+	return locate(/datum/status_effect/incapacitating) in status_effects || null
 
 /mob/living/carbon/human/npc/proc/observed_by_player()
 	for (var/mob/observing_mob in viewers(DEFAULT_SIGHT_DISTANCE, src))
@@ -297,7 +292,7 @@
 					GLOB.move_manager.move_to(src, danger_source, 1, cached_multiplicative_slowdown)
 
 		// Deaggro if the danger source has been beaten up
-		if (danger_source.stat > UNCONSCIOUS)
+		if (IS_UNCONSCIOUS_OR_CRIT(danger_source))
 			end_combat()
 
 		// Deaggro if 30 second have passed since being antagonised

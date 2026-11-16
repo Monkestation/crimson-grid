@@ -23,11 +23,18 @@
 	abstract_type = /obj/item/occult_artifact
 	w_class = WEIGHT_CLASS_SMALL
 	var/mob/living/owner
+	/// Name set upon identifying the artifact
 	var/true_name
+	/// Desc set upon identifying the artifact
 	var/true_desc
 	var/identified = FALSE
+	/// How many points this grants when fed into the treme artifact muncher
 	var/research_value = 0
+	/// "Rank" of artifact as used in the TTRPG.
+	var/rank = 1
 	var/can_be_identified_without_ritual = TRUE
+
+	var/magic_type
 
 	var/grant_sound // = 'sound/effects/magic/swap.ogg'
 	var/ungrant_sound // = 'sound/effects/magic/teleport_diss.ogg'
@@ -50,11 +57,22 @@
 		if(src in artifact_identifier?.get_all_contents())
 			bind(artifact_identifier)
 
+/obj/item/occult_artifact/proc/can_be_used_by(mob/living/user)
+	return TRUE
+
 /obj/item/occult_artifact/proc/bind(mob/user)
 	if(!identified)
 		return
 	if(owner) // Dont bind twice
 		return
+	if(!can_be_used_by(user))
+		return
+	if(!CONFIG_GET(flag/artifact_stacking))
+		var/list/artifacts = user.get_all_contents_type(type)
+		for(var/obj/item/occult_artifact/other_artifact in artifacts)
+			if(other_artifact.owner == user) // We already have a trinket bound. Please dont stack.
+				to_chat(user, span_danger("This excess copy of an artifact is made inert by the same resonances of the current copies held."))
+				return
 	owner = user
 
 	var/datum/controller/subsystem/processing/subsystem = locate(subsystem_type) in Master.subsystems
@@ -105,6 +123,10 @@
 		to_chat(artifact_identifier, span_warning("You've seen some occult artifacts, trinkets, and powerful relics, but this, you've either never seen it before, or it's power can only be awakened by few..."))
 		return
 
+	if(!can_be_used_by(artifact_identifier))
+		to_chat(artifact_identifier, span_warning("There's a presence inside of this object that refuses to cooperate with you."))
+		return
+
 	to_chat(artifact_identifier, span_cult("You might have seen this before in an occult text. You start identifying it..."))
 	if(!do_after(artifact_identifier, 1 TURNS, src))
 		return
@@ -147,17 +169,19 @@
 /obj/effect/spawner/random/occult/artifact/werewolf_only
 	name = "random garou fetish"
 	loot = list(
-		/obj/item/occult_artifact/werewolf/nyxs_bangle = 45,
-		/obj/item/occult_artifact/werewolf/dagger_of_retribution = 45,
-		/obj/effect/spawner/random/occult/artifact/klaive = 10,
+		/obj/item/occult_artifact/werewolf/nyxs_bangle = 33,
+		/obj/item/occult_artifact/werewolf/dagger_of_retribution = 30,//Crimson edit reduced by 3 when inqusitor relic is removed increase back to 3
+		/obj/item/occult_artifact/holy/inquisitors_relic = 3, // Crimson Edit added new artifact to werewolf spawn temporarily until other artifacts are made to make own spawner
+		/obj/item/occult_artifact/werewolf/magpies_ears = 33,
+		/obj/effect/spawner/random/occult/artifact/klaive = 1,
 	)
-
 
 /obj/effect/spawner/random/occult/artifact/klaive
 	name = "random klaive"
 	loot = list(
-		/obj/item/occult_artifact/werewolf/klaive = 32,
-		/obj/item/occult_artifact/werewolf/klaive/bane = 32,
-		/obj/item/occult_artifact/werewolf/klaive/karambit = 32,
-		/obj/item/occult_artifact/werewolf/klaive/grand = 4, // Idk this thing is mega scary and mabye even doesnt belong here.
+		/obj/item/occult_artifact/werewolf/klaive = 33,
+		/obj/item/occult_artifact/werewolf/klaive/bane = 33,
+		/obj/item/occult_artifact/werewolf/klaive/karambit = 33,
 	)
+// I've elected to remove grand klaives in favor of making them something you have to kill a real boss for.
+

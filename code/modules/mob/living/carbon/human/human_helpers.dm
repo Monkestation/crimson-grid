@@ -71,6 +71,8 @@
 
 	// DARKPACK EDIT ADD START
 	var/known_name = face_name ? null : (examiner ? GET_GUESTBOOK_NAME(examiner, src) : null)
+	if(known_name && examiner != src && GET_GUESTBOOK_ENTRY(examiner, src)) // If this is a guestbook name, show original name too
+		known_name += ", [src]"
 	// DARKPACK EDIT ADD END
 
 	// Just go down the list of stuff we recorded
@@ -262,7 +264,7 @@
 			continue
 
 		if (preference.is_randomizable())
-			preference.apply_to_human(src, preference.create_random_value(preferences))
+			preference.apply_to_human(src, preference.create_random_value(preferences), preferences)
 
 	fully_replace_character_name(real_name, generate_random_mob_name())
 

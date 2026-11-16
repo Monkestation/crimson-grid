@@ -2,6 +2,7 @@
 	name = "holster"
 	desc = "a holster for your gun."
 	storage_type = /datum/storage/grid/holster
+	custom_price = 50
 
 /obj/item/storage/belt/holster/detective/darkpack/police
 	desc = "standard issue holster for standard issue sidearms."
@@ -35,6 +36,7 @@
 	name = "duty belt"
 	desc = "A black leather belt for holding patrol gear."
 	storage_type = /datum/storage/security_belt/darkpack
+	custom_price = 50
 
 /obj/item/storage/belt/security/police/PopulateContents()
 	new /obj/item/gun/energy/taser/darkpack(src)
@@ -63,7 +65,7 @@
 		/obj/item/flashlight/seclite,
 		/obj/item/food/donut,
 		/obj/item/grenade,
-		/obj/item/holosign_creator/security,
+		/obj/item/holosign_creator/police_tape, // DARKPACK EDIT - Original: /obj/item/holosign_creator/security
 		/obj/item/knife/combat,
 		/obj/item/melee/baton,
 		/obj/item/radio,

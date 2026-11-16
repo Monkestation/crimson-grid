@@ -8,20 +8,28 @@
 	outfit = /datum/outfit/job/vampire/sabbatpriest
 	allowed_splats = list(SPLAT_KINDRED)
 	job_flags = CITY_JOB_FLAGS
-	exp_required_type_department = EXP_TYPE_SABBAT
+
 	departments_list = list(
 		/datum/job_department/sabbat,
 	)
 
+	tgui_icon = FA_ICON_CROSS
+
 	description = "You are the Sabbat Priest. You are charged with the supervision of the ritae of your pack. You also serve as the second-in-command to the Ductus. Consecrate the Vaulderie for new Sabbat, consult your tome for rites to aid your pack, and ensure the Sabbat live on in Caine's favor. NOTE: BY PLAYING THIS ROLE YOU AGREE TO AND HAVE READ THE SERVER'S RULES ON ESCALATION FOR ANTAGS. KEEP THINGS INTERESTING AND ENGAGING FOR BOTH SIDES. KILLING PLAYERS JUST BECAUSE YOU CAN MAY RESULT IN A ROLEBAN."
 	minimum_masquerade = 0
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_SABBATPRIEST
 	whitelisted = TRUE
 
+	known_contacts = list(
+		JOB_SABBAT_DUCTUS,
+		JOB_SABBAT_PACK
+	)
+
 /datum/outfit/job/vampire/sabbatpriest
-	name = "Sabbat Priest"
+	name = JOB_SABBAT_PRIEST
 	jobtype = /datum/job/vampire/sabbatpriest
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/sabbat_priest
 	r_pocket = /obj/item/vamp/keys/sabbat
 	suit = /obj/item/clothing/suit/vampire/noddist
 	head = /obj/item/clothing/head/vampire/noddist_mask
@@ -34,7 +42,7 @@
 		H.mind.add_antag_datum(/datum/antagonist/sabbatist/priest)
 
 /datum/antagonist/sabbatist/priest
-	antag_hud_name = "ductus_priest"
+	antag_hud_name = "priest"
 
 /obj/item/sabbat_priest_tome
 	name = "Sabbat Priest's Tome"
@@ -79,11 +87,12 @@
 	desc = "None may defy Caine - especially not those who have undertaken the Vaulderie! Traitors and defectors to Caine and the Sabbat shall be struck down with a rightful war party, along with any who know of their treachery. Diablerie, burning them atop our ritual fire with a stake still in their putrid heart, or mutilation may take place, before they are sentenced to death. None may defy Caine, and none may escape Caine's vengeance, not the Elders of the Camarilla or traitors to the pack.\n "
 
 /obj/item/sabbat_priest_tome/attack_self(mob/living/carbon/human/user)
-	if(!user.mind || !is_sabbatist(user))
+	. = ..()
+	if(!user.mind || !is_sabbatist(user.mind.assigned_role))
 		to_chat(user, "You feel nothing when you touch this tome.")
 		return
 
-	var/is_priest = is_sabbat_priest(user)
+	var/is_priest = is_sabbat_priest(user.mind.assigned_role)
 
 	var/original_icon_state = icon_state
 	icon_state = "[original_icon_state]-open"

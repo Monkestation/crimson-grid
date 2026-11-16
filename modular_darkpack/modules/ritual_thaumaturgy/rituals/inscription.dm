@@ -56,6 +56,7 @@
 	var/ritual
 
 /obj/item/thaumaturgy_scroll/attack_self(mob/living/user)
+	. = ..()
 	if(!ritual)
 		to_chat(user, span_cult("The scroll is blank - there is nothing to invoke."))
 		return

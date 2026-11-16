@@ -1,5 +1,5 @@
 /datum/preference/numeric/height
-	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_key = "height"
 	savefile_identifier = PREFERENCE_CHARACTER
 	priority = PREFERENCE_PRIORITY_WORLD_OF_DARKNESS
@@ -10,7 +10,7 @@
 /datum/preference/numeric/height/create_default_value()
 	return HUMAN_HEIGHT_MEDIUM  // 12 or 5'10 or 5'11 idk
 
-/datum/preference/numeric/height/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/numeric/height/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.set_mob_height(value)
 
 /datum/preference/numeric/height/compile_constant_data()

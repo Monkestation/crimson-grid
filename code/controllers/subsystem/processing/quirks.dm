@@ -27,13 +27,22 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/numb, /datum/quirk/selfaware),
 	list(/datum/quirk/empath, /datum/quirk/evil),
 	list(/datum/quirk/keen_nose, /datum/quirk/item_quirk/anosmia),
+	list(/datum/quirk/darkpack/vengeful, /datum/quirk/darkpack/coldly_logical), // DARKPACK EDIT ADD - MERITS_FLAWS
 	list(/datum/quirk/darkpack/weak_willed, /datum/quirk/darkpack/untamable), // DARKPACK EDIT ADD - MERITS_FLAWS
+	list(/datum/quirk/darkpack/weak_willed, /datum/quirk/darkpack/iron_will), // DARKPACK EDIT ADD - MERITS_FLAWS
 	list(/datum/quirk/darkpack/permafangs, /datum/quirk/darkpack/dulled_bite), // DARKPACK EDIT ADD - MERITS_FLAWS
 	list(/datum/quirk/darkpack/grip_of_the_damned, /datum/quirk/darkpack/dulled_bite), // DARKPACK EDIT ADD - MERITS_FLAWS
 	list(/datum/quirk/darkpack/thaumaturgically_inept, /datum/quirk/darkpack/mage_blood), // DARKPACK EDIT ADD - MERITS_FLAWS
 	list(/datum/quirk/mute, /datum/quirk/darkpack/the_largest_maw), // DARKPACK EDIT ADD - MERITS_FLAWS
 	list(/datum/quirk/mute, /datum/quirk/darkpack/speech_impediment), // DARKPACK EDIT ADD - MERITS_FLAWS
 	list(/datum/quirk/darkpack/monstrous, /datum/quirk/darkpack/disfigured), // DARKPACK EDIT ADD - MERITS_FLAWS - PHYSICAL FLAWS
+	list(/datum/quirk/darkpack/monochrome_vision, /datum/quirk/darkpack/wolf_sight), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/monochrome_vision, /datum/quirk/item_quirk/blindness/), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/item_quirk/blindness, /datum/quirk/darkpack/wolf_sight), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/banned_transformation, /datum/quirk/darkpack/metamorph), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/thirst_of_ages, /datum/quirk/darkpack/organovore), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/thaumaturgical_sense, /datum/quirk/darkpack/thaumaturgically_inept), // CRIMSON GRID EDIT ADD - Add Thaumaturgical sense
+	list(/datum/quirk/darkpack/thaumaturgical_sense, /datum/quirk/darkpack/mage_blood), // CRIMSON GRID EDIT ADD - Add Thaumaturgical sense
 ))
 
 GLOBAL_LIST_INIT(quirk_string_blacklist, generate_quirk_string_blacklist())
@@ -89,14 +98,18 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 	for(var/type in quirk_list)
 		var/datum/quirk/quirk_type = type
-		// DARKPACK EDIT ADD START - MERITS_FLAWS
+		// DARKPACK EDIT CHANGE START - MERITS_FLAWS
 		if(!quirk_type::darkpack_allowed)
 			continue
 		if(quirk_type::roleplay_only && !CONFIG_GET(flag/roleplay_only_merits))
 			continue
-		// DARKPACK EDIT ADD END
 
-		quirk_prototypes[type] = new type
+		var/datum/quirk/quirk_datum = new type
+		if(!quirk_datum.soure_book_allowed(CONFIG_GET(string/ttrpg_accurate_cuttoff_merits)))
+			continue
+
+		quirk_prototypes[type] = quirk_datum
+		// DARKPACK EDIT CHANGE END
 		quirks[initial(quirk_type.name)] = quirk_type
 		quirk_points[initial(quirk_type.name)] = initial(quirk_type.value)
 
@@ -202,9 +215,6 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	for (var/quirk_name in quirks)
 		var/datum/quirk/quirk = all_quirks[quirk_name]
 		if (isnull(quirk))
-			continue
-
-		if ((initial(quirk.quirk_flags) & QUIRK_MOODLET_BASED) && CONFIG_GET(flag/disable_human_mood))
 			continue
 
 		var/blacklisted = FALSE

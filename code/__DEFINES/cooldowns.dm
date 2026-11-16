@@ -59,8 +59,10 @@
 #define COOLDOWN_CIRCUIT_TARGET_INTERCEPT "circuit_target_intercept"
 #define COOLDOWN_CIRCUIT_VIEW_SENSOR "circuit_view_sensor"
 
-// mob cooldowns
+// emote cooldowns
 #define COOLDOWN_YAWN_PROPAGATION "yawn_propagation_cooldown"
+#define COOLDOWN_YAWN_WITNESSED "yawn_witnessed_cooldown" // DARKPACK EDIT ADD
+#define COOLDOWN_DEATHGASP "deathgasp_cooldown"
 
 //Shared cooldowns for actions
 #define MOB_SHARED_COOLDOWN_1 (1<<0)

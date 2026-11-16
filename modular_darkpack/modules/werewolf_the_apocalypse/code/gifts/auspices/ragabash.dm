@@ -13,7 +13,7 @@
 	var/datum/storyteller_roll/roll_datum = new()
 	roll_datum.applicable_stats = list(STAT_MANIPULATION, STAT_STEALTH)
 	roll_datum.difficulty = 8
-	roll_datum.roll_output_type = ROLL_PRIVATE
+	roll_datum.roll_output_type = ROLL_FLAG_ROLLER
 	var/roll_result = roll_datum.st_roll(owner)
 
 	if(roll_result == ROLL_SUCCESS)
@@ -107,7 +107,7 @@
 
 
 /datum/storyteller_roll/gift/open_seal
-	roll_output_type = ROLL_PRIVATE
+	roll_output_type = ROLL_FLAG_ROLLER
 
 /datum/action/cooldown/power/gift/open_seal
 	name = "Open Seal"

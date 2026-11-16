@@ -70,8 +70,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		return
 	spans |= speech_span
 	language ||= get_selected_language()
-	if(!message_mods[SAY_MOD_VERB])
-		message_mods[SAY_MOD_VERB] = say_mod(message, message_mods)
+	message_mods[SAY_MOD_VERB] ||= say_mod(message, message_mods)
 	send_speech(message, message_range, src, bubble_type, spans, language, message_mods, forced = forced)
 
 /// Called when this movable hears a message from a source.
@@ -176,7 +175,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	//Speaker name
 	var/namepart = message_mods[MODE_SPEAKER_NAME_OVERRIDE] || speaker.get_message_voice(visible_name)
 
-	// DARKPACK EDIT START
+	// DARKPACK EDIT ADD START - GUESTBOOK
 	var/atom/movable/reliable_narrator = speaker
 	if(istype(reliable_narrator, /atom/movable/virtualspeaker))
 		var/atom/movable/virtualspeaker/fakespeaker = reliable_narrator
@@ -191,11 +190,12 @@ GLOBAL_LIST_INIT(freqtospan, list(
 			else
 				var/mob/living/living_narrator = reliable_narrator
 				namepart = "[living_narrator.get_generic_name(prefixed = TRUE, lowercase = TRUE)]"
-
+	// DARKPACK EDIT ADD END
+	// DARKPACK EDIT ADD START - PHONES
 	if(text2num(radio_freq) >= USABLE_RADIO_FREQUENCY_FOR_PHONE_RANGE)
 		var/icon/phone_icon = icon('modular_darkpack/modules/phones/icons/chat_icon.dmi', "phone")
 		freqpart = icon2html(phone_icon, src)
-	// DARKPACK EDIT END
+	// DARKPACK EDIT ADD END
 
 	//End name span.
 	var/endspanpart = "</span>"
@@ -207,15 +207,19 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		var/dialect_icon_type = dialect?.display_icon_type(src, message_mods) || DISPLAY_LANGUAGE_ICON_NONE
 		if(dialect_icon_type != DISPLAY_LANGUAGE_ICON_NONE)
 			var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
-			languageicon = sheet.icon_tag("language-[dialect.icon_state][dialect_icon_type == DISPLAY_LANGUAGE_ICON_PARTIAL ? "-partial" : ""]") + " "
+			var/icon_tag = sheet.icon_tag("language-[dialect.icon_state][dialect_icon_type == DISPLAY_LANGUAGE_ICON_PARTIAL ? "-partial" : ""]")
+			languageicon = span_tooltip_subtle(dialect.name, icon_tag) + " "
 
 	// The actual message part.
 	var/messagepart = speaker.generate_messagepart(raw_message, spans, message_mods)
 	messagepart = " <span class='message'>[messagepart]</span></span>"
 
+	var/speaker_voice_description = message_mods[MODE_SPEAKER_GENDER_OVERRIDE] || speaker.get_voice_description()
+
 	var/obj/item/radio/radio = source // DARKPACK EDIT ADD
 	var/radio_id = radio?.radio_id ? "\[[radio?.radio_id]\] " : null // DARKPACK EDIT ADD
-	return "[spanpart1][spanpart2][freqpart][radio_id][languageicon][compose_track_href(speaker, namepart)][namepart][compose_job(speaker, message_language, raw_message, radio_freq)][endspanpart][messagepart]" // DARKPACK EDIT CHANGE - ORIGINAL: 	return "[spanpart1][spanpart2][freqpart][languageicon][compose_track_href(speaker, namepart)][namepart][compose_job(speaker, message_language, raw_message, radio_freq)][endspanpart][messagepart]"
+
+	return "[spanpart1][spanpart2][freqpart][radio_id][languageicon][compose_track_href(speaker, namepart)][span_tooltip_subtle(speaker_voice_description, namepart)][compose_job(speaker, message_language, raw_message, radio_freq)][endspanpart][messagepart]" // DARKPACK EDIT CHANGE - ORIGINAL: return "[spanpart1][spanpart2][freqpart][languageicon][compose_track_href(speaker, namepart)][span_tooltip_subtle(speaker_voice_description, namepart)][compose_job(speaker, message_language, raw_message, radio_freq)][endspanpart][messagepart]"
 
 /atom/movable/proc/compose_track_href(atom/movable/speaker, message_langs, raw_message, radio_freq)
 	return ""
@@ -285,6 +289,17 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	var/processed_say_mod = apply_message_emphasis(say_mod)
 
 	return "[processed_say_mod], \"[processed_input]\""
+
+/atom/movable/proc/get_voice_description()
+	switch(gender)
+		if(MALE)
+			return VOICE_DESCRIPTION_MASCULINE
+		if(FEMALE)
+			return VOICE_DESCRIPTION_FEMININE
+		if(PLURAL)
+			return VOICE_DESCRIPTION_PLURAL
+		else
+			return VOICE_DESCRIPTION_NEUTER
 
 /// Transforms the message emphasis mods from [/atom/proc/apply_message_emphasis] into the appropriate HTML tags. Includes escaping.
 #define ENCODE_HTML_EMPHASIS(input, char, html, varname) \
@@ -408,6 +423,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/virtualspeaker)
 	source = M
 	if(istype(M))
 		name = radio?.anonymize ? "Unknown" : M.get_voice(add_id_name = TRUE)
+		gender = M.gender
 		verb_say = M.get_default_say_verb()
 		verb_ask = M.verb_ask
 		verb_exclaim = M.verb_exclaim
@@ -419,6 +435,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/virtualspeaker)
 		// can know their job even if they don't carry an ID.
 		var/datum/record/crew/found_record = find_record(name)
 		if(found_record)
+			gender = found_record.get_byond_gender()
 			job = found_record.rank
 		else
 			job = "Unknown"

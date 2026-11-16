@@ -17,3 +17,5 @@
 
 /datum/config_entry/flag/disable_ghost_looc
 	default = TRUE
+
+/datum/config_entry/string/servertagline

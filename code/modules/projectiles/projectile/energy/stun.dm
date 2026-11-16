@@ -222,7 +222,7 @@
 
 	owner.adjust_stutter_up_to(10 SECONDS, 20 SECONDS)
 	owner.adjust_jitter_up_to(20 SECONDS, 30 SECONDS)
-	if(owner.stat <= SOFT_CRIT)
+	if(!IS_UNCONSCIOUS(owner))
 		owner.do_jitter_animation(INFINITY) // maximum POWER
 
 	// You are damp, that's bad when you're being tased
@@ -293,7 +293,13 @@
 	SIGNAL_HANDLER
 	if(clicked_on != owner)
 		return NONE
-	if(LAZYACCESS(modifiers, SHIFT_CLICK))
+// CRIMSON EDIT ADD START - Taser buff/qol
+	if(LAZYACCESS(modifiers, SHIFT_CLICK) || LAZYACCESS(modifiers, ALT_CLICK) || LAZYACCESS(modifiers, CTRL_CLICK))
+		return NONE
+	if(source.get_active_held_item())
+		return NONE
+	if(source.combat_mode)
+// CRIMSON EDIT ADD END - Taser buff/qol
 		return NONE
 	end_tase()
 	source.changeNext_move(CLICK_CD_GRABBING)

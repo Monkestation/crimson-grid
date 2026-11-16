@@ -159,26 +159,35 @@
 	desc = "When you come into the land that the Lord your God is giving you, you must not learn to imitate the abhorrent practices of those nations. No one shall be found among you who makes a son or daughter pass through fire, or who practices divination, or is a soothsayer, or an augur, or a sorcerer, or one who casts spells, or who consults ghosts or spirits, or who seeks oracles from the dead. For whoever does these things is abhorrent to the Lord; it is because of such abhorrent practices that the Lord your God is driving them out before you (Deuteronomy 18:9-12)."
 	icon = 'modular_darkpack/modules/jobs/icons/id_items.dmi'
 	icon_state = "hunter_badge"
+	slot_flags = ITEM_SLOT_ID | ITEM_SLOT_NECK | ITEM_SLOT_BELT
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/jobs/icons/id_onfloors.dmi')
 	worn_icon = 'modular_darkpack/modules/jobs/icons/id_worn.dmi'
-	COOLDOWN_DECLARE(detonation_timer)
 
-/obj/item/card/hunter/attack_self(mob/user)
+/obj/item/card/hunter/silver
+	name = "silver cross"
+	icon_state = "hunter_silver"
+
+/obj/item/card/hunter/gothic
+	name = "gothic cross"
+	icon_state = "hunter_gothic"
+
+/* //CRIMSON EDIT: Removes hunter cross stun
+/obj/item/card/hunter/attack_self(mob/living/user)
 	. = ..()
-	if(!COOLDOWN_FINISHED(src, detonation_timer))
-		return
 	if(!user.mind)
 		return
-	if(user.mind.holy_role != HOLY_ROLE_PRIEST)
+	if(!user.mind?.holy_role)
 		return
-	COOLDOWN_START(src, detonation_timer, 30 SECONDS)
+	if(!COOLDOWN_FINISHED(user, true_faith_cd))
+		return
+	COOLDOWN_START(user, true_faith_cd, 30 SECONDS)
 	do_sparks(rand(5, 9), FALSE, user)
 	playsound(user.loc, 'modular_darkpack/modules/jobs/sounds/cross.ogg', 100, FALSE, 8, 0.9)
 	for(var/mob/living/M in get_hearers_in_view(4, src))
 		bang(get_turf(src), M, user)
 
 /obj/item/card/hunter/proc/bang(turf/turf, mob/living/living_mob, mob/living/user)
-	if(living_mob.stat == DEAD) //They're dead!
+	if(living_mob.stat == DEAD || living_mob == user || living_mob.mind?.holy_role) // Can't flash yourself
 		return
 	living_mob.show_message(span_warning(span_bold("GOD SEES YOU!")), MSG_AUDIBLE)
 
@@ -187,21 +196,21 @@
 		living_mob.pointed(user)
 
 	var/distance = max(0, get_dist(get_turf(src), turf))
-	if(living_mob.flash_act(affect_silicon = 1))
-		living_mob.Paralyze(max(10/max(1, distance), 5))
-		living_mob.Knockdown(max(100/max(1, distance), 40))
+	living_mob.flash_act(affect_silicon = 1)
+	living_mob.Paralyze(max(10/max(1, distance), 5))
+	living_mob.Knockdown(max(100/max(1, distance), 40))
+*/
 
 /obj/item/card/hunter/attack(mob/living/target, mob/living/user)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		return
-	if(!COOLDOWN_FINISHED(src, detonation_timer))
+	if(!COOLDOWN_FINISHED(user, true_faith_cd))
 		return
-	if(HAS_TRAIT(target, TRAIT_REPELLED_BY_HOLINESS))
-		COOLDOWN_START(src, detonation_timer, 30 SECONDS)
+	if(HAS_TRAIT(target, TRAIT_REPELLED_BY_HOLINESS) && target != user && !target.mind?.holy_role)
+		COOLDOWN_START(user, true_faith_cd, 30 SECONDS)
 		lightningbolt(target)
 		to_chat(target, span_userdanger("The gods have punished you for your sins!"))
-
 
 // POLICE
 /obj/item/card/police

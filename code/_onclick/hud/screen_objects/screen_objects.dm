@@ -328,6 +328,28 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	storage.hide_contents(usr)
 	return TRUE
 
+/atom/movable/screen/storage_up
+	name = "go up a storage level"
+	plane = ABOVE_HUD_PLANE
+	icon = 'icons/hud/screen_midnight.dmi'
+	icon_state = "storage_up"
+	mouse_over_pointer = MOUSE_HAND_POINTER
+	hud_group_key = HUD_GROUP_STORAGE
+
+/atom/movable/screen/storage_up/Initialize(mapload, datum/hud/hud_owner, new_master)
+	. = ..()
+	master_ref = WEAKREF(new_master)
+
+/atom/movable/screen/storage_up/Click()
+	var/datum/storage/storage = master_ref?.resolve()
+	if(!storage)
+		return
+	var/datum/storage/up_storage = storage.parent.loc?.atom_storage
+	if(!up_storage)
+		return
+	up_storage.open_storage(usr)
+	return TRUE
+
 /atom/movable/screen/drop
 	name = "drop"
 	icon = 'icons/hud/screen_midnight.dmi'
@@ -335,7 +357,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	mouse_over_pointer = MOUSE_HAND_POINTER
 
 /atom/movable/screen/drop/Click()
-	if(usr.stat == CONSCIOUS)
+	if(!IS_UNCONSCIOUS_OR_CRIT(usr))
 		usr.dropItemToGround(usr.get_active_held_item())
 
 /atom/movable/screen/combattoggle
@@ -600,14 +622,14 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	SetInvisibility(INVISIBILITY_ABSTRACT, INVISIBILITY_SOURCE_SLEEP_HUD_BUTTON)
 
 /atom/movable/screen/sleep/Click()
-	if(!isliving(usr) || HAS_TRAIT(usr, TRAIT_KNOCKEDOUT))
+	if(!isliving(usr) || IS_UNCONSCIOUS(usr))
 		return
 	if(!usr.client?.prefs.read_preference(/datum/preference/toggle/remove_double_click))
 		flick("[base_icon_state]_flick", src)
 		return
 
 	var/tgui_answer = tgui_alert(usr, "You sure you want to sleep for a while?", "Sleeping", list("Yes", "No"))
-	if(tgui_answer == "Yes" && !HAS_TRAIT(usr, TRAIT_KNOCKEDOUT))
+	if(tgui_answer == "Yes" && !IS_UNCONSCIOUS(usr))
 		var/mob/living/L = usr
 		L.Sleeping(400)
 
@@ -1013,6 +1035,9 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	var/list/current_animated = LAZYLISTDUPLICATE(animated_zones)
 
 	for(var/part_zone, body_part_untyped in owner.get_bodyparts_by_zones())
+		// I hate that we "allow" support for more than 2 hands in the codebase
+		if(!limbs[part_zone])
+			continue
 		var/icon_key = 0
 		var/obj/item/bodypart/body_part = body_part_untyped
 		var/list/overridable_key = list(icon_key)
@@ -1024,12 +1049,19 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 			icon_key = "DEAD"
 		else if(SEND_SIGNAL(body_part, COMSIG_BODYPART_UPDATING_HEALTH_HUD, owner, overridable_key) & OVERRIDE_BODYPART_HEALTH_HUD)
 			icon_key = overridable_key[1] // thanks i hate it
+		// CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+		else if(HAS_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES))
+			icon_key = 0
+		// CRIMSON GRID ADD END: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
 		else if(!owner.has_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy))
 			var/damage = body_part.get_damage() / body_part.max_damage
 			// calculate what icon state (1-5, or 0 if undamaged) to use based on damage
 			icon_key = clamp(ceil(damage * 5), 0, 5)
-
-		if(length(body_part?.wounds))
+		// CRIMSON GRID ADD: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+		if(HAS_TRAIT(owner, TRAIT_PREVENT_HEALTH_UPDATES))
+			LAZYREMOVE(animated_zones, part_zone)
+		// CRIMSON GRID ADD END: PATH OF PAIN NUMBING PREVENTS HEALTH UPDS
+		else if(length(body_part?.wounds))
 			LAZYSET(animated_zones, part_zone, TRUE)
 		else
 			LAZYREMOVE(animated_zones, part_zone)
@@ -1187,8 +1219,8 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	if(!istype(hungry))
 		return
 
-	if(!ishuman(hungry) || CONFIG_GET(flag/disable_human_mood))
-		screen_loc = ui_mood // Slot in where mood normally is if mood is disabled
+	if(isnull(hungry.mob_mood))
+		screen_loc = ui_mood // Slot in where mood normally is if mood is not here (we arent a human)
 
 	// Burger next to the bar
 	food_image = image(icon = food_icon, icon_state = food_icon_state, pixel_x = -5)
@@ -1208,7 +1240,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 	if(!istype(hungry))
 		return
 
-	if(HAS_TRAIT(hungry, TRAIT_NOHUNGER) || !hungry.get_organ_slot(ORGAN_SLOT_STOMACH))
+	if(HAS_TRAIT(hungry, TRAIT_NOHUNGER) || (ishuman(hungry) && !hungry.get_organ_slot(ORGAN_SLOT_STOMACH)))
 		fullness = NUTRITION_LEVEL_FED
 		state = HUNGER_STATE_FINE
 		return
@@ -1368,6 +1400,37 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen) // I hate this place
 
 #define FORMAT_XENOBIO_HUD_MAPTEXT(text_to_use) MAPTEXT_SPESSFONT("<span style='color: [COLOR_WHITE]; text-align: center; line-height: 1.9; '>[text_to_use]</span>")
 #define POTION_DROP_SPEED 5 DECISECONDS
+
+/atom/movable/screen/slime_power
+	name = "Power Level"
+	desc = "How much electricity they are generating. The higher this is, the stronger your attacks are."
+	icon_state = "slime_display"
+	base_icon_state = "slime_display"
+	screen_loc = ui_slime_powerlevel
+	maptext_x = 1
+	maptext_y = 8
+
+/atom/movable/screen/slime_power/Click(location, control, params)
+	. = ..()
+	to_chat(usr, span_notice("Shows you how much electricity they are generating. The higher this is, the higher chance you will strike with overwhelming electrical force."))
+
+/atom/movable/screen/slime_power/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	update_maptext()
+
+/atom/movable/screen/slime_power/update_icon_state()
+	. = ..()
+	icon_state = base_icon_state
+	var/mob/living/basic/slime/slime_owner = hud.mymob
+	if(istype(slime_owner) && slime_owner.powerlevel >= 7)
+		icon_state += "_shock"
+
+/atom/movable/screen/slime_power/proc/update_maptext()
+	var/mob/living/basic/slime/slime_owner = hud.mymob
+	if(!istype(slime_owner))
+		return
+	maptext = FORMAT_XENOBIO_HUD_MAPTEXT("[slime_owner.powerlevel]/[SLIME_MAX_POWER]")
+	update_appearance(UPDATE_ICON)
 
 /// Used to show how many monkeys & slimes are in the console
 /atom/movable/screen/xenobio_console

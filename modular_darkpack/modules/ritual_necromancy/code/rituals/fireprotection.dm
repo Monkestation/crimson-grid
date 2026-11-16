@@ -33,7 +33,7 @@
 	to_chat(victim, span_revendanger("Burning ice bleeds out of your soul and into everything else. Paralyzed, you stand in the cold as death lingers."))
 	victim.fakediablerist = TRUE
 	//removing iscathayan from line 38 -- DAKPACK TODO -- readd KJs (iscathayan(victim))
-	if(get_kindred_splat(victim) || iszombie(victim)) //made this a deduction rather than a flat set because of an artifact that independently changes damage mods
+	if(get_kindred_splat(victim) || victim.has_status_effect(/datum/status_effect/zombie)) //made this a deduction rather than a flat set because of an artifact that independently changes damage mods
 		// Im not even certin this does anything for kindred waying heatmod only affects the breath you take and kindred shouldnt be breathing really.
 		victim.dna.species.heatmod = max(0.5, victim.dna.species.heatmod-1) // This sucks why are we touching species for this.
 	else

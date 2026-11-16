@@ -89,6 +89,11 @@
 		if(PRcounts[id] > CONFIG_GET(number/pr_announcements_per_round))
 			return
 
+	// CRIMSON EDIT ADDITION START
+	if(findtext(input[keyword], @"[s]"))
+		return
+	// CRIMSON EDIT ADDITION END
+
 	var/final_composed = span_announce("PR: [input[keyword]]")
 	for(var/client/C in GLOB.clients)
 		C.AnnouncePR(final_composed)
@@ -252,6 +257,8 @@
 		// Shuttle status, see /__DEFINES/stat.dm
 		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
 		// Shuttle timer, in seconds
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_WORLD_TOPIC_STATUS, .) // DARKPACK EDIT ADD
 
 /datum/world_topic/create_news_channel
 	keyword = "create_news_channel"

@@ -1,7 +1,7 @@
 /datum/language/terrum
 	name = "Terrum"
 	desc = "The language of the golems. Sounds similar to old-earth Hebrew."
-	key = "g"
+	//key = "g" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 20
 	sentence_chance = 0
 	between_word_sentence_chance = 10

@@ -49,6 +49,7 @@
 	circuit = null
 	interaction_flags_atom = INTERACT_ATOM_UI_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND | INTERACT_MACHINE_REQUIRES_SIGHT
 	frame_type = /obj/item/wallframe/telescreen/entertainment
+	skill_dots_minimum = 0 // CRIMSON GRID ADDITION - tv isn't some advanced tech, anyone should be able to watch it
 	/// Virtual radio inside of the entertainment monitor to broadcast audio
 	var/obj/item/radio/entertainment/speakers/speakers
 	var/icon_state_off = "entertainment_blank"
@@ -101,7 +102,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 		return UI_CLOSE
 	if(!isliving(user))
 		return isAdminGhostAI(user) ? UI_INTERACTIVE : UI_UPDATE
-	if(user.stat >= SOFT_CRIT)
+	if(user.incapacitated)
 		return UI_UPDATE
 
 	var/can_range = FALSE
@@ -141,9 +142,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 	else
 		if(!can_see(watcher, src, 7))
 			return FALSE
-	if(watcher.is_blind())
-		return FALSE
-	if(!isobserver(watcher) && watcher.stat >= UNCONSCIOUS)
+	if(watcher.is_blind() || IS_UNCONSCIOUS(watcher))
 		return FALSE
 	return TRUE
 
@@ -571,4 +570,3 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/monaster
 /obj/item/wallframe/telescreen/monastery
 	name = "monastery telescreen frame"
 	result_path = /obj/machinery/computer/security/telescreen/monastery
-

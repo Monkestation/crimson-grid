@@ -135,14 +135,10 @@ SUBSYSTEM_DEF(ambience)
 		client.current_ambient_sound = null
 		return
 
-	//Station ambience is dependent on a functioning and charged APC with environment power enabled.
-	if(!is_mining_level(my_area.z) && ((!my_area.apc || !my_area.apc.operating || !my_area.apc.cell?.charge && my_area.requires_power || !my_area.power_environ)))
-		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, channel = CHANNEL_BUZZ))
-		client.current_ambient_sound = null
+	// DARKPACK EDIT CHANGE START - AMBIENCE
+	if(sound_to_use == client.current_ambient_sound) // Don't reset current loops
 		return
-	else
-		if(sound_to_use == client.current_ambient_sound) // Don't reset current loops
-			return
 
-		client.current_ambient_sound = sound_to_use
-		SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = my_area.ambient_buzz_vol * (volume_modifier / 100), channel = CHANNEL_BUZZ))
+	client.current_ambient_sound = sound_to_use
+	SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = my_area.ambient_buzz_vol * (volume_modifier / 100), channel = CHANNEL_BUZZ))
+	// DARKPACK EDIT CHANGE END

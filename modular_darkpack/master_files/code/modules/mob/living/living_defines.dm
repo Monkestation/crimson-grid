@@ -20,6 +20,9 @@
 	/// The quality of the mobs blood when drank from. Decides how much BP a vampire will regain.
 	var/bloodquality = BLOOD_QUALITY_LOW
 
+	// "True faith" stuff, only used for the cross rn
+	COOLDOWN_DECLARE(true_faith_cd)
+
 	COOLDOWN_DECLARE(masquerade_timer)
 	var/masquerade_score = 5
 
@@ -44,7 +47,6 @@
 	var/list/datum/component/obeys_commands/minion_command_components = list()
 
 	var/tentacle_escape_attempt = 0
-	var/tentacle_aggro_mode = "Aggressive"
 	var/possessed = FALSE //dominate 5 body posession
 	var/datum/weakref/conditioner // dominate 4
 	//obfuscate icon, client side
@@ -53,5 +55,9 @@
 	//thaumaturgy & necro path stuff
 	var/research_points = 0
 	var/collected_souls = 0
+	var/infernal_favor = 0 // CRIMSON GRID ADD: DARK THAUMATURGY
 
 	var/last_shown_area_name // AREAS
+
+	/// Lazy list of weakrefs for mobs the user has tasted the blood of
+	var/list/mobs_tasted_blood_of // WEREWOLF

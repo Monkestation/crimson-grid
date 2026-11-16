@@ -1,6 +1,5 @@
 /mob/living/basic/pet/dog/darkpack
 	name = "dog"
-	real_name = "dog"
 	icon_state = "dog1"
 	desc = "That's an ouppy."
 	base_icon_state = "dog"

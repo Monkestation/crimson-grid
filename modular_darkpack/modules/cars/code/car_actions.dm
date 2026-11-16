@@ -115,32 +115,4 @@
 	if(!.)
 		return FALSE
 	var/obj/darkpack_car/owned_car = owner.loc
-	if(owned_car.driver == owner)
-		owned_car.driver = null
-	if(owner in owned_car.passengers)
-		owned_car.passengers -= owner
-	owner.forceMove(owned_car.loc)
-
-	var/list/exit_side = list(
-		SIMPLIFY_DEGREES(owned_car.movement_vector + 90),
-		SIMPLIFY_DEGREES(owned_car.movement_vector - 90)
-	)
-	for(var/angle in exit_side)
-		if(get_step(owner, angle2dir(angle)).density)
-			exit_side.Remove(angle)
-	var/list/exit_alt = GLOB.alldirs.Copy()
-	for(var/dir in exit_alt)
-		if(get_step(owner, dir).density)
-			exit_alt.Remove(dir)
-	if(length(exit_side))
-		owner.Move(get_step(owner, angle2dir(pick(exit_side))))
-	else if(length(exit_alt))
-		owner.Move(get_step(owner, exit_alt))
-
-	to_chat(owner, span_notice("You exit [owned_car]."))
-	if(owner?.client)
-		owner.client.pixel_x = 0
-		owner.client.pixel_y = 0
-	playsound(owned_car, 'modular_darkpack/master_files/sounds/effects/door/door.ogg', 50, TRUE)
-	for(var/datum/action/darkpack_car/C in owner.actions)
-		qdel(C)
+	owned_car.empty_occupant(owner)

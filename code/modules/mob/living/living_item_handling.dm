@@ -1,6 +1,6 @@
 // Throwing stuff
 /mob/living/proc/toggle_throw_mode()
-	if(stat)
+	if(IS_UNCONSCIOUS_OR_CRIT(src))
 		return
 	if(!HAS_TRAIT(src, TRAIT_CAN_THROW_ITEMS))
 		return
@@ -80,6 +80,11 @@
 		power_throw += potential_spine.added_throw_speed
 		extra_throw_range += potential_spine.added_throw_range
 
+	// DARKPACK EDIT ADD START - Strength Based Throw Speed
+	var/strength = st_get_stat(STAT_STRENGTH)
+	power_throw += strength/5
+	// DARKPACK EDIT ADD END
+
 	if(HAS_TRAIT(src, TRAIT_HULK))
 		power_throw++
 	if(HAS_TRAIT(src, TRAIT_DWARF))
@@ -132,7 +137,7 @@
 		to_chat(src, span_warning("You're already offering something!"))
 		return
 
-	if(IS_DEAD_OR_INCAP(src))
+	if(src.incapacitated)
 		to_chat(src, span_warning("You're unable to offer anything in your current state!"))
 		return
 
@@ -154,7 +159,7 @@
 				to_chat(src, span_notice("You take [offered_item] from yourself."))
 				return
 
-		if(IS_DEAD_OR_INCAP(offered))
+		if(offered.incapacitated)
 			to_chat(src, span_warning("[offered.p_Theyre()] unable to take anything in [offered.p_their()] current state!"))
 			return
 
@@ -189,7 +194,7 @@
  */
 /mob/living/proc/take(mob/living/offerer, obj/item/offered_item, bypass)
 	clear_alert("[offerer]")
-	if(IS_DEAD_OR_INCAP(src))
+	if(src.incapacitated)
 		to_chat(src, span_warning("You're unable to take anything in your current state!"))
 		return
 	if(get_dist(src, offerer) > 1)

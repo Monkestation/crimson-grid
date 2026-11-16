@@ -3,6 +3,7 @@
 	icon_state = "park"
 	zone_type = ZONE_NO_MASQUERADE
 	sound_environment = SOUND_ENVIRONMENT_FOREST
+	ambience_index = AMBIENCE_NATURE
 	gauntlet_rating = 6
 	domain = TRUE
 	requires_power = FALSE

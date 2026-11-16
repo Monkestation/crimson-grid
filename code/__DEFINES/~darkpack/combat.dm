@@ -6,6 +6,8 @@
 ///Duration of one "scene", which is 3 minutes according to us
 #define SCENES * 3 MINUTES
 #define TURNS_PER_SCENE ((1 SCENES) / (1 TURNS))
+/// For rolls that you would assumidly need to wait a scene to try and again or have conditions change but 1 scene is way too punishing
+#define DEFAULT_REROLL_COOLDOWN 1 MINUTES
 
 // To eyeball damage as its calcuated in the ttrpg
 #define TTRPG_DAMAGE * 10

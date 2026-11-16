@@ -45,6 +45,24 @@
 /datum/loadout_item/suit/coat/leopardcoat
 	item_path = /obj/item/clothing/suit/vampire/coat/leopard
 
+//CRIMSON GRID ADDITION START: MILPARKA TO LOADOUT
+/datum/loadout_item/suit/jacket/military_parka
+	name = "Military Parka"
+	item_path = /obj/item/clothing/suit/vampire/coat/milparka
+//CRIMSON GRID ADDITION END
+
+/datum/loadout_item/suit/jacket/oversizedjacket
+	name = "Oversized Jacket"
+	item_path = /obj/item/clothing/suit/jacket/oversized
+
+/datum/loadout_item/suit/jacket/fancyfurcoat
+	name = "Fancy Fur Coat"
+	item_path = /obj/item/clothing/suit/jacket/fancy
+
+/datum/loadout_item/suit/jacket/trenchcoatalt
+	name = "Trenchcoat (Alt)"
+	item_path = /obj/item/clothing/suit/toggle/jacket/trenchcoat
+
 // Jackets
 /datum/loadout_item/suit/jacket
 	abstract_type = /datum/loadout_item/suit/jacket
@@ -62,8 +80,20 @@
 	item_path = /obj/item/clothing/suit/vampire/fancy_red
 
 /datum/loadout_item/suit/jacket/black_leather
-	name = "Leather Jacket"
+	name = "Leather Jacket (Black)"
 	item_path = /obj/item/clothing/suit/vampire/jacket
+
+/datum/loadout_item/suit/jacket/black_leather_cut
+	name = "Cropped Leather Jacket (Black)"
+	item_path = /obj/item/clothing/suit/vampire/jacket/cropped
+
+/datum/loadout_item/suit/jacket/red_leather
+	name = "Leather Jacket (Red)"
+	item_path = /obj/item/clothing/suit/vampire/jacket/red
+
+/datum/loadout_item/suit/jacket/red_leather_cut
+	name = "Cropped Leather Jacket (Red)"
+	item_path = /obj/item/clothing/suit/vampire/jacket/cropped/red
 
 /datum/loadout_item/suit/jacket/military
 	name = "Jacket (Military)"
@@ -72,6 +102,14 @@
 /datum/loadout_item/suit/jacket/black_suit
 	name = "Jacket (Black Suit)"
 	item_path = /obj/item/clothing/suit/toggle/lawyer/black
+
+/datum/loadout_item/suit/jacket/bomber_classic
+	name = "Classic Bomber Jacket"
+	item_path = /obj/item/clothing/suit/vampire/bomber_jacket_classic
+
+/datum/loadout_item/suit/jacket/bomber_gray
+	name = "Gray Bomber Jacket"
+	item_path = /obj/item/clothing/suit/vampire/bomber_jacket_gray
 
 // Trenchcoats
 /datum/loadout_item/suit/trenchcoat
@@ -100,6 +138,12 @@
 /datum/loadout_item/suit/kasaya
 	name = "Kasaya"
 	item_path = /obj/item/clothing/suit/vampire/kasaya
+
+// CRIMSON GRID ADDITION START: HAZARD VEST TO LOADOUT
+/datum/loadout_item/suit/hazard_vest
+	name = "Hazard Vest"
+	item_path = /obj/item/clothing/suit/hazardvest
+//CRIMSON GRID ADDITION END
 
 /datum/loadout_item/suit/imam
 	name = "Imam Robe"
@@ -152,3 +196,16 @@
 /datum/loadout_item/suit/robes/blue
 	name = "Robes (Blue)"
 	item_path = /obj/item/clothing/suit/hooded/robes/blue
+
+
+/// Shawls
+/datum/loadout_item/suit/shawl
+	abstract_type = /datum/loadout_item/suit/shawl
+
+/datum/loadout_item/suit/shawl/black
+	name = "Black Shawl"
+	item_path = /obj/item/clothing/suit/vampire/shawl_black
+
+/datum/loadout_item/suit/shawl/white
+	name = "White Shawl"
+	item_path = /obj/item/clothing/suit/vampire/shawl_white

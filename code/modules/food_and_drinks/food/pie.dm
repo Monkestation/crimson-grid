@@ -346,7 +346,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
 	tastes = list("pie" = 1, "dark chocolate" = 3)
-	foodtypes = GRAIN|DAIRY|SUGAR
+	foodtypes = GRAIN|DAIRY|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 
 /obj/item/food/pie/blumpkinpie
 	name = "blumpkin pie"
@@ -443,7 +443,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
 	tastes = list("pie" = 1, "smooth chocolate" = 1, "whipped cream" = 1)
-	foodtypes = GRAIN | DAIRY | SUGAR
+	foodtypes = GRAIN | DAIRY | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	slice_type = /obj/item/food/pieslice/frenchsilk
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -452,7 +452,7 @@
 	desc = "A slice of french silk pie, filled with a chocolate mousse and topped with a layer of whipped cream and chocolate shavings. Delicious enough to make you cry."
 	icon_state = "frenchsilkpieslice"
 	tastes = list("pie" = 1, "smooth chocolate" = 1, "whipped cream" = 1)
-	foodtypes = GRAIN | DAIRY | SUGAR
+	foodtypes = GRAIN | DAIRY | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/pie/shepherds_pie
@@ -503,7 +503,7 @@
 	icon_state = "bacid_pie"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 18,
-		/datum/reagent/consumable/liquidelectricity/enriched = 18
+		/datum/reagent/consumable/liquidelectricity = 18
 	)
 	tastes = list("battery acid" = 2, "electricity" = 2, "a cyber world" = 2)
 	foodtypes = GRAIN|DAIRY|TOXIC
@@ -518,7 +518,7 @@
 	icon_state = "bacid_pie_slice"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4.5,
-		/datum/reagent/consumable/liquidelectricity/enriched = 4.5
+		/datum/reagent/consumable/liquidelectricity = 4.5
 	)
 	tastes = list("battery acid" = 1, "electricity" = 1, "a cyber world" = 1)
 	foodtypes = TOXIC

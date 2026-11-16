@@ -42,6 +42,7 @@
 		else
 			return FALSE
 
+	update_rage_effects() //CRIMSON GRID ADDITION - passive rage effects
 	owner.update_werewolf_hud()
 	return TRUE
 
@@ -79,13 +80,26 @@
 
 	splat_traits = list(
 		TRAIT_FERA_RENOWN,
+		TRAIT_GAIA_CAERN_FRIEND, // Without them having there own tribes or declared alligence. This is the best way to determine.
 	)
 
 	// incompatible_splats = list(/datum/splat/werewolf/shifter) // TODO: Becoming a shifter should get rid of your kinfolk splat
 
+/datum/splat/werewolf/kinfolk/on_gain() //Currently just for granting language Garou Tongue or High Tongue that Kinfolk can learn.
+	. = ..()
+	owner.grant_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE, LANGUAGE_SPLAT) //Separated because Spoken and Hearing Components are separated
+	owner.grant_language(/datum/language/garou_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_SPLAT)
+
+/datum/splat/werewolf/kinfolk/on_lose_or_destroy()
+	. = ..()
+	if(!QDELING(owner))
+		owner.remove_language(/datum/language/garou_tongue, SPOKEN_LANGUAGE, LANGUAGE_SPLAT) //Separated because Spoken and Hearing Components are separated
+		owner.remove_language(/datum/language/garou_tongue, UNDERSTOOD_LANGUAGE, LANGUAGE_SPLAT)
+
 /datum/splat/werewolf/shifter
 	abstract_type = /datum/splat/werewolf/shifter
 	splat_traits = list(
+		TRAIT_POSSIBLE_WYRM,
 		TRAIT_FERA_FORMS,
 		TRAIT_FERA_FUR,
 		TRAIT_FERA_RENOWN,
@@ -104,6 +118,7 @@
 	var/list/transformation_list = list()
 	/// Stats added and removed upon gaining the species of the splat. Assoc list indexed by the species ids for each form
 	var/list/transformation_stats
+	var/list/transformation_stat_clamps
 	var/transform_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/transform.ogg'
 	COOLDOWN_DECLARE(transform_cd)
 	/**
@@ -138,6 +153,7 @@
 
 /datum/splat/werewolf/shifter/on_lose_or_destroy()
 	. = ..()
+	clear_rage_effects() //CRIMSON GRID ADDITION - passive rage effects
 	if(!QDELETED(owner))
 		owner.set_species(/datum/species/human)
 
@@ -151,8 +167,9 @@
 	var/can_passively_heal = !(is_breed_form() && (get_breed_form_species() != /datum/species/human/shifter/war))
 	if(COOLDOWN_FINISHED(src, passive_healing_cd))
 		if(can_passively_heal)
-			// 2 to represent lethal. Fera passive regen closes burn, but not aggravated damage.
-			owner.heal_storyteller_health(2, heal_aggravated = FALSE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = TRUE)
+			// 2 to represent lethal. Fera passive regen closes burn (if we've the "can heal burn" gift), but not aggravated damage.
+			var/can_heal_burn = !!owner.has_status_effect(/datum/status_effect/master_of_fire)
+			owner.heal_storyteller_health(2, heal_aggravated = FALSE, heal_scars = TRUE, heal_blood = TRUE, heal_burn = can_heal_burn)
 			// Keep organ healing ticking so internal damage recovers even between major regrowth pulses.
 			owner.adjust_organ_loss(ORGAN_SLOT_BRAIN, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_HEART, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
@@ -161,6 +178,7 @@
 			owner.adjust_organ_loss(ORGAN_SLOT_LIVER, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EYES, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
 			owner.adjust_organ_loss(ORGAN_SLOT_EARS, -0.5 * seconds_per_tick, required_organ_flag = ORGAN_ORGANIC)
+			owner.adjust_blood_volume(BLOOD_VOLUME_NORMAL * 0.10, maximum = BLOOD_VOLUME_NORMAL) //CRIMSON GRID ADDITION - blood restore effects to tg health
 		COOLDOWN_START(src, passive_healing_cd, 1 TURNS)
 
 	if(COOLDOWN_FINISHED(src, passive_regrowth_cd))
@@ -181,10 +199,11 @@
 
 /datum/splat/werewolf/shifter/proc/causes_delirium()
 	var/datum/species/human/shifter/shifter_species = owner.dna.species
-	if(istype(shifter_species))
+	if(!istype(shifter_species))
 		return FALSE
-	if(shifter_species.form_causes_delirium && !HAS_TRAIT(owner, TRAIT_PIERCED_VEIL))
-		return TRUE
+	if(HAS_TRAIT(owner, TRAIT_PIERCED_VEIL))
+		return FALSE
+	return shifter_species.form_causes_delirium
 
 // Being used to represent meditating in your caern
 /datum/splat/werewolf/shifter/proc/regain_gnosis_process(seconds_per_tick)
@@ -222,7 +241,6 @@
 			STAT_STAMINA = 3,
 			STAT_DEXTERITY = 1,
 			STAT_MANIPULATION = -3,
-			// STAT_APPEARANCE = 0 // NOT YET SUPPORTED
 		),
 		SPECIES_FERA_DIRE = list(
 			STAT_STRENGTH = 3,
@@ -237,18 +255,25 @@
 			STAT_MANIPULATION = -3,
 		)
 	)
+	transformation_stat_clamps = list(
+		SPECIES_FERA_WAR = list(
+			STAT_APPEARANCE = 0
+		),
+	)
 	mimmicing_animal = /mob/living/basic/pet/dog/wolf
 
 /datum/splat/werewolf/shifter/corax
 	name = "Corax"
 	id = SPLAT_CORAX
 	splat_traits = list(
+		TRAIT_POSSIBLE_WYRM,
 		TRAIT_FERA_FORMS,
 		TRAIT_FERA_FUR,
 		TRAIT_FERA_RENOWN,
 		TRAIT_FERA_FLIGHT,
 		TRAIT_FRENETIC_AURA,
 		TRAIT_GOLD_WEAKNESS,
+		TRAIT_TRUE_NIGHT_VISION, // CRIMSON GRID ADDITION - allow corax to see in the dark, so they can snoop on people better
 	)
 	transformation_list = list(
 		/datum/species/human/shifter/homid,
@@ -262,7 +287,6 @@
 			STAT_DEXTERITY = 1,
 			STAT_MANIPULATION = -2,
 			STAT_PERCEPTION = 3,
-			// STAT_APPEARANCE = 0 // NOT YET SUPPORTED
 		),
 		SPECIES_FERA_FERAL = list(
 			STAT_STRENGTH = -1,
@@ -270,6 +294,11 @@
 			STAT_MANIPULATION = -3,
 			STAT_PERCEPTION = 4,
 		)
+	)
+	transformation_stat_clamps = list(
+		SPECIES_FERA_WAR = list(
+			STAT_APPEARANCE = 0
+		),
 	)
 	transform_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/corax_transform.ogg'
 	mob_icons = list(
@@ -284,11 +313,15 @@
 /datum/splat/werewolf/shifter/corax/on_gain()
 	. = ..()
 	add_power(/datum/action/cooldown/power/gift/eye_drink)
+	owner.update_sight() // CRIMSON GRID ADDITION - allow corax to see in the dark, so they can snoop on people better
 
 /datum/splat/werewolf/shifter/corax/on_lose_or_destroy()
 	. = ..()
 	remove_power(/datum/action/cooldown/power/gift/eye_drink)
-
+	// CRIMSON GRID ADDITION START - allow corax to see in the dark, so they can snoop on people better
+	if(!QDELETED(owner))
+		owner.update_sight()
+	// CRIMSON GRID ADDITION END
 
 /mob/living/carbon/human/splat/kinfolk
 	auto_splats = list(/datum/splat/werewolf/kinfolk)
@@ -298,3 +331,30 @@
 
 /mob/living/carbon/human/splat/corax
 	auto_splats = list(/datum/splat/werewolf/shifter/corax)
+
+//CRMISON GRID ADDITION START - adds scaling rage speed and slowdown immunites based on rage amount
+
+/datum/splat/werewolf/proc/update_rage_effects()
+	if(!owner)
+		return
+	var/is_fighting_form = istype(owner.dna?.species, /datum/species/human/shifter/war) || istype(owner.dna?.species, /datum/species/human/shifter/dire)
+	var/rage_slowdown = -0.01 * clamp(rage, 0, permanent_rage)
+	if(rage >= 3 && is_fighting_form)
+		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/shifter/rage,multiplicative_slowdown = rage_slowdown)
+	else
+		owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
+	if(rage >= 6 && is_fighting_form)
+		owner.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+	else
+		owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+
+/datum/movespeed_modifier/shifter/rage
+	variable = TRUE
+
+/datum/splat/werewolf/shifter/proc/clear_rage_effects()
+	if(!owner)
+		return
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/shifter/rage)
+	owner.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
+
+//CRMISON GRID ADDITION END

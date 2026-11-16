@@ -19,6 +19,20 @@
 	contains = list(/obj/item/knife/vamp)
 	crate_name = "weapon crate"
 
+/datum/supply_pack/weapons/brassknuckles
+	name = "Weapon (brass knuckles)"
+	desc = "Contains a set of brass knuckles."
+	cost = 100
+	contains = list(/obj/item/clothing/gloves/vampire/brassknuckles)
+	crate_name = "weapon crate"
+
+/datum/supply_pack/weapons/spikedknuckles
+	name = "Weapon (spiked knuckles)"
+	desc = "Contains a set of spiked knuckles."
+	cost = 500
+	contains = list(/obj/item/clothing/gloves/vampire/brassknuckles/spiked)
+	crate_name = "weapon crate"
+
 /datum/supply_pack/weapons/weapontire
 	name = "Weapon (tire iron)"
 	desc = "Contains a tire iron."
@@ -96,6 +110,13 @@
 	contains = list(/obj/item/gun/ballistic/revolver/darkpack/magnum)
 	crate_name = "weapon crate"
 
+/datum/supply_pack/weapons/weaponlever
+	name = "Weapon (lever action rifle)"
+	desc = "Contains a lever action rifle."
+	cost = 1500
+	contains = list(/obj/item/gun/ballistic/rifle/darkpack/lever)
+	crate_name = "weapon crate"
+
 /datum/supply_pack/weapons/weapondeagle
 	name = "Weapon (desert eagle)"
 	desc = "Contains a desert eagle."
@@ -104,10 +125,10 @@
 	crate_name = "weapon crate"
 
 /datum/supply_pack/weapons/weapondeagle50
-	name = "Weapon (desert eagle 50AE)"
+	name = "Weapon (Mclusky Special)"
 	desc = "Contains a .50 caliber desert eagle."
-	cost = 2000
-	contains = list(/obj/item/gun/ballistic/automatic/pistol/deagle, /obj/item/ammo_box/magazine/m50)
+	cost = 3000
+	contains = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle/c50, /obj/item/ammo_box/magazine/m50)
 
 /datum/supply_pack/weapons/glock
 	name = "Weapon (Brokk19)"
@@ -130,11 +151,32 @@
 	contains = list(/obj/item/gun/ballistic/automatic/darkpack/uzi, /obj/item/ammo_box/magazine/darkpack9mm)
 	crate_name = "weapon crate"
 
+/datum/supply_pack/weapons/weaponmac10
+	name = "Weapon (Braddock .45)"
+	desc = "Contains a Braddock .45 submachine gun."
+	cost = 800
+	contains = list(/obj/item/gun/ballistic/automatic/darkpack/mac10, /obj/item/ammo_box/magazine/darkpack45smg)
+	crate_name = "weapon crate"
+
 /datum/supply_pack/weapons/weaponshotgun
 	name = "Weapon (pump shotgun)"
 	desc = "Contains a pump shotgun."
 	cost = 800
 	contains = list(/obj/item/gun/ballistic/shotgun/vampire)
+	crate_name = "weapon crate"
+
+/datum/supply_pack/weapons/weapondbshotgun
+	name = "Weapon (double barrel shotgun)"
+	desc = "Contains a double barrel shotgun."
+	cost = 1000
+	contains = list(/obj/item/gun/ballistic/shotgun/vampire/doublebarrel)
+	crate_name = "weapon crate"
+
+/datum/supply_pack/weapons/remington
+	name = "Weapon (Remington 11-87)"
+	desc = "Contains a Remington 11-87 Shotgun"
+	cost = 2100
+	contains = list(/obj/item/gun/ballistic/shotgun/vamp_remington)
 	crate_name = "weapon crate"
 
 /datum/supply_pack/weapons/thompson
@@ -159,8 +201,8 @@
 	crate_name = "weapon crate"
 
 /datum/supply_pack/weapons/weaponrifle
-	name = "Weapon (AR-15)"
-	desc = "Contains an AR-15 assault rifle."
+	name = "Weapon (CAR-15)"
+	desc = "Contains a CAR-15 assault rifle."
 	cost = 2500
 	contains = list(/obj/item/gun/ballistic/automatic/darkpack/ar15, /obj/item/ammo_box/magazine/darkpack556)
 	crate_name = "weapon crate"
@@ -170,6 +212,20 @@
 	desc = "Contains an AUG assault carbine."
 	cost = 4000
 	contains = list(/obj/item/gun/ballistic/automatic/darkpack/aug, /obj/item/ammo_box/magazine/darkpackaug)
+	crate_name = "weapon crate"
+
+/datum/supply_pack/weapons/weaponfal
+	name = "Weapon (Battle Rifle)"
+	desc = "Contains an 7.62 battle rifle."
+	cost = 4000
+	contains = list(/obj/item/gun/ballistic/automatic/darkpack/fal, /obj/item/ammo_box/magazine/darkpack762x51fal)
+	crate_name = "weapon crate"
+
+/datum/supply_pack/weapons/weaponfalauto
+	name = "Weapon (Military Battle Rifle)"
+	desc = "Contains an Military 7.62 battle rifle."
+	cost = 4500
+	contains = list(/obj/item/gun/ballistic/automatic/darkpack/fal/automatic, /obj/item/ammo_box/magazine/darkpack762x51fal)
 	crate_name = "weapon crate"
 
 /datum/supply_pack/weapons/musket
@@ -242,6 +298,13 @@
 	contains = list(/obj/item/ammo_box/darkpack/c44, /obj/item/ammo_box/darkpack/c44)
 	crate_name = "ammo crate"
 
+/datum/supply_pack/weapons/ammo45
+	name = "Ammo (.45 ACP ammo)"
+	desc = "Contains a box of .45 ACP ammo"
+	cost = 700
+	contains = list(/obj/item/ammo_box/darkpack/c45acp, /obj/item/ammo_box/darkpack/c45acp)
+	crate_name = "ammo crate"
+
 /datum/supply_pack/weapons/ammo556
 	name = "Ammo (5.56)"
 	desc = "Contains a box of 5.56 ammunition."
@@ -289,11 +352,11 @@
 	cost = 1000
 	contains = list(/obj/item/ammo_box/darkpack/c50ae, /obj/item/ammo_box/darkpack/c50ae)
 
-/datum/supply_pack/weapons/ammo556
-	name = "Ammo (5.56)"
-	desc = "Contains a box of 5.56 ammunition."
+/datum/supply_pack/weapons/ammo762
+	name = "Ammo (7.62)"
+	desc = "Contains a box of 7.62 ammunition."
 	cost = 1500
-	contains = list(/obj/item/ammo_box/darkpack/c556)
+	contains = list(/obj/item/ammo_box/darkpack/c762x51mm, /obj/item/ammo_box/darkpack/c762x51mm)
 	crate_name = "ammo crate"
 
 /datum/supply_pack/weapons/ammo556/incendiart
@@ -394,11 +457,25 @@
 	contains = list(/obj/item/ammo_box/magazine/darkpackaug, /obj/item/ammo_box/magazine/darkpackaug, /obj/item/ammo_box/magazine/darkpackaug)
 	crate_name = "ammo crate"
 
+/datum/supply_pack/weapons/magazine_fal
+	name = "Ammo (2x battle rifle magazine)"
+	desc = "Contains two battle rifle magazines."
+	cost = 300
+	contains = list(/obj/item/ammo_box/magazine/darkpack762x51fal, /obj/item/ammo_box/magazine/darkpack762x51fal)
+	crate_name = "ammo crate"
+
 /datum/supply_pack/weapons/magazine_thompson
 	name = "Ammo (3x Thompson magazine)"
 	desc = "Contains three Thompson magazines."
 	cost = 300
 	contains = list(/obj/item/ammo_box/magazine/darkpackthompson, /obj/item/ammo_box/magazine/darkpackthompson, /obj/item/ammo_box/magazine/darkpackthompson)
+	crate_name = "ammo crate"
+
+/datum/supply_pack/weapons/magazine_mac10
+	name = "Ammo (3x Braddock magazines)"
+	desc = "Contains three Braddock magazines."
+	cost = 250
+	contains = list(/obj/item/ammo_box/magazine/darkpack45smg, /obj/item/ammo_box/magazine/darkpack45smg, /obj/item/ammo_box/magazine/darkpack45smg)
 	crate_name = "ammo crate"
 
 /datum/supply_pack/weapons/armorlight

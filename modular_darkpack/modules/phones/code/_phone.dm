@@ -3,6 +3,7 @@
 	desc = "A portable device to call anyone you want."
 	icon = 'modular_darkpack/modules/phones/icons/phone.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/phones/icons/phone_onfloor.dmi')
+	base_icon_state = "phone"
 	icon_state = "phone"
 	inhand_icon_state = "phone"
 	lefthand_file = 'modular_darkpack/modules/phones/icons/lefthand.dmi'
@@ -28,10 +29,14 @@
 	var/obj/machinery/newscaster/irc_channel
 	// Do we have a SIM card?
 	var/obj/item/sim_card/sim_card
+	/// If we should spawn a SIM card as init, what should its type be?
+	var/default_sim_card_type = /obj/item/sim_card
 	// There's a wiki in our phone. Literally.
 	var/obj/item/book/manual/wiki/wiki_book
-	// Phone flags, for things like if its open or if it has no sim card.
-	var/phone_flags = NONE
+	// Is the phone opened?
+	var/opened = FALSE
+	/// Is this phone always open?
+	var/always_open = FALSE
 	// The phone's current state.
 	VAR_PRIVATE/current_state = PHONE_AVAILABLE
 	// The number the phone has dialed.
@@ -44,10 +49,6 @@
 	var/ringer = TRUE
 	// If the phone shows balloon alerts when ringing.
 	var/vibration = TRUE
-	// Passive particle effect generation for when on call
-	var/obj/effect/abstract/particle_holder/particle_generator
-	// If the phone's microphone is muted.
-	var/muted = FALSE
 	// ID of the timer that the phone uses for ringing. Deleted once the user denies a phone call or misses it.
 	var/phone_ringing_timer = null
 	// The phone number of the phone calling us. If any.
@@ -69,8 +70,8 @@
 /obj/item/smartphone/Initialize(mapload)
 	. = ..()
 	GLOB.phones_list += src
-	if(!sim_card)
-		sim_card = new()
+	if(!sim_card && default_sim_card_type)
+		sim_card = new default_sim_card_type(src)
 		sim_card.phone_weakref = WEAKREF(src)
 	phone_radio = new(src)
 	phone_radio.keyslot = new
@@ -80,18 +81,10 @@
 	wiki_book = new()
 	become_hearing_sensitive(ROUNDSTART_TRAIT)
 	RegisterSignal(src, COMSIG_MOVABLE_HEAR, PROC_REF(handle_hearing))
-	AddComponent(/datum/component/violation_observer, FALSE)
 	phone_background = "BG_[rand(1,18)]" // pick a random phone background when spawned
 
-/// Index to a define to point at a runtime-global list at compile-time.
-#define NETWORK_ID 1
-/// Index to a string, for the contact title.
-#define OUR_ROLE 2
-/// Index to a boolean, on whether to replace role with job title (or alt-title).
-#define USE_JOB_TITLE 3
-
-/obj/item/smartphone/proc/update_initialized_contacts()
-	var/mob/living/carbon/owner = owner_weakref.resolve()
+/obj/item/smartphone/proc/update_initialized_contacts(mob/living/carbon/owner, client/owner_client)
+	owner_weakref = WEAKREF(owner)
 	if(LAZYLEN(contact_networks_pre_init))
 		LAZYINITLIST(contact_networks)
 		for(var/list/contact_network_info as anything in contact_networks_pre_init)
@@ -114,19 +107,19 @@
 	if(important_contact_of && owner && sim_card.phone_number)
 		GLOB.important_contacts[important_contact_of] = new /datum/phonecontact(owner.real_name, sim_card.phone_number)
 
-#undef NETWORK_ID
-#undef OUR_ROLE
-#undef USE_JOB_TITLE
+	var/name_pref = owner_client?.prefs?.read_preference(/datum/preference/text/phone_published_name)
+	if(name_pref)
+		publish_number(owner, name_pref, save = FALSE)
 
 /obj/item/smartphone/Destroy(force)
+	SEND_SIGNAL(src, COMSIG_ALL_MASQUERADE_REINFORCE)
 	GLOB.phones_list -= src
 	for(var/datum/contact_network/contact_network as anything in contact_networks)
 		for(var/datum/contact/our_contact in contact_network.contacts)
 			if(our_contact.number == sim_card.phone_number)
 				contact_network.contacts -= our_contact
 
-	if(particle_generator)
-		QDEL_NULL(particle_generator)
+	remove_shared_particles(/particles/phone_ringing, delete_on_empty = FALSE)
 
 	lose_hearing_sensitivity(ROUNDSTART_TRAIT)
 	UnregisterSignal(src, COMSIG_MOVABLE_HEAR)
@@ -148,30 +141,32 @@
 	. += span_notice("[EXAMINE_HINT("Alt-Click")] or [EXAMINE_HINT("Right-Click")] to toggle the screen.")
 	if(sim_card)
 		. += span_notice("[EXAMINE_HINT("Ctrl-Click")] to remove [sim_card].")
+		if(sim_card.phone_number && (user.is_holding(src) || isobserver(user)))
+			. += span_notice("Its phone number is [span_bold("[sim_card.phone_number]")].")
 	else
 		. += span_notice("You can [EXAMINE_HINT("Insert")] a SIM card.")
 
 /obj/item/smartphone/attack_self(mob/user, modifiers)
 	. = ..()
-	if(!(phone_flags & PHONE_OPEN))
+	if(!opened)
 		toggle_screen(user)
 	ui_interact(user)
 
 /obj/item/smartphone/click_alt(mob/user)
-	if(!(user.is_holding(src)))
+	if(!user.is_holding(src))
 		return CLICK_ACTION_BLOCKING
 	toggle_screen(user)
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/smartphone/item_ctrl_click(mob/user)
-	if(!(user.is_holding(src)))
+	if(!user.is_holding(src))
 		return CLICK_ACTION_BLOCKING
 	if(!sim_card)
 		balloon_alert(user, "no sim card!")
 		return CLICK_ACTION_BLOCKING
 	if(do_after(user, 2 SECONDS, src))
 		balloon_alert(user, "you remove \the [sim_card]!")
-		log_phone("[key_name(usr)] removed a SIM card with the number [sim_card.phone_number].")
+		log_phone("[key_name(user)] removed a SIM card with the number [sim_card.phone_number].")
 		switch(current_state)
 			if(PHONE_CALLING)
 				hang_up_phone_call(dialed_number)
@@ -182,58 +177,70 @@
 		user.put_in_hands(sim_card)
 		sim_card.phone_weakref = null
 		sim_card = null
-		phone_flags |= PHONE_NO_SIM
+		SStgui.update_uis(src)
 		return CLICK_ACTION_SUCCESS
 	return CLICK_ACTION_BLOCKING
 
 /obj/item/smartphone/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(istype(tool, /obj/item/sim_card))
-		if(sim_card)
-			balloon_alert(user, "[sim_card] already installed!")
-			return ITEM_INTERACT_BLOCKING
-		balloon_alert(user, "you insert \the [tool]!")
-		sim_card = tool
-		user.transferItemToLoc(tool, src)
-		sim_card.phone_weakref = WEAKREF(src)
-		phone_flags &= ~PHONE_NO_SIM
-		log_phone("[key_name(usr)] inserted a SIM card with the number [sim_card.phone_number].")
-		return TRUE
-	return ..()
+	if(!istype(tool, /obj/item/sim_card))
+		return NONE
+	if(sim_card)
+		balloon_alert(user, "[sim_card] already installed!")
+		return ITEM_INTERACT_BLOCKING
+	if(!user.transferItemToLoc(tool, src))
+		balloon_alert(user, "failed to install [tool]!")
+		return ITEM_INTERACT_BLOCKING
+	balloon_alert(user, "you insert \the [tool]!")
+	sim_card = tool
+	sim_card.phone_weakref = WEAKREF(src)
+	log_phone("[key_name(user)] inserted a SIM card with the number [sim_card.phone_number].")
+	SStgui.update_uis(src)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/smartphone/update_icon_state()
+	. = ..()
+	icon_state = (opened && !always_open) ? "[base_icon_state]_on" : base_icon_state
+	inhand_icon_state = (opened && !always_open) ? "[base_icon_state]_on" : base_icon_state
 
 /obj/item/smartphone/ui_status(mob/user, datum/ui_state/state)
-	if(!(phone_flags & PHONE_OPEN))
+	if(!opened)
 		return UI_CLOSE
 	return ..()
 
 /obj/item/smartphone/ui_interact(mob/user, datum/tgui/ui)
-	. = ..()
-	var/datum/asset/background_files = get_asset_datum(/datum/asset/simple/phone_assets)
-	if(user.client)
-		background_files.send(user.client)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "Telephone")
 		ui.open()
 
+/obj/item/smartphone/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/simple/phone_assets),
+	)
+
 /obj/item/smartphone/ui_data(mob/living/user)
 	var/list/data = list()
-	data["my_number"] = sim_card ? sim_card.phone_number : "No SIM card inserted."
-	data["no_sim_card"] = (phone_flags & PHONE_NO_SIM) ? TRUE : FALSE
+	if(sim_card)
+		data["my_number"] = sim_card.phone_number
+		data["no_sim_card"] = FALSE
+	else
+		data["my_number"] = "No SIM card inserted"
+		data["no_sim_card"] = TRUE
 	data["phone_in_call"] = (current_state == PHONE_IN_CALL) ? TRUE : FALSE
 	data["phone_ringing"] = (current_state == PHONE_RINGING) ? TRUE : FALSE
 	data["phone_calling"] = (current_state == PHONE_CALLING) ? TRUE : FALSE
 	data["ringer"] = ringer
 	data["vibration"] = vibration
 	data["speaker_mode"] = (phone_radio.canhear_range == 3) ? TRUE : FALSE
-	data["muted"] = muted
+	data["muted"] = !phone_radio.get_broadcasting()
+	data["on_hold"] = !phone_radio.get_listening()
 
 	var/list/published_numbers = list()
-	for(var/contact in SSphones.published_phone_numbers)
+	for(var/contact, number in SSphones.published_phone_numbers)
 		UNTYPED_LIST_ADD(published_numbers, list(
 			"name" = contact,
-			"number" = SSphones.published_phone_numbers[contact],
+			"number" = number,
 		))
-	published_numbers = sort_list(published_numbers)
 	data["published_numbers"] = published_numbers
 	data["sim_published"] = sim_card.published
 	data["sim_published_name"] = sim_card.published_name
@@ -244,7 +251,6 @@
 			"name" = contact.name,
 			"number" = contact.number,
 		))
-	our_contacts = sort_list(our_contacts)
 	data["our_contacts"] = our_contacts
 
 	var/list/our_blocked_contacts = list()
@@ -253,7 +259,6 @@
 			"name" = contact.name,
 			"number" = contact.number,
 		))
-	our_blocked_contacts = sort_list(our_blocked_contacts)
 	data["our_blocked_contacts"] = our_blocked_contacts
 
 	var/list/phone_history = list()
@@ -276,6 +281,7 @@
 	data["time"] = server_timestamp("hh:mm", ic_time = TRUE)
 	data["date"] = server_timestamp("Day, Month DD, YYYY", ic_time = TRUE)
 	data["background_url"] = phone_background
+	data["city_name"] = SSmapping.current_map.map_name
 
 	var/list/conversations_list = list()
 	for(var/datum/phone_conversation/convo in conversations)
@@ -317,14 +323,33 @@
 
 	return data
 
-/obj/item/smartphone/ui_act(action, params, datum/tgui/ui)
+/obj/item/smartphone/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
+
+	var/mob/user = ui.user
+
+	// CRIMSON GRID ADDITION START - normal taps!!
+	if(COOLDOWN_FINISHED(src, tap_sound_cooldown))
+		var/static/list/ignored_actions_for_clicksound = list(
+			"terminal_sound",
+			"keyboard_click",
+			"viewing_newscaster_channel"
+		)
+
+		if(!(action in ignored_actions_for_clicksound) && ringer)
+			playsound(loc, 'modular_vcg/master_files/sounds/item/smartphone/aosp/Effect_Tick.ogg', 10, FALSE)
+			COOLDOWN_START(src, tap_sound_cooldown, 0.1 SECONDS)
+		if(action == "clicksound")
+			return
+	// CRIMSON GRID ADDITION END - normal taps!!
+
+	var/passed_number = params["number"]
 	switch(action)
 		if("call")
-			start_phone_call(usr, params["number"])
-			log_phone("[key_name(usr)] called [params["number"]].")
+			start_phone_call(user, params["number"])
+			log_phone("[key_name(user)] called [params["number"]].")
 			return TRUE
 
 		if("hang")
@@ -335,94 +360,116 @@
 			return TRUE
 
 		if("accept")
-			accept_phone_call(usr)
-			log_phone("[key_name(usr)] answered a phone call.")
+			accept_phone_call(user)
+			log_phone("[key_name(user)] answered a phone call.")
 			return TRUE
 
 		if("decline")
 			decline_phone_call()
-			log_phone("[key_name(usr)] declined a phone call.")
+			log_phone("[key_name(user)] declined a phone call.")
 			return TRUE
 
 		if("publish_number")
-			to_chat(usr, span_notice("This text will represent you in the phonebook. example: Jane Doe | Anarchy Rose Manager"))
-			var/name = tgui_input_text(usr, "Phonebook Name", "Publish Number")
+			var/name = tgui_input_text(user, "What name will represent you in the phonebook. Example: Jane Doe | Anarchy Rose Manager", "Publish Number", max_length = MAX_MESSAGE_LEN)
 			if(!name)
-				to_chat(usr, span_danger("You must input text to publish your number."))
+				to_chat(user, span_danger("You must enter a name to be published under."))
 				return
+			var/make_persistent = tgui_alert(user, "Do you want to make this number persistent between rounds? If one is already persistent for this character, this will override it.", "Number Persistence", list("Yes", "No"))
 			if(!sim_card)
-				to_chat(usr, span_danger("You must insert a SIM card to publish your number."))
+				to_chat(user, span_danger("You must insert a SIM card to publish your number."))
 				return
-			name = trim(copytext_char(sanitize(name), 1, MAX_MESSAGE_LEN))
 			for(var/contact in SSphones.published_phone_numbers)
 				if(SSphones.published_phone_numbers[contact] == sim_card.phone_number)
-					to_chat(usr, span_danger("Error: This number is already published."))
+					to_chat(user, span_danger("Error: This number is already published."))
 					return TRUE
-			SSphones.published_phone_numbers[name] = sim_card.phone_number
-			to_chat(usr, span_notice("Your number is now published."))
-			sim_card.published = TRUE
-			sim_card.published_name = name
-			log_phone("[key_name(usr)] published their number ([name])/[sim_card.phone_number] to the phonebook.")
+			publish_number(user, name, save = (make_persistent == "Yes"))
 			return TRUE
 
 		if("unpublish_number")
 			for(var/contact in SSphones.published_phone_numbers)
-				if(SSphones.published_phone_numbers[contact] == sim_card.phone_number)
-					log_phone("[key_name(usr)] unpublished their number ([contact])/[sim_card.phone_number] from the phonebook.")
-					SSphones.published_phone_numbers.Remove(contact)
-					sim_card.published = FALSE
-					sim_card.published_name = null
-					to_chat(usr, span_notice("Your number is now unpublished."))
-					return TRUE
+				if(SSphones.published_phone_numbers[contact] != sim_card.phone_number)
+					continue
+				var/make_persistent = FALSE
+				var/mob/living/carbon/owner = owner_weakref?.resolve()
+				var/name_pref = owner.client?.prefs?.read_preference(/datum/preference/text/phone_published_name)
+				if(name_pref)
+					make_persistent = tgui_alert(user, "Do you want to remove this as a persistent number?", "Number Persistence", list("Remove persistently", "Just for today"))
+				unpublish_number(user, contact, save = (make_persistent == "Remove persistently"))
+				return TRUE
 
 		if("custom_background")
-			to_chat(usr, span_danger("Do NOT use images that can be considered offensive or obscene, or that contain references to something that happened after the year [CURRENT_STATION_YEAR]. Recommended image dimensions: 400x600 "))
-			custom_background = tgui_input_text(usr, "Input background image URL", "Custom Background")
+			// CRIMSON EDIT START
+			if(!user.client?.is_donator())
+				var/patreon_link = CONFIG_GET(string/patreon_link)
+				var/twitch_link = CONFIG_GET(string/twitch_link)
+				var/notice = "This is a donator exclusive feature. You may only be able to set a background if you are a " + \
+					"[patreon_link ? "<a href='[patreon_link]'>": ""]Patreon supporter[patreon_link ? "</a>": ""] or " + \
+					"[twitch_link ? "<a href='[twitch_link]'>": ""]Twitch subscriber[twitch_link ? "</a>": ""]."
+				to_chat(user, span_notice(notice))
+				return
+			// CRIMSON EDIT END
+			to_chat(user, span_danger("Do NOT use images that can be considered offensive or obscene, or that contain references to something that happened after the year [CURRENT_STATION_YEAR]. Recommended image dimensions: 400x600 "))
+			custom_background = tgui_input_text(user, "Input background image URL", "Custom Background")
 			if(!custom_background)
-				to_chat(usr, span_danger("You must input a URL to set a custom background."))
+				to_chat(user, span_danger("You must input a URL to set a custom background."))
 				return
 			phone_background = custom_background
-			log_phone("[key_name(usr)] set a custom background image on [src]: [custom_background]")
+			log_phone("[key_name(user)] set a custom background image on [src]: [custom_background]")
 			return TRUE
 
 		if("add_contact")
-			var/number = tgui_input_text(usr, "Input number", "Add Contact")
+			var/number = passed_number || tgui_input_text(user, "Input number", "Add Contact")
+			if(!number)
+				to_chat(user, span_danger("You must provide a number."))
+				return FALSE
 			if(length(number) > 15)
-				to_chat(usr, span_danger("Entered number is too long"))
+				to_chat(user, span_danger("Entered number is too long"))
 				return FALSE
+			for(var/datum/phonecontact/contact as anything in contacts)
+				if(contact.number == number)
+					to_chat(user, span_danger("This phone number is already in your contacts list!"))
+					return FALSE
 			var/stripped_number = replacetext(number, " ", "") // remove spaces
-			var/new_contact_name = tgui_input_text(usr, "Input name", "Add Contact")
-			if(!new_contact_name || !number)
-				to_chat(usr, span_danger("You must provide both a name and a number."))
+			var/new_contact_name = tgui_input_text(user, "Input name", "Add Contact")
+			if(!new_contact_name)
+				to_chat(user, span_danger("You must provide a name for the contact."))
 				return FALSE
+			for(var/datum/phonecontact/contact as anything in contacts)
+				if(contact.number == number)
+					to_chat(user, span_danger("This phone number is already in your contacts list!"))
+					return FALSE
 
 			var/datum/phonecontact/new_contact = new()
 			new_contact.number = "[stripped_number]"
 			new_contact.name = "[new_contact_name]"
 			contacts += new_contact
-			log_phone("[key_name(usr)] added a new contact: [new_contact_name] ([stripped_number])")
+			log_phone("[key_name(user)] added a new contact: [new_contact_name] ([stripped_number])")
 			return TRUE
 
 		if("remove_contact")
-			var/number = tgui_input_text(usr, "Input number", "Remove Contact")
+			var/number = passed_number || tgui_input_text(user, "Input number", "Remove Contact")
 			if(length(number) > 15)
-				to_chat(usr, span_danger("Entered number is too long"))
+				to_chat(user, span_danger("Entered number is too long"))
 				return FALSE
 			for(var/datum/phonecontact/contact in contacts)
 				if(contact.number == number)
 					contacts -= contact
-					log_phone("[key_name(usr)] removed a contact with number: [number]")
+					log_phone("[key_name(user)] removed a contact with number: [number]")
 					return TRUE
 			return FALSE
 
 		if("block")
-			var/block_number = tgui_input_text(usr, "Input number to block", "Block Contact")
+			var/block_number = passed_number || tgui_input_text(user, "Input number to block", "Block Contact")
 			if(!block_number)
-				to_chat(usr, span_warning("You must provide a number."))
+				to_chat(user, span_warning("You must provide a number."))
 				return FALSE
 			if(length(block_number) > 15)
-				to_chat(usr, span_warning("Invalid number."))
+				to_chat(user, span_warning("Invalid number."))
 				return FALSE
+			for(var/datum/phonecontact/contact as anything in blocked_contacts)
+				if(contact.number == block_number)
+					to_chat(user, span_danger("This phone number is already blocked!"))
+					return FALSE
 
 			var/datum/phonecontact/blocked_contact = new()
 			block_number = replacetext(block_number, " ", "")
@@ -432,37 +479,34 @@
 			return TRUE
 
 		if("unblock")
-			var/result = tgui_input_text(usr, "Input number to unblock", "Unblock Contact")
-			if(!result)
-				to_chat(usr, span_warning("You must provide a number."))
+			var/number = passed_number || tgui_input_text(user, "Input number to unblock", "Unblock Contact")
+			if(!number)
+				to_chat(user, span_warning("You must provide a number."))
 				return FALSE
 			for(var/datum/phonecontact/unblocked_contact in blocked_contacts)
-				if(unblocked_contact.name == result)
+				if(unblocked_contact.number == number)
 					blocked_contacts -= unblocked_contact
 					return TRUE
 			return FALSE
 
 		if("delete_call_history")
 			if(!length(phone_history_list))
-				to_chat(usr, span_danger("You have no call history to delete."))
+				to_chat(user, span_danger("You have no call history to delete."))
 				return FALSE
 
-			to_chat(usr, "Your total amount of history saved is: [length(phone_history_list)]")
-			var/number_of_deletions = tgui_input_number(usr, "Input the amount that you want to delete", "Deletion Amount", max_value = length(phone_history_list))
+			to_chat(user, span_notice("Your total amount of history saved is: [length(phone_history_list)]"))
+			var/number_of_deletions = tgui_input_number(user, "Input the amount that you want to delete", "Deletion Amount", max_value = length(phone_history_list))
 			if(!number_of_deletions)
 				return FALSE
 
 			//Delete the call history depending on the amount inputed by the User
 			if(number_of_deletions > length(phone_history_list))
 				//Verify if the requested amount in bigger than the history list.
-				to_chat(usr, "You cannot delete more items than the history contains.")
+				to_chat(user, span_warning("You cannot delete more items than the history contains."))
 				return FALSE
 			else
-				for(var/i in 1 to number_of_deletions)
-					//It will always delete the first item of the list, so the last logs are deleted first
-					var/item_to_remove = phone_history_list[1]
-					phone_history_list -= item_to_remove
-			to_chat(usr, "[number_of_deletions] call history entries were deleted. Remaining: [length(phone_history_list)]")
+				phone_history_list.Cut(1, number_of_deletions + 1)
+			to_chat(user, span_notice("[number_of_deletions] call history entries were deleted. Remaining: [length(phone_history_list)]"))
 			return TRUE
 
 		if("terminal_sound")
@@ -472,21 +516,23 @@
 
 		if("silent")
 			ringer = !ringer
-			balloon_alert(usr, "ringer [ringer ? "on" : "off"]!")
+			balloon_alert(user, "ringer [ringer ? "on" : "off"]!")
+			if(!ringer)
+				remove_shared_particles(/particles/phone_ringing, delete_on_empty = FALSE)
 			return TRUE
 
 		if("vibration")
 			vibration = !vibration
-			balloon_alert(usr, "vibration [vibration ? "on" : "off"]!")
+			balloon_alert(user, "vibration [vibration ? "on" : "off"]!")
 			return TRUE
 
 		if("speaker")
 			if(phone_radio.canhear_range == 1)
 				phone_radio.canhear_range = 3
-				balloon_alert(usr, "speaker on!")
+				balloon_alert(user, "speaker on!")
 			else
 				phone_radio.canhear_range = 1
-				balloon_alert(usr, "speaker off!")
+				balloon_alert(user, "speaker off!")
 			return TRUE
 
 		if("set_background")
@@ -494,12 +540,22 @@
 			return TRUE
 
 		if("mute")
-			muted = !muted
-			phone_radio.set_listening(!muted)
-			balloon_alert(usr, "[muted ? "muted" : "unmuted"]!")
+			if(!phone_radio.is_on())
+				return FALSE
+			phone_radio.set_broadcasting(!phone_radio.get_broadcasting())
+			balloon_alert(user, "[!phone_radio.get_broadcasting() ? "muted" : "unmuted"]!")
+
+		if("hold_call")
+			phone_radio.set_listening(!phone_radio.get_listening())
+			if(!phone_radio.get_listening())
+				phone_radio.set_on(FALSE) // do not use set_phone_radio() as it fully resets the radio
+				balloon_alert(user, "on hold!")
+			else
+				phone_radio.set_on(TRUE)
+				balloon_alert(user, "resumed!")
 
 		if("wiki")
-			wiki_book.display_content(usr)
+			wiki_book.display_content(user)
 
 		if("view_conversation")
 			current_viewed_conversation = params["contact_number"]
@@ -509,47 +565,90 @@
 			return TRUE
 
 		if("submit_post")
-			submit_post(params["body"])
+			submit_post(user, params["body"])
 			return TRUE
 
 		if("endpost_registration")
-			endpost_registration()
+			endpost_registration(user)
 			return TRUE
 
 		if("remove_endpost")
+			if(!is_admin(user.client))
+				CRASH("Non-admin somehow tried to call remove_endpost")
 			var/post_index = text2num(params["post_index"])
 			if(!post_index)
-				to_chat(usr, "Invalid post index.")
+				to_chat(user, span_warning("Invalid post index."))
 				return FALSE
 			var/list/selected_post = SSphones.endpost_posts[post_index]
 			SSphones.endpost_posts.Cut(post_index, post_index + 1)
-			to_chat(usr, "Post '[selected_post["body"]]' by [selected_post["author"]] removed.")
-			log_phone("[key_name(usr)] removed an endpost: [selected_post["body"]] by [selected_post["author"]]", list("author" = selected_post["author"], "body" = selected_post["body"]))
+			to_chat(user, span_notice("Post '[selected_post["body"]]' by [selected_post["author"]] removed."))
+			log_phone("[key_name(user)] removed an endpost: [selected_post["body"]] by [selected_post["author"]]", list("author" = selected_post["author"], "body" = selected_post["body"]))
 			return TRUE
 
 		if("keyboard_click")
+			/* //CRIMSON EDIT REMOVAL START
 			if(ringer)
 				playsound(loc, 'modular_darkpack/modules/phones/sounds/keyboard_click.ogg', 75, TRUE)
-			return TRUE
+			*/ // CRIMSON EDIT REMOVAL END
+			// CRIMSON EDIT ADDITION START
+			if(!ringer)
+				return TRUE
+			var/key_action = params["sound"]
+			var/static/alist/sound_map = alist(
+				"del" = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressDelete.ogg',
+				"ret" = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressReturn.ogg',
+				"spb" = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressSpacebar.ogg',
+			)
+			var/sound_to_play
+			if(!key_action)
+				sound_to_play = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressStandard.ogg'
+			else if(key_action in sound_map)
+				sound_to_play = sound_map[key_action]
+			else
+				sound_to_play = 'modular_vcg/master_files/sounds/item/smartphone/aosp/KeypressInvalid.ogg'
 
+			playsound(loc, sound_to_play, 35, FALSE)
+			// CRIMSON EDIT ADDITION END
+			return TRUE
 		if("send_message")
 			var/contact_number = params["contact_number"]
 			var/message_text = params["message_text"]
 			if(!contact_number || !message_text)
 				return FALSE
-			send_text_message(contact_number, message_text)
+			send_text_message(user, contact_number, message_text)
 			if(ringer)
 				playsound(loc, 'modular_darkpack/modules/phones/sounds/text_send.ogg', 50, TRUE)
 			return TRUE
 
 	return FALSE
 
+/obj/item/smartphone/proc/publish_number(mob/user, sim_name, save = FALSE)
+	SSphones.published_phone_numbers[sim_name] = sim_card.phone_number
+	to_chat(user, span_notice("Your number is now published."))
+	sim_card.published = TRUE
+	sim_card.published_name = sim_name
+	var/mob/living/carbon/human/owner = owner_weakref?.resolve()
+	if(save && owner && owner.client?.prefs)
+		log_phone("[key_name(user)] published their number ([sim_name])/[sim_card.phone_number] to the persistent phonebook.")
+		owner.write_preference_midround(/datum/preference/text/phone_published_name, sim_name)
+
+/obj/item/smartphone/proc/unpublish_number(mob/user, contact, save = FALSE)
+	SSphones.published_phone_numbers -= contact
+	sim_card.published = FALSE
+	sim_card.published_name = null
+	to_chat(user, span_notice("Your number is now unpublished."))
+	var/mob/living/carbon/human/owner = owner_weakref?.resolve()
+	var/name_pref = owner.client?.prefs?.read_preference(/datum/preference/text/phone_published_name)
+	if(save && owner && name_pref)
+		log_phone("[key_name(user)] unpublished their number ([contact])/[sim_card.phone_number] from the persistent phonebook.")
+		owner.write_preference_midround(/datum/preference/text/phone_published_name, null)
+
 /obj/item/smartphone/proc/get_conversation(contact_number)
 	for(var/datum/phone_conversation/convo in conversations)
 		if(convo.contact_number == contact_number)
 			return convo
 
-/obj/item/smartphone/proc/send_text_message(contact_number, message_text)
+/obj/item/smartphone/proc/send_text_message(mob/user, contact_number, message_text)
 	if(!contact_number || !message_text)
 		return FALSE
 
@@ -571,7 +670,7 @@
 			receiving_phone.conversations += recv_conversation
 		recv_conversation.add_message(message_text, FALSE)
 		addtimer(CALLBACK(receiving_phone, PROC_REF(after_text_received), contact_name, message_text), rand(1 SECONDS, 2 SECONDS)) //simulate random delay before sending an audible/visible alert
-		log_phone("[key_name(usr)] sent a text to [contact_number]: [message_text]", list("sender" = contact_name, "receiver" = recv_contact_name, "message" = message_text))
+		log_phone("[key_name(user)] sent a text to [contact_number]: [message_text]", list("sender" = contact_name, "receiver" = recv_contact_name, "message" = message_text))
 	return TRUE
 
 //stuff to do after a text is received
@@ -598,15 +697,10 @@
 	return formatted_messages
 
 /obj/item/smartphone/proc/toggle_screen(mob/user)
-	if(phone_flags & PHONE_OPEN)
-		phone_flags &= ~PHONE_OPEN
-	else
-		phone_flags |= PHONE_OPEN
-	icon_state = (phone_flags & PHONE_OPEN) ? "phone_on" : "phone"
-	inhand_icon_state = (phone_flags & PHONE_OPEN) ? "phone_on" : "phone"
-	update_icon()
+	opened = always_open || !opened
+	update_appearance(UPDATE_ICON_STATE)
 
-/obj/item/smartphone/proc/submit_post(body)
+/obj/item/smartphone/proc/submit_post(mob/user, body)
 	if(!body)
 		return FALSE
 
@@ -621,13 +715,13 @@
 	)
 
 	UNTYPED_LIST_ADD(SSphones.endpost_posts, new_post)
-	log_phone("[key_name(usr)] submitted a new endpost: [trim(body)] as [endpost_username]")
+	log_phone("[key_name(user)] submitted a new endpost: [trim(body)] as [endpost_username]")
 
 	return TRUE
 
-/obj/item/smartphone/proc/endpost_registration()
-	var/new_username = tgui_input_text(usr, "Choose your username:", "EndPost Registration", "", 14) //max size of 14 chars or it starts bumping elements around
-	log_phone("[key_name(usr)] [endpost_username ? "updated" : "registered"] their username as [new_username]")
+/obj/item/smartphone/proc/endpost_registration(mob/user)
+	var/new_username = tgui_input_text(user, "Choose your username:", "EndPost Registration", max_length = 14) //max size of 14 chars or it starts bumping elements around
+	log_phone("[key_name(user)] [endpost_username ? "updated" : "registered"] their username as [new_username]")
 	endpost_username = new_username
 	return TRUE
 

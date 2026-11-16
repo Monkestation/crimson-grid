@@ -186,7 +186,7 @@
 			to_chat(ghostie, span_userdanger("The power of [deity] compels you!"))
 			ghostie.apply_status_effect(/datum/status_effect/incapacitating/paralyzed/revenant, 2 SECONDS)
 			ghostie.apply_status_effect(/datum/status_effect/revenant/revealed, 10 SECONDS)
-			ghostie.adjust_health(50)
+			ghostie.adjust_brute_loss(50)
 		for(var/mob/living/carbon/evil_motherfucker in get_hearers_in_view(effective_size,T))
 			if(IS_CULTIST(evil_motherfucker) || HAS_TRAIT(evil_motherfucker, TRAIT_EVIL))
 				to_chat(evil_motherfucker, span_userdanger("The divine explosion sears you!"))
@@ -288,7 +288,7 @@
 	for(var/turf/target in RANGE_TURFS(1,T))
 		new /obj/effect/hotspot(target)
 	holder.chem_temp = 1000 // hot as shit
-	..()
+	// ..() Sure you can heat it, it won't explode now though. // CRIMSON EDIT CHANGE - No More Super Meth Bombs
 
 /datum/chemical_reaction/reagent_explosion/methsplosion/methboom2
 	required_reagents = list(/datum/reagent/diethylamine = 1, /datum/reagent/iodine = 1, /datum/reagent/phosphorus = 1, /datum/reagent/hydrogen = 1) //diethylamine is often left over from mixing the ephedrine.

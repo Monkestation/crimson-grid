@@ -98,7 +98,7 @@
 	if(prob(50))
 		spawn_list.Add(/mob/living/basic/trooper/syndicate/ranged/infiltrator)
 */
-
+/* // DARKPACK EDIT REMOVAL START  - (Removes Monkey Cubes and Bees)
 /datum/shuttle_loan_situation/lots_of_bees
 	sender = "CentCom Janitorial Division"
 	announcement_text = "One of our freighters carrying a bee shipment has been attacked by eco-terrorists. Can you clean up the mess for us?"
@@ -133,6 +133,7 @@
 	for(var/i in 1 to 10)
 		var/casing = /obj/item/ammo_casing/spent
 		new casing(pick_n_take(empty_shuttle_turfs))
+*/ // DARKPACK EDIT REMOVAL END
 
 /datum/shuttle_loan_situation/jc_a_bomb
 	sender = "CentCom Security Division"

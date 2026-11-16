@@ -1,7 +1,7 @@
 /obj/item/wallframe/secure_safe
 	name = "secure safe frame"
 	desc = "A locked safe. It being unpowered prevents any access until placed back onto a wall."
-	icon = 'icons/obj/storage/storage.dmi'
+	icon = 'modular_darkpack/modules/decor/icons/safes.dmi' // DARKPACK EDIT CHANGE - (MS FURNITURE UPDATE)
 	icon_state = "wall_safe"
 	base_icon_state = "wall_safe"
 	result_path = /obj/structure/secure_safe
@@ -82,7 +82,7 @@
 /obj/structure/secure_safe
 	name = "secure safe"
 	desc = "Excellent for securing things away from grubby hands."
-	icon = 'icons/obj/storage/storage.dmi'
+	icon = 'modular_darkpack/modules/decor/icons/safes.dmi' // DARKPACK EDIT CHANGE - (MS FURNITURE UPDATE)
 	icon_state = "wall_safe"
 	base_icon_state = "wall_safe"
 	anchored = TRUE
@@ -198,3 +198,4 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/secure_safe, 32)
 
 /obj/structure/secure_safe/caps_spare/rust_heretic_act()
 	take_damage(damage_amount = 100, damage_type = BRUTE, damage_flag = MELEE, armour_penetration = 100)
+	return TRUE

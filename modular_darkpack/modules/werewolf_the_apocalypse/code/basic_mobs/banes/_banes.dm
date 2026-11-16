@@ -26,6 +26,8 @@
 	bloodquality = BLOOD_QUALITY_LOW
 
 	ai_controller = /datum/ai_controller/basic_controller/simple/simple_hostile_obstacles
+	// General spitball of the "power" of the bane so we can use that for difficulty calculations
+	var/power_rank = 1
 
 /mob/living/basic/bane/Initialize(mapload)
 	. = ..()

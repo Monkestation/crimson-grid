@@ -1,6 +1,11 @@
 /datum/discipline/dementation
 	name = "Dementation"
-	desc = "Makes all humans in radius mentally ill for a moment, supressing their defending ability."
+	desc = {"Makes all humans in radius mentally ill for a moment, supressing their defending ability.
+● Passion: Charisma + Empathy
+●● The Haunting: Manipulation + Subterfuge
+●●● Eyes of Chaos: Perception + Occult
+●●●● Voice of Madness: Manipulation + Empathy
+●●●●● Total Insanity: Manipulation + Intimidation"}
 	icon_state = "dementation"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/dementation
@@ -9,6 +14,10 @@
 /datum/discipline/dementation/post_gain()
 	. = ..()
 	owner.add_quirk(/datum/quirk/darkpack/derangement)
+
+/datum/discipline/dementation/post_loss()
+	owner.remove_quirk(/datum/quirk/darkpack/derangement)
+	return ..()
 
 /datum/discipline_power/dementation
 	name = "Dementation power name"
@@ -141,6 +150,8 @@ pools for a turn or two after the manifestation.
 	var/resistence_stat = target.st_get_stat(STAT_SELF_CONTROL)
 	if(get_kindred_splat(target))
 		resistence_stat = target.st_get_stat(owner.is_enlightenment() ? STAT_CONVICTION : STAT_SELF_CONTROL)
+	if(HAS_TRAIT(target, TRAIT_IRON_WILL))
+		resistence_stat += 3
 	var/theirpower = target.st_get_stat(STAT_PERCEPTION) + resistence_stat
 	mypower = SSroll.storyteller_roll_datum(owner, difficulty = theirpower, applic_stats = list(STAT_MANIPULATION, STAT_SUBTERFUGE), numerical = TRUE)
 	if(mypower <= 0)
@@ -374,7 +385,7 @@ frenzy or Rötschreck response is automatic.
 	owner.say(attack_text, spans = list("bold", "singing"))
 	var/list/potential_targets = list()
 	for(var/mob/living/carbon/human/hearer in (get_hearers_in_view(8, owner) - owner))
-		if(HAS_TRAIT(hearer, TRAIT_DEAF) || hearer.stat > CONSCIOUS)
+		if(HAS_TRAIT(hearer, TRAIT_DEAF) || IS_UNCONSCIOUS_OR_CRIT(hearer))
 			continue
 		potential_targets += hearer
 	var/targets_affected = 0
@@ -430,6 +441,10 @@ determines the duration.
 
 /datum/discipline_power/dementation/total_insanity/pre_activation_checks(mob/living/carbon/human/target)
 	theirpower = target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
+	if(HAS_TRAIT(target, TRAIT_IRON_WILL))
+		theirpower += 3
+	if(HAS_TRAIT(owner, TRAIT_ENCHANTING_VOICE))
+		theirpower -= 2
 	mypower = SSroll.storyteller_roll_datum(owner, difficulty = theirpower, applic_stats = list(STAT_MANIPULATION, STAT_INTIMIDATION), numerical = TRUE)
 	if(mypower <= 0)
 		to_chat(owner, span_warning("[target]'s mind is too powerful to corrupt!"))
@@ -437,7 +452,7 @@ determines the duration.
 	return TRUE
 
 /datum/discipline_power/dementation/total_insanity/proc/self_attack(iteration)
-	if(attack_target.stat > CONSCIOUS)
+	if(IS_UNCONSCIOUS_OR_CRIT(attack_target))
 		return
 	if(iteration <= 0)
 		return

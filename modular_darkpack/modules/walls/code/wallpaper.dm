@@ -19,6 +19,42 @@
 /obj/effect/decal/wallpaper/low
 	icon_state = "wallpaper_low"
 
+/obj/effect/decal/wallpaper/paint
+	icon_state = "paint-white"
+
+/obj/effect/decal/wallpaper/paint/low
+	icon_state = "paint-white_low"
+
+/obj/effect/decal/wallpaper/paint/gray
+	icon_state = "paint-gray"
+
+/obj/effect/decal/wallpaper/paint/gray/low
+	icon_state = "paint-gray_low"
+
+/obj/effect/decal/wallpaper/paint/red
+	icon_state = "paint-red"
+
+/obj/effect/decal/wallpaper/paint/red/low
+	icon_state = "paint-red_low"
+
+/obj/effect/decal/wallpaper/paint/yellow
+	icon_state = "paint-yellow"
+
+/obj/effect/decal/wallpaper/paint/yellow/low
+	icon_state = "paint-yellow_low"
+
+/obj/effect/decal/wallpaper/paint/green
+	icon_state = "paint-green"
+
+/obj/effect/decal/wallpaper/paint/green/low
+	icon_state = "paint-green_low"
+
+/obj/effect/decal/wallpaper/paint/blue
+	icon_state = "paint-blue"
+
+/obj/effect/decal/wallpaper/paint/blue/low
+	icon_state = "paint-blue_low"
+
 /obj/effect/decal/wallpaper/grey
 	icon_state = "wallpaper-grey"
 
@@ -49,6 +85,30 @@
 
 /obj/effect/decal/wallpaper/paper/low
 	icon_state = "wallpaper-cheap_low"
+
+/obj/effect/decal/wallpaper/paper/fancy
+	icon_state = "wallpaper-greenfancy"
+
+/obj/effect/decal/wallpaper/paper/fancy/low
+	icon_state = "wallpaper-greenfancy_low"
+
+/obj/effect/decal/wallpaper/paper/fancy/stripe
+	icon_state = "wallpaper-stripesfancy"
+
+/obj/effect/decal/wallpaper/paper/fancy/stripe/low
+	icon_state = "wallpaper-stripesfancy_low"
+
+/obj/effect/decal/wallpaper/paper/fancy/red
+	icon_state = "wallpaper-redfancy"
+
+/obj/effect/decal/wallpaper/paper/fancy/red/low
+	icon_state = "wallpaper-redfancy_low"
+
+/obj/effect/decal/wallpaper/paper/fancy/blue
+	icon_state = "wallpaper-bluefancy"
+
+/obj/effect/decal/wallpaper/paper/fancy/blue/low
+	icon_state = "wallpaper-bluefancy_low"
 
 /obj/effect/decal/wallpaper/paper/green
 	icon_state = "wallpaper-green"
@@ -116,6 +176,12 @@
 
 /obj/effect/decal/wallpaper/lightpadded/low
 	icon_state = "wallpaper-lightpadded_low"
+
+/obj/effect/decal/wallpaper/absorbingfoam
+	icon_state = "absorbingfoam"
+
+/obj/effect/decal/wallpaper/absorbingfoam/low
+	icon_state = "absorbingfoam_low"
 
 /obj/effect/decal/wallpaper/papers
 	name = "papers"

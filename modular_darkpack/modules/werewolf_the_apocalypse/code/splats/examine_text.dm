@@ -8,6 +8,8 @@
 		var/same_tribe = FALSE
 		var/is_known = FALSE
 
+		if(!tribe)
+			return
 		if(!wolp_splat.tribe || !wolp_splat.auspice)
 			return
 		if(tribe.name == wolp_splat.tribe.name)

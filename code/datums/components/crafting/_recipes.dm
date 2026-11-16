@@ -57,33 +57,6 @@
 	* Can be set to ALWAYS_BLACKLIST_RESULT or NEVER_BLACKLIST_RESULT to override the default behavior.
 	*/
 	var/blacklist_result = BLACKLIST_RESULT_IF_NOT_IN_REQS
-	/// Global crafting blacklist. These should be excluded from all crafting recipes no matter what.
-	var/static/list/global_blacklist = typecacheof(list(
-		/obj/item/cautery/augment,
-		/obj/item/cautery/cruel/augment,
-		/obj/item/circular_saw/augment,
-		/obj/item/circular_saw/cruel/augment,
-		/obj/item/crowbar/cyborg,
-		/obj/item/hemostat/augment,
-		/obj/item/hemostat/cruel/augment,
-		/obj/item/multitool/cyborg,
-		/obj/item/retractor/augment,
-		/obj/item/retractor/cruel/augment,
-		/obj/item/scalpel/augment,
-		/obj/item/scalpel/cruel/augment,
-		/obj/item/screwdriver/cyborg,
-		/obj/item/surgicaldrill/augment,
-		/obj/item/surgicaldrill/cruel/augment,
-		/obj/item/weldingtool/largetank/cyborg,
-		/obj/item/wirecutters/cyborg,
-		/obj/item/wrench/cyborg,
-	))
-	// DARKPACK EDIT ADD START - STORYTELER_STATS
-	/// Stat define/typepath required for this recipe. No check if null
-	var/datum/st_stat/skill_required_for_use = STAT_CRAFTS
-	/// You need ATLEAST this many dots in a skill to craft.
-	var/skill_dots_minimum = null // Null by default means it wont even try to get stats. as if its 0 or less, it only catches people with low stats AND a debuff and i dont really care.
-	// DARKPACK EDIT ADD END
 
 /datum/crafting_recipe/New()
 	if(!name && result)
@@ -136,17 +109,3 @@
 /// Additional UI data to be passed to the crafting UI for this recipe
 /datum/crafting_recipe/proc/crafting_ui_data()
 	return list()
-
-// DARKPACK EDIT ADD START
-/datum/crafting_recipe/proc/is_recipe_available(mob/user)
-	SHOULD_CALL_PARENT(TRUE)
-
-	if(skill_required_for_use && !isnull(skill_dots_minimum))
-		var/mob/living/living_user = astype(user)
-		if(!living_user)
-			return FALSE
-		if(living_user.st_get_stat(skill_required_for_use) < skill_dots_minimum)
-			return FALSE
-
-	return TRUE
-// DARKPACK EDIT ADD END

@@ -3,7 +3,12 @@
 
 /datum/discipline/obfuscate
 	name = "Obfuscate"
-	desc = "Makes you less noticable for living and un-living beings."
+	desc = {"Makes you less noticable for living and un-living beings.
+● Cloak of Shadows: Passive
+●● Unseen Presence: Passive
+●●● Mask of a Thousand Faces: Manipulation + Performance (difficulty 7)
+●●●● Vanish from the Mind's Eye: Charisma + Stealth (difficulty 6)
+●●●●● Cloak the Gathering: Passive"}
 	icon_state = "obfuscate"
 	power_type = /datum/discipline_power/obfuscate
 
@@ -65,7 +70,7 @@
 			continue
 
 		//the corpses are not watching you
-		if (viewer.is_blind() || (viewer.stat >= UNCONSCIOUS))
+		if (viewer.is_blind() || IS_UNCONSCIOUS(viewer))
 			continue
 
 		to_chat(owner, span_warning("You cannot use [src] while you're being observed!"))
@@ -89,6 +94,7 @@
 		/datum/discipline_power/obfuscate/vanish_from_the_minds_eye,
 		/datum/discipline_power/obfuscate/cloak_the_gathering
 	)
+	frenzy_usable = FALSE
 
 /datum/discipline_power/obfuscate/cloak_of_shadows/pre_activation_checks()
 	. = ..()
@@ -131,6 +137,7 @@
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 
@@ -184,6 +191,7 @@
 	level = 3
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0 // vitae cost handled in activate()
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 	grouped_powers = list(
@@ -208,7 +216,8 @@
 	var/mob/living/carbon/human/target = examined
 	var/image/target_image = image(target)
 	to_chat(owner, span_info("You get a good look at your target and memorize their features."))
-	LAZYSET(cached_targets, target.name, list("image" = target_image, "target" = target))
+	// Oh this shit hella hard-dels.
+	LAZYSET(cached_targets, GET_GUESTBOOK_NAME_TRUE(examiner, target), list("image" = target_image, "target" = target))
 
 /datum/discipline_power/obfuscate/mask_of_a_thousand_faces/post_gain()
 	. = ..()
@@ -235,20 +244,10 @@
 
 /datum/discipline_power/obfuscate/mask_of_a_thousand_faces/activate()
 	. = ..()
+	var/mob/living/carbon/human/target = owner?.mind?.guestbook.pick_known_guy(owner)
 
-	var/list/display_targets = list()
-	for(var/target_name in cached_targets)
-		display_targets[target_name] = cached_targets[target_name]["image"]
-
-	var/chosen_name = show_radial_menu(owner, owner, display_targets, radius = 40, require_near = TRUE, tooltips = TRUE)
-	if(!chosen_name)
-		try_deactivate(direct = TRUE)
-		return
-
-	var/mob/living/carbon/human/target = cached_targets[chosen_name]["target"]
-
-	if(!target)
-		to_chat(owner, span_warning("You can't recall [chosen_name]'s features clearly enough!"))
+	if(!istype(target))
+		to_chat(owner, span_warning("You can't recall [target]'s features clearly enough!"))
 		try_deactivate(direct = TRUE)
 		return
 
@@ -271,10 +270,12 @@
 	if(target_splat?.clan?.alt_sprite)
 		owner.set_body_sprite(target_splat.clan.alt_sprite, target_splat.clan.alt_sprite_greyscale, TRUE)
 	else
-		if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_FACE in owner_splat.clan.clan_traits))
-			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, CLAN_TRAIT)
-		if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_EYES in owner_splat.clan.clan_traits))
-			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, CLAN_TRAIT)
+		if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_FACE in owner_splat.clan.subsplat_traits))
+			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, SUBSPLAT_TRAIT)
+		if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_EYES in owner_splat.clan.subsplat_traits))
+			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, SUBSPLAT_TRAIT)
+		if(original_sprite == "rotten4" || original_sprite == "rotten3")
+			REMOVE_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, MAGIC_TRAIT)
 		owner.set_body_sprite(SPECIES_HUMAN, TRUE, TRUE)
 
 	owner.updateappearance(mutcolor_update = TRUE)
@@ -289,10 +290,12 @@
 	original_dna.copy_dna(owner.dna, 0)
 	owner.name = original_name
 
-	if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_FACE in owner_splat.clan.clan_traits))
-		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, CLAN_TRAIT)
-	if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_EYES in owner_splat.clan.clan_traits))
-		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, CLAN_TRAIT)
+	if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_FACE in owner_splat.clan.subsplat_traits))
+		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, SUBSPLAT_TRAIT)
+	if(owner_splat.clan && (TRAIT_MASQUERADE_VIOLATING_EYES in owner_splat.clan.subsplat_traits))
+		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_EYES, SUBSPLAT_TRAIT)
+	if(original_sprite == "rotten4" || original_sprite == "rotten3")
+		ADD_TRAIT(owner, TRAIT_MASQUERADE_VIOLATING_FACE, MAGIC_TRAIT)
 
 	owner.set_body_sprite(original_sprite, original_sprite_greyscale, TRUE)
 	owner.updateappearance(mutcolor_update = TRUE)
@@ -350,6 +353,7 @@
 	level = 5
 	check_flags = DISC_CHECK_CAPABLE
 	vitae_cost = 0
+	frenzy_usable = FALSE
 
 	toggled = TRUE
 

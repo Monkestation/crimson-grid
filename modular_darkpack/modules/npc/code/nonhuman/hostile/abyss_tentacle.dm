@@ -25,115 +25,97 @@ GLOBAL_LIST_EMPTY(global_tentacle_grabs)
 	mobility_flags = NONE
 	move_resist = MOVE_FORCE_EXTREMELY_STRONG
 
-
 	environment_smash = ENVIRONMENT_SMASH_NONE
 
+	ai_controller = /datum/ai_controller/basic_controller/abyss_tentacle
+
 	var/mob/living/carbon/human/owner
-	var/mob/living/grabbed_mob = null
 	var/list/recently_released = list()
-	var/aggro_mode = "Aggressive"
 	COOLDOWN_DECLARE(grab_cooldown)
 	COOLDOWN_DECLARE(damage_cooldown)
-	ai_controller = /datum/ai_controller/basic_controller/abyss_tentacle
 
 /datum/ai_controller/basic_controller/abyss_tentacle
 	blackboard = list(
-		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/abyss_tentacle,
 	)
 	ai_movement = /datum/ai_movement/complete_stop
-	idle_behavior = /datum/idle_behavior/idle_random_walk
-	planning_subtrees = list(
-		/datum/ai_planning_subtree/tentacle_grab_and_crush,
-	)
 
-/datum/ai_planning_subtree/tentacle_grab_and_crush
-
-/datum/ai_planning_subtree/tentacle_grab_and_crush/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
-	var/mob/living/basic/abyss_tentacle/tentacle = controller.pawn
-	if(!istype(tentacle))
-		return
-
-	if(tentacle.aggro_mode == "Passive")
-		if(tentacle.grabbed_mob)
-			tentacle.release_grabbed_mob()
-		return
-
-	if(tentacle.grabbed_mob)
-		if(tentacle.aggro_mode == "Aggressive")
-			controller.queue_behavior(/datum/ai_behavior/tentacle_crush_victim)
-		return SUBTREE_RETURN_FINISH_PLANNING
-
-	var/mob/living/target = find_valid_grab_target(tentacle)
-	if(target)
-		controller.queue_behavior(/datum/ai_behavior/tentacle_grab_target, target)
-		return SUBTREE_RETURN_FINISH_PLANNING
-
-	return
+	behavior_tree_json = "modular_darkpack/modules/npc/code/nonhuman/hostile/abyss_tentacle.bt.json"
 
 
-/datum/ai_planning_subtree/tentacle_grab_and_crush/proc/find_valid_grab_target(mob/living/basic/abyss_tentacle/tentacle)
-	for(var/mob/living/potential_target in oview(2, tentacle))
-		//dont attack our owner, dead things, other tentacles, things being grabbed by tentacles, or things recently released
-		if(potential_target == tentacle.owner)
-			continue
-		if(potential_target.stat == DEAD)
-			continue
-		if(istype(potential_target, /mob/living/basic/abyss_tentacle))
-			continue
-		if(potential_target in GLOB.global_tentacle_grabs)
-			continue
-		if(potential_target in tentacle.recently_released)
-			continue
+/datum/targeting_strategy/abyss_tentacle
 
-		return potential_target
-	return null
-
-/datum/ai_behavior/tentacle_grab_target
-	action_cooldown = 2 SECONDS
-
-/datum/ai_behavior/tentacle_grab_target/setup(datum/ai_controller/controller, target_key)
-	. = ..()
-	var/mob/living/target = target_key
-	if(!istype(target))
+/datum/targeting_strategy/abyss_tentacle/is_valid_target(mob/living/living_mob, atom/the_target, vision_range, datum/ai_controller/controller = null)
+	var/mob/living/basic/abyss_tentacle/tentacle = astype(living_mob)
+	var/mob/living/target = astype(the_target)
+	if(!tentacle || !target)
 		return FALSE
-	return TRUE
+	//dont attack our owner, dead things, other tentacles, things being grabbed by tentacles, or things recently released
+	if(target == tentacle.owner)
+		return FALSE
+	if(target.stat == DEAD)
+		return FALSE
+	if(istype(target, /mob/living/basic/abyss_tentacle))
+		return FALSE
+	if(target in GLOB.global_tentacle_grabs)
+		return FALSE
+	if(target in tentacle.recently_released)
+		return FALSE
 
-/datum/ai_behavior/tentacle_grab_target/perform(seconds_per_tick, datum/ai_controller/controller, mob/living/target)
+	return ..()
+
+
+/datum/bt_node/ai_behavior/tentacle_grab_target
+	time_between_perform = 2 SECONDS
+
+/datum/bt_node/ai_behavior/tentacle_grab_target/perform(seconds_per_tick, datum/ai_controller/controller)
 	. = ..()
-	var/mob/living/basic/abyss_tentacle/tentacle = controller.pawn
-
-	if(!istype(tentacle))
+	var/mob/living/basic/abyss_tentacle/tentacle = astype(controller.pawn)
+	var/mob/living/target = astype(controller.blackboard[BB_CURRENT_TARGET])
+	if(!tentacle)
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
+	if(!target)
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
 	tentacle.grab_mob(target)
 
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
 
-/datum/ai_behavior/tentacle_crush_victim
-	action_cooldown = 5 SECONDS
 
-/datum/ai_behavior/tentacle_crush_victim/perform(seconds_per_tick, datum/ai_controller/controller)
+/datum/bt_node/ai_behavior/tentacle_crush_victim
+	time_between_perform = 5 SECONDS
+
+/datum/bt_node/ai_behavior/tentacle_crush_victim/perform(seconds_per_tick, datum/ai_controller/controller)
 	. = ..()
-	var/mob/living/basic/abyss_tentacle/tentacle = controller.pawn
-
-	if(!istype(tentacle) || !tentacle.grabbed_mob)
+	var/mob/living/basic/abyss_tentacle/tentacle = astype(controller.pawn)
+	var/mob/living/grabbed = astype(controller.blackboard[BB_ABYSS_TENTACLE_GRABBED])
+	if(!tentacle || !grabbed)
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 
-	tentacle.grabbed_mob.apply_damage(40, BRUTE)
-	to_chat(tentacle.grabbed_mob, span_danger("The tentacle tightens its grip, crushing you!"))
+	grabbed.apply_damage(40, BRUTE)
+	to_chat(grabbed, span_danger("The tentacle tightens its grip, crushing you!"))
 	playsound(tentacle, 'sound/mobs/non-humanoids/venus_trap/venus_trap_hurt.ogg', 50, FALSE)
 
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
+
+
+/datum/bt_node/ai_behavior/tentacle_release_target
+
+/datum/bt_node/ai_behavior/tentacle_release_target/perform(seconds_per_tick, datum/ai_controller/controller)
+	. = ..()
+	var/mob/living/basic/abyss_tentacle/tentacle = astype(controller.pawn)
+	var/mob/living/grabbed = astype(controller.blackboard[BB_ABYSS_TENTACLE_GRABBED])
+	if(!tentacle || !grabbed)
+		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
+
+	tentacle.release_grabbed_mob()
+	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED
+
 
 /mob/living/basic/abyss_tentacle/Initialize(mapload, mob/living/summoner)
 	. = ..()
 	if(summoner)
 		owner = summoner
-	if(owner)
-		var/datum/splat/vampire/vampire = get_splat_with_discipline(owner)
-		var/datum/discipline_power/obtenebration/arms_of_the_abyss/abyss_power = vampire?.get_discipline_power(/datum/discipline_power/obtenebration/arms_of_the_abyss)
-		if(abyss_power)
-			aggro_mode = abyss_power.aggro_mode
 
 /mob/living/basic/abyss_tentacle/Destroy(force)
 	if(owner)
@@ -141,8 +123,7 @@ GLOBAL_LIST_EMPTY(global_tentacle_grabs)
 		var/datum/discipline_power/obtenebration/arms_of_the_abyss/abyss_power = vampire?.get_discipline_power(/datum/discipline_power/obtenebration/arms_of_the_abyss)
 		if(abyss_power)
 			abyss_power.active_tentacles -= src
-		if(grabbed_mob)
-			release_grabbed_mob()
+		release_grabbed_mob()
 
 	. = ..()
 
@@ -152,7 +133,7 @@ GLOBAL_LIST_EMPTY(global_tentacle_grabs)
 		return
 	if(target in GLOB.global_tentacle_grabs)
 		return
-	if(grabbed_mob)
+	if(ai_controller?.blackboard[BB_ABYSS_TENTACLE_GRABBED])
 		return
 	if(target.client)
 		to_chat(target, span_userdanger("A shadowy tentacle grabs you!"))
@@ -163,24 +144,24 @@ GLOBAL_LIST_EMPTY(global_tentacle_grabs)
 	target.forceMove(get_turf(src))
 	target.set_tentacle_grab(src)
 
-	if(aggro_mode == "Control")
+	if(ai_controller?.blackboard[BB_ABYSS_TENTACLE_MODE] == ABYSS_TENTACLE_MODE_CONTROL)
 		target.mobility_flags &= ~(MOBILITY_STAND | MOBILITY_MOVE)
 		target.set_resting(TRUE, TRUE, TRUE)
 		to_chat(target, span_userdanger("The tentacle forces you to the ground!"))
 
-	grabbed_mob = target
+	ai_controller?.set_blackboard_key(BB_ABYSS_TENTACLE_GRABBED, target)
 	GLOB.global_tentacle_grabs += target
 
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(on_grabbed_mob_move))
 
 /mob/living/basic/abyss_tentacle/proc/release_mob(mob/living/target, add_cooldown = TRUE)
-	if(target == grabbed_mob)
-		grabbed_mob = null
+	if(target == ai_controller?.blackboard[BB_ABYSS_TENTACLE_GRABBED])
+		ai_controller?.clear_blackboard_key(BB_ABYSS_TENTACLE_GRABBED)
 		GLOB.global_tentacle_grabs -= target
 		target.Stun(0)
 		target.clear_tentacle_grab()
 
-		if(aggro_mode == "Control")
+		if(ai_controller?.blackboard[BB_ABYSS_TENTACLE_MODE] == ABYSS_TENTACLE_MODE_CONTROL)
 			target.mobility_flags |= (MOBILITY_STAND | MOBILITY_MOVE)
 			target.set_resting(FALSE, TRUE, TRUE)
 
@@ -195,6 +176,7 @@ GLOBAL_LIST_EMPTY(global_tentacle_grabs)
 	recently_released -= target
 
 /mob/living/basic/abyss_tentacle/proc/release_grabbed_mob()
+	var/mob/living/grabbed_mob = ai_controller?.blackboard[BB_ABYSS_TENTACLE_GRABBED]
 	if(grabbed_mob)
 		release_mob(grabbed_mob, FALSE)
 

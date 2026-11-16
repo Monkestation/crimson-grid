@@ -71,7 +71,7 @@
 	RegisterSignal(owner, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(handle_lose_organ))
 
 	//vampires don't die while in crit, they just slip into torpor after 2 minutes of being critted
-	RegisterSignal(owner, SIGNAL_ADDTRAIT(TRAIT_CRITICAL_CONDITION), PROC_REF(handle_enter_critical_condition))
+	RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(handle_enter_critical_condition))
 
 	//vampires resist vampire bites better than mortals
 	RegisterSignal(owner, COMSIG_MOB_VAMPIRE_SUCKED, PROC_REF(on_vampire_bitten))
@@ -97,11 +97,11 @@
 			tongue?.toxic_foodtypes = ~(GORE | MEAT | RAW) // nagarajas?
 
 	// Set blood type
-	owner.set_blood_type(BLOOD_TYPE_KINDRED)
+	owner.set_blood_type(/datum/blood_type/kindred)
 
-	// Apply temperature damage modifiers
-	owner.physiology.heat_mod *= 2
-	owner.physiology.cold_mod *= 0.25
+	// Apply temperature & burn damage modifiers - Kindred do not get harmed by tempatures, but do by combustion/physical flame damage.
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_HEAT, 2)
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_COLD, 0.25)
 
 
 /datum/splat/vampire/kindred/on_lose()
@@ -109,7 +109,7 @@
 
 	UnregisterSignal(owner, list(
 		COMSIG_CARBON_LOSE_ORGAN,
-		SIGNAL_ADDTRAIT(TRAIT_CRITICAL_CONDITION),
+		COMSIG_MOB_STATCHANGE,
 		COMSIG_MOB_VAMPIRE_SUCKED,
 		COMSIG_MOB_APPLY_DAMAGE_MODIFIERS,
 		COMSIG_HUMAN_ON_HANDLE_BLOOD,
@@ -126,9 +126,9 @@
 	// Reset blood type
 	owner.set_blood_type()
 
-	// Reset temperature damage modifiers
-	owner.physiology.heat_mod *= 0.5
-	owner.physiology.cold_mod *= 4
+	// Reset temperature & burn damage modifiers
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_HEAT, 0.5)
+	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_COLD, 4)
 
 	// Reset bloodpool size from Generation
 	owner.maxbloodpool = initial(owner.maxbloodpool)
@@ -161,7 +161,7 @@
 	SIGNAL_HANDLER
 
 	// Kindred take half "bashing" damage, which is normally blunt damage but includes pointy things like bullets because they're undead
-	if ((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
+	if((damagetype == BRUTE) && (sharpness != SHARP_EDGED))
 		damage_mods += 0.5
 
 /**
@@ -188,8 +188,10 @@
 
 	source.death()
 
-/datum/splat/vampire/kindred/proc/handle_enter_critical_condition(mob/living/carbon/human/source)
+/datum/splat/vampire/kindred/proc/handle_enter_critical_condition(mob/living/carbon/human/source, new_stat, old_stat)
 	SIGNAL_HANDLER
+	if(new_stat < SOFT_CRIT)
+		return
 
 	to_chat(source, span_warning("You can feel yourself slipping into Torpor. You can use succumb to immediately sleep..."))
 	addtimer(CALLBACK(src, PROC_REF(slip_into_torpor), source), 2 MINUTES)
@@ -197,7 +199,7 @@
 /datum/splat/vampire/kindred/proc/slip_into_torpor(mob/living/carbon/human/kindred)
 	if (!kindred || (kindred.stat == DEAD))
 		return
-	if (kindred.stat < SOFT_CRIT)
+	if (!IS_UNCONSCIOUS_OR_CRIT(kindred))
 		return
 
 	kindred.torpor(DAMAGE_TRAIT)

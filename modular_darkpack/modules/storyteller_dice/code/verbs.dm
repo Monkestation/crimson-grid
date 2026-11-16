@@ -1,5 +1,8 @@
-ADMIN_VERB_ONLY_CONTEXT_MENU(roll_storyteller_dice, R_FUN, "Roll storyteller dice", mob/living/M in world)
-	M.roll_dice_custom()
+ADMIN_VERB_ONLY_CONTEXT_MENU(roll_storyteller_dice, R_FUN, "Roll storyteller dice", /mob/living)
+	VERB_ARG_TYPED(roller, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob/living)
+
+	roller.roll_dice_custom()
+
 	BLACKBOX_LOG_ADMIN_VERB("Storyteller dice")
 
 GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
@@ -25,17 +28,22 @@ GAME_VERB(/mob/living, do_roll_dice_custom, "Roll custom dice", null)
 	if(isnull(bonus_dice))
 		return
 
-	var/difficulty = tgui_input_number(usr, "Input roll difficulty.", "Difficulty", 6, 10, 1)
+	var/difficulty = tgui_input_number(usr, "Input roll difficulty.", "Difficulty", 6, ROLL_DIFFICULTY_MAX, ROLL_DIFFICULTY_MIN)
 	if(isnull(difficulty))
 		return
 
-	var/successes_needed = tgui_input_number(usr, "Input successes required to pass.", "Successes Needed", 1, 20, 1)
+	var/successes_needed = tgui_input_number(usr, "Input successes required to pass.", "Successes Needed", 1, 5, 1)
 	if(isnull(successes_needed))
 		return
 
-	var/roll_type = tgui_input_list(usr, "Who do you want to roll to.", "Roll Type", list(ROLL_PUBLIC, ROLL_PRIVATE, ROLL_PRIVATE_ADMIN, ROLL_ADMIN), ROLL_PUBLIC)
-	if(isnull(roll_type))
+	var/static/list/roll_choices = ROLL_OUTPUT_IC
+	var/list/roll_type_choice = tgui_input_checkboxes(usr, "Who do you want to roll to.", "Roll Type", roll_choices)
+	if(!roll_type_choice)
 		return
+	var/roll_type = NONE
+	for(var/list/entry in roll_type_choice)
+		roll_type |= (1 << (roll_choices.Find(entry[1]) - 1))
+
 
 	var/datum/storyteller_roll/custom_roll/custom_roll = new()
 	custom_roll.applicable_stats = output_stats

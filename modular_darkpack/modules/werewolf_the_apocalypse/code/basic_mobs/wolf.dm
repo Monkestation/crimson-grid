@@ -36,7 +36,6 @@
 
 /mob/living/basic/pet/dog/wolf
 	name = "wolf"
-	real_name = "wolf"
 	icon_state = "wolf1"
 	desc = "That's a big, scary wolf. Might be best to steer clear."
 	base_icon_state = "wolf"
@@ -144,16 +143,16 @@
 			. += damage_overlay
 
 /mob/living/basic/pet/dog/wolf/proc/wolfresting()
-	return stat > CONSCIOUS || IsSleeping() || IsParalyzed() || body_position == LYING_DOWN
+	return IS_UNCONSCIOUS_OR_CRIT(src) || IsSleeping() || IsParalyzed() || body_position == LYING_DOWN
 
 // WOLF TYPES
 /mob/living/basic/pet/dog/wolf/kinfolk
-	real_name = "kinfolk"
+	// real_name = "kinfolk"
 	wolf_type = TYPE_KINFOLK
 
 /mob/living/basic/pet/dog/wolf/kinfolk/spiral
 	name = "rotten wolf"
-	real_name = "tainted kinfolk"
+	// real_name = "tainted kinfolk"
 	icon_state = "wolfspiral1"
 	base_icon_state = "wolfspiral"
 

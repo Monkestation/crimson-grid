@@ -22,7 +22,7 @@
 	suits = list(/obj/item/clothing/suit/vampire/vest)
 	glasses = list(/obj/item/clothing/glasses/vampire/sun)
 	hats = list(/obj/item/clothing/head/beret/black)
-	masks = list(/obj/item/clothing/mask/gas/explorer)
+	masks = list(/obj/item/clothing/mask/gas/darkpack/military/pentex)
 
 /datum/socialrole/bouncer/endron/endron_lab_2
 	bouncer_weapon_type = /obj/item/gun/ballistic/automatic/darkpack/mp5
@@ -34,7 +34,7 @@
 	suits = list(/obj/item/clothing/suit/vampire/vest)
 	glasses = list(/obj/item/clothing/glasses/vampire/sun)
 	hats = list(/obj/item/clothing/head/beret/black)
-	masks = list(/obj/item/clothing/mask/gas/explorer)
+	masks = list(/obj/item/clothing/mask/gas/darkpack/military/pentex)
 
 /datum/socialrole/bouncer/endron/endron_2
 	bouncer_weapon_type = /obj/item/gun/ballistic/automatic/pistol/darkpack/deagle

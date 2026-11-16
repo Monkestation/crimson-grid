@@ -1,6 +1,11 @@
 /datum/discipline/obtenebration
 	name = "Obtenebration"
-	desc = "Controls the darkness around you."
+	desc = {"Controls the darkness around you.
+● Shadow Play: Passive
+●● Shroud of Night: Manipulation + Occult (difficulty 7)
+●●● Arms of the Abyss: Manipulation + Occult (difficulty 7)
+●●●● Black Metamorphosis: Manipulation + Courage (difficulty 7)
+●●●●● Tenebrous Form: Passive"}
 	icon_state = "obtenebration"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obtenebration
@@ -46,6 +51,7 @@
 	multi_activate = TRUE
 	duration_length = 1 SCENES
 	cooldown_length = 1 TURNS
+	frenzy_usable = FALSE
 
 	var/list/shadows = list() // A list of all active shadows
 	var/datum/action/clear_shadows/cbutton // The button to clear everything
@@ -119,7 +125,7 @@
 	cooldown_length = 1 TURNS
 
 	var/list/active_tentacles = list()
-	var/aggro_mode = "Aggressive"
+	var/aggro_mode = ABYSS_TENTACLE_MODE_AGGRESSIVE
 
 /datum/discipline_power/obtenebration/arms_of_the_abyss/activate(atom/target)
 	. = ..()
@@ -157,7 +163,7 @@
 
 			// if we ended up making a new tentacle add it to our list and inherit set aggro_mode
 			if(new_tentacle)
-				new_tentacle.aggro_mode = aggro_mode
+				new_tentacle.ai_controller?.set_blackboard_key(BB_ABYSS_TENTACLE_MODE, aggro_mode)
 				active_tentacles += new_tentacle
 	else
 		to_chat(usr, span_warning("The area is too bright for the shadows to manifest!"))
@@ -172,7 +178,6 @@
 	vitae_cost = 2
 
 	violates_masquerade = TRUE
-
 	toggled = TRUE
 	duration_length = 999 SCENES
 
@@ -203,7 +208,7 @@
 	switch(roll)
 		if(ROLL_SUCCESS)
 			successful = TRUE
-			owner.physiology.damage_resistance += 60
+			owner.damage_resistance += 25 // CRIMSON EDIT ADD - Makes Obtenebration not as strong as some other stuff
 			animate(owner, color = "#000000", time = 1 SECONDS, loop = 1)
 			to_chat(owner, span_green("You successfully fuse with the shadows!"))
 		if(ROLL_FAILURE)
@@ -220,7 +225,7 @@
 		return
 	to_chat(owner, span_notice("The shadows fall away from your body."))
 	playsound(owner.loc, 'sound/effects/magic/voidblink.ogg', 50, FALSE)
-	owner.physiology.damage_resistance -= 60
+	owner.damage_resistance -= 25 // CRIMSON EDIT - Reduces Strength of Obetenebration 4
 	animate(owner, color = initial(owner.color), time = 1 SECONDS, loop = 1)
 
 /datum/discipline_power/obtenebration/tenebrous_form
@@ -237,12 +242,6 @@
 
 	cooldown_length = 1 TURNS
 	var/activating = FALSE
-	var/saved_brute_mod = 1
-	var/saved_burn_mod = 1
-	var/saved_aggravated_mod = 1
-	var/saved_clone_mod = 1
-	var/saved_stamina_mod = 1
-	var/saved_brain_mod = 1
 	var/saved_density
 
 /datum/discipline_power/obtenebration/tenebrous_form/pre_activation_checks()
@@ -272,16 +271,11 @@
 	. = ..()
 	activating = FALSE
 	playsound(owner.loc, 'sound/effects/magic/voidblink.ogg', 50, FALSE)
-	saved_brute_mod = owner.physiology.brute_mod
-	owner.physiology.brute_mod = 0
-	saved_burn_mod = owner.physiology.burn_mod
-	owner.physiology.burn_mod = 2
-	saved_aggravated_mod= owner.physiology.aggravated_mod
-	owner.physiology.aggravated_mod = 0
-	saved_stamina_mod = owner.physiology.stamina_mod
-	owner.physiology.stamina_mod = 0
-	saved_brain_mod = owner.physiology.brain_mod
-	owner.physiology.brain_mod = 0
+	MODIFY_PHYSIOLOGY(owner, BRUTE, 0.1)
+	MODIFY_PHYSIOLOGY(owner, BURN, 2)
+	MODIFY_PHYSIOLOGY(owner, AGGRAVATED, 0.1)
+	MODIFY_PHYSIOLOGY(owner, STAMINA, 0.1)
+	MODIFY_PHYSIOLOGY(owner, BRAIN, 0.1)
 	animate(owner, color = "#000000", time = 1 SECONDS, loop = 1)
 
 	ADD_TRAIT(owner, TRAIT_STUNIMMUNE, MAGIC_TRAIT)
@@ -300,11 +294,11 @@
 	. = ..()
 	to_chat(owner, span_notice("You return to your normal form."))
 	playsound(owner.loc, 'sound/effects/magic/voidblink.ogg', 50, FALSE)
-	owner.physiology.brute_mod = saved_brute_mod
-	owner.physiology.burn_mod = saved_burn_mod
-	owner.physiology.aggravated_mod = saved_aggravated_mod
-	owner.physiology.stamina_mod = saved_stamina_mod
-	owner.physiology.brain_mod = saved_brain_mod
+	MODIFY_PHYSIOLOGY(owner, BRUTE, 10)
+	MODIFY_PHYSIOLOGY(owner, BURN, 0.5)
+	MODIFY_PHYSIOLOGY(owner, AGGRAVATED, 10)
+	MODIFY_PHYSIOLOGY(owner, STAMINA, 10)
+	MODIFY_PHYSIOLOGY(owner, BRAIN, 10)
 	animate(owner, color = initial(owner.color), time = 1 SECONDS, loop = 1)
 
 	REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, MAGIC_TRAIT)
@@ -323,9 +317,9 @@
 /datum/action/aggro_mode
 	name = "Tentacle Control"
 	desc = "Switches the aggro mode of your Arms of the Abyss"
-	button_icon = 'icons/hud/screen_glass.dmi'
+	button_icon = 'modular_darkpack/master_files/icons/hud/screen_gen.dmi'
 	button_icon_state = "harm"
-	var/current_mode = "Aggressive"
+	var/current_mode = ABYSS_TENTACLE_MODE_AGGRESSIVE
 	var/datum/discipline_power/obtenebration/arms_of_the_abyss/abyss_power
 
 /datum/action/aggro_mode/New(Target)
@@ -347,9 +341,9 @@
 		return
 
 	var/list/options = list(
-		"Aggressive" = "Aggressive (grab and damage targets)",
-		"Control" = "Control (grab and restrain without damage)",
-		"Passive" = "Passive (don't attack or grab)"
+		ABYSS_TENTACLE_MODE_AGGRESSIVE = "Aggressive (grab and damage targets)",
+		ABYSS_TENTACLE_MODE_CONTROL = "Control (grab and restrain without damage)",
+		ABYSS_TENTACLE_MODE_PASSIVE = "Passive (don't attack or grab)"
 	)
 
 	var/select = tgui_input_list(tentacle_owner, "Select tentacle behaviour", "Tentacle Mode", options)
@@ -363,13 +357,13 @@
 	var/tentacles = 0
 	for(var/mob/living/basic/abyss_tentacle/T in abyss_power?.active_tentacles)
 		if(T && !QDELETED(T))
-			var/was_passive = (T.aggro_mode == "Passive")
-			T.aggro_mode = select
+			var/was_passive = (T.ai_controller?.blackboard[BB_ABYSS_TENTACLE_MODE] == ABYSS_TENTACLE_MODE_PASSIVE)
+			T.ai_controller?.set_blackboard_key(BB_ABYSS_TENTACLE_MODE, abyss_power.aggro_mode)
 			tentacles++
 
-			if(select == "Passive" && T.grabbed_mob)
+			if(select == ABYSS_TENTACLE_MODE_PASSIVE && T.ai_controller?.blackboard[BB_ABYSS_TENTACLE_GRABBED])
 				T.release_grabbed_mob()
-			else if(was_passive && select != "Passive")
+			else if(was_passive && select != ABYSS_TENTACLE_MODE_PASSIVE)
 				T.recently_released.Cut()
 
 	if(tentacles)
@@ -378,11 +372,11 @@
 
 /datum/action/aggro_mode/proc/update_button_icon()
 	switch(current_mode)
-		if("Aggressive")
+		if(ABYSS_TENTACLE_MODE_AGGRESSIVE)
 			button_icon_state = "harm"
-		if("Control")
+		if(ABYSS_TENTACLE_MODE_CONTROL)
 			button_icon_state = "grab"
-		if("Passive")
+		if(ABYSS_TENTACLE_MODE_PASSIVE)
 			button_icon_state = "disarm"
 	build_all_button_icons()
 

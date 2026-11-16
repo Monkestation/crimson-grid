@@ -3,6 +3,7 @@
 #define AMBIENCE_NATURE "nature"
 #define AMBIENCE_SEWER "sewer"
 #define AMBIENCE_OFFICE "office"
+#define AMBIENCE_TOWER "tower"
 
 //Alot of these names are pretty placeholder while we develop better lists and vibes.
 #define MUSIC_CITY "city"
@@ -14,3 +15,5 @@
 #define MUSIC_HOLLYWOOD "hollywood"
 #define MUSIC_SANTAMONICA "santamonica"
 #define MUSIC_SAFE "saftey"
+#define MUSIC_ENDRON "endron"
+#define MUSIC_CAERN "caern"

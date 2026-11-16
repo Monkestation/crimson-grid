@@ -1,3 +1,10 @@
+/datum/storyteller_roll/avoid_stick
+	bumper_text = "avoid stick"
+	applicable_stats = list(STAT_PERCEPTION, STAT_STEALTH)
+	roll_output_type = ROLL_FLAG_ROLLER
+	roll_output_type_on_fail = ROLL_PUBLIC
+	spammy_roll = TRUE
+
 /obj/effect/mine/stick
 	name = "stick"
 	desc = "Sticky."
@@ -43,11 +50,7 @@
 		if(isliving(triggerer))
 			var/mob/living/stepper = triggerer
 			if(stepper.mob_size >= MOB_SIZE_HUMAN)
-				var/datum/storyteller_roll/step_roll = new()
-				step_roll.applicable_stats = list(STAT_PERCEPTION, STAT_STEALTH)
-				step_roll.roll_output_type = ROLL_PRIVATE
-				step_roll.spammy_roll = TRUE
-				var/roll_result = step_roll.st_roll(triggerer, src)
+				var/roll_result = SSroll.storyteller_roll_datum(triggerer, src, /datum/storyteller_roll/avoid_stick)
 				if(roll_result != ROLL_SUCCESS)
 					mineEffect(triggerer)
 

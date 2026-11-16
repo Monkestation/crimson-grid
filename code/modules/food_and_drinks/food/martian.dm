@@ -443,7 +443,7 @@
 		/datum/reagent/medicine/omnizine = 5,
 	)
 	tastes = list("masterful curry" = 1, "rice" = 1)
-	foodtypes = MEAT|VEGETABLES|GRAIN|FRUIT|SUGAR
+	foodtypes = MEAT|VEGETABLES|GRAIN|FRUIT|SUGAR|CHOCOLATE  //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_5 //Extensive and secretly guarded. Was previously 2 and I thought it was pathetic.
 	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
@@ -1217,7 +1217,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("cold pineapple" = 1, "chocolate" = 1)
-	foodtypes = SUGAR|FRUIT|PINEAPPLE
+	foodtypes = SUGAR|FRUIT|PINEAPPLE|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/popsicle/sea_salt
@@ -1386,7 +1386,7 @@
 	icon = 'icons/obj/food/martian.dmi'
 	icon_state = "pickled_voltvine"
 	food_reagents = list(
-		/datum/reagent/consumable/liquidelectricity/enriched = 4,
+		/datum/reagent/consumable/liquidelectricity = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("sour radish" = 1)
@@ -1401,7 +1401,7 @@
 	icon = 'icons/obj/food/martian.dmi'
 	icon_state = "volt_fish"
 	food_reagents = list(
-		/datum/reagent/consumable/liquidelectricity/enriched = 6,
+		/datum/reagent/consumable/liquidelectricity = 6,
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
 	tastes = list("fish" = 1, "sour pear" = 1)
@@ -1416,7 +1416,7 @@
 	icon = 'icons/obj/food/martian.dmi'
 	icon_state = "sprout_bowl"
 	food_reagents = list(
-		/datum/reagent/consumable/liquidelectricity/enriched = 8,
+		/datum/reagent/consumable/liquidelectricity = 8,
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)

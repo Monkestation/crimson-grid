@@ -8,8 +8,11 @@
 	/// Associative list of known guests, real_name = known_name
 	var/list/known_names
 
+	var/list/datum/known_identity/known_identity_datums
+
 /datum/guestbook/Destroy(force)
-	known_names = null
+	LAZYNULL(known_names)
+	LAZYNULL(known_identity_datums)
 	return ..()
 
 /datum/guestbook/ui_interact(mob/user, datum/tgui/ui)
@@ -136,8 +139,10 @@
 	if(guest)
 		if(user == guest)
 			return guest.real_name
-		else
-			checked_name = guest.real_name
+		var/mob/living/carbon/carbon_guest = astype(guest)
+		if((carbon_guest?.get_face_name() == "Unknown") && !carbon_guest.client?.prefs.read_preference(/datum/preference/toggle/show_identity_when_masked))
+			return null
+		checked_name = guest.real_name
 	return LAZYACCESS(known_names, checked_name)
 
 /datum/guestbook/proc/visibility_checks(mob/user, mob/living/carbon/human/guest, silent = FALSE)
@@ -146,7 +151,7 @@
 			to_chat(user, span_warning("What?"))
 		return FALSE
 	var/mob/living/living_user = user
-	if(istype(living_user) && !can_see(living_user, guest, 7))
+	if(istype(living_user) && !can_see(living_user, guest, DEFAULT_SIGHT_DISTANCE))
 		if(!silent)
 			to_chat(user, span_warning("You can't see them!"))
 		return FALSE
@@ -155,7 +160,7 @@
 		if(!silent)
 			to_chat(user, span_warning("You can't see their face very well!"))
 		return FALSE
-	if(get_dist(user, guest) > 4)
+	if(get_dist(user, guest) > DEFAULT_SIGHT_DISTANCE)
 		if(!silent)
 			to_chat(user, span_warning("You need to take a closer look at them!"))
 		return FALSE

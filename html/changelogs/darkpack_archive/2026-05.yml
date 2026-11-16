@@ -1,0 +1,192 @@
+2026-05-04:
+  Biplume:
+  - balance: Crinos, Hispo, and Lupus speeds were all nerfed.
+  - balance: Hispo and Lupus bites do aggravated damage.
+  FalloutFalcon:
+  - config: Adds config for if roleplay only merits are available
+  - balance: You can no longer jump while lying down
+  - qol: Street signs tell you where you are
+  - balance: Claws are prefered to kicking
+  - bugfix: Claws get intended bonus dice on basic mobs
+  - balance: Fera claws are sharp and deal aggravated damage
+  - rscadd: reworks frenzying to be a role-play/fluff effect rather then stealing
+      control of your character.
+  - bugfix: color effect from Kiss status effect should properly clear
+  - balance: fera warforms are considered large mobs
+  - balance: Gangrel forms are downgraded to large mobs instead of huge
+  - image: hair dye spray has an onfloor
+  - rscdel: Removes dice output preference in favor of always outputting to chat unless
+      declared by the roll.
+  - balance: reduces the rate at which cats breed
+  FalloutFalcon, CYBILIZE:
+  - bugfix: fixed separate phone calls occasionally sharing audio with each other
+  - code_imp: corrected secure phone frequency assignment logic
+  buffyuwu:
+  - bugfix: Crime will no longer be automatically reported outside of masquerade enforced
+      areas
+  chazzyjazzy:
+  - code_imp: every job datum now has a faction
+  - code_imp: removes unused and useless 'is_gun_store' job on /obj/structure/retail
+  - bugfix: fixes the very smallest and the very tallest height from not being applied
+  - rscadd: store owners now say unique things to you when you open their store
+  - rscadd: store owners now have revamped outfits for unique and cool looks
+  - rscadd: makes lightposts go out when the area power transformer is broken
+  - rscadd: gargoyles can now tuck their wings, preventing them from flying, but making
+      them able to wear other clothes
+  - rscadd: gargoyle flight now makes a flapping noise
+  - rscadd: fixes serpentis 1
+  - bugfix: readds bank vault door to giovanni kindred roles
+  - bugfix: adds npc subtypes for the new store owners
+  - rscadd: empty bloodbags can now be bought at the pharmacy
+  - bugfix: negative stat modifiers now work
+  chazzyjazzy, buffyuwu:
+  - rscadd: blush of health quirk
+  - rscadd: eat food quirk
+  - bugfix: aura hearts now beat only when they should
+  - bugfix: setites now get their clan keys
+  - bugfix: bloodpacks now actually increment bloodpool
+  - bugfix: sunglasses and other glasses now act in the same way masks do for masquerade
+      violating eyes
+  - bugfix: dementation's missing sprite is now patched
+  dwinters99:
+  - rscadd: company logo element
+  theselfish:
+  - rscadd: Tremere may have a Third Eye.
+2026-05-11:
+  Beautiful TG coders:
+  - code_imp: TG Pull. Thank you TG.
+  Biplume:
+  - bugfix: Rolls to not step on sticks are now private.
+  FalloutFalcon:
+  - rscadd: Adds Wolf Sight Merit from W20
+  - bugfix: Doors can no longer be repunched for infinite door items
+  - rscadd: Adds support for automatic successes based on the TTRPG
+  - code_imp: Cleans up some of the code surrounding potance
+  - balance: Kills some of the snowflaky effect of potance in favor of it granting
+      automatic successes (TTRPG accuracy)
+  - qol: Makes the dice unicode characters to show individual dice results a little
+      larger
+  - bugfix: Potance 1-2 no longer cripples melee damage and it now scales correctly
+      with all dots.
+  - rscadd: landmark for cargo crate delivery locations
+  - balance: Fera transformations damage worn clothing
+  - rscadd: Adds two werewolf fetishes; Nyxs Bangle and Dagger of retribution
+  - refactor: Cleans up some artifact code around ownership and power granting
+  - rscadd: Two separate fields for flavor text that overwrite existing one when your
+      in crinos or hispo/lupus respectivly
+  - rscadd: Delirium status effect
+  - balance: Removes nutriment gain from biting
+  - balance: number of successes required for Fera shifting is based on how many forms
+      your swapping between
+  - bugfix: Feras's shift difficulty is based on the form your currently in rather
+      then the one your turning into
+  - qol: Makes the local host start now sound quieter and only play once
+  - rscdel: Removed some TG holidays from appearing
+  FalloutFalcon, Major00:
+  - image: Resprites wooden drying racks
+  Kolibri-B:
+  - bugfix: Fixed Obtenebration 3 "Arms of the Abyss" tentacle behaviour
+  Magisterium2022:
+  - balance: Made Lupus and Hispo unable to be handcuffed.
+  Stutternov:
+  - rscadd: Adds maximum immortal age variable for jobs.
+  Xeonmations:
+  - rscadd: adds vocal sounds
+  buffyuwu:
+  - bugfix: Ghoul auras are no longer fully opaque
+  - rscadd: ghouls now get potence 1 for free
+  - bugfix: ghouls can now only have level 1 in their disciplines
+  - bugfix: solves bloodheal and potence harddels by removing the disciplines on_lose_or_destroy
+  - bugfix: fixes a bug with transformation disciplines causing disciplines to become
+      unusable
+  - bugfix: fera no longer feel terribly bloated all the time
+  chazzyjazzy:
+  - balance: animalism mobs now have bloodpool = 2
+  - rscadd: adds the szlachta attack random event
+  - bugfix: adds hunter landmarks
+  - qol: area title and info is displayed when crossing areas
+  - admin: adds mentors
+  - bugfix: fixes Thaumaturgy 4 not incrementing the target's bloodpool
+  - bugfix: Thaumaturgy 4 Theft of Vitae now costs 1 bloodpoint
+  - balance: lowers Lure of Flames and Levinbolt 'palm of flame'-type ability's damage
+      from 25 burn (50 against kindred) per click to 15 burn (30 against kindred),
+      20 for 'candle' and 'illuminate'
+  - rscadd: adds the Society of Leopold, the largest subdivision of the Inquisiton,
+      Vampire and Werewolf hunters
+  - rscadd: adds blackout random event
+  - code_imp: cleaned up fusebox damage code
+  - bugfix: necro 3 no longer permanently leaves bones
+  - rscadd: finance as a stat now gives steady, consistent income, rather than a lump
+      sum at roundstart
+  lobotomypilled:
+  - bugfix: 'fixed transformers being unrepairable upon failing the roll
+
+      :cl:'
+2026-05-18:
+  Biplume:
+  - balance: You now faint from Delirium at 1 Willpower.
+  - qol: Delirium text is now large.
+  FalloutFalcon:
+  - rscadd: Added Berry Juice to Dispenser
+  - balance: Replacing Uranium with Atomic Bomb, and LDM with Mindbreaker
+  Kolibri-B:
+  - bugfix: Fixed Sense Wyrm's detection code; now properly separates Path of Humanity
+      & Path of Enlightenment
+  lobotomypilled:
+  - rscadd: 'added a 1pt merit for sign language
+
+      :cl:'
+2026-05-25:
+  Biplume:
+  - rscadd: Cast No Reflection flaw for Kindred
+  - balance: Crinos breedforms are no longer safe from silvers.
+  - rscadd: Speech Impediment flaw, available to all splats
+  - rscadd: Hidden Diablerie merit for Kindred
+  - bugfix: Certain merits and flaws are now mutually exclusive; e.g. you can no longer
+      be banned from Thaumaturgy and also banned from everything except Thaumaturgy
+  - rscadd: Calm Heart merit for Kindred
+  FalloutFalcon:
+  - rscdel: Removes a few more TG crafting recipes
+  - balance: Gives varried skill requirments to a buncha recipes (most are set to
+      only need 0, a ton of the funny ones need 1-5)
+  - rscdel: removes superfluous weaknesses in favor of the trait for baali
+  - bugfix: Fixes interactions surrounding cars and transfer points
+  - bugfix: Frenzy verb is no longer displayed in the verb panel. It can still be
+      found in the context menu for mobs.
+  - qol: Frenzy verb only displays if your a supernatural
+  - qol: Combat dice-rolls are displayed more clearly
+  - bugfix: The same area name wont be shown twice when entering areas
+  - bugfix: Generate forest has a correct area name
+  Magisterium2022:
+  - bugfix: Fixed incorrect BP cost for Presence 2
+  Marshmellow105:
+  - rscadd: adds new wallpapers for mappers to use
+  - rscadd: adds new mannequin subtypes to be used by mappers
+  - rscadd: adds the FBI SWAT Response Team
+  - rscadd: three new uniform bits for FBI agents, a turtleneck, fatigues, and fatigue
+      pants
+  Stutternov:
+  - rscadd: Adds in 5.56 silver to have Agg damage to Garou. 7.62, 12g slug, and .75
+      have received silver variant ammo as well.
+  - balance: Rebalanced multiple bullets (.50 AE now exists, 5.45, 12g slug, 12g buck,
+      12g rubber) in rather small ways. Except .50 AE, larger rebalance. (70 -> 45)
+  - balance: Rebalanced multiple melee weapons (shovel, scythe, chainsaw, baseball
+      bat, fireaxe)
+  - balance: Hard-buffs the .44 deagle by giving it ONE more round in its magazine...
+  - bugfix: Fixed shotgun slug knockdown not rolling. Not sure why this fixed it but
+      - it managed to.
+  - rscadd: Adds recoil calc stat check to reduce spread as well
+  - rscadd: Adds difficulty to recoil calc
+  - rscdel: Removes bonus damage random chance for firearm damage based on skill probability
+      check
+  - balance: Redoes some weapons recoil and spread slightly; overall changes ranged
+      from 1-2 recoil/spread so very minor.
+  chazzyjazzy:
+  - rscadd: adds the financial crisis event which wipes out people's bank accounts,
+      blame the giovannis
+  kyres, bomby:
+  - rscadd: adds a new billboard with sprites from aurora
+  obs7777:
+  - rscadd: adds czech, polish, and ukrainian as languages
+  odisurin:
+  - rscadd: adds a new magadon sign

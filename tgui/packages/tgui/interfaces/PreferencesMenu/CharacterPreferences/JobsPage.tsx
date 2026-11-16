@@ -1,4 +1,3 @@
-import { sortBy } from 'es-toolkit';
 import { type PropsWithChildren, type ReactNode, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
@@ -19,13 +18,6 @@ import {
   type PreferencesMenuData,
 } from '../types';
 import { useServerPrefs } from '../useServerPrefs';
-
-function sortJobs(entries: [string, Job][], head?: string) {
-  return sortBy(entries, [
-    ([key, _]) => (key === head ? -1 : 1),
-    ([key, _]) => key,
-  ]);
-}
 
 const PRIORITY_BUTTON_SIZE = '18px';
 
@@ -309,18 +301,24 @@ function JobRow(props: JobRowProps) {
             >
               <Tooltip content={job.description} position="bottom-start">
                 {
-                  // DARKPACK EDIT CHANGE START -  ALTERNATIVE_JOB_TITLES - ORIGINAL: {name}
+                  // DARKPACK EDIT CHANGE START - ALTERNATIVE_JOB_TITLES - ORIGINAL: {name}
                   !job.alt_titles ? (
                     name
                   ) : (
-                    <Dropdown
-                      width="100%"
-                      options={job.alt_titles}
-                      selected={alt_title_selected}
-                      onSelected={(value) =>
-                        act('set_job_title', { job: name, new_title: value })
-                      }
-                    />
+                    <Box position="relative">
+                      <Dropdown
+                        width="100%"
+                        options={job.alt_titles}
+                        selected={alt_title_selected}
+                        menuWidth="25"
+                        onSelected={(value) =>
+                          act('set_job_title', {
+                            job: name,
+                            new_title: value,
+                          })
+                        }
+                      />
+                    </Box>
                   )
                   // DARKPACK EDIT CHANGE END
                 }
@@ -376,7 +374,7 @@ function Department(props: DepartmentProps) {
   const data = useServerPrefs();
   if (!data) return;
 
-  const { departments, jobs } = data.jobs;
+  const { departments, jobs, jobs_sorted } = data.jobs;
   const department = departments[name];
 
   // This isn't necessarily a bug, it's like this
@@ -387,10 +385,9 @@ function Department(props: DepartmentProps) {
     return null;
   }
 
-  const jobsForDepartment = sortJobs(
-    Object.entries(jobs).filter(([_, job]) => job.department === name),
-    department.head,
-  );
+  const jobsForDepartment = jobs_sorted
+    .map((jobName) => [jobName, jobs[jobName]] as const)
+    .filter(([, job]) => job.department === name);
 
   return (
     <Stack.Item
@@ -547,7 +544,8 @@ export function JobsPage() {
         </Stack.Item>
       </Stack>
       <Stack vertical fill>
-        <Stack.Item mt={10}> {/* // DARKPACK EDIT CHANGE */}
+        {/* // DARKPACK EDIT CHANGE, ORIGINAL: 15 */}
+        <Stack.Item mt={10}>
           <Stack fill g={1} className="PreferencesMenu__Jobs">
             {
               // DARKPACK EDIT ADD START
@@ -555,99 +553,142 @@ export function JobsPage() {
             <Stack.Item>
               <Stack vertical>
                 <PriorityHeaders />
-                <Department department="Prince"
-                                  dragging={dragging}
+                <Department
+                  department="Prince"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Camarilla"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Camarilla"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Clinic"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Clinic"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Church"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Church"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Strip Club"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Strip Club"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
+                  setHoveringOver={setHoveringOver}
+                />
               </Stack>
             </Stack.Item>
             <Stack.Item mt={-3.9}>
               <Stack vertical>
                 <PriorityHeaders />
-                <Department department="Anarch"                   dragging={dragging}
+                <Department
+                  department="Anarch"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Giovanni"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Giovanni"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Chantry"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Chantry"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Manor"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Manor"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Sabbat"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Sabbat"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Garou Nation"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Garou Nation"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
+                  setHoveringOver={setHoveringOver}
+                />
               </Stack>
             </Stack.Item>
             <Stack.Item>
               <Stack vertical>
                 <PriorityHeaders />
-                <Department department="Pentex"                   dragging={dragging}
+                <Department
+                  department="Pentex"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Warehouse"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Warehouse"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Police"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Police"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Society of Leopold"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Society of Leopold"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="City Services"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="City Services"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
-                <Department department="Citizen"
-                                  dragging={dragging}
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Citizen"
+                  dragging={dragging}
                   setDragging={setDragging}
                   hoveringOver={hoveringOver}
-                  setHoveringOver={setHoveringOver}/>
+                  setHoveringOver={setHoveringOver}
+                />
+                <Department
+                  department="Chinese Triad" // Crimson Grid edit - Added Triad
+                  dragging={dragging}
+                  setDragging={setDragging}
+                  hoveringOver={hoveringOver}
+                  setHoveringOver={setHoveringOver}
+                />
               </Stack>
             </Stack.Item>
             {

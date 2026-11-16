@@ -12,7 +12,7 @@
 			var/blood_data = B.data
 			if(blood_data)
 				var/generation = blood_data["generation"]
-				var/clan = blood_data["clan"]
+				var/clan = LOWER_TEXT(blood_data["clan"])
 				var/real_name = blood_data["real_name"]
 				var/message = generate_message(generation, clan, real_name)
 				to_chat(last_activator, "[message]")

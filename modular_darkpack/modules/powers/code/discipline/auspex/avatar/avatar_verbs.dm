@@ -1,6 +1,30 @@
 GAME_VERB(/mob/living/basic/avatar, reenter_corpse, "Re-enter Corpse", null)
 	exit_avatar(force = FALSE)
 
+/mob/living/basic/avatar/say(
+	message,
+	bubble_type,
+	list/spans = list(),
+	sanitize = TRUE,
+	datum/language/language,
+	ignore_spam = FALSE,
+	forced,
+	filterproof = FALSE,
+	message_range = 7,
+	datum/saymode/saymode,
+	list/message_mods = list(),
+)
+	return
+
+/mob/living/basic/avatar/try_speak(message, ignore_spam, forced, filterproof)
+	return
+
+/mob/living/basic/avatar/emote(act, type_override, message, intentional, force_silence, forced)
+	return FALSE
+
+/mob/living/basic/avatar/grab(mob/living/target)
+	return GRAB_FAILURE
+
 /mob/living/basic/avatar/proc/exit_avatar(force = FALSE)
 	if(!client)
 		return

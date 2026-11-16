@@ -7,6 +7,7 @@
 | Code                    | https://github.com/DarkPack13/SecondCity |
 | The Second City Discord | https://discord.gg/rmAbJcuChD            |
 | Coderbus Discord        | https://discord.gg/Vh8TJp9               |
+| Getting Started With Development | https://hackmd.io/@tgstation/HJ8OdjNBc#tgstation-Development-Guide |
 
 This is the codebase for the Darkpack13 Project, a fork of TGstation 2025 for the purposes of being an upstream for The Final Nights, Apocrypha, Requiem and World of Darkness 13.
 
@@ -27,16 +28,6 @@ We are based on the Paradox Interactive World of Darkness(c) gamelines, with adm
 **Building tgstation in DreamMaker directly is deprecated and might produce errors**, such as `'tgui.bundle.js': cannot find file`.
 
 **[How to compile in VSCode and other build options](tools/build/README.md).**
-
-If you'd like to contribute to this codebase, consider uncommenting line 1 @ \_maps_basemap.dm for faster initialization.
-
-## Getting started
-
-For contribution guidelines refer to the [Guides for Contributors](.github/CONTRIBUTING.md).
-
-For getting started (dev env, compilation) see the HackMD document [here](https://hackmd.io/@tgstation/HJ8OdjNBc#tgstation-Development-Guide).
-
-For overall design documentation see [HackMD](https://hackmd.io/@tgstation).
 
 ## LICENSE
 

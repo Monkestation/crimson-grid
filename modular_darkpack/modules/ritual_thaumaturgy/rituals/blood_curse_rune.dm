@@ -114,6 +114,7 @@
 		if(H.real_name == curse_target)
 			found_target = TRUE
 			H.adjust_agg_loss(25 + activator_bonus)
+			log_combat(last_activator, curse_target, "bloodcursed")
 			playsound(H.loc, 'modular_darkpack/modules/powers/sounds/thaum.ogg', 50, FALSE)
 			to_chat(H, span_warning("You feel dark energy tearing at your very being!"))
 			H.Stun(2)

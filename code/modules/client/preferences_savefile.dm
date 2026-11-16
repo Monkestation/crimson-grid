@@ -184,6 +184,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 // DARKPACK EDIT ADD START
 /datum/preferences/proc/update_preferences_darkpack(current_version, datum/json_savefile/S)
+	if(load_and_save && current_version < 3)
+		write_preference(GLOB.preference_entries[/datum/preference/toggle/enable_legacy_driving_controls], TRUE)
 
 /datum/preferences/proc/update_character_darkpack(current_version, list/save_data)
 	if (current_version < 2)
@@ -269,6 +271,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	chat_toggles = savefile.get_entry("chat_toggles", chat_toggles)
 	toggles = savefile.get_entry("toggles", toggles)
 	ignoring = savefile.get_entry("ignoring", ignoring)
+	job_assigned_profiles = savefile.get_entry("job_assigned_profiles")
 
 	// OOC commendations
 	hearted_until = savefile.get_entry("hearted_until", hearted_until)
@@ -293,8 +296,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if (fexists(bacpath))
 			fdel(bacpath) //only keep 1 version of backup
 		fcopy(savefile.path, bacpath) //byond helpfully lets you use a savefile for the first arg.
-		update_preferences(data_validity_integer, savefile)
-		update_preferences_darkpack(data_validity_integer_darkpack, savefile) // DARKPACK EDIT ADD
+		// DARKPACK EDIT CHANGE START
+		if(SHOULD_UPDATE_DATA(data_validity_integer))
+			update_preferences(data_validity_integer, savefile)
+		if(SHOULD_UPDATE_DATA_DARKPACK(data_validity_integer_darkpack))
+			update_preferences_darkpack(data_validity_integer_darkpack, savefile)
+		// DARKPACK EDIT CHANGE END
 
 	check_keybindings() // this apparently fails every time and overwrites any unloaded prefs with the default values, so don't load anything after this line or it won't actually save
 
@@ -305,6 +312,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	be_special = sanitize_be_special(SANITIZE_LIST(be_special))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
+	job_assigned_profiles = SANITIZE_LIST(job_assigned_profiles)
 
 	key_bindings_by_key = get_key_bindings_by_key(key_bindings)
 
@@ -360,6 +368,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	savefile.set_entry("key_bindings", key_bindings)
 	savefile.set_entry("hearted_until", (hearted_until > world.realtime ? hearted_until : null))
 	savefile.set_entry("favorite_outfits", favorite_outfits)
+	savefile.set_entry("job_assigned_profiles", job_assigned_profiles)
 	savefile.save()
 	return TRUE
 
@@ -504,7 +513,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	for(var/stat_typepath in stats_list)
 		var/datum/st_stat/stat = stats_list[stat_typepath]
 		new_stats_list[stat_typepath] = list()
-		new_stats_list[stat_typepath][STAT_SCORE] = stat.get_score(include_bonus = FALSE)
+		new_stats_list[stat_typepath][STAT_SCORE] = stat.get_pure_score()
 		new_stats_list[stat_typepath][STAT_POINTS] = stat.get_points()
 		new_stats_list[stat_typepath][STAT_FREEBIE_COST_SPENT] = stat.freebie_cost_spent
 	save_data["preference_storyteller_stats"] = new_stats_list
@@ -526,7 +535,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.on_new_character(usr)
 
-	character_preview_view.update_body()
+	character_preview_view?.update_body() // CRIMSON EDIT - Original: character_preview_view.update_body()
 
 /datum/preferences/proc/remove_current_slot()
 	PRIVATE_PROC(TRUE)
@@ -549,6 +558,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		stack_trace("remove_current_slot() being called when there are no slots to go to, the client should prevent this")
 		return
 
+	discipline_levels = list() // DARKPACK EDIT ADD - remove disciplines when removing a character slot
 	savefile.remove_entry("character[default_slot]")
 	tainted_character_profiles = TRUE
 	switch_to_slot(closest_slot)

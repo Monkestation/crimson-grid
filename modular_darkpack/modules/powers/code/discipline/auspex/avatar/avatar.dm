@@ -22,11 +22,12 @@
 	response_harm_continuous = "punches through"
 	response_harm_simple = "punch through"
 	unsuitable_atmos_damage = 0
-	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, STAMINA = 0, OXY = 0)
+	physiology = list(TOX = 0, STAMINA = 0, OXY = 0)
 	habitable_atmos = null
 	minimum_survivable_temperature = 0
 	maximum_survivable_temperature = INFINITY
 	mob_flags = MOB_HAS_SCREENTIPS_NAME_OVERRIDE
+	mobility_flags = MOBILITY_MOVE
 	status_flags = NONE
 	density = FALSE
 	move_resist = MOVE_FORCE_OVERPOWERING
@@ -60,6 +61,12 @@
 //But we will still carry a mind.
 /mob/living/basic/avatar/mind_initialize()
 	return
+
+/mob/living/basic/avatar/can_perform_action(atom/target, action_bitflags)
+	return FALSE
+
+/mob/living/basic/avatar/can_hold_items(obj/item/I)
+	return FALSE
 
 /// For Guestbooks.
 /mob/living/basic/avatar/proc/name_override(datum/source, list/returned_name, obj/item/held_item, mob/living/carbon/human/hovered)

@@ -342,7 +342,7 @@ Versioning
 		first_death["role"] = null
 		first_death["role"] = L.mind.assigned_role.title
 		first_death["area"] = "[AREACOORD(L)]"
-		first_death["damage"] = "<font color='#FF5555'>[L.get_brute_loss()]</font>/<font color='orange'>[L.get_fire_loss()]</font>/<font color='lightgreen'>[L.get_tox_loss()]</font>/<font color='lightblue'>[L.get_oxy_loss()]</font><font color='red'>[L.get_agg_loss()]</font>" // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
+		first_death["damage"] = "<font color='#FF5555'>[L.get_brute_loss()]</font>/<font color='orange'>[L.get_fire_loss()]</font>/<font color='lightgreen'>[L.get_tox_loss()]</font>/<font color='lightblue'>[L.get_oxy_loss()]</font>/<font color='red'>[L.get_agg_loss()]</font>" // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 		first_death["last_words"] = L.last_words
 
 	if(!SSdbcore.Connect())

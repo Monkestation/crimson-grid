@@ -1,6 +1,11 @@
 /datum/discipline/serpentis
 	name = "Serpentis"
-	desc = "Act like a cobra, get the powers to stun targets with your gaze and your tongue, praise the mummy traditions and spread them to your childe. Violates Masquerade."
+	desc = {"Act like a cobra, get the powers to stun targets with your gaze and your tongue, praise the mummy traditions and spread them to your childe. Violates Masquerade.
+● The Eyes of the Serpent: Passive
+●● The Tongue of the Asp: Strength (difficulty 6)
+●●● The Skin of the Adder: Passive
+●●●● The Form of the Cobra: Passive
+●●●●● The Heart of Darkness: Passive"}
 	icon_state = "serpentis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/serpentis
@@ -26,6 +31,7 @@
 	aggravating = FALSE
 	hostile = FALSE
 	violates_masquerade = TRUE
+	frenzy_usable = FALSE
 
 	multi_activate = TRUE
 	duration_length = 5 SECONDS
@@ -64,7 +70,7 @@
 /datum/discipline_power/serpentis/the_eyes_of_the_serpent/activate(mob/living/target)
 	. = ..()
 	target.face_atom(owner)
-	target.visible_message(span_hypnophrase("<b>[owner] hypnotizes [target] with [owner.p_their()] eyes!</b>"), span_warning("<b>[owner] hypnotizes you! Their words seem to become more convincing and hypnotic...</b>"))
+	target.visible_message(span_hypnophrase("<b>[owner] hypnotizes [target] with [owner.p_their()] eyes!</b>"), span_warning("<b>[owner] hypnotizes you! You can't seem to move or look away...</b>"))
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.remove_overlay(POWERS_LAYER)
@@ -87,7 +93,7 @@
 	level = 2
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
 	target_type = TARGET_LIVING
-	range = 6
+	range = 4 //CRIMSON EDIT LOWERED RANGE
 	effect_sound = 'modular_darkpack/modules/powers/sounds/tongue.ogg'
 	aggravating = TRUE
 	hostile = TRUE
@@ -114,9 +120,10 @@
 
 /datum/discipline_power/serpentis/the_tongue_of_the_asp/activate(mob/living/target)
 	. = ..()
-	target.adjust_blood_pool(-2)
-	target.apply_damage(12 * successes, AGGRAVATED)
-	owner.adjust_blood_pool(2)
+	var/blood_to_take = min(2, target.bloodpool) // CRIMSON EDIT ADDITION - Blood Drain Check
+	target.adjust_blood_pool(-blood_to_take) // CRIMSON EDIT CHANGE - ORIGINAL: target.adjust_blood_pool(-2)
+	target.apply_damage(6 * successes, AGGRAVATED)//CRIMSON GRID CHANGE LOWERED DAMAGE
+	owner.adjust_blood_pool(blood_to_take) // CRIMSON EDIT CHANGE - ORIGINAL: owner.adjust_blood_pool(2)
 	var/obj/item/ammo_casing/magic/tentacle/casing = new (get_turf(owner))
 	casing.fire_casing(target, owner, null, null, null, ran_zone(), 0,  owner)
 	qdel(casing)
@@ -129,7 +136,7 @@
 	check_flags = DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_LYING
 	toggled = TRUE
 	vitae_cost = 0 //handling blood cost in pre_activation because this power asks for one bloodpoint, but can be on forever without consuming more
-	violates_masquerade = TRUE
+	violates_masquerade = FALSE
 	var/choice
 
 /datum/discipline_power/serpentis/the_skin_of_the_adder/pre_activation_checks()
@@ -147,7 +154,7 @@
 	else
 		owner.st_add_stat_mod(STAT_STAMINA, 2, "Serpentis") // permanently on with no downsides according to dav20. its staying at fort one bro
 	ADD_TRAIT(owner, TRAIT_SERPENTIS_SKIN, DISCIPLINE_TRAIT(type)) //ideally this would either be blatantly obvious or not so much depending on the choice. I guess masq violating face trait will work for obvious.
-	owner.st_add_stat_mod(STAT_APPEARANCE, -(owner.st_get_stat(STAT_APPEARANCE) - 1), "Serpentis")
+	owner.st_add_stat_clamp(STAT_APPEARANCE, 0, "Serpentis")
 	/*
 	owner.Stun(duration_length)
 	owner.petrify(duration_length, "Serpentis")
@@ -162,7 +169,7 @@
 	else
 		owner.st_remove_stat_mod(STAT_STAMINA, 2, "Serpentis")
 	REMOVE_TRAIT(owner, TRAIT_SERPENTIS_SKIN, DISCIPLINE_TRAIT(type))
-	owner.st_remove_stat_mod(STAT_APPEARANCE, "Serpentis")
+	owner.st_remove_stat_clamp(STAT_APPEARANCE, "Serpentis")
 
 
 //THE FORM OF THE COBRA
@@ -227,15 +234,29 @@
 	icon_state = "cobra"
 	icon_living = "cobra"
 	mob_biotypes = MOB_ORGANIC | MOB_HUMANOID
-	speed = -1
+	speed = -0.4 //CRIMSON GRID EDIT - original mob speed = -1
 	maxHealth = 300
 	health = 300
 	melee_damage_lower = 30
 	melee_damage_upper = 30
+
+	var/poison_reagent = /datum/reagent/toxin/viperspider
+	var/venom_dose = 5
+//CRIMSON GRID ADDATIONS START - lowers cobra melee swing speed, adds armor penetration,no slow down drag and changes their visual attacks
+	melee_attack_cooldown = 10
+	armour_penetration = 25
+	slowed_by_drag = FALSE
+	attack_vis_effect = ATTACK_EFFECT_BITE
+//CRMISON GRID ADDTION END
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/items/weapons/slash.ogg'
 	pixel_w = -8
+
+/mob/living/basic/cobra/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/swing_attack) //CRIMSON GRID ADDTION - adds swing attacks
+	AddElement(/datum/element/venomous, poison_reagent, venom_dose)
 
 /mob/living/basic/cobra/typhon
 	name = "Typhonic beast"
@@ -243,6 +264,7 @@
 	icon = 'modular_darkpack/modules/deprecated/icons/icons.dmi'
 	icon_state = "protean4"
 	icon_living = "protean4"
+	attack_vis_effect = ATTACK_EFFECT_CLAW //CRIMSON GRID ADDITION - jackal man is all claw and no bite
 	mob_size = MOB_SIZE_LARGE
 	pixel_w = 0
 	initial_size = 1.4
@@ -261,6 +283,7 @@
 	vitae_cost = 0
 
 	violates_masquerade = TRUE
+	frenzy_usable = FALSE
 
 	cooldown_length = 20 SECONDS
 

@@ -28,6 +28,7 @@
 	qdel(src)
 
 /obj/item/darkpack/drill/attack_self(mob/user)
+	. = ..()
 	plant(user)
 
 /obj/structure/drill

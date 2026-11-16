@@ -9,7 +9,7 @@
 
 /obj/ritual_rune/thaumaturgy/donning_the_mask_of_shadows/complete()
 	. = ..()
-	last_activator.apply_status_effect(/datum/status_effect/mask_of_shadows, ritual_roll_datum.last_sucess_amount MINUTES)
+	last_activator.apply_status_effect(/datum/status_effect/mask_of_shadows, last_sucess_amount MINUTES)
 	qdel(src)
 
 /datum/status_effect/mask_of_shadows
@@ -28,7 +28,8 @@
 	owner.color = "#5f5f5f"
 	mask_action = new(owner)
 	mask_action.Grant(owner)
-	ADD_TRAIT(owner, TRAIT_SILENT_FOOTSTEPS, MAGIC_TRAIT)
+	ADD_TRAIT(owner, TRAIT_SILENT_FOOTSTEPS, TRAIT_STATUS_EFFECT(id))
+	ADD_TRAIT(owner, TRAIT_UNKNOWN_APPEARANCE, TRAIT_STATUS_EFFECT(id))
 
 /datum/status_effect/mask_of_shadows/on_remove()
 	owner.alpha = 255
@@ -36,7 +37,8 @@
 	if(mask_action)
 		mask_action.Remove(owner)
 		qdel(mask_action)
-	REMOVE_TRAIT(owner, TRAIT_SILENT_FOOTSTEPS, MAGIC_TRAIT)
+	REMOVE_TRAIT(owner, TRAIT_SILENT_FOOTSTEPS, TRAIT_STATUS_EFFECT(id))
+	REMOVE_TRAIT(owner, TRAIT_UNKNOWN_APPEARANCE, TRAIT_STATUS_EFFECT(id))
 	return ..()
 
 /datum/action/remove_mask_of_shadows_action

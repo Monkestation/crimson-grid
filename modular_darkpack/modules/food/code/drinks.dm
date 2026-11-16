@@ -143,3 +143,9 @@
 	spillable = TRUE
 	custom_materials = list(/datum/material/glass=500)
 	custom_price = 10 // ECONOMY
+
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+/obj/item/reagent_containers/cup/glass/mug/tea/jasmine
+	name = "jasmine tea"
+	desc = "Loose leaf jasmine tea, served hot in a plain ceramic mug."
+// CRIMSON EDIT ADD END - Shop Inventories Additions

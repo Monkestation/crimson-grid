@@ -248,7 +248,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
 	tastes = list("cake" = 5, "sweetness" = 1, "chocolate" = 4)
-	foodtypes = GRAIN | DAIRY | JUNKFOOD | SUGAR
+	foodtypes = GRAIN | DAIRY | JUNKFOOD | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	venue_value = FOOD_PRICE_CHEAP
 	slice_type = /obj/item/food/cakeslice/chocolate
 	crafting_complexity = FOOD_COMPLEXITY_3
@@ -258,7 +258,7 @@
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "chocolatecake_slice"
 	tastes = list("cake" = 5, "sweetness" = 1, "chocolate" = 4)
-	foodtypes = GRAIN | DAIRY | JUNKFOOD | SUGAR
+	foodtypes = GRAIN | DAIRY | JUNKFOOD | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	crafting_complexity = FOOD_COMPLEXITY_3
 
 /obj/item/food/cake/birthday
@@ -302,7 +302,7 @@
 		/datum/reagent/consumable/sprinkles = 10,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 		/datum/reagent/consumable/pwr_game = 10,
-		/datum/reagent/consumable/liquidelectricity/enriched = 10,
+		/datum/reagent/consumable/liquidelectricity = 10,
 	)
 	tastes = list("cake" = 3, "a Vlad's Salad" = 1)
 	slice_type = /obj/item/food/cakeslice/birthday/energy
@@ -333,7 +333,7 @@
 		/datum/reagent/consumable/sprinkles = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 		/datum/reagent/consumable/pwr_game = 2,
-		/datum/reagent/consumable/liquidelectricity/enriched = 2,
+		/datum/reagent/consumable/liquidelectricity = 2,
 	)
 	tastes = list("cake" = 3, "a Vlad's Salad" = 1)
 	crafting_complexity = FOOD_COMPLEXITY_4
@@ -440,7 +440,7 @@
 		/datum/reagent/consumable/coco = 5,
 	)
 	tastes = list("blackberry" = 2, "strawberries" = 2, "chocolate" = 2, "sweetness" = 2, "cake" = 3)
-	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
+	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	slice_type = /obj/item/food/cakeslice/berry_chocolate_cake
 	crafting_complexity = FOOD_COMPLEXITY_4
 
@@ -450,7 +450,7 @@
 		For some reason, this configuration of cake is particularly aesthetically pleasing to AIs in SELF."
 	icon_state = "liars_slice"
 	tastes = list("strawberries" = 2, "chocolate" = 2, "sweetness" = 2, "cake" = 3)
-	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR
+	foodtypes = GRAIN | DAIRY | FRUIT | SUGAR | CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/cake/holy_cake

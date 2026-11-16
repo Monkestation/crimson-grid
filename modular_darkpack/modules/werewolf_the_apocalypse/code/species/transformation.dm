@@ -4,6 +4,11 @@
 	bumper_text = "transformation"
 	applicable_stats = list(STAT_STAMINA)
 
+/datum/storyteller_roll/banned_transformation
+	bumper_text = "banned transformation bypass"
+	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
+	difficulty = 8
+	roll_output_type = ROLL_FLAG_ROLLER
 
 // Remeber if you remove homid being species that this will break.
 /datum/splat/werewolf/shifter/proc/transform_fera(datum/species/human/shifter/form_to_transform, costs_rage = FALSE, requires_roll = TRUE, force = FALSE)
@@ -19,7 +24,6 @@
 	if(!force && !COOLDOWN_FINISHED(src, transform_cd))
 		to_chat(owner, span_warning("Your shifting is on cooldown for [DisplayTimeText(COOLDOWN_TIMELEFT(src, transform_cd))]."))
 		return
-
 	if(HAS_TRAIT(owner, TRAIT_METAMORPH))
 		requires_roll = FALSE
 	else if(ispath(get_breed_form_species(), form_to_transform))
@@ -34,6 +38,17 @@
 
 	COOLDOWN_START(src, transform_cd, 1 TURNS)
 	var/time_to_transform = DOGGY_ANIMATION_TIME
+
+	if(HAS_TRAIT(owner, TRAIT_BANNED_TRANSFORMATION))
+		if(owner.st_get_stat(STAT_TEMPORARY_WILLPOWER) <= 1)
+			to_chat(owner, span_warning("You don't have enough <b>WILLPOWER</b> to do that!"))
+			return
+		else
+			var/datum/storyteller_roll/banned_transformation/bypass_roll = new()
+			to_chat(owner, span_notice("You expend your willpower trying to transform!"))
+			owner.st_change_stat(STAT_TEMPORARY_WILLPOWER, -1)
+			if(bypass_roll.st_roll(owner, owner) != ROLL_SUCCESS)
+				return
 
 	// TODO: should accctually require an amount of successes equal to the forms your shifting through
 	if(requires_roll)
@@ -78,7 +93,7 @@
 	ASYNC // We dont return anything important to death and we want to be able to sleep for metamorph
 		if(HAS_TRAIT(owner, TRAIT_METAMORPH))
 			var/datum/storyteller_roll/metamorph/roll_datum = new()
-			if(roll_datum.st_roll(owner, bonus = PRIMAL_URGE_PLACEHOLDER) == ROLL_SUCCESS)
+			if(roll_datum.st_roll(owner, bonus_added = PRIMAL_URGE_PLACEHOLDER) == ROLL_SUCCESS)
 				// First valid use of timeout discovered (we dont want to be able to hold it out)
 				var/choice = tgui_input_list(owner, "Revert to your choosen form", "Metamorph", transformation_list, get_breed_form_species(), 1 TURNS)
 				if(choice in transformation_list)
@@ -95,9 +110,11 @@
 		var/previous_angle = owner.set_lying_angle(0)
 		owner.set_species(form_to_transform)
 		owner.set_lying_angle(previous_angle)
+		update_rage_effects() //CRIMSON GRID ADDITION - passive rage effects
 		return
 
 	owner.set_species(form_to_transform)
+	update_rage_effects() //CRIMSON GRID ADDITION - passive rage effects
 
 /datum/splat/werewolf/shifter/proc/is_breed_form()
 	if(!owner?.dna)

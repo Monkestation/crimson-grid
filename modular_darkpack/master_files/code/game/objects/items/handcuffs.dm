@@ -1,5 +1,6 @@
 /obj/item/restraints/handcuffs
 	cuff_break_strength_needed = 6
+	custom_price = 10
 
 /obj/item/restraints/handcuffs/alien
 	cuff_break_strength_needed = 8

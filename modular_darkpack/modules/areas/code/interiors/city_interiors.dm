@@ -1,8 +1,3 @@
-/area/vtm/interior/shop
-	name = "\improper Shop"
-	icon_state = "shop"
-	fire_controled = TRUE
-
 /area/vtm/interior/laundromat
 	name = "Laundromat"
 	icon_state = "shop"
@@ -82,6 +77,7 @@
 	icon_state = "mansion"
 	zone_type = ZONE_NO_MASQUERADE
 	domain = TRUE
+	musictracks = list('modular_darkpack/modules/ambience/sounds/music/enterlair.ogg', 'modular_darkpack/modules/ambience/sounds/music/infected_warehouse.ogg') //CRIMSON GRID EDIT | PR: Properly Makes Sangfancisco's Abandoned Manor is an interior | EDIT: I added scary music, spooky manors need to be spooky for the bit.
 
 /area/vtm/interior/apartment
 	name = "Millenium Apartments"
@@ -109,13 +105,6 @@
 	zone_type = ZONE_NO_MASQUERADE
 	music_index = MUSIC_FOREST
 	fire_controled = FALSE
-
-/area/vtm/interior/tzimisce_manor
-	name = "Tzimisce Manor"
-	icon_state = "old_clan_tzimisce"
-	zone_type = ZONE_ELYSIUM
-	music_index = MUSIC_PRINCE
-	domain = TRUE
 
 /area/vtm/interior/strip_elysium
 	name = "Strip Club - Elysium"
@@ -193,8 +182,6 @@
 	name = "Elevator"
 	icon_state = "prince"
 	zone_type = ZONE_ELYSIUM
-	// Most elevators handle themselves with those little effect thingys
-	ambience_index = null
 	fire_controled = TRUE
 
 /area/vtm/interior/theatre
@@ -230,11 +217,14 @@
 	zone_type = ZONE_ELYSIUM
 	fire_controled = TRUE
 
+//CRIMSON GRID EDIT: Updates the Salubri domain to be like other domains
 /area/vtm/interior/salubri
-	name = "Veterinary Clinic"
-	icon_state = "old_clan_tzimisce"
-	zone_type = ZONE_ELYSIUM
+	name = "Vet Clinic"
+	icon_state = "clinic"
+	ambience_index = AMBIENCE_OFFICE
+	music_index = MUSIC_SAFE
 	fire_controled = TRUE
+	domain = TRUE
 
 /area/vtm/interior/banu
 	name = "Coffee House"
@@ -248,10 +238,10 @@
 	zone_type = ZONE_ELYSIUM
 	fire_controled = TRUE
 
-// line 111. someone fucked up.
 /area/vtm/interior/tzimisce_manor
 	name = "Clan Tzimisce Manor"
 	icon_state = "old_clan_tzimisce"
+	music_index = MUSIC_PRINCE
 	zone_type = ZONE_ELYSIUM
 	domain = TRUE
 

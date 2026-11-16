@@ -191,7 +191,7 @@
 			hud_list[hud] = list()
 
 		else
-			var/image/I = image('icons/mob/huds/hud.dmi', src, "")
+			var/image/I = image(DEFAULT_HUDS_DMI, src, "")
 			I.appearance_flags = RESET_COLOR|PIXEL_SCALE|KEEP_APART
 			hud_list[hud] = I
 		set_hud_image_active(hud, update_huds = FALSE) //by default everything is active. but dont add it to huds to keep control.
@@ -251,7 +251,7 @@ GAME_VERB_PROC(/mob, Cell, "Cell", "Admin")
 				if(type & MSG_VISUAL && is_blind())
 					return FALSE
 	// voice muffling
-	if(stat == UNCONSCIOUS || stat == HARD_CRIT)
+	if(IS_UNCONSCIOUS(src))
 		if(type & MSG_AUDIBLE) //audio
 			to_chat(src, "<I>... You can almost hear something ...</I>")
 		return FALSE
@@ -565,7 +565,8 @@ GAME_VERB_PROC(/mob, Cell, "Cell", "Admin")
  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
  * for why this isn't atom/verb/examine()
  */
-GAME_VERB(/mob, examinate, "Examine", null, atom/examinify as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
+GAME_VERB_CONTEXT(/mob, examinate, "Examine", "", null, /atom)
+	VERB_ARG_TYPED(examinify, VERB_ARG_TYPE_MOB | VERB_ARG_TYPE_OBJ | VERB_ARG_TYPE_TURF, VERB_ARG_SOURCE_VIEW, /atom)
 
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(run_examinate), examinify))
 
@@ -581,7 +582,7 @@ GAME_VERB(/mob, examinate, "Examine", null, atom/examinify as mob|obj|turf in vi
 	if(is_blind()) //blind people see things differently (through touch)
 		if(!blind_examine_check(examinify))
 			return
-	else if(examine_turf && !(examine_turf.luminosity || examine_turf.dynamic_lumcount) && \
+	else if(examine_turf && !(examine_turf.luminosity || examine_turf.get_dynamic_lumcount()) && \
 		get_dist(src, examine_turf) > 1 && \
 		!has_nightvision()) // If you aren't blind, it's in darkness (that you can't see) and farther then next to you
 		return
@@ -617,6 +618,7 @@ GAME_VERB(/mob, examinate, "Examine", null, atom/examinify as mob|obj|turf in vi
 		result_combined = (atom_title ? fieldset_block("[atom_title].", jointext(result, "<br>"), "boxed_message") : boxed_message(jointext(result, "<br>")))
 
 	to_chat(src, span_infoplain(result_combined))
+	mind?.guestbook?.on_examine(src, examinify, result_combined) // DARKPACK EDIT ADD - GUESTBOOK
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, examinify)
 
 /// Handles adding examine messages for the target that are specific to this mob, e.g. a blood worm examining how much blood a living target has.
@@ -710,7 +712,7 @@ GAME_VERB(/mob, examinate, "Examine", null, atom/examinify as mob|obj|turf in vi
 	return
 
 /mob/living/handle_eye_contact(mob/living/examined_mob)
-	if(!istype(examined_mob) || src == examined_mob || examined_mob.stat >= UNCONSCIOUS || !client || is_blind())
+	if(!istype(examined_mob) || src == examined_mob || IS_UNCONSCIOUS(examined_mob) || !client || is_blind())
 		return
 
 	var/imagined_eye_contact = FALSE
@@ -904,10 +906,10 @@ GAME_VERB(/mob, reset_ui_positions_for_mob, "Reset UI Positions", "OOC")
 	SStgui.reset_ui_position(src)
 
 //suppress the .click/dblclick macros so people can't use them to identify the location of items or aimbot
-GAME_VERB_HIDDEN(/mob, DisClick, ".click", argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
+GAME_VERB_NATIVE(/mob, DisClick, ".click", null, argu = null as anything, sec = "" as text, number1 = 0 as num, number2 = 0 as num)
 	return
 
-GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
+GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, sec = "" as text, number1 = 0 as num, number2 = 0 as num)
 	return
 
 /// Adds this list to the output to the stat browser
@@ -1151,18 +1153,13 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
  *
  * Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
  */
-/mob/proc/fully_replace_character_name(oldname, newname)
+/mob/proc/fully_replace_character_name(oldname, newname, log_new_name = FALSE)
 	if(!newname)
-		log_message("[src] failed name change from [oldname] as no new name was specified", LOG_OWNERSHIP)
 		return FALSE
 	if(oldname == newname)
-		log_message("[src] failed name change as the new name was the same as the old one: [oldname]", LOG_OWNERSHIP)
 		return FALSE
 	if(!istext(newname) && !isnull(newname))
-		stack_trace("[src] attempted to change its name from [oldname] to the non string value [newname]")
 		return FALSE
-
-	log_message("[src] name changed from [oldname] to [newname]", LOG_OWNERSHIP)
 
 	log_played_names(
 		ckey,
@@ -1184,6 +1181,8 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 			) //Just in case the mind is unsynced at the moment.
 
 	if(oldname)
+		log_message("[src] name changed from [oldname] to [newname]", LOG_OWNERSHIP)
+
 		//update the datacore records! This is goig to be a bit costly.
 		replace_records_name(oldname,newname)
 
@@ -1196,7 +1195,11 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
 
+	else if(log_new_name)
+		log_message("[src] name set to [newname]", LOG_OWNERSHIP)
+
 	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
+	SEND_SIGNAL(src, COMSIG_MOB_FULLY_RENAMED, oldname, newname)
 
 	return TRUE
 
@@ -1233,9 +1236,10 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 				search_pda = 0
 
 /mob/proc/update_stat()
+	SIGNAL_HANDLER
 	return
 
-/mob/proc/update_health_hud()
+/mob/proc/update_health_hud(healthpercent)
 	return
 
 /// Changes the stamina HUD based on new information
@@ -1244,6 +1248,7 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 
 ///Update the lighting plane and sight of this mob (sends COMSIG_MOB_UPDATE_SIGHT)
 /mob/proc/update_sight()
+	SIGNAL_HANDLER
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_SIGHT)
 	sync_lighting_plane_cutoff()
@@ -1331,7 +1336,7 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 	var/turf/mob_location = get_turf(src)
 	var/area/mob_area = get_area(src)
 
-	if(mob_location.get_lumcount() > light_amount)
+	if(mob_location.check_lumcount_above(light_amount))
 		return TRUE
 	else if(!mob_area.static_lighting)
 		return TRUE
@@ -1367,6 +1372,14 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_SPELL, "Remove Spell")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_MOB_ACTION, "Give Mob Ability")
 	VV_DROPDOWN_OPTION(VV_HK_REMOVE_MOB_ACTION, "Remove Mob Ability")
+	// DARKPACK EDIT ADD START - SPLATS & MASQUERADE
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_POWER, "Give Power")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_POWER, "Remove Power")
+	VV_DROPDOWN_OPTION(VV_HK_GIVE_ACTION, "Give Action")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_ACTION, "Remove Action")
+	VV_DROPDOWN_OPTION(VV_HK_CURE_BREACH, "Cure Breach")
+	VV_DROPDOWN_OPTION(VV_HK_CURE_ALL_BREACHES, "Cure All Breaches")
+	// DARKPACK EDIT ADD END
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DISEASE, "Give Disease")
 	VV_DROPDOWN_OPTION(VV_HK_GODMODE, "Toggle Godmode")
 	VV_DROPDOWN_OPTION(VV_HK_DROP_ALL, "Drop Everything")
@@ -1404,9 +1417,6 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 	if(href_list[VV_HK_GIVE_AI])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/give_ai_controller, src)
 
-	if(href_list[VV_HK_GIVE_AI_SPEECH])
-		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/give_ai_speech, src)
-
 	if(href_list[VV_HK_GIVE_MOB_ACTION])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/give_mob_action, src)
 
@@ -1418,6 +1428,26 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 
 	if(href_list[VV_HK_REMOVE_SPELL])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/remove_spell, src)
+
+	// DARKPACK EDIT ADD START - SPLATS & MASQUERADE
+	if(href_list[VV_HK_GIVE_ACTION])
+		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/give_action, src)
+
+	if(href_list[VV_HK_REMOVE_ACTION])
+		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/remove_action, src)
+
+	if(href_list[VV_HK_GIVE_POWER])
+		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/give_power, src)
+
+	if(href_list[VV_HK_REMOVE_POWER])
+		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/remove_power, src)
+
+	if(href_list[VV_HK_CURE_BREACH])
+		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/cure_breach, src)
+
+	if(href_list[VV_HK_CURE_ALL_BREACHES])
+		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/cure_all_breaches, src)
+	// DARKPACK EDIT ADD END
 
 	if(href_list[VV_HK_GIVE_DISEASE])
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/give_disease, src)
@@ -1575,12 +1605,13 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 	for(var/datum/callback/CB as anything in persistent_client.post_logout_callbacks)
 		CB.Invoke()
 
-	if(canon_client?.movingmob)
-		LAZYREMOVE(canon_client.movingmob.client_mobs_in_contents, src)
-		canon_client.movingmob = null
-
 	clear_important_client_contents()
 	canon_client = null
+
+// CRIMSON EDIT START - MEMORIES
+GAME_VERB_DESC(/mob, memories, "Memories", "View your character's memories.", "IC")
+	open_memory_panel()
+// CRIMSON EDIT END
 
 ///Shows a tgui window with memories
 /mob/proc/open_memory_panel()

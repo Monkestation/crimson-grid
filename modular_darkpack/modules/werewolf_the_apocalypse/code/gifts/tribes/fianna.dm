@@ -88,7 +88,7 @@
 		roll_datum = new()
 	roll_datum.applicable_stats = list(STAT_WITS, STAT_OCCULT)
 	roll_datum.difficulty = 6
-	roll_datum.roll_output_type = ROLL_PRIVATE
+	roll_datum.roll_output_type = ROLL_FLAG_ROLLER
 	var/roll_result = roll_datum.st_roll(owner)
 
 	if(roll_result <= ROLL_FAILURE)

@@ -5,6 +5,13 @@
 	requires_power = FALSE
 	default_gravity = STANDARD_GRAVITY
 	outdoors = TRUE
+
+	ambience_index = null
+	ambient_buzz = null
+	ambient_buzz_vol = 8
+	min_ambience_cooldown = 30 SECONDS
+	max_ambience_cooldown = 2 MINUTES
+
 	var/zone_type = ZONE_MASQUERADE
 
 	// 7 is an average city street.

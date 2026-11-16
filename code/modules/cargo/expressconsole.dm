@@ -19,9 +19,7 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 
 /obj/machinery/computer/cargo/express
 	name = "express supply console"
-	desc = "This console allows the user to purchase a package \
-		with 1/40th of the delivery time: made possible by Nanotrasen's new \"1500mm Orbital Railgun\".\
-		All sales are near instantaneous - please choose carefully"
+	desc = "An ordering terminal for the warehouse." // DARKPACK EDIT CHANGE - ORIGINAL: desc = "This console allows the user to purchase a package with 1/40th of the delivery time: made possible by Nanotrasen's new \"1500mm Orbital Railgun\". All sales are near instantaneous - please choose carefully"
 	icon_state = MAP_SWITCH("computer", "/obj/machinery/computer/cargo/express")
 	icon_screen = "supply_express"
 	circuit = /obj/item/circuitboard/computer/cargo/express
@@ -58,7 +56,7 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 	return ..()
 
 /obj/machinery/computer/cargo/express/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if (tool.GetID() && allowed(user))
+	if (istype(tool, /obj/item/card/supplytech) || istype(tool, /obj/item/card/dealer)) // DARKPACK EDIT CHANGE - ORIGINAL: if (tool.GetID() && allowed(user))
 		locked = !locked
 		to_chat(user, span_notice("You [locked ? "lock" : "unlock"] the interface."))
 		return ITEM_INTERACT_SUCCESS
@@ -100,6 +98,9 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 
 // DARKPACK EDIT ADD START - (Putting cash into the cargo console)
 /obj/machinery/computer/cargo/express/click_alt(mob/user)
+	if(locked)
+		balloon_alert(user, "access denied!")
+		return
 	var/datum/bank_account/account = SSeconomy.get_dep_account(cargo_account)
 	if(isnull(account))
 		return

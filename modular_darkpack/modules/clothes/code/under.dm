@@ -262,6 +262,7 @@
 	 */
 	desc = "The clothes of the boys in blue. Did you know that 40% of Cops have heard of " + EVIL_COMPANY + "? Google 40% of Cops for more information."
 	icon_state = "police"
+	custom_price = 20
 
 /obj/item/clothing/under/vampire/police/long
 	name = "police uniform"
@@ -476,49 +477,68 @@
 	name = "Ardus Enterprises custodian jumpsuit"
 	desc = "An Ardus Enterprises custodian's uniform."
 	icon_state = "pentex_janitor"
+	brand = "ardus"
 
 /obj/item/clothing/under/vampire/pentex_shortsleeve
 	name = "\improper " + MAIN_EVIL_COMPANY + " polo-shirt"
 	desc = "An " + MAIN_EVIL_COMPANY + " International employee uniform. This one is a nice polo!"
 	icon_state = "pentex_shortsleeve"
+	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_longleeve
 	name = "\improper " + MAIN_EVIL_COMPANY + " shirt"
 	desc = "An " + MAIN_EVIL_COMPANY + " International employee uniform. This one has sleeves!"
 	icon_state = "pentex_longsleeve"
+	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_turtleneck
 	name = "\improper " + MAIN_EVIL_COMPANY + " turtleneck"
 	desc = "An " + MAIN_EVIL_COMPANY + " International employee uniform. This one is a nice turtleneck!"
 	icon_state = "pentex_turtleneck"
+	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_suit
 	name = "\improper " + MAIN_EVIL_COMPANY + " suit"
 	desc = "A nice suit with a green dress-shirt. This one has an " + MAIN_EVIL_COMPANY + " International tag on it!"
 	icon_state = "pentex_suit"
+	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_suitskirt
 	name = "\improper " + MAIN_EVIL_COMPANY + " suitskirt"
 	desc = "A nice suitskirt with a green dress-shirt. This one has an " + MAIN_EVIL_COMPANY + " International tag on it!"
 	icon_state = "pentex_suitskirt"
+	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_executive_suit
 	name = "\improper " + MAIN_EVIL_COMPANY + " executive suit"
 	desc = "A  white designer suit with a green dress shirt. This one has an " + MAIN_EVIL_COMPANY + " International tag on it!"
 	icon_state = "pentex_executivesuit"
+	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_executiveskirt
 	name = "\improper " + MAIN_EVIL_COMPANY + " executive suitskirt"
 	desc = "A white designer suitskirt with a green dress shirt. This one has an " + MAIN_EVIL_COMPANY + " International tag on it!"
 	icon_state = "pentex_executiveskirt"
+	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_executive_suit
 	name = "Endron executive suit"
 	desc = "A  white designer suit with a green dress shirt. This one has an Endron International tag on it!"
 	icon_state = "pentex_executivesuit"
+	brand = "endron"
 
 /obj/item/clothing/under/vampire/pentex_executiveskirt
 	name = "Endron executive suitskirt"
 	desc = "A white designer suitskirt with a green dress shirt. This one has an Endron International tag on it!"
 	icon_state = "pentex_executiveskirt"
+	brand = "endron"
 
+/obj/item/clothing/under/vampire/gown_black
+	name = "black gown"
+	desc = "An expensive black gown."
+	icon_state = "gown_black"
+
+/obj/item/clothing/under/vampire/gown_white
+	name = "white gown"
+	desc = "An expensive white gown."
+	icon_state = "gown_white"

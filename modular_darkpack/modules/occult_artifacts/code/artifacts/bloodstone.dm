@@ -2,7 +2,7 @@
 	true_name = "bloodstone"
 	true_desc = "A pulsing crimson stone that creates a mystical bond with its identifier."
 	icon = 'modular_darkpack/modules/paths/icons/bloodstone_artifact.dmi'
-	onflooricon = 'modular_darkpack/modules/paths/icons/bloodstone_artifact.dmi'
+	ONFLOOR_ICON_HELPER('modular_darkpack/modules/paths/icons/bloodstone_artifact_onfloor.dmi')
 	icon_state = "bloodstone"
 	can_be_identified_without_ritual = FALSE // the bloodstone is a tremere-specific creation, its actually technically created via ritual.
 	var/datum/weakref/bound_identifier // Who identified it first

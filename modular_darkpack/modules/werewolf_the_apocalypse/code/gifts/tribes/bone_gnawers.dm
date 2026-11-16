@@ -21,7 +21,10 @@
 
 /datum/action/cooldown/power/gift/desperate_strength/Activate(atom/target)
 	. = ..()
-	var/mob/living/caster = owner
+	var/mob/living/caster = astype(owner)
+	if(!caster)
+		return
+
 	var/static/list/radial_menu_options = list(
 			"One" = icon('modular_darkpack/modules/werewolf_the_apocalypse/icons/gifts/tribes/bone_gnawers.dmi', "radial_one"),
 			"Two" = icon('modular_darkpack/modules/werewolf_the_apocalypse/icons/gifts/tribes/bone_gnawers.dmi', "radial_two"),
@@ -31,19 +34,10 @@
 		)
 
 	var/pick = show_radial_menu(owner, owner, radial_menu_options)
-	var/value
+	if(!pick)
+		return
 
-	switch(pick)
-		if("One")
-			value = 1
-		if("Two")
-			value = 2
-		if("Three")
-			value = 3
-		if("Four")
-			value = 4
-		if("Five")
-			value = 5
+	var/value = word_to_int(pick)
 
 	if(!isnull(value))
 		caster.apply_status_effect(/datum/status_effect/desperate_strength, value)
@@ -69,7 +63,7 @@
 	playsound(owner, 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/gifts/desperate_strength_activate.ogg', 75, FALSE)
 	return TRUE
 
-/datum/status_effect/desperate_strength/proc/on_dice_rolled(mob/living/roller, datum/storyteller_roll/roll_datum, output)
+/datum/status_effect/desperate_strength/proc/on_dice_rolled(mob/living/roller, datum/storyteller_roll/roll_datum, atom/target, atom/using_item, output)
 	SIGNAL_HANDLER
 
 	if(STAT_STRENGTH in roll_datum.using_stats(roller))
@@ -87,3 +81,21 @@
 	desc = "Your next roll will be made with bonus strength, at the penalty of bashing damage!"
 	icon = 'modular_darkpack/modules/deprecated/icons/hud/screen_alert.dmi'
 	icon_state = "riddle" // TODO: get an icon for this
+
+
+/proc/word_to_int(word)
+	var/static/alist/words_to_number = list(
+		"one" = 1,
+		"two" = 2,
+		"three" = 3,
+		"four" = 4,
+		"five" = 5,
+		"six" = 6,
+		"seven" = 7,
+		"eight" = 8,
+		"nine" = 9,
+		"ten" = 10,
+	)
+
+	word = LOWER_TEXT(word)
+	return words_to_number[word]

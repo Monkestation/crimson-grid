@@ -9,6 +9,7 @@
 	charge_sections = 2
 	grid_width = 2 GRID_BOXES
 	grid_height = 1 GRID_BOXES
+	custom_price = 50
 
 
 /obj/item/ammo_casing/energy/electrode/darkpack

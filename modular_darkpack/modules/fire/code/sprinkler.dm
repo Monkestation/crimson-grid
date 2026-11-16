@@ -14,6 +14,7 @@
 	icon_state = "sprinkler"
 	layer = ABOVE_ALL_MOB_LAYER
 	pixel_y = 8
+	processing_flags = START_PROCESSING_MANUALLY
 	var/fire_detection_range = 1
 	var/current_spray_range = 1
 	var/sprinkler_spray_range = 6
@@ -23,6 +24,7 @@
 	/// If the sprinkler triggers and is triggered my the area being set to on fire
 	var/area_managed = FALSE
 	var/datum/looping_sound/sprinkler/looping_sound
+	var/sprinkling_timer
 
 /obj/machinery/sprinkler/Initialize(mapload)
 	. = ..()
@@ -36,7 +38,6 @@
 	for(var/turf/open/open_turf in RANGE_TURFS(fire_detection_range, src))
 		RegisterSignals(open_turf, list(COMSIG_ATOM_FIRE_ACT, COMSIG_TURF_HOTSPOT_EXPOSE, COMSIG_TURF_IGNITED), PROC_REF(fire_act_listener))
 
-
 /obj/machinery/sprinkler/proc/fire_act_listener()
 	SIGNAL_HANDLER
 
@@ -44,14 +45,13 @@
 
 /obj/machinery/sprinkler/fire_act(exposed_temperature, exposed_volume)
 	trigger_sprinkler()
-	. = ..()
+	return ..()
 
 /obj/machinery/sprinkler/process(seconds_per_tick)
-	if(has_water_reclaimer)
-		reagents.add_reagent(/datum/reagent/water, 2.5 * seconds_per_tick)
+	var/process_needed = FALSE
 
 	if(is_active())
-		looping_sound.start()
+		process_needed = TRUE
 		for(var/turf/open/turf in circle_view_turfs(src, current_spray_range))
 			reagents.expose(turf, TOUCH, current_spray_range/sprinkler_spray_range)
 			new /obj/effect/temp_visual/rain(turf)
@@ -60,10 +60,14 @@
 
 		reagents.remove_all(1 * seconds_per_tick)
 		current_spray_range = min(sprinkler_spray_range, current_spray_range + 2)
-	else
-		looping_sound.stop()
-		current_spray_range = 1
-	update_appearance(UPDATE_OVERLAYS)
+
+	if(has_water_reclaimer && (reagents.total_volume < reagents.maximum_volume))
+		process_needed = TRUE
+		reagents.add_reagent(/datum/reagent/water, 2.5 * seconds_per_tick)
+
+	//we're done processing everything, we'll automatically boot back up in toggle sprinkler
+	if(!process_needed)
+		return PROCESS_KILL
 
 /obj/machinery/sprinkler/update_overlays()
 	. = ..()
@@ -76,12 +80,26 @@
 	if(!area_managed)
 		return
 	var/area/my_area = get_area(src)
-	if(my_area)
+	if(!my_area)
+		return
+
+	if(!(datum_flags & DF_ISPROCESSING))
+		begin_processing()
+		looping_sound.start()
 		my_area.set_fire_effect(TRUE, AREA_FAULT_AUTOMATIC, name)
 		my_area.alarm_manager.send_alarm(ALARM_FIRE, src)
-	spawn(30 SECONDS)
-		my_area.set_fire_effect(FALSE)
-		my_area.alarm_manager.clear_alarm(ALARM_FIRE, my_area)
+		update_appearance(UPDATE_OVERLAYS)
+
+	if(sprinkling_timer)
+		deltimer(sprinkling_timer)
+	sprinkling_timer = addtimer(CALLBACK(src, PROC_REF(finish_sprinkling), my_area), 30 SECONDS, TIMER_STOPPABLE)
+
+/obj/machinery/sprinkler/proc/finish_sprinkling(area/my_area)
+	my_area.set_fire_effect(FALSE)
+	my_area.alarm_manager.clear_alarm(ALARM_FIRE, my_area)
+	looping_sound.stop()
+	current_spray_range = 1
+	update_appearance(UPDATE_OVERLAYS)
 
 /obj/machinery/sprinkler/proc/is_active()
 	if(last_fire_detection && (last_fire_detection + 15 SECONDS > world.time))

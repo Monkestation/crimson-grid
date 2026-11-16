@@ -61,6 +61,38 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/pride/pan, 32)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/pride/trans, 32)
 
+/obj/structure/sign/flag/pride/mlm
+	name = "men-loving-men pride flag"
+	desc = "The flag of men-loving-men pride."
+	icon_state = "flag_mlm"
+	item_flag = /obj/item/sign/flag/pride/mlm
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/pride/mlm, 32)
+
+/obj/structure/sign/flag/pride/rabies
+	name = "rabies pride flag"
+	desc = "The flag of rabies pride."
+	icon_state = "flag_rabies"
+	item_flag = /obj/item/sign/flag/pride/rabies
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/pride/rabies, 32)
+
+/obj/structure/sign/flag/pride/enby
+	name = "non-binary pride flag"
+	desc = "The flag of non-binary pride."
+	icon_state = "flag_enby"
+	item_flag = /obj/item/sign/flag/pride/enby
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/pride/enby, 32)
+
+/obj/structure/sign/flag/pride/inter
+	name = "intersex pride flag"
+	desc = "The flag of intersex pride."
+	icon_state = "flag_inter"
+	item_flag = /obj/item/sign/flag/pride/inter
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/pride/inter, 32)
+
 // FOLDED
 
 /obj/item/sign/flag/pride
@@ -116,3 +148,27 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/pride/trans, 32)
 	desc = "The folded flag of trans pride."
 	icon_state = "folded_pride_trans"
 	sign_path = /obj/structure/sign/flag/pride/trans
+
+/obj/item/sign/flag/pride/mlm
+	name = "folded men-loving-men pride flag"
+	desc = "The folded flag of men-loving-men pride."
+	icon_state = "folded_pride_mlm"
+	sign_path = /obj/structure/sign/flag/pride/mlm
+
+/obj/item/sign/flag/pride/rabies
+	name = "folded rabies pride flag"
+	desc = "The folded flag of rabies pride."
+	icon_state = "folded_pride_rabies"
+	sign_path = /obj/structure/sign/flag/pride/rabies
+
+/obj/item/sign/flag/pride/enby
+	name = "folded non-binary pride flag"
+	desc = "The folded flag of non-binary pride."
+	icon_state = "folded_pride_enby"
+	sign_path = /obj/structure/sign/flag/pride/enby
+
+/obj/item/sign/flag/pride/inter
+	name = "folded intersex pride flag"
+	desc = "The folded flag of intersex pride."
+	icon_state = "folded_pride_inter"
+	sign_path = /obj/structure/sign/flag/pride/inter

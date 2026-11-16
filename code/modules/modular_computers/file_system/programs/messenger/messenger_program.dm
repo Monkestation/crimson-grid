@@ -693,8 +693,8 @@
 	if(computer.loc && isliving(computer.loc))
 		receievers += computer.loc
 
-	// resolving w/o nullcheck here, assume the messenger exists if a real person sent a message
-	var/datum/computer_file/program/messenger/sender_messenger = chat.recipient?.resolve()
+	// chat is null for rigged messages, we do in fact have to nullcheck
+	var/datum/computer_file/program/messenger/sender_messenger = chat?.recipient?.resolve()
 
 	var/sender_title = is_fake_user ? STRINGIFY_PDA_TARGET(fake_name, fake_job) : get_messenger_name(sender_messenger)
 	var/sender_name = is_fake_user ? fake_name : sender_messenger.computer.saved_identification
@@ -702,7 +702,7 @@
 	SEND_SIGNAL(computer, COMSIG_MODULAR_PDA_MESSAGE_RECEIVED, signal, fake_job || sender_messenger?.computer.saved_job , sender_name)
 
 	for(var/mob/living/messaged_mob as anything in receievers)
-		if(messaged_mob.stat >= UNCONSCIOUS)
+		if(IS_UNCONSCIOUS(messaged_mob))
 			continue
 		if(!messaged_mob.is_literate())
 			continue

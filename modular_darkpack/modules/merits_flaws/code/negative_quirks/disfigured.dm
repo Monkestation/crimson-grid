@@ -18,14 +18,10 @@
 	var/mob/living/carbon/human/human_holder = astype(quirk_holder)
 	if(!human_holder)
 		return
-	appearance_to_subtract = human_holder.st_get_stat(STAT_APPEARANCE)-2
 	if(human_holder.st_get_stat(STAT_APPEARANCE) > 2)
-		human_holder.st_add_stat_mod(STAT_APPEARANCE, -appearance_to_subtract, "Disfigured")
 		to_chat(human_holder, span_warning("Your appearance stat has been lowered as you cannot have an appearance value greater than two."))
+	human_holder.st_add_stat_clamp(STAT_APPEARANCE, 2, type)
 
 /datum/quirk/darkpack/disfigured/remove()
 	. = ..()
-	var/mob/living/carbon/human/human_holder = astype(quirk_holder)
-	if(!human_holder)
-		return
-	human_holder.st_remove_stat_mod(STAT_APPEARANCE, "Disfigured")
+	quirk_holder.st_remove_stat_clamp(STAT_APPEARANCE, type)

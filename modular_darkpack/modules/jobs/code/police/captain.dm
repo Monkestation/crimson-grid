@@ -7,19 +7,36 @@
 	config_tag = "POLICE_CAPTAIN"
 	outfit = /datum/outfit/job/vampire/police_captain
 	job_flags = CITY_JOB_FLAGS
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_POLICE_CAPTAIN
 	exp_required_type_department = EXP_TYPE_POLICE
 	departments_list = list(
 		/datum/job_department/police,
 	)
 
+	tgui_icon = FA_ICON_USER_SHIELD
+
+	exp_requirements = EXP_REQ_HEAD
+
 	allowed_splats = list(SPLAT_NONE)
 
 	description = "Underpaid, overworked, and understrength. Do your best to keep the order in " + CITY_NAME + ". Keep the officers in line."
 	minimum_masquerade = 0
 
+	known_contacts = list(
+		JOB_POLICE_SERGEANT,
+		JOB_EMERGENCY_DISPATCHER,
+		JOB_FEDERAL_INVESTIGATOR
+	)
+
+// CRIMSON GRID EDIT START - Security console and records
+/datum/job/vampire/police_captain/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	spawned.add_mob_memory(/datum/memory/key/police_login)
+// CRIMSON GRID END
+
 /datum/outfit/job/vampire/police_captain
-	name = "Police Captain"
+	name = JOB_POLICE_CAPTAIN
 	jobtype = /datum/job/vampire/police_captain
 
 	ears = /obj/item/radio/headset/darkpack/police
@@ -28,14 +45,15 @@
 	suit = /obj/item/clothing/suit/vampire/vest/police/captain
 	belt = /obj/item/storage/belt/holster/detective/darkpack/officer
 	id = /obj/item/card/police/captain
-	l_pocket = /obj/item/smartphone
+	l_pocket = /obj/item/smartphone/police_captain
 	r_pocket = /obj/item/vamp/keys/police/secure/captain
 	backpack_contents = list(
 		/obj/item/card/credit = 1,
 		/obj/item/ammo_box/darkpack/c9mm = 1,
 		/obj/item/restraints/handcuffs = 1,
 		/obj/item/melee/baton/vamp = 1,
-		/obj/item/storage/medkit/darkpack/ifak = 1
+		/obj/item/storage/medkit/darkpack/ifak = 1,
+		/obj/item/bodycam_upgrade = 1
 	)
 
 /datum/outfit/job/vampire/police_captain/post_equip(mob/living/carbon/human/H)

@@ -63,6 +63,11 @@
 			client.mob.do_verb(entry)
 			return TRUE
 		// DARKPACK EDIT ADD END
+		// DARKPACK EDIT ADD START - MENTORS
+		if(MENTOR_CHANNEL)
+			client.cmd_mentor_say(entry)
+			return TRUE
+		// DARKPACK EDIT ADD END
 	return FALSE
 
 /**
@@ -102,7 +107,7 @@
  * * major - If [TRUE], a "major action" triggered the force say, which may have additional side effects
  */
 /mob/living/carbon/human/proc/force_say(list/alter_phrases = null, immediate = FALSE, major = TRUE)
-	if(stat != CONSCIOUS || !client?.tgui_say?.window_open)
+	if(IS_UNCONSCIOUS_OR_CRIT(src) || !client?.tgui_say?.window_open)
 		return FALSE
 	client.tgui_say.force_say(alter_phrases, immediate)
 	if(client.typing_indicators)

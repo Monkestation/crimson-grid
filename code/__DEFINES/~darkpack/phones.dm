@@ -8,14 +8,6 @@
 #define PHONE_CALLING 2
 #define PHONE_IN_CALL 3
 
-#define PHONE_NO_SIM (1<<1)
-#define PHONE_OPEN (1<<2)
-
-DEFINE_BITFIELD(phone_flags, list(
-	"PHONE_NO_SIM" = PHONE_NO_SIM,
-	"PHONE_OPEN" = PHONE_OPEN,
-))
-
 // Icons used for call history logging
 #define PHONE_CALL_ACCEPTED "fa-phone-volume"
 #define PHONE_CALL_DECLINED "fa-phone-slash"
@@ -30,3 +22,11 @@ DEFINE_BITFIELD(phone_flags, list(
 #define PHONE_CALL_MISSED_TOOLTIP "Phone call missed"
 #define PHONE_CALL_SENT_TOOLTIP "Phone call sent"
 #define PHONE_CALL_ENDED_TOOLTIP "Phone call ended"
+
+// Used in contact_networks_pre_init to generate preexisting contacts
+/// Index to a define to point at a runtime-global list at compile-time.
+#define NETWORK_ID 1
+/// Index to a string, for the contact title.
+#define OUR_ROLE 2
+/// Index to a boolean, on whether to replace role with job title (or alt-title).
+#define USE_JOB_TITLE 3

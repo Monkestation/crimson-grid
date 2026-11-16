@@ -103,7 +103,7 @@ for code_file in scannable_files:
             continue
 
         post_error(f"Missing include for {dm_path}.")
-        #fail_no_include = True # RE-ENABLE THIS ONCE WE HAVE ALL OF OUR TICKED FILES DONE
+        fail_no_include = True
 
 if fail_no_include:
     sys.exit(1)
@@ -151,6 +151,7 @@ sorted_lines = sorted(lines, key = functools.cmp_to_key(compare_lines))
 for (index, line) in enumerate(lines):
     if sorted_lines[index] != line:
         post_error(f"The include at line {index + offset} is out of order ({line}, expected {sorted_lines[index]})")
+        post_error("Please run './tools/build/build sort-dme' to fix this automatically.")
         sys.exit(1)
 
 print(green(f"Ticked File Enforcement: [{file_reference}] All includes (for {len(scannable_files)} scanned files) are in order!"))

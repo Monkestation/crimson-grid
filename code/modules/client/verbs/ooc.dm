@@ -2,7 +2,8 @@ GLOBAL_VAR_INIT(OOC_COLOR, null)//If this is null, use the CSS for OOC. Otherwis
 GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 ///talking in OOC uses this
-GAME_VERB(/client, ooc, VERB_OOC, null, msg as text)
+GAME_VERB(/client, ooc, VERB_OOC, null)
+	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
@@ -84,6 +85,14 @@ GAME_VERB(/client, ooc, VERB_OOC, null, msg as text)
 		LAZYADD(key_tags, "emoji-heart")
 	if(visible_unlock)
 		LAZYADD(key_tags, "byond_member")
+
+	// CRIMSON EDIT ADD START - donator
+	if(persistent_client.patreon.access_rank > 0 && prefs.read_preference(/datum/preference/toggle/patreon_public))
+		LAZYADD(key_tags, "emoji-patreon")
+
+	if(persistent_client.twitch.access_rank > 0 && prefs.read_preference(/datum/preference/toggle/twitch_public))
+		LAZYADD(key_tags, "emoji-twitch")
+	// CRIMSON EDIT ADD END - donator
 
 	if(LAZYLEN(key_tags))
 		var/datum/asset/spritesheet_batched/chat/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)

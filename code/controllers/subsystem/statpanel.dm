@@ -35,10 +35,22 @@ SUBSYSTEM_DEF(statpanels)
 		if(cached)
 			global_data += "Next Map: [cached.map_name]"
 
+		// CRIMSON EDIT ADDITION START - ACTIVE AND OBSERVING PLAYERS
+		var/real_round_time = world.timeofday - SSticker.real_round_start_time
+		var/active_players = get_active_player_count(alive_check = FALSE, afk_check = TRUE, human_check = FALSE) //This is a list of all active players, including players who are dead
+		var/observing_players = length(GLOB.current_observers_list) //This is a list of all players that started as an observer-- dead and lobby players are not included.
+		// CRIMSON EDIT ADDITION END
+
 		global_data += list(
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
+			// CRIMSON EDIT ADD START- Active and Observing Players
+			"Connected: [GLOB.clients.len] | Active: [active_players] | Observing: [observing_players]",
+			"Connected Players: [GLOB.clients.len]",
+			" ",
+			// CRIMSON EDIT ADD END - Active and Observing Players
 			"Server Time: [server_timestamp(format = "YYYY-MM-DD hh:mm:ss")]", // DARKPACK EDIT CHANGE - CITY_TIME
-			"Round Time: [(SSticker.round_start_time == 0) ? "Pre-Game" : round_timestamp()]", // DARKPACK EDIT CHANGE - CITY_TIME
+			"Round Time: [(SSticker.current_state < GAME_STATE_PLAYING) ? "Pre-Game" : round_timestamp()]", // DARKPACK EDIT CHANGE - CITY_TIME
+			"Actual Round Timer: [(SSticker.current_state < GAME_STATE_PLAYING) ? "Pre-Game" : time2text(real_round_time, "hh:mm:ss", 0)]", // CRIMSON EDIT ADD
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 			"\n", // DARKPACK EDIT ADD
 			"Canon: [GLOB.canon_event ? "Yes" : "No"]", // DARKPACK EDIT ADD

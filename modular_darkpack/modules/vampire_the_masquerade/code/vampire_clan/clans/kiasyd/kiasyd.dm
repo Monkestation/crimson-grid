@@ -10,7 +10,7 @@
 		/datum/discipline/obtenebration,
 		/datum/discipline/mytherceria
 	)
-	clan_traits = list(
+	subsplat_traits = list(
 		TRAIT_MASQUERADE_VIOLATING_EYES
 	)
 	alt_sprite = "kiasyd"

@@ -178,6 +178,8 @@
 // Pride pin skins
 /datum/atom_skin/pride_pin
 	abstract_type = /datum/atom_skin/pride_pin
+	new_icon = /obj/item/clothing/accessory/pride::icon // DARKPACK EDIT ADD - FLAGS - (Make sure extra pins we add dont fuck up icon state of normal ones)
+	new_worn_icon = /obj/item/clothing/accessory/pride::worn_icon // DARKPACK EDIT ADD - FLAGS
 
 /datum/atom_skin/pride_pin/gay
 	preview_name = "Rainbow Pride"
@@ -210,6 +212,10 @@
 /datum/atom_skin/pride_pin/lesbian
 	preview_name = "Lesbian Pride"
 	new_icon_state = "pride_lesbian"
+
+/datum/atom_skin/pride_pin/mlm
+	preview_name = "Gay Pride"
+	new_icon_state = "pride_gay"
 
 /obj/item/clothing/accessory/pride
 	name = "pride pin"

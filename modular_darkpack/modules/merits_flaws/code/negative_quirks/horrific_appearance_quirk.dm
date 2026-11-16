@@ -10,6 +10,7 @@
 	icon = FA_ICON_SKULL
 	failure_message = "The skin on your corpsely flesh returns to normal."
 	quirk_flags = QUIRK_CHANGES_APPEARANCE
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 
 /datum/quirk/darkpack/horrific_appearance/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = astype(quirk_holder)
@@ -21,5 +22,8 @@
 			human_holder.rot_body(3)
 		if (500 to INFINITY)
 			human_holder.rot_body(4)
-	if(human_holder.st_get_stat(STAT_APPEARANCE) > 0)
-		human_holder.st_add_stat_mod(STAT_APPEARANCE, -(STAT_APPEARANCE), "Monstrous")
+	human_holder.st_add_stat_clamp(STAT_APPEARANCE, 0, type)
+
+/datum/quirk/darkpack/horrific_appearance/remove()
+	. = ..()
+	quirk_holder.st_remove_stat_clamp(STAT_APPEARANCE, type)

@@ -27,11 +27,20 @@ ON_CRIT_ADDITIONAL_DIE
 ## If having 0 dot in abilities can hardlock you out of features
 #PUNISHING_ZERO_DOTS
 
+#If you can be barred from jobs for having too high of an age/generation
+#MAX_GEN_LIMITS
+
+##Whether we should allow artifact 'stacking', in other words, if a player has more than two of the same artifacts, if that artifact's powers should be applied twice
+#ARTIFACT_STACKING
+
 ##Artifact spawn chance from crates - note, crates usually drop random artifact subtype, so this probability is typically multiplied by the random probability
 ARTIFACT_CRATE_PROBABILITY 20
-
 ##Artifact spawn chance from mapped in random spots
 ARTIFACT_RANDOM_PROBABILITY 50
+## Min amount of initiallly placed corpses with banes and artifacts around them
+UMBRA_ARTIFACT_MIN 1
+## Max amount of initiallly placed corpses with banes and artifacts around them
+UMBRA_ARTIFACT_MAX 3
 
 ## Time til day define
 TIME_TILL_DAY 198000
@@ -45,6 +54,17 @@ ROUNDSTART_SPLATS splat_kinfolk
 ROUNDSTART_SPLATS splat_garou
 ROUNDSTART_SPLATS splat_corax
 
+#WHITELISTED_SPLATS splat_garou
+#WHITELISTED_SPLATS splat_corax
+
+#WHITELISTED_CLANS baali
+#WHITELISTED_CLANS healer_salubri
+#WHITELISTED_CLANS warrior_salubri
+#WHITELISTED_CLANS true_brujah
+#WHITELISTED_CLANS cappadocian
+#WHITELISTED_CLANS harbinger
+
+
 ## If dead people and ghosts can LOOC to people who are alive.
 DISABLE_GHOST_LOOC
 
@@ -53,7 +73,7 @@ DISABLE_GHOST_LOOC
 ## DOWNSTREAMS! Consider leaving/setting this low to encourage people to support the service that makes this game possible. <3 BYOND <3
 MAX_SAVE_SLOTS 5
 EXTRA_SAVE_SLOTS_BYOND_MEMBER 5
-
+EXTRA_SAVE_SLOTS_DONATOR 10
 ## log stat and pref changes
 LOG_STATS
 
@@ -64,16 +84,42 @@ LOG_STATS
 ## Bool for if roleplay only merits/quirks are enabled
 ROLEPLAY_ONLY_MERITS 1
 
+## String for how ttrpg accurate our merits must be. Offical, Storyteller Vault, or Homebrew
+TTRPG_ACCURATE_CUTOFF_MERITS Homebrew
+
 ## Configs for the type of attack we use when we click at a ranged distance. Only one can be enabled at a time.
 #DIRECTIONAL_COMBAT
 SWING_COMBAT
 
+## Server tagline: This will appear right below the server's title.
+# SERVERTAGLINE A total conversion project to the WoD setting
+
 ## Configs for passive bloodpool drain, if this is enabled, then the below timer can be adjusted to make vampires and ghouls lose 1 blood point when the timer is up
 #PASSIVE_BP_DRAIN
 PASSIVE_BP_DRAIN_TIMER 12000
+
+#HUNGER_MODIFIER 0.5
 
 ## Configs for which Discipline keybinds are enabled (unbound by default) and how they behave
 ## Default keybinds where you select a Discipline then activate a power
 DISCIPLINE_KEYBINDS
 ## Gives every single power a keybind, will majorly clutter the keybinds menu if uncommented in exchange for being very convenient for players
 #INDIVIDUAL_POWER_KEYBINDS
+
+## Flags for discipline teaching. Four settings here - full, rares disabled, in clans only, or disabled.
+## 0 - Full discipline teaching allowed
+## 1 - A player can only teach non-rare disciplines (potence, fortitude, etc allowed. temporis & thaumaturgy, disallowed)
+## 2 - A player can only teach in clan disciplines (A Gangrel can teach a Tremere Protean, but the Tremere can't teach anyone Protean)
+## 3 - Discipline teaching is fully disabled (no one will be able to teach anyone anything)
+DISCIPLINE_TEACHING 0
+## Configs how long between full moons. Defaults to realtime (default: 29.530588)
+LUNAR_CYCLE_INTERVAL 29.530588
+
+## Configs what kind of Lunar Cycle we want to use. A malformed number will result in a permanent new moon
+## 0 = Use LUNAR_CYCLE_INTERVAL (Default)
+## 1 = Lunar cycle advances every LUNAR_CYCLE_ROUNDS
+## 2 = Lunar cycle is random per round
+LUNAR_CYCLE_TYPE 0
+
+## If using LUNAR_CYCLE_TYPE 1, how many rounds does the moonphase last? (default: 1)
+LUNAR_CYCLE_ROUNDS 1

@@ -1,7 +1,7 @@
 /datum/language/buzzwords
 	name = "Buzzwords"
 	desc = "A common language to all insects, made by the rhythmic beating of wings."
-	key = "z"
+	// key = "z" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 0
 	sentence_chance = 0
 	between_word_sentence_chance = 5

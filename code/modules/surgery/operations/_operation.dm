@@ -523,7 +523,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 		return 0
 
 	var/obj/item/realtool = tool
-	return (realtool.toolspeed) * (implements[realtool.tool_behaviour] || is_type_in_list(realtool, implements, zebra = TRUE) || 0)
+	return (realtool.toolspeed) * (implements[realtool.tool_behaviour] || is_type_in_list(realtool, implements, zebra = TRUE, return_first_match = TRUE) || 0)
 
 /**
  * Return a radial slice, a list of radial slices, or an assoc list of radial slice to operation info
@@ -784,6 +784,11 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	else
 		basemod *= 1 + round((drunkness ** 1.5) / 90, 0.1)
 
+	// DARKPACK EDIT ADD START - Medicine Surgery Speed
+	var/medicine_stat = surgeon.st_get_stat(STAT_MEDICINE)
+	basemod *= (1 - (0.02 * medicine_stat))
+	// DARKPACK EDIT ADD END
+
 	return basemod
 
 /// Gets the surgery speed modifier for a given mob, based off what sort of table/bed/whatever is on their turf.
@@ -855,7 +860,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	var/result = NONE
 
 	if(patient)
-		was_sleeping = (patient.stat != DEAD && HAS_TRAIT(patient, TRAIT_KNOCKEDOUT))
+		was_sleeping = IS_UNCONSCIOUS_AND_ALIVE(patient)
 		update_surgery_mood(patient, SURGERY_STATE_STARTED)
 		SEND_SIGNAL(patient, COMSIG_ATOM_SURGERY_STARTED, src, operating_on, tool)
 
@@ -1023,7 +1028,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	// Create a probability to ignore the pain based on drunkenness level
 	var/drunken_ignorance_probability = clamp(drunken_patient, 0, 90)
 
-	if(target.stat >= UNCONSCIOUS || HAS_TRAIT(target, TRAIT_KNOCKEDOUT))
+	if(IS_UNCONSCIOUS(target))
 		return
 	if(HAS_TRAIT(target, TRAIT_ANALGESIA) || drunken_patient && prob(drunken_ignorance_probability))
 		to_chat(target, span_notice("You feel a dull, numb sensation as your body is surgically operated on."))
@@ -1087,7 +1092,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	if(HAS_TRAIT(patient, TRAIT_ANALGESIA) || prob(drunk_ignore_prob))
 		patient.clear_mood_event(SURGERY_MOOD_CATEGORY) //incase they gained the trait mid-surgery (or became drunk). has the added side effect that if someone has a bad surgical memory/mood and gets drunk & goes back to surgery, they'll forget they hated it, which is kinda funny imo.
 		return
-	if(patient.stat >= UNCONSCIOUS)
+	if(IS_UNCONSCIOUS(patient))
 		var/datum/mood_event/surgery/target_mood_event = patient.mob_mood?.mood_events[SURGERY_MOOD_CATEGORY]
 		if(!target_mood_event || target_mood_event.surgery_completed) //don't give sleeping mobs trauma. that said, if they fell asleep mid-surgery after already getting the bad mood, lets make sure they wake up to a (hopefully) happy memory.
 			return

@@ -394,20 +394,22 @@
 	if (can_stick)
 		. += span_notice("If you had a rod you could make <b>butter on a stick</b>.")
 
-/obj/item/food/butter/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
-	if(!istype(item, /obj/item/stack/rods) || !can_stick)
-		return ..()
-	var/obj/item/stack/rods/rods = item
+/obj/item/food/butter/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(!istype(tool, /obj/item/stack/rods) || !can_stick)
+		return NONE
+
+	var/obj/item/stack/rods/rods = tool
 	if(!rods.use(1))//borgs can still fail this if they have no metal
 		to_chat(user, span_warning("You do not have enough iron to put [src] on a stick!"))
-		return ..()
+		return ITEM_INTERACT_BLOCKING
+
 	to_chat(user, span_notice("You stick the rod into the stick of butter."))
 	user.temporarilyRemoveItemFromInventory(src)
 	var/obj/item/food/butter/on_a_stick/new_item = new(drop_location())
 	if (new_item.IsReachableBy(user))
 		user.put_in_hands(new_item)
 	qdel(src)
-	return TRUE
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/food/butter/on_a_stick //there's something so special about putting it on a stick.
 	name = "butter on a stick"
@@ -579,7 +581,7 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 	)
 	tastes = list("granola" = 1, "nuts" = 1, "chocolate" = 1, "raisin" = 1)
-	foodtypes = GRAIN|NUTS|FRUIT|SUGAR
+	foodtypes = GRAIN|NUTS|FRUIT|SUGAR|CHOCOLATE //DARKPACK EDIT CHANGE: Chocolate
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
 

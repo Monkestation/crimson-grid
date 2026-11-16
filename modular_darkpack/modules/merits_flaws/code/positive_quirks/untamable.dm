@@ -5,6 +5,7 @@
 		You are immune to vampiric Domination (but not emotional manipulations via Presence)"}
 		// Change this line when we add these gifts.
 		// You are immune to vampiric Domination (but not emotional manipulations via Presence) and these Gifts will not work on you: Roll Over, Obedience, and Mastery."}
+	ttrpg_sources = list(/datum/source_book/wta20 = 476)
 	value = 5
 	mob_trait = TRAIT_MERIT_UNTAMABLE
 	icon = FA_ICON_SHIELD_DOG

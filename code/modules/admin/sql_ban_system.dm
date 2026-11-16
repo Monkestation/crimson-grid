@@ -348,7 +348,7 @@
 			break_counter = 0
 
 		var/list/other_job_lists = list(
-			"Abstract" = list("Appearance", "Emote", "Deadchat", "OOC", "Urgent Adminhelp"),
+			"Abstract" = list("Appearance", "Emote", "Deadchat", "OOC", "Urgent Adminhelp", BAN_LOOC), // DARKPACK EDIT ADD - LOOC
 			)
 		for(var/department in other_job_lists)
 			output += "<div class='column'><label class='rolegroup [ckey(department)]'><input type='checkbox' name='[department]' class='hidden' onClick='header_click_all_checkboxes(this)'>[department]</label><div class='content'>"
@@ -405,11 +405,6 @@
 				ROLE_VOIDWALKER,
 				ROLE_WIZARD,
 			),
-			// DARKPACK EDIT ADD START
-			"Darkpack Ban Options" = list(
-				BAN_LOOC,
-			),
-			// DARKPACK EDIT ADD END
 		)
 		for(var/department in long_job_lists)
 			output += "<div class='column'><label class='rolegroup long [ckey(department)]'><input type='checkbox' name='[department]' class='hidden' onClick='header_click_all_checkboxes(this)'>[department]</label><div class='content'>"

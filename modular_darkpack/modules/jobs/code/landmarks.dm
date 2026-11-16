@@ -59,8 +59,6 @@ JOB_START_HELPER(hospital/doctor, JOB_DOCTOR)
 /obj/effect/landmark/start/darkpack/law_enforcement
 	name = "generic police start"
 
-JOB_START_HELPER(law_enforcement/national_guard, JOB_NATIONAL_GUARD)
-JOB_START_HELPER(law_enforcement/swat, JOB_POLICE_SWAT)
 JOB_START_HELPER(law_enforcement/captain, JOB_POLICE_CAPTAIN)
 JOB_START_HELPER(law_enforcement/sergeant, JOB_POLICE_SERGEANT)
 JOB_START_HELPER(law_enforcement/officer, JOB_POLICE_OFFICER)
@@ -72,6 +70,7 @@ JOB_START_HELPER(law_enforcement/fbi, JOB_FEDERAL_INVESTIGATOR)
 	name = "generic hecata start"
 
 JOB_START_HELPER(hecata/capo, JOB_CAPO)
+JOB_START_HELPER(hecata/nonni, JOB_I_NONNI)
 JOB_START_HELPER(hecata/famiglia, JOB_LA_SQUADRA)
 JOB_START_HELPER(hecata/squadra, JOB_LA_FAMIGLIA)
 
@@ -84,6 +83,7 @@ JOB_START_HELPER(citizen/club_worker, JOB_CLUB_WORKER)
 JOB_START_HELPER(citizen/janitor, JOB_STREET_JANITOR)
 JOB_START_HELPER(citizen/priest, JOB_PRIEST)
 JOB_START_HELPER(citizen/taxi, JOB_TAXI_DRIVER)
+JOB_START_HELPER(citizen/red_news, JOB_RED_NEWS_REPORTER)
 
 /* Sabbat */
 /obj/effect/landmark/start/darkpack/sabbat
@@ -92,7 +92,6 @@ JOB_START_HELPER(citizen/taxi, JOB_TAXI_DRIVER)
 JOB_START_HELPER(sabbat/ductus, JOB_SABBAT_DUCTUS)
 JOB_START_HELPER(sabbat/pack, JOB_SABBAT_PACK)
 JOB_START_HELPER(sabbat/priest, JOB_SABBAT_PRIEST)
-JOB_START_HELPER(sabbat/sabbatist, JOB_SABBAT_SABBATIST)
 
 /* Chantry */
 /obj/effect/landmark/start/darkpack/chantry
@@ -116,7 +115,6 @@ JOB_START_HELPER(forest_wolves/guardian, JOB_GAROU_GUARDIAN)
 /obj/effect/landmark/start/darkpack/pentex
 	name = "generic evil dog start"
 
-JOB_START_HELPER(pentex/first_team, JOB_PENTEX_FIRST)
 JOB_START_HELPER(pentex/lead, JOB_PENTEX_LEAD)
 JOB_START_HELPER(pentex/executive, JOB_PENTEX_EXEC)
 JOB_START_HELPER(pentex/affairs, JOB_PENTEX_AFFAIRS)

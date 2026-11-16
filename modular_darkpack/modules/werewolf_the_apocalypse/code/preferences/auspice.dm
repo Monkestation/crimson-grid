@@ -18,7 +18,7 @@
 	auspice_icon.blend_icon(uni_icon('modular_darkpack/modules/werewolf_the_apocalypse/icons/auspices.dmi', replacetext(LOWER_TEXT(value), " ", "_")), ICON_OVERLAY)
 	return auspice_icon
 
-/datum/preference/choiced/subsplat/fera_auspice/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/subsplat/fera_auspice/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	var/joining_round = !isdummy(target)
 	target.set_auspice(value, joining_round)
 

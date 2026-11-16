@@ -31,6 +31,8 @@
 	var/hostile = FALSE
 	/// If use of this power creates a visible Masquerade breach.
 	var/violates_masquerade = FALSE
+	/// Can this be used while in frenzy
+	var/frenzy_usable = TRUE
 
 	/* HOW AND WHEN IT'S ACTIVATED AND DEACTIVATED */
 	/// If this Discipline doesn't automatically expire, but rather periodically drains blood.
@@ -49,6 +51,10 @@
 	var/cooldown_override = FALSE
 	/// List of Discipline power types that cannot be activated alongside this power and share a cooldown with it.
 	var/list/grouped_powers
+
+	var/magic_type = MAGIC_TYPE_BLOOD
+	var/magic_subtype
+	var/spawns_magic_effect = TRUE
 
 	/* NOT MEANT TO BE OVERRIDDEN */
 	/// Timer(s) tracking the duration of the power. Can have multiple if multi_activate is true.
@@ -70,13 +76,19 @@
 	src.owner = discipline.owner
 
 /datum/discipline_power/Destroy(force)
-	for(var/i in length(duration_timers))
-		deltimer(duration_timers[i])
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled && active)
+		owner?.clear_alert(DISCIPLINE_ACTIVE_ALERT(src))
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
+
+	for(var/timer_id in duration_timers)
+		deltimer(timer_id)
+	duration_timers = null
 	if(cooldown_timer)
 		deltimer(cooldown_timer)
 		cooldown_timer = null
-	QDEL_LIST(duration_timers)
 	grouped_powers = null
+	discipline = null
 	owner = null
 	return ..()
 
@@ -268,6 +280,11 @@
 		//feedback is sent by the proc preventing activation
 		return FALSE
 
+	if(!frenzy_usable && HAS_TRAIT(owner, TRAIT_IN_FRENZY))
+		if(alert)
+			to_chat(owner, span_warning("You cannot do this while in frenzy!"))
+		return FALSE
+
 	//can't activate if the owner isn't capable of it
 	if (!can_activate_untargeted(alert))
 		return FALSE
@@ -448,6 +465,18 @@
 
 	do_caster_notification(target)
 	do_logging(target)
+
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled)
+		var/atom/movable/screen/alert/discipline_active/indicator = owner.throw_alert(DISCIPLINE_ACTIVE_ALERT(src), /atom/movable/screen/alert/discipline_active)
+		if (istype(indicator))
+			indicator.set_power(src)
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
+
+	if(spawns_magic_effect && magic_type)
+		var/turf/used_turf = get_turf(discipline.owner)
+		if(used_turf)
+			spawn_magic_after_effect(used_turf, discipline.owner, level, magic_type, magic_subtype)
 
 	owner.update_action_buttons()
 
@@ -649,7 +678,7 @@
 
 	SEND_SIGNAL(src, COMSIG_POWER_DEACTIVATE, src, target)
 	SEND_SIGNAL(owner, COMSIG_POWER_DEACTIVATE, src, target)
-	if (target)
+	if (istype(target))
 		SEND_SIGNAL(target, COMSIG_POWER_DEACTIVATE_ON, src)
 
 	if (!multi_activate)
@@ -660,6 +689,11 @@
 
 	if (deactivate_sound)
 		owner.playsound_local(owner, deactivate_sound, 50, FALSE)
+
+	// CRIMSON EDIT ADD START - Discipline Active Indicator
+	if (toggled)
+		owner.clear_alert(DISCIPLINE_ACTIVE_ALERT(src))
+	// CRIMSON EDIT ADD END - Discipline Active Indicator
 
 	owner.update_action_buttons()
 

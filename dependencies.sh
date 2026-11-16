@@ -5,7 +5,7 @@
 
 # byond version. Also must be updated in .tgs.yml
 export BYOND_MAJOR=516
-export BYOND_MINOR=1659
+export BYOND_MINOR=1685
 
 #rust_g git tag
 export RUST_G_VERSION=6.2.0
@@ -30,4 +30,7 @@ export CUTTER_REPO=spacestation13/hypnagogic
 
 #hypnagogic git tag
 export CUTTER_VERSION=v5.0.1
+
+# byond-memorystats version
+export BYONDMEMORYSTATS_VERSION=0.2.0
 

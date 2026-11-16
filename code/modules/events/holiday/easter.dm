@@ -82,6 +82,7 @@
 	name = "wrapped egg"
 	desc = "A chocolate egg containing a little something special. Unwrap and enjoy!"
 	icon_state = "egg"
+	inhand_icon_state = "egg"
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/food/egg.dmi'
@@ -188,7 +189,7 @@
 		/datum/reagent/consumable/milk = 5
 	)
 	result = /obj/item/food/bowled/mammi
-	added_foodtypes = DAIRY
+	added_foodtypes = DAIRY | CHOCOLATE // DARKPACK EDIT CHANGE - (Chocolate)
 	dish_category = DISH_CANDY
 	meal_category = MEAL_DESSERT
 
@@ -198,7 +199,7 @@
 	icon_state = "chocolatebunny"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/coco = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
 	crafting_complexity = FOOD_COMPLEXITY_1
-	foodtypes = JUNKFOOD | SUGAR
+	foodtypes = JUNKFOOD | SUGAR | CHOCOLATE //DARKPACK EDIT ADDITION: Chocolate
 
 /datum/crafting_recipe/food/chocolatebunny
 	name = "Chocolate bunny"

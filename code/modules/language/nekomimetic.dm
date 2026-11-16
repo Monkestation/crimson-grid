@@ -1,7 +1,7 @@
 /datum/language/nekomimetic
 	name = "Nekomimetic"
 	desc = "To the casual observer, this language is an incomprehensible mess of broken Japanese. To the felinids, it's somehow comprehensible."
-	key = "f"
+	// key = "f" // DARKPACK EDIT REMOVAL - (Key conflicts)
 	space_chance = 15
 	sentence_chance = 0
 	between_word_sentence_chance = 10

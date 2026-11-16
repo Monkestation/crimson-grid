@@ -87,17 +87,17 @@
 #define span_rlooc(str) ("<span class='rlooc'>" + str + "</span>") // DARKPACK EDIT ADD
 #define span_major_announcement_text(str) ("<span class='major_announcement_text'>" + str + "</span>")
 #define span_major_announcement_title(str) ("<span class='major_announcement_title'>" + str + "</span>")
+#define span_mansus(str) ("<span class='mansus'>" + str + "</span>")
 #define span_medal(str) ("<span class='medal'>" + str + "</span>")
 #define span_medradio(str) ("<span class='medradio'>" + str + "</span>")
 #define span_memo(str) ("<span class='memo'>" + str + "</span>")
 #define span_memoedit(str) ("<span class='memoedit'>" + str + "</span>")
-#define span_policy(str) ("<span class='policy'>" + str + "</span>")
 #define span_mentor(str) ("<span class ='mentor'>" + str + "</span>") // DARKPACK EDIT ADD - MENTOR
 #define span_mentornotice(str) ("<span class = 'mentornotice'>" + str + "</span>") // DARKPACK EDIT ADD - MENTOR
 #define span_message(str) ("<span class='message'>" + str + "</span>")
 #define span_mind_control(str) ("<span class='mind_control'>" + str + "</span>")
-#define span_minorannounce(str) ("<span class='minorannounce'>" + str + "</span>")
 #define span_minoralert(str) ("<span class='minoralert'>" + str + "</span>")
+#define span_minorannounce(str) ("<span class='minorannounce'>" + str + "</span>")
 #define span_monkey(str) ("<span class='monkey'>" + str + "</span>")
 #define span_name(str) ("<span class='name'>" + str + "</span>")
 #define span_narsie(str) ("<span class='narsie'>" + str + "</span>")
@@ -110,6 +110,7 @@
 #define span_ooc_announcement_text(str) ("<span class='ooc_announcement_text'>" + str + "</span>")
 #define span_papyrus(str) ("<span class='papyrus'>" + str + "</span>")
 #define span_phobia(str) ("<span class='phobia'>" + str + "</span>")
+#define span_policy(str) ("<span class='policy'>" + str + "</span>")
 #define span_prefix(str) ("<span class='prefix'>" + str + "</span>")
 #define span_priorityalert(str) ("<span class='priorityalert'>" + str + "</span>")
 #define span_priorityannounce(str) ("<span class='priorityannounce'>" + str + "</span>")
@@ -167,3 +168,5 @@
 // Spans that use embedded tgui components:
 // Sorted alphabetically
 #define span_tooltip(tip, main_text) ("<span data-component=\"Tooltip\" data-content=\"" + tip + "\" class=\"tooltip\">" + main_text + "</span>")
+/// Creates a tooltip without italicization or a dotted underline under the "say" class.
+#define span_tooltip_subtle(tip, main_text) ("<span data-component=\"Tooltip\" data-content=\"" + tip + "\" class=\"tooltip_subtle\">" + main_text + "</span>")

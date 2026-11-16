@@ -8,10 +8,8 @@
 	supervisors = "the Board and the Branch Lead"
 	req_admin_notify = 1
 	minimal_player_age = 25
-	exp_requirements = 150
-	exp_required_type = EXP_TYPE_SPIRAL
+	exp_requirements = EXP_REQ_MINOR
 	exp_required_type_department = EXP_TYPE_SPIRAL
-	exp_granted_type = EXP_TYPE_SPIRAL
 	config_tag = "PENTEX_AFFAIRS"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/affairs
@@ -20,16 +18,20 @@
 	minimum_masquerade = 5
 	// minimal_renown_rank = 3
 	allowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS, TRIBE_RONIN)
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_AFFAIRS
 	departments_list = list(
 		/datum/job_department/pentex,
 	)
 
+	tgui_icon = FA_ICON_BRIEFCASE
+
 	known_contacts = list(
 		JOB_PENTEX_LEAD,
 		JOB_PENTEX_EXEC,
-		JOB_PENTEX_SEC_CHIEF
+		JOB_PENTEX_SEC_CHIEF,
+		JOB_PENTEX_EMPLOYEE,
+		JOB_PENTEX_SEC
 	)
 
 	paycheck = PAYCHECK_COMMAND
@@ -45,6 +47,6 @@
 	id = /obj/item/card/pentex/affairs
 	uniform =  /obj/item/clothing/under/vampire/pentex_suit
 	shoes = /obj/item/clothing/shoes/vampire/businessblack
-	l_pocket = /obj/item/smartphone // /affairsagent - todo subtype
+	l_pocket = /obj/item/smartphone/endron_affairs
 	r_pocket = /obj/item/vamp/keys/pentex
 	backpack_contents = list(/obj/item/phone_book=1, /obj/item/veil_contract, /obj/item/card/credit/rich=1)

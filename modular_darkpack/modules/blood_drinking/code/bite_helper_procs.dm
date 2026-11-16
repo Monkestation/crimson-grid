@@ -63,8 +63,7 @@
 	if(client)
 		client.images -= suckbar
 	QDEL_NULL(suckbar)
-	suckbar_loc = drunk_from
-	suckbar = image('modular_darkpack/modules/blood_drinking/icons/bloodcounter.dmi', suckbar_loc, "[round(14*(drunk_from.bloodpool/drunk_from.maxbloodpool))]", HUD_PLANE)
+	suckbar = image('modular_darkpack/modules/blood_drinking/icons/bloodcounter.dmi', drunk_from, "[round(14*(drunk_from.bloodpool/drunk_from.maxbloodpool))]", HUD_PLANE)
 	suckbar.pixel_z = 40
 	suckbar.plane = ABOVE_HUD_PLANE
 	suckbar.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA

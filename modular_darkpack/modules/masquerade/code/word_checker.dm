@@ -6,9 +6,9 @@
 		return FALSE
 
 	var/dist = get_dist(speaker, src) - message_range
-	if(dist > 0 && dist <= EAVESDROP_EXTRA_RANGE && !HAS_TRAIT(src, TRAIT_GOOD_HEARING))
+	if(dist > 0 && dist <= EAVESDROP_RANGE && !HAS_TRAIT(src, TRAIT_GOOD_HEARING))
 		raw_message = stars(raw_message)
-	if(message_range != INFINITY && dist > EAVESDROP_EXTRA_RANGE && !HAS_TRAIT(src, TRAIT_GOOD_HEARING))
+	if(message_range != INFINITY && dist > EAVESDROP_RANGE && !HAS_TRAIT(src, TRAIT_GOOD_HEARING))
 		return FALSE
 
 	if(!has_language(message_language))

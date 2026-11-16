@@ -10,12 +10,16 @@
 	icon = FA_ICON_FACE_ANGRY
 	failure_message = "Your appearance softens, as though a great weight is lifted - you may bare your face again."
 	quirk_flags = QUIRK_CHANGES_APPEARANCE
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS
 
 /datum/quirk/darkpack/monstrous/add(client/client_source)
 	var/mob/living/carbon/human/human_holder = astype(quirk_holder)
 	if(!human_holder)
 		return
 	human_holder.rot_body(1)
-	ADD_TRAIT(human_holder, TRAIT_MASQUERADE_VIOLATING_FACE, "Monstrous")
-	if(human_holder.st_get_stat(STAT_APPEARANCE) > 0)
-		human_holder.st_add_stat_mod(STAT_APPEARANCE, -human_holder.st_get_stat(STAT_APPEARANCE), "Monstrous")
+	ADD_TRAIT(human_holder, TRAIT_MASQUERADE_VIOLATING_FACE, type)
+	human_holder.st_add_stat_clamp(STAT_APPEARANCE, 0, type)
+
+/datum/quirk/darkpack/monstrous/remove()
+	. = ..()
+	quirk_holder.st_remove_stat_clamp(STAT_APPEARANCE, type)

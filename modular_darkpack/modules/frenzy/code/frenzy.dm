@@ -4,20 +4,27 @@
 /mob/living/proc/enter_frenzy_mode(atom/target, fleeing = FALSE, source = "Unknown cause")
 	if(HAS_TRAIT(src, TRAIT_IN_FRENZY))
 		return
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(IS_UNCONSCIOUS(src))
 		return
-	add_traits(list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), FRENZY_TRAIT)
-	message_admins("[ADMIN_LOOKUPFLW(src)] has entered frenzy[target ? " targeting [ADMIN_LOOKUPFLW(src)]": ""]. ([source])")
-	log_message("entered frenzy.", LOG_GAME)
+
+	set_jitter_if_lower(1 SCENES)
+
+	message_admins("[ADMIN_LOOKUPFLW(src)] has entered frenzy[target ? " targeting [ADMIN_LOOKUPFLW(target)]": ""]. ([source])")
+	log_combat(src, (src || target), "has frenzied on because of \"[source]\" on")
 
 	if(fleeing)
 		to_chat(src, span_danger("FLEE."))
+		src.balloon_alert(src, "flee!")
+		apply_status_effect(/datum/status_effect/frenzy/flee, target)
 	else
 		to_chat(src, span_bolddanger("FRENZY."))
+		src.balloon_alert(src, "frenzy!")
+		if(get_kindred_splat(src))
+			apply_status_effect(/datum/status_effect/frenzy/vampire_hunger, target)
+		else
+			apply_status_effect(/datum/status_effect/frenzy, target)
 
 	SEND_SOUND(src, sound('modular_darkpack/modules/frenzy/sounds/frenzy.ogg', volume = 50))
-
-	apply_status_effect(/datum/status_effect/frenzy, target)
 
 	// This is assuming no other interaction happens to remove it before this.
 	addtimer(CALLBACK(src, PROC_REF(exit_frenzy_mode)), 1 SCENES)
@@ -25,45 +32,55 @@
 /mob/living/proc/exit_frenzy_mode()
 	if(!HAS_TRAIT(src, TRAIT_IN_FRENZY))
 		return
-	remove_traits(list(TRAIT_IN_FRENZY, TRAIT_NOSOFTCRIT, TRAIT_ANALGESIA), FRENZY_TRAIT)
-	log_message("exited frenzy.", LOG_GAME)
+	log_message("exited frenzy.", LOG_ATTACK, color="red")
 
+	remove_status_effect(/datum/status_effect/frenzy/vampire_hunger)
+	remove_status_effect(/datum/status_effect/frenzy/flee)
 	remove_status_effect(/datum/status_effect/frenzy)
 
 /datum/storyteller_roll/frenzy
 	abstract_type = /datum/storyteller_roll/frenzy
 	bumper_text = "frenzy"
-	roll_output_type = ROLL_PRIVATE_AND_TARGET
+	roll_output_type = ROLL_FLAG_ROLLER|ROLL_FLAG_TARGET
 	numerical = TRUE
 
 /datum/storyteller_roll/frenzy/rotschreck
 	bumper_text = "rotschrek"
 	applicable_stats = list(STAT_COURAGE)
 
+// CRIMSON EDIT ADD START - Calm Heart Rotschreck
+/datum/storyteller_roll/frenzy/rotschreck/using_bonus(mob/living/roller, atom/target, bonus_added)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_CALM_HEART))
+		. += 2
+// CRIMSON EDIT ADD END - Calm Heart Rotschreck
+
 /datum/storyteller_roll/frenzy/kindred
 
 // Specificly kindred as I dont really think brujah are meant to rotschreck easier.
-/datum/storyteller_roll/frenzy/kindred/calculate_used_difficulty(mob/living/roller)
+/datum/storyteller_roll/frenzy/kindred/using_difficulty(mob/living/roller, atom/target)
 	. = ..()
 	// V20 p.51
 	if(HAS_TRAIT(roller, TRAIT_DIFFICULT_FRENZY))
 		. += 2
+	if(HAS_TRAIT(roller, TRAIT_UNCONTROLLABLE))
+		. = 10
 
-/datum/storyteller_roll/frenzy/kindred/calculate_used_dice(mob/living/roller, bonus)
+/datum/storyteller_roll/frenzy/kindred/using_bonus(mob/living/roller, atom/target, bonus_added)
 	. = ..()
 	if(HAS_TRAIT(roller, TRAIT_CALM_HEART))
 		. += 2
 
 /datum/storyteller_roll/frenzy/rage
 
-/datum/storyteller_roll/frenzy/rage/calculate_used_difficulty(mob/living/roller)
+/datum/storyteller_roll/frenzy/rage/using_difficulty(mob/living/roller, atom/target)
 	. = ..()
 	if(HAS_TRAIT(roller, TRAIT_DIFFICULT_RAGE))
 		. += 1
 
 
 /mob/living/proc/trigger_rotschreck(atom/fire, difficulty = 6, successes = 0)
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(IS_UNCONSCIOUS(src))
 		return
 	if(!get_kindred_splat(src))
 		return
@@ -72,6 +89,8 @@
 	frenzy_roll.difficulty = difficulty
 	var/frenzy_result = frenzy_roll.st_roll(src, fire)
 	if(frenzy_result <= 0)
+		if(!fire)
+			fire = src
 		enter_frenzy_mode(fire, TRUE, "Rotshreck")
 		return
 	successes += frenzy_result
@@ -82,7 +101,7 @@
 
 
 /mob/living/proc/trigger_kindred_frenzy(atom/target, difficulty = 6, successes = 0, flavor_text = "Something")
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(IS_UNCONSCIOUS(src))
 		return
 	if(!get_kindred_splat(src))
 		return
@@ -95,6 +114,8 @@
 	if(frenzy_result <= 0)
 		to_chat(src, span_userdanger("[flavor_text] sends you into a frenzy!"))
 		var/victim = get_closest_atom(/atom, get_frenzy_victims(), src)
+		if(!victim)
+			victim = src
 		enter_frenzy_mode(victim, source = "Kindred")
 		return
 
@@ -107,7 +128,7 @@
 
 
 /mob/living/proc/trigger_rage_frenzy(atom/target, difficulty = 6, successes = 0)
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(IS_UNCONSCIOUS(src))
 		return
 	var/datum/splat/werewolf/shifter/shifter_splat = get_shifter_splat(src)
 	if(!shifter_splat)
@@ -121,7 +142,9 @@
 	return frenzy_result
 
 
-GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy_roll, "Manual Frenzy Roll", "Trigger a roll for a frenzy", null, atom/movable/AM as mob|obj in oview(DEFAULT_SIGHT_DISTANCE))
+GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy_roll, "Manual Frenzy Roll", "Trigger a roll for a frenzy", null)
+	VERB_ARG_TYPED(AM, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_VIEW, /mob/living)
+
 	if(!istype(AM))
 		return
 	if(!issupernatural(src))
@@ -133,7 +156,9 @@ GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy_roll, "Manual Frenzy
 		trigger_kindred_frenzy(AM)
 
 // Used by the berserker merit. or possibly even for that one vampire thing of riding the frenzy in future?
-GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy, "Manual Frenzy", "Enter a frenzy at will", null, atom/movable/AM as mob|obj in oview(DEFAULT_SIGHT_DISTANCE))
+GAME_VERB_PROC_DESC(/mob/living/carbon/human, manual_frenzy, "Manual Frenzy", "Enter a frenzy at will", null)
+	VERB_ARG_TYPED(AM, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_VIEW, /mob/living)
+
 	if(!istype(AM))
 		return
 	if(!issupernatural(src))

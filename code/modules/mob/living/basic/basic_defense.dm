@@ -96,7 +96,6 @@
 			var/datum/storyteller_roll/damage/damage_roll = new damage_roll_type()
 			damage_roll.difficulty += damage_difficulty_bonus
 			damage = damage_roll.st_roll(user, src, damage_bonus_dice) TTRPG_DAMAGE
-	damage = (basic_mob_flags & IMMUNE_TO_FISTS) ? 0 : damage
 
 	if(damage <= 0 || !attack_landed)
 		playsound(loc, attacking_bodypart.unarmed_miss_sound, 25, TRUE, -1)
@@ -206,7 +205,7 @@
 	if(. && stat != DEAD) //successful larva bite
 		var/damage_done = apply_damage(rand(attacking_larva.melee_damage_lower, attacking_larva.melee_damage_upper), BRUTE)
 		if(damage_done > 0)
-			attacking_larva.amount_grown = min(attacking_larva.amount_grown + damage_done, attacking_larva.max_grown)
+			attacking_larva.amount_grown = min(attacking_larva.amount_grown + damage_done, XENOMORPH_MAX_GROWTH)
 
 /mob/living/basic/attack_drone(mob/living/basic/drone/attacking_drone)
 	if(attacking_drone.combat_mode) //No kicking dogs even as a rogue drone. Use a weapon.
@@ -225,28 +224,23 @@
 	. = ..()
 	if(!. || QDELETED(src))
 		return FALSE
-
 	var/bomb_armor = getarmor(null, BOMB)
+	var/bomb_multi = clamp(1 - bomb_armor/200, 0, 1) // Scales linearly down to 50% damage at 100 armor
+	var/bloss
 	switch(severity)
 		if (EXPLODE_DEVASTATE)
-			if(prob(bomb_armor))
-				apply_damage(500, damagetype = BRUTE)
-			else
+			if(bomb_armor < EXPLODE_GIB_THRESHOLD)
 				investigate_log("has been gibbed by an explosion.", INVESTIGATE_DEATHS)
 				gib(DROP_ALL_REMAINS)
-
+			else
+				apply_damage(500, damagetype = BRUTE)
 		if (EXPLODE_HEAVY)
-			var/bloss = 60
-			if(prob(bomb_armor))
-				bloss = bloss / 1.5
-			apply_damage(bloss, damagetype = BRUTE)
-
+			bloss = 60
 		if (EXPLODE_LIGHT)
-			var/bloss = 30
-			if(prob(bomb_armor))
-				bloss = bloss / 1.5
-			apply_damage(bloss, damagetype = BRUTE)
-
+			bloss = 30
+	if(bloss)
+		bloss *= bomb_multi
+		apply_damage(bloss, damagetype = BRUTE)
 	return TRUE
 
 /mob/living/basic/blob_act(obj/structure/blob/attacking_blob)
@@ -272,7 +266,7 @@
 		if(health <= 0)
 			death()
 		else
-			set_stat(CONSCIOUS)
+			set_stat(STABLE)
 	med_hud_set_status()
 
 /mob/living/basic/emp_act(severity)

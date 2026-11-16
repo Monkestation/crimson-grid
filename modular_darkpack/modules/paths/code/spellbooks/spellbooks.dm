@@ -9,6 +9,7 @@
 	var/activate_sound = 'modular_darkpack/modules/paths/sounds/open_book.ogg'
 	var/deactivate_sound = 'modular_darkpack/modules/paths/sounds/close_book.ogg'
 
+	var/datum/discipline/required_discipline = /datum/discipline/thaumaturgy // CRIMSON GRID ADD: DARK THAUMATURGY
 	var/path_type = null
 	var/path_level = 1
 	var/do_after_time = 30 SECONDS
@@ -34,6 +35,7 @@
 		. += span_notice("You could try to clean off the dust to see what lies beneath.")
 
 /obj/item/path_spellbook/attack_self(mob/living/carbon/human/user)
+	. = ..()
 	if(!istype(user))
 		return FALSE
 
@@ -63,8 +65,10 @@
 		return
 
 	if(get_kindred_splat(user))
-		if(!user.get_discipline(/datum/discipline/thaumaturgy))
-			to_chat(user, span_warning("You must have knowledge of Thaumaturgy to use this book!"))
+		// CRIMSON GRID ADD: DARK THAUMATURGY
+		if(!user.get_discipline(required_discipline))
+			to_chat(user, span_warning("You must have knowledge of [required_discipline.name] to use this book!"))
+		// CRIMSON GRID ADD END: DARK THAUMATURGY
 			return
 		if(existing_path_discipline)
 			//Then we check if the level can be learned
@@ -137,7 +141,7 @@
 	var/study_research_value = 50
 	var/required_discipline = /datum/discipline/thaumaturgy
 	var/no_trait_message = "The text is incomprehensible to you without the proper knowledge."
-	var/cooldown_message = "You have recently studied this tome extensively. You need %TIME% more minutes before you can gain further insight from it."
+	var/cooldown_message = "You have recently studied this tome extensively. You need to wait %TIME% before you can gain further insight from it."
 	var/study_start_message = "You begin studying the occult text..."
 	var/study_interrupted_message = "Your concentration was broken. You failed to absorb any meaningful knowledge from the text."
 	var/research_gain_message = "You gain %POINTS% research points from studying this tome!"
@@ -171,7 +175,8 @@
 
 /obj/item/occult_book/proc/check_cooldown(mob/living/carbon/human/user)
 	if(!COOLDOWN_FINISHED(src, study_cooldown))
-		to_chat(user, span_warning(cooldown_message))
+		var/replaced_text_cooldown_message = replacetext(cooldown_message, "%TIME%", "[COOLDOWN_TIMELEFT(src, study_cooldown) / 10] seconds")
+		to_chat(user, span_warning(replaced_text_cooldown_message))
 		return FALSE
 	return TRUE
 

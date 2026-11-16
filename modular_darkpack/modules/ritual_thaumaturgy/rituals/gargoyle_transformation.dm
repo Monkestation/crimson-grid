@@ -18,7 +18,7 @@
 			else if(H.is_clan(/datum/subsplat/vampire_clan/gargoyle))
 				to_chat(usr, span_warning("You may not use this ritual on a Gargoyle!"))
 				return
-			else if(H.stat > SOFT_CRIT)
+			else if(IS_UNCONSCIOUS(H))
 				valid_bodies += H
 			else
 				H.adjust_agg_loss(50)

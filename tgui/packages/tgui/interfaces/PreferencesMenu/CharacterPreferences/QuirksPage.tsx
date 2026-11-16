@@ -21,6 +21,7 @@ import {
 import { useRandomToggleState } from '../useRandomToggleState';
 import { useServerPrefs } from '../useServerPrefs';
 import { getRandomization, PreferenceList } from './MainPage';
+import { PersonalityPage } from './PersonalityPage';
 
 function getColorValueClass(quirk: Quirk) {
   if (quirk.value > 0) {
@@ -564,7 +565,7 @@ function QuirkPage() {
 }
 
 export function QuirkPersonalityPage() {
-  const [contentPage, setContentPage] = useState<'quirks'>( // DARKPACK EDIT CHANGE - ORIGINAL: const [contentPage, setContentPage] = useState<'quirks' | 'personality'>(
+  const [contentPage, setContentPage] = useState<'quirks' | 'personality'>(
     'quirks',
   );
 
@@ -580,10 +581,9 @@ export function QuirkPersonalityPage() {
               align="center"
               fontSize="14px"
             >
-              Quirks
+              Merits/Flaws
             </Button>
           </Stack.Item>
-          { /* // DARKPACK EDIT REMOVAL START
           <Stack.Item grow>
             <Button
               selected={contentPage === 'personality'}
@@ -592,20 +592,14 @@ export function QuirkPersonalityPage() {
               align="center"
               fontSize="14px"
             >
-              Personality
+              Nature/Demeanor
             </Button>
           </Stack.Item>
-          // DARKPACK EDIT REMOVAL END */}
         </Stack>
       </Stack.Item>
-      { /* // DARKPACK EDIT REMOVAL START
       <Stack.Item grow>
         {contentPage === 'personality' ? <PersonalityPage /> : <QuirkPage />}
       </Stack.Item>
-      // DARKPACK EDIT REMOVAL END */}
-      {/* DARKPACK EDIT ADD START */}
-      <QuirkPage />
-      {/* DARKPACK EDIT ADD END */}
     </Stack>
   );
 }

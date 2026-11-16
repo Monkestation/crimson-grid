@@ -186,6 +186,7 @@ GLOBAL_VAR(basketball_game)
 		ADD_TRAIT(baller, TRAIT_CANNOT_CRYSTALIZE, BASKETBALL_MINIGAME_TRAIT)
 		// this is basketball, not a boxing match
 		ADD_TRAIT(baller, TRAIT_PACIFISM, BASKETBALL_MINIGAME_TRAIT)
+		ADD_TRAIT(baller, TRAIT_NO_CANON, INNATE_TRAIT) // DARKPACK EDIT ADD
 
 		baller.equipOutfit(team_uniform)
 

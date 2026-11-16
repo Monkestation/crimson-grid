@@ -1,6 +1,11 @@
 /datum/discipline/mytherceria
 	name = "Mytherceria"
-	desc = "Mytherceria is a Discipline that manifests in faerie-blooded vampires such as the Kiasyd and Maeghar. It grants the vampire mystical senses, the ability to steal knowledge, and other powers attributed to fae."
+	desc = {"Mytherceria is a Discipline that manifests in faerie-blooded vampires such as the Kiasyd and Maeghar. It grants the vampire mystical senses, the ability to steal knowledge, and other powers attributed to fae.
+● Fey Sight: Passive
+●● Darkling Trickery: Passive
+●●● Goblinism: Passive
+●●●● Chanjelin Ward: Passive
+●●●●● Riddle Phantastique: Passive"}
 	icon_state = "mytherceria"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/mytherceria
@@ -20,6 +25,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE
 	target_type = TARGET_MOB
 	range = 7
+	frenzy_usable = FALSE
 
 	cooldown_length = 10 SECONDS
 
@@ -27,9 +33,14 @@
 	. = ..()
 	to_chat(owner, span_purple("Your fae senses reach out to detect what they're carrying..."))
 	for(var/obj/item/item in target.get_all_contents())
+		/* Magic limbs.... should be fine?
 		if(isorgan(item) || isbodypart(item))
 			continue
-		to_chat(owner, "- [item.name]")
+		*/
+		var/list/magic_sources = item.get_magic_sources()
+		if(!length(magic_sources))
+			continue
+		to_chat(owner, span_purple("- [item.examine_title(owner)]"))
 
 //DARKLING TRICKERY
 /datum/discipline_power/mytherceria/darkling_trickery
@@ -40,6 +51,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_FREE_HAND | DISC_CHECK_LYING
 	target_type = TARGET_LIVING
 	range = 3
+	frenzy_usable = FALSE
 
 	cooldown_length = 30 SECONDS
 
@@ -48,7 +60,7 @@
 
 	var/list/choices = list()
 	for(var/obj/item/thing in target.get_all_contents())
-		if(isorgan(thing) || isbodypart(thing))
+		if(isorgan(thing) || isbodypart(thing) || HAS_TRAIT(thing, TRAIT_NODROP))
 			continue
 		choices[thing.name] = thing
 
@@ -73,6 +85,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_FREE_HAND
 	target_type = TARGET_MOB
 	range = 5
+	frenzy_usable = FALSE
 
 	aggravating = TRUE
 	hostile = TRUE
@@ -149,6 +162,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE
 	target_type = TARGET_LIVING
 	range = 5
+	frenzy_usable = FALSE
 
 	aggravating = TRUE
 	hostile = TRUE
@@ -170,6 +184,7 @@
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_IMMOBILE | DISC_CHECK_SPEAK
 	target_type = TARGET_LIVING
 	range = 7
+	frenzy_usable = FALSE
 
 	cooldown_length = 0
 

@@ -204,6 +204,17 @@
 	scan_state_overlay.pixel_y = 224
 	scan_overlay.add_overlay(scan_state_overlay)
 
+/turf/closed/mineral/set_smoothed_icon_state(new_junction)
+	var/old_junction = smoothing_junction
+	. = ..()
+	if(new_junction != ALL_SMOOTHING_JUNCTIONS || (!isnull(old_junction) && old_junction != new_junction))
+		update_appearance(UPDATE_OVERLAYS)
+
+/turf/closed/mineral/update_overlays()
+	. = ..()
+	if(smoothing_junction != ALL_SMOOTHING_JUNCTIONS)
+		. += fast_emissive_blocker(src)
+
 /turf/closed/mineral/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	if(turf_type)
 		underlay_appearance.icon = initial(turf_type.icon)
@@ -968,7 +979,6 @@
 /// Wall piece
 /turf/closed/mineral/ash_rock
 	name = "rock"
-	icon = 'icons/turf/mining.dmi'
 	icon = MAP_SWITCH('icons/turf/walls/rock_wall.dmi', 'icons/turf/mining.dmi')
 	icon_state = "rock2"
 	base_icon_state = "rock_wall"

@@ -3,8 +3,9 @@
 	desc = "Due to the size of your shark-like rows of teeth, you find it hard to communicate verbally. Instead, you speak through pools of spit and sometimes bite your own teeth in the process. This makes you quieter than other Nagaraja, always stuck whispering."
 	icon = FA_ICON_COMMENT
 	value = -2
-	mob_trait = TRAIT_SOFTSPOKEN
+	mob_trait = TRAIT_FORCE_WHISPER
 	gain_text = span_danger("Your teeth shift uncomfortably, taking more room in your mouth - it seems difficult to speak.")
 	lose_text = span_notice("Your teeth seemingly retract, leaving your voice louder than it was before.")
 	allowed_splats = list(SPLAT_KINDRED)
 	included_clans = list(VAMPIRE_CLAN_NAGARAJA)
+	quirk_flags = QUIRK_HIDE_FROM_SCAN //CRIMSON GRID EDIT ADD | PR: MAKE MEDICAL RECORDS NOT MASQ BREACHY | CHANGE: ADDED THIS TO PREVENT IT FROM BEING SEEN IN COMS

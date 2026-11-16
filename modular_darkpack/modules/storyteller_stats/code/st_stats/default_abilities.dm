@@ -106,6 +106,65 @@
 	name = "Academics"
 	description = "Affects your character's familiarity with academics and literature. Affects how many languages your character knows. At 0 points, your character will only know one language."
 
+/datum/st_stat/ability/academics/update_mob(mob/living/our_mob, initial)
+	our_mob.remove_all_partial_languages(LANGUAGE_ACADEMICS)
+	
+	var/current_score = get_score()
+	// level 1 - english, spanish, french, german
+	if(current_score >= 1)
+		our_mob.grant_partial_language(/datum/language/common, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/spanish, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/french, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/german, 25, LANGUAGE_ACADEMICS)
+
+	// level 2 - italian, polish, adds addtl 25 to common spanish french german (-> 50)
+	if(current_score >= 2)
+		our_mob.grant_partial_language(/datum/language/italian, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/polish, 25, LANGUAGE_ACADEMICS)
+
+		our_mob.grant_partial_language(/datum/language/common, 50, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/spanish, 50, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/french, 50, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/german, 50, LANGUAGE_ACADEMICS)
+
+	// level 3 - czech, tagalog, ukrainian, welsh, armenian, adds addtl 10 to common spanish french german (-> 60)
+	if(current_score >= 3)
+		our_mob.grant_partial_language(/datum/language/czech, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/tagalog, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/ukrainian, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/welsh, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/armenian, 25, LANGUAGE_ACADEMICS)
+
+		our_mob.grant_partial_language(/datum/language/common, 60, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/spanish, 60, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/french, 60, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/german, 60, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/italian, 40, LANGUAGE_ACADEMICS)
+
+	// level 4 - hebrew, russian, greek
+	if(current_score >= 4)
+		our_mob.grant_partial_language(/datum/language/hebrew, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/russian, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/greek, 25, LANGUAGE_ACADEMICS)
+
+	// level 5 - japanese, mandarin, latin, farsi, arabic, cantonese, scottish, irish, korean
+	if(current_score >= 5)
+		our_mob.grant_partial_language(/datum/language/japanese, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/mandarin, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/latin, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/farsi, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/arabic, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/cantonese, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/scottish, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/irish, 25, LANGUAGE_ACADEMICS)
+		our_mob.grant_partial_language(/datum/language/korean, 25, LANGUAGE_ACADEMICS)
+		
+/datum/st_stat/ability/academics/unlink_mob(mob/living/our_mob)
+	if(QDELING(our_mob))
+		return
+	our_mob.remove_all_partial_languages(LANGUAGE_ACADEMICS)
+
+
 /datum/st_stat/ability/computer
 	subcategory = "Knowledges"
 	name = "Computer"
@@ -140,6 +199,12 @@
 	subcategory = "Knowledges"
 	name = "Medicine"
 	description = "Affects your character's knowledge of anatomy, medicine, and emergency first aid protocols. Used in Vicissitude."
+
+/datum/st_stat/ability/medicine/link_mob(mob/living/our_mob)
+	RegisterSignal(our_mob, COMSIG_LIVING_OPERATING_ON, PROC_REF(check_medicine_wound_tending))
+
+/datum/st_stat/ability/medicine/unlink_mob(mob/living/our_mob)
+	UnregisterSignal(our_mob, COMSIG_LIVING_OPERATING_ON)
 
 /datum/st_stat/ability/occult
 	subcategory = "Knowledges"

@@ -1,7 +1,7 @@
 #define NPC_ITEM_TRAIT "npc_item"
 
-/// Trait given by a vampire's Clan
-#define CLAN_TRAIT "clan"
+/// Trait given by a splat's subsplat
+#define SUBSPLAT_TRAIT "subsplat"
 
 #define GIFT_TRAIT "gift"
 
