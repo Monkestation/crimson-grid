@@ -35,7 +35,6 @@
 	righthand_file = 'modular_darkpack/modules/deprecated/icons/righthand.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev44
-	initial_caliber = CALIBER_44MAG
 	fire_sound = 'modular_darkpack/modules/weapons/sounds/revolver.ogg'
 	vary_fire_sound = FALSE
 	fire_sound_volume = 85
@@ -52,7 +51,6 @@
 	inhand_icon_state = "revolver_snub"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rev9mm
 	w_class = WEIGHT_CLASS_SMALL
-	initial_caliber = CALIBER_9MM
 	fire_sound_volume = 65
 	projectile_damage_multiplier = 1.2 //21.6 damage, slightly higher than the m1911, just so it is possible to kill NPCs within 6 bullets
 	recoil = 2

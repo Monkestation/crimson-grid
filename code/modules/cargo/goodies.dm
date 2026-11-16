@@ -135,11 +135,13 @@
 	contains = list(/obj/item/gun/energy/disabler/smg)
 
 /datum/supply_pack/goody/hell_single
-	name = "Hellgun Kit Single-Pack"
-	desc = "Contains one hellgun degradation kit, an old pattern of laser gun infamous for its ability to horribly disfigure targets with burns. Technically violates the Geneva Convention when used on humanoids." // DARKPACK EDIT CHANGE
-	cost = PAYCHECK_CREW * 2
+	name = "Type 4 'Hellfire' Laser Gun Single-Pack"
+	desc = "Contains a Hellfire Gun, an overclocked laser gun that fires \"enhanced\" laser beams that burn hotter than normal, \
+		at the expense of higher energy consumption."
+	cost = PAYCHECK_CREW * 8
 	access_view = ACCESS_WEAPONS
-	contains = list(/obj/item/weaponcrafting/gunkit/hellgun)
+	contains = list(/obj/item/gun/energy/laser/hellgun)
+	order_flags = ORDER_CONTRABAND
 
 /datum/supply_pack/goody/thermal_single
 	name = "Thermal Pistol Holster Single-Pack"
@@ -148,6 +150,13 @@
 	access_view = ACCESS_WEAPONS
 	contains = list(/obj/item/storage/belt/holster/energy/thermal)
 */
+
+/datum/supply_pack/goody/syringegun_single
+	name = "Syringe Gun Single-Pack"
+	desc = "Contains a single syringe gun."
+	cost = PAYCHECK_CREW * 10
+	access_view = ACCESS_MEDICAL
+	contains = list(/obj/item/gun/syringe)
 
 /datum/supply_pack/goody/sologamermitts
 	name = "Insulated Gloves Single-Pack"
