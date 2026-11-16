@@ -365,6 +365,13 @@
 "agV" = (
 /turf/open/floor/plating/canal,
 /area/vtm/sunnycoast/marina)
+"ahc" = (
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/obj/structure/roofstuff/vent_end,
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "ahh" = (
 /turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/marina)
@@ -729,6 +736,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 6
 	},
+/mob/living/carbon/human/npc/business,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/sunnycoast/commerce)
 "amL" = (
@@ -1974,6 +1982,13 @@
 	},
 /turf/closed/wall/vampwall/brick_old,
 /area/vtm/interior/clinic)
+"aDS" = (
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/mob/living/carbon/human/npc/walkby,
+/turf/open/floor/plating/sidewalk,
+/area/vtm/sunnycoast/commerce)
 "aDY" = (
 /obj/structure/chair/wood/darkpack{
 	dir = 1
@@ -2703,6 +2718,13 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/asphalt,
 /area/vtm/sunnycoast/interior/parking)
+"aNy" = (
+/obj/effect/turf_decal/bordur{
+	dir = 1
+	},
+/obj/effect/turf_decal/bordur,
+/turf/open/floor/plating/concrete,
+/area/vtm/sunnycoast/marina)
 "aNz" = (
 /obj/structure/hedge,
 /obj/effect/turf_decal/siding/wood/dark/corner{
@@ -3510,6 +3532,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/mob/living/carbon/human/npc/business,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/sunnycoast/heritage/italy)
 "bap" = (
@@ -3569,6 +3592,10 @@
 	},
 /turf/open/floor/concrete/slab_4,
 /area/vtm/sunnycoast/interior/parking/three)
+"bbE" = (
+/obj/effect/decal/shadow,
+/turf/open/floor/iron/solarpanel,
+/area/vtm/sunnycoast/heritage/italy)
 "bbN" = (
 /obj/structure/hedge,
 /obj/effect/turf_decal/bordur{
@@ -5921,12 +5948,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/city/factory,
 /area/vtm/interior/millennium_tower)
-"bMR" = (
-/obj/effect/turf_decal/bordur/corner{
-	dir = 1
-	},
-/turf/open/floor/plating/sidewalk/poor,
-/area/vtm/sunnycoast/marina)
 "bNi" = (
 /obj/structure/fountain,
 /obj/effect/landmark/observer_start,
@@ -9088,10 +9109,17 @@
 /obj/item/reagent_containers/cup/glass/baggie/meth,
 /turf/open/floor/city/circled/large,
 /area/vtm/sunnycoast/anarchmotel/interior)
+"cKi" = (
+/obj/effect/decal/support,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/sunnycoast/heritage/italy)
 "cKk" = (
 /obj/effect/turf_decal/bordur,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/sunnycoast/marina)
+"cKv" = (
+/turf/open/floor/iron/solarpanel,
+/area/vtm/sunnycoast/heritage/italy)
 "cKz" = (
 /obj/structure/lattice/grate,
 /obj/effect/decal/pallet,
@@ -9631,6 +9659,13 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower/f3)
+"cTq" = (
+/obj/effect/turf_decal/bordur{
+	dir = 9
+	},
+/mob/living/carbon/human/npc/business,
+/turf/open/floor/plating/sidewalk/old,
+/area/vtm/sunnycoast/heritage)
 "cTr" = (
 /obj/effect/turf_decal/darkpack/cave{
 	dir = 5
@@ -9758,6 +9793,19 @@
 /obj/structure/bricks,
 /turf/open/floor/concrete/slab_1,
 /area/vtm/interior/apartment)
+"cVb" = (
+/obj/structure/lattice/pentex,
+/obj/item/reagent_containers/cup/glass/flask/gold,
+/obj/item/clothing/gloves/boxing/golden,
+/obj/item/reagent_containers/cup/glass/trophy/gold_cup,
+/obj/item/stack/sheet/mineral/gold/fifty,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/structure/safe,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank)
 "cVh" = (
 /obj/structure/platform/lowwall/brick,
 /obj/structure/table/countertop/bubway,
@@ -11530,6 +11578,9 @@
 /obj/structure/flora/bush/sparsegrass/style_random,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sewer/nosferatu_warren)
+"dwd" = (
+/turf/closed/wall/vampwall/market,
+/area/vtm)
 "dwm" = (
 /obj/structure/platform/lowwall/rich/window/reinforced,
 /obj/effect/decal/wallpaper/gold/low,
@@ -17313,11 +17364,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/marina)
-"fdL" = (
-/obj/structure/platform/lowwall/market/window/reinforced,
-/obj/effect/decal/wallpaper/trim,
-/turf/open/floor/city/plating,
-/area/vtm/interior/bianchiBank)
 "fdN" = (
 /obj/structure/fence/end,
 /obj/effect/turf_decal/bordur/corner{
@@ -18820,6 +18866,14 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/sunnycoast/marina)
+"fzU" = (
+/obj/effect/turf_decal/bordur,
+/obj/effect/turf_decal/bordur{
+	dir = 1
+	},
+/obj/structure/roofstuff/vent,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/sunnycoast/marina)
 "fAf" = (
 /obj/structure/chair/plastic/darkpack,
 /obj/item/reagent_containers/cup/bucket{
@@ -19630,6 +19684,13 @@
 /obj/effect/turf_decal/asphalt,
 /turf/open/floor/plating/rough,
 /area/vtm/sunnycoast/marina)
+"fKX" = (
+/obj/effect/turf_decal/bordur{
+	dir = 4
+	},
+/mob/living/carbon/human/npc/business,
+/turf/open/floor/plating/sidewalk/rich,
+/area/vtm/sunnycoast/commerce)
 "fLa" = (
 /obj/structure/platform/lowwall/market,
 /obj/effect/decal/wallpaper/stone/low,
@@ -19732,6 +19793,15 @@
 /obj/effect/decal/wallpaper/paper/darkred,
 /turf/closed/wall/vampwall/rich,
 /area/vtm/interior/millennium_tower)
+"fMt" = (
+/obj/effect/turf_decal/bordur{
+	dir = 4
+	},
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/turf/open/floor/plating/concrete,
+/area/vtm/sunnycoast/marina)
 "fMA" = (
 /obj/effect/turf_decal/bordur,
 /obj/effect/turf_decal/bordur{
@@ -19951,6 +20021,10 @@
 /obj/machinery/reagentgrinder/kitchen,
 /turf/open/floor/city/bacotell,
 /area/vtm/sunnycoast/motel/interior)
+"fQm" = (
+/obj/structure/roofstuff/vent,
+/turf/open/floor/plating/rough,
+/area/vtm/sunnycoast/marina)
 "fQo" = (
 /obj/effect/decal/fakelattice{
 	density = 0
@@ -20112,6 +20186,13 @@
 /obj/effect/spawner/random/trash/grime,
 /turf/open/misc/dirt,
 /area/vtm/sunnycoast/junkyard)
+"fSI" = (
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/mob/living/carbon/human/npc/business,
+/turf/open/floor/plating/sidewalk,
+/area/vtm/outside/pacificheights/industrial)
 "fSJ" = (
 /obj/structure/table/countertop/green,
 /obj/machinery/microwave,
@@ -20602,6 +20683,22 @@
 "fZZ" = (
 /turf/closed/wall/vampwall/rustbad,
 /area/vtm/interior/sewer/nosferatu_town)
+"gae" = (
+/obj/structure/lattice/pentex,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/coin/gold,
+/obj/item/coin/gold,
+/obj/item/coin/diamond,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/safe,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank)
 "gal" = (
 /obj/effect/turf_decal/bordur/corner,
 /turf/open/floor/plating/rough,
@@ -22837,6 +22934,13 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/apartment/fifthave)
+"gLY" = (
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/obj/machinery/camera/autoname/directional/west,
+/turf/open/floor/plating/sidewalk,
+/area/vtm/sunnycoast/marina)
 "gMe" = (
 /obj/effect/turf_decal/darkpack/dirt/corner{
 	dir = 4
@@ -22874,6 +22978,13 @@
 	},
 /turf/open/misc/grass/nosmooth,
 /area/vtm/outside/park)
+"gMV" = (
+/obj/effect/turf_decal/bordur/corner,
+/obj/effect/turf_decal/bordur{
+	dir = 5
+	},
+/turf/open/floor/plating/concrete,
+/area/vtm/sunnycoast/marina)
 "gMW" = (
 /obj/effect/turf_decal/darkpack/dirt/corner{
 	dir = 4
@@ -23269,6 +23380,9 @@
 "gUj" = (
 /obj/effect/turf_decal/bordur/corner{
 	dir = 4
+	},
+/obj/effect/turf_decal/bordur{
+	dir = 9
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/marina)
@@ -26500,6 +26614,10 @@
 /obj/structure/table/no_smooth/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/apartment/fifthave)
+"hXt" = (
+/obj/structure/roofstuff/alt2,
+/turf/open/floor/plating/rough,
+/area/vtm/sunnycoast/marina)
 "hXw" = (
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/flower_shop)
@@ -27626,6 +27744,10 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/bianchiBank)
+"iqL" = (
+/obj/effect/decal/wallpaper/trim,
+/turf/closed/wall/vampwall/market,
+/area/vtm)
 "iqM" = (
 /obj/effect/decal/wallpaper/stone/low/tilt{
 	dir = 4
@@ -30213,14 +30335,13 @@
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/museum)
 "jge" = (
-/obj/effect/turf_decal/darkpack/rough,
 /obj/effect/turf_decal/darkpack/dirt{
 	dir = 1
 	},
 /obj/machinery/light/floor/lamppost/one{
 	dir = 4
 	},
-/turf/open/misc/grass/random/bushes,
+/turf/open/misc/grass/nosmooth,
 /area/vtm/sunnycoast/street/firstave/outskirts)
 "jgf" = (
 /obj/structure/noticeboard/directional/north,
@@ -30516,6 +30637,14 @@
 	color = "#bfbfbf"
 	},
 /area/vtm/interior/police)
+"jjE" = (
+/obj/effect/decal/wallpaper/stone/low{
+	pixel_y = 24
+	},
+/obj/effect/decal/shadow,
+/obj/structure/fluff/sat_dish,
+/turf/open/floor/plating/rough,
+/area/vtm/sunnycoast/marina)
 "jjL" = (
 /obj/structure/table,
 /obj/item/reagent_containers/cup/glass/coffee/vampire/robust{
@@ -30837,6 +30966,14 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet/darkpack/bluesilver,
 /area/vtm/interior/shop/tattoo)
+"joC" = (
+/obj/structure/roofstuff/vent,
+/obj/effect/turf_decal/bordur,
+/obj/effect/turf_decal/bordur{
+	dir = 1
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/sunnycoast/marina)
 "joE" = (
 /obj/effect/turf_decal/darkpack/rough/corner,
 /obj/structure/roadsign/street{
@@ -33038,6 +33175,16 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/sunnycoast/interior/selfstorage)
+"jTX" = (
+/obj/effect/turf_decal/bordur{
+	dir = 10
+	},
+/obj/effect/turf_decal/bordur{
+	dir = 6
+	},
+/mob/living/carbon/human/npc/business,
+/turf/open/floor/plating/sidewalk/old,
+/area/vtm/sunnycoast/heritage/italy)
 "jUb" = (
 /obj/effect/turf_decal/bordur,
 /obj/effect/turf_decal/darkpack/rough{
@@ -35653,6 +35800,20 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/apartment/penthouse)
+"kJA" = (
+/obj/structure/lattice/pentex,
+/obj/item/disk/computer,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/documents{
+	desc = "A stack of papers pertaining to money laundering operations in the city. This should pawn off well."
+	},
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/item/stack/dollar/thousand,
+/obj/structure/safe,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/bianchiBank)
 "kJI" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/smooth/old,
@@ -35784,15 +35945,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/interior/selfstorage)
-"kMh" = (
-/obj/structure/lattice/pentex,
-/obj/structure/secure_safe/directional/north,
-/obj/item/reagent_containers/cup/glass/flask/gold,
-/obj/item/clothing/gloves/boxing/golden,
-/obj/item/reagent_containers/cup/glass/trophy/gold_cup,
-/obj/item/stack/sheet/mineral/gold/fifty,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "kMl" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -37001,6 +37153,10 @@
 /obj/structure/closet/crate/cardboard,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/pawnshop)
+"lcO" = (
+/obj/structure/roofstuff/alt1,
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "lcQ" = (
 /obj/effect/turf_decal/siding/wood/dark/corner,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -37375,11 +37531,6 @@
 /obj/effect/decal/graffiti,
 /turf/open/floor/plating/rough,
 /area/vtm/sunnycoast/interior/selfstorage/yard)
-"lji" = (
-/obj/structure/flora/grass/jungle/a/style_random,
-/obj/effect/decal/cleanable/cobweb,
-/turf/open/water/vamp_sewer/border,
-/area/vtm/interior/sewer)
 "lju" = (
 /obj/structure/chair/office/darkpack/blue{
 	dir = 8
@@ -38223,6 +38374,14 @@
 /obj/structure/stairs/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/smoke_shop)
+"lyn" = (
+/obj/effect/decal/wallpaper/stone/low{
+	pixel_y = 24
+	},
+/obj/effect/decal/shadow,
+/obj/effect/turf_decal/bordur,
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "lyp" = (
 /obj/structure/pallets/rand,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -39480,6 +39639,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 9
 	},
+/mob/living/carbon/human/npc/business,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/sunnycoast/heritage/italy)
 "lRU" = (
@@ -40878,16 +41038,6 @@
 /obj/effect/decal/pallet,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sewer/nosferatu_bar)
-"mpg" = (
-/obj/effect/turf_decal/siding/grey{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/grey,
-/obj/structure/secure_safe/directional/north,
-/obj/item/stack/sheet/mineral/gold/fifty,
-/obj/item/stack/sheet/mineral/silver/fifty,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "mpj" = (
 /obj/effect/decal/cleanable/trash/big,
 /turf/open/floor/plating/canal,
@@ -41876,6 +42026,15 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church)
+"mDq" = (
+/obj/effect/turf_decal/bordur{
+	dir = 5
+	},
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "mDv" = (
 /obj/vampgrave{
 	max_zombies_per_grave = 0
@@ -43547,6 +43706,7 @@
 /obj/effect/turf_decal/bordur,
 /obj/structure/railing/corner,
 /obj/structure/fluff/bollard/dual/grey/directional/south,
+/mob/living/carbon/human/npc/business,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/sunnycoast/commerce)
 "naq" = (
@@ -44817,17 +44977,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop/gunshop)
-"nsx" = (
-/obj/structure/lattice/pentex,
-/obj/structure/secure_safe/directional/north,
-/obj/item/documents{
-	desc = "A stack of papers pertaining to money laundering operations in the city. This should pawn off well."
-	},
-/obj/item/disk/computer,
-/obj/item/disk/computer,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "nsB" = (
 /obj/structure/closet,
 /obj/effect/turf_decal/siding/wood/dark{
@@ -45525,6 +45674,7 @@
 	dir = 8
 	},
 /obj/structure/fluff/bollard/dual/grey/directional/south,
+/mob/living/carbon/human/npc/business,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/sunnycoast/commerce)
 "nBm" = (
@@ -48707,6 +48857,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/vtm/interior/endron_facility/restricted)
+"owe" = (
+/obj/effect/turf_decal/bordur{
+	dir = 10
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "owr" = (
 /obj/structure/vampdoor/prison,
 /obj/effect/mapping_helpers/door/access/hunter,
@@ -52945,6 +53101,7 @@
 "pHT" = (
 /obj/effect/turf_decal/bordur,
 /obj/structure/fluff/bollard/dual/grey/directional/south,
+/mob/living/carbon/human/npc/business,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/sunnycoast/heritage/italy)
 "pIn" = (
@@ -53049,6 +53206,7 @@
 /obj/effect/turf_decal/bordur{
 	dir = 9
 	},
+/mob/living/carbon/human/npc/walkby,
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/sunnycoast/commerce)
 "pJX" = (
@@ -53548,6 +53706,13 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights/industrial)
+"pQc" = (
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/obj/structure/fluff/sat_dish,
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "pQp" = (
 /obj/effect/turf_decal/bordur/corner{
 	dir = 8
@@ -54646,6 +54811,16 @@
 /obj/structure/tire,
 /turf/open/misc/dirt,
 /area/vtm/sunnycoast/junkyard)
+"qjT" = (
+/obj/effect/turf_decal/bordur{
+	dir = 6
+	},
+/obj/effect/decal/wallpaper/stone/low{
+	pixel_y = 24
+	},
+/obj/effect/decal/shadow,
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "qjU" = (
 /obj/effect/turf_decal/bordur/corner{
 	dir = 4
@@ -58690,22 +58865,6 @@
 /obj/effect/decal/rugs,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop/gunshop)
-"rxN" = (
-/obj/structure/lattice/pentex,
-/obj/structure/secure_safe/directional/north,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/stack/dollar/thousand,
-/obj/item/coin/gold,
-/obj/item/coin/gold,
-/obj/item/coin/diamond,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/bianchiBank)
 "rxR" = (
 /obj/structure/closet/secure_closet/freezer/empty,
 /turf/open/floor/city/bacotell,
@@ -58950,6 +59109,15 @@
 	dir = 5
 	},
 /turf/open/floor/plating/sidewalk/rich,
+/area/vtm/sunnycoast/marina)
+"rBp" = (
+/obj/effect/turf_decal/bordur/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/bordur{
+	dir = 10
+	},
+/turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/marina)
 "rBt" = (
 /obj/effect/turf_decal/siding/wood/dark{
@@ -60235,6 +60403,15 @@
 /obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/iron/freezer,
 /area/vtm/interior/clinic)
+"rWn" = (
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/obj/effect/turf_decal/bordur{
+	dir = 6
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "rXh" = (
 /turf/open/floor/carpet/darkpack/purplegold,
 /area/vtm/sunnycoast/interior/nightclub/staff)
@@ -65124,6 +65301,15 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/sunnycoast/interior/ranger)
+"tsQ" = (
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/obj/effect/turf_decal/bordur{
+	dir = 4
+	},
+/turf/open/floor/plating/concrete,
+/area/vtm/sunnycoast/marina)
 "tsT" = (
 /obj/effect/turf_decal/bordur/corner,
 /obj/structure/roadsign/warningtrafficlight{
@@ -65443,6 +65629,14 @@
 /obj/item/reagent_containers/cup/glass/bottle/vodka,
 /turf/open/floor/city/factory,
 /area/vtm/sunnycoast/interior/nightclub/staff)
+"txZ" = (
+/obj/effect/turf_decal/bordur,
+/obj/effect/turf_decal/bordur{
+	dir = 1
+	},
+/obj/structure/roofstuff/vent/autotiling,
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/sunnycoast/marina)
 "tyi" = (
 /obj/effect/turf_decal/asphalt,
 /turf/open/floor/plating/asphalt,
@@ -66149,7 +66343,6 @@
 	can_spread = 0;
 	pixel_y = 26
 	},
-/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/water/vamp_sewer/border,
 /area/vtm/interior/sewer)
 "tIs" = (
@@ -66571,6 +66764,12 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/millennium_tower/f4)
+"tNP" = (
+/obj/effect/turf_decal/bordur,
+/obj/structure/railing,
+/mob/living/carbon/human/npc/business,
+/turf/open/floor/plating/sidewalk/rich,
+/area/vtm/sunnycoast/commerce)
 "tNQ" = (
 /obj/effect/turf_decal/tile/neutral/opposingcorners,
 /obj/structure/chair/darkpack{
@@ -67018,6 +67217,9 @@
 /obj/effect/turf_decal/bordur/corner{
 	dir = 8
 	},
+/obj/effect/turf_decal/bordur{
+	dir = 6
+	},
 /turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/marina)
 "tTW" = (
@@ -67189,6 +67391,13 @@
 /obj/effect/mapping_helpers/mob_buckler,
 /turf/open/floor/carpet/darkpack/greengold,
 /area/vtm/interior/bianchiBank)
+"tXs" = (
+/obj/effect/turf_decal/bordur{
+	dir = 10
+	},
+/mob/living/carbon/human/npc/walkby,
+/turf/open/floor/plating/sidewalk/old,
+/area/vtm/sunnycoast/heritage)
 "tXA" = (
 /obj/darkpack_car/retro/rand{
 	dir = 2
@@ -69064,6 +69273,7 @@
 	dir = 8
 	},
 /mob/living/carbon/human/npc/police,
+/obj/machinery/camera/autoname/directional/west,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/sunnycoast/marina)
 "uBP" = (
@@ -71224,6 +71434,16 @@
 	},
 /turf/open/floor/plating/roofwalk,
 /area/vtm/sunnycoast/commerce)
+"vhn" = (
+/obj/effect/decal/wallpaper/stone/low{
+	pixel_y = 24
+	},
+/obj/effect/decal/shadow,
+/obj/machinery/camera/autoname/directional/north{
+	pixel_y = 24
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/sunnycoast/marina)
 "vho" = (
 /obj/structure/table/countertop/teal,
 /obj/structure/sink/basin/directional/north,
@@ -72274,10 +72494,6 @@
 	},
 /turf/open/misc/dirt,
 /area/vtm/graveyard)
-"vuU" = (
-/obj/structure/platform/lowwall/market/window/reinforced,
-/turf/open/floor/city/plating,
-/area/vtm/interior/bianchiBank)
 "vvm" = (
 /obj/structure/flora/bush/sparsegrass/style_random,
 /obj/effect/turf_decal/darkpack/dirt/corner{
@@ -73347,6 +73563,15 @@
 	},
 /turf/open/floor/carpet/darkpack/greengold,
 /area/vtm/interior/bianchiBank)
+"vMt" = (
+/obj/effect/turf_decal/bordur{
+	dir = 6
+	},
+/obj/effect/turf_decal/bordur{
+	dir = 8
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "vMx" = (
 /obj/structure/table/no_smooth/modular_desk/left{
 	dir = 1
@@ -77235,7 +77460,6 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/sunnycoast/marina)
 "xaF" = (
-/obj/effect/turf_decal/darkpack/rough,
 /obj/machinery/light/floor/lamppost/one{
 	dir = 8
 	},
@@ -79560,6 +79784,13 @@
 	},
 /turf/open/floor/plating/sidewalk/rich,
 /area/vtm/sunnycoast/marina)
+"xJr" = (
+/obj/effect/turf_decal/bordur,
+/obj/machinery/camera/autoname/directional/south{
+	pixel_y = 16
+	},
+/turf/open/floor/plating/sidewalk,
+/area/vtm/sunnycoast/marina)
 "xJt" = (
 /obj/structure/chair/darkpack/green,
 /turf/open/floor/carpet/darkpack/orangesilver,
@@ -79690,6 +79921,13 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/clothing_store)
+"xLn" = (
+/obj/effect/turf_decal/bordur,
+/obj/effect/turf_decal/bordur{
+	dir = 1
+	},
+/turf/open/floor/plating/concrete,
+/area/vtm/sunnycoast/marina)
 "xLs" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -87064,7 +87302,7 @@ tpW
 tpW
 tpW
 tpW
-tpW
+dwd
 hln
 jwl
 fqr
@@ -87218,9 +87456,9 @@ tpW
 tpW
 tpW
 tpW
-tpW
-jwl
-rxN
+iqL
+gae
+cyd
 xzn
 bzM
 okz
@@ -87372,9 +87610,9 @@ tpW
 tpW
 tpW
 tpW
-tpW
-jwl
-nsx
+iqL
+kJA
+cyd
 nuG
 bzM
 cbG
@@ -87526,9 +87764,9 @@ tpW
 tpW
 tpW
 tpW
-tpW
-jwl
-kMh
+iqL
+cVb
+bzM
 xzn
 cyd
 teW
@@ -87682,9 +87920,9 @@ tpW
 tpW
 hln
 hln
-fdL
+jwl
 dbl
-vuU
+hln
 hln
 hln
 tpW
@@ -88760,7 +88998,7 @@ tpW
 tpW
 tpW
 jwl
-mpg
+xzn
 nVu
 hfJ
 hln
@@ -95454,7 +95692,7 @@ ilv
 cMg
 inX
 inX
-lji
+eqT
 tjp
 rpy
 inX
@@ -96538,7 +96776,7 @@ sKX
 ppR
 jsY
 inX
-lji
+eqT
 tqM
 tjp
 qnj
@@ -106498,7 +106736,7 @@ lUN
 iLs
 nRq
 fRH
-mqh
+vhn
 top
 top
 top
@@ -106636,7 +106874,7 @@ hNZ
 brr
 hNZ
 mvP
-hZo
+xJr
 fRH
 fRH
 fRH
@@ -107961,13 +108199,13 @@ iXY
 iXY
 iXY
 iXY
-iXY
+fSI
 uFo
 piy
 piy
-piy
+aDS
 kNC
-piy
+aDS
 piy
 piy
 piy
@@ -108030,7 +108268,7 @@ fFD
 fFD
 fFD
 fFD
-fFD
+gLY
 fFD
 fFD
 fFD
@@ -109207,9 +109445,9 @@ unW
 unW
 unW
 unW
-unW
+fKX
 wKg
-unW
+fKX
 unW
 unW
 unW
@@ -112921,7 +113159,7 @@ eSA
 cGu
 eSA
 mtG
-uFa
+jTX
 tJd
 vAv
 mEo
@@ -114281,7 +114519,7 @@ hwU
 ihY
 hwU
 lIH
-tXU
+tNP
 qSW
 uCf
 gvN
@@ -115513,7 +115751,7 @@ hwU
 ihY
 hwU
 lIH
-tXU
+tNP
 hvb
 tpk
 uCf
@@ -118026,7 +118264,7 @@ gKZ
 gKZ
 xKv
 xFa
-wOU
+cTq
 iHq
 hNZ
 fel
@@ -121545,7 +121783,7 @@ vkq
 hwW
 wBY
 ydm
-gol
+tXs
 iJY
 iJY
 iJY
@@ -160060,9 +160298,9 @@ pBY
 pBY
 hUF
 cqe
-hNH
-hNH
-hNH
+cKv
+bbE
+cKi
 dWT
 pGe
 oMG
@@ -160214,9 +160452,9 @@ pBY
 pBY
 hUF
 cqe
-hNH
-hNH
-hNH
+cKv
+bbE
+cKi
 dWT
 pGe
 oMG
@@ -164099,11 +164337,11 @@ xHc
 xHc
 xHc
 xHc
-xHc
-xHc
-xHc
-xHc
-nAe
+rWn
+cVD
+cVD
+cVD
+eiQ
 upD
 upD
 upD
@@ -164247,17 +164485,17 @@ upD
 upD
 upD
 tCD
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
+rFL
+rUn
+dmg
+rFL
+rUn
+dmg
 jFK
+wGo
+wGo
+wGo
+bfw
 upD
 upD
 upD
@@ -164401,17 +164639,17 @@ upD
 upD
 upD
 tCD
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
+rFL
+rUn
+dmg
+rFL
+rUn
+dmg
 jFK
+wGo
+wGo
+wGo
+bfw
 upD
 upD
 upD
@@ -164561,11 +164799,11 @@ tZI
 tZI
 tZI
 tZI
-tZI
-tZI
-tZI
-tZI
 jFK
+wGo
+wGo
+wGo
+bfw
 upD
 upD
 upD
@@ -164709,17 +164947,17 @@ upD
 upD
 upD
 tCD
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
+rFL
+rUn
+dmg
+rFL
+rUn
+dmg
 jFK
+wGo
+wGo
+wGo
+bfw
 upD
 upD
 upD
@@ -164863,17 +165101,17 @@ upD
 upD
 upD
 tCD
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
-tZI
+rFL
+rUn
+dmg
+rFL
+rUn
+dmg
 jFK
+wGo
+wGo
+wGo
+bfw
 upD
 upD
 upD
@@ -165023,11 +165261,11 @@ tZI
 tZI
 tZI
 tZI
-tZI
-tZI
-vjz
-vQs
-klD
+owe
+xHc
+vMt
+wJX
+gfx
 upD
 upD
 upD
@@ -165160,12 +165398,12 @@ rdq
 upD
 upD
 tCD
+rFL
+rUn
+dmg
 tZI
-tZI
-tZI
-tZI
-tZI
-tZI
+ucw
+pYd
 jFK
 upD
 upD
@@ -165174,14 +165412,14 @@ tCD
 tZI
 tZI
 tZI
-tZI
-vjz
+bIS
+qjT
 vQs
 vQs
 vQs
 klD
-wIu
-ahj
+hUo
+npR
 upD
 upD
 upD
@@ -165314,12 +165552,12 @@ rdq
 upD
 upD
 tCD
+rFL
+rUn
+dmg
 tZI
-tZI
-tZI
-tZI
-tZI
-tZI
+joC
+pYd
 jFK
 upD
 upD
@@ -165328,14 +165566,14 @@ tCD
 tZI
 tZI
 tZI
-tZI
-jFK
-upD
-upD
-upD
-upD
-bMR
-bvn
+gJg
+hDq
+qlL
+ksl
+ksl
+sqh
+cWt
+mlF
 upD
 upD
 upD
@@ -165472,8 +165710,8 @@ tZI
 tZI
 tZI
 tZI
-tZI
-tZI
+jmD
+pYd
 jFK
 upD
 upD
@@ -165484,10 +165722,10 @@ vQs
 vQs
 vQs
 klD
-upD
-upD
-upD
-upD
+sqh
+sqh
+qlL
+sqh
 upD
 upD
 upD
@@ -165622,9 +165860,9 @@ rdq
 upD
 upD
 tCD
-tZI
-tZI
-tZI
+rFL
+rUn
+dmg
 tZI
 tZI
 vjz
@@ -165776,9 +166014,9 @@ rdq
 upD
 upD
 tCD
-tZI
-tZI
-tZI
+rFL
+rUn
+dmg
 tZI
 tZI
 jFK
@@ -166084,8 +166322,8 @@ rdq
 upD
 upD
 tCD
-tZI
-tZI
+bIS
+pYd
 tZI
 tZI
 tZI
@@ -166238,9 +166476,9 @@ rdq
 upD
 upD
 tCD
-tZI
-tZI
-tZI
+gJg
+pYd
+art
 tZI
 tZI
 jFK
@@ -166249,17 +166487,17 @@ upD
 upD
 upD
 mrn
-xHc
-xHc
-xHc
-xHc
+vMt
+wJX
+wJX
+mDq
 nAe
 tTV
-mQc
-mQc
-mQc
-mQc
-toJ
+tsQ
+tsQ
+tsQ
+tsQ
+gMV
 upD
 upD
 upD
@@ -166403,17 +166641,17 @@ upD
 upD
 upD
 tCD
-tZI
-tZI
-tZI
-tZI
 jFK
-jWI
-ahh
-ahh
-ahh
-ahh
-jPs
+wGo
+wGo
+tCD
+jFK
+aNy
+upD
+upD
+upD
+upD
+xLn
 upD
 upD
 upD
@@ -166547,27 +166785,27 @@ upD
 upD
 upD
 tTV
-mQc
-mQc
-mQc
-mQc
-mQc
-toJ
+tsQ
+tsQ
+tsQ
+tsQ
+tsQ
+gMV
 upD
 upD
 upD
 tCD
-tZI
-tZI
-tZI
-tZI
 jFK
-jWI
-ahh
-ahh
-ahh
-ahh
-jPs
+wGo
+wGo
+tCD
+jFK
+aNy
+upD
+upD
+upD
+upD
+xLn
 upD
 upD
 upD
@@ -166700,28 +166938,28 @@ rdq
 upD
 upD
 upD
-jWI
-ahh
-ahh
-ahh
-ahh
-ahh
-jPs
+aNy
+fEd
+fQm
+jQf
+hXt
+hXt
+xLn
 upD
 upD
 upD
 tCD
-tZI
-tZI
-tZI
-tZI
 jFK
-jWI
-ahh
-ahh
-ahh
-ahh
-jPs
+wGo
+wGo
+tCD
+jFK
+aNy
+upD
+upD
+upD
+upD
+xLn
 upD
 upD
 upD
@@ -166854,28 +167092,28 @@ rdq
 upD
 upD
 upD
-jWI
-ahh
-ahh
-ahh
-ahh
-ahh
-jPs
+aNy
+jjE
+rSi
+cOV
+cOV
+cOV
+xLn
 upD
 upD
 upD
 tCD
-tZI
-tZI
-tZI
-tZI
 jFK
-jWI
-ahh
-ahh
-ahh
-ahh
-jPs
+wGo
+wGo
+tCD
+jFK
+aNy
+upD
+upD
+upD
+upD
+xLn
 upD
 upD
 upD
@@ -167008,28 +167246,28 @@ rdq
 upD
 upD
 upD
-jWI
-ahh
-ahh
-ahh
-ahh
-ahh
-jPs
+aNy
+hkG
+rSi
+jQf
+cOK
+jQf
+xLn
 upD
 upD
 mrn
 vDH
-tZI
-tZI
-tZI
-tZI
+owe
+xHc
+pQc
+vDH
 jFK
-jWI
-ahh
-ahh
-ahh
-ahh
-jPs
+aNy
+upD
+upD
+upD
+upD
+xLn
 upD
 upD
 upD
@@ -167162,28 +167400,28 @@ rdq
 upD
 upD
 upD
-jWI
-ahh
-ahh
-ahh
-ahh
-ahh
-jPs
+aNy
+fEd
+rSi
+rSi
+rSi
+jQf
+xLn
 upD
 upD
 tCD
-tZI
-tZI
-tZI
+gAc
+vhC
+pYd
 tZI
 tZI
 jFK
-jWI
-ahh
-ahh
-ahh
-ahh
-jPs
+aNy
+upD
+upD
+upD
+upD
+xLn
 upD
 upD
 upD
@@ -167316,28 +167554,28 @@ rdq
 upD
 upD
 upD
-jWI
-ahh
-ahh
-ahh
-ahh
-ahh
-jPs
+aNy
+fEd
+jQf
+rSi
+jQf
+jQf
+xLn
 upD
 upD
 tCD
 tZI
 tZI
 tZI
-tZI
-tZI
-jFK
-jWI
-ahh
-ahh
-ahh
-ahh
-jPs
+gAc
+vhC
+lyn
+aNy
+upD
+upD
+upD
+upD
+xLn
 upD
 upD
 upD
@@ -167470,28 +167708,28 @@ rdq
 upD
 upD
 upD
-jWI
-ahh
-ahh
-ahh
-ahh
-ahh
-jPs
+aNy
+hkG
+cOV
+rSi
+cOV
+cOV
+xLn
 upD
 upD
 tCD
-tZI
-tZI
-tZI
+gAc
+vhC
+pYd
 tZI
 tZI
 jFK
-jWI
-ahh
-ahh
-ahh
-ahh
-jPs
+aNy
+upD
+upD
+upD
+upD
+xLn
 upD
 upD
 upD
@@ -167624,12 +167862,12 @@ rdq
 upD
 upD
 upD
-xpK
-lEz
-lEz
-lEz
-lEz
-lEz
+rBp
+fMt
+fMt
+fMt
+fMt
+fMt
 gUj
 upD
 upD
@@ -167640,11 +167878,11 @@ vQs
 vQs
 vQs
 klD
-xpK
-lEz
-lEz
-lEz
-lEz
+rBp
+fMt
+fMt
+fMt
+fMt
 gUj
 upD
 upD
@@ -168247,21 +168485,21 @@ xHc
 xHc
 xHc
 xHc
-nAe
-upD
-upD
-mrn
-xHc
-xHc
 xHc
 xHc
 xHc
 nAe
 upD
 upD
-upD
-upD
-upD
+qTU
+cVD
+cVD
+cVD
+cVD
+xvr
+xHc
+xHc
+nAe
 upD
 upD
 upD
@@ -168396,26 +168634,26 @@ upD
 upD
 upD
 tCD
+gAc
+vhC
+pYd
 tZI
-tZI
-tZI
-tZI
-tZI
+rFL
+rUn
+rUn
+dmg
 jFK
 upD
 upD
+daq
+wGo
+wGo
+wGo
+wGo
 tCD
-tZI
-tZI
-tZI
-tZI
-tZI
+xxh
+pYd
 jFK
-upD
-upD
-upD
-upD
-upD
 upD
 upD
 upD
@@ -168554,22 +168792,22 @@ tZI
 tZI
 tZI
 tZI
-tZI
+rFL
+rUn
+rUn
+fsy
 jFK
 upD
 upD
+daq
+wGo
+wGo
+wGo
+wGo
 tCD
-tZI
-tZI
-tZI
-tZI
-tZI
+sgk
+pYd
 jFK
-upD
-upD
-upD
-upD
-upD
 upD
 upD
 upD
@@ -168705,25 +168943,25 @@ upD
 upD
 tCD
 tZI
+dFQ
 tZI
 tZI
-tZI
-tZI
+rFL
+rUn
+rUn
+dmg
 jFK
 upD
 upD
+daq
+wGo
+wGo
+wGo
+wGo
 tCD
-tZI
-tZI
-tZI
-tZI
-tZI
+fzU
+pYd
 jFK
-upD
-upD
-upD
-upD
-upD
 upD
 upD
 upD
@@ -168858,15 +169096,9 @@ upD
 upD
 upD
 tCD
+tSx
+tSx
 tZI
-tZI
-tZI
-tZI
-tZI
-jFK
-upD
-upD
-tCD
 tZI
 tZI
 tZI
@@ -168875,9 +169107,15 @@ tZI
 jFK
 upD
 upD
-upD
-upD
-upD
+yfl
+ahc
+xHc
+xHc
+xHc
+vDH
+fzU
+pYd
+jFK
 upD
 upD
 upD
@@ -169012,26 +169250,26 @@ upD
 upD
 upD
 tCD
+tSx
 tZI
 tZI
 tZI
 tZI
 tZI
+tZI
+lcO
 jFK
 upD
 upD
 tCD
-tZI
-tZI
-tZI
-tZI
-tZI
+tSx
+tSx
+tSx
+tSx
+tSx
+txZ
+pYd
 jFK
-upD
-upD
-upD
-upD
-upD
 upD
 upD
 upD
@@ -169166,26 +169404,26 @@ upD
 upD
 upD
 tCD
+hTy
+tZI
+art
 tZI
 tZI
 tZI
 tZI
-tZI
+lcO
 jFK
 upD
 upD
 tCD
 tZI
 tZI
+art
 tZI
 tZI
-tZI
+kbX
+pYd
 jFK
-upD
-upD
-upD
-upD
-upD
 upD
 upD
 upD
@@ -169325,6 +169563,9 @@ vQs
 vQs
 vQs
 vQs
+vQs
+vQs
+vQs
 klD
 upD
 upD
@@ -169334,12 +169575,9 @@ vQs
 vQs
 vQs
 vQs
+vQs
+vQs
 klD
-upD
-upD
-upD
-upD
-upD
 upD
 upD
 upD
@@ -176087,7 +176325,7 @@ nwC
 nwC
 nwC
 nwC
-bYC
+nkM
 hkE
 tLr
 tLr
@@ -176395,7 +176633,7 @@ xjL
 gws
 sNZ
 gws
-lTe
+gws
 tLr
 tLr
 tLr
