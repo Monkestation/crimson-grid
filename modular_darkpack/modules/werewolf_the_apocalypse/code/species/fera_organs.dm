@@ -102,3 +102,9 @@
 // Garou tongues can speak all default + garou tongue
 /obj/item/organ/tongue/fera/get_possible_languages()
 	return ..() + list(/datum/language/garou_tongue, /datum/language/primal_tongue)
+
+// Stop Lupus and Hispo speaking human languages
+/obj/item/organ/tongue/fera/beast
+
+/obj/item/organ/tongue/fera/beast/get_possible_languages()
+	return list(/datum/language/garou_tongue, /datum/language/primal_tongue)

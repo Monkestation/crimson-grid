@@ -320,7 +320,7 @@
 
 	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	mutantbrain = /obj/item/organ/brain/fera
-	mutanttongue = /obj/item/organ/tongue/fera
+	mutanttongue = /obj/item/organ/tongue/fera/beast // Beast cannot speak human languages
 	species_language_holder = /datum/language_holder/primal
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera/aggravated,
@@ -360,7 +360,7 @@
 
 	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	mutantbrain = /obj/item/organ/brain/fera
-	mutanttongue = /obj/item/organ/tongue/fera
+	mutanttongue = /obj/item/organ/tongue/fera/beast // Beast cannot speak human languages
 	species_language_holder = /datum/language_holder/primal
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera,
