@@ -117,6 +117,14 @@
 		return
 	ready = PLAYER_READY_TO_PLAY
 	update_ready_report()
+	// CRIMSON EDIT ADDITION START - Ready message
+	if(client?.prefs)
+		var/highest_job = client.prefs.GetHighestJobPreference()
+		var/ready_message = "Readying up as '[client.prefs.read_preference(/datum/preference/name/real_name)]'"
+		if(length(highest_job))
+			ready_message += ", Highest occupation setting: [highest_job]"
+		to_chat(src, span_notice(ready_message))
+	// CRIMSON EDIT ADDITION END - Ready message
 
 /// Unreadies for the round
 /mob/dead/new_player/proc/unready()
