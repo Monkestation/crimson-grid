@@ -210,6 +210,8 @@
 	var/current_score = get_score()
 	if(current_score >= 3)
 		ADD_TRAIT(our_mob, TRAIT_SELF_AWARE, QUIRK_TRAIT)
+	else
+		return
 
 /datum/st_stat/ability/occult
 	subcategory = "Knowledges"
