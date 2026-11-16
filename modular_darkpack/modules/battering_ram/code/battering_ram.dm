@@ -14,7 +14,7 @@
 
 /obj/item/battering_ram/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded = 5, force_wielded = 20, require_twohands = TRUE, icon_wielded = "battering_ram")
+	AddComponent(/datum/component/two_handed, force_unwielded = 5, force_wielded = 20, require_twohands = TRUE, update_icon_state = FALSE)
 
 /obj/item/battering_ram/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
