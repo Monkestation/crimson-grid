@@ -357,7 +357,7 @@
 		TRAIT_FERAL_BITER,
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
-		TRAIT_HARDENED_SOLES,
+		TRAIT_HARDENED_SOLES,//CRIMSON GRID ADDITION 
 	)
 
 	skinned_type = /obj/item/stack/sheet/animalhide/generic
