@@ -160,9 +160,6 @@
 	set_parent(parent)
 	set_real_location(parent)
 
-	set_parent(parent)
-	set_real_location(parent)
-
 	if(grid && !grid_box_size)
 		grid_box_size = get_grid_box_size()
 
@@ -474,7 +471,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return FALSE
 
 	// this is valid if the container our location is being held in is a storage item
-	var/datum/storage/bigger_fish = parent.loc.atom_storage
+	var/datum/storage/bigger_fish = parent?.loc?.atom_storage
 	if(bigger_fish && bigger_fish.max_specific_storage < max_specific_storage)
 		if(messages && user)
 			user.balloon_alert(user, "[LOWER_TEXT(parent.loc.name)] is in the way!")
