@@ -118,9 +118,9 @@
 
 	if(!(flags & CALTROP_NOSTUN)) // Won't set off the paralysis.
 		if(!HAS_TRAIT(digitigrade_fan, TRAIT_LIGHT_STEP))
-			digitigrade_fan.Paralyze(paralyze_duration)
+			//digitigrade_fan.Paralyze(paralyze_duration)
 		else
-			digitigrade_fan.Knockdown(paralyze_duration)
+			//digitigrade_fan.Knockdown(paralyze_duration)
 	if(!soundfile)
 		return
 	playsound(digitigrade_fan, soundfile, 15, TRUE, -3)
