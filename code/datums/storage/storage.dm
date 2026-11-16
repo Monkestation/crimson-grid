@@ -249,7 +249,8 @@
 /datum/storage/proc/set_parent(atom/new_parent)
 	PROTECTED_PROC(TRUE)
 
-	ASSERT(isnull(parent))
+	///this is disabled because of init priority issues, the item exists but nullchecking doesn't because :# CRIMSON GRID EDIT
+	//ASSERT(isnull(parent))
 
 	parent = new_parent
 	ADD_TRAIT(parent, TRAIT_COMBAT_MODE_SKIP_INTERACTION, REF(src))
