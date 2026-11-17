@@ -15,3 +15,5 @@
 	attack_verb_continuous = list("shoves", "bashes")
 	attack_verb_simple = list("shove", "bash")
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 10)
+	grid_width = 7 GRID_BOXES
+	grid_height = 9 GRID_BOXES

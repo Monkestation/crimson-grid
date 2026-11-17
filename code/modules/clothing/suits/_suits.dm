@@ -15,6 +15,8 @@
 	drop_sound = 'sound/items/handling/cloth/cloth_drop1.ogg'
 	pickup_sound = 'sound/items/handling/cloth/cloth_pickup1.ogg'
 	slot_flags = ITEM_SLOT_OCLOTHING
+	grid_width = 2 GRID_BOXES
+	grid_height = 3 GRID_BOXES
 	var/blood_overlay_type = "suit"
 	limb_integrity = 0 // disabled for most exo-suits
 

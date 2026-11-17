@@ -11,6 +11,8 @@
 	force = 8
 	throwforce = 10
 	throw_range = 3
+	grid_width = 10 GRID_BOXES
+	grid_height = 10 GRID_BOXES
 	var/obj/structure/drill/origin_type = /obj/structure/drill
 
 /obj/item/darkpack/drill/proc/plant(mob/user)

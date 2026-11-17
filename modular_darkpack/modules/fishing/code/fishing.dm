@@ -29,6 +29,8 @@
 	beauty = FISH_BEAUTY_GREAT
 	sprite_width = 5
 	sprite_height = 3
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/fish/darkpack/shark/Initialize(mapload)
 	. = ..()
@@ -54,6 +56,8 @@
 	aquarium_vc_color = "#22244e"
 	sprite_width = 8
 	sprite_height = 6
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/fish/darkpack/tuna/Initialize(mapload)
 	. = ..()
@@ -76,6 +80,8 @@
 	beauty = FISH_BEAUTY_GOOD
 	sprite_width = 4
 	sprite_height = 2
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/fish/darkpack/catfish/Initialize(mapload)
 	. = ..()
@@ -98,6 +104,8 @@
 	dedicated_in_aquarium_icon_state = "crab_small"
 	sprite_height = 4
 	sprite_width = 4
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/fish/darkpack/crab/Initialize(mapload)
 	. = ..()

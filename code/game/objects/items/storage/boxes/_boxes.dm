@@ -12,6 +12,9 @@
 	pickup_sound = 'sound/items/handling/cardboard_box/cardboardbox_pickup.ogg'
 	storage_type = /datum/storage/box
 
+	grid_width = 3 GRID_BOXES
+	grid_height = 3 GRID_BOXES
+
 	/// What material do we get when we fold this box?
 	var/foldable_result = /obj/item/stack/sheet/cardboard
 	/// What drawing will we get on the face of the box?

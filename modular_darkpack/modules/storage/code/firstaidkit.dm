@@ -10,6 +10,9 @@
 	lefthand_file = 'modular_darkpack/modules/storage/icons/firstaidkit_lefthand.dmi'
 	righthand_file = 'modular_darkpack/modules/storage/icons/firstaidkit_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
+	storage_type = /datum/storage/grid/firstaid
 
 /obj/item/storage/medkit/darkpack/standard
 	name = "first-aid kit"
@@ -31,7 +34,7 @@
 	desc = "A handheld medical suite containing basic medical tools and some surgery equipment."
 	icon_state = "firstaid_doctor"
 	inhand_icon_state = "firstaid_doctor"
-	storage_type = /datum/storage/medkit/darkpack/doctor
+	storage_type = /datum/storage/grid/firstaid
 
 /obj/item/storage/medkit/darkpack/doctor/PopulateContents()
 	if(empty)
@@ -140,6 +143,9 @@
 	icon_state = "firstaid_ifak"
 	inhand_icon_state = "firstaid_ifak"
 	custom_price = 20
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
+	storage_type = /datum/storage/grid/firstaid/ifak
 
 /obj/item/storage/medkit/darkpack/ifak/PopulateContents()
 	if(empty)
@@ -156,7 +162,7 @@
 	desc = "A medical suite designed for when you need your strongest potions to take into battle."
 	icon_state = "firstaid_combat"
 	inhand_icon_state = "firstaid_combat"
-	storage_type = /datum/storage/medkit/darkpack/combat
+	storage_type = /datum/storage/grid/firstaid
 
 /obj/item/storage/medkit/darkpack/combat/PopulateContents()
 	if(empty)
@@ -171,11 +177,3 @@
 	)
 	generate_items_inside(items_inside,src)
 
-
-/datum/storage/medkit/darkpack/doctor/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound, list/holdables)
-	holdables = list_of_everything_medkits_can_hold
-	return ..()
-
-/datum/storage/medkit/darkpack/combat/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound, list/holdables)
-	holdables = list_of_everything_medkits_can_hold
-	return ..()

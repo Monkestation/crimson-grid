@@ -7,6 +7,8 @@
 	abstract_type = /obj/item/clothing/head
 	body_parts_covered = HEAD
 	slot_flags = ITEM_SLOT_HEAD
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /// Can we land on people's heads?
 /obj/item/clothing/head/proc/can_throw_equip(atom/hit_atom)

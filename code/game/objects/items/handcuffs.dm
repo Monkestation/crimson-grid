@@ -13,6 +13,8 @@
 	breakouttime = 1 MINUTES
 	dye_color = DYE_PRISONER
 	icon = 'icons/obj/weapons/restraints.dmi'
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/restraints/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!"))

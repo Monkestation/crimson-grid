@@ -3,6 +3,8 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	w_class = WEIGHT_CLASS_NORMAL
 	abstract_type = /obj/item/ammo_box/darkpack
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 // 9x19mm Parabellum
 
@@ -12,6 +14,8 @@
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
 	max_ammo = 100
 	custom_price = 300
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/darkpack/c9mm/plus
 	name = "ammo box (9mm, +P)"
@@ -31,6 +35,8 @@
 	max_ammo = 3
 	w_class = WEIGHT_CLASS_TINY
 	multiple_sprites = AMMO_BOX_PER_BULLET
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 // .45 ACP
 /obj/item/ammo_box/darkpack/c45acp
@@ -116,6 +122,8 @@
 	icon_state = "12box"
 	ammo_type = /obj/item/ammo_casing/vampire/c12g
 	max_ammo = 30
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/darkpack/c12g/silver
 	name = "silver ammo box (12g)"
@@ -155,6 +163,8 @@
 	icon_state = "arrows"
 	ammo_type = /obj/item/ammo_casing/caseless/bolt
 	max_ammo = 30
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 // 7.62x51mm NATO
 /obj/item/ammo_box/darkpack/c762x51mm

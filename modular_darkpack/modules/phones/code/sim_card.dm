@@ -7,6 +7,8 @@
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 	var/published = FALSE
 	var/published_name = "" //the published number listing for this sim
 

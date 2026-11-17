@@ -5,7 +5,7 @@
 	max_total_storage = 50
 	do_rustle = FALSE
 
-/datum/storage/pockets/attempt_insert(obj/item/to_insert, mob/user, override, force, messages)
+/datum/storage/pockets/attempt_insert(obj/item/to_insert, mob/user, override, force, messages, list/modifiers)
 	. = ..()
 	if(!.)
 		return
@@ -68,7 +68,7 @@
 		/obj/item/food/deadmouse
 	))
 
-/datum/storage/pockets/chefhat/can_insert(obj/item/to_insert, mob/user, messages, force)
+/datum/storage/pockets/chefhat/can_insert(obj/item/to_insert, mob/user, messages, force, list/modifiers)
 	. = ..()
 	if(ispickedupmob(to_insert))
 		var/obj/item/mob_holder/mausholder = to_insert

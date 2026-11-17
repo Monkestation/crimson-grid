@@ -11,6 +11,8 @@
 	force = 5
 	armour_penetration = 15
 	demolition_mod = 2
+	grid_width = 8 GRID_BOXES
+	grid_height = 3 GRID_BOXES
 
 /obj/item/battering_ram/Initialize(mapload)
 	. = ..()

@@ -164,6 +164,8 @@
 	icon = 'modular_darkpack/modules/weapons/icons/ammo.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/ammo_onfloor.dmi')
 	harmful = TRUE
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 // 7.62x51mm NATO
 /obj/item/ammo_casing/vampire/c762x51mm // DARKPACK TODO: can you believe these never had a sprite? tfn...

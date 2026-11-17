@@ -21,6 +21,8 @@
 	max_integrity = 200
 	armor_type = /datum/armor/item_katana
 	resistance_flags = FIRE_PROOF
+	grid_width = 5 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 	var/list/alt_continuous = list("stabs", "pierces", "impales")
 	var/list/alt_simple = list("stab", "pierce", "impale")
 
