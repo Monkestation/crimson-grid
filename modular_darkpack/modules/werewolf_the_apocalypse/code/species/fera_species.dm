@@ -250,7 +250,7 @@
 	. = ..()
 	UnregisterSignal(human, COMSIG_ATOM_UPDATE_OVERLAYS)
 	human.update_appearance(UPDATE_OVERLAYS)
-	human.update_transform()
+	human.update_transform(1 / 1.25) // fix Glabro scaling not resetting when shifting out of it
 
 /datum/species/human/shifter/bestial/proc/add_fluff(datum/source, list/overlay_list)
 	SIGNAL_HANDLER
