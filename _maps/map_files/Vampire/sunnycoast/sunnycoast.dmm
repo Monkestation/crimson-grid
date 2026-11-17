@@ -11145,7 +11145,7 @@
 "dpQ" = (
 /obj/machinery/elevator_control_panel/directional/north{
 	linked_elevator_id = "SFPD";
-	preset_destination_names = list("2" = "Basement", "3" = "Ground Level", "4" = "Second Level")
+	preset_destination_names = list("2" = "Basement", "3" = "Ground Floor", "4" = "Second Floor")
 	},
 /obj/effect/abstract/elevator_music_zone{
 	linked_elevator_id = "SFPD"
@@ -22626,7 +22626,7 @@
 	},
 /obj/machinery/elevator_control_panel/directional/north{
 	linked_elevator_id = "MilleniumApts";
-	preset_destination_names = list("2" = "Basement", "3" = "1st Floor", "4" = "2nd Floor", "5" = "3rd Floor", "6" = "Penthouse Floor")
+	preset_destination_names = list("2" = "Basement", "3" = "Ground Floor", "4" = "Second Floor", "5" = "Third Floor", "6" = "Penthouse Floor")
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/apartment)
@@ -39254,7 +39254,7 @@
 /obj/structure/transport/linear/public,
 /obj/machinery/elevator_control_panel/directional/north{
 	linked_elevator_id = "DepotElevator";
-	preset_destination_names = list("2" = "Lower", "3" = "Upper")
+	preset_destination_names = list("3" = "Ground Floor", "4" = "Second Floor")
 	},
 /turf/open/floor/plating/elevatorshaft,
 /area/vtm/interior/supply)
@@ -76436,6 +76436,13 @@
 /obj/structure/railing,
 /turf/open/floor/plating/roofwalk,
 /area/vtm/sunnycoast/heritage/italy)
+"wHW" = (
+/obj/structure/hedge,
+/obj/effect/turf_decal/bordur{
+	dir = 1
+	},
+/turf/open/floor/concrete/slab_1,
+/area/vtm/sunnycoast/interior/metro)
 "wHX" = (
 /obj/effect/landmark/start/darkpack/citizen/citizen,
 /turf/open/floor/eighties,
@@ -86791,7 +86798,7 @@ sMe
 sMe
 sMe
 sMe
-bZo
+sMe
 bZo
 sWo
 whS
@@ -86944,8 +86951,8 @@ xbh
 sMe
 mgf
 tqr
+wHW
 sMe
-bZo
 bZo
 pLJ
 qpS
@@ -87098,8 +87105,8 @@ apJ
 sMe
 uMw
 tqr
+wHW
 sMe
-bZo
 bZo
 sWo
 whS
