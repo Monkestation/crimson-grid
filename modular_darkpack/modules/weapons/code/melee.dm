@@ -388,6 +388,12 @@
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 2)
 	custom_price = 20
+	// CRIMSON EDIT ADD - Buffs Police Baton
+	cooldown = (0.7 SECONDS)
+	stamina_damage = 1.5 LETHAL_TTRPG_DAMAGE
+	knockdown_time = (0.3 SECONDS)
+	stun_armour_penetration = 25
+	// CRIMSON EDIT ADD END - Buffs Police Baton
 
 /obj/item/switchblade/vamp
 	name = "switchblade"
