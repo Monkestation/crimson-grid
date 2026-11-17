@@ -628,7 +628,7 @@
 
 //stuff to do after a text is received
 /obj/item/smartphone/proc/after_text_received(contact_name, message_text)
-	// This should support having your notifiactions set to hidden to not show detials without opening the app.
+	// This should support having your notifications set to hidden to not show details without opening the app.
 	receive_notification("Message+", contact_name, message_text)
 
 /obj/item/smartphone/proc/format_conversation(contact_number)
