@@ -66,7 +66,7 @@
 			([dummy] was located within [dummy.loc], which is a [dummy.loc?.type || "null"]).")
 
 	var/mob/living/shape = dummy.loc
-	if(!(shift in shape.actions))
+	if(!(shift in shape.actions) && shift.owner_has_control)
 		return TEST_FAIL("Shapeshift spell: [shift.name] failed to grant the spell to the dummy's shape.")
 
 	TRIGGER_RESET_COOLDOWN(shift)

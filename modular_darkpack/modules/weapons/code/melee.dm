@@ -252,6 +252,10 @@
 	grid_width = 2 GRID_BOXES
 	grid_height = 1 GRID_BOXES
 
+/obj/item/melee/vamp/tire/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/kneecapping)
+
 /obj/item/knife/vamp
 	name = "knife"
 	desc = "Don't cut yourself accidentally."
@@ -412,6 +416,10 @@
 	grid_width = 1 GRID_BOXES
 	grid_height = 2 GRID_BOXES
 	custom_price = 20
+
+/obj/item/melee/baton/vamp/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/kneecapping)
 
 /obj/item/switchblade/vamp
 	name = "switchblade"
