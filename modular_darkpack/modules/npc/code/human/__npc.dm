@@ -101,6 +101,9 @@
 	if(country_of_origin == "Canada")
 		preference = GLOB.preference_entries[/datum/preference/choiced/province_of_origin]
 		preference.apply_to_human(src, preference.create_informed_default_value())
+	if(country_of_origin == "United Kingdom")
+		preference = GLOB.preference_entries[/datum/preference/choiced/nation_of_origin]
+		preference.apply_to_human(src, preference.create_informed_default_value())
 
 	return INITIALIZE_HINT_LATELOAD
 

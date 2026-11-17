@@ -33,3 +33,7 @@
 /datum/loadout_item/head/baseballcap_green
 	name = "Green Baseball Cap"
 	item_path = /obj/item/clothing/head/baseballcap/vampire/green
+
+/datum/loadout_item/head/voodoo_hat
+	name = "Voodoo Hat"
+	item_path = /obj/item/clothing/head/vampire/voodoohat

@@ -239,6 +239,9 @@
 	health = 300
 	melee_damage_lower = 30
 	melee_damage_upper = 30
+
+	var/poison_reagent = /datum/reagent/toxin/viperspider
+	var/venom_dose = 5
 //CRIMSON GRID ADDATIONS START - lowers cobra melee swing speed, adds armor penetration,no slow down drag and changes their visual attacks
 	melee_attack_cooldown = 10
 	armour_penetration = 25
@@ -249,11 +252,12 @@
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/items/weapons/slash.ogg'
 	pixel_w = -8
-//CRIMSON GRID ADDTION START - adds swing attacks
+
 /mob/living/basic/cobra/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/swing_attack)
-//CRMISON GRID ADDTION END
+	AddElement(/datum/element/swing_attack) //CRIMSON GRID ADDTION - adds swing attacks
+	AddElement(/datum/element/venomous, poison_reagent, venom_dose)
+
 /mob/living/basic/cobra/typhon
 	name = "Typhonic beast"
 	desc = "A massive supernatural jackal with long, spiked ears, a hard, forked tail and a long snout."
