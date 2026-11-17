@@ -16,13 +16,14 @@
 
 	activate_sound = 'modular_darkpack/modules/powers/sounds/visceratika.ogg'
 
-/datum/discipline/visceratika/post_gain()
+/datum/discipline/visceratika/post_gain(post_gain_applied)
 	. = ..()
 	// it is rumored that, if a non-gargoyle kindred were to learn Visceratika, their skin would turn stony
-	owner.skin_tone = "albino"
-	owner.set_body_sprite("gargoyle")
-	owner.update_body_parts()
-	owner.update_body()
+	if(!post_gain_applied)
+		owner.skin_tone = "albino"
+		owner.set_body_sprite("gargoyle")
+		owner.update_body_parts()
+		owner.update_body()
 
 //SKIN OF THE CHAMELEON
 /datum/discipline_power/visceratika/skin_of_the_chameleon
@@ -243,7 +244,7 @@
 
 	vitae_cost = 0
 
-/datum/discipline_power/visceratika/armor_of_terra/post_gain()
+/datum/discipline_power/visceratika/armor_of_terra/post_gain(post_gain_applied)
 	MODIFY_PHYSIOLOGY(owner, BRUTE, 0.8)
 	MODIFY_PHYSIOLOGY(owner, PHYS_COEFF_HEAT, 0.5)
 	ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, DISCIPLINE_TRAIT(type))
