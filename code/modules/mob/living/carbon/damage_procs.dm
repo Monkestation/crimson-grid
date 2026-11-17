@@ -109,9 +109,7 @@
 
 /mob/living/carbon/on_damage_loss_changed(amount, updating_health, forced, damage_type)
 	. = ..()
-	// CRIMSON GRID ADD: DARK THAUMATURGY 2 - STAMCRIT REINTRODUCTION
-	if(damage_type == STAMINA && amount > 0 && (max_stamina - staminaloss) <= crit_threshold && stat != DEAD)
-	// CRIMSON GRID ADD END: DARK THAUMATURGY 2 - STAMCRIT REINTRODUCTION
+	if(damage_type == STAMINA && amount > 0 && (maxHealth - staminaloss) <= crit_threshold && stat != DEAD)
 		apply_status_effect(/datum/status_effect/incapacitating/stamcrit)
 
 /**

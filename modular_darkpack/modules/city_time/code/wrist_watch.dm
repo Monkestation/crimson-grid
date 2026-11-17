@@ -1,4 +1,4 @@
-/obj/item/clothing/watch
+/obj/item/watch
 	name = "wrist watch"
 	desc = "A portable device to check time."
 	icon = 'modular_darkpack/modules/city_time/icons/clock.dmi'
@@ -9,15 +9,16 @@
 	armor_type = /datum/armor/card_id
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	slot_flags = ITEM_SLOT_GLOVES
-	clothing_traits = list(TRAIT_TIME_SENSE)
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/deprecated/icons/onfloor.dmi')
 	custom_price = 20 // ECONOMY
 
-/obj/item/clothing/watch/Initialize(mapload)
+/obj/item/watch/examine(mob/user)
 	. = ..()
-	AddComponent(/datum/component/selling, 20, "watch", FALSE) // CRIMSON EDIT ADDITION - Sell Valuables
-	AddElement(/datum/element/readable_time)
+	. += "[src]: <b>[server_timestamp("hh:mm:ss", ic_time = TRUE, twelve_hour_clock = user.client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))], [server_timestamp("MMM DD", ic_time = TRUE)]</b>"
+	. += "That should make it <b>[server_timestamp("Day", ic_time = TRUE)]</b>"
 
-/obj/item/clothing/watch/attack_hand(mob/user, list/modifiers)
+// CRIMSON EDIT ADD START - Sell Valuables
+/obj/item/watch/Initialize(mapload)
 	. = ..()
-	user.examinate(src)
+	AddComponent(/datum/component/selling, 20, "watch", FALSE)
+// CRIMSON EDIT ADD END - Sell Valuables

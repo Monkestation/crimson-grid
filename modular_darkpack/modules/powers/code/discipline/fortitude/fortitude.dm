@@ -43,9 +43,8 @@
 	. = ..()
 	owner.remove_status_effect(/datum/status_effect/fortitude/one)
 
-/datum/discipline_power/fortitude/one/post_gain(post_gain_applied)
-	if(!post_gain_applied)
-		owner.st_add_stat_mod(STAT_STAMINA, 1, "Fortitude")
+/datum/discipline_power/fortitude/one/post_gain()
+	owner.st_add_stat_mod(STAT_STAMINA, 1, "Fortitude")
 
 //FORTITUDE 2
 /datum/discipline_power/fortitude/two
@@ -74,9 +73,8 @@
 	. = ..()
 	owner.remove_status_effect(/datum/status_effect/fortitude/two)
 
-/datum/discipline_power/fortitude/two/post_gain(post_gain_applied)
-	if(!post_gain_applied)
-		owner.st_add_stat_mod(STAT_STAMINA, 2, "Fortitude")
+/datum/discipline_power/fortitude/two/post_gain()
+	owner.st_add_stat_mod(STAT_STAMINA, 2, "Fortitude")
 
 //FORTITUDE 3
 /datum/discipline_power/fortitude/three
@@ -105,9 +103,8 @@
 	. = ..()
 	owner.remove_status_effect(/datum/status_effect/fortitude/three)
 
-/datum/discipline_power/fortitude/three/post_gain(post_gain_applied)
-	if(!post_gain_applied)
-		owner.st_add_stat_mod(STAT_STAMINA, 3, "Fortitude")
+/datum/discipline_power/fortitude/three/post_gain()
+	owner.st_add_stat_mod(STAT_STAMINA, 3, "Fortitude")
 
 //FORTITUDE 4
 /datum/discipline_power/fortitude/four
@@ -136,9 +133,8 @@
 	. = ..()
 	owner.remove_status_effect(/datum/status_effect/fortitude/four)
 
-/datum/discipline_power/fortitude/four/post_gain(post_gain_applied)
-	if(!post_gain_applied)
-		owner.st_add_stat_mod(STAT_STAMINA, 4, "Fortitude")
+/datum/discipline_power/fortitude/four/post_gain()
+	owner.st_add_stat_mod(STAT_STAMINA, 4, "Fortitude")
 
 //FORTITUDE 5
 /datum/discipline_power/fortitude/five
@@ -167,6 +163,5 @@
 	. = ..()
 	owner.remove_status_effect(/datum/status_effect/fortitude/five)
 
-/datum/discipline_power/fortitude/five/post_gain(post_gain_applied)
-	if(!post_gain_applied)
-		owner.st_add_stat_mod(STAT_STAMINA, 5, "Fortitude")
+/datum/discipline_power/fortitude/five/post_gain()
+	owner.st_add_stat_mod(STAT_STAMINA, 5, "Fortitude")

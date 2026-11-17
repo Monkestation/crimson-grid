@@ -184,8 +184,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 // DARKPACK EDIT ADD START
 /datum/preferences/proc/update_preferences_darkpack(current_version, datum/json_savefile/S)
-	if(load_and_save && current_version < 3)
-		write_preference(GLOB.preference_entries[/datum/preference/toggle/enable_legacy_driving_controls], TRUE)
 
 /datum/preferences/proc/update_character_darkpack(current_version, list/save_data)
 	if (current_version < 2)
@@ -296,12 +294,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if (fexists(bacpath))
 			fdel(bacpath) //only keep 1 version of backup
 		fcopy(savefile.path, bacpath) //byond helpfully lets you use a savefile for the first arg.
-		// DARKPACK EDIT CHANGE START
-		if(SHOULD_UPDATE_DATA(data_validity_integer))
-			update_preferences(data_validity_integer, savefile)
-		if(SHOULD_UPDATE_DATA_DARKPACK(data_validity_integer_darkpack))
-			update_preferences_darkpack(data_validity_integer_darkpack, savefile)
-		// DARKPACK EDIT CHANGE END
+		update_preferences(data_validity_integer, savefile)
+		update_preferences_darkpack(data_validity_integer_darkpack, savefile) // DARKPACK EDIT ADD
 
 	check_keybindings() // this apparently fails every time and overwrites any unloaded prefs with the default values, so don't load anything after this line or it won't actually save
 

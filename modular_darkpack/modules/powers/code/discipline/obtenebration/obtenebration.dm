@@ -11,12 +11,11 @@
 	power_type = /datum/discipline_power/obtenebration
 	signature_clan = VAMPIRE_CLAN_LASOMBRA
 
-/datum/discipline/obtenebration/post_gain(post_gain_applied)
+/datum/discipline/obtenebration/post_gain()
 	. = ..()
-	if(!post_gain_applied)
-		var/datum/action/ritual_drawing/mysticism/mystic = new()
-		mystic.Grant(owner)
-		mystic.level = level
+	var/datum/action/ritual_drawing/mysticism/mystic = new()
+	mystic.Grant(owner)
+	mystic.level = level
 
 /datum/discipline/obtenebration/post_loss()
 	. = ..()
@@ -209,7 +208,7 @@
 	switch(roll)
 		if(ROLL_SUCCESS)
 			successful = TRUE
-			owner.damage_resistance += 25 // CRIMSON EDIT ADD - Makes Obtenebration not as strong as some other stuff
+			owner.damage_resistance += 40 // CRIMSON EDIT ADD - Makes Obtenebration not as strong as some other stuff
 			animate(owner, color = "#000000", time = 1 SECONDS, loop = 1)
 			to_chat(owner, span_green("You successfully fuse with the shadows!"))
 		if(ROLL_FAILURE)
@@ -226,7 +225,7 @@
 		return
 	to_chat(owner, span_notice("The shadows fall away from your body."))
 	playsound(owner.loc, 'sound/effects/magic/voidblink.ogg', 50, FALSE)
-	owner.damage_resistance -= 25 // CRIMSON EDIT - Reduces Strength of Obetenebration 4
+	owner.damage_resistance -= 40 // CRIMSON EDIT - Reduces Strength of Obetenebration 4
 	animate(owner, color = initial(owner.color), time = 1 SECONDS, loop = 1)
 
 /datum/discipline_power/obtenebration/tenebrous_form

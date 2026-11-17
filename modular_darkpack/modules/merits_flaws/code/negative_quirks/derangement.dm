@@ -122,7 +122,7 @@ GLOBAL_LIST_INIT(derangement_phrases,list(
 		'modular_darkpack/modules/powers/sounds/dementation/child_cry.ogg',
 		'modular_darkpack/modules/powers/sounds/dementation/man_moan.ogg', // zombie like moaning sounds
 		'modular_darkpack/modules/powers/sounds/dementation/woman_moan.ogg',
-		'modular_darkpack/modules/powers/sounds/dementation/evillaugh.ogg',
+		'modular_darkpack/modules/powers/sounds/dementation/evillaugh.ogg'
 	)
 	hallucinator.playsound_local(hallucinator, pick(ambient_sounds), vol = 20, vary = FALSE)
 
@@ -193,11 +193,11 @@ GLOBAL_LIST_INIT(derangement_phrases,list(
 			pick_list_replacements(malk_file, "be_upset"),
 			pick_list_replacements(malk_file, "get_reprimanded_old"),
 		)
-	var/delay = 2 SECONDS
+	var/delay = 4 SECONDS
 	for(var/line in scold_lines)
 		addtimer(CALLBACK(src, PROC_REF(talk), line), delay)
-		delay += 2 SECONDS
-	addtimer(CALLBACK(src, PROC_REF(exit)), delay + 4 SECONDS)
+		delay += 5 SECONDS
+	addtimer(CALLBACK(src, PROC_REF(exit)), delay + 10 SECONDS)
 	return TRUE
 
 
@@ -210,15 +210,10 @@ GLOBAL_LIST_INIT(derangement_phrases,list(
 
 // the random hallucination type will store overrides and extensions of basegame hallucinations, as well as untouched basegame hallucinations like eyes_in_the_dark
 /datum/hallucination/malk/random
-	var/list/hallucinations = list(
-		/datum/hallucination/eyes_in_dark = 4,
-		/datum/hallucination/blood_flow/malk = 3,
-		/datum/hallucination/your_mother/malk = 2,
-		/datum/hallucination/delusion/preset/zombie = 1,
-	)
+	var/list/hallucinations = list(/datum/hallucination/eyes_in_dark, /datum/hallucination/your_mother/malk, /datum/hallucination/blood_flow/malk)
 
 /datum/hallucination/malk/random/start()
-	hallucinator.cause_hallucination(pick_weight(hallucinations), "malkavian derangement")
+	hallucinator.cause_hallucination(pick(hallucinations), "malkavian derangement")
 	return TRUE
 
 // 'Blood Flow'

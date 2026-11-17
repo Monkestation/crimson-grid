@@ -54,15 +54,16 @@
 		return human_user.get_discipline(/datum/discipline/daimonion)
 
 /obj/structure/retail/occult/baali/proc/calculate_favor(mob/living/carbon/human/sacrificed)
-	var/favor = 50
-	var/splat = sacrificed.client.prefs.read_preference(/datum/preference/choiced/splats)
-	if(ispath(splat, /datum/splat/vampire/kindred))
+	var/favor = 25
+	if(get_kindred_splat(sacrificed))
 		favor = ((GHOUL_GENERATION - clamp(sacrificed.get_generation(), 1, 17)) * 8 + 78) //the '8+78' creates a linear scale based on generation with 8 being 150 favor, 13th being 100 favor, and 16th being 78 favor.
-	if(ispath(splat, /datum/splat/werewolf/shifter))
+	if(get_garou_splat(sacrificed) || get_corax_splat(sacrificed))
 		favor = 100
+	if(get_ghoul_splat(sacrificed))
+		favor = 50
 	return favor * FAVOR_MULTIPLIER
 
-/obj/structure/retail/occult/baali/attack_hand(mob/living/user, list/modifiers)
+/obj/structure/retail/occult/baali/attackby(obj/item/I, mob/user, params)
 	. = ..()
 	if(can_shop(user))
 		var/sacrifice = FALSE
@@ -70,7 +71,7 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/human_user = user
 			for(var/mob/living/carbon/human/sacrificed_human in get_turf(src))
-				if(sacrificed_human.stat != SOFT_CRIT && sacrificed_human.stat != HARD_CRIT)
+				if(sacrificed_human.stat < HARD_CRIT)
 					continue
 				if(!sacrificed_human.mind)
 					upset = TRUE
@@ -83,14 +84,10 @@
 					if(HAS_TRAIT_FROM(sacrificed_human, TRAIT_AURA_OF_INFERNO, DAIMONION_TRAIT))
 						to_chat(sacrificed_human, span_userdanger("YOUR SOUL IS DRAGGED INTO THE INFERNAL PLANE!"))
 						sacrificed_human.dust(drop_items = TRUE)
-						var/mob/dead/new_player/player = new()
-						player.ckey = sacrificed_human.ckey
-						qdel(sacrificed_human)
 						continue
 					to_chat(sacrificed_human, span_userdanger("SOMETHING TEARS AT YOUR SOUL! THE PAIN!"))
 					sacrificed_human.forceMove(spawn_point)
 					ADD_TRAIT(sacrificed_human, TRAIT_AURA_OF_INFERNO, DAIMONION_TRAIT)
-					ADD_TRAIT(sacrificed_human, TRAIT_BEACON_OF_THE_UNHOLY, DAIMONION_TRAIT)
 					SEND_SIGNAL(sacrificed_human, COMSIG_MOB_UPDATE_AURA)
 					sacrificed_human.AdjustSleeping(5 SECONDS)
 					addtimer(CALLBACK(src, PROC_REF(on_wake_up), sacrificed_human), 5 SECONDS)
@@ -98,9 +95,6 @@
 					log_admin("[key_name(sacrificed_human)] has been sacrificed the first time on baali rune by [key_name(user)].")
 				else
 					sacrificed_human.dust(drop_items = TRUE)
-					var/mob/dead/new_player/player = new()
-					player.ckey = sacrificed_human.ckey
-					qdel(sacrificed_human)
 				sacrifice = TRUE
 			if(upset)
 				to_chat(human_user, span_warning("THE INFERNAL DESIRE ONLY MINDFUL BEINGS!"))

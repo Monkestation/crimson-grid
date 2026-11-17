@@ -44,12 +44,8 @@
 	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 0
 
-/datum/discipline_power/temporis/hourglass_of_the_mind/post_gain(post_gain_applied)
+/datum/discipline_power/temporis/hourglass_of_the_mind/post_gain()
 	ADD_TRAIT(owner, TRAIT_TIME_SENSE, DISCIPLINE_TRAIT(type))
-
-/datum/discipline_power/temporis/hourglass_of_the_mind/post_loss()
-	REMOVE_TRAIT(owner, TRAIT_TIME_SENSE, DISCIPLINE_TRAIT(type))
-	return ..()
 
 /datum/discipline_power/temporis/hourglass_of_the_mind/activate()
 	. = ..()
