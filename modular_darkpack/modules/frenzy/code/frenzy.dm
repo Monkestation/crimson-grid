@@ -84,6 +84,10 @@
 		return
 	if(!get_kindred_splat(src))
 		return
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	if(HAS_TRAIT(src, ROTSCHRECK_IMMUNITY))
+		return
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 
 	var/datum/storyteller_roll/frenzy/rotschreck/frenzy_roll = new()
 	frenzy_roll.difficulty = difficulty
