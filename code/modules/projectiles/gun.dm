@@ -284,7 +284,7 @@
 		if(pb_knockback > 0 && ismob(pbtarget))
 			var/mob/PBT = pbtarget
 			var/atom/throw_target = get_edge_target_turf(PBT, user.dir)
-			PBT.throw_at(throw_target, pb_knockback, 2)
+			PBT.throw_at(throw_target, pb_knockback, gentle = TRUE) // CRIMSON EDIT CHANGE - Original: PBT.throw_at(throw_target, pb_knockback, 2)
 	else if(!tk_firing(user))
 		user.visible_message(
 			span_danger("[user] fires [src]!"),
