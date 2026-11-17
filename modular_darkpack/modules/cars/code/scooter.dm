@@ -1,7 +1,9 @@
-/datum/storage/car/scooter
+/datum/storage/grid/car/scooter
 	max_slots = 4
 	max_total_storage = 10
 	max_specific_storage = WEIGHT_CLASS_NORMAL
+	screen_max_columns = 4
+	screen_max_rows = 2
 
 /obj/darkpack_car/scooter
 	name = "scooter"
@@ -15,7 +17,7 @@
 
 	max_integrity = 150
 	max_passengers = 0
-	car_storage_type = /datum/storage/car/scooter
+	car_storage_type = /datum/storage/grid/car/scooter
 	lockpick_difficulty = 4
 	throwforce = 40
 
