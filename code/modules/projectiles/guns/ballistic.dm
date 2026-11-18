@@ -647,9 +647,9 @@
 		return
 	if(sawn_off)
 		bonus_spread += SAWN_OFF_ACC_PENALTY
-
+//CRIMSON GRID REMOVAL START - FIXING RECOIL
 	// DARKPACK EDIT ADD START - STORYTELLER_DICE
-	if(!recoil_roll)
+/*	if(!recoil_roll)
 		recoil_roll = new()
 
 	if(COOLDOWN_FINISHED(src, recoil_skill_check))
@@ -665,11 +665,25 @@
 		var/datum/component/automatic_fire/automatic_check = src.GetComponent(/datum/component/automatic_fire)
 		if(automatic_check)
 			recoil_roll.difficulty += 2	//Full-auto gains +2 difficulty
-
-		var/recoil_reduction = recoil_roll.st_roll(user, src, using_item = src)
-		recoil = max(initial(recoil) - recoil_reduction, 0)
-		spread = max(initial(spread) - recoil_reduction, 0)
-		COOLDOWN_START(src, recoil_skill_check, 1 SCENES)
+*/
+//CRIMSON GRID REMOVAL END - FIXING RECOIL
+//CRIMSON GRID EDIT START - FIXING RECOIL
+	var/recoil_reduction = user.st_get_stat(STAT_FIREARMS)
+	recoil = max(initial(recoil) - recoil_reduction, 0)
+	spread = max(initial(spread) - recoil_reduction, 0)
+	for(var/obj/item/gun/gun in user.held_items)
+		if(gun == src || gun.weapon_weight >= WEAPON_MEDIUM)
+			continue
+		else if(can_trigger_gun(user, akimbo_usage = TRUE))
+			if(!HAS_TRAIT(user, TRAIT_AMBIDEXTROUS))
+				recoil += 1
+	var/datum/component/automatic_fire/automatic_check = src.GetComponent(/datum/component/automatic_fire)
+	if(automatic_check)
+		recoil += 1
+	else if(burst_fire_selection == TRUE)
+		recoil += 1
+//CRIMSON GRID EDIT END - FIXING RECOIL
+//		COOLDOWN_START(src, recoil_skill_check, 1 SCENES)
 	// DARKPACK EDIT ADD END
 
 	// DARKPACK EDIT ADD START - FORENSICS
