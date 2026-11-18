@@ -3232,6 +3232,13 @@
 /obj/machinery/sprinkler/area_managed,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
+"aNk" = (
+/obj/structure/table/wood/fancy/red,
+/obj/machinery/light/prince/directional/east,
+/turf/open/floor/carpet/darkpack{
+	color = "#FFD9C0"
+	},
+/area/vtm/interior/laundromat)
 "aNv" = (
 /obj/structure/railing{
 	dir = 4
@@ -5097,6 +5104,10 @@
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
 	pixel_x = 9;
 	pixel_y = 4
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = -4;
+	pixel_y = 7
 	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
@@ -14173,6 +14184,10 @@
 /obj/machinery/shower/directional/east,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior)
+"dng" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood/rough,
+/area/vtm/interior/laundromat)
 "dnj" = (
 /obj/structure/roofstuff,
 /turf/open/floor/plating/roofwalk,
@@ -16475,6 +16490,10 @@
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
 	pixel_x = -6;
 	pixel_y = 0
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = 1;
+	pixel_y = 3
 	},
 /turf/open/floor/plating/granite{
 	color = "#B8FFE7"
@@ -19699,6 +19718,10 @@
 /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass{
 	pixel_x = 5;
 	pixel_y = 13
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = -7;
+	pixel_y = 9
 	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
@@ -34469,6 +34492,11 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/industrial)
+"hWr" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior)
 "hWz" = (
 /obj/item/vampirebook/noddist,
 /obj/machinery/light/dim/directional/south,
@@ -39174,6 +39202,10 @@
 	pixel_x = -9;
 	pixel_y = 12
 	},
+/obj/item/storage/fancy/cigarettes/cigpack_robust{
+	pixel_x = 1;
+	pixel_y = 3
+	},
 /turf/open/floor/plating/granite{
 	color = "#B8FFE7"
 	},
@@ -41573,7 +41605,6 @@
 /obj/effect/decal/graffiti{
 	icon_state = "graffiti9"
 	},
-/obj/machinery/light/dim/directional/north,
 /turf/open/floor/wood/rough,
 /area/vtm/interior/laundromat)
 "jwA" = (
@@ -49937,6 +49968,7 @@
 /obj/effect/turf_decal/siding/dark_brown{
 	dir = 1
 	},
+/obj/machinery/light/prince/directional/south,
 /turf/open/floor/plating/granite{
 	color = "#B8FFE7"
 	},
@@ -60651,6 +60683,10 @@
 	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/jazzclub)
+"nSF" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior)
 "nSH" = (
 /obj/item/kirbyplants/darkpack/random,
 /obj/effect/turf_decal/siding/wood/dark/corner,
@@ -78958,6 +78994,7 @@
 /obj/structure/vampipe{
 	icon_state = "piping43"
 	},
+/obj/structure/table/wood,
 /turf/open/floor/wood/rough,
 /area/vtm/interior/laundromat)
 "sbT" = (
@@ -96542,6 +96579,12 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/outside/pacificheights/community)
+"wdF" = (
+/obj/structure/table/wood,
+/obj/item/gun/ballistic/shotgun/vampire,
+/obj/item/ammo_box/darkpack/c12g,
+/turf/open/floor/wood/rough,
+/area/vtm/interior/laundromat)
 "wdH" = (
 /obj/structure/kitchenspike,
 /turf/open/misc/dirt,
@@ -133730,7 +133773,7 @@ vJZ
 eth
 gIJ
 gIJ
-wmJ
+hWr
 ajj
 uvs
 uvs
@@ -134318,7 +134361,7 @@ uvs
 uvs
 pFV
 uSF
-gIJ
+akx
 gIJ
 mVa
 hXG
@@ -134726,7 +134769,7 @@ uvs
 uvs
 pFV
 uSF
-gIJ
+nSF
 gIJ
 mVa
 kig
@@ -172267,9 +172310,9 @@ kgF
 rwH
 szp
 jwz
-fmH
-fmH
-fmH
+dng
+wdF
+dng
 szp
 nXT
 cPE
@@ -214076,13 +214119,13 @@ wMW
 hfg
 vwH
 sUc
-tIn
+aNk
 iiC
 sUc
 tIn
 iiC
 sUc
-tIn
+aNk
 iiC
 kgF
 mjT
