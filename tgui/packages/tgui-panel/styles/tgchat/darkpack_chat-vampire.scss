@@ -1,0 +1,1470 @@
+// THIS IS A DARKPACK UI FILE
+/**
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
+ */
+
+@use 'sass:map';
+@use 'sass:color';
+
+em {
+  font-style: normal;
+  font-weight: bold;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: pixelated;
+}
+
+img.icon {
+  height: 1em;
+  min-height: 16px;
+  min-width: 16px;
+  width: auto;
+  vertical-align: bottom;
+}
+
+a {
+  cursor: var(--cursor-pointer);
+  color: var(--color-hyperlink);
+  transition: color var(--transition-time-medium);
+
+  &:hover {
+    color: hsl(from var(--color-hyperlink) h s calc(l + var(--adjust-hover)));
+  }
+}
+
+a.visited,
+a:visited {
+  color: var(--color-hyperlink-visited);
+
+  &:hover {
+    color: hsl(
+      from var(--color-hyperlink-visited) h s calc(l + var(--adjust-hover))
+    );
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+/* POPUPS */
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background: hsl(0, 15%, 15%);
+}
+
+.popup .close {
+  position: absolute;
+  background: hsl(0, 35%, 25%);
+  top: 0;
+  right: 0;
+  color: hsl(45, 70%, 75%);
+  text-decoration: none;
+  z-index: 2;
+  padding: 0 10px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.popup .close:hover {
+  background: hsl(0, 45%, 35%);
+}
+
+.popup .head {
+  background: hsl(0, 45%, 20%);
+  color: hsl(45, 80%, 80%);
+  padding: 0 10px;
+  height: 30px;
+  line-height: 30px;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: bold;
+  border-bottom: 2px solid hsl(0, 65%, 35%);
+}
+
+.popup input {
+  border: 1px solid hsl(0, 35%, 25%);
+  background: hsl(0, 10%, 10%);
+  margin: 0;
+  padding: 5px;
+  outline: none;
+  color: hsl(0, 15%, 85%);
+}
+
+.popup input[type='text']:hover,
+.popup input[type='text']:active,
+.popup input[type='text']:focus {
+  border-color: hsl(0, 55%, 40%);
+}
+
+.popup input[type='submit'] {
+  padding: 5px 10px;
+  background: hsl(0, 45%, 25%);
+  color: hsl(45, 70%, 75%);
+  text-transform: uppercase;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.popup input[type='submit']:hover,
+.popup input[type='submit']:focus,
+.popup input[type='submit']:active {
+  background: hsl(0, 55%, 35%);
+  cursor: pointer;
+}
+
+.changeFont {
+  padding: 10px;
+}
+
+.changeFont a {
+  display: block;
+  text-decoration: none;
+  padding: 3px;
+  color: hsl(0, 15%, 85%);
+}
+
+.changeFont a:hover {
+  background: hsl(0, 25%, 20%);
+}
+
+.highlightPopup {
+  padding: 10px;
+  text-align: center;
+}
+
+.highlightPopup input[type='text'] {
+  display: block;
+  width: 215px;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.highlightPopup input.highlightColor {
+  background-color: hsl(45, 100%, 50%);
+}
+
+.highlightPopup input.highlightTermSubmit {
+  margin-top: 5px;
+}
+
+/* ADMIN CONTEXT MENU */
+
+.contextMenu {
+  background-color: hsl(0, 15%, 15%);
+  position: fixed;
+  margin: 2px;
+  width: 150px;
+}
+
+.contextMenu a {
+  display: block;
+  padding: 2px 5px;
+  text-decoration: none;
+  color: hsl(0, 15%, 85%);
+}
+
+.contextMenu a:hover {
+  background-color: hsl(0, 25%, 20%);
+}
+
+/* ADMIN FILTER MESSAGES MENU */
+
+.filterMessages {
+  padding: 5px;
+}
+
+.filterMessages div {
+  padding: 2px 0;
+}
+
+.filterMessages input {
+}
+
+.filterMessages label {
+}
+
+.icon-stack {
+  height: 1em;
+  line-height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  margin-top: -2px;
+}
+
+/*****************************************
+*
+* OUTPUT ACTUALLY RELATED TO MESSAGES
+*
+******************************************/
+
+/* MOTD */
+
+.motd {
+  color: hsl(45, 60%, 75%);
+  font-family: Verdana, sans-serif;
+  white-space: normal;
+}
+
+.motd h1,
+.motd h2,
+.motd h3,
+.motd h4,
+.motd h5,
+.motd h6 {
+  color: hsl(45, 70%, 80%);
+  text-decoration: underline;
+}
+
+.motd a,
+.motd a:link,
+.motd a:visited,
+.motd a:active,
+.motd a:hover {
+  color: hsl(0, 75%, 60%);
+}
+
+/* ADD HERE FOR BOLD */
+
+.bold,
+.name,
+.prefix,
+.ooc,
+.looc,
+.do,
+.adminooc,
+.admin,
+.medal,
+.yell {
+  font-weight: bold;
+}
+
+/* ADD HERE FOR ITALIC */
+
+.italic,
+.italics {
+  font-style: italic;
+}
+
+/* OUTPUT COLORS */
+
+.highlight {
+  background: hsl(45, 100%, 35%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: hsl(45, 60%, 75%);
+  font-family: Georgia, Verdana, sans-serif;
+}
+
+h1.alert,
+h2.alert {
+  color: hsl(0, 75%, 60%);
+}
+
+em {
+  font-style: normal;
+  font-weight: bold;
+}
+
+.ooc {
+  color: hsl(47.9, 100%, 40%);
+  font-weight: bold;
+}
+
+.adminobserverooc {
+  color: hsl(195, 100%, 40%);
+  font-weight: bold;
+}
+
+.adminooc {
+  color: hsl(226.6, 52.8%, 50.2%);
+  font-weight: bold;
+}
+
+.adminsay {
+  color: hsl(16.2, 100%, 50%);
+  font-weight: bold;
+}
+
+.admin {
+  color: hsl(227, 63.5%, 60.2%);
+  font-weight: bold;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.say,
+.emote,
+.infoplain,
+.oocplain,
+.tooltip_subtle,
+.warningplain {
+}
+
+.deadsay {
+  color: hsl(271.9, 100%, 87.8%);
+}
+
+.binarysay {
+  color: hsl(209.6, 100%, 55.9%);
+}
+
+.binarysay a {
+  color: hsl(120, 100%, 50%);
+}
+
+.binarysay a:active,
+.binarysay a:visited {
+  color: hsl(120, 100%, 76.7%);
+}
+
+/* RADIO COLORS */
+/* IF YOU CHANGE THIS KEEP IT IN SYNC WITH TGUI CONSTANTS */
+
+.radio {
+  color: hsl(132.8, 74.4%, 45.9%);
+}
+
+.sciradio {
+  color: hsl(271.6, 91.7%, 76.5%);
+}
+
+.comradio {
+  color: hsl(53, 97.6%, 50%);
+}
+
+.secradio {
+  color: hsl(0, 80%, 60%);
+}
+
+.medradio {
+  color: hsl(202, 83.6%, 64.1%);
+}
+
+.engradio {
+  color: hsl(17, 87.8%, 61.4%);
+}
+
+.suppradio {
+  color: hsl(33.7, 44.9%, 49.8%);
+}
+
+.servradio {
+  color: hsl(88.1, 60.6%, 40.8%);
+}
+
+.enteradio {
+  color: hsl(157.1, 39.6%, 62.4%);
+}
+
+.syndradio {
+  color: hsl(0, 45%, 50%);
+}
+
+.gangradio {
+  color: hsl(305.2, 57.8%, 42.7%);
+}
+
+.centcomradio {
+  color: hsl(197, 62.6%, 39.8%);
+}
+
+.aiprivradio {
+  color: hsl(332.2, 59.6%, 60.2%);
+}
+
+.redteamradio {
+  color: hsl(0, 100%, 63.3%) !important;
+}
+
+.blueteamradio {
+  color: hsl(240, 98%, 59.8%) !important;
+}
+
+.greenteamradio {
+  color: hsl(120, 98%, 59.8%) !important;
+}
+
+.yellowteamradio {
+  color: hsl(60, 98%, 59.8%) !important;
+}
+
+.captaincast {
+  color: hsl(157.1, 39.6%, 62.4%);
+}
+
+// DARKPACK EDIT START
+.policeradio {
+  color: hsl(210, 100%, 62%);
+}
+.clinicradio {
+  color: hsl(239, 100%, 73%);
+}
+.militaryradio {
+  color: hsl(93, 100%, 41%);
+}
+.camarillaradio {
+  color: hsl(300, 81%, 34%);
+}
+.anarchradio {
+  color: hsl(0, 57%, 46%);
+}
+.endronradio {
+  color: hsl(22, 100%, 50%);
+}
+// DARKPACK EDIT END
+
+.yell {
+  font-weight: bold;
+}
+
+.alert {
+  color: hsl(0, 85%, 55%);
+}
+
+.userdanger {
+  color: hsl(0, 85%, 50%);
+  font-weight: bold;
+  font-size: 185%;
+}
+
+.bolddanger {
+  color: hsl(0, 85%, 50%);
+  font-weight: bold;
+}
+
+.danger {
+  color: hsl(0, 85%, 50%);
+}
+
+.tinydanger {
+  color: hsl(0, 85%, 50%);
+  font-size: 85%;
+}
+
+.smalldanger {
+  color: hsl(0, 85%, 50%);
+  font-size: 90%;
+}
+.warning {
+  color: hsl(15, 85%, 55%);
+  font-style: italic;
+}
+
+.alertwarning {
+  color: hsl(0, 100%, 60%);
+  font-weight: bold;
+}
+
+.boldwarning {
+  color: hsl(15, 85%, 55%);
+  font-style: italic;
+  font-weight: bold;
+}
+
+.announce {
+  color: hsl(0, 85%, 55%);
+  font-weight: bold;
+}
+
+.boldannounce {
+  color: hsl(0, 85%, 55%);
+  font-weight: bold;
+}
+
+.minorannounce {
+  color: hsl(0, 85%, 55%);
+  font-weight: bold;
+  font-size: 185%;
+}
+
+.minoralert {
+  color: hsl(45, 70%, 75%);
+  font-size: 125%;
+}
+
+.priorityannounce {
+  color: hsl(45, 80%, 80%);
+  font-weight: bold;
+  font-size: 225%;
+}
+
+.prioritytitle {
+  color: hsl(45, 90%, 75%);
+  font-weight: bold;
+  font-size: 185%;
+}
+
+.priorityalert {
+  color: hsl(0, 90%, 60%);
+  font-size: 140%;
+}
+
+.greenannounce {
+  color: hsl(132.8, 93.4%, 35%);
+  font-weight: bold;
+}
+
+.rose {
+  color: hsl(0, 100%, 70%);
+}
+
+.info {
+  color: hsl(30, 40%, 60%);
+}
+
+.notice {
+  color: hsl(45, 80%, 65%);
+}
+
+.tinynotice {
+  color: hsl(45, 80%, 65%);
+  font-size: 85%;
+}
+
+.tinynoticeital {
+  color: hsl(45, 80%, 65%);
+  font-style: italic;
+  font-size: 85%;
+}
+
+.smallnotice {
+  color: hsl(45, 80%, 65%);
+  font-size: 90%;
+}
+
+.smallnoticeital {
+  color: hsl(45, 80%, 65%);
+  font-style: italic;
+  font-size: 90%;
+}
+
+.bolditalic {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.boldnotice {
+  color: hsl(45, 80%, 65%);
+  font-weight: bold;
+}
+
+.hear {
+  color: hsl(45, 80%, 65%);
+  font-style: italic;
+}
+
+.adminnotice {
+  color: hsl(45, 80%, 65%);
+}
+
+.adminhelp {
+  color: hsl(0, 100%, 60%);
+  font-weight: bold;
+}
+
+.unconscious {
+  color: hsl(45, 80%, 65%);
+  font-weight: bold;
+}
+
+.suicide {
+  color: hsl(0, 100%, 70%);
+  font-style: italic;
+}
+
+.green {
+  color: hsl(132.8, 93.4%, 35%);
+}
+
+.grey {
+  color: hsl(0, 5%, 60%);
+}
+
+.red {
+  color: hsl(0, 100%, 60%);
+}
+
+.blue {
+  color: hsl(224.1, 100%, 56.5%);
+}
+
+.nicegreen {
+  color: hsl(132.8, 93.4%, 35%);
+}
+
+.boldnicegreen {
+  color: hsl(132.8, 93.4%, 35%);
+  font-weight: bold;
+}
+
+.tinynicegreen {
+  color: hsl(132.8, 93.4%, 35%);
+  font-size: 85%;
+}
+
+.blob {
+  color: hsl(16.1, 100%, 46.7%);
+}
+
+.blobannounce {
+  color: hsl(82, 39%, 30.2%);
+  font-weight: bold;
+  font-size: 185%;
+}
+
+.cult {
+  color: hsl(0, 55%, 45%);
+}
+
+.cult_italic {
+  color: hsl(0, 55%, 45%);
+  font-style: italic;
+}
+
+.cult_bold {
+  color: hsl(0, 55%, 45%);
+  font-style: italic;
+  font-weight: bold;
+}
+
+.cult_bold_italic {
+  color: hsl(0, 55%, 45%);
+  font-weight: bold;
+  font-size: 185%;
+}
+
+.cult_large {
+  color: hsl(0, 55%, 45%);
+  font-weight: bold;
+  font-size: 185%;
+}
+
+.narsie {
+  color: hsl(0, 55%, 45%);
+  font-weight: bold;
+  font-size: 925%;
+}
+
+.narsiesmall {
+  color: hsl(0, 55%, 45%);
+  font-weight: bold;
+  font-size: 370%;
+}
+
+.colossus {
+  color: hsl(0, 65%, 40%);
+  font-size: 310%;
+}
+
+.hierophant {
+  color: hsl(279.9, 83.6%, 59.4%);
+  font-weight: bold;
+  font-style: italic;
+}
+
+.hierophant_warning {
+  color: hsl(280.3, 82.7%, 68.2%);
+  font-style: italic;
+}
+
+.purple {
+  color: hsl(272.2, 58.7%, 58.2%);
+}
+
+.holoparasite {
+  color: hsl(257.1, 12.4%, 55.7%);
+}
+
+.revennotice {
+  color: hsl(272.1, 55.7%, 74.3%);
+}
+
+.revenboldnotice {
+  color: hsl(272.1, 55.7%, 74.3%);
+  font-weight: bold;
+}
+
+.revenbignotice {
+  color: hsl(272.1, 55.7%, 74.3%);
+  font-weight: bold;
+  font-size: 185%;
+}
+
+.revenminor {
+  color: hsl(273.5, 52.7%, 48%);
+}
+
+.revenwarning {
+  color: hsl(275.9, 85.1%, 39.6%);
+  font-style: italic;
+}
+
+.revendanger {
+  color: hsl(275.9, 85.1%, 39.6%);
+  font-weight: bold;
+  font-size: 185%;
+}
+
+.deconversion_message {
+  color: hsl(272, 100%, 63.9%);
+  font-size: 185%;
+  font-style: italic;
+}
+
+.ghostalert {
+  color: hsl(264, 100%, 50%);
+  font-style: italic;
+  font-weight: bold;
+}
+
+.alien {
+  color: hsl(300, 17.7%, 44.3%);
+}
+
+.noticealien {
+  color: hsl(132.8, 93.4%, 35%);
+}
+
+.alertalien {
+  color: hsl(132.8, 93.4%, 35%);
+  font-weight: bold;
+}
+
+.changeling {
+  color: hsl(132.8, 93.4%, 35%);
+  font-style: italic;
+}
+
+.alertsyndie {
+  color: hsl(0, 100%, 60%);
+  font-size: 185%;
+  font-weight: bold;
+}
+
+.spiderbroodmother {
+  color: hsl(272, 100%, 50%);
+  font-weight: bold;
+  font-size: 185%;
+}
+
+.spiderbreacher {
+  color: hsl(35, 72.3%, 67.5%);
+  font-weight: bold;
+  font-size: 140%;
+}
+
+.spiderscout {
+  color: hsl(242.9, 68%, 35.5%);
+  font-weight: bold;
+  font-size: 120%;
+}
+
+.interface {
+  color: hsl(300, 78.6%, 25.7%);
+}
+
+.sans {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.papyrus {
+  font-family: 'Papyrus', cursive, sans-serif;
+}
+
+.robot {
+  font-family: 'Courier New', cursive, sans-serif;
+}
+
+.tape_recorder {
+  color: hsl(0, 100%, 60%);
+  font-family: 'Courier New', cursive, sans-serif;
+}
+
+.command_headset {
+  font-weight: bold;
+  font-size: 160%;
+}
+
+.soapbox {
+  font-weight: bold;
+  font-size: 135%;
+}
+
+.small {
+  font-size: 60%;
+}
+
+.smaller {
+  font-size: 90%;
+}
+
+.slightly_larger {
+  font-size: 115%;
+}
+
+.big {
+  font-size: 185%;
+}
+
+.reallybig {
+  font-size: 245%;
+}
+
+.extremelybig {
+  font-size: 310%;
+}
+
+.greentext {
+  color: hsl(132.8, 93.4%, 35%);
+  font-size: 185%;
+}
+
+.redtext {
+  color: hsl(0, 85%, 50%);
+  font-size: 185%;
+}
+
+.clown {
+  color: hsl(326, 100%, 72%);
+  font-size: 160%;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: bold;
+}
+
+.singing {
+  font-family: 'Trebuchet MS', cursive, sans-serif;
+  font-style: italic;
+}
+
+.his_grace {
+  color: hsl(119.1, 84.4%, 45.3%);
+  font-family: 'Courier New', cursive, sans-serif;
+  font-style: italic;
+}
+
+.hypnophrase {
+  color: hsl(0, 0%, 12.5%);
+  font-weight: bold;
+  animation: hypnocolor 1500ms infinite;
+  animation-direction: alternate;
+}
+
+@keyframes hypnocolor {
+  0% {
+    color: hsl(0, 0%, 12.5%);
+  }
+
+  25% {
+    color: hsl(0, 85%, 40%);
+  }
+
+  50% {
+    color: hsl(0, 75%, 60%);
+  }
+
+  75% {
+    color: hsl(15, 70%, 45%);
+  }
+
+  100% {
+    color: hsl(45, 80%, 70%);
+  }
+}
+
+.phobia {
+  color: hsl(0, 100%, 50%);
+  font-weight: bold;
+  animation: phobia 750ms infinite;
+}
+
+@keyframes phobia {
+  0% {
+    color: hsl(0, 90%, 70%);
+  }
+
+  50% {
+    color: hsl(0, 100%, 50%);
+  }
+
+  100% {
+    color: hsl(0, 90%, 70%);
+  }
+}
+
+.icon {
+  height: 1em;
+  width: auto;
+}
+
+.bigicon {
+  font-size: 2.5em;
+}
+
+.hugeicon {
+  font-size: 5em;
+}
+
+.memo {
+  color: hsl(75.3, 100%, 26.1%);
+  text-align: center;
+}
+
+.memoedit {
+  text-align: center;
+  font-size: 125%;
+}
+
+.policy {
+  text-align: center;
+  font-size: 125%;
+  color: hsl(276, 70%, 52%);
+  font-style: italic;
+}
+
+.abductor {
+  color: hsl(300, 96%, 38.8%);
+  font-style: italic;
+}
+
+.mind_control {
+  color: hsl(320, 71.7%, 55.7%);
+  font-size: 100%;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.slime {
+  color: hsl(180.9, 100%, 41%);
+}
+
+.drone {
+  color: hsl(60, 100%, 50%);
+  background-color: hsl(287 62% 36%);
+  font-style: italic;
+}
+
+.monkey {
+  color: hsl(17.8, 50.2%, 39.4%);
+}
+
+.swarmer {
+  color: hsl(219.2, 100%, 58.6%);
+}
+
+.resonate {
+  color: hsl(174.1, 55.4%, 36.1%);
+}
+
+.upside_down {
+  transform: rotate(180deg);
+  display: inline-block;
+}
+
+.mansus {
+  color: #0d9b00;
+  text-shadow: 0 0 6px #0d9b00;
+}
+
+.cyan {
+  color: #bde0dc;
+  text-shadow: 0 0 6px #bde0dc;
+}
+
+.connectionClosed,
+.fatalError {
+  background: hsl(0, 85%, 25%);
+  color: hsl(45, 80%, 85%);
+  padding: 5px;
+}
+
+.connectionClosed.restored {
+  background: hsl(132.8, 70%, 25%);
+}
+
+.internal.boldnshit {
+  color: hsl(226.6, 52.8%, 50.2%);
+  font-weight: bold;
+}
+
+/* HELPER CLASSES */
+
+.text-normal {
+  font-weight: normal;
+  font-style: normal;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.ml-1 {
+  margin-left: 1em;
+}
+
+.ml-2 {
+  margin-left: 2em;
+}
+
+.ml-3 {
+  margin-left: 2.5em;
+}
+
+.tooltip {
+  font-style: italic;
+  border-bottom: 1px dashed;
+}
+
+.fieldset_legend {
+  position: relative;
+  max-width: 95%;
+  font-size: 120%;
+  background-color: hsl(0, 20%, 8%);
+  padding: var(--space-s) var(--space-m);
+  border-color: inherit;
+  z-index: 0;
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: var(--border-thickness-tiny) solid;
+    border-color: inherit;
+    border-radius: var(--border-radius-medium);
+    mask-image: linear-gradient(to top, black 50%, transparent 50%);
+    z-index: -1;
+  }
+}
+
+.boxed_message {
+  background: hsl(0, 20%, 12%);
+  border: var(--border-thickness-tiny) solid;
+  border-left: var(--border-thickness-large) solid;
+  border-color: hsla(0, 45%, 35%, 0.4);
+  margin: var(--space-m) 0;
+  padding: var(--space-m) var(--space-l);
+  border-radius: var(--border-radius-medium);
+
+  &.red_box {
+    background: hsl(0, 25%, 10%);
+    border-color: hsla(0, 85%, 50%, 0.6);
+  }
+
+  &.green_box {
+    background: hsl(140, 20%, 10%);
+    border-color: hsla(120, 100%, 50%, 0.5);
+  }
+
+  &.blue_box {
+    background: hsl(220, 20%, 10%);
+    border-color: hsla(225, 90%, 65%, 0.5);
+  }
+
+  &.purple_box {
+    background: hsl(260, 25%, 12.5%);
+    border-color: hsla(260, 100%, 75%, 0.5);
+  }
+
+  hr {
+    margin: var(--space-m) -0.75em;
+    border-color: inherit;
+  }
+}
+
+// Provides a horizontal bar with text in the middle
+// I got this off stackoverflow
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.separator::before,
+.separator::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid hsl(45, 60%, 60%);
+}
+
+.separator:not(:empty)::before {
+  margin-right: 0.25em;
+}
+
+.separator:not(:empty)::after {
+  margin-left: 0.25em;
+}
+
+// Used to display images besides text
+.img_by_text_container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.img_by_text_container img {
+  width: 3em; // a css guru can probably dehardcode this later
+  height: auto;
+  margin-right: 12px;
+  margin-top: 6px;
+}
+
+.img_by_text_container .img_text {
+  flex-grow: 1;
+}
+
+$alert-stripe-colors: (
+  'default': hsl(0, 25%, 12%),
+  'green': hsl(120, 100%, 12%),
+  'blue': hsl(198.6, 100%, 11.4%),
+  'pink': hsl(326.2, 100%, 9.4%),
+  'yellow': hsl(45, 80%, 15%),
+  'orange': hsl(15, 85%, 15%),
+  'red': hsl(0, 85%, 12%),
+  'purple': hsl(295, 100%, 9.4%),
+  'grey': hsl(0, 0%, 14.5%),
+);
+
+$alert-stripe-alternate-colors: (
+  'default': hsl(0, 35%, 15%),
+  'green': hsl(120, 100%, 13.9%),
+  'blue': hsl(198.3, 100%, 13.5%),
+  'pink': hsl(325.3, 100%, 12.5%),
+  'yellow': hsl(45, 75%, 18%),
+  'orange': hsl(15, 80%, 18%),
+  'red': hsl(0, 75%, 15%),
+  'purple': hsl(295.1, 100%, 12%),
+  'grey': hsl(0, 0%, 16.1%),
+);
+
+$alert-major-header-colors: (
+  'default': hsl(0, 75%, 65%),
+  'green': hsl(150.1, 100%, 50%),
+  'blue': hsl(192.4, 100%, 60%),
+  'pink': hsl(336.1, 100%, 66.1%),
+  'yellow': hsl(45, 90%, 80%),
+  'orange': hsl(15, 85%, 70%),
+  'red': hsl(0, 85%, 65%),
+  'purple': hsl(266.5, 84.3%, 80%),
+  'grey': hsl(336.1, 100%, 66.1%),
+);
+
+$alert-subheader-header-colors: (
+  'default': hsl(45, 70%, 70%),
+  'green': hsl(336.4, 100%, 76.1%),
+  'blue': hsl(336.1, 100%, 66.1%),
+  'pink': hsl(192.4, 100%, 60%),
+  'yellow': hsl(0, 75%, 60%),
+  'orange': hsl(0, 75%, 60%),
+  'red': hsl(45, 80%, 70%),
+  'purple': hsl(192.4, 100%, 60%),
+  'grey': hsl(192.4, 100%, 60%),
+);
+
+$border-width: 4;
+
+$border-width-px: $border-width * 1px;
+
+.major_announcement_title {
+  font-size: 175%;
+  padding: 0rem 0.5rem;
+  line-height: 100%;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+}
+
+.subheader_announcement_text {
+  font-weight: bold;
+  padding: 0 0.5rem;
+  padding-top: 0.25rem;
+  line-height: 100%;
+  width: 100%;
+  text-align: left;
+  font-size: 125%;
+}
+
+.major_announcement_text {
+  color: hsl(0, 15%, 90%);
+  background-color: hsl(0, 25%, 8%);
+  font-weight: bold;
+  font-size: 100%;
+  text-align: left;
+  padding: 0.5rem 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.minor_announcement_title {
+  font-weight: bold;
+  padding: 0 0.5rem;
+  padding-top: 0;
+  line-height: 100%;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  font-size: 150%;
+}
+
+.minor_announcement_text {
+  background-color: hsl(0, 25%, 12%);
+  color: hsl(0, 15%, 90%);
+  padding: 0.5rem 0.5rem;
+  text-align: left;
+  font-size: 100%;
+}
+
+.announcement_header {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ooc_alert {
+  background: hsl(45, 80%, 15%);
+  border: 1px solid hsl(45, 90%, 50%);
+  margin: 0.5em;
+  padding: 0.5em 0.5em 0.5em 0.2em;
+  color: hsl(0, 0%, 100%);
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.ooc_announcement_text {
+  color: hsl(45, 90%, 60%);
+  padding: 0.5em 0 0 0.35em;
+  display: flex;
+  flex-direction: column;
+}
+
+@each $color-name, $color-value in $alert-stripe-colors {
+  .chat_alert_#{$color-name} {
+    color: hsl(0, 0%, 100%);
+    padding: 0.5rem 0.5rem;
+    box-shadow: none;
+    font-weight: bold;
+    margin: 1rem 0 1rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    border-image: repeating-linear-gradient(
+      -45deg,
+      map.get($alert-stripe-alternate-colors, $color-name),
+      map.get($alert-stripe-alternate-colors, $color-name) 10px,
+      $color-value 10px,
+      $color-value 20px
+    );
+    border-image-slice: $border-width fill;
+    border-width: $border-width-px;
+    border-image-width: $border-width-px;
+    border-image-outset: 0 0 0 0;
+    border-image-repeat: repeat repeat;
+    border-style: solid;
+  }
+
+  .chat_alert_#{$color-name} .major_announcement_title {
+    color: map.get($alert-major-header-colors, $color-name);
+  }
+
+  .chat_alert_#{$color-name} .minor_announcement_title {
+    color: map.get($alert-major-header-colors, $color-name);
+  }
+
+  .chat_alert_#{$color-name} .subheader_announcement_text {
+    color: map.get($alert-subheader-header-colors, $color-name);
+  }
+
+  .chat_alert_#{$color-name} .minor_announcement_text {
+    background-color: color.adjust(
+      map.get($alert-stripe-colors, $color-name),
+      $lightness: -5%,
+      $space: hsl
+    );
+  }
+
+  .chat_alert_#{$color-name} .major_announcement_text {
+    background-color: color.adjust(
+      map.get($alert-stripe-colors, $color-name),
+      $lightness: -5%,
+      $space: hsl
+    );
+  }
+}
+
+/* DARKPACK EDIT ADD START */
+
+.mentor {
+  color: #8a2be2;
+}
+
+.looc {
+  color: #d8b555;
+}
+.rlooc {
+  color: #b09448;
+}
+
+.boxed_message .icon {
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0;
+  padding: 0;
+
+  &.corplogo {
+    width: 300px !important;
+    height: 110px !important;
+  }
+}
+
+.corp_label_pentex {
+  color: hsl(317.78, 29.67%, 17.84%);
+  text-shadow: 0 0 8px #3b2033;
+  font-weight: bold;
+}
+
+.corp_label_ardus {
+  color: hsl(201.43, 16.28%, 66.27%);
+  text-shadow: 0 0 8px #9badb7;
+  font-weight: bold;
+}
+
+.corp_label_avalon {
+  color: hsl(245.96, 80.75%, 63.33%);
+  text-shadow: 0 0 8px #6556ed;
+  font-weight: bold;
+}
+
+.corp_label_circinus {
+  color: hsl(29.28, 100%, 75.49%);
+  text-shadow: 0 0 8px #ffbf82;
+  font-weight: bold;
+}
+
+.corp_label_consolidex {
+  color: hsl(290.51, 100%, 57.84%);
+  text-shadow: 0 0 8px #dd28ff;
+  font-weight: bold;
+}
+
+.corp_label_endron {
+  color: hsl(157.32, 97.62%, 16.47%);
+  text-shadow: 0 0 8px #015334;
+  font-weight: bold;
+}
+
+.corp_label_harold_harold {
+  color: hsl(8.97, 42.44%, 40.2%);
+  text-shadow: 0 0 8px #92483b;
+  font-weight: bold;
+}
+
+.corp_label_good_house {
+  color: hsl(285, 20.93%, 66.27%);
+  text-shadow: 0 0 8px #b297bb;
+  font-weight: bold;
+}
+
+.corp_label_hallahan {
+  color: hsl(257.45, 88.29%, 43.53%);
+  text-shadow: 0 0 8px #460dd1;
+  font-weight: bold;
+}
+
+.corp_label_herculean {
+  color: hsl(0, 100%, 53.14%);
+  text-shadow: 0 0 8px #ff1010;
+  font-weight: bold;
+}
+
+.corp_label_herricks {
+  color: hsl(285.51, 90.82%, 38.43%);
+  text-shadow: 0 0 8px #9009bb;
+  font-weight: bold;
+}
+
+.corp_label_king {
+  color: hsl(44.62, 53.92%, 57.45%);
+  text-shadow: 0 0 8px #cdaf58;
+  font-weight: bold;
+}
+
+.corp_label_megadon {
+  color: hsl(182.58, 100%, 63.53%);
+  text-shadow: 0 0 8px #45f7ff;
+  font-weight: bold;
+}
+
+.corp_label_nastrum {
+  color: hsl(342.92, 100%, 74.51%);
+  text-shadow: 0 0 8px #ff7da2;
+  font-weight: bold;
+}
+
+.corp_label_omni_tv {
+  color: hsl(11.33, 79.89%, 64.9%);
+  text-shadow: 0 0 8px #ed795e;
+  font-weight: bold;
+}
+
+.corp_label_otolleys {
+  color: hsl(154.47, 72.31%, 74.51%);
+  text-shadow: 0 0 8px #8fedc5;
+  font-weight: bold;
+}
+
+.corp_label_black_dog {
+  color: hsl(222.86, 100%, 94.51%);
+  text-shadow: 0 0 8px #e3ebff;
+  font-weight: bold;
+}
+
+.corp_label_rainbow_inc {
+  color: hsl(313.97, 100%, 85.69%);
+  text-shadow: 0 0 8px #ffb6ee;
+  font-weight: bold;
+}
+
+.corp_label_tellus {
+  color: hsl(102.7, 100%, 57.84%);
+  text-shadow: 0 0 8px #66ff28;
+  font-weight: bold;
+}
+
+.corp_label_vesuvius {
+  color: hsl(61.82, 41.77%, 84.51%);
+  text-shadow: 0 0 8px #e7e8c7;
+  font-weight: bold;
+}
+
+.corp_label_young_smith {
+  color: hsl(96.67, 20.93%, 66.27%);
+  text-shadow: 0 0 8px #a5bb97;
+  font-weight: bold;
+}
+
+.subtle {
+  color: #abc6ec;
+}
+.subtler {
+  color: #e2c1ff;
+}
+
+/* DARKPACK EDIT ADD END */
