@@ -7,9 +7,9 @@
 	text_gain_indication = span_notice("You feel smarter!")
 	limb_req = BODY_ZONE_HEAD
 	instability = POSITIVE_INSTABILITY_MAJOR
-	mutation_icon_state = "telekinesishead"
+	//mutation_icon_state = "telekinesishead" - CRIMSON GRID REMOVAL - Make stealthy
 	///Typecache of atoms that TK shouldn't interact with
-	var/static/list/blacklisted_atoms = typecacheof(list(/atom/movable/screen))
+	var/static/list/blacklisted_atoms = typecacheof(list(/atom/movable/screen, /turf)) // CRIMSON GRID EDIT - Prevent interaction with turfs
 
 /datum/mutation/telekinesis/on_acquiring(mob/living/carbon/human/homan)
 	. = ..()
