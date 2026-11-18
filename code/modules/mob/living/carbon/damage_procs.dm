@@ -288,6 +288,10 @@
 	aggravated = abs(aggravated) // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
 
 	var/list/obj/item/bodypart/parts = get_damageable_bodyparts(required_bodytype)
+	// receive_damage() applies physiology, so it's divided back out of what each part took. Otherwise the leftovers make up for part of it
+	var/brute_physiology = forced ? DEFAULT_PHYSIOLOGY_VAL : GET_PHYSIOLOGY(src, BRUTE)
+	var/burn_physiology = forced ? DEFAULT_PHYSIOLOGY_VAL : GET_PHYSIOLOGY(src, BURN)
+	var/agg_physiology = forced ? DEFAULT_PHYSIOLOGY_VAL : GET_PHYSIOLOGY(src, AGGRAVATED) // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
 	var/update = NONE
 	while(parts.len && (brute > 0 || burn > 0 || aggravated > 0)) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 		var/obj/item/bodypart/picked = pick(parts)
@@ -305,9 +309,9 @@
 
 		. -= picked.get_damage() // return the net amount of damage healed
 
-		brute = round(brute - (picked.brute_dam - brute_was), DAMAGE_PRECISION)
-		burn = round(burn - (picked.burn_dam - burn_was), DAMAGE_PRECISION)
-		aggravated = round(aggravated - (picked.aggravated_dam - aggravated_was), DAMAGE_PRECISION) // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
+		brute = round(brute - (picked.brute_dam - brute_was) / brute_physiology, DAMAGE_PRECISION)
+		burn = round(burn - (picked.burn_dam - burn_was) / burn_physiology, DAMAGE_PRECISION)
+		aggravated = round(aggravated - (picked.aggravated_dam - aggravated_was) / agg_physiology, DAMAGE_PRECISION) // DARKPACK EDIT ADD - AGGRAVATED_DAMAGE
 
 		parts -= picked
 

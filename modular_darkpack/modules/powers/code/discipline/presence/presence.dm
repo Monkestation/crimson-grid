@@ -11,9 +11,13 @@
 	icon_state = "presence"
 	power_type = /datum/discipline_power/presence
 
-/datum/discipline/presence/post_gain()
+/datum/discipline/presence/post_gain(post_gain_applied)
 	. = ..()
-	ADD_TRAIT(owner, TRAIT_CHARMER, /datum/discipline/presence)
+	ADD_TRAIT(owner, TRAIT_CHARMER, DISCIPLINE_TRAIT(src))
+
+/datum/discipline/presence/post_loss()
+	REMOVE_TRAIT(owner, TRAIT_CHARMER, DISCIPLINE_TRAIT(src))
+	return ..()
 
 /datum/discipline_power/presence
 	name = "Presence power name"
