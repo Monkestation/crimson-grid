@@ -1,5 +1,5 @@
-#define BASHING_LETHAL_PROTECTION 7 // CRIMSON EDIT CHANGE - Original: #define BASHING_LETHAL_PROTECTION 15
-#define AGGRAVATED_PROTECTION 10
+#define BASHING_LETHAL_PROTECTION 12 // CRIMSON EDIT CHANGE - Original: #define BASHING_LETHAL_PROTECTION 15
+#define AGGRAVATED_PROTECTION 12 // CRIMSON EDIT CHANGE - Original: #define AGGRAVATED_PROTECTION 10
 
 /datum/status_effect/fortitude
 	// All IDs are the same to prevent stacking multiple Fortitude statuses
