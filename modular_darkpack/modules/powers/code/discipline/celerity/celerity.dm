@@ -57,8 +57,9 @@
 	UnregisterSignal(owner, COMSIG_POWER_PRE_ACTIVATION)
 	owner.remove_status_effect(/datum/status_effect/celerity/one)
 
-/datum/discipline_power/celerity/one/post_gain()
-	owner.st_add_stat_mod(STAT_DEXTERITY, 1, "Celerity")
+/datum/discipline_power/celerity/one/post_gain(post_gain_applied)
+	if(!post_gain_applied)
+		owner.st_add_stat_mod(STAT_DEXTERITY, 1, "Celerity")
 
 //CELERITY 2
 /datum/discipline_power/celerity/two
@@ -89,8 +90,9 @@
 	UnregisterSignal(owner, COMSIG_POWER_PRE_ACTIVATION)
 	owner.remove_status_effect(/datum/status_effect/celerity/two)
 
-/datum/discipline_power/celerity/two/post_gain()
-	owner.st_add_stat_mod(STAT_DEXTERITY, 2, "Celerity")
+/datum/discipline_power/celerity/two/post_gain(post_gain_applied)
+	if(!post_gain_applied)
+		owner.st_add_stat_mod(STAT_DEXTERITY, 2, "Celerity")
 
 //CELERITY 3
 /datum/discipline_power/celerity/three
@@ -121,8 +123,9 @@
 	UnregisterSignal(owner, COMSIG_POWER_PRE_ACTIVATION)
 	owner.remove_status_effect(/datum/status_effect/celerity/three)
 
-/datum/discipline_power/celerity/three/post_gain()
-	owner.st_add_stat_mod(STAT_DEXTERITY, 3, "Celerity")
+/datum/discipline_power/celerity/three/post_gain(post_gain_applied)
+	if(!post_gain_applied)
+		owner.st_add_stat_mod(STAT_DEXTERITY, 3, "Celerity")
 
 //CELERITY 4
 /datum/discipline_power/celerity/four
@@ -153,8 +156,9 @@
 	UnregisterSignal(owner, COMSIG_POWER_PRE_ACTIVATION)
 	owner.remove_status_effect(/datum/status_effect/celerity/four)
 
-/datum/discipline_power/celerity/four/post_gain()
-	owner.st_add_stat_mod(STAT_DEXTERITY, 4, "Celerity")
+/datum/discipline_power/celerity/four/post_gain(post_gain_applied)
+	if(!post_gain_applied)
+		owner.st_add_stat_mod(STAT_DEXTERITY, 4, "Celerity")
 
 //CELERITY 5
 /datum/discipline_power/celerity/five
@@ -185,5 +189,6 @@
 	UnregisterSignal(owner, COMSIG_POWER_PRE_ACTIVATION)
 	owner.remove_status_effect(/datum/status_effect/celerity/five)
 
-/datum/discipline_power/celerity/five/post_gain()
-	owner.st_add_stat_mod(STAT_DEXTERITY, 5, "Celerity")
+/datum/discipline_power/celerity/five/post_gain(post_gain_applied)
+	if(!post_gain_applied)
+		owner.st_add_stat_mod(STAT_DEXTERITY, 5, "Celerity")
