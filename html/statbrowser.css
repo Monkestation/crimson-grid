@@ -271,3 +271,78 @@ body.dark {
 .dark .grid-item:active .grid-item-text {
   background-color: #313131;
 }
+
+/**
+ * MARK: Vampire theme colors
+ * DARKPACK EDIT ADD START - Vampire Theme
+ */
+.vampire:root {
+  --color-base: #251313;
+  --scrollbar-base: #0f0202;
+  --scrollbar-thumb: #2d0909;
+}
+
+body.vampire {
+  background-color: #251313;
+  color: #d4a574;
+}
+
+.vampire a {
+  color: #b83d3d;
+}
+
+.vampire a:hover {
+  color: #cc5555;
+}
+
+.vampire .grid-item:hover,
+.vampire .grid-item:active {
+  color: #e6b888;
+}
+
+.vampire h3 {
+  color: #e6b888;
+}
+
+.vampire #menu {
+  background-color: #251313;
+}
+
+.vampire #menu.tabs-classic .button.active {
+  background-color: transparent;
+  color: #e6b888;
+}
+
+.vampire .button {
+  color: rgba(212, 165, 116, 0.8);
+}
+
+.vampire .button:hover {
+  background-color: hsl(0, 35%, 15%);
+  border-bottom: 2px solid hsl(0, 45%, 25%);
+}
+
+.vampire .button.active {
+  background-color: hsl(0, 50%, 20%);
+  color: hsl(45, 80%, 70%);
+  text-shadow: 0 0 2px rgba(218, 165, 32, 0.8);
+  border-bottom: 2px solid hsl(45, 60%, 40%);
+}
+
+.vampire #under-menu,
+.vampire #under-content {
+  background-color: #392121;
+}
+
+.vampire .grid-item {
+  color: #d4a574;
+}
+
+.vampire .grid-item:hover .grid-item-text {
+  background-color: #2d0909;
+}
+
+.vampire .grid-item:active .grid-item-text {
+  background-color: #3d1111;
+}
+/* DARKPACK EDIT ADD END - Vampire Theme */
