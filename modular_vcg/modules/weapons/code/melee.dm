@@ -97,7 +97,7 @@
 	skill_required_for_use = STAT_CRAFTS
 	skill_dots_minimum = 3
 
-obj/item/flashlight/flare/torch/attack_self(mob/user)
+/obj/item/flashlight/flare/torch/attack_self(mob/user)
 	. = ..()
 	if(light_on && isliving(user))
 		var/mob/living/lighter = user
