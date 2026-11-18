@@ -92,6 +92,7 @@
 	time = 50
 	reqs = list(/obj/item/stack/sheet/mineral/wood = 5, /obj/item/rag = 1, /datum/reagent/consumable/nutriment/fat/oil = 10)
 	result = /obj/item/flashlight/flare/torch
+	crafting_flags = CRAFT_SKIP_MATERIALS_PARITY
 	category = CAT_WEAPON_MELEE
 	skill_required_for_use = STAT_CRAFTS
 	skill_dots_minimum = 3
