@@ -8,7 +8,7 @@
 	supervisors = SUPERVISOR_PRIMOGEN_VENTRUE
 	config_tag = "JOB_JAZZ_SERVANT"
 
-	description = "A servant of the local Jazz Club hosted by the Camarilla. You are a conscious servant of the Jazz Club, be it because of your clan allegiance, or because you were put into servitude. Aside from the usual responsabilities, you can enjoy a lavish lifestyle at the local Jazz Club."
+	description = "A servant of the local Jazz Club hosted by the Camarilla. You are a conscious servant of the Jazz Club, be it because of your clan allegiance, or because you were put into servitude. Aside from the usual responsibilities, you can enjoy a lavish lifestyle at the local Jazz Club."
 	maximal_generation = 9
 	maximum_immortal_age = 200
 	minimum_masquerade = 5
