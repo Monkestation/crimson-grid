@@ -47,3 +47,12 @@
 
 /obj/item/pc_floppy/portrait_printer
 	program_type = /datum/pc_program/portrait_printer
+
+/obj/item/pc_floppy/stock_market
+	program_type = /datum/pc_program/stocks
+
+/obj/item/pc_floppy/commodities
+	program_type = /datum/pc_program/commodities
+
+/obj/item/pc_floppy/medical
+	program_type = /datum/pc_program/operating
