@@ -12,6 +12,6 @@
 		new /datum/data/vending_product("floppy disk (stock market)", /obj/item/pc_floppy/stock_market, 100),
 		new /datum/data/vending_product("floppy disk (commodities)", /obj/item/pc_floppy/commodities, 100),
 		new /datum/data/vending_product("floppy disk (permissions)", /obj/item/pc_floppy/permissions, 100),
-		new /datum/data/vending_product("floppy disk (security_camera)", /obj/item/pc_floppy/security_camera, 100),
+		new /datum/data/vending_product("floppy disk (security_camera)", /obj/item/pc_floppy/security, 100),
 		new /datum/data/vending_product("floppy disk (medical operations)", /obj/item/pc_floppy/medical, 100),
 	)
