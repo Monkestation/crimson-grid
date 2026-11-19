@@ -90,7 +90,7 @@
 /datum/crafting_recipe/torch
 	name = "Torch"
 	time = 50
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 5, /obj/item/rag = 1, /datum/reagent/consumable/nutriment/fat/oil = 10)
+	reqs = list(/obj/item/stack/sheet/mineral/wood = 5, /obj/item/stack/sheet/mineral/coal = 1)
 	result = /obj/item/flashlight/flare/torch
 	crafting_flags = CRAFT_SKIP_MATERIALS_PARITY
 	category = CAT_WEAPON_MELEE
