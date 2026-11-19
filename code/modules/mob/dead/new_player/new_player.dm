@@ -166,6 +166,10 @@
 	var/datum/job/job = SSjob.get_job(rank)
 	if(!(job.job_flags & JOB_NEW_PLAYER_JOINABLE))
 		return JOB_UNAVAILABLE_GENERIC
+	// DARKPACK EDIT ADD START - Admins bypass latejoin job restrictions
+	if(check_rights_for(client, R_ADMIN))
+		return JOB_AVAILABLE
+	// DARKPACK EDIT ADD END
 	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
 		if(is_assistant_job(job))
 			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
@@ -210,7 +214,7 @@
 
 	var/datum/job/job = SSjob.get_job(rank)
 
-	if(!SSjob.assign_role(src, job, TRUE))
+	if(!SSjob.assign_role(src, job, TRUE, do_eligibility_checks = !check_rights_for(client, R_ADMIN))) // DARKPACK EDIT CHANGE - ORIGINAL: if(!SSjob.assign_role(src, job, TRUE))
 		tgui_alert(usr, "There was an unexpected error putting you into your requested job. If you cannot join with any job, you should contact an admin.")
 		return FALSE
 
