@@ -115,6 +115,10 @@
 	if(hares_leap)
 		adjusted_jump_range *= hares_leap.jump_modifier
 
+	//CRIMSON GRID EDIT - Tlacique Puma, Jaguar, and Floppa Cat PR
+	if(istype(jumper, /mob/living/basic/pet/cat/protean/puma))
+		adjusted_jump_range *= 3
+
 	var/distance = get_dist(jumper.loc, target)
 	var/turf/adjusted_target = target
 	if(distance > adjusted_jump_range)

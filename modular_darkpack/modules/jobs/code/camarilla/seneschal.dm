@@ -12,7 +12,7 @@
 	config_tag = "SENESCHAL"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/clerk
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_CLERK
 	departments_list = list(
 		/datum/job_department/camarilla,
@@ -39,6 +39,19 @@
 		JOB_PRIMOGEN_VENTRUE,
 		JOB_PRIMOGEN_NOSFERATU
 	)
+
+//CG Edit Start: Lets characters remember relevant keypad codes
+
+/datum/job/vampire/clerk/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/obj/keypad/armory/armory_keypad = locate() in GLOB.keypads
+	if(armory_keypad)
+		spawned.mind.add_memory(/datum/memory/key/armory_code, remembered_code = armory_keypad.pincode)
+	var/obj/keypad/panic_room/panic_room_keypad = locate() in GLOB.keypads
+	if(panic_room_keypad)
+		spawned.mind.add_memory(/datum/memory/key/panic_room_code, remembered_code = panic_room_keypad.pincode)
+
+//CG Edit End.
 
 /datum/outfit/job/vampire/clerk
 	name = JOB_SENESCHAL
