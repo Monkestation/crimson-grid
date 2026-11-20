@@ -24,7 +24,7 @@
 		JOB_HOS_EXECUTIVE,
 	)
 
-	allowed_splats = list(SPLAT_CORAX)
+	allowed_splats = list(SPLAT_CORAX, SPLAT_KINFOLK)
 	description = "You are the Executive Manager of Helios Overnight Services. It is your job to assist the Lead Coordinator in all tasks and duties relating to the business, whether it be dispatching enemies or dispatching personnel and packages."
 	minimum_masquerade = 3
 

@@ -26,7 +26,7 @@
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE, SPLAT_GAROU, SPLAT_CORAX, SPLAT_KINDRED)
 	allowed_tribes = list(TRIBE_GLASS_WALKERS, TRIBE_RONIN, TRIBE_STARGAZERS)
-	description = "You are a Mail Officer of the Federal Government. Your duty is to deliver products. The local government has no control over you due to your connection to the Federal Government."
+	description = "You are a Mail Officer of the Federal Government. Your duty is to deliver products safely and on time. Your federal post grants you no authority over the city and no immunity from its laws. Respect the local government and law enforcement like any other citizen."
 	minimum_masquerade = 3
 	maximal_generation = 11
 	maximum_immortal_age = 100
