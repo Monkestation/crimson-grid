@@ -1,8 +1,8 @@
 /datum/job/vampire/hos_garrison
 	title = JOB_HOS_GARRISON
 	faction = FACTION_HOS
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 5
+	spawn_positions = 5
 	supervisors = SUPERVISOR_HOS
 	config_tag = "JOB_HOS_GARRISON"
 	job_flags = CITY_JOB_FLAGS
