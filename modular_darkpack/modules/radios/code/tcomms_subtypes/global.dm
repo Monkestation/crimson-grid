@@ -30,5 +30,5 @@
 /obj/machinery/telecomms/allinone/public
 	name = "global telecommunications mainframe"
 	desc = "A mainframe that allows for the processing of priority radio telecommunications."
-	freq_listening = list(FREQ_POLICE, FREQ_CLINIC, FREQ_MILITARY, FREQ_CAMARILLA, FREQ_ANARCH, FREQ_ENDRON)
+	freq_listening = list(FREQ_POLICE, FREQ_CLINIC, FREQ_MILITARY, FREQ_CAMARILLA, FREQ_ANARCH, FREQ_ENDRON, FREQ_CORAX)
 	syndicate = TRUE
