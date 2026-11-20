@@ -1,5 +1,6 @@
 #define COMBAT_COOLDOWN_LENGTH 45 SECONDS
 #define REVEAL_COOLDOWN_LENGTH 15 SECONDS
+#define GATHERING_RANGE 2
 
 /datum/discipline/obfuscate
 	name = "Obfuscate"
@@ -8,7 +9,7 @@
 ●● Unseen Presence: Passive
 ●●● Mask of a Thousand Faces: Manipulation + Performance (difficulty 7)
 ●●●● Vanish from the Mind's Eye: Charisma + Stealth (difficulty 6)
-●●●●● Cloak the Gathering: Passive"}
+●●●●● Cloak the Gathering: Passive + Wits"}
 	icon_state = "obfuscate"
 	power_type = /datum/discipline_power/obfuscate
 
@@ -29,6 +30,12 @@
 		COMSIG_LIVING_GRAB
 	)
 
+	//Cloak the gathering defines vvv
+	var/list/in_cloak_range = list()
+	var/list/currently_cloaked = list()
+	var/outranged = FALSE
+
+
 /datum/discipline_power/obfuscate/proc/on_discipline_activation(datum/source, datum/discipline_power/activated_power, atom/target)
 	SIGNAL_HANDLER
 
@@ -41,15 +48,15 @@
 	deltimer(cooldown_timer)
 	cooldown_timer = addtimer(CALLBACK(src, PROC_REF(cooldown_expire)), COMBAT_COOLDOWN_LENGTH, TIMER_STOPPABLE | TIMER_DELETE_ME)
 
-/datum/discipline_power/obfuscate/proc/on_talk(datum/source, list/speech_args)
+/datum/discipline_power/obfuscate/proc/on_talk(datum/source, list/speech_args, mob/currentuser)
 	SIGNAL_HANDLER
 
 	// This is a soft reveal as only as you would only be revealed to the person next to you. (which we are missing implementation of rn)
 	if(speech_args[SPEECH_MODS][WHISPER_MODE] == MODE_WHISPER)
 		return
 
-	to_chat(owner, span_danger("Your Obfuscation falls away as you reveal yourself!"))
-	try_deactivate(direct = TRUE)
+	to_chat(currentuser, span_danger("Your Obfuscation falls away as you reveal yourself!"))
+	try_deactivate(currentuser, direct = TRUE)
 
 	deltimer(cooldown_timer)
 	cooldown_timer = addtimer(CALLBACK(src, PROC_REF(cooldown_expire)), COMBAT_COOLDOWN_LENGTH, TIMER_STOPPABLE | TIMER_DELETE_ME)
@@ -363,16 +370,67 @@
 		/datum/discipline_power/obfuscate/vanish_from_the_minds_eye,
 	)
 
+/// Cloak the gathering signal procs. vvvv
+
+/datum/discipline_power/obfuscate/proc/on_discipline_activation_gathering(mob/cloaked, datum/discipline_power/activated_power)
+	SIGNAL_HANDLER
+
+	if(istype(activated_power, /datum/discipline_power/obfuscate))
+		return
+
+	to_chat(cloaked, span_danger("The Obfuscation falls away as you focus your blood on another discipline!"))
+	deactivate_cloaked(cloaked)
+
+/datum/discipline_power/obfuscate/proc/on_talk_gathering(mob/cloaked, list/speech_args)
+	SIGNAL_HANDLER
+
+	// This is a soft reveal as only as you would only be revealed to the person next to you. (which we are missing implementation of rn)
+	if(speech_args[SPEECH_MODS][WHISPER_MODE] == MODE_WHISPER)
+		return
+
+	to_chat(cloaked, span_danger("The Obfuscation falls away as you reveal yourself!"))
+	deactivate_cloaked(cloaked)
+
+/datum/discipline_power/obfuscate/proc/on_combat_signal_gathering(mob/cloaked,)
+	SIGNAL_HANDLER
+
+	to_chat(cloaked, span_danger("The Obfuscation falls away as you reveal yourself!"))
+	deactivate_cloaked(cloaked)
+
+/// Cloak the gathering signal procs. ^^^^
+
+/datum/discipline_power/obfuscate/cloak_the_gathering/proc/in_range_cloak_source(mob/cloaked) //proc for cloaked participants being out of range
+	//if(owner) //commented for testing
+	//	return
+	if((get_dist(cloaked, owner) > (GATHERING_RANGE + owner.st_get_stat(STAT_WITS))) || IS_UNCONSCIOUS(cloaked) || IS_DEAD_OR_FAKING(cloaked)) //in tabletop wits decides how many people you can cloak- here it's better to simply use it as a continual check for cloaked groups. The more wits the owner has, the easier it is to take a gathering with you unabated.
+		if(outranged == FALSE)
+			addtimer(CALLBACK(src, PROC_REF(in_range_cloak_source), cloaked), 3 TURNS)
+			to_chat(cloaked, span_warning("You feel distant from your source of shadow, if you don't get closer- you'll be revealed."))
+			outranged = TRUE
+			return
+		to_chat(cloaked, span_warning("The deception shared with you fades, and the world sees you once more."))
+		currently_cloaked -= cloaked //removes index from list
+		deactivate_cloaked(cloaked)
+		outranged = FALSE
+	else	// Cloak participant in range of discipline user
+		to_chat(cloaked, span_notice("You feel in comfort, as the unminds fail to see the ones in their midst."))
+		outranged = FALSE
+
 /datum/discipline_power/obfuscate/cloak_the_gathering/activate()
 	. = ..()
-	RegisterSignals(owner, aggressive_signals, PROC_REF(on_combat_signal))
-	RegisterSignal(owner, COMSIG_POWER_ACTIVATE, PROC_REF(on_discipline_activation))
-	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(on_talk))
+	in_cloak_range = viewers((GATHERING_RANGE+owner.st_get_stat(STAT_WITS)), owner)
+	for(var/mob/living/carbon/human/cloaked in in_cloak_range)
+		currently_cloaked += cloaked //adds index to list
+		RegisterSignal(cloaked, aggressive_signals, PROC_REF(on_combat_signal_gathering))
+		RegisterSignal(cloaked, COMSIG_POWER_ACTIVATE, PROC_REF(on_discipline_activation_gathering))
+		RegisterSignal(cloaked, COMSIG_MOB_SAY, PROC_REF(on_talk_gathering))
+		addtimer(CALLBACK(src, PROC_REF(in_range_cloak_source), cloaked), 1 TURNS) //signal for cloaked participants being out of range
 
-	for(var/mob/living/carbon/human/npc/NPC in GLOB.npc_list)
-		if (NPC.danger_source == owner)
-			NPC.danger_source = null
-	ADD_TRAIT(owner, TRAIT_OBFUSCATED, OBFUSCATE_TRAIT)
+		ADD_TRAIT(cloaked, TRAIT_OBFUSCATED, OBFUSCATE_TRAIT)
+
+		for(var/mob/living/carbon/human/npc/NPC in GLOB.npc_list)
+			if (NPC.danger_source == cloaked)
+				NPC.danger_source = null
 
 /datum/discipline_power/obfuscate/cloak_the_gathering/deactivate()
 	. = ..()
@@ -381,5 +439,14 @@
 
 	REMOVE_TRAIT(owner, TRAIT_OBFUSCATED, OBFUSCATE_TRAIT)
 
+/datum/discipline_power/obfuscate/proc/deactivate_cloaked(mob/cloaked) //deactivate non-discipline user cloaked
+	SIGNAL_HANDLER
+	UnregisterSignal(cloaked, aggressive_signals)
+	UnregisterSignal(owner, list(COMSIG_POWER_ACTIVATE, COMSIG_MOB_SAY, COMSIG_MOVABLE_MOVED))
+
+	REMOVE_TRAIT(cloaked, TRAIT_OBFUSCATED, OBFUSCATE_TRAIT)
+	currently_cloaked -= cloaked //removes index from list
+
 #undef COMBAT_COOLDOWN_LENGTH
 #undef REVEAL_COOLDOWN_LENGTH
+#undef GATHERING_RANGE
