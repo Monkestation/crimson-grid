@@ -332,52 +332,52 @@
 	name = "Chinatown - Underground"
 
 /area/vtm/interior/house/sanfran/gh_1
-	name = "Chinatown - House 1 - North"
+	name = "Ghetto - House 1 - North"
 
 /area/vtm/interior/house/sanfran/gh_2
-	name = "Chinatown - House 2 - North"
+	name = "Ghetto - House 2 - North"
 
 /area/vtm/interior/house/sanfran/gh_3
-	name = "Chinatown - House 3 - North"
+	name = "Ghetto - House 3 - North"
 
 /area/vtm/interior/house/sanfran/gh_4
-	name = "Chinatown - House 4 - North"
+	name = "Ghetto - House 4 - North"
 
 /area/vtm/interior/house/sanfran/gh_5
-	name = "Chinatown - House 5 - North"
+	name = "Ghetto - House 5 - North"
 
 /area/vtm/interior/house/sanfran/gh_6
-	name = "Chinatown - House 6 - North"
+	name = "Ghetto - House 6 - North"
 
 /area/vtm/interior/house/sanfran/gh_7
-	name = "Chinatown - House 7 - North"
+	name = "Ghetto - House 7 - North"
 
 /area/vtm/interior/house/sanfran/gh_8
-	name = "Chinatown - House 1 - Central"
+	name = "Ghetto - House 1 - Central"
 
 /area/vtm/interior/house/sanfran/gh_9
-	name = "Chinatown - House 2 - Central"
+	name = "Ghetto - House 2 - Central"
 
 /area/vtm/interior/house/sanfran/gh_10
-	name = "Chinatown - House 3 - Central"
+	name = "Ghetto - House 3 - Central"
 
 /area/vtm/interior/house/sanfran/gh_11
-	name = "Chinatown - House 4 - Central"
+	name = "Ghetto - House 4 - Central"
 
 /area/vtm/interior/house/sanfran/gh_12
-	name = "Chinatown - House 5 - Central"
+	name = "Ghetto - House 5 - Central"
 
 /area/vtm/interior/house/sanfran/gh_13
-	name = "Chinatown - House 1 - South"
+	name = "Ghetto - House 1 - South"
 
 /area/vtm/interior/house/sanfran/gh_14
-	name = "Chinatown - House 2 - South"
+	name = "Ghetto - House 2 - South"
 
 /area/vtm/interior/house/sanfran/gh_15
-	name = "Chinatown - House 3 - South"
+	name = "Ghetto - House 3 - South"
 
 /area/vtm/interior/house/sanfran/gh_16
-	name = "Chinatown - House 4 - South"
+	name = "Ghetto - House 4 - South"
 
 /area/vtm/interior/house/sanfran/fn_1
 	name = "Financial - Bank Back Alleys"
