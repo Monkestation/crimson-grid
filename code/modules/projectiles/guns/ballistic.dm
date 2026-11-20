@@ -663,7 +663,7 @@
 	var/recoil_reduction = user.st_get_stat(STAT_FIREARMS)
 	recoil = max(initial(recoil) - recoil_reduction, 0)
 	spread = max(initial(spread) - recoil_reduction, 0)
-	for(var/obj/item/gun/gun in user.held_items)
+	for(var/obj/item/gun/gun as anything in user.get_held_items_of_type(/obj/item/gun))
 		if(gun == src || gun.weapon_weight >= WEAPON_MEDIUM)
 			continue
 		else if(can_trigger_gun(user, akimbo_usage = TRUE))

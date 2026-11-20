@@ -255,10 +255,6 @@
 /obj/projectile/bullet/darkpack/vamp762x51mm/incendiary/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	do_sparks(2, TRUE, src)
-	if(iscarbon(target))
-		var/mob/living/carbon/M = target
-		M.adjust_fire_stacks(fire_stacks)
-		M.ignite_mob()
 
 // .50 BMG
 /obj/projectile/bullet/darkpack/vamp50
