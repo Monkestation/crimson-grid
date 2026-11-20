@@ -206,13 +206,13 @@
 	name = "Fisherman's Wharf - Abandoned Building 1 - North"
 
 /area/vtm/interior/house/sanfran/fh_2
-	name = "Fisherman's Wharf - North Abandoned Building 2 - North"
+	name = "Fisherman's Wharf - Abandoned Building 2 - North"
 
 /area/vtm/interior/house/sanfran/fh_3
-	name = "Fisherman's Wharf - North Abandoned Building 3 - North"
+	name = "Fisherman's Wharf - Abandoned Building 3 - North"
 
 /area/vtm/interior/house/sanfran/fh_4
-	name = "Fisherman's Wharf - North Abandoned Building 4 - North"
+	name = "Fisherman's Wharf - Abandoned Building 4 - North"
 
 /area/vtm/interior/house/sanfran/fh_5
 	name = "Fisherman's Wharf - Abandoned Building - South West"
