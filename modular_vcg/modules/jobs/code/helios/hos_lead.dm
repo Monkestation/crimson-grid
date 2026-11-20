@@ -19,9 +19,9 @@
 	known_contacts = list(
 		JOB_HOS_GARRISON,
 		JOB_DEALER,
-        JOB_HOS_EXECUTIVE,
-        JOB_GAROU_COUNCIL,
-        JOB_HOS_COORDINATOR
+		JOB_HOS_EXECUTIVE,
+		JOB_GAROU_COUNCIL,
+		JOB_HOS_COORDINATOR,
 	)
 
 	allowed_splats = list(SPLAT_CORAX)
@@ -36,9 +36,9 @@
 	l_pocket = /obj/item/smartphone/hos_lead
 	r_pocket = /obj/item/vamp/keys/hos_lead
 	backpack_contents = list(
-        /obj/item/card/credit/rich=1,
-        /obj/item/phone_book=1,
-        /obj/item/flashlight/seclite=1,
-        /obj/item/melee/baton/vamp = 1,
-        /obj/item/restraints/handcuffs = 1,
+		/obj/item/card/credit/rich=1,
+		/obj/item/phone_book=1,
+		/obj/item/flashlight/seclite=1,
+		/obj/item/melee/baton/vamp = 1,
+		/obj/item/restraints/handcuffs = 1,
     )

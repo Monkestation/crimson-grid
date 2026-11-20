@@ -17,9 +17,9 @@
 	tgui_icon = FA_ICON_CAR
 
 	known_contacts = list(
-        JOB_CITY_MAILMAN,
+		JOB_CITY_MAILMAN,
 		JOB_TAXI_DRIVER,
-        JOB_DEALER,
+		JOB_DEALER,
 		JOB_SUPPLY_TECH,
 		JOB_STREET_JANITOR,
 	)
@@ -41,5 +41,5 @@
 	l_pocket = /obj/item/smartphone/mailman
 	r_pocket = /obj/item/vamp/keys/mail_office
 	backpack_contents = list(
-        /obj/item/card/credit=1,
-    )
+		/obj/item/card/credit=1,
+	)

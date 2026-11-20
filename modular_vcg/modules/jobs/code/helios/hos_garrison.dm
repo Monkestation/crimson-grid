@@ -17,9 +17,9 @@
 	tgui_icon = FA_ICON_CROW
 
 	known_contacts = list(
-        JOB_HOS_EXECUTIVE,
-        JOB_HOS_COORDINATOR,
-		JOB_HOS_GARRISON
+		JOB_HOS_EXECUTIVE,
+		JOB_HOS_COORDINATOR,
+		JOB_HOS_GARRISON,
 	)
 
 	allowed_splats = list(SPLAT_CORAX, SPLAT_KINFOLK)
@@ -34,7 +34,7 @@
 	l_pocket = /obj/item/smartphone/hos_garrison
 	r_pocket = /obj/item/vamp/keys/hos
 	backpack_contents = list(
-        /obj/item/card/credit=1,
-        /obj/item/phone_book=1,
-        /obj/item/flashlight/seclite=1,
-    )
+		/obj/item/card/credit=1,
+		/obj/item/phone_book=1,
+		/obj/item/flashlight/seclite=1,
+	)

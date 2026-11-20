@@ -20,8 +20,8 @@
 	known_contacts = list(
 		JOB_HOS_GARRISON,
 		JOB_DEALER,
-        JOB_HOS_COORDINATOR,
-        JOB_HOS_EXECUTIVE,
+		JOB_HOS_COORDINATOR,
+		JOB_HOS_EXECUTIVE,
 	)
 	allowed_splats = list(SPLAT_CORAX)
 	description = "You are the Executive Manager of Helios Overnight Services. It is your job to assist the Lead Coordinator in all tasks and duties relating to the business, whether it be dispatching enemies or dispatching personnel and packages."
@@ -35,8 +35,8 @@
 	l_pocket = /obj/item/smartphone/hos_executive
 	r_pocket = /obj/item/vamp/keys/hos
 	backpack_contents = list(
-        /obj/item/card/credit/rich=1,
-        /obj/item/phone_book=1,
-        /obj/item/flashlight/seclite=1,
-        /obj/item/restraints/handcuffs = 1,
+		/obj/item/card/credit/rich=1,
+		/obj/item/phone_book=1,
+		/obj/item/flashlight/seclite=1,
+		/obj/item/restraints/handcuffs = 1,
     )
