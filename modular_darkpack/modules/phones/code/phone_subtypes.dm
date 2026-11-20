@@ -402,17 +402,17 @@
 
 /obj/item/smartphone/hos_lead
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = HOS_NETWORK, OUR_ROLE = "Lead Coordinator", USE_JOB_TITLE = FALSE),
+		alist(NETWORK_ID = HELIOS_NETWORK, OUR_ROLE = "Lead Coordinator", USE_JOB_TITLE = FALSE),
 		)
 
 /obj/item/smartphone/hos_executive
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = HOS_NETWORK, OUR_ROLE = "Executive Manager", USE_JOB_TITLE = FALSE),
+		alist(NETWORK_ID = HELIOS_NETWORK, OUR_ROLE = "Executive Manager", USE_JOB_TITLE = FALSE),
 		)
 
 /obj/item/smartphone/hos_garrison
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = HOS_NETWORK, OUR_ROLE = "Garrison", USE_JOB_TITLE = FALSE)
+		alist(NETWORK_ID = HELIOS_NETWORK, OUR_ROLE = "Garrison", USE_JOB_TITLE = FALSE)
 		)
 
 /obj/item/smartphone/city_mail

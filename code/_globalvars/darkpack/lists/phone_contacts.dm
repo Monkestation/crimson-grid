@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(mail_network)
 #define TRIAD_NETWORK 16
 // CRIMSON EDIT END - Triads
 // CRIMSON EDIT ADD - Helios Overnight Services
-#define HELIOS_NETOWRK 17
+#define HELIOS_NETWORK 17
 // CRIMSON EDIT END - Helios Overnight Services
 // CRIMSON EDIT ADD - City Services: CG Edition
 #define MAIL_NETWORK 18
