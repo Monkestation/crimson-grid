@@ -16,6 +16,7 @@
 
 	tgui_icon = FA_ICON_CROW
 
+
 	known_contacts = list(
 		JOB_HOS_GARRISON,
 		JOB_DEALER,
