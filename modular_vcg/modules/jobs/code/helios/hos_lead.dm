@@ -41,4 +41,4 @@
 		/obj/item/flashlight/seclite=1,
 		/obj/item/melee/baton/vamp = 1,
 		/obj/item/restraints/handcuffs = 1,
-    )
+	)
