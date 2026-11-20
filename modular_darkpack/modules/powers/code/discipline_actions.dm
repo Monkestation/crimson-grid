@@ -235,6 +235,7 @@
 				discipline.switch_level(-1)
 			else
 				discipline.switch_level(1)
+			openToolTip(usr, src, params, title = name, content = desc, theme = actiontooltipstyle)
 			return
 		//TODO: middle click to swap loadout
 	. = ..()

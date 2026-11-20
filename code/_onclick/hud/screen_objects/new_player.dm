@@ -678,7 +678,7 @@
 	update_text()
 
 /atom/movable/screen/lobby/new_player_info/proc/update_text()
-	if(!hud || !show_static)
+	if(!hud?.mymob || !show_static)
 		maptext = null
 		return
 
