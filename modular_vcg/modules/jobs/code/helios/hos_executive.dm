@@ -31,7 +31,6 @@
 	name = JOB_HOS_EXECUTIVE
 	jobtype = /datum/job/vampire/hos_executive
 	uniform = /obj/item/clothing/under/vampire/turtleneck_navy
-    suit = /obj/item/clothing/suit/vampire/trench
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/smartphone/hos_executive
 	r_pocket = /obj/item/vamp/keys/hos_executive
