@@ -66,6 +66,67 @@
 	. = ..()
 	AddElement(/datum/element/swing_attack)
 
+//Da floppa
+/mob/living/basic/pet/cat/protean/floppa
+	name = "\improper floppa cat"
+	desc = "What a distinguished gentleman."
+	icon_state = "floppa"
+	icon_living = "floppa"
+	icon_dead = "floppa_dead"
+	base_icon_state = "floppa"
+	icon = 'modular_vcg/modules/npc/icons/floppa.dmi'
+
+
+//Tlacique Exclusive forms
+
+/mob/living/basic/pet/cat/protean/jaguar
+	name = "Jaguar"
+	desc = "Fast Kitty!!"
+	maxHealth = 400
+	health = 400
+	speed = -0.6
+	melee_damage_lower = 60
+	melee_damage_upper = 60
+	melee_attack_cooldown = 8
+	mob_size = MOB_SIZE_LARGE
+	icon_state = "jaguar"
+	icon_living = "jaguar"
+	icon_dead = "jaguar_dead"
+	base_icon_state = "jaguar"
+	icon = 'modular_vcg/modules/npc/icons/jaguar.dmi'
+	attack_verb_continuous = "claws"
+	attack_verb_simple = "claw"
+	attack_sound = 'sound/items/weapons/slash.ogg'
+	attack_vis_effect = ATTACK_EFFECT_CLAW
+	sharpness = TRUE
+	can_breed = FALSE
+
+/mob/living/basic/pet/cat/protean/puma
+	name = "Puma"
+	desc = "Sneaky Kitty!"
+	maxHealth = 300
+	health = 300
+	speed = -0.4
+	melee_damage_lower = 30
+	melee_damage_upper = 30
+	melee_attack_cooldown = 8
+	mob_size = MOB_SIZE_LARGE
+	icon_state = "puma"
+	icon_living = "puma"
+	icon_dead = "puma_dead"
+	base_icon_state = "puma"
+	icon = 'modular_vcg/modules/npc/icons/jaguar.dmi'
+	attack_verb_continuous = "claws"
+	attack_verb_simple = "claw"
+	attack_sound = 'sound/items/weapons/slash.ogg'
+	attack_vis_effect = ATTACK_EFFECT_CLAW
+	sharpness = TRUE
+	can_breed = FALSE
+
+/mob/living/basic/pet/cat/protean/puma/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/jumper)
+
 /datum/action/cooldown/spell/shapeshift/gangrel/beast_form
 	var/chosen_icon_state
 	var/static/list/shape_colors = list(
@@ -111,6 +172,15 @@
 	var/mob/living/carbon/human/grant_to_human = grant_to
 	if(grant_to_human.is_clan(/datum/subsplat/vampire_clan/gangrel) || grant_to_human.is_clan(/datum/subsplat/vampire_clan/setite/tlacique)) // Host requested
 		possible_shapes |= /mob/living/basic/pet/cat/protean
+	if(grant_to_human.is_clan(/datum/subsplat/vampire_clan/setite/tlacique))
+		possible_shapes -= list(
+			/mob/living/basic/pet/dog/wolf/protean,
+		)
+		possible_shapes += list(
+			/mob/living/basic/pet/cat/protean/jaguar,
+			/mob/living/basic/pet/cat/protean/puma,
+			/mob/living/basic/pet/cat/protean/floppa,
+		)
 
 /datum/action/cooldown/spell/shapeshift/gangrel/beast_form/before_cast(mob/living/cast_on)
 	if(shapeshift_type)
