@@ -3,12 +3,12 @@
 	faction = FACTION_HOS
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = SUPERVISOR_HOS
+	supervisors = SUPERVISOR_CORAX_HOS
 	config_tag = "JOB_HOS_GARRISON"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/hos_garrison
 
-	display_order = JOB_DISPLAY_ORDER_GARRISON
+	display_order = JOB_DISPLAY_ORDER_HOS_GARRISON
 	exp_required_type_department = EXP_TYPE_HOS
 	departments_list = list(
 		/datum/job_department/hos,

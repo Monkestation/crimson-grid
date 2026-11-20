@@ -3,7 +3,7 @@
 	faction = FACTION_HOS
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = SUPERVISOR_HOS
+	supervisors = SUPERVISOR_CORAX_HOS
 	config_tag = "JOB_HOS_EXECUTIVE"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/hos_executive

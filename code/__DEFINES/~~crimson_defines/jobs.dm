@@ -25,9 +25,11 @@
 #define JOB_DISPLAY_ORDER_TRIAD_RED_POLE 3
 #define JOB_DISPLAY_ORDER_TRIAD_BLUE_LANTERNS 4
 
-#define JOB_DISPLAY_ORDER_COORDINATOR 1
-#define JOB_DISPLAY_ORDER_EXECUTIVE 2
-#define JOB_DISPLAY_ORDER_GARRISON 3
+//Helios Overnight Services - Crimson Grid Addition - START
+#define JOB_DISPLAY_ORDER_HOS_COORDINATOR 1
+#define JOB_DISPLAY_ORDER_HOS_EXECUTIVE 2
+#define JOB_DISPLAY_ORDER_HOS_GARRISON 3
+//Helios Overnight Services - Crimson Grid Addition - END
 
 #define JOB_DISPLAY_ORDER_BRUJAH 13
 
@@ -39,7 +41,7 @@
 
 #define SUPERVISOR_TRIAD "the Mountain Master"
 
-#define SUPERVISOR_HOS "Raven Laws and Helios"
+#define SUPERVISOR_CORAX_HOS "Raven Laws and Helios"
 
 #define SUPERVISOR_MAIL "Federal Government" // CRIMSON EDIT ADDITION - Mail Office
 
