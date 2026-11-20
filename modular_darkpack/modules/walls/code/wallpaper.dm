@@ -13,8 +13,10 @@
 /obj/effect/decal/wallpaper/Initialize(mapload)
 	. = ..()
 	if(isclosedturf(loc))
-		forceMove(get_step(src, SOUTH))
-		pixel_y = 32
+		var/turf/south_turf = get_step(src, SOUTH)
+		if(istype(south_turf))
+			forceMove(south_turf)
+			pixel_y = 32
 
 /obj/effect/decal/wallpaper/low
 	icon_state = "wallpaper_low"

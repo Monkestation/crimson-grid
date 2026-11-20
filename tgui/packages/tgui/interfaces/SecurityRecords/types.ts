@@ -25,6 +25,7 @@ export type SecurityRecord = {
   recorded_rank: string; // CRIMSON EDIT ADD - CLETS
   species: string;
   trim: string;
+  job_icon: string;
   wanted_status: string;
   voice: string;
   past_criminal_records: string; // DARKPACK EDIT - Flavor Text

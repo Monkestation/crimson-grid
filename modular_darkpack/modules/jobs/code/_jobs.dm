@@ -110,6 +110,9 @@
 	exp_granted_type = EXP_TYPE_PLAYTIME
 	tgui_icon = FA_ICON_QUESTION
 
+/datum/job/vampire/get_lobby_icon()
+	return icon(DEFAULT_HUDS_DMI, SECHUD_UNKNOWN)
+
 /**
  * This type is used to indicate a lack of a job.
  * The mind variable assigned_role will point here by default.
