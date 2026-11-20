@@ -224,3 +224,27 @@
 	return clan_blacklist
 
 // DARKPACK EDIT END - MERITS_FLAWS
+
+// Crimson Grid edit start | Change: Added a check for auspice compatibility.
+/datum/preference_middleware/quirks/proc/get_auspice_compatibility()
+	var/list/auspice_blacklist = list()
+	var/auspice_name = preferences.read_preference(/datum/preference/choiced/subsplat/werewolf/auspice)
+
+	if(!auspice_name)
+		return auspice_blacklist
+
+	//auspice_name is auspice.name which is "Ragabash" vampire auspice list is "name" ("Ragabash") = typepath, werewolf/auspice is typepath = datum. we need the datum for the id, which is... just a lowercase name...
+	var/datum/subsplat/werewolf/auspice/auspice = GLOB.garou_auspices[GLOB.garou_auspice_list[auspice_name]]
+	for(var/quirk_path in SSquirks.quirk_prototypes)
+		var/datum/quirk/quirk_prototype = SSquirks.quirk_prototypes[quirk_path]
+
+		// auspice exclusion is only going to reasonably appear on crimson grid quirks
+		if(!istype(quirk_prototype, /datum/quirk/darkpack))
+			continue
+
+		var/datum/quirk/darkpack/darkpack_quirk = quirk_prototype
+		if(!darkpack_quirk.is_auspice_appropriate(auspice))
+			auspice_blacklist += quirk_prototype.name
+
+	return auspice_blacklist
+// Crimson Grid edit end
