@@ -8,7 +8,7 @@
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/mailman
 
-	display_order = JOB_DISPLAY_ORDE_CITY_MAILMAN
+	display_order = JOB_DISPLAY_ORDER_CITY_MAILMAN
 	exp_required_type_department = EXP_TYPE_HOS
 	departments_list = list(
 		/datum/job_department/city_services,
