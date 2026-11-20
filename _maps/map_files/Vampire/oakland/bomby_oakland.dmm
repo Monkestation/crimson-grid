@@ -7928,6 +7928,13 @@
 /obj/structure/railing,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
+"bRC" = (
+/obj/structure/table/wood,
+/obj/structure/retail/triad{
+	dir = 4
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/laundromat)
 "bRH" = (
 /obj/effect/turf_decal/siding/wideplating/orange{
 	dir = 4
@@ -20734,6 +20741,16 @@
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/apartment)
+"eRV" = (
+/obj/effect/turf_decal/siding/wideplating/blue,
+/obj/structure/plaque/kiddie/developer{
+	pixel_y = 29;
+	name = "\improper journalists plaque";
+	desc = "A memorial plaque referencing journalists that had lost their lives covering conflicts."
+	},
+/mob/living/carbon/human/npc/guard,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior)
 "eRW" = (
 /turf/open/water/beach/vamp,
 /area/vtm/interior/caves)
@@ -44379,6 +44396,14 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior)
+"kmt" = (
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/structure/plaque/kiddie/library{
+	pixel_y = 33
+	},
+/obj/machinery/libraryscanner,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/library)
 "kmF" = (
 /obj/effect/decal/fakelattice{
 	density = 0
@@ -65568,14 +65593,6 @@
 /obj/structure/flora/bush/flowers_pp/style_random,
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/jazzclub)
-"pfp" = (
-/obj/effect/turf_decal/siding/thinplating/dark,
-/obj/structure/plaque/kiddie/library{
-	pixel_y = 33
-	},
-/obj/machinery/libraryscanner,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior/library)
 "pfu" = (
 /obj/structure/table/wood,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -86900,16 +86917,6 @@
 	},
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior/tzimisce_sanctum)
-"udp" = (
-/obj/effect/turf_decal/siding/wideplating/blue,
-/obj/structure/plaque/kiddie/developer{
-	pixel_y = 29;
-	name = "\improper journalists plaque";
-	desc = "A memorial plaque referencing journalists that had lost their lives covering conflicts."
-	},
-/mob/living/carbon/human/npc/guard,
-/turf/open/floor/wood/smooth/old,
-/area/vtm/interior)
 "udr" = (
 /turf/open/floor/carpet/darkpack/blacksilver,
 /area/vtm/interior/setite)
@@ -171182,7 +171189,7 @@ xuu
 vTS
 uIK
 vTS
-pfp
+kmt
 rZH
 wmi
 rZH
@@ -185688,7 +185695,7 @@ msh
 vZI
 nQg
 vam
-udp
+eRV
 uic
 fDY
 uic
@@ -211676,7 +211683,7 @@ mjT
 mjT
 mjT
 mGZ
-bXK
+bRC
 sbc
 lqP
 wGy
