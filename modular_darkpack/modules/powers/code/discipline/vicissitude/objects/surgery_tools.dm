@@ -3,7 +3,11 @@
 	icon = 'modular_darkpack/modules/powers/icons/fleshcrafting_surgery_tools.dmi'
 	organ_flags = ORGAN_ORGANIC
 	aug_overlay = ""
-	items_to_create = list(
+	extend_sound = 'modular_darkpack/modules/powers/sounds/vicissitude.ogg'
+	retract_sound =  'modular_darkpack/modules/powers/sounds/vicissitude.ogg'
+
+/obj/item/organ/cyberimp/arm/toolkit/surgery/vicissitude/get_init_items()
+	return list(
 		/obj/item/retractor/augment/vicissitude,
 		/obj/item/hemostat/augment/vicissitude,
 		/obj/item/cautery/augment/vicissitude,
@@ -14,9 +18,8 @@
 		/obj/item/bonesetter/augment/vicissitude,
 		/obj/item/blood_filter/augment/vicissitude,
 		/obj/item/healthanalyzer/vicissitude,
-		/obj/item/shockpaddles/cyborg/vicissitude)
-	extend_sound = 'modular_darkpack/modules/powers/sounds/vicissitude.ogg'
-	retract_sound =  'modular_darkpack/modules/powers/sounds/vicissitude.ogg'
+		/obj/item/shockpaddles/cyborg/vicissitude
+	)
 
 /obj/item/retractor/augment/vicissitude
 	name = "retracting appendage"
