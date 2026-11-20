@@ -17,6 +17,7 @@
 #define JOB_TAXI_DRIVER "Taxi Driver"
 #define JOB_RED_NEWS_REPORTER "Red News Reporter"
 
+
 //Camarilla
 #define JOB_PRINCE "Prince"
 #define JOB_SHERIFF "Sheriff"
@@ -215,6 +216,10 @@
 #define DEPARTMENT_BITFLAG_TRIAD (1<<17)
 #define DEPARTMENT_TRIAD "Chinese Triad"
 // CRIMSON EDIT END - Triads
+// CRIMSON EDIT ADDITION - Helios Overnight Services
+#define DEPARTMENT_BITFLAG_HOS (1<<18)
+#define DEPARTMENT_HOS "Helios Overnight Services"
+// CRIMSON EDIT ADDITION - Helios Overnight Services
 
 DEFINE_BITFIELD(departments_bitflags, list(
 	"CITIZEN" = DEPARTMENT_BITFLAG_CITIZEN,
@@ -235,6 +240,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 	"CITY_SERVICES" = DEPARTMENT_BITFLAG_CITY_SERVICES,
 	"SOCIETY_OF_LEOPOLD" = DEPARTMENT_BITFLAG_SOCIETY_OF_LEOPOLD,
 	"TRIAD" = DEPARTMENT_BITFLAG_TRIAD // CRIMSON GRID ADDITION - Triads
+	"HOS" = DEPARTMENT_BITFLAG_HOS // CRIMSON GRID ADDITION - Helios Overnight Services
 ))
 
 /// Combination flag for jobs which are considered regular crew members of the station.
@@ -275,6 +281,7 @@ DEFINE_BITFIELD(departments_bitflags, list(
 #define EXP_TYPE_CHURCH "Church"
 #define EXP_TYPE_CLUB "Strip Club"
 #define EXP_TYPE_SOCIETY_OF_LEOPOLD "Society of Leopold"
+
 
 #define EXP_REQ_CRITICAL 720
 #define EXP_REQ_HEAD 360
