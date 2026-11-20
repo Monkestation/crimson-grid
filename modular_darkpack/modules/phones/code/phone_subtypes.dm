@@ -415,7 +415,7 @@
 		alist(NETWORK_ID = HELIOS_NETWORK, OUR_ROLE = "Garrison", USE_JOB_TITLE = FALSE)
 		)
 
-/obj/item/smartphone/city_mail
+/obj/item/smartphone/mailman
 	contact_networks_pre_init = list(
 		alist(NETWORK_ID = MAIL_NETWORK, OUR_ROLE = "Mailman", USE_JOB_TITLE = FALSE)
 		)

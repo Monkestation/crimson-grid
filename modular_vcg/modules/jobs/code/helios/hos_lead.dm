@@ -32,7 +32,7 @@
 	name = JOB_HOS_COORDINATOR
 	jobtype = /datum/job/vampire/hos_lead
 	uniform = /obj/item/clothing/under/vampire/turtleneck_navy
-	shoes = /obj/item/clothing/shoes/vampire/jackboots
+	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
 	l_pocket = /obj/item/smartphone/hos_lead
 	r_pocket = /obj/item/vamp/keys/hos_lead
 	backpack_contents = list(
@@ -42,9 +42,3 @@
         /obj/item/melee/baton/vamp = 1,
         /obj/item/restraints/handcuffs = 1,
     )
-
-/datum/outfit/job/vampire/hos_lead/post_equip(mob/living/carbon/human/H)
-	. = ..()
-	var/datum/martial_art/martial_art = new /datum/martial_art/cqc
-	H.ignores_warrant = TRUE
-	martial_art.teach(H)

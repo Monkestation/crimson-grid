@@ -22,7 +22,8 @@
 	minimum_masquerade = 0
 
 	known_contacts = list(
-		JOB_DEALER
+		JOB_DEALER,
+		JOB_CITY_MAILMAN,
 	)
 
 /datum/outfit/job/vampire/supply_tech
