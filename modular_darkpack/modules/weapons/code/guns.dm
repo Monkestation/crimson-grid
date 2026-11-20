@@ -8,6 +8,7 @@
 	worn_icon = 'modular_darkpack/modules/weapons/icons/worn_guns.dmi'
 	ONFLOOR_ICON_HELPER('modular_darkpack/modules/weapons/icons/weapons_onfloor.dmi')
 	recoil = 5
+	can_suppress = FALSE //This was inherited from /obj/item/gun/ballistic/automatic so you were able to suppress literally any darkpack gun which is bad
 
 	//Leave serial_type blank for no serial number/obliterated serial number.
 	serial_type = "SF"

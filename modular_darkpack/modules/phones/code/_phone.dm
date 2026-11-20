@@ -110,6 +110,7 @@
 		publish_number(owner, name_pref, save = FALSE)
 
 /obj/item/smartphone/Destroy(force)
+	unpublish_number()
 	SEND_SIGNAL(src, COMSIG_ALL_MASQUERADE_REINFORCE)
 	GLOB.phones_list -= src
 	for(var/datum/contact_network/contact_network as anything in contact_networks)
@@ -122,7 +123,6 @@
 	lose_hearing_sensitivity(ROUNDSTART_TRAIT)
 	UnregisterSignal(src, COMSIG_MOVABLE_HEAR)
 	if(sim_card)
-		sim_card.phone_weakref = null
 		QDEL_NULL(sim_card)
 	if(phone_radio)
 		QDEL_NULL(phone_radio.keyslot)
@@ -631,10 +631,18 @@
 		owner.write_preference_midround(/datum/preference/text/phone_published_name, sim_name)
 
 /obj/item/smartphone/proc/unpublish_number(mob/user, contact, save = FALSE)
+	if(isnull(contact))
+		for(var/published_contact in SSphones.published_phone_numbers)
+			if(SSphones.published_phone_numbers[published_contact] == sim_card.phone_number)
+				contact = sim_card.published_name
+				break
+		if(isnull(contact))
+			return
 	SSphones.published_phone_numbers -= contact
 	sim_card.published = FALSE
 	sim_card.published_name = null
-	to_chat(user, span_notice("Your number is now unpublished."))
+	if(user)
+		to_chat(user, span_notice("Your number is now unpublished."))
 	var/mob/living/carbon/human/owner = owner_weakref?.resolve()
 	var/name_pref = owner.client?.prefs?.read_preference(/datum/preference/text/phone_published_name)
 	if(save && owner && name_pref)
