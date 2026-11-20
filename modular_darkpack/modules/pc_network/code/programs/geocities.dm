@@ -84,9 +84,9 @@ GLOBAL_LIST_EMPTY(geocities_sites)
 	var/message
 
 /datum/pc_program/geocities/proc/own_key(mob/user)
-	if(!user?.ckey || !user.real_name)
+	if(!user?.ckey || !user.mind?.name)
 		return null
-	return geo_make_key(user.ckey, user.real_name)
+	return geo_make_key(user.ckey, user.mind.name)
 
 /datum/pc_program/geocities/ui_data(mob/user)
 	var/list/data = list()
@@ -95,9 +95,9 @@ GLOBAL_LIST_EMPTY(geocities_sites)
 	var/list/sites = list()
 	var/list/seen = list()
 	for(var/mob/M in GLOB.player_list)
-		if(!M.ckey || !M.real_name)
+		if(!M.ckey || !M.mind?.name)
 			continue
-		var/key = geo_make_key(M.ckey, M.real_name)
+		var/key = geo_make_key(M.ckey, M.mind.name)
 		if(seen[key])
 			continue
 		seen[key] = TRUE
@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(geocities_sites)
 	var/datum/pc_geosite/mine = my_key ? geo_get_site(my_key) : null
 	data["mine"] = mine ? mine.to_list() : null
 	data["my_key"] = my_key
-	data["my_name"] = user?.real_name
+	data["my_name"] = user?.mind?.name
 	data["max_html"] = GEO_MAX_HTML
 	data["max_title"] = GEO_MAX_TITLE
 	data["cooldown_left"] = max(0, round((next_publish - world.time) / 10))
@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY(geocities_sites)
 				return FALSE
 			var/found = FALSE
 			for(var/mob/M in GLOB.player_list)
-				if(M.ckey && M.real_name && geo_make_key(M.ckey, M.real_name) == key)
+				if(M.ckey && M.mind?.name && geo_make_key(M.ckey, M.mind?.name) == key)
 					found = TRUE
 					break
 			if(!found)
@@ -175,7 +175,7 @@ GLOBAL_LIST_EMPTY(geocities_sites)
 				S = new
 				S.key = key
 				S.ckey = user.ckey
-				S.char_name = user.real_name
+				S.char_name = user.mind?.name
 				GLOB.geocities_sites[key] = S
 			S.title = title
 			S.html = geo_sanitize_html(params["html"])
