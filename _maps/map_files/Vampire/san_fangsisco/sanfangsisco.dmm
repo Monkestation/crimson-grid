@@ -819,6 +819,7 @@
 	},
 /area/vtm/interior/setite)
 "ajp" = (
+/obj/effect/turf_decal/siding/wood/dark,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/laundromat)
 "ajv" = (
@@ -7088,8 +7089,8 @@
 /area/vtm/interior)
 "bBy" = (
 /obj/machinery/light/directional/south,
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 5
+/obj/effect/turf_decal/siding/wood/dark/end{
+	dir = 4
 	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/laundromat)
@@ -7913,19 +7914,13 @@
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/museum)
 "bKY" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 1
-	},
-/obj/structure/vampdoor/simple{
-	pixel_x = 0
-	},
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/access/triad,
 /obj/effect/mapping_helpers/door/bash_difficulty/five,
 /obj/effect/mapping_helpers/door/lock,
 /obj/effect/mapping_helpers/door/lock_difficulty/six,
-/obj/effect/turf_decal/siding/dark_brown{
-	dir = 1
+/obj/structure/vampdoor/simple{
+	pixel_x = 0
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/laundromat)
@@ -8089,10 +8084,10 @@
 	dir = 4;
 	color = "#CD5C5C"
 	},
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
 /obj/effect/landmark/start/darkpack/triad/red_pole,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 9
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "bMx" = (
@@ -17677,12 +17672,6 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/vtm)
-"dUr" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 8
-	},
-/turf/open/floor/carpet/darkpack/redsilver,
-/area/vtm/interior)
 "dUF" = (
 /obj/structure/chair/pew/left{
 	dir = 4
@@ -29331,6 +29320,9 @@
 	color = "#CD5C5C"
 	},
 /obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 5
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "gFW" = (
@@ -33103,6 +33095,15 @@
 /obj/effect/mapping_helpers/door/bash_difficulty/six,
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/chantry/basement)
+"hAe" = (
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood/dark/corner{
+	dir = 8
+	},
+/turf/open/floor/carpet/darkpack/redsilver,
+/area/vtm/interior)
 "hAi" = (
 /obj/structure/table,
 /obj/item/vamp/keys/techstore,
@@ -42274,6 +42275,9 @@
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/bianchiBank)
 "jIk" = (
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 10
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "jIl" = (
@@ -46690,6 +46694,9 @@
 	color = "#CD5C5C"
 	},
 /obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 9
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "kLx" = (
@@ -50037,6 +50044,9 @@
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
 	},
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 9
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/laundromat)
 "lyP" = (
@@ -51792,9 +51802,7 @@
 /turf/open/misc/grass,
 /area/vtm/interior/millennium_tower/f4)
 "lSD" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 4
-	},
+/obj/effect/turf_decal/siding/wood/dark/end,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "lSE" = (
@@ -54019,6 +54027,12 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/city/plating,
 /area/vtm/interior/clinic/haven)
+"msW" = (
+/obj/effect/turf_decal/siding/wood/dark/end{
+	dir = 1
+	},
+/turf/open/floor/carpet/darkpack/redsilver,
+/area/vtm/interior)
 "msX" = (
 /obj/structure/table,
 /obj/item/storage/box/lights/mixed,
@@ -65298,8 +65312,10 @@
 	dir = 8;
 	color = "#CD5C5C"
 	},
-/obj/effect/turf_decal/siding/wood/dark,
 /obj/effect/landmark/start/darkpack/triad/red_pole,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 6
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "oYA" = (
@@ -66623,6 +66639,9 @@
 	},
 /obj/machinery/light/directional/west,
 /obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 8
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "pqK" = (
@@ -68036,6 +68055,9 @@
 	},
 /obj/machinery/light/directional/west,
 /obj/effect/landmark/start/darkpack/triad/red_pole,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 8
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "pHS" = (
@@ -68972,8 +68994,10 @@
 	color = "#CD5C5C";
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/wood/dark,
 /obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 10
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "pRX" = (
@@ -80243,6 +80267,9 @@
 	pixel_x = -8;
 	pixel_y = 6
 	},
+/obj/effect/turf_decal/siding/wood/dark/corner{
+	dir = 4
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "stW" = (
@@ -88641,6 +88668,9 @@
 	pixel_x = 9;
 	pixel_y = 14
 	},
+/obj/effect/turf_decal/siding/wood/dark/corner{
+	dir = 1
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "utY" = (
@@ -88683,6 +88713,9 @@
 "uuv" = (
 /obj/structure/stairs/west{
 	color = "#876E4B"
+	},
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 10
 	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/laundromat)
@@ -94964,6 +94997,9 @@
 	dir = 4
 	},
 /obj/effect/landmark/start/darkpack/triad/red_pole,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 8
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "vRv" = (
@@ -95048,6 +95084,7 @@
 /obj/effect/turf_decal/siding/wood/dark/corner{
 	dir = 4
 	},
+/obj/effect/turf_decal/siding/wood/dark,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/laundromat)
 "vSn" = (
@@ -95562,6 +95599,9 @@
 	},
 /obj/machinery/light/directional/east,
 /obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 4
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "vXN" = (
@@ -148469,7 +148509,7 @@ ovq
 jcc
 jcc
 tit
-lSD
+msW
 utT
 bKe
 tct
@@ -148480,7 +148520,7 @@ wyt
 oXK
 xSH
 yje
-lSD
+hAe
 lSD
 jcc
 jcc
@@ -150525,7 +150565,7 @@ nvg
 jcc
 jcc
 tit
-dUr
+msW
 stP
 trb
 sTe

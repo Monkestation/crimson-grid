@@ -3878,7 +3878,7 @@
 "aVJ" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
+	dir = 5
 	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
@@ -5094,6 +5094,7 @@
 	pixel_x = -4;
 	pixel_y = 7
 	},
+/obj/effect/turf_decal/siding/wood/dark,
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "biG" = (
@@ -19661,6 +19662,9 @@
 /obj/item/storage/fancy/cigarettes/cigpack_robust{
 	pixel_x = -7;
 	pixel_y = 9
+	},
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
 	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
@@ -34932,7 +34936,9 @@
 /area/vtm/interior/ghetto)
 "icd" = (
 /obj/machinery/light/directional/east,
-/obj/effect/turf_decal/siding/wood/dark,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 6
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "icu" = (
@@ -35404,6 +35410,9 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 6
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "iiy" = (
@@ -61485,6 +61494,16 @@
 	},
 /turf/open/floor/city/circled,
 /area/vtm/interior/sewer/police)
+"ocT" = (
+/obj/structure/chair/plastic/darkpack{
+	dir = 4
+	},
+/obj/effect/landmark/start/darkpack/triad/red_pole,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 9
+	},
+/turf/open/floor/carpet/darkpack/redsilver,
+/area/vtm/interior)
 "odc" = (
 /obj/structure/brazier{
 	pixel_x = 0;
@@ -62971,13 +62990,13 @@
 /turf/open/floor/city/factory,
 /area/vtm/interior/church/staff)
 "osg" = (
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 8
-	},
 /obj/structure/chair/plastic/darkpack{
 	dir = 4
 	},
 /obj/effect/landmark/start/darkpack/triad/red_pole,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 10
+	},
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior)
 "osh" = (
@@ -81976,6 +81995,16 @@
 /obj/effect/landmark/start/darkpack/citizen/janitor,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm)
+"sLQ" = (
+/obj/structure/chair/plastic/darkpack{
+	dir = 8
+	},
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 5
+	},
+/turf/open/floor/carpet/darkpack/redsilver,
+/area/vtm/interior)
 "sLZ" = (
 /obj/effect/landmark/start/darkpack/society_of_leopold/inquisitor,
 /turf/open/floor/plating/concrete{
@@ -104707,6 +104736,16 @@
 /obj/machinery/light/small/red/directional/north,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer)
+"xVa" = (
+/obj/structure/chair/plastic/darkpack{
+	dir = 8
+	},
+/obj/effect/landmark/start/darkpack/triad/blue_lanterns,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 4
+	},
+/turf/open/floor/carpet/darkpack/redsilver,
+/area/vtm/interior)
 "xVo" = (
 /obj/structure/reagent_dispensers/water_cooler{
 	pixel_y = 23;
@@ -133323,7 +133362,7 @@ gIJ
 nfj
 abY
 tqf
-osg
+ocT
 qva
 njz
 njz
@@ -133731,8 +133770,8 @@ gIJ
 gIJ
 rSC
 tqf
-iiu
-iiu
+sLQ
+xVa
 icd
 njz
 njz
@@ -133740,7 +133779,7 @@ njz
 njz
 njz
 aVJ
-iiu
+xVa
 iiu
 ajj
 imV
