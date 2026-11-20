@@ -32,7 +32,7 @@
 	uniform = /obj/item/clothing/under/vampire/turtleneck_navy
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/smartphone/hos_garrison
-	r_pocket = /obj/item/vamp/keys/hos_garrison
+	r_pocket = /obj/item/vamp/keys/hos
 	backpack_contents = list(
         /obj/item/card/credit=1,
         /obj/item/phone_book=1,
