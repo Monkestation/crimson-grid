@@ -316,13 +316,13 @@
 	name = "Forest - Tunnel - West"
 
 /area/vtm/interior/house/oakland/fr_3
-	name = "Forest - Cottage - South"
+	name = "Forest - Abandoned Cabin"
 
 /area/vtm/interior/house/oakland/fr_4
-	name = "Forest - Cottage - East"
+	name = "Forest - Cottage"
 
 /area/vtm/interior/house/oakland/fr_5
-	name = "Forest - Cottage - North"
+	name = "Forest - Cabin"
 
 /area/vtm/interior/house/oakland/fr_6
 	name = "Forest - Ranger Station"
