@@ -516,15 +516,8 @@
 	. = ..()
 	owner.remove_inner_armor(/datum/armor/werewolf)
 
-// CRIMSON EDIT CHANGE START - Crinos soak changed from Fortitude 4 to Fortitude 5
+// CRIMSON EDIT CHANGE - Crinos soak changed from Dark Pack Fortitude 4 to Fortitude 5
 
-// ORIGINAL: // Equal to Fortitude 4; 4x15 (60) for bash, 4x10 (40) for agg on fort 4
-// ORIGINAL: // If it's too weak you can tune up to Fort 5 (75 bash and 60 agg) but that felt too strong when tried w/ Garou passive regen values.
-
-// Equivalent to Dark Pack Fortitude 5; these armour values were previously set with Garou regeneration values that were more than double what we have now.
-// 75 Bash/Lethal, 50 Agg in line with the current armour damage reduction cap, which is fine since Garou can't wear armour in their war forms.
-
-// CRIMSON EDIT CHANGE END
 /datum/armor/werewolf
 	acid = 50 // CRIMSON EDIT CHANGE - ORIGINAL: acid = 40
 	bio = 50 // CRIMSON EDIT CHANGE - ORIGINAL: bio = 40
