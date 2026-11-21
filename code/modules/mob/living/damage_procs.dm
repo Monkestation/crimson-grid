@@ -529,6 +529,8 @@
  *
  * returns the net change in damage
  */
+
+// TODO - Apparently this doesn't work for aggravated damage. It's also never used for aggravated damage, and you shouldn't use it for that either unless you go out of your way to fix it.
 /mob/living/proc/heal_bodypart_damage(brute = 0, burn = 0, updating_health = TRUE, required_bodytype = NONE, target_zone = null, aggravated = 0) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 	. = (adjust_brute_loss(-abs(brute), updating_health = FALSE) + adjust_fire_loss(-abs(burn), updating_health = FALSE) + adjust_agg_loss(-abs(aggravated), updating_health = FALSE)) // DARKPACK EDIT CHANGE - AGGRAVATED_DAMAGE
 	if(!.) // no change, no need to update
