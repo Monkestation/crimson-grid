@@ -48,8 +48,11 @@
 		if(successes <= 0)
 			return TRUE
 
-	to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
-	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	if(owner != /datum/species/human/shifter/feral)
+		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
+		SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	else
+		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
 
 	var/deathdesc
 	if(prompting_mob)
