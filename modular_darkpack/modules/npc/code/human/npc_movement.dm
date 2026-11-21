@@ -1,3 +1,8 @@
+// How many recently visited activity points an NPC remembers (prevents ping-ponging between two points)
+#define NPC_RECENT_TARGETS 4
+// How far an NPC on asphalt will look for somewhere off the road to loiter
+#define NPC_SIDEWALK_SEARCH_RANGE 8
+
 /obj/effect/landmark/npc_spawn_point
 	icon = 'modular_darkpack/modules/deprecated/icons/effects/landmarks_static.dmi'
 	icon_state = "spawn"
@@ -35,6 +40,10 @@
 	icon = 'modular_darkpack/modules/deprecated/icons/effects/landmarks_static.dmi'
 	icon_state = "bullets"
 
+/// Activity point that draws NPCs to somewhere they can buy food.
+/obj/effect/landmark/npcactivity/food
+	name = "NPC Food Activity"
+
 /obj/effect/landmark/npcability
 	name = "NPC Ability"
 	icon = 'modular_darkpack/modules/deprecated/icons/effects/landmarks_static.dmi'
@@ -54,6 +63,7 @@
 	GLOB.alive_npc_list -= src
 	SShumannpcpool.try_repopulate()
 	GLOB.move_manager.stop_looping(src)
+	abandon_food()
 
 	if (!last_attacker || (get_dist(src, last_attacker) >= 10) || key || hostile)
 		return ..()
@@ -86,10 +96,12 @@
 
 	. = ..()
 
+// CRIMSON GRID EDIT - NPC GRID
+#define NPC_LOOP_NONE 0
+#define NPC_LOOP_WALK 1
+#define NPC_LOOP_REACT 2 // combat or fleeing
+
 /mob/living/carbon/human/npc/Life()
-	// huh, NPCs don't run Life() at all if they're dead
-	// this means NPCs' organs will never rot, they'll stop bleeding, their body will stay
-	// the temperature it was when they died, etc. remove?
 	if (stat == DEAD)
 		return
 
@@ -108,30 +120,44 @@
 
 	if (staying)
 		return
-	if (!walktarget)
+
+	// Don't pick a new destination while loitering
+	if (!walktarget && world.time >= loiter_until)
 		walktarget = ChoosePath()
 	if(walktarget)
 		EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Set walktarget: [walktarget]", list(loc, get_turf(walktarget)))
+
+	// Loitering NPCs just stand around, skip stuck detection below
+	if (!walktarget && world.time < loiter_until)
+		return
+
+	// Track stuck steps on the same turf
 	if (loc == tupik_loc)
 		tupik_steps += 1
 	else
 		tupik_loc = loc
 		tupik_steps = 0
 
-	if (tupik_steps <= 3)
-		return
-	var/turf/T = get_step(src, pick(NORTH, SOUTH, WEST, EAST))
-	face_atom(T)
-	step_to(src, T, 0)
+	// If we've been stuck on the same turf for more than 3 ticks
+	if (tupik_steps > 3)
+		tupik_steps = 0
 
-	if (!walktarget || old_movement)
+		// Remember the blocked target so we don't immediately retry it, then reset movement
+		if(walktarget)
+			remember_target(walktarget)
+			walktarget = null
+
+		set_loop_mode(NPC_LOOP_NONE)
+		loiter_spot = null
+		// Short pause before choosing a fresh destination
+		loiter_until = world.time + rand(2 SECONDS, 5 SECONDS)
+
+		// Try to take a random step aside to untangle from crowds
+		var/turf/side_step = get_step(src, pick(NORTH, SOUTH, WEST, EAST))
+		if(side_step && !side_step.density)
+			face_atom(side_step)
+			step_to(src, side_step, 0)
 		return
-	if (observed_by_player())
-		return
-	var/turf/old_loc = loc
-	var/turf/new_loc = get_turf(walktarget)
-	forceMove(new_loc)
-	EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Teleported using evil russian shitcode", list(old_loc, new_loc))
 
 /mob/living/carbon/human/npc/proc/CreateWay(direction)
 	var/turf/location = get_turf(src)
@@ -151,10 +177,27 @@
 				stopturf = 1
 				return get_step(location, direction)
 
+/// Remembers a destination we've just visited so ChoosePath doesn't send us straight back to it.
+/mob/living/carbon/human/npc/proc/remember_target(atom/target)
+	recent_targets += target
+	if(length(recent_targets) > NPC_RECENT_TARGETS)
+		recent_targets.Cut(1, 2)
+
+/// Whether ChoosePath is allowed to send us to this activity point right now.
+/mob/living/carbon/human/npc/proc/can_pick_activity(obj/effect/landmark/npcactivity/N)
+	if(N in recent_targets)
+		return FALSE
+	// Not hungry again yet
+	if(world.time < food_cooldown_until && istype(N, /obj/effect/landmark/npcactivity/food))
+		return FALSE
+	return TRUE
+
 /mob/living/carbon/human/npc/proc/ChoosePath()
 	if(!old_movement)
 		var/list/possible_list = list()
 		for(var/obj/effect/landmark/npcactivity/N in GLOB.npc_activities)
+			if(!can_pick_activity(N))
+				continue
 			if(get_dist(src, N) < 64)
 				var/turf/T = get_step(N, turn(get_dir(src, N), 180))
 				var/obj/effect/landmark/npcability/A = locate() in T
@@ -164,18 +207,22 @@
 					if(N.y > y-3 && N.y < y+3)
 						possible_list += N
 		if(!length(possible_list))
-			var/atom/shitshit
+			//any activity point that isn't right on top of us, isn't one we just visited, and isn't crowded
+			var/list/candidates = list()
+			var/list/anywhere = list()
 			for(var/obj/effect/landmark/npcactivity/N in GLOB.npc_activities)
-				if(!shitshit)
-					shitshit = N
-				if(get_dist(src, N) > 1 && get_dist(src, N) < get_dist(src, shitshit))
-					shitshit = N
-			if(shitshit)
-				return shitshit
-			else if (length(GLOB.npc_activities))
-				return pick(GLOB.npc_activities)
-			else
-				return
+				if(!can_pick_activity(N))
+					continue
+				anywhere += N
+				var/dist = get_dist(src, N)
+				if(dist <= 1 || dist > 40)
+					continue
+				candidates += N
+			if(length(candidates))
+				return pick(candidates)
+			if(length(anywhere))
+				return pick(anywhere)
+			return
 
 		return pick(possible_list)
 	else
@@ -213,6 +260,38 @@
 					return pick(north_steps, south_steps, east_steps)
 				else
 					return pick(north_steps, south_steps, west_steps)
+
+/// Finds the closest free open turf that isn't asphalt, or null if there isn't one in range.
+/mob/living/carbon/human/npc/proc/find_sidewalk_spot()
+	var/best = INFINITY
+	var/list/spots = list()
+	for(var/turf/open/T in range(NPC_SIDEWALK_SEARCH_RANGE, src))
+		if(T.density || istype(T, /turf/open/floor/plating/asphalt))
+			continue
+		if(locate(/mob/living) in T)
+			continue
+		var/dist = get_dist(src, T)
+		if(dist > best)
+			continue
+		if(dist < best)
+			best = dist
+			spots.Cut()
+		spots += T
+	if(length(spots))
+		return pick(spots)
+	return null
+
+/// Called when we arrive at a destination. If we're standing on asphalt, walk off it first, then idle for a while.
+/mob/living/carbon/human/npc/proc/start_loitering()
+	if(istype(get_turf(src), /turf/open/floor/plating/asphalt))
+		var/turf/spot = find_sidewalk_spot()
+		if(spot)
+			// loiter_until gets set once we actually reach the spot
+			loiter_spot = spot
+			walktarget = spot
+			stopturf = 0
+			return
+	loiter_until = world.time + rand(10 SECONDS, 30 SECONDS)
 
 /mob/living/carbon/human/npc/proc/can_npc_move()
 	if(stat >= HARD_CRIT)
@@ -255,20 +334,30 @@
 
 	if(!staying)
 		lifespan += 1
-	if(!walktarget && !staying)
+	if(!walktarget && !staying && world.time >= loiter_until)
 		stopturf = rand(1, 2)
 		walktarget = ChoosePath()
 		face_atom(walktarget)
 
+	if(!isnull(hardstop) && !loiter_spot)
+		stopturf = hardstop
 	// Can't do anything if in a container
 	if (!isturf(loc))
 		return
 
-	// Checks for fire, clearing the stored fire if none is in view
-	afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
+	// Checks for fire, clearing the stored fire if none is in view.
+	// Skipped in combat, since the combat branch never reads it.
+	afraid_of_fire = danger_source ? null : find_nearby_fire()
 
 	// Combat behaviour
 	if (danger_source)
+		set_loop_mode(NPC_LOOP_REACT)
+		// Stop loitering so we resume walking once the fight is over
+		loiter_until = 0
+		loiter_spot = null
+		// Get out of the chair and forget about dinner
+		abandon_food()
+
 		// Run away from the danger source if they aren't aggressive and have no weapon
 		if (!has_weapon && !aggressive)
 			GLOB.move_manager.move_away(src, danger_source, 10, cached_multiplicative_slowdown)
@@ -301,13 +390,57 @@
 
 	// Running away from fire behaviour
 	else if (afraid_of_fire)
+		set_loop_mode(NPC_LOOP_REACT)
 		GLOB.move_manager.move_away(src, afraid_of_fire, 10, cached_multiplicative_slowdown)
 		if (prob(25))
 			emote("scream")
 
 	// Walking around behaviour
 	else if (walktarget && !staying)
-		GLOB.move_manager.move_to(src, walktarget, 0, cached_multiplicative_slowdown)
+		var/arrive_dist = (loiter_spot && walktarget == loiter_spot) ? 0 : max(stopturf, 0)
+		var/at_counter = (food_phase == 2 && food_order?.counter && get_dist(src, food_order.counter) <= 1)
+		if(at_counter || get_dist(src, walktarget) <= arrive_dist)
+			var/reached_loiter_spot = (walktarget == loiter_spot)
+			if(!reached_loiter_spot)
+				remember_target(walktarget)
+			walktarget = null
+			walk_stuck_ticks = 0
+			set_loop_mode(NPC_LOOP_NONE)
+			if(reached_loiter_spot)
+				loiter_spot = null
+				loiter_until = world.time + rand(10 SECONDS, 30 SECONDS)
+				// Sitting down, collecting food, etc. (see the food counter code)
+				on_loiter_spot_reached()
+			else
+				start_loitering()
+		else
+			set_loop_mode(NPC_LOOP_WALK)
+			// If we haven't moved for a few ticks, we're probably stuck behind someone: repath around them
+			//chud shit
+			if(loiter_spot && walktarget == loiter_spot && walk_stuck_ticks >= 2 && get_dist(src, walktarget) <= 3)
+				var/turf/spot_turf = get_turf(walktarget)
+				if(spot_turf && !spot_turf.density)
+					forceMove(spot_turf)
+					walk_stuck_ticks = 0
+					last_walk_pos = loc
+					return
+
+			if(loc == last_walk_pos)
+				walk_stuck_ticks++
+			else
+				walk_stuck_ticks = 0
+				last_walk_pos = loc
+			if(walk_stuck_ticks >= 3) // tune to your tick rate
+				var/turf/ahead = get_step(src, dir)
+				if(ahead && (locate(/mob/living) in ahead))
+					walk_avoid = ahead
+				walk_stuck_ticks = 0
+				walk_loop_target = null // forces start_walk_loop to rebuild the path
+			start_walk_loop()
+			walk_avoid = null
+
+	else
+		set_loop_mode(NPC_LOOP_NONE)
 
 	if (!has_weapon || danger_source || !spawned_weapon)
 		return
@@ -315,3 +448,80 @@
 		npc_stow_weapon()
 	else
 		has_weapon = FALSE
+
+/mob/living/carbon/human/npc/proc/start_walk_loop()
+	var/delay = cached_multiplicative_slowdown + 0.1 SECONDS
+	if(walk_loop_target == walktarget && walk_loop_delay == delay)
+		return
+	walk_loop_target = walktarget
+	walk_loop_delay = delay
+	// Loiter spots (chairs, counter spots, sidewalk) are walked to exactly (dist 0); everything else stops 1+ away
+	var/min_dist = loiter_spot ? 0 : max(stopturf, 1)
+	GLOB.move_manager.navmap_astar_move(src, walktarget, delay, \
+		repath_delay = 2 SECONDS, \
+		max_path_length = clamp(get_dist(src, walktarget) * 2, 40, 120), \
+		minimum_distance = min_dist, \
+		simulated_only = TRUE, \
+		avoid = walk_avoid, \
+		skip_first = TRUE, \
+		allow_multiz = FALSE, \
+		allow_nav_links = FALSE)
+
+/mob/living/carbon/human/npc/CanAllowThrough(atom/movable/mover, border_dir)
+	if(istype(mover, /mob/living/carbon/human/npc))
+		return TRUE
+	return ..()
+
+/// Returns the first visible turf fire in range, or null.
+/mob/living/carbon/human/npc/proc/find_nearby_fire()
+	if(!length(GLOB.turf_fires))
+		return null
+	for(var/obj/effect/abstract/turf_fire/fire as anything in GLOB.turf_fires)
+		if(fire.z != z || get_dist(src, fire) > DEFAULT_SIGHT_DISTANCE)
+			continue
+		if(!can_see(src, fire, DEFAULT_SIGHT_DISTANCE))
+			continue
+		return fire
+	return null
+
+/mob/living/carbon/human/npc
+	///the hard passed in dist for stop turfs
+	var/hardstop
+
+	var/loop_mode = NPC_LOOP_NONE
+	/// The walktarget our current jps walk loop was built for. Null means no walk loop of ours is running.
+	var/walk_loop_target
+	/// The delay our current jps walk loop was built with, so we can rebuild it if slowdown changes.
+	var/walk_loop_delay
+	/// Where we were last time the walk branch ran, used to detect being stuck.
+	var/turf/last_walk_pos
+	/// How many walk ticks in a row we haven't moved.
+	var/walk_stuck_ticks = 0
+	/// A turf the next jps path should route around (the mob blocking us), cleared right after use.
+	var/turf/walk_avoid
+	/// Recently visited activity points, excluded from ChoosePath so we don't ping-pong.
+	var/list/recent_targets = list()
+	/// world.time until which we stand around instead of picking a new destination.
+	var/loiter_until = 0
+	/// The off-road turf we're walking to so we can loiter there. Null if we aren't heading to one.
+	var/turf/loiter_spot
+	/// world.time before which we won't path to food activity points or order food (we just ate).
+	var/food_cooldown_until = 0
+
+/mob/living/carbon/human/npc/proc/set_loop_mode(new_mode)
+	if(loop_mode == new_mode)
+		return
+	if(loop_mode != NPC_LOOP_NONE)
+		GLOB.move_manager.stop_looping(src)
+	loop_mode = new_mode
+	walk_loop_target = null
+	walk_loop_delay = null
+
+#undef NPC_LOOP_NONE
+#undef NPC_LOOP_WALK
+#undef NPC_LOOP_REACT
+
+// CRIMSON GRID EDIT END - NPC GRID
+
+#undef NPC_RECENT_TARGETS
+#undef NPC_SIDEWALK_SEARCH_RANGE
