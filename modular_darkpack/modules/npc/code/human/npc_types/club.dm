@@ -17,7 +17,7 @@
 		hasjukebox = TRUE
 
 		// Hacky check for if it's currently playing
-		if (jukebox.static_power_usage != ACTIVE_POWER_USE)
+		if (!jukebox.music_player?.active_song_sound)
 			continue
 		if (prob(50))
 			dancefirst(src)

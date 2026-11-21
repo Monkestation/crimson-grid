@@ -3,19 +3,18 @@
 	true_desc = "Decreases incoming damage."
 	icon_state = "k_alamut"
 	research_value = 30
+	var/damage_modifier = 1.2
 
 /obj/item/occult_artifact/vampire/key_of_alamut/grant_powers()
 	. = ..()
-	var/mob/living/carbon/human/H = owner
-	if(H.dna.species.damage_modifier >= 70)
-		return
-	if(H.dna)
-		H.dna.species.damage_modifier = H.dna.species.damage_modifier+20
+	RegisterSignal(owner, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(on_owner_damage))
 
 /obj/item/occult_artifact/vampire/key_of_alamut/ungrant_powers()
 	. = ..()
-	var/mob/living/carbon/human/H = owner
-	if(H.dna.species.damage_modifier >= 50)
+	UnregisterSignal(owner, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS)
+
+/obj/item/occult_artifact/vampire/key_of_alamut/proc/on_owner_damage(mob/living/carbon/human/source, list/damage_mods, damage_amount, damagetype, def_zone, sharpness, attack_direction, obj/item/attacking_item)
+	SIGNAL_HANDLER
+	if(!istype(source))
 		return
-	if(H.dna)
-		H.dna.species.damage_modifier = H.dna.species.damage_modifier-20
+	damage_mods += damage_modifier

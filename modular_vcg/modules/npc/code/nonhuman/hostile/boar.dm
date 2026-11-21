@@ -47,4 +47,4 @@
 	message = "oinks!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	vary = TRUE
-	sound = SFX_PIG_OINK
+	sound = /datum/sound_effect/pig_oink
