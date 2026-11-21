@@ -158,7 +158,7 @@
 		new /datum/data/vending_product("military jacket", /obj/item/clothing/suit/vampire/toggled/military_jacket, 25),
 		new /datum/data/vending_product("harness boots", /obj/item/clothing/shoes/vampire/harness_boots, 30),
 		new /datum/data/vending_product("brown harness boots", /obj/item/clothing/shoes/vampire/harness_boots/brown, 30),
-		new /datum/data/vending_product("wrist watch", /obj/item/watch, 20), 
+		new /datum/data/vending_product("wrist watch", /obj/item/clothing/watch, 20), 
 		new /datum/data/vending_product("beret", /obj/item/clothing/head/beret, 15),
 		new /datum/data/vending_product("mariniere", /obj/item/clothing/under/rank/civilian/mime, 60),
 		new /datum/data/vending_product("propeller hat", /obj/item/clothing/head/soft/propeller_hat, 25),

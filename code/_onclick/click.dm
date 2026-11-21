@@ -395,7 +395,7 @@
 	. = SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A, params)
 	if(. & COMSIG_MOB_CANCEL_CLICKON)
 		return
-	//swap_hand() DARKPACK EDIT REMOVAL - Swapping hands on middle click removed.
+	// cycle_hand(WEST, FALSE) // DARKPACK EDIT REMOVAL - (Swapping hands on middle click removed.)
 
 /**
  * Shift click
@@ -501,9 +501,8 @@
 	var/list/modifiers = params2list(params)
 	// DARKPACK EDIT REMOVAL START - (remove middle click swapping hands.)
 	/*
-	if(LAZYACCESS(modifiers, MIDDLE_CLICK) && iscarbon(usr))
-		var/mob/living/carbon/C = usr
-		C.swap_hand()
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK) && ismob(usr))
+		usr.cycle_hand(WEST, FALSE)
 	else
 		var/turf/click_turf = parse_caught_click_modifiers(modifiers, get_turf(usr.client ? usr.client.eye : usr), usr.client)
 		if (click_turf)

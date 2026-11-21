@@ -12,14 +12,14 @@
 	power_type = /datum/discipline_power/dominate
 	var/list/botched_targets //a lazylist of weakrefs
 
-/datum/discipline/dominate/post_gain()
+/datum/discipline/dominate/post_gain(post_gain_applied)
 	. = ..()
 	if(level >= 4)
 		RegisterSignal(owner, COMSIG_MOB_EMOTE, PROC_REF(on_snap))
 
 /datum/discipline/dominate/post_loss()
-	. = ..()
 	UnregisterSignal(owner, COMSIG_MOB_EMOTE)
+	return ..()
 
 /datum/discipline/dominate/proc/on_snap(atom/source, datum/emote/emote_args)
 	SIGNAL_HANDLER

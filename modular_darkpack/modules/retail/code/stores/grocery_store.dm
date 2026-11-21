@@ -1,6 +1,7 @@
 /obj/structure/retail/grocery_store
 	desc = "A small grocery store."
 	products_list = list(
+		new /datum/data/vending_product("gum", /obj/item/storage/box/gum, 5),
 		new /datum/data/vending_product("chocolate bar", /obj/item/food/chocolatebar),
 		new /datum/data/vending_product("chips", /obj/item/food/chips),
 		new /datum/data/vending_product("water bottle", /obj/item/reagent_containers/cup/glass/vampirewater),

@@ -8,6 +8,12 @@
 	ui_name = null
 	hud_icon = 'modular_darkpack/modules/jobs/icons/sabbat.dmi'
 
+/datum/antagonist/sabbatist/on_gain()
+	. = ..()
+	var/mob/living/sabbatist = owner.current
+	if(sabbatist.is_clan(/datum/subsplat/vampire_clan/tremere))
+		sabbatist.add_quirk(/datum/quirk/darkpack/betrayers_mark)
+
 /datum/antagonist/sabbatist/apply_innate_effects(mob/living/mob_override)
 	. = ..()
 	add_team_hud(owner.current, /datum/antagonist/sabbatist)

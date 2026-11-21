@@ -19,6 +19,11 @@
 		new /datum/data/vending_product("crutch", /obj/item/cane/crutch),
 		new /datum/data/vending_product("wooden crutch", /obj/item/cane/crutch/wood),
 		new /datum/data/vending_product("empty blood bag", /obj/item/reagent_containers/blood/empty),
+		new /datum/data/vending_product("tourniquet", /obj/item/tourniquet, 100),
+		new /datum/data/vending_product("stethoscope", /obj/item/clothing/neck/stethoscope, 50),
+		new /datum/data/vending_product("head mirror", /obj/item/clothing/head/utility/head_mirror, 50),
+		new /datum/data/vending_product("medical belt", /obj/item/storage/belt/medical, 100),
+		new /datum/data/vending_product("paramedic belt", /obj/item/storage/belt/medical/paramedic, 100),
 		new /datum/data/vending_product("reflex hammer", /obj/item/reflexhammer, 30),
 // CRIMSON EDIT ADD START - Medkit to Pharmacy
 		new /datum/data/vending_product("Empty Medical Kit", /obj/item/storage/medkit/darkpack, 200),
