@@ -16,39 +16,59 @@
 	if(violation_observer)
 		RegisterSignal(src, COMSIG_SEEN_MASQUERADE_VIOLATION, PROC_REF(on_observed_violation))
 		RegisterSignal(src, COMSIG_MASQUERADE_REINFORCE, PROC_REF(on_masquerade_violation_reinforced))
-		RegisterSignals(src, list(COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE), PROC_REF(on_masquerade_witness_death))
+		RegisterSignals(src, list(COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE, COMSIG_QDELETING), PROC_REF(on_masquerade_witness_death))
+
 	else
 		UnregisterSignal(src, list(COMSIG_SEEN_MASQUERADE_VIOLATION, COMSIG_MASQUERADE_REINFORCE, COMSIG_LIVING_DEATH, COMSIG_ALL_MASQUERADE_REINFORCE))
 
 /atom/movable/proc/on_masquerade_violation()
 	if(!COOLDOWN_FINISHED(src, masquerade_violation_cooldown))
-		return
+		return FALSE
+	if(HAS_TRAIT(src, TRAIT_OBFUSCATED))
+		return FALSE
 	var/area/vtm/breacher_area = get_area(src)
 	if(!istype(breacher_area, /area/vtm))
-		return
+		return FALSE
 	if(breacher_area.zone_type != ZONE_MASQUERADE)
-		return
+		return FALSE
 	for(var/atom/movable/moving_atom in view(7, loc))
 		if(!moving_atom.violation_observer)
 			continue
+		if(istype(moving_atom, /mob/living))
+			var/mob/living/living_breach_witness = moving_atom
+			if(living_breach_witness.has_status_effect(/datum/status_effect/kissed) || living_breach_witness.has_status_effect(/datum/status_effect/delirium))
+				continue
 		SEND_SIGNAL(moving_atom, COMSIG_SEEN_MASQUERADE_VIOLATION, src)
 	COOLDOWN_START(src, masquerade_violation_cooldown, 1 TURNS)
+	return TRUE
 
 /atom/movable/proc/on_observed_violation(atom/source, atom/movable/player_breacher)
 	SIGNAL_HANDLER
 
 	if(!source || !player_breacher || ismundane(player_breacher)) //Humans cant break the masquerade. Because reasons.
-		return
+		return FALSE
+	if(HAS_TRAIT(player_breacher, TRAIT_OBFUSCATED))
+		return FALSE
+	if(SSmasquerade.has_open_breach(player_breacher, source))
+		return FALSE
 
 	if(isnpc(source))
 		var/mob/living/carbon/human/npc/npc_source = source
 		if(npc_source.client)
-			return
+			return FALSE
+		if(!ismundane(npc_source))
+			return FALSE
+		if(player_breacher.in_contents_of(/obj/structure/closet))
+			return FALSE
+		if(npc_source.stat == HARD_CRIT || IS_UNCONSCIOUS_AND_ALIVE(npc_source))
+			return FALSE
+		if(npc_source.is_blind())
+			return FALSE
 
 	if(isliving(source))
 		var/mob/living/mob_parent = source
 		if(mob_parent.stat == DEAD)
-			return
+			return FALSE
 		if(!INCAPACITATED_IGNORING(mob_parent, INCAPABLE_RESTRAINTS))
 			mob_parent.face_atom(player_breacher)
 	source.observe_masquerade_violation(player_breacher)
@@ -62,7 +82,7 @@
 
 	source.AddComponent(/datum/component/masquerade_hud, player_breacher)
 	SSmasquerade.masquerade_breach(source, player_breacher, (isliving(source) ? MASQUERADE_REASON_NPC : MASQUERADE_REASON_OBJECT))
-	RegisterSignal(player_breacher, COMSIG_LIVING_DEATH, PROC_REF(on_breacher_death), override = TRUE) // override is for breaching multiple times on the same violation observer - on_breacher_death handles all violations, not just the breach created here, so we only need one register
+	RegisterSignals(player_breacher, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING), PROC_REF(on_breacher_death), override = TRUE) // override is for breaching multiple times on the same violation observer - on_breacher_death handles all violations, not just the breach created here, so we only need one register
 
 	return TRUE
 
@@ -94,11 +114,14 @@
 		observe_masquerade_reinforce(player_breacher)
 		UnregisterSignal(player_breacher, COMSIG_LIVING_DEATH)
 
+// er... yuck. remind me to rewrite this.
 /atom/movable/proc/on_breacher_death(mob/living/dead_breacher, gibbed)
 	SIGNAL_HANDLER
 
 	for(var/breach in SSmasquerade.masquerade_breachers)
 		if(breach[1] != dead_breacher)
+			continue
+		if(breach[2] != src)
 			continue
 		SEND_SIGNAL(src, COMSIG_MASQUERADE_HUD_DELETE, dead_breacher)
 		SSmasquerade.masquerade_reinforce(src, dead_breacher)
