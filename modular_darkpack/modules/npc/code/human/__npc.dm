@@ -262,7 +262,7 @@
 	last_grab = world.time
 
 /mob/living/carbon/human/npc/ghoulificate(mob/owner)
-	deadchat_broadcast(span_ghostalert("[owner] is ghoulificating [src]."), owner, src)
+	deadchat_broadcast(" is ghoulificating [src].", owner, src)
 
 	AddComponent(\
 		/datum/component/ghost_direct_control,\

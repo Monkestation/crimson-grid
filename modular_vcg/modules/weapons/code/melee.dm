@@ -58,7 +58,7 @@
 
 /obj/item/sheriffblade/vamp/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=force_unwielded, force_wielded=force_wielded, icon_wielded="[base_icon_state]1")
+	AddComponent(/datum/component/two_handed, force_unwielded=force_unwielded, force_wielded=force_wielded, update_icon_state = TRUE)
 
 /obj/item/fireaxe/update_icon_state()
 	icon_state = "[base_icon_state]0"
