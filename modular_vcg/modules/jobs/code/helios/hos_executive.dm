@@ -25,7 +25,7 @@
 	)
 
 	allowed_splats = list(SPLAT_CORAX, SPLAT_KINFOLK)
-	description = "You are the Executive Manager of Helios Overnight Services. It is your job to assist the Lead Coordinator in all tasks and duties relating to the business, whether it be dispatching enemies or dispatching personnel and packages."
+	description = "You are the Executive Manager of Helios Overnight Services. It is your job to assist the Lead Coordinator in all tasks and duties relating to the business, whether it be dispatching personnel, managing intel or dispatching personnel and packages. Beyond the business, you are bound to the Nest perched atop Helios Overnight Services, and you must help guard and keep it alongside your kin."
 	minimum_masquerade = 3
 
 /datum/outfit/job/vampire/hos_executive

@@ -23,7 +23,7 @@
 	)
 
 	allowed_splats = list(SPLAT_CORAX, SPLAT_KINFOLK)
-	description = "You are a Garrison of Helios Overnight Services. It is your job to serve under your superiors, and as a family of Helios Overnight Services."
+	description = "You are a Garrison of Helios Overnight Services, gathering intel for clients and acting as a private investigator. It is your job to serve under your superiors, and as a family of Helios Overnight Services. Above all, you are sworn to the Nest perched atop Helios Overnight Services, and you must defend it with your life."
 	minimum_masquerade = 3
 
 /datum/outfit/job/vampire/hos_garrison
@@ -38,4 +38,5 @@
 		/obj/item/card/credit=1,
 		/obj/item/phone_book=1,
 		/obj/item/flashlight/seclite=1,
+		/obj/item/restraints/handcuffs = 1,
 	)

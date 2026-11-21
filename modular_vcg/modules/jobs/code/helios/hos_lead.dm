@@ -25,7 +25,7 @@
 	)
 
 	allowed_splats = list(SPLAT_CORAX)
-	description = "You are the Lead Coordinator of Helios Overnight Services. It is your job to organize all of the comings and goings at the business, making sure that everything is handled and sorted. Nothing must escape your gaze."
+	description = "You are the Lead Coordinator of Helios Overnight Services. It is your job to organize all of the comings and goings at the business, making sure that everything is handled and sorted. Nothing must escape your gaze, least of all the Nest perched atop Helios Overnight Services, whose safety and secrecy rest on your watch."
 	minimum_masquerade = 3
 
 /datum/outfit/job/vampire/hos_lead
