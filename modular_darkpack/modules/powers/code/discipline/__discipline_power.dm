@@ -63,6 +63,7 @@
 	var/cooldown_timer
 	/// If this Discipline is currently in use.
 	var/active = FALSE
+	var/mid_activate = FALSE
 	/// The Discipline that this power is part of.
 	var/datum/discipline/discipline
 	/// The player using this Discipline power.
@@ -569,10 +570,16 @@
  * * target - what the targeted Discipline (null otherwise) is being used on.
  */
 /datum/discipline_power/proc/try_activate(atom/target)
+	if(mid_activate)
+		return FALSE
+
+	mid_activate = TRUE
 	if (can_activate(target, TRUE))
 		pre_activation(target)
+		mid_activate = FALSE
 		return TRUE
 
+	mid_activate = FALSE
 	return FALSE
 
 /**
