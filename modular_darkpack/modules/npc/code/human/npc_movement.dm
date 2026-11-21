@@ -395,6 +395,14 @@
 		if (prob(25))
 			emote("scream")
 
+	// CRIMSON EDIT ADDITION START - drug dealing
+	// Fleeing from cops who witnessed a drug deal
+	else if (fleeing_from)
+		GLOB.move_manager.move_away(src, fleeing_from, 10, cached_multiplicative_slowdown)
+		if(IS_UNCONSCIOUS_OR_CRIT(fleeing_from) || !(fleeing_from in view(DEFAULT_SIGHT_DISTANCE, src)))
+			fleeing_from = null
+	// CRIMSON EDIT ADDITION END - drug dealing
+
 	// Walking around behaviour
 	else if (walktarget && !staying)
 		var/arrive_dist = (loiter_spot && walktarget == loiter_spot) ? 0 : max(stopturf, 0)

@@ -31,6 +31,12 @@
 	var/datum/socialrole/socialrole
 
 	var/is_talking = FALSE
+	// CRIMSON EDIT ADDITION START - drug dealing
+	var/talk_start_timer
+	var/talk_finish_timer
+	COOLDOWN_DECLARE(drug_line_cooldown)
+	COOLDOWN_DECLARE(drug_purchase_reset)
+	// CRIMSON EDIT ADDITION END - drug dealing
 	COOLDOWN_DECLARE(annoyed_cooldown)
 	COOLDOWN_DECLARE(car_dodge)
 	var/hostile = FALSE
@@ -38,6 +44,7 @@
 	var/last_antagonised = 0
 	var/mob/living/danger_source
 	var/obj/effect/abstract/turf_fire/afraid_of_fire
+	var/mob/living/fleeing_from // CRIMSON EDIT ADDITION - drug dealing
 	var/mob/living/last_attacker
 	var/last_health = 100
 	var/mob/living/last_damager
@@ -76,6 +83,19 @@
 	var/is_criminal = FALSE
 
 	var/list/drop_on_death_list = null
+
+	// CRIMSON EDIT ADDITION START - drug dealing
+	var/drug_price = 0
+	var/drug_purchase_limit = 3 // so you can't just keep an NPC next to a weed farm
+	var/drug_purchases = 0
+	var/drug_purchase_reset_time = 10 MINUTES // how long until the purchase limit resets
+	var/datum/storyteller_roll/npc_drug_sale/drug_sell_roll
+	var/static/list/npc_buyable_categories = list(
+		"weed",
+//		"meth",  Uncomment when these are actually craftable drugs, accidentally left from first PR.
+//		"cocaine", ^^^^^
+	)
+	// CRIMSON EDIT ADDITION END - drug dealing
 
 /mob/living/carbon/human/npc/Initialize(mapload)
 	. = ..()
@@ -181,15 +201,23 @@
 		return
 	is_talking = TRUE
 
-	addtimer(CALLBACK(src, PROC_REF(start_talking), message), 1 SECONDS)
+	// CRIMSON EDIT CHANGE START - drug dealing
+	talk_start_timer = addtimer(CALLBACK(src, PROC_REF(start_talking), message), 1 SECONDS)
+	// CRIMSON EDIT CHANGE END - drug dealing
 
 /mob/living/carbon/human/npc/proc/start_talking(message)
 	ADD_TRAIT(src, TRAIT_THINKING_IN_CHARACTER, CURRENTLY_TYPING_TRAIT)
 	create_typing_indicator()
 	var/typing_delay = round(length_char(message) * 0.5)
-	addtimer(CALLBACK(src, PROC_REF(finish_talking), message), max(3 SECONDS, typing_delay))
+	// CRIMSON EDIT CHANGE START - drug dealing
+	talk_finish_timer = addtimer(CALLBACK(src, PROC_REF(finish_talking), message), max(3 SECONDS, typing_delay))
+	// CRIMSON EDIT CHANGE END - drug dealing
 
 /mob/living/carbon/human/npc/proc/finish_talking(message)
+	// CRIMSON EDIT CHANGE START - drug dealing
+	talk_start_timer = null
+	talk_finish_timer = null
+	// CRIMSON EDIT CHANGE END - drug dealing
 	remove_typing_indicator()
 	REMOVE_TRAIT(src, TRAIT_THINKING_IN_CHARACTER, CURRENTLY_TYPING_TRAIT)
 	say(message)

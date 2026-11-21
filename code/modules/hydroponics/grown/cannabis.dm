@@ -134,7 +134,7 @@
 // DARKPACK EDIT ADD START
 /obj/item/food/grown/cannabis/Initialize(mapload, obj/item/seeds/new_seed)
 	. = ..()
-	AddComponent(/datum/component/selling, 100, "weed", TRUE, -1, 7)
+	AddComponent(/datum/component/selling, 50, "weed", TRUE, -1, 7, FALSE, FALSE) // CRIMSON EDIT CHANGE - drug dealing - black market no longer accepts weed - Original: AddComponent(/datum/component/selling, 100, "weed", TRUE, -1, 7)
 	//In 2015 Cannabis was only legally distributed in California by medical dispensary. https://web.archive.org/web/20161109220853/http://www.times-standard.com/article/NJ/20161107/NEWS/161109826
 	ADD_TRAIT(src, TRAIT_CONTRABAND, INNATE_TRAIT)
 // DARKPACK EDIT ADD END
