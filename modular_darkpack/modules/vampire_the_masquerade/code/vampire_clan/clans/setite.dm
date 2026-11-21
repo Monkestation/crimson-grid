@@ -28,6 +28,8 @@
 		/datum/discipline/presence,
 		/datum/discipline/protean
 	)
+	subsplat_keys = /obj/item/vamp/keys/tlacique
+
 	whitelisted = TRUE
 
 /datum/subsplat/vampire_clan/setite/warrior

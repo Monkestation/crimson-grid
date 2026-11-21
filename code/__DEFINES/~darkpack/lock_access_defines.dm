@@ -39,6 +39,7 @@
 #define LOCKACCESS_GIOVANNI "giovanni"
 #define LOCKACCESS_DAUGHTERS "daughters"
 #define LOCKACCESS_CAPPADOCIAN "cappadocian"
+#define LOCKACCESS_TLACIQUE "tlacique"
 #define LOCKACCESS_SALUBRI "salubri"
 #define LOCKACCESS_OLD_CLAN_TZI "old_clan_tzimisce"
 #define LOCKACCESS_BAALI "baali"
