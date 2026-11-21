@@ -40,8 +40,8 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	else if(ispath(splat, /datum/splat/vampire/ghoul))
 		discipline_points_budget = get_ghoul_discipline_budget(discipline_count)["points"]
 
-	// we are assuming that diablerists gain discipline points or disciplines.
-	if(discipline_points_spent > discipline_points_budget && !client.prefs.read_preference(/datum/preference/toggle/diablerist))
+	// we are assuming that diablerists gain discipline points or disciplines, and ghouls may potentially have these set higher than they can normally achieve.
+	if(discipline_points_spent > discipline_points_budget && !client.prefs.read_preference(/datum/preference/toggle/diablerist) && !ispath(splat, /datum/splat/vampire/ghoul))
 		tgui_alert(src, "You have [discipline_points_spent] discipline points spent, but your character is only allowed [discipline_points_budget]! Please fix your character preferences before joining.", "Discipline Points Overspent", list("OK"))
 		return FALSE
 
@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 			var/discipline = text2path(disc_path)
 			if(!discipline)
 				continue
-			var/level = character.get_splat(/datum/splat/vampire/ghoul) ? 1 : discipline_levels[disc_path]
+			var/level = discipline_levels[disc_path]
 			if(!level)
 				continue // prevent removing the disc by stopping here if they put 0 in it
 			var/result = character.change_st_power_level(discipline, level)
