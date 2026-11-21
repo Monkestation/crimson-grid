@@ -355,6 +355,7 @@ function draw_status() {
       a.href = 'byond://?' + part[2];
       a.textContent = part[1];
       lastdiv.appendChild(a);
+      continue; // CRIMSON GRID ADDITION - make stat panel not break
     } else {
       div = document.createElement('div');
       lastdiv = div;
