@@ -55,3 +55,7 @@ cp -r tgui/public/* $1/tgui/public/
 if [ "$(uname -o)" = "Msys" ]; then
 	cp ./*.dll $1/
 fi
+
+cp ./libdmeow.so $1/
+cp ./dmeow_procs.txt $1/
+cp ./dmeow_sleep_verdicts.txt $1/

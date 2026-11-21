@@ -315,6 +315,7 @@ SUBSYSTEM_DEF(ticker)
 			to_chat(world, span_info(holiday.greet()))
 
 	PostSetup()
+	INVOKE_ASYNC(Tracy, TYPE_PROC_REF(/datum/tracy, flush))
 
 	return TRUE
 
