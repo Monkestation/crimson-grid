@@ -407,8 +407,8 @@
 	abstract_type = /datum/movespeed_modifier/shifter
 	movetypes = GROUND
 
-/datum/movespeed_modifier/shifter/dire // CRIMSON GRID EDIT: Hispo is a giant wolf so it should be as fast as Lupus at base speed. The tradeoff is that Hispo autobreaches and doesn't induce delirium. Beware.
-	multiplicative_slowdown = -0.45 //CRIMSON GRID EDIT - previous multiplicative_slowdown = -0.3, original multiplicative_slowdown = -0.2
+/datum/movespeed_modifier/shifter/dire
+	multiplicative_slowdown = -0.45 //CRIMSON GRID EDIT - original multiplicative_slowdown = -0.2
 
 /datum/movespeed_modifier/shifter/feral
 	multiplicative_slowdown = -0.45 //CRMISON GRID EDIT - original multiplicative_slowdown = -0.35
