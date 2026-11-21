@@ -322,7 +322,7 @@
 
 /datum/status_effect/burning_touch/tick(seconds_between_ticks)
 	to_chat(owner, span_userdanger(pick(pain_messages)))
-	playsound(get_turf(owner), SFX_SIZZLE, 80, TRUE)
+	playsound(get_turf(owner), /datum/sound_effect/sizzle, 80, TRUE)
 
 /atom/movable/screen/alert/status_effect/burning_touch
 	name = "Burning Touch"

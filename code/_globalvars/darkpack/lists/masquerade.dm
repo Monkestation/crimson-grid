@@ -10,3 +10,5 @@ GLOBAL_LIST_EMPTY(veil_breakers_list)
 GLOBAL_LIST_EMPTY(supernatural_breakers_list)
 /// Areas that people will be transported to if they latejoin with a Masquerade-violating appearance
 GLOBAL_LIST_EMPTY(masquerade_latejoin)
+/// List of people who have knowledge of the supernatural despite being human
+GLOBAL_LIST_EMPTY(human_knowers)
