@@ -24,6 +24,7 @@
 #define VAMPIRE_CLAN_SETITE "setite"
 #define VAMPIRE_CLAN_TLACIQUE "tlacique"
 #define VAMPIRE_CLAN_TOREADOR "toreador"
+#define VAMPIRE_CLAN_VOLGIRRE_TOREADOR "volgirre_toreador"
 #define VAMPIRE_CLAN_TREMERE "tremere"
 #define VAMPIRE_CLAN_TRUE_BRUJAH "true_brujah"
 #define VAMPIRE_CLAN_TZIMISCE "tzimisce"
