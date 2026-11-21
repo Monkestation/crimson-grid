@@ -227,6 +227,10 @@
 /datum/discipline_power/vicissitude/horrid_form/activate()
 	. = ..()
 	activating = FALSE
+	var/datum/discipline/obtenebration/obten = owner.get_discipline(/datum/discipline/obtenebration)
+	var/datum/discipline_power/obtenebration/black_metamorphosis/armor = obten?.get_power(/datum/discipline_power/obtenebration/black_metamorphosis)
+	if(armor?.active)
+		armor.try_deactivate(direct = TRUE)
 	owner.set_species(mrace = /datum/species/tzimisce_zulo_form, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)
 	owner.uncuff() // mimics bloodform for uncuffing. Placeholder until cuffbreaking code is done.
 

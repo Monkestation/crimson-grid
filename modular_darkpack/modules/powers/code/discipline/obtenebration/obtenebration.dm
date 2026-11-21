@@ -187,6 +187,8 @@
 
 /datum/discipline_power/obtenebration/black_metamorphosis/pre_activation_checks()
 	. = ..()
+	if(is_species(owner, SPECIES_ZULO_FORM))
+		return FALSE
 	if(activating) // Prevent multi-activation while the do_after is ongoing
 		to_chat(owner, span_warning("You are already attempting to activate Black Metamorphosis!"))
 		return FALSE
