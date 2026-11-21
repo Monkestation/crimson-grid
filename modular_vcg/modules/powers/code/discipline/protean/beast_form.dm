@@ -75,7 +75,7 @@
 	icon_dead = "floppa_dead"
 	base_icon_state = "floppa"
 	icon = 'modular_vcg/modules/npc/icons/floppa.dmi'
-	pixel_x = -16
+	pixel_x = -8
 
 //Tlacique Exclusive forms
 
