@@ -31,9 +31,18 @@
 /mob/living/proc/getarmor(def_zone, type)
 	SHOULD_CALL_PARENT(TRUE)
 	var/worn_armor = get_worn_armor_value(def_zone, type)
+	/* // CRIMSON EDIT REMOVAL START - INNER_ARMOR_OVERLAP
 	var/inner_armor_percent = min(inner_armor?.get_rating(type) * 0.01, 1)
 	var/not_blocked = (100 - worn_armor) * (1 - inner_armor_percent)
 	return 100 - not_blocked
+	*/ // CRIMSON EDIT REMOVAL END
+	// CRIMSON EDIT ADDITION START - INNER_ARMOR_OVERLAP
+	var/inner_armor_rating = min(inner_armor?.get_rating(type) || 0, 100)
+	// math source: my ass
+	var/stronger = max(worn_armor, inner_armor_rating)
+	var/weaker = min(worn_armor, inner_armor_rating)
+	return stronger + (100 - stronger) * weaker * 0.01 * (weaker > 0 ? 0.5 : 1)
+	// CRIMSON EDIT ADDITION END
 
 /mob/living/proc/get_worn_armor_value(obj/item/bodypart/def_zone, damage_type)
 	return 0
@@ -75,7 +84,7 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_GET_EAR_PROTECTION, sig_protection)
 	var/protection = sig_protection[EAR_PROTECTION_ARG]
 	var/turf/current_turf = get_turf(src)
-	var/datum/gas_mixture/environment = current_turf.return_air()
+	var/datum/gas_mixture/environment = current_turf?.return_air()
 	var/pressure = environment?.return_pressure()
 	if(pressure < SOUND_MINIMUM_PRESSURE) //space is empty
 		protection += EAR_PROTECTION_VACUUM
@@ -127,6 +136,14 @@
 /// Returns the atom covering the mob's ears, or null if their ears are uncovered.
 /mob/living/proc/is_ears_covered()
 	return null
+
+/**
+ * Checks if our mob has their eyes visible.
+ * More verbose then directly checking HIDEEYES and lets you search for tint, flash protection, or covering clothing.
+ * Retuns TRUE or FALSE
+ */
+/mob/living/proc/is_eyes_visible(max_tint, max_flash_protection, requires_eyes = FALSE, covered_check_flags = NONE)
+	return TRUE
 
 /**
  * Check if the passed body zone is covered by some clothes
@@ -344,8 +361,13 @@
 /mob/living/proc/can_catch_item(skip_throw_mode_check = FALSE, try_offhand = FALSE)
 	if(HAS_TRAIT(src, TRAIT_HANDS_BLOCKED))
 		return FALSE
-	if(get_active_held_item() && (!try_offhand || get_inactive_held_item() || !swap_hand()))
-		return FALSE
+
+	if(get_active_held_item())
+		if(!try_offhand)
+			return FALSE
+		var/empty_held_indexes = get_empty_held_indexes()
+		if(!length(empty_held_indexes) || !swap_hand(pick(empty_held_indexes)))
+			return FALSE
 	return TRUE
 
 // CRIMSON GRID ADD: DARK THAUMATURGY
