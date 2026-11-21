@@ -104,6 +104,9 @@
 	if(phone)
 		phone.update_initialized_contacts(spawned, player_client)
 
+/datum/job/vampire/get_lobby_icon()
+	return icon(DEFAULT_HUDS_DMI, "hudno_id")
+
 /datum/job/vampire
 	abstract_type = /datum/job/vampire
 	exp_required_type = EXP_TYPE_PLAYTIME
