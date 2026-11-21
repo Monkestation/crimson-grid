@@ -139,8 +139,8 @@
 	if(guest)
 		if(user == guest)
 			return guest.real_name
-		var/mob/living/carbon/carbon_guest = astype(guest)
-		if((carbon_guest?.get_face_name() == "Unknown") && !carbon_guest.client?.prefs.read_preference(/datum/preference/toggle/show_identity_when_masked))
+		var/mob/living/carbon/human/human_guest = astype(guest)
+		if(human_guest?.is_identity_hidden())
 			return null
 		checked_name = guest.real_name
 	return LAZYACCESS(known_names, checked_name)
@@ -155,8 +155,7 @@
 		if(!silent)
 			to_chat(user, span_warning("You can't see them!"))
 		return FALSE
-	var/face_name = guest.get_face_name()
-	if((face_name == "Unknown"))
+	if(guest.is_identity_hidden())
 		if(!silent)
 			to_chat(user, span_warning("You can't see their face very well!"))
 		return FALSE

@@ -70,7 +70,7 @@
 			return "[face_name] (as [id_name])"
 
 	// DARKPACK EDIT ADD START
-	var/known_name = face_name ? null : (examiner ? GET_GUESTBOOK_NAME(examiner, src) : null)
+	var/known_name = isnull(signal_face) ? (examiner ? GET_GUESTBOOK_NAME(examiner, src) : null) : null
 	if(known_name && examiner != src && GET_GUESTBOOK_ENTRY(examiner, src)) // If this is a guestbook name, show original name too
 		known_name += ", [src]"
 	// DARKPACK EDIT ADD END
@@ -91,10 +91,10 @@
 		return if_no_face
 	return // DARKPACK EDIT CHANGE - ORIGINAL: return real_name
 
-/mob/living/carbon/human/proc/is_face_obscured()
+/mob/living/carbon/human/proc/is_face_obscured(ignore_clothing = FALSE) // DARKPACK EDIT CHANGE - ORIGINAL: /mob/living/carbon/human/proc/is_face_obscured()
 	if(HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
 		return TRUE //We're Unknown, no face information for you
-	if(obscured_slots & HIDEFACE)
+	if(!ignore_clothing && (obscured_slots & HIDEFACE)) // DARKPACK EDIT CHANGE - ORIGINAL: if(obscured_slots & HIDEFACE)
 		return TRUE
 	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
 	if(isnull(head) || HAS_TRAIT(head, TRAIT_DISFIGURED) || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN)) //disfigured. use id-name if possible
