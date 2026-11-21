@@ -1073,11 +1073,9 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 		return null
 
 	var/obj/structure/table/optable/operating_table = locate() in operating_turf
-	var/obj/machinery/computer/operating/operating_computer = operating_table?.computer
-
-	if(isnull(operating_computer) || (operating_computer.machine_stat & (NOPOWER|BROKEN)))
+	var/obj/machinery/computer/operating_computer = operating_table?.computer
+	if(isnull(operating_computer) || !operating_table.operating_program || (operating_computer.machine_stat & (NOPOWER|BROKEN)))
 		return null
-
 	return operating_computer
 
 /// Updates a patient's mood based on the surgery state and their traits

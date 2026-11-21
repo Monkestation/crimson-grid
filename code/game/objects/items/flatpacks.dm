@@ -11,11 +11,13 @@
 	drag_slowdown = 3.5 //use the cart stupid
 	custom_premium_price = PAYCHECK_COMMAND * 1.5
 
-	/// The board we deploy
+	/// The board we deploy (optional if machine_path is set)
 	var/obj/item/circuitboard/machine/board
+	/// The machine we deploy when there is no board. Set automatically from the board if one exists.
+	var/obj/machinery/machine_path //CRIMSON GRID EDIT - PC
 
-/obj/item/flatpack/Initialize(mapload, obj/item/circuitboard/machine/new_board)
-	if(isnull(board) && isnull(new_board))
+/obj/item/flatpack/Initialize(mapload, obj/item/circuitboard/machine/new_board, obj/machinery/new_machine_path)
+	if(isnull(board) && isnull(new_board) && isnull(machine_path) && isnull(new_machine_path)) //CRIMSON GRID EDIT - PC
 		return INITIALIZE_HINT_QDEL //how
 
 	. = ..()
@@ -27,11 +29,17 @@
 		)
 	AddElement(/datum/element/contextual_screentip_tools, tool_behaviors)
 
-	board = !isnull(new_board) ? new_board : new board(src) // i got board
-	if(board.loc != src)
-		board.forceMove(src)
-	var/obj/machinery/build = initial(board.build_path)
-	name = "flatpack ([initial(build.name)])"
+	//CRIMSON GRID EDIT - PC
+	if(!isnull(new_machine_path))
+		machine_path = new_machine_path
+
+	if(!isnull(board) || !isnull(new_board))
+		board = !isnull(new_board) ? new_board : new board(src) // i got board
+		if(board.loc != src)
+			board.forceMove(src)
+		machine_path = initial(board.build_path)
+
+	name = "flatpack ([initial(machine_path.name)])"
 
 /obj/item/flatpack/Destroy()
 	QDEL_NULL(board)
@@ -54,7 +62,7 @@
 /obj/item/flatpack/multitool_act(mob/living/user, obj/item/tool)
 	. = NONE
 
-	if(isnull(board))
+	if(isnull(board) && isnull(machine_path)) //CRIMSON GRID EDIT - PC
 		return ITEM_INTERACT_BLOCKING
 	if(!isturf(loc))
 		balloon_alert(user, "must deploy on the floor")
@@ -71,22 +79,29 @@
 		return ITEM_INTERACT_BLOCKING
 
 	new /obj/effect/temp_visual/mook_dust(loc)
-	var/obj/item/circuitboard/machine/leaving_circuit = board
-	if(contents.len > 1)
-		leaving_circuit.replacement_parts = leaving_circuit.flatten_component_list()
-		for(var/obj/item/flatpack_component in src)
-			if(flatpack_component == leaving_circuit)
-				continue
-			for(var/i in 1 to leaving_circuit.replacement_parts.len)
-				var/obj/item/machine_component = leaving_circuit.replacement_parts[i]
-				if(!ispath(machine_component, /obj/item))
-					continue
-				if(flatpack_component.type == machine_component)
-					leaving_circuit.replacement_parts[i] = flatpack_component
-					break
 
-	board = null
-	var/obj/machinery/new_machine = new leaving_circuit.build_path(loc, board = leaving_circuit)
+	//CRIMSON GRID EDIT - PC
+	var/obj/machinery/new_machine
+	if(isnull(board))
+		// circuitless: just spawn the machine
+		new_machine = new machine_path(loc)
+	else
+		var/obj/item/circuitboard/machine/leaving_circuit = board
+		if(contents.len > 1)
+			leaving_circuit.replacement_parts = leaving_circuit.flatten_component_list()
+			for(var/obj/item/flatpack_component in src)
+				if(flatpack_component == leaving_circuit)
+					continue
+				for(var/i in 1 to leaving_circuit.replacement_parts.len)
+					var/obj/item/machine_component = leaving_circuit.replacement_parts[i]
+					if(!ispath(machine_component, /obj/item))
+						continue
+					if(flatpack_component.type == machine_component)
+						leaving_circuit.replacement_parts[i] = flatpack_component
+						break
+		board = null
+		new_machine = new leaving_circuit.build_path(loc, board = leaving_circuit)
+
 	new_machine.on_construction(user)
 	loc.visible_message(span_warning("[src] deploys!"))
 	playsound(src, 'sound/machines/terminal/terminal_eject.ogg', 70, TRUE)
