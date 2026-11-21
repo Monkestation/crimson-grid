@@ -75,7 +75,7 @@
 	icon_dead = "floppa_dead"
 	base_icon_state = "floppa"
 	icon = 'modular_vcg/modules/npc/icons/floppa.dmi'
-
+	pixel_x = -16
 
 //Tlacique Exclusive forms
 
@@ -100,6 +100,7 @@
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 	sharpness = TRUE
 	can_breed = FALSE
+	pixel_x = -16
 
 /mob/living/basic/pet/cat/protean/puma
 	name = "Puma"
@@ -122,6 +123,7 @@
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 	sharpness = TRUE
 	can_breed = FALSE
+	pixel_x = -16
 
 /mob/living/basic/pet/cat/protean/puma/Initialize(mapload)
 	. = ..()
