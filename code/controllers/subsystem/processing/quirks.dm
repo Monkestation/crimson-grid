@@ -41,6 +41,13 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/item_quirk/blindness, /datum/quirk/darkpack/wolf_sight), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 	list(/datum/quirk/darkpack/banned_transformation, /datum/quirk/darkpack/metamorph), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 	list(/datum/quirk/darkpack/thirst_of_ages, /datum/quirk/darkpack/organovore), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/enchanting_voice, /datum/quirk/darkpack/speech_impediment), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/thirst_of_ages, /datum/quirk/darkpack/anthropic_taste), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/mute, /datum/quirk/darkpack/enchanting_voice), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/nonviolent, /datum/quirk/darkpack/territorial), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/nonviolent, /datum/quirk/darkpack/vengeful), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/short, /datum/quirk/darkpack/huge_size), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/iron_will/human, /datum/quirk/darkpack/weak_willed), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 ))
 
 GLOBAL_LIST_INIT(quirk_string_blacklist, generate_quirk_string_blacklist())
