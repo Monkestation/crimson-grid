@@ -56,6 +56,13 @@
 	special_networks = list(clinicadmin = list(fax_name = "Saint John's Hospital", fax_id = "clinicadmin", color = "blue", emag_needed = FALSE))
 // CRIMSON EDIT ADD END - #206
 
+// CRIMSON EDIT ADD - #322
+/obj/machinery/fax/corax
+	fax_name = "Helios Overnight Services"
+	fax_id = "helios"
+	special_networks = list(clinicadmin = list(fax_name = "Helios Overnight Services", fax_id = "helios", color = "blue", emag_needed = FALSE))
+// CRIMSON EDIT ADD END - #322
+
 /obj/machinery/fax/anarch
 	fax_name = "Anarchy Rose Bar"
 	fax_id = "anarchs"

@@ -99,6 +99,13 @@
 #define RADIO_TOKEN_ENDRON ":d"
 #define RADIO_COLOR_ENDRON "#ff4800"
 
+// CRIMSON GRID EDIT ADD
+#define RADIO_CHANNEL_CORAX "Helios"
+#define RADIO_KEY_CORAX "x"
+#define RADIO_TOKEN_CORAX ":x"
+#define RADIO_COLOR_CORAX "#1d307c"
+// CRIMSON GRID EDIT END
+
 // DARKPACK EDIT ADD END
 
 #define RADIO_CHANNEL_CTF_RED "Red Team"
@@ -160,6 +167,10 @@
 #define FREQ_ANARCH 1509 // Anarch comms frequency, dark orange
 #define FREQ_ENDRON 1511 // Endron comms frequency, orange
 // DARKPACK EDIT ADD END
+
+// CRIMSON GRID EDIT ADD
+#define FREQ_CORAX 1513 // Corax comms frequency, blueish purple
+// CRIMSON GRID EDIT END
 
 #define MAX_FREE_FREQ 1599 // -------------------------------------------------
 

@@ -170,6 +170,15 @@
 /obj/effect/mapping_helpers/door/access/triad
 	lock_id = LOCKACCESS_TRAID
 
+/obj/effect/mapping_helpers/door/access/hos //Helios Overnight Services - Crimson Grid Addition
+	lock_id = LOCKACCESS_HOS
+
+/obj/effect/mapping_helpers/door/access/hos_lead //Helios Overnight Services - Crimson Grid Addition
+	lock_id = LOCKACCESS_HOS_LEAD
+
+/obj/effect/mapping_helpers/door/access/mail // Mail Office - Crimson Grid Addition
+	lock_id = LOCKACCESS_MAIL
+
 /obj/effect/mapping_helpers/door/access/cleaning
 	lock_id = LOCKACCESS_CLEANING
 

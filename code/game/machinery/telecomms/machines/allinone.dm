@@ -76,7 +76,13 @@
 		"[FREQ_ENDRON]" = list(
 			"name" = RADIO_CHANNEL_ENDRON,
 			"color" = RADIO_COLOR_ENDRON
-		) // DARKPACK EDIT ADD END
+		), // DARKPACK EDIT ADD END
+		// CRIMSON GRID EDIT ADD
+		"[FREQ_CORAX]" = list(
+			"name" = RADIO_CHANNEL_CORAX,
+			"color" = RADIO_COLOR_CORAX,
+		)
+		// CRIMSON GRID EDIT END
 	)
 
 /obj/machinery/telecomms/allinone/nuclear

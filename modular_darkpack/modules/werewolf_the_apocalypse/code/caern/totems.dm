@@ -195,6 +195,20 @@
 		stinky_guy.forceMove(kickout_turf)
 		break
 
+///---------------- Corax Totem Beginning: Crimson Grid Addition
+
+/obj/structure/werewolf_totem/corax
+	name = "corax totem"
+	icon_state = "glassw" // This should be changed in the future for a modularized icon
+	base_icon_state = "glassw" // This should be changed in the future for a modularized icon
+	light_color = "#4052a3"
+
+/obj/structure/werewolf_totem/corax/is_friend_of_totem(mob/living/potential_friend)
+	return !!get_corax_splat(potential_friend)
+
+
+///---------------- Corax Totem End: Crimson Grid Addition
+
 /obj/structure/werewolf_totem/wendigo
 	name = "\improper " + TRIBE_GALESTALKERS + " totem"
 	friendly_tribes = list(TRIBE_GALESTALKERS)

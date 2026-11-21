@@ -689,6 +689,13 @@ export function JobsPage() {
                   hoveringOver={hoveringOver}
                   setHoveringOver={setHoveringOver}
                 />
+                <Department
+                  department="Helios Overnight Services" // Crimson Grid edit - Added Helios Overnight Services
+                  dragging={dragging}
+                  setDragging={setDragging}
+                  hoveringOver={hoveringOver}
+                  setHoveringOver={setHoveringOver}
+                />
               </Stack>
             </Stack.Item>
             {
