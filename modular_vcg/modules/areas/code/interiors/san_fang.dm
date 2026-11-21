@@ -230,10 +230,10 @@
 	name = "Fisherman's Wharf - Cave - West"
 
 /area/vtm/interior/house/sanfran/fh_10
-	name = "Fisherman's Wharf - Underground Gym"
-
-/area/vtm/interior/house/sanfran/fh_10
 	name = "Fisherman's Wharf - Unknown Underground Cavern"
+
+/area/vtm/interior/house/sanfran/fh_11
+	name = "Fisherman's Wharf - Underground Gym"
 
 /area/vtm/interior/house/sanfran/ph_1
 	name = "Pacific Heights - House - North West"
