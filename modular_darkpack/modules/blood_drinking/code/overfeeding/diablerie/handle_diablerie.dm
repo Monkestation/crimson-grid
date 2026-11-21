@@ -12,9 +12,6 @@
 			if(victim_generation >= generation)
 				message_admins("[ADMIN_LOOKUPFLW(src)] successfully Diablerized [ADMIN_LOOKUPFLW(victim)]")
 				log_attack("[key_name(src)] successfully Diablerized [key_name(victim)].")
-				if(victim.client)
-					var/datum/brain_trauma/special/imaginary_friend/trauma = gain_trauma(/datum/brain_trauma/special/imaginary_friend)
-					trauma.friend.key = victim.key
 			else
 				var/start_prob = 10
 				if(HAS_TRAIT(src, TRAIT_DIABLERIE))
@@ -31,13 +28,19 @@
 					return
 				message_admins("[ADMIN_LOOKUPFLW(src)] successfully Diablerized [ADMIN_LOOKUPFLW(victim)]")
 				log_attack("[key_name(src)] successfully Diablerized [key_name(victim)].")
-				if(victim.client)
-					var/datum/brain_trauma/special/imaginary_friend/diablerie/trauma = gain_trauma(/datum/brain_trauma/special/imaginary_friend/diablerie)
-					trauma.friend.key = victim.key
 
+			bind_diablerie_victim(victim)
 			make_diablerist()
 			adjust_brute_loss(-50, TRUE)
 			adjust_fire_loss(-50, TRUE)
 			victim.death()
 		if("No")	//Defaults to this if no if option not chosen to avoid issue.
 			return FALSE
+
+/mob/living/carbon/human/proc/bind_diablerie_victim(mob/living/victim)
+	if(!victim.client)
+		return
+	var/datum/brain_trauma/special/imaginary_friend/diablerie/trauma = has_trauma_type(/datum/brain_trauma/special/imaginary_friend/diablerie)
+	if(!trauma)
+		trauma = gain_trauma(/datum/brain_trauma/special/imaginary_friend/diablerie)
+	trauma?.add_victim(victim)
