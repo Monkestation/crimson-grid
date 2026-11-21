@@ -319,10 +319,10 @@
 	name = "Forest - Abandoned Cabin"
 
 /area/vtm/interior/house/oakland/fr_4
-	name = "Forest - Cottage"
+	name = "Forest - Decrepit Farmhouse"
 
 /area/vtm/interior/house/oakland/fr_5
-	name = "Forest - Cabin"
+	name = "Forest - Rental Cabin"
 
 /area/vtm/interior/house/oakland/fr_6
 	name = "Forest - Ranger Station"
