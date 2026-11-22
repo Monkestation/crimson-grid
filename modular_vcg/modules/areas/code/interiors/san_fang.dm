@@ -230,9 +230,6 @@
 	name = "Fisherman's Wharf - Cave - West"
 
 /area/vtm/interior/house/sanfran/fh_10
-	name = "Fisherman's Wharf - Unknown Underground Cavern"
-
-/area/vtm/interior/house/sanfran/fh_11
 	name = "Fisherman's Wharf - Underground Gym"
 
 /area/vtm/interior/house/sanfran/ph_1
@@ -282,6 +279,9 @@
 
 /area/vtm/interior/house/sanfran/ph_16
 	name = "Pacific Heights - Strip Club Penthouse"
+
+/area/vtm/interior/house/sanfran/ph_17
+	name = "Fisherman's Wharf - Unknown Underground Cavern"
 
 /area/vtm/interior/house/sanfran/pho_1
 	name = "Pacific Heights Outskirts - Cavern Passage"
@@ -389,7 +389,4 @@
 	name = "Undeground Town - House 2"
 
 /area/vtm/interior/house/sanfran/ut_3
-	name = "Undeground Town - House 3"
-
-/area/vtm/interior/house/sanfran/ut_4
 	name = "Undeground Town - Church"
