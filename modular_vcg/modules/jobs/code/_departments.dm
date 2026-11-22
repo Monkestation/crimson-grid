@@ -6,7 +6,7 @@
 	display_order = 17
 	ui_color = "#8c1717"
 
-/datum/job_department/hos
+/datum/job_department/hos // Crimson Grid Addition: Helios Overnight Services Faction
 	department_name = DEPARTMENT_HOS
 	department_bitflags = DEPARTMENT_BITFLAG_HOS
 	department_head = /datum/job/vampire/hos_lead

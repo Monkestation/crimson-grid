@@ -1,3 +1,5 @@
+// Crimson Grid Addition: A City Services Project for more City Workers, This one adds Mail Officers for deliveries
+
 /datum/job/vampire/mailman
 	title = JOB_CITY_MAILMAN
 	faction = FACTION_CITY

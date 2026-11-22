@@ -1,3 +1,5 @@
+// Crimson Grid Addition: Helios Overnight Services Addition for a Corax faction that works as a investigative agency
+
 /datum/job/vampire/hos_garrison
 	title = JOB_HOS_GARRISON
 	faction = FACTION_HOS

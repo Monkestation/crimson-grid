@@ -12,7 +12,7 @@ JOB_START_HELPER(forest_wolves/keeper, JOB_GAROU_KEEPER)
 JOB_START_HELPER(hospital/clinic_guard, JOB_CLINIC_GUARD)
 JOB_START_HELPER(hospital/clinic_lawyer, JOB_CLINIC_LAWYER)
 
-JOB_START_HELPER(city/mail, JOB_CITY_MAILMAN)
+JOB_START_HELPER(city/mail, JOB_CITY_MAILMAN) // Crimson Grid Addition: Mail Officers
 
 
 // Triad
@@ -24,7 +24,7 @@ JOB_START_HELPER(triad/deputy_mountain_master, JOB_DEPUTY_MOUNTAIN_MASTER)
 JOB_START_HELPER(triad/red_pole, JOB_TRIAD_RED_POLE)
 JOB_START_HELPER(triad/blue_lanterns, JOB_TRIAD_BLUE_LANTERNS)
 
-// Helios Overnight Services
+// Helios Overnight Services - Crimson Grid Addition
 /obj/effect/landmark/start/darkpack/hos
 	name = "generic hos start"
 

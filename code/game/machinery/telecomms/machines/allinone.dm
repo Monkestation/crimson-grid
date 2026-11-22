@@ -76,7 +76,7 @@
 		"[FREQ_ENDRON]" = list(
 			"name" = RADIO_CHANNEL_ENDRON,
 			"color" = RADIO_COLOR_ENDRON
-		)
+		) // DARKPACK EDIT ADD END
 	)
 
 /obj/machinery/telecomms/allinone/nuclear

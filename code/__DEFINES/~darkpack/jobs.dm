@@ -216,10 +216,10 @@
 #define DEPARTMENT_BITFLAG_TRIAD (1<<17)
 #define DEPARTMENT_TRIAD "Chinese Triad"
 // CRIMSON EDIT END - Triads
-// CRIMSON EDIT ADDITION - Helios Overnight Services
+// CRIMSON EDIT ADDITION - Helios Overnight Services - START
 #define DEPARTMENT_BITFLAG_HOS (1<<18)
 #define DEPARTMENT_HOS "Helios Overnight Services"
-// CRIMSON EDIT ADDITION - Helios Overnight Services
+// CRIMSON EDIT ADDITION - Helios Overnight Services - END
 
 DEFINE_BITFIELD(departments_bitflags, list(
 	"CITIZEN" = DEPARTMENT_BITFLAG_CITIZEN,

@@ -1,12 +1,14 @@
+// Crimson Grid Modularized File For Keys Subtypes
+
 /obj/item/vamp/keys/hos
-	name = "Feathered Keys"
+	name = "feathered keys"
 	accesslocks = list(
 		LOCKACCESS_HOS,
 	)
 	color = "#4979d9"
 
 /obj/item/vamp/keys/hos_lead
-	name = "plumed Keys"
+	name = "plumed keys"
 	accesslocks = list(
 		LOCKACCESS_HOS,
 		LOCKACCESS_HOS_LEAD,

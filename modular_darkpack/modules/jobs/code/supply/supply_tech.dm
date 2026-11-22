@@ -23,7 +23,7 @@
 
 	known_contacts = list(
 		JOB_DEALER,
-		JOB_CITY_MAILMAN,
+		JOB_CITY_MAILMAN, // Crimson Grid Addition - Mail Office
 	)
 
 /datum/outfit/job/vampire/supply_tech
