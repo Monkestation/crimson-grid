@@ -160,9 +160,3 @@
 /obj/machinery/radio_tranceiver/endron
 	radio_network = NETWORK_ENDRON
 	radio_frequency = FREQ_ENDRON
-
-// CRIMSON GRID EDIT ADD
-/obj/machinery/radio_tranceiver/corax
-	radio_network = NETWORK_CORAX
-	radio_frequency = FREQ_CORAX
-// CRIMSON GRID EDIT END

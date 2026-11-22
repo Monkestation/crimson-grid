@@ -175,10 +175,6 @@ SUBSYSTEM_DEF(blackbox)
 		if(FREQ_ENDRON)
 			record_feedback("tally", "radio_usage", 1, "endron")
 		// DARKPACK EDIT ADD END
-		// CRIMSON GRID EDIT ADD
-		if(FREQ_CORAX)
-			record_feedback("tally", "radio_usage", 1, "corax")
-		// CRIMSON GRID EDIT END
 		else
 			record_feedback("tally", "radio_usage", 1, "other")
 

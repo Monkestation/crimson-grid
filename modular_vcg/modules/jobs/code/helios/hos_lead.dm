@@ -33,7 +33,6 @@
 	jobtype = /datum/job/vampire/hos_lead
 	uniform = /obj/item/clothing/under/vampire/turtleneck_navy
 	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
-	ears = /obj/item/radio/headset/darkpack
 	l_pocket = /obj/item/smartphone/hos_lead
 	r_pocket = /obj/item/vamp/keys/hos_lead
 	backpack_contents = list(

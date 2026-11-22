@@ -82,8 +82,8 @@ export const MESSAGE_TYPES: MessageType[] = [
     name: 'Radio',
     description: 'All departments of radio messages',
     selector:
-      '.alert, .minorannounce, .syndradio, .centcomradio, .aiprivradio, .comradio, .secradio, .gangradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .radio, .deptradio, .binarysay, .resonate, .abductor, .alien, .changeling, .policeradio, .clinicradio, .militaryradio, .camarillaradio, .anarchradio, .endronradio, .coraxradio', // DARKPACK EDIT CHANGE - ORIGINAL: '.alert, .minorannounce, .syndradio, .centcomradio, .aiprivradio, .comradio, .secradio, .gangradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .radio, .deptradio, .binarysay, .resonate, .abductor, .alien, .changeling',
-  }, // CRIMSON GRID EDIT CHANGE - ORIGINAL: '.alert, .minorannounce, .syndradio, .centcomradio, .aiprivradio, .comradio, .secradio, .gangradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .radio, .deptradio, .binarysay, .resonate, .abductor, .alien, .changeling, .policeradio, .clinicradio, .militaryradio, .camarillaradio, .anarchradio, .endronradio'
+      '.alert, .minorannounce, .syndradio, .centcomradio, .aiprivradio, .comradio, .secradio, .gangradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .radio, .deptradio, .binarysay, .resonate, .abductor, .alien, .changeling, .policeradio, .clinicradio, .militaryradio, .camarillaradio, .anarchradio, .endronradio', // DARKPACK EDIT CHANGE - ORIGINAL: '.alert, .minorannounce, .syndradio, .centcomradio, .aiprivradio, .comradio, .secradio, .gangradio, .engradio, .medradio, .sciradio, .suppradio, .servradio, .radio, .deptradio, .binarysay, .resonate, .abductor, .alien, .changeling',
+  },
   {
     type: MESSAGE_TYPE_ENTERTAINMENT,
     name: 'Entertainment',
