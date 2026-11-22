@@ -296,10 +296,7 @@ body.vampire {
 }
 
 .vampire .grid-item:hover,
-.vampire .grid-item:active {
-  color: #e6b888;
-}
-
+.vampire .grid-item:active,
 .vampire h3 {
   color: #e6b888;
 }
@@ -319,14 +316,14 @@ body.vampire {
 
 .vampire .button:hover {
   background-color: hsl(0, 35%, 15%);
-  border-bottom: 2px solid hsl(0, 45%, 25%);
+  border-bottom-color: hsl(0, 45%, 25%);
 }
 
 .vampire .button.active {
   background-color: hsl(0, 50%, 20%);
   color: hsl(45, 80%, 70%);
+  border-bottom-color: hsl(45, 60%, 40%);
   text-shadow: 0 0 2px rgba(218, 165, 32, 0.8);
-  border-bottom: 2px solid hsl(45, 60%, 40%);
 }
 
 .vampire #under-menu,
