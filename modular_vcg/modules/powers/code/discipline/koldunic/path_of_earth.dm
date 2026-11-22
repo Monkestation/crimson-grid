@@ -32,10 +32,10 @@
 	aggravating = FALSE
 	hostile = TRUE
 	multi_activate = TRUE
-	duration_length = 2 SECONDS
+	duration_length = 4 SECONDS
 	cooldown_length = 10 SECONDS
 
-/datum/discipline_power/path_of_earth/grasp_of_earth/proc/immobilize_target(mob/living/target, duration = 2 SECONDS)
+/datum/discipline_power/path_of_earth/grasp_of_earth/proc/immobilize_target(mob/living/target, duration = 4 SECONDS)
 	ADD_TRAIT(target, TRAIT_IMMOBILIZED, DISCIPLINE_TRAIT(type))
 
 /datum/discipline_power/path_of_earth/grasp_of_earth/proc/release_target(mob/living/target)
@@ -294,7 +294,7 @@
 	level = 5
 	check_flags = DISC_CHECK_CONSCIOUS
 	vitae_cost = 3
-	cooldown_length = 240 SECONDS
+	cooldown_length = 120 SECONDS
 	target_type = TARGET_TURF
 	range = 15
 /datum/discipline_power/path_of_earth/kupalas_fury/activate(target)
