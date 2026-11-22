@@ -48,11 +48,11 @@
 		if(successes <= 0)
 			return TRUE
 
-	if(!istype(owner, /mob/living/basic/corvid/corvid))
+	if(HAS_TRAIT(src, TRAIT_MOVE_FLYING))
 		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
-		SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 	else
 		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
+		SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 
 	var/deathdesc
 	if(prompting_mob)
