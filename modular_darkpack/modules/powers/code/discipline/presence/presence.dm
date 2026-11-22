@@ -262,7 +262,7 @@
 	log_combat(owner, target, "Used Presence Entrancement")
 
 	apply_presence_overlay(target, successes * 1 MINUTES)
-	to_chat(target, span_hypnophrase("You find yourself becoming completely entraced by [owner]. You are now their willing servant yet you retain your free will. try to assist them."))//Crimson Edit improves wording and makes more tabletop accurate this discipline is not dominate stop using it as such
+	to_chat(target, span_hypnophrase("You find yourself becoming completely entraced by [owner]. You are now their willing servant yet you retain your free will. try to assist them.")) // CRIMSON EDIT CHANGE - Original: to_chat(target, span_hypnophrase("You find yourself becoming completely entraced by [owner]. You are now their willing servant."))
 	to_chat(target, span_info("You are now the willing servant of [owner]. You will seek to please them and fulfill their every desire, but this desire will fade soon."))
 	addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 1 MINUTES) // CRIMSON GRID EDIT - Original: addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 10 MINUTES)
 
