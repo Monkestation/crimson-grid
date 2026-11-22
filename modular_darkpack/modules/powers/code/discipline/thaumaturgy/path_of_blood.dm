@@ -32,6 +32,10 @@
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	numerical = TRUE
 
+/datum/storyteller_roll/thaumaturgy/using_difficulty(mob/living/roller, atom/target)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_BLOOD_SORCERY_PRODIGY))
+		. = max(4, . - 1)
 
 /datum/discipline_power/thaumaturgy
 	name = "Thaumaturgy power name"
