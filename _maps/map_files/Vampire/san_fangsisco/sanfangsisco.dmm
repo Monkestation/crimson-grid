@@ -7597,7 +7597,6 @@
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 5
 	},
-/obj/vampire_computer,
 /turf/open/floor/wood/herring,
 /area/vtm/interior/clinic)
 "bGQ" = (
@@ -29594,7 +29593,9 @@
 "gCB" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/siding/dark_brown,
-/obj/vampire_computer,
+/obj/machinery/computer/pc{
+	dir = 4
+	},
 /turf/open/floor/carpet/darkpack/purplegold,
 /area/vtm/interior/clinic/haven)
 "gCC" = (
@@ -54279,16 +54280,7 @@
 /turf/open/misc/grass,
 /area/vtm/interior/chantry)
 "mjL" = (
-/obj/structure/table/wood,
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
 /obj/machinery/computer/pc/clinic,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/structure/table/wood,
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
@@ -66704,15 +66696,6 @@
 /area/vtm)
 "pcz" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/pc{
-	dir = 4
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/table/wood,
 /obj/item/paper_bin{
 	pixel_y = 5;
 	pixel_x = -7
@@ -66726,25 +66709,13 @@
 	pixel_y = 10;
 	pixel_x = 6
 	},
-/obj/item/vamp/keys/camarilla{
-	pixel_x = 6;
-	pixel_y = 1
-	},
 /obj/item/vamp/keys/malkav{
 	pixel_y = 10;
 	pixel_x = 2
 	},
-/obj/item/vamp/keys/malkav{
-	pixel_y = 10;
-	pixel_x = 10
-	},
 /obj/item/vamp/keys/camarilla{
 	pixel_x = 2;
 	pixel_y = 1
-	},
-/obj/item/vamp/keys/malkav{
-	pixel_y = 1;
-	pixel_x = 10
 	},
 /turf/open/floor/carpet/darkpack/purplegold,
 /area/vtm/interior/clinic/haven)
