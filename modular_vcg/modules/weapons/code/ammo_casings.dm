@@ -173,7 +173,7 @@
 
 /obj/item/ammo_casing/caseless/bolt/flaming
 	name = "flaming bolt"
-	desc = "Welcome to the Middle Ages! This ones is on fire thats gonna hurt"
+	desc = "Welcome to the Middle Ages! This ones is on fire, thats gonna hurt"
 	projectile_type = /obj/projectile/bullet/crossbow_bolt/flaming
 
 /obj/item/ammo_casing/caseless/bolt/silver
