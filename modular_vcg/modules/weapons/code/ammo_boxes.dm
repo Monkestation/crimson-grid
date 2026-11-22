@@ -167,6 +167,10 @@
 	name = "ammo box (broadhead bolts)"
 	ammo_type = /obj/item/ammo_casing/caseless/bolt/broadhead
 
+/obj/item/ammo_box/darkpack/arrows/flaming
+	name = "ammo box (flaming bolts)"
+	ammo_type = /obj/item/ammo_casing/caseless/bolt/flaming
+
 /obj/item/ammo_box/darkpack/arrows/silver
 	name = "ammo box (silver bolts)"
 	desc = "The box shows Action Bill shooting out the eye of an Eco-Terrorist with his trusty crossbow, grinning madly as he does."
