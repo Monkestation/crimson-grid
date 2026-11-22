@@ -33,7 +33,7 @@
 	unarmed_attack_verbs = list("claw")
 	unarmed_attack_verbs_continuous = list("claws")
 	appendage_noun = "paw"
-	unarmed_pen = 35 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
+	unarmed_pen = 30 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/slashmiss.ogg'
@@ -47,13 +47,31 @@
 	unarmed_attack_verbs = list("claw")
 	unarmed_attack_verbs_continuous = list("claws")
 	appendage_noun = "paw"
-	unarmed_pen = 35 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
+	unarmed_pen = 30 //CRIMSON GRID ADDITION - fera species claw baseline armor penetration
 	unarmed_attack_effect = ATTACK_EFFECT_CLAW
 	unarmed_attack_sound = 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/werewolf_bite.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/slashmiss.ogg'
 
 /obj/item/bodypart/arm/right/fera/aggravated
 	attack_type = AGGRAVATED
+
+/obj/item/bodypart/arm/left/fera/aggravated/warform/Initialize(mapload)
+	held_hand_offset = new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("south" = 10 , "north" = 12 , "east" = 16, "west" = -2),
+		offset_y = list("south" = 10, "north" = 16 , "east" = 10 ,"west" = 9),
+	)
+	return ..()
+
+/obj/item/bodypart/arm/right/fera/aggravated/warform/Initialize(mapload)
+	held_hand_offset = new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("south" = 10 , "north" = 12 , "east" = 18 ,"west" = -2),
+		offset_y = list("south" = 10, "north" = 16 , "east" = 8 ,"west" = 9),
+	)
+	return ..()
 
 /obj/item/bodypart/leg/left/fera
 	unarmed_sharpness = SHARP_EDGED
@@ -134,3 +152,8 @@
 
 //CRIMSION GRID ADDITION END
 
+// Stop Lupus and Hispo speaking human languages
+/obj/item/organ/tongue/fera/beast
+
+/obj/item/organ/tongue/fera/beast/get_possible_languages()
+	return list(/datum/language/garou_tongue, /datum/language/primal_tongue)

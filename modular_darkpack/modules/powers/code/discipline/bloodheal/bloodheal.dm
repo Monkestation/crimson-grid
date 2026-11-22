@@ -102,10 +102,17 @@
 	owner.cure_blind(NO_EYES)
 	owner.cure_blind(EYE_DAMAGE)
 	owner.cure_nearsighted(EYE_DAMAGE)
-	if(!owner.has_quirk(/datum/quirk/item_quirk/scarred_eye))
-		if (eyes)
+
+	var/datum/quirk/item_quirk/scarred_eye/scar = owner.get_quirk(/datum/quirk/item_quirk/scarred_eye)
+	if(eyes)
+		if(!scar)
 			eyes.fix_scar(LEFT_EYE_SCAR)
 			eyes.fix_scar(RIGHT_EYE_SCAR)
+		else if(scar.scarring_type == LEFT_EYE_SCAR)
+			eyes.fix_scar(RIGHT_EYE_SCAR)
+		else if(scar.scarring_type == RIGHT_EYE_SCAR)
+			eyes.fix_scar(LEFT_EYE_SCAR)
+
 	owner.remove_status_effect(/datum/status_effect/temporary_blindness)
 	owner.remove_status_effect(/datum/status_effect/eye_blur)
 

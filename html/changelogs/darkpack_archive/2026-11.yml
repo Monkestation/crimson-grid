@@ -1,0 +1,109 @@
+2026-11-02:
+  Wunderwaffle11:
+  - bugfix: Updated recalculate_max_health.dm to factor in Huge Size trait's flat
+      max HP bonus.
+2026-11-06:
+  JohnFulpWillard:
+  - balance: Malkavians now see people as Zombies as a rare chance. Your mother has
+      also been made rarer.
+  - rscadd: Added a reflex hammer to the pharmacy.
+  Rhys Mori / Twox:
+  - bugfix: Necromancy 1 'Shroudsight' no longer claims it gives non-existent nightvision
+  - qol: ' Unidentified description of "Silver Bracelet / Nyx''s Bangle" slightly
+      hints at the item''s supernatural nature.'
+  breadcrombs:
+  - balance: perfect gargs are now more deadly
+2026-11-08:
+  JohnFulpWillard:
+  - qol: Cars have had their sound lowered by 40%
+2026-11-10:
+  JohnFulpWillard:
+  - bugfix: All Primogens now have similar Tower-related access.
+  - rscadd: You can now take a -4 pacifism quirk.
+  - bugfix: Confidence has readable aura to Auspex users and whatnot.
+  - qol: Wearing a watch now lets you see the time in the stat panel.
+  - bugfix: Pentex's turrets now doesn't shoot at pentex employees.
+  - bugfix: Transformation spells should now properly add & remove your spells.
+  - bugfix: Gangrel no longer gets 2 transformation spells when transformed.
+  bomby:
+  - rscadd: Adds two new Endron decals
+  - rscadd: Adds blue light subtypes
+  - rscadd: Adds coloured line on white paint wallpaper subtypes
+  - code_imp: Lampposts are now density 0
+  - code_imp: Endron Sec Chief now gets leadership keys
+2026-11-11:
+  breadcrombs:
+  - rscadd: The baton and tire iron can now kneecap
+2026-11-12:
+  Marshmellow105:
+  - rscadd: Added Red News locks/keys to go with the job
+2026-11-14:
+  Rhys Mori / Twox:
+  - bugfix: Qdeleted masquerade Breachers/Reporters will properly be reinforced.
+  - bugfix: Ghoulification reinforces masquerade breaches reported by new ghoul.
+  - bugfix: NPCs will no longer autobreach some cases where they really shouldn't
+  - spellcheck: Minor spelling fix in phone.dm
+  - spellcheck: Minor text formatting fix in npc.dm (ghoulification message improperly
+      spaced)
+  chazzyjazzy:
+  - bugfix: fixes a crash related to diablerie
+  - bugfix: diablerie ghosts now look like the victims
+  - bugfix: diablerie ghosts are now always played by the victim and the ghost poll
+      is removed
+  - bugfix: you can now have multiple diablerie ghosts
+2026-11-15:
+  chazzyjazzy:
+  - admin: admins can bypass all job slot requirements while adminned
+2026-11-16:
+  Dusk-a:
+  - image: Changed the alternate gargoyle legs
+  JohnFulpWillard:
+  - bugfix: mundanes can now report masquerade breaches.
+  - rscadd: Humans can now opt-in to letting their knowledge of the supernatural being
+      known by said supernatural.
+  Rhys Mori / Twox:
+  - rscadd: Crafted szlachta now utilize Beastmaster and will be assigned to their
+      crafter.
+  - rscadd: Added new crafting flag "CRAFT_CHECK_MINION", is something under this
+      tag is crafted it will be prevented if the Crafter cannot handle any more Beastmaster
+      minions. (Darkpack Edit)
+  - spellcheck: Typo fix in the commenting of _recipes.dm
+  TheColorCyan:
+  - bugfix: bloodheal can now heal eye scars of people with one eye merit as long
+      as it's not the scar you got from it
+  chazzyjazzy:
+  - bugfix: npcs will no longer report being bitten when they have the kiss effect
+  - bugfix: sunglasses will now protect you from breaching
+2026-11-17:
+  FalloutFalcon:
+  - bugfix: fixes poor offset on fera warforms for holding items
+  JohnFulpWillard:
+  - bugfix: Fixed ash trays so it can't be used as a pretty good and cheap inventory
+      item. It also uses TGUI color picker too.
+  Wunderwaffle11:
+  - rscadd: Adds the ability for Garou to speak High Tongue in all forms
+  - rscdel: Kinfolk can no longer speak High Tongue (they can still understand it)
+  - bugfix: Garou can no longer speak non-English human languages in lupus and hispo
+  - bugfix: Shapeshifted Gangrel can no longer speak
+  - code_imp: Changed lupus and hispo to have beast tongues to limit their language
+      types
+  cam_dev:
+  - rscadd: Added Spirit Speech for corvid-born and Truth of Gaia for homid-born Corax
+2026-11-18:
+  SELFHELL:
+  - bugfix: Gun suppressor oversights
+  Wunderwaffle11:
+  - bugfix: Makes Glabro not permanently increase your Runechat height
+  - bugfix: Makes Huge Size sprite scaling actually work after shifting
+  - bugfix: Corrects rotation behaviour to stop sprites getting stuck in wrong orientation
+      after shifting while horizontal
+  chazzyjazzy:
+  - rscadd: tremeres who do the vaulderie now always get the 'mark of the betrayer'
+      flaw.
+2026-11-20:
+  JohnFulpWillard:
+  - bugfix: You can't spam the battering ram anymore.
+  - bugfix: Matrix'ing now unpublishes your phone number.
+  chazzyjazzy:
+  - bugfix: exit_frenzy_mode will now remove all types of frenzying not just the main
+      general type
