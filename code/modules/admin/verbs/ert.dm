@@ -17,11 +17,12 @@
 	.["mainsettings"]["teamsize"]["value"] = newtemplate.teamsize
 	.["mainsettings"]["mission"]["value"] = newtemplate.mission
 	.["mainsettings"]["polldesc"]["value"] = newtemplate.polldesc
-	.["mainsettings"]["open_armory"]["value"] = newtemplate.opendoors ? "Yes" : "No"
+	//.["mainsettings"]["open_armory"]["value"] = newtemplate.opendoors ? "Yes" : "No" // DARKPACK EDIT REMOVAL - Forces ERT Splats
 	.["mainsettings"]["leader_experience"]["value"] = newtemplate.leader_experience ? "Yes" : "No"
 	.["mainsettings"]["random_names"]["value"] = newtemplate.random_names ? "Yes" : "No"
 	.["mainsettings"]["spawn_admin"]["value"] = newtemplate.spawn_admin ? "Yes" : "No"
-	.["mainsettings"]["use_custom_shuttle"]["value"] = newtemplate.use_custom_shuttle ? "Yes" : "No"
+	//.["mainsettings"]["use_custom_shuttle"]["value"] = newtemplate.use_custom_shuttle ? "Yes" : "No" // DARKPACK EDIT REMOVAL - Forces ERT Splats
+	.["mainsettings"]["supernatural_aware"]["value"] = newtemplate.supernatural_aware ? "Yes" : "No" // DARKPACK EDIT ADD - Forces ERT Splats
 
 
 /datum/admins/proc/equipAntagOnDummy(mob/living/carbon/human/dummy/mannequin, datum/antagonist/antag)
@@ -77,7 +78,7 @@
 	else
 		ertemplate = new /datum/ert/darkpack/swat // DARKPACK EDIT CHANGE - ORIGINAL: ertemplate = new /datum/ert/centcom_official
 
-	var/human_authority_setting = CONFIG_GET(string/human_authority)
+	//var/human_authority_setting = CONFIG_GET(string/human_authority) // DARKPACK EDIT REMOVAL - Forces ERT Splats
 
 	var/list/settings = list(
 		"preview_callback" = CALLBACK(src, PROC_REF(makeERTPreviewIcon)),
@@ -86,12 +87,14 @@
 		"teamsize" = list("desc" = "Team Size", "type" = "number", "value" = ertemplate.teamsize),
 		"mission" = list("desc" = "Mission", "type" = "string", "value" = ertemplate.mission),
 		"polldesc" = list("desc" = "Ghost poll description", "type" = "string", "value" = ertemplate.polldesc),
-		"enforce_human" = list("desc" = "Enforce human authority", "type" = "boolean", "value" = "[(human_authority_setting == HUMAN_AUTHORITY_ENFORCED ? "Yes" : "No")]"),
-		"open_armory" = list("desc" = "Open armory doors", "type" = "boolean", "value" = "[(ertemplate.opendoors ? "Yes" : "No")]"),
+		//"enforce_human" = list("desc" = "Enforce human authority", "type" = "boolean", "value" = "[(human_authority_setting == HUMAN_AUTHORITY_ENFORCED ? "Yes" : "No")]"), // DARKPACK EDIT REMOVAL - Forces ERT Splats
+		//"open_armory" = list("desc" = "Open armory doors", "type" = "boolean", "value" = "[(ertemplate.opendoors ? "Yes" : "No")]"), // DARKPACK EDIT REMOVAL - Forces ERT Splats
+		"forced_splat" = list("desc" = "Forced splat", "type" = "choice", "choices" = list(ERT_TEAM_SPLAT, SPLAT_NONE, ERT_KEEP_CHARACTERS_SPLATS) + get_selectable_splats(), "value" = ERT_TEAM_SPLAT), // DARKPACK EDIT ADD - Forces ERT Splats
+		"supernatural_aware" = list("desc" = "Aware of the supernatural", "type" = "boolean", "value" = "[(ertemplate.supernatural_aware ? "Yes" : "No")]"), // DARKPACK EDIT ADD - Forces ERT Splats
 		"leader_experience" = list("desc" = "Pick an experienced leader", "type" = "boolean", "value" = "[(ertemplate.leader_experience ? "Yes" : "No")]"),
 		"random_names" = list("desc" = "Randomize names", "type" = "boolean", "value" = "[(ertemplate.random_names ? "Yes" : "No")]"),
 		"spawn_admin" = list("desc" = "Spawn yourself as briefing officer", "type" = "boolean", "value" = "[(ertemplate.spawn_admin ? "Yes" : "No")]"),
-		"use_custom_shuttle" = list("desc" = "Use the ERT's custom shuttle (if it has one)", "type" = "boolean", "value" = "[(ertemplate.use_custom_shuttle ? "Yes" : "No")]"),
+		//"use_custom_shuttle" = list("desc" = "Use the ERT's custom shuttle (if it has one)", "type" = "boolean", "value" = "[(ertemplate.use_custom_shuttle ? "Yes" : "No")]"), // DARKPACK EDIT REMOVAL - Forces ERT Splats
 		"mob_type" = list("desc" = "Base Species", "callback" = CALLBACK(src, PROC_REF(makeERTTemplateModified)), "type" = "datum", "path" = "/mob/living/carbon/human", "subtypesonly" = TRUE, "value" = ertemplate.mob_type),
 		)
 	)
@@ -114,13 +117,21 @@
 	ertemplate.teamsize = prefs["teamsize"]["value"]
 	ertemplate.mission = prefs["mission"]["value"]
 	ertemplate.polldesc = prefs["polldesc"]["value"]
-	ertemplate.enforce_human = prefs["enforce_human"]["value"] == "Yes" // these next 6 are effectively toggles
-	ertemplate.opendoors = prefs["open_armory"]["value"] == "Yes"
+	//ertemplate.enforce_human = prefs["enforce_human"]["value"] == "Yes" // these next 6 are effectively toggles // DARKPACK EDIT REMOVAL - Forces ERT Splats
+	//ertemplate.opendoors = prefs["open_armory"]["value"] == "Yes" // DARKPACK EDIT REMOVAL - Forces ERT Splats
 	ertemplate.leader_experience = prefs["leader_experience"]["value"] == "Yes"
 	ertemplate.random_names = prefs["random_names"]["value"] == "Yes"
 	ertemplate.spawn_admin = prefs["spawn_admin"]["value"] == "Yes"
-	ertemplate.use_custom_shuttle = prefs["use_custom_shuttle"]["value"] == "Yes"
+	//ertemplate.use_custom_shuttle = prefs["use_custom_shuttle"]["value"] == "Yes" // DARKPACK EDIT REMOVAL - Forces ERT Splats
 	ertemplate.mob_type = prefs["mob_type"]["value"]
+	// DARKPACK EDIT ADD START - Forces ERT Splats
+	ertemplate.supernatural_aware = prefs["supernatural_aware"]["value"] == "Yes"
+	var/forced_splat_choice = prefs["forced_splat"]["value"]
+	if(forced_splat_choice == ERT_KEEP_CHARACTERS_SPLATS)
+		ertemplate.forced_splat = null
+	else if(forced_splat_choice != ERT_TEAM_SPLAT)
+		ertemplate.forced_splat = forced_splat_choice
+	// DARKPACK EDIT ADD END - Forces ERT Splats
 
 	var/list/spawn_points = GLOB.emergencyresponseteamspawn
 
@@ -229,6 +240,10 @@
 		else
 			ert_operative = new /mob/living/carbon/human(spawnloc)
 			chosen_candidate.client.prefs.safe_transfer_prefs_to(ert_operative, is_antag = TRUE)
+		// DARKPACK EDIT ADD START - Forces ERT Splats
+		if(ertemplate.forced_splat)
+			ert_operative.apply_ert_splat(ertemplate.forced_splat)
+		// DARKPACK EDIT ADD END - Forces ERT Splats
 		ert_operative.PossessByPlayer(chosen_candidate.key)
 
 		if(ertemplate.enforce_human || !(ert_operative.dna.species.changesource_flags & ERT_SPAWN))
@@ -248,6 +263,10 @@
 
 		ert_operative.mind.add_antag_datum(ert_antag,ert_team)
 		ert_operative.mind.set_assigned_role(SSjob.get_job_type(ert_antag.ert_job_path))
+		// DARKPACK EDIT ADD START - Forces ERT Splats
+		if(ertemplate.supernatural_aware)
+			to_chat(ert_operative, span_userdanger("You are fully aware of the supernatural presence in the city."))
+		// DARKPACK EDIT ADD END - Forces ERT Splats
 
 		//Logging and cleanup
 		ert_operative.log_message("has been selected as \a [ert_antag.name].", LOG_GAME)
