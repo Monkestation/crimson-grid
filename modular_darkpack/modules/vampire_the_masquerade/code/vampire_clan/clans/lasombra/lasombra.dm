@@ -47,8 +47,8 @@
 	for(var/i = 1 to length(message))
 		var/char = message[i]
 		// Randomize or replace characters with gibberish
-		// CRIMSON EDIT START: var/chance = 70 + total_stats
-		var/chance = HAS_TRAIT(lasombra, TRAIT_GARBLED_SPEECH) ? 70 : 70 + total_stats // 70% + total_stats chance per point of social to keep intact unless player has this trait.
+		// CRIMSON EDIT START: Original: var/chance = 70 + total_stats
+		var/chance = HAS_TRAIT(lasombra, TRAIT_GARBLED_SPEECH) ? 70 : 70 + total_stats // 70% + total_stats chance per point of either occult or technology to keep intact unless player has this trait.
 		// CRIMSON EDIT END
 		if(prob(chance))
 			gibberish_message += char
