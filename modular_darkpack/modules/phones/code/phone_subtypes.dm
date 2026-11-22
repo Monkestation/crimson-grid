@@ -417,16 +417,16 @@
 		alist(NETWORK_ID = HELIOS_NETWORK, OUR_ROLE = "Garrison", USE_JOB_TITLE = FALSE)
 		)
 
- // Crimson Grid Addition: Helios Overnight Services Phone Contacts - End
+// Crimson Grid Addition: Helios Overnight Services Phone Contacts - End
 
- // Crimson Grid Addition: City Services Specific Contacts - Start
+// Crimson Grid Addition: City Services Specific Contacts - Start
 
 /obj/item/smartphone/mailman
 	contact_networks_pre_init = list(
 		alist(NETWORK_ID = MAIL_NETWORK, OUR_ROLE = "Mailman", USE_JOB_TITLE = FALSE)
 		)
 
- // Crimson Grid Addition: City Services Specific Contacts - End
+// Crimson Grid Addition: City Services Specific Contacts - End
 
 /obj/item/smartphone/clinic_lawyer
 	contact_networks_pre_init = list(
