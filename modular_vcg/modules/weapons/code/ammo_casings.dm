@@ -181,3 +181,9 @@
 	desc = "Welcome to the Middle Ages! A silver headed bolt for hunting monsters. As if those existed."
 	projectile_type = /obj/projectile/bullet/crossbow_bolt/silver
 
+
+/obj/item/ammo_casing/vampire/c75/phosphorus
+	name = "phosporus bullet"
+	desc = "A round truely designed to destroy those who dwell in the night chapter house infiltrators beware"
+	projectile_type=/obj/projectile/bullet/darkpack/vamp75/phosphorus
+

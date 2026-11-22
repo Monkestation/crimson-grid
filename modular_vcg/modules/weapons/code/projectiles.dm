@@ -412,6 +412,22 @@
 	exposed_wound_bonus = 15
 	wound_bonus = 15
 
+/obj/projectile/bullet/darkpack/vamp75/phosphorus
+	damage = 90
+	armour_penetration = 0
+	exposed_wound_bonus = 15
+	damage_type = BURN//Occum grab the phosporus bullets their is a vampire in the chapterhouse
+	wound_bonus = 15
+	var/fire_stacks = 8
+
+/obj/projectile/bullet/darkpack/vamp75/phosphorus/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	do_sparks(2, TRUE, src)
+	if(iscarbon(target))
+		var/mob/living/carbon/M = target
+		M.adjust_fire_stacks(fire_stacks)
+		M.ignite_mob()
+
 /obj/projectile/bullet/darkpack/vamp75/silver
 	armour_penetration = 2
 
