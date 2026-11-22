@@ -48,7 +48,9 @@
 		if(successes <= 0)
 			return TRUE
 
-	if(HAS_TRAIT(src, TRAIT_MOVE_FLYING))
+	if(HAS_TRAIT(owner, TRAIT_MOVE_FLYING))
+		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
+	else if(HAS_TRAIT(owner, TRAIT_WADDLING))
 		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
 	else
 		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
