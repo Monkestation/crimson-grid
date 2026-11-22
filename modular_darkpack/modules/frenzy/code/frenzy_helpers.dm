@@ -22,7 +22,6 @@
 			return TRUE
 
 
-/// Find targets to ATTACK while frenzying
 /mob/living/proc/get_frenzy_victims(range = DEFAULT_SIGHT_DISTANCE)
 	var/list/victims = list()
 

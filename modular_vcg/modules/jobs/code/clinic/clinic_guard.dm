@@ -13,6 +13,7 @@
 	)
 
 	alt_titles = list(
+		JOB_CLINIC_GUARD,
 		"Clinic Orderly",
 		"Hospise Orderly",
 	)
@@ -44,3 +45,9 @@
 	r_pocket = /obj/item/vamp/keys/clinics_director
 	backpack_contents = list(/obj/item/card/credit = 1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/ammo_box/magazine/glock9mm = 2)
 
+/obj/item/vamp/keys/clinic_guard
+	name = "clinic guard keys"
+	accesslocks = list(
+		LOCKACCESS_CLINIC,
+		LOCKACCESS_DIRECTOR,
+	)

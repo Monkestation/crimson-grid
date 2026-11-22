@@ -14,7 +14,7 @@
 		new /datum/data/vending_product("binoculars", /obj/item/binoculars),
 		new /datum/data/vending_product("camera", /obj/item/camera),
 		new /datum/data/vending_product("9mm ammo box", /obj/item/ammo_box/darkpack/c9mm),
-		new /datum/data/vending_product("12ga shotgun shells, buckshot",/obj/item/ammo_box/darkpack/c12g/buck),
+		new /datum/data/vending_product("12ga shotgun shells, buckshot", /obj/item/ammo_box/darkpack/c12g/buck),
 		new /datum/data/vending_product("machete", /obj/item/claymore/machete),
 		new /datum/data/vending_product("hunting shotgun", /obj/item/gun/ballistic/shotgun/vampire),
 		new	/datum/data/vending_product("Elite 92G", /obj/item/gun/ballistic/automatic/pistol/darkpack/beretta),
@@ -23,12 +23,22 @@
 		new /datum/data/vending_product("hunting rifle", /obj/item/gun/ballistic/automatic/darkpack/huntrifle),
 		new /datum/data/vending_product("7.52x51 ammo", /obj/item/ammo_box/darkpack/c762x51mm, 1000), // Crimson Grid Replacement - Was 5.56 Ammo Box
 		new /datum/data/vending_product("military parka", /obj/item/clothing/suit/vampire/coat/milparka,	90),
+		// CRIMSON GRID ADDITION BEGIN - Armory Ammunition Additions
+		new /datum/data/vending_product("crossbow", /obj/item/gun/ballistic/shotgun/toy/crossbow/vampire, 1000),
+		new /datum/data/vending_product("Bodkin bolts", /obj/item/ammo_box/darkpack/arrows/bodkin, 800),
+		new /datum/data/vending_product("Broadhead bolts", /obj/item/ammo_box/darkpack/arrows/broadhead, 800),
+		// CRIMSON GRID ADDITION END - Armory Ammunition Additions
+		new /datum/data/vending_product("ice hiking boots", /obj/item/clothing/shoes/winterboots/ice_boots, 100),
 	)
 	product_types = list(
 		/obj/item/fishing_rod,
+		/obj/item/fishing_rod/telescopic,
 		/obj/item/bait_can/worm,
 		/obj/item/bait_can/super_baits,
 		/obj/item/storage/toolbox/fishing,
 		/obj/item/storage/box/fishing_lures,
+		/obj/item/storage/box/fishing_hooks,
+		/obj/item/storage/box/fishing_lines,
+		/obj/item/storage/bag/fishing,
 		/obj/item/fishing_line/auto_reel
 	)

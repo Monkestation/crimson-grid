@@ -78,7 +78,7 @@
 
 /datum/discipline_power/protean/feral_claws/pre_activation_checks(atom/target)
 	. = ..()
-	if(do_after(owner, 1 TURNS, timed_action_flags = IGNORE_USER_LOC_CHANGE))
+	if(do_after(owner, 1 SECONDS, timed_action_flags = IGNORE_USER_LOC_CHANGE)) // CRIMSON GRID EDIT - 5-> 1 seconds ORIGINAL: if(do_after(owner, 1 TURNS, timed_action_flags = IGNORE_USER_LOC_CHANGE))
 		return TRUE
 	else
 		to_chat(owner, span_warning("You are rendered unable to transform!"))
@@ -256,3 +256,14 @@
 	cooldown_time = 5 SECONDS
 	revert_on_death = TRUE
 	die_with_shapeshifted_form = FALSE
+	owner_has_control = TRUE
+
+/* CRIMSON GRID REMOVAL START - this is stupid and also stops me from meowing
+// Prevent Gangrel from speaking while shapeshifted
+
+/datum/action/cooldown/spell/shapeshift/gangrel/do_shapeshift(mob/living/caster)
+	var/mob/living/new_shape = ..()
+	if(new_shape)
+		ADD_TRAIT(new_shape, TRAIT_MUTE, SHAPESHIFT_TRAIT)
+	return new_shape
+*/ // CRIMSON GRID REMOVAL END

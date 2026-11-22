@@ -61,7 +61,8 @@
 /obj/item/smartphone/malkavian_primo
 	important_contact_of = VAMPIRE_CLAN_MALKAVIAN
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = "Asylum Administrator", USE_JOB_TITLE = FALSE)		// CRIMSON EDIT — Original: OUR_ROLE = "Hospital Administrator"
+		alist(NETWORK_ID = VAMPIRE_LEADER_NETWORK, OUR_ROLE = "Asylum Administrator", USE_JOB_TITLE = FALSE), // CRIMSON EDIT — Original: OUR_ROLE = "Hospital Administrator"
+		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "Asylum Director", USE_JOB_TITLE = FALSE), // CRIMSON EDIT: In the Clinic
 		)
 
 // LASOMBRA
@@ -229,22 +230,22 @@
 
 /obj/item/smartphone/novice
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Novice", USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Co-Worker", USE_JOB_TITLE = FALSE) // CRIMSON EDIT CHANGE - Original: alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Novice", USE_JOB_TITLE = TRUE)
 		)
 
 /obj/item/smartphone/condottieri
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Condottieri", USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Janitor", USE_JOB_TITLE = FALSE) // CRIMSON EDIT CHANGE - Original: alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Condottieri", USE_JOB_TITLE = TRUE)
 		)
 
 /obj/item/smartphone/inquisitor
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Inquisitor", USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Technician", USE_JOB_TITLE = FALSE) // CRIMSON EDIT CHANGE - Original: alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Inquisitor", USE_JOB_TITLE = TRUE)
 		)
 
 /obj/item/smartphone/abbe
 	contact_networks_pre_init = list(
-		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Abbé", USE_JOB_TITLE = TRUE)
+		alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Manager", USE_JOB_TITLE = FALSE) // CRIMSON EDIT CHANGE - Original: alist(NETWORK_ID = SOCIETY_OF_LEOPOLD_NETWORK, OUR_ROLE = "Abbé", USE_JOB_TITLE = TRUE)
 		)
 
 // CIVILIAN
@@ -399,6 +400,12 @@
 	contact_networks_pre_init = list(
 		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "Clinic Orderly", USE_JOB_TITLE = FALSE)
 		)
+
+/obj/item/smartphone/clinic_lawyer
+	contact_networks_pre_init = list(
+		alist(NETWORK_ID = MEDICAL_NETWORK, OUR_ROLE = "General Counsel", USE_JOB_TITLE = TRUE)
+		)
+
 // CRIMSON EDIT ADD END - Triads and Rolelocks
 
 

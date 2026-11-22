@@ -108,7 +108,14 @@
 			/obj/item/path_spellbook/levinbolt/level2,
 			/obj/item/path_spellbook/levinbolt/level3,
 			/obj/item/path_spellbook/levinbolt/level4,
-			/obj/item/path_spellbook/levinbolt/level5)
+			// CRIMSON GRID EDIT START - Movement of the Mind
+			/obj/item/path_spellbook/levinbolt/level5,
+			/obj/item/path_spellbook/movement_of_mind/level1,
+			/obj/item/path_spellbook/movement_of_mind/level2,
+			/obj/item/path_spellbook/movement_of_mind/level3,
+			/obj/item/path_spellbook/movement_of_mind/level4,
+			/obj/item/path_spellbook/movement_of_mind/level5)
+			// CRIMSON GRID EDIT END
 		new occult_book_type(src)
 		update_appearance()
 	// DARKPACK EDIT ADD END - Paths

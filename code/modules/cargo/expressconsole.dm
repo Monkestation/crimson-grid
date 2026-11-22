@@ -130,6 +130,7 @@ GLOBAL_LIST_EMPTY(cargo_landing_spots)
 	var/obj/item/circuitboard/computer/cargo/board = circuit
 	board.obj_flags |= EMAGGED
 	board.contraband = TRUE
+	update_static_data_for_all_viewers()
 	return TRUE
 
 /obj/machinery/computer/cargo/express/ui_data(mob/user)

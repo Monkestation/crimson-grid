@@ -116,6 +116,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	accesslocks = list(
 		LOCKACCESS_CHANTRY,
 		LOCKACCESS_JAZZ_CLUB,
+		LOCKACCESS_THEATRE,
 		LOCKACCESS_PRIMOGEN,
 		LOCKACCESS_CAMARILLA,
 		LOCKACCESS_JAZZ_CLUB_DELIVERY,
@@ -190,6 +191,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_THEATRE,
 		LOCKACCESS_CAMARILLA,
 		LOCKACCESS_PRIMOGEN_LASOMBRA,
+		LOCKACCESS_JAZZ_CLUB_DELIVERY,
 	)
 	color = "#4b039c"
 
@@ -227,6 +229,8 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_JAZZ_CLUB,
 		LOCKACCESS_CAMARILLA,
 		LOCKACCESS_JAZZ_CLUB_DELIVERY,
+		LOCKACCESS_THEATRE,
+		LOCKACCESS_CLINIC, // CRIMSON GRID EDIT - Part of the Clinic
 	)
 	color = "#2c92ff"
 
@@ -256,7 +260,9 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_CAMARILLA,
 		LOCKACCESS_BANU,
 		LOCKACCESS_BANU_PRIMOGEN,
+		LOCKACCESS_JAZZ_CLUB_DELIVERY,
 	)
+
 /obj/item/vamp/keys/toreador/primogen
 	name = "really sexy keys"
 	accesslocks = list(
@@ -266,6 +272,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_JAZZ_CLUB,
 		LOCKACCESS_CAMARILLA,
 		LOCKACCESS_JAZZ_CLUB_DELIVERY,
+		LOCKACCESS_THEATRE,
 		LOCKACCESS_STRIP, //CRIMSON GRID ADD | PR: Adds Strip Key Access to Toreador Primogen (They own the Club)
 	)
 	color = "#ff2fc4"
@@ -285,6 +292,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_PRIMOGEN,
 		LOCKACCESS_JAZZ_CLUB,
 		LOCKACCESS_CAMARILLA,
+		LOCKACCESS_THEATRE,
 		LOCKACCESS_JAZZ_CLUB_DELIVERY,
 	)
 	color = "#367c31"
@@ -302,8 +310,10 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 		LOCKACCESS_PRIMOGEN_BRUJAH,
 		LOCKACCESS_BRUJAH,
 		LOCKACCESS_PRIMOGEN,
+		LOCKACCESS_THEATRE,
 		LOCKACCESS_JAZZ_CLUB,
-		LOCKACCESS_CAMARILLA
+		LOCKACCESS_CAMARILLA,
+		LOCKACCESS_JAZZ_CLUB_DELIVERY,
 	)
 	color = "#ec8f3e"
 
@@ -311,6 +321,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	name = "businessy keys"
 	accesslocks = list(
 		LOCKACCESS_VENTRUE,
+		LOCKACCESS_THEATRE,
 		LOCKACCESS_JAZZ_CLUB
 	)
 	color = "#f6ffa7"
@@ -358,7 +369,8 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	name = "clinic director keys"
 	accesslocks = list(
 		LOCKACCESS_CLINIC,
-		LOCKACCESS_DIRECTOR
+		LOCKACCESS_DIRECTOR,
+		LOCKACCESS_MALK, // CRIMSON GRID EDIT - Access to the Ward
 	)
 
 //===========================POLICE KEYS===========================
@@ -500,3 +512,10 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	accesslocks = list(
 		"apartment"
 	)
+
+/obj/item/vamp/keys/red_news
+	name = "RED News Employee keys"
+	accesslocks = list(
+		LOCKACCESS_RED_NEWS
+	)
+	color = "#bd3327"

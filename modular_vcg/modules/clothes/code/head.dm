@@ -1,3 +1,77 @@
+/obj/item/clothing/head/fedora/vampire  // Da High-Rollahs
+	name = "grey fedora"
+	desc = "a classy hat usually worn by wise guys."
+	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
+	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
+	icon_state = "fedora_grey"
+	hair_mask = /datum/hair_mask/standard_hat_low
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
+
+/obj/item/clothing/head/fedora/vampire/Initialize(mapload)
+	. = ..()
+
+/obj/item/clothing/head/fedora/vampire/tan
+	name = "tan fedora"
+	icon_state = "fedora_tan"
+	inhand_icon_state = null
+
+/obj/item/clothing/head/fedora/vampire/sage
+	name = "sage fedora"
+	icon_state = "fedora_sage"
+	inhand_icon_state = null
+
+/obj/item/clothing/head/flathat/vampire  //Da GOONS
+	name = "grey flatcap"
+	desc = "a flat hat usually worn by tough guys."
+	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
+	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
+	icon_state = "flatcap_grey"
+	hair_mask = /datum/hair_mask/standard_hat_low
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
+
+/obj/item/clothing/head/flathat/vampire/Initialize(mapload)
+	. = ..()
+
+/obj/item/clothing/head/flathat/vampire/tan
+	name = "tan flatcap"
+	icon_state = "flatcap_tan"
+	inhand_icon_state = null
+
+/obj/item/clothing/head/flathat/vampire/sage
+	name = "sage flatcap"
+	icon_state = "flatcap_sage"
+	inhand_icon_state = null
+
+/obj/item/clothing/head/baseballcap/vampire  //For yall
+	name = "red baseball cap"
+	desc = "a baseball cap worn by the average sports fan."
+	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
+	worn_icon = 'modular_vcg/modules/clothes/icons/worn.dmi'
+	icon_state = "baseball_red"
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
+
+/obj/item/clothing/head/baseballcap/vampire/blue
+	name = "blue baseball cap"
+	icon_state = "baseball_blue"
+	inhand_icon_state = null
+
+/obj/item/clothing/head/baseballcap/vampire/green
+	name = "green baseball cap"
+	icon_state = "baseball_green"
+	inhand_icon_state = null
+
+/obj/item/clothing/head/vampire/voodoohat
+	name = "voodoo hat"
+	desc = "a fantastically fancy hat worn by the eccentric."
+	icon = 'modular_vcg/modules/clothes/icons/clothing.dmi'
+	worn_icon = 'modular_vcg/modules/clothes/icons/worn_32x40.dmi'
+	icon_state = "voodoo_hat"
+	worn_y_offset = 1
+	ONFLOOR_ICON_HELPER('modular_vcg/modules/clothes/icons/clothing_onfloor.dmi')
+	custom_price = 150
+
+/// ARMOR
+
 /obj/item/clothing/head/vampire/bikehelmet
 	name = "black bike helmet"
 	desc = "A black helmet.. Deja Vu?.. "
@@ -49,3 +123,7 @@
 	name = "white race helmet"
 	desc = "A white race helmet.. Deja Vu?.. "
 	icon_state = "white_racehelmet"
+
+/datum/armor/eod_helmet
+	melee = 55
+	bullet = 55

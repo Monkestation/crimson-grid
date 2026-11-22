@@ -221,6 +221,7 @@ SUBSYSTEM_DEF(job)
 
 
 /datum/controller/subsystem/job/proc/get_job(rank)
+	RETURN_TYPE(/datum/job)
 	if(!length(all_occupations))
 		setup_occupations()
 	return name_occupations[rank]
@@ -258,6 +259,7 @@ SUBSYSTEM_DEF(job)
 	player.mind.set_assigned_role(job)
 	unassigned -= player
 	job.current_positions++
+	take_splat_slot(player, job) // DARKPACK EDIT ADD - Splat Slots
 	return TRUE
 
 /datum/controller/subsystem/job/proc/find_occupation_candidates(datum/job/job, level = 0)
@@ -602,6 +604,9 @@ SUBSYSTEM_DEF(job)
 	// DARKPACK EDIT ADD START - ALTERNATIVE_JOB_TITLES
 	// The alt job title, if user picked one, or the default
 	var/alt_title = player_client?.prefs.alt_job_titles?[job.title] || job.title
+	var/knows_masquerade = player_client.prefs.read_preference(/datum/preference/toggle/masquerade_knower)
+	if(knows_masquerade)
+		GLOB.human_knowers |= equipping
 	// DARKPACK EDIT ADD END
 	equipping.job = job.title
 
@@ -727,7 +732,7 @@ SUBSYSTEM_DEF(job)
 	unassigned -= player
 	if(!run_divide_occupation_pure)
 		to_chat(player, span_infoplain("<b>You have failed to qualify for any job you desired.</b>"))
-		player.ready = PLAYER_NOT_READY
+		player.unready()
 
 
 /datum/controller/subsystem/job/Recover()

@@ -263,7 +263,7 @@
 	wound = 40
 
 /obj/item/clothing/head/vampire/bogatyr
-	name = "bone helmet"
+	name = "regal helmet" // CRIMSON EDIT CHANGE - Original: name = "bone helmet"
 	desc = "A regal helmet made of unknown materials."
 	icon_state = "bogatyr_helmet_light"
 	armor_type = /datum/armor/police_helmet
@@ -274,17 +274,17 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/clothing/head/vampire/bogatyr/captain
-	name = "golden bone helmet"
+	name = "golden regal helmet" // CRIMSON EDIT CHANGE - Original: name = "golden bone helmet"
 	icon_state = "bogatyr_captain_helmet"
 	armor_type = /datum/armor/bogatyr_helmet
 
 /obj/item/clothing/head/vampire/bogatyr/captain/heavy // ! Craftable only.
-	name = "reinforced golden bone helmet"
+	name = "reinforced golden regal helmet" // CRIMSON EDIT CHANGE - Original: name = "reinforced golden bone helmet"
 	armor_type = /datum/armor/eod_helmet
 	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/clothing/head/vampire/bogatyr/heavy
-	name = "heavy bone greathelm"
+	name = "heavy regal greathelm" // CRIMSON EDIT CHANGE - Original: name = "heavy bone greathelm"
 	icon_state = "bogatyr_helmet"
 	armor_type = /datum/armor/eod_helmet
 	w_class = WEIGHT_CLASS_BULKY
@@ -375,6 +375,7 @@
 	user.cure_blind("blindfold_[REF(src)]")
 
 /obj/item/clothing/head/vampire/blackbag/attack(mob/living/target, mob/living/user)
+	. = ..()
 	var/obj/item/clothing/head/H = target.get_item_by_slot(ITEM_SLOT_HEAD)
 	if(H?.clothing_flags & SNUG_FIT)
 		to_chat(user, span_warning("You can't fit the blackbag over [target.p_their()] headgear!"))

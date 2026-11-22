@@ -12,14 +12,14 @@
 	power_type = /datum/discipline_power/dominate
 	var/list/botched_targets //a lazylist of weakrefs
 
-/datum/discipline/dominate/post_gain()
+/datum/discipline/dominate/post_gain(post_gain_applied)
 	. = ..()
 	if(level >= 4)
 		RegisterSignal(owner, COMSIG_MOB_EMOTE, PROC_REF(on_snap))
 
 /datum/discipline/dominate/post_loss()
-	. = ..()
 	UnregisterSignal(owner, COMSIG_MOB_EMOTE)
+	return ..()
 
 /datum/discipline/dominate/proc/on_snap(atom/source, datum/emote/emote_args)
 	SIGNAL_HANDLER
@@ -186,6 +186,7 @@
 //dominate involves capturing the victim's gaze, leaving them completely helpless as you hypnotically invade their mind.
 /datum/discipline_power/dominate/proc/immobilize_target(mob/living/carbon/human/target, duration = 5 SECONDS)
 	ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_GENERIC)
+	ADD_TRAIT(target, TRAIT_PACIFISM, "dominate") // CRIMSON EDIT ADD - DOM PACIFY
 	RegisterSignals(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT), PROC_REF(on_target_attacked))
 	if(do_after(owner, duration, target))
 		release_target(target)
@@ -205,6 +206,7 @@
 	UnregisterSignal(target, list(COMSIG_ATOM_ATTACKBY, COMSIG_MOB_ITEM_ATTACK, COMSIG_PROJECTILE_PREHIT))
 	to_chat(target, span_danger("You feel your concentration become your own once more, able to look away from the commanding gaze."))
 	REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_GENERIC)
+	REMOVE_TRAIT(target, TRAIT_PACIFISM, "dominate") // CRIMSON EDIT ADD - DOM PACIFY
 
 /mob/living/carbon/human/proc/post_dominate_checks(mob/living/carbon/human/dominate_target)
 	dominate_target?.remove_overlay(POWERS_LAYER)

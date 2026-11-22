@@ -11,9 +11,13 @@
 	icon_state = "presence"
 	power_type = /datum/discipline_power/presence
 
-/datum/discipline/presence/post_gain()
+/datum/discipline/presence/post_gain(post_gain_applied)
 	. = ..()
-	ADD_TRAIT(owner, TRAIT_CHARMER, /datum/discipline/presence)
+	ADD_TRAIT(owner, TRAIT_CHARMER, DISCIPLINE_TRAIT(src))
+
+/datum/discipline/presence/post_loss()
+	REMOVE_TRAIT(owner, TRAIT_CHARMER, DISCIPLINE_TRAIT(src))
+	return ..()
 
 /datum/discipline_power/presence
 	name = "Presence power name"
@@ -96,6 +100,11 @@
 	difficulty = 7
 	applicable_stats = list(STAT_CHARISMA, STAT_PERFORMANCE)
 	numerical = TRUE
+
+/datum/storyteller_roll/presence_awe/using_difficulty(mob/living/roller, atom/target)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_ENCHANTING_VOICE))
+		. -= 2
 
 // AWE
 /datum/discipline_power/presence/awe
@@ -255,7 +264,7 @@
 	apply_presence_overlay(target, successes * 1 MINUTES)
 	to_chat(target, span_hypnophrase("You find yourself becoming completely entraced by [owner]. You are now their willing servant."))
 	to_chat(target, span_info("You are now the willing servant of [owner]. You will seek to please them and fulfill their every desire, but this desire will fade soon."))
-	addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 10 MINUTES)
+	addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 1 MINUTES) // CRIMSON GRID EDIT - Original: addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 10 MINUTES)
 
 /datum/discipline_power/presence/entrancement/proc/end_entrancement(mob/living/carbon/human/target)
 	to_chat(target, span_hypnophrase("Your desire to fulfill [owner]'s every desire fades."))

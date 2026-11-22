@@ -7,6 +7,7 @@
 	icon_state = "matrix"
 
 /turf/closed/indestructible/the_matrix/attack_hand(mob/user)
+	. = ..()
 	if(!user.client)
 		return FALSE
 	if(!do_after(user, 10 SECONDS, src, interaction_key = DOAFTER_SOURCE_MATRIX))
@@ -15,7 +16,7 @@
 	return TRUE
 
 /obj/the_matrix
-	name = "matrix (depricated)"
+	name = "matrix (deprecated)"
 	desc = "Suicide is no exit... This is an old evil version, please contact a mapper to replace this with a turf one if you are reading this"
 	icon = 'modular_darkpack/modules/matrix/icons/matrix.dmi'
 	icon_state = "matrix"
@@ -25,7 +26,12 @@
 	density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 
+/obj/the_matrix/Initialize(mapload)
+	. = ..()
+	log_mapping("A deprecated matrix obj was created at [loc.x], [loc.y], [loc.z]. Please replace this with the new filepath, [/turf/closed/indestructible/the_matrix::type].")
+
 /obj/the_matrix/attack_hand(mob/user)
+	. = ..()
 	if(!user.client)
 		return FALSE
 	if(!do_after(user, 10 SECONDS, src, interaction_key = DOAFTER_SOURCE_MATRIX))

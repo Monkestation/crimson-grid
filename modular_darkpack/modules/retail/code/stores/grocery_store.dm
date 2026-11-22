@@ -1,6 +1,7 @@
 /obj/structure/retail/grocery_store
 	desc = "A small grocery store."
 	products_list = list(
+		new /datum/data/vending_product("gum", /obj/item/storage/box/gum, 5),
 		new /datum/data/vending_product("chocolate bar", /obj/item/food/chocolatebar),
 		new /datum/data/vending_product("chips", /obj/item/food/chips),
 		new /datum/data/vending_product("water bottle", /obj/item/reagent_containers/cup/glass/vampirewater),
@@ -59,6 +60,9 @@
 		new /datum/data/vending_product("mustard", /obj/item/reagent_containers/condiment/mustard, 3),
 		new /datum/data/vending_product("soy milk", /obj/item/reagent_containers/condiment/soymilk),
 		new /datum/data/vending_product("cheese wedge", /obj/item/food/cheese/wedge, 6),
+		new /datum/data/vending_product("baguette", /obj/item/food/baguette, 14),
+		new /datum/data/vending_product("lollipop", /obj/item/food/lollipop, 3),
+		new /datum/data/vending_product("swirl lollipop", /obj/item/food/swirl_lollipop, 20),
 // CRIMSON EDIT ADD END - Shop Inventories Additions
 	)
 

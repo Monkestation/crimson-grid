@@ -67,6 +67,7 @@
 		return ITEM_INTERACT_SUCCESS
 
 /obj/item/bong/attack_self(mob/user)
+	. = ..()
 	var/turf/location = get_turf(user)
 	if(lit)
 		user.visible_message(span_notice("[user] puts out [src]."), span_notice("You put out [src]."))

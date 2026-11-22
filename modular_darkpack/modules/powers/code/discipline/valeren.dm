@@ -322,7 +322,7 @@
 
 /datum/status_effect/burning_touch/tick(seconds_between_ticks)
 	to_chat(owner, span_userdanger(pick(pain_messages)))
-	playsound(get_turf(owner), SFX_SIZZLE, 80, TRUE)
+	playsound(get_turf(owner), /datum/sound_effect/sizzle, 80, TRUE)
 
 /atom/movable/screen/alert/status_effect/burning_touch
 	name = "Burning Touch"
@@ -389,9 +389,6 @@
 	. = ..()
 	if (!.)
 		return
-
-	if(ismob(owner))
-		return FALSE
 
 	RegisterSignal(owner, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(reduce_damage))
 	RegisterSignal(owner, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(add_halo))
@@ -485,9 +482,9 @@
 
 /datum/status_effect/vengeance_of_samiel/on_remove()
 	. = ..()
-	owner.st_remove_stat_mod(STAT_DEXTERITY, bonus, "vengeance_of_samiel")
-	owner.st_remove_stat_mod(STAT_MELEE, bonus, "vengeance_of_samiel")
-	owner.st_remove_stat_mod(STAT_BRAWL, bonus, "vengeance_of_samiel")
+	owner.st_remove_stat_mod(STAT_DEXTERITY, "vengeance_of_samiel")
+	owner.st_remove_stat_mod(STAT_MELEE, "vengeance_of_samiel")
+	owner.st_remove_stat_mod(STAT_BRAWL, "vengeance_of_samiel")
 
 	for(var/datum/weakref/limb_weakref in affected_bodyparts)
 		var/obj/item/bodypart/limb = limb_weakref.resolve()

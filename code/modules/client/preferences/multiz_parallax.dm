@@ -8,12 +8,11 @@
 
 /datum/preference/toggle/multiz_parallax/apply_to_client(client/client, value)
 	// Update the plane master group's Z transforms.
-
 	var/datum/hud/my_hud = client.mob?.hud_used
 	if(!my_hud)
 		return
 
-	for(var/group_key in my_hud.master_groups)
-		var/datum/plane_master_group/group = my_hud.master_groups[group_key]
+	for(var/group_key, _group in my_hud.master_groups)
+		var/datum/plane_master_group/group = _group
 		group.refresh_planes_offset()
 */ // DARKPACK EDIT END -- Offsets Z levels to give the appearance of building 'stacking'

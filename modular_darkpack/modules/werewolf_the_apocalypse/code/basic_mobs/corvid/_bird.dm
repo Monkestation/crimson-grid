@@ -140,7 +140,7 @@
 		balloon_alert(src, "already holding something!")
 		return FALSE
 
-	for(var/obj/item/stealable in victim.held_items)
+	for(var/obj/item/stealable in victim.get_held_items())
 		if(stealable.w_class > WEIGHT_CLASS_SMALL)
 			continue
 

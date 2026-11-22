@@ -69,6 +69,7 @@
 	if(victim.body_position == STANDING_UP)
 		victim.toggle_resting()
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
+	target.apply_status_effect(/datum/status_effect/daimonion_dread) // CRIMSON GRID ADD: DARK THAUMATURGY 2
 	victim.playsound_local(src, 'modular_darkpack/modules/powers/sounds/daimonion_laughs/demonlaugh1.ogg', 50, FALSE)
 	to_chat(victim, span_cult("HELL IS REAL, IT HAS TOUCHED ME"))
 
@@ -79,6 +80,7 @@
 	if(victim.body_position == STANDING_UP)
 		victim.toggle_resting()
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
+	target.apply_status_effect(/datum/status_effect/daimonion_dread) // CRIMSON GRID ADD: DARK THAUMATURGY 2
 	to_chat(victim, span_cult("THE SPIRIT HAS TAKEN SOMETHING FROM ME"))
 
 /obj/effect/client_image_holder/baali_demon/wyrm/on_contact(mob/living/victim)
@@ -88,6 +90,7 @@
 	if(victim.body_position == STANDING_UP)
 		victim.toggle_resting()
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
+	target.apply_status_effect(/datum/status_effect/daimonion_dread) // CRIMSON GRID ADD: DARK THAUMATURGY 2
 	victim.playsound_local(src, 'modular_darkpack/modules/powers/sounds/daimonion_laughs/malklaugh.ogg', 50, FALSE)
 
 /obj/effect/client_image_holder/baali_demon/banu/on_contact(mob/living/victim)
@@ -97,6 +100,10 @@
 	if(victim.body_position == STANDING_UP)
 		victim.toggle_resting()
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	target.apply_status_effect(/datum/status_effect/daimonion_dread)
+	victim.playsound_local(src, 'modular_darkpack/modules/powers/sounds/daimonion_laughs/malklaugh.ogg', 50, FALSE)
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 
 /obj/effect/client_image_holder/baali_demon/tremere/on_contact(mob/living/victim)
 	victim.visible_message(span_warning("[victim] collapses onto the ground, convulsing"), span_cult("THE [src.name] TAKES YOUR VITAE"))
@@ -106,3 +113,7 @@
 	if(victim.body_position == STANDING_UP)
 		victim.toggle_resting()
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	target.apply_status_effect(/datum/status_effect/daimonion_dread)
+	victim.playsound_local(src, 'modular_darkpack/modules/powers/sounds/daimonion_laughs/malklaugh.ogg', 50, FALSE)
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
