@@ -209,12 +209,12 @@
 	return TRUE
 
 /datum/species/human/shifter/homid
-	name = "homid form"
+	name = "Human" //health scanner 
 	id = SPECIES_FERA_HOMID
 
 
 /datum/species/human/shifter/bestial
-	name = "bestial form"
+	name = "Bestial form"
 	id = SPECIES_FERA_BESTIAL
 	shift_difficulty = 7
 	species_language_holder = /datum/language_holder/garou
@@ -267,7 +267,7 @@
 
 
 /datum/species/human/shifter/war
-	name = "war form"
+	name = "War form"
 	id = SPECIES_FERA_WAR
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -305,7 +305,7 @@
 
 
 /datum/species/human/shifter/dire
-	name = "dire form"
+	name = "Dire form"
 	id = SPECIES_FERA_DIRE
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -347,7 +347,7 @@
 
 
 /datum/species/human/shifter/feral
-	name = "feral form"
+	name = "Feral form"
 	id = SPECIES_FERA_FERAL
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -357,6 +357,7 @@
 		TRAIT_FERAL_BITER,
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
+		TRAIT_HARDENED_SOLES, //CRIMSON GRID ADDITION 
 	)
 
 	skinned_type = /obj/item/stack/sheet/animalhide/generic
