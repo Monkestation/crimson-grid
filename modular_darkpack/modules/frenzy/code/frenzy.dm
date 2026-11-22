@@ -34,9 +34,11 @@
 		return
 	log_message("exited frenzy.", LOG_ATTACK, color="red")
 
-	remove_status_effect(/datum/status_effect/frenzy/vampire_hunger)
-	remove_status_effect(/datum/status_effect/frenzy/flee)
-	remove_status_effect(/datum/status_effect/frenzy)
+	var/static/list/frenzy_types
+	if(!frenzy_types)
+		frenzy_types = typecacheof(/datum/status_effect/frenzy)
+	for(var/frenzytype in frenzy_types)
+		remove_status_effect(frenzytype)
 
 /datum/storyteller_roll/frenzy
 	abstract_type = /datum/storyteller_roll/frenzy
@@ -84,6 +86,10 @@
 		return
 	if(!get_kindred_splat(src))
 		return
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	if(HAS_TRAIT(src, ROTSCHRECK_IMMUNITY))
+		return
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 
 	var/datum/storyteller_roll/frenzy/rotschreck/frenzy_roll = new()
 	frenzy_roll.difficulty = difficulty

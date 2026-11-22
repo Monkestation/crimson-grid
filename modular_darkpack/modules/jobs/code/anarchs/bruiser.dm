@@ -7,7 +7,7 @@
 	config_tag = "BRUISER"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/bruiser
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_BRUISER
 	departments_list = list(
 		/datum/job_department/anarch,

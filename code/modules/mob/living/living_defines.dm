@@ -22,7 +22,7 @@
 	var/health = MAX_LIVING_HEALTH
 
 	/// The max amount of stamina damage we can have at once (Does NOT effect stamcrit thresholds. See crit_threshold)
-	var/max_stamina = 120
+	var/max_stamina = 200 // CRIMSON GRID ADD: DARK THAUMATURGY 2 - STAMCRIT REINTRODUCTION
 	///Stamina damage, or exhaustion. You recover it slowly naturally, and are knocked down if it gets too high. Holodeck and hallucinations deal this.
 	var/staminaloss = 0
 
@@ -139,7 +139,7 @@
 	///How many usable hands does this mob currently have. Should only be changed through set_usable_hands()
 	var/usable_hands = 2
 
-	var/list/pipes_shown = list()
+	var/list/pipes_shown
 	var/last_played_vent = 0
 	/// The last direction we moved in a vent. Used to make holding two directions feel nice
 	var/last_vent_dir = 0
@@ -205,7 +205,7 @@
 	var/slowed_by_drag = TRUE
 
 	/// List of changes to body temperature, used by desease symtoms like fever
-	var/list/body_temp_changes = list()
+	var/list/body_temp_changes
 
 	//this stuff is here to make it simple for admins to mess with custom held sprites
 	///left hand icon for holding mobs

@@ -213,6 +213,12 @@ GLOBAL_LIST_INIT(xeno_recipes, list ( \
 	icon_state = "sheet-carp"
 	inhand_icon_state = null
 	merge_type = /obj/item/stack/sheet/animalhide/carp
+
+/obj/item/stack/sheet/animalhide/carp/fish
+	name = "fish scales"
+	desc = "The scales of a fish, or fish person. It reminds you about the importance of sharing."
+	singular_name = "fish scale"
+
 /* // DARKPACK EDIT REMOVAL
 GLOBAL_LIST_INIT(carp_recipes, list ( \
 	new/datum/stack_recipe("carp scale carpet", /obj/item/stack/tile/carpet/carp, 1, 4, 20, category = CAT_TILES), \

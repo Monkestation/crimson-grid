@@ -7,6 +7,7 @@
 	config_tag = "POLICE_CAPTAIN"
 	outfit = /datum/outfit/job/vampire/police_captain
 	job_flags = CITY_JOB_FLAGS
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_POLICE_CAPTAIN
 	exp_required_type_department = EXP_TYPE_POLICE
 	departments_list = list(
