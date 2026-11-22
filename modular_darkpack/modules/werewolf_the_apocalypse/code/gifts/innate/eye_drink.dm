@@ -48,7 +48,7 @@
 		if(successes <= 0)
 			return TRUE
 
-	if(owner != /datum/species/human/shifter/feral)
+	if(owner != var/mob/living/basic/corvid/corvid)
 		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
 		SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
 	else
