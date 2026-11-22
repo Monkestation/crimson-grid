@@ -180,6 +180,7 @@
 
 /obj/item/ammo_box/darkpack/c75/silver
 	desc = "The bag has Action Bill emblazoned on the front, holding the head of a dead wolf and a still smoking musket. Vintage merchandise."
+
 /obj/item/ammo_box/darkpack/c75/phosphorus
 	name = "cartridge bag (.75 phosphorous ball)"
 	desc = "A ball of white phosphorous entirely, dear god man ever heard of overkill?"
