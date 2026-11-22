@@ -227,10 +227,12 @@
 /datum/discipline_power/vicissitude/horrid_form/activate()
 	. = ..()
 	activating = FALSE
+// CRIMSON EDIT ADD START - Disallows Zulo Form from using Obtenebration
 	var/datum/discipline/obtenebration/obten = owner.get_discipline(/datum/discipline/obtenebration)
 	var/datum/discipline_power/obtenebration/black_metamorphosis/armor = obten?.get_power(/datum/discipline_power/obtenebration/black_metamorphosis)
 	if(armor?.active)
 		armor.try_deactivate(direct = TRUE)
+// CRIMSON EDIT ADD END - Disallows Zulo Form from using Obtenebration
 	owner.set_species(mrace = /datum/species/tzimisce_zulo_form, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)
 	owner.uncuff() // mimics bloodform for uncuffing. Placeholder until cuffbreaking code is done.
 
