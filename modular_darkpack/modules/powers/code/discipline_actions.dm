@@ -28,8 +28,8 @@
 	register_to_availability_signals()
 
 /datum/action/discipline/Destroy()
+	. = ..()
 	QDEL_NULL(discipline)
-	return ..()
 
 /datum/action/discipline/Remove(mob/owner)
 	if(discipline)
