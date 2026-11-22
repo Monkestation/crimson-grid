@@ -183,4 +183,4 @@
 /obj/item/ammo_box/darkpack/c75/phosphorus
 	name = "cartriage bag (.75 phosphorous ball)"
 	desc = "A ball of white phosphorous entirely, dear god man ever heard of overkill?"
-	ammo_type = /obj/item/ammo_casing/vampire/c75/phosphorous
+	ammo_type = /obj/item/ammo_casing/vampire/c75/phosphorus
