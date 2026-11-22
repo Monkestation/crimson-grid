@@ -11,6 +11,11 @@
 #define SPLAT_CORAX "splat_corax"
 #define SPLAT_SHIFTERS list(SPLAT_GAROU, SPLAT_CORAX)
 
+/// ERT setup value for keeping each character's own splat instead of forcing one
+#define ERT_KEEP_CHARACTERS_SPLATS "keep character splat"
+/// ERT setup value for using the template's own forced_splat
+#define ERT_TEAM_SPLAT "use team's splat"
+
 #define SPLAT_PRIO_HALFSPLAT 100
 #define SPLAT_PRIO_SPLAT 200
 

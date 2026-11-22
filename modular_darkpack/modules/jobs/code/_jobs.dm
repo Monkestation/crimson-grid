@@ -104,14 +104,14 @@
 	if(phone)
 		phone.update_initialized_contacts(spawned, player_client)
 
+/datum/job/vampire/get_lobby_icon()
+	return icon(DEFAULT_HUDS_DMI, "hudno_id")
+
 /datum/job/vampire
 	abstract_type = /datum/job/vampire
 	exp_required_type = EXP_TYPE_PLAYTIME
 	exp_granted_type = EXP_TYPE_PLAYTIME
 	tgui_icon = FA_ICON_QUESTION
-
-/datum/job/vampire/get_lobby_icon()
-	return icon(DEFAULT_HUDS_DMI, SECHUD_UNKNOWN)
 
 /**
  * This type is used to indicate a lack of a job.
