@@ -187,8 +187,10 @@
 
 /datum/discipline_power/obtenebration/black_metamorphosis/pre_activation_checks()
 	. = ..()
+// CRIMSON EDIT ADD START - Disallows Zulo Form from using Obtenebration
 	if(is_species(owner, SPECIES_ZULO_FORM))
 		return FALSE
+// CRIMSON EDIT ADD END - Disallows Zulo Form from using Obtenebration
 	if(activating) // Prevent multi-activation while the do_after is ongoing
 		to_chat(owner, span_warning("You are already attempting to activate Black Metamorphosis!"))
 		return FALSE
