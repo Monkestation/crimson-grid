@@ -32,6 +32,13 @@
 
 /datum/pc_program/proc/notify_tap(datum/bank_account/payer, datum/bank_account/payee, amount)
 
+
+/// Called when this program's window opens on its computer.
+/datum/pc_program/proc/on_open()
+
+/// Called when this program's window closes, including when a network switch closes every window.
+/datum/pc_program/proc/on_close()
+
 /datum/pc_program/proc/get_lock_reason(mob/living/user)
 	return null
 

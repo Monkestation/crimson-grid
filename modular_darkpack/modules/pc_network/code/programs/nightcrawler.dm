@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(nightcrawler_photo_keys)
 		if("toggle_mute")
 			if(!speakers)
 				return FALSE
-			speakers.toggle_mute()
+			speakers.set_listening(!speakers.should_be_listening)
 			return TRUE
 	return FALSE
 

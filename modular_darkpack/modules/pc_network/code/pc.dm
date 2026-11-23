@@ -103,6 +103,33 @@
 /obj/machinery/computer/pc/proc/get_logged_account()
 	return logged_account?.resolve()
 
+/obj/machinery/computer/pc/proc/open_program(program_type)
+	for(var/datum/pc_program/program as anything in installed_programs)
+		if(program.type != program_type)
+			continue
+		if(!(program_type in open_windows))
+			open_windows[program_type] = TRUE
+			program.on_open()
+		active_program = program_type
+		return TRUE
+	return FALSE
+
+/obj/machinery/computer/pc/proc/close_program(program_type)
+	if(!(program_type in open_windows))
+		return
+	open_windows -= program_type
+	if(active_program == program_type)
+		active_program = null
+	for(var/datum/pc_program/program as anything in installed_programs)
+		if(program.type == program_type)
+			program.on_close()
+			return
+
+/obj/machinery/computer/pc/proc/close_all_programs()
+	for(var/program_type in open_windows)
+		close_program(program_type)
+	active_program = null
+
 /// Put this computer on the offline network. It can reconnect via its network switcher.
 /obj/machinery/computer/pc/proc/disconnect_from_network()
 	if(!current_network || current_network.id == PC_NETWORK_OFFLINE)
@@ -110,8 +137,7 @@
 	current_network.leave(src)
 	current_network = GLOB.pc_networks[PC_NETWORK_OFFLINE]
 	current_network?.join(src)
-	open_windows.Cut()
-	active_program = null
+	close_all_programs()
 	return TRUE
 
 /obj/machinery/computer/pc/proc/try_login(mob/user)
@@ -188,8 +214,7 @@
 	current_network?.join(src)
 
 	// Close active windows on network reset for security
-	open_windows.Cut()
-	active_program = null
+	close_all_programs()
 
 /obj/machinery/computer/pc/proc/get_formatted_address()
 	var/datum/bank_account/acc = get_logged_account()
@@ -373,22 +398,13 @@
 			current_network = target_net
 			current_network.join(src)
 
-			open_windows.Cut()
-			active_program = null
+			close_all_programs()
 			return TRUE
 
 		if("open_program")
-			var/prog_type = text2path(params["id"])
-			for(var/datum/pc_program/P in installed_programs)
-				if(P.type == prog_type)
-					open_windows[prog_type] = TRUE
-					active_program = prog_type
-					return TRUE
+			return open_program(text2path(params["id"]))
 		if("close_program")
-			var/prog_type = text2path(params["id"])
-			open_windows -= prog_type
-			if(active_program == prog_type)
-				active_program = null
+			close_program(text2path(params["id"]))
 			return TRUE
 		if("set_active")
 			active_program = text2path(params["id"])
