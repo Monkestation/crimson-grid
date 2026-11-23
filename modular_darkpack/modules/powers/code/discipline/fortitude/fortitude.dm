@@ -6,6 +6,7 @@
 ●●● Fortitude 3: Passive
 ●●●● Fortitude 4: Passive
 ●●●●● Fortitude 5: Passive"}
+	id = DISCIPLINE_FORTITUDE
 	icon_state = "fortitude"
 	power_type = /datum/discipline_power/fortitude
 

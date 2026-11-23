@@ -12,8 +12,16 @@
 
 /datum/quirk/darkpack/pain_tolerance/add(client/client_source)
 	quirk_holder.add_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	quirk_holder.add_traits(list(TRAIT_ANALGESIA, TRAIT_NO_DAMAGE_OVERLAY), QUIRK_TRAIT)
+	quirk_holder.add_traits(list(TRAIT_ANALGESIA, TRAIT_NOSOFTCRIT), QUIRK_TRAIT)
 
 /datum/quirk/darkpack/pain_tolerance/remove(client/client_source)
 	quirk_holder.remove_movespeed_mod_immunities(type, /datum/movespeed_modifier/damage_slowdown)
-	quirk_holder.remove_traits(list(TRAIT_ANALGESIA, TRAIT_NO_DAMAGE_OVERLAY), QUIRK_TRAIT)
+	quirk_holder.remove_traits(list(TRAIT_ANALGESIA, TRAIT_NOSOFTCRIT), QUIRK_TRAIT)
+
+// from clanbook malk revised page 65
+/datum/quirk/darkpack/pain_tolerance/malk
+	name = "Deadened Nerves"
+	desc = "Your nervous system is missing a few connections. While you may miss some important warnings, your deadened nerves also protect you from pain."
+	value = 4
+	allowed_splats = list(SPLAT_KINDRED)
+	included_clans = list(VAMPIRE_CLAN_MALKAVIAN)
