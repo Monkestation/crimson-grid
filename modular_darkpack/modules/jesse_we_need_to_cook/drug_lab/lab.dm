@@ -1,8 +1,12 @@
 #define METHLAB_IDLE 0
 #define METHLAB_COOKING 1
 #define METHLAB_DONE 2
+/// A ruined batch. Locked up until it goes off.
+#define METHLAB_RUINED 3
 
 #define METHLAB_STAGE_COUNT 5
+/// How long between a batch being ruined and the lab going off, so people can get clear.
+#define METHLAB_FUSE_TIME (3 SECONDS)
 
 /obj/structure/methlab
 	/// One of METHLAB_*
@@ -35,16 +39,19 @@
 /obj/structure/methlab/examine(mob/user)
 	. = ..()
 	. += span_notice("It's set to make [recipe.name].")
-	if(state == METHLAB_IDLE)
-		var/list/missing = list()
-		for(var/slot_type in recipe.slots)
-			var/datum/lab_slot/slot = GLOB.lab_slots[slot_type]
-			var/remaining = recipe.slots[slot_type] - (loaded[slot_type] || 0)
-			if(remaining > 0)
-				missing += "[remaining]x [slot.name]"
-		. += span_notice("Still needs: [english_list(missing, "nothing")]. Use it with an empty hand to change the recipe.")
-	else
-		. += span_notice("It's loaded and ready. Use it with an empty hand to open the controls.")
+	switch(state)
+		if(METHLAB_IDLE)
+			var/list/missing = list()
+			for(var/slot_type in recipe.slots)
+				var/datum/lab_slot/slot = GLOB.lab_slots[slot_type]
+				var/remaining = recipe.slots[slot_type] - (loaded[slot_type] || 0)
+				if(remaining > 0)
+					missing += "[remaining]x [slot.name]"
+			. += span_notice("Still needs: [english_list(missing, "nothing")]. Use it with an empty hand to change the recipe.")
+		if(METHLAB_RUINED)
+			. += span_userdanger("It's rattling and hissing. It's about to go!")
+		else
+			. += span_notice("It's loaded and ready. Use it with an empty hand to open the controls.")
 
 /obj/structure/methlab/proc/reset_lab()
 	state = METHLAB_IDLE
@@ -120,6 +127,9 @@
 	return TRUE
 
 /obj/structure/methlab/ui_interact(mob/user, datum/tgui/ui)
+	if(state == METHLAB_RUINED)
+		balloon_alert(user, "it's about to blow!")
+		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "MethLab")
@@ -216,12 +226,12 @@
 	visible_message(span_notice("[src] pings. The batch is ready."))
 	playsound(src, 'sound/machines/ping.ogg', 40, TRUE)
 
-/// user is whoever finished the last stage, and is who witnesses blame.
+/// Starts the fuse. user is whoever finished the last stage, and is who witnesses blame.
 /obj/structure/methlab/proc/ruin_batch(mob/living/user)
-	visible_message(span_userdanger("[src] boils over in a cloud of noxious fumes!"))
-	new /obj/effect/particle_effect/fluid/smoke(get_turf(src))
-	for(var/mob/living/victim in range(1, src))
-		victim.adjust_tox_loss(recipe.ruin_damage)
+	state = METHLAB_RUINED
+	SStgui.close_uis(src)
+	visible_message(span_userdanger("[src] shudders and starts hissing violently! Get away from it!"))
+	playsound(src, 'sound/effects/spray2.ogg', 50, TRUE)
 
 	for(var/mob/living/carbon/human/npc/police/witness in oviewers(DEFAULT_SIGHT_DISTANCE, src))
 		witness.announce_drug_line(witness.socialrole?.drug_witness_phrases)
@@ -232,7 +242,18 @@
 		witness.cancel_talking()
 		SEND_SIGNAL(SSdcs, COMSIG_GLOB_REPORT_CRIME, CRIME_DRUG_PRODUCTION, get_turf(src))
 
-	reset_lab()
+	addtimer(CALLBACK(src, PROC_REF(detonate)), METHLAB_FUSE_TIME)
+
+/// The lab goes up: a cloud of fumes, a blast sized by the recipe, and the lab is destroyed.
+/obj/structure/methlab/proc/detonate()
+	var/turf/blast_turf = get_turf(src)
+	if(blast_turf)
+		var/datum/effect_system/fluid_spread/smoke/lab_fumes/fumes = new(blast_turf, recipe.fume_range)
+		fumes.tox_damage = recipe.fume_damage
+		fumes.start()
+		if(recipe.blast_range)
+			explosion(blast_turf, light_impact_range = recipe.blast_range, flame_range = recipe.blast_range)
+	qdel(src)
 
 /obj/structure/methlab/proc/collect(mob/living/user)
 	var/amount = recipe.base_yield + round(final_quality / recipe.yield_divisor)
@@ -245,4 +266,6 @@
 #undef METHLAB_IDLE
 #undef METHLAB_COOKING
 #undef METHLAB_DONE
+#undef METHLAB_RUINED
 #undef METHLAB_STAGE_COUNT
+#undef METHLAB_FUSE_TIME

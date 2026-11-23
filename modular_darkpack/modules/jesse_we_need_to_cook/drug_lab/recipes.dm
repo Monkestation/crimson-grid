@@ -20,8 +20,12 @@ GLOBAL_LIST_INIT(lab_recipes, init_lab_recipes())
 	var/yield_divisor = 25
 	/// Added to instability when scaling the minigames. Harder recipes = higher number.
 	var/base_difficulty = 0
-	/// Toxin damage to everyone next to the lab when a batch is ruined.
-	var/ruin_damage = 8
+	/// When a batch is ruined: toxin damage per second to anyone in the fumes
+	var/fume_damage = 2
+	/// How far the fumes spread
+	var/fume_range = 3
+	/// Radius of the blast (also the fire radius). 0 = no explosion, just fumes.
+	var/blast_range = 1
 
 /// The slot this item fills for this recipe, or null if it isn't an ingredient.
 /datum/lab_recipe/proc/find_slot(obj/item/tool)
@@ -43,6 +47,19 @@ GLOBAL_LIST_INIT(lab_recipes, init_lab_recipes())
 	output_name = "crystals"
 	base_yield = 2
 	base_difficulty = 0
+	blast_range = 2
+
+/datum/lab_recipe/opium
+	name = "Opium"
+	desc = "Slow and forgiving. Boil down the poppies, then add the solvent once they're all in."
+	slots = list(
+		/datum/lab_slot/supply/poppy = 3,
+		/datum/lab_slot/supply/finisher/solvent = 1,
+	)
+	output_type = /obj/item/food/drug/opium/batch
+	output_name = "lumps of opium"
+	base_yield = 2
+	base_difficulty = 1
 
 /datum/lab_recipe/mdma
 	name = "MDMA"
@@ -85,19 +102,9 @@ GLOBAL_LIST_INIT(lab_recipes, init_lab_recipes())
 	base_yield = 4
 	yield_divisor = 25
 	base_difficulty = 3
-	ruin_damage = 15
-
-/datum/lab_recipe/opium
-	name = "Opium"
-	desc = "Slow and forgiving. Boil down the poppies, then add the solvent once they're all in."
-	slots = list(
-		/datum/lab_slot/supply/poppy = 3,
-		/datum/lab_slot/supply/finisher/solvent = 1,
-	)
-	output_type = /obj/item/food/drug/opium/batch
-	output_name = "lumps of opium"
-	base_yield = 2
-	base_difficulty = 1
+	fume_damage = 4
+	fume_range = 4
+	blast_range = 0
 
 /obj/item/lab_supply
 	abstract_type = /obj/item/lab_supply
