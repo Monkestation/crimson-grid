@@ -13,11 +13,12 @@
 	)
 
 	alt_titles = list(
+		JOB_CLINIC_GUARD,
 		"Clinic Orderly",
 		"Hospise Orderly",
 	)
 
-	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE)
+	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE, SPLAT_GAROU, SPLAT_KINDRED)
 	splat_slots = list(SPLAT_GHOUL = 2, SPLAT_KINFOLK = 2)
 
 	description = "As an Orderly for the Hospital your main job is ensuring the security of medical staff, patients, and equipment."
@@ -41,6 +42,12 @@
 	belt = /obj/item/storage/belt/security/police
 	id = /obj/item/card/clinic
 	l_pocket = /obj/item/smartphone/clinic_officer
-	r_pocket = /obj/item/vamp/keys/clinics_director
+	r_pocket = /obj/item/vamp/keys/clinic_guard
 	backpack_contents = list(/obj/item/card/credit=1, /obj/item/ammo_box/darkpack/c9mm = 1, /obj/item/ammo_box/magazine/glock9mm = 2)
 
+/obj/item/vamp/keys/clinic_guard
+	name = "clinic guard keys"
+	accesslocks = list(
+		LOCKACCESS_CLINIC,
+		LOCKACCESS_DIRECTOR,
+	)

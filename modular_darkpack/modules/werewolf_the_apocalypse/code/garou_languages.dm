@@ -29,6 +29,7 @@
 	)
 	spoken_languages = list(
 		/datum/language/primal_tongue = list(LANGUAGE_ATOM),
+		/datum/language/garou_tongue = list(LANGUAGE_ATOM), // Garou should be able to speak High Tongue in every form.
 	)
 
 /datum/language/garou_tongue

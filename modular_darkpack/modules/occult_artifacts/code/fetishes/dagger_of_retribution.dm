@@ -22,9 +22,9 @@
 	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FIRE_PROOF
 	obj_flags = CONDUCTS_ELECTRICITY
-	operating_sound = SFX_KNIFE_SLICE
-	pickup_sound = SFX_KNIFE_PICKUP
-	drop_sound = SFX_KNIFE_DROP
+	operating_sound = /datum/sound_effect/knife_slice
+	pickup_sound = /datum/sound_effect/knife_pickup
+	drop_sound = /datum/sound_effect/knife_drop
 	subsystem_type = /datum/controller/subsystem/processing/fastprocess
 
 	spirit_type = SPIRIT_VENGEANCE
