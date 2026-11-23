@@ -216,9 +216,9 @@
 #define DEPARTMENT_TRIAD "Chinese Triad"
 // CRIMSON EDIT END - Triads
 
-// CRIMSON EDIT ADDITION - Camarilla
+// CRIMSON EDIT ADDITION - Camarilla Jazz Servant
 #define SUPERVISOR_PRIMOGEN_VENTRUE "the Ventrue Primogen"
-// CRIMSON EDIT END - Camarilla
+// CRIMSON EDIT END - Camarilla Jazz Servant
 
 
 DEFINE_BITFIELD(departments_bitflags, list(
