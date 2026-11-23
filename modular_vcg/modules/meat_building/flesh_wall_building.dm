@@ -1,9 +1,16 @@
 /obj/item/stack/sheet/meat/examine(mob/user)
 	. = ..()
-	. += span_notice("You can build a flesh wall by right clicking on an empty floor.")
+	var/mob/living/living_user = astype(user)
+	if(living_user?.get_discipline(/datum/discipline/vicissitude))
+		. += span_notice("You can build a flesh wall by right clicking on an empty floor.")
 
+// You can build the fleshwall with right click, if you are Tzi
 /obj/item/stack/sheet/meat/afterattack_secondary(atom/target, mob/user, proximity_flag, click_parameters)
 	if(istype(target, /turf/open))
+		var/mob/living/living_user = astype(user)
+		if(living_user?.get_discipline(/datum/discipline/vicissitude))
+			user.balloon_alert(user, "no clue, what to do with that!")
+			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 		var/turf/open/build_on = target
 		if(!user.Adjacent(build_on))
 			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
