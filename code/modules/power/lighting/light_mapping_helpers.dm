@@ -54,6 +54,46 @@
 	bulb_colour = "#FFDDCC"
 	bulb_power = 0.6
 
+/obj/machinery/light/verydim
+	nightshift_allowed = FALSE
+	bulb_colour = "#FFDDCC"
+	bulb_power = 0.5
+
+/obj/machinery/light/extremedim
+	nightshift_allowed = FALSE
+	bulb_colour = "#FFDDCC"
+	bulb_power = 0.3
+
+/obj/machinery/light/cold/dim
+	nightshift_allowed = FALSE
+	bulb_colour = "#f3fffa"
+	bulb_power = 0.6
+
+/obj/machinery/light/cold/verydim
+	nightshift_allowed = FALSE
+	bulb_colour = "#f3fffa"
+	bulb_power = 0.5
+
+/obj/machinery/light/cold/extremedim
+	nightshift_allowed = FALSE
+	bulb_colour = "#f3fffa"
+	bulb_power = 0.3
+
+/obj/machinery/light/skyblue
+	nightshift_allowed = FALSE
+	bulb_colour = "#9ceff2"
+	bulb_power = 1
+
+/obj/machinery/light/pissyellow
+	nightshift_allowed = FALSE
+	bulb_colour = "#ffdf22"
+	bulb_power = 1
+
+/obj/machinery/light/sickgreen
+	nightshift_allowed = FALSE
+	bulb_colour = "#e1ff00"
+	bulb_power = 1
+
 // the smaller bulb light fixture
 
 /obj/machinery/light/small
@@ -131,6 +171,16 @@
 	no_low_power = TRUE
 	nightshift_allowed = FALSE
 	bulb_colour = "#e26ed2"
+
+/obj/machinery/light/small/green
+	bulb_colour = "#238200"
+	no_low_power = TRUE
+	nightshift_allowed = FALSE
+
+/obj/machinery/light/small/yellow
+	bulb_colour = "#e8cf00"
+	no_low_power = TRUE
+	nightshift_allowed = FALSE
 
 /obj/machinery/light/prince
 	icon_state = "prince"
@@ -210,6 +260,15 @@ LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/cold/dim)
 // ---- Red tubes
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/red)
 
+// ---- Sky Blue tubes
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/skyblue)
+
+// ---- Piss Yellow tubes
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/pissyellow)
+
+// ---- Sick Green Tubes
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/sickgreen)
+
 // ---- Red dim tubes
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/red/dim)
 
@@ -218,6 +277,21 @@ LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/blacklight)
 
 // ---- Dim tubes
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/dim)
+
+// ---- Very Dim tubes
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/verydim)
+
+// ---- Extremely Dim tubes
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/extremedim)
+
+// ---- Cold Dim tubes
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/cold/dim)
+
+// ---- Cold Very Dim tubes
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/cold/verydim)
+
+// ---- Cold Extremely Dim tubes
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/cold/extremedim)
 
 
 // -------- Bulb lights
@@ -254,8 +328,15 @@ LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/prince/broken)
 
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/prince/ghost)
 
+// ---- Green bulbs
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/small/green)
+
+// ---- Yellow bulbs
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/small/yellow)
+
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/blue)
 
+// ---- Blue bulbs
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/blue/dim)
 
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/small/blue)

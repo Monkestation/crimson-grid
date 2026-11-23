@@ -80,11 +80,13 @@
 		cached_species_compatibility = get_species_compatibility()
 		cached_splats_compatibility = get_splat_compatibility() // DARKPACK EDIT ADD - SPLATS
 		cached_clans_compatibility = get_clan_compatibility() // DARKPACK EDIT ADD - MERITS_FLAWS
+		cached_disciplines_compatibility = get_disciplines_compatibility() // DARKPACK EDIT ADD - MERITS_FLAWS
 
 	data["selected_quirks"] = cached_selected_quirks
 	data["species_disallowed_quirks"] = cached_species_compatibility
 	data["splat_disallowed_quirks"] = cached_splats_compatibility // DARKPACK EDIT ADD - SPLATS
 	data["clan_disallowed_quirks"] = cached_clans_compatibility // DARKPACK EDIT ADD - MERITS_FLAWS
+	data["discipline_disallowed_quirks"] = cached_disciplines_compatibility // DARKPACK EDIT ADD - MERITS_FLAWS
 	data["quirk_balance"] = get_quirk_balance() // DARKPACK EDIT ADD - MERITS_FLAWS
 	data["freebie_points"] = get_freebie_points() // DARKPACK EDIT ADD - MERITS_FLAWS
 
@@ -128,8 +130,14 @@
 /datum/preference_middleware/quirks/proc/give_quirk(list/params, mob/user)
 	var/quirk_name = params["quirk"]
 	// DARKPACK EDIT ADD - MERITS_FLAWS
-	var/datum/st_stat/freebie/freebie_points = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS]
 	var/datum/quirk/quirk_type = SSquirks.quirks[quirk_name]
+	if(!quirk_type)
+		return TRUE
+	if(!SSquirks.quirk_prototypes[quirk_type].is_prefs_appropriate(preferences))
+		tainted = TRUE
+		preferences.update_static_data(user, always_instant = TRUE)
+		return TRUE
+	var/datum/st_stat/freebie/freebie_points = preferences.preference_storyteller_stats[STAT_FREEBIE_POINTS]
 	freebie_points.decrease_points(quirk_type.value)
 	// DARKPACK EDIT END - MERITS_FLAWS
 	preferences.validate_quirks()
@@ -222,5 +230,17 @@
 			clan_blacklist += quirk_prototype.name
 
 	return clan_blacklist
+
+/datum/preference_middleware/quirks/proc/get_disciplines_compatibility()
+	var/list/discipline_blacklist = list()
+	var/list/discipline_ids = preferences.get_discipline_ids()
+
+	for(var/quirk_path in SSquirks.quirk_prototypes)
+		var/datum/quirk/darkpack/darkpack_quirk = SSquirks.quirk_prototypes[quirk_path]
+		if(!istype(darkpack_quirk))
+			continue
+		if(!darkpack_quirk.is_discipline_appropriate(discipline_ids))
+			discipline_blacklist += darkpack_quirk.name
+	return discipline_blacklist
 
 // DARKPACK EDIT END - MERITS_FLAWS

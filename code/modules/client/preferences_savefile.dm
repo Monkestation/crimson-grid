@@ -13,7 +13,7 @@
 /// You do not need to raise this if you are adding new values that have sane defaults.
 /// Only raise this value when changing the meaning/format/name/layout of an existing value
 /// where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX 52
+#define SAVEFILE_VERSION_MAX 54
 
 #define IS_DATA_OBSOLETE(version) (version == SAVE_DATA_OBSOLETE)
 #define SHOULD_UPDATE_DATA(version) (version >= SAVE_DATA_NO_ERROR && version < SAVEFILE_VERSION_MAX)
@@ -122,7 +122,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (current_version < 44)
 		update_tts_blip_prefs()
 
+	if(current_version < 53)
+		if("swap_hands" in key_bindings)
+			var/keys = key_bindings["swap_hands"]
+			key_bindings -= "swap_hands"
+			key_bindings["swap_hands_row"] = keys
+
 /datum/preferences/proc/update_character(current_version, list/save_data)
+	if(current_version < 54)
+		migrate_legacy_loadout_items(save_data)
+
 	if (current_version < 41)
 		migrate_character_to_tgui_prefs_menu()
 
@@ -387,6 +396,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 				continue
 			value_cache -= preference.type
+		discipline_levels = list() // DARKPACK EDIT ADD - MERITS_FLAWS
 		return FALSE
 
 	var/data_validity_integer = check_savedata_version(save_data)
@@ -462,7 +472,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
 
+	// DARKPACK EDIT ADD START - MERITS_FLAWS
+	// Discipline-gated quirks are validated below, so the new slot's disciplines must be loaded first.
+	// Otherwise this validates against whatever slot we switched FROM (or an empty list on first load).
+	discipline_levels = SANITIZE_LIST(save_data?["discipline_levels"]) || list()
+	// DARKPACK EDIT ADD END
+
 	validate_quirks()
+
+	if(isnewplayer(parent?.mob))
+		var/mob/dead/new_player/lobbyguy = parent?.mob
+		lobbyguy.update_ready_report()
 
 	return TRUE
 

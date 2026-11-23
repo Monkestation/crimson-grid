@@ -7,6 +7,7 @@
 ●●● Blood of Potency: Permanent Willpower
 ●●●● Theft of Vitae: Permanent Willpower
 ●●●●● Cauldron of Blood: Permanent Willpower"}
+	id = DISCIPLINE_THAUMATURGY
 	icon_state = "thaumaturgy"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/thaumaturgy
@@ -32,6 +33,10 @@
 	applicable_stats = list(STAT_PERMANENT_WILLPOWER)
 	numerical = TRUE
 
+/datum/storyteller_roll/thaumaturgy/using_difficulty(mob/living/roller, atom/target)
+	. = ..()
+	if(HAS_TRAIT(roller, TRAIT_BLOOD_SORCERY_PRODIGY))
+		. = max(4, . - 1)
 
 /datum/discipline_power/thaumaturgy
 	name = "Thaumaturgy power name"

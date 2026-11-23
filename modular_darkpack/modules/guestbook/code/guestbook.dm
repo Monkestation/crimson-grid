@@ -166,10 +166,12 @@
 		return FALSE
 	return TRUE
 
-/mob/living/carbon/human/proc/attempt_guestbook_add(datum/source, atom/A)
+/mob/living/proc/attempt_guestbook_add(datum/source, atom/A)
 	SIGNAL_HANDLER
 
-	if(!ishuman(A) || in_range(A, src))
+	if(!ishuman(A) || !mind?.guestbook)
+		return
+	if(in_range(A, src) && get_active_held_item())
 		return
 	var/mob/living/carbon/human/targeted_human = A
 	if(!targeted_human.mind?.guestbook)

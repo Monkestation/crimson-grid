@@ -119,7 +119,7 @@
 //------------Glasses------------
 
 /obj/item/clothing/glasses/night/thermal
-	vision_flags = SEE_MOBS
+	clothing_traits = list(TRAIT_THERMAL_VISION)
 //	brand = "mars" // TODO: implement the rest of the non-top 21 pentex subsids
 
 //------------Weapons------------/obj/item/ammo_casing/vampire/c12gvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv

@@ -9,6 +9,7 @@
 ●●● Mask of a Thousand Faces: Manipulation + Performance (difficulty 7)
 ●●●● Vanish from the Mind's Eye: Charisma + Stealth (difficulty 6)
 ●●●●● Cloak the Gathering: Passive"}
+	id = DISCIPLINE_OBFUSCATE
 	icon_state = "obfuscate"
 	power_type = /datum/discipline_power/obfuscate
 

@@ -16,7 +16,7 @@
 /obj/item/masquerade_contract/attack_self(mob/user, modifiers)
 	. = ..()
 	if(!get_vampire_splat(user))
-		return
+		return FALSE
 	var/turf/current_location = get_turf(user)
 	to_chat(user, span_info("[span_bold("YOU")], [get_area_name(user)] X:[current_location.x] Y:[current_location.y] Z:[current_location.z]"))
 	for(var/mob/living/carbon/breacher in GLOB.masquerade_breakers_list)
@@ -28,8 +28,19 @@
 			location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Masquerade Breaches: [5 - breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]")) // CRIMSON EDIT CHANGE - Original: to_chat(user, span_info("[breacher.real_name], Masquerade: [breacher.masquerade_score], Diablerist: [(HAS_TRAIT(breacher, TRAIT_DIABLERIE) && !HAS_TRAIT(breacher, TRAIT_HIDDEN_DIABLERIE)) ? "<b>YES</b>" : "NO"], [location_info]"))
 
-	if(!GLOB.masquerade_breakers_list)
+	if(!length(GLOB.masquerade_breakers_list))
 		to_chat(user, span_info("No available Masquerade breakers in city..."))
+	return TRUE
+
+/obj/item/masquerade_contract/prince/attack_self(mob/user, modifiers)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!length(GLOB.human_knowers))
+		return
+	to_chat(user, span_info("Humans with knowledge of us:"))
+	for(var/mob/living/carbon/breacher in GLOB.human_knowers)
+		to_chat(user, span_info("[breacher.real_name]"))
 
 /obj/item/veil_contract
 	name = "\improper brass pocketwatch"
@@ -41,10 +52,22 @@
 	w_class = WEIGHT_CLASS_SMALL
 	armor_type = /datum/armor/masquerade_contract
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	maptext_width = 40
+	maptext_x = -4
 
 /obj/item/veil_contract/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/readable_time)
+
+/obj/item/veil_contract/MouseEntered(location, control, params)
+	. = ..()
+	if(((get(src, /mob) == usr) || loc?.atom_storage || (item_flags & IN_STORAGE)) && !QDELETED(src)) //nullspace exists.
+		var/mob/L = usr
+		maptext = MAPTEXT("<div align='center' valign='bottom'>[server_timestamp("hh:mm", ic_time = TRUE, twelve_hour_clock = L.client?.prefs.read_preference(/datum/preference/toggle/twelve_hour))]</div>")
+
+/obj/item/veil_contract/MouseExited()
+	. = ..()
+	maptext = null
 
 /obj/item/veil_contract/attack_self(mob/user, modifiers)
 	. = ..()
@@ -62,7 +85,7 @@
 			location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Veil: [breacher.masquerade_score], [location_info]"))
 
-	if(!GLOB.veil_breakers_list)
+	if(!length(GLOB.veil_breakers_list))
 		to_chat(user, span_info("No available Veil breakers in city..."))
 
 /obj/item/intel_report
@@ -95,7 +118,7 @@
 			location_info = "[get_area_name(turf)]"
 		to_chat(user, span_info("[breacher.real_name], Veil: [breacher.masquerade_score], [location_info]"))
 
-	if(!GLOB.supernatural_breakers_list)
+	if(!length(GLOB.supernatural_breakers_list))
 		to_chat(user, span_info("No available freaks of nature in city..."))
 
 // CRIMSON EDIT ADD START - Sell Valuables

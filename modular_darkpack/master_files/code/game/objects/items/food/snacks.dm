@@ -30,6 +30,21 @@
 /obj/item/food/chips/shrimp
 	icon_state = "crisps2"
 
+/obj/item/food/chips/corn
+	icon_state = "crisps2"
+
+/obj/item/food/chips/corn/blue
+	icon_state = "crisps2"
+
+/obj/item/food/chips/corn/green
+	icon_state = "crisps2"
+
+/obj/item/food/chips/corn/red
+	icon_state = "crisps2"
+
+/obj/item/food/chips/corn/purple
+	icon_state = "crisps2"
+
 /obj/item/food/chocolatebar
 	icon_state = "bar2"
 	icon = 'modular_darkpack/modules/food/icons/items.dmi'

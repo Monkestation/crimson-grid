@@ -57,7 +57,6 @@
 
 /mob/living/carbon/human/npc/death()
 	GLOB.alive_npc_list -= src
-	SShumannpcpool.try_repopulate()
 	GLOB.move_manager.stop_looping(src)
 
 	if (!last_attacker || (get_dist(src, last_attacker) >= 10) || key || hostile)
@@ -116,6 +115,8 @@
 	// Don't pick a new destination while loitering
 	if (!walktarget && world.time >= loiter_until)
 		walktarget = ChoosePath()
+		if(!walktarget)
+			COOLDOWN_START(src, choose_path_cooldown, 2 SECONDS)
 	if(walktarget)
 		EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Set walktarget: [walktarget]", list(loc, get_turf(walktarget)))
 	// Loitering NPCs just stand around, skip the stuck detection below so they don't jitter
@@ -155,20 +156,23 @@
 /mob/living/carbon/human/npc/proc/CreateWay(direction)
 	var/turf/location = get_turf(src)
 	for(var/distance = 1 to 50)
-		location = get_step(location, direction)
+		var/turf/next_location = get_step(location, direction)
+		if(!next_location)
+			return location
+		location = next_location
 		if(iswallturf(location))
 			return location
-		for(var/atom/A in location)
-			// DARKPACK TODO - reimplement decor
-			/*
-			if(A.density && !istype(A, /obj/structure/lamppost))
-				return location
-			*/
-			if(istype(A, /obj/effect/landmark/npcwall))
-				return get_step_towards(location, get_turf(src))
-			if(istype(A, /obj/effect/landmark/npcbeacon) && prob(50))
-				stopturf = 1
-				return get_step(location, direction)
+		// DARKPACK TODO - reimplement decor
+		/*
+		if(A.density && !istype(A, /obj/structure/lamppost))
+			return location
+		*/
+		if(locate(/obj/effect/landmark/npcwall) in location)
+			return get_step_towards(location, get_turf(src))
+		if((locate(/obj/effect/landmark/npcbeacon) in location) && prob(50))
+			stopturf = 1
+			return get_step(location, direction)
+	return location
 
 /// Remembers a destination we've just visited so ChoosePath doesn't send us straight back to it.
 /mob/living/carbon/human/npc/proc/remember_target(atom/target)
@@ -324,6 +328,8 @@
 	if(!walktarget && !staying && world.time >= loiter_until)
 		stopturf = rand(1, 2)
 		walktarget = ChoosePath()
+		if(!walktarget)
+			COOLDOWN_START(src, choose_path_cooldown, 2 SECONDS)
 		face_atom(walktarget)
 
 	if(!isnull(hardstop))
@@ -332,9 +338,13 @@
 	if (!isturf(loc))
 		return
 
-	// Checks for fire, clearing the stored fire if none is in view.
-	// Skipped in combat, since the combat branch never reads it.
-	afraid_of_fire = danger_source ? null : find_nearby_fire()
+	// view() is pricey and there's usually no fire anywhere, so only bother when one's close
+	var/obj/effect/abstract/turf_fire/afraid_of_fire
+	for(var/obj/effect/abstract/turf_fire/fire as anything in SSturf_fire.processing)
+		if(fire.z != z || get_dist(src, fire) > DEFAULT_SIGHT_DISTANCE)
+			continue
+		afraid_of_fire = locate(/obj/effect/abstract/turf_fire) in view(DEFAULT_SIGHT_DISTANCE, src)
+		break
 
 	// Combat behaviour
 	if (danger_source)
@@ -379,6 +389,14 @@
 		GLOB.move_manager.move_away(src, afraid_of_fire, 10, cached_multiplicative_slowdown)
 		if (prob(25))
 			emote("scream")
+
+	// CRIMSON EDIT ADDITION START - drug dealing
+	// Fleeing from cops who witnessed a drug deal
+	else if (fleeing_from)
+		GLOB.move_manager.move_away(src, fleeing_from, 10, cached_multiplicative_slowdown)
+		if(IS_UNCONSCIOUS_OR_CRIT(fleeing_from) || !(fleeing_from in view(DEFAULT_SIGHT_DISTANCE, src)))
+			fleeing_from = null
+	// CRIMSON EDIT ADDITION END - drug dealing
 
 	// Walking around behaviour
 	else if (walktarget && !staying)
