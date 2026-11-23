@@ -195,19 +195,19 @@
 		stinky_guy.forceMove(kickout_turf)
 		break
 
-///---------------- Corax Totem Beginning: Crimson Grid Addition
+///---------------- Corax Totem Beginning: Crimson Grid Addition - Credits to SugarLooped for the Amazing Art!!
 
 /obj/structure/werewolf_totem/corax
-	name = "corax totem"
-	icon_state = "glassw" // This should be changed in the future for a modularized icon
-	base_icon_state = "glassw" // This should be changed in the future for a modularized icon
-	light_color = "#4052a3"
+	desc = "Gives power to all Corax of this Nest."
+	icon_state = "corax" // This should be changed in the future for a modularized icon
+	base_icon_state = "corax_broken" // This should be changed in the future for a modularized icon
+	light_color = "#f7f300"
 
 /obj/structure/werewolf_totem/corax/is_friend_of_totem(mob/living/potential_friend)
 	return !!get_corax_splat(potential_friend)
 
 
-///---------------- Corax Totem End: Crimson Grid Addition
+///---------------- Corax Totem End: Crimson Grid Addition - Credits to SugarLooped for the Amazing Art!!
 
 /obj/structure/werewolf_totem/wendigo
 	name = "\improper " + TRIBE_GALESTALKERS + " totem"
