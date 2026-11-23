@@ -94,6 +94,8 @@
 	var/datum/storyteller_roll/frenzy/rotschreck/frenzy_roll = new()
 	frenzy_roll.difficulty = difficulty
 	var/frenzy_result = frenzy_roll.st_roll(src, fire)
+	if(prob(45.1))
+		src.emote("gulp")
 	if(frenzy_result <= 0)
 		if(!fire)
 			fire = src
