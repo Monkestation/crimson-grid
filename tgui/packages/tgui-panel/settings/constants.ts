@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-export const THEMES = ['light', 'dark'] as const;
+export const THEMES = ['light', 'dark', 'vampire'] as const; // DARKPACK EDIT CHANGE - Vampire Theme - ORIGINAL: export const THEMES = ['light', 'dark'] as const;
 
 export const COLORS = {
   DARK: {
@@ -23,6 +23,16 @@ export const COLORS = {
     TEXT_IMPORTANT: '#A6A6A6',
     BG_IMPORTANT: '#910707',
   },
+  // DARKPACK EDIT ADD START - Vampire Theme
+  VAMPIRE: {
+    BG_BASE: '#1a0505',
+    BG_SECOND: '#0f0202',
+    BUTTON: '#2d0909',
+    TEXT: '#d4a574',
+    TEXT_IMPORTANT: '#e6b888',
+    BG_IMPORTANT: '#5c0f0f',
+  },
+  // DARKPACK EDIT ADD END - Vampire Theme
 } as const;
 
 export const SETTINGS_TABS = [

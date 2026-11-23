@@ -6,6 +6,7 @@
 ●●● Celerity 3: Passive
 ●●●● Celerity 4: Passive
 ●●●●● Celerity 5: Passive"}
+	id = DISCIPLINE_CELERITY
 	icon_state = "celerity"
 	power_type = /datum/discipline_power/celerity
 

@@ -6,6 +6,12 @@
 	. = ..()
 	mentor_datum_set()
 
+/client/Destroy()
+	if(mentor_datum)
+		mentor_datum.owner = null
+		GLOB.mentors -= src
+	return ..()
+
 // Overwrites /client/Topic to return for mentor client procs
 /client/Topic(href, href_list, hsrc)
 	//Replying to a mentorhelp

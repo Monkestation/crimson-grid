@@ -14,8 +14,9 @@
  * * multiline -  Bool that determines if the input box is much larger. Good for large messages, laws, etc.
  * * encode - Toggling this determines if input is filtered via html_encode. Setting this to FALSE gives raw input.
  * * timeout - The timeout of the textbox, after which the modal will close and qdel itself. Set to zero for no timeout.
+ * * * autofocus - The bool that controls if this picker should grab window focus. // DARKPACK EDIT ADD - autofocus arguments in this file
  */
-/proc/tgui_input_text(mob/user, message = "", title = "Text Input", default, max_length, multiline = FALSE, encode = TRUE, timeout = 0, ui_state = GLOB.always_state)
+/proc/tgui_input_text(mob/user, message = "", title = "Text Input", default, max_length, multiline = FALSE, encode = TRUE, timeout = 0, ui_state = GLOB.always_state, autofocus = TRUE) // DARKPACK EDIT ADD - autofocus = TRUE
 	if (!user)
 		user = usr
 	if (!istype(user))
@@ -36,14 +37,14 @@
 
 		if(encode)
 			if(multiline)
-				return stripped_multiline_input(user, message, title, default, PREVENT_CHARACTER_TRIM_LOSS(max_length))
+				return stripped_multiline_input(user, message, title, default, PREVENT_CHARACTER_TRIM_LOSS(max_length), autofocus) // DARKPACK EDIT ADD - autofocus
 			else
-				return stripped_input(user, message, title, default, PREVENT_CHARACTER_TRIM_LOSS(max_length))
+				return stripped_input(user, message, title, default, PREVENT_CHARACTER_TRIM_LOSS(max_length), autofocus) // DARKPACK EDIT ADD - autofocus
 		else
 			if(multiline)
-				return trim(input(user, message, title, default) as message|null, max_length)
+				return trim(input(user, message, title, default) as message|null, max_length, autofocus) // DARKPACK EDIT ADD - autofocus
 			else
-				return trim(input(user, message, title, default) as text|null, max_length)
+				return trim(input(user, message, title, default) as text|null, max_length, autofocus) // DARKPACK EDIT ADD - autofocus
 	var/datum/tgui_input_text/text_input = new(user, message, title, default, max_length, multiline, encode, timeout, ui_state)
 	text_input.ui_interact(user)
 	text_input.wait()
@@ -80,8 +81,11 @@
 	var/title
 	/// The TGUI UI state that will be returned in ui_state(). Default: always_state
 	var/datum/ui_state/state
+	/// The bool that controls if this modal should grab window focus
+	var/autofocus // DARKPACK EDIT ADD - var/autofocus
 
-/datum/tgui_input_text/New(mob/user, message, title, default, max_length, multiline, encode, timeout, ui_state)
+/datum/tgui_input_text/New(mob/user, message, title, default, max_length, multiline, encode, timeout, ui_state, autofocus) // DARKPACK EDIT ADD - autofocus
+	src.autofocus = autofocus // DARKPACK EDIT ADD - src.autofocus = autofocus
 	src.default = default
 	src.encode = encode
 	src.max_length = max_length
@@ -122,6 +126,7 @@
 
 /datum/tgui_input_text/ui_static_data(mob/user)
 	var/list/data = list()
+	data["autofocus"] = autofocus // DARKPACK EDIT ADD - data["autofocus"] = autofocus
 	data["large_buttons"] = user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
 	data["max_length"] = max_length
 	data["message"] = message
