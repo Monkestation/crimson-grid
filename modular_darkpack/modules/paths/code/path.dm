@@ -1,6 +1,7 @@
 /datum/discipline/path
 	abstract_type = /datum/discipline/path
 	action_type = /datum/action/discipline/path
+	icon = 'modular_darkpack/modules/paths/icons/paths.dmi' // CRIMSON GRID ADD: DARK THAUMATURGY
 	var/action_replaced = FALSE
 	selectable = FALSE //cant buy it as a ghoul
 
@@ -12,3 +13,10 @@
 	background_icon_state = "default"
 	button_icon_state = "default"
 	overlay_icon_state = "default"
+
+// CRIMSON GRID ADD: DARK THAUMATURGY
+/datum/action/discipline/path/New(Target, datum/discipline/discipline)
+	. = ..()
+	button_icon = discipline.icon
+	button_icon_state = discipline.icon_state
+// CRIMSON GRID ADD END: DARK THAUMATURGY

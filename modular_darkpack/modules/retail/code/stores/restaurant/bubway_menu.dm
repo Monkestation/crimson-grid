@@ -8,6 +8,10 @@
 		/obj/item/food/cookie,
 		/obj/item/reagent_containers/cup/glass/coffee/vampire,
 		/obj/item/reagent_containers/cup/glass/coffee/vampire/robust,
+// CRIMSON EDIT ADD START - Shop Inventories Additions
+		/obj/item/reagent_containers/cup/glass/vampirecola,
+		/obj/item/reagent_containers/cup/soda_cans/vampirecola,
+// CRIMSON EDIT ADD END - Shop Inventories Additions
 		/obj/item/reagent_containers/cup/soda_cans/thaw_club
 	)
 

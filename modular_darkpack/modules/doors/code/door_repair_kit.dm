@@ -4,3 +4,4 @@
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "sheet-titaniumglass"
 	w_class = WEIGHT_CLASS_BULKY
+	custom_price = 200 // CRIMSON EDIT ADD - Shop Inventories Additions

@@ -53,6 +53,7 @@ jobs:
             tools/ci/mysql_config.cnf
             tools/ci/run_server.sh
             modular_darkpack
+            modular_vcg
 
       - name: Configure BYOND version
         uses: ./.github/actions/configure_byond_version

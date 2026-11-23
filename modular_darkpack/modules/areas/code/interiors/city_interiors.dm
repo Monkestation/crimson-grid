@@ -77,6 +77,7 @@
 	icon_state = "mansion"
 	zone_type = ZONE_NO_MASQUERADE
 	domain = TRUE
+	musictracks = list('modular_darkpack/modules/ambience/sounds/music/enterlair.ogg', 'modular_darkpack/modules/ambience/sounds/music/infected_warehouse.ogg') //CRIMSON GRID EDIT | PR: Properly Makes Sangfancisco's Abandoned Manor is an interior | EDIT: I added scary music, spooky manors need to be spooky for the bit.
 
 /area/vtm/interior/apartment
 	name = "Millenium Apartments"
@@ -216,11 +217,14 @@
 	zone_type = ZONE_ELYSIUM
 	fire_controled = TRUE
 
+//CRIMSON GRID EDIT: Updates the Salubri domain to be like other domains
 /area/vtm/interior/salubri
-	name = "Veterinary Clinic"
-	icon_state = "old_clan_tzimisce"
-	zone_type = ZONE_ELYSIUM
+	name = "Vet Clinic"
+	icon_state = "clinic"
+	ambience_index = AMBIENCE_OFFICE
+	music_index = MUSIC_SAFE
 	fire_controled = TRUE
+	domain = TRUE
 
 /area/vtm/interior/banu
 	name = "Coffee House"

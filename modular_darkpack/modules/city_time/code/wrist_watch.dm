@@ -17,6 +17,7 @@
 
 /obj/item/clothing/watch/Initialize(mapload)
 	. = ..()
+	AddComponent(/datum/component/selling, 20, "watch", FALSE) // CRIMSON EDIT ADDITION - Sell Valuables
 	AddElement(/datum/element/readable_time)
 
 /obj/item/clothing/watch/attack_self(mob/user, list/modifiers)

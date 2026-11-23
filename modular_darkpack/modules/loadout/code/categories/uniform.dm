@@ -239,6 +239,12 @@
 	name = "Overalls"
 	item_path = /obj/item/clothing/under/vampire/mechanic
 
+//CRIMSON GRID ADDITION START: BLACK OVERALLS TO LOADOUT
+/datum/loadout_item/uniform/black_overalls
+	name = "Black Overalls"
+	item_path = /obj/item/clothing/under/vampire/graveyard
+//CRIMSON GRID ADDITION END
+
 /datum/loadout_item/uniform/black_overcoat
 	name = "Overcoat (Black)"
 	item_path = /obj/item/clothing/under/vampire/rich

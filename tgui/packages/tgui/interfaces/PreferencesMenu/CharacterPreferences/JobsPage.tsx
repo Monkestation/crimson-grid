@@ -682,6 +682,13 @@ export function JobsPage() {
                   hoveringOver={hoveringOver}
                   setHoveringOver={setHoveringOver}
                 />
+                <Department
+                  department="Chinese Triad" // Crimson Grid edit - Added Triad
+                  dragging={dragging}
+                  setDragging={setDragging}
+                  hoveringOver={hoveringOver}
+                  setHoveringOver={setHoveringOver}
+                />
               </Stack>
             </Stack.Item>
             {

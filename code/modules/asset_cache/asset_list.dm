@@ -149,24 +149,27 @@ GLOBAL_LIST_EMPTY(asset_datums)
 	item_filename = SANITIZE_FILENAME("[date].yml")
 	SSassets.transport.register_asset(item_filename, file("html/changelogs/archive/" + item_filename))
 	SSassets.transport.register_asset("darkpack_[item_filename]", file("html/changelogs/darkpack_archive/" + item_filename)) // DARKPACK EDIT CHANGE - SPLIT_CHANGELOG
+	SSassets.transport.register_asset("crimson_[item_filename]", file("html/changelogs/crimson_archive/" + item_filename)) // CRIMSON EDIT CHANGE - SPLIT_CHANGELOG
 
 /datum/asset/changelog_item/send(client)
 	if (!item_filename)
 		return
 
-	. = SSassets.transport.send_assets(client, list(item_filename, "darkpack_[item_filename]")) // DARKPACK EDIT CHANGE - SPLIT_CHANGELOG
+	. = SSassets.transport.send_assets(client, list(item_filename, "darkpack_[item_filename]", "crimson_[item_filename]")) // DARKPACK EDIT CHANGE - SPLIT_CHANGELOG
 
 /datum/asset/changelog_item/get_url_mappings()
 	if (!item_filename)
 		return
 	. = list("[item_filename]" = SSassets.transport.get_asset_url(item_filename))
 	. += list("darkpack_[item_filename]" = SSassets.transport.get_asset_url("darkpack_[item_filename]")) // DARKPACK EDIT ADD - SPLIT_CHANGELOG
+	. += list("crimson_[item_filename]" = SSassets.transport.get_asset_url("crimson_[item_filename]")) // CRIMSON EDIT ADD - SPLIT_CHANGELOG
 
 /datum/asset/changelog_item/unregister()
 	if (!item_filename)
 		return
 	SSassets.transport.unregister_asset(item_filename)
 	SSassets.transport.unregister_asset("darkpack_[item_filename]") // DARKPACK EDIT ADD - SPLIT_CHANGELOGG
+	SSassets.transport.unregister_asset("crimson_[item_filename]") // CRIMSON EDIT ADD - SPLIT_CHANGELOGG
 
 //Generates assets based on iconstates of a single icon
 /datum/asset/simple/icon_states

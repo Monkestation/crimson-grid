@@ -10,7 +10,7 @@
 	/// Images of the path created by navigate().
 	var/list/navigation_images = list()
 
-GAME_VERB_HIDDEN(/mob/living, navigate, "Navigate")
+GAME_VERB(/mob/living, navigate, "Navigate", "IC") // CRIMSON EDIT CHANGE ORIGINAL: GAME_VERB_HIDDEN(/mob/living, navigate, "Navigate")
 
 	if(incapacitated)
 		return

@@ -80,6 +80,7 @@ jobs:
         run: |
           bash tools/ci/check_grep.sh
           bash modular_darkpack/tools/darkpack_check_grep.sh # DARKPACK EDIT ADD - checking modular_darkpack code
+          bash modular_vcg/tools/darkpack_check_grep.sh # CRIMSON EDIT ADD
 
       - name: Ticked file enforcement
         if: ${{ !cancelled() }}

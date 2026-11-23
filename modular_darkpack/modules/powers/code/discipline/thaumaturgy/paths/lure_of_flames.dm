@@ -150,7 +150,7 @@
 	var/turf/start = get_turf(owner)
 	var/obj/projectile/flames/H = new(start)
 	H.firer = owner
-	H.damage = 25 + owner.thaum_damage_plus + success_count
+	H.damage = 35 + owner.thaum_damage_plus + success_count  // CRIMSON EDIT CHANGE - Original: 25 + owner.thaum_damage_plus + success_count
 	var/angle = get_angle(owner, target)
 	H.fire(angle, target)
 	to_chat(target, span_danger("A bolt of searing flame flies toward you!"))
@@ -179,7 +179,7 @@
 	if(.)
 		return
 
-	var/damage_amount = 25 + owner.thaum_damage_plus + success_count
+	var/damage_amount = 35 + owner.thaum_damage_plus + success_count // CRIMSON EDIT CHANGE - Original: 25 + owner.thaum_damage_plus + success_count
 	target.adjust_fire_loss(damage_amount)
 
 	target.adjust_fire_stacks(4 + success_count)
@@ -226,7 +226,7 @@
 		new /obj/effect/temp_visual/inferno_warning(T)
 	owner.visible_message(span_warning("Sparks begin to fly and the temperature begins to climb... what could be happening?!"))
 
-	if(!do_after(owner, 4 SECONDS))
+	if(!do_after(owner, 2 SECONDS))  // CRIMSON EDIT CHANGE - Original (owner, 4 SECONDS)
 		to_chat(owner, span_warning("Your firestorm casting was interrupted!"))
 		for(var/turf/T in affected_turfs) // delete all inferno warnings if casting was interrupted
 			for(var/obj/effect/temp_visual/inferno_warning/W in T)
@@ -234,7 +234,7 @@
 		return
 
 	// damage dealt to those standing in the zone is based on successes and so are the fire stacks
-	var/base_damage = 20 + (success_count * 5) + owner.thaum_damage_plus
+	var/base_damage = 40 + (success_count * 5) + owner.thaum_damage_plus // CRIMSON EDIT CHANGE - Original: 20 + (success_count * 5) + owner.thaum_damage_plus
 	var/fire_stacks_amount = 3 + success_count
 	var/ignite_chance = min(60 + (success_count * 10), 95) // 60% base, +10% per success, max 95%
 
@@ -302,7 +302,7 @@
 	icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	icon_state = "fireball"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
-	damage = 20
+	damage = 35 // CRIMSONT EDIT CHANGE - Original: 20
 	damage_type = BURN
 	hitsound_wall = 'sound/items/weapons/effects/searwall.ogg'
 	//flag = LASER
@@ -312,6 +312,12 @@
 	light_color = COLOR_ORANGE
 	ricochets_max = 0
 	ricochet_chance = 0
+	// CRIMSON GRID ADD: DARK THAUMATURGY 2
+	var/ignite_chance = 10
+	var/fire_turf_chance = 10
+	var/ignite_color
+	var/fire_turf_type = /obj/effect/abstract/turf_fire
+	// CRIMSON GRID ADD END: DARK THAUMATURGY 2
 
 /obj/projectile/flames/on_hit(atom/target, blocked = FALSE, pierce_hit)
 	. = ..()
@@ -319,11 +325,11 @@
 		return
 	var/mob/living/L = target
 	// Chance to ignite target
-	if(prob(10))
-		L.adjust_fire_stacks(2)
+	if(prob(ignite_chance)) // CRIMSON GRID ADD: DARK THAUMATURGY 2
+		L.adjust_fire_stacks(2, overwrite_color = ignite_color) // CRIMSON GRID ADD END: DARK THAUMATURGY 2
 		L.ignite_mob()
-	if(prob(10))
+	if(prob(fire_turf_chance)) // CRIMSON GRID ADD: DARK THAUMATURGY 2
 		var/target_turf = get_turf(L)
-		new /obj/effect/abstract/turf_fire(target_turf)
+		new fire_turf_type(target_turf, 20, ignite_color) // CRIMSON GRID ADD: DARK THAUMATURGY 2
 	L.visible_message(span_danger("[target] is struck by supernatural flames!"), span_userdanger("You are burned by supernatural fire!"))
 	playsound(get_turf(target), 'modular_darkpack/modules/paths/sounds/fireball.ogg', 50, TRUE)

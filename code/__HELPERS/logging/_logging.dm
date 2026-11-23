@@ -149,8 +149,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			log_stats(log_text, data)
 		// DARKPACK EDIT ADD END
 		// DARKPACK EDIT ADD START - SUBTLE
+		/* CRIMSON EDIT REMOVE - Removes ERP
 		if(LOG_SUBTLE)
 			log_subtle(log_text, data)
+		*/ // CRIMSON EDIT REMOVE - Removes ERP
 		// DARKPACK EDIT ADD END
 		else
 			stack_trace("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
@@ -180,6 +182,13 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		M = C.mob
 		key = C.key
 		ckey = C.ckey
+	// CRIMSON EDIT ADDITION START
+	else if(istype(whom, /datum/client_interface))
+		C = whom
+		M = C.mob
+		key = C.key
+		ckey = C.ckey
+	// CRIMSON EDIT ADDITION END
 	else if(ismob(whom))
 		M = whom
 		C = M.client

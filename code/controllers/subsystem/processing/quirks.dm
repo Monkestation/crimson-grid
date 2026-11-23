@@ -43,6 +43,8 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/item_quirk/blindness, /datum/quirk/darkpack/wolf_sight), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 	list(/datum/quirk/darkpack/banned_transformation, /datum/quirk/darkpack/metamorph), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 	list(/datum/quirk/darkpack/thirst_of_ages, /datum/quirk/darkpack/organovore), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
+	list(/datum/quirk/darkpack/thaumaturgical_sense, /datum/quirk/darkpack/thaumaturgically_inept), // CRIMSON GRID EDIT ADD - Add Thaumaturgical sense
+	list(/datum/quirk/darkpack/thaumaturgical_sense, /datum/quirk/darkpack/mage_blood), // CRIMSON GRID EDIT ADD - Add Thaumaturgical sense
 	list(/datum/quirk/darkpack/enchanting_voice, /datum/quirk/darkpack/speech_impediment), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 	list(/datum/quirk/darkpack/thirst_of_ages, /datum/quirk/darkpack/anthropic_taste), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS
 	list(/datum/quirk/mute, /datum/quirk/darkpack/enchanting_voice), // DARKPACK EDIT ADD - MERITS_FLAWS - MERITS_FLAWS

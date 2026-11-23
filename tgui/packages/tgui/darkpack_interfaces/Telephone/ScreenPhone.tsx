@@ -12,7 +12,7 @@ export const ScreenPhone = (props: {
 }) => {
   const { enteredNumber, setEnteredNumber, setApp } = props;
   const { act, data } = useBackend<Data>();
-  const { ringer, vibration } = data;
+  const { ringer, vibration, notification_sound } = data; // CRIMSON EDIT ADDITION - Original: const { ringer, vibration } = data;
 
   const [settings, setSettings] = useState(false);
 
@@ -22,10 +22,10 @@ export const ScreenPhone = (props: {
       return;
     }
 
-    if(enteredNumber.length >= 10){
+    if (enteredNumber.length >= 10) {
       return;
     }
-    act('terminal_sound');
+    act('dtmf_sound', { key: digit }); // CRIMSON EDIT CHANGE - Original: act('terminal_sound');
     if (digit === '_') {
       setEnteredNumber(`${enteredNumber} `);
     } else {
@@ -41,11 +41,7 @@ export const ScreenPhone = (props: {
             style={{ cursor: 'pointer' }}
             onClick={() => setSettings((x) => !x)}
           >
-            <Icon
-              name="ellipsis"
-              color={settings ? 'blue' : ''}
-              size={2}
-            />
+            <Icon name="ellipsis" color={settings ? 'blue' : ''} size={2} />
           </Stack.Item>
         </Stack>
       </Stack.Item>
@@ -78,6 +74,23 @@ export const ScreenPhone = (props: {
                 <Stack.Item>{vibration ? 'On' : 'Off'}</Stack.Item>
               </Stack>
             </Stack.Item>
+            {/* CRIMSON EDIT ADDITION START */}
+            <Stack.Item>
+              <Stack
+                fill
+                align="center"
+                justify="space-between"
+                p={1}
+                onClick={() =>
+                  setApp(NavigableApps.SoundSettingsNotificationSound)
+                }
+                className="Telephone__ContactsElement"
+              >
+                <Stack.Item>Notification sound:</Stack.Item>
+                <Stack.Item>{notification_sound}</Stack.Item>
+              </Stack>
+            </Stack.Item>
+            {/*  CRIMSON EDIT ADDITION END */}
           </Stack>
         </Stack.Item>
       ) : (

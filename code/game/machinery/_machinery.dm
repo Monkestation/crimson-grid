@@ -721,7 +721,7 @@
 
 		var/dots = living_user.st_get_stat(skill_required_for_use)
 		if(dots < skill_dots_minimum)
-			to_chat(user, span_warning("[src] requires atleast [skill_dots_minimum] dots in [skill_required_for_use::name] for proper use."))
+			to_chat(user, span_warning("[src] requires at least [skill_dots_minimum] dots in [skill_required_for_use::name] for proper use."))
 			bad_at_device = TRUE
 			if(CONFIG_GET(flag/punishing_zero_dots) && dots <= 0)
 				return

@@ -24,8 +24,7 @@ export const UserDetails = (props) => {
         (data.user.money > 0 || data.user.is_card === 1) &&
         ((data.user.is_card === 0 && (
           <Box>
-            You seem to have $<b>{data.user.money}</b> in hand. Products over
-            $1000 require card to purchase.
+            You seem to have $<b>{data.user.money}</b> on you.
           </Box>
         )) ||
           (data.user.is_card === 1 && (

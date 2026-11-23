@@ -31,9 +31,18 @@
 /mob/living/proc/getarmor(def_zone, type)
 	SHOULD_CALL_PARENT(TRUE)
 	var/worn_armor = get_worn_armor_value(def_zone, type)
+	/* // CRIMSON EDIT REMOVAL START - INNER_ARMOR_OVERLAP
 	var/inner_armor_percent = min(inner_armor?.get_rating(type) * 0.01, 1)
 	var/not_blocked = (100 - worn_armor) * (1 - inner_armor_percent)
 	return 100 - not_blocked
+	*/ // CRIMSON EDIT REMOVAL END
+	// CRIMSON EDIT ADDITION START - INNER_ARMOR_OVERLAP
+	var/inner_armor_rating = min(inner_armor?.get_rating(type) || 0, 100)
+	// math source: my ass
+	var/stronger = max(worn_armor, inner_armor_rating)
+	var/weaker = min(worn_armor, inner_armor_rating)
+	return stronger + (100 - stronger) * weaker * 0.01 * (weaker > 0 ? 0.5 : 1)
+	// CRIMSON EDIT ADDITION END
 
 /mob/living/proc/get_worn_armor_value(obj/item/bodypart/def_zone, damage_type)
 	return 0
@@ -361,9 +370,11 @@
 			return FALSE
 	return TRUE
 
-/mob/living/fire_act()
+// CRIMSON GRID ADD: DARK THAUMATURGY
+/mob/living/fire_act(exposed_temperature, exposed_volume, fire_color)
+// CRIMSON GRID ADD END: DARK THAUMATURGY
 	. = ..()
-	adjust_fire_stacks(3)
+	adjust_fire_stacks(3, overwrite_color = fire_color) // CRIMSON GRID ADD: DARK THAUMATURGY
 	ignite_mob()
 
 /**

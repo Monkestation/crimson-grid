@@ -117,6 +117,14 @@
 		return
 	ready = PLAYER_READY_TO_PLAY
 	update_ready_report()
+	// CRIMSON EDIT ADDITION START - Ready message
+	if(client?.prefs)
+		var/highest_job = client.prefs.GetHighestJobPreference()
+		var/ready_message = "Readying up as '[client.prefs.read_preference(/datum/preference/name/real_name)]'"
+		if(length(highest_job))
+			ready_message += ", Highest occupation setting: [highest_job]"
+		to_chat(src, span_notice(ready_message))
+	// CRIMSON EDIT ADDITION END - Ready message
 
 /// Unreadies for the round
 /mob/dead/new_player/proc/unready()
@@ -167,16 +175,20 @@
 		var/lower_end = clamp(score_vector.x, 0, job_slot_count - 1)
 		var/upper_end = clamp(score_vector.y, 0, job_slot_count)
 
-		var/display = " [lower_end] to [upper_end] "
+		var/display = "[job.title]: [lower_end] to [upper_end] " // DARKPACK EDIT CHANGE
 		for(var/i in 1 to job_slot_count)
 			display += i <= lower_end ? "◼" : i <= upper_end ? "◩" : is_infinite_overflow ? "" : "◻"
 		if(is_infinite_overflow)
 			display += "…"
 
+		/* // DARKPACK EDIT REMOVAL
 		var/static/alist/cached_base64_icons = alist()
 		cached_base64_icons[job.type] ||= icon2base64(get_job_hud_icon(job, scale = 2))
 		var/icon = "data:image/png;base64,[cached_base64_icons[job.type]]"
 		. += list(list("img", icon, job.title, display, "There will likely be between [lower_end] and [upper_end] [job.title]s."))
+		*/
+		. += list(list(display))
+		// DARKPACK EDIT ADD
 
 /proc/get_job_unavailable_error_message(retval, jobtitle)
 	switch(retval)
@@ -218,6 +230,11 @@
 		if(JOB_UNAVAILABLE_FERA_AUSPICE)
 			return "Your character's auspice is incompatible for [jobtitle]."
 		// DARKPACK EDIT END
+		// CRIMSON EDIT ADD START
+		if(JOB_UNAVAILABLE_DONATOR)
+			return "You need to be a donator to have play as [jobtitle]."
+		// CRIMSON EDIT ADD END
+
 
 	return GENERIC_JOB_UNAVAILABLE_ERROR
 

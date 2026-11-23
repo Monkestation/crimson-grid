@@ -86,13 +86,16 @@ export const RecordPrint = (props) => {
             Missing
           </Button>
           <Button
-            disabled={innocent}
+            // disabled={innocent} // CRIMSON EDIT REMOVAL - CLETS
             icon="file-alt"
             onClick={() => swapTabs(PRINTOUT.Rapsheet)}
             selected={printType === PRINTOUT.Rapsheet}
-            tooltip={`Prints a standard paper with the record on it.${
-              innocent ? ' (Requires crimes)' : ''
-            }`}
+            // CRIMSON EDIT REMOVAL START - CLETS
+            // tooltip={`Prints a standard paper with the record on it.${
+            //   innocent ? ' (Requires crimes)' : ''
+            // }`}
+            // CRIMSON EDIT REMOVAL END - CLETS
+            tooltip={`Prints a standard paper with the record on it.`} // CRIMSON EDIT ADD - CLETS
             tooltipPosition="bottom"
           >
             Rapsheet

@@ -7,6 +7,7 @@
 	config_tag = "FEDERAL_AGENT"
 	outfit = /datum/outfit/job/vampire/fbi
 	job_flags = CITY_JOB_FLAGS
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_FBI
 	departments_list = list(
 		/datum/job_department/police,
@@ -23,7 +24,13 @@
 	description = "Enforce the Law."
 	minimum_masquerade = 0
 
-	known_contacts = list("Police Captain")
+	known_contacts = list(JOB_POLICE_CAPTAIN)
+
+// CRIMSON GRID EDIT START - Security console and records
+/datum/job/vampire/fbi/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	spawned.add_mob_memory(/datum/memory/key/police_login)
+// CRIMSON GRID END
 
 /datum/outfit/job/vampire/fbi
 	name = JOB_FEDERAL_INVESTIGATOR

@@ -22,7 +22,7 @@
 	//time to create a holosign in deciseconds.
 	var/creation_time = 0
 	//holosign image that is projected
-	var/holosign_type = /obj/structure/holosign/wetsign
+	var/obj/holosign_type = /obj/structure/holosign/wetsign // DARKPACK EDIT - Police tape
 	var/holocreator_busy = FALSE //to prevent placing multiple holo barriers at once
 	/// List of special things we can project holofans under/through.
 	var/list/projectable_through = list(
@@ -61,7 +61,7 @@
 	if(target_turf.is_blocked_turf(TRUE, ignore_atoms = projectable_through, type_list = TRUE)) //can't put holograms on a tile that has dense stuff
 		return ITEM_INTERACT_BLOCKING
 	if(holocreator_busy)
-		balloon_alert(user, "busy making a hologram!")
+		balloon_alert(user, "busy making \a [initial(holosign_type.name)]!") // DARKPACK EDIT - Police tape
 		return ITEM_INTERACT_BLOCKING
 	if(LAZYLEN(signs) >= max_signs)
 		balloon_alert(user, "max capacity!")
