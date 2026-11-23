@@ -84,5 +84,7 @@
 	if(get_corax_splat(human))
 		return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/cawcrinos.ogg'
 
+/datum/species/proc/get_roar_sound(mob/living/carbon/human/human)
+
 /datum/species/human/shifter/war/get_roar_sound(mob/living/carbon/human/human)
 	return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/crinos_roar.ogg'
