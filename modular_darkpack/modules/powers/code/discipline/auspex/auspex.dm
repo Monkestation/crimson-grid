@@ -354,7 +354,7 @@
 
 			log_directed_talk(owner, target, input_message, LOG_SAY, "Telepathy")
 			to_chat(owner, span_notice("You project your thoughts into [GET_GUESTBOOK_NAME(owner, target)]'s mind: \"[input_message]\""))
-			to_chat(target, span_boldannounce("You hear the voice of [target?.mind?.guestbook?.get_known_name(target, disguised_voice) || disguised_voice] in your thoughts: \"[input_message]\""))
+			to_chat(target, span_boldannounce("You hear the voice of [target?.mind?.guestbook?.get_known_name(target, checked_name = disguised_voice) || disguised_voice] in your thoughts: \"[input_message]\""))
 			COOLDOWN_START(src, implant_tht_cd, 5 SECONDS)
 
 		if(TELEPATHY_MIND_READING)
