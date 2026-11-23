@@ -21,6 +21,7 @@
 	new /datum/data/vending_product("45ACP White Powder", /obj/item/ammo_box/darkpack/c45acp/wp, 1500),
 	new /datum/data/vending_product("Sun Light 44", /obj/item/ammo_box/darkpack/c44/wp, 1500),
 	new /datum/data/vending_product("50Ae White Powder", /obj/item/ammo_box/darkpack/c50ae/wp, 2000),
+	new /datum/data/vending_product("Fire Ball 75",/obj/item/ammo_box/darkpack/c75/phosphorus,4500),
 	new /datum/data/vending_product("Type 74 Boiled Round", /obj/item/ammo_box/darkpack/c545/incendiary, 2000),
 	new /datum/data/vending_product("Traditional Tokarev as seen in John Woo Movies", /obj/item/gun/ballistic/automatic/pistol/darkpack/m1911, 100),
 	new /datum/data/vending_product("tokerev pistal magazien", /obj/item/ammo_box/magazine/darkpack45acp, 50),
