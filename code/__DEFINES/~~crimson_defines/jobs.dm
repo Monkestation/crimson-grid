@@ -10,6 +10,7 @@
 
 // Clinic
 #define JOB_CLINIC_GUARD "Clinic Guard"
+#define JOB_CLINIC_LAWYER "General Counsel"
 
 // Camarilla
 #define JOB_JAZZ_SERVANT "Jazz Club Servant"
@@ -26,6 +27,7 @@
 
 #define JOB_DISPLAY_ORDER_KEEPER 6
 
+#define JOB_DISPLAY_ORDER_CLINIC_LAWYER JOB_DISPLAY_ORDER_CLINICS_DIRECTOR + 0.5 //Between Director and Doctor
 #define JOB_DISPLAY_ORDER_CLINIC_GUARD 3
 
 #define SUPERVISOR_TRIAD "the Mountain Master"
