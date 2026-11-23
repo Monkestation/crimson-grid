@@ -25,19 +25,8 @@
 	var/frame_path = null
 	var/cost = 2 // Default flesh wall cost
 	var/time = 4 SECONDS // build time
-	var/obj/item/circuitboard/held_board = user.is_holding_item_of_type(__IMPLIED_TYPE__)
-	if(!isnull(held_board))
-		if(istype(held_board, /obj/item/circuitboard/machine))
-			frame_path = /obj/structure/frame/machine
-		else
-			frame_path = /obj/structure/frame/computer
-		for(var/datum/stack_recipe/recipe in GLOB.metal_recipes)
-			if(recipe.result_type == frame_path)
-				time = recipe.time
-				cost = recipe.req_amount
-				break
 	if(get_amount() < cost)
-		user.balloon_alert(user, "need [cost] metal sheets!")
+		user.balloon_alert(user, "need [cost] meat!")
 		return ITEM_INTERACT_BLOCKING
 	if(!do_after(user, time, build_on))
 		return ITEM_INTERACT_BLOCKING
@@ -47,11 +36,6 @@
 	if(!use(cost))
 		user.balloon_alert(user, "not enough material!")
 		return ITEM_INTERACT_BLOCKING
-	if(frame_path)
-		var/obj/structure/frame/constructed_frame = new frame_path(build_on)
-		constructed_frame.setDir(REVERSE_DIR(user.dir)) //to align computer frame with player direction
-		user.balloon_alert(user, "frame created")
-	else
-		new/obj/structure/girder/displaced(build_on)
-		user.balloon_alert(user, "girder created")
+	new/obj/structure/fleshwall(build_on)
+	user.balloon_alert(user, "flesh wall created")
 	return ITEM_INTERACT_SUCCESS
