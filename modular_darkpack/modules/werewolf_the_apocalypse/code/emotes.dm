@@ -84,15 +84,12 @@
 	if(get_corax_splat(human))
 		return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/cawcrinos.ogg'
 
-/datum/emote/living/warcry/roar
-    key = "roar"
-    key_third_person = "roars"
-    message = "roars!"
-
-/datum/emote/living/warcry/roar/get_sound(mob/living/carbon/human/user)
-    if(!istype(user))
-        return
-    return user.dna.species.get_roar_sound(user)
+/datum/emote/living/carbon/human/screech/roar/get_sound(mob/living/carbon/human/user)
+    if(istype(user))
+        var/roar_sound = user.dna.species.get_roar_sound(user)
+        if(roar_sound)
+            return roar_sound
+    return ..()
 
 /datum/species/proc/get_roar_sound(mob/living/carbon/human/human)
     return
