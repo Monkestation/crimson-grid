@@ -10,6 +10,7 @@ JOB_START_HELPER(primogen/brujah, JOB_PRIMOGEN_BRUJAH)
 JOB_START_HELPER(forest_wolves/keeper, JOB_GAROU_KEEPER)
 
 JOB_START_HELPER(hospital/clinic_guard, JOB_CLINIC_GUARD)
+JOB_START_HELPER(hospital/clinic_lawyer, JOB_CLINIC_LAWYER)
 
 
 // Triad
