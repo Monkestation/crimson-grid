@@ -6,6 +6,7 @@
 ●●● Conflagration: No roll
 ●●●● Psychomania: target's lowest Virtue
 ●●●●● Condemnation: Intelligence + Occult vs. target's Willpower"}
+	id = DISCIPLINE_DAIMONION
 	icon_state = "daimonion"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/daimonion

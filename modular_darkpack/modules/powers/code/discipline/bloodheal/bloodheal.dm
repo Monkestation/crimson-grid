@@ -5,6 +5,7 @@
 	name = "Bloodheal"
 	desc = {"Use the power of your Vitae to mend your flesh.
 ● Bloodheal: Stamina + Survival (difficulty 8) - roll only on interrupted cast"}
+	id = DISCIPLINE_BLOODHEAL
 	icon_state = "bloodheal"
 	power_type = /datum/discipline_power/bloodheal
 	selectable = FALSE
@@ -75,9 +76,9 @@
 	//normal bashing/lethal damage
 	owner.heal_ordered_damage(HEAL_BASHING_LETHAL_DAMAGE * vitae_cost, list(BRUTE, TOX, OXY, STAMINA))
 
-	if(length(owner.all_wounds))
+	if(iscarbon(owner) && length(owner.all_wounds))
 		for (var/i in 1 to min(vitae_cost, length(owner.all_wounds)))
-			var/datum/wound/wound = owner.all_wounds[i]
+			var/datum/wound/wound = owner.all_wounds[1]
 			wound.remove_wound()
 
 	//aggravated damage
@@ -93,12 +94,14 @@
 			brain.cure_trauma_type(healing_trauma, resilience = TRAUMA_RESILIENCE_WOUND)
 
 	// Let core species logic handle restoring/healing organs so missing eyes are rebuilt correctly.
-	owner.regenerate_organs()
-	var/obj/item/organ/eyes/eyes = owner.get_organ_slot(ORGAN_SLOT_EYES)
-	if (!eyes)
-		var/eyes_type = owner.dna?.species?.get_mutant_organ_type_for_slot(ORGAN_SLOT_EYES) || /obj/item/organ/eyes
-		eyes = new eyes_type()
-		eyes.Insert(owner, special = TRUE, movement_flags = DELETE_IF_REPLACED)
+	var/obj/item/organ/eyes/eyes
+	if(iscarbon(owner))
+		owner.regenerate_organs()
+		eyes = owner.get_organ_slot(ORGAN_SLOT_EYES)
+		if (!eyes)
+			var/eyes_type = owner.dna?.species?.get_mutant_organ_type_for_slot(ORGAN_SLOT_EYES) || /obj/item/organ/eyes
+			eyes = new eyes_type()
+			eyes.Insert(owner, special = TRUE, movement_flags = DELETE_IF_REPLACED)
 	owner.cure_blind(NO_EYES)
 	owner.cure_blind(EYE_DAMAGE)
 	owner.cure_nearsighted(EYE_DAMAGE)
@@ -116,7 +119,7 @@
 	owner.remove_status_effect(/datum/status_effect/temporary_blindness)
 	owner.remove_status_effect(/datum/status_effect/eye_blur)
 
-	if(get_kindred_splat(owner) && length(owner.get_missing_limbs()))
+	if(iscarbon(owner) && get_kindred_splat(owner) && length(owner.get_missing_limbs()))
 		owner.regenerate_limbs()
 		violates_masquerade = TRUE
 

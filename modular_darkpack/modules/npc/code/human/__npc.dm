@@ -33,11 +33,11 @@
 	var/is_talking = FALSE
 	COOLDOWN_DECLARE(annoyed_cooldown)
 	COOLDOWN_DECLARE(car_dodge)
+	COOLDOWN_DECLARE(choose_path_cooldown)
 	var/hostile = FALSE
 	var/aggressive = FALSE
 	var/last_antagonised = 0
 	var/mob/living/danger_source
-	var/obj/effect/abstract/turf_fire/afraid_of_fire
 	var/mob/living/last_attacker
 	var/last_health = 100
 	var/mob/living/last_damager
@@ -133,7 +133,6 @@
 /mob/living/carbon/human/npc/Destroy()
 	UnregisterSignal(src, list(COMSIG_ATOM_WAS_ATTACKED, COMSIG_LIVING_MOB_BUMPED, COMSIG_CARBON_HELP_ACT))
 	danger_source = null
-	QDEL_NULL(afraid_of_fire)
 	last_attacker = null
 	last_damager = null
 	walktarget = null
@@ -147,7 +146,6 @@
 	GLOB.npc_list -= src
 	GLOB.alive_npc_list -= src
 	SShumannpcpool.currentrun -= src
-	SShumannpcpool.try_repopulate()
 	return ..()
 
 //====================Sticky Item Handling====================
