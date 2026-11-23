@@ -84,7 +84,19 @@
 	if(get_corax_splat(human))
 		return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/cawcrinos.ogg'
 
+/datum/emote/living/warcry/roar
+    key = "roar"
+    key_third_person = "roars"
+    message = "roars!"
+
+/datum/emote/living/warcry/roar/get_sound(mob/living/carbon/human/user)
+    if(!istype(user))
+        return
+    return user.dna.species.get_roar_sound(user)
+
 /datum/species/proc/get_roar_sound(mob/living/carbon/human/human)
+    return
 
 /datum/species/human/shifter/war/get_roar_sound(mob/living/carbon/human/human)
-	return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/crinos_roar.ogg'
+    if(get_garou_splat(human))
+        return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/crinos_roar.ogg'
