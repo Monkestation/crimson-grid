@@ -345,7 +345,7 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	)
 	color = "#99620e"
 
-/obj/item/vamp/keys/tlacique
+/obj/item/vamp/keys/tlacique // Crimson Grid Addition: Tlacique Hideout Keys
 	name = "tribal keys"
 	accesslocks = list(
 		LOCKACCESS_TLACIQUE

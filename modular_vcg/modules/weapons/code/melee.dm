@@ -87,7 +87,7 @@
 	pixel_w = -8
 	custom_price = 2250  // credit to Infared Baron for the sprite
 
-/obj/item/claymore/vengeful_maw
+/obj/item/claymore/vengeful_maw // Crimson Grid Addition - A Bloody Tlacique Haven Sword Inspired on Aztec Weapons
 	name = "Vengeful Maw"
 	desc = "An archaic weapon, created using the bones of dead Garou, this dreadful weapon has a insatiable thirst, drinking from anything it can."
 	icon = 'modular_vcg/modules/weapons/icons/weapons.dmi'

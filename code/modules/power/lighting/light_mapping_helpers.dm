@@ -54,10 +54,10 @@
 	bulb_colour = "#FFDDCC"
 	bulb_power = 0.6
 
-/obj/machinery/light/warmer
+/obj/machinery/light/warmer // Crimson Grid Addition: Light Helper
 	bulb_colour = "#e6a429"
 
-/obj/machinery/light/warmer/dim
+/obj/machinery/light/warmer/dim // Crimson Grid Addition: Light Helper
 	bulb_colour = "#e6a429"
 	nightshift_allowed = FALSE
 	bulb_power = 0.6
@@ -287,9 +287,9 @@ LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/blacklight)
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/dim)
 
 // ---- Warmer Light Tubes
-LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/warmer)
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/warmer) // Crimson Grid Addition: Light Helper
 
-LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/warmer/dim)
+LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/warmer/dim) // Crimson Grid Addition: Light Helper
 // ---- Very Dim tubes
 LIGHTING_DIRECTIONAL_HELPERS(/obj/machinery/light/verydim)
 

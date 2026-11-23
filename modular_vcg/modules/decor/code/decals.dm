@@ -29,7 +29,7 @@
 	icon = 'modular_vcg/modules/decor/icons/decals.dmi'
 	icon_state = "xing"
 
-// Crimson Grid Addition: Credits to Flav for The Art (Waiting on Ook to give me the name)
+// Crimson Grid Addition: Credits to Flav for The Art - Start
 
 /obj/effect/decal/cleanable/crayon/scribble
 	icon = 'modular_vcg/modules/decor/icons/decals.dmi'
@@ -88,3 +88,5 @@
 
 /obj/effect/decal/cleanable/crayon/scribble/scribble19
 	icon_state = "scribble18"
+
+// Crimson Grid Addition: Credits to Flav for The Art - End
