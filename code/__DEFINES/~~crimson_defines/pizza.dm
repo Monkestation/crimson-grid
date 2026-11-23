@@ -87,7 +87,5 @@ GLOBAL_LIST_INIT(order_drinks, list(
 /// from /obj/machinery/deepfryer/process(): (obj/machinery/deepfryer/fryer, seconds_per_tick)
 #define COMSIG_ITEM_FRYER_PROCESS "item_fryer_process"
 	#define COMPONENT_HANDLED_FRYING (1<<0)
-/// from /datum/component/fryable/finish_frying(): (atom/fried_result)
-#define COMSIG_ITEM_FRIED "item_fried"
 /// sent to the result: (atom/original)
 #define COMSIG_ITEM_FRIED_RESULT "item_fried_result"

@@ -351,10 +351,6 @@
 	if (!isturf(loc))
 		return
 
-	// Checks for fire, clearing the stored fire if none is in view.
-	// Skipped in combat, since the combat branch never reads it.
-	afraid_of_fire = danger_source ? null : find_nearby_fire()
-
 	// Combat behaviour
 	if (danger_source)
 		set_loop_mode(NPC_LOOP_REACT)
@@ -393,13 +389,6 @@
 		// Deaggro if 30 second have passed since being antagonised
 		if ((last_antagonised + 30 SECONDS) <= world.time)
 			end_combat()
-
-	// Running away from fire behaviour
-	else if (afraid_of_fire)
-		set_loop_mode(NPC_LOOP_REACT)
-		GLOB.move_manager.move_away(src, afraid_of_fire, 10, cached_multiplicative_slowdown)
-		if (prob(25))
-			emote("scream")
 
 	// CRIMSON EDIT ADDITION START - drug dealing
 	// Fleeing from cops who witnessed a drug deal
