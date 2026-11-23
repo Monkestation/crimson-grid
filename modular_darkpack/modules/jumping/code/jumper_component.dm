@@ -118,6 +118,8 @@
 	//CRIMSON GRID EDIT - Tlacique Puma, Jaguar, and Floppa Cat PR
 	if(istype(jumper, /mob/living/basic/pet/cat/protean/puma))
 		adjusted_jump_range *= 3
+	else if(istype(jumper, /mob/living/basic/pet/cat/protean))
+		adjusted_jump_range *= 1.5
 
 	var/distance = get_dist(jumper.loc, target)
 	var/turf/adjusted_target = target
