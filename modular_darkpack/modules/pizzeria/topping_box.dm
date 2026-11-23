@@ -14,7 +14,6 @@
 	. = ..()
 	topping = GLOB.pizza_toppings[topping_type]
 	if(!topping)
-		stack_trace("[type] has no valid topping_type")
 		return
 	name = "box of [topping.name]"
 	add_overlay(mutable_appearance(PIZZA_TOPPING_ICON, topping.icon_state))
