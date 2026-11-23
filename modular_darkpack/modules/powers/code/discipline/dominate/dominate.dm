@@ -8,6 +8,7 @@
 ●●● The Forgetful Mind: Wits + Subterfuge
 ●●●● Conditioning: Charisma + Leadership
 ●●●●● Possession: Charisma + Intimidation"}
+	id = DISCIPLINE_DOMINATE
 	icon_state = "dominate"
 	power_type = /datum/discipline_power/dominate
 	var/list/botched_targets //a lazylist of weakrefs

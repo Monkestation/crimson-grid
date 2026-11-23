@@ -1,6 +1,7 @@
 /datum/discipline/path/flames
 	name = "Lure of Flames"
 	desc = "A mystical path of Thaumaturgy that allows the summoning of fire and flame. Violates Masquerade."
+	id = PATH_LURE_OF_FLAMES
 	icon_state = "flames"
 	power_type = /datum/discipline_power/thaumaturgy/path/flames
 

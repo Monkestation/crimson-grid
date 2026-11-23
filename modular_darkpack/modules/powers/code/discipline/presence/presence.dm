@@ -8,6 +8,7 @@
 ●●● Entrancement: Appearance + Empathy vs. Willpower
 ●●●● Summon: Charisma + Subterfuge (difficulty 7)
 ●●●●● Majesty: Courage vs. Charisma + Intimidation"}
+	id = DISCIPLINE_PRESENCE
 	icon_state = "presence"
 	power_type = /datum/discipline_power/presence
 

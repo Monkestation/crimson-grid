@@ -8,6 +8,7 @@
 ●●● Ashes to Ashes: Wits + Occult (difficulty 6)
 ●●●● Cold of the Grave: Wits + Occult (difficulty 6)
 ●●●●● Shambling Horde: Wits + Occult (difficulty 6)"}
+	id = DISCIPLINE_NECROMANCY
 	icon_state = "necromancy"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/necromancy

@@ -7,6 +7,7 @@
 ●●● Blood of Potency: Permanent Willpower
 ●●●● Theft of Vitae: Permanent Willpower
 ●●●●● Cauldron of Blood: Permanent Willpower"}
+	id = DISCIPLINE_THAUMATURGY
 	icon_state = "thaumaturgy"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/thaumaturgy

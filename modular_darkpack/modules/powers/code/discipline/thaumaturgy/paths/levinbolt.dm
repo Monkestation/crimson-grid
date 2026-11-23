@@ -1,6 +1,7 @@
 /datum/discipline/path/levinbolt
 	name = "Path of the Levinbolt"
 	desc = "A rudimentary path of Thaumaturgy that allows the manipulation of lightning. Violates Masquerade."
+	id = PATH_LEVINBOLT
 	icon_state = "levinbolt"
 	power_type = /datum/discipline_power/thaumaturgy/path/levinbolt
 
