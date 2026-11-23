@@ -428,6 +428,12 @@
 				setting["value"] = (setting["value"] == "Yes") ? "No" : "Yes"
 			if ("ckey")
 				setting["value"] = input(user, "[setting["desc"]]?") in (list("none") + GLOB.directory)
+			// DARKPACK EDIT ADD START - Forces ERT Splats
+			if ("choice")
+				var/new_value = tgui_input_list(user, "[setting["desc"]]?", setting["desc"], setting["choices"], setting["value"])
+				if (!isnull(new_value))
+					setting["value"] = new_value
+			// DARKPACK EDIT ADD END - Forces ERT Splats
 		if (setting["callback"])
 			var/datum/callback/callback = setting["callback"]
 			settings = callback.Invoke(settings)
