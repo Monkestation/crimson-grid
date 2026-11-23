@@ -9,7 +9,7 @@
 	if(!isopenturf(interacting_with))
 		return NONE
 	var/mob/living/living_user = astype(user)
-	if(living_user?.get_discipline(/datum/discipline/vicissitude))
+	if(!living_user?.get_discipline(/datum/discipline/vicissitude))
 		user.balloon_alert(user, "no clue, what to do with that!")
 		return ITEM_INTERACT_BLOCKING
 	var/turf/open/build_on = interacting_with
