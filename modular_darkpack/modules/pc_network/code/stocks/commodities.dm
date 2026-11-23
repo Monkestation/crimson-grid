@@ -34,10 +34,12 @@ SUBSYSTEM_DEF(commodities)
 		T.refresh_prices()
 
 /datum/controller/subsystem/commodities/proc/commodity_for_item(obj/item/I)
-	var/path = I.type
-	var/datum/commodity/C = commodity_by_item[path]
-	if(C)
-		return C
+	for(var/atom in commodity_by_item)
+		if(!istype(I, atom))
+			continue
+		var/datum/commodity/C = commodity_by_item[path]
+		if(C)
+			return C
 	return null
 
 /// Market value of an item or stack at the current price. 0 if not a commodity.
