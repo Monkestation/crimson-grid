@@ -5,7 +5,10 @@
 		new /datum/data/vending_product("rolling paper", /obj/item/rollingpaper, 10), // CRIMSON EDIT ADD - Shop Inventories Additions
 		new /datum/data/vending_product("zippo lighter", /obj/item/lighter, 20),
 		new /datum/data/vending_product("Bailer", /obj/item/reagent_containers/cup/watering_can/metal, 20),
-		new /datum/data/vending_product("Weed Seed", /obj/item/seeds/cannabis, 20),
+		new /datum/data/vending_product("OG Kush Seed", /obj/item/seeds/cannabis/og_kush, 20),
+		new /datum/data/vending_product("Sour Diesel Seed", /obj/item/seeds/cannabis/sour_diesel, 20),
+		new /datum/data/vending_product("Granddaddy Purple Seed", /obj/item/seeds/cannabis/granddaddy_purple, 20),
+		new /datum/data/vending_product("Girl Scout Cookies Seed", /obj/item/seeds/cannabis/girl_scout_cookies, 20),
 		new /datum/data/vending_product("cannabis joint", /obj/item/cigarette/rollie/cannabis, 40), // CRIMSON EDIT - Shop Inventories Additions - Original: "cannabis puff"
 		new /datum/data/vending_product("bong", /obj/item/bong, 50),
 		new /datum/data/vending_product("lockpick", /obj/item/vamp/keys/hack, 50),
@@ -25,8 +28,8 @@
 		new /datum/data/vending_product("oil filter 11-87 suppressor", /obj/item/suppressor/darkpack_oil, 400),
 		new /datum/data/vending_product("cannabis package", /obj/item/food/grown/cannabis, 700),
 		new /datum/data/vending_product("morphine syringe", /obj/item/reagent_containers/syringe/contraband/morphine, 800),
-		new /datum/data/vending_product("meth package", /obj/item/reagent_containers/cup/glass/baggie/meth, 800),
-		new /datum/data/vending_product("cocaine package", /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine, 800),
+		new /datum/data/vending_product("meth package", /obj/item/reagent_containers/applicator/baggie/meth, 800),
+		new /datum/data/vending_product("cocaine package", /obj/item/reagent_containers/applicator/baggie/cocaine, 800),
 // CRIMSON EDIT ADD START - Medkit to Pharmacy
 		new /datum/data/vending_product("Compact Medical Kit", /obj/item/storage/medkit/tactical_lite, 1125),
 		new /datum/data/vending_product("Coroner's Surgical Kit", /obj/item/storage/medkit/coroner, 750),

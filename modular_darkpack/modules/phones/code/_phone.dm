@@ -233,6 +233,10 @@
 	data["muted"] = !phone_radio.get_broadcasting()
 	data["on_hold"] = !phone_radio.get_listening()
 
+	var/datum/component/dealer_app/dealer = GetComponent(/datum/component/dealer_app)
+	data["dealer_enabled"] = !!dealer
+	data["drug_deals"] = dealer?.get_ui_data() || list()
+
 	var/list/published_numbers = list()
 	for(var/contact, number in SSphones.published_phone_numbers)
 		UNTYPED_LIST_ADD(published_numbers, list(
@@ -617,6 +621,18 @@
 			if(ringer)
 				playsound(loc, 'modular_darkpack/modules/phones/sounds/text_send.ogg', 50, TRUE)
 			return TRUE
+
+		//CRIMSON GRID EDIT - METH
+		if("deal_accept", "deal_decline", "deal_track")
+			return GetComponent(/datum/component/dealer_app)?.handle_action(user, action, params["id"])
+		if("dealer_toggle")
+			var/datum/component/dealer_app/app = GetComponent(/datum/component/dealer_app)
+			if(app)
+				qdel(app)
+			else
+				AddComponent(/datum/component/dealer_app)
+			return TRUE
+		//CRIMSON GRID EDIT - METH
 
 	return FALSE
 

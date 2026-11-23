@@ -9,6 +9,7 @@ import type { BooleanLike } from 'tgui-core/react';
 import { ScreenBackgrounds } from './ScreenBackgrounds';
 import { ScreenBrowser } from './ScreenBrowser';
 import { ScreenContacts } from './ScreenContacts';
+import { type DrugDeal, ScreenDealer } from './ScreenDealer';
 import { ScreenEndpost } from './ScreenEndpost';
 import { ScreenHome } from './ScreenHome';
 import { ScreenCalling, ScreenInCall } from './ScreenInCall';
@@ -100,6 +101,9 @@ export type Data = {
 
   conversations: Conversation[];
   current_conversation_messages: ConversationMessage[];
+
+  dealer_enabled: BooleanLike;
+  drug_deals: DrugDeal[];
 };
 
 export enum NavigableApps {
@@ -113,6 +117,7 @@ export enum NavigableApps {
   Settings,
   SoundSettings,
   SoundSettingsNotificationSound, // CRIMSON EDIT ADDITION - notification sounds
+  Dealer, // CRIMSON GRID EDIT - METH
   Endpost,
 }
 
@@ -194,6 +199,10 @@ const PhysicalScreen = memo(
         // CRIMSON EDIT ADDITION END - notification sounds
         case NavigableApps.Endpost:
           return <ScreenEndpost setApp={setApp} />;
+        // CRIMSON EDIT ADDITION START - METH
+        case NavigableApps.Dealer:
+          return <ScreenDealer setApp={setApp} />;
+        // CRIMSON EDIT ADDITION START - METH
         default:
           return <ScreenHome setApp={setApp} />;
       }
@@ -307,7 +316,8 @@ const NavigationBar = memo(
 
 export const Telephone = (props) => {
   const { act, data } = useBackend<Data>();
-  let [app, setApp] = useSharedState<NavigableApps | null>( // CRIMSON EDIT: ORIGINAL: const [app, setApp] = useSharedState<NavigableApps | null>(
+  let [app, setApp] = useSharedState<NavigableApps | null>(
+    // CRIMSON EDIT: ORIGINAL: const [app, setApp] = useSharedState<NavigableApps | null>(
     'telephone_state',
     null,
   );

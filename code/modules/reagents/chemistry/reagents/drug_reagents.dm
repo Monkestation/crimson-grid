@@ -53,8 +53,13 @@
 /datum/reagent/drug/cannabis/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	affected_mob.apply_status_effect(/datum/status_effect/stoned)
+
+	// CRIMSON EDIT ADD START - METH
+	if(!is_primary_cannabis())
+		return
+	// CRIMSON EDIT ADD END - METH
 	if(SPT_PROB(1, seconds_per_tick))
-		var/smoke_message = pick("You feel relaxed.","You feel calmed.","Your mouth feels dry.","You could use some water.","Your heart beats quickly.","You feel clumsy.","You crave junk food.","You notice you've been moving more slowly.")
+		var/smoke_message = pick(smoke_messages) // CRIMSON EDIT -METH
 		to_chat(affected_mob, span_notice("[smoke_message]"))
 	if(SPT_PROB(2, seconds_per_tick))
 		affected_mob.emote(pick("smile","laugh","giggle"))
@@ -170,7 +175,7 @@
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	addiction_types = list(/datum/addiction/stimulants = 75)
-	metabolized_traits = list(TRAIT_STIMULATED)
+	metabolized_traits = list(TRAIT_STIMULATED, TRAIT_SLEEPIMMUNE) // CRIMSON EDIT - METH
 
 /datum/reagent/drug/methamphetamine/on_new(data)
 	. = ..()
@@ -197,7 +202,7 @@
 
 /datum/reagent/drug/methamphetamine/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
-	var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.", "You understand now.")
+	var/high_message = pick("You feel hyper.", "You feel like you need to go faster.", "You feel like you can run the world.", "You understand now.", "Sleep is a thing other people need.", "Your thoughts arrive faster than you can use them.", "You have not been hungry in hours.", "Something behind your eyes is being spent.") // CRIMSON EDIT - METH
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(affected_mob, span_notice("[high_message]"))
 	affected_mob.add_mood_event("tweaking", /datum/mood_event/stimulant_medium)
@@ -211,6 +216,16 @@
 	if(SPT_PROB(2.5, seconds_per_tick))
 		affected_mob.emote(pick("twitch", "shiver"))
 
+	// CRIMSON EDIT ADD START - METH
+	affected_mob.take_stimulant_dose(peak = 0.2, recovery_minutes = 5)
+	affected_mob.adjust_nutrition(0.6 * metabolization_ratio * seconds_per_tick)
+	if(current_cycle > 60)
+		affected_mob.set_jitter_if_lower(7.5 SECONDS * metabolization_ratio * seconds_per_tick)
+		affected_mob.adjust_disgust(0.5 * metabolization_ratio * seconds_per_tick)
+		if(SPT_PROB(2, seconds_per_tick))
+			affected_mob.adjust_hallucinations_up_to(10 SECONDS * metabolization_ratio * seconds_per_tick, 60 SECONDS)
+	// CRIMSON EDIT ADD END - METH
+
 /datum/reagent/drug/methamphetamine/overdose_process(mob/living/affected_mob, seconds_per_tick, metabolization_ratio)
 	. = ..()
 	if(!HAS_TRAIT(affected_mob, TRAIT_IMMOBILIZED) && !ismovable(affected_mob.loc))
@@ -221,6 +236,12 @@
 	if(SPT_PROB(18, seconds_per_tick))
 		affected_mob.visible_message(span_danger("[affected_mob]'s hands flip out and flail everywhere!"))
 		affected_mob.drop_all_held_items()
+
+	// CRIMSON EDIT ADD START - METH
+	if(SPT_PROB(10, seconds_per_tick))
+		to_chat(affected_mob, span_danger(pick("You cannot make your hands do what you want.", "Your skin will not stop crawling.", "You have lost track of what you were doing.")))
+	// CRIMSON EDIT ADD END - METH
+
 	var/need_mob_update
 	need_mob_update = affected_mob.adjust_tox_loss(0.67 * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
 	need_mob_update += affected_mob.adjust_organ_loss(ORGAN_SLOT_BRAIN, 0.67 * (rand(5, 10) / 10) * metabolization_ratio * seconds_per_tick, required_organ_flag = affected_organ_flags)
