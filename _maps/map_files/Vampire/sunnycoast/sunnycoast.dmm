@@ -538,6 +538,12 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop/gunshop)
+"ajn" = (
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_china"
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/heritage/china)
 "ajq" = (
 /obj/effect/turf_decal/darkpack/rough{
 	dir = 8
@@ -2054,6 +2060,12 @@
 /obj/effect/decal/wallpaper/paper/fancy/low,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/apartment/fifthave)
+"aET" = (
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_hospital"
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/commerce)
 "aEY" = (
 /obj/structure/roadsign/warningdeer,
 /turf/open/floor/plating/rough,
@@ -10024,6 +10036,14 @@
 	},
 /turf/open/misc/dirt/rails,
 /area/vtm/sunnycoast/interior/cave/mineshaft)
+"cXx" = (
+/obj/structure/lattice/grate,
+/obj/structure/railing/darkpack/sewer,
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_sewers_central"
+	},
+/turf/open/water/vamp_sewer,
+/area/vtm/interior/sewer)
 "cXy" = (
 /obj/effect/decal/carpet{
 	icon_state = "rug_red";
@@ -15481,6 +15501,12 @@
 /obj/machinery/grill,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/sunnycoast/marina)
+"eAS" = (
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_beach"
+	},
+/turf/open/misc/beach/vamp,
+/area/vtm/sunnycoast/marina)
 "eAT" = (
 /mob/living/carbon/human/npc/walkby/club,
 /turf/open/floor/plating/granite/black,
@@ -18799,6 +18825,9 @@
 /obj/structure/railing{
 	dir = 10
 	},
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_tower"
+	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/interior/millennium_tower/f2)
 "fyy" = (
@@ -19039,7 +19068,6 @@
 /obj/structure/chair/darkpack/green{
 	dir = 8
 	},
-/obj/structure/coclock,
 /obj/machinery/ticket_machine/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
@@ -22425,6 +22453,16 @@
 /obj/structure/sink/basin/directional/east,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer/nosferatu_town)
+"gDF" = (
+/obj/effect/turf_decal/siding/wood/dark,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
+	},
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_church"
+	},
+/turf/open/floor/city/church,
+/area/vtm/outside/pacificheights/industrial)
 "gDG" = (
 /obj/effect/turf_decal/darkpack/endron/six,
 /turf/open/floor/iron/dark/textured_large,
@@ -25639,6 +25677,13 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/sewer/nosferatu_warren)
+"hFE" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_endron"
+	},
+/turf/open/floor/plating/sidewalk/poor,
+/area/vtm/sunnycoast/commerce)
 "hFH" = (
 /obj/structure/table/no_smooth/modular_desk/right{
 	dir = 1
@@ -29799,6 +29844,9 @@
 /obj/effect/decal/graffiti,
 /obj/item/reagent_containers/cup/glass/baggie/meth/cocaine,
 /obj/effect/spawner/random/trash/mess,
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_dora"
+	},
 /turf/open/floor/city/factory,
 /area/vtm/sunnycoast/interior/nightclub)
 "iWf" = (
@@ -32511,6 +32559,9 @@
 /area/vtm/interior/shop/red_dragon)
 "jJQ" = (
 /obj/effect/landmark/npcwall,
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_sewers_nw"
+	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sewer)
 "jJT" = (
@@ -44764,6 +44815,12 @@
 "noj" = (
 /turf/open/floor/iron/stairs/left,
 /area/vtm/interior/endron_facility/restricted)
+"now" = (
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_arcade"
+	},
+/turf/open/floor/plating/rough,
+/area/vtm/sunnycoast/marina)
 "noy" = (
 /turf/open/openspace,
 /area/vtm/sunnycoast/street/secondst)
@@ -45801,6 +45858,12 @@
 /obj/effect/turf_decal/bordur/corner,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/sunnycoast/marina)
+"nCs" = (
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_library"
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/heritage)
 "nCv" = (
 /obj/effect/turf_decal/asphaltline/alt/offset{
 	dir = 4
@@ -47422,6 +47485,9 @@
 /area/vtm/interior/shop/deli)
 "nZu" = (
 /obj/item/binoculars,
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_police"
+	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/sunnycoast/marina)
 "nZw" = (
@@ -48944,6 +49010,10 @@
 /obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/stone,
 /area/vtm/sunnycoast/commerce)
+"owL" = (
+/obj/structure/sign/flag/california/directional/north,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/police)
 "owO" = (
 /obj/effect/landmark/npcability,
 /turf/open/floor/plating/sidewalk,
@@ -61039,6 +61109,13 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/industrial)
+"sgR" = (
+/obj/effect/turf_decal/bordur/end,
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_supply"
+	},
+/turf/open/floor/tram/plate,
+/area/vtm/outside/supply)
 "sgS" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave,
@@ -61445,6 +61522,16 @@
 	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/sunnycoast/anarchmotel)
+"slD" = (
+/obj/effect/decal/shadow,
+/obj/effect/decal/wallpaper/stone/low{
+	pixel_y = 24
+	},
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_magadon"
+	},
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "slN" = (
 /obj/structure/closet,
 /obj/item/storage/box/evidence,
@@ -64739,6 +64826,12 @@
 "tkK" = (
 /turf/closed/wall/vampwall/old,
 /area/vtm/sunnycoast/motel/interior)
+"tkM" = (
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_italy"
+	},
+/turf/open/floor/plating/rough,
+/area/vtm/sunnycoast/heritage/italy)
 "tkO" = (
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 6
@@ -69839,6 +69932,12 @@
 	},
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/sabbat_lair)
+"uIP" = (
+/obj/transfer_point_vamp/umbral/exit{
+	id = "umbra_forest"
+	},
+/turf/open/misc/dirt,
+/area/vtm/sunnycoast/forest)
 "uIU" = (
 /obj/effect/turf_decal/darkpack/cave{
 	dir = 9
@@ -91829,7 +91928,7 @@ tqM
 nJt
 qNC
 wyq
-dgc
+cXx
 tqM
 tqM
 tqM
@@ -100745,7 +100844,7 @@ kAi
 kAi
 kAi
 kAi
-kAi
+eAS
 kAi
 kAi
 kAi
@@ -107408,7 +107507,7 @@ iLs
 iLs
 iHh
 fRH
-kWm
+owL
 bUD
 fRH
 orN
@@ -129400,7 +129499,7 @@ gXu
 lqE
 lqE
 lqE
-lqE
+ajn
 orh
 lqE
 orh
@@ -130888,7 +130987,7 @@ dVM
 jHN
 szw
 hNh
-vOS
+gDF
 hNh
 szw
 jHN
@@ -143185,7 +143284,7 @@ gAd
 (96,1,3) = {"
 gAd
 iIf
-sTt
+sgR
 vcb
 isH
 isH
@@ -158699,7 +158798,7 @@ upD
 upD
 tCD
 sgk
-sBB
+slD
 tZI
 sgk
 gdi
@@ -159125,7 +159224,7 @@ oMG
 wHE
 jqc
 fbw
-fbw
+tkM
 fbw
 jqV
 pBY
@@ -159248,7 +159347,7 @@ skl
 omR
 omR
 lRu
-pet
+hFE
 hAP
 jbk
 ePD
@@ -163906,7 +164005,7 @@ cdT
 iFu
 eDH
 eDH
-eDH
+nCs
 eDH
 eWs
 puT
@@ -166802,7 +166901,7 @@ biY
 nvB
 krR
 krR
-krR
+aET
 nUS
 hwK
 bQB
@@ -167621,7 +167720,7 @@ upD
 upD
 aNy
 fEd
-jQf
+now
 rSi
 jQf
 jQf
@@ -178751,7 +178850,7 @@ oku
 rnQ
 gxs
 sYx
-cIw
+uIP
 nPM
 nPM
 vJI
