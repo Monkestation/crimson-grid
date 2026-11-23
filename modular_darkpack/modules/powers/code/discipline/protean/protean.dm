@@ -256,3 +256,14 @@
 	cooldown_time = 5 SECONDS
 	revert_on_death = TRUE
 	die_with_shapeshifted_form = FALSE
+	owner_has_control = TRUE
+
+/* CRIMSON GRID REMOVAL START - this is stupid and also stops me from meowing
+// Prevent Gangrel from speaking while shapeshifted
+
+/datum/action/cooldown/spell/shapeshift/gangrel/do_shapeshift(mob/living/caster)
+	var/mob/living/new_shape = ..()
+	if(new_shape)
+		ADD_TRAIT(new_shape, TRAIT_MUTE, SHAPESHIFT_TRAIT)
+	return new_shape
+*/ // CRIMSON GRID REMOVAL END

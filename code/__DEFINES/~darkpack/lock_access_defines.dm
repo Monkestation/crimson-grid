@@ -61,6 +61,7 @@
 #define LOCKACCESS_GRAVEYARD "graveyard"
 #define LOCKACCESS_CHURCH "church"
 #define LOCKACCESS_TAXI "taxi"
+#define LOCKACCESS_RED_NEWS "red_news"
 
 #define LOCKACCESS_TRAID "triad"
 #define LOCKACCESS_CLEANING "cleaning"
