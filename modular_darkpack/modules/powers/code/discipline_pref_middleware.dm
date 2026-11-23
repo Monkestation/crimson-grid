@@ -268,6 +268,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 		return FALSE
 
 	preferences.discipline_levels[discipline] = new_level
+	on_disciplines_changed()
 
 	preferences.save_character()
 	return TRUE
@@ -286,9 +287,16 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	if(clan_datum)
 		for(var/disc_type in clan_datum.clan_disciplines)
 			if(ispath(disc_type, /datum/discipline))
-				preferences.discipline_levels += disc_type
+				preferences.discipline_levels["[disc_type]"] = 0
+	on_disciplines_changed()
 	preferences.save_character()
 	return TRUE
+
+/// Drops quirks the new discipline sheet no longer qualifies for and refreshes the quirk menu.
+/datum/preference_middleware/disciplines/proc/on_disciplines_changed()
+	preferences.validate_quirks()
+	var/datum/preference_middleware/quirks/quirk_middleware = locate() in preferences.middleware
+	quirk_middleware?.tainted = TRUE
 
 /datum/preferences/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, list/do_not_apply)
 	if(!isnull(character))
