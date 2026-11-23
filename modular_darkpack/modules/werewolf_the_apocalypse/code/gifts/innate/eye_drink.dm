@@ -48,13 +48,12 @@
 		if(successes <= 0)
 			return TRUE
 
-	if(HAS_TRAIT(owner, TRAIT_MOVE_FLYING))
-		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
-	else if(HAS_TRAIT(owner, TRAIT_WADDLING))
-		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
-	else
-		to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
+	to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
+	// CRIMSON EDIT CHANGE START - 590 - Raven pecking a corpse's eyes isn't supernatural
+	// ORIGINAL: SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	if(!is_species(owner, /datum/species/human/shifter/feral))
 		SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	// CRIMSON EDIT CHANGE END
 
 	var/deathdesc
 	if(prompting_mob)
