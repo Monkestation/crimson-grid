@@ -85,15 +85,15 @@
 		return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/cawcrinos.ogg'
 
 /datum/emote/living/carbon/human/screech/roar/get_sound(mob/living/carbon/human/user) //uses previous roar emote for humans
-    if(istype(user))
-        var/roar_sound = user.dna.species.get_roar_sound(user)
-        if(roar_sound)
-            return roar_sound
-    return ..()
+	if(istype(user))
+		var/roar_sound = user.dna.species.get_roar_sound(user)
+		if(roar_sound)
+			return roar_sound
+	return ..()
 
 /datum/species/proc/get_roar_sound(mob/living/carbon/human/human)
-    return
+	return
 
 /datum/species/human/shifter/war/get_roar_sound(mob/living/carbon/human/human)
-    if(get_garou_splat(human))
-        return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/crinos_roar.ogg'
+	if(get_garou_splat(human))
+		return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/crinos_roar.ogg'
