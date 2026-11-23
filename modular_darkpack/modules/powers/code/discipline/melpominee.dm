@@ -7,6 +7,7 @@
 ●●●● Siren's Beckoning: Wits + Performance vs. target's Willpower
 ●●●●● Virtuosa: Passive toggle
 ●●●●●● Shattering Crescendo: Passive"}
+	id = DISCIPLINE_MELPOMINEE
 	icon_state = "melpominee"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/melpominee

@@ -30,6 +30,11 @@ SUBSYSTEM_DEF(humannpcpool)
 	if(!resumed)
 		src.currentrun = active_npcs.Copy()
 
+		// if there's less than the amount of NPCs we want, spawn a new one.
+		if(length(GLOB.npc_spawn_points) && length(GLOB.alive_npc_list) < SSmapping.current_map.max_npcs)
+			spawn_random_npc()
+
+	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 	while(length(currentrun))
 		var/mob/living/carbon/human/npc/NPC = currentrun[length(currentrun)]
@@ -40,21 +45,24 @@ SUBSYSTEM_DEF(humannpcpool)
 		if(MC_TICK_CHECK)
 			return
 
+/datum/controller/subsystem/humannpcpool/proc/spawn_random_npc()
+	var/atom/chosen_spawn_point = pick(GLOB.npc_spawn_points)
+	var/creating_npc = pick(
+		/mob/living/carbon/human/npc/police, \
+		/mob/living/carbon/human/npc/bandit, \
+		/mob/living/carbon/human/npc/hobo, \
+		/mob/living/carbon/human/npc/walkby, \
+		/mob/living/carbon/human/npc/business \
+	)
+	new creating_npc(get_turf(chosen_spawn_point))
+
 /datum/controller/subsystem/humannpcpool/proc/try_repopulate()
 #ifndef UNIT_TESTS
 	if (!length(GLOB.npc_spawn_points))
 		return
 
 	while (length(GLOB.alive_npc_list) < SSmapping.current_map.max_npcs)
-		var/atom/chosen_spawn_point = pick(GLOB.npc_spawn_points)
-		var/creating_npc = pick(
-			/mob/living/carbon/human/npc/police, \
-			/mob/living/carbon/human/npc/bandit, \
-			/mob/living/carbon/human/npc/hobo, \
-			/mob/living/carbon/human/npc/walkby, \
-			/mob/living/carbon/human/npc/business \
-		)
-		new creating_npc(get_turf(chosen_spawn_point))
+		spawn_random_npc()
 #endif
 
 #define NPC_INTERESTING_DIST AI_DEFAULT_INTERESTING_DIST

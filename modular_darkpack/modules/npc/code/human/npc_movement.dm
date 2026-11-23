@@ -61,7 +61,6 @@
 
 /mob/living/carbon/human/npc/death()
 	GLOB.alive_npc_list -= src
-	SShumannpcpool.try_repopulate()
 	GLOB.move_manager.stop_looping(src)
 	abandon_food()
 
@@ -124,6 +123,8 @@
 	// Don't pick a new destination while loitering
 	if (!walktarget && world.time >= loiter_until)
 		walktarget = ChoosePath()
+		if(!walktarget)
+			COOLDOWN_START(src, choose_path_cooldown, 2 SECONDS)
 	if(walktarget)
 		EVLOG_PATH(src, EVLOG_CATEGORY_MOVELOOPS, "Set walktarget: [walktarget]", list(loc, get_turf(walktarget)))
 
@@ -162,20 +163,23 @@
 /mob/living/carbon/human/npc/proc/CreateWay(direction)
 	var/turf/location = get_turf(src)
 	for(var/distance = 1 to 50)
-		location = get_step(location, direction)
+		var/turf/next_location = get_step(location, direction)
+		if(!next_location)
+			return location
+		location = next_location
 		if(iswallturf(location))
 			return location
-		for(var/atom/A in location)
-			// DARKPACK TODO - reimplement decor
-			/*
-			if(A.density && !istype(A, /obj/structure/lamppost))
-				return location
-			*/
-			if(istype(A, /obj/effect/landmark/npcwall))
-				return get_step_towards(location, get_turf(src))
-			if(istype(A, /obj/effect/landmark/npcbeacon) && prob(50))
-				stopturf = 1
-				return get_step(location, direction)
+		// DARKPACK TODO - reimplement decor
+		/*
+		if(A.density && !istype(A, /obj/structure/lamppost))
+			return location
+		*/
+		if(locate(/obj/effect/landmark/npcwall) in location)
+			return get_step_towards(location, get_turf(src))
+		if((locate(/obj/effect/landmark/npcbeacon) in location) && prob(50))
+			stopturf = 1
+			return get_step(location, direction)
+	return location
 
 /// Remembers a destination we've just visited so ChoosePath doesn't send us straight back to it.
 /mob/living/carbon/human/npc/proc/remember_target(atom/target)
@@ -337,6 +341,8 @@
 	if(!walktarget && !staying && world.time >= loiter_until)
 		stopturf = rand(1, 2)
 		walktarget = ChoosePath()
+		if(!walktarget)
+			COOLDOWN_START(src, choose_path_cooldown, 2 SECONDS)
 		face_atom(walktarget)
 
 	if(!isnull(hardstop) && !loiter_spot)
