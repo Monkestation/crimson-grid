@@ -84,7 +84,7 @@
 	if(get_corax_splat(human))
 		return 'modular_darkpack/modules/werewolf_the_apocalypse/sounds/emotes/cawcrinos.ogg'
 
-/datum/emote/living/carbon/human/screech/roar/get_sound(mob/living/carbon/human/user)
+/datum/emote/living/carbon/human/screech/roar/get_sound(mob/living/carbon/human/user) //uses previous roar emote for humans
     if(istype(user))
         var/roar_sound = user.dna.species.get_roar_sound(user)
         if(roar_sound)
