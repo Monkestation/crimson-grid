@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Autofocus, Button, Input, Section, Stack } from 'tgui-core/components';
+import { Button, Input, Section, Stack } from 'tgui-core/components'; // DARKPACK EDIT REMOVE - Autofocus
 import {
   KEY_A,
   KEY_DOWN,
@@ -17,10 +17,11 @@ type ListInputModalProps = {
   message: string;
   on_selected: (entry: string) => void;
   on_cancel: () => void;
+  autofocus: boolean; // DARKPACK ADD - autofocus: boolean;
 };
 
 export const ListInputModal = (props: ListInputModalProps) => {
-  const { items = [], default_item, message, on_selected, on_cancel } = props;
+  const { items = [], default_item, message, on_selected, on_cancel, autofocus } = props; // DARKPACK EDIT ADD - autofocus
 
   const [selected, setSelected] = useState(items.indexOf(default_item));
   const [searchBarVisible, setSearchBarVisible] = useState(items.length > 9);
@@ -100,11 +101,11 @@ export const ListInputModal = (props: ListInputModalProps) => {
     item?.toLowerCase().includes(searchQuery.toLowerCase()),
   );
   // Grabs the cursor when no search bar is visible.
-  if (!searchBarVisible) {
+  if (!searchBarVisible && autofocus) { // DARKPACK EDIT ADD - && Autofocus
     setTimeout(() => document!.getElementById(selected.toString())?.focus(), 1);
   }
 
-  return (
+  return ( // DARKPACK EDIT ADD - Line 160/161 ={autofocus}
     <Section
       onKeyDown={(event) => {
         const keyCode = window.event ? event.which : event.keyCode;
@@ -156,8 +157,8 @@ export const ListInputModal = (props: ListInputModalProps) => {
         </Stack.Item>
         {searchBarVisible && (
           <Input
-            autoFocus
-            autoSelect
+            autoFocus={autofocus}
+            autoSelect={autofocus}
             fluid
             onEnter={() => on_selected(filteredItems[selected])}
             onChange={onSearch}
@@ -200,9 +201,8 @@ const ListDisplay = (props: ListDisplayProps) => {
     selected,
   } = props;
 
-  return (
+  return ( // DARKPACK EDIT REMOVE - <Autofocus />
     <Section fill scrollable>
-      <Autofocus />
       {filteredItems.map((item, index) => (
         <Button
           className="candystripe"

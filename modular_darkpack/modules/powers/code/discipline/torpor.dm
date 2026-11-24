@@ -1,6 +1,7 @@
 /datum/discipline/torpor
 	name = "Torpor"
 	desc = "We fall into a false death state, allowing us to feign death."
+	id = DISCIPLINE_TORPOR
 	icon_state = "quietus"
 	power_type = /datum/discipline_power/torpor
 	selectable = FALSE // so it doesn't show up in the admin UI as selectable

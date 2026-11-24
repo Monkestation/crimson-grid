@@ -62,7 +62,27 @@
 	guestbook_names = save_data?["guestbook_names"]
 	guestbook_names = SANITIZE_LIST(guestbook_names)
 	alt_job_titles = save_data?["alt_job_titles"] // ALTERNATIVE_JOB_TITLES
-	discipline_levels = SANITIZE_LIST(save_data?["discipline_levels"]) || list()
+	// discipline_levels is loaded in the parent proc, since validate_quirks() there depends on it.
+
+/// Returns the ids of every discipline this character will spawn with.
+/datum/preferences/proc/get_discipline_ids()
+	var/list/discipline_ids = list()
+	for(var/discipline_key in discipline_levels)
+		if(!discipline_levels[discipline_key])
+			continue
+		var/datum/discipline/discipline_path = ispath(discipline_key) ? discipline_key : text2path(discipline_key)
+		if(discipline_path)
+			discipline_ids |= initial(discipline_path.id)
+	if(length(discipline_ids))
+		return discipline_ids
+
+	// No dots allocated means they spawn with 1 dot in each clan discipline, see on_prefs_applied_disciplines()
+	var/clan_value = read_preference(/datum/preference/choiced/subsplat/vampire_clan)
+	var/datum/subsplat/vampire_clan/clan = clan_value ? get_vampire_clan(clan_value) : null
+	for(var/datum/discipline/discipline_path as anything in clan?.clan_disciplines)
+		if(ispath(discipline_path, /datum/discipline))
+			discipline_ids |= initial(discipline_path.id)
+	return discipline_ids
 
 /datum/preferences/save_character()
 	. = ..()
