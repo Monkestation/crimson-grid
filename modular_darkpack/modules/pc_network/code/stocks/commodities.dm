@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(commodities)
 	for(var/atom in commodity_by_item)
 		if(!istype(I, atom))
 			continue
-		var/datum/commodity/C = commodity_by_item[path]
+		var/datum/commodity/C = commodity_by_item[atom]
 		if(C)
 			return C
 	return null
