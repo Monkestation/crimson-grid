@@ -10,7 +10,6 @@
 
 	maximal_generation = 8
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINFOLK)
-	allowed_clans = /datum/job/vampire/clinic_director::allowed_clans
 	exp_required_type_department = EXP_TYPE_CLINIC
 	exp_requirements = EXP_REQ_HEAD
 	desensitized_base = DESENSITIZED_THRESHOLD
