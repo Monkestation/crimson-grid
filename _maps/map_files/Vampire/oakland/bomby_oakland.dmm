@@ -16122,6 +16122,7 @@
 /obj/effect/turf_decal/siding/grey{
 	dir = 1
 	},
+/obj/structure/rack/clothing_hanger,
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/clinic)
 "dJG" = (
@@ -32177,6 +32178,13 @@
 /obj/machinery/light/prince/directional/north,
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/jazzclub)
+"huF" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/rack/clothing_hanger,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "huM" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "splatter4-old"
@@ -80517,6 +80525,10 @@
 /area/vtm/outside/chinatown)
 "suR" = (
 /obj/machinery/light/directional/west,
+/obj/item/clothing/head/cone,
+/obj/effect/decal/cleanable/trash{
+	icon_state = "trash5"
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "suS" = (
@@ -96228,10 +96240,7 @@
 /turf/open/water/beach/vamp,
 /area/vtm/outside/forest)
 "wbZ" = (
-/obj/effect/decal/cleanable/trash{
-	icon_state = "trash5"
-	},
-/obj/item/clothing/head/cone,
+/obj/structure/rack/clothing_hanger,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "wca" = (
@@ -221602,7 +221611,7 @@ bnn
 rdv
 dWB
 ucX
-hYk
+huF
 pQm
 pQm
 rAl
