@@ -8163,13 +8163,6 @@
 	color = "#bfbfbf"
 	},
 /area/vtm/interior/endron_facility/helipad)
-"bLY" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 31
-	},
-/turf/open/floor/city/industrial/large,
-/area/vtm/interior/clinic/haven)
 "bLZ" = (
 /obj/machinery/light/small/directional/south,
 /obj/structure/table/wood,
@@ -8201,10 +8194,6 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police/fed)
 "bMw" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 31
-	},
 /obj/structure/table,
 /obj/machinery/button/door{
 	id = "west isolator";
@@ -16001,7 +15990,6 @@
 /obj/effect/abstract/elevator_music_zone{
 	linked_elevator_id = "HospitalVisit"
 	},
-/obj/machinery/light/small/directional/north,
 /turf/open/floor/city/plating,
 /area/vtm/interior/clinic/haven)
 "dxH" = (
@@ -18697,6 +18685,11 @@
 /obj/structure/hydrant,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/financialdistrict)
+"edj" = (
+/obj/structure/coclock,
+/obj/item/kirbyplants/darkpack/random,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "edm" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -52281,10 +52274,6 @@
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior)
 "lPN" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 31
-	},
 /obj/machinery/photocopier/prebuilt,
 /turf/open/floor/city/industrial/large,
 /area/vtm/interior/clinic/haven)
@@ -61967,14 +61956,6 @@
 /obj/item/food/grown/flower/moonflower,
 /turf/open/misc/grass,
 /area/vtm/interior/wyld/caern)
-"nZr" = (
-/obj/item/kirbyplants/random,
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 31
-	},
-/turf/open/floor/city/plating,
-/area/vtm/interior/clinic/haven)
 "nZz" = (
 /obj/effect/turf_decal/siding/white,
 /obj/structure/coclock,
@@ -62038,13 +62019,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/police)
-"oaq" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 31
-	},
-/turf/open/floor/city/industrial,
-/area/vtm/interior/clinic/haven)
 "oar" = (
 /obj/structure/vampfence{
 	dir = 8
@@ -62226,6 +62200,10 @@
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
+"ocP" = (
+/obj/structure/rack/clothing_hanger,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "ocR" = (
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/millennium_tower)
@@ -74824,6 +74802,10 @@
 /area/vtm)
 "qXh" = (
 /obj/structure/platform/lowwall/city/window/reinforced,
+/obj/structure/vampfence/rich{
+	dir = 4;
+	name = "bars"
+	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/clinic/haven)
 "qXk" = (
@@ -76555,7 +76537,7 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
-/obj/item/kirbyplants/darkpack/random,
+/obj/structure/rack/clothing_hanger,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic)
 "rsc" = (
@@ -77896,6 +77878,10 @@
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/banu/haven)
+"rGc" = (
+/obj/structure/rack/clothing_hanger,
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic/haven)
 "rGf" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 4
@@ -101520,10 +101506,6 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior)
 "xdg" = (
-/obj/structure/vampfence/rich{
-	dir = 4;
-	pixel_y = 31
-	},
 /obj/structure/table,
 /obj/item/paper_bin{
 	pixel_y = 6
@@ -105985,6 +105967,10 @@
 /area/vtm/interior/laundromat)
 "yek" = (
 /obj/structure/platform/lowwall/city/window,
+/obj/structure/vampfence/rich{
+	dir = 4;
+	name = "bars"
+	},
 /turf/open/floor/city/plating,
 /area/vtm/interior/clinic/haven)
 "yen" = (
@@ -133791,10 +133777,10 @@ tlG
 tlG
 tlG
 yek
-bLY
+vte
 dVg
 qXh
-nZr
+tmv
 tlG
 tlG
 jVN
@@ -136344,7 +136330,7 @@ icN
 dky
 eDf
 eDf
-eDf
+rro
 eXn
 eDf
 uBo
@@ -136603,7 +136589,7 @@ dyn
 dQy
 ndN
 fsT
-cfp
+rGc
 kVx
 cMO
 ruV
@@ -137902,7 +137888,7 @@ wpT
 mzw
 vte
 yek
-oaq
+mdi
 vte
 vte
 tdU
@@ -138159,7 +138145,7 @@ son
 vte
 vte
 yek
-oaq
+mdi
 lnh
 eCk
 wKY
@@ -201126,7 +201112,7 @@ bUt
 bUt
 bUt
 bUt
-eTC
+hNZ
 hNZ
 nDS
 dHR
@@ -270008,7 +269994,7 @@ jcx
 bki
 jcx
 oNY
-cLG
+edj
 aCY
 lfn
 xGQ
@@ -272836,7 +272822,7 @@ kCX
 ruX
 mCP
 hOy
-mCP
+ocP
 bUt
 bUt
 dWf
