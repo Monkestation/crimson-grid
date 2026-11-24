@@ -28,6 +28,27 @@
 
 	return get_discipline(discipline_power_type::discipline)?.get_power(discipline_power_type)
 
+/mob/living/proc/get_active_disciplines()
+	RETURN_TYPE(/datum/discipline)
+
+	var/datum/splat/vampire/vampire = get_splat_with_discipline(src)
+	var/list/current_disciplines = list()
+	for (var/datum/action/discipline/individual_discipline in vampire.powers) // Remove Bloodheal
+		if (istype(individual_discipline.discipline, /datum/discipline/bloodheal))
+			continue
+		current_disciplines += individual_discipline.discipline
+	return current_disciplines
+
+/datum/splat/vampire/proc/get_active_disciplines()
+	RETURN_TYPE(/datum/discipline)
+
+	var/list/current_disciplines = list()
+	for (var/datum/action/discipline/individual_discipline in src.powers) // Remove Bloodheal
+		if (istype(individual_discipline.discipline, /datum/discipline/bloodheal))
+			continue
+		current_disciplines += individual_discipline.discipline
+	return current_disciplines
+
 /datum/splat/vampire/proc/get_discipline(discipline_type)
 	RETURN_TYPE(/datum/discipline)
 
