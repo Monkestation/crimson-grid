@@ -2,7 +2,6 @@
 	// Humans have a default bloodpool of 10
 	maxbloodpool = 10
 	bloodpool = 10
-	mob_flags = MOB_HAS_SCREENTIPS_NAME_OVERRIDE
 	// NPC humans get the area of effect, player humans dont.
 	var/violation_aoe = FALSE
 	/// List of ownership types the player has claimed keys for (e.g., "apartment", "car")

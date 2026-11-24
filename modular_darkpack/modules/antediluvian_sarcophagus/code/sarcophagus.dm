@@ -97,6 +97,7 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 	pixel_w = -8
 	var/password = "Brongus"
 	var/passkey = 5
+	var/opened = FALSE
 	var/datum/storyteller_roll/sarcophagus_cipher/cipher_roll
 
 /obj/sarcophagus/Initialize(mapload)
@@ -124,10 +125,13 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 #define OPEN_SOUND 'modular_darkpack/modules/antediluvian_sarcophagus/sounds/mp_hello.ogg'
 /obj/sarcophagus/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/sarcophagus_key))
+		if(opened)
+			return ITEM_INTERACT_BLOCKING
 		var/pass = tgui_input_text(user, "???", "???")
-		if(!pass)
+		if(!pass || opened)
 			return ITEM_INTERACT_BLOCKING
 		if(password == uppertext(pass))
+			opened = TRUE
 			open_the_sarcophagus()
 			return ITEM_INTERACT_SUCCESS
 
