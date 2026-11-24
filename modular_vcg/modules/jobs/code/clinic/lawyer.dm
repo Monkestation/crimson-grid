@@ -31,7 +31,7 @@
 		JOB_PRIMOGEN_MALKAVIAN,
 	)
 
-	description = "Ensure Saint John's Clinic and Asylum keeps itself afloat legally and monetarily. Handle malpractice cases, influence the Director to favor you and the Malkavian Primogen."
+	description = "Ensure Saint John's Clinic and Asylum keeps itself afloat legally and monetarily. Handle malpractice cases, influence the Clinic Director to favor you and the Asylum Director."
 
 	job_tone = "objection"
 	tgui_icon = FA_ICON_GAVEL
