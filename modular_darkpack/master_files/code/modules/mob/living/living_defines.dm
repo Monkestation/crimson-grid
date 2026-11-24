@@ -1,5 +1,6 @@
 /mob/living
 	has_emotion = TRUE
+	mob_flags = MOB_HAS_SCREENTIPS_NAME_OVERRIDE
 
 	//Damage related vars, NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS
 	///Aggravated damage caused by supernatural attacks.

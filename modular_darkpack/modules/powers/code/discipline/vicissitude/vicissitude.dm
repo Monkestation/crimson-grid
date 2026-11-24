@@ -9,6 +9,7 @@
 ●●● Bonecrafting: Strength + Medicine (difficulty 7)
 ●●●● Horrid Form: Passive
 ●●●●● Bloodform: Passive"}
+	id = DISCIPLINE_VICISSITUDE
 	icon_state = "vicissitude"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/vicissitude
@@ -25,53 +26,61 @@
 	name = "Vicissitude power name"
 	desc = "Vicissitude power description"
 
-	var/datum/action/cooldown/mob_cooldown/shapeshift/shapeshift_ability
+	var/datum/action/cooldown/mob_cooldown/bodycraft/bodycraft_ability
 
 /datum/discipline_power/vicissitude/post_gain(post_gain_applied)
-	if(!shapeshift_ability)
-		shapeshift_ability = new(owner)
-	shapeshift_ability.Grant(owner)
+	if(!bodycraft_ability)
+		bodycraft_ability = new(owner)
+	bodycraft_ability.Grant(owner)
 
 /datum/discipline_power/vicissitude/post_loss()
-	shapeshift_ability.Remove(owner)
+	bodycraft_ability.Remove(owner)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/malleable_visage
 	name = "Malleable Visage"
-	desc = "Shapeshift yourself."
+	desc = "Alter yourself."
 
 	level = 1
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND
 	target_type = NONE
-	cooldown_length = 1 TURNS
-	vitae_cost = 1
+	cooldown_length = 0 TURNS
+	vitae_cost = 0 // Cost handled in Bodycrafting
 	toggled = FALSE
 	frenzy_usable = FALSE
 
 /datum/discipline_power/vicissitude/malleable_visage/activate(atom/target)
 	. = ..()
-	shapeshift_ability.Activate(owner)
+	bodycraft_ability.Activate(owner)
 	return TRUE
+
+// Suppress cast notification since it's a menu
+/datum/discipline_power/vicissitude/malleable_visage/do_caster_notification(target)
+	return
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/discipline_power/vicissitude/fleshcrafting
 	name = "Fleshcrafting"
-	desc = "Shapeshift yourself or others."
+	desc = "Alter yourself or others."
 
 	level = 2
 	check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE | DISC_CHECK_FREE_HAND | DISC_CHECK_IMMOBILE
 	target_type = TARGET_SELF | TARGET_HUMAN
-	vitae_cost = 1
+	vitae_cost = 0 // Cost handled in Bodycrafting
 	range = 1
 	toggled = FALSE
-	cooldown_length = 1 TURNS
+	cooldown_length = 0 TURNS
 	frenzy_usable = FALSE
+
+// Suppress cast notification since it's a menu
+/datum/discipline_power/vicissitude/fleshcrafting/do_caster_notification(target)
+	return
 
 /datum/discipline_power/vicissitude/fleshcrafting/activate(atom/movable/target)
 	. = ..()
-	shapeshift_ability.Activate(target)
+	bodycraft_ability.Activate(target)
 	return TRUE
 
 /datum/discipline_power/vicissitude/fleshcrafting/post_gain(post_gain_applied)
@@ -257,6 +266,8 @@
 /datum/discipline_power/vicissitude/bloodform/pre_activation_checks()
 	. = ..()
 	owner.do_jitter_animation(1 TURNS)
+	if(HAS_TRAIT(owner, TRAIT_PROMETHEAN_CLAY))
+		return TRUE
 	if(!do_after(owner, 1 TURNS, owner))
 		return FALSE
 	return TRUE
@@ -264,11 +275,14 @@
 /datum/discipline_power/vicissitude/bloodform/activate()
 	. = ..()
 	owner.set_species(mrace = /datum/species/tzimisce_blood_form, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)
-	owner.uncuff() //Avoids any issues with existing cuffs, and you can't handcuff a selectively solid pool of blood.
+	owner.uncuff() // Avoids any issues with existing cuffs, and you can't handcuff a selectively solid pool of blood.
 
 /datum/discipline_power/vicissitude/bloodform/deactivate()
 	. = ..()
 	owner.do_jitter_animation(1 TURNS)
+	if(HAS_TRAIT(owner, TRAIT_PROMETHEAN_CLAY))
+		owner.set_species(mrace = /datum/species/human, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)
+		return TRUE
 	if(!do_after(owner, 1 TURNS, owner))
 		return FALSE
 	owner.set_species(mrace = /datum/species/human, icon_update = TRUE, pref_load = TRUE, replace_missing = FALSE)

@@ -6,6 +6,7 @@
 ●●● Potence 3: Passive
 ●●●● Potence 4: Passive
 ●●●●● Potence 5: Passive"}
+	id = DISCIPLINE_POTENCE
 	icon_state = "potence"
 	power_type = /datum/discipline_power/potence
 
