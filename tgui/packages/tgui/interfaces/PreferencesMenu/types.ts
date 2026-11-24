@@ -248,6 +248,7 @@ export type PreferencesMenuData = {
   discipline_points_spent: number;
   discipline_tier: string;
   discipline_tier_details: string;
+  discipline_disallowed_quirks: string[];
   is_trusted: BooleanLike;
   player_whitelists: string[]; // DARKPACK EDIT ADD - WHITELIST
   clan_names_to_key: Record<string, string>; // DARKPACK EDIT ADD - WHITELIST
