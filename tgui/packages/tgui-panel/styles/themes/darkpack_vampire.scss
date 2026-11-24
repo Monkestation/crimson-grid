@@ -1,0 +1,37 @@
+// THIS IS A DARKPACK UI FILE
+/**
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
+ */
+
+@use 'sass:color';
+@use 'sass:meta';
+
+.theme-vampire:root {
+  --chat-text-color: hsl(30, 50%, 70%);
+
+  // Base
+  --color-base: hsl(0, 20%, 8%);
+  --color-section: hsla(0, 71%, 7%, 0.4);
+  --color-text: hsl(30, 50%, 70%);
+  --color-label: hsl(0, 15%, 70%);
+  --color-action: hsl(0, 45%, 20%);
+  --color-scrollbar-thumb: hsl(0, 45%, 25%);
+  --color-primary: hsl(0, 65%, 25%);
+  --color-hyperlink: hsl(0, 75%, 55%);
+  --color-hyperlink-visited: hsl(15, 65%, 45%);
+  --primary-lightness: 25%;
+  --primary-saturation: 65%;
+  --border-primary-alpha: 0.5;
+
+  // Components
+  --button-background-selected: hsl(0, 75%, 30%);
+  --button-background-caution: hsl(45, 80%, 35%);
+  --button-background-danger: hsl(15, 85%, 40%);
+  --tab-color-selected: hsl(45, 80%, 70%);
+  --input-background: hsl(0, 15%, 12%);
+  --tooltip-background-lightness: 15;
+
+  // Chat styles
+  @include meta.load-css('../tgchat/darkpack_chat-vampire.scss');
+}

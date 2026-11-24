@@ -6,6 +6,7 @@
 
 import './styles/main.scss';
 import './styles/themes/light.scss';
+import './styles/themes/darkpack_vampire.scss'; // DARKPACK EDIT ADD - Vampire Theme
 
 import { createRoot } from 'react-dom/client';
 import { setupGlobalEvents } from 'tgui-core/events';

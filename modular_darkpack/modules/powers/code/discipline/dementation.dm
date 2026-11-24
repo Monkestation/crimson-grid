@@ -6,6 +6,7 @@
 ●●● Eyes of Chaos: Perception + Occult
 ●●●● Voice of Madness: Manipulation + Empathy
 ●●●●● Total Insanity: Manipulation + Intimidation"}
+	id = DISCIPLINE_DEMENTATION
 	icon_state = "dementation"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/dementation
