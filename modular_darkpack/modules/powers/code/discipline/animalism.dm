@@ -6,6 +6,7 @@
 ●●● Summon Wolf: Passive
 ●●●● Summon Bat: Passive
 ●●●●● Skitter: Passive"}
+	id = DISCIPLINE_ANIMALISM
 	icon_state = "animalism"
 	power_type = /datum/discipline_power/animalism
 

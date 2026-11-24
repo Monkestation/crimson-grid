@@ -6,6 +6,7 @@
 ●●● Bond with the Mountain: Passive
 ●●●● Armor of Terra: No roll - always active
 ●●●●● Flow Within the Mountain: Passive"}
+	id = DISCIPLINE_VISCERATIKA
 	icon_state = "visceratika"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/visceratika

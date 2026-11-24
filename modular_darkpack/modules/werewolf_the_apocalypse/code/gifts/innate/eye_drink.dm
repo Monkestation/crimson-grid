@@ -49,7 +49,11 @@
 			return TRUE
 
 	to_chat(owner, span_notice("You drink of the eyes of [human_target] and a vision fills your mind..."))
-	SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	// CRIMSON EDIT CHANGE START - 590 - Raven pecking a corpse's eyes isn't supernatural
+	// ORIGINAL: SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	if(!is_species(owner, /datum/species/human/shifter/feral))
+		SEND_SIGNAL(owner, COMSIG_MASQUERADE_VIOLATION)
+	// CRIMSON EDIT CHANGE END
 
 	var/deathdesc
 	if(prompting_mob)
