@@ -23,8 +23,8 @@
 
 	description = "As an Orderly for the Hospital your main job is ensuring the security of medical staff, patients, and equipment."
 	minimum_masquerade = 0
-	maximal_generation = 8
-	maximum_immortal_age = 200
+	maximal_generation = 11
+	maximum_immortal_age = 100
 
 	known_contacts = list(
 		JOB_CLINIC_DIRECTOR,
