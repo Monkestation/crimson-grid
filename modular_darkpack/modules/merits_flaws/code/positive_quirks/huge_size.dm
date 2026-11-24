@@ -1,11 +1,11 @@
 /datum/quirk/darkpack/huge_size
 	name = "Huge size"
 	desc = {"You are abnormally large in size, at least 6'10" and
-300 pounds in weight (well over two meters tall and
-over 130 kgs). Aside from making you extremely no
-ticeable in public, this extra mass bestows an additional
-20 health. Characters with this Merit may also gain bonuses to
-bash down doors."}
+		300 pounds in weight (well over two meters tall and
+		over 130 kgs). Aside from making you extremely noticeable in
+		public, this extra mass bestows an additional 20 health.
+		Characters with this Merit may also gain bonuses to bash
+		down doors."}
 /* Characters with this Merit may
 also gain bonuses to push objects, open barred doors,
 avoid being knocked down, etc*/

@@ -187,6 +187,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_BANNED_TRANSFORMATION "banned_transformation"
 #define TRAIT_BEACON_OF_THE_UNHOLY "beacon_of_the_unholy"
 #define TRAIT_BETRAYERS_MARK "betrayers_mark"
+#define TRAIT_BLOOD_SORCERY_PRODIGY "blood_sorcery_prodigy"
 #define TRAIT_CALM_HEART "calm_heart"
 #define TRAIT_COLDLY_LOGICAL "coldly_logical"
 #define TRAIT_DISFIGURED_APPEARANCE "disfigured_appearance"
