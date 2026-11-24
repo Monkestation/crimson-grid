@@ -19,18 +19,24 @@
 	)
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE, SPLAT_GAROU, SPLAT_KINDRED)
-	splat_slots = list(SPLAT_GHOUL = 2, SPLAT_KINFOLK = 2)
+	disallowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS)
+	splat_slots = list(
+		SPLAT_KINDRED = 2,
+		SPLAT_GAROU = 2,
+	)
 
 	description = "As an Orderly for the Hospital your main job is ensuring the security of medical staff, patients, and equipment."
 	minimum_masquerade = 0
-	maximal_generation = 8
-	maximum_immortal_age = 200
+	maximal_generation = 9
+	maximum_immortal_age = 100
 
 	known_contacts = list(
 		JOB_CLINIC_DIRECTOR,
 		JOB_DOCTOR,
 		JOB_EMERGENCY_DISPATCHER
 	)
+
+	tgui_icon = FA_ICON_HELMET_UN
 
 /datum/outfit/job/vampire/clinic_guard
 	name = JOB_CLINIC_GUARD
