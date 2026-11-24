@@ -281,7 +281,7 @@
 	name = "Pacific Heights - Strip Club Penthouse"
 
 /area/vtm/interior/house/sanfran/ph_17
-	name = "Fisherman's Wharf - Unknown Underground Cavern"
+	name = "Pacific Heights - Unknown Underground Cavern"
 
 /area/vtm/interior/house/sanfran/pho_1
 	name = "Pacific Heights Outskirts - Cavern Passage"
