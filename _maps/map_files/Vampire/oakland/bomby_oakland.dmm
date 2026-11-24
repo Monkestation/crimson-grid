@@ -7,6 +7,29 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
+"aab" = (
+/obj/structure/table/wood,
+/obj/machinery/light/small/directional/north{
+	pixel_x = 16
+	},
+/obj/machinery/computer/pc,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
+	},
+/turf/open/floor/wood/rough,
+/area/vtm/interior/clinic/haven)
+"aac" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
+	},
+/obj/machinery/computer/pc/clinic,
+/obj/effect/turf_decal/siding/wood/dark{
+	dir = 1
+	},
+/obj/effect/decal/carpet,
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic)
 "aad" = (
 /turf/closed/wall/vampwall/brick,
 /area/vtm)
@@ -14822,24 +14845,6 @@
 	},
 /turf/open/misc/dirt,
 /area/vtm/interior/wyld/caern)
-"dtl" = (
-/obj/structure/table/wood,
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/obj/machinery/computer/pc/clinic,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/table/wood,
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/obj/effect/decal/carpet,
-/turf/open/floor/wood/herring,
-/area/vtm/interior/clinic)
 "dtm" = (
 /obj/effect/decal/wallpaper/grey/low,
 /obj/structure/platform/lowwall/junk/alt/window,
@@ -73315,29 +73320,6 @@
 /obj/structure/roadsign/speedlimit25,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
-"qJt" = (
-/obj/structure/table/wood,
-/obj/machinery/light/small/directional/north{
-	pixel_x = 16
-	},
-/obj/machinery/computer/pc,
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/effect/turf_decal/siding/wood/dark{
-	dir = 1
-	},
-/obj/structure/table/wood,
-/obj/item/paper_bin{
-	pixel_y = 6
-	},
-/obj/item/pen{
-	pixel_y = 8
-	},
-/turf/open/floor/wood/rough,
-/area/vtm/interior/clinic/haven)
 "qJA" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -142415,7 +142397,7 @@ tuX
 tuX
 rRR
 ldl
-qJt
+aab
 hUf
 hUf
 vAM
@@ -221380,7 +221362,7 @@ dWB
 ucX
 nHf
 rJV
-dtl
+aac
 jBb
 joX
 joX
