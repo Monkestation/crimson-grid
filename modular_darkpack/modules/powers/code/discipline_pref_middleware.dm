@@ -11,6 +11,10 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	/datum/discipline/obeah,
 	/datum/discipline/daimonion,
 	/datum/discipline/melpominee,
+	/datum/discipline/mytherceria,
+	/datum/discipline/visceratika,
+	/datum/discipline/thanatosis,
+	/datum/discipline/vicissitude,
 ))
 
 // warns a player if they have no discipline dots assigned before joining
@@ -40,8 +44,8 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	else if(ispath(splat, /datum/splat/vampire/ghoul))
 		discipline_points_budget = get_ghoul_discipline_budget(discipline_count)["points"]
 
-	// we are assuming that diablerists gain discipline points or disciplines.
-	if(discipline_points_spent > discipline_points_budget && !client.prefs.read_preference(/datum/preference/toggle/diablerist))
+	// we are assuming that diablerists gain discipline points or disciplines, and ghouls may potentially have these set higher than they can normally achieve.
+	if(discipline_points_spent > discipline_points_budget && !client.prefs.read_preference(/datum/preference/toggle/diablerist) && !ispath(splat, /datum/splat/vampire/ghoul))
 		tgui_alert(src, "You have [discipline_points_spent] discipline points spent, but your character is only allowed [discipline_points_budget]! Please fix your character preferences before joining.", "Discipline Points Overspent", list("OK"))
 		return FALSE
 
@@ -264,6 +268,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 		return FALSE
 
 	preferences.discipline_levels[discipline] = new_level
+	on_disciplines_changed()
 
 	preferences.save_character()
 	return TRUE
@@ -282,9 +287,16 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 	if(clan_datum)
 		for(var/disc_type in clan_datum.clan_disciplines)
 			if(ispath(disc_type, /datum/discipline))
-				preferences.discipline_levels += disc_type
+				preferences.discipline_levels["[disc_type]"] = 0
+	on_disciplines_changed()
 	preferences.save_character()
 	return TRUE
+
+/// Drops quirks the new discipline sheet no longer qualifies for and refreshes the quirk menu.
+/datum/preference_middleware/disciplines/proc/on_disciplines_changed()
+	preferences.validate_quirks()
+	var/datum/preference_middleware/quirks/quirk_middleware = locate() in preferences.middleware
+	quirk_middleware?.tainted = TRUE
 
 /datum/preferences/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE, list/do_not_apply)
 	if(!isnull(character))
@@ -325,7 +337,7 @@ GLOBAL_LIST_INIT(rare_discipline_types, list(
 			var/discipline = text2path(disc_path)
 			if(!discipline)
 				continue
-			var/level = character.get_splat(/datum/splat/vampire/ghoul) ? 1 : discipline_levels[disc_path]
+			var/level = discipline_levels[disc_path]
 			if(!level)
 				continue // prevent removing the disc by stopping here if they put 0 in it
 			var/result = character.change_st_power_level(discipline, level)

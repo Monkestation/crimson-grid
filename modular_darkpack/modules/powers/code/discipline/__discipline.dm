@@ -4,6 +4,8 @@
 	var/name = "Discipline name"
 	///Text description of this Discipline.
 	var/desc = "Discipline description"
+	/// ID for trait sources and whatnot
+	var/id = DISCIPLINE_BLANK
 	///Icon file for this Discipline
 	var/icon = 'modular_darkpack/modules/powers/icons/actions.dmi'
 	///Icon state for this Discipline

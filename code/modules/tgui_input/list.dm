@@ -9,8 +9,9 @@
  * * items - The options that can be chosen by the user, each string is assigned a button on the UI.
  * * default - If an option is already preselected on the UI. Current values, etc.
  * * timeout - The timeout of the input box, after which the menu will close and qdel itself. Set to zero for no timeout.
+* * * autofocus - The bool that controls if this picker should grab window focus. // DARKPACK EDIT ADD - autofocus arguments in this file
  */
-/proc/tgui_input_list(mob/user, message, title = "Select", list/items, default, timeout = 0, ui_state = GLOB.always_state)
+/proc/tgui_input_list(mob/user, message, title = "Select", list/items, default, timeout = 0, ui_state = GLOB.always_state, autofocus = TRUE) // DARKPACK EDIT ADD - autofocus = TRUE
 	if (!user)
 		user = usr
 	if(!length(items))
@@ -28,7 +29,7 @@
 	/// Client does NOT have tgui_input on: Returns regular input
 	if(!user.client.prefs.read_preference(/datum/preference/toggle/tgui_input))
 		return input(user, message, title, default) as null|anything in items
-	var/datum/tgui_list_input/input = new(user, message, title, items, default, timeout, ui_state)
+	var/datum/tgui_list_input/input = new(user, message, title, items, default, timeout, ui_state, autofocus) // DARKPACK EDIT ADD - autofocus
 	if(input.invalid)
 		qdel(input)
 		return
@@ -67,8 +68,11 @@
 	var/datum/ui_state/state
 	/// Whether the tgui list input is invalid or not (i.e. due to all list entries being null)
 	var/invalid = FALSE
+	/// The bool that controls if this modal should grab window focus
+	var/autofocus // DARKPACK EDIT ADD - var/autofocus
 
-/datum/tgui_list_input/New(mob/user, message, title, list/items, default, timeout, ui_state)
+/datum/tgui_list_input/New(mob/user, message, title, list/items, default, timeout, ui_state, autofocus) // DARKPACK EDIT ADD - autofocus
+	src.autofocus = autofocus // DARKPACK EDIT ADD - src.autofocus = autofocus
 	src.title = title
 	src.message = message
 	src.items = list()
@@ -124,6 +128,7 @@
 
 /datum/tgui_list_input/ui_static_data(mob/user)
 	var/list/data = list()
+	data["autofocus"] = autofocus // DARKPACK EDIT ADD - data["autofocus"] = autofocus
 	data["init_value"] = default || items[1]
 	data["items"] = items
 	data["large_buttons"] = user.client.prefs.read_preference(/datum/preference/toggle/tgui_input_large)
