@@ -2545,6 +2545,7 @@
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "aEK" = (
@@ -10013,6 +10014,15 @@
 /obj/item/soap/deluxe,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/interior)
+"cmY" = (
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/turf/open/floor/wood/herring,
+/area/vtm/interior/clinic/haven)
 "cmZ" = (
 /obj/structure/stairs/east,
 /turf/open/floor/wood/smooth/old,
@@ -16112,6 +16122,7 @@
 /obj/effect/turf_decal/siding/grey{
 	dir = 1
 	},
+/obj/structure/rack/clothing_hanger,
 /turf/open/floor/carpet/darkpack,
 /area/vtm/interior/clinic)
 "dJG" = (
@@ -24134,6 +24145,7 @@
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "fCn" = (
@@ -24885,6 +24897,9 @@
 "fLl" = (
 /obj/structure/lattice/grate{
 	dir = 4
+	},
+/obj/structure/railing{
+	dir = 9
 	},
 /turf/open/openspace,
 /area/vtm/outside/culture/italy)
@@ -32172,6 +32187,13 @@
 /obj/machinery/light/prince/directional/north,
 /turf/open/floor/carpet/royalblue,
 /area/vtm/interior/jazzclub)
+"huF" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/rack/clothing_hanger,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/clinic)
 "huM" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "splatter4-old"
@@ -59423,6 +59445,15 @@
 /obj/item/storage/ashtray,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/strip)
+"nDn" = (
+/obj/structure/lattice/grate{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 5
+	},
+/turf/open/openspace,
+/area/vtm/outside/culture/italy)
 "nDp" = (
 /obj/structure/bath/sabbatbath,
 /obj/machinery/light/dim/directional/south,
@@ -74288,6 +74319,7 @@
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/clinic/haven)
 "qVg" = (
@@ -80502,6 +80534,10 @@
 /area/vtm/outside/chinatown)
 "suR" = (
 /obj/machinery/light/directional/west,
+/obj/item/clothing/head/cone,
+/obj/effect/decal/cleanable/trash{
+	icon_state = "trash5"
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "suS" = (
@@ -91547,6 +91583,12 @@
 /obj/machinery/light/small/directional/north{
 	pixel_x = -16
 	},
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
+/obj/item/reagent_containers/blood/o_minus,
 /turf/open/floor/wood/herring,
 /area/vtm/interior/clinic/haven)
 "uUS" = (
@@ -94095,6 +94137,7 @@
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "vEu" = (
@@ -96111,6 +96154,15 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/millennium_tower)
+"wbd" = (
+/obj/structure/lattice/grate{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/openspace,
+/area/vtm/outside/culture/italy)
 "wbf" = (
 /obj/effect/decal/rugs,
 /obj/structure/table,
@@ -96197,10 +96249,7 @@
 /turf/open/water/beach/vamp,
 /area/vtm/outside/forest)
 "wbZ" = (
-/obj/effect/decal/cleanable/trash{
-	icon_state = "trash5"
-	},
-/obj/item/clothing/head/cone,
+/obj/structure/rack/clothing_hanger,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/clinic/haven)
 "wca" = (
@@ -96564,6 +96613,7 @@
 /obj/effect/mapping_helpers/door/access/malkavian,
 /obj/effect/mapping_helpers/door/lock_difficulty/eight,
 /obj/effect/mapping_helpers/door/bash_difficulty/eight,
+/obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/canal,
 /area/vtm/interior/sewer)
 "wgf" = (
@@ -136489,7 +136539,7 @@ aej
 vFf
 kRM
 jWO
-vWu
+cmY
 vWu
 pUF
 kpw
@@ -137514,7 +137564,7 @@ vWu
 sYy
 dQe
 dQe
-vAM
+pir
 gvf
 gbG
 vAM
@@ -181986,7 +182036,7 @@ sWU
 sWU
 pbo
 eaL
-fLl
+wbd
 joX
 nqp
 nXV
@@ -182190,7 +182240,7 @@ qHj
 nYp
 pbo
 eaL
-fLl
+nDn
 joX
 ila
 kaD
@@ -221578,7 +221628,7 @@ bnn
 rdv
 dWB
 ucX
-hYk
+huF
 pQm
 pQm
 rAl
