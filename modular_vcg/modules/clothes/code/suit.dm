@@ -97,3 +97,10 @@
 /obj/item/clothing/suit/armor/riot/knight/red
 	slowdown = 0.5
 
+/datum/armor/highly_protective_vest
+	melee = 55
+	bullet = 55
+
+/datum/armor/eod_suit
+	melee = 70
+	bullet = 70

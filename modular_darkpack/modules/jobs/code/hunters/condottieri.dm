@@ -11,7 +11,7 @@
 	config_tag = "CONDOTTIERI"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/condottieri
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_CONDOTTIERI
 	departments_list = list(
 		/datum/job_department/society_of_leopold,
@@ -41,7 +41,7 @@
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	r_pocket = /obj/item/vamp/keys/hunter
 	l_pocket = /obj/item/smartphone/condottieri
-	backpack_contents = list(/obj/item/vampire_stake=1,  /obj/item/intel_report=1, /obj/item/card/credit=1, /obj/item/vampirebook/bible=1)
+	backpack_contents = list(/obj/item/vampire_stake=1,  /obj/item/intel_report=1, /obj/item/card/credit=1, /obj/item/vampirebook/bible=1, /obj/item/gun/ballistic/automatic/darkpack/hk51 = 1, /obj/item/ammo_box/magazine/darkpack762x51fal/hk51 = 1 ) // CRIMSON EDIT CHANGE - Original: backpack_contents = list(/obj/item/vampire_stake=1,  /obj/item/intel_report=1, /obj/item/card/credit=1, /obj/item/vampirebook/bible=1)
 
 /datum/outfit/job/vampire/condottieri/pre_equip(mob/living/carbon/human/H)
 	. = ..()

@@ -13,7 +13,7 @@
 	config_tag = "PRINCE"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/prince
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_PRINCE
 	departments_list = list(
 		/datum/job_department/camarilla,
@@ -46,6 +46,19 @@
 /datum/job/vampire/prince/get_captaincy_announcement(mob/living/captain)
 	return "Prince [captain.real_name] is in the city!"
 
+//CG Edit Start: Lets characters remember relevant keypad codes
+
+/datum/job/vampire/prince/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/obj/keypad/armory/armory_keypad = locate() in GLOB.keypads
+	if(armory_keypad)
+		spawned.mind.add_memory(/datum/memory/key/armory_code, remembered_code = armory_keypad.pincode)
+	var/obj/keypad/panic_room/panic_room_keypad = locate() in GLOB.keypads
+	if(panic_room_keypad)
+		spawned.mind.add_memory(/datum/memory/key/panic_room_code, remembered_code = panic_room_keypad.pincode)
+
+//CG Edit End.
+
 /datum/outfit/job/vampire/prince
 	name = JOB_PRINCE
 	jobtype = /datum/job/vampire/prince
@@ -59,4 +72,4 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/smartphone/prince
 	r_pocket = /obj/item/vamp/keys/prince
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/masquerade_contract=1, /obj/item/card/credit/prince=1)
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/pistol/darkpack/deagle=1, /obj/item/phone_book=1, /obj/item/masquerade_contract/prince=1, /obj/item/card/credit/prince=1)

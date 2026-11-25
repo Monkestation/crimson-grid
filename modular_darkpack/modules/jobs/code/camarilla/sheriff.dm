@@ -12,7 +12,7 @@
 	config_tag = "SHERIFF"
 	job_flags = CITY_JOB_FLAGS
 	outfit = /datum/outfit/job/vampire/sheriff
-
+	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
 	display_order = JOB_DISPLAY_ORDER_SHERIFF
 	departments_list = list(
 		/datum/job_department/camarilla,
@@ -32,6 +32,16 @@
 	)
 
 	tgui_icon = FA_ICON_SHIELD
+
+//CG Edit Start: Lets characters remember relevant keypad codes
+
+/datum/job/vampire/sheriff/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/obj/keypad/armory/armory_keypad = locate() in GLOB.keypads
+	if(armory_keypad)
+		spawned.mind.add_memory(/datum/memory/key/armory_code, remembered_code = armory_keypad.pincode)
+
+//CG Edit End.
 
 /datum/outfit/job/vampire/sheriff
 	name = JOB_SHERIFF

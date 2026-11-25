@@ -1,7 +1,3 @@
-
-/datum/emote/living/custom
-	stat_allowed = SOFT_CRIT
-
 /datum/emote/living/nodnod
 	key = "nod2"
 	key_third_person = "nod2s"
@@ -55,7 +51,7 @@
 	message = "meows!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
-	sound = SFX_CAT_MEOW
+	sound = /datum/sound_effect/assoc/cat_meow
 
 /datum/emote/living/headtilt
 	key = "tilt"
