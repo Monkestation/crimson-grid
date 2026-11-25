@@ -46,6 +46,5 @@
 		new /datum/data/vending_product("magafinil pill bottle", /obj/item/storage/pill_bottle/magafinil, 200),
 		new /datum/data/vending_product("magaloft pill bottle", /obj/item/storage/pill_bottle/magaloft, 250),
 		new /datum/data/vending_product("magaversidin pill bottle", /obj/item/storage/pill_bottle/magaversidin, 300),
-		new /datum/data/vending_product("flubuster single shot", /obj/item/reagent_containers/hypospray/medipen/flubuster, 700),
 // CRIMSON EDIT ADD END - Magadon Drugs
 	)
