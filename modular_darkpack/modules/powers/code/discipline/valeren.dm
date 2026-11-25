@@ -6,6 +6,7 @@
 ●●● Burning Touch: Passive
 ●●●● Armor of Caine's Fury: Stamina + Melee (difficulty 7)
 ●●●●● Vengeance of Samiel: Passive"}
+	id = DISCIPLINE_VALEREN
 	icon_state = "valeren"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/valeren

@@ -396,6 +396,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 				continue
 			value_cache -= preference.type
+		discipline_levels = list() // DARKPACK EDIT ADD - MERITS_FLAWS
 		return FALSE
 
 	var/data_validity_integer = check_savedata_version(save_data)
@@ -470,6 +471,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			job_preferences -= job
 
 	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
+
+	// DARKPACK EDIT ADD START - MERITS_FLAWS
+	// Discipline-gated quirks are validated below, so the new slot's disciplines must be loaded first.
+	// Otherwise this validates against whatever slot we switched FROM (or an empty list on first load).
+	discipline_levels = SANITIZE_LIST(save_data?["discipline_levels"]) || list()
+	// DARKPACK EDIT ADD END
 
 	validate_quirks()
 

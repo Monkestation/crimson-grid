@@ -10,6 +10,7 @@ type ListInputData = {
   message: string;
   timeout: number;
   title: string;
+  autofocus: boolean; // DARKPACK EDIT ADD - autofocus: boolean;
 };
 
 export const ListInputWindow = () => {
@@ -21,13 +22,14 @@ export const ListInputWindow = () => {
     large_buttons,
     timeout,
     title,
+    autofocus, // DARKPACK EDIT ADD - autofocus,
   } = data;
 
   // Dynamically changes the window height based on the message.
   const windowHeight =
     325 + Math.ceil(message.length / 3) + (large_buttons ? 5 : 0);
 
-  return (
+  return ( // DARKPACK EDIT ADD - Line 42 autofocus={autofocus}
     <Window title={title} width={325} height={windowHeight}>
       {timeout && <Loader value={timeout} />}
       <Window.Content>
@@ -37,6 +39,7 @@ export const ListInputWindow = () => {
           message={message}
           on_selected={(entry) => act('submit', { entry })}
           on_cancel={() => act('cancel')}
+          autofocus={autofocus}
         />
       </Window.Content>
     </Window>

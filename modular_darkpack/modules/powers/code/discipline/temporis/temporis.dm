@@ -6,6 +6,7 @@
 ●●● Leaden Moment: Passive
 ●●●● Patience of the Norns: Passive
 ●●●●● Clotho's Gift: Passive"}
+	id = DISCIPLINE_TEMPORIS
 	icon_state = "temporis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/temporis
