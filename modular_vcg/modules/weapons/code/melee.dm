@@ -86,3 +86,26 @@
 
 	pixel_w = -8
 	custom_price = 2250  // credit to Infared Baron for the sprite
+
+/datum/crafting_recipe/torch
+	name = "Torch"
+	time = 50
+	reqs = list(/obj/item/stack/sheet/mineral/wood = 5, /obj/item/stack/sheet/mineral/coal = 1)
+	result = /obj/item/flashlight/flare/torch
+	crafting_flags = CRAFT_SKIP_MATERIALS_PARITY
+	category = CAT_WEAPON_MELEE
+	skill_required_for_use = STAT_CRAFTS
+	skill_dots_minimum = 3
+
+/obj/item/flashlight/flare/torch/attack_self(mob/user)
+	. = ..()
+	if(light_on && isliving(user))
+		var/mob/living/lighter = user
+		lighter.trigger_rotschreck(src, 5)
+
+/obj/item/flashlight/flare/torch/afterattack(atom/target, mob/user, click_parameters)
+	. = ..()
+	if(isliving(target) && get_temperature() && prob(25))
+		var/mob/living/victim = target
+		victim.adjust_fire_stacks(1)
+		fuel -= 1 MINUTES

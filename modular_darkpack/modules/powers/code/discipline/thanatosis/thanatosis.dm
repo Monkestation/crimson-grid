@@ -6,6 +6,7 @@
 ●●● Ashes to Ashes: Passive
 ●●●● Withering: Manipulation + Medicine vs. target's Stamina
 ●●●●● Necrosis: Dexterity + Medicine vs. target's Stamina"}
+	id = DISCIPLINE_THANATOSIS
 	icon_state = "thanatosis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/thanatosis

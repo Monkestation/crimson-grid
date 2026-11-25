@@ -1,0 +1,9 @@
+author: "Rhys Mori / Twox"
+delete-after: True
+changes:
+  - rscadd: "-Promethean Clay now applies as expected to Vicissitude 1 & 2 (self) in addition to 5 — RP tag removed.\n-Zulo form preferences are now tied to Vicissitude instead of Tzimisce."
+  - qol: "Vicissitude 1 & 2 usage should be far more smooth now.\n-Vicissitude 1 & 2 no longer have a timer as they were just a radial opener prior.\n-Vicissitude TGUI menus will no longer take screen priority."
+  - balance: "-Vicissitude 1 & 2 costs are now handled in radial rather than tied to the discipline button.\n-Non-self Vicissitude casting still has a flat 1 BP cost."
+  - bugfix: "-Vicissitude 2 will no longer incur BP cost on non-applicable targets.\n-Vicissitude radials will now delete themselves when out of range.\n-Vicissitude options now use TGUI colour."
+  - code_imp: "-All references to Vicissitude Shapeshifting have been converted to Bodycrafting.\n-'get_active_disciplines()' now exists in vampire_splat.dm and will return a list of the target's currently active disciplines in a round.\n-IDs & global file for disciplines."
+  - refactor: "-Framework additions for better functionality regarding Disciplines and Quirks.\n-Autofocus arguments to List and Text TGUI menus.\n-Quirks can now reference the presence of active disciplines."

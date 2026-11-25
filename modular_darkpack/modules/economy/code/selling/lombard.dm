@@ -47,6 +47,12 @@
 		to_chat(user, span_warning("[black_market ? "This" : "The pawnshop"] doesn't accept [selling_comp.illegal ? "illegal" : "legal"] goods."))
 		return ITEM_INTERACT_BLOCKING
 
+	// CRIMSON EDIT ADDITION START - drug dealing
+	if(black_market && !selling_comp.black_market_allowed)
+		to_chat(user, span_warning("The dealer doesn't accept [tool], but you might be able to peddle it on the street."))
+		return ITEM_INTERACT_BLOCKING
+	// CRIMSON EDIT ADDITION END - drug dealing
+
 	sell_one_item(tool, user)
 	return ITEM_INTERACT_SUCCESS
 
@@ -175,6 +181,12 @@
 	if(selling_comp.illegal != black_market)
 		to_chat(user, span_warning("[black_market ? "This" : "The pawnshop"] doesn't accept [selling_comp.illegal ? "illegal" : "legal"] goods."))
 		return
+
+	// CRIMSON EDIT ADDITION START - drug dealing
+	if(black_market && !selling_comp.black_market_allowed)
+		to_chat(user, span_warning("The dealer doesn't accept [sold], but you might be able to peddle it on the street."))
+		return
+	// CRIMSON EDIT ADDITION END - drug dealing
 
 	if(!src.IsReachableBy(user))
 		to_chat(user, span_warning("You're too far from [src]!"))

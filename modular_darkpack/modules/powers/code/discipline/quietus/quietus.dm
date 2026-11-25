@@ -6,6 +6,7 @@
 ●●● Dagon's Call: Stamina vs. target's Willpower
 ●●●● Baal's Caress: Passive
 ●●●●● Taste of Death: Stamina + Athletics (difficulty 6)"}
+	id = DISCIPLINE_QUIETUS
 	icon_state = "quietus"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/quietus
