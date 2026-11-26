@@ -55,6 +55,24 @@
 /obj/item/bodypart/arm/right/fera/aggravated
 	attack_type = AGGRAVATED
 
+/obj/item/bodypart/arm/left/fera/aggravated/warform/Initialize(mapload)
+	held_hand_offset = new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("south" = 10 , "north" = 12 , "east" = 16, "west" = -2),
+		offset_y = list("south" = 10, "north" = 16 , "east" = 10 ,"west" = 9),
+	)
+	return ..()
+
+/obj/item/bodypart/arm/right/fera/aggravated/warform/Initialize(mapload)
+	held_hand_offset = new(
+		attached_part = src,
+		feature_key = OFFSET_HELD,
+		offset_x = list("south" = 10 , "north" = 12 , "east" = 18 ,"west" = -2),
+		offset_y = list("south" = 10, "north" = 16 , "east" = 8 ,"west" = 9),
+	)
+	return ..()
+
 /obj/item/bodypart/leg/left/fera
 	unarmed_sharpness = SHARP_EDGED
 	// limb_id = SPECIES_FERA
@@ -113,11 +131,13 @@
 		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 12.5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour =  COLOR_RED_LIGHT)
 		regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
+	species_fera_dire.add_inner_armor(/datum/armor/werewolf_dire) // CRIMSON EDIT ADD - Hispo soak armour
 
 
 /datum/species/human/shifter/dire/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
 	qdel(human.GetComponent(/datum/component/regenerator))
+	human.remove_inner_armor(/datum/armor/werewolf_dire) // CRIMSON EDIT ADD - Hispo soak armour
 
 /datum/species/human/shifter/bestial/on_species_gain(mob/living/carbon/human/species_fera_bestial, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
@@ -134,24 +154,8 @@
 
 //CRIMSION GRID ADDITION END
 
-//CRMISION GRID ADDITION START - objects in hands for crinos form
+// Stop Lupus and Hispo speaking human languages
+/obj/item/organ/tongue/fera/beast
 
-/obj/item/bodypart/arm/left/fera/aggravated/warform/Initialize(mapload)
-	held_hand_offset = new(
-		attached_part = src,
-		feature_key = OFFSET_HELD,
-		offset_x = list("south" = 10 , "north" = 12 , "east" = 16, "west" = -2),
-		offset_y = list("south" = 10, "north" = 16 , "east" = 10 ,"west" = 9),
-	)
-	return ..()
-
-/obj/item/bodypart/arm/right/fera/aggravated/warform/Initialize(mapload)
-	held_hand_offset = new(
-		attached_part = src,
-		feature_key = OFFSET_HELD,
-		offset_x = list("south" = 10 , "north" = 12 , "east" = 18 ,"west" = -2),
-		offset_y = list("south" = 10, "north" = 16 , "east" = 8 ,"west" = 9),
-	)
-	return ..()
-
-//CRIMSION GRID ADDITION END
+/obj/item/organ/tongue/fera/beast/get_possible_languages()
+	return list(/datum/language/garou_tongue, /datum/language/primal_tongue)

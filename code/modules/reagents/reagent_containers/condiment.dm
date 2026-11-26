@@ -25,7 +25,7 @@
 
 /obj/item/reagent_containers/condiment/update_icon_state()
 	. = ..()
-	if(reagents?.reagent_list.len) // DARKPACK EDIT CHANGE - world icon can call update_icon_state before reagents exist
+	if(length(reagents?.reagent_list)) // DARKPACK EDIT CHANGE - world icon can call update_icon_state before reagents exist
 		if(icon_preempty)
 			icon_state = icon_preempty
 			icon_preempty = null
@@ -145,6 +145,8 @@
 	volume = 20
 	list_reagents = list(/datum/reagent/consumable/salt = 20)
 	fill_icon_thresholds = null
+	pickup_sound = /datum/sound_effect/seasoning_shaker_pickup
+	drop_sound = /datum/sound_effect/seasoning_shaker_drop
 
 /obj/item/reagent_containers/condiment/saltshaker/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] begins to swap forms with the salt shaker! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -180,6 +182,8 @@
 	volume = 20
 	list_reagents = list(/datum/reagent/consumable/blackpepper = 20)
 	fill_icon_thresholds = null
+	pickup_sound = /datum/sound_effect/seasoning_shaker_pickup
+	drop_sound = /datum/sound_effect/seasoning_shaker_drop
 
 /obj/item/reagent_containers/condiment/milk
 	name = "space milk"

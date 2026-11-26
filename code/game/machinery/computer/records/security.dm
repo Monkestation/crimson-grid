@@ -133,6 +133,7 @@
 			recorded_rank = target.recorded_rank, // CRIMSON GRID EDIT - Security console and records
 			species = target.species,
 			trim = target.trim,
+			job_icon = SSjob.get_job(target.trim)?.tgui_icon,
 			wanted_status = target.wanted_status,
 			past_criminal_records = target.past_criminal_records, // DARKPACK EDIT - FLAVOR TEXT
 		))

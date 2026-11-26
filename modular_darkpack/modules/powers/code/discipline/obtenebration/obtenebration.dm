@@ -6,6 +6,7 @@
 ●●● Arms of the Abyss: Manipulation + Occult (difficulty 7)
 ●●●● Black Metamorphosis: Manipulation + Courage (difficulty 7)
 ●●●●● Tenebrous Form: Passive"}
+	id = DISCIPLINE_OBTENEBRATION
 	icon_state = "obtenebration"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obtenebration

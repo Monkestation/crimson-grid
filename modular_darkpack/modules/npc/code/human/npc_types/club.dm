@@ -1,5 +1,8 @@
 /mob/living/carbon/human/npc/walkby/club
 	staying = TRUE
+	// CRIMSON EDIT ADDITION START - drug dealing
+	drug_price = 2
+	// CRIMSON EDIT ADDITION END - drug dealing
 
 /mob/living/carbon/human/npc/walkby/club/Life()
 	. = ..()
@@ -17,7 +20,7 @@
 		hasjukebox = TRUE
 
 		// Hacky check for if it's currently playing
-		if (jukebox.static_power_usage != ACTIVE_POWER_USE)
+		if (!jukebox.music_player?.active_song_sound)
 			continue
 		if (prob(50))
 			dancefirst(src)

@@ -78,7 +78,9 @@
 #define SKIP_FANTASY_ON_SPAWN (1<<17)
 /// If an item has had its /datum/element/weapon_description initialized or not.
 #define WEAPON_DESCRIPTION_INITIALIZED (1<<18)
-#define ACTIVE_ONFLOOR_ICON (1<<19) // DARKPACK EDIT ADD - ONFLOOR_ICONS
+/// MODsuits can overslot these items
+#define CAN_BE_OVERSLOT (1<<19)
+#define ACTIVE_ONFLOOR_ICON (1<<20) // DARKPACK EDIT ADD - ONFLOOR_ICONS
 
 // Flags for the clothing_flags var on /obj/item/clothing
 

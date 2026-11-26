@@ -209,12 +209,12 @@
 	return TRUE
 
 /datum/species/human/shifter/homid
-	name = "homid form"
+	name = "Human" //health scanner 
 	id = SPECIES_FERA_HOMID
 
 
 /datum/species/human/shifter/bestial
-	name = "bestial form"
+	name = "Bestial form"
 	id = SPECIES_FERA_BESTIAL
 	shift_difficulty = 7
 	species_language_holder = /datum/language_holder/garou
@@ -250,7 +250,7 @@
 	. = ..()
 	UnregisterSignal(human, COMSIG_ATOM_UPDATE_OVERLAYS)
 	human.update_appearance(UPDATE_OVERLAYS)
-	human.update_transform()
+	human.update_transform(1 / 1.25) // fix Glabro scaling not resetting when shifting out of it
 
 /datum/species/human/shifter/bestial/proc/add_fluff(datum/source, list/overlay_list)
 	SIGNAL_HANDLER
@@ -267,7 +267,7 @@
 
 
 /datum/species/human/shifter/war
-	name = "war form"
+	name = "War form"
 	id = SPECIES_FERA_WAR
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -283,8 +283,8 @@
 	species_language_holder = /datum/language_holder/crinos
 	mutanttongue = /obj/item/organ/tongue/fera
 	bodypart_overrides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera/aggravated/warform, //CRIMSON GRID EDIT - original /obj/item/bodypart/arm/left/fera/aggravated
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/fera/aggravated/warform, //CRIMSON GRID EDIT - original /obj/item/bodypart/arm/right/fera/aggravated
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera/aggravated/warform,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/fera/aggravated/warform,
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/fera/aggravated,
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/fera/heavy,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/fera/heavy,
@@ -305,7 +305,7 @@
 
 
 /datum/species/human/shifter/dire
-	name = "dire form"
+	name = "Dire form"
 	id = SPECIES_FERA_DIRE
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -321,7 +321,7 @@
 
 	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	mutantbrain = /obj/item/organ/brain/fera
-	mutanttongue = /obj/item/organ/tongue/fera
+	mutanttongue = /obj/item/organ/tongue/fera/beast // Beast cannot speak human languages
 	species_language_holder = /datum/language_holder/primal
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera/aggravated,
@@ -347,7 +347,7 @@
 
 
 /datum/species/human/shifter/feral
-	name = "feral form"
+	name = "Feral form"
 	id = SPECIES_FERA_FERAL
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -357,11 +357,12 @@
 		TRAIT_FERAL_BITER,
 		TRAIT_SMALL_HANDS,
 		TRAIT_NO_CUFF,
+		TRAIT_HARDENED_SOLES, //CRIMSON GRID ADDITION 
 	)
 
 	skinned_type = /obj/item/stack/sheet/animalhide/generic
 	mutantbrain = /obj/item/organ/brain/fera
-	mutanttongue = /obj/item/organ/tongue/fera
+	mutanttongue = /obj/item/organ/tongue/fera/beast // Beast cannot speak human languages
 	species_language_holder = /datum/language_holder/primal
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/fera,
@@ -408,7 +409,7 @@
 	movetypes = GROUND
 
 /datum/movespeed_modifier/shifter/dire
-	multiplicative_slowdown = -0.3 //CRIMSON GRID EDIT - original multiplicative_slowdown = -0.2
+	multiplicative_slowdown = -0.45 //CRIMSON GRID EDIT - original multiplicative_slowdown = -0.2
 
 /datum/movespeed_modifier/shifter/feral
 	multiplicative_slowdown = -0.45 //CRMISON GRID EDIT - original multiplicative_slowdown = -0.35
@@ -516,9 +517,22 @@
 	. = ..()
 	owner.remove_inner_armor(/datum/armor/werewolf)
 
-// Equal to Fortitude 4; 4x15 (60) for bash, 4x10 (40) for agg on fort 4
-// If it's too weak you can tune up to Fort 5 (75 bash and 60 agg) but that felt too strong when tried w/ Garou passive regen values.
+// CRIMSON EDIT CHANGE - Crinos soak changed from Dark Pack Fortitude 4 to Fortitude 5
+
 /datum/armor/werewolf
+	acid = 50 // CRIMSON EDIT CHANGE - ORIGINAL: acid = 40
+	bio = 50 // CRIMSON EDIT CHANGE - ORIGINAL: bio = 40
+	bomb = 75 // CRIMSON EDIT CHANGE - ORIGINAL: bomb = 60
+	bullet = 75 // CRIMSON EDIT CHANGE - ORIGINAL: bullet = 60
+	consume = 75 // CRIMSON EDIT CHANGE - ORIGINAL: consume = 60
+	energy = 75 // CRIMSON EDIT CHANGE - ORIGINAL: energy = 60
+	laser = 75 // CRIMSON EDIT CHANGE - ORIGINAL: laser = 60
+	fire = 50 // CRIMSON EDIT CHANGE - ORIGINAL: fire = 40
+	melee = 75 // CRIMSON EDIT CHANGE - ORIGINAL: melee = 60
+	wound = 75 // CRIMSON EDIT CHANGE - ORIGINAL: wound = 60
+
+// CRIMSON EDIT ADD START - Hispo 'soak' armour, equivalent to Dark Pack Fortitude 4 (60 bash/lethal, 40 agg)
+/datum/armor/werewolf_dire
 	acid = 40
 	bio = 40
 	bomb = 60
@@ -529,3 +543,4 @@
 	fire = 40
 	melee = 60
 	wound = 60
+// CRIMSON EDIT ADD END
