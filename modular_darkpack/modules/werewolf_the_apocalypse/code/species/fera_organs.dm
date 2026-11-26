@@ -131,11 +131,13 @@
 		species_fera_dire.AddComponent(/datum/component/regenerator, regeneration_delay = 1 SECONDS, heals_wounds = TRUE, brute_per_second = 12.5, tox_per_second = 5, oxy_per_second = 5, ignore_damage_types = list(AGGRAVATED,BURN), outline_colour =  COLOR_RED_LIGHT)
 		regenerator = species_fera_dire.GetComponent(/datum/component/regenerator)
 	regenerator?.start_regenerating()
+	species_fera_dire.add_inner_armor(/datum/armor/werewolf_dire) // CRIMSON EDIT ADD - Hispo soak armour
 
 
 /datum/species/human/shifter/dire/on_species_loss(mob/living/carbon/human/human, datum/species/new_species, pref_load)
 	. = ..()
 	qdel(human.GetComponent(/datum/component/regenerator))
+	human.remove_inner_armor(/datum/armor/werewolf_dire) // CRIMSON EDIT ADD - Hispo soak armour
 
 /datum/species/human/shifter/bestial/on_species_gain(mob/living/carbon/human/species_fera_bestial, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
