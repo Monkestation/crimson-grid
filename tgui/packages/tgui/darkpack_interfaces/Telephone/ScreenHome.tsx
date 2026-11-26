@@ -270,6 +270,18 @@ export const ScreenHome = (props: {
             </Stack.Item>
             <Stack.Item>
               <AppIcon
+                backgroundColor="#2e7d32"
+                text="Dealer"
+                iconName="sack-dollar"
+                iconColor="white"
+                notification={
+                  data.drug_deals?.filter((deal) => !deal.accepted).length
+                }
+                onClick={() => navigateTo(NavigableApps.Dealer)}
+              />
+            </Stack.Item>
+            <Stack.Item>
+              <AppIcon
                 backgroundColor="#fff"
                 text="Gallery"
                 iconName="file-image"

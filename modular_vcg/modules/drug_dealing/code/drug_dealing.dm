@@ -36,6 +36,8 @@
 /mob/living/carbon/human/npc/proc/handle_drug_sale(mob/living/user, obj/item/tool)
 	if(user.combat_mode)
 		return NONE
+	if(drug_deal)
+		return drug_deal.receive_item(user, tool)
 
 	var/datum/component/selling/selling_comp = tool.GetComponent(/datum/component/selling)
 	if(!selling_comp || !(selling_comp.object_category in npc_buyable_categories))

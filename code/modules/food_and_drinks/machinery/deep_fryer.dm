@@ -166,7 +166,10 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 				anosmia_havers += smeller
 		visible_message(span_warning("[src] emits an acrid smell!"), ignored_mobs = anosmia_havers)
 
-	use_energy(active_power_usage)
+	//CRIMSON GRID EDIT - PIZZERIA
+	if(SEND_SIGNAL(frying, COMSIG_ITEM_FRYER_PROCESS, src, seconds_per_tick) & COMPONENT_HANDLED_FRYING)
+		use_energy(active_power_usage)
+		return
 
 /obj/machinery/deepfryer/Exited(atom/movable/gone, direction)
 	. = ..()
@@ -195,6 +198,7 @@ GLOBAL_LIST_INIT(oilfry_blacklisted_items, typecacheof(list(
 		addtimer(CALLBACK(src, PROC_REF(blow_up)), 5 SECONDS)
 
 	frying = frying_item
+	SEND_SIGNAL(frying, COMSIG_ITEM_ENTERED_FRYER, user) // CRIMSON GRID EDIT -PIZZERIA
 	// Give them reagents to put frying oil in
 	if(isnull(frying.reagents))
 		frying.create_reagents(50, INJECTABLE)
