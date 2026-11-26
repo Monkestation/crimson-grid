@@ -19,7 +19,6 @@
 	)
 
 	allowed_splats = list(SPLAT_GHOUL, SPLAT_KINFOLK, SPLAT_NONE, SPLAT_GAROU, SPLAT_KINDRED)
-	disallowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS)
 	splat_slots = list(
 		SPLAT_KINDRED = 2,
 		SPLAT_GAROU = 2,

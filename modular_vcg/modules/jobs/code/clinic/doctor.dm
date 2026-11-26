@@ -8,4 +8,3 @@
 		SPLAT_KINDRED = 4,
 		SPLAT_GAROU = 4,
 	)
-	disallowed_tribes = list(TRIBE_BLACK_SPIRAL_DANCERS)
