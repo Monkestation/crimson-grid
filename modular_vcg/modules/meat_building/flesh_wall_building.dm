@@ -1,3 +1,4 @@
+// only Tzi can examine and get info about flesh wall building
 /obj/item/stack/sheet/meat/examine(mob/user)
 	. = ..()
 	var/mob/living/living_user = astype(user)
@@ -22,7 +23,6 @@
 		user.balloon_alert(user, "something is blocking the tile!")
 		return ITEM_INTERACT_BLOCKING
 
-	var/frame_path = null
 	var/cost = 2 // Default flesh wall cost
 	var/time = 4 SECONDS // build time
 	if(get_amount() < cost)
