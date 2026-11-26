@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Section, Stack, TextArea } from 'tgui-core/components';
-import { isEscape } from 'tgui-core/keys';
-import { KEY } from 'tgui-core/keys';
+import { isEscape, KEY } from 'tgui-core/keys';
+
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -16,6 +16,7 @@ type TextInputData = {
   placeholder: string;
   timeout: number;
   title: string;
+  autofocus: boolean; // DARKPACK EDIT ADD - autofocus: boolean;
 };
 
 export const sanitizeMultiline = (toSanitize: string) => {
@@ -36,6 +37,7 @@ export const TextInputModal = (props) => {
     placeholder = '',
     timeout,
     title,
+    autofocus, // DARKPACK EDIT ADD - autofocus
   } = data;
 
   const [input, setInput] = useState(placeholder || '');
@@ -71,7 +73,7 @@ export const TextInputModal = (props) => {
   // Should be equivalent to what length_char would output for the same string in BYOND.
   const char_length = [...input].length;
 
-  return (
+  return ( // DARKPACK EDIT ADD - Line 87/86 ={autofocus}
     <Window title={title} width={325} height={windowHeight}>
       {timeout && <Loader value={timeout} />}
       <Window.Content onKeyDown={handleKeyDown}>
@@ -82,8 +84,8 @@ export const TextInputModal = (props) => {
             </Stack.Item>
             <Stack.Item grow>
               <TextArea
-                autoFocus
-                autoSelect
+                autoFocus={autofocus}
+                autoSelect={autofocus}
                 fluid
                 height={multiline || input.length >= 30 ? '100%' : '1.8rem'}
                 maxLength={max_length}

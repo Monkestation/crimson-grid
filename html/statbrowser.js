@@ -355,6 +355,7 @@ function draw_status() {
       a.href = 'byond://?' + part[2];
       a.textContent = part[1];
       lastdiv.appendChild(a);
+      continue; // CRIMSON GRID ADDITION - make stat panel not break
     } else {
       div = document.createElement('div');
       lastdiv = div;
@@ -748,6 +749,11 @@ function set_theme(which) {
   } else if (which == 'dark') {
     document.body.className = 'dark';
     document.documentElement.className = 'dark';
+  // DARKPACK EDIT ADD START - Vampire Theme
+  } else if (which == 'vampire') {
+    document.body.className = 'vampire';
+    document.documentElement.className = 'vampire';
+  // DARKPACK EDIT ADD END - Vampire Theme
   }
 }
 

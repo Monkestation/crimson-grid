@@ -6,6 +6,7 @@
 ●●● Corpore Sano: No roll
 ●●●● Shepherd's Watch: No roll
 ●●●●● Unburden the Bestial Soul: Intelligence + Empathy (difficulty 8)"}
+	id = DISCIPLINE_OBEAH
 	icon_state = "obeah"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/obeah

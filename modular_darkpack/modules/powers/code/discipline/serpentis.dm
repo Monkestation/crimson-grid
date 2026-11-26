@@ -6,6 +6,7 @@
 ●●● The Skin of the Adder: Passive
 ●●●● The Form of the Cobra: Passive
 ●●●●● The Heart of Darkness: Passive"}
+	id = DISCIPLINE_SERPENTIS
 	icon_state = "serpentis"
 	clan_restricted = TRUE
 	power_type = /datum/discipline_power/serpentis
