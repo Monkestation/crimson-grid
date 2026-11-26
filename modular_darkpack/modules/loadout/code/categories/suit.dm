@@ -167,6 +167,12 @@
 	name = "Letterman (Red)"
 	item_path = /obj/item/clothing/suit/jacket/letterman_syndie
 
+//CRIMSON GRID ADDITION START: New clothes to loadout
+/datum/loadout_item/suit/hawaii
+	name = "Hawaiian Shirt"
+	item_path = /obj/item/clothing/suit/costume/hawaiian
+//CRIMSON GRID ADDITION END
+
 // Robes
 /datum/loadout_item/suit/robes
 	abstract_type = /datum/loadout_item/suit/robes
