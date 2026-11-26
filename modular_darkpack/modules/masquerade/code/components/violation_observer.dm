@@ -65,12 +65,16 @@
 		if(npc_source.is_blind())
 			return FALSE
 
+	var/hidden = FALSE
 	if(isliving(source))
 		var/mob/living/mob_parent = source
 		if(mob_parent.stat == DEAD)
 			return FALSE
 		if(!INCAPACITATED_IGNORING(mob_parent, INCAPABLE_RESTRAINTS))
 			mob_parent.face_atom(player_breacher)
+		var/mob/living/masq_reporter = source
+		if(masq_reporter.st_get_stat(STAT_STEALTH) >= 5)
+			hidden = TRUE
 	source.observe_masquerade_violation(player_breacher)
 
 	var/mutable_appearance/alert = mutable_appearance('icons/obj/storage/closet.dmi', "cardboard_special")
@@ -79,8 +83,7 @@
 	exclamation.alpha = 0
 	exclamation.pixel_x = -source.pixel_x
 	animate(exclamation, pixel_z = 32, alpha = 255, time = 0.5 SECONDS, easing = ELASTIC_EASING)
-	var/mob/living/masq_reporter = player_breacher
-	if(masq_reporter.st_get_stat(STAT_STEALTH) < 5)
+	if(!hidden)
 		source.AddComponent(/datum/component/masquerade_hud, player_breacher)
 	SSmasquerade.masquerade_breach(source, player_breacher, (isliving(source) ? MASQUERADE_REASON_NPC : MASQUERADE_REASON_OBJECT))
 	RegisterSignals(player_breacher, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING), PROC_REF(on_breacher_death), override = TRUE) // override is for breaching multiple times on the same violation observer - on_breacher_death handles all violations, not just the breach created here, so we only need one register
