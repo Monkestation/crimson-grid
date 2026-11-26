@@ -94,8 +94,10 @@
 	var/datum/storyteller_roll/frenzy/rotschreck/frenzy_roll = new()
 	frenzy_roll.difficulty = difficulty
 	var/frenzy_result = frenzy_roll.st_roll(src, fire)
-	if(prob(45.1))
+	// CRIMSON GRID ADD: Rotschreck gulp
+	if(prob(4.51))
 		src.emote("gulp")
+	// CRIMSON GRID ADD END: Rotschreck gulp
 	if(frenzy_result <= 0)
 		if(!fire)
 			fire = src
