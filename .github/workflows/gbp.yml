@@ -30,7 +30,7 @@ jobs:
             console.log(`Labels updated: ${new_labels}`);
   gbp:
     runs-on: ubuntu-24.04
-    if: github.event.action == 'opened' || github.event.action == 'closed'
+    if: false # CRIMSON EDIT CHANGE - Original: if: github.event.action == 'opened' || github.event.action == 'closed'
     steps:
       - name: "Check for ACTION_ENABLER secret and pass true to output if it exists to be checked by later steps"
         id: value_holder
