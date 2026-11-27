@@ -29,7 +29,8 @@
 		JOB_GAROU_WARDER,
 		JOB_GAROU_WYRMFOE,
 		JOB_GAROU_GUARDIAN,
-		JOB_GAROU_COUNCIL
+		JOB_HOS_COORDINATOR, // Crimson Grid Addition: Helios Overnight Services
+		JOB_GAROU_COUNCIL,
 	)
 
 /datum/outfit/job/vampire/councillor

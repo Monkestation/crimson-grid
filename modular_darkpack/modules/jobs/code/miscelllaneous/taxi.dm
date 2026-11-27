@@ -16,7 +16,8 @@
 	tgui_icon = FA_ICON_CAR
 
 	known_contacts = list(
-		JOB_TAXI_DRIVER
+		JOB_TAXI_DRIVER,
+		JOB_CITY_MAILMAN, // Crimson Grid Addition - Mail Office
 	)
 
 	description = "Drive people in the city."

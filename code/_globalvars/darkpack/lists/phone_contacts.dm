@@ -23,6 +23,12 @@ GLOBAL_LIST_EMPTY(sabbat_network)
 // CRIMSON EDIT ADD - Triad
 GLOBAL_LIST_EMPTY(triad_network)
 // CRIMSON EDIT END - Triad
+// CRIMSON EDIT ADD - Helios Overnight Services - Start
+GLOBAL_LIST_EMPTY(hos_network)
+// CRIMSON EDIT END - Helios Overnight Services - End
+// CRIMSON EDIT ADD - City Services: CG Edition - Start
+GLOBAL_LIST_EMPTY(mail_network)
+// CRIMSON EDIT END - City Services: CG Edition - End
 
 #define MILLENIUM_TOWER_NETWORK 1
 #define LASOMBRA_NETWORK 2
@@ -42,6 +48,12 @@ GLOBAL_LIST_EMPTY(triad_network)
 // CRIMSON EDIT ADD - Triads
 #define TRIAD_NETWORK 16
 // CRIMSON EDIT END - Triads
+// CRIMSON EDIT ADD - Helios Overnight Services - Start
+#define HELIOS_NETWORK 17
+// CRIMSON EDIT END - Helios Overnight Services - End
+// CRIMSON EDIT ADD - City Services: CG Edition - Start
+#define MAIL_NETWORK 18
+// CRIMSON EDIT END - City Services: CG Edition - End
 
 // An indexed list of all the different phone networks that connect the phones that are part of them together.
 GLOBAL_LIST_INIT(contact_networks, alist(
@@ -63,4 +75,11 @@ GLOBAL_LIST_INIT(contact_networks, alist(
 	// CRIMSON EDIT ADD - Triads
 	TRIAD_NETWORK = GLOB.triad_network,
 	// CRIMSON EDIT END - Triads
+	// CRIMSON EDIT ADD - Helios Overnight Services - Start
+	HOS_NETWORK = GLOB.hos_network,
+	// CRIMSON EDIT END - Helios Overnight Services - End
+	// CRIMSON EDIT ADD - City Services: CG Edition - Start
+	MAIL_NETWORK = GLOB.mail_network,
+	// CRIMSON EDIT END - City Services: CG Edition - End
+
 ))

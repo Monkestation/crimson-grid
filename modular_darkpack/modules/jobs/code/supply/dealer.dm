@@ -25,7 +25,10 @@
 		JOB_BARON,
 		JOB_SUPPLY_TECH,
 		JOB_HARPY,
-		JOB_EMISSARY
+		JOB_EMISSARY,
+		JOB_HOS_COORDINATOR, // Crimson Grid Addition: Helios Overnight Services
+		JOB_HOS_EXECUTIVE, // Crimson Grid Addition: Helios Overnight Services
+		JOB_CITY_MAILMAN, // Crimson Grid Addition - Mail Office
 	)
 	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_GAROU, SPLAT_NONE)
 	splat_slots = list(SPLAT_NONE = 1)

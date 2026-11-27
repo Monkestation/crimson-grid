@@ -122,3 +122,6 @@
 
 /obj/effect/landmark/bawn_entrance/gaia/children_of_gaia
 	linked_totem_path = /obj/structure/werewolf_totem/children_of_gaia
+
+/obj/effect/landmark/bawn_entrance/corax // Crimson Grid Addition: Adds the Corax Totem
+	linked_totem_path = /obj/structure/werewolf_totem/corax
