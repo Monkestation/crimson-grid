@@ -2816,11 +2816,9 @@
 /turf/open/floor/wood/old,
 /area/vtm/interior/jazzclub)
 "aCq" = (
-/obj/structure/table/countertop/bacotell,
-/obj/effect/turf_decal/siding/wood/light,
-/obj/structure/sign/city/order/directional/west,
-/turf/open/floor/city/bacotell,
-/area/vtm/interior/shop/sanfran/fn_pizza)
+/obj/machinery/oven/range,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/house/sanfran/gh_9)
 "aCw" = (
 /obj/effect/turf_decal/siding/yellow{
 	dir = 4
@@ -12574,6 +12572,15 @@
 /obj/item/binoculars,
 /turf/open/floor/iron/smooth,
 /area/vtm)
+"cCW" = (
+/obj/item/kirbyplants/darkpack/random,
+/obj/machinery/light/prince/directional/south,
+/obj/structure/table/countertop/bacotell,
+/obj/effect/turf_decal/siding/wood/light{
+	dir = 8
+	},
+/turf/open/floor/city/bacotell,
+/area/vtm/interior/shop/sanfran/fn_pizza)
 "cDb" = (
 /obj/effect/mapping_helpers/door/access/clinic,
 /obj/effect/mapping_helpers/door/lock,
@@ -15435,6 +15442,11 @@
 	},
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/millennium_tower)
+"dle" = (
+/obj/structure/coclock,
+/obj/machinery/oven/range,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/house/sanfran/gh_8)
 "dlh" = (
 /obj/structure/table,
 /turf/open/floor/city/circled,
@@ -19824,7 +19836,7 @@
 /obj/structure/signboard{
 	pixel_y = 17
 	},
-/obj/item/toy/crayon/white,
+/obj/item/pen/charcoal,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch)
 "ehw" = (
@@ -20027,7 +20039,11 @@
 /area/vtm/interior/clinic/haven)
 "ejO" = (
 /obj/machinery/sprinkler,
-/turf/open/floor/city/bacotell,
+/obj/effect/turf_decal/siding/wood/light{
+	dir = 8
+	},
+/obj/structure/sign/city/order/directional/west,
+/turf/closed/wall/vampwall/redbrick,
 /area/vtm/interior/shop/sanfran/fn_pizza)
 "ejT" = (
 /mob/living/carbon/human/npc/guard,
@@ -20412,6 +20428,12 @@
 	},
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/outside/park)
+"eod" = (
+/obj/structure/table/wood,
+/obj/machinery/light/small/directional/west,
+/obj/vampire_computer,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/sewer/nosferatu_town)
 "eof" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/bottle/beer/vampire,
@@ -23642,12 +23664,9 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/house/sanfran/cn_8)
 "eYF" = (
-/obj/effect/turf_decal/siding/grey{
-	dir = 4
-	},
-/obj/structure/table/wood,
-/turf/open/floor/city/plating_mono,
-/area/vtm/interior/shop/sanfran/fn_pizza)
+/obj/structure/dresser,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/shop/sanfran/cn_laundromat)
 "eYH" = (
 /obj/structure/table,
 /obj/machinery/button/door{
@@ -33104,10 +33123,9 @@
 /turf/open/misc/grass,
 /area/vtm/outside/giovanni/courtyard)
 "heU" = (
-/obj/structure/table/wood,
-/obj/vampire_computer,
-/turf/open/floor/plating/rough,
-/area/vtm/interior/sewer/nosferatu_town)
+/obj/structure/closet/secure_closet/freezer/fridge/all_access,
+/turf/open/floor/city/toilet,
+/area/vtm/interior/setite)
 "heV" = (
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/city/plating,
@@ -33842,8 +33860,8 @@
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/glasswalker)
 "hnV" = (
-/obj/structure/closet/secure_closet/freezer/fridge/all_access,
 /obj/machinery/light/small/directional/east,
+/obj/machinery/griddle,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/setite)
 "hnW" = (
@@ -34339,11 +34357,10 @@
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/jazzclub)
 "hsR" = (
-/obj/structure/chair/wood/darkpack/red{
-	dir = 8
-	},
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/shop/sanfran/fn_pizza)
+/obj/item/gun/ballistic/shotgun/vampire,
+/obj/structure/table/reinforced,
+/turf/open/floor/city/bacotell,
+/area/vtm/interior/bianchiBank)
 "hsV" = (
 /obj/effect/turf_decal/bordur{
 	dir = 1
@@ -35167,11 +35184,11 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/house/sanfran/fh_6)
 "hDa" = (
-/obj/machinery/griddle,
 /obj/effect/turf_decal/siding/white{
 	dir = 4
 	},
 /obj/machinery/light/directional/north,
+/obj/machinery/oven/range,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/police/upstairs)
 "hDc" = (
@@ -35889,6 +35906,7 @@
 /area/vtm/interior/salubri)
 "hKR" = (
 /obj/machinery/light/small/directional/east,
+/obj/machinery/oven/range,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/house/sanfran/gh_11)
 "hKS" = (
@@ -43143,6 +43161,7 @@
 /area/vtm/interior/house/sanfran/cn_4)
 "jsG" = (
 /obj/machinery/light/warm/directional/south,
+/obj/machinery/oven/range,
 /turf/open/floor/city/plating,
 /area/vtm/interior/techshop)
 "jsH" = (
@@ -44854,10 +44873,10 @@
 /turf/open/floor/wood/old,
 /area/vtm)
 "jLG" = (
-/obj/effect/turf_decal/siding/grey{
+/obj/structure/chair/wood/darkpack/red,
+/obj/effect/turf_decal/siding/grey/corner{
 	dir = 4
 	},
-/obj/structure/chair/wood/darkpack/red,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop/sanfran/fn_pizza)
 "jLL" = (
@@ -46808,8 +46827,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/sanfran/fn_clothes_n)
 "kiF" = (
-/obj/machinery/griddle,
-/obj/structure/table,
+/obj/machinery/oven/range,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/setite)
 "kiI" = (
@@ -49867,6 +49885,15 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/jazzclub)
+"kSB" = (
+/obj/effect/turf_decal/siding/grey{
+	dir = 6
+	},
+/obj/structure/chair/wood/darkpack/red{
+	dir = 1
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/shop/sanfran/fn_pizza)
 "kSD" = (
 /obj/effect/decal/cleanable/cardboard,
 /obj/item/clothing/head/vampire/straw_hat,
@@ -51386,6 +51413,10 @@
 /obj/item/vamp/keys/camarilla,
 /turf/open/floor/carpet/darkpack/blacksilver,
 /area/vtm/interior/millennium_tower/f4)
+"lhZ" = (
+/obj/machinery/oven/range,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/house/sanfran/gh_5)
 "lid" = (
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/house/sanfran/gh_7)
@@ -51816,7 +51847,7 @@
 /area/vtm/interior/shop/sanfran/cn_casino)
 "lon" = (
 /obj/machinery/light/small/directional/north,
-/obj/structure/dresser,
+/obj/machinery/oven/range,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/sanfran/cn_laundromat)
 "lop" = (
@@ -52271,12 +52302,10 @@
 /turf/open/floor/carpet/darkpack/bluesilver,
 /area/vtm/interior/salubri)
 "ltn" = (
-/obj/effect/turf_decal/siding/grey{
-	dir = 4
-	},
 /obj/structure/chair/wood/darkpack/red{
 	dir = 1
 	},
+/obj/effect/turf_decal/siding/grey/corner,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop/sanfran/fn_pizza)
 "ltp" = (
@@ -56964,8 +56993,7 @@
 /area/vtm/interior/tzimisce_manor)
 "mtw" = (
 /obj/machinery/light/directional/north,
-/obj/structure/table/reinforced,
-/obj/item/gun/ballistic/shotgun/vampire,
+/obj/machinery/oven/range,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/bianchiBank)
 "mtD" = (
@@ -58381,6 +58409,7 @@
 /obj/underplate{
 	pixel_y = 8
 	},
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/millennium_tower)
 "mLl" = (
@@ -58903,9 +58932,9 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/chinatown)
 "mQW" = (
-/obj/machinery/light/small/directional/south,
+/obj/machinery/oven/range,
 /turf/open/floor/wood/smooth/old,
-/area/vtm/interior/house/sanfran/gh_14)
+/area/vtm/interior/house/sanfran/gh_2)
 "mRd" = (
 /obj/structure/table,
 /obj/item/restraints/handcuffs,
@@ -63419,7 +63448,7 @@
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/house/sanfran/fh_1)
 "nOp" = (
-/obj/structure/extinguisher_cabinet/directional/north,
+/obj/machinery/oven/range,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/millennium_tower)
 "nOt" = (
@@ -70636,6 +70665,11 @@
 /obj/structure/ladder/manhole/up,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/house/sanfran/gh_2)
+"pvF" = (
+/obj/machinery/oven/range,
+/obj/structure/table,
+/turf/open/floor/city/circled,
+/area/vtm/interior/shop/sanfran/gh_bubway)
 "pvI" = (
 /obj/structure/railing,
 /obj/structure/flora/bush/sparsegrass/style_random,
@@ -74973,8 +75007,11 @@
 /turf/open/floor/plating/rough,
 /area/vtm/interior/shop/sanfran/fh_pizza)
 "qtp" = (
-/obj/structure/table/wood,
-/turf/open/floor/wood/smooth,
+/obj/structure/table/countertop/bacotell,
+/obj/effect/turf_decal/siding/wood/light/corner{
+	dir = 8
+	},
+/turf/open/floor/city/bacotell,
 /area/vtm/interior/shop/sanfran/fn_pizza)
 "qtr" = (
 /obj/structure/table/wood,
@@ -77520,6 +77557,7 @@
 /area/vtm/graveyard)
 "qTB" = (
 /obj/machinery/light/directional/north,
+/obj/machinery/oven/range,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/shop/sanfran/fh_otooley)
 "qTJ" = (
@@ -80434,6 +80472,13 @@
 /obj/structure/sign/poster/random/directional/north,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/community)
+"rzo" = (
+/obj/effect/turf_decal/siding/grey{
+	dir = 5
+	},
+/obj/structure/chair/wood/darkpack/red,
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/shop/sanfran/fn_pizza)
 "rzs" = (
 /obj/structure/arc{
 	dir = 9
@@ -80911,6 +80956,10 @@
 	},
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/techshop)
+"rFh" = (
+/obj/machinery/oven/range,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/sewer/nosferatu_town)
 "rFo" = (
 /obj/structure/flora/darkpack_flower/yerba,
 /turf/open/misc/grass,
@@ -87436,7 +87485,13 @@
 /area/vtm/interior/clinic/haven)
 "tdo" = (
 /obj/structure/table/countertop/bacotell,
-/obj/effect/turf_decal/siding/wood/light,
+/obj/effect/turf_decal/siding/wood/light{
+	dir = 8
+	},
+/obj/structure/fluff/tv/order/two{
+	pixel_y = 9;
+	pixel_x = 4
+	},
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/shop/sanfran/fn_pizza)
 "tdp" = (
@@ -89000,12 +89055,6 @@
 /turf/open/floor/plating/canal,
 /area/vtm/interior/endron_facility/restricted)
 "tuA" = (
-/obj/structure/table/countertop/bacotell,
-/obj/structure/fluff/tv/order/two{
-	pixel_y = 9;
-	pixel_x = 4
-	},
-/obj/effect/turf_decal/siding/wood/light,
 /obj/machinery/light/prince/directional/east,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/shop/sanfran/fn_pizza)
@@ -96867,6 +96916,13 @@
 "viP" = (
 /turf/closed/wall/vampwall/city,
 /area/vtm/interior/house/sanfran/fh_8)
+"viS" = (
+/obj/structure/table/wood,
+/obj/effect/turf_decal/siding/grey{
+	dir = 4
+	},
+/turf/open/floor/city/plating_mono,
+/area/vtm/interior/shop/sanfran/fn_pizza)
 "vjq" = (
 /obj/effect/turf_decal/asphalt,
 /turf/open/floor/plating/concrete,
@@ -102657,6 +102713,11 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior/anarch)
+"wxw" = (
+/obj/effect/decal/graffiti,
+/obj/item/kirbyplants/random,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/sewer/nosferatu_town)
 "wxy" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -103601,6 +103662,13 @@
 	},
 /turf/open/floor/city/clinic,
 /area/vtm/interior/salubri)
+"wHP" = (
+/obj/structure/table/countertop/bacotell,
+/obj/effect/turf_decal/siding/wood/light{
+	dir = 10
+	},
+/turf/open/floor/city/bacotell,
+/area/vtm/interior/shop/sanfran/fn_pizza)
 "wHV" = (
 /obj/structure/railing/darkpack/metal/industrial/solo,
 /obj/structure/vampipe{
@@ -103681,15 +103749,9 @@
 /turf/closed/wall/vampwall/rich/old,
 /area/vtm/interior/house/sanfran/ph_15)
 "wIS" = (
-/obj/structure/vampdoor/woodglass{
-	dir = 4
-	},
-/obj/effect/turf_decal/siding/wood/light{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/door/lock,
-/obj/effect/mapping_helpers/door/lock_difficulty/four,
-/turf/open/floor/city/bacotell,
+/obj/structure/table/wood,
+/obj/vampire_computer,
+/turf/open/floor/city/plating_mono,
 /area/vtm/interior/shop/sanfran/fn_pizza)
 "wIY" = (
 /turf/open/floor/plating/concrete,
@@ -106875,6 +106937,10 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/house/sanfran/cn_8)
+"xqg" = (
+/obj/machinery/oven/range,
+/turf/open/floor/city/toilet,
+/area/vtm/interior/tzimisce_manor)
 "xql" = (
 /obj/structure/table/wood,
 /obj/machinery/microwave{
@@ -107337,6 +107403,14 @@
 /obj/structure/table/wood,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/theatre)
+"xvV" = (
+/obj/structure/vampdoor/woodglass{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/door/lock,
+/obj/effect/mapping_helpers/door/lock_difficulty/four,
+/turf/open/floor/city/bacotell,
+/area/vtm/interior/shop/sanfran/fn_pizza)
 "xvX" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
@@ -109837,11 +109911,9 @@
 /turf/open/floor/carpet/darkpack/redsilver,
 /area/vtm/interior/chantry)
 "xYE" = (
-/obj/structure/chair/wood/darkpack/red{
-	dir = 4
-	},
-/turf/open/floor/wood/smooth,
-/area/vtm/interior/shop/sanfran/fn_pizza)
+/obj/machinery/oven/range,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/house/sanfran/gh_14)
 "xYH" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
@@ -120572,14 +120644,14 @@ sRH
 fZO
 fZO
 eZa
-hfi
+wxw
 eir
 eir
 ove
-mrS
-heU
-eir
+eod
+bCv
 qkc
+rFh
 uuF
 dvN
 dvN
@@ -178536,7 +178608,7 @@ bUr
 bUr
 bUr
 bUr
-bUr
+heU
 iKo
 dAV
 dAV
@@ -194642,7 +194714,7 @@ iCo
 umT
 raa
 raa
-raa
+hsR
 set
 qVW
 gfB
@@ -201051,7 +201123,7 @@ oWV
 wCQ
 cEm
 waX
-mBt
+wIS
 wsi
 cEm
 wCQ
@@ -201308,7 +201380,7 @@ oWV
 wCQ
 pXP
 jLG
-eYF
+mBt
 ltn
 btz
 wCQ
@@ -201564,9 +201636,9 @@ pYt
 oWV
 wCQ
 oHG
-oHG
-oHG
-oHG
+rzo
+viS
+kSB
 oHG
 wiu
 nYX
@@ -201820,9 +201892,9 @@ ssB
 pYt
 oWV
 wCQ
-wIS
-wCQ
-wCQ
+oHG
+oHG
+oHG
 oHG
 wJU
 wCQ
@@ -202077,9 +202149,9 @@ sJm
 oWV
 oWV
 wCQ
-nKm
-nKm
-aCq
+oHG
+oHG
+oHG
 oHG
 oHG
 suD
@@ -202334,10 +202406,10 @@ ssB
 oWV
 oWV
 wCQ
-aYr
+xvV
 ejO
 tdo
-oHG
+wHP
 oHG
 suD
 nYX
@@ -202591,11 +202663,11 @@ kDd
 oWV
 oWV
 wCQ
-jxn
 nKm
-tdo
-oHG
-wJU
+nKm
+nKm
+qtp
+cCW
 wCQ
 nYX
 tYY
@@ -202850,9 +202922,9 @@ oWV
 wCQ
 rtA
 nKm
-tdo
-oHG
-xYE
+nKm
+nKm
+nKm
 wiu
 nYX
 tYY
@@ -203107,9 +203179,9 @@ oWV
 wCQ
 vsv
 nKm
-tdo
-oHG
-qtp
+nKm
+nKm
+aYr
 wCQ
 nYX
 tYY
@@ -203365,8 +203437,8 @@ wCQ
 iKN
 bVl
 tuA
-oHG
-hsR
+nKm
+jxn
 wCQ
 nYX
 hDz
@@ -223616,7 +223688,7 @@ rBH
 eEu
 eOw
 ssx
-vrl
+pvF
 vrl
 etv
 jlv
@@ -225430,7 +225502,7 @@ rjC
 vSN
 vSN
 vSN
-vSN
+lhZ
 iaD
 aca
 dci
@@ -226698,8 +226770,8 @@ vxn
 xAg
 xAg
 ihz
+mQW
 vTj
-xAg
 pvE
 tgU
 kzp
@@ -227271,7 +227343,7 @@ jlv
 fog
 nqo
 npH
-npH
+aCq
 egQ
 vmm
 ufv
@@ -229924,7 +229996,7 @@ unZ
 gOR
 rfe
 rWp
-rfe
+eYF
 bLk
 bLk
 lym
@@ -233030,7 +233102,7 @@ gsA
 jbu
 rNl
 rih
-xFz
+xqg
 xFz
 rOo
 nQJ
@@ -236295,7 +236367,7 @@ jJI
 jJI
 jJI
 jJI
-mQW
+jJI
 umC
 jlv
 cLr
@@ -236552,7 +236624,7 @@ rZW
 qEu
 bAG
 wTT
-jJI
+xYE
 umC
 jlv
 cLr
@@ -237273,7 +237345,7 @@ wDE
 wDE
 uzO
 oli
-vsd
+dle
 wDE
 wDE
 oxA

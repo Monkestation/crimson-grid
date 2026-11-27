@@ -5958,6 +5958,9 @@
 /obj/structure/table,
 /obj/effect/decal/wallpaper/red/low,
 /obj/structure/platform/lowwall/brick_old,
+/obj/underplate/stuff{
+	pixel_y = 8
+	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/laundromat)
 "buc" = (
@@ -12431,6 +12434,14 @@
 /obj/structure/stairs/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
+"cQS" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/bowl,
+/obj/item/reagent_containers/cup/bowl,
+/obj/item/reagent_containers/cup/bowl,
+/obj/item/reagent_containers/cup/bowl,
+/turf/open/floor/city/toilet,
+/area/vtm/interior/laundromat)
 "cQU" = (
 /obj/structure/table/countertop,
 /obj/item/stack/medical/wrap/sticky_tape/duct{
@@ -18406,11 +18417,11 @@
 /obj/effect/decal/wallpaper/grey/low{
 	color = "#6d6d6d"
 	},
-/obj/effect/decal/wallpaper/papers/eight{
-	pixel_y = -4
+/obj/effect/decal/wallpaper/papers/three{
+	pixel_y = -4;
+	pixel_x = 19
 	},
-/obj/effect/decal/wallpaper/papers/five{
-	pixel_x = 18;
+/obj/effect/decal/wallpaper/papers/four{
 	pixel_y = -3
 	},
 /turf/closed/wall/vampwall/bar,
@@ -22063,20 +22074,7 @@
 /turf/open/floor/wood/ornate,
 /area/vtm/interior/police/upstairs)
 "fdH" = (
-/obj/structure/table/countertop,
-/obj/item/plate{
-	pixel_y = 6
-	},
-/obj/item/plate{
-	pixel_y = 8
-	},
-/obj/item/kitchen/fork{
-	pixel_x = -11;
-	pixel_y = 3
-	},
-/obj/item/kitchen/fork{
-	pixel_x = -11
-	},
+/obj/machinery/griddle,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/murdercabin)
 "fdO" = (
@@ -22539,6 +22537,10 @@
 	},
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/outside/culture/italy)
+"fje" = (
+/obj/machinery/oven/range,
+/turf/open/floor/city/toilet,
+/area/vtm/interior/laundromat)
 "fjg" = (
 /obj/effect/turf_decal/siding/wideplating/dark/corner,
 /obj/structure/sign/painting/library{
@@ -22760,11 +22762,18 @@
 /turf/open/floor/city/factory,
 /area/vtm/interior/setite)
 "flt" = (
-/obj/machinery/griddle,
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
 /obj/machinery/computer/security/telescreen/entertainment/directional/north,
+/obj/structure/table,
+/obj/item/pizzabox/mushroom{
+	pixel_y = 10
+	},
+/obj/item/pizzabox/meat{
+	pixel_y = 7
+	},
+/obj/item/knife/plastic,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/police/upstairs)
 "flu" = (
@@ -30088,12 +30097,15 @@
 /obj/effect/decal/wallpaper/grey/low{
 	color = "#6d6d6d"
 	},
-/obj/effect/decal/wallpaper/papers/four{
+/obj/effect/decal/wallpaper/papers/eight{
+	pixel_y = -4
+	},
+/obj/effect/decal/wallpaper/papers/five{
+	pixel_x = 18;
 	pixel_y = -3
 	},
-/obj/effect/decal/wallpaper/papers/three{
-	pixel_y = -4;
-	pixel_x = 19
+/obj/effect/decal/wallpaper/papers/four{
+	pixel_y = -3
 	},
 /turf/closed/wall/vampwall/bar,
 /area/vtm/interior/anarch)
@@ -35269,6 +35281,7 @@
 /area/vtm/interior/strip)
 "igx" = (
 /obj/machinery/light/directional/west,
+/obj/structure/table,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
 "igC" = (
@@ -43392,7 +43405,7 @@
 /turf/open/floor/carpet/green,
 /area/vtm/interior/apartment)
 "jVm" = (
-/obj/structure/table,
+/obj/machinery/griddle,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/police/upstairs)
 "jVo" = (
@@ -43973,11 +43986,6 @@
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
 "kbD" = (
-/obj/structure/table,
-/obj/item/reagent_containers/cup/bowl,
-/obj/item/reagent_containers/cup/bowl,
-/obj/item/reagent_containers/cup/bowl,
-/obj/item/reagent_containers/cup/bowl,
 /obj/machinery/sprinkler,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
@@ -47808,6 +47816,9 @@
 "kXR" = (
 /obj/structure/table,
 /obj/machinery/sprinkler,
+/obj/machinery/reagentgrinder/kitchen{
+	pixel_y = 4
+	},
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/shop)
 "kXS" = (
@@ -49398,6 +49409,12 @@
 	},
 /turf/open/floor/wood/herring,
 /area/vtm/interior/littleitaly)
+"lpE" = (
+/obj/effect/decal/cleanable/trash{
+	icon_state = "trash30"
+	},
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/murdercabin)
 "lpF" = (
 /obj/effect/turf_decal/darkpack/dirt{
 	dir = 1
@@ -50273,12 +50290,21 @@
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/chinatown)
 "lBl" = (
-/obj/structure/table,
-/obj/underplate/stuff{
-	pixel_y = 8
-	},
-/turf/open/floor/city/toilet,
-/area/vtm/interior/laundromat)
+/obj/machinery/computer/security/telescreen/entertainment/directional/north,
+/obj/structure/rack/tall/metal_shelf,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/item/clothing/suit/apron/chef,
+/turf/open/floor/wood/smooth/old,
+/area/vtm/interior/anarch)
 "lBp" = (
 /obj/transfer_point_vamp/umbral/exit{
 	id = 663
@@ -51198,7 +51224,7 @@
 	dir = 4
 	},
 /obj/effect/decal/rugs,
-/obj/effect/landmark/start/darkpack/anarch/tapster,
+/obj/effect/landmark/start/darkpack/anarch/sweeper,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/anarch)
 "lML" = (
@@ -72946,14 +72972,7 @@
 /turf/open/floor/city/factory,
 /area/vtm/interior/millennium_tower/f3)
 "qEV" = (
-/obj/structure/table,
-/obj/item/pizzabox/meat{
-	pixel_y = 7
-	},
-/obj/item/pizzabox/mushroom{
-	pixel_y = 10
-	},
-/obj/item/knife/plastic,
+/obj/machinery/oven/range,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/police/upstairs)
 "qEW" = (
@@ -77999,7 +78018,7 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/littleitaly/apartments)
 "rNS" = (
-/obj/structure/sink/kitchen/directional/east,
+/obj/structure/sink/kitchen/directional/west,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/laundromat)
 "rNZ" = (
@@ -83379,14 +83398,22 @@
 /turf/open/floor/light/colour_cycle/dancefloor_a,
 /area/vtm/interior/strip)
 "tcx" = (
-/obj/effect/decal/cleanable/trash{
-	icon_state = "trash30"
-	},
 /obj/structure/sign/clock/directional/north,
 /obj/machinery/light_switch/directional/north{
 	pixel_x = 9
 	},
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table/countertop,
+/obj/item/fishing_rod{
+	pixel_y = 6;
+	pixel_x = 8
+	},
+/obj/item/fishing_rod{
+	pixel_y = 12
+	},
+/obj/item/flashlight/lamp{
+	pixel_y = 14;
+	pixel_x = -12
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/murdercabin)
 "tcz" = (
@@ -85825,23 +85852,10 @@
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/tzimisce_manor)
 "tGA" = (
-/obj/machinery/computer/security/telescreen/entertainment/directional/north,
-/obj/effect/decal/rugs,
-/obj/structure/rack/tall/metal_shelf,
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/sheet/cardboard,
-/obj/item/stack/sheet/cardboard,
-/obj/item/clothing/suit/apron/chef,
 /obj/effect/turf_decal/siding/white{
 	dir = 8
 	},
+/obj/machinery/oven/range,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/anarch)
 "tGG" = (
@@ -92980,16 +92994,18 @@
 /area/vtm/interior/sewer/nosferatu_warren)
 "vnE" = (
 /obj/structure/table/countertop,
-/obj/item/fishing_rod{
-	pixel_y = 12
+/obj/item/plate{
+	pixel_y = 8
 	},
-/obj/item/fishing_rod{
-	pixel_y = 6;
-	pixel_x = 8
+/obj/item/plate{
+	pixel_y = 6
 	},
-/obj/item/flashlight/lamp{
-	pixel_y = 14;
-	pixel_x = -12
+/obj/item/kitchen/fork{
+	pixel_x = -11;
+	pixel_y = 3
+	},
+/obj/item/kitchen/fork{
+	pixel_x = -11
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/murdercabin)
@@ -149580,7 +149596,7 @@ iQQ
 dSH
 dSH
 ejH
-hZi
+sPs
 hZi
 hZi
 edG
@@ -149784,7 +149800,7 @@ iQQ
 dSH
 dSH
 gVN
-sPs
+lAj
 hZi
 hZi
 vrT
@@ -149988,7 +150004,7 @@ iQQ
 dSH
 dSH
 nAK
-lAj
+dyH
 hZi
 hZi
 uSP
@@ -150192,7 +150208,7 @@ iQQ
 dSH
 dSH
 uHB
-dyH
+bkI
 vom
 jCF
 uSP
@@ -150396,7 +150412,7 @@ iQQ
 dSH
 dSH
 hLw
-bkI
+qTQ
 hZi
 hZi
 uSP
@@ -150600,7 +150616,7 @@ iQQ
 dSH
 dSH
 hUz
-qTQ
+lBl
 hZi
 hZi
 kdo
@@ -171921,10 +171937,10 @@ imi
 wqF
 mGZ
 rbE
-jbd
+cQS
 igx
-rNS
-jbd
+ybA
+fje
 jbd
 mGZ
 jCl
@@ -172126,9 +172142,9 @@ wqF
 kgF
 mGZ
 wui
-ybA
+jbd
 kbD
-lBl
+jbd
 jbd
 ofZ
 bXK
@@ -172537,7 +172553,7 @@ jbd
 iCX
 ewZ
 kgq
-jbd
+rNS
 btW
 bXK
 bXK
@@ -187880,7 +187896,7 @@ uDx
 crF
 ydm
 crF
-crF
+gsR
 lWu
 lfM
 tPJ
@@ -308997,7 +309013,7 @@ anF
 vLa
 tcx
 mIm
-eaX
+lpE
 eaX
 eaX
 mBv
