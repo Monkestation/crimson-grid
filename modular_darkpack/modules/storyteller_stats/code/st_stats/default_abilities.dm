@@ -206,6 +206,13 @@
 /datum/st_stat/ability/medicine/unlink_mob(mob/living/our_mob)
 	UnregisterSignal(our_mob, COMSIG_LIVING_OPERATING_ON)
 
+/datum/st_stat/attribute/medicine/update_mob(mob/living/our_mob, initial)
+	var/current_score = get_score()
+	if(current_score >= 3)
+		ADD_TRAIT(our_mob, TRAIT_SELF_AWARE, QUIRK_TRAIT)
+	else
+		REMOVE_TRAIT(our_mob, TRAIT_SELF_AWARE, QUIRK_TRAIT)
+
 /datum/st_stat/ability/occult
 	subcategory = "Knowledges"
 	name = "Occult"
