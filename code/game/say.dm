@@ -177,19 +177,17 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 	// DARKPACK EDIT ADD START - GUESTBOOK
 	var/atom/movable/reliable_narrator = speaker
+	var/voice_hidden = message_mods[MODE_SPEAKER_NAME_OVERRIDE]
 	if(istype(reliable_narrator, /atom/movable/virtualspeaker))
 		var/atom/movable/virtualspeaker/fakespeaker = reliable_narrator
 		reliable_narrator = fakespeaker.source
+		if(fakespeaker.radio?.anonymize)
+			voice_hidden = TRUE
 
-	if(ismob(src) && ishuman(reliable_narrator) && (namepart != "Unknown"))
+	if(ismob(src) && ishuman(reliable_narrator) && !voice_hidden && !HAS_TRAIT(reliable_narrator, TRAIT_UNKNOWN_VOICE))
 		var/mob/receiver_mob = src
 		if(receiver_mob.mind?.guestbook)
-			var/known_name = GET_GUESTBOOK_NAME(receiver_mob, reliable_narrator)
-			if(known_name)
-				namepart = "[known_name]"
-			else
-				var/mob/living/living_narrator = reliable_narrator
-				namepart = "[living_narrator.get_generic_name(prefixed = TRUE, lowercase = TRUE)]"
+			namepart = "[GET_GUESTBOOK_NAME(receiver_mob, reliable_narrator)]"
 	// DARKPACK EDIT ADD END
 	// DARKPACK EDIT ADD START - PHONES
 	if(text2num(radio_freq) >= USABLE_RADIO_FREQUENCY_FOR_PHONE_RANGE)
