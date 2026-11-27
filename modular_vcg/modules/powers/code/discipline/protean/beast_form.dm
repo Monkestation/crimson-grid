@@ -65,6 +65,7 @@
 /mob/living/basic/pet/cat/protean/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/swing_attack)
+	AddComponent(/datum/component/jumper)
 
 //Da floppa
 /mob/living/basic/pet/cat/protean/floppa
@@ -124,10 +125,6 @@
 	sharpness = TRUE
 	can_breed = FALSE
 	pixel_x = -16
-
-/mob/living/basic/pet/cat/protean/puma/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/jumper)
 
 /datum/action/cooldown/spell/shapeshift/gangrel/beast_form
 	var/chosen_icon_state
