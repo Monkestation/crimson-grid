@@ -2,18 +2,21 @@
 GLOBAL_LIST_INIT(zulo_forms, list(
 	"Beast" = "weretzi",
 	"Brust" = "4armstzi",
+	"Baran" = "barantzi", //CRIMSON GRID ADDITION - New zulo form barantzi
 	// "Noble" = "nobletzi", //Nobletzi commented out for now pending a new 64x64 sprite
 ))
 // This list holds w pixel offset for the character screen form selection UI
 GLOBAL_LIST_INIT(zulo_w_offset, list(
 	"Beast" = -16,
 	"Brust" = -10,
+	"Baran" = -10, // CRIMSON GRID ADDITION - New zulo form barantzi
 	// "Noble" = 0, //Nobletzi commented out for now pending a new 64x64 sprite
 ))
 // This list holds z pixel offset for the character screen form selection UI
 GLOBAL_LIST_INIT(zulo_z_offset, list(
 	"Beast" = 0,
 	"Brust" = 0,
+	"Baran" = 0, // CRIMSON GRID ADDITION - New zulo form barantzi
 	// "Noble" = 0, //Nobletzi commented out for now pending a new 64x64 sprite
 ))
 
