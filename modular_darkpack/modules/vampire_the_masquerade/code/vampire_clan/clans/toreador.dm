@@ -27,3 +27,17 @@
 	to_chat(target, span_cult("THE BEAST SCREAMS IN MY MIND TO RUN"))
 	new /obj/effect/client_image_holder/baali_demon(get_turf(target), list(target))
 	// CRIMSON GRID ADD END: DARK THAUMATURGY
+
+/datum/subsplat/vampire_clan/toreador/volgirre
+	name = "Volgirre Toreador"
+	id = VAMPIRE_CLAN_VOLGIRRE_TOREADOR
+	icon = "volgirre_toreador"
+	desc = "'Art is the truth. Life is the lie.'\n\nBeauty as suffering, and flesh as canvas- the one-to-two dozen descendents of Baron Volgirre, one of the biggest influences on the Toreador clan- and disciple of the fleshcrafting Dragons, are masters of the patrician arts just as much as they are masters of fleshcrafting- and what passion they feel for their gifts they likely also feel in hate for their collective sirer. Though nominally aligned with the Sabbat as part of their rebellion, many of this bloodline's members find themselves among the Camarilla and Anarchs. Their unique teachings, however, force them to hide their learned urges and sadistic proclivities from the sects at large."
+	roleplay_level = "Advanced"
+	sense_the_sin_text = "sees you as a canvas, too."
+	clan_disciplines = list(
+		/datum/discipline/auspex,
+		/datum/discipline/celerity,
+		/datum/discipline/presence,
+		/datum/discipline/vicissitude
+	)
