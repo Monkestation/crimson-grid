@@ -277,6 +277,15 @@
 					if(try_keys(user, found_key))
 						return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
+		for(var/obj/item/storage/wallet/darkpack/found_wallet in user)
+			for(var/obj/item/vamp/keys/found_key in found_wallet)
+				// check if we already set has_keys so the first key you try and no do_after.
+				if(has_keys && !do_after(user, 1 SECONDS, src, interaction_key = DOAFTER_SOURCE_DOOR))
+					return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+				has_keys = TRUE
+				if(try_keys(user, found_key))
+					return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
 		if(lock_id == LOCKACCESS_ALL)
 			if(try_keys(user, need_key = FALSE))
 				return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -353,9 +362,9 @@
 			return
 	*/
 	if(need_key)
-		to_chat(user, span_notice("You try [key_used] against [src]"))
+		to_chat(user, span_notice("You try [key_used] against [src]."))
 	else
-		to_chat(user, span_notice("You try to unlock [src]"))
+		to_chat(user, span_notice("You try to unlock [src]."))
 
 	if(door_broken)
 		to_chat(user, span_warning("There is no door to open/close here."))
