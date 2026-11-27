@@ -196,6 +196,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EFFICIENT_DIGESTION "efficient_digestion"
 #define TRAIT_ENCHANTING_VOICE "enchanting_voice"
 #define TRAIT_FAIR_GLABRO "fair_glabro"
+#define TRAIT_GARBLED_SPEECH "garbled_speech" // Crimson Grid addition: lasombra flaw "abyss technology interference"
 #define TRAIT_GLOWING_EYES "glowing_eyes"
 #define TRAIT_GRAVE_SMELL "grave_smell"
 #define TRAIT_GRIP_OF_THE_DAMNED "grip_of_the_damned"
