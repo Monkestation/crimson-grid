@@ -1,5 +1,6 @@
 /obj/projectile/bullet/darkpack
 	abstract_type = /obj/projectile/bullet/darkpack
+	hitscan = TRUE
 
 // 9x19mm Parabellum
 /obj/projectile/bullet/darkpack/vamp9mm
