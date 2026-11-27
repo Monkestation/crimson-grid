@@ -27,6 +27,7 @@
 		new /datum/data/vending_product("crossbow", /obj/item/gun/ballistic/shotgun/toy/crossbow/vampire, 1000),
 		new /datum/data/vending_product("Bodkin bolts", /obj/item/ammo_box/darkpack/arrows/bodkin, 800),
 		new /datum/data/vending_product("Broadhead bolts", /obj/item/ammo_box/darkpack/arrows/broadhead, 800),
+		new /datum/data/vending_product("Blazing bolts", /obj/item/ammo_box/darkpack/arrows/flaming, 2500),
 		// CRIMSON GRID ADDITION END - Armory Ammunition Additions
 		new /datum/data/vending_product("ice hiking boots", /obj/item/clothing/shoes/winterboots/ice_boots, 100),
 	)
