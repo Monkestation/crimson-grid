@@ -4940,7 +4940,9 @@
 /turf/open/floor/plating/granite,
 /area/vtm/interior/endron_facility)
 "bvD" = (
-/obj/structure/stairs/ramp/south,
+/obj/transfer_point_vamp{
+	id = "milleniumramp1"
+	},
 /turf/open/floor/plating/asphalt,
 /area/vtm/interior/millennium_tower)
 "bvF" = (
@@ -39132,6 +39134,12 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/library)
+"lBv" = (
+/obj/transfer_point_vamp{
+	id = "milleniumramp2"
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/interior/millennium_tower)
 "lBI" = (
 /obj/effect/turf_decal/darkpack/cave/corner{
 	dir = 8
@@ -52024,6 +52032,9 @@
 "pfJ" = (
 /obj/structure/table/no_smooth/large/wood/desk/alt,
 /obj/effect/decal/rugs,
+/obj/vampire_computer{
+	pixel_y = 3
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/tattoo)
 "pfL" = (
@@ -96521,7 +96532,7 @@ wAW
 kJL
 wus
 wus
-bvD
+lBv
 eLO
 hwK
 hwK
@@ -119775,8 +119786,8 @@ wJV
 blm
 wJV
 blm
-khx
-khx
+bvD
+wus
 asr
 wus
 wus
@@ -119929,8 +119940,8 @@ bMh
 blm
 otQ
 blm
-khx
-khx
+lBv
+wus
 wus
 phg
 wus
