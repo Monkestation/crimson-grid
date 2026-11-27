@@ -123,6 +123,7 @@
 	exposed_wound_bonus = 5
 	wound_bonus = 10
 
+/* // CRIMSON EDIT REMOVAL START - Shotgun stuns
 /obj/projectile/bullet/shotgun_slug/vamp/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(iscarbon(target))
@@ -133,6 +134,15 @@
 		if(knockdown_roll.st_roll(target, firer ? firer : src) == ROLL_FAILURE)
 			hit_person.Knockdown(20)
 			to_chat(hit_person, span_danger("The force of a projectile sends you sprawling!"))
+*/ // CRIMSON EDIT REMOVAL END
+
+// CRIMSON EDIT ADDITION START - Shotgun slowdown
+/obj/projectile/bullet/shotgun_slug/vamp/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/hit_person = target
+		hit_person.apply_status_effect(/datum/status_effect/shotgun_slowdown)
+// CRIMSON EDIT ADDITION END
 
 /obj/projectile/bullet/shotgun_slug/vamp/silver
 	name = "12g silver shotgun slug"
@@ -162,11 +172,41 @@
 	exposed_wound_bonus = 10
 	wound_bonus = -5
 
+/* // CRIMSON EDIT REMOVAL START - Shotgun stuns
 /obj/projectile/bullet/darkpack/shotpellet/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		M.Stun(4)
+*/ // CRIMSON EDIT REMOVAL END
+
+// CRIMSON EDIT ADDITION START - Shotgun slowdown
+/obj/projectile/bullet/darkpack/shotpellet/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/hit_person = target
+		hit_person.apply_status_effect(/datum/status_effect/shotgun_slowdown)
+
+/datum/movespeed_modifier/shotgun_slowdown
+	multiplicative_slowdown = 0.2
+
+/datum/status_effect/shotgun_slowdown
+	id = "shotgun_slowdown"
+	duration = 0.75 SECONDS
+	status_type = STATUS_EFFECT_REFRESH
+	tick_interval = STATUS_EFFECT_NO_TICK
+	alert_type = null
+	remove_on_fullheal = TRUE
+
+/datum/status_effect/shotgun_slowdown/on_apply()
+	if(owner.stat == DEAD)
+		return FALSE
+	owner.add_movespeed_modifier(/datum/movespeed_modifier/shotgun_slowdown)
+	return TRUE
+
+/datum/status_effect/shotgun_slowdown/on_remove()
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/shotgun_slowdown)
+// CRIMSON EDIT ADDITION END
 
 /obj/projectile/bullet/darkpack/dragonsbreath
 	name = "12g shotgun incendiary pellet"
