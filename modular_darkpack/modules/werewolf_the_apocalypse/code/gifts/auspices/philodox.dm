@@ -122,7 +122,9 @@
 				to_chat(owner, span_purple("[victim] smells mundane."))
 			if(2 to 3)
 				if(get_kindred_splat(victim))
-					to_chat(owner, span_purple("[victim] smells of [HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT) ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
+					var/datum/st_stat/morality_path/morality/stat_morality = victim?.storyteller_stats[STAT_MORALITY]
+					var/hide_taint = (stat_morality?.morality_path?.alignment == MORALITY_HUMANITY && stat_morality?.get_score() > 7) || HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT)
+					to_chat(owner, span_purple("[victim] smells of [hide_taint ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 				if(get_shifter_splat(victim) && !get_garou_splat(victim))
 					to_chat(owner, span_purple("They smell of kin, but not Garou."))
 //				if(ishungrydead(victim))
@@ -137,7 +139,9 @@
 					to_chat(owner, span_purple("[victim] smells mundane."))
 			if(4)
 				if(get_kindred_splat(victim))
-					to_chat(owner, span_purple("[victim] smells of [HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT) ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
+					var/datum/st_stat/morality_path/morality/stat_morality = victim?.storyteller_stats[STAT_MORALITY]
+					var/hide_taint = (stat_morality?.morality_path?.alignment == MORALITY_HUMANITY && stat_morality?.get_score() > 7) || HAS_TRAIT(victim, TRAIT_HIDDEN_WYRMTAINT)
+					to_chat(owner, span_purple("[victim] smells of [hide_taint ? pick(wyld_descriptors) : pick(wyrm_descriptors)]")) // CRIMSON EDIT CHANGE - ORIGINAL: to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 				if(get_ghoul_splat(victim))
 					to_chat(owner, span_purple("[victim] smells of [pick(wyrm_descriptors)]"))
 				if(get_shifter_splat(victim) && !get_garou_splat(victim))
