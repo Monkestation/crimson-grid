@@ -167,6 +167,10 @@
 	name = "ammo box (broadhead bolts)"
 	ammo_type = /obj/item/ammo_casing/caseless/bolt/broadhead
 
+/obj/item/ammo_box/darkpack/arrows/flaming
+	name = "ammo box (flaming bolts)"
+	ammo_type = /obj/item/ammo_casing/caseless/bolt/flaming
+
 /obj/item/ammo_box/darkpack/arrows/silver
 	name = "ammo box (silver bolts)"
 	desc = "The box shows Action Bill shooting out the eye of an Eco-Terrorist with his trusty crossbow, grinning madly as he does."
@@ -177,3 +181,7 @@
 /obj/item/ammo_box/darkpack/c75/silver
 	desc = "The bag has Action Bill emblazoned on the front, holding the head of a dead wolf and a still smoking musket. Vintage merchandise."
 
+/obj/item/ammo_box/darkpack/c75/phosphorus
+	name = "cartridge bag (.75 phosphorous ball)"
+	desc = "A ball of white phosphorous entirely, dear god man ever heard of overkill?"
+	ammo_type = /obj/item/ammo_casing/vampire/c75/phosphorus
