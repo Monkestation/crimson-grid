@@ -253,7 +253,7 @@
 	//CG Edit Start: Introduces a weight to NPC age rolls to cut down on the ammount of old people out on town in the middle of the night
 /mob/living/carbon/human/npc/proc/rollnormalizedage()
 	var/output_age
-	if(socialrole.max_age <= 50)	// No need to normalize if the roll already does not include old people
+	if(socialrole.max_age < 50)	// No need to normalize if the roll already does not include old people
 		output_age = rand(socialrole.min_age, socialrole.max_age)
 		return output_age
 	var/old_roll = prob(20)
