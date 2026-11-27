@@ -250,6 +250,21 @@
 
 	var/is_criminal = FALSE
 
+	//CG Edit Start: Introduces a weight to NPC age rolls to cut down on the ammount of old people out on town in the middle of the night
+/mob/living/carbon/human/npc/proc/rollnormalizedage()
+	var/output_age
+	if(socialrole.max_age < 50)	// No need to normalize if the roll already does not include old people
+		output_age = rand(socialrole.min_age, socialrole.max_age)
+		return output_age
+	var/old_roll = prob(20)
+	if(old_roll == 1)
+		output_age = rand(50,socialrole.max_age)
+	else
+		output_age = rand(socialrole.min_age,49)
+	return output_age
+
+	//CG Edit End: Introduces a weight to NPC age rolls to cut down on the ammount of old people out on town in the middle of the night
+
 /mob/living/carbon/human/npc/proc/AssignSocialRole(datum/socialrole/S, dont_random)
 	socialrole = GLOB.npc_social_roles[S]
 
@@ -283,7 +298,9 @@
 			s_names = socialrole.surnames
 		else
 			s_names = GLOB.last_names
-		age = rand(socialrole.min_age, socialrole.max_age)
+	//CG Edit Start: Introduces a weight to NPC age rolls to cut down on the ammount of old people out on town in the middle of the night
+		age = rollnormalizedage()
+	//CG Edit End: Introduces a weight to NPC age rolls to cut down on the ammount of old people out on town in the middle of the night
 		skin_tone = pick(socialrole.s_tones)
 
 		if (age >= 55)
