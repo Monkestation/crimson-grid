@@ -28,6 +28,8 @@
 		/datum/discipline/presence,
 		/datum/discipline/protean
 	)
+	subsplat_keys = /obj/item/vamp/keys/tlacique // Crimson Grid Addition: Tlacique Hideout Keys
+
 	whitelisted = TRUE
 
 /datum/subsplat/vampire_clan/setite/warrior

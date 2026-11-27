@@ -483,3 +483,4 @@
 /obj/item/darkpack/spear/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/selling, 400, "spear", FALSE)
+
