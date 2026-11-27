@@ -298,9 +298,9 @@
 			s_names = socialrole.surnames
 		else
 			s_names = GLOB.last_names
-	//CG Edit Start: Indtroduceds a weight to NPC age rolls to cut down on the ammount of old people out on town in the middle of the night
+	//CG Edit Start: Introduces a weight to NPC age rolls to cut down on the ammount of old people out on town in the middle of the night
 		age = rollnormalizedage()
-	//CG Edit End: Indtroduceds a weight to NPC age rolls to cut down on the ammount of old people out on town in the middle of the night
+	//CG Edit End: Introduces a weight to NPC age rolls to cut down on the ammount of old people out on town in the middle of the night
 		skin_tone = pick(socialrole.s_tones)
 
 		if (age >= 55)
