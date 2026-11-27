@@ -79016,6 +79016,22 @@
 /obj/structure/bonfire/fire_barrel,
 /turf/open/misc/dirt,
 /area/vtm/interior/sewer)
+"scX" = (
+/obj/structure/table/wood,
+/obj/item/clothing/mask/vampire/venetian_mask,
+/obj/item/clothing/mask/vampire/venetian_mask/fancy{
+	pixel_y = 5;
+	pixel_x = 4
+	},
+/obj/item/clothing/mask/vampire/venetian_mask{
+	pixel_y = 3;
+	pixel_x = -3
+	},
+/obj/effect/spawner/random/occult/artifact/holy_only,
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
+/area/vtm/interior/sewer)
 "scZ" = (
 /obj/structure/lattice/grate,
 /obj/structure/railing{
@@ -82443,6 +82459,15 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior)
+"sQL" = (
+/obj/structure/table/wood,
+/obj/item/storage/belt/sheath/vamp/sword,
+/obj/item/storage/belt/sheath/vamp/sword,
+/obj/effect/spawner/random/occult/artifact/holy_only,
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
+/area/vtm/interior/sewer)
 "sQR" = (
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 5
@@ -82503,15 +82528,6 @@
 /obj/structure/stairs/east,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/interior/giovanni)
-"sRQ" = (
-/obj/structure/table/wood,
-/obj/item/storage/belt/sheath/vamp/sword,
-/obj/item/storage/belt/sheath/vamp/sword,
-/obj/effect/spawner/random/occult/artifact/holy_only,
-/turf/open/floor/plating/concrete{
-	color = "#bfbfbf"
-	},
-/area/vtm/interior/sewer)
 "sRS" = (
 /obj/transfer_point_vamp{
 	id = "Forest_Transfer3"
@@ -96006,22 +96022,6 @@
 /obj/item/clothing/head/vampire/police,
 /turf/open/floor/city/toilet,
 /area/vtm/interior/police/upstairs)
-"vZN" = (
-/obj/structure/table/wood,
-/obj/item/clothing/mask/vampire/venetian_mask,
-/obj/item/clothing/mask/vampire/venetian_mask/fancy{
-	pixel_y = 5;
-	pixel_x = 4
-	},
-/obj/item/clothing/mask/vampire/venetian_mask{
-	pixel_y = 3;
-	pixel_x = -3
-	},
-/obj/effect/spawner/random/occult/artifact/holy_only,
-/turf/open/floor/plating/concrete{
-	color = "#bfbfbf"
-	},
-/area/vtm/interior/sewer)
 "vZP" = (
 /obj/machinery/light/prince/directional/east{
 	pixel_y = 14
@@ -123127,7 +123127,7 @@ rQH
 sLZ
 pHD
 ajD
-sRQ
+sQL
 tuX
 uvs
 uvs
@@ -123737,7 +123737,7 @@ gco
 rES
 tuX
 mUx
-vZN
+scX
 jpA
 tuX
 tuX
@@ -152928,7 +152928,7 @@ ike
 uxY
 ozX
 ozX
-qeQ
+ozX
 qeQ
 qeQ
 gPe
