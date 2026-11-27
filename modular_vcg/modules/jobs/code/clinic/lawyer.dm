@@ -8,9 +8,11 @@
 	outfit = /datum/outfit/job/vampire/clinic_lawyer
 	job_flags = CITY_JOB_FLAGS
 
+	maximal_generation = 8
+	allowed_splats = list(SPLAT_KINDRED, SPLAT_GHOUL, SPLAT_NONE, SPLAT_KINFOLK)
 	exp_required_type_department = EXP_TYPE_CLINIC
 	exp_requirements = EXP_REQ_HEAD
-	desensitized_base = DESENSITIZED_THRESHOLD // CRIMSON EDIT ADDITION - JOB MOOD
+	desensitized_base = DESENSITIZED_THRESHOLD
 	display_order = JOB_DISPLAY_ORDER_CLINIC_LAWYER
 	departments_list = list(
 		/datum/job_department/clinic,
@@ -28,8 +30,7 @@
 		JOB_PRIMOGEN_MALKAVIAN,
 	)
 
-	description = "Ensure Saint John's Clinic keeps itself afloat legally and monetarily. Handle malpractice cases, influence the Director to favor you."
-	allowed_splats = null
+	description = "Ensure Saint John's Clinic and Asylum keeps itself afloat legally and monetarily. Handle malpractice cases, influence the Clinic Director to favor you and the Asylum Director."
 
 	job_tone = "objection"
 	tgui_icon = FA_ICON_GAVEL
