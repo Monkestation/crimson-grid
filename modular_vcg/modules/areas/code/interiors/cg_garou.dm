@@ -5,3 +5,10 @@
 	zone_type = ZONE_ELYSIUM
 	gauntlet_rating = 5
 	outdoors = FALSE
+
+/area/vtm/interior/wyrm_corrupted/bawn
+	name = "Wyrm Corruption Bawn"
+
+/area/vtm/interior/wyrm_corrupted/bawn/LateInitialize()
+	. = ..()
+	AddComponent(/datum/component/bawn_area, /obj/structure/werewolf_totem/generic/wyrm)
