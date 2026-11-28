@@ -8,7 +8,7 @@
 	. = ..()
 	if(time)
 		duration = time
-	owner.st_add_stat_mod(STAT_DEXTERITY, -4)	//Nukes your dex temporarily
+	//owner.st_add_stat_mod(STAT_DEXTERITY, -4)	//Nukes your dex temporarily CRIMSON EDIT REMOVAL 
 
 /atom/movable/screen/alert/status_effect/dread_gaze
 	name = "Overwhelming Dread"

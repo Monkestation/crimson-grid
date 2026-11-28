@@ -38,7 +38,7 @@
 		return FALSE
 
 	//is the difficulty pre-defined? if not, its probably their willpower.
-	var/theirpower = difficulty || target.st_get_stat(STAT_TEMPORARY_WILLPOWER)
+	var/theirpower = difficulty || target.st_get_stat(STAT_PERMANENT_WILLPOWER)//DONT ROLL TEMP WILLPOWER FOR SAVES YOU FOOL
 
 	// Do we have traits to modify our difficulties?
 	if((!(owner.obscured_slots & HIDEFACE))&(HAS_TRAIT(owner, TRAIT_DISFIGURED_APPEARANCE))) // Are we visibly disfigured?
@@ -157,7 +157,7 @@
 	for(var/i = 1; i <= min(targets_to_affect, length(potential_targets)); i++)
 		var/mob/living/carbon/target = potential_targets[i]
 		apply_presence_overlay(target)
-		to_chat(target, span_yellowteamradio("You feel extremely attracted to and persuaded by [owner]'s words, no matter what they're saying!"))
+		to_chat(target, span_yellowteamradio("You feel extremely attracted to and persuaded by [owner]'s words, and become receptive to her point of view, Outwardly hostile actions break this spell"))//Crimson Edit improves wording and makes more tabletop accurate this discipline is not dominate stop using it as such
 		target.apply_status_effect(STATUS_EFFECT_AWE, owner)
 		affected_targets += target
 
@@ -263,7 +263,7 @@
 	log_combat(owner, target, "Used Presence Entrancement")
 
 	apply_presence_overlay(target, successes * 1 MINUTES)
-	to_chat(target, span_hypnophrase("You find yourself becoming completely entraced by [owner]. You are now their willing servant."))
+	to_chat(target, span_hypnophrase("You find yourself becoming completely entraced by [owner]. You are now their willing servant yet you retain your free will. try to assist them.")) // CRIMSON EDIT CHANGE - Original: to_chat(target, span_hypnophrase("You find yourself becoming completely entraced by [owner]. You are now their willing servant."))
 	to_chat(target, span_info("You are now the willing servant of [owner]. You will seek to please them and fulfill their every desire, but this desire will fade soon."))
 	addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 1 MINUTES) // CRIMSON GRID EDIT - Original: addtimer(CALLBACK(src, PROC_REF(end_entrancement), target), successes * 10 MINUTES)
 
@@ -363,7 +363,7 @@
 
 		var/roll_difficulty = owner.st_get_stat(STAT_CHARISMA) + owner.st_get_stat(STAT_INTIMIDATION)
 		//'the victim must make a courage roll with a difficulty equal to the caster's charisma + intimidation to a maximum of 10'
-		var/hearer_successes = SSroll.storyteller_roll_datum(hearer, owner, difficulty = roll_difficulty, applic_stats = list(STAT_COURAGE), numerical = TRUE)
+		var/hearer_successes = SSroll.storyteller_roll_datum(hearer, owner, difficulty = roll_difficulty, applic_stats = list(STAT_PERMANENT_WILLPOWER), numerical = TRUE)//Crimson edit Who the fuck put this as just courage as the roll This is madness Please roll a actual stat so this roll even exists at all. It is legitmently near impossible to succeed this roll against someone with any investment in these stats
 		hearer_successes = max(0, hearer_successes)
 
 		apply_presence_overlay(hearer, 3 MINUTES)
@@ -371,7 +371,7 @@
 		watch_for_attacks(hearer) // CRIMSON EDIT ADD - Majesty pacifism breaks after being attacked
 
 		// this ability is often used to end combat scenes but it often ignored.
-		var/pacifism_delay = hearer_successes * 10 SECONDS
+		var/pacifism_delay = hearer_successes * 30 SECONDS//Gives you actual time to react this 10 seconds is barely enough to even read the text
 		if(hearer_successes > 0)
 			to_chat(hearer, span_info("Your will allows you to resist for [pacifism_delay / 10] seconds before you're forced into pacifism.")) // CRIMSON EDIT - Majesty pacifism breaks after being attacked
 			addtimer(CALLBACK(src, PROC_REF(apply_pacifism), hearer), pacifism_delay)
