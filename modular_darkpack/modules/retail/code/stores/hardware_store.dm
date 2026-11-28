@@ -34,13 +34,16 @@
 		new /datum/data/vending_product("cloth", /obj/item/stack/sheet/cloth, 5),
 		new /datum/data/vending_product("door repair kit", /obj/item/door_repair_kit, 300),
 		new /datum/data/vending_product("wooden plank", /obj/item/stack/sheet/mineral/wood, 10),
+		new /datum/data/vending_product("bunch of wooden plank", /obj/item/stack/sheet/mineral/wood/fifty, 450), // CRIMSON EDIT ADD
 		new /datum/data/vending_product("bamboo cuttings", /obj/item/stack/sheet/mineral/bamboo, 10),
 		new /datum/data/vending_product("bronze sheet", /obj/item/stack/sheet/bronze, 10),
 		new /datum/data/vending_product("sandstone brick", /obj/item/stack/sheet/mineral/sandstone, 10),
 		new /datum/data/vending_product("duct tape", /obj/item/stack/medical/wrap/sticky_tape/duct, 20),
 		new /datum/data/vending_product("sticky tape", /obj/item/stack/medical/wrap/sticky_tape, 20),
 		new /datum/data/vending_product("leather sheet", /obj/item/stack/sheet/leather, 10),
+		new /datum/data/vending_product("remote signaler", /obj/item/assembly/signaler, 50), // CRIMSON EDIT ADD - bombs
 		new /datum/data/vending_product("iron sheet", /obj/item/stack/sheet/iron, 10),
+		new /datum/data/vending_product("bunch of iron sheet", /obj/item/stack/sheet/iron/fifty, 450), // CRIMSON EDIT ADD
 		new /datum/data/vending_product("glass sheet", /obj/item/stack/sheet/glass, 10),
 		new /datum/data/vending_product("plastic sheet", /obj/item/stack/sheet/plastic, 10),
 		new /datum/data/vending_product("cardboard sheet", /obj/item/stack/sheet/cardboard, 10),

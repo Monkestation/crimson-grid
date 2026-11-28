@@ -171,8 +171,19 @@
 	desc = "Welcome to the Middle Ages! This ones able to more easily shred flesh."
 	projectile_type = /obj/projectile/bullet/crossbow_bolt/broadhead
 
+/obj/item/ammo_casing/caseless/bolt/flaming
+	name = "flaming bolt"
+	desc = "Welcome to the Middle Ages! This ones is on fire, thats gonna hurt"
+	projectile_type = /obj/projectile/bullet/crossbow_bolt/flaming
+
 /obj/item/ammo_casing/caseless/bolt/silver
 	name = "silver bolt"
 	desc = "Welcome to the Middle Ages! A silver headed bolt for hunting monsters. As if those existed."
 	projectile_type = /obj/projectile/bullet/crossbow_bolt/silver
+
+
+/obj/item/ammo_casing/vampire/c75/phosphorus
+	name = "phosporus bullet"
+	desc = "A round truly designed to destroy those who dwell in the night - chapter house infiltrators beware!"
+	projectile_type=/obj/projectile/bullet/darkpack/vamp75/phosphorus
 

@@ -743,12 +743,6 @@
 	},
 /turf/open/floor/plating/canal,
 /area/vtm/interior/techshop)
-"mh" = (
-/obj/effect/decal/cleanable/cardboard,
-/obj/structure/closet/cardboard,
-/obj/item/laptop,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "mn" = (
 /obj/structure/barrels/rand,
 /turf/open/misc/dirt,
@@ -797,10 +791,6 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/interior/techshop)
-"mH" = (
-/obj/machinery/computer/pc/debug,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "mW" = (
 /obj/item/storage/box/syringes,
 /obj/item/storage/box/masks,
@@ -868,15 +858,6 @@
 /obj/structure/table,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/clinic)
-"oi" = (
-/obj/effect/decal/cleanable/cardboard,
-/obj/effect/decal/graffiti/large,
-/obj/machinery/pc_server/mapped,
-/obj/effect/mapping_helpers/pc_server/network_name{
-	network_name = "SewerNet"
-	},
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "oj" = (
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/pharmacy)
@@ -1313,6 +1294,10 @@
 "uQ" = (
 /turf/open/floor/city/toilet,
 /area/vtm/interior/shop/gummaguts)
+"uR" = (
+/obj/effect/landmark/ert_spawn,
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/pacificheights)
 "uX" = (
 /obj/effect/landmark/navigate_destination,
 /turf/open/floor/plating/rough,
@@ -1350,6 +1335,13 @@
 /obj/structure/table/countertop/purple,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/pharmacy)
+"vp" = (
+/obj/effect/turf_decal/asphaltline{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/pacificheights)
 "vs" = (
 /obj/effect/landmark/npcbeacon,
 /obj/effect/turf_decal/bordur/corner,
@@ -1439,6 +1431,11 @@
 /obj/structure/table/countertop/green,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/gasstation)
+"wK" = (
+/obj/effect/turf_decal/asphaltline,
+/obj/effect/landmark/ert_shuttle_spawn,
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/pacificheights)
 "wO" = (
 /obj/effect/decal/cleanable/trash,
 /turf/open/misc/beach/vamp,
@@ -1627,6 +1624,15 @@
 /obj/structure/bookcase/random/adult,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop)
+"AT" = (
+/obj/effect/decal/cleanable/litter,
+/obj/machinery/camera/autoname/directional/east,
+/obj/effect/mapping_helpers/networked/network_id{
+	network_id = "SewerNet"
+	},
+/obj/effect/landmark/latejoin_masquerade,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "Be" = (
 /obj/structure/vampdoor/simple,
 /obj/effect/mapping_helpers/door/access/supply,
@@ -2090,6 +2096,12 @@
 "HU" = (
 /turf/closed/wall/vampwall/rich/old,
 /area/vtm/interior/cog/caern/bawn)
+"Ib" = (
+/obj/effect/decal/cleanable/cardboard,
+/obj/structure/closet/cardboard,
+/obj/item/laptop,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "Id" = (
 /turf/open/floor/plating/rough,
 /area/vtm/interior/techshop)
@@ -2354,15 +2366,6 @@
 /obj/effect/mapping_helpers/door/lock,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop)
-"LQ" = (
-/obj/effect/decal/cleanable/litter,
-/obj/machinery/camera/autoname/directional/east,
-/obj/effect/mapping_helpers/networked/network_id{
-	network_id = "SewerNet"
-	},
-/obj/effect/landmark/latejoin_masquerade,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "LU" = (
 /obj/structure/platform/lowwall/rich/old/window,
 /turf/open/floor/plating/rough,
@@ -2499,6 +2502,15 @@
 	},
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights)
+"Nt" = (
+/obj/effect/decal/cleanable/cardboard,
+/obj/effect/decal/graffiti/large,
+/obj/machinery/pc_server/mapped,
+/obj/effect/mapping_helpers/pc_server/network_name{
+	network_name = "SewerNet"
+	},
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "Nw" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/rough,
@@ -2605,11 +2617,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/clothing_store)
-"OM" = (
-/obj/effect/turf_decal/asphaltline,
-/obj/effect/landmark/ert_shuttle_spawn,
-/turf/open/floor/plating/asphalt,
-/area/vtm/outside/pacificheights)
 "OO" = (
 /obj/structure/table/wood,
 /obj/item/storage/box/drinkingglasses{
@@ -2696,10 +2703,6 @@
 /obj/structure/roofstuff/vent,
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights)
-"PH" = (
-/obj/effect/landmark/ert_spawn,
-/turf/open/floor/plating/asphalt,
-/area/vtm/outside/pacificheights)
 "PI" = (
 /mob/living/carbon/human/npc/shop,
 /turf/open/floor/plating/concrete,
@@ -2783,10 +2786,6 @@
 	},
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights)
-"QM" = (
-/obj/effect/landmark/ert_shuttle_brief_spawn,
-/turf/open/floor/plating/asphalt,
-/area/vtm/outside/pacificheights)
 "QN" = (
 /obj/effect/decal/cleanable/litter,
 /turf/open/floor/wood/smooth/old,
@@ -2869,6 +2868,10 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/gasstation)
+"RI" = (
+/obj/effect/landmark/ert_shuttle_brief_spawn,
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/pacificheights)
 "RP" = (
 /obj/effect/decal/cleanable/trash{
 	icon_state = "trash7"
@@ -2879,6 +2882,10 @@
 /obj/structure/sign/city/police_department/directional/north{
 	icon_state = "police4"
 	},
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
+"Sh" = (
+/obj/machinery/computer/pc/debug,
 /turf/open/misc/beach/vamp,
 /area/vtm/outside/pacificheights)
 "Si" = (
@@ -3601,7 +3608,7 @@ iJ
 lM
 VH
 Ef
-oi
+Nt
 aM
 wO
 NR
@@ -3669,9 +3676,9 @@ QN
 hH
 Kz
 Ef
-mH
-LQ
-mh
+Sh
+AT
+Ib
 Bf
 UJ
 UJ
@@ -4033,7 +4040,7 @@ ik
 ik
 ik
 ik
-PH
+uR
 cD
 NR
 Rj
@@ -4101,7 +4108,7 @@ hi
 hi
 hi
 hi
-OM
+wK
 vA
 NR
 Rj
@@ -4169,7 +4176,7 @@ ik
 ik
 ik
 ik
-QM
+RI
 Cg
 NR
 Rj
@@ -4568,7 +4575,7 @@ kb
 NR
 cj
 ik
-VQ
+vp
 tW
 VD
 NR
