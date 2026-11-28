@@ -12,6 +12,8 @@
 #define JOB_CLINIC_GUARD "Clinic Guard"
 #define JOB_CLINIC_LAWYER "General Counsel"
 
+// Camarilla
+#define JOB_JAZZ_SERVANT "Jazz Club Servant" // Crimson Grid Change: Adds the Jazz Club Servant
 
 // Display orders
 #define JOB_DISPLAY_ORDER_MOUNTAIN_MASTER 1
@@ -19,7 +21,9 @@
 #define JOB_DISPLAY_ORDER_TRIAD_RED_POLE 3
 #define JOB_DISPLAY_ORDER_TRIAD_BLUE_LANTERNS 4
 
-#define JOB_DISPLAY_ORDER_BRUJAH 13
+#define JOB_DISPLAY_ORDER_BRUJAH 14 // Crimson Grid Change: Reposition for Jazz Club Servant
+
+#define JOB_DISPLAY_ORDER_JAZZ_SERVANT 13 // Crimson Grid Change: Reposition for Jazz Club Servant
 
 #define JOB_DISPLAY_ORDER_KEEPER 6
 

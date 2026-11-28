@@ -12,6 +12,9 @@ JOB_START_HELPER(forest_wolves/keeper, JOB_GAROU_KEEPER)
 JOB_START_HELPER(hospital/clinic_guard, JOB_CLINIC_GUARD)
 JOB_START_HELPER(hospital/clinic_lawyer, JOB_CLINIC_LAWYER)
 
+JOB_START_HELPER(hospital/clinic_guard, JOB_CLINIC_GUARD)
+
+JOB_START_HELPER(camarilla/jazz_servant, JOB_JAZZ_SERVANT) // Crimson Grid Addition: The Jazz Servant
 
 // Triad
 /obj/effect/landmark/start/darkpack/triad
