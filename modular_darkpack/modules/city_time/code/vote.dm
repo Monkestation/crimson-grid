@@ -1,5 +1,5 @@
 #define CHOICE_15 "15 Minutes"
-#define CHOICE_30 "30 Mintues"
+#define CHOICE_30 "30 Minutes"
 #define CHOICE_60 "1 Hour"
 #define CHOICE_NO "No Extension"
 

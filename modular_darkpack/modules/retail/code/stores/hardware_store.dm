@@ -41,6 +41,7 @@
 		new /datum/data/vending_product("duct tape", /obj/item/stack/medical/wrap/sticky_tape/duct, 20),
 		new /datum/data/vending_product("sticky tape", /obj/item/stack/medical/wrap/sticky_tape, 20),
 		new /datum/data/vending_product("leather sheet", /obj/item/stack/sheet/leather, 10),
+		new /datum/data/vending_product("remote signaler", /obj/item/assembly/signaler, 50), // CRIMSON EDIT ADD - bombs
 		new /datum/data/vending_product("iron sheet", /obj/item/stack/sheet/iron, 10),
 		new /datum/data/vending_product("bunch of iron sheet", /obj/item/stack/sheet/iron/fifty, 450), // CRIMSON EDIT ADD
 		new /datum/data/vending_product("glass sheet", /obj/item/stack/sheet/glass, 10),
