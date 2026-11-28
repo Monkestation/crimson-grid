@@ -915,20 +915,30 @@
 	slam_gently = TRUE
 	/// Mob currently lying on the table
 	var/mob/living/patient = null
-	/// Operating computer we're linked to, to sync operations from
-	var/obj/machinery/computer/operating/computer = null
 	/// Tank attached under the table
 	var/obj/item/tank/air_tank = null
 	/// Mask attached *to* the table, doesn't mean its inside the table as it can be worn by the patient
 	var/obj/item/clothing/mask/breath/breath_mask = null
 
+	///CRIMSON GRID EDIT - PC NET
+	/// Host computer (for screen overlay + autopsy signals)
+	var/obj/machinery/computer/computer = null
+	/// Operating program running on that computer
+	var/datum/pc_program/operating/operating_program = null
+	///CRIMSON GRID EDIT END - PC NET
+
 /obj/structure/table/optable/Initialize(mapload, obj/structure/table_frame/frame_used, obj/item/stack/stack_used)
 	. = ..()
+	///CRIMSON GRID EDIT - PC NET
 	for(var/direction in GLOB.alldirs)
-		computer = locate(/obj/machinery/computer/operating) in get_step(src, direction)
-		if(computer)
-			computer.table = src
+		var/obj/machinery/computer/pc/host = locate() in get_step(src, direction)
+		var/datum/pc_program/operating/prog = host?.get_program(/datum/pc_program/operating)
+		if(prog)
+			computer = host
+			operating_program = prog
+			prog.table = src
 			break
+	///CRIMSON GRID EDIT END - PC NET
 
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(mark_patient),
@@ -941,8 +951,12 @@
 		mark_patient(potential_patient)
 
 /obj/structure/table/optable/Destroy()
-	if(computer && computer.table == src)
-		computer.table = null
+	///CRIMSON GRID EDIT - PC NET
+	if(operating_program && operating_program.table == src)
+		operating_program.table = null
+	operating_program = null
+	computer = null
+	///CRIMSON GRID EDIT END - PC NET
 	patient = null
 	QDEL_NULL(air_tank)
 	if (breath_mask?.loc == src)
@@ -1111,7 +1125,7 @@
 	SEND_SIGNAL(src, COMSIG_OPERATING_TABLE_SET_PATIENT, new_patient)
 	patient = new_patient
 	update_appearance()
-	computer?.update_static_data_for_all_viewers()
+	operating_program?.refresh() //CRIMSON GRID EDIT - PC NET
 	if (!patient)
 		return
 	RegisterSignals(patient, list(
@@ -1125,15 +1139,16 @@
 /obj/structure/table/optable/proc/on_surgery_change(datum/source)
 	SIGNAL_HANDLER
 	update_appearance()
-	computer?.update_static_data_batched()
+	operating_program?.refresh_batched() //CRIMSON GRID EDIT - PC NET
 
 /obj/structure/table/optable/proc/get_surgeries(datum/source, mob/living/surgeon, list/operations)
 	SIGNAL_HANDLER
 
-	if(isnull(computer))
+	if(isnull(operating_program))
 		return
 
-	operations |= computer.advanced_surgeries
+	if(operating_program) //CRIMSON GRID EDIT - PC NET
+		operations |= operating_program.advanced_surgeries //CRIMSON GRID EDIT - PC NET
 
 /obj/structure/table/optable/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if (istype(tool, /obj/item/clothing/mask/breath))

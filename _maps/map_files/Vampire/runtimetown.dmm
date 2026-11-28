@@ -1,11 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/effect/turf_decal/asphaltline{
-	dir = 8;
-	pixel_y = 12
-	},
-/turf/open/floor/plating/asphalt,
-/area/vtm/outside/pacificheights)
 "ad" = (
 /obj/effect/turf_decal/bordur{
 	dir = 4
@@ -314,11 +307,6 @@
 /obj/effect/spawner/random/trash/hobo_squat,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/ghetto)
-"gb" = (
-/obj/effect/decal/cleanable/cardboard,
-/obj/structure/closet/cardboard,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "gc" = (
 /mob/living/carbon/human/npc/shop,
 /turf/open/floor/plating/concrete,
@@ -1347,6 +1335,13 @@
 /obj/structure/table/countertop/purple,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/pharmacy)
+"vp" = (
+/obj/effect/turf_decal/asphaltline{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/plating/asphalt,
+/area/vtm/outside/pacificheights)
 "vs" = (
 /obj/effect/landmark/npcbeacon,
 /obj/effect/turf_decal/bordur/corner,
@@ -1629,6 +1624,15 @@
 /obj/structure/bookcase/random/adult,
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop)
+"AT" = (
+/obj/effect/decal/cleanable/litter,
+/obj/machinery/camera/autoname/directional/east,
+/obj/effect/mapping_helpers/networked/network_id{
+	network_id = "SewerNet"
+	},
+/obj/effect/landmark/latejoin_masquerade,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "Be" = (
 /obj/structure/vampdoor/simple,
 /obj/effect/mapping_helpers/door/access/supply,
@@ -1910,11 +1914,6 @@
 /obj/structure/ladder/manhole,
 /turf/open/openspace,
 /area/vtm/interior/techshop)
-"FG" = (
-/obj/effect/decal/cleanable/cardboard,
-/obj/effect/decal/graffiti/large,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "FH" = (
 /obj/structure/table/wood,
 /obj/machinery/chem_dispenser/drinks/fullupgrade{
@@ -2097,6 +2096,12 @@
 "HU" = (
 /turf/closed/wall/vampwall/rich/old,
 /area/vtm/interior/cog/caern/bawn)
+"Ib" = (
+/obj/effect/decal/cleanable/cardboard,
+/obj/structure/closet/cardboard,
+/obj/item/laptop,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "Id" = (
 /turf/open/floor/plating/rough,
 /area/vtm/interior/techshop)
@@ -2497,6 +2502,15 @@
 	},
 /turf/open/misc/grass,
 /area/vtm/outside/pacificheights)
+"Nt" = (
+/obj/effect/decal/cleanable/cardboard,
+/obj/effect/decal/graffiti/large,
+/obj/machinery/pc_server/mapped,
+/obj/effect/mapping_helpers/pc_server/network_name{
+	network_name = "SewerNet"
+	},
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "Nw" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating/rough,
@@ -2870,6 +2884,10 @@
 	},
 /turf/open/misc/beach/vamp,
 /area/vtm/outside/pacificheights)
+"Sh" = (
+/obj/machinery/computer/pc/debug,
+/turf/open/misc/beach/vamp,
+/area/vtm/outside/pacificheights)
 "Si" = (
 /obj/structure/table,
 /obj/machinery/microwave{
@@ -2879,10 +2897,6 @@
 	},
 /turf/open/floor/plating/concrete,
 /area/vtm/interior/shop/bubway)
-"Sj" = (
-/obj/effect/landmark/latejoin_masquerade,
-/turf/open/misc/beach/vamp,
-/area/vtm/outside/pacificheights)
 "Sp" = (
 /obj/structure/table,
 /obj/item/stack/medical/bone_gel,
@@ -3594,7 +3608,7 @@ iJ
 lM
 VH
 Ef
-FG
+Nt
 aM
 wO
 NR
@@ -3662,9 +3676,9 @@ QN
 hH
 Kz
 Ef
-Sj
-ok
-gb
+Sh
+AT
+Ib
 Bf
 UJ
 UJ
@@ -4561,7 +4575,7 @@ kb
 NR
 cj
 ik
-aa
+vp
 tW
 VD
 NR

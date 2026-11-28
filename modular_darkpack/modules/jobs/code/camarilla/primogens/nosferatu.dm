@@ -39,6 +39,12 @@
 		JOB_PRIMOGEN_VENTRUE
 	)
 
+/datum/job/vampire/primogen_nosferatu/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	var/datum/pc_network/schrecknet/net = GLOB.schrecknet
+	net.generate_network_password()
+	net.send_password_to(spawned)
+
 /datum/outfit/job/vampire/nosferatu
 	name = JOB_PRIMOGEN_NOSFERATU
 	jobtype = /datum/job/vampire/primogen_nosferatu

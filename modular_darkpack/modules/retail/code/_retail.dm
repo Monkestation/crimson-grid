@@ -46,6 +46,11 @@
 
 /obj/structure/retail/attackby(obj/item/I, mob/user, params)
 	. = ..()
+	//CRIMSON GRID EDIT - PC
+	if(closed)
+		to_chat(user, span_alert("The shop is closed."))
+		return
+	//CRIMSON GRID EDIT END - PC
 	if(can_shop(user))
 		if(owner_needed == TRUE && (!my_owner || (get_dist(src, my_owner) > 4) || (my_owner.stat >= HARD_CRIT)))
 			to_chat(user, span_alert("There's no teller here to sell you things..."))
@@ -68,6 +73,10 @@
 	)
 
 /obj/structure/retail/ui_interact(mob/user, datum/tgui/ui)
+	//CRIMSON GRID EDIT - PC
+	if(closed)
+		return
+	//CRIMSON GRID EDIT END - PC
 	if(owner_needed == TRUE)
 		if(!my_owner)
 			return
@@ -142,6 +151,10 @@
 	if(owner_needed == TRUE && (!my_owner || (get_dist(src, my_owner) > 4) || (my_owner.stat >= HARD_CRIT)))
 		to_chat(usr, span_alert("There's no teller here to sell you things..."))
 		return
+	//CRIMSON GRID EDIT - PC
+	if(closed)
+		return
+	//CRIMSON GRID EDIT END - PC
 
 	switch(action)
 		if("purchase")
@@ -206,6 +219,13 @@
 				--product.amount
 				update_static_data(usr)
 			SSblackbox.record_feedback("nested tally", "retail_item_bought", 1, list("[type]", "[product.product_path]"))
+			//CRIMSON GRID EDIT - PC
+			sales++
+			revenue += product.price
+			SEND_SIGNAL(src, COMSIG_RETAIL_PURCHASE, product.name, product.price)
+			if(product.amount == 0)
+				SEND_SIGNAL(src, COMSIG_RETAIL_SOLD_OUT, product.name)
+			//CRIMSON GRID EDIT END - PC
 			. = TRUE
 
 #undef SANITIZED_PATH
