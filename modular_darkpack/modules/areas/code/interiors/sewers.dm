@@ -14,7 +14,7 @@
 	name = "Underground Town"
 	icon_state = "hotel"
 	musictracks = list('modular_darkpack/modules/ambience/sounds/music/nosferatu.ogg')
-	zone_type = ZONE_ELYSIUM
+	zone_type = ZONE_NO_MASQUERADE // Crimson Grid Edit Change: Sunnycoast
 
 /area/vtm/interior/sewer/police
 	name = "Police Station - Basement"
@@ -24,19 +24,19 @@
 /area/vtm/interior/sewer/nosferatu_town
 	name = "Underground Town"
 	icon_state = "hotel"
-	zone_type = ZONE_ELYSIUM
+	zone_type = ZONE_NO_MASQUERADE // Crimson Grid Edit Change: Sunnycoast
 
 /area/vtm/interior/sewer/nosferatu_warren
 	name = "Underground Warren"
 	icon_state = "hotel"
-	zone_type = ZONE_ELYSIUM
+	zone_type = ZONE_NO_MASQUERADE // Crimson Grid Edit Change: Sunnycoast
 
 /area/vtm/interior/sewer/nosferatu_bar
 	name = "Underground Bar"
 	icon_state = "hotel"
-	zone_type = ZONE_ELYSIUM
+	zone_type = ZONE_NO_MASQUERADE // Crimson Grid Edit Change: Sunnycoast
 
 /area/vtm/interior/nosferatu_office
 	name = "Underground Office"
 	icon_state = "hotel"
-	zone_type = ZONE_ELYSIUM
+	zone_type = ZONE_NO_MASQUERADE // Crimson Grid Edit Change: Sunnycoast

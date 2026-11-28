@@ -1,0 +1,56 @@
+{
+	"version": 1,
+	"map_name": "Sunny Coast",
+	"map_path": "map_files/Vampire/sunnycoast",
+	"map_file": "sunnycoast.dmm",
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"planetary": 1,
+	"ignored_unit_tests": [
+		"/datum/unit_test/cargo_dep_order_locations",
+		"/datum/unit_test/spy_bounty",
+		"/datum/unit_test/space_dragon_expiration",
+		"/datum/unit_test/maptest_mapload_space_verification",
+		"/datum/unit_test/nuke_cinematic"
+	],
+	"traits": [
+		{
+			"Up": 1,
+			"Baseturf": "/turf/open/misc/dirt"
+		},
+		{
+			"Up": 1,
+			"Down": -1,
+			"Baseturf": "/turf/open/openspace"
+		},
+		{
+			"Up": 1,
+			"Down": -1,
+			"Baseturf": "/turf/open/openspace"
+		},
+		{
+			"Down": -1,
+			"Baseturf": "/turf/open/openspace"
+		},
+		{
+			"Baseturf": "/turf/open/misc/dirt"
+		}
+	],
+	"job_changes": {
+		"I Nonni": {
+			"spawn_positions": 1,
+			"total_positions": 1
+		},
+		"Graveyard Keeper": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Emergency Dispatcher": {
+			"spawn_positions": 1,
+			"total_positions": 1
+		}
+	},
+	"max_npcs": 50,
+	"umbra_map_path": "map_files/Vampire/sunnycoast",
+	"umbra_map_file": "sunnycoast_umbra.dmm"
+}

@@ -377,14 +377,16 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 /obj/item/vamp/keys/police
 	name = "police keys"
 	accesslocks = list(
-		LOCKACCESS_POLICE
+		LOCKACCESS_POLICE,
+		LOCKACCESS_DISPATCH
 	)
 
 /obj/item/vamp/keys/police/federal
 	name = "federal agent keys"
 	accesslocks = list(
 		LOCKACCESS_POLICE,
-		LOCKACCESS_FEDERAL
+		LOCKACCESS_FEDERAL,
+		LOCKACCESS_DISPATCH
 	)
 
 /obj/item/vamp/keys/dispatch
@@ -397,7 +399,8 @@ GLOBAL_LIST_INIT(city_door_lock_ids, list())
 	name = "sergeant police keys"
 	accesslocks = list(
 		LOCKACCESS_POLICE,
-		LOCKACCESS_POLICE_SECURE
+		LOCKACCESS_POLICE_SECURE,
+		LOCKACCESS_DISPATCH
 	)
 
 /obj/item/vamp/keys/police/secure/captain

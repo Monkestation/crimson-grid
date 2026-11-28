@@ -16,6 +16,14 @@
 /obj/structure/vampfence/corner/rich
 	icon = 'modular_darkpack/modules/deprecated/icons/32x48.dmi'
 
+// CRIMSON GRID EDIT ADD START: Sunnycoast
+/obj/structure/vampfence/rich/indestructible
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+/obj/structure/vampfence/corner/rich/indestructible
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+// CRIMSON GRID EDIT ADD END: Sunnycoast
+
 /obj/structure/vampfence/Initialize(mapload)
 	.=..()
 	AddElement(/datum/element/climbable)

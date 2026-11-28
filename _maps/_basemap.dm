@@ -11,6 +11,7 @@
 	#include "map_files\Vampire\san_fangsisco\sanfangsisco.dmm" // CRIMSON EDIT - Map
 	#include "map_files\Vampire\oakland\bomby_oakland.dmm" // CRIMSON EDIT ADD - Oakland
 	#include "map_files\Vampire\westfield_mall\westfield_mall.dmm"
+	#include "map_files\Vampire\sunnycoast\sunnycoast.dmm"
 	#include "map_files\Vampire\runtimetown.dmm"
 	#include "map_files\debug\multiz.dmm"
 	#include "map_files\debug\runtimestation.dmm"
