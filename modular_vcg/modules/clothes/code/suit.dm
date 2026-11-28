@@ -104,3 +104,20 @@
 /datum/armor/eod_suit
 	melee = 70
 	bullet = 70
+
+// NPS Ranger gear. Uses FBI vest sprites for closer match to Ranger vests and to visually distinguish them from police. FBI markings are on the icon not visible on the sprite. Potentially placeholder.
+
+/obj/item/clothing/suit/vampire/vest/police/ranger
+	name = "\improper NPS Ranger duty vest"
+	icon_state = "fbivest"
+	desc = "Lightweight, bulletproof vest with NPS Ranger markings, tailored for active duty."
+
+/obj/item/clothing/suit/vampire/vest/police/sergeant/ranger
+	name = "\improper NPS Lead Ranger duty vest"
+	icon_state = "fbivest"
+	desc = "Lightweight, bulletproof vest with NPS Ranger markings, tailored for active duty. This one has Lead Ranger insignia on it."
+
+/obj/item/clothing/suit/vampire/vest/police/captain/ranger
+	name = "\improper NPS Chief Ranger duty vest"
+	icon_state = "fbivest"
+	desc = "Composite bulletproof vest with NPS Ranger markings, tailored for improved protection. This one has Chief Ranger insignia on it."

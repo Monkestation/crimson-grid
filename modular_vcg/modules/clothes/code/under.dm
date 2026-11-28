@@ -49,3 +49,7 @@
 /obj/item/clothing/under/vampire/tripp_jeans/red
 	name = "red tripp jeans"
 	icon_state = "tripp3"
+
+/obj/item/clothing/under/vampire/turtleneck_black/ranger // Rough resemblance to Ranger uniforms. Potential placeholder.
+	name = "\improper Ranger uniform"
+	desc = "A Ranger uniform consisting of a grey turtleneck, tan pants, and NPS insignia."

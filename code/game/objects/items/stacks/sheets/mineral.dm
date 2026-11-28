@@ -642,8 +642,9 @@ GLOBAL_LIST_INIT(zaukerite_recipes, list(
 
 /obj/item/stack/sheet/mineral/diamond/crown
 	name = "The Crown Diamond"
+	desc = "Apparently, one of the diamonds that would go on the crown of a long dead king. This one is just a replica, however." // CRIMSON EDIT ADD - Crown Diamond Nerf
 	merge_type = /obj/item/stack/sheet/mineral/diamond/crown
-	fence_value = 5000
+	fence_value = 500 // CRIMSON EDIT ADD - Crown Diamond Nerf
 	fence_illegal = TRUE
 
 /obj/item/stack/sheet/mineral/diamond/heart
