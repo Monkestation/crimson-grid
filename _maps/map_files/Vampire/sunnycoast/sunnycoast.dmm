@@ -1030,6 +1030,9 @@
 /obj/effect/turf_decal/siding/grey/inner_corner{
 	dir = 8
 	},
+/obj/structure/railing/wooden_fence{
+	dir = 10
+	},
 /turf/open/water/bloodwave,
 /area/vtm/interior/chantry/basement)
 "aqb" = (
@@ -1242,10 +1245,6 @@
 /area/vtm/sunnycoast/heritage/italy)
 "asO" = (
 /obj/structure/table/wood,
-/obj/vampire_computer{
-	icon_state = "computerprince";
-	pixel_y = 4
-	},
 /obj/effect/decal/cleanable/litter,
 /obj/item/kirbyplants/darkpack/plant2{
 	pixel_y = 17;
@@ -1256,6 +1255,12 @@
 	pixel_y = 24
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/computer/records/security{
+	icon_state = "oldcomp";
+	icon_screen = null;
+	icon_keyboard = null;
+	pixel_y = 7
+	},
 /turf/open/floor/carpet/darkpack/greengold,
 /area/vtm/interior/police)
 "asQ" = (
@@ -2665,6 +2670,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/mapping_helpers/broken_floor,
 /obj/effect/decal/cleanable/trash,
+/obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church/staff)
 "aMF" = (
@@ -3507,6 +3513,11 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/item/flashlight/flare/candle/infinite,
+/obj/item/flashlight/flare/candle/infinite{
+	pixel_x = 10;
+	pixel_y = -4
+	},
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/chantry/basement)
 "aZh" = (
@@ -4079,7 +4090,7 @@
 /area/vtm/sunnycoast/marina)
 "bhF" = (
 /obj/structure/displaycase{
-	start_showpiece_type = /obj/item/occult_artifact/vampire/odious_chalice;
+	start_showpiece_type = /obj/item/occult_artifact/vampire/mummywrap_fetish;
 	alert = 0
 	},
 /turf/open/floor/wood/smooth/old,
@@ -7291,6 +7302,8 @@
 /obj/effect/turf_decal/bordur,
 /obj/structure/railing,
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/occult/artifact/werewolf_only,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/sunnycoast/marina)
 "cfZ" = (
@@ -7818,7 +7831,6 @@
 /obj/effect/turf_decal/bordur{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/rough,
 /area/vtm/interior/vjanitor)
 "coy" = (
@@ -7863,6 +7875,8 @@
 /obj/effect/turf_decal/bordur{
 	dir = 8
 	},
+/obj/effect/spawner/random/occult/artifact,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/concrete/slab_1,
 /area/vtm/sunnycoast/interior/metro)
 "cpD" = (
@@ -8912,6 +8926,13 @@
 	},
 /turf/open/floor/carpet/darkpack/old,
 /area/vtm/interior/techshop)
+"cFn" = (
+/obj/structure/vampipe{
+	icon_state = "piping32"
+	},
+/obj/effect/spawner/random/occult/artifact,
+/turf/open/floor/plating/canal,
+/area/vtm/interior/sewer)
 "cFp" = (
 /obj/structure/fence{
 	dir = 4
@@ -9314,6 +9335,12 @@
 /obj/effect/turf_decal/darkpack/dirt/corner,
 /turf/open/floor/plating/rough/cave,
 /area/vtm/sunnycoast/interior/cave/mineshaft)
+"cKW" = (
+/obj/structure/closet/crate/dumpster,
+/obj/effect/spawner/random/maintenance/dumpster,
+/obj/effect/spawner/random/occult/artifact,
+/turf/open/floor/plating/sidewalkalt,
+/area/vtm/sunnycoast/commerce)
 "cLc" = (
 /obj/effect/turf_decal/stripes/asteroid/line,
 /obj/effect/turf_decal/stripes/asteroid/line{
@@ -11529,6 +11556,10 @@
 "dsw" = (
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/chantry/basement)
+"dsy" = (
+/obj/effect/spawner/random/occult/artifact,
+/turf/open/water/vamp_sewer,
+/area/vtm/interior/sewer)
 "dsB" = (
 /obj/effect/turf_decal/siding/wood/dark{
 	dir = 1
@@ -11990,6 +12021,7 @@
 	},
 /obj/effect/spawner/random/maintenance/dumpster,
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/eighties,
 /area/vtm/sunnycoast/interior/arcade)
 "dzn" = (
@@ -12853,6 +12885,7 @@
 /obj/effect/spawner/random/maintenance/dumpster,
 /obj/item/food/garlicbread,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/shop/pizza)
 "dLN" = (
@@ -13340,8 +13373,9 @@
 /obj/structure/railing/corner/end/flip{
 	dir = 8
 	},
-/turf/open/floor/plating/concrete{
-	color = "#bfbfbf"
+/obj/machinery/shower/directional/east,
+/turf/open/floor/plating/grate/dirty{
+	dir = 1
 	},
 /area/vtm/interior/police)
 "dSQ" = (
@@ -14312,6 +14346,13 @@
 /obj/item/binoculars,
 /turf/open/floor/city/plating_mono,
 /area/vtm/interior/police)
+"eia" = (
+/obj/effect/turf_decal/bordur{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/vjanitor)
 "eie" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -15109,6 +15150,8 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/occult/artifact,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/plating/rough,
 /area/vtm/sunnycoast/marina)
 "esS" = (
@@ -15304,6 +15347,7 @@
 /obj/effect/decal/pallet,
 /obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/plating/rough,
 /area/vtm/outside/supply)
 "ewM" = (
@@ -17888,6 +17932,7 @@
 /area/vtm/interior/apartment)
 "fiU" = (
 /obj/effect/turf_decal/siding/grey,
+/obj/structure/railing/wooden_fence,
 /turf/open/water/bloodwave,
 /area/vtm/interior/chantry/basement)
 "fjd" = (
@@ -20649,6 +20694,7 @@
 "fVj" = (
 /obj/effect/decal/pallet,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/crate/large,
 /turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/interior/selfstorage)
 "fVl" = (
@@ -21046,6 +21092,7 @@
 /obj/machinery/light/cold/directional/east{
 	pixel_y = 16
 	},
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/iron/small,
 /area/vtm/interior/endron_facility/restricted)
 "gbD" = (
@@ -21108,6 +21155,11 @@
 "gcu" = (
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/chantry/basement)
+"gcx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/mop_bucket/janitorialcart,
+/turf/open/floor/plating/concrete,
+/area/vtm/interior/vjanitor)
 "gcB" = (
 /obj/structure/chair/comfy/darkpack/blue,
 /turf/open/floor/carpet/darkpack/bluegold,
@@ -21896,6 +21948,9 @@
 /area/vtm/interior/police)
 "gra" = (
 /obj/effect/turf_decal/siding/grey/inner_corner,
+/obj/structure/railing/wooden_fence{
+	dir = 6
+	},
 /turf/open/water/bloodwave,
 /area/vtm/interior/chantry/basement)
 "grd" = (
@@ -23115,6 +23170,7 @@
 	},
 /obj/effect/decal/pallet,
 /obj/structure/closet/crate/large,
+/obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/interior/nightclub/staff)
 "gJJ" = (
@@ -23246,6 +23302,9 @@
 /obj/machinery/light/small/directional/south,
 /obj/machinery/camera/autoname/directional/south{
 	pixel_y = 16
+	},
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 8
 	},
 /turf/open/floor/plating/concrete{
 	color = "#bfbfbf"
@@ -24404,6 +24463,7 @@
 	pixel_y = 16
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/item/clothing/suit/vampire/dutch,
 /turf/open/floor/city/circled/large,
 /area/vtm/interior/laundromat)
 "hhs" = (
@@ -24421,6 +24481,9 @@
 /area/vtm/sunnycoast/marina)
 "hhG" = (
 /obj/structure/sink/directional/east,
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 1
+	},
 /turf/open/floor/plating/concrete{
 	color = "#bfbfbf"
 	},
@@ -27186,6 +27249,7 @@
 "iaA" = (
 /obj/structure/closet/body_bag,
 /obj/effect/mob_spawn/corpse/human/ciz1,
+/obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/plating/asphalt,
 /area/vtm/sunnycoast/interior/parking/three)
 "iaE" = (
@@ -28672,6 +28736,7 @@
 /area/vtm/sunnycoast/forest)
 "iwV" = (
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/factory,
 /area/vtm/sunnycoast/interior/nightclub/staff)
 "ixl" = (
@@ -29117,6 +29182,8 @@
 	dir = 5
 	},
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/occult/artifact,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/plating/sidewalk,
 /area/vtm/outside/pacificheights/industrial)
 "iEt" = (
@@ -29166,6 +29233,9 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/camera/autoname/directional/north{
 	pixel_y = 24
+	},
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 8
 	},
 /turf/open/floor/plating/concrete{
 	color = "#bfbfbf"
@@ -30402,6 +30472,11 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 4
 	},
+/obj/item/flashlight/flare/candle/infinite{
+	pixel_x = -10;
+	pixel_y = -4
+	},
+/obj/item/flashlight/flare/candle/infinite,
 /turf/open/floor/plating/granite/black,
 /area/vtm/interior/chantry/basement)
 "iZt" = (
@@ -31131,6 +31206,9 @@
 /obj/machinery/light/small/directional/south,
 /obj/machinery/camera/autoname/directional/south{
 	pixel_y = 16
+	},
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 8
 	},
 /turf/open/floor/plating/concrete{
 	color = "#bfbfbf"
@@ -33147,6 +33225,9 @@
 "jLY" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /mob/living/basic/mouse/vampire,
+/obj/effect/turf_decal/siding/dark_brown/corner{
+	dir = 1
+	},
 /turf/open/floor/plating/concrete{
 	color = "#bfbfbf"
 	},
@@ -35620,6 +35701,7 @@
 "kxM" = (
 /obj/effect/decal/cleanable/trash,
 /obj/structure/sink/directional/east,
+/obj/effect/turf_decal/siding/dark_brown,
 /turf/open/floor/plating/concrete{
 	color = "#bfbfbf"
 	},
@@ -35835,6 +35917,7 @@
 /obj/structure/closet/crate/bin,
 /obj/effect/spawner/random/trash/botanical_waste,
 /obj/effect/spawner/random/trash/food_packaging,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/factory,
 /area/vtm/interior/supply)
 "kAG" = (
@@ -37224,6 +37307,16 @@
 /obj/structure/fluff/bollard/dual/grey/directional/north,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights/industrial)
+"kVC" = (
+/obj/effect/decal/cleanable/trash,
+/obj/structure/sink/directional/east,
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 1
+	},
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
+/area/vtm/interior/police)
 "kVL" = (
 /obj/structure/chair/wood/darkpack/red{
 	dir = 4
@@ -37501,6 +37594,7 @@
 	pixel_y = -8
 	},
 /obj/effect/decal/pallet,
+/obj/structure/closet/crate/large,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/sewer/nosferatu_bar)
 "kZQ" = (
@@ -38797,6 +38891,10 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/church/staff)
+"lvd" = (
+/obj/effect/spawner/random/occult/artifact/werewolf_only,
+/turf/open/water/beach/vamp,
+/area/vtm/sunnycoast/marina)
 "lve" = (
 /obj/structure/table/wood,
 /obj/item/plate/small{
@@ -39398,6 +39496,7 @@
 /obj/machinery/light/cold/directional/west{
 	pixel_y = 16
 	},
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/circled/large,
 /area/vtm/interior/shop/bubway)
 "lDe" = (
@@ -40573,6 +40672,7 @@
 /obj/effect/decal/pallet,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/light/small/dim/directional/north,
+/obj/structure/closet/crate/large,
 /turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/interior/selfstorage)
 "lWj" = (
@@ -40645,12 +40745,16 @@
 /turf/closed/wall/vampwall/rich/old,
 /area/vtm/interior/sewer)
 "lXN" = (
-/obj/structure/reagent_dispensers/watertank/high,
-/obj/structure/railing{
-	dir = 6
-	},
 /obj/effect/turf_decal/bordur{
 	dir = 6
+	},
+/obj/structure/bodycontainer/crematorium{
+	id = 11
+	},
+/obj/machinery/button/crematorium{
+	id = 11;
+	pixel_y = 31;
+	pixel_x = -8
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/vjanitor)
@@ -40818,6 +40922,13 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating/stone,
 /area/vtm/interior/endron_facility/restricted)
+"mbd" = (
+/obj/effect/turf_decal/darkpack/dirt{
+	dir = 1
+	},
+/obj/effect/spawner/random/occult/artifact,
+/turf/open/floor/plating/rough/cave,
+/area/vtm/sunnycoast/interior/tunnels)
 "mbn" = (
 /obj/structure/fence{
 	dir = 4
@@ -41123,6 +41234,13 @@
 /obj/effect/spawner/random/trash/grime,
 /turf/open/misc/dirt,
 /area/vtm/sunnycoast/interior/tunnels)
+"mfH" = (
+/obj/effect/turf_decal/siding/grey/inner_corner{
+	dir = 8
+	},
+/obj/structure/railing/wooden_fence,
+/turf/open/water/bloodwave,
+/area/vtm/interior/chantry/basement)
 "mfI" = (
 /obj/effect/turf_decal/bordur{
 	dir = 8
@@ -41506,6 +41624,7 @@
 /area/vtm/sunnycoast/heritage/italy)
 "mlQ" = (
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/red_dragon)
 "mlV" = (
@@ -44122,6 +44241,10 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/city/plating_mono,
 /area/vtm/sunnycoast/interior/nightclub)
+"mTL" = (
+/obj/effect/spawner/random/occult/artifact/werewolf_only,
+/turf/open/misc/grass/random/grass,
+/area/vtm/sunnycoast/forest)
 "mTO" = (
 /obj/effect/decal/wallpaper/stone/low{
 	pixel_y = 24
@@ -45989,6 +46112,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/litter,
 /obj/structure/sink/directional/east,
+/obj/effect/turf_decal/siding/dark_brown,
 /turf/open/floor/plating/concrete{
 	color = "#bfbfbf"
 	},
@@ -47694,6 +47818,11 @@
 	},
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights/industrial)
+"nRh" = (
+/obj/effect/decal/pallet,
+/obj/effect/spawner/random/occult/artifact,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/sewer)
 "nRi" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/paper_bin{
@@ -50538,6 +50667,9 @@
 /obj/effect/turf_decal/siding/wood/dark/corner,
 /obj/structure/detectiveboard/directional/north,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/item/clothing/head/costume/spacepolice{
+	name = "SFPD Captains cap"
+	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
 "oHf" = (
@@ -50827,6 +50959,14 @@
 	},
 /turf/open/floor/plating/stone,
 /area/vtm/interior/endron_facility/restricted)
+"oLr" = (
+/obj/effect/turf_decal/siding/dark_brown/corner{
+	dir = 1
+	},
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
+/area/vtm/interior/police)
 "oLD" = (
 /obj/effect/turf_decal/bordur,
 /obj/structure/fence/door,
@@ -50868,6 +51008,7 @@
 /area/vtm/outside/pacificheights/industrial)
 "oMr" = (
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/shop/grocery)
 "oMs" = (
@@ -51220,6 +51361,7 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/iron/dark/small,
 /area/vtm/interior/endron_facility/restricted)
 "oSG" = (
@@ -51575,6 +51717,7 @@
 /area/vtm/sunnycoast/interior/nightclub/vip)
 "oXa" = (
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/clinic,
 /area/vtm/interior/clinic)
 "oXw" = (
@@ -51614,6 +51757,7 @@
 /area/vtm/interior/clinic/haven)
 "oYa" = (
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/plating,
 /area/vtm/interior/millennium_tower)
 "oYe" = (
@@ -51633,6 +51777,17 @@
 	},
 /turf/open/floor/city/factory,
 /area/vtm/interior/sewer/nosferatu_warren)
+"oYk" = (
+/obj/structure/toilet{
+	dir = 4;
+	pixel_y = 8
+	},
+/obj/structure/railing/corner/end/flip{
+	dir = 8
+	},
+/obj/machinery/shower/directional/east,
+/turf/open/floor/plating/grate/dirty,
+/area/vtm/interior/police)
 "oYr" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/city/plating_mono,
@@ -51667,16 +51822,12 @@
 	name = "sheriff's tactical helmet"
 	},
 /obj/item/clothing/head/hats/hos/beret,
-/obj/item/katana/vamp{
-	color = "#ccffff";
-	desc = "A flimsy appearing replica katana. It looks quite sharp, despite being an apparent reference to Japanese animation. ";
-	force = 50;
-	name = "Sheriff's special"
-	},
 /obj/effect/turf_decal/siding/wood/dark/corner{
 	dir = 8
 	},
 /obj/machinery/light/prince/directional/north,
+/obj/item/sheriffblade/vamp,
+/obj/item/vamp/keys/sheriff,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/millennium_tower/f3)
 "oYL" = (
@@ -54417,6 +54568,14 @@
 /obj/structure/platform/lowwall/brick,
 /turf/open/floor/plating/sidewalk/old,
 /area/vtm/sunnycoast/heritage/italy)
+"pMy" = (
+/obj/effect/decal/fakelattice{
+	density = 0
+	},
+/obj/effect/decal/pallet,
+/obj/structure/closet/crate/large,
+/turf/open/floor/plating/rough/cave,
+/area/vtm/interior/sewer/nosferatu_bar)
 "pME" = (
 /obj/structure/platform/lowwall/rich/window,
 /obj/effect/decal/wallpaper/red/low,
@@ -55685,6 +55844,13 @@
 /obj/structure/stairs/north,
 /turf/open/floor/stone,
 /area/vtm/sunnycoast/interior/blackmarket)
+"qhK" = (
+/obj/structure/table/wood,
+/obj/underplate{
+	pixel_y = 5
+	},
+/turf/open/floor/carpet/darkpack/greengold,
+/area/vtm/interior/police)
 "qib" = (
 /obj/machinery/light/warm/directional/east{
 	pixel_y = 16
@@ -55934,6 +56100,7 @@
 	density = 0
 	},
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/church,
 /area/vtm/interior/church/staff)
 "qlT" = (
@@ -56034,6 +56201,7 @@
 "qnb" = (
 /obj/structure/closet/crate/bin,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/circled,
 /area/vtm/interior/shop/gasstation)
 "qnc" = (
@@ -56551,9 +56719,8 @@
 	},
 /obj/effect/decal/cleanable/litter,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/plating/concrete{
-	color = "#bfbfbf"
-	},
+/obj/machinery/shower/directional/east,
+/turf/open/floor/plating/grate/dirty,
 /area/vtm/interior/police)
 "qvD" = (
 /obj/structure/flora/bush/sparsegrass/style_random,
@@ -60083,6 +60250,14 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/police)
+"rzW" = (
+/obj/effect/turf_decal/siding/dark_brown/corner{
+	dir = 8
+	},
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
+/area/vtm/interior/police)
 "rzX" = (
 /obj/effect/turf_decal/darkpack/dirt{
 	dir = 1
@@ -61092,6 +61267,7 @@
 /area/vtm/sunnycoast/heritage)
 "rPq" = (
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/bacotell,
 /area/vtm/sunnycoast/interior/oldmansion)
 "rPz" = (
@@ -64947,6 +65123,14 @@
 	},
 /turf/open/misc/dirt/dark,
 /area/vtm/sunnycoast/junkyard)
+"sVK" = (
+/obj/effect/decal/shadow,
+/obj/effect/decal/wallpaper/stone/low{
+	pixel_y = 24
+	},
+/obj/effect/spawner/random/occult/artifact/werewolf_only,
+/turf/open/floor/plating/roofwalk,
+/area/vtm/sunnycoast/marina)
 "sVO" = (
 /obj/effect/turf_decal/darkpack/dirt{
 	dir = 4
@@ -65772,6 +65956,8 @@
 /area/vtm/interior/supply)
 "ths" = (
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/occult/artifact/werewolf_only,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/bacotell,
 /area/vtm/sunnycoast/interior/cabin)
 "thu" = (
@@ -66047,6 +66233,14 @@
 "tlI" = (
 /turf/open/floor/city/plating_stone,
 /area/vtm/sunnycoast/interior/gambling)
+"tlJ" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/obj/structure/railing{
+	dir = 10
+	},
+/obj/effect/turf_decal/bordur/corner,
+/turf/open/floor/plating/rough,
+/area/vtm/interior/vjanitor)
 "tlK" = (
 /obj/structure/vampipe{
 	icon_state = "piping34"
@@ -67888,6 +68082,7 @@
 "tLA" = (
 /obj/effect/turf_decal/darkpack/rough,
 /obj/effect/decal/pallet,
+/obj/structure/closet/crate/large,
 /turf/open/floor/plating/concrete,
 /area/vtm/sunnycoast/interior/selfstorage)
 "tLB" = (
@@ -68477,6 +68672,7 @@
 /area/vtm/interior/endron_facility/restricted)
 "tTe" = (
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/wood/smooth/old,
 /area/vtm/interior/supply)
 "tTk" = (
@@ -70346,6 +70542,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
+/obj/structure/sink/directional/south,
 /turf/open/floor/city/bacotell,
 /area/vtm/interior/police)
 "uwR" = (
@@ -70797,6 +70994,15 @@
 	},
 /turf/open/floor/plating/rough,
 /area/vtm/interior/sewer)
+"uDk" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/siding/dark_brown/corner{
+	dir = 8
+	},
+/turf/open/floor/plating/concrete{
+	color = "#bfbfbf"
+	},
+/area/vtm/interior/police)
 "uDl" = (
 /obj/machinery/light/red/directional/east{
 	pixel_y = 16
@@ -72395,6 +72601,8 @@
 	},
 /obj/effect/decal/pallet,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/occult/artifact,
+/obj/structure/closet/crate/large,
 /turf/open/floor/plating/canalplating,
 /area/vtm/interior/shop/smoke_shop)
 "uZo" = (
@@ -72840,6 +73048,13 @@
 "vgr" = (
 /turf/open/floor/city/industrial/large,
 /area/vtm/interior/apartment/italy)
+"vgt" = (
+/obj/effect/turf_decal/darkpack/rough,
+/obj/effect/decal/pallet,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/crate/large,
+/turf/open/floor/plating/concrete,
+/area/vtm/sunnycoast/interior/selfstorage)
 "vgy" = (
 /obj/structure/table/countertop/red,
 /obj/machinery/light/small/red/directional/west{
@@ -72966,6 +73181,7 @@
 "vhT" = (
 /obj/structure/closet/crate/bin,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/clinic,
 /area/vtm/interior/clinic)
 "vhX" = (
@@ -73150,6 +73366,9 @@
 /obj/effect/decal/cleanable/trash,
 /obj/machinery/camera/autoname/directional/north{
 	pixel_y = 24
+	},
+/obj/effect/turf_decal/siding/dark_brown{
+	dir = 8
 	},
 /turf/open/floor/plating/concrete{
 	color = "#bfbfbf"
@@ -74523,6 +74742,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/wood/smooth,
 /area/vtm/interior/clinic)
 "vEz" = (
@@ -74816,6 +75036,8 @@
 	dir = 8
 	},
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/occult/artifact,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/plating/sidewalkalt,
 /area/vtm/sunnycoast/heritage/china)
 "vJh" = (
@@ -75512,6 +75734,11 @@
 	},
 /turf/open/floor/wood/smooth/old,
 /area/vtm/sunnycoast/interior/nightclub/staff)
+"vUx" = (
+/obj/effect/turf_decal/siding/grey/inner_corner,
+/obj/structure/railing/wooden_fence,
+/turf/open/water/bloodwave,
+/area/vtm/interior/chantry/basement)
 "vUB" = (
 /obj/structure/spacevine{
 	can_spread = 0;
@@ -76216,6 +76443,7 @@
 	dir = 8
 	},
 /obj/effect/decal/pallet,
+/obj/effect/spawner/random/occult/artifact/werewolf_only,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/sunnycoast/commerce)
 "wfY" = (
@@ -76440,6 +76668,7 @@
 "wiO" = (
 /obj/effect/turf_decal/tile/neutral/opposingcorners,
 /obj/structure/closet/crate/bin,
+/obj/effect/spawner/random/maintenance/dumpster,
 /turf/open/floor/city/gummaguts,
 /area/vtm/interior/shop/diner)
 "wiP" = (
@@ -78706,6 +78935,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/bin,
 /obj/effect/spawner/random/maintenance/dumpster,
+/obj/effect/spawner/random/occult/artifact,
 /turf/open/floor/plating/sidewalk/poor,
 /area/vtm/outside/pacificheights/industrial)
 "wUu" = (
@@ -85105,7 +85335,7 @@ tpW
 tpW
 wRb
 qvB
-kxM
+kVC
 ehF
 rHC
 quz
@@ -85267,7 +85497,7 @@ fBo
 fBo
 eLb
 txb
-cUK
+rzW
 gLN
 fRH
 tpW
@@ -85720,7 +85950,7 @@ tpW
 tpW
 tpW
 wRb
-dSK
+oYk
 hhG
 ehF
 rHC
@@ -85875,7 +86105,7 @@ tpW
 tpW
 wRb
 iEX
-cUK
+oLr
 ehF
 njb
 fBo
@@ -85883,7 +86113,7 @@ fBo
 fBo
 dGl
 cUK
-ehF
+uDk
 jjx
 fRH
 deE
@@ -86322,7 +86552,7 @@ tBr
 lOY
 dri
 dRa
-tqM
+dsy
 tqM
 inX
 inX
@@ -88540,7 +88770,7 @@ gAd
 gAd
 piT
 aLl
-cAS
+mbd
 eCS
 piT
 piT
@@ -91180,7 +91410,7 @@ sWo
 whS
 syk
 rcb
-woL
+cFn
 guj
 hbx
 dxb
@@ -91722,7 +91952,7 @@ tpW
 tpW
 hWB
 hWB
-mpf
+pMy
 cex
 hWB
 hWB
@@ -95048,7 +95278,7 @@ syk
 qgX
 uGV
 vzo
-iza
+nRh
 qJd
 nLW
 whS
@@ -95079,7 +95309,7 @@ syk
 lap
 mxK
 tcN
-aqa
+mfH
 aYV
 jQn
 vrR
@@ -95695,7 +95925,7 @@ syk
 lap
 mxK
 tcN
-gra
+vUx
 iZm
 srG
 srG
@@ -97787,7 +98017,7 @@ inX
 inX
 peE
 qnj
-ppR
+inX
 ppR
 inX
 kbO
@@ -102926,7 +103156,7 @@ aPw
 aPw
 aPw
 aPw
-aPw
+lvd
 aPw
 aPw
 aPw
@@ -107220,7 +107450,7 @@ kNY
 uHx
 pxG
 jMp
-jMp
+cKW
 wOH
 nug
 usv
@@ -111343,7 +111573,7 @@ mVu
 tTD
 oEb
 lXN
-coi
+eia
 coi
 oEb
 aQj
@@ -111958,7 +112188,7 @@ rTQ
 iSa
 tTD
 wqW
-uRm
+gcx
 qXl
 muQ
 oEb
@@ -112112,7 +112342,7 @@ jzA
 iSa
 tTD
 wqW
-qXl
+tlJ
 muQ
 gZt
 oEb
@@ -119213,7 +119443,7 @@ pqx
 ihI
 owu
 vXa
-yeS
+vgt
 gpw
 iyY
 oBE
@@ -131312,7 +131542,7 @@ scT
 ogk
 lUN
 uee
-qOF
+qhK
 iiL
 upD
 upD
@@ -160419,7 +160649,7 @@ upD
 upD
 tCD
 kbX
-sBB
+sVK
 tZI
 kbX
 gdi
@@ -188167,7 +188397,7 @@ gso
 xGS
 xGS
 gjr
-xGS
+mTL
 xGS
 cXp
 vHi
