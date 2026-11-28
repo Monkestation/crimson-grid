@@ -673,6 +673,10 @@
 						user.add_mood_event("morbid_saved_life", /datum/mood_event/morbid_saved_life)
 					else
 						user.add_mood_event("saved_life", /datum/mood_event/saved_life)
+						// CRIMSON EDIT ADDITION START - Humanity Gain
+						if(!user.is_enlightenment())
+							SEND_SIGNAL(user, COMSIG_PATH_HIT, 1, 10, FALSE)
+						// CRIMSON EDIT ADDITION END - Humanity Gain
 					log_combat(user, H, "revived", defib)
 				do_success()
 				return
