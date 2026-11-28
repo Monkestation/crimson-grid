@@ -217,8 +217,10 @@
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	return ..()
 
+/* CRIMSON GRID REMOVAL START - this just breaks projectile armor working on basic mobs, why is this a thing?
 /mob/living/basic/check_projectile_armor(def_zone, obj/projectile/impacting_projectile, is_silent)
 	return 0
+*/ // CRIMSON GRID REMOVAL END
 
 /mob/living/basic/ex_act(severity, target, origin)
 	. = ..()
